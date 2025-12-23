@@ -1,0 +1,138 @@
+{
+  "ttl_days": 7,
+  "as_of": "2025-01-20T10:30:00Z",
+  "next_refresh": "2025-01-27T10:30:00Z",
+  "items": [
+    {
+      "symbol": "ONDS",
+      "sector": "Technology",
+      "industry": "Industrial IoT Solutions",
+      "confidence": 0.75,
+      "sources": ["yahoo_finance", "sec_filings"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "small_cap",
+      "exchange": "NASDAQ"
+    },
+    {
+      "symbol": "PL",
+      "sector": "Technology",
+      "industry": "Satellite Imaging & Analytics",
+      "confidence": 0.90,
+      "sources": ["yahoo_finance", "sec_filings", "company_website"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "small_cap",
+      "exchange": "NYSE"
+    },
+    {
+      "symbol": "RKLB",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "confidence": 0.90,
+      "sources": ["yahoo_finance", "sec_filings", "company_website"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "small_cap",
+      "exchange": "NASDAQ"
+    },
+    {
+      "symbol": "ASTS",
+      "sector": "Communication Services",
+      "industry": "Satellite Communications",
+      "confidence": 0.75,
+      "sources": ["yahoo_finance", "sec_filings"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "small_cap",
+      "exchange": "NASDAQ"
+    },
+    {
+      "symbol": "RIVN",
+      "sector": "Consumer Cyclical",
+      "industry": "Electric Vehicles",
+      "confidence": 0.90,
+      "sources": ["yahoo_finance", "sec_filings", "company_website"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "large_cap",
+      "exchange": "NASDAQ"
+    },
+    {
+      "symbol": "MDB",
+      "sector": "Technology",
+      "industry": "Database Software",
+      "confidence": 0.90,
+      "sources": ["yahoo_finance", "sec_filings", "company_website"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "large_cap",
+      "exchange": "NASDAQ"
+    },
+    {
+      "symbol": "ORCL",
+      "sector": "Technology",
+      "industry": "Enterprise Software",
+      "confidence": 0.90,
+      "sources": ["yahoo_finance", "sec_filings", "company_website"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "large_cap",
+      "exchange": "NYSE"
+    },
+    {
+      "symbol": "TSM",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "confidence": 0.90,
+      "sources": ["yahoo_finance", "sec_filings", "company_website"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "large_cap",
+      "exchange": "NYSE"
+    },
+    {
+      "symbol": "AVAV",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "confidence": 0.75,
+      "sources": ["yahoo_finance", "sec_filings"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "mid_cap",
+      "exchange": "NASDAQ"
+    },
+    {
+      "symbol": "RDW",
+      "sector": "Industrials",
+      "industry": "Space Infrastructure",
+      "confidence": 0.75,
+      "sources": ["yahoo_finance"],
+      "last_verified_at": "2025-01-20T10:30:00Z",
+      "market_cap_category": "small_cap",
+      "exchange": "NYSE"
+    }
+  ],
+  "sector_grouping": {
+    "Technology": ["ONDS", "PL", "MDB", "ORCL", "TSM"],
+    "Industrials": ["RKLB", "AVAV", "RDW"],
+    "Communication Services": ["ASTS"],
+    "Consumer Cyclical": ["RIVN"],
+    "Financial Services": [],
+    "Healthcare": [],
+    "Consumer Defensive": [],
+    "Energy": [],
+    "Basic Materials": [],
+    "Real Estate": [],
+    "Utilities": [],
+    "Unknown": []
+  },
+  "confidence_distribution": {
+    "high_confidence_0_90": 6,
+    "medium_confidence_0_75": 3,
+    "low_confidence_0_50": 1
+  },
+  "data_sources": {
+    "yahoo_finance": 10,
+    "sec_filings": 9,
+    "company_website": 6
+  },
+  "refresh_metadata": {
+    "last_refresh_duration_ms": 12450,
+    "symbols_updated": 10,
+    "symbols_failed": 0,
+    "confidence_improvements": 2,
+    "new_sources_added": 1
+  }
+}
