@@ -13,7 +13,20 @@
       content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https:; frame-src https:;"
     />
     <title>Investment Dashboard</title>
-    <script type="module" crossorigin src="/investment-dashboard/assets/index-BfQb5wx4.js"></script>
+    <script>
+      // GitHub Pages SPA routing support
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?')
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          )
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/investment-dashboard/assets/index-C2qVlQf7.js"></script>
     <link rel="stylesheet" crossorigin href="/investment-dashboard/assets/index-Da7Gadk6.css">
   </head>
   <body>
