@@ -144,7 +144,7 @@ const SymbolDataSchema = z.object({
   gaps: z.array(z.string())
 })
 
-const MacroIndicatorSchema = z.object({
+const MarketsIndicatorSchema = z.object({
   id: z.string().min(1),
   value: z.number().nullable(),
   as_of: DateTimeString,
@@ -153,7 +153,7 @@ const MacroIndicatorSchema = z.object({
 })
 
 const MacroDataSchema = z.object({
-  items: z.array(MacroIndicatorSchema).length(10, 'Must have exactly 10 macro indicators')
+  items: z.array(MarketsIndicatorSchema).length(10, 'Must have exactly 10 markets indicators')
 })
 
 const GenerationMetadataSchema = z.object({
@@ -295,7 +295,7 @@ export const UniverseConfigSchema = z.object({
   validation: ValidationRulesSchema
 })
 
-const MacroIndicatorDefinitionSchema = z.object({
+const MarketsIndicatorDefinitionSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
   description: z.string().min(1),
@@ -312,11 +312,11 @@ const ScrapingSettingsSchema = z.object({
   user_agent: z.string().min(1)
 })
 
-export const MacroIndicatorConfigSchema = z.object({
+export const MarketsIndicatorConfigSchema = z.object({
   description: z.string(),
   version: z.string(),
   last_updated: z.string(),
-  indicators: z.array(MacroIndicatorDefinitionSchema).length(10, 'Must have exactly 10 macro indicators'),
+  indicators: z.array(MarketsIndicatorDefinitionSchema).length(10, 'Must have exactly 10 markets indicators'),
   scraping_settings: ScrapingSettingsSchema
 })
 
@@ -378,8 +378,8 @@ export function validateUniverseConfig(data: unknown): ValidationResult<Universe
   return validateData(UniverseConfigSchema, data)
 }
 
-export function validateMacroIndicatorConfig(data: unknown): ValidationResult<MacroIndicatorConfig> {
-  return validateData(MacroIndicatorConfigSchema, data)
+export function validateMarketsIndicatorConfig(data: unknown): ValidationResult<MarketsIndicatorConfig> {
+  return validateData(MarketsIndicatorConfigSchema, data)
 }
 
 // ============================================================================

@@ -165,15 +165,15 @@ describe('Sample Data Files', () => {
       })
     })
 
-    it('should have proper industry grouping', () => {
+    it('should have proper sector grouping', () => {
       const metadataData = JSON.parse(
         readFileSync(resolve(dataPath, 'symbols_metadata.json'), 'utf8')
       )
       
-      expect(metadataData).toHaveProperty('industry_grouping')
+      expect(metadataData).toHaveProperty('sector_grouping')
       
       // Check that all symbols are accounted for in grouping
-      const allGroupedSymbols = Object.values(metadataData.industry_grouping).flat()
+      const allGroupedSymbols = Object.values(metadataData.sector_grouping).flat()
       expect(allGroupedSymbols).toHaveLength(10)
       
       // Check confidence distribution

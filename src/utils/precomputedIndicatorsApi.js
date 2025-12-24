@@ -1,0 +1,148 @@
+// 預計算技術指標 API
+// 從靜態文件讀取預計算的技術指標數據
+
+class PrecomputedIndicatorsAPI {
+  constructor() {
+    this.baseUrl = '/data/technical-indicators/';
+    this.cache = new Map();
+    this.cacheTimeout = 5 * 60 * 1000; // 5分鐘緩存
+  }
+
+  // 獲取今天的日期字符串
+  getTodayString() {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  // 獲取預計算的技術指標數據
+  async getTechnicalIndicators(symbol) {
+    const cacheKey = `precomputed_${symbol}`;
+    
+    // 檢查緩存
+    if (this.cache.has(cacheKey)) {
+      const cached = this.cache.get(cacheKey);
+      if (Date.now() - cached.timestamp < this.cacheTimeout) {
+        console.log(`Using precomputed cache for ${symbol}`);
+        return cached.data;
+      }
+    }
+
+    try {
+      // 嘗試獲取今天的預計算數據
+      const today = this.getTodayString();
+      const todayUrl = `${this.baseUrl}${today}_${symbol}.json`;
+      
+      console.log(`Fetching precomputed data for ${symbol} from ${todayUrl}`);
+      
+      let response = await fetch(todayUrl);
+      
+      // 如果今天的數據不存在，嘗試獲取最新的數據
+      if (!response.ok) {
+        console.log(`Today's data not found for ${symbol}, trying latest...`);
+        
+        // 先獲取索引文件找到最新日期
+        const indexResponse = await fetch(`${this.baseUrl}latest_index.json`);
+        if (indexResponse.ok) {
+          const index = await indexResponse.json();
+          if (index.symbols.includes(symbol)) {
+            const latestUrl = `${this.baseUrl}${index.date}_${symbol}.json`;
+            response = await fetch(latestUrl);
+          }
+        }
+      }
+      
+      if (!response.ok) {
+        throw new Error(`Precomputed data not found for ${symbol}`);
+      }
+      
+      const data = await response.json();
+      
+      // 轉換數據格式以匹配原有 API
+      const indicators = {
+        ...data.indicators,
+        source: 'Precomputed',
+        lastUpdated: data.computedAt,
+        dataAge: this.calculateDataAge(data.computedAt),
+        precomputedDate: data.date
+      };
+      
+      // 緩存結果
+      this.cache.set(cacheKey, {
+        data: indicators,
+        timestamp: Date.now()
+      });
+      
+      console.log(`✅ Loaded precomputed data for ${symbol} (age: ${indicators.dataAge})`);
+      return indicators;
+      
+    } catch (error) {
+      console.error(`Failed to load precomputed data for ${symbol}:`, error);
+      throw error;
+    }
+  }
+
+  // 計算數據年齡
+  calculateDataAge(computedAt) {
+    const now = new Date();
+    const computed = new Date(computedAt);
+    const diffMs = now - computed;
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    
+    if (diffHours > 0) {
+      return `${diffHours}h ${diffMinutes}m ago`;
+    } else {
+      return `${diffMinutes}m ago`;
+    }
+  }
+
+  // 獲取可用的預計算數據索引
+  async getAvailableData() {
+    try {
+      const response = await fetch(`${this.baseUrl}latest_index.json`);
+      if (!response.ok) {
+        throw new Error('Index not found');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Failed to load precomputed index:', error);
+      return null;
+    }
+  }
+
+  // 檢查預計算數據是否可用
+  async isPrecomputedDataAvailable(symbol) {
+    try {
+      const index = await this.getAvailableData();
+      return index && index.symbols.includes(symbol);
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // 清除緩存
+  clearCache() {
+    this.cache.clear();
+  }
+
+  // 獲取緩存統計
+  getCacheStats() {
+    const stats = {
+      size: this.cache.size,
+      items: []
+    };
+    
+    for (const [key, value] of this.cache.entries()) {
+      stats.items.push({
+        key,
+        age: Date.now() - value.timestamp,
+        expired: Date.now() - value.timestamp > this.cacheTimeout
+      });
+    }
+    
+    return stats;
+  }
+}
+
+// 創建單例實例
+export const precomputedIndicatorsAPI = new PrecomputedIndicatorsAPI();
+export default precomputedIndicatorsAPI;

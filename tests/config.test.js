@@ -29,10 +29,10 @@ describe('Configuration Files', () => {
     })
   })
 
-  describe('macro_indicators.json', () => {
-    it('should contain exactly 10 macro indicators', () => {
+  describe('markets_indicators.json', () => {
+    it('should contain exactly 10 markets indicators', () => {
       const macroConfig = JSON.parse(
-        readFileSync(resolve(configPath, 'macro_indicators.json'), 'utf8')
+        readFileSync(resolve(configPath, 'markets_indicators.json'), 'utf8')
       )
       
       expect(macroConfig.indicators).toHaveLength(10)
@@ -40,7 +40,7 @@ describe('Configuration Files', () => {
 
     it('should have indicators with scrape_only flags', () => {
       const macroConfig = JSON.parse(
-        readFileSync(resolve(configPath, 'macro_indicators.json'), 'utf8')
+        readFileSync(resolve(configPath, 'markets_indicators.json'), 'utf8')
       )
       
       const scrapeOnlyCount = macroConfig.indicators.filter(
@@ -58,7 +58,7 @@ describe('Configuration Files', () => {
 
     it('should have required fields for each indicator', () => {
       const macroConfig = JSON.parse(
-        readFileSync(resolve(configPath, 'macro_indicators.json'), 'utf8')
+        readFileSync(resolve(configPath, 'markets_indicators.json'), 'utf8')
       )
       
       macroConfig.indicators.forEach(indicator => {

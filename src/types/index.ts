@@ -61,13 +61,18 @@ export interface QuotesSnapshot {
 export interface QuoteItem {
   symbol: string
   price_usd: number | null
-  price_type: 'latest' | 'close' | 'last_known'
+  price_type: 'latest' | 'close' | 'last_known' | 'after_hours'
   market_state: 'open' | 'closed' | 'pre' | 'post' | null
   is_delayed: boolean
   stale_level: 'fresh' | 'stale' | 'very_stale'
   error: string | null
   change_percent?: number
+  change_amount?: number
   volume?: number
+  close_price?: number
+  after_hours_price?: number | null
+  after_hours_change_percent?: number | null
+  after_hours_change_amount?: number | null
 }
 
 export interface QuotesMetadata {
@@ -110,10 +115,10 @@ export interface NewsItem {
 }
 
 export interface MacroData {
-  items: MacroIndicator[] // Exactly 10 items
+  items: MarketsIndicator[] // Exactly 10 items
 }
 
-export interface MacroIndicator {
+export interface MarketsIndicator {
   id: string
   value: number | null
   as_of: string
@@ -251,15 +256,15 @@ export interface ValidationRules {
   case_sensitive: boolean
 }
 
-export interface MacroIndicatorConfig {
+export interface MarketsIndicatorConfig {
   description: string
   version: string
   last_updated: string
-  indicators: MacroIndicatorDefinition[]
+  indicators: MarketsIndicatorDefinition[]
   scraping_settings: ScrapingSettings
 }
 
-export interface MacroIndicatorDefinition {
+export interface MarketsIndicatorDefinition {
   id: string
   name: string
   description: string

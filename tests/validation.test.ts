@@ -8,7 +8,7 @@ import {
   validateMetadataSnapshot,
   validateSystemStatus,
   validateUniverseConfig,
-  validateMacroIndicatorConfig,
+  validateMarketsIndicatorConfig,
   validateSymbolFormat,
   validateSymbolInUniverse,
   validateNoDuplicateSymbol,
@@ -33,12 +33,12 @@ describe('Data Model Validation', () => {
       expect(result.data?.symbols).toHaveLength(10)
     })
 
-    it('should validate macro_indicators.json structure', () => {
+    it('should validate markets_indicators.json structure', () => {
       const macroData = JSON.parse(
-        readFileSync(resolve(configPath, 'macro_indicators.json'), 'utf8')
+        readFileSync(resolve(configPath, 'markets_indicators.json'), 'utf8')
       )
       
-      const result = validateMacroIndicatorConfig(macroData)
+      const result = validateMarketsIndicatorConfig(macroData)
       expect(result.success).toBe(true)
       expect(result.data?.indicators).toHaveLength(10)
     })

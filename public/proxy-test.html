@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS 代理服務測試</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-controls {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .test-controls button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        .test-controls button:hover {
+            background: #0056b3;
+        }
+        
+        .test-controls button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .proxy-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #e9ecef;
+        }
+        
+        .proxy-card.success {
+            border-left-color: #28a745;
+        }
+        
+        .proxy-card.failed {
+            border-left-color: #dc3545;
+        }
+        
+        .proxy-card.testing {
+            border-left-color: #ffc107;
+        }
+        
+        .proxy-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .proxy-name {
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status-badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-badge.failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-badge.testing {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .proxy-details {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        .proxy-details p {
+            margin: 5px 0;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        
+        .summary {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e9ecef;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 CORS 代理服務測試工具</h1>
+        <p>測試各種 CORS 代理服務對 Yahoo Finance API 的支援情況</p>
+    </div>
+    
+    <div class="test-controls">
+        <button onclick="startTest()" id="testBtn">開始測試所有代理</button>
+        <button onclick="testYahooDirectly()" id="directBtn">測試 Yahoo Finance 直接訪問</button>
+        <button onclick="clearResults()" id="clearBtn">清除結果</button>
+    </div>
+    
+    <div id="loading" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p id="loadingText">正在測試代理服務...</p>
+    </div>
+    
+    <div id="results" class="results"></div>
+    
+    <div id="summary" class="summary" style="display: none;">
+        <h3>📊 測試結果總結</h3>
+        <div id="summaryContent"></div>
+    </div>
+
+    <script>
+        // 代理服務列表
+        const proxies = [
+            {
+                name: 'CORS.SH',
+                url: 'https://cors.sh/',
+                type: 'direct',
+                description: '專業的 CORS 代理服務'
+            },
+            {
+                name: 'Proxy CORS (isomorphic-git)',
+                url: 'https://proxy-cors.isomorphic-git.org/',
+                type: 'direct',
+                description: '由 isomorphic-git 團隊維護'
+            },
+            {
+                name: 'ThingProxy',
+                url: 'https://thingproxy.freeboard.io/fetch/',
+                type: 'direct',
+                description: '由 Freeboard.io 提供'
+            },
+            {
+                name: 'CORS Proxy (HTMLDriven)',
+                url: 'https://cors-proxy.htmldriven.com/?url=',
+                type: 'query',
+                description: '簡單易用的代理服務'
+            },
+            {
+                name: 'AllOrigins',
+                url: 'https://api.allorigins.win/raw?url=',
+                type: 'query',
+                description: '免費 CORS 代理服務'
+            },
+            {
+                name: 'CorsProxy.io',
+                url: 'https://corsproxy.io/?',
+                type: 'query',
+                description: '開源 CORS 代理'
+            },
+            {
+                name: 'CORS Anywhere',
+                url: 'https://cors-anywhere.herokuapp.com/',
+                type: 'direct',
+                description: 'Heroku 託管的 CORS 代理'
+            }
+        ];
+        
+        const testSymbol = 'AAPL';
+        const targetUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${testSymbol}?interval=1d&range=5d`;
+        
+        let testResults = [];
+        
+        // 測試單個代理
+        async function testProxy(proxy, index) {
+            const startTime = Date.now();
+            
+            try {
+                let testUrl;
+                if (proxy.type === 'query') {
+                    testUrl = `${proxy.url}${encodeURIComponent(targetUrl)}`;
+                } else {
+                    testUrl = `${proxy.url}${targetUrl}`;
+                }
+                
+                console.log(`Testing ${proxy.name}: ${testUrl.substring(0, 100)}...`);
+                
+                const response = await fetch(testUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'User-Agent': 'Mozilla/5.0 (compatible; ProxyTest/1.0)'
+                    }
+                });
+                
+                const responseTime = Date.now() - startTime;
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                // 驗證數據結構
+                const dataPoints = data?.chart?.result?.[0]?.indicators?.quote?.[0]?.close?.filter(p => p !== null)?.length || 0;
+                
+                if (dataPoints > 0) {
+                    const prices = data.chart.result[0].indicators.quote[0].close.filter(p => p !== null);
+                    const priceRange = {
+                        min: Math.min(...prices).toFixed(2),
+                        max: Math.max(...prices).toFixed(2)
+                    };
+                    
+                    return {
+                        success: true,
+                        responseTime,
+                        dataPoints,
+                        priceRange,
+                        httpStatus: response.status
+                    };
+                } else {
+                    throw new Error('無效的數據結構 - 沒有價格數據');
+                }
+                
+            } catch (error) {
+                const responseTime = Date.now() - startTime;
+                
+                let errorType = 'UNKNOWN_ERROR';
+                if (error.message.includes('CORS') || error.message.includes('cors')) {
+                    errorType = 'CORS_ERROR';
+                } else if (error.message.includes('401')) {
+                    errorType = 'UNAUTHORIZED';
+                } else if (error.message.includes('403')) {
+                    errorType = 'FORBIDDEN';
+                } else if (error.message.includes('404')) {
+                    errorType = 'NOT_FOUND';
+                } else if (error.message.includes('Failed to fetch')) {
+                    errorType = 'NETWORK_ERROR';
+                }
+                
+                return {
+                    success: false,
+                    responseTime,
+                    error: error.message,
+                    errorType
+                };
+            }
+        }
+        
+        // 更新代理卡片顯示
+        function updateProxyCard(proxy, index, result, status = 'testing') {
+            const resultsDiv = document.getElementById('results');
+            let card = document.getElementById(`proxy-${index}`);
+            
+            if (!card) {
+                card = document.createElement('div');
+                card.id = `proxy-${index}`;
+                card.className = 'proxy-card';
+                resultsDiv.appendChild(card);
+            }
+            
+            card.className = `proxy-card ${status}`;
+            
+            let content = `
+                <div class="proxy-header">
+                    <div class="proxy-name">${proxy.name}</div>
+                    <div class="status-badge ${status}">${status.toUpperCase()}</div>
+                </div>
+                <div class="proxy-details">
+                    <p><strong>描述:</strong> ${proxy.description}</p>
+                    <p><strong>URL:</strong> ${proxy.url}</p>
+                    <p><strong>類型:</strong> ${proxy.type}</p>
+            `;
+            
+            if (result) {
+                content += `<p><strong>響應時間:</strong> ${result.responseTime}ms</p>`;
+                
+                if (result.success) {
+                    content += `
+                        <div class="success-message">
+                            <p><strong>✅ 測試成功!</strong></p>
+                            <p>HTTP 狀態: ${result.httpStatus}</p>
+                            <p>數據點: ${result.dataPoints}</p>
+                            <p>價格範圍: $${result.priceRange.min} - $${result.priceRange.max}</p>
+                        </div>
+                    `;
+                } else {
+                    content += `
+                        <div class="error-message">
+                            <p><strong>❌ 測試失敗</strong></p>
+                            <p>錯誤類型: ${result.errorType}</p>
+                            <p>錯誤訊息: ${result.error}</p>
+                        </div>
+                    `;
+                }
+            }
+            
+            content += '</div>';
+            card.innerHTML = content;
+        }
+        
+        // 開始測試
+        async function startTest() {
+            const testBtn = document.getElementById('testBtn');
+            const loading = document.getElementById('loading');
+            const summary = document.getElementById('summary');
+            
+            testBtn.disabled = true;
+            loading.style.display = 'block';
+            summary.style.display = 'none';
+            testResults = [];
+            
+            // 清除之前的結果
+            document.getElementById('results').innerHTML = '';
+            
+            for (let i = 0; i < proxies.length; i++) {
+                const proxy = proxies[i];
+                
+                // 顯示測試中狀態
+                updateProxyCard(proxy, i, null, 'testing');
+                document.getElementById('loadingText').textContent = `正在測試 ${proxy.name}...`;
+                
+                // 執行測試
+                const result = await testProxy(proxy, i);
+                testResults.push({ proxy, result });
+                
+                // 更新結果
+                updateProxyCard(proxy, i, result, result.success ? 'success' : 'failed');
+                
+                // 添加延遲
+                if (i < proxies.length - 1) {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                }
+            }
+            
+            // 顯示總結
+            showSummary();
+            
+            testBtn.disabled = false;
+            loading.style.display = 'none';
+        }
+        
+        // 顯示測試總結
+        function showSummary() {
+            const summary = document.getElementById('summary');
+            const summaryContent = document.getElementById('summaryContent');
+            
+            const successful = testResults.filter(r => r.result.success);
+            const failed = testResults.filter(r => !r.result.success);
+            
+            let content = `
+                <p><strong>✅ 成功的代理:</strong> ${successful.length}/${testResults.length}</p>
+            `;
+            
+            if (successful.length > 0) {
+                content += '<ul>';
+                successful.forEach(r => {
+                    content += `<li>${r.proxy.name}: ${r.result.responseTime}ms (${r.result.dataPoints} 數據點)</li>`;
+                });
+                content += '</ul>';
+                
+                const fastest = successful.reduce((prev, current) => 
+                    prev.result.responseTime < current.result.responseTime ? prev : current
+                );
+                content += `<p><strong>🏆 最快的代理:</strong> ${fastest.proxy.name} (${fastest.result.responseTime}ms)</p>`;
+            }
+            
+            content += `<p><strong>❌ 失敗的代理:</strong> ${failed.length}/${testResults.length}</p>`;
+            
+            if (failed.length > 0) {
+                content += '<ul>';
+                failed.forEach(r => {
+                    content += `<li>${r.proxy.name}: ${r.result.errorType} - ${r.result.error}</li>`;
+                });
+                content += '</ul>';
+            }
+            
+            // 建議
+            if (successful.length > 0) {
+                content += `
+                    <div style="background: #d4edda; padding: 15px; border-radius: 4px; margin-top: 15px;">
+                        <h4 style="margin: 0 0 10px 0; color: #155724;">💡 建議</h4>
+                        <p style="margin: 0; color: #155724;">
+                            發現 ${successful.length} 個可用的代理服務！建議更新 yahooFinanceApi.js，
+                            將成功的代理放在前面以提高 API 成功率。
+                        </p>
+                    </div>
+                `;
+            } else {
+                content += `
+                    <div style="background: #f8d7da; padding: 15px; border-radius: 4px; margin-top: 15px;">
+                        <h4 style="margin: 0 0 10px 0; color: #721c24;">⚠️ 注意</h4>
+                        <p style="margin: 0; color: #721c24;">
+                            所有代理都失敗了。幸好系統有完善的靜態回退機制，
+                            用戶體驗不會受到影響。建議繼續使用當前的回退策略。
+                        </p>
+                    </div>
+                `;
+            }
+            
+            summaryContent.innerHTML = content;
+            summary.style.display = 'block';
+        }
+        
+        // 測試 Yahoo Finance 直接訪問
+        async function testYahooDirectly() {
+            const directBtn = document.getElementById('directBtn');
+            directBtn.disabled = true;
+            
+            try {
+                console.log('Testing Yahoo Finance direct access...');
+                const response = await fetch(targetUrl);
+                
+                if (response.ok) {
+                    alert('✅ Yahoo Finance 直接訪問成功！\n這表示 CORS 限制可能已經放寬。');
+                } else {
+                    alert(`❌ Yahoo Finance 直接訪問失敗\nHTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                alert(`❌ Yahoo Finance 直接訪問失敗\n錯誤: ${error.message}\n\n這是正常的，因為瀏覽器的 CORS 政策限制。`);
+            }
+            
+            directBtn.disabled = false;
+        }
+        
+        // 清除結果
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('summary').style.display = 'none';
+            testResults = [];
+        }
+        
+        // 頁面載入時的說明
+        console.log('🔍 CORS 代理測試工具已載入');
+        console.log('點擊 "開始測試所有代理" 按鈕來測試各個代理服務');
+        console.log('或者在控制台中運行 startTest() 函數');
+    </script>
+</body>
+</html>
