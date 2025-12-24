@@ -114,6 +114,44 @@
         </div>
       </div>
 
+      <!-- 緩存預熱狀態 -->
+      <div class="status-card">
+        <div class="card-header">
+          <h3>緩存預熱</h3>
+          <div class="status-indicator" :class="warmupStatusClass">
+            {{ warmupStatus }}
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="status-item">
+            <span class="label">預熱狀態:</span>
+            <span class="value" :class="warmupStatusClass">
+              {{ warmupInfo.isWarming ? '進行中' : '待機中' }}
+            </span>
+          </div>
+          <div class="status-item">
+            <span class="label">進度:</span>
+            <span class="value">{{ Math.round(warmupInfo.progress) }}%</span>
+          </div>
+          <div class="status-item">
+            <span class="label">追蹤股票:</span>
+            <span class="value">{{ warmupInfo.trackedSymbols?.length || 0 }} 支</span>
+          </div>
+          <div class="status-item">
+            <span class="label">上次預熱:</span>
+            <span class="value">{{ formatTime(warmupInfo.lastWarmupTime) }}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button @click="triggerWarmup" class="btn btn-info btn-sm" :disabled="loading || warmupInfo.isWarming">
+            {{ warmupInfo.isWarming ? '預熱中...' : '手動預熱' }}
+          </button>
+          <div class="update-note">
+            <small>註: 預熱所有股票的技術指標數據</small>
+          </div>
+        </div>
+      </div>
+
       <!-- 緩存狀態 -->
       <div class="status-card">
         <div class="card-header">
@@ -235,6 +273,7 @@
 <script>
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler.js'
 import { performanceCache } from '@/utils/performanceCache.js'
+import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
 
 export default {
   name: 'AutoUpdateMonitor',
@@ -262,7 +301,13 @@ export default {
       technicalIndicatorsSuccessRate: 0,
       metadataLastUpdate: null,
       metadataAge: 0,
-      metadataSymbolCount: 0
+      metadataSymbolCount: 0,
+      warmupInfo: {
+        isWarming: false,
+        progress: 0,
+        lastWarmupTime: null,
+        trackedSymbols: []
+      }
     }
   },
   computed: {
@@ -304,6 +349,18 @@ export default {
       if (total > 100) return '需要清理'
       if (total > 50) return '正常'
       return '良好'
+    },
+    warmupStatus() {
+      if (this.warmupInfo.isWarming) return '預熱中'
+      if (this.warmupInfo.progress === 100) return '已完成'
+      if (this.warmupInfo.lastWarmupTime) return '待機中'
+      return '未預熱'
+    },
+    warmupStatusClass() {
+      if (this.warmupInfo.isWarming) return 'status-warning'
+      if (this.warmupInfo.progress === 100) return 'status-success'
+      if (this.warmupInfo.lastWarmupTime) return 'status-info'
+      return 'status-error'
     }
   },
   async mounted() {
@@ -322,6 +379,7 @@ export default {
         await this.refreshStatus()
         await this.loadTechnicalIndicatorsStatus()
         await this.loadMetadataStatus()
+        await this.loadWarmupStatus()
         this.startTime = new Date()
         this.addLog('監控面板已初始化', 'INFO')
       } catch (error) {
@@ -362,6 +420,28 @@ export default {
         this.metadataSymbolCount = 24 // 暫時硬編碼
       } catch (error) {
         this.addLog(`載入元數據狀態失敗: ${error.message}`, 'ERROR')
+      }
+    },
+
+    async loadWarmupStatus() {
+      try {
+        this.warmupInfo = cacheWarmupService.getWarmupStatus()
+      } catch (error) {
+        this.addLog(`載入預熱狀態失敗: ${error.message}`, 'ERROR')
+      }
+    },
+
+    async triggerWarmup() {
+      this.loading = true
+      try {
+        this.addLog('手動觸發緩存預熱', 'INFO')
+        await cacheWarmupService.triggerManualWarmup()
+        this.addLog('緩存預熱完成', 'SUCCESS')
+        await this.loadWarmupStatus()
+      } catch (error) {
+        this.addLog(`緩存預熱失敗: ${error.message}`, 'ERROR')
+      } finally {
+        this.loading = false
       }
     },
 
@@ -408,6 +488,7 @@ export default {
         await this.refreshStatus()
         await this.loadTechnicalIndicatorsStatus()
         await this.loadMetadataStatus()
+        await this.loadWarmupStatus()
       }, 30000) // 每 30 秒刷新一次
     },
 

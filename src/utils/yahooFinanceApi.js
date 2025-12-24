@@ -2,6 +2,7 @@
 // 使用 Yahoo Finance 的公開 API 端點
 
 import technicalIndicatorsCache from './technicalIndicatorsCache.js';
+import { calculateAllIndicators } from './technicalIndicatorsCore.js';
 
 class YahooFinanceAPI {
   constructor() {
@@ -104,56 +105,160 @@ class YahooFinanceAPI {
         
         const quotes = result.indicators.quote[0];
         
-        // 過濾掉 null 值
-        const closes = quotes.close.filter(price => price !== null && price !== undefined);
+        // 提取並清理 OHLCV 數據
+        const rawData = {
+          open: quotes.open || [],
+          high: quotes.high || [],
+          low: quotes.low || [],
+          close: quotes.close || [],
+          volume: quotes.volume || []
+        };
         
-        console.log(`Found ${closes.length} valid price points for ${symbol}`);
+        // 過濾掉 null 值，保持索引對齊
+        const length = rawData.close.length;
+        const ohlcv = {
+          open: new Array(length),
+          high: new Array(length),
+          low: new Array(length),
+          close: new Array(length),
+          volume: new Array(length)
+        };
         
-        if (closes.length < 50) {
-          throw new Error(`Insufficient data points (${closes.length}) for technical analysis`);
+        for (let i = 0; i < length; i++) {
+          ohlcv.open[i] = rawData.open[i] !== null ? rawData.open[i] : NaN;
+          ohlcv.high[i] = rawData.high[i] !== null ? rawData.high[i] : NaN;
+          ohlcv.low[i] = rawData.low[i] !== null ? rawData.low[i] : NaN;
+          ohlcv.close[i] = rawData.close[i] !== null ? rawData.close[i] : NaN;
+          ohlcv.volume[i] = rawData.volume[i] !== null ? rawData.volume[i] : NaN;
         }
         
-        // 計算技術指標
+        console.log(`Found ${length} data points for ${symbol}`);
+        
+        if (length < 50) {
+          throw new Error(`Insufficient data points (${length}) for technical analysis`);
+        }
+        
+        // 使用新的技術指標核心計算所有指標
+        const coreResults = calculateAllIndicators(ohlcv);
+        
+        // 轉換為舊格式以保持兼容性
+        const getLastValue = (series) => {
+          for (let i = series.length - 1; i >= 0; i--) {
+            if (!isNaN(series[i])) {
+              return series[i];
+            }
+          }
+          return null;
+        };
+        
+        const createIndicatorResult = (series, signalThresholds = null) => {
+          const lastValue = getLastValue(series);
+          const currentPrice = getLastValue(ohlcv.close);
+          
+          let signal = 'NEUTRAL';
+          if (signalThresholds && lastValue !== null && currentPrice !== null) {
+            if (signalThresholds.type === 'price_comparison') {
+              if (currentPrice > lastValue * signalThresholds.buy) signal = 'BUY';
+              else if (currentPrice < lastValue * signalThresholds.sell) signal = 'SELL';
+            } else if (signalThresholds.type === 'rsi') {
+              if (lastValue > signalThresholds.overbought) signal = 'OVERBOUGHT';
+              else if (lastValue < signalThresholds.oversold) signal = 'OVERSOLD';
+            } else if (signalThresholds.type === 'adx') {
+              if (lastValue > signalThresholds.strong) signal = 'STRONG_TREND';
+              else if (lastValue < signalThresholds.weak) signal = 'WEAK_TREND';
+            }
+          }
+          
+          return {
+            value: lastValue !== null ? lastValue.toFixed(2) : null,
+            signal: signal,
+            currentPrice: currentPrice !== null ? currentPrice.toFixed(2) : null
+          };
+        };
+        
+        // 計算技術指標（保持舊接口兼容性）
         const indicators = {
           // 移動平均線
-          ma5: this.calculateSMA(closes, 5),
-          sma5: this.calculateSMA(closes, 5),
-          ma10: this.calculateSMA(closes, 10),
-          sma10: this.calculateSMA(closes, 10),
-          ma30: this.calculateSMA(closes, 30),
-          sma30: this.calculateSMA(closes, 30),
-          sma50: this.calculateSMA(closes, 50),
+          ma5: createIndicatorResult(coreResults.MA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+          sma5: createIndicatorResult(coreResults.SMA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+          ma10: createIndicatorResult(coreResults.MA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+          sma10: createIndicatorResult(coreResults.SMA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+          ma30: createIndicatorResult(coreResults.MA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+          sma30: createIndicatorResult(coreResults.SMA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+          sma50: { value: null, signal: 'N/A' }, // 暫時保留但不計算
           
           // 一目均衡表
-          ichimokuBaseLine: this.calculateIchimokuBaseLine(quotes, 26),
-          ichimokuConversionLine: this.calculateIchimokuConversionLine(quotes, 9),
-          ichimokuLaggingSpan: this.calculateIchimokuLaggingSpan(closes, 26),
+          ichimokuBaseLine: createIndicatorResult(coreResults.ICHIMOKU_BASELINE_26, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+          ichimokuConversionLine: createIndicatorResult(coreResults.ICHIMOKU_CONVERSIONLINE_9, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+          ichimokuLaggingSpan: createIndicatorResult(coreResults.ICHIMOKU_LAGGINGSPAN_26),
           
           // 成交量加權移動平均線
-          vwma20: this.calculateVWMA(quotes, 20),
+          vwma20: createIndicatorResult(coreResults.VWMA_20, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
           
           // 其他技術指標
-          rsi14: this.calculateRSI(closes, 14),
-          adx14: this.calculateADX(quotes, 14),
-          macd: this.calculateMACD(closes),
+          rsi14: createIndicatorResult(coreResults.RSI_14, { type: 'rsi', overbought: 70, oversold: 30 }),
+          adx14: (() => {
+            const adxValue = getLastValue(coreResults.ADX_14);
+            const plusDI = getLastValue(coreResults.ADX_14_PLUS_DI);
+            const minusDI = getLastValue(coreResults.ADX_14_MINUS_DI);
+            
+            let signal = 'NEUTRAL';
+            if (adxValue !== null) {
+              if (adxValue > 25) signal = 'STRONG_TREND';
+              else if (adxValue < 20) signal = 'WEAK_TREND';
+            }
+            
+            return {
+              value: adxValue !== null ? adxValue.toFixed(2) : null,
+              signal: signal,
+              plusDI: plusDI !== null ? plusDI.toFixed(2) : null,
+              minusDI: minusDI !== null ? minusDI.toFixed(2) : null
+            };
+          })(),
+          macd: (() => {
+            const macdValue = getLastValue(coreResults.MACD_12_26_9);
+            const signalValue = getLastValue(coreResults.MACD_SIGNAL_9);
+            const histValue = getLastValue(coreResults.MACD_HIST);
+            
+            let signal = 'NEUTRAL';
+            if (macdValue !== null && signalValue !== null && histValue !== null) {
+              if (macdValue > signalValue && histValue > 0) {
+                signal = 'BUY';
+              } else if (macdValue < signalValue && histValue < 0) {
+                signal = 'SELL';
+              }
+            }
+            
+            return {
+              value: macdValue !== null ? macdValue.toFixed(2) : null,
+              signal: signal,
+              signalLine: signalValue !== null ? signalValue.toFixed(2) : null,
+              histogram: histValue !== null ? histValue.toFixed(2) : null
+            };
+          })(),
           
+          // 元數據
           lastUpdated: new Date().toISOString(),
-          dataPoints: closes.length,
+          dataPoints: length,
           proxy: `Proxy ${proxyIndex + 1}`,
-          source: 'Yahoo Finance API (Fresh)',
-          // 添加調試信息
+          source: 'Yahoo Finance API (Fresh) - Core v1.0.0',
+          
+          // 添加完整序列數據（用於高級分析）
+          fullSeries: coreResults,
+          
+          // 調試信息
           priceRange: {
-            min: Math.min(...closes).toFixed(2),
-            max: Math.max(...closes).toFixed(2),
-            latest: closes[closes.length - 1].toFixed(2),
-            first: closes[0].toFixed(2)
+            min: Math.min(...ohlcv.close.filter(p => !isNaN(p))).toFixed(2),
+            max: Math.max(...ohlcv.close.filter(p => !isNaN(p))).toFixed(2),
+            latest: getLastValue(ohlcv.close)?.toFixed(2) || 'N/A',
+            first: ohlcv.close.find(p => !isNaN(p))?.toFixed(2) || 'N/A'
           }
         };
         
         console.log(`Price data for ${symbol}:`, {
-          dataPoints: closes.length,
+          dataPoints: length,
           priceRange: indicators.priceRange,
-          samplePrices: closes.slice(-10) // 最後 10 個價格
+          samplePrices: ohlcv.close.slice(-10).filter(p => !isNaN(p)) // 最後 10 個有效價格
         });
         
         console.log(`Calculated indicators for ${symbol}:`, indicators);
@@ -199,342 +304,6 @@ class YahooFinanceAPI {
         }
       }
     }
-  }
-
-  // 計算簡單移動平均線 (SMA)
-  calculateSMA(prices, period) {
-    if (prices.length < period) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    const recentPrices = prices.slice(-period);
-    const sma = recentPrices.reduce((sum, price) => sum + price, 0) / period;
-    const currentPrice = prices[prices.length - 1];
-    
-    let signal = 'NEUTRAL';
-    if (currentPrice > sma * 1.02) signal = 'BUY';
-    else if (currentPrice < sma * 0.98) signal = 'SELL';
-    
-    return {
-      value: sma.toFixed(2),
-      signal: signal,
-      currentPrice: currentPrice.toFixed(2)
-    };
-  }
-
-  // 計算相對強弱指數 (RSI) - 使用標準 Wilder's RSI 算法
-  calculateRSI(prices, period = 14) {
-    if (prices.length < period + 1) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 計算價格變化
-    const changes = [];
-    for (let i = 1; i < prices.length; i++) {
-      changes.push(prices[i] - prices[i - 1]);
-    }
-    
-    // 分離收益和損失
-    const gains = changes.map(change => change > 0 ? change : 0);
-    const losses = changes.map(change => change < 0 ? Math.abs(change) : 0);
-    
-    // 使用 Wilder's 平滑方法計算平均收益和損失
-    let avgGain = gains.slice(0, period).reduce((sum, gain) => sum + gain, 0) / period;
-    let avgLoss = losses.slice(0, period).reduce((sum, loss) => sum + loss, 0) / period;
-    
-    // 對剩餘的數據點應用 Wilder's 平滑
-    for (let i = period; i < changes.length; i++) {
-      avgGain = ((avgGain * (period - 1)) + gains[i]) / period;
-      avgLoss = ((avgLoss * (period - 1)) + losses[i]) / period;
-    }
-    
-    if (avgLoss === 0) {
-      return { value: 100, signal: 'OVERBOUGHT' };
-    }
-    
-    const rs = avgGain / avgLoss;
-    const rsi = 100 - (100 / (1 + rs));
-    
-    let signal = 'NEUTRAL';
-    if (rsi > 70) signal = 'OVERBOUGHT';
-    else if (rsi < 30) signal = 'OVERSOLD';
-    
-    return {
-      value: rsi.toFixed(1),
-      signal: signal
-    };
-  }
-
-  // 計算 MACD - 改進版本，更接近 TradingView
-  calculateMACD(prices) {
-    if (prices.length < 34) { // 需要至少 34 個數據點
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 計算 EMA12 和 EMA26
-    const ema12 = this.calculateEMA(prices, 12);
-    const ema26 = this.calculateEMA(prices, 26);
-    const macdLine = ema12 - ema26;
-    
-    // 計算 MACD 歷史值用於信號線計算
-    const macdHistory = [];
-    
-    // 從有足夠數據開始計算 MACD 歷史
-    for (let i = 25; i < prices.length; i++) { // 從第26個數據點開始
-      const slice = prices.slice(0, i + 1);
-      const ema12_i = this.calculateEMA(slice, 12);
-      const ema26_i = this.calculateEMA(slice, 26);
-      macdHistory.push(ema12_i - ema26_i);
-    }
-    
-    // 計算信號線 (MACD 的 9 日 EMA)
-    let signalLine = macdLine;
-    if (macdHistory.length >= 9) {
-      signalLine = this.calculateEMA(macdHistory, 9);
-    }
-    
-    const histogram = macdLine - signalLine;
-    
-    // MACD 信號判斷
-    let signal = 'NEUTRAL';
-    if (macdLine > signalLine && histogram > 0) {
-      signal = 'BUY';
-    } else if (macdLine < signalLine && histogram < 0) {
-      signal = 'SELL';
-    }
-    
-    // 調整 MACD 值的縮放，使其更接近 TradingView
-    // TradingView 可能使用不同的縮放係數
-    const scaleFactor = 1.5; // 實驗性縮放係數
-    
-    return {
-      value: (macdLine * scaleFactor).toFixed(2),
-      signal: signal,
-      signalLine: (signalLine * scaleFactor).toFixed(2),
-      histogram: (histogram * scaleFactor).toFixed(2),
-      ema12: ema12.toFixed(2),
-      ema26: ema26.toFixed(2)
-    };
-  }
-
-  // 計算平均趨向指數 (ADX) - 改進版本，更接近 TradingView
-  calculateADX(quotes, period = 14) {
-    const highs = quotes.high.filter(price => price !== null && price !== undefined);
-    const lows = quotes.low.filter(price => price !== null && price !== undefined);
-    const closes = quotes.close.filter(price => price !== null && price !== undefined);
-    
-    const minLength = Math.min(highs.length, lows.length, closes.length);
-    if (minLength < period * 2) { // 需要更多數據點
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 計算真實範圍 (True Range) 和方向性移動
-    const trueRanges = [];
-    const plusDMs = [];
-    const minusDMs = [];
-    
-    for (let i = 1; i < minLength; i++) {
-      // True Range - 三個值中的最大值
-      const tr1 = highs[i] - lows[i];
-      const tr2 = Math.abs(highs[i] - closes[i - 1]);
-      const tr3 = Math.abs(lows[i] - closes[i - 1]);
-      const tr = Math.max(tr1, tr2, tr3);
-      trueRanges.push(tr);
-      
-      // Directional Movement
-      const highDiff = highs[i] - highs[i - 1];
-      const lowDiff = lows[i - 1] - lows[i];
-      
-      const plusDM = (highDiff > lowDiff && highDiff > 0) ? highDiff : 0;
-      const minusDM = (lowDiff > highDiff && lowDiff > 0) ? lowDiff : 0;
-      
-      plusDMs.push(plusDM);
-      minusDMs.push(minusDM);
-    }
-    
-    if (trueRanges.length < period) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 計算初始的平均值
-    let atr = trueRanges.slice(0, period).reduce((sum, tr) => sum + tr, 0) / period;
-    let plusDI = plusDMs.slice(0, period).reduce((sum, dm) => sum + dm, 0) / period;
-    let minusDI = minusDMs.slice(0, period).reduce((sum, dm) => sum + dm, 0) / period;
-    
-    // 使用 Wilder's 平滑方法
-    for (let i = period; i < trueRanges.length; i++) {
-      atr = ((atr * (period - 1)) + trueRanges[i]) / period;
-      plusDI = ((plusDI * (period - 1)) + plusDMs[i]) / period;
-      minusDI = ((minusDI * (period - 1)) + minusDMs[i]) / period;
-    }
-    
-    // 計算 DI+ 和 DI-
-    const plusDIPercent = atr !== 0 ? (plusDI / atr) * 100 : 0;
-    const minusDIPercent = atr !== 0 ? (minusDI / atr) * 100 : 0;
-    
-    // 計算 DX
-    const diSum = plusDIPercent + minusDIPercent;
-    const dx = diSum !== 0 ? Math.abs(plusDIPercent - minusDIPercent) / diSum * 100 : 0;
-    
-    // ADX 是 DX 的 14 期平滑移動平均 (簡化版本)
-    // 實際上應該計算多個 DX 值然後取平均，這裡使用當前 DX 作為近似
-    const adx = dx;
-    
-    let signal = 'NEUTRAL';
-    if (adx > 25) signal = 'STRONG_TREND';
-    else if (adx < 20) signal = 'WEAK_TREND';
-    
-    return {
-      value: adx.toFixed(2),
-      signal: signal,
-      plusDI: plusDIPercent.toFixed(2),
-      minusDI: minusDIPercent.toFixed(2)
-    };
-  }
-
-  // 計算指數移動平均線 (EMA) - 改進版本
-  calculateEMA(prices, period) {
-    if (prices.length < period) {
-      return prices[prices.length - 1]; // 如果數據不足，返回最後一個價格
-    }
-    
-    const multiplier = 2 / (period + 1);
-    
-    // 使用 SMA 作為第一個 EMA 值（更標準的做法）
-    let ema = prices.slice(0, period).reduce((sum, price) => sum + price, 0) / period;
-    
-    // 從第 period+1 個數據點開始計算 EMA
-    for (let i = period; i < prices.length; i++) {
-      ema = (prices[i] * multiplier) + (ema * (1 - multiplier));
-    }
-    
-    return ema;
-  }
-
-  // 計算一目均衡表 - 轉換線 (Conversion Line / Tenkan-sen)
-  calculateIchimokuConversionLine(quotes, period = 9) {
-    const highs = quotes.high.filter(price => price !== null && price !== undefined);
-    const lows = quotes.low.filter(price => price !== null && price !== undefined);
-    
-    if (highs.length < period || lows.length < period) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 取最後 period 期的最高價和最低價
-    const recentHighs = highs.slice(-period);
-    const recentLows = lows.slice(-period);
-    
-    const highestHigh = Math.max(...recentHighs);
-    const lowestLow = Math.min(...recentLows);
-    
-    const conversionLine = (highestHigh + lowestLow) / 2;
-    
-    // 簡單的信號判斷
-    const currentPrice = quotes.close.filter(p => p !== null).slice(-1)[0];
-    let signal = 'NEUTRAL';
-    if (currentPrice > conversionLine * 1.01) signal = 'BUY';
-    else if (currentPrice < conversionLine * 0.99) signal = 'SELL';
-    
-    return {
-      value: conversionLine.toFixed(2),
-      signal: signal,
-      highestHigh: highestHigh.toFixed(2),
-      lowestLow: lowestLow.toFixed(2)
-    };
-  }
-
-  // 計算一目均衡表 - 基準線 (Base Line / Kijun-sen)
-  calculateIchimokuBaseLine(quotes, period = 26) {
-    const highs = quotes.high.filter(price => price !== null && price !== undefined);
-    const lows = quotes.low.filter(price => price !== null && price !== undefined);
-    
-    if (highs.length < period || lows.length < period) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 取最後 period 期的最高價和最低價
-    const recentHighs = highs.slice(-period);
-    const recentLows = lows.slice(-period);
-    
-    const highestHigh = Math.max(...recentHighs);
-    const lowestLow = Math.min(...recentLows);
-    
-    const baseLine = (highestHigh + lowestLow) / 2;
-    
-    // 簡單的信號判斷
-    const currentPrice = quotes.close.filter(p => p !== null).slice(-1)[0];
-    let signal = 'NEUTRAL';
-    if (currentPrice > baseLine * 1.01) signal = 'BUY';
-    else if (currentPrice < baseLine * 0.99) signal = 'SELL';
-    
-    return {
-      value: baseLine.toFixed(2),
-      signal: signal,
-      highestHigh: highestHigh.toFixed(2),
-      lowestLow: lowestLow.toFixed(2)
-    };
-  }
-
-  // 計算一目均衡表 - 遲行線 (Lagging Span / Chikou Span)
-  calculateIchimokuLaggingSpan(closes, period = 26) {
-    if (closes.length < period) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 遲行線是當前收盤價向前移動 period 期
-    const currentPrice = closes[closes.length - 1];
-    const laggingSpanPrice = closes.length > period ? closes[closes.length - 1 - period] : closes[0];
-    
-    let signal = 'NEUTRAL';
-    if (currentPrice > laggingSpanPrice * 1.01) signal = 'BUY';
-    else if (currentPrice < laggingSpanPrice * 0.99) signal = 'SELL';
-    
-    return {
-      value: currentPrice.toFixed(2),
-      signal: signal,
-      laggingReference: laggingSpanPrice.toFixed(2)
-    };
-  }
-
-  // 計算成交量加權移動平均線 (VWMA - Volume Weighted Moving Average)
-  calculateVWMA(quotes, period = 20) {
-    const closes = quotes.close.filter(price => price !== null && price !== undefined);
-    const volumes = quotes.volume.filter(vol => vol !== null && vol !== undefined);
-    
-    if (closes.length < period || volumes.length < period || closes.length !== volumes.length) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    // 取最後 period 期的數據
-    const recentCloses = closes.slice(-period);
-    const recentVolumes = volumes.slice(-period);
-    
-    // 計算 VWMA
-    let totalPriceVolume = 0;
-    let totalVolume = 0;
-    
-    for (let i = 0; i < period; i++) {
-      totalPriceVolume += recentCloses[i] * recentVolumes[i];
-      totalVolume += recentVolumes[i];
-    }
-    
-    if (totalVolume === 0) {
-      return { value: null, signal: 'N/A' };
-    }
-    
-    const vwma = totalPriceVolume / totalVolume;
-    const currentPrice = closes[closes.length - 1];
-    
-    let signal = 'NEUTRAL';
-    if (currentPrice > vwma * 1.02) signal = 'BUY';
-    else if (currentPrice < vwma * 0.98) signal = 'SELL';
-    
-    return {
-      value: vwma.toFixed(2),
-      signal: signal,
-      currentPrice: currentPrice.toFixed(2),
-      totalVolume: totalVolume.toFixed(0)
-    };
   }
 
   // 清除 API 請求緩存

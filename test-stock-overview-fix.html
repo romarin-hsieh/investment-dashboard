@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Overview 修復測試</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .warning { background: #fff3cd; color: #856404; }
+        .error { background: #f8d7da; color: #721c24; }
+        .loading { background: #cce7ff; color: #004085; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .comparison-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Stock Overview 修復測試</h1>
+    
+    <div class="test-card">
+        <h2>📋 修復摘要</h2>
+        <div class="status success">
+            ✅ 已修復的問題：<br>
+            1. 移除了有問題的 stockOverviewOptimizer 導入<br>
+            2. 修復了 FastTradingViewWidget 的 edgeCompatibility 導入<br>
+            3. 更新了 symbolsConfig 以優先使用 universe.json<br>
+            4. 統一了股票列表配置
+        </div>
+    </div>
+
+    <div class="test-card">
+        <h2>🔍 配置一致性檢查</h2>
+        <div id="config-status" class="status loading">正在檢查配置一致性...</div>
+        <button onclick="checkConfigConsistency()">檢查配置</button>
+        <div id="config-results"></div>
+    </div>
+
+    <div class="test-card">
+        <h2>📊 數據匹配測試</h2>
+        <div id="data-match-status" class="status loading">準備測試數據匹配...</div>
+        <button onclick="testDataMatching()">測試匹配</button>
+        <div id="data-match-results"></div>
+    </div>
+
+    <div class="test-card">
+        <h2>🚀 Stock Overview 模擬載入</h2>
+        <div id="simulation-status" class="status loading">準備模擬載入...</div>
+        <button onclick="simulateStockOverviewLoad()">模擬載入</button>
+        <div id="simulation-results"></div>
+    </div>
+
+    <script>
+        // 檢查配置一致性
+        async function checkConfigConsistency() {
+            const statusEl = document.getElementById('config-status');
+            const resultsEl = document.getElementById('config-results');
+            
+            statusEl.className = 'status loading';
+            statusEl.textContent = '正在檢查配置一致性...';
+            
+            try {
+                // 載入 universe.json
+                const universeResponse = await fetch('http://localhost:3000/config/universe.json');
+                const universeData = await universeResponse.json();
+                
+                // 載入 quotes 數據
+                const quotesResponse = await fetch('http://localhost:3000/data/quotes/latest.json');
+                const quotesData = await quotesResponse.json();
+                
+                // 載入 metadata
+                const metadataResponse = await fetch('http://localhost:3000/data/symbols_metadata.json');
+                const metadataData = await metadataResponse.json();
+                
+                const universeSymbols = universeData.symbols || [];
+                const quotesSymbols = quotesData.items ? quotesData.items.map(item => item.symbol) : [];
+                const metadataSymbols = metadataData.items ? metadataData.items.map(item => item.symbol) : [];
+                
+                // 檢查一致性
+                const universeSet = new Set(universeSymbols);
+                const quotesSet = new Set(quotesSymbols);
+                const metadataSet = new Set(metadataSymbols);
+                
+                const quotesMatch = universeSymbols.filter(symbol => quotesSet.has(symbol));
+                const metadataMatch = universeSymbols.filter(symbol => metadataSet.has(symbol));
+                
+                const quotesMatchRate = (quotesMatch.length / universeSymbols.length * 100).toFixed(1);
+                const metadataMatchRate = (metadataMatch.length / universeSymbols.length * 100).toFixed(1);
+                
+                if (quotesMatchRate >= 90 && metadataMatchRate >= 90) {
+                    statusEl.className = 'status success';
+                    statusEl.textContent = '✅ 配置一致性良好';
+                } else {
+                    statusEl.className = 'status warning';
+                    statusEl.textContent = '⚠️ 配置存在不一致';
+                }
+                
+                resultsEl.innerHTML = `
+                    <div class="comparison">
+                        <div class="comparison-item">
+                            <strong>Universe.json (${universeSymbols.length})</strong><br>
+                            ${universeSymbols.join(', ')}
+                        </div>
+                        <div class="comparison-item">
+                            <strong>Quotes 匹配率: ${quotesMatchRate}%</strong><br>
+                            匹配: ${quotesMatch.join(', ')}<br>
+                            <br>
+                            <strong>Metadata 匹配率: ${metadataMatchRate}%</strong><br>
+                            匹配: ${metadataMatch.join(', ')}
+                        </div>
+                    </div>
+                `;
+                
+            } catch (error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ 配置檢查失敗';
+                resultsEl.innerHTML = `<div class="status error">錯誤: ${error.message}</div>`;
+            }
+        }
+
+        // 測試數據匹配
+        async function testDataMatching() {
+            const statusEl = document.getElementById('data-match-status');
+            const resultsEl = document.getElementById('data-match-results');
+            
+            statusEl.className = 'status loading';
+            statusEl.textContent = '正在測試數據匹配...';
+            
+            try {
+                // 模擬 Stock Overview 的數據處理邏輯
+                const universeResponse = await fetch('http://localhost:3000/config/universe.json');
+                const universeData = await universeResponse.json();
+                const configuredSymbols = universeData.symbols || [];
+                
+                const quotesResponse = await fetch('http://localhost:3000/data/quotes/latest.json');
+                const quotesData = await quotesResponse.json();
+                
+                const metadataResponse = await fetch('http://localhost:3000/data/symbols_metadata.json');
+                const metadataData = await metadataResponse.json();
+                
+                // 過濾 quotes (模擬 StockOverview 的邏輯)
+                const filteredQuotes = quotesData.items.filter(quote => 
+                    configuredSymbols.includes(quote.symbol)
+                );
+                
+                // 檢查 metadata 匹配
+                const metadataMap = new Map();
+                metadataData.items.forEach(item => {
+                    metadataMap.set(item.symbol, item);
+                });
+                
+                // 模擬分組邏輯
+                const groups = {};
+                filteredQuotes.forEach(quote => {
+                    const symbolMetadata = metadataMap.get(quote.symbol);
+                    let sector = 'Unknown';
+                    
+                    if (symbolMetadata && symbolMetadata.confidence >= 0.7) {
+                        sector = symbolMetadata.sector || 'Unknown';
+                    }
+                    
+                    if (!groups[sector]) {
+                        groups[sector] = [];
+                    }
+                    
+                    groups[sector].push({
+                        symbol: quote.symbol,
+                        price: quote.price_usd,
+                        sector: sector,
+                        confidence: symbolMetadata ? symbolMetadata.confidence : 0
+                    });
+                });
+                
+                const totalStocks = Object.values(groups).reduce((sum, group) => sum + group.length, 0);
+                
+                if (totalStocks > 0) {
+                    statusEl.className = 'status success';
+                    statusEl.textContent = `✅ 數據匹配成功 - 找到 ${totalStocks} 支股票`;
+                } else {
+                    statusEl.className = 'status error';
+                    statusEl.textContent = '❌ 沒有找到匹配的股票數據';
+                }
+                
+                const groupsHtml = Object.entries(groups).map(([sector, stocks]) => `
+                    <div class="comparison-item">
+                        <strong>${sector} (${stocks.length})</strong><br>
+                        ${stocks.map(stock => 
+                            `${stock.symbol}: $${stock.price} (信心度: ${stock.confidence})`
+                        ).join('<br>')}
+                    </div>
+                `).join('');
+                
+                resultsEl.innerHTML = `
+                    <div class="comparison">
+                        ${groupsHtml}
+                    </div>
+                `;
+                
+            } catch (error) {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ 數據匹配測試失敗';
+                resultsEl.innerHTML = `<div class="status error">錯誤: ${error.message}</div>`;
+            }
+        }
+
+        // 模擬 Stock Overview 載入
+        async function simulateStockOverviewLoad() {
+            const statusEl = document.getElementById('simulation-status');
+            const resultsEl = document.getElementById('simulation-results');
+            
+            statusEl.className = 'status loading';
+            statusEl.textContent = '正在模擬 Stock Overview 載入...';
+            
+            const startTime = performance.now();
+            const steps = [];
+            
+            try {
+                // 步驟 1: 載入配置
+                steps.push('🔄 載入 symbols 配置...');
+                const universeResponse = await fetch('http://localhost:3000/config/universe.json');
+                const universeData = await universeResponse.json();
+                const configuredSymbols = universeData.symbols || [];
+                steps.push(`✅ 載入了 ${configuredSymbols.length} 個配置的股票`);
+                
+                // 步驟 2: 載入 quotes
+                steps.push('🔄 載入 quotes 數據...');
+                const quotesResponse = await fetch('http://localhost:3000/data/quotes/latest.json');
+                const quotesData = await quotesResponse.json();
+                const filteredQuotes = quotesData.items.filter(quote => 
+                    configuredSymbols.includes(quote.symbol)
+                );
+                steps.push(`✅ 過濾得到 ${filteredQuotes.length} 個股票報價`);
+                
+                // 步驟 3: 載入 metadata
+                steps.push('🔄 載入 metadata...');
+                const metadataResponse = await fetch('http://localhost:3000/data/symbols_metadata.json');
+                const metadataData = await metadataResponse.json();
+                steps.push(`✅ 載入了 ${metadataData.items.length} 個股票的 metadata`);
+                
+                // 步驟 4: 數據處理
+                steps.push('🔄 處理和分組數據...');
+                const groups = {};
+                filteredQuotes.forEach(quote => {
+                    const symbolMetadata = metadataData.items.find(m => m.symbol === quote.symbol);
+                    let sector = 'Unknown';
+                    
+                    if (symbolMetadata && symbolMetadata.confidence >= 0.7) {
+                        sector = symbolMetadata.sector || 'Unknown';
+                    }
+                    
+                    if (!groups[sector]) {
+                        groups[sector] = [];
+                    }
+                    
+                    groups[sector].push(quote);
+                });
+                
+                const totalTime = (performance.now() - startTime) / 1000;
+                const sectorCount = Object.keys(groups).length;
+                const stockCount = Object.values(groups).reduce((sum, group) => sum + group.length, 0);
+                
+                steps.push(`✅ 完成！分為 ${sectorCount} 個行業，共 ${stockCount} 支股票`);
+                
+                if (stockCount > 0) {
+                    statusEl.className = 'status success';
+                    statusEl.textContent = `✅ 模擬載入成功 - ${totalTime.toFixed(2)} 秒`;
+                } else {
+                    statusEl.className = 'status error';
+                    statusEl.textContent = '❌ 模擬載入失敗 - 沒有數據';
+                }
+                
+                resultsEl.innerHTML = `
+                    <div class="comparison-item">
+                        <strong>載入步驟</strong><br>
+                        ${steps.join('<br>')}
+                        <br><br>
+                        <strong>最終結果</strong><br>
+                        載入時間: ${totalTime.toFixed(2)} 秒<br>
+                        行業數量: ${sectorCount}<br>
+                        股票數量: ${stockCount}<br>
+                        <br>
+                        <strong>行業分佈</strong><br>
+                        ${Object.entries(groups).map(([sector, stocks]) => 
+                            `${sector}: ${stocks.length} 支股票`
+                        ).join('<br>')}
+                    </div>
+                `;
+                
+            } catch (error) {
+                const totalTime = (performance.now() - startTime) / 1000;
+                statusEl.className = 'status error';
+                statusEl.textContent = `❌ 模擬載入失敗 - ${totalTime.toFixed(2)} 秒`;
+                
+                steps.push(`❌ 錯誤: ${error.message}`);
+                resultsEl.innerHTML = `
+                    <div class="comparison-item">
+                        <strong>載入步驟</strong><br>
+                        ${steps.join('<br>')}
+                    </div>
+                `;
+            }
+        }
+
+        // 頁面載入時自動檢查
+        window.onload = function() {
+            console.log('🔧 Stock Overview 修復測試工具已載入');
+        };
+    </script>
+</body>
+</html>

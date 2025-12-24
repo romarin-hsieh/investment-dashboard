@@ -18,10 +18,7 @@
               <router-link to="/settings" class="nav-link">Settings</router-link>
             </li> -->
             <li>
-              <router-link to="/technical-manager" class="nav-link">Technical Manager</router-link>
-            </li>
-            <li>
-              <router-link to="/auto-update-monitor" class="nav-link">Auto Update</router-link>
+              <router-link to="/system-manager" class="nav-link">Control Panel</router-link>
             </li>
           </ul>
         </div>

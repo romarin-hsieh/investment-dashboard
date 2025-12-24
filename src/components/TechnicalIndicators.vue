@@ -18,7 +18,7 @@
     </div>
     
     <div v-else class="indicators-grid">
-      <!-- Row 1: MA5, MA10, SMA30 -->
+      <!-- Row 1: MA5, MA10, MA30 -->
       <div class="indicator-item">
         <span class="indicator-label">MA5</span>
         <div class="indicator-value-row">
@@ -44,13 +44,13 @@
       </div>
       
       <div class="indicator-item">
-        <span class="indicator-label">SMA30</span>
+        <span class="indicator-label">MA30</span>
         <div class="indicator-value-row">
-          <span class="indicator-value" :class="getSignalClass(technicalData?.sma30?.signal)">
-            {{ formatValue(technicalData?.sma30?.value) }}
+          <span class="indicator-value" :class="getSignalClass(technicalData?.ma30?.signal)">
+            {{ formatValue(technicalData?.ma30?.value) }}
           </span>
-          <span class="price-diff" :class="getPriceDiffClass(technicalData?.sma30?.value)">
-            {{ formatPriceDiff(technicalData?.sma30?.value) }}
+          <span class="price-diff" :class="getPriceDiffClass(technicalData?.ma30?.value)">
+            {{ formatPriceDiff(technicalData?.ma30?.value) }}
           </span>
         </div>
       </div>

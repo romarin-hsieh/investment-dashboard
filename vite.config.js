@@ -13,7 +13,16 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['vue', 'vue-router'],
+          utils: ['zod']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000
   },
   test: {
     globals: true,

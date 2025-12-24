@@ -20,11 +20,11 @@
             stroke-linecap="round"
           />
           
-          <!-- Colored Segments -->
+          <!-- Colored Segments with Lower Saturation -->
           <path
             d="M 20 100 A 80 80 0 0 1 52 40"
             fill="none"
-            stroke="#dc3545"
+            stroke="#e57373"
             stroke-width="12"
             stroke-linecap="round"
             class="extreme-fear-arc"
@@ -32,7 +32,7 @@
           <path
             d="M 52 40 A 80 80 0 0 1 84 20"
             fill="none"
-            stroke="#fd7e14"
+            stroke="#ffb74d"
             stroke-width="12"
             stroke-linecap="round"
             class="fear-arc"
@@ -40,7 +40,7 @@
           <path
             d="M 84 20 A 80 80 0 0 1 116 20"
             fill="none"
-            stroke="#ffc107"
+            stroke="#fff176"
             stroke-width="12"
             stroke-linecap="round"
             class="neutral-arc"
@@ -48,7 +48,7 @@
           <path
             d="M 116 20 A 80 80 0 0 1 148 40"
             fill="none"
-            stroke="#28a745"
+            stroke="#81c784"
             stroke-width="12"
             stroke-linecap="round"
             class="greed-arc"
@@ -56,7 +56,7 @@
           <path
             d="M 148 40 A 80 80 0 0 1 180 100"
             fill="none"
-            stroke="#22ab94"
+            stroke="#4db6ac"
             stroke-width="12"
             stroke-linecap="round"
             class="extreme-greed-arc"

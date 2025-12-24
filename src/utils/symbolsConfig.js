@@ -32,7 +32,15 @@ export class SymbolsConfigManager {
         return this.cache.get('symbols') || []
       }
 
-      // 3. 嘗試從 Google Sheets 獲取 (可選，非阻塞)
+      // 3. 嘗試從 universe.json 獲取 (新增)
+      const universeSymbols = await this.fetchFromUniverse()
+      if (universeSymbols.length > 0) {
+        this.updateCache('symbols', universeSymbols)
+        console.log('Using symbols from universe.json')
+        return universeSymbols
+      }
+
+      // 4. 嘗試從 Google Sheets 獲取 (可選，非阻塞)
       const sheetsSymbols = await this.fetchFromGoogleSheets()
       if (sheetsSymbols.length > 0) {
         this.updateCache('symbols', sheetsSymbols)
@@ -40,7 +48,7 @@ export class SymbolsConfigManager {
         return sheetsSymbols
       }
 
-      // 4. 最終 fallback 到靜態配置
+      // 5. 最終 fallback 到靜態配置
       const staticSymbols = this.getStaticSymbols()
       console.log('Using static fallback symbols')
       return staticSymbols
@@ -48,6 +56,37 @@ export class SymbolsConfigManager {
     } catch (error) {
       console.warn('Error fetching symbols config:', error)
       return this.getStaticSymbols()
+    }
+  }
+
+  /**
+   * 從 universe.json 獲取 symbols
+   */
+  async fetchFromUniverse() {
+    try {
+      console.log('Fetching symbols from universe.json...')
+      const response = await fetch('/config/universe.json')
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`)
+      }
+      
+      const data = await response.json()
+      
+      if (data.symbols && Array.isArray(data.symbols)) {
+        const symbols = data.symbols
+          .filter(symbol => symbol && typeof symbol === 'string')
+          .map(symbol => symbol.trim().toUpperCase())
+        
+        console.log(`✅ Loaded ${symbols.length} symbols from universe.json:`, symbols)
+        return symbols
+      }
+      
+      throw new Error('Invalid universe.json format')
+      
+    } catch (error) {
+      console.warn('Failed to fetch from universe.json:', error)
+      return []
     }
   }
 

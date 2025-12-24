@@ -189,8 +189,10 @@ export default {
   },
   async mounted() {
     performanceMonitor.start(PERFORMANCE_LABELS.STOCK_OVERVIEW_LOAD)
+    
     await this.loadSymbolsConfig()
     await this.loadStockData()
+    
     performanceMonitor.end(PERFORMANCE_LABELS.STOCK_OVERVIEW_LOAD)
     
     // 生成性能報告
@@ -210,7 +212,7 @@ export default {
         console.log(`✅ Loaded ${this.configuredSymbols.length} symbols from ${this.configSource}:`, this.configuredSymbols)
         console.log('📊 Cache info:', this.cacheInfo)
         
-        // 檢查是否有遺漏的股票
+        // 檢查是否有遺漏的股票 - 使用完整的 24 支股票列表
         const expectedSymbols = ['ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB', 'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'TSLA']
         const missingSymbols = expectedSymbols.filter(symbol => !this.configuredSymbols.includes(symbol))
         if (missingSymbols.length > 0) {

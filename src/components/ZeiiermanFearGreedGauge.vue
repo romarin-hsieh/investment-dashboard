@@ -25,19 +25,26 @@
           <!-- Background Arc with Color Zones -->
           <defs>
             <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:#d4a5a5;stop-opacity:1" />
-              <stop offset="10%" style="stop-color:#d4a8a8;stop-opacity:1" />
-              <stop offset="20%" style="stop-color:#d4abab;stop-opacity:1" />
-              <stop offset="30%" style="stop-color:#d4aeae;stop-opacity:1" />
-              <stop offset="40%" style="stop-color:#d4b1b1;stop-opacity:1" />
-              <stop offset="50%" style="stop-color:#d4b4b4;stop-opacity:1" />
-              <stop offset="60%" style="stop-color:#d4b7b7;stop-opacity:1" />
-              <stop offset="70%" style="stop-color:#d4baba;stop-opacity:1" />
-              <stop offset="80%" style="stop-color:#d4bdbd;stop-opacity:1" />
-              <stop offset="85%" style="stop-color:#d4c0a5;stop-opacity:1" />
-              <stop offset="90%" style="stop-color:#b4d4a5;stop-opacity:1" />
-              <stop offset="95%" style="stop-color:#a5d4a8;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#a5d4ab;stop-opacity:1" />
+              <!-- 極度恐懼 (0-25): 降低飽和度的紅色 -->
+              <stop offset="0%" style="stop-color:#e57373;stop-opacity:1" />
+              <stop offset="12.5%" style="stop-color:#ef5350;stop-opacity:1" />
+              <stop offset="25%" style="stop-color:#ffb74d;stop-opacity:1" />
+              
+              <!-- 恐懼 (25-45): 降低飽和度的橙色 -->
+              <stop offset="35%" style="stop-color:#ffcc80;stop-opacity:1" />
+              <stop offset="45%" style="stop-color:#ffd54f;stop-opacity:1" />
+              
+              <!-- 中性 (45-55): 降低飽和度的黃色 -->
+              <stop offset="50%" style="stop-color:#fff176;stop-opacity:1" />
+              <stop offset="55%" style="stop-color:#fff59d;stop-opacity:1" />
+              
+              <!-- 貪婪 (55-75): 降低飽和度的綠色 -->
+              <stop offset="65%" style="stop-color:#aed581;stop-opacity:1" />
+              <stop offset="75%" style="stop-color:#81c784;stop-opacity:1" />
+              
+              <!-- 極度貪婪 (75-100): 降低飽和度的深綠色 -->
+              <stop offset="87.5%" style="stop-color:#66bb6a;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#4db6ac;stop-opacity:1" />
             </linearGradient>
           </defs>
           
@@ -412,7 +419,7 @@ export default {
 
 .component-fill {
   height: 100%;
-  background: linear-gradient(90deg, #c4a5a5 0%, #c4b5a5 25%, #c4c4a5 50%, #a5c4a5 75%, #a5c4b5 100%);
+  background: linear-gradient(90deg, #c67373 0%, #d4956f 25%, #d4c56f 50%, #7ca67c 75%, #7ca688 100%);
   border-radius: 12px;
   transition: width 0.8s ease;
 }

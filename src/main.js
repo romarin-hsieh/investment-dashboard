@@ -9,6 +9,9 @@ import '@/utils/widgetPreloader'
 // Import and initialize auto-update scheduler
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler.js'
 
+// Import cache warmup service
+import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
+
 // Import pages
 import MarketDashboard from './pages/MarketDashboard.vue'
 import StockDashboard from './pages/StockDashboard.vue'
@@ -23,6 +26,7 @@ import ProxyDiagnosticTest from './pages/ProxyDiagnosticTest.vue'
 
 import TechnicalIndicatorsManager from './pages/TechnicalIndicatorsManager.vue'
 import AutoUpdateMonitor from './pages/AutoUpdateMonitor.vue'
+import SystemManager from './pages/SystemManager.vue'
 
 // Router configuration
 const routes = [
@@ -44,6 +48,7 @@ const routes = [
   { path: '/metadata-test', component: MetadataServiceTest, name: 'metadata-test' },
   { path: '/technical-manager', component: TechnicalIndicatorsManager, name: 'technical-manager' },
   { path: '/auto-update-monitor', component: AutoUpdateMonitor, name: 'auto-update-monitor' },
+  { path: '/system-manager', component: SystemManager, name: 'system-manager' },
   // Catch-all route for 404s
   { path: '/:pathMatch(.*)*', redirect: '/market-overview' }
 ]
@@ -63,3 +68,10 @@ setTimeout(() => {
   console.log('🚀 Initializing auto-update scheduler...')
   autoUpdateScheduler.start()
 }, 10000) // Start after 10 seconds
+
+// Initialize cache warmup service
+// Start earlier to preload data before users navigate
+setTimeout(() => {
+  console.log('🔥 Initializing cache warmup service...')
+  cacheWarmupService.start()
+}, 5000) // Start after 5 seconds
