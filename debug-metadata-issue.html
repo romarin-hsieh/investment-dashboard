@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Metadata Issue</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+        .status {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .data-preview {
+            max-height: 400px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .stock-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: white;
+        }
+        .stock-symbol {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .stock-info {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .missing-data {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .good-data {
+            color: #27ae60;
+        }
+        .cache-info {
+            background-color: #e8f4f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Debug: Metadata 產業別和 Exchange 問題</h1>
+        
+        <div class="test-section">
+            <div class="test-title">1. 環境檢測</div>
+            <div id="env-info"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">2. Metadata 數據檢查</div>
+            <div id="metadata-status" class="status warning">Loading...</div>
+            <div id="metadata-summary" class="cache-info"></div>
+            <div id="metadata-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">3. 問題股票詳細檢查</div>
+            <div id="problem-stocks"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">4. 緩存檢查</div>
+            <div id="cache-status" class="status warning">Checking...</div>
+            <div id="cache-info" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">5. 解決方案建議</div>
+            <div id="solutions" class="data-preview">分析中...</div>
+        </div>
+    </div>
+
+    <script>
+        // 路徑生成函數
+        function getCorrectPath(relativePath) {
+            const hostname = window.location.hostname;
+            const pathname = window.location.pathname;
+            
+            if (hostname === 'romarin-hsieh.github.io') {
+                if (pathname.includes('/investment-dashboard/')) {
+                    return `/investment-dashboard${relativePath}`;
+                }
+                return `/investment-dashboard${relativePath}`;
+            }
+            
+            return relativePath;
+        }
+
+        // 環境檢測
+        function detectEnvironment() {
+            const hostname = window.location.hostname;
+            const pathname = window.location.pathname;
+            const fullUrl = window.location.href;
+            
+            const envInfo = {
+                hostname,
+                pathname,
+                fullUrl,
+                isGitHubPages: hostname === 'romarin-hsieh.github.io',
+                isLocal: hostname === 'localhost' || hostname === '127.0.0.1',
+                basePath: hostname === 'romarin-hsieh.github.io' ? '/investment-dashboard' : ''
+            };
+            
+            document.getElementById('env-info').innerHTML = `
+                <div class="info">
+                    <strong>Environment:</strong> ${envInfo.isGitHubPages ? 'GitHub Pages (Production)' : envInfo.isLocal ? 'Local Development' : 'Other'}<br>
+                    <strong>Hostname:</strong> ${envInfo.hostname}<br>
+                    <strong>Base Path:</strong> ${envInfo.basePath || '(none)'}<br>
+                    <strong>Full URL:</strong> ${envInfo.fullUrl}
+                </div>
+            `;
+            
+            return envInfo;
+        }
+
+        // 檢查 Metadata
+        async function checkMetadata() {
+            const statusElement = document.getElementById('metadata-status');
+            const summaryElement = document.getElementById('metadata-summary');
+            const dataElement = document.getElementById('metadata-data');
+            
+            try {
+                const url = getCorrectPath('/data/symbols_metadata.json');
+                console.log('Fetching metadata from:', url);
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // 分析數據
+                const totalStocks = data.items.length;
+                const stocksWithIndustry = data.items.filter(item => item.industry && item.industry !== 'Unknown Industry').length;
+                const stocksWithExchange = data.items.filter(item => item.exchange && item.exchange !== 'Unknown').length;
+                const stocksWithSector = data.items.filter(item => item.sector && item.sector !== 'Unknown').length;
+                
+                const missingIndustry = data.items.filter(item => !item.industry || item.industry === 'Unknown Industry');
+                const missingExchange = data.items.filter(item => !item.exchange || item.exchange === 'Unknown');
+                const missingSector = data.items.filter(item => !item.sector || item.sector === 'Unknown');
+                
+                // 更新狀態
+                if (missingIndustry.length === 0 && missingExchange.length === 0 && missingSector.length === 0) {
+                    statusElement.className = 'status success';
+                    statusElement.textContent = '✅ Metadata 完整 - 所有股票都有完整資訊';
+                } else {
+                    statusElement.className = 'status error';
+                    statusElement.textContent = `❌ Metadata 不完整 - ${missingIndustry.length + missingExchange.length + missingSector.length} 個問題`;
+                }
+                
+                // 摘要信息
+                summaryElement.innerHTML = `
+                    <strong>數據摘要:</strong><br>
+                    • 總股票數: ${totalStocks}<br>
+                    • 有產業資訊: ${stocksWithIndustry}/${totalStocks}<br>
+                    • 有交易所資訊: ${stocksWithExchange}/${totalStocks}<br>
+                    • 有部門資訊: ${stocksWithSector}/${totalStocks}<br>
+                    • 數據更新時間: ${data.as_of}<br>
+                    • 數據來源: ${data.items[0]?.api_source || 'Unknown'}
+                `;
+                
+                // 詳細數據預覽
+                dataElement.textContent = JSON.stringify(data, null, 2).substring(0, 2000) + '...';
+                
+                return {
+                    success: true,
+                    data,
+                    totalStocks,
+                    missingIndustry,
+                    missingExchange,
+                    missingSector
+                };
+                
+            } catch (error) {
+                statusElement.className = 'status error';
+                statusElement.textContent = `❌ 無法載入 Metadata: ${error.message}`;
+                dataElement.textContent = `Error: ${error.message}`;
+                return { success: false, error: error.message };
+            }
+        }
+
+        // 檢查問題股票
+        function checkProblemStocks(metadataResult) {
+            const problemStocksElement = document.getElementById('problem-stocks');
+            
+            if (!metadataResult.success) {
+                problemStocksElement.innerHTML = '<div class="error">無法檢查問題股票 - Metadata 載入失敗</div>';
+                return;
+            }
+            
+            const { missingIndustry, missingExchange, missingSector } = metadataResult;
+            
+            let html = '';
+            
+            // 重點檢查的股票
+            const keyStocks = ['CRM', 'IONQ', 'NVDA', 'TSLA', 'ASTS'];
+            
+            keyStocks.forEach(symbol => {
+                const stock = metadataResult.data.items.find(item => item.symbol === symbol);
+                
+                if (stock) {
+                    const hasIndustry = stock.industry && stock.industry !== 'Unknown Industry';
+                    const hasExchange = stock.exchange && stock.exchange !== 'Unknown';
+                    const hasSector = stock.sector && stock.sector !== 'Unknown';
+                    
+                    html += `
+                        <div class="stock-card">
+                            <div class="stock-symbol">${symbol}</div>
+                            <div class="stock-info">
+                                <strong>Sector:</strong> 
+                                <span class="${hasSector ? 'good-data' : 'missing-data'}">
+                                    ${stock.sector || 'Missing'}
+                                </span>
+                            </div>
+                            <div class="stock-info">
+                                <strong>Industry:</strong> 
+                                <span class="${hasIndustry ? 'good-data' : 'missing-data'}">
+                                    ${stock.industry || 'Missing'}
+                                </span>
+                            </div>
+                            <div class="stock-info">
+                                <strong>Exchange:</strong> 
+                                <span class="${hasExchange ? 'good-data' : 'missing-data'}">
+                                    ${stock.exchange || 'Missing'}
+                                </span>
+                            </div>
+                            <div class="stock-info">
+                                <strong>Confidence:</strong> ${stock.confidence || 'N/A'}
+                            </div>
+                            <div class="stock-info">
+                                <strong>Last Updated:</strong> ${stock.last_verified_at || 'N/A'}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="stock-card">
+                            <div class="stock-symbol">${symbol}</div>
+                            <div class="missing-data">❌ 股票數據完全缺失</div>
+                        </div>
+                    `;
+                }
+            });
+            
+            problemStocksElement.innerHTML = html;
+        }
+
+        // 檢查緩存
+        function checkCache() {
+            const statusElement = document.getElementById('cache-status');
+            const infoElement = document.getElementById('cache-info');
+            
+            try {
+                // 檢查 localStorage
+                const localStorageKeys = Object.keys(localStorage).filter(key => 
+                    key.includes('metadata') || key.includes('stock') || key.includes('cache')
+                );
+                
+                // 檢查 sessionStorage
+                const sessionStorageKeys = Object.keys(sessionStorage).filter(key => 
+                    key.includes('metadata') || key.includes('stock') || key.includes('cache')
+                );
+                
+                let cacheInfo = '瀏覽器緩存檢查:\n\n';
+                cacheInfo += `LocalStorage 相關項目 (${localStorageKeys.length}):\n`;
+                localStorageKeys.forEach(key => {
+                    const value = localStorage.getItem(key);
+                    cacheInfo += `  - ${key}: ${value ? value.substring(0, 100) + '...' : 'null'}\n`;
+                });
+                
+                cacheInfo += `\nSessionStorage 相關項目 (${sessionStorageKeys.length}):\n`;
+                sessionStorageKeys.forEach(key => {
+                    const value = sessionStorage.getItem(key);
+                    cacheInfo += `  - ${key}: ${value ? value.substring(0, 100) + '...' : 'null'}\n`;
+                });
+                
+                // 檢查 Cache API (如果支援)
+                if ('caches' in window) {
+                    caches.keys().then(cacheNames => {
+                        cacheInfo += `\nCache API 緩存:\n`;
+                        cacheNames.forEach(name => {
+                            cacheInfo += `  - ${name}\n`;
+                        });
+                        infoElement.textContent = cacheInfo;
+                    });
+                } else {
+                    cacheInfo += '\nCache API 不支援\n';
+                }
+                
+                statusElement.className = 'status info';
+                statusElement.textContent = `ℹ️ 緩存檢查完成 - 找到 ${localStorageKeys.length + sessionStorageKeys.length} 個相關項目`;
+                
+                infoElement.textContent = cacheInfo;
+                
+            } catch (error) {
+                statusElement.className = 'status error';
+                statusElement.textContent = `❌ 緩存檢查失敗: ${error.message}`;
+                infoElement.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        // 生成解決方案
+        function generateSolutions(metadataResult, env) {
+            const solutionsElement = document.getElementById('solutions');
+            
+            let solutions = '🔧 問題診斷和解決方案:\n\n';
+            
+            if (!metadataResult.success) {
+                solutions += '❌ 主要問題: 無法載入 Metadata 文件\n';
+                solutions += '解決方案:\n';
+                solutions += '1. 檢查網路連接\n';
+                solutions += '2. 確認 GitHub Pages 部署狀態\n';
+                solutions += '3. 檢查文件路徑配置\n\n';
+            } else {
+                const { missingIndustry, missingExchange, missingSector } = metadataResult;
+                
+                if (missingIndustry.length > 0 || missingExchange.length > 0 || missingSector.length > 0) {
+                    solutions += '❌ 主要問題: Metadata 數據不完整\n\n';
+                    
+                    if (missingIndustry.length > 0) {
+                        solutions += `🏭 缺少產業資訊的股票 (${missingIndustry.length}):\n`;
+                        missingIndustry.forEach(stock => {
+                            solutions += `   - ${stock.symbol}: ${stock.industry || 'No industry'}\n`;
+                        });
+                        solutions += '\n';
+                    }
+                    
+                    if (missingExchange.length > 0) {
+                        solutions += `🏢 缺少交易所資訊的股票 (${missingExchange.length}):\n`;
+                        missingExchange.forEach(stock => {
+                            solutions += `   - ${stock.symbol}: ${stock.exchange || 'No exchange'}\n`;
+                        });
+                        solutions += '\n';
+                    }
+                    
+                    solutions += '🔧 建議解決方案:\n';
+                    solutions += '1. 手動觸發 GitHub Actions metadata 更新:\n';
+                    solutions += '   git commit --allow-empty -m "🔄 Trigger metadata update"\n';
+                    solutions += '   git push origin main\n\n';
+                    
+                    solutions += '2. 清除瀏覽器緩存:\n';
+                    solutions += '   - 按 Ctrl+Shift+R 強制刷新\n';
+                    solutions += '   - 清除瀏覽器數據\n\n';
+                    
+                    solutions += '3. 檢查 YFinance API 狀態:\n';
+                    solutions += '   - 可能是 API 限制或暫時性問題\n';
+                    solutions += '   - 等待下次自動更新 (每週日 UTC 2:00)\n\n';
+                    
+                } else {
+                    solutions += '✅ Metadata 數據完整!\n\n';
+                    solutions += '如果前端仍顯示 "Unknown Industry"，可能是:\n';
+                    solutions += '1. 瀏覽器緩存問題 - 嘗試強制刷新\n';
+                    solutions += '2. 前端組件緩存 - 等待幾分鐘後重試\n';
+                    solutions += '3. CDN 緩存延遲 - GitHub Pages 可能需要時間同步\n\n';
+                }
+                
+                if (env.isGitHubPages) {
+                    solutions += '📡 GitHub Pages 環境特殊注意事項:\n';
+                    solutions += '- CDN 緩存可能需要 5-10 分鐘更新\n';
+                    solutions += '- 可以嘗試添加 ?v=' + Date.now() + ' 參數強制刷新\n';
+                    solutions += '- 檢查 GitHub Actions 是否全部成功完成\n\n';
+                }
+            }
+            
+            solutions += '🔍 進一步調試:\n';
+            solutions += '1. 開啟瀏覽器開發者工具 (F12)\n';
+            solutions += '2. 檢查 Network 標籤中的 API 請求\n';
+            solutions += '3. 查看 Console 中的錯誤訊息\n';
+            solutions += '4. 確認 symbols_metadata.json 的實際內容\n';
+            
+            solutionsElement.textContent = solutions;
+        }
+
+        // 主函數
+        async function runDiagnostics() {
+            console.log('🚀 Starting metadata diagnostics...');
+            
+            // 1. 環境檢測
+            const env = detectEnvironment();
+            
+            // 2. 檢查 Metadata
+            const metadataResult = await checkMetadata();
+            
+            // 3. 檢查問題股票
+            checkProblemStocks(metadataResult);
+            
+            // 4. 檢查緩存
+            checkCache();
+            
+            // 5. 生成解決方案
+            generateSolutions(metadataResult, env);
+            
+            console.log('✅ Diagnostics completed', { env, metadataResult });
+        }
+
+        // 頁面載入後執行
+        document.addEventListener('DOMContentLoaded', runDiagnostics);
+    </script>
+</body>
+</html>
