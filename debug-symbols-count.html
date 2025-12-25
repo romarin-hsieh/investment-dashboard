@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Symbols Count Issue</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+        .status {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .data-preview {
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+        .count-display {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+            text-align: center;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Debug: 股票數量從 24 變成 10 的問題</h1>
+        
+        <div class="test-section">
+            <div class="test-title">1. Universe.json 檢查</div>
+            <div id="universe-status" class="status loading">Testing...</div>
+            <div id="universe-count" class="count-display">-</div>
+            <div id="universe-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">2. Quotes Data 檢查</div>
+            <div id="quotes-status" class="status loading">Testing...</div>
+            <div id="quotes-count" class="count-display">-</div>
+            <div id="quotes-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">3. Symbols Metadata 檢查</div>
+            <div id="metadata-status" class="status loading">Testing...</div>
+            <div id="metadata-count" class="count-display">-</div>
+            <div id="metadata-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">4. SymbolsConfig Manager 測試</div>
+            <div id="config-status" class="status loading">Testing...</div>
+            <div id="config-count" class="count-display">-</div>
+            <div id="config-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">5. 問題診斷</div>
+            <div id="diagnosis" class="data-preview">正在分析...</div>
+        </div>
+    </div>
+
+    <script>
+        // 路徑生成函數
+        function getCorrectPath(relativePath) {
+            const hostname = window.location.hostname;
+            const pathname = window.location.pathname;
+            
+            if (hostname === 'romarin-hsieh.github.io') {
+                if (pathname.includes('/investment-dashboard/')) {
+                    return `/investment-dashboard${relativePath}`;
+                }
+                return `/investment-dashboard${relativePath}`;
+            }
+            
+            return relativePath;
+        }
+
+        // 測試函數
+        async function testDataSource(name, url, statusId, countId, dataId) {
+            const statusElement = document.getElementById(statusId);
+            const countElement = document.getElementById(countId);
+            const dataElement = document.getElementById(dataId);
+            
+            try {
+                const response = await fetch(url);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    let count = 0;
+                    let symbols = [];
+                    
+                    if (data.symbols) {
+                        // Universe.json format
+                        count = data.symbols.length;
+                        symbols = data.symbols;
+                    } else if (data.items) {
+                        // Quotes/Metadata format
+                        count = data.items.length;
+                        symbols = data.items.map(item => item.symbol);
+                    }
+                    
+                    statusElement.className = 'status success';
+                    statusElement.textContent = `✅ ${name} - Success`;
+                    countElement.textContent = `${count} 隻股票`;
+                    countElement.style.color = count === 24 ? '#27ae60' : '#e74c3c';
+                    
+                    dataElement.textContent = `Symbols (${count}): ${symbols.join(', ')}\n\nFull Data:\n${JSON.stringify(data, null, 2).substring(0, 1000)}...`;
+                    
+                    return { success: true, count, symbols, data };
+                } else {
+                    statusElement.className = 'status error';
+                    statusElement.textContent = `❌ ${name} - HTTP ${response.status}`;
+                    countElement.textContent = 'Error';
+                    dataElement.textContent = `Error: ${response.status} ${response.statusText}`;
+                    return { success: false, error: response.status };
+                }
+            } catch (error) {
+                statusElement.className = 'status error';
+                statusElement.textContent = `❌ ${name} - Network Error`;
+                countElement.textContent = 'Error';
+                dataElement.textContent = `Error: ${error.message}`;
+                return { success: false, error: error.message };
+            }
+        }
+
+        // 模擬 SymbolsConfig Manager
+        async function testSymbolsConfig() {
+            const statusElement = document.getElementById('config-status');
+            const countElement = document.getElementById('config-count');
+            const dataElement = document.getElementById('config-data');
+            
+            try {
+                // 模擬 SymbolsConfigManager 的邏輯
+                let symbols = [];
+                let source = '';
+                
+                // 1. 檢查環境變數 (模擬)
+                const envSymbols = null; // 沒有環境變數
+                
+                if (envSymbols) {
+                    symbols = envSymbols;
+                    source = 'environment';
+                } else {
+                    // 2. 嘗試從 universe.json 獲取
+                    try {
+                        const universeUrl = getCorrectPath('/config/universe.json');
+                        const response = await fetch(universeUrl);
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.symbols && Array.isArray(data.symbols)) {
+                                symbols = data.symbols;
+                                source = 'universe.json';
+                            }
+                        }
+                    } catch (error) {
+                        console.warn('Failed to fetch universe.json:', error);
+                    }
+                    
+                    // 3. 如果失敗，使用靜態 fallback
+                    if (symbols.length === 0) {
+                        symbols = [
+                            'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 
+                            'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
+                            'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
+                            'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
+                            'IONQ', 'PLTR', 'HIMS', 'TSLA'
+                        ];
+                        source = 'static_fallback';
+                    }
+                }
+                
+                statusElement.className = 'status success';
+                statusElement.textContent = `✅ SymbolsConfig - Success (${source})`;
+                countElement.textContent = `${symbols.length} 隻股票`;
+                countElement.style.color = symbols.length === 24 ? '#27ae60' : '#e74c3c';
+                
+                dataElement.textContent = `Source: ${source}\nCount: ${symbols.length}\nSymbols: ${symbols.join(', ')}`;
+                
+                return { success: true, count: symbols.length, symbols, source };
+                
+            } catch (error) {
+                statusElement.className = 'status error';
+                statusElement.textContent = `❌ SymbolsConfig - Error`;
+                countElement.textContent = 'Error';
+                dataElement.textContent = `Error: ${error.message}`;
+                return { success: false, error: error.message };
+            }
+        }
+
+        // 診斷問題
+        function diagnoseIssue(results) {
+            const diagnosisElement = document.getElementById('diagnosis');
+            
+            let diagnosis = '🔍 問題診斷結果:\n\n';
+            
+            const universeResult = results.universe;
+            const quotesResult = results.quotes;
+            const metadataResult = results.metadata;
+            const configResult = results.config;
+            
+            // 檢查各個數據源
+            diagnosis += `1. 數據源檢查:\n`;
+            diagnosis += `   - Universe.json: ${universeResult.success ? `✅ ${universeResult.count} 隻股票` : '❌ 失敗'}\n`;
+            diagnosis += `   - Quotes Data: ${quotesResult.success ? `✅ ${quotesResult.count} 隻股票` : '❌ 失敗'}\n`;
+            diagnosis += `   - Metadata: ${metadataResult.success ? `✅ ${metadataResult.count} 隻股票` : '❌ 失敗'}\n`;
+            diagnosis += `   - SymbolsConfig: ${configResult.success ? `✅ ${configResult.count} 隻股票 (${configResult.source})` : '❌ 失敗'}\n\n`;
+            
+            // 找出問題
+            diagnosis += `2. 問題分析:\n`;
+            
+            if (universeResult.success && universeResult.count === 24) {
+                diagnosis += `   ✅ Universe.json 正常 (24 隻股票)\n`;
+            } else {
+                diagnosis += `   ❌ Universe.json 問題: ${universeResult.success ? `只有 ${universeResult.count} 隻股票` : '無法讀取'}\n`;
+            }
+            
+            if (quotesResult.success && quotesResult.count === 24) {
+                diagnosis += `   ✅ Quotes 數據正常 (24 隻股票)\n`;
+            } else {
+                diagnosis += `   ❌ Quotes 數據問題: ${quotesResult.success ? `只有 ${quotesResult.count} 隻股票` : '無法讀取'}\n`;
+            }
+            
+            if (metadataResult.success && metadataResult.count === 24) {
+                diagnosis += `   ✅ Metadata 正常 (24 隻股票)\n`;
+            } else {
+                diagnosis += `   ❌ Metadata 問題: ${metadataResult.success ? `只有 ${metadataResult.count} 隻股票` : '無法讀取'}\n`;
+            }
+            
+            if (configResult.success && configResult.count === 24) {
+                diagnosis += `   ✅ SymbolsConfig 正常 (24 隻股票)\n`;
+            } else {
+                diagnosis += `   ❌ SymbolsConfig 問題: ${configResult.success ? `只有 ${configResult.count} 隻股票，來源: ${configResult.source}` : '無法讀取'}\n`;
+            }
+            
+            diagnosis += `\n3. 建議解決方案:\n`;
+            
+            // 根據結果給出建議
+            const allHave24 = [universeResult, quotesResult, metadataResult].every(r => r.success && r.count === 24);
+            
+            if (allHave24 && configResult.success && configResult.count < 24) {
+                diagnosis += `   🔧 問題在 SymbolsConfig Manager，可能是:\n`;
+                diagnosis += `      - 路徑配置問題 (GitHub Pages vs 本地)\n`;
+                diagnosis += `      - 緩存問題\n`;
+                diagnosis += `      - 環境變數覆蓋\n`;
+            } else if (!allHave24) {
+                diagnosis += `   🔧 數據源問題，需要檢查:\n`;
+                if (!universeResult.success || universeResult.count !== 24) {
+                    diagnosis += `      - Universe.json 配置\n`;
+                }
+                if (!quotesResult.success || quotesResult.count !== 24) {
+                    diagnosis += `      - Quotes 數據生成\n`;
+                }
+                if (!metadataResult.success || metadataResult.count !== 24) {
+                    diagnosis += `      - Metadata 更新\n`;
+                }
+            } else {
+                diagnosis += `   ✅ 所有數據源都正常，問題可能在前端組件的過濾邏輯\n`;
+            }
+            
+            diagnosisElement.textContent = diagnosis;
+        }
+
+        // 主測試函數
+        async function runAllTests() {
+            console.log('🚀 Starting symbols count debugging...');
+            
+            const results = {};
+            
+            // 測試各個數據源
+            results.universe = await testDataSource(
+                'Universe.json',
+                getCorrectPath('/config/universe.json'),
+                'universe-status',
+                'universe-count',
+                'universe-data'
+            );
+            
+            results.quotes = await testDataSource(
+                'Quotes Data',
+                getCorrectPath('/data/quotes/latest.json'),
+                'quotes-status',
+                'quotes-count',
+                'quotes-data'
+            );
+            
+            results.metadata = await testDataSource(
+                'Symbols Metadata',
+                getCorrectPath('/data/symbols_metadata.json'),
+                'metadata-status',
+                'metadata-count',
+                'metadata-data'
+            );
+            
+            results.config = await testSymbolsConfig();
+            
+            // 診斷問題
+            diagnoseIssue(results);
+            
+            console.log('✅ Debugging completed', results);
+        }
+
+        // 頁面載入後執行測試
+        document.addEventListener('DOMContentLoaded', runAllTests);
+    </script>
+</body>
+</html>
