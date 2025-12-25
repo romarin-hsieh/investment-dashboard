@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metadata Cache Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .debug-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .debug-title {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .symbol-card {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+        }
+        .symbol-header {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .metadata-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .metadata-key {
+            font-weight: 500;
+            color: #666;
+        }
+        .metadata-value {
+            color: #333;
+        }
+        .confidence-high { color: #28a745; }
+        .confidence-medium { color: #ffc107; }
+        .confidence-low { color: #dc3545; }
+        .error { color: #dc3545; background: #f8d7da; padding: 10px; border-radius: 4px; }
+        .success { color: #155724; background: #d4edda; padding: 10px; border-radius: 4px; }
+        .warning { color: #856404; background: #fff3cd; padding: 10px; border-radius: 4px; }
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .btn:hover { background: #0056b3; }
+        .btn-secondary { background: #6c757d; }
+        .btn-secondary:hover { background: #545b62; }
+        .json-display {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Metadata Cache Debug Tool</h1>
+    <p>Debug tool to check metadata loading and display issues</p>
+
+    <div class="debug-section">
+        <h2 class="debug-title">🎯 Quick Actions</h2>
+        <button class="btn" onclick="loadMetadata()">Load Metadata</button>
+        <button class="btn" onclick="testSpecificSymbol()">Test CRM Symbol</button>
+        <button class="btn" onclick="clearBrowserCache()">Clear Browser Cache</button>
+        <button class="btn btn-secondary" onclick="showRawData()">Show Raw JSON</button>
+    </div>
+
+    <div class="debug-section">
+        <h2 class="debug-title">📊 Metadata Status</h2>
+        <div id="status">Click "Load Metadata" to start debugging...</div>
+    </div>
+
+    <div class="debug-section">
+        <h2 class="debug-title">🔍 Symbol Analysis</h2>
+        <div id="symbolAnalysis"></div>
+    </div>
+
+    <div class="debug-section" id="rawDataSection" style="display: none;">
+        <h2 class="debug-title">📄 Raw JSON Data</h2>
+        <div id="rawData" class="json-display"></div>
+    </div>
+
+    <script>
+        let metadataData = null;
+        
+        // Detect environment
+        function getEnvironment() {
+            const hostname = window.location.hostname;
+            if (hostname === 'localhost' || hostname === '127.0.0.1') {
+                return 'local';
+            } else if (hostname.includes('github.io')) {
+                return 'production';
+            }
+            return 'unknown';
+        }
+
+        // Get correct path based on environment
+        function getMetadataPath() {
+            const env = getEnvironment();
+            if (env === 'production') {
+                return '/investment-dashboard/data/symbols_metadata.json';
+            }
+            return '/data/symbols_metadata.json';
+        }
+
+        async function loadMetadata() {
+            const statusDiv = document.getElementById('status');
+            const analysisDiv = document.getElementById('symbolAnalysis');
+            
+            statusDiv.innerHTML = '<div class="warning">Loading metadata...</div>';
+            analysisDiv.innerHTML = '';
+            
+            try {
+                const metadataPath = getMetadataPath();
+                console.log('Loading metadata from:', metadataPath);
+                
+                const response = await fetch(metadataPath);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                metadataData = await response.json();
+                
+                // Display status
+                statusDiv.innerHTML = `
+                    <div class="success">✅ Metadata loaded successfully!</div>
+                    <div class="metadata-row">
+                        <span class="metadata-key">Environment:</span>
+                        <span class="metadata-value">${getEnvironment()}</span>
+                    </div>
+                    <div class="metadata-row">
+                        <span class="metadata-key">Path:</span>
+                        <span class="metadata-value">${metadataPath}</span>
+                    </div>
+                    <div class="metadata-row">
+                        <span class="metadata-key">Total Symbols:</span>
+                        <span class="metadata-value">${metadataData.items?.length || 0}</span>
+                    </div>
+                    <div class="metadata-row">
+                        <span class="metadata-key">Last Updated:</span>
+                        <span class="metadata-value">${metadataData.as_of || 'Unknown'}</span>
+                    </div>
+                `;
+                
+                // Analyze symbols
+                analyzeSymbols();
+                
+            } catch (error) {
+                console.error('Failed to load metadata:', error);
+                statusDiv.innerHTML = `
+                    <div class="error">❌ Failed to load metadata</div>
+                    <div class="metadata-row">
+                        <span class="metadata-key">Error:</span>
+                        <span class="metadata-value">${error.message}</span>
+                    </div>
+                    <div class="metadata-row">
+                        <span class="metadata-key">Attempted Path:</span>
+                        <span class="metadata-value">${getMetadataPath()}</span>
+                    </div>
+                `;
+            }
+        }
+
+        function analyzeSymbols() {
+            if (!metadataData || !metadataData.items) {
+                document.getElementById('symbolAnalysis').innerHTML = '<div class="error">No metadata to analyze</div>';
+                return;
+            }
+            
+            const analysisDiv = document.getElementById('symbolAnalysis');
+            let html = '';
+            
+            // Focus on problematic symbols
+            const problemSymbols = ['CRM', 'IONQ', 'ASTS', 'RIVN'];
+            
+            problemSymbols.forEach(symbol => {
+                const symbolData = metadataData.items.find(item => item.symbol === symbol);
+                
+                if (symbolData) {
+                    const confidenceClass = symbolData.confidence >= 0.7 ? 'confidence-high' : 'confidence-low';
+                    const shouldShowIndustry = symbolData.confidence >= 0.7;
+                    const displayIndustry = shouldShowIndustry ? (symbolData.industry || symbolData.sector || 'Unknown Industry') : 'Unknown Industry';
+                    
+                    html += `
+                        <div class="symbol-card">
+                            <div class="symbol-header">${symbol}</div>
+                            <div class="metadata-row">
+                                <span class="metadata-key">Sector:</span>
+                                <span class="metadata-value">${symbolData.sector || 'N/A'}</span>
+                            </div>
+                            <div class="metadata-row">
+                                <span class="metadata-key">Industry:</span>
+                                <span class="metadata-value">${symbolData.industry || 'N/A'}</span>
+                            </div>
+                            <div class="metadata-row">
+                                <span class="metadata-key">Exchange:</span>
+                                <span class="metadata-value">${symbolData.exchange || 'N/A'}</span>
+                            </div>
+                            <div class="metadata-row">
+                                <span class="metadata-key">Confidence:</span>
+                                <span class="metadata-value ${confidenceClass}">${symbolData.confidence}</span>
+                            </div>
+                            <div class="metadata-row">
+                                <span class="metadata-key">Should Display:</span>
+                                <span class="metadata-value">${displayIndustry}</span>
+                            </div>
+                            <div class="metadata-row">
+                                <span class="metadata-key">Passes Threshold:</span>
+                                <span class="metadata-value ${shouldShowIndustry ? 'confidence-high' : 'confidence-low'}">${shouldShowIndustry ? 'YES' : 'NO'}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="symbol-card">
+                            <div class="symbol-header">${symbol}</div>
+                            <div class="error">❌ Symbol not found in metadata</div>
+                        </div>
+                    `;
+                }
+            });
+            
+            analysisDiv.innerHTML = html;
+        }
+
+        function testSpecificSymbol() {
+            if (!metadataData) {
+                alert('Please load metadata first');
+                return;
+            }
+            
+            const crmData = metadataData.items.find(item => item.symbol === 'CRM');
+            if (crmData) {
+                console.log('CRM Metadata:', crmData);
+                alert(`CRM Data:
+Sector: ${crmData.sector}
+Industry: ${crmData.industry}
+Exchange: ${crmData.exchange}
+Confidence: ${crmData.confidence}
+Should show industry: ${crmData.confidence >= 0.7 ? 'YES' : 'NO'}`);
+            } else {
+                alert('CRM not found in metadata');
+            }
+        }
+
+        function clearBrowserCache() {
+            // Clear localStorage
+            localStorage.clear();
+            
+            // Clear sessionStorage
+            sessionStorage.clear();
+            
+            // Force reload without cache
+            window.location.reload(true);
+        }
+
+        function showRawData() {
+            const section = document.getElementById('rawDataSection');
+            const dataDiv = document.getElementById('rawData');
+            
+            if (section.style.display === 'none') {
+                if (metadataData) {
+                    dataDiv.textContent = JSON.stringify(metadataData, null, 2);
+                    section.style.display = 'block';
+                } else {
+                    alert('Please load metadata first');
+                }
+            } else {
+                section.style.display = 'none';
+            }
+        }
+
+        // Auto-load on page load
+        window.addEventListener('load', () => {
+            loadMetadata();
+        });
+    </script>
+</body>
+</html>

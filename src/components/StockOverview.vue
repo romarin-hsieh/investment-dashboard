@@ -126,7 +126,9 @@ export default {
     },
 
     groupedStocks() {
-      if (!this.quotes.length || !this.metadata) return {}
+      if (!this.quotes.length || !this.metadata) {
+        return {}
+      }
       
       const groups = {}
       
@@ -151,35 +153,26 @@ export default {
         })
       })
       
-      // 排序：先按 sector 名稱，然後在每個 sector 內部按照新的排序邏輯
+      // 排序邏輯保持不變
       const sortedGroups = {}
       Object.keys(groups)
-        .sort() // 按 sector 名稱排序
+        .sort()
         .forEach(sector => {
-          // 在每個 sector 內部進行三層排序：
-          // 1. 先按 exchange (交易所)
-          // 2. 再按 industry (產業)
-          // 3. 最後按 symbol A-Z
           sortedGroups[sector] = groups[sector].sort((a, b) => {
-            // 獲取 exchange 信息
             const exchangeA = this.getStockExchange(a.quote.symbol, a.metadata)
             const exchangeB = this.getStockExchange(b.quote.symbol, b.metadata)
             
-            // 第一層排序：按 exchange
             if (exchangeA !== exchangeB) {
               return exchangeA.localeCompare(exchangeB)
             }
             
-            // 獲取 industry 信息
             const industryA = this.getStockIndustry(a.metadata)
             const industryB = this.getStockIndustry(b.metadata)
             
-            // 第二層排序：按 industry
             if (industryA !== industryB) {
               return industryA.localeCompare(industryB)
             }
             
-            // 第三層排序：按 symbol A-Z（不區分大小寫）
             return a.quote.symbol.toUpperCase().localeCompare(b.quote.symbol.toUpperCase())
           })
         })
@@ -241,16 +234,23 @@ export default {
 
     getStockExchange(symbol, metadata) {
       if (metadata && metadata.exchange) {
-        return metadata.exchange
+        // 將 metadata 中的 exchange 代碼轉換為顯示名稱
+        const exchangeMap = {
+          'NYQ': 'NYSE',    // New York Stock Exchange
+          'NMS': 'NASDAQ',  // NASDAQ Global Select Market
+          'NCM': 'NASDAQ',  // NASDAQ Capital Market
+          'NGM': 'NASDAQ'   // NASDAQ Global Market
+        }
+        return exchangeMap[metadata.exchange] || metadata.exchange
       }
       
-      // 根據 symbol 推測交易所
+      // 根據 symbol 推測交易所（備用方案）
       // NYSE 股票
-      if (['ORCL', 'TSM', 'RDW', 'CRM'].includes(symbol)) {
+      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS'].includes(symbol)) {
         return 'NYSE'
       }
       // NASDAQ 股票
-      else if (['ASTS', 'RIVN', 'PL', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'TSLA'].includes(symbol)) {
+      else if (['ASTS', 'RIVN', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'CRWV', 'PLTR', 'TSLA'].includes(symbol)) {
         return 'NASDAQ'
       }
       
@@ -258,15 +258,34 @@ export default {
     },
 
     getStockIndustry(metadata) {
-      if (!metadata) return 'Unknown Industry'
+      if (!metadata) {
+        console.warn('No metadata provided to getStockIndustry')
+        return 'Unknown Industry'
+      }
+      
+      // Debug logging for problematic symbols
+      if (metadata.symbol && ['CRM', 'IONQ'].includes(metadata.symbol)) {
+        console.log(`StockOverview - ${metadata.symbol} metadata:`, metadata)
+        console.log(`StockOverview - ${metadata.symbol} confidence:`, metadata.confidence)
+        console.log(`StockOverview - ${metadata.symbol} industry:`, metadata.industry)
+        console.log(`StockOverview - ${metadata.symbol} sector:`, metadata.sector)
+      }
       
       // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
       if (metadata.confidence < 0.7) {
+        console.warn(`Low confidence (${metadata.confidence}) for ${metadata.symbol}`)
         return 'Unknown Industry'
       }
       
       // 返回完整的 industry 信息，如果沒有則顯示 sector
-      return metadata.industry || metadata.sector || 'Unknown Industry'
+      const result = metadata.industry || metadata.sector || 'Unknown Industry'
+      
+      // Debug logging for problematic symbols
+      if (metadata.symbol && ['CRM', 'IONQ'].includes(metadata.symbol)) {
+        console.log(`StockOverview - ${metadata.symbol} final industry result:`, result)
+      }
+      
+      return result
     },
 
     async loadStockData() {
@@ -323,22 +342,22 @@ export default {
         }
         this.loadingStages.dailyData = false
         
-        // 獲取所有股票的 metadata (使用靜態數據)
+        // 獲取所有股票的 metadata (使用直接載入器)
         if (this.quotes.length > 0) {
           this.loadingStages.metadata = true
           const symbols = this.quotes.map(quote => quote.symbol)
-          console.log(`🔄 Loading metadata for ${symbols.length} symbols using static data...`)
           
-          const metadataMap = await metadataService.getBatchMetadata(symbols)
+          // 使用直接載入器
+          const { directMetadataLoader } = await import('@/utils/directMetadataLoader.js')
+          const metadataMap = await directMetadataLoader.getBatchMetadata(symbols)
           
           // 轉換為原有格式以保持兼容性
           this.metadata = {
             items: Array.from(metadataMap.values()),
             as_of: new Date().toISOString(),
-            source: 'Static Data (Performance Optimized)'
+            source: 'DirectMetadataLoader'
           }
           
-          console.log(`✅ Successfully loaded metadata for ${this.metadata.items.length} symbols`)
           this.loadingStages.metadata = false
         }
         

@@ -46,6 +46,7 @@ class MetadataService {
     if (this.metadata && this.metadata.items) {
       const symbolMetadata = this.metadata.items.find(m => m.symbol === symbol)
       if (symbolMetadata) {
+        console.log(`✅ Found static metadata for ${symbol}:`, symbolMetadata)
         // Cache the result
         this.cache.set(symbol, {
           data: symbolMetadata,
@@ -55,6 +56,7 @@ class MetadataService {
       }
     }
 
+    console.warn(`❌ No metadata found for ${symbol}, using default`)
     // Return default metadata if not found
     const defaultMetadata = {
       symbol,
@@ -80,11 +82,23 @@ class MetadataService {
       return await dynamicMetadataService.getBatchMetadata(symbols)
     } else {
       // 靜態文件模式的批量處理
+      console.log(`🔄 getBatchMetadata (static mode) for ${symbols.length} symbols:`, symbols)
       const results = new Map()
+      
+      // 先確保 metadata 已載入
+      await this.refreshMetadata()
+      
       for (const symbol of symbols) {
         const metadata = await this.getStaticSymbolMetadata(symbol)
         results.set(symbol, metadata)
+        
+        // 特別除錯 CRM 和 IONQ
+        if (['CRM', 'IONQ'].includes(symbol)) {
+          console.log(`🎯 getBatchMetadata result for ${symbol}:`, metadata)
+        }
       }
+      
+      console.log(`✅ getBatchMetadata completed, ${results.size} results`)
       return results
     }
   }
@@ -92,13 +106,44 @@ class MetadataService {
   // Refresh metadata from API
   async refreshMetadata() {
     try {
-      const result = await dataFetcher.fetchMetadataSnapshot()
+      console.log('🔄 Refreshing metadata from dataFetcher...')
+      
+      // 嘗試直接載入 JSON 檔案作為備用方案
+      let result;
+      try {
+        result = await dataFetcher.fetchMetadataSnapshot()
+      } catch (fetcherError) {
+        console.warn('❌ dataFetcher failed, trying direct fetch:', fetcherError)
+        
+        // 直接載入 JSON 檔案
+        const response = await fetch('/data/symbols_metadata.json')
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
+        const data = await response.json()
+        result = { data }
+      }
+      
       if (result.data) {
         this.metadata = result.data
         this.lastFetch = Date.now()
+        console.log(`✅ Metadata refreshed successfully, ${this.metadata.items?.length || 0} items loaded`)
+        
+        // Debug: Check if CRM is in the loaded data
+        if (this.metadata.items) {
+          const crmData = this.metadata.items.find(item => item.symbol === 'CRM')
+          if (crmData) {
+            console.log('✅ CRM found in refreshed metadata:', crmData)
+          } else {
+            console.warn('❌ CRM not found in refreshed metadata')
+            console.log('Available symbols:', this.metadata.items.map(item => item.symbol).slice(0, 10))
+          }
+        }
+      } else {
+        console.warn('❌ No data returned from fetchMetadataSnapshot')
       }
     } catch (error) {
-      console.warn('Failed to refresh metadata:', error)
+      console.warn('❌ Failed to refresh metadata:', error)
     }
   }
 

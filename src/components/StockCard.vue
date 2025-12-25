@@ -117,14 +117,14 @@ export default {
     },
 
     getIndustry() {
-      if (!this.metadata) return 'Unknown Industry'
+      if (!this.metadata) {
+        return 'Unknown Industry'
+      }
       
-      // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
       if (this.metadata.confidence < 0.7) {
         return 'Unknown Industry'
       }
       
-      // 返回完整的 industry 信息，如果沒有則顯示 sector
       return this.metadata.industry || this.metadata.sector || 'Unknown Industry'
     },
 
@@ -150,18 +150,25 @@ export default {
 
     getExchange() {
       if (this.metadata && this.metadata.exchange) {
-        return this.metadata.exchange
+        // 將 metadata 中的 exchange 代碼轉換為顯示名稱
+        const exchangeMap = {
+          'NYQ': 'NYSE',    // New York Stock Exchange
+          'NMS': 'NASDAQ',  // NASDAQ Global Select Market
+          'NCM': 'NASDAQ',  // NASDAQ Capital Market
+          'NGM': 'NASDAQ'   // NASDAQ Global Market
+        }
+        return exchangeMap[this.metadata.exchange] || this.metadata.exchange
       }
       
-      // 根據 symbol 推測交易所
+      // 根據 symbol 推測交易所（備用方案）
       const symbol = this.quote.symbol
       
       // NYSE 股票
-      if (['ORCL', 'TSM', 'RDW', 'CRM'].includes(symbol)) {
+      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS'].includes(symbol)) {
         return 'NYSE'
       }
       // NASDAQ 股票
-      else if (['ASTS', 'RIVN', 'PL', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'TSLA'].includes(symbol)) {
+      else if (['ASTS', 'RIVN', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'CRWV', 'PLTR', 'TSLA'].includes(symbol)) {
         return 'NASDAQ'
       }
       
