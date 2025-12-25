@@ -400,7 +400,8 @@ export default {
 
     async loadTechnicalIndicatorsStatus() {
       try {
-        const response = await fetch('/data/technical-indicators/latest_index.json')
+        const basePath = window.location.hostname === 'romarin-hsieh.github.io' ? '/investment-dashboard/' : '/';
+        const response = await fetch(`${basePath}data/technical-indicators/latest_index.json`)
         if (response.ok) {
           const data = await response.json()
           this.technicalIndicatorsLastUpdate = new Date(data.generatedAt)

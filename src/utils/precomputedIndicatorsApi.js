@@ -3,7 +3,10 @@
 
 class PrecomputedIndicatorsAPI {
   constructor() {
-    this.baseUrl = '/data/technical-indicators/';
+    // 根據環境設定基礎 URL
+    const isProduction = window.location.hostname === 'romarin-hsieh.github.io';
+    const basePath = isProduction ? '/investment-dashboard/' : '/';
+    this.baseUrl = `${basePath}data/technical-indicators/`;
     this.cache = new Map();
     this.cacheTimeout = 60 * 60 * 1000; // 1小時緩存 (技術指標每日更新)
   }

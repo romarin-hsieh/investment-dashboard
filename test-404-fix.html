@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test 404 Fix - latest_index.json</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-danger { background: #dc3545; color: white; }
+        
+        .status-success { color: #28a745; font-weight: bold; }
+        .status-error { color: #dc3545; font-weight: bold; }
+        
+        .log-container {
+            background: #1e1e1e;
+            color: #f0f0f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test 404 Fix - latest_index.json</h1>
+        <p>測試修復後的路徑配置是否能正確載入 latest_index.json</p>
+        
+        <div>
+            <button class="btn btn-primary" onclick="testLocalPath()">測試本地路徑</button>
+            <button class="btn btn-success" onclick="testProductionPath()">測試正式環境路徑</button>
+            <button class="btn btn-danger" onclick="testPrecomputedAPI()">測試 PrecomputedAPI</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>測試結果</h2>
+        <div id="test-results">
+            <p>點擊測試按鈕來查看結果...</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>操作日誌</h2>
+        <div class="log-container" id="log-container">
+            <div id="log-content">準備開始測試...</div>
+        </div>
+        <button class="btn btn-primary" onclick="clearLog()">清除日誌</button>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logElement = document.getElementById('log-content');
+            const colorMap = {
+                info: '#f0f0f0',
+                success: '#4CAF50',
+                warning: '#FF9800',
+                error: '#F44336'
+            };
+            
+            logElement.innerHTML += `<div style="color: ${colorMap[type]}">[${timestamp}] ${message}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        async function testPath(url, description) {
+            try {
+                log(`🔍 測試 ${description}: ${url}`, 'info');
+                
+                const response = await fetch(url);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    log(`✅ ${description} 成功載入`, 'success');
+                    log(`📊 資料: ${data.totalSymbols} 個股票, 日期: ${data.date}`, 'info');
+                    return { success: true, data };
+                } else {
+                    log(`❌ ${description} 失敗: HTTP ${response.status}`, 'error');
+                    return { success: false, status: response.status };
+                }
+            } catch (error) {
+                log(`❌ ${description} 錯誤: ${error.message}`, 'error');
+                return { success: false, error: error.message };
+            }
+        }
+
+        async function testLocalPath() {
+            const url = '/data/technical-indicators/latest_index.json';
+            const result = await testPath(url, '本地路徑');
+            updateResults('local', result);
+        }
+
+        async function testProductionPath() {
+            const url = '/investment-dashboard/data/technical-indicators/latest_index.json';
+            const result = await testPath(url, '正式環境路徑');
+            updateResults('production', result);
+        }
+
+        async function testPrecomputedAPI() {
+            try {
+                log('🔍 測試 PrecomputedAPI 類別', 'info');
+                
+                // 模擬 PrecomputedAPI 的路徑邏輯
+                const isProduction = window.location.hostname === 'romarin-hsieh.github.io';
+                const basePath = isProduction ? '/investment-dashboard/' : '/';
+                const url = `${basePath}data/technical-indicators/latest_index.json`;
+                
+                log(`🎯 檢測到環境: ${isProduction ? '正式環境' : '本地環境'}`, 'info');
+                log(`🔗 使用路徑: ${url}`, 'info');
+                
+                const result = await testPath(url, 'PrecomputedAPI 自動路徑');
+                updateResults('api', result);
+                
+                if (result.success) {
+                    // 測試載入單個股票資料
+                    const symbolUrl = `${basePath}data/technical-indicators/${result.data.date}_AVGO.json`;
+                    const symbolResult = await testPath(symbolUrl, 'AVGO 股票資料');
+                    updateResults('symbol', symbolResult);
+                }
+                
+            } catch (error) {
+                log(`❌ PrecomputedAPI 測試錯誤: ${error.message}`, 'error');
+                updateResults('api', { success: false, error: error.message });
+            }
+        }
+
+        function updateResults(testType, result) {
+            const resultsDiv = document.getElementById('test-results');
+            const testName = {
+                'local': '本地路徑測試',
+                'production': '正式環境路徑測試',
+                'api': 'PrecomputedAPI 測試',
+                'symbol': 'AVGO 股票資料測試'
+            }[testType];
+
+            let html = resultsDiv.innerHTML;
+            if (html.includes('點擊測試按鈕')) {
+                html = '';
+            }
+
+            const statusClass = result.success ? 'status-success' : 'status-error';
+            const statusText = result.success ? '✅ 成功' : '❌ 失敗';
+            
+            html += `<div style="margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">`;
+            html += `<h4>${testName}: <span class="${statusClass}">${statusText}</span></h4>`;
+            
+            if (result.success && result.data) {
+                html += `<p><strong>總股票數:</strong> ${result.data.totalSymbols}</p>`;
+                html += `<p><strong>資料日期:</strong> ${result.data.date}</p>`;
+                html += `<p><strong>生成時間:</strong> ${result.data.generatedAt}</p>`;
+                if (result.data.symbols) {
+                    html += `<p><strong>股票列表:</strong> ${result.data.symbols.slice(0, 5).join(', ')}${result.data.symbols.length > 5 ? '...' : ''}</p>`;
+                }
+            } else {
+                if (result.status) {
+                    html += `<p><strong>HTTP 狀態:</strong> ${result.status}</p>`;
+                }
+                if (result.error) {
+                    html += `<p><strong>錯誤訊息:</strong> ${result.error}</p>`;
+                }
+            }
+            
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+
+        function clearLog() {
+            document.getElementById('log-content').innerHTML = '日誌已清除...';
+        }
+
+        // 頁面載入時顯示環境資訊
+        document.addEventListener('DOMContentLoaded', function() {
+            const isProduction = window.location.hostname === 'romarin-hsieh.github.io';
+            const currentEnv = isProduction ? '正式環境 (GitHub Pages)' : '本地開發環境';
+            
+            log(`🌐 當前環境: ${currentEnv}`, 'info');
+            log(`🔗 主機名稱: ${window.location.hostname}`, 'info');
+            log(`📍 完整 URL: ${window.location.href}`, 'info');
+            log('準備開始測試...', 'success');
+        });
+    </script>
+</body>
+</html>
