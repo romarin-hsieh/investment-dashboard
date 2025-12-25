@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Path Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .info { background: #e3f2fd; padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .success { background: #e8f5e9; padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .error { background: #ffebee; padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .test-btn { padding: 10px 20px; margin: 5px; background: #2196f3; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Debug Path Detection</h1>
+    
+    <div class="info">
+        <h3>當前環境資訊</h3>
+        <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+        <p><strong>Pathname:</strong> <span id="pathname"></span></p>
+        <p><strong>Full URL:</strong> <span id="fullurl"></span></p>
+    </div>
+
+    <div class="info">
+        <h3>路徑檢測結果</h3>
+        <p><strong>檢測到的基礎路徑:</strong> <span id="basepath"></span></p>
+        <p><strong>完整 API URL:</strong> <span id="apiurl"></span></p>
+    </div>
+
+    <div>
+        <button class="test-btn" onclick="testApiUrl()">測試 API URL</button>
+        <button class="test-btn" onclick="testBothUrls()">測試兩種路徑</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        // 顯示環境資訊
+        document.getElementById('hostname').textContent = window.location.hostname;
+        document.getElementById('pathname').textContent = window.location.pathname;
+        document.getElementById('fullurl').textContent = window.location.href;
+
+        // 模擬 PrecomputedIndicatorsAPI 的路徑檢測邏輯
+        function getCorrectBaseUrl() {
+            const hostname = window.location.hostname;
+            const pathname = window.location.pathname;
+            
+            console.log('Path detection:', { hostname, pathname });
+            
+            // GitHub Pages 檢測
+            if (hostname === 'romarin-hsieh.github.io') {
+                // 如果路徑包含 investment-dashboard，使用完整路徑
+                if (pathname.includes('/investment-dashboard/')) {
+                    return '/investment-dashboard/data/technical-indicators/';
+                }
+                // 否則也使用完整路徑（防止直接訪問根域名的情況）
+                return '/investment-dashboard/data/technical-indicators/';
+            }
+            
+            // 本地開發環境
+            return '/data/technical-indicators/';
+        }
+
+        const baseUrl = getCorrectBaseUrl();
+        const apiUrl = baseUrl + 'latest_index.json';
+
+        document.getElementById('basepath').textContent = baseUrl;
+        document.getElementById('apiurl').textContent = window.location.origin + apiUrl;
+
+        async function testUrl(url, description) {
+            try {
+                console.log(`Testing ${description}: ${url}`);
+                const response = await fetch(url);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    return {
+                        success: true,
+                        status: response.status,
+                        data: data,
+                        description: description
+                    };
+                } else {
+                    return {
+                        success: false,
+                        status: response.status,
+                        error: `HTTP ${response.status}`,
+                        description: description
+                    };
+                }
+            } catch (error) {
+                return {
+                    success: false,
+                    error: error.message,
+                    description: description
+                };
+            }
+        }
+
+        async function testApiUrl() {
+            const result = await testUrl(apiUrl, '檢測到的 API URL');
+            displayResult(result);
+        }
+
+        async function testBothUrls() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h3>測試結果</h3>';
+
+            // 測試檢測到的 URL
+            const detectedResult = await testUrl(apiUrl, '檢測到的 URL');
+            displayResult(detectedResult);
+
+            // 測試兩種可能的 URL
+            const url1 = '/data/technical-indicators/latest_index.json';
+            const url2 = '/investment-dashboard/data/technical-indicators/latest_index.json';
+
+            const result1 = await testUrl(url1, '本地路徑');
+            const result2 = await testUrl(url2, '正式環境路徑');
+
+            displayResult(result1);
+            displayResult(result2);
+        }
+
+        function displayResult(result) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = result.success ? 'success' : 'error';
+            
+            let html = `<h4>${result.description}: ${result.success ? '✅ 成功' : '❌ 失敗'}</h4>`;
+            
+            if (result.success) {
+                html += `<p><strong>狀態:</strong> ${result.status}</p>`;
+                if (result.data) {
+                    html += `<p><strong>股票數量:</strong> ${result.data.totalSymbols || 'N/A'}</p>`;
+                    html += `<p><strong>資料日期:</strong> ${result.data.date || 'N/A'}</p>`;
+                }
+            } else {
+                html += `<p><strong>錯誤:</strong> ${result.error}</p>`;
+                if (result.status) {
+                    html += `<p><strong>HTTP 狀態:</strong> ${result.status}</p>`;
+                }
+            }
+            
+            div.innerHTML = html;
+            results.appendChild(div);
+        }
+
+        // 頁面載入時自動測試
+        window.addEventListener('load', function() {
+            console.log('Environment detection:', {
+                hostname: window.location.hostname,
+                pathname: window.location.pathname,
+                detectedBaseUrl: baseUrl,
+                fullApiUrl: window.location.origin + apiUrl
+            });
+        });
+    </script>
+</body>
+</html>

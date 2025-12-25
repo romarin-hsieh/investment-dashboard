@@ -3,12 +3,37 @@
 
 class PrecomputedIndicatorsAPI {
   constructor() {
-    // 根據環境設定基礎 URL
-    const isProduction = window.location.hostname === 'romarin-hsieh.github.io';
-    const basePath = isProduction ? '/investment-dashboard/' : '/';
-    this.baseUrl = `${basePath}data/technical-indicators/`;
+    // 更強健的環境檢測和路徑設定
+    this.baseUrl = this.getCorrectBaseUrl();
     this.cache = new Map();
     this.cacheTimeout = 60 * 60 * 1000; // 1小時緩存 (技術指標每日更新)
+    
+    // 調試日誌
+    console.log('PrecomputedIndicatorsAPI initialized:', {
+      hostname: window.location.hostname,
+      pathname: window.location.pathname,
+      baseUrl: this.baseUrl,
+      fullUrl: window.location.href
+    });
+  }
+
+  // 獲取正確的基礎 URL
+  getCorrectBaseUrl() {
+    const hostname = window.location.hostname;
+    const pathname = window.location.pathname;
+    
+    // GitHub Pages 檢測
+    if (hostname === 'romarin-hsieh.github.io') {
+      // 如果路徑包含 investment-dashboard，使用完整路徑
+      if (pathname.includes('/investment-dashboard/')) {
+        return '/investment-dashboard/data/technical-indicators/';
+      }
+      // 否則也使用完整路徑（防止直接訪問根域名的情況）
+      return '/investment-dashboard/data/technical-indicators/';
+    }
+    
+    // 本地開發環境
+    return '/data/technical-indicators/';
   }
 
   // 獲取今天的日期字符串
