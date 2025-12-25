@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Fixes Verification Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+        .status {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .url-display {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+            word-break: break-all;
+        }
+        .data-preview {
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Path Fixes Verification Test</h1>
+        <p class="info">測試修復後的路徑配置是否在 GitHub Pages 環境中正常工作</p>
+
+        <div class="test-section">
+            <div class="test-title">1. Environment Detection</div>
+            <div id="env-info"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">2. Package.json Access Test</div>
+            <div id="package-status" class="status loading">Testing...</div>
+            <div id="package-url" class="url-display"></div>
+            <div id="package-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">3. Universe.json Access Test</div>
+            <div id="universe-status" class="status loading">Testing...</div>
+            <div id="universe-url" class="url-display"></div>
+            <div id="universe-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">4. Daily JSON Access Test</div>
+            <div id="daily-status" class="status loading">Testing...</div>
+            <div id="daily-url" class="url-display"></div>
+            <div id="daily-data" class="data-preview"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">5. Symbols Config Manager Test</div>
+            <div id="symbols-status" class="status loading">Testing...</div>
+            <div id="symbols-data" class="data-preview"></div>
+        </div>
+    </div>
+
+    <script>
+        // 環境檢測函數
+        function detectEnvironment() {
+            const hostname = window.location.hostname;
+            const pathname = window.location.pathname;
+            const fullUrl = window.location.href;
+            
+            const envInfo = {
+                hostname,
+                pathname,
+                fullUrl,
+                isGitHubPages: hostname === 'romarin-hsieh.github.io',
+                isLocal: hostname === 'localhost' || hostname === '127.0.0.1',
+                basePath: hostname === 'romarin-hsieh.github.io' ? '/investment-dashboard' : ''
+            };
+            
+            document.getElementById('env-info').innerHTML = `
+                <div class="info">
+                    <strong>Hostname:</strong> ${envInfo.hostname}<br>
+                    <strong>Pathname:</strong> ${envInfo.pathname}<br>
+                    <strong>Full URL:</strong> ${envInfo.fullUrl}<br>
+                    <strong>Environment:</strong> ${envInfo.isGitHubPages ? 'GitHub Pages' : envInfo.isLocal ? 'Local Development' : 'Other'}<br>
+                    <strong>Base Path:</strong> ${envInfo.basePath || '(none)'}
+                </div>
+            `;
+            
+            return envInfo;
+        }
+
+        // 路徑生成函數
+        function getCorrectPath(relativePath) {
+            const hostname = window.location.hostname;
+            const pathname = window.location.pathname;
+            
+            if (hostname === 'romarin-hsieh.github.io') {
+                if (pathname.includes('/investment-dashboard/')) {
+                    return `/investment-dashboard${relativePath}`;
+                }
+                return `/investment-dashboard${relativePath}`;
+            }
+            
+            return relativePath;
+        }
+
+        // 測試函數
+        async function testFileAccess(testName, relativePath, statusElementId, urlElementId, dataElementId) {
+            const url = getCorrectPath(relativePath);
+            const statusElement = document.getElementById(statusElementId);
+            const urlElement = document.getElementById(urlElementId);
+            const dataElement = document.getElementById(dataElementId);
+            
+            urlElement.textContent = `Testing URL: ${url}`;
+            
+            try {
+                const response = await fetch(url);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    statusElement.className = 'status success';
+                    statusElement.textContent = `✅ ${testName} - Success (${response.status})`;
+                    
+                    // 顯示數據預覽
+                    dataElement.textContent = JSON.stringify(data, null, 2).substring(0, 500) + '...';
+                    
+                    return { success: true, data };
+                } else {
+                    statusElement.className = 'status error';
+                    statusElement.textContent = `❌ ${testName} - HTTP ${response.status}`;
+                    dataElement.textContent = `Error: ${response.status} ${response.statusText}`;
+                    return { success: false, status: response.status };
+                }
+            } catch (error) {
+                statusElement.className = 'status error';
+                statusElement.textContent = `❌ ${testName} - Network Error`;
+                dataElement.textContent = `Error: ${error.message}`;
+                return { success: false, error: error.message };
+            }
+        }
+
+        // 模擬 SymbolsConfigManager 測試
+        async function testSymbolsConfig() {
+            const statusElement = document.getElementById('symbols-status');
+            const dataElement = document.getElementById('symbols-data');
+            
+            try {
+                // 模擬 getUniverseJsonUrl 函數
+                const hostname = window.location.hostname;
+                const pathname = window.location.pathname;
+                
+                let universeUrl;
+                if (hostname === 'romarin-hsieh.github.io') {
+                    if (pathname.includes('/investment-dashboard/')) {
+                        universeUrl = '/investment-dashboard/config/universe.json';
+                    } else {
+                        universeUrl = '/investment-dashboard/config/universe.json';
+                    }
+                } else {
+                    universeUrl = '/config/universe.json';
+                }
+                
+                const response = await fetch(universeUrl);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const symbols = data.symbols || [];
+                    
+                    statusElement.className = 'status success';
+                    statusElement.textContent = `✅ Symbols Config - Loaded ${symbols.length} symbols`;
+                    
+                    dataElement.innerHTML = `
+                        <strong>Universe URL:</strong> ${universeUrl}<br>
+                        <strong>Symbols Count:</strong> ${symbols.length}<br>
+                        <strong>Symbols:</strong> ${symbols.join(', ')}
+                    `;
+                    
+                    return { success: true, symbols, url: universeUrl };
+                } else {
+                    statusElement.className = 'status error';
+                    statusElement.textContent = `❌ Symbols Config - HTTP ${response.status}`;
+                    dataElement.textContent = `Failed to load from: ${universeUrl}`;
+                    return { success: false, status: response.status };
+                }
+            } catch (error) {
+                statusElement.className = 'status error';
+                statusElement.textContent = `❌ Symbols Config - Error`;
+                dataElement.textContent = `Error: ${error.message}`;
+                return { success: false, error: error.message };
+            }
+        }
+
+        // 主測試函數
+        async function runAllTests() {
+            console.log('🚀 Starting path fixes verification tests...');
+            
+            // 1. 環境檢測
+            const env = detectEnvironment();
+            
+            // 2. Package.json 測試
+            await testFileAccess(
+                'Package.json',
+                '/package.json',
+                'package-status',
+                'package-url',
+                'package-data'
+            );
+            
+            // 3. Universe.json 測試
+            await testFileAccess(
+                'Universe.json',
+                '/config/universe.json',
+                'universe-status',
+                'universe-url',
+                'universe-data'
+            );
+            
+            // 4. Daily JSON 測試 (今天的日期)
+            const today = new Date().toISOString().split('T')[0];
+            await testFileAccess(
+                'Daily JSON',
+                `/data/daily/${today}.json`,
+                'daily-status',
+                'daily-url',
+                'daily-data'
+            );
+            
+            // 5. Symbols Config 測試
+            await testSymbolsConfig();
+            
+            console.log('✅ All tests completed');
+        }
+
+        // 頁面載入後執行測試
+        document.addEventListener('DOMContentLoaded', runAllTests);
+    </script>
+</body>
+</html>

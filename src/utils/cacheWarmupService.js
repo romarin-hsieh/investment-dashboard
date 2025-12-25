@@ -232,18 +232,40 @@ class CacheWarmupService {
   // 獲取當前版本
   async getCurrentVersion() {
     try {
-      // 嘗試從 package.json 或構建信息獲取版本
-      const response = await fetch('/package.json')
+      // 獲取正確的 package.json 路徑 (支援 GitHub Pages)
+      const packageUrl = this.getPackageJsonUrl()
+      
+      const response = await fetch(packageUrl)
       if (response.ok) {
         const pkg = await response.json()
         return pkg.version || '1.0.0'
       }
     } catch (error) {
+      console.warn('Failed to fetch package.json:', error)
       // 如果無法獲取，使用構建時間戳
       return Date.now().toString()
     }
     
     return '1.0.0'
+  }
+
+  // 獲取正確的 package.json URL (支援 GitHub Pages)
+  getPackageJsonUrl() {
+    const hostname = window.location.hostname
+    const pathname = window.location.pathname
+    
+    // GitHub Pages 檢測
+    if (hostname === 'romarin-hsieh.github.io') {
+      // 如果路徑包含 investment-dashboard，使用完整路徑
+      if (pathname.includes('/investment-dashboard/')) {
+        return '/investment-dashboard/package.json'
+      }
+      // 否則也使用完整路徑（防止直接訪問根域名的情況）
+      return '/investment-dashboard/package.json'
+    }
+    
+    // 本地開發環境
+    return '/package.json'
   }
 
   // 獲取上次預熱版本

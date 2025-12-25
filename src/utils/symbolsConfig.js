@@ -65,7 +65,12 @@ export class SymbolsConfigManager {
   async fetchFromUniverse() {
     try {
       console.log('Fetching symbols from universe.json...')
-      const response = await fetch('/config/universe.json')
+      
+      // 獲取正確的路徑 (支援 GitHub Pages)
+      const universeUrl = this.getUniverseJsonUrl()
+      console.log('Universe.json URL:', universeUrl)
+      
+      const response = await fetch(universeUrl)
       
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
@@ -88,6 +93,27 @@ export class SymbolsConfigManager {
       console.warn('Failed to fetch from universe.json:', error)
       return []
     }
+  }
+
+  /**
+   * 獲取正確的 universe.json URL (支援 GitHub Pages)
+   */
+  getUniverseJsonUrl() {
+    const hostname = window.location.hostname
+    const pathname = window.location.pathname
+    
+    // GitHub Pages 檢測
+    if (hostname === 'romarin-hsieh.github.io') {
+      // 如果路徑包含 investment-dashboard，使用完整路徑
+      if (pathname.includes('/investment-dashboard/')) {
+        return '/investment-dashboard/config/universe.json'
+      }
+      // 否則也使用完整路徑（防止直接訪問根域名的情況）
+      return '/investment-dashboard/config/universe.json'
+    }
+    
+    // 本地開發環境
+    return '/config/universe.json'
   }
 
   /**
