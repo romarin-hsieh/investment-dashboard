@@ -275,10 +275,19 @@ export default {
   },
   watch: {
     symbol() {
+      // 當 symbol 改變時，滾動到頂部並重新載入數據
+      this.scrollToTop()
       this.loadMetadata()
+    },
+    $route() {
+      // 當路由改變時，滾動到頂部
+      this.scrollToTop()
     }
   },
     mounted() {
+    // 頁面載入時滾動到頂部
+    this.scrollToTop()
+    
     // 啟用動態 API 模式以獲取最新的 sector/industry 信息
     metadataService.setUseDynamicAPI(true)
     
@@ -329,6 +338,23 @@ export default {
       console.log('Navigating back to stock overview')
       this.$router.push({ name: 'stock-overview' }).catch(err => {
         console.error('Navigation error:', err)
+      })
+    },
+
+    // 滾動到頁面頂部
+    scrollToTop() {
+      // 使用 nextTick 確保 DOM 已更新
+      this.$nextTick(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        })
+        
+        // 備用方案：立即滾動
+        setTimeout(() => {
+          window.scrollTo(0, 0)
+        }, 100)
       })
     }
   }

@@ -9,19 +9,21 @@ class AutoUpdateScheduler {
     this.updateIntervals = new Map()
     this.isRunning = false
     this.config = {
-      // 技術指標更新配置
+      // 技術指標更新配置 - 改為美股收盤後半小時觸發
       technicalIndicators: {
         enabled: true,
-        interval: 60 * 60 * 1000, // 1 小時
+        interval: 24 * 60 * 60 * 1000, // 24 小時 (每日更新)
         marketHoursOnly: true,
+        updateTimeWindow: { start: 16.5, end: 17 }, // 美東時間 16:30-17:00 (收盤後半小時)
         retryAttempts: 3,
         retryDelay: 5 * 60 * 1000 // 5 分鐘
       },
-      // 元數據更新配置
+      // 元數據更新配置 - 改為美股收盤後半小時觸發
       metadata: {
         enabled: true,
-        interval: 24 * 60 * 60 * 1000, // 24 小時
-        marketHoursOnly: false,
+        interval: 24 * 60 * 60 * 1000, // 24 小時 (每日更新)
+        marketHoursOnly: true,
+        updateTimeWindow: { start: 16.5, end: 17 }, // 美東時間 16:30-17:00 (收盤後半小時)
         retryAttempts: 2,
         retryDelay: 30 * 60 * 1000 // 30 分鐘
       },
@@ -147,9 +149,9 @@ class AutoUpdateScheduler {
     try {
       console.log('🔍 Checking technical indicators update...')
 
-      // 檢查是否在市場時間內 (如果配置要求)
-      if (this.config.technicalIndicators.marketHoursOnly && !this.isMarketHours()) {
-        console.log('⏰ Outside market hours, skipping technical indicators update')
+      // 檢查是否在美股收盤後半小時的更新時間窗口內
+      if (this.config.technicalIndicators.marketHoursOnly && !this.isUpdateTimeWindow()) {
+        console.log('⏰ Outside update time window, skipping technical indicators update')
         return
       }
 
@@ -386,7 +388,24 @@ class AutoUpdateScheduler {
     }, config.retryDelay)
   }
 
-  // 檢查是否在市場時間內
+  // 檢查是否在更新時間窗口內 (美股收盤後半小時)
+  isUpdateTimeWindow() {
+    const now = new Date()
+    const estTime = this.convertToEST(now)
+    const hour = estTime.getHours() + estTime.getMinutes() / 60
+
+    // 檢查是否在美股收盤後半小時的更新窗口內 (16:30-17:00 EST)
+    const updateWindow = this.config.technicalIndicators.updateTimeWindow
+    const isInWindow = hour >= updateWindow.start && hour <= updateWindow.end
+
+    if (isInWindow) {
+      console.log(`📅 In update time window: ${estTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York' })} EST`)
+    }
+
+    return isInWindow
+  }
+
+  // 檢查是否在市場時間內 (保留原有功能)
   isMarketHours() {
     const now = new Date()
     const estTime = this.convertToEST(now)
@@ -400,12 +419,29 @@ class AutoUpdateScheduler {
     )
   }
 
-  // 轉換為美東時間
+  // 轉換為美東時間 (考慮夏令時)
   convertToEST(date) {
-    // 簡化的時區轉換，實際應用中可能需要更精確的處理
-    const utc = date.getTime() + (date.getTimezoneOffset() * 60000)
-    const est = new Date(utc + (-5 * 3600000)) // EST = UTC-5
-    return est
+    // 使用 Intl.DateTimeFormat 來正確處理夏令時
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    })
+    
+    const parts = formatter.formatToParts(date)
+    const year = parseInt(parts.find(p => p.type === 'year').value)
+    const month = parseInt(parts.find(p => p.type === 'month').value) - 1
+    const day = parseInt(parts.find(p => p.type === 'day').value)
+    const hour = parseInt(parts.find(p => p.type === 'hour').value)
+    const minute = parseInt(parts.find(p => p.type === 'minute').value)
+    const second = parseInt(parts.find(p => p.type === 'second').value)
+    
+    return new Date(year, month, day, hour, minute, second)
   }
 
   // 獲取調度器狀態

@@ -166,9 +166,11 @@ export const CACHE_KEYS = {
 }
 
 // 緩存 TTL 配置
+// 注意：股價現在使用 TradingView Widget 實時顯示，Yahoo Finance API 數據改為每日更新
 export const CACHE_TTL = {
-  QUOTES: 5 * 60 * 1000,      // 5 minutes - 股價數據更新頻繁
-  DAILY_DATA: 60 * 60 * 1000,  // 1 hour - 日線數據更新較慢
-  METADATA: 24 * 60 * 60 * 1000, // 24 hours - 元數據變化很少
-  CONFIG: 60 * 60 * 1000       // 1 hour - 配置數據
+  QUOTES: 24 * 60 * 60 * 1000,     // 24 hours - 改為每日更新 (美股收盤後半小時觸發)
+  DAILY_DATA: 24 * 60 * 60 * 1000, // 24 hours - 改為每日更新 (美股收盤後半小時觸發)
+  METADATA: 24 * 60 * 60 * 1000,   // 24 hours - 元數據變化很少
+  CONFIG: 60 * 60 * 1000,          // 1 hour - 配置數據保持不變
+  TECHNICAL_INDICATORS: 24 * 60 * 60 * 1000 // 24 hours - 技術指標每日更新
 }

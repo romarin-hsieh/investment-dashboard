@@ -36,15 +36,11 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add public/data/technical-indicators/
-        git diff --staged --quiet || git commit -m "Update precomputed technical indicators $(date -u +%Y-%m-%d)"
-        git push
+        if ! git diff --staged --quiet; then
+          git commit -m "Update precomputed technical indicators $(date -u +%Y-%m-%d) [skip ci]"
+          git push
+        else
+          echo "No changes to commit"
+        fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Deploy to GitHub Pages (if needed)
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        cname: your-domain.com  # 如果有自定義域名

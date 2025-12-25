@@ -7,11 +7,11 @@ export class SymbolsConfigManager {
   constructor() {
     this.cache = new Map()
     this.lastUpdate = null
-    // 從環境變數讀取快取時間，預設 10 分鐘
-    const cacheMinutes = import.meta.env.VITE_CACHE_SYMBOLS_MINUTES || 10
+    // 從環境變數讀取快取時間，預設 60 分鐘 (1 小時)
+    const cacheMinutes = import.meta.env.VITE_CACHE_SYMBOLS_MINUTES || 60
     this.updateInterval = cacheMinutes * 60 * 1000 // 轉換為毫秒
     
-    console.log(`Symbols cache interval set to ${cacheMinutes} minutes`)
+    console.log(`Symbols cache interval set to ${cacheMinutes} minutes (1 hour default)`)
   }
 
   /**

@@ -123,7 +123,15 @@ export default {
     }
   },
   mounted() {
+    // 頁面載入時滾動到頂部
+    this.scrollToTop()
     this.initializePage()
+  },
+  watch: {
+    $route() {
+      // 當路由改變時，滾動到頂部
+      this.scrollToTop()
+    }
   },
   methods: {
     async initializePage() {
@@ -140,6 +148,23 @@ export default {
       this.loading = true
       this.error = null
       await this.initializePage()
+    },
+
+    // 滾動到頁面頂部
+    scrollToTop() {
+      // 使用 nextTick 確保 DOM 已更新
+      this.$nextTick(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        })
+        
+        // 備用方案：立即滾動
+        setTimeout(() => {
+          window.scrollTo(0, 0)
+        }, 100)
+      })
     }
   },
   computed: {

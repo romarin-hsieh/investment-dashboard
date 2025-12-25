@@ -5,7 +5,7 @@ class PrecomputedIndicatorsAPI {
   constructor() {
     this.baseUrl = '/data/technical-indicators/';
     this.cache = new Map();
-    this.cacheTimeout = 5 * 60 * 1000; // 5分鐘緩存
+    this.cacheTimeout = 60 * 60 * 1000; // 1小時緩存 (技術指標每日更新)
   }
 
   // 獲取今天的日期字符串

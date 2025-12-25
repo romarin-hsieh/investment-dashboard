@@ -1,12 +1,13 @@
 /**
  * 技術指標核心實現
- * 基於 YAML 規格 technical_indicators_core v1.0.0
+ * 基於 YAML 規格 indicator_algorithms v2.0.0
  * 
  * 特點:
  * - 所有輸出序列與輸入對齊，長度一致
  * - 前 (period-1) 根輸出 NaN
- * - 使用標準 Wilder 平滑
- * - 完整的邊界條件處理
+ * - SMA: 嚴格按照 v2.0.0 規格實現
+ * - EMA: 支援 sma_seed 和 first_value 初始化模式
+ * - 完整的 NaN 處理策略 (strict, skipna, hold_last 等)
  */
 
 // =========================
@@ -74,31 +75,46 @@ function rollingMin(values, period) {
 // =========================
 
 /**
- * SMA Helper
+ * SMA Helper - 基於 v2.0.0 規格
  * @param {number[]} values - 輸入序列
- * @param {number} period - 週期
+ * @param {number} period - 週期 N
+ * @param {string} nanPolicy - NaN 處理策略: 'strict' | 'skipna'
+ * @param {number} minPeriods - skipna 模式下的最小有效值數量
  * @returns {number[]} SMA 序列，與輸入對齊
  */
-function sma(values, period) {
+function sma(values, period, nanPolicy = 'strict', minPeriods = null) {
   if (period <= 0) throw new Error('Period must be positive');
   
-  const result = new Array(values.length);
+  const L = values.length;
+  const result = new Array(L).fill(NaN);
   
-  for (let i = 0; i < values.length; i++) {
-    if (i < period - 1) {
-      result[i] = NaN;
-    } else {
-      let sum = 0;
-      let count = 0;
-      
-      for (let j = i - period + 1; j <= i; j++) {
-        if (!isNaN(values[j])) {
-          sum += values[j];
-          count++;
-        }
+  // minPeriods 預設為 period
+  if (minPeriods === null) minPeriods = period;
+  
+  for (let t = 0; t < L; t++) {
+    if (t < period - 1) {
+      // t < N-1: keep NaN
+      continue;
+    }
+    
+    // window = x[t-N+1 .. t]
+    const window = values.slice(t - period + 1, t + 1);
+    
+    if (nanPolicy === 'strict') {
+      // 如果 window 中有任何 NaN，則 sma[t] = NaN
+      if (window.some(v => isNaN(v))) {
+        result[t] = NaN;
+      } else {
+        result[t] = window.reduce((sum, v) => sum + v, 0) / window.length;
       }
-      
-      result[i] = count === period ? sum / period : NaN;
+    } else if (nanPolicy === 'skipna') {
+      // 只計算有效值
+      const validValues = window.filter(v => !isNaN(v));
+      if (validValues.length < minPeriods) {
+        result[t] = NaN;
+      } else {
+        result[t] = validValues.reduce((sum, v) => sum + v, 0) / validValues.length;
+      }
     }
   }
   
@@ -106,49 +122,119 @@ function sma(values, period) {
 }
 
 /**
- * EMA Helper
+ * EMA Helper - 基於 v2.0.0 規格
  * @param {number[]} values - 輸入序列
- * @param {number} period - 週期
+ * @param {number} period - 週期 N
  * @param {number} alpha - 平滑係數，預設 2/(period+1)
- * @param {string} init - 初始化策略，預設 'sma'
+ * @param {string} initMode - 初始化策略: 'sma_seed' | 'first_value'
+ * @param {string} nanPolicy - NaN 處理策略: 'strict_break' | 'strict_recover' | 'hold_last'
  * @returns {number[]} EMA 序列，與輸入對齊
  */
-function ema(values, period, alpha = null, init = 'sma') {
+function ema(values, period, alpha = null, initMode = 'sma_seed', nanPolicy = 'strict_recover') {
   if (period <= 0) throw new Error('Period must be positive');
   
-  alpha = alpha || (2 / (period + 1));
-  const result = new Array(values.length);
+  const L = values.length;
+  const result = new Array(L).fill(NaN);
   
-  // 初始化階段
-  for (let i = 0; i < period - 1; i++) {
-    result[i] = NaN;
+  // 預設 alpha = 2/(N+1)
+  if (alpha === null) alpha = 2 / (period + 1);
+  
+  // 驗證 alpha 範圍
+  if (alpha <= 0 || alpha > 1) {
+    throw new Error('Alpha must be in (0, 1]');
   }
   
-  if (values.length < period) return result;
-  
-  // 第一個 EMA 值使用 SMA
-  if (init === 'sma') {
-    let sum = 0;
-    let count = 0;
-    
-    for (let j = 0; j < period; j++) {
-      if (!isNaN(values[j])) {
-        sum += values[j];
-        count++;
+  if (initMode === 'first_value') {
+    // 找到第一個非 NaN 值作為初始值
+    let firstValidIndex = -1;
+    for (let k = 0; k < L; k++) {
+      if (!isNaN(values[k])) {
+        firstValidIndex = k;
+        break;
       }
     }
     
-    result[period - 1] = count === period ? sum / period : NaN;
-  } else if (init === 'first_value') {
-    result[period - 1] = values[period - 1];
-  }
-  
-  // 遞迴計算 EMA
-  for (let i = period; i < values.length; i++) {
-    if (isNaN(result[i - 1]) || isNaN(values[i])) {
-      result[i] = NaN;
-    } else {
-      result[i] = alpha * values[i] + (1 - alpha) * result[i - 1];
+    if (firstValidIndex === -1) {
+      // 沒有找到有效值，返回全 NaN
+      return result;
+    }
+    
+    // 設置初始值
+    result[firstValidIndex] = values[firstValidIndex];
+    
+    // 從下一個點開始計算
+    for (let t = firstValidIndex + 1; t < L; t++) {
+      if (isNaN(values[t])) {
+        // 處理 NaN 輸入
+        if (nanPolicy === 'hold_last') {
+          result[t] = result[t - 1];
+        } else {
+          result[t] = NaN;
+        }
+      } else {
+        // 有效輸入
+        if (isNaN(result[t - 1])) {
+          if (nanPolicy === 'strict_recover') {
+            result[t] = NaN; // 等待重新 seed
+          } else {
+            result[t] = NaN;
+          }
+        } else {
+          result[t] = alpha * values[t] + (1 - alpha) * result[t - 1];
+        }
+      }
+    }
+    
+  } else if (initMode === 'sma_seed') {
+    // sma_seed 模式：在 t = N-1 處用 SMA 初始化
+    
+    for (let t = 0; t < L; t++) {
+      if (t < period - 1) {
+        // t < N-1: keep NaN
+        continue;
+      }
+      
+      if (t === period - 1) {
+        // 首次 seed 點
+        const window = values.slice(0, period);
+        if (window.some(v => isNaN(v))) {
+          result[t] = NaN;
+        } else {
+          result[t] = window.reduce((sum, v) => sum + v, 0) / window.length;
+        }
+      } else {
+        // t > N-1
+        if (isNaN(values[t])) {
+          // 輸入是 NaN
+          if (nanPolicy === 'hold_last') {
+            result[t] = result[t - 1];
+          } else if (nanPolicy === 'strict_break') {
+            result[t] = NaN;
+            // 標記為 broken，後續都是 NaN (簡化實現)
+          } else if (nanPolicy === 'strict_recover') {
+            result[t] = NaN;
+          }
+        } else {
+          // 輸入有效
+          if (isNaN(result[t - 1])) {
+            if (nanPolicy === 'strict_recover') {
+              // re-seed: 檢查最近 N 根是否都有效
+              const recentWindow = values.slice(t - period + 1, t + 1);
+              if (recentWindow.some(v => isNaN(v))) {
+                result[t] = NaN;
+              } else {
+                // 重新 seed
+                result[t] = recentWindow.reduce((sum, v) => sum + v, 0) / recentWindow.length;
+              }
+            } else {
+              result[t] = NaN;
+            }
+          } else {
+            // 正常 EMA 計算
+            result[t] = alpha * values[t] + (1 - alpha) * result[t - 1];
+          }
+        }
+      }
     }
   }
   
@@ -203,17 +289,17 @@ function wilderSmoothing(values, period) {
 // =========================
 
 /**
- * MA (EMA) - 指數移動平均線
+ * MA (EMA) - 指數移動平均線 - v2.0.0 規格
  */
-function calculateMA(close, period = 5, alpha = null, init = 'sma') {
-  return ema(close, period, alpha, init);
+function calculateMA(close, period = 5, alpha = null, initMode = 'sma_seed', nanPolicy = 'strict_recover') {
+  return ema(close, period, alpha, initMode, nanPolicy);
 }
 
 /**
- * SMA - 簡單移動平均線
+ * SMA - 簡單移動平均線 - v2.0.0 規格
  */
-function calculateSMA(close, period = 5) {
-  return sma(close, period);
+function calculateSMA(close, period = 5, nanPolicy = 'strict', minPeriods = null) {
+  return sma(close, period, nanPolicy, minPeriods);
 }
 
 /**
