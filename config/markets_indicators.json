@@ -1,0 +1,103 @@
+{
+  "description": "Configuration for 10 markets economic indicators",
+  "version": "1.0.0",
+  "last_updated": "2025-01-22",
+  "indicators": [
+    {
+      "id": "sp500_index",
+      "name": "S&P 500 Index",
+      "description": "Standard & Poor's 500 stock market index",
+      "scrape_only": false,
+      "data_source": "financial_api",
+      "update_frequency": "hourly",
+      "unit": "points"
+    },
+    {
+      "id": "nasdaq_composite",
+      "name": "NASDAQ Composite",
+      "description": "NASDAQ stock market composite index",
+      "scrape_only": false,
+      "data_source": "financial_api",
+      "update_frequency": "hourly",
+      "unit": "points"
+    },
+    {
+      "id": "vix_volatility",
+      "name": "VIX Volatility Index",
+      "description": "CBOE Volatility Index measuring market fear",
+      "scrape_only": false,
+      "data_source": "financial_api",
+      "update_frequency": "hourly",
+      "unit": "percentage"
+    },
+    {
+      "id": "us_10y_treasury",
+      "name": "US 10-Year Treasury Yield",
+      "description": "10-year US Treasury bond yield rate",
+      "scrape_only": true,
+      "data_source": "treasury_gov",
+      "update_frequency": "daily",
+      "unit": "percentage"
+    },
+    {
+      "id": "dxy_dollar_index",
+      "name": "DXY Dollar Index",
+      "description": "US Dollar Index against major currencies",
+      "scrape_only": true,
+      "data_source": "forex_scraper",
+      "update_frequency": "hourly",
+      "unit": "index"
+    },
+    {
+      "id": "gold_spot_price",
+      "name": "Gold Spot Price",
+      "description": "Current spot price of gold per ounce",
+      "scrape_only": true,
+      "data_source": "commodities_scraper",
+      "update_frequency": "hourly",
+      "unit": "usd_per_oz"
+    },
+    {
+      "id": "crude_oil_wti",
+      "name": "WTI Crude Oil",
+      "description": "West Texas Intermediate crude oil price",
+      "scrape_only": true,
+      "data_source": "commodities_scraper",
+      "update_frequency": "hourly",
+      "unit": "usd_per_barrel"
+    },
+    {
+      "id": "bitcoin_price",
+      "name": "Bitcoin Price",
+      "description": "Bitcoin cryptocurrency price in USD",
+      "scrape_only": false,
+      "data_source": "crypto_api",
+      "update_frequency": "hourly",
+      "unit": "usd"
+    },
+    {
+      "id": "unemployment_rate",
+      "name": "US Unemployment Rate",
+      "description": "US national unemployment rate",
+      "scrape_only": true,
+      "data_source": "bls_scraper",
+      "update_frequency": "monthly",
+      "unit": "percentage"
+    },
+    {
+      "id": "fed_funds_rate",
+      "name": "Federal Funds Rate",
+      "description": "Federal Reserve interest rate",
+      "scrape_only": true,
+      "data_source": "fed_scraper",
+      "update_frequency": "daily",
+      "unit": "percentage"
+    }
+  ],
+  "scraping_settings": {
+    "default_enabled": false,
+    "timeout_seconds": 30,
+    "retry_attempts": 3,
+    "user_agent": "Investment-Dashboard-Bot/1.0"
+  }
+}
