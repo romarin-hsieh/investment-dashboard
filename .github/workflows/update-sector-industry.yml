@@ -323,20 +323,44 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
+        # 拉取最新變更以避免衝突
+        echo "🔄 Pulling latest changes to avoid conflicts..."
+        git fetch origin
+        git pull origin main --no-edit || {
+          echo "⚠️ Pull failed, attempting rebase..."
+          git pull origin main --rebase || {
+            echo "❌ Rebase failed, manual intervention required"
+            exit 1
+          }
+        }
+        
+        # 檢查是否仍有變更需要提交
+        if git diff --quiet; then
+          echo "✅ No changes after pull - data already up to date"
+          exit 0
+        fi
+        
         # 添加變更的文件
         git add public/data/sector_industry.json
         git add public/data/symbols_metadata.json
         
         # 創建提交訊息
         COMMIT_MSG="🤖 Auto-update sector and industry data
-        
-        - Updated via Python yfinance library (no CORS issues)
-        - Triggered by: ${{ github.event_name }}
-        - Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
-        - Schedule: Daily at 0:20 UTC (8:20 Taiwan time)"
+
+- Updated via Python yfinance library (no CORS issues)
+- Triggered by: ${{ github.event_name }}
+- Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+- Schedule: Daily at 0:20 UTC (8:20 Taiwan time)"
         
         git commit -m "$COMMIT_MSG"
-        git push
+        
+        # 推送變更，如果失敗則重試
+        echo "🚀 Pushing changes..."
+        git push || {
+          echo "⚠️ Push failed, pulling latest changes and retrying..."
+          git pull origin main --rebase
+          git push
+        }
     
     - name: Create summary
       if: always()
