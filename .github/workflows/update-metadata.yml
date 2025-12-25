@@ -32,26 +32,21 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
     
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Setup Python
+      uses: actions/setup-python@v4
       with:
-        node-version: '18'
-        cache: 'npm'
+        python-version: '3.11'
     
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Update YFinance Metadata
+    - name: Install Python dependencies
       run: |
-        echo "🚀 Starting YFinance metadata update..."
-        node scripts/update-yfinance-metadata.js
+        python -m pip install --upgrade pip
+        pip install yfinance requests
+    
+    - name: Update YFinance Metadata (Python)
+      run: |
+        echo "🚀 Starting YFinance metadata update with Python..."
+        python scripts/update-metadata-python.py
         echo "✅ YFinance metadata update completed"
-    
-    - name: Update Exchange Mappings
-      run: |
-        echo "🚀 Starting exchange mappings update..."
-        node scripts/update-exchanges.js
-        echo "✅ Exchange mappings update completed"
     
     - name: Check for changes
       id: changes
@@ -73,13 +68,13 @@ jobs:
         
         # 添加變更的文件
         git add public/data/symbols_metadata.json
-        git add public/data/exchange_cache.json
+        git add public/data/sector_industry.json
         
         # 創建提交訊息
-        COMMIT_MSG="🤖 Auto-update metadata and exchange mappings
+        COMMIT_MSG="🤖 Auto-update metadata via Python yfinance
         
-        - Updated YFinance sector/industry data
-        - Updated exchange mappings via Finnhub API
+        - Updated YFinance sector/industry data via Python (no CORS issues)
+        - Direct API access from GitHub Actions server
         - Triggered by: ${{ github.event_name }}
         - Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
         
