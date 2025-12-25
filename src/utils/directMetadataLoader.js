@@ -7,6 +7,25 @@ class DirectMetadataLoader {
     this.loading = false
   }
 
+  getMetadataUrl() {
+    // 環境檢測邏輯，與其他服務保持一致
+    const hostname = window.location.hostname
+    const pathname = window.location.pathname
+    
+    // 正式環境 (GitHub Pages)
+    if (hostname === 'romarin-hsieh.github.io') {
+      return '/investment-dashboard/data/symbols_metadata.json'
+    }
+    
+    // 如果路徑包含 investment-dashboard，使用完整路徑
+    if (pathname.includes('/investment-dashboard/')) {
+      return '/investment-dashboard/data/symbols_metadata.json'
+    }
+    
+    // 本地開發環境
+    return '/data/symbols_metadata.json'
+  }
+
   async loadMetadata() {
     if (this.cache) {
       return this.cache
@@ -23,7 +42,10 @@ class DirectMetadataLoader {
     this.loading = true
     
     try {
-      const response = await fetch('/data/symbols_metadata.json')
+      const url = this.getMetadataUrl()
+      console.log('🔍 DirectMetadataLoader fetching from:', url)
+      
+      const response = await fetch(url)
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
@@ -31,6 +53,7 @@ class DirectMetadataLoader {
       const data = await response.json()
       this.cache = data
       
+      console.log('✅ DirectMetadataLoader loaded successfully:', data.items?.length, 'items')
       return this.cache
       
     } catch (error) {

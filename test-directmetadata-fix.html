@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DirectMetadataLoader 路徑修復測試</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .success { border-left: 5px solid #28a745; background-color: #d4edda; }
+        .error { border-left: 5px solid #dc3545; background-color: #f8d7da; }
+        .info { border-left: 5px solid #17a2b8; background-color: #d1ecf1; }
+        .warning { border-left: 5px solid #ffc107; background-color: #fff3cd; }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        
+        .metadata-item {
+            background: #e9ecef;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 DirectMetadataLoader 路徑修復測試</h1>
+        
+        <div class="test-section info">
+            <h3>📋 測試目的</h3>
+            <p>驗證 DirectMetadataLoader 是否能正確處理 GitHub Pages 的路徑前綴問題</p>
+            <ul>
+                <li><strong>本地環境</strong>: <code>/data/symbols_metadata.json</code></li>
+                <li><strong>正式環境</strong>: <code>/investment-dashboard/data/symbols_metadata.json</code></li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🌍 環境檢測</h3>
+            <div id="environment-info"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔗 路徑測試</h3>
+            <button onclick="testPaths()">測試所有路徑</button>
+            <div id="path-results"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 DirectMetadataLoader 測試</h3>
+            <button onclick="testDirectMetadataLoader()">測試 DirectMetadataLoader</button>
+            <div id="loader-results"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 特定股票測試</h3>
+            <button onclick="testSpecificStocks()">測試 CRM, IONQ, PL</button>
+            <div id="stock-results"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>📝 完整日誌</h3>
+            <button onclick="clearLogs()">清除日誌</button>
+            <pre id="logs"></pre>
+        </div>
+    </div>
+
+    <script type="module">
+        // 模擬 DirectMetadataLoader 類別
+        class DirectMetadataLoader {
+            constructor() {
+                this.cache = null
+                this.loading = false
+            }
+
+            getMetadataUrl() {
+                // 環境檢測邏輯，與其他服務保持一致
+                const hostname = window.location.hostname
+                const pathname = window.location.pathname
+                
+                // 正式環境 (GitHub Pages)
+                if (hostname === 'romarin-hsieh.github.io') {
+                    return '/investment-dashboard/data/symbols_metadata.json'
+                }
+                
+                // 如果路徑包含 investment-dashboard，使用完整路徑
+                if (pathname.includes('/investment-dashboard/')) {
+                    return '/investment-dashboard/data/symbols_metadata.json'
+                }
+                
+                // 本地開發環境
+                return '/data/symbols_metadata.json'
+            }
+
+            async loadMetadata() {
+                if (this.cache) {
+                    return this.cache
+                }
+
+                if (this.loading) {
+                    // 等待載入完成
+                    while (this.loading) {
+                        await new Promise(resolve => setTimeout(resolve, 100))
+                    }
+                    return this.cache
+                }
+
+                this.loading = true
+                
+                try {
+                    const url = this.getMetadataUrl()
+                    log(`🔍 DirectMetadataLoader fetching from: ${url}`)
+                    
+                    const response = await fetch(url)
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+                    }
+                    
+                    const data = await response.json()
+                    this.cache = data
+                    
+                    log(`✅ DirectMetadataLoader loaded successfully: ${data.items?.length} items`)
+                    return this.cache
+                    
+                } catch (error) {
+                    log(`❌ DirectMetadataLoader failed: ${error}`)
+                    return null
+                } finally {
+                    this.loading = false
+                }
+            }
+
+            async getSymbolMetadata(symbol) {
+                const data = await this.loadMetadata()
+                if (!data || !data.items) {
+                    return {
+                        symbol,
+                        sector: 'Unknown',
+                        industry: 'Unknown Industry',
+                        exchange: 'NASDAQ',
+                        confidence: 0.0,
+                        source: 'DirectLoader (Failed)'
+                    }
+                }
+
+                const symbolData = data.items.find(item => item.symbol === symbol)
+                if (symbolData) {
+                    return {
+                        ...symbolData,
+                        source: 'DirectLoader (Success)'
+                    }
+                }
+
+                return {
+                    symbol,
+                    sector: 'Unknown',
+                    industry: 'Unknown Industry',
+                    exchange: 'NASDAQ',
+                    confidence: 0.0,
+                    source: 'DirectLoader (Not Found)'
+                }
+            }
+        }
+
+        const directMetadataLoader = new DirectMetadataLoader()
+
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString()
+            const logElement = document.getElementById('logs')
+            logElement.textContent += `[${timestamp}] ${message}\n`
+            console.log(message)
+        }
+
+        function clearLogs() {
+            document.getElementById('logs').textContent = ''
+        }
+
+        // 環境檢測
+        function detectEnvironment() {
+            const hostname = window.location.hostname
+            const pathname = window.location.pathname
+            const protocol = window.location.protocol
+            
+            const info = `
+🌍 當前環境資訊:
+- Hostname: ${hostname}
+- Pathname: ${pathname}
+- Protocol: ${protocol}
+- Full URL: ${window.location.href}
+
+🎯 環境判斷:
+- 是否為 GitHub Pages: ${hostname === 'romarin-hsieh.github.io' ? '✅ 是' : '❌ 否'}
+- 路徑包含 investment-dashboard: ${pathname.includes('/investment-dashboard/') ? '✅ 是' : '❌ 否'}
+- 預期 metadata URL: ${directMetadataLoader.getMetadataUrl()}
+            `
+            
+            document.getElementById('environment-info').innerHTML = `<pre>${info}</pre>`
+            log('Environment detected')
+        }
+
+        // 測試所有可能的路徑
+        async function testPaths() {
+            const paths = [
+                '/data/symbols_metadata.json',
+                '/investment-dashboard/data/symbols_metadata.json'
+            ]
+            
+            const results = []
+            
+            for (const path of paths) {
+                try {
+                    log(`🔍 Testing path: ${path}`)
+                    const response = await fetch(path)
+                    const status = response.ok ? '✅ 成功' : `❌ 失敗 (${response.status})`
+                    results.push(`${path}: ${status}`)
+                    
+                    if (response.ok) {
+                        const data = await response.json()
+                        results.push(`  └─ 資料項目: ${data.items?.length || 0} 個`)
+                    }
+                } catch (error) {
+                    results.push(`${path}: ❌ 錯誤 - ${error.message}`)
+                }
+            }
+            
+            document.getElementById('path-results').innerHTML = `<pre>${results.join('\n')}</pre>`
+        }
+
+        // 測試 DirectMetadataLoader
+        async function testDirectMetadataLoader() {
+            try {
+                log('🚀 Testing DirectMetadataLoader...')
+                
+                // 清除快取以重新測試
+                directMetadataLoader.cache = null
+                
+                const data = await directMetadataLoader.loadMetadata()
+                
+                if (data && data.items) {
+                    const result = `
+✅ DirectMetadataLoader 測試成功!
+
+📊 載入結果:
+- 總項目數: ${data.items.length}
+- 資料時間: ${data.as_of}
+- TTL: ${data.ttl_days} 天
+- 資料來源: ${data.refresh_metadata?.update_source || 'Unknown'}
+
+🔍 前 5 個項目:
+${data.items.slice(0, 5).map(item => 
+    `- ${item.symbol}: ${item.sector} - ${item.industry} (${item.exchange})`
+).join('\n')}
+                    `
+                    
+                    document.getElementById('loader-results').innerHTML = `<pre>${result}</pre>`
+                    document.getElementById('loader-results').className = 'test-section success'
+                } else {
+                    throw new Error('No data loaded')
+                }
+                
+            } catch (error) {
+                const errorMsg = `❌ DirectMetadataLoader 測試失敗: ${error.message}`
+                document.getElementById('loader-results').innerHTML = `<pre>${errorMsg}</pre>`
+                document.getElementById('loader-results').className = 'test-section error'
+                log(errorMsg)
+            }
+        }
+
+        // 測試特定股票
+        async function testSpecificStocks() {
+            const testSymbols = ['CRM', 'IONQ', 'PL']
+            const results = []
+            
+            try {
+                log('🎯 Testing specific stocks...')
+                
+                for (const symbol of testSymbols) {
+                    const metadata = await directMetadataLoader.getSymbolMetadata(symbol)
+                    
+                    results.push(`
+📈 ${symbol}:
+- Sector: ${metadata.sector}
+- Industry: ${metadata.industry}
+- Exchange: ${metadata.exchange}
+- Confidence: ${metadata.confidence}
+- Source: ${metadata.source}
+                    `)
+                }
+                
+                const finalResult = `✅ 特定股票測試完成:\n${results.join('\n')}`
+                document.getElementById('stock-results').innerHTML = `<pre>${finalResult}</pre>`
+                document.getElementById('stock-results').className = 'test-section success'
+                
+            } catch (error) {
+                const errorMsg = `❌ 特定股票測試失敗: ${error.message}`
+                document.getElementById('stock-results').innerHTML = `<pre>${errorMsg}</pre>`
+                document.getElementById('stock-results').className = 'test-section error'
+                log(errorMsg)
+            }
+        }
+
+        // 頁面載入時自動檢測環境
+        window.addEventListener('load', () => {
+            detectEnvironment()
+            log('Page loaded, environment detected')
+        })
+
+        // 全域函數
+        window.testPaths = testPaths
+        window.testDirectMetadataLoader = testDirectMetadataLoader
+        window.testSpecificStocks = testSpecificStocks
+        window.clearLogs = clearLogs
+    </script>
+</body>
+</html>
