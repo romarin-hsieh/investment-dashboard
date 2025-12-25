@@ -15,6 +15,9 @@
     <div v-else-if="error" class="error-state">
       <span class="error-icon">⚠️</span>
       <span>{{ error }}</span>
+      <button @click="retryLoad" class="retry-button" :disabled="loading">
+        {{ loading ? 'Loading...' : 'Retry' }}
+      </button>
     </div>
     
     <div v-else class="indicators-grid">
@@ -206,20 +209,43 @@ export default {
         }
         
         // 設置緩存信息
-        if (this.technicalData.source === 'Daily Cache') {
-          this.cacheInfo = `Cached data (${loadTime}ms)`;
+        if (this.technicalData.source) {
+          if (this.technicalData.source.includes('Cache')) {
+            this.cacheInfo = `${this.technicalData.source} (${loadTime}ms)`;
+          } else if (this.technicalData.source.includes('Precomputed')) {
+            this.cacheInfo = `${this.technicalData.source} (${loadTime}ms)`;
+          } else {
+            this.cacheInfo = `Fresh data (${loadTime}ms)`;
+          }
         } else {
-          this.cacheInfo = `Fresh data (${loadTime}ms)`;
+          this.cacheInfo = `Loaded in ${loadTime}ms`;
         }
         
         console.log(`Technical data loaded for ${this.symbol}:`, this.technicalData);
         
+        // 驗證 ADX 數據
+        if (this.technicalData.adx14 && this.technicalData.adx14.value !== null && this.technicalData.adx14.value !== 'N/A') {
+          console.log(`✅ ADX data is valid for ${this.symbol}: ${this.technicalData.adx14.value}`);
+        } else {
+          console.warn(`⚠️ ADX data may be invalid for ${this.symbol}:`, this.technicalData.adx14);
+        }
+        
       } catch (error) {
         console.error(`Failed to load technical data for ${this.symbol}:`, error);
         this.error = error.message;
+        
+        // 如果是網路錯誤，提供重試選項
+        if (error.message.includes('fetch') || error.message.includes('network') || error.message.includes('proxy')) {
+          this.error = `Network error loading data for ${this.symbol}. Click to retry.`;
+        }
       } finally {
         this.loading = false;
       }
+    },
+    
+    // 手動重試載入
+    async retryLoad() {
+      await this.loadTechnicalData();
     },
     
     getSignalClass(signal) {
@@ -352,10 +378,31 @@ export default {
   font-size: 0.9rem;
   text-align: center;
   padding: 2rem;
+  flex-direction: column;
 }
 
 .error-icon {
   font-size: 1.1rem;
+}
+
+.retry-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.retry-button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.retry-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
 }
 
 .indicators-grid {

@@ -68,8 +68,8 @@ class YahooFinanceAPI {
         
         console.log(`Fetching data for ${symbol} using proxy ${proxyIndex + 1}...`);
         
-        // 構建請求 URL
-        const targetUrl = `${this.baseUrl}${symbol}?interval=1d&range=3mo&indicators=quote&includePrePost=false`;
+        // 構建請求 URL - 增加數據範圍以確保 ADX 計算有足夠數據
+        const targetUrl = `${this.baseUrl}${symbol}?interval=1d&range=6mo&indicators=quote&includePrePost=false`;
         const url = `${proxy}${encodeURIComponent(targetUrl)}`;
         
         console.log(`Request URL: ${url}`);
@@ -114,7 +114,7 @@ class YahooFinanceAPI {
           volume: quotes.volume || []
         };
         
-        // 過濾掉 null 值，保持索引對齊
+        // 過濾掉 null 值，保持索引對齊，並確保數據質量
         const length = rawData.close.length;
         const ohlcv = {
           open: new Array(length),
@@ -124,15 +124,27 @@ class YahooFinanceAPI {
           volume: new Array(length)
         };
         
+        let validDataPoints = 0;
         for (let i = 0; i < length; i++) {
           ohlcv.open[i] = rawData.open[i] !== null ? rawData.open[i] : NaN;
           ohlcv.high[i] = rawData.high[i] !== null ? rawData.high[i] : NaN;
           ohlcv.low[i] = rawData.low[i] !== null ? rawData.low[i] : NaN;
           ohlcv.close[i] = rawData.close[i] !== null ? rawData.close[i] : NaN;
           ohlcv.volume[i] = rawData.volume[i] !== null ? rawData.volume[i] : NaN;
+          
+          // 計算有效數據點（OHLC 都不是 NaN）
+          if (!isNaN(ohlcv.open[i]) && !isNaN(ohlcv.high[i]) && 
+              !isNaN(ohlcv.low[i]) && !isNaN(ohlcv.close[i])) {
+            validDataPoints++;
+          }
         }
         
-        console.log(`Found ${length} data points for ${symbol}`);
+        console.log(`Found ${length} total data points, ${validDataPoints} valid OHLC points for ${symbol}`);
+        
+        // ADX 需要至少 28 個有效數據點 (14 * 2)
+        if (validDataPoints < 28) {
+          console.warn(`⚠️ Insufficient valid data for ADX calculation: ${validDataPoints} < 28`);
+        }
         
         if (length < 50) {
           throw new Error(`Insufficient data points (${length}) for technical analysis`);
@@ -143,11 +155,19 @@ class YahooFinanceAPI {
         
         // 轉換為舊格式以保持兼容性
         const getLastValue = (series) => {
+          if (!series || !Array.isArray(series)) {
+            console.warn('getLastValue: Invalid series data');
+            return null;
+          }
+          
           for (let i = series.length - 1; i >= 0; i--) {
-            if (!isNaN(series[i])) {
-              return series[i];
+            const value = series[i];
+            if (value !== null && value !== undefined && !isNaN(value) && isFinite(value)) {
+              console.log(`getLastValue: Found valid value ${value} at index ${i} of ${series.length}`);
+              return value;
             }
           }
+          console.warn(`getLastValue: No valid values found in series of length ${series.length}`);
           return null;
         };
         
@@ -198,22 +218,32 @@ class YahooFinanceAPI {
           // 其他技術指標
           rsi14: createIndicatorResult(coreResults.RSI_14, { type: 'rsi', overbought: 70, oversold: 30 }),
           adx14: (() => {
+            console.log('🔍 Processing ADX results...');
+            console.log('ADX_14 series:', coreResults.ADX_14);
+            console.log('ADX_14_PLUS_DI series:', coreResults.ADX_14_PLUS_DI);
+            console.log('ADX_14_MINUS_DI series:', coreResults.ADX_14_MINUS_DI);
+            
             const adxValue = getLastValue(coreResults.ADX_14);
             const plusDI = getLastValue(coreResults.ADX_14_PLUS_DI);
             const minusDI = getLastValue(coreResults.ADX_14_MINUS_DI);
             
+            console.log('ADX extracted values:', { adxValue, plusDI, minusDI });
+            
             let signal = 'NEUTRAL';
-            if (adxValue !== null) {
+            if (adxValue !== null && !isNaN(adxValue)) {
               if (adxValue > 25) signal = 'STRONG_TREND';
               else if (adxValue < 20) signal = 'WEAK_TREND';
             }
             
-            return {
-              value: adxValue !== null ? adxValue.toFixed(2) : null,
+            const result = {
+              value: adxValue !== null && !isNaN(adxValue) ? adxValue.toFixed(2) : null,
               signal: signal,
-              plusDI: plusDI !== null ? plusDI.toFixed(2) : null,
-              minusDI: minusDI !== null ? minusDI.toFixed(2) : null
+              plusDI: plusDI !== null && !isNaN(plusDI) ? plusDI.toFixed(2) : null,
+              minusDI: minusDI !== null && !isNaN(minusDI) ? minusDI.toFixed(2) : null
             };
+            
+            console.log('ADX final result:', result);
+            return result;
           })(),
           macd: (() => {
             const macdValue = getLastValue(coreResults.MACD_12_26_9);

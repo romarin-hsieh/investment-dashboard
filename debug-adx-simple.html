@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ADX Debug</title>
+</head>
+<body>
+    <h1>ADX Debug Test</h1>
+    <div id="results"></div>
+    
+    <script type="module">
+        import yahooFinanceAPI from './src/utils/yahooFinanceApi.js';
+        
+        async function debugADX() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = 'Testing ADX calculation...';
+            
+            try {
+                console.log('Fetching AAPL data...');
+                const data = await yahooFinanceAPI.fetchTechnicalIndicatorsFromAPI('AAPL');
+                
+                console.log('AAPL data received:', data);
+                
+                let html = '<h2>AAPL Technical Indicators</h2>';
+                html += `<p><strong>ADX (14):</strong> ${data.adx14?.value || 'N/A'}</p>`;
+                html += `<p><strong>Data Points:</strong> ${data.dataPoints || 'Unknown'}</p>`;
+                html += `<p><strong>Source:</strong> ${data.source}</p>`;
+                
+                if (data.fullSeries && data.fullSeries.ADX_14) {
+                    const adxSeries = data.fullSeries.ADX_14;
+                    const validCount = adxSeries.filter(v => !isNaN(v)).length;
+                    html += `<p><strong>Valid ADX values:</strong> ${validCount} / ${adxSeries.length}</p>`;
+                    
+                    // Show last 10 values
+                    html += '<h3>Last 10 ADX Values:</h3><ul>';
+                    for (let i = Math.max(0, adxSeries.length - 10); i < adxSeries.length; i++) {
+                        html += `<li>Index ${i}: ${isNaN(adxSeries[i]) ? 'N/A' : adxSeries[i].toFixed(2)}</li>`;
+                    }
+                    html += '</ul>';
+                }
+                
+                if (data.error) {
+                    html += `<p style="color: red;"><strong>Error:</strong> ${data.error}</p>`;
+                }
+                
+                resultsDiv.innerHTML = html;
+                
+            } catch (error) {
+                console.error('Debug error:', error);
+                resultsDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+        
+        // Run debug on page load
+        debugADX();
+    </script>
+</body>
+</html>

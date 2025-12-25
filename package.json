@@ -18,7 +18,11 @@
     "precompute": "node scripts/precompute-indicators.js",
     "test-precompute": "node scripts/test-precompute.js",
     "update-metadata": "node scripts/update-metadata.js",
-    "update-metadata:force": "node scripts/update-metadata.js --force"
+    "update-metadata:force": "node scripts/update-metadata.js --force",
+    "update-yfinance": "node scripts/update-yfinance-metadata.js",
+    "update-yfinance:force": "node scripts/update-yfinance-metadata.js --force",
+    "update-exchanges": "node scripts/update-exchanges.js",
+    "cors-proxy": "node local-cors-proxy.js"
   },
   "dependencies": {
     "vue": "^3.4.0",

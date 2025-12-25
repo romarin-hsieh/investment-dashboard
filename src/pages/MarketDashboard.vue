@@ -30,24 +30,7 @@
         />
       </div>
 
-      <!-- VIX Index - 高優先級 -->
-      <div class="widget-container">
-        <div class="widget-header">
-          <h3>VIX Index (Volatility Index)</h3>
-        </div>
-        <LazyTradingViewWidget
-          widget-type="VIX Index"
-          :config="vixConfig"
-          script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-          height="400px"
-          :priority="1"
-        />
-      </div>
-
-      <!-- Fear & Greed Gauge - 高優先級 (不是 TradingView widget) -->
-      <ZeiiermanFearGreedGauge />
-
-      <!-- Top Stories - 中優先級 -->
+      <!-- Top Stories - 移到 Market Index 下方 -->
       <div class="widget-container">
         <div class="widget-header">
           <h3>Top Stories</h3>
@@ -59,6 +42,20 @@
           height="650px"
           :priority="2"
         />
+      </div>
+
+      <!-- Fear & Greed Gauge - 高優先級 (不是 TradingView widget) -->
+      <ZeiiermanFearGreedGauge />
+
+      <!-- VIX Index - 移到 Fear & Greed Index 下方 -->
+      <div class="widget-container vix-container">
+        <div class="widget-header">
+          <h3>VIX Index (Volatility Index)</h3>
+          <button @click="refreshVixWidget" class="btn btn-sm btn-secondary">
+            🔄 Refresh VIX
+          </button>
+        </div>
+        <VixWidget :key="`vix-${vixKey}`" />
       </div>
 
       <!-- Stock Market Insight -->
@@ -118,6 +115,7 @@
 
 <script>
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
+import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
 import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
@@ -126,6 +124,7 @@ export default {
   name: 'MarketDashboard',
   components: {
     LazyTradingViewWidget,
+    VixWidget,
     ZeiiermanFearGreedGauge,
     PerformanceMonitor,
     MarketOverviewSkeleton
@@ -133,7 +132,8 @@ export default {
   data() {
     return {
       loading: true,
-      error: null
+      error: null,
+      vixKey: Date.now() // 添加 VIX 專用的 key
     }
   },
   mounted() {
@@ -161,6 +161,7 @@ export default {
     async refresh() {
       this.loading = true
       this.error = null
+      this.vixKey = Date.now() // 強制重新載入 VIX widget
       await this.initializePage()
     },
 
@@ -179,6 +180,12 @@ export default {
           window.scrollTo(0, 0)
         }, 100)
       })
+    },
+
+    // 強制刷新 VIX widget
+    refreshVixWidget() {
+      this.vixKey = Date.now()
+      console.log('VIX widget refreshed with key:', this.vixKey)
     }
   },
   computed: {
@@ -197,47 +204,6 @@ export default {
         "largeChartUrl": "",
         "isTransparent": true,
         "showSymbolLogo": true
-      }
-    },
-
-    vixConfig() {
-      return {
-        "lineWidth": 2,
-        "lineType": 2,
-        "chartType": "line",
-        "showVolume": false,
-        "fontColor": "rgb(106, 109, 120)",
-        "gridLineColor": "rgba(46, 46, 46, 0.06)",
-        "volumeUpColor": "rgba(34, 171, 148, 0.5)",
-        "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-        "backgroundColor": "#ffffff",
-        "widgetFontColor": "#0F0F0F",
-        "upColor": "#22ab94",
-        "downColor": "#f7525f",
-        "borderUpColor": "#22ab94",
-        "borderDownColor": "#f7525f",
-        "wickUpColor": "#22ab94",
-        "wickDownColor": "#f7525f",
-        "colorTheme": "light",
-        "isTransparent": true,
-        "locale": "en",
-        "chartOnly": false,
-        "scalePosition": "right",
-        "scaleMode": "Normal",
-        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-        "valuesTracking": "1",
-        "changeMode": "price-and-percent",
-        "symbols": [["FRED:VIXCLS|12M"]],
-        "dateRanges": ["12m|1D","60m|1W","all|1M"],
-        "fontSize": "10",
-        "headerFontSize": "medium",
-        "autosize": true,
-        "width": "100%",
-        "height": "100%",
-        "noTimeScale": false,
-        "hideDateRanges": false,
-        "hideMarketStatus": false,
-        "hideSymbolLogo": false
       }
     },
 
@@ -415,8 +381,13 @@ export default {
   background: #545b62;
 }
 
-/* 統一的 Widget 容器樣式 */
-.widget-container {
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* 統一的 Widget 容器樣式 - 限定在 market-dashboard 內 */
+.market-dashboard .widget-container {
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -426,8 +397,8 @@ export default {
   position: relative;
 }
 
-/* Ticker 專用的 Widget 容器樣式 */
-.widget-container-ticker {
+/* Ticker 專用的 Widget 容器樣式 - 限定在 market-dashboard 內 */
+.market-dashboard .widget-container-ticker {
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -437,7 +408,7 @@ export default {
   position: relative;
 }
 
-.widget-header {
+.market-dashboard .widget-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -446,47 +417,53 @@ export default {
   border-bottom: 1px solid #f0f0f0;
 }
 
-.widget-header h3 {
+.market-dashboard .widget-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
   color: #333;
   margin: 0;
 }
 
-.insight-grid {
+.market-dashboard .insight-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: start;
 }
 
-.insight-section {
+.market-dashboard .insight-section {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
 /* 第二個 insight-section 上方添加間隔線 */
-.weekly-section {
+.market-dashboard .weekly-section {
   border-top: 1px solid #f0f0f0;
   padding-top: 1.5rem;
 }
 
-.section-header {
+.market-dashboard .section-header {
   padding-bottom: 0.5rem;
   /* 移除底線 border-bottom: 1px solid #f0f0f0; */
 }
 
-.section-header h4 {
+.market-dashboard .section-header h4 {
   font-size: 0.95rem;
   font-weight: 600;
   color: #555;
   margin: 0;
 }
 
+/* VIX 專用容器樣式 - 限定在 market-dashboard 內 */
+.market-dashboard .vix-container {
+  min-height: 600px; /* 整體容器 600px */
+  overflow: hidden; /* 參考 LazyTradingViewWidget 的做法 */
+}
+
 /* 響應式設計 */
 @media (max-width: 768px) {
-  .widget-header {
+  .market-dashboard .widget-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
@@ -494,12 +471,12 @@ export default {
 }
 
 @media (max-width: 480px) {
-  .widget-container {
+  .market-dashboard .widget-container {
     padding: 0.75rem;
     margin: 0 -0.25rem 2rem -0.25rem;
   }
   
-  .insight-grid {
+  .market-dashboard .insight-grid {
     gap: 0.75rem;
   }
 }

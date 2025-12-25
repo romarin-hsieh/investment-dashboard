@@ -141,53 +141,73 @@ export default {
             existingContent.style.display = 'none'
           }
 
-          // 創建 TradingView 容器結構
-          const widgetContainer = document.createElement('div')
-          widgetContainer.className = 'tradingview-widget-container'
-          widgetContainer.style.height = '100%'
-          widgetContainer.style.width = '100%'
+          try {
+            // 創建 TradingView 容器結構
+            const widgetContainer = document.createElement('div')
+            widgetContainer.className = 'tradingview-widget-container'
+            widgetContainer.style.height = '100%'
+            widgetContainer.style.width = '100%'
 
-          const widgetContent = document.createElement('div')
-          widgetContent.className = 'tradingview-widget-container__widget'
+            const widgetContent = document.createElement('div')
+            widgetContent.className = 'tradingview-widget-container__widget'
+            widgetContent.style.height = '100%'
+            widgetContent.style.width = '100%'
 
-          widgetContainer.appendChild(widgetContent)
+            widgetContainer.appendChild(widgetContent)
 
-          const script = document.createElement('script')
-          script.type = 'text/javascript'
-          script.src = this.scriptUrl
-          script.async = true
-          script.innerHTML = JSON.stringify(this.config)
-          
-          // 設定超時 - 根據優先級調整
-          const timeouts = {
-            1: 5000,  // 高優先級：5秒超時
-            2: 8000,  // 中優先級：8秒超時
-            3: 10000  // 低優先級：10秒超時
-          }
-          
-          const timeout = setTimeout(() => {
-            this.error = true
-            reject(new Error('Widget load timeout'))
-          }, timeouts[this.priority] || 8000)
-          
-          script.onload = () => {
-            clearTimeout(timeout)
-            this.loaded = true
+            // 創建 TradingView script - 正確的方式
+            const script = document.createElement('script')
+            script.type = 'text/javascript'
+            script.src = this.scriptUrl
+            script.async = true
             
-            const loadTime = performance.now() - this.loadStartTime
-            console.log(`${this.widgetType} widget loaded in ${loadTime.toFixed(2)}ms (Priority: ${this.priority})`)
+            // 將配置作為 script 的內容
+            const configJson = JSON.stringify(this.config)
+            script.innerHTML = configJson
             
-            resolve()
-          }
-          
-          script.onerror = () => {
-            clearTimeout(timeout)
+            // 調試信息
+            console.log(`🔧 Creating ${this.widgetType} widget with config:`, this.config)
+            console.log(`📝 Config JSON:`, configJson)
+            
+            // 設定超時 - 根據優先級調整
+            const timeouts = {
+              1: 8000,  // 高優先級：8秒超時
+              2: 10000, // 中優先級：10秒超時
+              3: 12000  // 低優先級：12秒超時
+            }
+            
+            const timeout = setTimeout(() => {
+              console.warn(`${this.widgetType} widget load timeout`)
+              this.error = true
+              reject(new Error('Widget load timeout'))
+            }, timeouts[this.priority] || 10000)
+            
+            script.onload = () => {
+              clearTimeout(timeout)
+              this.loaded = true
+              
+              const loadTime = performance.now() - this.loadStartTime
+              console.log(`✅ ${this.widgetType} widget loaded in ${loadTime.toFixed(2)}ms (Priority: ${this.priority})`)
+              
+              resolve()
+            }
+            
+            script.onerror = (error) => {
+              clearTimeout(timeout)
+              console.error(`❌ ${this.widgetType} script load failed:`, error)
+              this.error = true
+              reject(new Error('Script load failed'))
+            }
+            
+            // 添加到 DOM
+            widgetContent.appendChild(script)
+            container.appendChild(widgetContainer)
+            
+          } catch (error) {
+            console.error(`❌ ${this.widgetType} widget creation failed:`, error)
             this.error = true
-            reject(new Error('Script load failed'))
+            reject(error)
           }
-          
-          widgetContent.appendChild(script)
-          container.appendChild(widgetContainer)
         })
       })
     },

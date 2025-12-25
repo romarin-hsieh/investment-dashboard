@@ -1,0 +1,116 @@
+name: Update YFinance Metadata
+
+on:
+  # 每週日凌晨 2 點執行 (UTC)
+  schedule:
+    - cron: '0 2 * * 0'
+  
+  # 每次部署到 main 分支時執行
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+      - '*.md'
+  
+  # 允許手動觸發
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update all metadata'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  update-metadata:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Update YFinance Metadata
+      run: |
+        echo "🚀 Starting YFinance metadata update..."
+        node scripts/update-yfinance-metadata.js
+        echo "✅ YFinance metadata update completed"
+    
+    - name: Update Exchange Mappings
+      run: |
+        echo "🚀 Starting exchange mappings update..."
+        node scripts/update-exchanges.js
+        echo "✅ Exchange mappings update completed"
+    
+    - name: Check for changes
+      id: changes
+      run: |
+        if git diff --quiet; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "No changes detected"
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "Changes detected:"
+          git diff --name-only
+        fi
+    
+    - name: Commit and push changes
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # 添加變更的文件
+        git add public/data/symbols_metadata.json
+        git add public/data/exchange_cache.json
+        
+        # 創建提交訊息
+        COMMIT_MSG="🤖 Auto-update metadata and exchange mappings
+        
+        - Updated YFinance sector/industry data
+        - Updated exchange mappings via Finnhub API
+        - Triggered by: ${{ github.event_name }}
+        - Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+        
+        git commit -m "$COMMIT_MSG"
+        git push
+    
+    - name: Create summary
+      if: always()
+      run: |
+        echo "## 📊 Metadata Update Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+        echo "**Changes:** ${{ steps.changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.changes.outputs.changed }}" == "true" ]; then
+          echo "### 📝 Files Updated:" >> $GITHUB_STEP_SUMMARY
+          git diff --name-only HEAD~1 | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+        else
+          echo "### ✅ No updates needed" >> $GITHUB_STEP_SUMMARY
+          echo "All metadata is up to date." >> $GITHUB_STEP_SUMMARY
+        fi
+    
+    - name: Notify on failure
+      if: failure()
+      run: |
+        echo "## ❌ Metadata Update Failed" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "The metadata update process encountered an error." >> $GITHUB_STEP_SUMMARY
+        echo "Please check the workflow logs for details." >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY

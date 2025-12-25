@@ -1,5 +1,5 @@
 <template>
-  <div class="fast-widget" :id="containerId" ref="container">
+  <div class="fast-widget" :class="{ 'overview-widget': widgetType === 'overview' }" :id="containerId" ref="container">
     <div v-if="!loaded && !error" class="fast-loading">
       <div class="loading-spinner"></div>
       <span>Loading {{ widgetType }}...</span>
@@ -303,8 +303,15 @@ export default {
 .fast-widget {
   width: 100%;
   height: 100%;
-  min-height: 500px; /* 增加到 500px 確保 X-axis 顯示 */
+  min-height: 500px;
   position: relative;
+}
+
+/* Symbol Overview 特殊樣式 - 白底和 padding */
+.fast-widget.overview-widget {
+  background: #ffffff;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .fast-loading {
@@ -313,10 +320,15 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100%;
-  min-height: 500px; /* 增加到 500px */
+  min-height: 500px;
   background: #f8f9fa;
   border-radius: 8px;
   color: #6c757d;
+}
+
+/* Symbol Overview 的 loading 狀態調整 */
+.fast-widget.overview-widget .fast-loading {
+  margin: -8px; /* 抵消容器的 padding */
 }
 
 .loading-spinner {
@@ -345,11 +357,16 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100%;
-  min-height: 500px; /* 增加到 500px */
+  min-height: 500px;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
   border-radius: 8px;
   color: #721c24;
+}
+
+/* Symbol Overview 的 error 狀態調整 */
+.fast-widget.overview-widget .fast-error {
+  margin: -8px; /* 抵消容器的 padding */
 }
 
 .retry-btn {

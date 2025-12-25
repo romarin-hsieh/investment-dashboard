@@ -242,7 +242,7 @@ function ema(values, period, alpha = null, initMode = 'sma_seed', nanPolicy = 's
 }
 
 /**
- * Wilder 平滑 Helper
+ * Wilder 平滑 Helper (增強版，更好的 NaN 處理)
  * @param {number[]} values - 輸入序列
  * @param {number} period - 週期
  * @returns {number[]} Wilder 平滑序列
@@ -257,29 +257,49 @@ function wilderSmoothing(values, period) {
     result[i] = NaN;
   }
   
-  if (values.length < period) return result;
+  if (values.length < period) {
+    console.log(`Wilder: Insufficient data length ${values.length} < ${period}`);
+    return result;
+  }
   
-  // 第一個值使用 SMA
+  // 第一個值使用 SMA - 尋找足夠的有效值
   let sum = 0;
   let count = 0;
+  let validIndices = [];
   
-  for (let j = 0; j < period; j++) {
+  // 收集前 period 個有效值
+  for (let j = 0; j < values.length && validIndices.length < period; j++) {
     if (!isNaN(values[j])) {
+      validIndices.push(j);
       sum += values[j];
       count++;
     }
   }
   
-  result[period - 1] = count === period ? sum / period : NaN;
+  console.log(`Wilder: Found ${count} valid values in first ${period} positions for SMA initialization`);
   
-  // Wilder 遞迴平滑
-  for (let i = period; i < values.length; i++) {
+  if (count < period) {
+    console.warn(`Wilder: Insufficient valid data for SMA initialization: ${count} < ${period}`);
+    return result; // 返回全 NaN
+  }
+  
+  // 使用最後一個有效值的位置作為初始化點
+  const initIndex = Math.max(period - 1, validIndices[period - 1]);
+  result[initIndex] = sum / period;
+  
+  console.log(`Wilder: Initialized at index ${initIndex} with value ${result[initIndex]}`);
+  
+  // Wilder 遞迴平滑 - 從初始化點開始
+  for (let i = initIndex + 1; i < values.length; i++) {
     if (isNaN(result[i - 1]) || isNaN(values[i])) {
       result[i] = NaN;
     } else {
       result[i] = (result[i - 1] * (period - 1) + values[i]) / period;
     }
   }
+  
+  const validCount = result.filter(v => !isNaN(v)).length;
+  console.log(`Wilder: Generated ${validCount} valid smoothed values`);
   
   return result;
 }
@@ -430,11 +450,33 @@ function calculateRSI(close, period = 14) {
 }
 
 /**
- * ADX - 平均趨向指數 (完整 Wilder 實現)
+ * ADX - 平均趨向指數 (完整 Wilder 實現，增強數據驗證)
  */
 function calculateADX(high, low, close, period = 14) {
   const length = Math.min(high.length, low.length, close.length);
+  
+  // 增強數據驗證
   if (length < period * 2) {
+    console.warn(`ADX: Insufficient data length ${length} < ${period * 2} for period ${period}`);
+    return {
+      adx: new Array(length).fill(NaN),
+      plusDI: new Array(length).fill(NaN),
+      minusDI: new Array(length).fill(NaN)
+    };
+  }
+  
+  // 檢查數據質量
+  let validOHLCCount = 0;
+  for (let i = 0; i < length; i++) {
+    if (!isNaN(high[i]) && !isNaN(low[i]) && !isNaN(close[i])) {
+      validOHLCCount++;
+    }
+  }
+  
+  console.log(`ADX: Processing ${length} data points, ${validOHLCCount} valid OHLC points`);
+  
+  if (validOHLCCount < period * 2) {
+    console.warn(`ADX: Insufficient valid OHLC data ${validOHLCCount} < ${period * 2}`);
     return {
       adx: new Array(length).fill(NaN),
       plusDI: new Array(length).fill(NaN),
@@ -456,6 +498,17 @@ function calculateADX(high, low, close, period = 14) {
   tr[0] = NaN;
   
   for (let i = 1; i < length; i++) {
+    // 檢查當前和前一個數據點的有效性
+    if (isNaN(high[i]) || isNaN(low[i]) || isNaN(close[i]) ||
+        isNaN(high[i-1]) || isNaN(low[i-1]) || isNaN(close[i-1])) {
+      upMove[i] = NaN;
+      downMove[i] = NaN;
+      plusDM[i] = NaN;
+      minusDM[i] = NaN;
+      tr[i] = NaN;
+      continue;
+    }
+    
     // Up/Down Move
     upMove[i] = high[i] - high[i - 1];
     downMove[i] = low[i - 1] - low[i];
@@ -480,10 +533,12 @@ function calculateADX(high, low, close, period = 14) {
     tr[i] = Math.max(tr1, tr2, tr3);
   }
   
-  // Step B: Wilder 平滑
+  // Step B: Wilder 平滑 - 跳過第一個 NaN 值
   const smTR = wilderSmoothing(tr.slice(1), period);
   const smPlusDM = wilderSmoothing(plusDM.slice(1), period);
   const smMinusDM = wilderSmoothing(minusDM.slice(1), period);
+  
+  console.log(`ADX: Wilder smoothing results - TR valid: ${smTR.filter(v => !isNaN(v)).length}, +DM valid: ${smPlusDM.filter(v => !isNaN(v)).length}, -DM valid: ${smMinusDM.filter(v => !isNaN(v)).length}`);
   
   // Step C: 計算 DI
   const plusDI = new Array(length);
@@ -499,7 +554,7 @@ function calculateADX(high, low, close, period = 14) {
     const smPlusDMValue = smPlusDM[i - 1];
     const smMinusDMValue = smMinusDM[i - 1];
     
-    if (isNaN(smTRValue) || smTRValue <= EPSILON) {
+    if (isNaN(smTRValue) || isNaN(smPlusDMValue) || isNaN(smMinusDMValue) || smTRValue <= EPSILON) {
       plusDI[i] = NaN;
       minusDI[i] = NaN;
       dx[i] = NaN;
@@ -519,12 +574,18 @@ function calculateADX(high, low, close, period = 14) {
   // Step D: ADX Wilder 平滑
   const adx = wilderSmoothing(dx.slice(1), period);
   
+  console.log(`ADX: Final ADX smoothing - DX valid: ${dx.filter(v => !isNaN(v)).length}, ADX valid: ${adx.filter(v => !isNaN(v)).length}`);
+  
   // 對齊結果
   const adxResult = new Array(length);
   adxResult[0] = NaN;
   for (let i = 1; i < length; i++) {
     adxResult[i] = adx[i - 1];
   }
+  
+  // 最終驗證
+  const finalValidADX = adxResult.filter(v => !isNaN(v)).length;
+  console.log(`ADX: Final result - ${finalValidADX} valid ADX values out of ${length} total`);
   
   return {
     adx: adxResult,

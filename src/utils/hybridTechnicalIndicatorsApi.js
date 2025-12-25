@@ -17,24 +17,29 @@ class HybridTechnicalIndicatorsAPI {
     console.log(`🔍 Getting technical indicators for ${symbol}`);
     
     try {
-      // 策略 1: 嘗試預計算數據
+      // 策略 1: 嘗試預計算數據 (檢查 ADX 是否有效)
       if (this.preferPrecomputed) {
         const precomputedData = await this.tryPrecomputedData(symbol);
-        if (precomputedData) {
+        if (precomputedData && this.isADXValid(precomputedData)) {
+          console.log(`✅ Using precomputed data with valid ADX for ${symbol}`);
           return precomputedData;
+        } else if (precomputedData) {
+          console.log(`⚠️ Precomputed data has invalid ADX for ${symbol}, falling back to real-time`);
         }
       }
       
-      // 策略 2: 檢查每日緩存
+      // 策略 2: 檢查每日緩存 (檢查 ADX 是否有效)
       const cachedData = await technicalIndicatorsCache.getTechnicalIndicators(symbol);
-      if (cachedData) {
-        console.log(`📦 Using daily cache for ${symbol}`);
+      if (cachedData && this.isADXValid(cachedData)) {
+        console.log(`📦 Using daily cache with valid ADX for ${symbol}`);
         return cachedData;
+      } else if (cachedData) {
+        console.log(`⚠️ Cached data has invalid ADX for ${symbol}, falling back to real-time`);
       }
       
-      // 策略 3: 實時計算 (如果允許)
+      // 策略 3: 實時計算
       if (this.fallbackToRealtime) {
-        console.log(`⚡ Falling back to real-time calculation for ${symbol}`);
+        console.log(`⚡ Using real-time calculation for ${symbol}`);
         const realtimeData = await yahooFinanceAPI.fetchTechnicalIndicatorsFromAPI(symbol);
         
         if (realtimeData && !realtimeData.error) {
@@ -53,6 +58,33 @@ class HybridTechnicalIndicatorsAPI {
       // 返回錯誤狀態的指標
       return this.createErrorResponse(symbol, error.message);
     }
+  }
+
+  // 檢查 ADX 是否有效
+  isADXValid(data) {
+    if (!data || !data.adx14) {
+      return false;
+    }
+    
+    // 檢查 ADX 值是否為 null 或 "N/A"
+    const adxValue = data.adx14.value;
+    if (adxValue === null || adxValue === undefined || adxValue === 'N/A') {
+      return false;
+    }
+    
+    // 檢查完整序列數據中的 ADX
+    if (data.fullSeries && data.fullSeries.ADX_14) {
+      const adxSeries = data.fullSeries.ADX_14;
+      const validADXCount = adxSeries.filter(v => v !== null && v !== undefined && !isNaN(v)).length;
+      
+      // 如果有效 ADX 值少於 5 個，認為無效
+      if (validADXCount < 5) {
+        console.log(`ADX validation failed: only ${validADXCount} valid values`);
+        return false;
+      }
+    }
+    
+    return true;
   }
 
   // 嘗試獲取預計算數據

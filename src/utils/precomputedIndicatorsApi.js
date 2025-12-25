@@ -27,31 +27,29 @@ class PrecomputedIndicatorsAPI {
     }
 
     try {
-      // 嘗試獲取今天的預計算數據
-      const today = this.getTodayString();
-      const todayUrl = `${this.baseUrl}${today}_${symbol}.json`;
+      // 首先獲取最新的索引文件
+      const indexResponse = await fetch(`${this.baseUrl}latest_index.json`);
+      let latestDate = this.getTodayString(); // 默認使用今天
       
-      console.log(`Fetching precomputed data for ${symbol} from ${todayUrl}`);
-      
-      let response = await fetch(todayUrl);
-      
-      // 如果今天的數據不存在，嘗試獲取最新的數據
-      if (!response.ok) {
-        console.log(`Today's data not found for ${symbol}, trying latest...`);
+      if (indexResponse.ok) {
+        const index = await indexResponse.json();
+        latestDate = index.date; // 使用索引中的最新日期
         
-        // 先獲取索引文件找到最新日期
-        const indexResponse = await fetch(`${this.baseUrl}latest_index.json`);
-        if (indexResponse.ok) {
-          const index = await indexResponse.json();
-          if (index.symbols.includes(symbol)) {
-            const latestUrl = `${this.baseUrl}${index.date}_${symbol}.json`;
-            response = await fetch(latestUrl);
-          }
+        // 檢查該 symbol 是否在可用列表中
+        if (!index.symbols.includes(symbol)) {
+          throw new Error(`Symbol ${symbol} not found in precomputed data`);
         }
       }
       
+      // 使用最新日期構建 URL
+      const dataUrl = `${this.baseUrl}${latestDate}_${symbol}.json`;
+      
+      console.log(`Fetching precomputed data for ${symbol} from ${dataUrl}`);
+      
+      const response = await fetch(dataUrl);
+      
       if (!response.ok) {
-        throw new Error(`Precomputed data not found for ${symbol}`);
+        throw new Error(`Precomputed data not found for ${symbol} (${response.status})`);
       }
       
       const data = await response.json();
@@ -71,7 +69,7 @@ class PrecomputedIndicatorsAPI {
         timestamp: Date.now()
       });
       
-      console.log(`✅ Loaded precomputed data for ${symbol} (age: ${indicators.dataAge})`);
+      console.log(`✅ Loaded precomputed data for ${symbol} (date: ${latestDate}, age: ${indicators.dataAge})`);
       return indicators;
       
     } catch (error) {

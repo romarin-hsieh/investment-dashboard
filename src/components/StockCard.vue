@@ -157,11 +157,11 @@ export default {
       const symbol = this.quote.symbol
       
       // NYSE 股票
-      if (['ORCL', 'TSM', 'RDW'].includes(symbol)) {
+      if (['ORCL', 'TSM', 'RDW', 'CRM'].includes(symbol)) {
         return 'NYSE'
       }
       // NASDAQ 股票
-      else if (['ASTS', 'RIVN', 'PL', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'TSLA'].includes(symbol)) {
+      else if (['ASTS', 'RIVN', 'PL', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'TSLA'].includes(symbol)) {
         return 'NASDAQ'
       }
       

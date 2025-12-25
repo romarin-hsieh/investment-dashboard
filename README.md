@@ -149,17 +149,233 @@ VITE_SHEETS_TIMEOUT_MS=3000
 
 ## 🌐 部署
 
-### GitHub Pages (推薦)
+### 🚀 正式環境部署 (GitHub Pages)
+
+#### 自動化部署流程
+本專案使用 GitHub Actions 實現完全自動化的部署流程：
+
 ```bash
-# 構建並部署
-npm run build
-npx gh-pages -d dist
+# 一鍵部署到正式環境
+./deploy-production.bat
 ```
 
-### 其他平台
-- **Vercel**: 連接 GitHub 自動部署
-- **Netlify**: 拖拽 `dist` 文件夾部署
-- **Zeabur**: 支持 Node.js 項目部署
+#### 部署檢查清單
+在執行部署前，請確認：
+
+- [ ] **代碼品質**: 所有測試通過，無 ESLint 錯誤
+- [ ] **功能測試**: 本地測試所有核心功能正常
+- [ ] **資料完整性**: 24 組股票資料已更新
+- [ ] **Git 狀態**: 所有變更已提交到 main 分支
+- [ ] **環境變數**: 生產環境配置正確
+
+#### 部署步驟詳解
+
+1. **準備階段**
+   ```bash
+   # 檢查 Git 狀態
+   git status
+   
+   # 確保在 main 分支
+   git checkout main
+   git pull origin main
+   ```
+
+2. **建置階段**
+   ```bash
+   # 安裝依賴
+   npm install
+   
+   # 執行測試
+   npm run test
+   
+   # 建置生產版本
+   npm run build
+   ```
+
+3. **部署階段**
+   ```bash
+   # 推送到 main 分支 (觸發 GitHub Actions)
+   git push origin main
+   ```
+
+4. **驗證階段**
+   - 檢查 [GitHub Actions](https://github.com/your-username/investment-dashboard/actions) 執行狀態
+   - 確認 [部署狀態](https://github.com/your-username/investment-dashboard/deployments)
+   - 測試線上網站功能
+
+#### 🤖 GitHub Actions 自動化
+
+本專案配置了多個 GitHub Actions 工作流程：
+
+##### 1. 主要部署工作流程 (`.github/workflows/deploy.yml`)
+- **觸發條件**: 推送到 main 分支
+- **執行內容**: 建置 → 測試 → 部署到 gh-pages
+- **部署時間**: ~3-5 分鐘
+
+##### 2. 股票資料更新工作流程 (`.github/workflows/update-sector-industry.yml`)
+- **觸發條件**: 每日 0:20 UTC (台灣時間 8:20)
+- **執行內容**: 使用 Python yfinance 更新 24 組股票資料
+- **資料來源**: Yahoo Finance API (無 CORS 問題)
+- **更新內容**:
+  - `public/data/sector_industry.json` - 主要資料檔案
+  - `public/data/symbols_metadata.json` - 相容性資料檔案
+
+##### 3. 元數據更新工作流程 (`.github/workflows/update-metadata.yml`)
+- **觸發條件**: 每週日 1:00 UTC
+- **執行內容**: 更新股票交易所和基本資訊
+
+#### 📊 靜態資料服務
+
+##### 資料架構
+```
+public/data/
+├── sector_industry.json      # 24 組股票完整資料 (主要)
+├── symbols_metadata.json     # 相容性資料 (回退)
+├── daily/                    # 每日快照資料
+│   └── 2025-01-26.json
+└── quotes/                   # 即時報價快取
+    └── batch_quotes.json
+```
+
+##### 資料品質保證
+- **24 組股票**: 涵蓋 6 個主要 Sector
+- **高信心度**: 100% 來自 Yahoo Finance API
+- **自動更新**: 每日自動更新，確保資料新鮮度
+- **回退機制**: 多層資料來源保證可用性
+- **快取策略**: 24 小時本地快取 + CDN 快取
+
+##### 支援的股票列表
+```
+Technology (11): PL, ONDS, MDB, ORCL, TSM, CRM, NVDA, AVGO, CRWV, IONQ, PLTR
+Communication Services (4): ASTS, GOOG, META, NFLX  
+Consumer Cyclical (3): RIVN, AMZN, TSLA
+Industrials (3): RDW, AVAV, RKLB
+Energy (2): LEU, SMR
+Healthcare (1): HIMS
+```
+
+#### 🔧 部署配置
+
+##### Vite 配置 (`vite.config.js`)
+```javascript
+export default defineConfig({
+  base: '/investment-dashboard/',  // GitHub Pages 路徑
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,              // 生產環境不生成 sourcemap
+    minify: 'terser',             // 使用 Terser 壓縮
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['vue', 'vue-router'],
+          tradingview: ['lightweight-charts']
+        }
+      }
+    }
+  }
+})
+```
+
+##### 路由配置 (Hash 模式)
+```javascript
+const router = createRouter({
+  history: createWebHashHistory('/investment-dashboard/'),
+  routes: [...]
+})
+```
+
+#### 🌍 CDN 和快取策略
+
+##### GitHub Pages CDN
+- **全球 CDN**: 自動分發到全球節點
+- **HTTPS**: 強制 HTTPS 連接
+- **快取控制**: 靜態資源 24 小時快取
+
+##### 瀏覽器快取
+```javascript
+// 資料檔案快取策略
+Cache-Control: no-cache, no-store, must-revalidate  // JSON 資料
+Cache-Control: max-age=3600                         // 靜態資源
+Cache-Control: max-age=86400                        // 圖片資源
+```
+
+#### 🚨 部署注意事項
+
+##### 必須檢查項目
+1. **資料完整性**: 確認 24 組股票資料完整
+2. **API 限制**: 避免超過 Yahoo Finance API 限制
+3. **快取清理**: 部署後清理 CDN 快取
+4. **功能測試**: 測試所有核心功能
+5. **效能監控**: 檢查載入時間和響應速度
+
+##### 常見問題排除
+- **404 錯誤**: 檢查 `base` 路徑配置
+- **資料載入失敗**: 檢查 JSON 檔案格式和路徑
+- **Widget 載入慢**: 檢查 TradingView CDN 狀態
+- **快取問題**: 使用硬重新整理 (Ctrl+F5)
+
+##### 回滾策略
+如果部署出現問題：
+```bash
+# 回滾到上一個版本
+git revert HEAD
+git push origin main
+
+# 或者回滾到特定 commit
+git reset --hard <commit-hash>
+git push --force origin main
+```
+
+#### 📈 部署後驗證
+
+##### 功能測試清單
+- [ ] **首頁載入**: 確認首頁正常載入
+- [ ] **路由導航**: 測試所有頁面路由
+- [ ] **資料載入**: 確認股票資料正常顯示
+- [ ] **Widget 功能**: 測試 TradingView widgets
+- [ ] **響應式設計**: 測試不同設備尺寸
+- [ ] **效能指標**: 檢查載入時間 < 3 秒
+
+##### 監控和維護
+- **GitHub Actions**: 監控自動化工作流程
+- **資料更新**: 確認每日資料更新正常
+- **錯誤日誌**: 檢查瀏覽器控制台錯誤
+- **使用者回饋**: 收集使用者體驗回饋
+
+### 其他部署平台
+
+#### Vercel 部署
+```bash
+# 安裝 Vercel CLI
+npm i -g vercel
+
+# 部署
+vercel --prod
+```
+
+#### Netlify 部署
+```bash
+# 建置
+npm run build
+
+# 拖拽 dist 資料夾到 Netlify
+```
+
+#### 自託管部署
+```bash
+# 使用 nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /path/to/dist;
+    index index.html;
+    
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+```
 
 詳見 [DEPLOYMENT.md](./DEPLOYMENT.md) 和 [QUICK_DEPLOY.md](./QUICK_DEPLOY.md)
 
