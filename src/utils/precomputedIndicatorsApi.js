@@ -8,6 +8,11 @@ class PrecomputedIndicatorsAPI {
     this.cache = new Map();
     this.cacheTimeout = 60 * 60 * 1000; // 1小時緩存 (技術指標每日更新)
     
+    // 索引緩存 - 避免重複載入 latest_index.json
+    this.indexCache = null;
+    this.indexCacheTimestamp = null;
+    this.indexCacheTimeout = 10 * 60 * 1000; // 10分鐘緩存索引
+    
     // 調試日誌
     console.log('PrecomputedIndicatorsAPI initialized:', {
       hostname: window.location.hostname,
@@ -41,6 +46,38 @@ class PrecomputedIndicatorsAPI {
     return new Date().toISOString().split('T')[0];
   }
 
+  // 獲取緩存的索引數據（避免重複載入）
+  async getCachedIndex() {
+    // 檢查索引緩存是否有效
+    if (this.indexCache && this.indexCacheTimestamp && 
+        (Date.now() - this.indexCacheTimestamp < this.indexCacheTimeout)) {
+      console.log('📦 Using cached index data');
+      return this.indexCache;
+    }
+
+    try {
+      console.log('🔄 Loading latest_index.json...');
+      const indexResponse = await fetch(`${this.baseUrl}latest_index.json`);
+      
+      if (indexResponse.ok) {
+        const index = await indexResponse.json();
+        
+        // 更新索引緩存
+        this.indexCache = index;
+        this.indexCacheTimestamp = Date.now();
+        
+        console.log(`✅ Loaded latest_index.json: ${index.symbols.length} symbols, date: ${index.date}`);
+        return index;
+      } else {
+        console.warn('⚠️ latest_index.json not found, using fallback');
+        return null;
+      }
+    } catch (error) {
+      console.error('❌ Failed to load latest_index.json:', error);
+      return null;
+    }
+  }
+
   // 獲取預計算的技術指標數據
   async getTechnicalIndicators(symbol) {
     const cacheKey = `precomputed_${symbol}`;
@@ -49,18 +86,17 @@ class PrecomputedIndicatorsAPI {
     if (this.cache.has(cacheKey)) {
       const cached = this.cache.get(cacheKey);
       if (Date.now() - cached.timestamp < this.cacheTimeout) {
-        console.log(`Using precomputed cache for ${symbol}`);
+        console.log(`📦 Using precomputed cache for ${symbol}`);
         return cached.data;
       }
     }
 
     try {
-      // 首先獲取最新的索引文件
-      const indexResponse = await fetch(`${this.baseUrl}latest_index.json`);
+      // 使用緩存的索引數據
+      const index = await this.getCachedIndex();
       let latestDate = this.getTodayString(); // 默認使用今天
       
-      if (indexResponse.ok) {
-        const index = await indexResponse.json();
+      if (index) {
         latestDate = index.date; // 使用索引中的最新日期
         
         // 檢查該 symbol 是否在可用列表中
@@ -72,7 +108,7 @@ class PrecomputedIndicatorsAPI {
       // 使用最新日期構建 URL
       const dataUrl = `${this.baseUrl}${latestDate}_${symbol}.json`;
       
-      console.log(`Fetching precomputed data for ${symbol} from ${dataUrl}`);
+      console.log(`🔍 Fetching precomputed data for ${symbol} from ${dataUrl}`);
       
       const response = await fetch(dataUrl);
       
@@ -101,7 +137,7 @@ class PrecomputedIndicatorsAPI {
       return indicators;
       
     } catch (error) {
-      console.error(`Failed to load precomputed data for ${symbol}:`, error);
+      console.error(`❌ Failed to load precomputed data for ${symbol}:`, error);
       throw error;
     }
   }
@@ -123,22 +159,13 @@ class PrecomputedIndicatorsAPI {
 
   // 獲取可用的預計算數據索引
   async getAvailableData() {
-    try {
-      const response = await fetch(`${this.baseUrl}latest_index.json`);
-      if (!response.ok) {
-        throw new Error('Index not found');
-      }
-      return await response.json();
-    } catch (error) {
-      console.error('Failed to load precomputed index:', error);
-      return null;
-    }
+    return await this.getCachedIndex();
   }
 
   // 檢查預計算數據是否可用
   async isPrecomputedDataAvailable(symbol) {
     try {
-      const index = await this.getAvailableData();
+      const index = await this.getCachedIndex();
       return index && index.symbols.includes(symbol);
     } catch (error) {
       return false;
@@ -148,12 +175,17 @@ class PrecomputedIndicatorsAPI {
   // 清除緩存
   clearCache() {
     this.cache.clear();
+    this.indexCache = null;
+    this.indexCacheTimestamp = null;
+    console.log('🗑️ Cleared all precomputed caches');
   }
 
   // 獲取緩存統計
   getCacheStats() {
     const stats = {
       size: this.cache.size,
+      indexCached: !!this.indexCache,
+      indexAge: this.indexCacheTimestamp ? Date.now() - this.indexCacheTimestamp : null,
       items: []
     };
     

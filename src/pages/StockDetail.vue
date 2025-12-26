@@ -585,73 +585,28 @@ export default {
 .industry-tag {
   font-size: 0.75rem;
   color: #666;
-  background-color: #e8f4fd;
+  background-color: #f5f5f5;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-weight: 500;
-  border: 1px solid #b3d9ff;
+  border: 1px solid #e0e0e0;
   display: inline-block;
 }
 
-/* Industry Category Specific Styles */
-.industry-tech-iot {
-  background-color: #e3f2fd;
-  color: #1565c0;
-  border-color: #90caf9;
-}
-
-.industry-tech-satellite {
-  background-color: #f3e5f5;
-  color: #7b1fa2;
-  border-color: #ce93d8;
-}
-
-.industry-tech-software {
-  background-color: #e8f5e8;
-  color: #2e7d32;
-  border-color: #a5d6a7;
-}
-
-.industry-tech-hardware {
-  background-color: #fff3e0;
-  color: #ef6c00;
-  border-color: #ffcc80;
-}
-
-.industry-industrial-aerospace {
-  background-color: #fce4ec;
-  color: #c2185b;
-  border-color: #f8bbd9;
-}
-
-.industry-industrial-space {
-  background-color: #f1f8e9;
-  color: #558b2f;
-  border-color: #c5e1a5;
-}
-
-.industry-communications {
-  background-color: #e0f2f1;
-  color: #00695c;
-  border-color: #80cbc4;
-}
-
-.industry-automotive {
-  background-color: #fff8e1;
-  color: #ff8f00;
-  border-color: #ffcc02;
-}
-
-.industry-unknown {
+/* 統一使用灰色樣式，移除彩色分類 */
+.industry-tag.industry-tech-iot,
+.industry-tag.industry-tech-satellite,
+.industry-tag.industry-tech-software,
+.industry-tag.industry-tech-hardware,
+.industry-tag.industry-industrial-aerospace,
+.industry-tag.industry-industrial-space,
+.industry-tag.industry-communications,
+.industry-tag.industry-automotive,
+.industry-tag.industry-unknown,
+.industry-tag.industry-other {
   background-color: #f5f5f5;
-  color: #757575;
+  color: #666;
   border-color: #e0e0e0;
-}
-
-.industry-other {
-  background-color: #fafafa;
-  color: #616161;
-  border-color: #bdbdbd;
 }
 
 /* Header Actions */
