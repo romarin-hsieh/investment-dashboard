@@ -28,7 +28,7 @@ export default {
     },
     colorTheme: {
       type: String,
-      default: 'dark'
+      default: 'light'
     },
     isTransparent: {
       type: Boolean,
@@ -97,13 +97,15 @@ export default {
 
       // 創建配置
       const config = {
-        "symbol": "NYSE:RDW",
-        "colorTheme": "light",
-        "isTransparent": true,
-        "locale": "en",
+        "symbol": this.fullSymbol,
+        "colorTheme": this.colorTheme,
+        "isTransparent": this.isTransparent,
+        "locale": this.locale,
         "width": "100%",
         "height": "100%"
       }
+
+      console.log(`🏢 Creating Company Profile widget for ${this.fullSymbol}`, config)
 
       // 創建腳本
       const script = document.createElement('script')
@@ -206,21 +208,33 @@ export default {
   background: #c82333;
 }
 
-/* TradingView Widget 樣式覆蓋 */
-:global(.tv-embed-widget-wrapper) {
+/* TradingView Widget 樣式覆蓋 - 僅針對 Company Profile */
+:global(.company-profile-widget .tv-embed-widget-wrapper) {
   width: 100% !important;
   height: 100% !important;
   min-height: 400px !important;
+  max-height: 600px !important;
   overflow: visible !important;
 }
 
-:global(.tradingview-widget-container) {
+:global(.company-profile-widget .tradingview-widget-container) {
   width: 100% !important;
   height: 100% !important;
+  min-height: 400px !important;
+  max-height: 600px !important;
 }
 
-:global(.tradingview-widget-container__widget) {
+:global(.company-profile-widget .tradingview-widget-container__widget) {
   width: 100% !important;
   height: calc(100% - 32px) !important;
+  min-height: 370px !important;
+  max-height: 570px !important;
+}
+
+:global(.company-profile-widget .tradingview-widget-container iframe) {
+  width: 100% !important;
+  height: 400px !important;
+  min-height: 400px !important;
+  max-height: 600px !important;
 }
 </style>

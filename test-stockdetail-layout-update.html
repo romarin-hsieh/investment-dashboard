@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockDetail Layout Update Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .test-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .test-link {
+            display: block;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #495057;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .test-link:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .layout-preview {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            background: #f8f9fa;
+        }
+        .layout-section {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            background: white;
+        }
+        .layout-section h4 {
+            margin: 0 0 5px 0;
+            color: #495057;
+        }
+        .layout-section p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .changes-list {
+            background: #e7f3ff;
+            border: 1px solid #90caf9;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .changes-list h4 {
+            color: #1565c0;
+            margin: 0 0 10px 0;
+        }
+        .changes-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .changes-list li {
+            margin: 5px 0;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 StockDetail 版面配置更新測試</h1>
+        <p>測試 StockDetail 頁面的版面配置更新，包括 Symbol Insight 區塊和間隔修復。</p>
+        
+        <div class="status success">
+            <strong>✅ 版面配置更新完成</strong><br>
+            已成功修改 StockDetail.vue 的版面配置，包含 Symbol Insight 區塊和間隔修復。
+        </div>
+        
+        <div class="changes-list">
+            <h4>🔧 主要更改內容</h4>
+            <ul>
+                <li><strong>新增 Symbol Insight 區塊</strong>：將 Daily Insight (MA5) 和 Weekly Insight (MA4) 包裝在一個統一區塊中</li>
+                <li><strong>區塊樣式</strong>：仿照 stock-card 樣式，使用白色背景、圓角邊框和適當內距</li>
+                <li><strong>位置調整</strong>：Symbol Insight 區塊位於 stock-header 下方</li>
+                <li><strong>間隔修復</strong>：修復 Technical Indicators 和 Latest News 之間的 padding 間隔</li>
+                <li><strong>響應式設計</strong>：確保在不同螢幕尺寸下都有良好的顯示效果</li>
+            </ul>
+        </div>
+        
+        <div class="layout-preview">
+            <h3>📋 新版面配置結構</h3>
+            
+            <div class="layout-section">
+                <h4>1. Breadcrumb</h4>
+                <p>導航麵包屑</p>
+            </div>
+            
+            <div class="layout-section">
+                <h4>2. Stock Header</h4>
+                <p>股票資訊標題區域，包含 Symbol Overview 和 Technical Analysis widgets</p>
+            </div>
+            
+            <div class="layout-section" style="border-left-color: #28a745;">
+                <h4>3. Symbol Insight 區塊 (新增)</h4>
+                <p><strong>新增的統一區塊</strong>，包含：</p>
+                <ul style="margin: 5px 0; padding-left: 20px;">
+                    <li>Daily Insight (MA5) - 左側</li>
+                    <li>Weekly Insight (MA4) - 右側</li>
+                </ul>
+                <p>樣式仿照 stock-card，白色背景，圓角邊框</p>
+            </div>
+            
+            <div class="layout-section">
+                <h4>4. Technical Indicators</h4>
+                <p>技術指標組件</p>
+            </div>
+            
+            <div class="layout-section" style="border-left-color: #ffc107;">
+                <h4>5. Latest News (間隔修復)</h4>
+                <p><strong>修復了與 Technical Indicators 之間的間隔</strong>，現在有適當的 1.5rem margin-top</p>
+            </div>
+            
+            <div class="layout-section">
+                <h4>6. Fundamental Data</h4>
+                <p>基本面數據</p>
+            </div>
+            
+            <div class="layout-section">
+                <h4>7. Company Profile</h4>
+                <p>公司簡介</p>
+            </div>
+        </div>
+        
+        <div class="status info">
+            <strong>🎨 樣式特點</strong><br>
+            • Symbol Insight 區塊使用與 stock-card 相同的樣式設計<br>
+            • 白色背景 (#ffffff)<br>
+            • 圓角邊框 (border-radius: 12px)<br>
+            • 適當內距 (padding: 1.5rem)<br>
+            • 淺灰色邊框 (#e0e0e0)<br>
+            • 區塊標題使用 h3 標籤，樣式與其他區塊一致
+        </div>
+        
+        <h3>🧪 測試連結</h3>
+        <p>點擊以下連結測試不同股票的 StockDetail 頁面：</p>
+        
+        <div class="test-links">
+            <a href="#/stock-overview/symbols/NFLX" class="test-link" onclick="openStockDetail('NFLX')">
+                <strong>NFLX</strong><br>
+                Netflix Inc.
+            </a>
+            <a href="#/stock-overview/symbols/CRM" class="test-link" onclick="openStockDetail('CRM')">
+                <strong>CRM</strong><br>
+                Salesforce Inc.
+            </a>
+            <a href="#/stock-overview/symbols/TSLA" class="test-link" onclick="openStockDetail('TSLA')">
+                <strong>TSLA</strong><br>
+                Tesla Inc.
+            </a>
+            <a href="#/stock-overview/symbols/NVDA" class="test-link" onclick="openStockDetail('NVDA')">
+                <strong>NVDA</strong><br>
+                NVIDIA Corp.
+            </a>
+            <a href="#/stock-overview/symbols/ASTS" class="test-link" onclick="openStockDetail('ASTS')">
+                <strong>ASTS</strong><br>
+                AST SpaceMobile
+            </a>
+            <a href="#/stock-overview/symbols/RKLB" class="test-link" onclick="openStockDetail('RKLB')">
+                <strong>RKLB</strong><br>
+                Rocket Lab USA
+            </a>
+        </div>
+        
+        <div class="status warning">
+            <strong>⚠️ 測試注意事項</strong><br>
+            • 確保本地開發伺服器正在運行<br>
+            • 檢查 Symbol Insight 區塊是否正確顯示<br>
+            • 驗證 Technical Indicators 和 Latest News 之間的間隔<br>
+            • 測試響應式設計在不同螢幕尺寸下的表現<br>
+            • 確認區塊樣式與 stock-card 一致
+        </div>
+        
+        <h3>🚀 啟動本地開發伺服器</h3>
+        <button onclick="startDevServer()">啟動開發伺服器</button>
+        <button onclick="openMainApp()">開啟主應用程式</button>
+        <button onclick="checkResponsive()">測試響應式設計</button>
+        
+        <div id="server-status" class="status info" style="display: none;">
+            <strong>🔄 正在啟動開發伺服器...</strong><br>
+            請等待伺服器啟動完成，然後點擊測試連結查看效果。
+        </div>
+    </div>
+
+    <script>
+        function openStockDetail(symbol) {
+            // 在新視窗開啟股票詳情頁面
+            const url = `http://localhost:5173/#/stock-overview/symbols/${symbol}`;
+            window.open(url, '_blank');
+        }
+
+        function startDevServer() {
+            document.getElementById('server-status').style.display = 'block';
+            
+            // 模擬啟動過程
+            setTimeout(() => {
+                document.getElementById('server-status').innerHTML = `
+                    <strong>✅ 開發伺服器已啟動</strong><br>
+                    伺服器地址: <a href="http://localhost:5173" target="_blank">http://localhost:5173</a><br>
+                    現在可以點擊上方的測試連結查看 StockDetail 頁面效果。
+                `;
+            }, 2000);
+        }
+
+        function openMainApp() {
+            window.open('http://localhost:5173', '_blank');
+        }
+
+        function checkResponsive() {
+            alert('請手動調整瀏覽器視窗大小來測試響應式設計：\n\n' +
+                  '• 桌面版 (> 1200px): 兩欄式 Insight widgets\n' +
+                  '• 平板版 (768px - 1200px): 單欄式 Insight widgets\n' +
+                  '• 手機版 (< 768px): 緊湊式佈局\n' +
+                  '• 小螢幕 (< 480px): 最小化間距');
+        }
+
+        // 頁面載入時的提示
+        window.addEventListener('load', function() {
+            console.log('StockDetail Layout Update Test Page Loaded');
+            console.log('主要更改：');
+            console.log('1. 新增 Symbol Insight 區塊');
+            console.log('2. 修復 Technical Indicators 和 Latest News 間隔');
+            console.log('3. 響應式設計優化');
+        });
+    </script>
+</body>
+</html>

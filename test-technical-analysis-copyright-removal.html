@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Analysis Copyright Removal Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-title {
+            color: #007bff;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .test-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .test-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .test-link:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        .status.removed {
+            background: #d4edda;
+            color: #155724;
+        }
+        .code-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9em;
+            border-left: 4px solid #007bff;
+        }
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .before, .after {
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .before {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+        }
+        .after {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .widget-demo {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            position: relative;
+        }
+        .copyright-bar {
+            background: #ffcccc;
+            border: 1px solid #ff6666;
+            padding: 5px;
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .no-copyright {
+            background: #ccffcc;
+            border: 1px solid #66ff66;
+            padding: 20px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🗑️ Technical Analysis Copyright Removal Test</h1>
+            <p>Testing the removal of tradingview-widget-copyright from Technical Analysis widgets in Stock Overview</p>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🎯 Copyright Element Removed <span class="status removed">COMPLETED</span></div>
+            <div class="test-description">
+                The tradingview-widget-copyright element has been removed from the Technical Analysis widget in Stock Overview page, providing a cleaner appearance.
+            </div>
+            
+            <div class="before-after">
+                <div class="before">
+                    <h4>❌ Before (With Copyright)</h4>
+                    <div class="widget-demo">
+                        <div>Technical Analysis Widget</div>
+                        <div class="copyright-bar">
+                            NFLX stock analysis by TradingView
+                        </div>
+                    </div>
+                    <p><strong>Issue:</strong> Copyright 文字佔用額外空間，影響視覺效果</p>
+                </div>
+                
+                <div class="after">
+                    <h4>✅ After (No Copyright)</h4>
+                    <div class="widget-demo">
+                        <div class="no-copyright">
+                            Technical Analysis Widget<br>
+                            (Full Height Available)
+                        </div>
+                    </div>
+                    <p><strong>Result:</strong> 更乾淨的外觀，widget 可使用全部高度</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🔧 Technical Changes</div>
+            <div class="test-description">
+                Removed the copyright element and adjusted the widget container height:
+            </div>
+            
+            <div class="code-block">
+/* HTML 模板修改 */
+<!-- 移除前 -->
+&lt;div class="tradingview-widget-container"&gt;
+  &lt;div class="tradingview-widget-container__widget"&gt;&lt;/div&gt;
+  &lt;div class="tradingview-widget-copyright"&gt;
+    &lt;a href="..."&gt;
+      &lt;span class="blue-text"&gt;{{ symbol }} stock analysis&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;span class="trademark"&gt; by TradingView&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<!-- 移除後 -->
+&lt;div class="tradingview-widget-container"&gt;
+  &lt;div class="tradingview-widget-container__widget"&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </div>
+            
+            <div class="code-block">
+/* CSS 樣式修改 */
+/* 修改前 */
+.tradingview-widget-container__widget {
+  height: calc(100% - 20px); /* 為 copyright 預留空間 */
+}
+
+/* 修改後 */
+.tradingview-widget-container__widget {
+  height: 100%; /* 使用全高度 */
+}
+
+/* 移除的 CSS 規則 */
+.tradingview-widget-copyright { /* 已移除 */ }
+.tradingview-widget-copyright a { /* 已移除 */ }
+.tradingview-widget-copyright .blue-text { /* 已移除 */ }
+.tradingview-widget-copyright .trademark { /* 已移除 */ }
+.tradingview-widget-copyright a:hover .blue-text { /* 已移除 */ }
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📁 Modified File</div>
+            <div class="test-description">
+                The following component has been updated:
+            </div>
+            
+            <ul>
+                <li>✅ <strong>src/components/TechnicalAnalysisWidget.vue</strong> - Removed copyright element and related CSS</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🧪 Test Stock Overview Page</div>
+            <div class="test-description">
+                Test the Stock Overview page to verify the Technical Analysis widgets no longer show copyright text:
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>Test Link:</strong><br>
+                <a href="/#/stock-overview" class="test-link">Stock Overview Page</a>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <strong>What to verify:</strong>
+                <ul>
+                    <li>✅ Technical Analysis widgets 不再顯示 "stock analysis by TradingView" 文字</li>
+                    <li>✅ Widget 內容區域使用全部可用高度</li>
+                    <li>✅ 整體外觀更加乾淨</li>
+                    <li>✅ Technical Analysis 功能正常運作</li>
+                    <li>✅ 所有股票的 Technical Analysis 都沒有 copyright 文字</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🔍 Verification Steps</div>
+            <div class="test-description">
+                Follow these steps to verify the copyright removal:
+            </div>
+            
+            <ol>
+                <li><strong>Navigate to Stock Overview page</strong></li>
+                <li><strong>Scroll through different stock sectors</strong></li>
+                <li><strong>Look at Technical Analysis widgets:</strong>
+                    <ul>
+                        <li>Should not see "stock analysis by TradingView" text</li>
+                        <li>Should not see any copyright links</li>
+                        <li>Widget should use full available height</li>
+                    </ul>
+                </li>
+                <li><strong>Test multiple stocks:</strong>
+                    <ul>
+                        <li>Check different sectors (Technology, Space, etc.)</li>
+                        <li>Verify all Technical Analysis widgets are consistent</li>
+                        <li>Ensure functionality is not affected</li>
+                    </ul>
+                </li>
+                <li><strong>Use DevTools to verify:</strong>
+                    <ul>
+                        <li>No elements with class "tradingview-widget-copyright"</li>
+                        <li>Widget container uses full height (100%)</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📊 Expected Results</div>
+            <div class="test-description">
+                After applying this change, you should observe:
+            </div>
+            
+            <ul>
+                <li>✅ <strong>Cleaner Appearance:</strong> No copyright text cluttering the widget</li>
+                <li>✅ <strong>Better Space Usage:</strong> Widget content uses full available height</li>
+                <li>✅ <strong>Consistent Design:</strong> All Technical Analysis widgets look uniform</li>
+                <li>✅ <strong>Maintained Functionality:</strong> Technical analysis features work normally</li>
+                <li>✅ <strong>Improved UX:</strong> Focus on the actual analysis content</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📱 Responsive Testing</div>
+            <div class="test-description">
+                Test the copyright removal across different screen sizes:
+            </div>
+            
+            <ul>
+                <li><strong>Desktop (>1200px):</strong> Technical Analysis widgets should be clean and full-height</li>
+                <li><strong>Tablet (768px-1200px):</strong> Widgets maintain clean appearance</li>
+                <li><strong>Mobile (<768px):</strong> No copyright text on smaller screens</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🐛 Troubleshooting</div>
+            <div class="test-description">
+                If copyright text still appears:
+            </div>
+            
+            <ul>
+                <li><strong>Clear browser cache</strong> and hard refresh (Ctrl+F5)</li>
+                <li><strong>Check DevTools</strong> for any remaining copyright elements</li>
+                <li><strong>Verify component import</strong> in StockCard.vue uses TechnicalAnalysisWidget</li>
+                <li><strong>Look for cached components</strong> that might not have updated</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🚀 Deployment</div>
+            <div class="test-description">
+                The Technical Analysis copyright removal is ready for deployment.
+            </div>
+            
+            <div class="code-block">
+# Deploy the copyright removal to production
+git add src/components/TechnicalAnalysisWidget.vue
+git commit -m "remove: TradingView copyright element from Technical Analysis widget in Stock Overview"
+git push origin main
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some basic interaction and logging
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🗑️ Technical Analysis Copyright Removal Test Page Loaded');
+            console.log('🔧 Changes applied:');
+            console.log('  - Removed tradingview-widget-copyright element');
+            console.log('  - Removed related CSS styles');
+            console.log('  - Changed widget height from calc(100% - 20px) to 100%');
+            console.log('📍 Test URL: /#/stock-overview');
+        });
+    </script>
+</body>
+</html>

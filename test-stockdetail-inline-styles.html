@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockDetail Inline Styles Fix Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #dc3545;
+            padding-bottom: 10px;
+        }
+        .emergency-fix {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .emergency-fix h3 {
+            color: #856404;
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+        .emergency-fix p {
+            color: #856404;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        .test-checklist {
+            background: #f8f9fa;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .test-checklist h3 {
+            color: #28a745;
+            margin-top: 0;
+        }
+        .test-checklist ul {
+            color: #333;
+            line-height: 1.8;
+        }
+        .test-checklist li {
+            margin-bottom: 8px;
+        }
+        .test-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 10px 10px 10px 0;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .test-link:hover {
+            background: #c82333;
+        }
+        .code-example {
+            background: #f1f3f4;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #333;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">🚨 StockDetail 內聯樣式強制修正</h1>
+        
+        <div class="emergency-fix">
+            <h3>⚡ 緊急修正策略</h3>
+            <p>
+                由於 CSS 樣式持續被覆蓋，現在採用<strong>內聯樣式 (inline styles)</strong> 的方法，
+                直接在 HTML 元素上使用 <code>style="..."</code> 屬性，並加上 <code>!important</code> 聲明，
+                這是 CSS 優先級最高的方式，應該能夠強制顯示所有標題和正確的背景顏色。
+            </p>
+        </div>
+
+        <div class="test-checklist">
+            <h3>🔧 修正內容</h3>
+            <ul>
+                <li><strong>Symbol Overview 標題:</strong> 使用內聯樣式強制顯示灰色背景和標題文字</li>
+                <li><strong>Technical Analysis 標題:</strong> 使用內聯樣式強制顯示灰色背景和標題文字</li>
+                <li><strong>Daily Insight 標題:</strong> 使用內聯樣式強制顯示透明背景和標題文字</li>
+                <li><strong>Weekly Insight 標題:</strong> 使用內聯樣式強制顯示透明背景和標題文字</li>
+                <li><strong>所有主要 Widget:</strong> 使用內聯樣式強制白色背景和標題顯示</li>
+            </ul>
+        </div>
+
+        <div class="code-example">
+範例內聯樣式:
+&lt;div class="widget-header" style="background: #f8f9fa !important; padding: 0.75rem 1rem !important; display: flex !important;"&gt;
+  &lt;h4 style="color: #495057 !important; margin: 0 !important;"&gt;Symbol Overview&lt;/h4&gt;
+&lt;/div&gt;
+        </div>
+
+        <div class="test-checklist">
+            <h3>🧪 測試檢查清單</h3>
+            <ul>
+                <li>✅ Symbol Overview 標題應該<strong>強制顯示</strong> (灰色背景)</li>
+                <li>✅ Technical Analysis 標題應該<strong>強制顯示</strong> (灰色背景)</li>
+                <li>✅ Daily Insight (MA5) 標題應該<strong>強制顯示</strong></li>
+                <li>✅ Weekly Insight (MA4) 標題應該<strong>強制顯示</strong></li>
+                <li>✅ Latest News 標題和白色背景應該<strong>強制顯示</strong></li>
+                <li>✅ Fundamental Data 標題和白色背景應該<strong>強制顯示</strong></li>
+                <li>✅ Company Profile 標題和白色背景應該<strong>強制顯示</strong></li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="http://localhost:5173/stock-overview/symbols/NFLX" class="test-link" target="_blank">
+                🧪 測試 NFLX (內聯樣式)
+            </a>
+            <a href="http://localhost:5173/stock-overview/symbols/AAPL" class="test-link" target="_blank">
+                🧪 測試 AAPL (內聯樣式)
+            </a>
+            <a href="http://localhost:5173/stock-overview/symbols/RKLB" class="test-link" target="_blank">
+                🧪 測試 RKLB (內聯樣式)
+            </a>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #e7f3ff; border-radius: 8px; border-left: 4px solid #007bff;">
+            <h4 style="color: #0056b3; margin-top: 0;">💡 如果這次還是不行...</h4>
+            <p style="color: #0056b3; margin-bottom: 0;">
+                如果內聯樣式都無法解決問題，那可能是：<br>
+                1. 瀏覽器快取問題 - 請嘗試硬重新整理 (Ctrl+Shift+R)<br>
+                2. Vue 組件沒有正確重新載入 - 請重新啟動開發伺服器<br>
+                3. 有其他 JavaScript 在動態修改樣式
+            </p>
+        </div>
+    </div>
+</body>
+</html>

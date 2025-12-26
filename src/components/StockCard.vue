@@ -36,13 +36,12 @@
         />
       </div>
 
-      <!-- Technical Analysis (1/3 width) -->
-      <div class="widget-technical">
+      <!-- Technical Analysis (1/3 width) - 使用新的 TechnicalAnalysisWidget -->
+      <div class="widget-overview">
         <div class="widget-header">
           <h4>Technical Analysis</h4>
         </div>
-        <FastTradingViewWidget 
-          widget-type="technical"
+        <TechnicalAnalysisWidget 
           :symbol="quote.symbol" 
           :exchange="getExchange()"
           :priority="2"
@@ -77,12 +76,14 @@
 
 <script>
 import FastTradingViewWidget from './FastTradingViewWidget.vue'
+import TechnicalAnalysisWidget from './TechnicalAnalysisWidget.vue'
 import TechnicalIndicators from './TechnicalIndicators.vue'
 
 export default {
   name: 'StockCard',
   components: {
     FastTradingViewWidget,
+    TechnicalAnalysisWidget,
     TechnicalIndicators
   },
   props: {

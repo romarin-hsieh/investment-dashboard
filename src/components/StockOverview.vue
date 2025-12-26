@@ -518,9 +518,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  background: #f8f9fa;
+  margin: -1rem -1rem 1rem -1rem; /* 負邊距讓 header 延伸到容器邊緣 */
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .widget-header h3 {

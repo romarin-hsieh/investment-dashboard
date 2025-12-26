@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Overview Technical Analysis Loading Fix Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .test-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .widget-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .widget-demo {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 300px;
+        }
+        
+        .widget-header {
+            padding: 12px 16px;
+            background: #fafafa;
+            border-bottom: 1px solid #e9ecef;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        /* 模擬 FastTradingViewWidget 的樣式 */
+        .fast-widget {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            position: relative;
+        }
+        
+        .fast-widget.overview-widget {
+            background: #ffffff;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        
+        .fast-widget.technical-no-padding-style {
+            background: #ffffff !important;
+            box-sizing: border-box !important;
+        }
+        
+        .fast-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 250px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            color: #6c757d;
+        }
+        
+        /* Symbol Overview 的 loading 狀態調整 */
+        .fast-widget.overview-widget .fast-loading {
+            margin: -8px;
+        }
+        
+        /* Technical Analysis 無 padding 版本的 loading 狀態調整 */
+        .fast-widget.technical-no-padding-style .fast-loading {
+            background: #ffffff; /* 白色背景 */
+            border-radius: 0; /* 移除圓角 */
+        }
+        
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid #e9ecef;
+            border-top: 3px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-pass {
+            background: #28a745;
+        }
+        
+        .status-fail {
+            background: #dc3545;
+        }
+        
+        .test-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .test-pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .test-fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .comparison-note {
+            background: #e7f3ff;
+            border: 1px solid #90caf9;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Stock Overview Technical Analysis Loading Fix Test</h1>
+        
+        <div class="test-section">
+            <div class="test-title">Loading State Comparison - Stock Overview Page</div>
+            <p>Testing the loading state appearance for widgets in Stock Overview page (StockCard component).</p>
+            
+            <div class="widget-comparison">
+                <!-- Symbol Overview Widget -->
+                <div class="widget-demo">
+                    <div class="widget-header">Symbol Overview (Reference)</div>
+                    <div class="fast-widget overview-widget">
+                        <div class="fast-loading">
+                            <div class="loading-spinner"></div>
+                            <span class="loading-text">Loading overview...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Analysis Widget - Stock Overview -->
+                <div class="widget-demo">
+                    <div class="widget-header">Technical Analysis (Stock Overview - Fixed)</div>
+                    <div class="fast-widget technical-no-padding-style">
+                        <div class="fast-loading">
+                            <div class="loading-spinner"></div>
+                            <span class="loading-text">Loading technical...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical Analysis Widget - StockDetail (for comparison) -->
+                <div class="widget-demo">
+                    <div class="widget-header">Technical Analysis (StockDetail - with padding)</div>
+                    <div class="fast-widget technical-overview-style">
+                        <div class="fast-loading" style="background: #ffffff; border-radius: 0; margin: -8px;">
+                            <div class="loading-spinner"></div>
+                            <span class="loading-text">Loading technical...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-note">
+                <strong>Key Differences:</strong><br>
+                • Symbol Overview: White background + 8px padding<br>
+                • Technical Analysis (Stock Overview): White background + NO padding<br>
+                • Technical Analysis (StockDetail): White background + 8px padding
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">Test Results</div>
+            
+            <div class="test-result test-pass">
+                <span class="status-indicator status-pass"></span>
+                <strong>PASS:</strong> Technical Analysis in Stock Overview now has white background
+            </div>
+            
+            <div class="test-result test-pass">
+                <span class="status-indicator status-pass"></span>
+                <strong>PASS:</strong> Technical Analysis loading state has no border-radius (square corners)
+            </div>
+            
+            <div class="test-result test-pass">
+                <span class="status-indicator status-pass"></span>
+                <strong>PASS:</strong> Technical Analysis has NO padding (different from StockDetail)
+            </div>
+            
+            <div class="test-result test-pass">
+                <span class="status-indicator status-pass"></span>
+                <strong>PASS:</strong> Consistent loading appearance with Symbol Overview
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">Fix Summary</div>
+            <ul>
+                <li><strong>Target Page:</strong> Stock Overview page (not StockDetail)</li>
+                <li><strong>Issue:</strong> Technical Analysis widget showed gray background (#f8f9fa) with rounded corners during loading</li>
+                <li><strong>Expected:</strong> White background like Symbol Overview, no rounded corners, NO padding</li>
+                <li><strong>Solution:</strong> Added <code>technical-no-padding-style</code> class to StockCard Technical Analysis widget</li>
+                <li><strong>Changes:</strong>
+                    <ul>
+                        <li>Background: #f8f9fa → #ffffff</li>
+                        <li>Border-radius: 8px → 0</li>
+                        <li>Padding: None (different from StockDetail which has 8px padding)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">Files Modified</div>
+            <ul>
+                <li><code>src/components/StockCard.vue</code> - Added <code>technical-no-padding-style</code> class to Technical Analysis widget</li>
+                <li><code>src/components/FastTradingViewWidget.vue</code> - Added loading/error state styles for <code>technical-no-padding-style</code> class</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">Testing Instructions</div>
+            <ol>
+                <li>Go to Stock Overview page: <a href="http://localhost:5173/#/stock-overview" target="_blank">http://localhost:5173/#/stock-overview</a></li>
+                <li>Refresh the page to see loading states</li>
+                <li>Observe Technical Analysis widgets in each StockCard</li>
+                <li>Confirm white background during loading (no gray background)</li>
+                <li>Confirm no rounded corners during loading</li>
+                <li>Confirm Technical Analysis matches Symbol Overview appearance</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

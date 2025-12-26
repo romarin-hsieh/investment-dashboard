@@ -52,7 +52,7 @@
             />
           </div>
 
-          <!-- Technical Analysis (1/3 width) -->
+          <!-- Technical Analysis (1/3 width) - 仿照 Symbol Overview 樣式 -->
           <div class="widget-technical">
             <div class="widget-header">
               <h4>Technical Analysis</h4>
@@ -61,44 +61,81 @@
               widget-type="technical"
               :symbol="symbol" 
               :exchange="exchange"
+              class="technical-overview-style"
             />
           </div>
         </div>
       </div>
 
-      <!-- Daily and Weekly Insight Widgets -->
-      <div class="insight-widgets-container">
-        <!-- Daily Insight (MA5) - Left -->
-        <div class="insight-widget daily-insight">
+      <!-- Symbol Insight Block -->
+      <div class="symbol-insight-block">
+        <div class="insight-header">
+          <h3>Symbol Insight</h3>
+        </div>
+        
+        <!-- Market Regime Block (Full Width) -->
+        <div class="insight-full-widget market-regime">
           <div class="widget-header">
-            <h4>Daily Insight (MA5)</h4>
+            <h4>Market Regime</h4>
           </div>
-          <LazyTradingViewWidget
-            widget-type="Daily Insight"
-            :config="dailyInsightConfig"
-            script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-            height="550px"
+          <MarketRegimeWidget
+            :symbol="symbol"
+            :exchange="exchange"
             :priority="2"
           />
         </div>
 
-        <!-- Weekly Insight (MA4) - Right -->
-        <div class="insight-widget weekly-insight">
+        <!-- Trading Strategy Block (Full Width) -->
+        <div class="insight-full-widget trading-strategy">
           <div class="widget-header">
-            <h4>Weekly Insight (MA4)</h4>
+            <h4>Trading Strategy</h4>
           </div>
-          <LazyTradingViewWidget
-            widget-type="Weekly Insight"
-            :config="weeklyInsightConfig"
-            script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-            height="550px"
+          <TradingStrategyWidget
+            :symbol="symbol"
+            :exchange="exchange"
             :priority="3"
           />
         </div>
+        
+        <!-- Daily and Weekly Insight (Two Columns) -->
+        <div class="insight-widgets-container">
+          <!-- Daily Insight (MA5) - Left -->
+          <div class="insight-widget daily-insight">
+            <div class="widget-header">
+              <h4>Daily Insight (MA5)</h4>
+            </div>
+            <LazyTradingViewWidget
+              widget-type="Daily Insight"
+              :config="dailyInsightConfig"
+              script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+              height="550px"
+              :priority="4"
+            />
+          </div>
+
+          <!-- Weekly Insight (MA4) - Right -->
+          <div class="insight-widget weekly-insight">
+            <div class="widget-header">
+              <h4>Weekly Insight (MA4)</h4>
+            </div>
+            <LazyTradingViewWidget
+              widget-type="Weekly Insight"
+              :config="weeklyInsightConfig"
+              script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+              height="550px"
+              :priority="5"
+            />
+          </div>
+        </div>
       </div>
 
-      <!-- Technical Indicators - Same position as StockCard -->
-      <TechnicalIndicators :symbol="symbol" :exchange="exchange" />
+      <!-- Technical Indicators - Match Market Overview style -->
+      <div class="widget-container">
+        <div class="widget-header">
+          <h3>Technical Indicators</h3>
+        </div>
+        <TechnicalIndicators :symbol="symbol" :exchange="exchange" />
+      </div>
 
       <!-- Performance Monitor -->
       <PerformanceMonitor />
@@ -106,27 +143,32 @@
       <!-- Main Content Layout -->
       <div class="content-layout">
         <!-- Row 1: Stock News (Full Width) -->
-        <div class="stock-news-row">
-          <div class="widget-container">
-            <h3 class="widget-title">Latest News</h3>
-            <StockNews :symbol="symbol" />
+        <div class="widget-container">
+          <div class="widget-header">
+            <h3>Latest News</h3>
           </div>
+          <StockNews :symbol="symbol" />
         </div>
 
         <!-- Row 2: Fundamental Data (Full Width) -->
-        <div class="fundamental-data-row">
-          <div class="widget-container">
-            <h3 class="widget-title">Fundamental Data</h3>
-            <TradingViewFundamentalData :symbol="symbol" :exchange="exchange" />
+        <div class="widget-container">
+          <div class="widget-header">
+            <h3>Fundamental Data</h3>
           </div>
+          <TradingViewFundamentalData :symbol="symbol" :exchange="exchange" />
         </div>
 
         <!-- Row 3: Company Profile (Full Width) -->
-        <div class="company-profile-row">
-          <div class="widget-container">
-            <h3 class="widget-title">Company Profile</h3>
-            <TradingViewCompanyProfile :symbol="symbol" :exchange="exchange" />
+        <div class="widget-container">
+          <div class="widget-header">
+            <h3>Company Profile</h3>
           </div>
+          <TradingViewCompanyProfile 
+            :symbol="symbol" 
+            :exchange="exchange" 
+            color-theme="light"
+            :is-transparent="true"
+          />
         </div>
       </div>
     </div>
@@ -136,6 +178,8 @@
 <script>
 import FastTradingViewWidget from '@/components/FastTradingViewWidget.vue'
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
+import MarketRegimeWidget from '@/components/MarketRegimeWidget.vue'
+import TradingStrategyWidget from '@/components/TradingStrategyWidget.vue'
 import TradingViewCompanyProfile from '@/components/TradingViewCompanyProfile.vue'
 import TradingViewFundamentalData from '@/components/TradingViewFundamentalData.vue'
 import TechnicalIndicators from '@/components/TechnicalIndicators.vue'
@@ -150,6 +194,8 @@ export default {
   components: {
     FastTradingViewWidget,
     LazyTradingViewWidget,
+    MarketRegimeWidget,
+    TradingStrategyWidget,
     TradingViewCompanyProfile,
     TradingViewFundamentalData,
     TechnicalIndicators,
@@ -406,7 +452,7 @@ export default {
 
 <style scoped>
 .stock-detail {
-  background: #f8f9fa;
+  background: #f5f5f5; /* 與 main-content 相同的背景色 */
   padding: 1rem;
   min-height: 100vh;
 }
@@ -489,10 +535,12 @@ export default {
 }
 
 .widget-header {
-  background: #f8f9fa;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   flex-shrink: 0;
+  margin: 0; /* 確保 Symbol Overview 和 Technical Analysis 的 header 沒有 margin */
 }
 
 .widget-header h4 {
@@ -513,19 +561,98 @@ export default {
   min-height: 390px; /* Technical Analysis 內容區域適度增加到 390px */
 }
 
+/* Technical Analysis 仿照 Symbol Overview 樣式 */
+.technical-overview-style {
+  background: #ffffff !important;
+  padding: 0px !important; /* 改為 0px 避免雙重框框效果 */
+  box-sizing: border-box !important;
+}
+
+/* Technical Analysis loading 狀態調整 */
+.technical-overview-style .fast-loading {
+  background: #ffffff; /* 白色背景 */
+  border-radius: 0; /* 移除圓角 */
+  margin: 0; /* 不再需要抵消 padding */
+}
+
+/* Technical Analysis error 狀態調整 */
+.technical-overview-style .fast-error {
+  background: #ffffff; /* 白色背景 */
+  border: 1px solid #e0e0e0; /* 統一邊框顏色 */
+  border-radius: 0; /* 移除圓角 */
+  color: #6c757d; /* 調整文字顏色 */
+  margin: 0; /* 不再需要抵消 padding */
+}
+
+/* Symbol Insight Block - Match stock-card style */
+.symbol-insight-block {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.insight-header {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 1.5rem;
+}
+
+.insight-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+}
+
 /* Insight Widgets Container */
 .insight-widgets-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+}
+
+/* Full Width Insight Widgets */
+.insight-full-widget {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 900px; /* 850px + header space */
+  height: 900px;
   margin-bottom: 1.5rem;
 }
 
+.insight-full-widget .widget-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e9ecef;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.insight-full-widget .widget-header h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+}
+
+.insight-full-widget > :not(.widget-header) {
+  flex: 1;
+  min-height: 850px;
+  height: 850px;
+}
+
 .insight-widget {
-  background: #fafafa;
-  border: 1px solid #e9ecef;
+  background: white; /* 改為白底 */
+  border: 1px solid #e0e0e0; /* 統一邊框顏色 */
   border-radius: 8px;
-  overflow: visible; /* 改為 visible 讓內容可以完整顯示 */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 600px; /* 增加最小高度從 500px 到 600px */
@@ -533,11 +660,11 @@ export default {
 }
 
 .insight-widget .widget-header {
-  background: #f8f9fa;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 1rem;
   flex-shrink: 0;
-  height: 45px; /* 固定 header 高度 */
+  height: auto; /* 改為 auto 讓高度自適應 */
   display: flex;
   align-items: center;
 }
@@ -555,6 +682,12 @@ export default {
   min-height: 550px; /* 確保內容區域有足夠高度 */
   height: 550px; /* 固定內容區域高度 */
   overflow: visible; /* 讓 iframe 可以完整顯示 */
+}
+
+/* Symbol Insight 區塊內的 lazy-widget 添加 8px padding */
+.insight-widget .lazy-widget {
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 .symbol-info .symbol {
@@ -648,78 +781,39 @@ export default {
   align-items: center;
 }
 
-/* Content Layout - Row-based Structure */
-.content-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* Row 1: Stock News (Full Width) */
-.stock-news-row {
-  width: 100%;
-}
-
-.stock-news-row .widget-container {
-  min-height: 400px;
-  height: auto; /* 讓新聞區塊自適應高度 */
-}
-
-/* Row 2: Fundamental Data (Full Width) */
-.company-profile-row {
-  width: 100%;
-}
-
-.company-profile-row .widget-container {
-  min-height: 400px;
-  height: 400px;
-}
-
-/* Row 2: Fundamental Data (Full Width) */
-.fundamental-data-row {
-  width: 100%;
-}
-
-.fundamental-data-row .widget-container {
-  min-height: 600px;
-  height: 600px;
-}
-
-/* Row 3: Company Profile (Full Width) */
-.company-profile-row {
-  width: 100%;
-}
-
-.company-profile-row .widget-container {
-  min-height: 400px;
-  height: 400px;
-}
-
-/* Widget Container - Match Stock Dashboard Style */
+/* Widget Container - Match Market Overview Style */
 .widget-container {
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
   overflow: hidden;
+  position: relative;
+}
+
+.widget-container .widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* 保持 widget-container 內的 header margin */
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.widget-container .widget-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* Content Layout - Row-based Structure */
+.content-layout {
   display: flex;
   flex-direction: column;
-}
-
-.widget-title {
-  background: #f8f9fa;
-  padding: 0.75rem 1rem;
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #495057;
-  border-bottom: 1px solid #e9ecef;
-  flex-shrink: 0;
-}
-
-/* Widget Content Area */
-.widget-container > :not(.widget-title) {
-  flex: 1;
-  min-height: 0;
+  gap: 0; /* 移除 gap，讓 widget-container 的 margin-bottom 控制間距 */
+  margin-top: 0; /* 移除 margin-top */
 }
 
 /* 響應式設計 */
@@ -733,6 +827,25 @@ export default {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+  
+  .insight-full-widget {
+    min-height: 800px;
+    height: 800px;
+  }
+  
+  .insight-full-widget > :not(.widget-header) {
+    min-height: 750px;
+    height: 750px;
+  }
+  
+  .symbol-insight-block {
+    padding: 1rem;
+  }
+  
+  .widget-container {
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -742,6 +855,15 @@ export default {
   
   .stock-header {
     padding: 1rem;
+  }
+  
+  .symbol-insight-block {
+    padding: 1rem;
+  }
+  
+  .widget-container {
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
   }
   
   .stock-info-header {
@@ -766,6 +888,16 @@ export default {
     gap: 1rem;
   }
   
+  .insight-full-widget {
+    min-height: 700px;
+    height: 700px;
+  }
+  
+  .insight-full-widget > :not(.widget-header) {
+    min-height: 650px;
+    height: 650px;
+  }
+  
   .insight-widget {
     height: auto; /* 手機版自適應高度 */
     min-height: 500px;
@@ -785,16 +917,6 @@ export default {
     height: 380px; /* 手機版 Technical Analysis 適度調整 */
     min-height: 380px;
   }
-  
-  .content-layout {
-    gap: 1rem;
-  }
-  
-  .company-profile-row .widget-container,
-  .fundamental-data-row .widget-container {
-    height: 350px;
-    min-height: 350px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -804,6 +926,14 @@ export default {
   
   .stock-header {
     padding: 0.75rem;
+  }
+  
+  .symbol-insight-block {
+    padding: 0.75rem;
+  }
+  
+  .insight-header h3 {
+    font-size: 1.1rem;
   }
   
   .symbol-info .symbol {
@@ -836,6 +966,17 @@ export default {
     gap: 0.75rem;
   }
   
+  .insight-full-widget {
+    min-height: 600px;
+    height: 600px;
+    margin-bottom: 1rem;
+  }
+  
+  .insight-full-widget > :not(.widget-header) {
+    min-height: 550px;
+    height: 550px;
+  }
+  
   .insight-widget {
     height: auto; /* 小螢幕自適應高度 */
     min-height: 450px;
@@ -854,6 +995,10 @@ export default {
   .widget-technical {
     height: 330px; /* 小螢幕 Technical Analysis 適度調整 */
     min-height: 330px;
+  }
+  
+  .content-layout {
+    margin-top: 0.75rem; /* 小螢幕進一步減少間隔 */
   }
   
   .company-profile-row .widget-container,

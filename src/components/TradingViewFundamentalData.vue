@@ -150,7 +150,7 @@ export default {
 .fundamental-data-container {
   height: 100%;
   width: 100%;
-  min-height: 600px;
+  min-height: 950px;
   overflow: hidden;
 }
 
@@ -158,7 +158,7 @@ export default {
   height: 100%;
   width: 100%;
   position: relative;
-  min-height: 600px;
+  min-height: 950px;
   overflow: hidden;
 }
 
@@ -215,44 +215,44 @@ export default {
   background: #c82333;
 }
 
-/* TradingView Widget 樣式覆蓋 */
-:global(.tradingview-widget-container) {
+/* TradingView Widget 樣式覆蓋 - 僅針對 Fundamental Data */
+:global(.fundamental-data-widget .tradingview-widget-container) {
   width: 100% !important;
   height: 100% !important;
-  min-height: 600px !important;
+  min-height: 950px !important;
   max-height: none !important;
 }
 
-:global(.tradingview-widget-container__widget) {
+:global(.fundamental-data-widget .tradingview-widget-container__widget) {
   width: 100% !important;
   height: calc(100% - 32px) !important;
-  min-height: 560px !important;
+  min-height: 910px !important;
   max-height: none !important;
 }
 
-:global(.tradingview-widget-container iframe) {
+:global(.fundamental-data-widget .tradingview-widget-container iframe) {
   width: 100% !important;
-  height: 600px !important;
+  height: 950px !important;
   min-height: 600px !important;
   max-height: none !important;
 }
 
-/* Simplified TradingView overrides - focus on essential elements */
-:global(.tv-embed-widget-wrapper) {
-  height: 600px !important;
-  min-height: 600px !important;
+/* Simplified TradingView overrides - 僅針對 Fundamental Data */
+:global(.fundamental-data-widget .tv-embed-widget-wrapper) {
+  height: 950px !important;
+  min-height: 950px !important;
   overflow: auto !important;
 }
 
-:global(.tv-feed-widget) {
-  height: 560px !important;
-  min-height: 560px !important;
+:global(.fundamental-data-widget .tv-feed-widget) {
+  height: 910px !important;
+  min-height: 910px !important;
   overflow: auto !important;
 }
 
-:global(.tv-feed-widget__body) {
+:global(.fundamental-data-widget .tv-feed-widget__body) {
   height: auto !important;
-  min-height: 500px !important;
+  min-height: 850px !important;
   overflow: auto !important;
 }
 </style>

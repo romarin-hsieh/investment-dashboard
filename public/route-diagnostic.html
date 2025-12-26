@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路由診斷 - StockDetail 問題分析</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #dc3545;
+            padding-bottom: 15px;
+        }
+        .problem-analysis {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .problem-analysis h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .route-info {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .route-info h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .url-example {
+            background: #f1f3f4;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        .test-links {
+            background: #e7f3ff;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .test-links h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .test-link {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 8px 8px 8px 0;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .test-link:hover {
+            background: #0056b3;
+        }
+        .fix-summary {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+        }
+        .fix-summary h3 {
+            color: #28a745;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🔍 路由診斷 - StockDetail 問題分析</h1>
+        
+        <div class="problem-analysis">
+            <h3>🚨 問題根源發現</h3>
+            <p><strong>你的懷疑是正確的！</strong> 問題確實出在路由配置上。</p>
+            <p>專案使用了 <code>createWebHashHistory()</code>，這意味著所有路由都需要使用 <code>#</code> 符號。</p>
+        </div>
+
+        <div class="route-info">
+            <h3>📋 路由配置分析</h3>
+            <p><strong>Vite 配置 (vite.config.js):</strong></p>
+            <div class="url-example">
+開發環境: base: '/'
+正式環境: base: '/investment-dashboard/'
+            </div>
+            
+            <p><strong>Vue Router 配置 (main.js):</strong></p>
+            <div class="url-example">
+history: createWebHashHistory()
+路由: '/stock-overview/symbols/:symbol'
+            </div>
+        </div>
+
+        <div class="test-links">
+            <h3>🧪 正確的測試連結</h3>
+            <p>請使用以下正確的 Hash 路由格式測試：</p>
+            
+            <a href="/#/stock-overview/symbols/NFLX" class="test-link" target="_blank">
+                📊 NFLX StockDetail
+            </a>
+            <a href="/#/stock-overview/symbols/AAPL" class="test-link" target="_blank">
+                📊 AAPL StockDetail
+            </a>
+            <a href="/#/stock-overview/symbols/RKLB" class="test-link" target="_blank">
+                📊 RKLB StockDetail
+            </a>
+            <a href="/#/stock-overview/symbols/TSLA" class="test-link" target="_blank">
+                📊 TSLA StockDetail
+            </a>
+            
+            <br><br>
+            <p><strong>對照測試 - Stock Overview 頁面:</strong></p>
+            <a href="/#/stock-overview" class="test-link" target="_blank">
+                📈 Stock Overview (正常頁面)
+            </a>
+        </div>
+
+        <div class="fix-summary">
+            <h3>✅ 修正確認</h3>
+            <p>現在使用正確的 Hash 路由，StockDetail 頁面應該能夠：</p>
+            <ul>
+                <li>✅ 正確載入頁面</li>
+                <li>✅ 顯示 Symbol Overview 和 Technical Analysis 標題</li>
+                <li>✅ 顯示白色背景的 widget 容器</li>
+                <li>✅ 所有內聯樣式正確應用</li>
+            </ul>
+            
+            <p><strong>URL 格式說明:</strong></p>
+            <div class="url-example">
+開發環境: http://localhost:5173/#/stock-overview/symbols/NFLX
+正式環境: https://domain.com/investment-dashboard/#/stock-overview/symbols/NFLX
+            </div>
+        </div>
+    </div>
+</body>
+</html>

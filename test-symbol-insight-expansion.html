@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol Insight Expansion Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-title {
+            color: #007bff;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .test-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .test-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .test-link:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        .status.completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.new {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .layout-preview {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🔧 Symbol Insight Expansion Test</h1>
+            <p>Testing the new Symbol Insight layout with Market Regime and Trading Strategy blocks</p>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📊 New Symbol Insight Layout Structure</div>
+            <div class="test-description">
+                The Symbol Insight section now includes two new full-width blocks before the existing Daily/Weekly Insight widgets.
+            </div>
+            <div class="layout-preview">
+Symbol Insight
+├── Market Regime (Full Width, 850px height)
+│   └── Advanced Chart with: Ichimoku Cloud, BBTrend, TEMA, Awesome Oscillator, ADX
+├── Trading Strategy (Full Width, 850px height)
+│   └── Advanced Chart with: MACD, Donchian Channels, TRIX, RSI
+└── Daily & Weekly Insight (Two Columns)
+    ├── Daily Insight (MA5) - Left Column
+    └── Weekly Insight (MA4) - Right Column
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🧪 Test Stock Detail Pages</div>
+            <div class="test-description">
+                Test the new Symbol Insight layout with different stocks to verify the widgets load correctly.
+            </div>
+            
+            <a href="/#/stock-detail/AAPL" class="test-link">AAPL (Apple)</a>
+            <a href="/#/stock-detail/NVDA" class="test-link">NVDA (NVIDIA)</a>
+            <a href="/#/stock-detail/TSLA" class="test-link">TSLA (Tesla)</a>
+            <a href="/#/stock-detail/RKLB" class="test-link">RKLB (Rocket Lab)</a>
+            <a href="/#/stock-detail/ASTS" class="test-link">ASTS (AST SpaceMobile)</a>
+            
+            <div style="margin-top: 15px;">
+                <strong>What to verify:</strong>
+                <ul>
+                    <li>✅ Market Regime block appears first with 850px height</li>
+                    <li>✅ Trading Strategy block appears second with 850px height</li>
+                    <li>✅ Daily/Weekly Insight blocks appear last in two columns</li>
+                    <li>✅ All widgets load with correct technical indicators</li>
+                    <li>✅ Responsive design works on mobile devices</li>
+                    <li>✅ Loading states show properly for each widget</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📱 Responsive Design Test</div>
+            <div class="test-description">
+                Test the layout on different screen sizes to ensure proper responsive behavior.
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <strong>Screen Size Breakpoints:</strong>
+                <ul>
+                    <li><strong>Desktop (>1200px):</strong> Full layout with all widgets at full size</li>
+                    <li><strong>Tablet (768px-1200px):</strong> Reduced widget heights, single column for Daily/Weekly</li>
+                    <li><strong>Mobile (480px-768px):</strong> Further reduced heights, optimized spacing</li>
+                    <li><strong>Small Mobile (<480px):</strong> Compact layout with minimum viable heights</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">⚡ Performance Test</div>
+            <div class="test-description">
+                Verify that the lazy loading and priority system works correctly with the new widgets.
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <strong>Loading Priority Order:</strong>
+                <ol>
+                    <li>Symbol Overview & Technical Analysis (Priority 1)</li>
+                    <li>Market Regime Widget (Priority 2)</li>
+                    <li>Trading Strategy Widget (Priority 3)</li>
+                    <li>Daily Insight Widget (Priority 4)</li>
+                    <li>Weekly Insight Widget (Priority 5)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🔍 Technical Indicators Verification</div>
+            <div class="test-description">
+                Verify that each widget displays the correct technical indicators as specified.
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <strong>Market Regime Indicators:</strong>
+                <ul>
+                    <li>Ichimoku Cloud (STD;Ichimoku%1Cloud)</li>
+                    <li>BBTrend (STD;BBTrend)</li>
+                    <li>TEMA (STD;TEMA)</li>
+                    <li>Awesome Oscillator (STD;Awesome_Oscillator)</li>
+                    <li>Average Directional Index (STD;Average%1Directional%1Index)</li>
+                </ul>
+                
+                <strong>Trading Strategy Indicators:</strong>
+                <ul>
+                    <li>MACD (STD;MACD)</li>
+                    <li>Donchian Channels (STD;Donchian_Channels)</li>
+                    <li>TRIX (STD;TRIX)</li>
+                    <li>RSI (STD;RSI)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📋 Implementation Summary</div>
+            <div class="test-description">
+                Summary of changes made to implement the Symbol Insight expansion.
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <strong>Files Created/Modified:</strong>
+                <ul>
+                    <li>✅ <code>src/components/MarketRegimeWidget.vue</code> - New component for Market Regime</li>
+                    <li>✅ <code>src/components/TradingStrategyWidget.vue</code> - New component for Trading Strategy</li>
+                    <li>✅ <code>src/pages/StockDetail.vue</code> - Updated to include new widgets and layout</li>
+                    <li>✅ Added responsive CSS for different screen sizes</li>
+                    <li>✅ Implemented lazy loading with priority system</li>
+                    <li>✅ Added proper error handling and loading states</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🚀 Next Steps</div>
+            <div class="test-description">
+                After testing, the changes can be deployed to production.
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <strong>Deployment Commands:</strong>
+                <div class="layout-preview">
+# Build and deploy to production
+npm run build
+git add .
+git commit -m "feat: expand Symbol Insight with Market Regime and Trading Strategy widgets"
+git push origin main
+
+# Or use deployment script
+./deploy-production.bat
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some basic interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Symbol Insight Expansion Test Page Loaded');
+            console.log('📊 New layout includes:');
+            console.log('  - Market Regime (850px height, Priority 2)');
+            console.log('  - Trading Strategy (850px height, Priority 3)');
+            console.log('  - Daily Insight (MA5, Priority 4)');
+            console.log('  - Weekly Insight (MA4, Priority 5)');
+        });
+    </script>
+</body>
+</html>

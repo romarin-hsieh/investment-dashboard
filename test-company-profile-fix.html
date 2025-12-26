@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile Symbol Fix Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-title {
+            color: #007bff;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .test-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .test-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .test-link:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        .status.fixed {
+            background: #d4edda;
+            color: #155724;
+        }
+        .code-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.9em;
+            border-left: 4px solid #007bff;
+        }
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .before, .after {
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .before {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+        }
+        .after {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .symbol-mapping {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🏢 Company Profile Symbol Fix Test</h1>
+            <p>Testing the Company Profile widget to ensure it displays the correct symbol for each stock detail page</p>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🎯 Problem Fixed <span class="status fixed">COMPLETED</span></div>
+            <div class="test-description">
+                The Company Profile widget was hardcoded to show "RDW Profile" regardless of the current stock symbol. This has been fixed to use the correct symbol and exchange.
+            </div>
+            
+            <div class="before-after">
+                <div class="before">
+                    <h4>❌ Before (Problem)</h4>
+                    <p>Hardcoded symbol in config:</p>
+                    <div class="code-block">
+const config = {
+  "symbol": "NYSE:RDW",  // 硬編碼
+  "colorTheme": "light",
+  "isTransparent": true,
+  "locale": "en",
+  "width": "100%",
+  "height": "100%"
+}
+                    </div>
+                    <p><strong>Issue:</strong> 所有股票詳情頁面都顯示 RDW 的公司資料</p>
+                </div>
+                
+                <div class="after">
+                    <h4>✅ After (Fixed)</h4>
+                    <p>Dynamic symbol from props:</p>
+                    <div class="code-block">
+const config = {
+  "symbol": this.fullSymbol,  // 動態使用 props
+  "colorTheme": this.colorTheme,
+  "isTransparent": this.isTransparent,
+  "locale": this.locale,
+  "width": "100%",
+  "height": "100%"
+}
+                    </div>
+                    <p><strong>Result:</strong> 每個股票頁面顯示對應的公司資料</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">📁 Modified Files</div>
+            <div class="test-description">
+                The following component has been updated to use dynamic symbol configuration:
+            </div>
+            
+            <ul>
+                <li>✅ <strong>src/components/TradingViewCompanyProfile.vue</strong> - Fixed hardcoded symbol issue</li>
+                <li>✅ <strong>src/pages/StockDetail.vue</strong> - Removed duplicate import</li>
+            </ul>
+            
+            <div class="code-block">
+// 修復的核心邏輯
+computed: {
+  fullSymbol() {
+    return `${this.exchange}:${this.symbol}`
+  }
+},
+
+// 在 createCompanyProfile() 中使用
+const config = {
+  "symbol": this.fullSymbol,  // 使用計算屬性
+  // ... 其他配置
+}
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🧪 Test Different Stocks</div>
+            <div class="test-description">
+                Test the Company Profile widget with different stocks to verify each shows the correct company information:
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>NASDAQ Stocks:</strong><br>
+                <a href="/#/stock-detail/NFLX" class="test-link">NFLX (Netflix)</a>
+                <a href="/#/stock-detail/AAPL" class="test-link">AAPL (Apple)</a>
+                <a href="/#/stock-detail/NVDA" class="test-link">NVDA (NVIDIA)</a>
+                <a href="/#/stock-detail/TSLA" class="test-link">TSLA (Tesla)</a>
+                <a href="/#/stock-detail/META" class="test-link">META (Meta)</a>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>NYSE Stocks:</strong><br>
+                <a href="/#/stock-detail/RDW" class="test-link">RDW (Redwire)</a>
+                <a href="/#/stock-detail/TSM" class="test-link">TSM (TSMC)</a>
+                <a href="/#/stock-detail/CRM" class="test-link">CRM (Salesforce)</a>
+                <a href="/#/stock-detail/ORCL" class="test-link">ORCL (Oracle)</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🔍 Expected Symbol Mapping</div>
+            <div class="test-description">
+                Each stock should display the correct exchange:symbol format in the Company Profile:
+            </div>
+            
+            <div class="symbol-mapping">
+<strong>NASDAQ Stocks:</strong>
+NFLX → NASDAQ:NFLX
+AAPL → NASDAQ:AAPL  
+NVDA → NASDAQ:NVDA
+TSLA → NASDAQ:TSLA
+META → NASDAQ:META
+
+<strong>NYSE Stocks:</strong>
+RDW → NYSE:RDW
+TSM → NYSE:TSM
+CRM → NYSE:CRM
+ORCL → NYSE:ORCL
+            </div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">✅ Verification Steps</div>
+            <div class="test-description">
+                Follow these steps to verify the Company Profile fix is working:
+            </div>
+            
+            <ol>
+                <li><strong>Navigate to any stock detail page</strong> (click links above)</li>
+                <li><strong>Scroll down to "Company Profile" section</strong></li>
+                <li><strong>Verify the profile shows correct company:</strong>
+                    <ul>
+                        <li>NFLX page should show "NFLX Profile" (Netflix information)</li>
+                        <li>AAPL page should show "AAPL Profile" (Apple information)</li>
+                        <li>RDW page should show "RDW Profile" (Redwire information)</li>
+                        <li>etc.</li>
+                    </ul>
+                </li>
+                <li><strong>Check browser console for debug logs:</strong>
+                    <ul>
+                        <li>Should see: "🏢 Creating Company Profile widget for [EXCHANGE]:[SYMBOL]"</li>
+                        <li>Should see: "TradingView Company Profile loaded successfully"</li>
+                    </ul>
+                </li>
+                <li><strong>Test multiple stocks</strong> to ensure each shows different company data</li>
+            </ol>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🐛 Troubleshooting</div>
+            <div class="test-description">
+                If the Company Profile still shows incorrect information:
+            </div>
+            
+            <ul>
+                <li><strong>Clear browser cache</strong> and refresh the page</li>
+                <li><strong>Check browser console</strong> for any JavaScript errors</li>
+                <li><strong>Verify props are passed correctly</strong> in StockDetail.vue:
+                    <div class="code-block">
+&lt;TradingViewCompanyProfile :symbol="symbol" :exchange="exchange" /&gt;
+                    </div>
+                </li>
+                <li><strong>Check computed properties</strong> in StockDetail.vue for correct symbol/exchange values</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🚀 Deployment</div>
+            <div class="test-description">
+                The Company Profile symbol fix is ready for deployment.
+            </div>
+            
+            <div class="code-block">
+# Deploy the fix to production
+git add src/components/TradingViewCompanyProfile.vue src/pages/StockDetail.vue
+git commit -m "fix: use dynamic symbol in TradingView Company Profile widget"
+git push origin main
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some basic interaction and logging
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🏢 Company Profile Symbol Fix Test Page Loaded');
+            console.log('🔧 Applied fix:');
+            console.log('  - Replaced hardcoded "NYSE:RDW" with dynamic this.fullSymbol');
+            console.log('  - Added debug logging for widget creation');
+            console.log('  - Fixed duplicate import in StockDetail.vue');
+            
+            // Log current page URL for testing
+            console.log('📍 Current URL:', window.location.href);
+        });
+    </script>
+</body>
+</html>

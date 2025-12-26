@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockDetail 最終修正測試</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #28a745;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #28a745;
+            padding-bottom: 15px;
+        }
+        .fix-summary {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .fix-summary h3 {
+            color: #155724;
+            margin-top: 0;
+        }
+        .fix-summary ul {
+            color: #155724;
+            line-height: 1.6;
+        }
+        .test-section {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .test-section h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        .test-link {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 8px 8px 8px 0;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .test-link:hover {
+            background: #218838;
+        }
+        .checklist {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .checklist h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        .checklist ul {
+            color: #856404;
+            line-height: 1.8;
+        }
+        .checklist li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">✅ StockDetail 最終修正完成</h1>
+        
+        <div class="fix-summary">
+            <h3>🔧 本次修正內容</h3>
+            <ul>
+                <li><strong>移除內聯樣式:</strong> 清理了所有 style="..." 屬性，避免樣式衝突</li>
+                <li><strong>修正 CSS 選擇器:</strong> 為 .widget-header 添加了 display: flex 屬性</li>
+                <li><strong>統一樣式結構:</strong> 確保所有 widget-header 都有一致的 flexbox 佈局</li>
+                <li><strong>背景顏色修正:</strong> 確保 widget-container 有正確的白色背景</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>🧪 測試 StockDetail 頁面</h3>
+            <p>請使用正確的 Hash 路由格式測試以下頁面：</p>
+            
+            <a href="/#/stock-overview/symbols/NFLX" class="test-link" target="_blank">
+                📊 NFLX StockDetail
+            </a>
+            <a href="/#/stock-overview/symbols/AAPL" class="test-link" target="_blank">
+                📊 AAPL StockDetail
+            </a>
+            <a href="/#/stock-overview/symbols/RKLB" class="test-link" target="_blank">
+                📊 RKLB StockDetail
+            </a>
+            <a href="/#/stock-overview/symbols/TSLA" class="test-link" target="_blank">
+                📊 TSLA StockDetail
+            </a>
+        </div>
+
+        <div class="checklist">
+            <h3>📋 檢查清單</h3>
+            <p>現在應該能看到以下正確顯示：</p>
+            <ul>
+                <li>✅ <strong>Symbol Overview 標題</strong> - 灰色背景 (#f8f9fa)，標題文字清楚可見</li>
+                <li>✅ <strong>Technical Analysis 標題</strong> - 灰色背景 (#f8f9fa)，標題文字清楚可見</li>
+                <li>✅ <strong>Daily Insight (MA5) 標題</strong> - 透明背景，標題文字清楚可見</li>
+                <li>✅ <strong>Weekly Insight (MA4) 標題</strong> - 透明背景，標題文字清楚可見</li>
+                <li>✅ <strong>Latest News</strong> - 白色背景，標題清楚可見，無灰底問題</li>
+                <li>✅ <strong>Fundamental Data</strong> - 白色背景，標題清楚可見，無灰底問題</li>
+                <li>✅ <strong>Company Profile</strong> - 白色背景，標題清楚可見，無灰底問題</li>
+                <li>✅ <strong>Technical Indicators</strong> - 正常顯示，無樣式問題</li>
+            </ul>
+        </div>
+
+        <div style="background: #e7f3ff; border-left: 4px solid #007bff; padding: 20px; margin-top: 25px;">
+            <h4 style="color: #0056b3; margin-top: 0;">💡 修正原理</h4>
+            <p style="color: #0056b3; margin-bottom: 0;">
+                問題的根源是 CSS 中的 .widget-header 缺少 <code>display: flex</code> 屬性，
+                導致標題無法正確對齊和顯示。現在已經添加了完整的 flexbox 佈局屬性，
+                確保所有標題都能正確顯示。
+            </p>
+        </div>
+    </div>
+</body>
+</html>
