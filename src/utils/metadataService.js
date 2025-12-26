@@ -103,6 +103,26 @@ class MetadataService {
     }
   }
 
+  // 獲取 metadata 文件的正確路徑
+  getMetadataUrl() {
+    // 環境檢測邏輯，與 DirectMetadataLoader 保持一致
+    const hostname = window.location.hostname
+    const pathname = window.location.pathname
+    
+    // 正式環境 (GitHub Pages)
+    if (hostname === 'romarin-hsieh.github.io') {
+      return '/investment-dashboard/data/symbols_metadata.json'
+    }
+    
+    // 如果路徑包含 investment-dashboard，使用完整路徑
+    if (pathname.includes('/investment-dashboard/')) {
+      return '/investment-dashboard/data/symbols_metadata.json'
+    }
+    
+    // 本地開發環境
+    return '/data/symbols_metadata.json'
+  }
+
   // Refresh metadata from API
   async refreshMetadata() {
     try {
@@ -115,8 +135,11 @@ class MetadataService {
       } catch (fetcherError) {
         console.warn('❌ dataFetcher failed, trying direct fetch:', fetcherError)
         
-        // 直接載入 JSON 檔案
-        const response = await fetch('/data/symbols_metadata.json')
+        // 使用正確的路徑直接載入 JSON 檔案
+        const url = this.getMetadataUrl()
+        console.log('🔍 MetadataService fetching from:', url)
+        
+        const response = await fetch(url)
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`)
         }
