@@ -107,8 +107,7 @@
         />
       </div>
 
-      <!-- Performance Monitor -->
-      <PerformanceMonitor />
+      <!-- 移除 PerformanceMonitor，避免載入股票技術指標數據 -->
     </div>
   </div>
 </template>
@@ -117,7 +116,6 @@
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
-import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
 
 export default {
@@ -126,7 +124,6 @@ export default {
     LazyTradingViewWidget,
     VixWidget,
     ZeiiermanFearGreedGauge,
-    PerformanceMonitor,
     MarketOverviewSkeleton
   },
   data() {

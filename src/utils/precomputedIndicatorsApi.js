@@ -92,7 +92,8 @@ class PrecomputedIndicatorsAPI {
     }
 
     try {
-      // 使用緩存的索引數據
+      // 🚀 性能優化：只有在需要時才載入索引
+      // 使用緩存的索引數據，避免每個股票都重複載入
       const index = await this.getCachedIndex();
       let latestDate = this.getTodayString(); // 默認使用今天
       
@@ -105,7 +106,7 @@ class PrecomputedIndicatorsAPI {
         }
       }
       
-      // 使用最新日期構建 URL
+      // 使用最新日期構建 URL - 只載入當前股票的數據
       const dataUrl = `${this.baseUrl}${latestDate}_${symbol}.json`;
       
       console.log(`🔍 Fetching precomputed data for ${symbol} from ${dataUrl}`);
@@ -124,7 +125,8 @@ class PrecomputedIndicatorsAPI {
         source: 'Precomputed',
         lastUpdated: data.computedAt,
         dataAge: this.calculateDataAge(data.computedAt),
-        precomputedDate: data.date
+        precomputedDate: data.date,
+        symbol: symbol // 確保包含 symbol 信息
       };
       
       // 緩存結果

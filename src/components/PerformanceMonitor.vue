@@ -113,32 +113,45 @@ export default {
   },
   methods: {
     setupPerformanceTracking() {
-      // 監聽 console.log 來追蹤 widget 載入時間
-      const originalLog = console.log
-      console.log = (...args) => {
-        const message = args.join(' ')
-        
-        // 檢查是否是 widget 載入訊息
-        const widgetMatch = message.match(/Widget (.+) loaded in ([\d.]+)ms \(Priority: (\d+)\)/)
-        if (widgetMatch) {
+      // 🚨 修復：移除 console.log 攔截，避免無限循環和 Console 崩潰
+      // 改用 Performance Observer API 和自定義事件來追蹤性能
+      
+      // 監聽自定義性能事件
+      window.addEventListener('widget-loaded', (event) => {
+        if (event.detail) {
           this.addWidgetTime({
-            name: widgetMatch[1],
-            time: parseFloat(widgetMatch[2]),
-            priority: parseInt(widgetMatch[3])
+            name: event.detail.name,
+            time: event.detail.time,
+            priority: event.detail.priority || 1
           })
         }
-        
-        // 檢查是否是 LazyTradingViewWidget 載入訊息
-        const lazyMatch = message.match(/(.+) widget loaded in ([\d.]+)ms \(Priority: (\d+)\)/)
-        if (lazyMatch) {
-          this.addWidgetTime({
-            name: lazyMatch[1],
-            time: parseFloat(lazyMatch[2]),
-            priority: parseInt(lazyMatch[3])
+      })
+      
+      // 使用 Performance Observer 監聽資源載入
+      if (typeof PerformanceObserver !== 'undefined') {
+        try {
+          const observer = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+              // 只監聽 TradingView 相關的資源
+              if (entry.name.includes('tradingview') || entry.name.includes('widget')) {
+                this.addWidgetTime({
+                  name: entry.name.split('/').pop() || 'Unknown Widget',
+                  time: Math.round(entry.duration),
+                  priority: 2
+                })
+              }
+            }
           })
+          
+          observer.observe({ entryTypes: ['resource', 'navigation'] })
+          
+          // 組件銷毀時斷開觀察者
+          this.$once('hook:beforeDestroy', () => {
+            observer.disconnect()
+          })
+        } catch (error) {
+          console.warn('PerformanceObserver not supported:', error)
         }
-        
-        originalLog.apply(console, args)
       }
     },
     

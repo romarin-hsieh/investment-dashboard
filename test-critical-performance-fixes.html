@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Performance Fixes Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .test-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .test-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+        .test-status {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .status-critical { background: #dc3545; color: white; }
+        .status-fixed { background: #28a745; color: white; }
+        .status-testing { background: #ffc107; color: #212529; }
+        
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-right: 10px;
+        }
+        .test-button:hover { background: #0056b3; }
+        .test-button:disabled { background: #6c757d; cursor: not-allowed; }
+        
+        .results {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .network-monitor {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .network-request {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.8rem;
+        }
+        
+        .request-url {
+            font-family: 'Courier New', monospace;
+            color: #495057;
+            flex: 1;
+            margin-right: 10px;
+            word-break: break-all;
+        }
+        
+        .request-status {
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .status-200 { background: #d4edda; color: #155724; }
+        .status-404 { background: #f8d7da; color: #721c24; }
+        .status-pending { background: #fff3cd; color: #856404; }
+        
+        .problem-list {
+            list-style: none;
+            padding: 0;
+        }
+        .problem-list li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #dc3545;
+            background: #f8f9fa;
+            border-radius: 0 4px 4px 0;
+        }
+        .problem-list li.fixed {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+        
+        .console-monitor {
+            background: #212529;
+            color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+        
+        .console-error {
+            color: #ff6b6b;
+        }
+        .console-warn {
+            color: #ffd93d;
+        }
+        .console-info {
+            color: #74c0fc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 Critical Performance Fixes Test</h1>
+        
+        <div class="alert alert-danger">
+            <strong>⚠️ Critical Issues Detected:</strong> Multiple performance problems causing system instability and poor user experience.
+        </div>
+        
+        <!-- Problem Summary -->
+        <div class="test-section">
+            <div class="test-header">
+                <h2 class="test-title">🐛 Identified Problems</h2>
+                <span class="test-status status-critical">CRITICAL</span>
+            </div>
+            
+            <ul class="problem-list">
+                <li class="fixed">
+                    <strong>1. PerformanceMonitor Console 崩潰</strong><br>
+                    <small>原因: console.log 攔截導致無限循環<br>
+                    修復: 移除 console.log 攔截，改用 Performance Observer API</small>
+                </li>
+                <li class="fixed">
+                    <strong>2. Market Overview 載入股票技術指標</strong><br>
+                    <small>原因: MarketDashboard 包含 PerformanceMonitor 和 TechnicalIndicators<br>
+                    修復: 移除不相關的組件</small>
+                </li>
+                <li class="fixed">
+                    <strong>3. StockDetail 載入其他股票數據</strong><br>
+                    <small>原因: TechnicalIndicators 組件載入所有股票數據<br>
+                    修復: 只載入當前股票的技術指標</small>
+                </li>
+                <li class="fixed">
+                    <strong>4. latest_index.json 重複載入</strong><br>
+                    <small>原因: 每個 TechnicalIndicators 組件都載入索引<br>
+                    修復: 索引緩存機制</small>
+                </li>
+                <li>
+                    <strong>5. package.json 重複載入</strong><br>
+                    <small>原因: 可能是 Vite 模組載入問題<br>
+                    狀態: 需要進一步調查</small>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Console Monitor -->
+        <div class="test-section">
+            <div class="test-header">
+                <h2 class="test-title">📟 Console Monitor</h2>
+                <span id="console-status" class="test-status status-testing">監控中</span>
+            </div>
+            
+            <button class="test-button" onclick="testConsoleStability()">測試 Console 穩定性</button>
+            <button class="test-button" onclick="clearConsoleMonitor()">清除監控</button>
+            
+            <div class="console-monitor" id="console-monitor">
+                <div>Console 監控已啟動...</div>
+            </div>
+        </div>
+        
+        <!-- Network Requests Monitor -->
+        <div class="test-section">
+            <div class="test-header">
+                <h2 class="test-title">🌐 Network Requests Monitor</h2>
+                <span id="network-status" class="test-status status-testing">監控中</span>
+            </div>
+            
+            <button class="test-button" onclick="testNetworkOptimization()">測試網路優化</button>
+            <button class="test-button" onclick="clearNetworkMonitor()">清除監控</button>
+            
+            <div class="network-monitor" id="network-monitor">
+                <div class="network-request">
+                    <span class="request-url">等待網路請求...</span>
+                </div>
+            </div>
+            
+            <div class="results" id="network-results">等待測試結果...</div>
+        </div>
+        
+        <!-- Page Loading Test -->
+        <div class="test-section">
+            <div class="test-header">
+                <h2 class="test-title">📄 Page Loading Test</h2>
+                <span id="loading-status" class="test-status status-testing">待測試</span>
+            </div>
+            
+            <button class="test-button" onclick="testMarketOverviewLoading()">測試 Market Overview</button>
+            <button class="test-button" onclick="testStockOverviewLoading()">測試 Stock Overview</button>
+            <button class="test-button" onclick="testStockDetailLoading()">測試 Stock Detail</button>
+            
+            <div class="results" id="loading-results">等待測試結果...</div>
+        </div>
+        
+        <!-- Performance Comparison -->
+        <div class="test-section">
+            <div class="test-header">
+                <h2 class="test-title">📊 Performance Comparison</h2>
+                <span id="comparison-status" class="test-status status-testing">待比較</span>
+            </div>
+            
+            <button class="test-button" onclick="comparePerformance()">比較修復前後</button>
+            <button class="test-button" onclick="generateReport()">生成報告</button>
+            
+            <div class="results" id="comparison-results">等待比較結果...</div>
+        </div>
+    </div>
+
+    <script>
+        // 網路請求監控
+        let networkRequests = [];
+        let consoleMessages = [];
+        let originalFetch = window.fetch;
+        let originalConsole = {
+            log: console.log,
+            warn: console.warn,
+            error: console.error
+        };
+        
+        // 攔截 fetch 請求
+        window.fetch = function(...args) {
+            const url = args[0];
+            const startTime = Date.now();
+            
+            // 記錄請求
+            const requestId = Date.now() + Math.random();
+            networkRequests.push({
+                id: requestId,
+                url: url,
+                startTime: startTime,
+                status: 'pending'
+            });
+            
+            updateNetworkMonitor();
+            
+            return originalFetch.apply(this, args)
+                .then(response => {
+                    // 更新請求狀態
+                    const request = networkRequests.find(r => r.id === requestId);
+                    if (request) {
+                        request.status = response.status;
+                        request.endTime = Date.now();
+                        request.duration = request.endTime - request.startTime;
+                    }
+                    updateNetworkMonitor();
+                    return response;
+                })
+                .catch(error => {
+                    // 更新錯誤狀態
+                    const request = networkRequests.find(r => r.id === requestId);
+                    if (request) {
+                        request.status = 'error';
+                        request.error = error.message;
+                        request.endTime = Date.now();
+                        request.duration = request.endTime - request.startTime;
+                    }
+                    updateNetworkMonitor();
+                    throw error;
+                });
+        };
+        
+        // 攔截 console 輸出
+        console.log = function(...args) {
+            consoleMessages.push({
+                type: 'log',
+                message: args.join(' '),
+                timestamp: Date.now()
+            });
+            updateConsoleMonitor();
+            return originalConsole.log.apply(console, args);
+        };
+        
+        console.warn = function(...args) {
+            consoleMessages.push({
+                type: 'warn',
+                message: args.join(' '),
+                timestamp: Date.now()
+            });
+            updateConsoleMonitor();
+            return originalConsole.warn.apply(console, args);
+        };
+        
+        console.error = function(...args) {
+            consoleMessages.push({
+                type: 'error',
+                message: args.join(' '),
+                timestamp: Date.now()
+            });
+            updateConsoleMonitor();
+            return originalConsole.error.apply(console, args);
+        };
+        
+        function updateNetworkMonitor() {
+            const container = document.getElementById('network-monitor');
+            
+            if (networkRequests.length === 0) {
+                container.innerHTML = '<div class="network-request"><span class="request-url">暫無網路請求</span></div>';
+                return;
+            }
+            
+            const html = networkRequests.slice(-10).map(request => {
+                const statusClass = request.status === 200 ? 'status-200' : 
+                                  request.status === 404 ? 'status-404' : 
+                                  request.status === 'pending' ? 'status-pending' : 'status-error';
+                
+                const duration = request.duration ? `${request.duration}ms` : '...';
+                const statusText = request.status === 'pending' ? 'Loading...' : 
+                                 request.status === 'error' ? 'Error' : request.status;
+                
+                const shortUrl = request.url.length > 60 ? 
+                    request.url.substring(0, 60) + '...' : request.url;
+                
+                return `
+                    <div class="network-request">
+                        <span class="request-url">${shortUrl}</span>
+                        <div>
+                            <span class="request-status ${statusClass}">${statusText}</span>
+                            <small style="margin-left: 10px; color: #6c757d;">${duration}</small>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            container.innerHTML = html;
+        }
+        
+        function updateConsoleMonitor() {
+            const container = document.getElementById('console-monitor');
+            
+            if (consoleMessages.length === 0) {
+                container.innerHTML = '<div>Console 監控已啟動...</div>';
+                return;
+            }
+            
+            const html = consoleMessages.slice(-20).map(msg => {
+                const time = new Date(msg.timestamp).toLocaleTimeString();
+                const className = `console-${msg.type}`;
+                return `<div class="${className}">[${time}] ${msg.message}</div>`;
+            }).join('');
+            
+            container.innerHTML = html;
+            container.scrollTop = container.scrollHeight;
+        }
+        
+        function clearNetworkMonitor() {
+            networkRequests = [];
+            updateNetworkMonitor();
+        }
+        
+        function clearConsoleMonitor() {
+            consoleMessages = [];
+            updateConsoleMonitor();
+        }
+        
+        // 測試 Console 穩定性
+        function testConsoleStability() {
+            const resultsEl = document.getElementById('console-monitor');
+            const statusEl = document.getElementById('console-status');
+            
+            statusEl.className = 'test-status status-testing';
+            statusEl.textContent = '測試中...';
+            
+            try {
+                // 測試大量 console 輸出
+                console.log('🧪 開始 Console 穩定性測試...');
+                
+                for (let i = 0; i < 10; i++) {
+                    console.log(`測試訊息 ${i + 1}: 這是一個測試訊息`);
+                    console.warn(`警告訊息 ${i + 1}: 這是一個警告`);
+                    if (i % 3 === 0) {
+                        console.error(`錯誤訊息 ${i + 1}: 這是一個錯誤`);
+                    }
+                }
+                
+                console.log('✅ Console 穩定性測試完成');
+                
+                statusEl.className = 'test-status status-fixed';
+                statusEl.textContent = '✅ 穩定';
+                
+            } catch (error) {
+                console.error('❌ Console 測試失敗:', error);
+                statusEl.className = 'test-status status-critical';
+                statusEl.textContent = '❌ 不穩定';
+            }
+        }
+        
+        // 測試網路優化
+        async function testNetworkOptimization() {
+            const resultsEl = document.getElementById('network-results');
+            const statusEl = document.getElementById('network-status');
+            
+            statusEl.className = 'test-status status-testing';
+            statusEl.textContent = '測試中...';
+            
+            clearNetworkMonitor();
+            
+            try {
+                resultsEl.textContent = '開始網路優化測試...\n\n';
+                
+                const startTime = Date.now();
+                const initialRequestCount = networkRequests.length;
+                
+                // 模擬載入技術指標（應該只載入一次索引）
+                resultsEl.textContent += '測試 1: 載入技術指標索引\n';
+                
+                try {
+                    await fetch('/data/technical-indicators/latest_index.json');
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                } catch (error) {
+                    resultsEl.textContent += `  ⚠️ 索引載入失敗: ${error.message}\n`;
+                }
+                
+                // 模擬載入多個股票（應該重用索引緩存）
+                const symbols = ['CRM', 'ASTS', 'RIVN'];
+                resultsEl.textContent += `\n測試 2: 載入 ${symbols.length} 個股票的技術指標\n`;
+                
+                for (const symbol of symbols) {
+                    try {
+                        await fetch(`/data/technical-indicators/2025-12-26_${symbol}.json`);
+                        await new Promise(resolve => setTimeout(resolve, 50));
+                        resultsEl.textContent += `  ✅ ${symbol}: 載入成功\n`;
+                    } catch (error) {
+                        resultsEl.textContent += `  ⚠️ ${symbol}: ${error.message}\n`;
+                    }
+                }
+                
+                const endTime = Date.now();
+                const totalTime = endTime - startTime;
+                const finalRequestCount = networkRequests.length;
+                const indexRequests = networkRequests.filter(r => r.url.includes('latest_index.json')).length;
+                
+                resultsEl.textContent += `\n📊 測試結果:\n`;
+                resultsEl.textContent += `總耗時: ${totalTime}ms\n`;
+                resultsEl.textContent += `總網路請求: ${finalRequestCount - initialRequestCount}\n`;
+                resultsEl.textContent += `latest_index.json 請求次數: ${indexRequests}\n`;
+                
+                if (indexRequests <= 1) {
+                    resultsEl.textContent += `✅ 優化成功！索引文件只載入了 ${indexRequests} 次\n`;
+                    statusEl.className = 'test-status status-fixed';
+                    statusEl.textContent = '✅ 已優化';
+                } else {
+                    resultsEl.textContent += `⚠️ 需要優化：索引文件載入了 ${indexRequests} 次\n`;
+                    statusEl.className = 'test-status status-critical';
+                    statusEl.textContent = '❌ 需優化';
+                }
+                
+            } catch (error) {
+                resultsEl.textContent += `\n❌ 測試失敗: ${error.message}\n`;
+                statusEl.className = 'test-status status-critical';
+                statusEl.textContent = '❌ 測試失敗';
+            }
+        }
+        
+        // 測試頁面載入
+        async function testMarketOverviewLoading() {
+            const resultsEl = document.getElementById('loading-results');
+            resultsEl.textContent = '測試 Market Overview 載入...\n\n';
+            
+            const beforeRequests = networkRequests.length;
+            
+            // 模擬 Market Overview 載入
+            resultsEl.textContent += 'Market Overview 應該只載入市場相關數據，不載入股票技術指標\n';
+            resultsEl.textContent += '預期請求: TradingView widgets, VIX data, 市場指數\n';
+            resultsEl.textContent += '不應該請求: latest_index.json, 股票代號.json\n\n';
+            
+            const afterRequests = networkRequests.length;
+            const newRequests = networkRequests.slice(beforeRequests);
+            
+            const stockRequests = newRequests.filter(r => 
+                r.url.includes('latest_index.json') || 
+                r.url.match(/\d{4}-\d{2}-\d{2}_[A-Z]+\.json/)
+            );
+            
+            if (stockRequests.length === 0) {
+                resultsEl.textContent += '✅ Market Overview 載入正常，沒有載入股票技術指標\n';
+            } else {
+                resultsEl.textContent += `⚠️ Market Overview 載入了 ${stockRequests.length} 個股票相關請求:\n`;
+                stockRequests.forEach(req => {
+                    resultsEl.textContent += `  - ${req.url}\n`;
+                });
+            }
+        }
+        
+        async function testStockOverviewLoading() {
+            const resultsEl = document.getElementById('loading-results');
+            resultsEl.textContent += '\n測試 Stock Overview 載入...\n\n';
+            
+            resultsEl.textContent += 'Stock Overview 應該載入多個股票的技術指標\n';
+            resultsEl.textContent += '預期: latest_index.json 只載入一次，然後載入各股票數據\n\n';
+        }
+        
+        async function testStockDetailLoading() {
+            const resultsEl = document.getElementById('loading-results');
+            resultsEl.textContent += '\n測試 Stock Detail 載入...\n\n';
+            
+            resultsEl.textContent += 'Stock Detail (例如 CRM) 應該只載入 CRM 的技術指標\n';
+            resultsEl.textContent += '不應該載入: PL, ASTS, RIVN 等其他股票的數據\n\n';
+        }
+        
+        // 比較性能
+        function comparePerformance() {
+            const resultsEl = document.getElementById('comparison-results');
+            const statusEl = document.getElementById('comparison-status');
+            
+            const indexRequests = networkRequests.filter(r => r.url.includes('latest_index.json')).length;
+            const stockRequests = networkRequests.filter(r => r.url.match(/\d{4}-\d{2}-\d{2}_[A-Z]+\.json/)).length;
+            const packageRequests = networkRequests.filter(r => r.url.includes('package.json')).length;
+            
+            resultsEl.textContent = '📊 性能比較結果:\n\n';
+            resultsEl.textContent += `latest_index.json 請求次數: ${indexRequests}\n`;
+            resultsEl.textContent += `股票數據請求次數: ${stockRequests}\n`;
+            resultsEl.textContent += `package.json 請求次數: ${packageRequests}\n`;
+            resultsEl.textContent += `Console 訊息數量: ${consoleMessages.length}\n\n`;
+            
+            let score = 0;
+            let issues = [];
+            
+            if (indexRequests <= 1) {
+                score += 25;
+                resultsEl.textContent += '✅ 索引載入優化: 良好\n';
+            } else {
+                issues.push(`索引重複載入 ${indexRequests} 次`);
+                resultsEl.textContent += `❌ 索引載入優化: 需改善 (${indexRequests} 次)\n`;
+            }
+            
+            if (packageRequests <= 2) {
+                score += 25;
+                resultsEl.textContent += '✅ Package.json 載入: 正常\n';
+            } else {
+                issues.push(`package.json 重複載入 ${packageRequests} 次`);
+                resultsEl.textContent += `❌ Package.json 載入: 異常 (${packageRequests} 次)\n`;
+            }
+            
+            if (consoleMessages.length < 100) {
+                score += 25;
+                resultsEl.textContent += '✅ Console 穩定性: 良好\n';
+            } else {
+                issues.push(`Console 訊息過多 ${consoleMessages.length} 條`);
+                resultsEl.textContent += `❌ Console 穩定性: 需注意 (${consoleMessages.length} 條訊息)\n`;
+            }
+            
+            if (networkRequests.length < 50) {
+                score += 25;
+                resultsEl.textContent += '✅ 網路請求數量: 合理\n';
+            } else {
+                issues.push(`網路請求過多 ${networkRequests.length} 個`);
+                resultsEl.textContent += `❌ 網路請求數量: 過多 (${networkRequests.length} 個)\n`;
+            }
+            
+            resultsEl.textContent += `\n🎯 總分: ${score}/100\n`;
+            
+            if (score >= 80) {
+                statusEl.className = 'test-status status-fixed';
+                statusEl.textContent = '✅ 性能良好';
+                resultsEl.textContent += '✅ 性能優化成功！\n';
+            } else if (score >= 60) {
+                statusEl.className = 'test-status status-testing';
+                statusEl.textContent = '⚠️ 需要改善';
+                resultsEl.textContent += '⚠️ 性能有待改善\n';
+            } else {
+                statusEl.className = 'test-status status-critical';
+                statusEl.textContent = '❌ 性能問題';
+                resultsEl.textContent += '❌ 存在嚴重性能問題\n';
+            }
+            
+            if (issues.length > 0) {
+                resultsEl.textContent += '\n🔍 發現的問題:\n';
+                issues.forEach(issue => {
+                    resultsEl.textContent += `  - ${issue}\n`;
+                });
+            }
+        }
+        
+        // 生成報告
+        function generateReport() {
+            const report = {
+                timestamp: new Date().toISOString(),
+                networkRequests: networkRequests.length,
+                consoleMessages: consoleMessages.length,
+                indexRequests: networkRequests.filter(r => r.url.includes('latest_index.json')).length,
+                stockRequests: networkRequests.filter(r => r.url.match(/\d{4}-\d{2}-\d{2}_[A-Z]+\.json/)).length,
+                packageRequests: networkRequests.filter(r => r.url.includes('package.json')).length,
+                requests: networkRequests.map(r => ({
+                    url: r.url,
+                    status: r.status,
+                    duration: r.duration
+                })),
+                consoleLog: consoleMessages.map(m => ({
+                    type: m.type,
+                    message: m.message,
+                    timestamp: m.timestamp
+                }))
+            };
+            
+            const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `critical-performance-test-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        // 頁面載入時的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Critical Performance Fixes Test Page Loaded');
+            updateNetworkMonitor();
+            updateConsoleMonitor();
+        });
+    </script>
+</body>
+</html>

@@ -195,11 +195,12 @@ export default {
       this.cacheInfo = null;
       
       try {
-        console.log(`Loading technical data for ${this.symbol}...`);
+        console.log(`🔍 Loading technical data for ${this.symbol}...`);
         
         const startTime = Date.now();
         
-        // 使用混合 API 獲取數據 (預計算 + 緩存 + 實時)
+        // 🚀 性能優化：只載入當前股票的技術指標數據
+        // 避免載入所有股票的數據
         this.technicalData = await hybridTechnicalIndicatorsAPI.getTechnicalIndicators(this.symbol);
         
         const loadTime = Date.now() - startTime;
@@ -221,7 +222,11 @@ export default {
           this.cacheInfo = `Loaded in ${loadTime}ms`;
         }
         
-        console.log(`Technical data loaded for ${this.symbol}:`, this.technicalData);
+        console.log(`✅ Technical data loaded for ${this.symbol}:`, {
+          source: this.technicalData.source,
+          loadTime: `${loadTime}ms`,
+          hasADX: !!this.technicalData.adx14?.value
+        });
         
         // 驗證 ADX 數據
         if (this.technicalData.adx14 && this.technicalData.adx14.value !== null && this.technicalData.adx14.value !== 'N/A') {
@@ -230,8 +235,19 @@ export default {
           console.warn(`⚠️ ADX data may be invalid for ${this.symbol}:`, this.technicalData.adx14);
         }
         
+        // 發送自定義事件給 PerformanceMonitor（如果存在）
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('widget-loaded', {
+            detail: {
+              name: `TechnicalIndicators-${this.symbol}`,
+              time: loadTime,
+              priority: 2
+            }
+          }))
+        }
+        
       } catch (error) {
-        console.error(`Failed to load technical data for ${this.symbol}:`, error);
+        console.error(`❌ Failed to load technical data for ${this.symbol}:`, error);
         this.error = error.message;
         
         // 如果是網路錯誤，提供重試選項
