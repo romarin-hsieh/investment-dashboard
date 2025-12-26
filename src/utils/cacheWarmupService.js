@@ -19,10 +19,11 @@ class CacheWarmupService {
       batchDelay: 2000, // 批次間延遲 (毫秒)
       retryAttempts: 2, // 重試次數
       retryDelay: 5000, // 重試延遲
-      enableAutoWarmup: true, // 是否啟用自動預熱
-      warmupOnVersionChange: true, // 版本更新時預熱
-      warmupOnFirstLoad: true, // 首次載入時預熱
-      warmupInterval: 6 * 60 * 60 * 1000 // 6 小時自動預熱一次
+      enableAutoWarmup: this.isProductionEnvironment(), // 只在正式環境啟用自動預熱
+      warmupOnVersionChange: false, // 停用版本更新時預熱
+      warmupOnFirstLoad: false, // 停用首次載入時預熱
+      warmupInterval: 24 * 60 * 60 * 1000, // 24 小時自動預熱一次 (更長間隔)
+      minCacheCoverage: 0.95 // 需要 95% 以上的緩存覆蓋率才不預熱
     }
     
     // 追蹤的股票代碼
@@ -36,6 +37,12 @@ class CacheWarmupService {
   // 啟動緩存預熱服務
   async start() {
     console.log('🔥 Starting Cache Warmup Service...')
+    
+    // 🚀 開發環境檢測：完全停用預熱
+    if (!this.isProductionEnvironment()) {
+      console.log('🚫 Cache warmup disabled in development environment')
+      return
+    }
     
     try {
       // 檢查是否需要預熱
@@ -94,7 +101,7 @@ class CacheWarmupService {
       
       // 檢查緩存覆蓋率
       const cacheStats = await this.getCacheStats()
-      if (cacheStats.coverage < 0.8) { // 少於 80% 的股票有緩存
+      if (cacheStats.coverage < this.config.minCacheCoverage) { // 需要 95% 以上的緩存覆蓋率
         return {
           needed: true,
           reason: `Low cache coverage (${Math.round(cacheStats.coverage * 100)}%)`
@@ -365,6 +372,24 @@ class CacheWarmupService {
   // 工具函數：延遲
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
+  }
+
+  // 檢測是否為正式環境
+  isProductionEnvironment() {
+    const hostname = window.location.hostname
+    const pathname = window.location.pathname
+    
+    // GitHub Pages 正式環境
+    if (hostname === 'romarin-hsieh.github.io' && pathname.includes('/investment-dashboard/')) {
+      return true
+    }
+    
+    // 其他正式環境域名
+    if (hostname !== 'localhost' && hostname !== '127.0.0.1' && !hostname.includes('local')) {
+      return true
+    }
+    
+    return false
   }
 
   // 更新配置
