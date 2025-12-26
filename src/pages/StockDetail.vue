@@ -143,6 +143,7 @@ import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 import StockNews from '@/components/StockNews.vue'
 import StockDetailSkeleton from '@/components/StockDetailSkeleton.vue'
 import { metadataService } from '@/utils/metadataService.js'
+import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 
 export default {
   name: 'StockDetail',
@@ -168,19 +169,33 @@ export default {
       return this.$route.params.symbol || 'RKLB'
     },
     exchange() {
-      // 根據 symbol 推測交易所
-      const symbol = this.symbol
-      
-      // NASDAQ 股票
-      if (['ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'RKLB', 'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'TSLA'].includes(symbol)) {
-        return 'NASDAQ'
-      } 
-      // NYSE 股票
-      else if (['ORCL', 'TSM'].includes(symbol)) {
-        return 'NYSE'
+      // 優先使用 metadata 中的交易所資訊
+      if (this.metadata && this.metadata.exchange) {
+        // 將 metadata 中的 exchange 代碼轉換為顯示名稱
+        const exchangeMap = {
+          'NYQ': 'NYSE',    // New York Stock Exchange
+          'NMS': 'NASDAQ',  // NASDAQ Global Select Market
+          'NCM': 'NASDAQ',  // NASDAQ Capital Market
+          'NGM': 'NASDAQ',  // NASDAQ Global Market
+          'NYSE': 'NYSE',   // 直接的 NYSE
+          'NASDAQ': 'NASDAQ' // 直接的 NASDAQ
+        }
+        return exchangeMap[this.metadata.exchange] || this.metadata.exchange
       }
       
-      return 'NASDAQ'
+      // 備用方案：根據 symbol 推測交易所（使用正確的分類）
+      const symbol = this.symbol
+      
+      // NYSE 股票 (根據 symbols_metadata.json 的實際資料)
+      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS'].includes(symbol)) {
+        return 'NYSE'
+      }
+      // NASDAQ 股票
+      else if (['ASTS', 'RIVN', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'CRWV', 'PLTR', 'TSLA'].includes(symbol)) {
+        return 'NASDAQ'
+      }
+      
+      return 'NASDAQ' // 預設值
     },
 
     dailyInsightConfig() {
@@ -312,7 +327,9 @@ export default {
     },
     async loadMetadata() {
       try {
-        this.metadata = await metadataService.getSymbolMetadata(this.symbol)
+        // 使用 DirectMetadataLoader 以保持與 StockOverview 一致
+        this.metadata = await directMetadataLoader.getSymbolMetadata(this.symbol)
+        console.log(`📊 StockDetail loaded metadata for ${this.symbol}:`, this.metadata)
       } catch (error) {
         console.warn(`Failed to load metadata for ${this.symbol}:`, error)
         this.metadata = null
@@ -327,11 +344,37 @@ export default {
     },
 
     getIndustry() {
-      return metadataService.getIndustryDisplay(this.metadata)
+      if (!this.metadata) {
+        return 'Unknown Industry'
+      }
+      
+      // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
+      if (this.metadata.confidence < 0.7) {
+        return 'Unknown Industry'
+      }
+      
+      return this.metadata.industry || this.metadata.sector || 'Unknown Industry'
     },
 
     getIndustryCategory() {
-      return metadataService.getIndustryCategory(this.metadata)
+      const industry = this.getIndustry()
+      
+      // 根據 industry 返回主要分類，用於樣式
+      const industryCategories = {
+        'Software - Application': 'tech-software',
+        'Computer Hardware': 'tech-hardware',
+        'Communication Equipment': 'tech-satellite',
+        'Database Software': 'tech-software',
+        'Enterprise Software': 'tech-software',
+        'Semiconductors': 'tech-hardware',
+        'Aerospace & Defense': 'industrial-aerospace',
+        'Space Infrastructure': 'industrial-space',
+        'Satellite Communications': 'communications',
+        'Auto Manufacturers': 'automotive',
+        'Unknown Industry': 'unknown'
+      }
+      
+      return industryCategories[industry] || 'other'
     },
 
     goBack() {

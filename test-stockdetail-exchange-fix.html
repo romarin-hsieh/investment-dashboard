@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockDetail Exchange 修復測試</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .success { border-left: 5px solid #28a745; background-color: #d4edda; }
+        .error { border-left: 5px solid #dc3545; background-color: #f8d7da; }
+        .info { border-left: 5px solid #17a2b8; background-color: #d1ecf1; }
+        .warning { border-left: 5px solid #ffc107; background-color: #fff3cd; }
+        
+        .stock-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .stock-symbol {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .stock-tags {
+            margin-top: 10px;
+        }
+        
+        .exchange-tag {
+            background: #007bff;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        
+        .industry-tag {
+            background: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .url-link {
+            color: #007bff;
+            text-decoration: none;
+            font-family: monospace;
+        }
+        .url-link:hover {
+            text-decoration: underline;
+        }
+        
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 StockDetail Exchange 修復測試</h1>
+        
+        <div class="test-section info">
+            <h3>📋 修復內容</h3>
+            <ul>
+                <li><strong>Exchange 邏輯修復</strong>: 優先使用 metadata 中的實際交易所資訊</li>
+                <li><strong>DirectMetadataLoader 整合</strong>: 與 StockOverview 保持一致</li>
+                <li><strong>股票分類修正</strong>: 根據 symbols_metadata.json 的實際資料</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 預期修復結果</h3>
+            <div id="expected-results"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔗 測試連結</h3>
+            <p>請測試以下 StockDetail 頁面，確認 exchange 和 industry 資訊正確：</p>
+            <div id="test-links"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔍 檢查重點</h3>
+            <div class="info">
+                <h4>Console 檢查 (按 F12)</h4>
+                <ul>
+                    <li>應該看到: <code>📊 StockDetail loaded metadata for CRM: ...</code></li>
+                    <li>應該看到: <code>🔍 DirectMetadataLoader fetching from: /data/symbols_metadata.json</code></li>
+                    <li>不應該看到: metadataService 相關的錯誤</li>
+                </ul>
+                
+                <h4>視覺檢查</h4>
+                <ul>
+                    <li><strong>CRM</strong>: Exchange 標籤應顯示 "NYSE" (不是 NASDAQ)</li>
+                    <li><strong>IONQ</strong>: Exchange 標籤應顯示 "NYSE"</li>
+                    <li><strong>PL</strong>: Exchange 標籤應顯示 "NYSE"</li>
+                    <li><strong>Industry 標籤</strong>: 應與 StockOverview 頁面一致</li>
+                </ul>
+                
+                <h4>TradingView Widget</h4>
+                <ul>
+                    <li>Symbol Overview 和 Technical Analysis widgets 應正常載入</li>
+                    <li>不應該有 "Symbol not found" 錯誤</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>⚠️ 已知問題</h3>
+            <div class="warning">
+                <p><strong>技術指標載入過多數據</strong>: 目前 StockDetail 頁面會載入所有股票的技術指標數據，這是性能問題，需要進一步優化。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 根據 symbols_metadata.json 的實際資料
+        const expectedResults = [
+            {
+                symbol: 'CRM',
+                exchange: 'NYSE',
+                industry: 'Software - Application',
+                sector: 'Technology',
+                note: '之前錯誤顯示為 NASDAQ'
+            },
+            {
+                symbol: 'IONQ',
+                exchange: 'NYSE',
+                industry: 'Computer Hardware',
+                sector: 'Technology',
+                note: '量子計算公司'
+            },
+            {
+                symbol: 'PL',
+                exchange: 'NYSE',
+                industry: 'Aerospace & Defense',
+                sector: 'Industrials',
+                note: '衛星影像分析'
+            },
+            {
+                symbol: 'ASTS',
+                exchange: 'NASDAQ',
+                industry: 'Communication Equipment',
+                sector: 'Technology',
+                note: '衛星通訊'
+            },
+            {
+                symbol: 'RIVN',
+                exchange: 'NASDAQ',
+                industry: 'Auto Manufacturers',
+                sector: 'Consumer Cyclical',
+                note: '電動車製造商'
+            }
+        ];
+
+        function generateExpectedResults() {
+            let html = '';
+            
+            expectedResults.forEach(stock => {
+                html += `
+                    <div class="stock-info">
+                        <div class="stock-symbol">${stock.symbol}</div>
+                        <div class="stock-tags">
+                            <span class="exchange-tag">${stock.exchange}</span>
+                            <span class="industry-tag">${stock.industry}</span>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 0.9rem; color: #666;">
+                            ${stock.note}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('expected-results').innerHTML = html;
+        }
+
+        function generateTestLinks() {
+            const baseUrl = window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '');
+            
+            let html = '<ul>';
+            
+            expectedResults.forEach(stock => {
+                const url = `${baseUrl}/#/stock-overview/symbols/${stock.symbol}`;
+                html += `
+                    <li>
+                        <strong>${stock.symbol}</strong> (${stock.exchange}): 
+                        <a href="${url}" target="_blank" class="url-link">${url}</a>
+                    </li>
+                `;
+            });
+            
+            html += '</ul>';
+            
+            html += `
+                <div style="margin-top: 15px; padding: 10px; background-color: #e7f3ff; border-radius: 5px;">
+                    <strong>📝 測試步驟:</strong>
+                    <ol>
+                        <li>點擊上方連結開啟 StockDetail 頁面</li>
+                        <li>按 F12 開啟開發者工具，查看 Console</li>
+                        <li>確認 Exchange 和 Industry 標籤正確顯示</li>
+                        <li>檢查 TradingView widgets 是否正常載入</li>
+                        <li>比較與 StockOverview 頁面的一致性</li>
+                    </ol>
+                </div>
+            `;
+            
+            document.getElementById('test-links').innerHTML = html;
+        }
+
+        // 頁面載入時生成內容
+        window.addEventListener('load', () => {
+            generateExpectedResults();
+            generateTestLinks();
+        });
+    </script>
+</body>
+</html>
