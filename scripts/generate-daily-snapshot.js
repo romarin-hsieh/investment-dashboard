@@ -36,21 +36,37 @@ class DailySnapshotGenerator {
     return new Date().toISOString()
   }
 
-  // 從 universe.json 讀取股票列表
-  async getUniverseSymbols() {
+  // 從統一配置文件讀取股票列表
+  async getStocksFromConfig() {
     try {
-      const universePath = path.join(this.projectRoot, 'config', 'universe.json')
-      const universeData = JSON.parse(fs.readFileSync(universePath, 'utf8'))
-      return universeData.symbols || []
+      const configPath = path.join(this.projectRoot, 'config', 'stocks.json')
+      const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'))
+      
+      // 只返回啟用的股票符號
+      const enabledSymbols = configData.stocks
+        .filter(stock => stock.enabled)
+        .map(stock => stock.symbol)
+      
+      console.log(`📊 Loaded ${enabledSymbols.length} enabled symbols from stocks.json`)
+      return enabledSymbols
     } catch (error) {
-      console.warn('Failed to read universe.json, using fallback symbols:', error)
-      return [
-        'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 
-        'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
-        'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
-        'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
-        'IONQ', 'PLTR', 'HIMS', 'TSLA'
-      ]
+      console.warn('Failed to read stocks.json, falling back to universe.json:', error)
+      
+      // Fallback 到 universe.json
+      try {
+        const universePath = path.join(this.projectRoot, 'config', 'universe.json')
+        const universeData = JSON.parse(fs.readFileSync(universePath, 'utf8'))
+        return universeData.symbols || []
+      } catch (fallbackError) {
+        console.warn('Failed to read universe.json, using hardcoded fallback:', fallbackError)
+        return [
+          'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 
+          'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
+          'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
+          'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
+          'IONQ', 'PLTR', 'HIMS', 'TSLA'
+        ]
+      }
     }
   }
 
@@ -164,7 +180,7 @@ class DailySnapshotGenerator {
   async generateDailySnapshot() {
     const today = this.getTodayString()
     const utcNow = this.getUTCString()
-    const symbols = await this.getUniverseSymbols()
+    const symbols = await this.getStocksFromConfig()
 
     console.log(`🗓️  Generating daily snapshot for ${today}...`)
     console.log(`📊 Processing ${symbols.length} symbols`)
