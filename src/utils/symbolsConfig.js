@@ -233,7 +233,7 @@ export class SymbolsConfigManager {
   }
 
   /**
-   * 靜態 fallback symbols - 24 stocks from updated list
+   * 靜態 fallback symbols - 68 stocks from updated list
    */
   getStaticSymbols() {
     return [
@@ -241,7 +241,16 @@ export class SymbolsConfigManager {
       'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
       'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
       'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
-      'IONQ', 'PLTR', 'HIMS', 'TSLA'
+      'IONQ', 'PLTR', 'HIMS', 'TSLA',
+      'VST', 'KTOS', 'MELI', 'SOFI', 'RBRK',
+      'EOSE', 'CEG', 'TMDX', 'GRAB', 'RBLX',
+      'IREN', 'OKLO', 'PATH', 'INTR', 'SE',
+      'KSPI', 'LUNR', 'HOOD', 'APP', 'CHYM',
+      'NU', 'COIN', 'CRCL', 'IBKR', 'CCJ',
+      'UUUU', 'VRT', 'ETN', 'MSFT', 'ADBE',
+      'FIG', 'PAWN', 'CRWD', 'DDOG', 'DUOL',
+      'ZETA', 'AXON', 'ALAB', 'LRCX', 'BWXT',
+      'UMAC', 'MP', 'RR'
     ]
   }
 
