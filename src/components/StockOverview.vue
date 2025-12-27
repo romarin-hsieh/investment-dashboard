@@ -11,10 +11,9 @@
     
     <p class="text-muted mb-3">Stock universe overview and analysis</p>
 
-
-
-    <div v-if="loading" class="loading-with-skeleton">
-      <SkeletonLoader />
+    <div v-if="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading stock data...</p>
     </div>
 
     <div v-else-if="error" class="error">
@@ -23,7 +22,7 @@
     </div>
 
     <div v-else>
-      <!-- Market Index Section - 複製自 Market Overview -->
+      <!-- Market Index Section -->
       <div class="widget-container-ticker">
         <div class="widget-header">
           <h3>Market Index</h3>
@@ -69,83 +68,15 @@
 </template>
 
 <script>
-import { dataFetcher } from '@/lib/fetcher'
 import { stocksConfig } from '@/utils/stocksConfigService'
 import StockCard from './StockCard.vue'
 import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
-import SkeletonLoader from './SkeletonLoader.vue'
-import { metadataService } from '@/utils/metadataService.js'
-import { performanceCache, CACHE_KEYS, CACHE_TTL } from '@/utils/performanceCache.js'
-import { performanceMonitor, PERFORMANCE_LABELS } from '@/utils/performanceMonitor.js'
-
-// 配置常數 - 集中管理，易於維護
-const STOCK_OVERVIEW_CONFIG = {
-  // 交易所代碼映射
-  EXCHANGE_CODE_MAP: {
-    'NYQ': 'NYSE',    // New York Stock Exchange
-    'NMS': 'NASDAQ',  // NASDAQ Global Select Market
-    'NCM': 'NASDAQ',  // NASDAQ Capital Market
-    'NGM': 'NASDAQ',  // NASDAQ Global Market
-    'ASE': 'AMEX',    // American Stock Exchange
-    'AMEX': 'AMEX'    // American Stock Exchange
-  },
-  
-  // Symbol 到交易所的映射（備用方案）
-  SYMBOL_EXCHANGE_MAP: {
-    // NYSE symbols
-    'ORCL': 'NYSE', 'TSM': 'NYSE', 'RDW': 'NYSE', 'CRM': 'NYSE', 'PL': 'NYSE',
-    'LEU': 'NYSE', 'SMR': 'NYSE', 'IONQ': 'NYSE', 'HIMS': 'NYSE', 'VST': 'NYSE',
-    'RBRK': 'NYSE', 'OKLO': 'NYSE', 'PATH': 'NYSE', 'SE': 'NYSE', 'NU': 'NYSE',
-    'CRCL': 'NYSE', 'VRT': 'NYSE', 'ETN': 'NYSE', 'FIG': 'NYSE', 'ZETA': 'NYSE',
-    'MP': 'NYSE',
-    
-    // NASDAQ symbols
-    'ASTS': 'NASDAQ', 'RIVN': 'NASDAQ', 'ONDS': 'NASDAQ', 'AVAV': 'NASDAQ',
-    'MDB': 'NASDAQ', 'RKLB': 'NASDAQ', 'NVDA': 'NASDAQ', 'AVGO': 'NASDAQ',
-    'AMZN': 'NASDAQ', 'GOOG': 'NASDAQ', 'META': 'NASDAQ', 'NFLX': 'NASDAQ',
-    'CRWV': 'NASDAQ', 'PLTR': 'NASDAQ', 'TSLA': 'NASDAQ', 'KTOS': 'NASDAQ',
-    'MELI': 'NASDAQ', 'SOFI': 'NASDAQ', 'EOSE': 'NASDAQ', 'CEG': 'NASDAQ',
-    'TMDX': 'NASDAQ', 'GRAB': 'NASDAQ', 'RBLX': 'NASDAQ', 'IREN': 'NASDAQ',
-    'INTR': 'NASDAQ', 'KSPI': 'NASDAQ', 'LUNR': 'NASDAQ', 'HOOD': 'NASDAQ',
-    'APP': 'NASDAQ', 'CHYM': 'NASDAQ', 'COIN': 'NASDAQ', 'IBKR': 'NASDAQ',
-    'CCJ': 'NASDAQ', 'MSFT': 'NASDAQ', 'ADBE': 'NASDAQ', 'PAWN': 'NASDAQ',
-    'CRWD': 'NASDAQ', 'DDOG': 'NASDAQ', 'DUOL': 'NASDAQ', 'AXON': 'NASDAQ',
-    'ALAB': 'NASDAQ', 'LRCX': 'NASDAQ', 'BWXT': 'NASDAQ', 'RR': 'NASDAQ',
-    
-    // AMEX symbols
-    'UUUU': 'AMEX', 'UMAC': 'AMEX'
-  },
-  
-  // 預設交易所
-  DEFAULT_EXCHANGE: 'NASDAQ',
-  
-  // 最低信心度閾值
-  MIN_CONFIDENCE_THRESHOLD: 0.7,
-  
-  // Market Index 配置
-  MARKET_INDEX_CONFIG: {
-    "symbols": [
-      {"proName": "FOREXCOM:SPXUSD","title": "S&P 500 Index"},
-      {"proName": "NASDAQ:NDX","title": "NASDAQ 100 Index"},
-      {"proName": "OPOFINANCE:DJIUSD","title": "Dow Jone Index"},
-      {"proName": "CAPITALCOM:RTY","title": "US Russel 2000"},
-      {"proName": "INDEX:BTCUSD","title": "BTC"},
-      {"proName": "TVC:GOLD","title": "GOLD"}
-    ],
-    "colorTheme": "light",
-    "locale": "en",
-    "largeChartUrl": "",
-    "isTransparent": true,
-    "showSymbolLogo": true
-  }
-}
 
 export default {
   name: 'StockOverview',
   components: {
     StockCard,
-    LazyTradingViewWidget,
-    SkeletonLoader
+    LazyTradingViewWidget
   },
   data() {
     return {
@@ -155,22 +86,26 @@ export default {
       loading: false,
       error: null,
       lastUpdate: null,
-      staleLevel: 'fresh',
-      configuredSymbols: [],
-      configSource: 'static',
-      cacheInfo: {},
-      // 分階段載入狀態
-      loadingStages: {
-        config: false,
-        quotes: false,
-        dailyData: false,
-        metadata: false
-      }
+      configuredSymbols: []
     }
   },
   computed: {
     tickersConfig() {
-      return STOCK_OVERVIEW_CONFIG.MARKET_INDEX_CONFIG
+      return {
+        "symbols": [
+          {"proName": "FOREXCOM:SPXUSD","title": "S&P 500 Index"},
+          {"proName": "NASDAQ:NDX","title": "NASDAQ 100 Index"},
+          {"proName": "OPOFINANCE:DJIUSD","title": "Dow Jone Index"},
+          {"proName": "CAPITALCOM:RTY","title": "US Russel 2000"},
+          {"proName": "INDEX:BTCUSD","title": "BTC"},
+          {"proName": "TVC:GOLD","title": "GOLD"}
+        ],
+        "colorTheme": "light",
+        "locale": "en",
+        "largeChartUrl": "",
+        "isTransparent": true,
+        "showSymbolLogo": true
+      }
     },
 
     groupedStocks() {
@@ -182,11 +117,10 @@ export default {
       
       this.quotes.forEach(quote => {
         const symbolMetadata = this.metadata.items.find(m => m.symbol === quote.symbol)
-        const symbolDailyData = this.dailyData?.per_symbol.find(d => d.symbol === quote.symbol)
+        const symbolDailyData = this.dailyData?.per_symbol?.find(d => d.symbol === quote.symbol)
         
-        // 根據 PRD 要求：confidence >= 0.7 歸類為對應 sector
         let sector = 'Unknown'
-        if (symbolMetadata && symbolMetadata.confidence >= STOCK_OVERVIEW_CONFIG.MIN_CONFIDENCE_THRESHOLD) {
+        if (symbolMetadata && symbolMetadata.confidence >= 0.7) {
           sector = symbolMetadata.sector || 'Unknown'
         }
         
@@ -201,300 +135,326 @@ export default {
         })
       })
       
-      // 排序邏輯保持不變
+      // 自訂 Sector 排序順序
+      const sectorPriority = [
+        'Technology',
+        'Financial Services',
+        'Consumer Cyclical',
+        'Communication Services',
+        'Healthcare',
+        'Industrials',
+        'Consumer Defensive',
+        'Energy',
+        'Basic Materials',
+        'Real Estate',
+        'Utilities'
+      ]
+      
+      // 自訂 Industry 排序順序 (按 sector 分組)
+      const industryPriority = {
+        'Technology': [
+          'Semiconductors',
+          'Software - Infrastructure',
+          'Consumer Electronics',
+          'Software - Application',
+          'Information Technology Services',
+          'Semiconductor Equipment & Materials',
+          'Communication Equipment',
+          'Computer Hardware',
+          'Electronic Components',
+          'Scientific & Technical Instruments',
+          'Solar',
+          'Electronics & Computer Distribution'
+        ],
+        'Financial Services': [
+          'Banks - Diversified',
+          'Credit Services',
+          'Asset Management',
+          'Capital Markets',
+          'Insurance - Diversified',
+          'Banks - Regional',
+          'Financial Data & Stock Exchanges',
+          'Insurance - Property & Casualty',
+          'Insurance Brokers',
+          'Insurance - Life',
+          'Insurance - Specialty',
+          'Mortgage Finance',
+          'Insurance - Reinsurance',
+          'Financial Conglomerates',
+          'Shell Companies'
+        ],
+        'Consumer Cyclical': [
+          'Internet Retail',
+          'Auto Manufacturers',
+          'Restaurants',
+          'Home Improvement Retail',
+          'Travel Services',
+          'Apparel Retail',
+          'Auto Parts',
+          'Specialty Retail',
+          'Lodging',
+          'Residential Construction',
+          'Auto & Truck Dealerships',
+          'Packaging & Containers',
+          'Footwear & Accessories',
+          'Resorts & Casinos',
+          'Gambling',
+          'Leisure',
+          'Apparel Manufacturing',
+          'Furnishings, Fixtures & Appliances',
+          'Personal Services',
+          'Luxury Goods',
+          'Recreational Vehicles',
+          'Department Stores',
+          'Education & Training Services'
+        ],
+        'Communication Services': [
+          'Internet Content & Information',
+          'Telecom Services',
+          'Entertainment',
+          'Advertising Agencies',
+          'Electronic Gaming & Multimedia',
+          'Publishing',
+          'Broadcasting'
+        ],
+        'Healthcare': [
+          'Drug Manufacturers - General',
+          'Biotechnology',
+          'Medical Devices',
+          'Diagnostics & Research',
+          'Healthcare Plans',
+          'Medical Instruments & Supplies',
+          'Medical Distribution',
+          'Medical Care Facilities',
+          'Drug Manufacturers - Specialty & Generic',
+          'Health Information Services',
+          'Pharmaceutical Retailers'
+        ],
+        'Industrials': [
+          'Aerospace & Defense',
+          'Specialty Industrial Machinery',
+          'Farm & Heavy Construction Machinery',
+          'Railroads',
+          'Engineering & Construction',
+          'Building Products & Equipment',
+          'Specialty Business Services',
+          'Waste Management',
+          'Industrial Distribution',
+          'Conglomerates',
+          'Integrated Freight & Logistics',
+          'Electrical Equipment & Parts',
+          'Rental & Leasing Services',
+          'Airlines',
+          'Trucking',
+          'Consulting Services',
+          'Tools & Accessories',
+          'Metal Fabrication',
+          'Pollution & Treatment Controls',
+          'Security & Protection Services',
+          'Marine Shipping',
+          'Airports & Air Services',
+          'Staffing & Employment Services',
+          'Business Equipment & Supplies',
+          'Infrastructure Operations'
+        ],
+        'Consumer Defensive': [
+          'Discount Stores',
+          'Beverages - Non-Alcoholic',
+          'Household & Personal Products',
+          'Tobacco',
+          'Packaged Foods',
+          'Confectioners',
+          'Farm Products',
+          'Food Distribution',
+          'Grocery Stores',
+          'Education & Training Services',
+          'Beverages - Brewers',
+          'Beverages - Wineries & Distilleries'
+        ],
+        'Energy': [
+          'Oil & Gas Integrated',
+          'Oil & Gas Midstream',
+          'Oil & Gas E&P',
+          'Oil & Gas Equipment & Services',
+          'Oil & Gas Refining & Marketing',
+          'Uranium',
+          'Oil & Gas Drilling',
+          'Thermal Coal',
+          'Utilities - Independent Power Producers'
+        ],
+        'Basic Materials': [
+          'Gold',
+          'Specialty Chemicals',
+          'Building Materials',
+          'Copper',
+          'Steel',
+          'Agricultural Inputs',
+          'Other Industrial Metals & Mining',
+          'Chemicals',
+          'Other Precious Metals & Mining',
+          'Aluminum',
+          'Lumber & Wood Production',
+          'Silver',
+          'Coking Coal',
+          'Paper & Paper Products'
+        ],
+        'Real Estate': [
+          'REIT - Specialty',
+          'REIT - Industrial',
+          'REIT - Healthcare Facilities',
+          'REIT - Retail',
+          'REIT - Residential',
+          'Real Estate Services',
+          'REIT - Mortgage',
+          'REIT - Office',
+          'REIT - Diversified',
+          'REIT - Hotel & Motel',
+          'Real Estate - Development',
+          'Real Estate - Diversified'
+        ],
+        'Utilities': [
+          'Utilities - Regulated Electric',
+          'Utilities - Independent Power Producers',
+          'Utilities - Regulated Gas',
+          'Utilities - Diversified',
+          'Utilities - Renewable',
+          'Utilities - Regulated Water'
+        ]
+      }
+      
+      // 按自訂順序排序，只顯示有股票的 sector
       const sortedGroups = {}
-      Object.keys(groups)
-        .sort()
-        .forEach(sector => {
-          sortedGroups[sector] = groups[sector].sort((a, b) => {
-            const exchangeA = this.getStockExchange(a.quote.symbol, a.metadata)
-            const exchangeB = this.getStockExchange(b.quote.symbol, b.metadata)
-            
-            if (exchangeA !== exchangeB) {
-              return exchangeA.localeCompare(exchangeB)
+      
+      // 1. 先按優先順序添加有股票的 sector
+      sectorPriority.forEach(sector => {
+        if (groups[sector] && groups[sector].length > 0) {
+          // 在每個 sector 內按 industry 排序
+          const sectorIndustryPriority = industryPriority[sector] || []
+          
+          // 按 industry 分組
+          const industryGroups = {}
+          groups[sector].forEach(stock => {
+            const industry = stock.metadata?.industry || 'Unknown Industry'
+            if (!industryGroups[industry]) {
+              industryGroups[industry] = []
             }
-            
-            const industryA = this.getStockIndustry(a.metadata)
-            const industryB = this.getStockIndustry(b.metadata)
-            
-            if (industryA !== industryB) {
-              return industryA.localeCompare(industryB)
-            }
-            
-            return a.quote.symbol.toUpperCase().localeCompare(b.quote.symbol.toUpperCase())
+            industryGroups[industry].push(stock)
           })
-        })
+          
+          // 按 industry 優先順序排序
+          const sortedStocks = []
+          
+          // 先添加有優先順序的 industry
+          sectorIndustryPriority.forEach(industry => {
+            if (industryGroups[industry]) {
+              // 在每個 industry 內按 market cap 從大到小排序
+              const sortedIndustryStocks = industryGroups[industry].sort((a, b) => {
+                const marketCapA = a.metadata?.market_cap || 0
+                const marketCapB = b.metadata?.market_cap || 0
+                
+                // 如果 market cap 相同或都為 0，則按 symbol 字母順序排序
+                if (marketCapA === marketCapB) {
+                  return a.quote.symbol.localeCompare(b.quote.symbol)
+                }
+                
+                // Market cap 從大到小排序
+                return marketCapB - marketCapA
+              })
+              sortedStocks.push(...sortedIndustryStocks)
+            }
+          })
+          
+          // 再添加不在優先列表中的其他 industry
+          Object.keys(industryGroups).forEach(industry => {
+            if (!sectorIndustryPriority.includes(industry)) {
+              const sortedIndustryStocks = industryGroups[industry].sort((a, b) => {
+                const marketCapA = a.metadata?.market_cap || 0
+                const marketCapB = b.metadata?.market_cap || 0
+                
+                // 如果 market cap 相同或都為 0，則按 symbol 字母順序排序
+                if (marketCapA === marketCapB) {
+                  return a.quote.symbol.localeCompare(b.quote.symbol)
+                }
+                
+                // Market cap 從大到小排序
+                return marketCapB - marketCapA
+              })
+              sortedStocks.push(...sortedIndustryStocks)
+            }
+          })
+          
+          sortedGroups[sector] = sortedStocks
+        }
+      })
+      
+      // 2. 添加不在優先列表中但有股票的其他 sector (如 Unknown)
+      Object.keys(groups).forEach(sector => {
+        if (!sectorPriority.includes(sector) && groups[sector].length > 0) {
+          sortedGroups[sector] = groups[sector].sort((a, b) => {
+            return a.quote.symbol.localeCompare(b.quote.symbol)
+          })
+        }
+      })
       
       return sortedGroups
     }
   },
   async mounted() {
-    // 頁面載入時滾動到頂部
-    this.scrollToTop()
-    
-    // 🔍 檢查是否需要強制刷新 (來自修復工具)
-    const forceReload = sessionStorage.getItem('force_reload_stock_overview')
-    const emergencyFix = sessionStorage.getItem('emergency_fix_applied')
-    const targetedFix = sessionStorage.getItem('targeted_fix_applied')
-    
-    if (forceReload || emergencyFix || targetedFix) {
-      console.log('🔄 Force reload detected, clearing all caches')
-      performanceCache.delete(CACHE_KEYS.STOCK_OVERVIEW_DATA)
-      performanceCache.delete(CACHE_KEYS.QUOTES_SNAPSHOT)
-      performanceCache.delete(CACHE_KEYS.SYMBOLS_CONFIG)
-      
-      // 🚨 重要：也清除 stocksConfig 的內存緩存
-      await stocksConfig.refresh()
-      console.log('🗑️ StocksConfig cache cleared')
-      
-      // 清除標記以避免重複執行
-      sessionStorage.removeItem('force_reload_stock_overview')
-      if (emergencyFix) {
-        console.log('🚨 Emergency fix applied at:', new Date(parseInt(emergencyFix)))
-        sessionStorage.removeItem('emergency_fix_applied')
-      }
-      if (targetedFix) {
-        console.log('🎯 Targeted fix applied at:', new Date(parseInt(targetedFix)))
-        sessionStorage.removeItem('targeted_fix_applied')
-      }
-    }
-    
-    performanceMonitor.start(PERFORMANCE_LABELS.STOCK_OVERVIEW_LOAD)
-    
-    await this.loadSymbolsConfig()
     await this.loadStockData()
-    
-    performanceMonitor.end(PERFORMANCE_LABELS.STOCK_OVERVIEW_LOAD)
-    
-    // 生成性能報告
-    const report = performanceMonitor.generateReport()
-    performanceMonitor.checkPerformanceWarnings()
-  },
-  watch: {
-    $route() {
-      // 當路由改變時，滾動到頂部
-      this.scrollToTop()
-    }
   },
   methods: {
-    async loadSymbolsConfig() {
-      this.loadingStages.config = true
-      try {
-        await performanceMonitor.measureAsync(PERFORMANCE_LABELS.SYMBOLS_CONFIG_LOAD, async () => {
-          this.configuredSymbols = await stocksConfig.getEnabledSymbols()
-          this.configSource = stocksConfig.getConfigSource()
-          this.cacheInfo = stocksConfig.getCacheInfo()
-        })
-        
-        console.log(`✅ Loaded ${this.configuredSymbols.length} symbols from ${this.configSource}:`, this.configuredSymbols)
-        console.log('📊 Cache info:', this.cacheInfo)
-        
-        // 檢查是否有遺漏的股票 - 從 stocksConfig 獲取完整列表
-        const allSymbols = await stocksConfig.getEnabledSymbols()
-        const missingSymbols = allSymbols.filter(symbol => !this.configuredSymbols.includes(symbol))
-        if (missingSymbols.length > 0) {
-          console.warn('⚠️ Missing symbols:', missingSymbols)
-        }
-        
-      } catch (error) {
-        console.warn('❌ Failed to load stocks config:', error)
-        this.configuredSymbols = await stocksConfig.getEnabledSymbols()
-        this.configSource = 'fallback'
-        this.cacheInfo = stocksConfig.getCacheInfo()
-        console.log(`🔄 Fallback to emergency symbols (${this.configuredSymbols.length}):`, this.configuredSymbols)
-      } finally {
-        this.loadingStages.config = false
-      }
-    },
-
-    async getStockExchange(symbol, metadata) {
-      // 優先使用統一配置服務
-      try {
-        const exchange = await stocksConfig.getStockExchange(symbol)
-        return exchange
-      } catch (error) {
-        console.warn(`Failed to get exchange for ${symbol}:`, error)
-        
-        // Fallback 到 metadata
-        if (metadata && metadata.exchange) {
-          return STOCK_OVERVIEW_CONFIG.EXCHANGE_CODE_MAP[metadata.exchange] || metadata.exchange
-        }
-        
-        // 最終 fallback
-        return STOCK_OVERVIEW_CONFIG.DEFAULT_EXCHANGE
-      }
-    },
-
-    getStockIndustry(metadata) {
-      if (!metadata) {
-        console.warn('No metadata provided to getStockIndustry')
-        return 'Unknown Industry'
-      }
-      
-      // Debug logging for problematic symbols
-      if (metadata.symbol && ['CRM', 'IONQ'].includes(metadata.symbol)) {
-        console.log(`StockOverview - ${metadata.symbol} metadata:`, metadata)
-        console.log(`StockOverview - ${metadata.symbol} confidence:`, metadata.confidence)
-        console.log(`StockOverview - ${metadata.symbol} industry:`, metadata.industry)
-        console.log(`StockOverview - ${metadata.symbol} sector:`, metadata.sector)
-      }
-      
-      // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
-      if (metadata.confidence < STOCK_OVERVIEW_CONFIG.MIN_CONFIDENCE_THRESHOLD) {
-        console.warn(`Low confidence (${metadata.confidence}) for ${metadata.symbol}`)
-        return 'Unknown Industry'
-      }
-      
-      // 返回完整的 industry 信息，如果沒有則顯示 sector
-      const result = metadata.industry || metadata.sector || 'Unknown Industry'
-      
-      // Debug logging for problematic symbols
-      if (metadata.symbol && ['CRM', 'IONQ'].includes(metadata.symbol)) {
-        console.log(`StockOverview - ${metadata.symbol} final industry result:`, result)
-      }
-      
-      return result
-    },
-
     async loadStockData() {
       this.loading = true
       this.error = null
       
       try {
-        // 🚀 性能優化：檢查緩存中是否有完整的股票概覽數據
-        const cachedData = performanceCache.get(CACHE_KEYS.STOCK_OVERVIEW_DATA)
-        if (cachedData) {
-          // 🔍 檢查緩存數據是否包含足夠的股票數量 (應該有 67 個)
-          const expectedMinSymbols = 60 // 設置最小期望數量，允許一些容錯
-          const cachedSymbolCount = cachedData.quotes ? cachedData.quotes.length : 0
-          
-          if (cachedSymbolCount >= expectedMinSymbols) {
-            console.log(`📦 Using cached stock overview data (${cachedSymbolCount} symbols)`)
-            this.quotes = cachedData.quotes
-            this.dailyData = cachedData.dailyData
-            this.metadata = cachedData.metadata
-            this.lastUpdate = cachedData.lastUpdate
-            this.staleLevel = cachedData.staleLevel
-            this.loading = false
-            return
-          } else {
-            console.warn(`🗑️ Cached data has insufficient symbols (${cachedSymbolCount} < ${expectedMinSymbols}), clearing cache`)
-            performanceCache.delete(CACHE_KEYS.STOCK_OVERVIEW_DATA)
-          }
+        console.log('🚀 Starting simple stock data load...')
+        
+        // 1. 載入配置
+        this.configuredSymbols = await stocksConfig.getEnabledSymbols()
+        console.log(`✅ Loaded ${this.configuredSymbols.length} symbols from config`)
+        
+        // 2. 直接載入 quotes 數據
+        const quotesResponse = await fetch('/data/quotes/latest.json?t=' + Date.now())
+        if (!quotesResponse.ok) {
+          throw new Error(`Failed to load quotes: HTTP ${quotesResponse.status}`)
         }
-
-        // 🚀 性能優化：暫時禁用動態 API，使用靜態數據
-        // 避免大量 Yahoo Finance API 請求導致載入緩慢
-        metadataService.setUseDynamicAPI(false)
         
-        // 分階段並行載入數據
-        this.loadingStages.quotes = true
-        this.loadingStages.dailyData = true
-        
-        const [quotesResult, dailyResult] = await Promise.all([
-          dataFetcher.fetchQuotesSnapshot(),
-          dataFetcher.fetchDailySnapshot()
-        ])
-        
-        // 處理 quotes - 只顯示配置中的 symbols
-        if (quotesResult.data && quotesResult.data.items) {
-          // 過濾只顯示配置的 symbols
-          const allQuotes = quotesResult.data.items
-          this.quotes = allQuotes.filter(quote => 
+        const quotesData = await quotesResponse.json()
+        if (quotesData.items) {
+          this.quotes = quotesData.items.filter(quote => 
             this.configuredSymbols.includes(quote.symbol)
           )
-          
-          console.log(`📈 Total quotes available: ${allQuotes.length}`)
-          console.log(`🎯 Filtered quotes for configured symbols: ${this.quotes.length}`)
-          console.log(`📋 Quote symbols:`, this.quotes.map(q => q.symbol).sort())
-          
-          this.lastUpdate = quotesResult.as_of
-          this.staleLevel = quotesResult.stale_level
-        }
-        this.loadingStages.quotes = false
-        
-        // 處理 daily data
-        if (dailyResult.data) {
-          this.dailyData = dailyResult.data
-        }
-        this.loadingStages.dailyData = false
-        
-        // 獲取所有股票的 metadata (使用直接載入器)
-        if (this.quotes.length > 0) {
-          this.loadingStages.metadata = true
-          const symbols = this.quotes.map(quote => quote.symbol)
-          
-          // 使用直接載入器
-          const { directMetadataLoader } = await import('@/utils/directMetadataLoader.js')
-          const metadataMap = await directMetadataLoader.getBatchMetadata(symbols)
-          
-          // 轉換為原有格式以保持兼容性
-          this.metadata = {
-            items: Array.from(metadataMap.values()),
-            as_of: new Date().toISOString(),
-            source: 'DirectMetadataLoader'
-          }
-          
-          this.loadingStages.metadata = false
+          this.lastUpdate = quotesData.as_of
+          console.log(`✅ Loaded ${this.quotes.length} quotes`)
         }
         
-        // 🚀 緩存完整的股票概覽數據
-        const dataToCache = {
-          quotes: this.quotes,
-          dailyData: this.dailyData,
-          metadata: this.metadata,
-          lastUpdate: this.lastUpdate,
-          staleLevel: this.staleLevel
+        // 3. 直接載入 daily 數據
+        const dailyResponse = await fetch('/data/daily/2025-12-28.json?t=' + Date.now())
+        if (dailyResponse.ok) {
+          this.dailyData = await dailyResponse.json()
+          console.log(`✅ Loaded daily data`)
         }
-        performanceCache.set(CACHE_KEYS.STOCK_OVERVIEW_DATA, dataToCache, CACHE_TTL.QUOTES)
-        console.log('💾 Cached stock overview data for future use')
         
-        // 如果沒有任何數據，顯示錯誤
-        if (!this.quotes.length && !this.dailyData && !this.metadata) {
-          throw new Error('No stock data available')
+        // 4. 直接載入 metadata
+        const metadataResponse = await fetch('/data/symbols_metadata.json?t=' + Date.now())
+        if (metadataResponse.ok) {
+          this.metadata = await metadataResponse.json()
+          console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)
         }
+        
+        console.log('✅ Simple stock data load completed successfully!')
         
       } catch (err) {
         this.error = String(err)
-        console.error('Failed to load stock data:', err)
-        // 重置所有載入狀態
-        Object.keys(this.loadingStages).forEach(key => {
-          this.loadingStages[key] = false
-        })
+        console.error('❌ Simple stock data load failed:', err)
       } finally {
         this.loading = false
       }
     },
 
     async refresh() {
-      // 清除緩存以強制重新載入
-      performanceCache.delete(CACHE_KEYS.STOCK_OVERVIEW_DATA)
-      console.log('🗑️ Cleared stock overview cache')
-      
-      // 🚨 重要：也清除 stocksConfig 的內存緩存
-      await stocksConfig.refresh()
-      console.log('🗑️ Cleared stocksConfig cache')
-      
-      // 手動刷新 symbols 配置快取
-      await this.loadSymbolsConfig()
       await this.loadStockData()
-    },
-
-    // 滾動到頁面頂部
-    scrollToTop() {
-      // 使用 nextTick 確保 DOM 已更新
-      this.$nextTick(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'smooth'
-        })
-        
-        // 備用方案：立即滾動
-        setTimeout(() => {
-          window.scrollTo(0, 0)
-        }, 100)
-      })
     },
 
     formatTime(timeString) {
@@ -549,41 +509,43 @@ export default {
   font-size: 0.9rem;
 }
 
-.header-right .mb-3 {
-  margin-bottom: 0;
+.loading {
+  text-align: center;
+  padding: 3rem;
 }
 
-.config-info {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
 }
 
-.config-source {
-  color: #007bff;
-  font-weight: 500;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.symbols-count {
-  color: #6c757d;
-  font-style: italic;
+.error {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  margin: 1rem 0;
 }
 
-.cache-info {
-  color: #28a745;
-  font-weight: 500;
-  font-size: 0.8rem;
+.no-data {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  background-color: #f8f9fa;
+  border-radius: 8px;
 }
 
-.update-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.9rem;
-}
-
-/* 統一的 Widget 容器樣式 */
 .widget-container-ticker {
   background: white;
   border: 1px solid #e0e0e0;
@@ -599,7 +561,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   background: #f8f9fa;
-  margin: -1rem -1rem 1rem -1rem; /* 負邊距讓 header 延伸到容器邊緣 */
+  margin: -1rem -1rem 1rem -1rem;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #e9ecef;
   border-top-left-radius: 8px;
@@ -641,69 +603,44 @@ export default {
   font-weight: 400;
 }
 
-/* Stock Cards Grid Layout */
 .stocks-in-group {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-/* 每個 StockCard 現在是一個完整的行，包含兩個 widgets */
 .stocks-in-group > * {
   width: 100%;
 }
 
-/* 禁用 stocks-in-group 的 hover 效果 */
-.stocks-in-group:hover {
-  /* 移除任何 hover 效果 */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.loading-with-skeleton {
-  /* 骨架屏載入容器 */
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
 }
 
-.error {
-  text-align: center;
-  padding: 2rem;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
-  margin: 1rem 0;
+.btn-secondary:hover {
+  background-color: #5a6268;
 }
 
-.no-data {
-  text-align: center;
-  padding: 3rem;
-  color: #666;
-  background-color: #f8f9fa;
-  border-radius: 8px;
+.text-muted {
+  color: #6c757d;
 }
 
-/* 響應式設計 */
-
-/* 大螢幕 (桌機) - 1200px 以上 */
-@media (min-width: 1200px) {
-  .stocks-in-group {
-    gap: 2.5rem;
-  }
-  
-  .sector-group {
-    padding: 2rem;
-  }
+.text-danger {
+  color: #dc3545;
 }
 
-/* 中等螢幕 (平板橫向) - 768px 到 1199px */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .stocks-in-group {
-    gap: 2rem;
-  }
-  
-  .sector-group {
-    padding: 1.5rem;
-  }
+.mb-3 {
+  margin-bottom: 1rem;
 }
 
-/* 小螢幕 (平板直向和手機) - 768px 以下 */
 @media (max-width: 767px) {
   .stock-header {
     flex-direction: column;
@@ -711,32 +648,17 @@ export default {
     gap: 0.5rem;
   }
   
-  .update-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+  .sector-group {
+    padding: 1rem;
+    margin: 0 -0.5rem;
   }
   
   .stocks-in-group {
     gap: 1.5rem;
   }
-  
-  .sector-group {
-    padding: 1rem;
-    margin: 0 -0.5rem; /* 讓 sector group 稍微延伸到邊緣 */
-  }
-  
-  .sector-title {
-    font-size: 1rem;
-  }
 }
 
-/* 極小螢幕 (小手機) - 480px 以下 */
 @media (max-width: 480px) {
-  .stock-overview {
-    margin-bottom: 1rem;
-  }
-  
   .sector-groups {
     gap: 1.5rem;
   }
