@@ -8,7 +8,7 @@
 
 import { yfinanceMetadataService } from './yfinanceMetadataService.js';
 import { staticSectorIndustryService } from './staticSectorIndustryService.js';
-import { symbolsConfig } from './symbolsConfig.js';
+import { stocksConfig } from './stocksConfigService.js';
 
 class EnhancedMetadataService {
   constructor() {
@@ -81,7 +81,7 @@ class EnhancedMetadataService {
         }
 
         // 檢查是否需要更新
-        const symbols = await symbolsConfig.getSymbolsList();
+        const symbols = await stocksConfig.getEnabledSymbols();
         const updateResult = await this.yfinanceService.autoUpdate(symbols);
         
         if (updateResult.success) {
@@ -493,7 +493,7 @@ class EnhancedMetadataService {
    * @returns {Promise<Object>} 統計資訊
    */
   async getDetailedStats() {
-    const symbols = await symbolsConfig.getSymbolsList();
+    const symbols = await stocksConfig.getEnabledSymbols();
     const metadataMap = await this.getBatchMetadata(symbols);
     const updateStatus = await this.getUpdateStatus();
 

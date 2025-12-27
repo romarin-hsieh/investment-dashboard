@@ -4,7 +4,7 @@
 import { performanceCache, CACHE_KEYS, CACHE_TTL } from './performanceCache.js'
 import { performanceMonitor, PERFORMANCE_LABELS } from './performanceMonitor.js'
 import { dataFetcher } from '@/lib/fetcher'
-import { symbolsConfig } from './symbolsConfig'
+import { stocksConfig } from './stocksConfigService.js'
 import { metadataService } from './metadataService.js'
 
 class StockOverviewOptimizer {
@@ -41,7 +41,7 @@ class StockOverviewOptimizer {
     try {
       // 1. 預載入 symbols 配置
       performanceMonitor.start('preload_symbols_config')
-      const symbols = await symbolsConfig.getSymbolsList()
+      const symbols = await stocksConfig.getEnabledSymbols()
       performanceMonitor.end('preload_symbols_config')
 
       // 2. 預載入關鍵股票的 quotes
