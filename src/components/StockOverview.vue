@@ -70,13 +70,75 @@
 
 <script>
 import { dataFetcher } from '@/lib/fetcher'
-import { symbolsConfig } from '@/utils/symbolsConfig'
+import { stocksConfig } from '@/utils/stocksConfigService'
 import StockCard from './StockCard.vue'
 import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
 import SkeletonLoader from './SkeletonLoader.vue'
 import { metadataService } from '@/utils/metadataService.js'
 import { performanceCache, CACHE_KEYS, CACHE_TTL } from '@/utils/performanceCache.js'
 import { performanceMonitor, PERFORMANCE_LABELS } from '@/utils/performanceMonitor.js'
+
+// 配置常數 - 集中管理，易於維護
+const STOCK_OVERVIEW_CONFIG = {
+  // 交易所代碼映射
+  EXCHANGE_CODE_MAP: {
+    'NYQ': 'NYSE',    // New York Stock Exchange
+    'NMS': 'NASDAQ',  // NASDAQ Global Select Market
+    'NCM': 'NASDAQ',  // NASDAQ Capital Market
+    'NGM': 'NASDAQ',  // NASDAQ Global Market
+    'ASE': 'AMEX',    // American Stock Exchange
+    'AMEX': 'AMEX'    // American Stock Exchange
+  },
+  
+  // Symbol 到交易所的映射（備用方案）
+  SYMBOL_EXCHANGE_MAP: {
+    // NYSE symbols
+    'ORCL': 'NYSE', 'TSM': 'NYSE', 'RDW': 'NYSE', 'CRM': 'NYSE', 'PL': 'NYSE',
+    'LEU': 'NYSE', 'SMR': 'NYSE', 'IONQ': 'NYSE', 'HIMS': 'NYSE', 'VST': 'NYSE',
+    'RBRK': 'NYSE', 'OKLO': 'NYSE', 'PATH': 'NYSE', 'SE': 'NYSE', 'NU': 'NYSE',
+    'CRCL': 'NYSE', 'VRT': 'NYSE', 'ETN': 'NYSE', 'FIG': 'NYSE', 'ZETA': 'NYSE',
+    'MP': 'NYSE',
+    
+    // NASDAQ symbols
+    'ASTS': 'NASDAQ', 'RIVN': 'NASDAQ', 'ONDS': 'NASDAQ', 'AVAV': 'NASDAQ',
+    'MDB': 'NASDAQ', 'RKLB': 'NASDAQ', 'NVDA': 'NASDAQ', 'AVGO': 'NASDAQ',
+    'AMZN': 'NASDAQ', 'GOOG': 'NASDAQ', 'META': 'NASDAQ', 'NFLX': 'NASDAQ',
+    'CRWV': 'NASDAQ', 'PLTR': 'NASDAQ', 'TSLA': 'NASDAQ', 'KTOS': 'NASDAQ',
+    'MELI': 'NASDAQ', 'SOFI': 'NASDAQ', 'EOSE': 'NASDAQ', 'CEG': 'NASDAQ',
+    'TMDX': 'NASDAQ', 'GRAB': 'NASDAQ', 'RBLX': 'NASDAQ', 'IREN': 'NASDAQ',
+    'INTR': 'NASDAQ', 'KSPI': 'NASDAQ', 'LUNR': 'NASDAQ', 'HOOD': 'NASDAQ',
+    'APP': 'NASDAQ', 'CHYM': 'NASDAQ', 'COIN': 'NASDAQ', 'IBKR': 'NASDAQ',
+    'CCJ': 'NASDAQ', 'MSFT': 'NASDAQ', 'ADBE': 'NASDAQ', 'PAWN': 'NASDAQ',
+    'CRWD': 'NASDAQ', 'DDOG': 'NASDAQ', 'DUOL': 'NASDAQ', 'AXON': 'NASDAQ',
+    'ALAB': 'NASDAQ', 'LRCX': 'NASDAQ', 'BWXT': 'NASDAQ', 'RR': 'NASDAQ',
+    
+    // AMEX symbols
+    'UUUU': 'AMEX', 'UMAC': 'AMEX'
+  },
+  
+  // 預設交易所
+  DEFAULT_EXCHANGE: 'NASDAQ',
+  
+  // 最低信心度閾值
+  MIN_CONFIDENCE_THRESHOLD: 0.7,
+  
+  // Market Index 配置
+  MARKET_INDEX_CONFIG: {
+    "symbols": [
+      {"proName": "FOREXCOM:SPXUSD","title": "S&P 500 Index"},
+      {"proName": "NASDAQ:NDX","title": "NASDAQ 100 Index"},
+      {"proName": "OPOFINANCE:DJIUSD","title": "Dow Jone Index"},
+      {"proName": "CAPITALCOM:RTY","title": "US Russel 2000"},
+      {"proName": "INDEX:BTCUSD","title": "BTC"},
+      {"proName": "TVC:GOLD","title": "GOLD"}
+    ],
+    "colorTheme": "light",
+    "locale": "en",
+    "largeChartUrl": "",
+    "isTransparent": true,
+    "showSymbolLogo": true
+  }
+}
 
 export default {
   name: 'StockOverview',
@@ -108,21 +170,7 @@ export default {
   },
   computed: {
     tickersConfig() {
-      return {
-        "symbols": [
-          {"proName": "FOREXCOM:SPXUSD","title": "S&P 500 Index"},
-          {"proName": "NASDAQ:NDX","title": "NASDAQ 100 Index"},
-          {"proName": "OPOFINANCE:DJIUSD","title": "Dow Jone Index"},
-          {"proName": "CAPITALCOM:RTY","title": "US Russel 2000"},
-          {"proName": "INDEX:BTCUSD","title": "BTC"},
-          {"proName": "TVC:GOLD","title": "GOLD"}
-        ],
-        "colorTheme": "light",
-        "locale": "en",
-        "largeChartUrl": "",
-        "isTransparent": true,
-        "showSymbolLogo": true
-      }
+      return STOCK_OVERVIEW_CONFIG.MARKET_INDEX_CONFIG
     },
 
     groupedStocks() {
@@ -138,7 +186,7 @@ export default {
         
         // 根據 PRD 要求：confidence >= 0.7 歸類為對應 sector
         let sector = 'Unknown'
-        if (symbolMetadata && symbolMetadata.confidence >= 0.7) {
+        if (symbolMetadata && symbolMetadata.confidence >= STOCK_OVERVIEW_CONFIG.MIN_CONFIDENCE_THRESHOLD) {
           sector = symbolMetadata.sector || 'Unknown'
         }
         
@@ -184,6 +232,33 @@ export default {
     // 頁面載入時滾動到頂部
     this.scrollToTop()
     
+    // 🔍 檢查是否需要強制刷新 (來自修復工具)
+    const forceReload = sessionStorage.getItem('force_reload_stock_overview')
+    const emergencyFix = sessionStorage.getItem('emergency_fix_applied')
+    const targetedFix = sessionStorage.getItem('targeted_fix_applied')
+    
+    if (forceReload || emergencyFix || targetedFix) {
+      console.log('🔄 Force reload detected, clearing all caches')
+      performanceCache.delete(CACHE_KEYS.STOCK_OVERVIEW_DATA)
+      performanceCache.delete(CACHE_KEYS.QUOTES_SNAPSHOT)
+      performanceCache.delete(CACHE_KEYS.SYMBOLS_CONFIG)
+      
+      // 🚨 重要：也清除 stocksConfig 的內存緩存
+      await stocksConfig.refresh()
+      console.log('🗑️ StocksConfig cache cleared')
+      
+      // 清除標記以避免重複執行
+      sessionStorage.removeItem('force_reload_stock_overview')
+      if (emergencyFix) {
+        console.log('🚨 Emergency fix applied at:', new Date(parseInt(emergencyFix)))
+        sessionStorage.removeItem('emergency_fix_applied')
+      }
+      if (targetedFix) {
+        console.log('🎯 Targeted fix applied at:', new Date(parseInt(targetedFix)))
+        sessionStorage.removeItem('targeted_fix_applied')
+      }
+    }
+    
     performanceMonitor.start(PERFORMANCE_LABELS.STOCK_OVERVIEW_LOAD)
     
     await this.loadSymbolsConfig()
@@ -206,55 +281,48 @@ export default {
       this.loadingStages.config = true
       try {
         await performanceMonitor.measureAsync(PERFORMANCE_LABELS.SYMBOLS_CONFIG_LOAD, async () => {
-          this.configuredSymbols = await symbolsConfig.getSymbolsList()
-          this.configSource = symbolsConfig.getConfigSource()
-          this.cacheInfo = symbolsConfig.getCacheInfo()
+          this.configuredSymbols = await stocksConfig.getEnabledSymbols()
+          this.configSource = stocksConfig.getConfigSource()
+          this.cacheInfo = stocksConfig.getCacheInfo()
         })
         
         console.log(`✅ Loaded ${this.configuredSymbols.length} symbols from ${this.configSource}:`, this.configuredSymbols)
         console.log('📊 Cache info:', this.cacheInfo)
         
-        // 檢查是否有遺漏的股票 - 使用完整的 24 支股票列表
-        const expectedSymbols = ['ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB', 'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'TSLA']
-        const missingSymbols = expectedSymbols.filter(symbol => !this.configuredSymbols.includes(symbol))
+        // 檢查是否有遺漏的股票 - 從 stocksConfig 獲取完整列表
+        const allSymbols = await stocksConfig.getEnabledSymbols()
+        const missingSymbols = allSymbols.filter(symbol => !this.configuredSymbols.includes(symbol))
         if (missingSymbols.length > 0) {
           console.warn('⚠️ Missing symbols:', missingSymbols)
         }
         
       } catch (error) {
-        console.warn('❌ Failed to load symbols config:', error)
-        this.configuredSymbols = symbolsConfig.getStaticSymbols()
-        this.configSource = 'static'
-        this.cacheInfo = symbolsConfig.getCacheInfo()
-        console.log(`🔄 Fallback to static symbols (${this.configuredSymbols.length}):`, this.configuredSymbols)
+        console.warn('❌ Failed to load stocks config:', error)
+        this.configuredSymbols = await stocksConfig.getEnabledSymbols()
+        this.configSource = 'fallback'
+        this.cacheInfo = stocksConfig.getCacheInfo()
+        console.log(`🔄 Fallback to emergency symbols (${this.configuredSymbols.length}):`, this.configuredSymbols)
       } finally {
         this.loadingStages.config = false
       }
     },
 
-    getStockExchange(symbol, metadata) {
-      if (metadata && metadata.exchange) {
-        // 將 metadata 中的 exchange 代碼轉換為顯示名稱
-        const exchangeMap = {
-          'NYQ': 'NYSE',    // New York Stock Exchange
-          'NMS': 'NASDAQ',  // NASDAQ Global Select Market
-          'NCM': 'NASDAQ',  // NASDAQ Capital Market
-          'NGM': 'NASDAQ'   // NASDAQ Global Market
+    async getStockExchange(symbol, metadata) {
+      // 優先使用統一配置服務
+      try {
+        const exchange = await stocksConfig.getStockExchange(symbol)
+        return exchange
+      } catch (error) {
+        console.warn(`Failed to get exchange for ${symbol}:`, error)
+        
+        // Fallback 到 metadata
+        if (metadata && metadata.exchange) {
+          return STOCK_OVERVIEW_CONFIG.EXCHANGE_CODE_MAP[metadata.exchange] || metadata.exchange
         }
-        return exchangeMap[metadata.exchange] || metadata.exchange
+        
+        // 最終 fallback
+        return STOCK_OVERVIEW_CONFIG.DEFAULT_EXCHANGE
       }
-      
-      // 根據 symbol 推測交易所（備用方案）
-      // NYSE 股票
-      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS'].includes(symbol)) {
-        return 'NYSE'
-      }
-      // NASDAQ 股票
-      else if (['ASTS', 'RIVN', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'CRWV', 'PLTR', 'TSLA'].includes(symbol)) {
-        return 'NASDAQ'
-      }
-      
-      return 'NASDAQ' // 預設值
     },
 
     getStockIndustry(metadata) {
@@ -272,7 +340,7 @@ export default {
       }
       
       // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
-      if (metadata.confidence < 0.7) {
+      if (metadata.confidence < STOCK_OVERVIEW_CONFIG.MIN_CONFIDENCE_THRESHOLD) {
         console.warn(`Low confidence (${metadata.confidence}) for ${metadata.symbol}`)
         return 'Unknown Industry'
       }
@@ -296,14 +364,23 @@ export default {
         // 🚀 性能優化：檢查緩存中是否有完整的股票概覽數據
         const cachedData = performanceCache.get(CACHE_KEYS.STOCK_OVERVIEW_DATA)
         if (cachedData) {
-          console.log('📦 Using cached stock overview data')
-          this.quotes = cachedData.quotes
-          this.dailyData = cachedData.dailyData
-          this.metadata = cachedData.metadata
-          this.lastUpdate = cachedData.lastUpdate
-          this.staleLevel = cachedData.staleLevel
-          this.loading = false
-          return
+          // 🔍 檢查緩存數據是否包含足夠的股票數量 (應該有 67 個)
+          const expectedMinSymbols = 60 // 設置最小期望數量，允許一些容錯
+          const cachedSymbolCount = cachedData.quotes ? cachedData.quotes.length : 0
+          
+          if (cachedSymbolCount >= expectedMinSymbols) {
+            console.log(`📦 Using cached stock overview data (${cachedSymbolCount} symbols)`)
+            this.quotes = cachedData.quotes
+            this.dailyData = cachedData.dailyData
+            this.metadata = cachedData.metadata
+            this.lastUpdate = cachedData.lastUpdate
+            this.staleLevel = cachedData.staleLevel
+            this.loading = false
+            return
+          } else {
+            console.warn(`🗑️ Cached data has insufficient symbols (${cachedSymbolCount} < ${expectedMinSymbols}), clearing cache`)
+            performanceCache.delete(CACHE_KEYS.STOCK_OVERVIEW_DATA)
+          }
         }
 
         // 🚀 性能優化：暫時禁用動態 API，使用靜態數據
@@ -394,8 +471,11 @@ export default {
       performanceCache.delete(CACHE_KEYS.STOCK_OVERVIEW_DATA)
       console.log('🗑️ Cleared stock overview cache')
       
+      // 🚨 重要：也清除 stocksConfig 的內存緩存
+      await stocksConfig.refresh()
+      console.log('🗑️ Cleared stocksConfig cache')
+      
       // 手動刷新 symbols 配置快取
-      await symbolsConfig.refresh()
       await this.loadSymbolsConfig()
       await this.loadStockData()
     },
