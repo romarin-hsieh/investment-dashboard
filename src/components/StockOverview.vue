@@ -410,12 +410,15 @@ export default {
       try {
         console.log('🚀 Starting simple stock data load...')
         
+        // 動態獲取 base path
+        const basePath = import.meta.env.PROD ? '/investment-dashboard' : ''
+        
         // 1. 載入配置
         this.configuredSymbols = await stocksConfig.getEnabledSymbols()
         console.log(`✅ Loaded ${this.configuredSymbols.length} symbols from config`)
         
         // 2. 直接載入 quotes 數據
-        const quotesResponse = await fetch('/data/quotes/latest.json?t=' + Date.now())
+        const quotesResponse = await fetch(`${basePath}/data/quotes/latest.json?t=` + Date.now())
         if (!quotesResponse.ok) {
           throw new Error(`Failed to load quotes: HTTP ${quotesResponse.status}`)
         }
@@ -430,14 +433,14 @@ export default {
         }
         
         // 3. 直接載入 daily 數據
-        const dailyResponse = await fetch('/data/daily/2025-12-28.json?t=' + Date.now())
+        const dailyResponse = await fetch(`${basePath}/data/daily/2025-12-28.json?t=` + Date.now())
         if (dailyResponse.ok) {
           this.dailyData = await dailyResponse.json()
           console.log(`✅ Loaded daily data`)
         }
         
         // 4. 直接載入 metadata
-        const metadataResponse = await fetch('/data/symbols_metadata.json?t=' + Date.now())
+        const metadataResponse = await fetch(`${basePath}/data/symbols_metadata.json?t=` + Date.now())
         if (metadataResponse.ok) {
           this.metadata = await metadataResponse.json()
           console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)

@@ -14,8 +14,9 @@ class StocksConfigService {
    * 獲取股票配置文件的 URL
    */
   getConfigUrl() {
-    // 使用相對路徑，讓 Vite 的 base URL 自動處理
-    return '/config/stocks.json'
+    // 使用 import.meta.env 動態處理路徑
+    const basePath = import.meta.env.PROD ? '/investment-dashboard' : ''
+    return `${basePath}/config/stocks.json`
   }
 
   /**
