@@ -14,18 +14,7 @@ class StocksConfigService {
    * 獲取股票配置文件的 URL
    */
   getConfigUrl() {
-    const hostname = window.location.hostname
-    const pathname = window.location.pathname
-    
-    // GitHub Pages 檢測
-    if (hostname === 'romarin-hsieh.github.io') {
-      if (pathname.includes('/investment-dashboard/')) {
-        return '/investment-dashboard/config/stocks.json'
-      }
-      return '/investment-dashboard/config/stocks.json'
-    }
-    
-    // 本地開發環境
+    // 使用相對路徑，讓 Vite 的 base URL 自動處理
     return '/config/stocks.json'
   }
 
