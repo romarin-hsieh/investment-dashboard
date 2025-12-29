@@ -61,11 +61,11 @@ paths.technicalIndicators('2025-12-29', 'AAPL')  // 正常快取
 - **歸檔**: 超過30天的文件打包上傳到 GitHub Release
 - **頻率**: 每日自動執行
 
-## 🌐 生產環境 URL
+**生產環境 URL**
 
 ### 主要頁面
-- **首頁**: https://romarin1.github.io/investment-dashboard/
-- **測試頁面**: https://romarin1.github.io/investment-dashboard/test-data-update-robustness.html
+- **首頁**: https://romarin-hsieh.github.io/investment-dashboard/
+- **測試頁面**: https://romarin-hsieh.github.io/investment-dashboard/test-data-update-robustness.html
 
 ### 驗證步驟
 1. ✅ 訪問主頁確認正常運作
@@ -137,4 +137,4 @@ Data Update Robustness & Retention 實作已成功部署到生產環境！
 
 ---
 
-**🌟 立即體驗新功能**: https://romarin1.github.io/investment-dashboard/test-data-update-robustness.html
+**🌟 立即體驗新功能**: https://romarin-hsieh.github.io/investment-dashboard/test-data-update-robustness.html
