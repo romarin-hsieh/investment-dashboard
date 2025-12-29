@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFI Volume Profile Height Fix - Production Verification</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .header {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .verification-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .status-success { background: #d4edda; color: #155724; }
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-error { background: #f8d7da; color: #721c24; }
+        .test-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 0.5rem;
+            font-weight: 500;
+        }
+        .test-link:hover {
+            background: #0056b3;
+            color: white;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .checklist li:before {
+            content: "☐ ";
+            color: #6c757d;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .measurement-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .measurement-table th,
+        .measurement-table td {
+            border: 1px solid #e9ecef;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        .measurement-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        .expected { color: #28a745; font-weight: 600; }
+        .actual { color: #007bff; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 MFI Volume Profile Height Fix - Production Verification</h1>
+        <p><strong>部署狀態:</strong> <span class="status-badge status-success">✅ Force Deployed</span></p>
+        <p><strong>Git Commit:</strong> 60cfc24</p>
+        <p><strong>部署時間:</strong> 2025-01-29</p>
+        <p><strong>Production URL:</strong> <a href="https://romarin1.github.io/investment-dashboard/" target="_blank">https://romarin1.github.io/investment-dashboard/</a></p>
+    </div>
+
+    <div class="verification-section">
+        <h2>📊 快速測試連結</h2>
+        <p>點擊以下連結直接測試 MFI Volume Profile 功能：</p>
+        <a href="https://romarin1.github.io/investment-dashboard/#/stock/AAPL" target="_blank" class="test-link">測試 AAPL</a>
+        <a href="https://romarin1.github.io/investment-dashboard/#/stock/NVDA" target="_blank" class="test-link">測試 NVDA</a>
+        <a href="https://romarin1.github.io/investment-dashboard/#/stock/TSLA" target="_blank" class="test-link">測試 TSLA</a>
+        <a href="https://romarin1.github.io/investment-dashboard/#/stock/MSFT" target="_blank" class="test-link">測試 MSFT</a>
+    </div>
+
+    <div class="verification-section">
+        <h2>🔍 高度測量驗證</h2>
+        <p>使用瀏覽器開發者工具檢查以下元素的高度：</p>
+        
+        <table class="measurement-table">
+            <thead>
+                <tr>
+                    <th>元素選擇器</th>
+                    <th>預期高度</th>
+                    <th>實際高度</th>
+                    <th>狀態</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>.insight-full-widget.mfi-volume-profile</code></td>
+                    <td class="expected">≥ 954px (auto)</td>
+                    <td class="actual">待測量</td>
+                    <td><span class="status-badge status-pending">待驗證</span></td>
+                </tr>
+                <tr>
+                    <td><code>.chart-container</code></td>
+                    <td class="expected">600px</td>
+                    <td class="actual">待測量</td>
+                    <td><span class="status-badge status-pending">待驗證</span></td>
+                </tr>
+                <tr>
+                    <td><code>.volume-bars</code></td>
+                    <td class="expected">50 個 bins</td>
+                    <td class="actual">待計算</td>
+                    <td><span class="status-badge status-pending">待驗證</span></td>
+                </tr>
+                <tr>
+                    <td><code>.chart-header</code></td>
+                    <td class="expected">~52px</td>
+                    <td class="actual">待測量</td>
+                    <td><span class="status-badge status-pending">待驗證</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="verification-section">
+        <h2>🧪 開發者工具檢查步驟</h2>
+        <ol>
+            <li>打開任一測試連結 (建議 AAPL)</li>
+            <li>滾動到 "MFI Volume Profile" 區塊</li>
+            <li>按 F12 打開開發者工具</li>
+            <li>在 Elements 面板中找到 MFI Volume Profile 容器</li>
+            <li>檢查以下 CSS 屬性：</li>
+        </ol>
+        
+        <div class="code-block">
+/* 外層容器應該是自動高度 */
+.insight-full-widget.mfi-volume-profile {
+    min-height: auto;
+    height: auto;
+}
+
+/* Chart 容器應該是 600px */
+.chart-container {
+    height: 600px;
+}
+
+/* Volume bars 應該包含 50 個 bins */
+.volume-bars .volume-bar-row {
+    /* 應該有 50 個這樣的元素 */
+    height: 12px;
+}
+        </div>
+    </div>
+
+    <div class="verification-section">
+        <h2>✅ 功能驗證清單</h2>
+        <ul class="checklist">
+            <li>MFI Volume Profile 區塊完全可見</li>
+            <li>所有 50 個 Volume Profile bins 都顯示</li>
+            <li>無需滾動即可看到完整內容</li>
+            <li>Chart container 高度為 600px</li>
+            <li>外層容器高度 ≥ 954px</li>
+            <li>響應式設計在桌面版正常</li>
+            <li>響應式設計在平板版正常</li>
+            <li>響應式設計在手機版正常</li>
+            <li>MFI 數據正常載入和顯示</li>
+            <li>Volume Profile 圖表正常渲染</li>
+            <li>Trading Signals 區塊正常顯示</li>
+            <li>其他 StockDetail 功能不受影響</li>
+        </ul>
+    </div>
+
+    <div class="verification-section">
+        <h2>📱 響應式測試</h2>
+        <p>在不同螢幕尺寸下測試 MFI Volume Profile：</p>
+        <ul>
+            <li><strong>桌面版</strong> (>1200px): 完全展開，所有內容可見</li>
+            <li><strong>平板版</strong> (≤1200px): 完全展開，所有內容可見</li>
+            <li><strong>手機版</strong> (≤768px): 完全展開，所有內容可見</li>
+            <li><strong>小螢幕</strong> (≤480px): 完全展開，所有內容可見</li>
+        </ul>
+        
+        <p>使用開發者工具的設備模擬器測試各種螢幕尺寸。</p>
+    </div>
+
+    <div class="verification-section">
+        <h2>🔧 技術改進總結</h2>
+        <h3>修正前 ❌</h3>
+        <ul>
+            <li>Volume Profile 被截斷在 750px 容器內</li>
+            <li>chart-container 被壓縮到 345.48px</li>
+            <li>50個 bins 無法完全顯示</li>
+            <li>需要滾動查看內容</li>
+        </ul>
+        
+        <h3>修正後 ✅</h3>
+        <ul>
+            <li>Volume Profile 完全展開 (954.52px)</li>
+            <li>chart-container 使用完整 600px</li>
+            <li>所有 50個 bins 完全可見</li>
+            <li>無需滾動，一目了然</li>
+        </ul>
+    </div>
+
+    <div class="verification-section">
+        <h2>🚨 問題回報</h2>
+        <p>如果發現任何問題，請記錄以下資訊：</p>
+        <ul>
+            <li>瀏覽器類型和版本</li>
+            <li>螢幕解析度</li>
+            <li>測試的股票代號</li>
+            <li>具體的問題描述</li>
+            <li>開發者工具中的實際測量值</li>
+            <li>截圖 (如果可能)</li>
+        </ul>
+    </div>
+
+    <script>
+        // 自動檢測當前環境
+        document.addEventListener('DOMContentLoaded', function() {
+            const isProduction = window.location.hostname === 'romarin1.github.io';
+            const envBadge = document.createElement('span');
+            envBadge.className = 'status-badge ' + (isProduction ? 'status-success' : 'status-pending');
+            envBadge.textContent = isProduction ? '✅ Production' : '⚠️ Local/Dev';
+            
+            const header = document.querySelector('.header p');
+            header.appendChild(document.createTextNode(' '));
+            header.appendChild(envBadge);
+        });
+
+        // 提供快速測量工具
+        function measureElements() {
+            const measurements = {};
+            
+            // 測量主要元素
+            const mfiContainer = document.querySelector('.insight-full-widget.mfi-volume-profile');
+            const chartContainer = document.querySelector('.chart-container');
+            const volumeBars = document.querySelectorAll('.volume-bar-row');
+            const chartHeader = document.querySelector('.chart-header');
+            
+            if (mfiContainer) measurements.mfiContainer = mfiContainer.offsetHeight + 'px';
+            if (chartContainer) measurements.chartContainer = chartContainer.offsetHeight + 'px';
+            if (volumeBars) measurements.volumeBars = volumeBars.length + ' bins';
+            if (chartHeader) measurements.chartHeader = chartHeader.offsetHeight + 'px';
+            
+            console.log('MFI Volume Profile Measurements:', measurements);
+            return measurements;
+        }
+
+        // 在控制台提供測量函數
+        window.measureMFI = measureElements;
+        console.log('💡 Tip: 在 StockDetail 頁面執行 measureMFI() 來快速測量元素高度');
+    </script>
+</body>
+</html>
