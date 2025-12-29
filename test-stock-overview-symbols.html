@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Overview Symbols Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .symbol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .symbol-item {
+            padding: 8px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .symbol-item.new {
+            background: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .exchange-group {
+            margin-bottom: 20px;
+        }
+        .exchange-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border-radius: 4px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .test-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .test-button:hover {
+            background: #218838;
+        }
+        .log-area {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Overview Symbols Test</h1>
+    <p>測試 StockOverview.vue 是否正確顯示所有 68 個 symbols</p>
+
+    <div class="test-container">
+        <h2>Symbol 統計</h2>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-symbols">68</div>
+                <div>總 Symbols</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="new-symbols">44</div>
+                <div>新增 Symbols</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="nyse-symbols">21</div>
+                <div>NYSE</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="nasdaq-symbols">45</div>
+                <div>NASDAQ</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="amex-symbols">2</div>
+                <div>AMEX</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>測試操作</h2>
+        <button class="test-button" onclick="testSymbolsConfig()">測試 SymbolsConfig</button>
+        <button class="test-button" onclick="testExchangeMapping()">測試交易所映射</button>
+        <button class="test-button" onclick="testNewSymbols()">測試新增 Symbols</button>
+        <button class="test-button" onclick="openStockOverview()">打開 Stock Overview</button>
+        <button class="test-button" onclick="clearLog()">清除日誌</button>
+    </div>
+
+    <div class="test-container">
+        <h2>所有 Symbols 按交易所分組</h2>
+        
+        <div class="exchange-group">
+            <div class="exchange-title">NYSE (21 symbols)</div>
+            <div class="symbol-grid" id="nyse-symbols-grid"></div>
+        </div>
+
+        <div class="exchange-group">
+            <div class="exchange-title">NASDAQ (45 symbols)</div>
+            <div class="symbol-grid" id="nasdaq-symbols-grid"></div>
+        </div>
+
+        <div class="exchange-group">
+            <div class="exchange-title">AMEX (2 symbols)</div>
+            <div class="symbol-grid" id="amex-symbols-grid"></div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>測試日誌</h2>
+        <div class="log-area" id="log-area"></div>
+    </div>
+
+    <script>
+        // 完整的 68 個 symbols 列表
+        const ALL_SYMBOLS = [
+            'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
+            'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
+            'IONQ', 'PLTR', 'HIMS', 'TSLA', 'VST', 'KTOS', 'MELI', 'SOFI', 'RBRK', 'EOSE',
+            'CEG', 'TMDX', 'GRAB', 'RBLX', 'IREN', 'OKLO', 'PATH', 'INTR', 'SE', 'KSPI',
+            'LUNR', 'HOOD', 'APP', 'CHYM', 'NU', 'COIN', 'CRCL', 'IBKR', 'CCJ', 'UUUU',
+            'VRT', 'ETN', 'MSFT', 'ADBE', 'FIG', 'PANW', 'CRWD', 'DDOG', 'DUOL', 'ZETA',
+            'AXON', 'ALAB', 'LRCX', 'BWXT', 'UMAC', 'MP', 'RR'
+        ];
+
+        // 原有的 24 個 symbols
+        const ORIGINAL_SYMBOLS = [
+            'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
+            'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
+            'IONQ', 'PLTR', 'HIMS', 'TSLA'
+        ];
+
+        // 交易所映射
+        const EXCHANGE_MAPPING = {
+            // NYSE symbols
+            'ORCL': 'NYSE', 'TSM': 'NYSE', 'RDW': 'NYSE', 'CRM': 'NYSE', 'PL': 'NYSE',
+            'LEU': 'NYSE', 'SMR': 'NYSE', 'IONQ': 'NYSE', 'HIMS': 'NYSE', 'VST': 'NYSE',
+            'RBRK': 'NYSE', 'OKLO': 'NYSE', 'PATH': 'NYSE', 'SE': 'NYSE', 'NU': 'NYSE',
+            'CRCL': 'NYSE', 'VRT': 'NYSE', 'ETN': 'NYSE', 'FIG': 'NYSE', 'ZETA': 'NYSE',
+            'MP': 'NYSE',
+            
+            // NASDAQ symbols
+            'ASTS': 'NASDAQ', 'RIVN': 'NASDAQ', 'ONDS': 'NASDAQ', 'AVAV': 'NASDAQ',
+            'MDB': 'NASDAQ', 'RKLB': 'NASDAQ', 'NVDA': 'NASDAQ', 'AVGO': 'NASDAQ',
+            'AMZN': 'NASDAQ', 'GOOG': 'NASDAQ', 'META': 'NASDAQ', 'NFLX': 'NASDAQ',
+            'CRWV': 'NASDAQ', 'PLTR': 'NASDAQ', 'TSLA': 'NASDAQ', 'KTOS': 'NASDAQ',
+            'MELI': 'NASDAQ', 'SOFI': 'NASDAQ', 'EOSE': 'NASDAQ', 'CEG': 'NASDAQ',
+            'TMDX': 'NASDAQ', 'GRAB': 'NASDAQ', 'RBLX': 'NASDAQ', 'IREN': 'NASDAQ',
+            'INTR': 'NASDAQ', 'KSPI': 'NASDAQ', 'LUNR': 'NASDAQ', 'HOOD': 'NASDAQ',
+            'APP': 'NASDAQ', 'CHYM': 'NASDAQ', 'COIN': 'NASDAQ', 'IBKR': 'NASDAQ',
+            'CCJ': 'NASDAQ', 'MSFT': 'NASDAQ', 'ADBE': 'NASDAQ', 'PANW': 'NASDAQ',
+            'CRWD': 'NASDAQ', 'DDOG': 'NASDAQ', 'DUOL': 'NASDAQ', 'AXON': 'NASDAQ',
+            'ALAB': 'NASDAQ', 'LRCX': 'NASDAQ', 'BWXT': 'NASDAQ', 'RR': 'NASDAQ',
+            
+            // AMEX symbols
+            'UUUU': 'AMEX', 'UMAC': 'AMEX'
+        };
+
+        function log(message) {
+            const logArea = document.getElementById('log-area');
+            const timestamp = new Date().toLocaleTimeString();
+            logArea.textContent += `[${timestamp}] ${message}\n`;
+            logArea.scrollTop = logArea.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('log-area').textContent = '';
+        }
+
+        function testSymbolsConfig() {
+            log('=== 測試 SymbolsConfig ===');
+            log(`總 symbols 數量: ${ALL_SYMBOLS.length}`);
+            log(`原有 symbols: ${ORIGINAL_SYMBOLS.length}`);
+            log(`新增 symbols: ${ALL_SYMBOLS.length - ORIGINAL_SYMBOLS.length}`);
+            
+            const newSymbols = ALL_SYMBOLS.filter(s => !ORIGINAL_SYMBOLS.includes(s));
+            log(`新增的 symbols: ${newSymbols.join(', ')}`);
+            
+            // 檢查是否有重複
+            const duplicates = ALL_SYMBOLS.filter((item, index) => ALL_SYMBOLS.indexOf(item) !== index);
+            if (duplicates.length > 0) {
+                log(`⚠️ 發現重複 symbols: ${duplicates.join(', ')}`);
+            } else {
+                log('✅ 沒有重複 symbols');
+            }
+        }
+
+        function testExchangeMapping() {
+            log('=== 測試交易所映射 ===');
+            
+            const nyseSymbols = ALL_SYMBOLS.filter(s => EXCHANGE_MAPPING[s] === 'NYSE');
+            const nasdaqSymbols = ALL_SYMBOLS.filter(s => EXCHANGE_MAPPING[s] === 'NASDAQ');
+            const amexSymbols = ALL_SYMBOLS.filter(s => EXCHANGE_MAPPING[s] === 'AMEX');
+            const unmappedSymbols = ALL_SYMBOLS.filter(s => !EXCHANGE_MAPPING[s]);
+            
+            log(`NYSE symbols (${nyseSymbols.length}): ${nyseSymbols.join(', ')}`);
+            log(`NASDAQ symbols (${nasdaqSymbols.length}): ${nasdaqSymbols.join(', ')}`);
+            log(`AMEX symbols (${amexSymbols.length}): ${amexSymbols.join(', ')}`);
+            
+            if (unmappedSymbols.length > 0) {
+                log(`⚠️ 未映射的 symbols: ${unmappedSymbols.join(', ')}`);
+            } else {
+                log('✅ 所有 symbols 都已映射到交易所');
+            }
+        }
+
+        function testNewSymbols() {
+            log('=== 測試新增 Symbols ===');
+            
+            const newSymbols = ALL_SYMBOLS.filter(s => !ORIGINAL_SYMBOLS.includes(s));
+            log(`新增 symbols 數量: ${newSymbols.length}`);
+            
+            // 測試幾個關鍵的新 symbols
+            const keyNewSymbols = ['RR', 'VST', 'KTOS', 'MELI', 'UUUU', 'UMAC'];
+            keyNewSymbols.forEach(symbol => {
+                if (newSymbols.includes(symbol)) {
+                    const exchange = EXCHANGE_MAPPING[symbol] || 'UNKNOWN';
+                    log(`✅ ${symbol} - ${exchange}`);
+                } else {
+                    log(`❌ ${symbol} 未找到`);
+                }
+            });
+        }
+
+        function openStockOverview() {
+            log('=== 打開 Stock Overview ===');
+            log('正在打開 Stock Overview 頁面...');
+            window.open('http://localhost:3000/', '_blank');
+        }
+
+        function renderSymbolsByExchange() {
+            const nyseSymbols = ALL_SYMBOLS.filter(s => EXCHANGE_MAPPING[s] === 'NYSE');
+            const nasdaqSymbols = ALL_SYMBOLS.filter(s => EXCHANGE_MAPPING[s] === 'NASDAQ');
+            const amexSymbols = ALL_SYMBOLS.filter(s => EXCHANGE_MAPPING[s] === 'AMEX');
+            
+            function renderSymbolGrid(symbols, containerId) {
+                const container = document.getElementById(containerId);
+                container.innerHTML = '';
+                
+                symbols.forEach(symbol => {
+                    const div = document.createElement('div');
+                    div.className = 'symbol-item';
+                    if (!ORIGINAL_SYMBOLS.includes(symbol)) {
+                        div.className += ' new';
+                    }
+                    div.textContent = symbol;
+                    div.title = `${symbol} - ${ORIGINAL_SYMBOLS.includes(symbol) ? '原有' : '新增'}`;
+                    container.appendChild(div);
+                });
+            }
+            
+            renderSymbolGrid(nyseSymbols, 'nyse-symbols-grid');
+            renderSymbolGrid(nasdaqSymbols, 'nasdaq-symbols-grid');
+            renderSymbolGrid(amexSymbols, 'amex-symbols-grid');
+        }
+
+        // 頁面載入時初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            renderSymbolsByExchange();
+            log('頁面載入完成，可以開始測試');
+            log('綠色背景的 symbols 是新增的');
+        });
+    </script>
+</body>
+</html>

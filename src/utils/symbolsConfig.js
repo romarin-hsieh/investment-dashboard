@@ -248,7 +248,7 @@ export class SymbolsConfigManager {
       'KSPI', 'LUNR', 'HOOD', 'APP', 'CHYM',
       'NU', 'COIN', 'CRCL', 'IBKR', 'CCJ',
       'UUUU', 'VRT', 'ETN', 'MSFT', 'ADBE',
-      'FIG', 'PAWN', 'CRWD', 'DDOG', 'DUOL',
+      'FIG', 'PANW', 'CRWD', 'DDOG', 'DUOL',
       'ZETA', 'AXON', 'ALAB', 'LRCX', 'BWXT',
       'UMAC', 'MP', 'RR'
     ]

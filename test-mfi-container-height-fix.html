@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFI Volume Profile Container Height Fix</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .fix-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .problem {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .solution {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .height-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .height-table th, .height-table td {
+            border: 1px solid #dee2e6;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .height-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+        .correct {
+            color: #28a745;
+            font-weight: 600;
+        }
+        .incorrect {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 MFI Volume Profile Container Height Fix</h1>
+            <p>解決外層容器高度限制問題</p>
+        </div>
+
+        <div class="fix-section">
+            <h3>📊 當前高度分析</h3>
+            <div class="success">
+                <strong>✅ 內部高度已正確：</strong>
+                <table class="height-table">
+                    <tr>
+                        <th>元素</th>
+                        <th>實際高度</th>
+                        <th>狀態</th>
+                    </tr>
+                    <tr>
+                        <td><code>volume-profile-chart</code></td>
+                        <td>653.82px</td>
+                        <td class="correct">✅ 正確</td>
+                    </tr>
+                    <tr>
+                        <td><code>chart-header</code></td>
+                        <td>52.15px</td>
+                        <td class="correct">✅ 正確</td>
+                    </tr>
+                    <tr>
+                        <td><code>chart-container</code></td>
+                        <td>600px</td>
+                        <td class="correct">✅ 正確 (50 bins × 12px)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="fix-section">
+            <h3>🚨 發現的問題</h3>
+            <div class="problem">
+                <strong>外層容器高度限制：</strong>
+                <ul>
+                    <li><code>panel-content</code> 總高度：954.52px</li>
+                    <li><code>insight-full-widget.mfi-volume-profile</code> 限制：750px (桌面版)</li>
+                    <li>內容需要空間：954.52px</li>
+                    <li><strong>問題</strong>：外層容器太小，無法容納完整內容</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fix-section">
+            <h3>🔧 修正方案</h3>
+            <div class="solution">
+                <strong>移除所有外層容器高度限制：</strong>
+                <div class="code-block">
+/* 修正前 - 桌面版 */
+.insight-full-widget.mfi-volume-profile {
+  min-height: 750px;  /* ❌ 限制容器高度 */
+  height: 750px;
+}
+
+.insight-full-widget.mfi-volume-profile > :not(.widget-header) {
+  min-height: 700px;  /* ❌ 限制內容區域 */
+  height: 700px;
+}
+
+/* 修正後 - 所有版本 */
+.insight-full-widget.mfi-volume-profile {
+  min-height: auto;   /* ✅ 讓內容自然展開 */
+  height: auto;
+}
+
+.insight-full-widget.mfi-volume-profile > :not(.widget-header) {
+  min-height: auto;   /* ✅ 讓內容自然展開 */
+  height: auto;
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="fix-section">
+            <h3>📱 響應式修正</h3>
+            <div class="success">
+                <strong>所有螢幕尺寸都已修正：</strong>
+                <table class="height-table">
+                    <tr>
+                        <th>螢幕尺寸</th>
+                        <th>修正前限制</th>
+                        <th>修正後</th>
+                    </tr>
+                    <tr>
+                        <td>桌面版 (>1200px)</td>
+                        <td class="incorrect">750px</td>
+                        <td class="correct">auto (954.52px)</td>
+                    </tr>
+                    <tr>
+                        <td>平板版 (≤1200px)</td>
+                        <td class="incorrect">650px</td>
+                        <td class="correct">auto</td>
+                    </tr>
+                    <tr>
+                        <td>手機版 (≤768px)</td>
+                        <td class="incorrect">550px</td>
+                        <td class="correct">auto</td>
+                    </tr>
+                    <tr>
+                        <td>小螢幕 (≤480px)</td>
+                        <td class="incorrect">500px</td>
+                        <td class="correct">auto</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="fix-section">
+            <h3>📊 內容空間分配</h3>
+            <div class="solution">
+                <strong>MFI Volume Profile 內容結構：</strong>
+                <table class="height-table">
+                    <tr>
+                        <th>元素</th>
+                        <th>預估高度</th>
+                        <th>說明</th>
+                    </tr>
+                    <tr>
+                        <td>metrics-header</td>
+                        <td>~120px</td>
+                        <td>3個指標卡片</td>
+                    </tr>
+                    <tr>
+                        <td>volume-profile-chart</td>
+                        <td>653.82px</td>
+                        <td>header (52px) + container (600px)</td>
+                    </tr>
+                    <tr>
+                        <td>trading-signals</td>
+                        <td>~180px</td>
+                        <td>交易分析區塊</td>
+                    </tr>
+                    <tr>
+                        <td><strong>總計</strong></td>
+                        <td><strong>~954px</strong></td>
+                        <td>符合實際測量值</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="fix-section">
+            <h3>✅ 預期結果</h3>
+            <div class="success">
+                <strong>修正後的行為：</strong>
+                <ul>
+                    <li>外層容器不再限制 MFI Volume Profile 的高度</li>
+                    <li>所有內容（954.52px）都能完整顯示</li>
+                    <li>50個 Volume Profile bins 完全可見</li>
+                    <li>不會有內容被截斷或需要滾動</li>
+                    <li>響應式設計在所有設備上都正常工作</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fix-section">
+            <h3>🧪 驗證步驟</h3>
+            <div class="solution">
+                <strong>測試清單：</strong>
+                <ol>
+                    <li>部署修正後的代碼</li>
+                    <li>打開任一 StockDetail 頁面</li>
+                    <li>檢查 MFI Volume Profile 區塊</li>
+                    <li>確認外層容器高度 ≥ 954px</li>
+                    <li>確認所有內容都完整可見</li>
+                    <li>確認 50 個 bins 都顯示無需滾動</li>
+                    <li>測試不同螢幕尺寸的響應式效果</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>統一股票配置架構測試</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        .warning { background-color: #fff3cd; border-color: #ffeaa7; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .test-result { margin: 10px 0; padding: 8px; border-radius: 3px; }
+        .pass { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+        button { padding: 8px 16px; margin: 5px; border: none; border-radius: 3px; cursor: pointer; }
+        .btn-primary { background-color: #007bff; color: white; }
+        .btn-success { background-color: #28a745; color: white; }
+        .btn-warning { background-color: #ffc107; color: black; }
+    </style>
+</head>
+<body>
+    <h1>🎯 統一股票配置架構測試</h1>
+    
+    <div class="test-section info">
+        <h2>📋 測試概述</h2>
+        <p>此測試驗證新的統一股票配置架構是否正常工作：</p>
+        <ul>
+            <li>✅ 統一配置文件 <code>config/stocks.json</code> 載入</li>
+            <li>✅ 統一服務 <code>stocksConfigService.js</code> 功能</li>
+            <li>✅ 所有 67 個股票包括 RR 的正確顯示</li>
+            <li>✅ 交易所、sector、industry 信息正確性</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 測試控制</h2>
+        <button class="btn-primary" onclick="runAllTests()">執行所有測試</button>
+        <button class="btn-success" onclick="testConfigLoad()">測試配置載入</button>
+        <button class="btn-success" onclick="testStocksService()">測試股票服務</button>
+        <button class="btn-success" onclick="testRRSymbol()">測試 RR 符號</button>
+        <button class="btn-warning" onclick="clearResults()">清除結果</button>
+    </div>
+
+    <div id="test-results"></div>
+
+    <script type="module">
+        let stocksConfig;
+        
+        // 動態載入 stocksConfigService
+        try {
+            const module = await import('/src/utils/stocksConfigService.js');
+            stocksConfig = module.stocksConfig;
+            console.log('✅ Successfully loaded stocksConfigService');
+        } catch (error) {
+            console.error('❌ Failed to load stocksConfigService:', error);
+            addResult('fail', '無法載入 stocksConfigService: ' + error.message);
+        }
+
+        window.runAllTests = async function() {
+            clearResults();
+            addResult('info', '🚀 開始執行所有測試...');
+            
+            await testConfigLoad();
+            await testStocksService();
+            await testRRSymbol();
+            await testExchangeMapping();
+            await testSectorMapping();
+            await testBackwardCompatibility();
+            
+            addResult('info', '✅ 所有測試完成！');
+        }
+
+        window.testConfigLoad = async function() {
+            addResult('info', '📁 測試配置文件載入...');
+            
+            try {
+                // 測試直接載入配置文件
+                const response = await fetch('/config/stocks.json?t=' + Date.now());
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const config = await response.json();
+                
+                // 驗證配置格式
+                if (!config.stocks || !Array.isArray(config.stocks)) {
+                    throw new Error('配置格式錯誤：缺少 stocks 數組');
+                }
+                
+                const totalStocks = config.stocks.length;
+                const enabledStocks = config.stocks.filter(s => s.enabled).length;
+                
+                addResult('pass', `✅ 配置文件載入成功`);
+                addResult('pass', `✅ 總股票數: ${totalStocks}`);
+                addResult('pass', `✅ 啟用股票數: ${enabledStocks}`);
+                addResult('pass', `✅ 配置版本: ${config.version}`);
+                
+                // 檢查 RR 是否存在
+                const rrStock = config.stocks.find(s => s.symbol === 'RR');
+                if (rrStock) {
+                    addResult('pass', `✅ RR 股票存在: ${JSON.stringify(rrStock)}`);
+                } else {
+                    addResult('fail', '❌ RR 股票不存在於配置中');
+                }
+                
+                // 顯示所有交易所和 sectors
+                const exchanges = [...new Set(config.stocks.map(s => s.exchange))];
+                const sectors = [...new Set(config.stocks.map(s => s.sector))];
+                
+                addResult('info', `📊 支援的交易所: ${exchanges.join(', ')}`);
+                addResult('info', `📊 支援的 sectors: ${sectors.join(', ')}`);
+                
+            } catch (error) {
+                addResult('fail', '❌ 配置載入失敗: ' + error.message);
+            }
+        }
+
+        window.testStocksService = async function() {
+            if (!stocksConfig) {
+                addResult('fail', '❌ stocksConfig 服務未載入');
+                return;
+            }
+            
+            addResult('info', '🔧 測試股票服務功能...');
+            
+            try {
+                // 測試基本功能
+                const symbols = await stocksConfig.getEnabledSymbols();
+                addResult('pass', `✅ getEnabledSymbols(): ${symbols.length} 個符號`);
+                
+                // 測試統計信息
+                const stats = await stocksConfig.getStats();
+                addResult('pass', `✅ getStats(): ${JSON.stringify(stats, null, 2)}`);
+                
+                // 測試交易所分組
+                const byExchange = await stocksConfig.getStocksByExchange();
+                addResult('pass', `✅ getStocksByExchange(): ${Object.keys(byExchange).length} 個交易所`);
+                
+                // 測試 sector 分組
+                const bySector = await stocksConfig.getStocksBySector();
+                addResult('pass', `✅ getStocksBySector(): ${Object.keys(bySector).length} 個 sectors`);
+                
+                // 測試緩存信息
+                const cacheInfo = stocksConfig.getCacheInfo();
+                addResult('info', `📦 緩存信息: ${JSON.stringify(cacheInfo)}`);
+                
+            } catch (error) {
+                addResult('fail', '❌ 股票服務測試失敗: ' + error.message);
+            }
+        }
+
+        window.testRRSymbol = async function() {
+            if (!stocksConfig) {
+                addResult('fail', '❌ stocksConfig 服務未載入');
+                return;
+            }
+            
+            addResult('info', '🎯 測試 RR 符號特定功能...');
+            
+            try {
+                // 檢查 RR 是否在啟用列表中
+                const symbols = await stocksConfig.getEnabledSymbols();
+                const hasRR = symbols.includes('RR');
+                
+                if (hasRR) {
+                    addResult('pass', '✅ RR 符號在啟用列表中');
+                } else {
+                    addResult('fail', '❌ RR 符號不在啟用列表中');
+                    return;
+                }
+                
+                // 測試 RR 的詳細信息
+                const rrInfo = await stocksConfig.getStockInfo('RR');
+                addResult('pass', `✅ RR 股票信息: ${JSON.stringify(rrInfo, null, 2)}`);
+                
+                const rrExchange = await stocksConfig.getStockExchange('RR');
+                addResult('pass', `✅ RR 交易所: ${rrExchange}`);
+                
+                const rrSector = await stocksConfig.getStockSector('RR');
+                addResult('pass', `✅ RR Sector: ${rrSector}`);
+                
+                const rrIndustry = await stocksConfig.getStockIndustry('RR');
+                addResult('pass', `✅ RR Industry: ${rrIndustry}`);
+                
+                // 檢查 RR 是否在 Technology sector 中
+                const techStocks = (await stocksConfig.getStocksBySector())['Technology'] || [];
+                const rrInTech = techStocks.includes('RR');
+                
+                if (rrInTech) {
+                    addResult('pass', '✅ RR 正確歸類在 Technology sector');
+                } else {
+                    addResult('fail', '❌ RR 未正確歸類在 Technology sector');
+                }
+                
+            } catch (error) {
+                addResult('fail', '❌ RR 符號測試失敗: ' + error.message);
+            }
+        }
+
+        window.testExchangeMapping = async function() {
+            if (!stocksConfig) return;
+            
+            addResult('info', '🏛️ 測試交易所映射...');
+            
+            try {
+                const byExchange = await stocksConfig.getStocksByExchange();
+                
+                for (const [exchange, stocks] of Object.entries(byExchange)) {
+                    addResult('pass', `✅ ${exchange}: ${stocks.length} 個股票 - ${stocks.slice(0, 5).join(', ')}${stocks.length > 5 ? '...' : ''}`);
+                }
+                
+                // 測試特定股票的交易所
+                const testSymbols = ['ASTS', 'RR', 'TSLA', 'CRM', 'UUUU'];
+                for (const symbol of testSymbols) {
+                    const exchange = await stocksConfig.getStockExchange(symbol);
+                    addResult('info', `📍 ${symbol} -> ${exchange}`);
+                }
+                
+            } catch (error) {
+                addResult('fail', '❌ 交易所映射測試失敗: ' + error.message);
+            }
+        }
+
+        window.testSectorMapping = async function() {
+            if (!stocksConfig) return;
+            
+            addResult('info', '🏢 測試 Sector 映射...');
+            
+            try {
+                const bySector = await stocksConfig.getStocksBySector();
+                
+                for (const [sector, stocks] of Object.entries(bySector)) {
+                    addResult('pass', `✅ ${sector}: ${stocks.length} 個股票 - ${stocks.slice(0, 3).join(', ')}${stocks.length > 3 ? '...' : ''}`);
+                }
+                
+                // 測試特定股票的 sector
+                const testSymbols = ['RR', 'NVDA', 'TSLA', 'LEU', 'HIMS'];
+                for (const symbol of testSymbols) {
+                    const sector = await stocksConfig.getStockSector(symbol);
+                    const industry = await stocksConfig.getStockIndustry(symbol);
+                    addResult('info', `🏷️ ${symbol} -> ${sector} / ${industry}`);
+                }
+                
+            } catch (error) {
+                addResult('fail', '❌ Sector 映射測試失敗: ' + error.message);
+            }
+        }
+
+        window.testBackwardCompatibility = async function() {
+            if (!stocksConfig) return;
+            
+            addResult('info', '🔄 測試向後兼容性...');
+            
+            try {
+                // 測試舊版 API
+                const symbolsList = await stocksConfig.getSymbolsList();
+                addResult('pass', `✅ getSymbolsList() (舊版兼容): ${symbolsList.length} 個符號`);
+                
+                // 測試符號驗證
+                const validSymbols = ['RR', 'ASTS', 'TSLA'];
+                const invalidSymbols = ['INVALID', 'FAKE'];
+                
+                for (const symbol of validSymbols) {
+                    const isValid = await stocksConfig.isValidSymbol(symbol);
+                    if (isValid) {
+                        addResult('pass', `✅ ${symbol} 是有效符號`);
+                    } else {
+                        addResult('fail', `❌ ${symbol} 應該是有效符號但驗證失敗`);
+                    }
+                }
+                
+                for (const symbol of invalidSymbols) {
+                    const isValid = await stocksConfig.isValidSymbol(symbol);
+                    if (!isValid) {
+                        addResult('pass', `✅ ${symbol} 正確識別為無效符號`);
+                    } else {
+                        addResult('fail', `❌ ${symbol} 應該是無效符號但驗證通過`);
+                    }
+                }
+                
+            } catch (error) {
+                addResult('fail', '❌ 向後兼容性測試失敗: ' + error.message);
+            }
+        }
+
+        window.clearResults = function() {
+            document.getElementById('test-results').innerHTML = '';
+        }
+
+        function addResult(type, message) {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = `<pre>${message}</pre>`;
+            resultsDiv.appendChild(resultDiv);
+            
+            // 自動滾動到底部
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 頁面載入時自動執行基本測試
+        window.addEventListener('load', async function() {
+            addResult('info', '🎯 統一股票配置架構測試工具已載入');
+            addResult('info', '點擊 "執行所有測試" 開始完整測試，或選擇特定測試項目');
+        });
+    </script>
+</body>
+</html>

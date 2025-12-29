@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug StockOverview RR Specific Issue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .debug-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .debug-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        .info { color: #17a2b8; }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f8f9fa;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Debug StockOverview RR Specific Issue</h1>
+        <p>專門診斷為什麼 RR 沒有在 StockOverview 頁面顯示</p>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <button class="button" onclick="debugRRIssue()">🔍 診斷 RR 問題</button>
+            <button class="button" onclick="testAllDataSources()">📊 測試所有數據源</button>
+            <button class="button" onclick="simulateStockOverview()">🧩 模擬 StockOverview</button>
+        </div>
+
+        <div class="debug-section">
+            <div class="debug-title">🎯 RR 符號追蹤</div>
+            <div class="log" id="rr-log"></div>
+        </div>
+
+        <div class="debug-section">
+            <div class="debug-title">📊 數據源檢查</div>
+            <table class="data-table" id="data-sources-table">
+                <thead>
+                    <tr>
+                        <th>數據源</th>
+                        <th>狀態</th>
+                        <th>RR 存在</th>
+                        <th>詳細信息</th>
+                    </tr>
+                </thead>
+                <tbody id="data-sources-tbody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="debug-section">
+            <div class="debug-title">🧩 StockOverview 邏輯模擬</div>
+            <div class="log" id="simulation-log"></div>
+        </div>
+    </div>
+
+    <script>
+        const rrLog = document.getElementById('rr-log');
+        const simulationLog = document.getElementById('simulation-log');
+        const dataSourcesTbody = document.getElementById('data-sources-tbody');
+        
+        function addLog(element, message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}\n`;
+            element.innerHTML += `<span class="${type}">${logEntry}</span>`;
+            element.scrollTop = element.scrollHeight;
+        }
+
+        function addDataSourceRow(name, status, hasRR, details) {
+            const row = document.createElement('tr');
+            if (hasRR) {
+                row.className = 'highlight';
+            }
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${status}</td>
+                <td>${hasRR ? '✅ 是' : '❌ 否'}</td>
+                <td>${details}</td>
+            `;
+            dataSourcesTbody.appendChild(row);
+        }
+
+        async function debugRRIssue() {
+            try {
+                addLog(rrLog, '🎯 開始專門診斷 RR 符號問題...', 'info');
+                
+                const baseUrl = window.location.hostname === 'romarin-hsieh.github.io' && 
+                                window.location.pathname.startsWith('/investment-dashboard') 
+                                ? '/investment-dashboard' : '';
+
+                // 1. 檢查 RR 在各個數據源中的狀態
+                addLog(rrLog, '📋 檢查 RR 在各個數據源中的狀態...', 'info');
+
+                // Universe
+                const universeResponse = await fetch(`${baseUrl}/config/universe.json`);
+                const universeData = await universeResponse.json();
+                const rrInUniverse = universeData.symbols.includes('RR');
+                addLog(rrLog, `Universe: ${rrInUniverse ? '✅' : '❌'} (${universeData.symbols.length} 總符號)`, rrInUniverse ? 'success' : 'error');
+
+                // Quotes
+                const quotesResponse = await fetch(`${baseUrl}/data/quotes/latest.json`);
+                const quotesData = await quotesResponse.json();
+                const rrQuote = quotesData.items.find(item => item.symbol === 'RR');
+                const rrInQuotes = !!rrQuote;
+                addLog(rrLog, `Quotes: ${rrInQuotes ? '✅' : '❌'} (${quotesData.items.length} 總符號)`, rrInQuotes ? 'success' : 'error');
+                if (rrQuote) {
+                    addLog(rrLog, `  RR 價格: $${rrQuote.price_usd}, 變化: ${rrQuote.change_percent}%`, 'info');
+                }
+
+                // Metadata
+                const metadataResponse = await fetch(`${baseUrl}/data/symbols_metadata.json`);
+                const metadataData = await metadataResponse.json();
+                const rrMetadata = metadataData.items.find(item => item.symbol === 'RR');
+                const rrInMetadata = !!rrMetadata;
+                addLog(rrLog, `Metadata: ${rrInMetadata ? '✅' : '❌'} (${metadataData.items.length} 總符號)`, rrInMetadata ? 'success' : 'error');
+                if (rrMetadata) {
+                    addLog(rrLog, `  RR metadata: Sector=${rrMetadata.sector}, Confidence=${rrMetadata.confidence}`, 'info');
+                }
+
+                // SymbolsConfig
+                const configModule = await import('/src/utils/symbolsConfig.js');
+                const configSymbols = configModule.symbolsConfig.getStaticSymbols();
+                const rrInConfig = configSymbols.includes('RR');
+                addLog(rrLog, `SymbolsConfig: ${rrInConfig ? '✅' : '❌'} (${configSymbols.length} 總符號)`, rrInConfig ? 'success' : 'error');
+
+                // Technical Indicators
+                const techResponse = await fetch(`${baseUrl}/data/technical-indicators/2025-12-27_RR.json`);
+                const rrHasTech = techResponse.ok;
+                addLog(rrLog, `Technical Indicators: ${rrHasTech ? '✅' : '❌'}`, rrHasTech ? 'success' : 'error');
+                if (rrHasTech) {
+                    const techData = await techResponse.json();
+                    addLog(rrLog, `  RR 技術指標: ${Object.keys(techData.indicators).length} 個指標`, 'info');
+                }
+
+                // 2. 檢查 RR 是否滿足 StockOverview 顯示條件
+                addLog(rrLog, '🔍 檢查 RR 是否滿足 StockOverview 顯示條件...', 'info');
+                
+                const conditions = [
+                    { name: '在 Universe 中', passed: rrInUniverse },
+                    { name: '在 Quotes 中', passed: rrInQuotes },
+                    { name: '在 Metadata 中', passed: rrInMetadata },
+                    { name: '在 SymbolsConfig 中', passed: rrInConfig },
+                    { name: 'Metadata confidence >= 0.7', passed: rrMetadata && rrMetadata.confidence >= 0.7 },
+                    { name: 'Metadata 有 sector', passed: rrMetadata && rrMetadata.sector && rrMetadata.sector !== 'Unknown' }
+                ];
+
+                conditions.forEach(condition => {
+                    addLog(rrLog, `  ${condition.name}: ${condition.passed ? '✅' : '❌'}`, condition.passed ? 'success' : 'error');
+                });
+
+                const allConditionsPassed = conditions.every(c => c.passed);
+                addLog(rrLog, `🎯 RR 顯示條件: ${allConditionsPassed ? '✅ 全部滿足' : '❌ 有條件未滿足'}`, allConditionsPassed ? 'success' : 'error');
+
+                if (!allConditionsPassed) {
+                    addLog(rrLog, '💡 建議修復步驟:', 'warning');
+                    conditions.forEach(condition => {
+                        if (!condition.passed) {
+                            addLog(rrLog, `  - 修復: ${condition.name}`, 'warning');
+                        }
+                    });
+                }
+
+            } catch (error) {
+                addLog(rrLog, `❌ 診斷過程中發生錯誤: ${error.message}`, 'error');
+                console.error('Debug error:', error);
+            }
+        }
+
+        async function testAllDataSources() {
+            try {
+                // 清空表格
+                dataSourcesTbody.innerHTML = '';
+                
+                const baseUrl = window.location.hostname === 'romarin-hsieh.github.io' && 
+                                window.location.pathname.startsWith('/investment-dashboard') 
+                                ? '/investment-dashboard' : '';
+
+                const dataSources = [
+                    {
+                        name: 'universe.json',
+                        url: `${baseUrl}/config/universe.json`,
+                        checkRR: data => data.symbols.includes('RR'),
+                        getDetails: data => `${data.symbols.length} symbols`
+                    },
+                    {
+                        name: 'quotes/latest.json',
+                        url: `${baseUrl}/data/quotes/latest.json`,
+                        checkRR: data => data.items.some(item => item.symbol === 'RR'),
+                        getDetails: data => {
+                            const rrItem = data.items.find(item => item.symbol === 'RR');
+                            return rrItem ? `$${rrItem.price_usd} (${data.items.length} total)` : `${data.items.length} symbols`;
+                        }
+                    },
+                    {
+                        name: 'symbols_metadata.json',
+                        url: `${baseUrl}/data/symbols_metadata.json`,
+                        checkRR: data => data.items.some(item => item.symbol === 'RR'),
+                        getDetails: data => {
+                            const rrItem = data.items.find(item => item.symbol === 'RR');
+                            return rrItem ? `${rrItem.sector}, conf: ${rrItem.confidence} (${data.items.length} total)` : `${data.items.length} symbols`;
+                        }
+                    },
+                    {
+                        name: 'technical-indicators/2025-12-27_RR.json',
+                        url: `${baseUrl}/data/technical-indicators/2025-12-27_RR.json`,
+                        checkRR: data => data.symbol === 'RR',
+                        getDetails: data => data.symbol === 'RR' ? `${Object.keys(data.indicators).length} indicators` : 'N/A'
+                    }
+                ];
+
+                for (const source of dataSources) {
+                    try {
+                        const response = await fetch(source.url);
+                        if (response.ok) {
+                            const data = await response.json();
+                            const hasRR = source.checkRR(data);
+                            const details = source.getDetails(data);
+                            addDataSourceRow(source.name, '✅ OK', hasRR, details);
+                        } else {
+                            addDataSourceRow(source.name, `❌ HTTP ${response.status}`, false, 'Failed to load');
+                        }
+                    } catch (error) {
+                        addDataSourceRow(source.name, '❌ Error', false, error.message);
+                    }
+                }
+
+            } catch (error) {
+                console.error('Test data sources error:', error);
+            }
+        }
+
+        async function simulateStockOverview() {
+            try {
+                addLog(simulationLog, '🧩 開始模擬 StockOverview 組件邏輯...', 'info');
+                
+                const baseUrl = window.location.hostname === 'romarin-hsieh.github.io' && 
+                                window.location.pathname.startsWith('/investment-dashboard') 
+                                ? '/investment-dashboard' : '';
+
+                // 1. 載入 symbolsConfig
+                addLog(simulationLog, '📋 載入 symbolsConfig...', 'info');
+                const configModule = await import('/src/utils/symbolsConfig.js');
+                const configuredSymbols = configModule.symbolsConfig.getStaticSymbols();
+                addLog(simulationLog, `✅ 載入 ${configuredSymbols.length} 個配置符號`, 'success');
+                addLog(simulationLog, `RR 在配置中: ${configuredSymbols.includes('RR') ? '✅' : '❌'}`, configuredSymbols.includes('RR') ? 'success' : 'error');
+
+                // 2. 載入 quotes 數據
+                addLog(simulationLog, '📊 載入 quotes 數據...', 'info');
+                const quotesResponse = await fetch(`${baseUrl}/data/quotes/latest.json`);
+                const quotesData = await quotesResponse.json();
+                addLog(simulationLog, `✅ 載入 ${quotesData.items.length} 個 quotes`, 'success');
+
+                // 3. 過濾 quotes
+                const filteredQuotes = quotesData.items.filter(quote => 
+                    configuredSymbols.includes(quote.symbol)
+                );
+                addLog(simulationLog, `🎯 過濾後的 quotes: ${filteredQuotes.length} 個`, 'info');
+                
+                const rrInFiltered = filteredQuotes.find(quote => quote.symbol === 'RR');
+                addLog(simulationLog, `RR 在過濾後的 quotes 中: ${rrInFiltered ? '✅' : '❌'}`, rrInFiltered ? 'success' : 'error');
+
+                // 4. 載入 metadata
+                addLog(simulationLog, '📋 載入 metadata...', 'info');
+                const metadataResponse = await fetch(`${baseUrl}/data/symbols_metadata.json`);
+                const metadataData = await metadataResponse.json();
+                addLog(simulationLog, `✅ 載入 ${metadataData.items.length} 個 metadata`, 'success');
+
+                // 5. 模擬分組邏輯
+                addLog(simulationLog, '🗂️ 模擬分組邏輯...', 'info');
+                const groups = {};
+                const MIN_CONFIDENCE_THRESHOLD = 0.7;
+
+                filteredQuotes.forEach(quote => {
+                    const symbolMetadata = metadataData.items.find(m => m.symbol === quote.symbol);
+                    
+                    let sector = 'Unknown';
+                    if (symbolMetadata && symbolMetadata.confidence >= MIN_CONFIDENCE_THRESHOLD) {
+                        sector = symbolMetadata.sector || 'Unknown';
+                    }
+                    
+                    if (!groups[sector]) {
+                        groups[sector] = [];
+                    }
+                    
+                    groups[sector].push({
+                        symbol: quote.symbol,
+                        price: quote.price_usd,
+                        sector: sector,
+                        confidence: symbolMetadata ? symbolMetadata.confidence : 'N/A'
+                    });
+                });
+
+                // 6. 檢查 RR 在哪個分組
+                let rrGroup = null;
+                for (const [sector, stocks] of Object.entries(groups)) {
+                    const rrInGroup = stocks.find(stock => stock.symbol === 'RR');
+                    if (rrInGroup) {
+                        rrGroup = { sector, stock: rrInGroup };
+                        break;
+                    }
+                }
+
+                addLog(simulationLog, '📊 分組結果:', 'info');
+                Object.entries(groups).forEach(([sector, stocks]) => {
+                    addLog(simulationLog, `  ${sector}: ${stocks.length} 個股票`, 'info');
+                    if (sector === 'Technology' || stocks.some(s => s.symbol === 'RR')) {
+                        const symbolsList = stocks.map(s => s.symbol).join(', ');
+                        addLog(simulationLog, `    符號: ${symbolsList}`, 'info');
+                    }
+                });
+
+                if (rrGroup) {
+                    addLog(simulationLog, `✅ RR 找到在分組: ${rrGroup.sector}`, 'success');
+                    addLog(simulationLog, `  價格: $${rrGroup.stock.price}, 信心度: ${rrGroup.stock.confidence}`, 'info');
+                } else {
+                    addLog(simulationLog, `❌ RR 沒有出現在任何分組中`, 'error');
+                    
+                    // 詳細診斷為什麼 RR 沒有分組
+                    const rrQuote = filteredQuotes.find(q => q.symbol === 'RR');
+                    if (!rrQuote) {
+                        addLog(simulationLog, `  原因: RR 沒有通過 quotes 過濾`, 'error');
+                    } else {
+                        const rrMetadata = metadataData.items.find(m => m.symbol === 'RR');
+                        if (!rrMetadata) {
+                            addLog(simulationLog, `  原因: RR 沒有 metadata`, 'error');
+                        } else if (rrMetadata.confidence < MIN_CONFIDENCE_THRESHOLD) {
+                            addLog(simulationLog, `  原因: RR confidence (${rrMetadata.confidence}) < ${MIN_CONFIDENCE_THRESHOLD}`, 'error');
+                        } else {
+                            addLog(simulationLog, `  原因: 未知問題`, 'error');
+                        }
+                    }
+                }
+
+                addLog(simulationLog, '✅ StockOverview 邏輯模擬完成', 'success');
+
+            } catch (error) {
+                addLog(simulationLog, `❌ 模擬過程中發生錯誤: ${error.message}`, 'error');
+                console.error('Simulation error:', error);
+            }
+        }
+
+        // 頁面載入時自動開始診斷
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                debugRRIssue();
+                testAllDataSources();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -41,7 +41,7 @@
 - **MSFT** (NASDAQ) - Microsoft Corporation - Technology
 - **ADBE** (NASDAQ) - Adobe Inc - Technology
 - **FIG** (NYSE) - Fortress Investment Group - Financial Services
-- **PAWN** (NASDAQ) - First Cash Holdings - Financial Services
+- **PANW** (NASDAQ) - Palo Alto Networks - Technology
 - **CRWD** (NASDAQ) - CrowdStrike Holdings - Technology
 - **DDOG** (NASDAQ) - Datadog Inc - Technology
 - **DUOL** (NASDAQ) - Duolingo Inc - Consumer Cyclical

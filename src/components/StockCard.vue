@@ -1,5 +1,10 @@
 <template>
-  <div class="stock-card-pair">
+  <div 
+    class="stock-card-pair"
+    :id="domId"
+    :data-symbol="quote.symbol"
+    tabindex="-1"
+  >
     <!-- Stock Info Header -->
     <div class="stock-info-header">
       <div class="symbol-info">
@@ -103,6 +108,10 @@ export default {
   computed: {
     isStale() {
       return this.quote.stale_level !== 'fresh'
+    },
+
+    domId() {
+      return `sym-${this.sanitizeSymbol(this.quote.symbol)}`
     }
   },
   methods: {
@@ -156,7 +165,8 @@ export default {
           'NYQ': 'NYSE',    // New York Stock Exchange
           'NMS': 'NASDAQ',  // NASDAQ Global Select Market
           'NCM': 'NASDAQ',  // NASDAQ Capital Market
-          'NGM': 'NASDAQ'   // NASDAQ Global Market
+          'NGM': 'NASDAQ',  // NASDAQ Global Market
+          'ASE': 'AMEX'     // NYSE American (原 American Stock Exchange)
         }
         return exchangeMap[this.metadata.exchange] || this.metadata.exchange
       }
@@ -193,6 +203,12 @@ export default {
       }).catch(err => {
         console.error('Navigation error:', err)
       })
+    },
+
+    sanitizeSymbol(symbol) {
+      // 將 symbol 轉換為有效的 DOM ID
+      // 替換非字母數字字符為底線
+      return symbol.replace(/[^a-zA-Z0-9]/g, '_')
     }
   }
 }
@@ -208,6 +224,7 @@ export default {
   transition: all 0.2s;
   position: relative;
   width: 100%;
+  scroll-margin-top: 80px; /* Handle sticky header offset */
 }
 
 /* Stock Info Header */
@@ -435,6 +452,7 @@ export default {
   padding: 1rem;
   border-radius: 6px;
   border-left: 4px solid #007bff;
+  display: none; /* 隱藏 brief-section，後續會用別的方式實作內容 */
 }
 
 .brief-section h5 {
@@ -552,6 +570,7 @@ export default {
   
   .brief-section {
     padding: 0.75rem;
+    display: none; /* 隱藏 brief-section */
   }
   
   .brief-text {
@@ -595,6 +614,7 @@ export default {
   
   .brief-section {
     padding: 0.5rem;
+    display: none; /* 隱藏 brief-section */
   }
 }
 </style>

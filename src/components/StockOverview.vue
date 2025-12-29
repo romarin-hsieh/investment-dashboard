@@ -21,41 +21,55 @@
       <button @click="refresh" class="btn btn-secondary">Retry</button>
     </div>
 
-    <div v-else>
-      <!-- Market Index Section -->
-      <div class="widget-container-ticker">
-        <div class="widget-header">
-          <h3>Market Index</h3>
+    <div v-else class="main-layout">
+      <!-- Navigation Panel (Desktop) -->
+      <NavigationPanel
+        :toc-tree="tocTree"
+        :active-symbol="activeSymbol"
+        :search-query="searchQuery"
+        :is-visible="true"
+        @symbol-click="onSymbolClick"
+        @search-change="onSearchChange"
+        class="navigation-sidebar"
+      />
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Market Index Section -->
+        <div class="widget-container-ticker">
+          <div class="widget-header">
+            <h3>Market Index</h3>
+          </div>
+          <LazyTradingViewWidget
+            widget-type="Market Index"
+            :config="tickersConfig"
+            script-url="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js"
+            height="100px"
+            :priority="1"
+          />
         </div>
-        <LazyTradingViewWidget
-          widget-type="Market Index"
-          :config="tickersConfig"
-          script-url="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js"
-          height="100px"
-          :priority="1"
-        />
-      </div>
-      
-      <!-- Sector Groups -->
-      <div class="sector-groups">
-        <div 
-          v-for="(group, sector) in groupedStocks" 
-          :key="sector"
-          class="sector-group"
-        >
-          <h4 class="sector-title">
-            {{ sector }}
-            <span class="stock-count">({{ group.length }})</span>
-          </h4>
-          
-          <div class="stocks-in-group">
-            <StockCard
-              v-for="stock in group"
-              :key="stock.quote.symbol"
-              :quote="stock.quote"
-              :daily-data="stock.dailyData"
-              :metadata="stock.metadata"
-            />
+        
+        <!-- Sector Groups -->
+        <div class="sector-groups">
+          <div 
+            v-for="(group, sector) in groupedStocks" 
+            :key="sector"
+            class="sector-group"
+          >
+            <h4 class="sector-title">
+              {{ sector }}
+              <span class="stock-count">({{ group.length }})</span>
+            </h4>
+            
+            <div class="stocks-in-group">
+              <StockCard
+                v-for="stock in group"
+                :key="stock.quote.symbol"
+                :quote="stock.quote"
+                :daily-data="stock.dailyData"
+                :metadata="stock.metadata"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -71,12 +85,16 @@
 import { stocksConfig } from '@/utils/stocksConfigService'
 import StockCard from './StockCard.vue'
 import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
+import NavigationPanel from './NavigationPanel.vue'
+import { navigationService } from '@/services/NavigationService.js'
+import { scrollSpyService } from '@/services/ScrollSpyService.js'
 
 export default {
   name: 'StockOverview',
   components: {
     StockCard,
-    LazyTradingViewWidget
+    LazyTradingViewWidget,
+    NavigationPanel
   },
   data() {
     return {
@@ -86,7 +104,11 @@ export default {
       loading: false,
       error: null,
       lastUpdate: null,
-      configuredSymbols: []
+      configuredSymbols: [],
+      // Navigation state
+      activeSymbol: '',
+      searchQuery: ''
+      // 移除 expandedSections，因為不再需要展開/收合功能
     }
   },
   computed: {
@@ -397,10 +419,97 @@ export default {
       })
       
       return sortedGroups
+    },
+
+    tocTree() {
+      if (!this.quotes.length || !this.metadata) {
+        return []
+      }
+
+      const tree = []
+      
+      // 使用與 groupedStocks 相同的邏輯來確保一致性
+      Object.entries(this.groupedStocks).forEach(([sectorName, stocks]) => {
+        const sectorNode = {
+          id: `sector-${this.sanitizeId(sectorName)}`,
+          type: 'sector',
+          label: sectorName,
+          children: []
+        }
+
+        // 按 industry 分組
+        const industryGroups = {}
+        stocks.forEach(stock => {
+          const industry = stock.metadata?.industry || 'Unknown Industry'
+          if (!industryGroups[industry]) {
+            industryGroups[industry] = []
+          }
+          industryGroups[industry].push(stock)
+        })
+
+        // 為每個 industry 創建節點
+        Object.entries(industryGroups).forEach(([industryName, industryStocks]) => {
+          const industryNode = {
+            id: `industry-${this.sanitizeId(sectorName)}-${this.sanitizeId(industryName)}`,
+            type: 'industry',
+            label: industryName,
+            children: []
+          }
+
+          // 為每個 symbol 創建節點
+          industryStocks.forEach(stock => {
+            const symbolNode = {
+              id: `symbol-${this.sanitizeId(stock.quote.symbol)}`,
+              type: 'symbol',
+              label: stock.quote.symbol,
+              symbol: stock.quote.symbol,
+              metadata: {
+                sector: sectorName,
+                industry: industryName,
+                exchange: this.mapExchangeCode(stock.metadata?.exchange),
+                marketCap: stock.metadata?.market_cap || 0
+              }
+            }
+            industryNode.children.push(symbolNode)
+          })
+
+          sectorNode.children.push(industryNode)
+        })
+
+        tree.push(sectorNode)
+      })
+
+      return tree
+    },
+
+    // 效能優化的資料映射
+    metadataMap() {
+      if (!this.metadata?.items) return new Map()
+      
+      const map = new Map()
+      this.metadata.items.forEach(item => {
+        map.set(item.symbol, item)
+      })
+      return map
+    },
+
+    dailyDataMap() {
+      if (!this.dailyData?.per_symbol) return new Map()
+      
+      const map = new Map()
+      this.dailyData.per_symbol.forEach(item => {
+        map.set(item.symbol, item)
+      })
+      return map
     }
   },
   async mounted() {
     await this.loadStockData()
+    this.initializeNavigation()
+  },
+
+  beforeUnmount() {
+    this.cleanupNavigation()
   },
   methods: {
     async loadStockData() {
@@ -474,6 +583,177 @@ export default {
       } catch {
         return timeString
       }
+    },
+
+    // Helper method to map exchange codes to display names
+    mapExchangeCode(exchangeCode) {
+      if (!exchangeCode) return 'Unknown'
+      
+      const exchangeMap = {
+        'NYQ': 'NYSE',    // New York Stock Exchange
+        'NMS': 'NASDAQ',  // NASDAQ Global Select Market
+        'NCM': 'NASDAQ',  // NASDAQ Capital Market
+        'NGM': 'NASDAQ',  // NASDAQ Global Market
+        'ASE': 'AMEX'     // NYSE American (原 American Stock Exchange)
+      }
+      
+      return exchangeMap[exchangeCode] || exchangeCode
+    },
+
+    sanitizeId(str) {
+      // 將字串轉換為有效的 DOM ID
+      return str.replace(/[^a-zA-Z0-9]/g, '_')
+    },
+    async onSymbolClick(symbol) {
+      console.log('Navigation: Symbol clicked:', symbol)
+      
+      // 暫停 ScrollSpy 避免衝突
+      scrollSpyService.pause()
+      
+      try {
+        // 更新 URL query 參數
+        navigationService.updateQueryParam(symbol)
+        
+        // 滾動到目標
+        await navigationService.scrollToSymbol(symbol)
+        
+        // 更新 active symbol
+        this.activeSymbol = symbol
+        
+        // 自動展開對應的 sections
+        this.autoExpandForSymbol(symbol)
+      } finally {
+        // 恢復 ScrollSpy
+        setTimeout(() => {
+          scrollSpyService.resume()
+        }, 500)
+      }
+    },
+
+    onSearchChange(query) {
+      this.searchQuery = query
+    },
+
+    onToggleSection(sectionId, expanded) {
+      if (expanded) {
+        this.expandedSections.add(sectionId)
+      } else {
+        this.expandedSections.delete(sectionId)
+      }
+      
+      // 儲存到 localStorage
+      this.saveExpandedSections()
+    },
+
+    autoExpandForSymbol(symbol) {
+      // 找到 symbol 對應的 sector 和 industry
+      for (const sectorNode of this.tocTree) {
+        for (const industryNode of sectorNode.children) {
+          const symbolNode = industryNode.children.find(s => s.symbol === symbol)
+          if (symbolNode) {
+            this.expandedSections.add(sectorNode.id)
+            this.expandedSections.add(industryNode.id)
+            this.saveExpandedSections()
+            return
+          }
+        }
+      }
+    },
+
+    saveExpandedSections() {
+      try {
+        const sectionsArray = Array.from(this.expandedSections)
+        localStorage.setItem('stock-overview-expanded-sections', JSON.stringify(sectionsArray))
+      } catch (error) {
+        console.warn('Failed to save expanded sections:', error)
+      }
+    },
+
+    loadExpandedSections() {
+      try {
+        const saved = localStorage.getItem('stock-overview-expanded-sections')
+        if (saved) {
+          const sectionsArray = JSON.parse(saved)
+          this.expandedSections = new Set(sectionsArray)
+        }
+      } catch (error) {
+        console.warn('Failed to load expanded sections:', error)
+        this.expandedSections = new Set()
+      }
+    },
+
+    initializeNavigation() {
+      // 載入儲存的展開狀態，如果沒有儲存的狀態則預設全部展開
+      this.loadExpandedSections()
+      
+      // 如果沒有儲存的展開狀態，預設展開所有 sections
+      if (this.expandedSections.size === 0) {
+        this.expandAllSections()
+      }
+      
+      // 檢查 URL query 參數
+      const focusSymbol = navigationService.getFocusSymbolFromQuery()
+      if (focusSymbol && this.isSymbolValid(focusSymbol)) {
+        console.log('Navigation: Found focus symbol in URL:', focusSymbol)
+        
+        // 延遲執行以確保 DOM 已渲染
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.onSymbolClick(focusSymbol)
+          }, 500)
+        })
+      }
+      
+      // 初始化 ScrollSpy
+      this.$nextTick(() => {
+        this.setupScrollSpy()
+      })
+    },
+
+    setupScrollSpy() {
+      try {
+        // 獲取所有 StockCard 元素
+        const stockCardElements = document.querySelectorAll('[data-symbol]')
+        
+        if (stockCardElements.length === 0) {
+          console.warn('ScrollSpy: No stock card elements found')
+          return
+        }
+        
+        // 設置 ScrollSpy
+        scrollSpyService.setup(
+          Array.from(stockCardElements),
+          (activeSymbol) => {
+            console.log('ScrollSpy: Active symbol changed to:', activeSymbol)
+            this.activeSymbol = activeSymbol
+            this.autoExpandForSymbol(activeSymbol)
+          }
+        )
+        
+        console.log(`ScrollSpy: Initialized with ${stockCardElements.length} elements`)
+      } catch (error) {
+        console.error('Failed to setup ScrollSpy:', error)
+      }
+    },
+
+    cleanupNavigation() {
+      scrollSpyService.cleanup()
+    },
+
+    isSymbolValid(symbol) {
+      return navigationService.isSymbolValid(symbol)
+    },
+
+    expandAllSections() {
+      // 展開所有 sector 和 industry sections
+      this.tocTree.forEach(sectorNode => {
+        this.expandedSections.add(sectorNode.id)
+        sectorNode.children.forEach(industryNode => {
+          this.expandedSections.add(industryNode.id)
+        })
+      })
+      this.saveExpandedSections()
+      console.log('Navigation: Expanded all sections by default')
     }
   }
 }
@@ -482,6 +762,22 @@ export default {
 <style scoped>
 .stock-overview {
   margin-bottom: 1rem;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.navigation-sidebar {
+  flex-shrink: 0;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0; /* 防止 flex item 溢出 */
 }
 
 .stock-header {
@@ -651,6 +947,16 @@ export default {
     gap: 0.5rem;
   }
   
+  /* 行動版隱藏導覽面板 */
+  .main-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .navigation-sidebar {
+    display: none;
+  }
+  
   .sector-group {
     padding: 1rem;
     margin: 0 -0.5rem;
@@ -658,6 +964,17 @@ export default {
   
   .stocks-in-group {
     gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main-layout {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .navigation-sidebar {
+    display: none;
   }
 }
 

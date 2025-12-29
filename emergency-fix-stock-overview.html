@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Fix - StockOverview Cache Issue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .alert {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            border-left: 4px solid;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .button.danger {
+            background: #dc3545;
+        }
+        .button.danger:hover {
+            background: #c82333;
+        }
+        .button.success {
+            background: #28a745;
+        }
+        .button.success:hover {
+            background: #218838;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        .info { color: #17a2b8; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #e9ecef;
+        }
+        .stat-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        .stat-value {
+            font-size: 18px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 緊急修復 - StockOverview 緩存問題</h1>
+        
+        <div class="alert alert-danger">
+            <strong>問題診斷:</strong> StockOverview 頁面只顯示 24 個股票，但實際應該有 67 個股票。
+            這是由於 <code>performanceCache</code> 緩存了舊的數據導致的。
+        </div>
+
+        <div class="alert alert-warning">
+            <strong>根本原因:</strong> 
+            <ul>
+                <li><code>STOCK_OVERVIEW_DATA</code> 緩存鍵包含了舊的 24 個股票數據</li>
+                <li>緩存 TTL 設置為 24 小時，導致舊數據持續被使用</li>
+                <li>即使 <code>universe.json</code> 和其他數據源已更新為 67 個股票，緩存仍然返回舊數據</li>
+            </ul>
+        </div>
+
+        <div class="stats" id="stats">
+            <!-- 統計信息將在這裡顯示 -->
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <button class="button danger" onclick="emergencyFix()">🚨 緊急修復 (清除所有緩存)</button>
+            <button class="button" onclick="targetedFix()">🎯 精準修復 (只清除 StockOverview 緩存)</button>
+            <button class="button success" onclick="verifyFix()">✅ 驗證修復結果</button>
+        </div>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="/" class="button">🏠 測試 StockOverview (應該顯示 67 個股票)</a>
+            <a href="/stock/RR" class="button">🔍 測試 RR 詳情頁</a>
+        </div>
+
+        <div class="log" id="log"></div>
+    </div>
+
+    <script>
+        const log = document.getElementById('log');
+        const statsContainer = document.getElementById('stats');
+        
+        function addLog(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}\n`;
+            log.innerHTML += `<span class="${type}">${logEntry}</span>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function createStatCard(title, value, description = '') {
+            return `
+                <div class="stat-card">
+                    <div class="stat-title">${title}</div>
+                    <div class="stat-value">${value}</div>
+                    ${description ? `<div style="font-size: 12px; color: #6c757d; margin-top: 5px;">${description}</div>` : ''}
+                </div>
+            `;
+        }
+
+        async function updateStats() {
+            try {
+                const stats = [];
+                
+                // 檢查 localStorage 中的緩存項目
+                let cacheCount = 0;
+                let stockOverviewCached = false;
+                const cachePrefix = 'investment_dashboard_cache_';
+                
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith(cachePrefix)) {
+                        cacheCount++;
+                        if (key.includes('stock_overview_data')) {
+                            stockOverviewCached = true;
+                        }
+                    }
+                }
+                
+                stats.push(createStatCard('緩存項目數量', cacheCount, 'localStorage 中的緩存項目'));
+                stats.push(createStatCard('StockOverview 緩存', stockOverviewCached ? '❌ 存在' : '✅ 已清除', '問題緩存狀態'));
+                
+                // 檢查數據源
+                const baseUrl = window.location.hostname === 'romarin-hsieh.github.io' && 
+                                window.location.pathname.startsWith('/investment-dashboard') 
+                                ? '/investment-dashboard' : '';
+
+                try {
+                    const universeResponse = await fetch(`${baseUrl}/config/universe.json?t=${Date.now()}`);
+                    const universeData = await universeResponse.json();
+                    stats.push(createStatCard('Universe 股票數', universeData.symbols.length, 'config/universe.json'));
+                } catch (error) {
+                    stats.push(createStatCard('Universe 股票數', '❌ 錯誤', error.message));
+                }
+
+                try {
+                    const quotesResponse = await fetch(`${baseUrl}/data/quotes/latest.json?t=${Date.now()}`);
+                    const quotesData = await quotesResponse.json();
+                    stats.push(createStatCard('Quotes 股票數', quotesData.items.length, 'data/quotes/latest.json'));
+                } catch (error) {
+                    stats.push(createStatCard('Quotes 股票數', '❌ 錯誤', error.message));
+                }
+
+                try {
+                    const metadataResponse = await fetch(`${baseUrl}/data/symbols_metadata.json?t=${Date.now()}`);
+                    const metadataData = await metadataResponse.json();
+                    stats.push(createStatCard('Metadata 股票數', metadataData.items.length, 'data/symbols_metadata.json'));
+                } catch (error) {
+                    stats.push(createStatCard('Metadata 股票數', '❌ 錯誤', error.message));
+                }
+
+                statsContainer.innerHTML = stats.join('');
+                
+            } catch (error) {
+                addLog(`❌ 更新統計信息時發生錯誤: ${error.message}`, 'error');
+            }
+        }
+
+        async function emergencyFix() {
+            try {
+                addLog('🚨 開始緊急修復...', 'warning');
+                
+                // 1. 清除所有 localStorage 緩存
+                addLog('🗑️ 清除所有 localStorage 緩存...', 'info');
+                const cachePrefix = 'investment_dashboard_cache_';
+                const keysToRemove = [];
+                
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key && key.startsWith(cachePrefix)) {
+                        keysToRemove.push(key);
+                    }
+                }
+                
+                keysToRemove.forEach(key => {
+                    localStorage.removeItem(key);
+                    addLog(`  - 移除: ${key}`, 'info');
+                });
+                
+                addLog(`✅ 清除了 ${keysToRemove.length} 個緩存項目`, 'success');
+                
+                // 2. 清除 sessionStorage
+                addLog('🗑️ 清除 sessionStorage...', 'info');
+                sessionStorage.clear();
+                addLog('✅ sessionStorage 已清除', 'success');
+                
+                // 3. 清除瀏覽器緩存
+                if ('caches' in window) {
+                    addLog('🗑️ 清除瀏覽器緩存...', 'info');
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                    addLog(`✅ 清除了 ${cacheNames.length} 個瀏覽器緩存`, 'success');
+                }
+                
+                // 4. 設置強制重新載入標記
+                sessionStorage.setItem('force_reload_stock_overview', 'true');
+                sessionStorage.setItem('emergency_fix_applied', Date.now().toString());
+                
+                addLog('✅ 緊急修復完成！', 'success');
+                addLog('💡 請點擊 "測試 StockOverview" 按鈕驗證修復結果', 'warning');
+                
+                await updateStats();
+                
+            } catch (error) {
+                addLog(`❌ 緊急修復過程中發生錯誤: ${error.message}`, 'error');
+            }
+        }
+
+        async function targetedFix() {
+            try {
+                addLog('🎯 開始精準修復...', 'info');
+                
+                // 只清除 StockOverview 相關的緩存
+                const cachePrefix = 'investment_dashboard_cache_';
+                const targetKeys = [
+                    'stock_overview_data',
+                    'quotes_snapshot',
+                    'symbols_config'
+                ];
+                
+                let removedCount = 0;
+                targetKeys.forEach(targetKey => {
+                    const fullKey = cachePrefix + targetKey;
+                    if (localStorage.getItem(fullKey)) {
+                        localStorage.removeItem(fullKey);
+                        addLog(`  - 移除: ${fullKey}`, 'info');
+                        removedCount++;
+                    }
+                });
+                
+                addLog(`✅ 精準清除了 ${removedCount} 個相關緩存項目`, 'success');
+                
+                // 設置強制重新載入標記
+                sessionStorage.setItem('force_reload_stock_overview', 'true');
+                sessionStorage.setItem('targeted_fix_applied', Date.now().toString());
+                
+                addLog('✅ 精準修復完成！', 'success');
+                addLog('💡 請點擊 "測試 StockOverview" 按鈕驗證修復結果', 'warning');
+                
+                await updateStats();
+                
+            } catch (error) {
+                addLog(`❌ 精準修復過程中發生錯誤: ${error.message}`, 'error');
+            }
+        }
+
+        async function verifyFix() {
+            try {
+                addLog('✅ 開始驗證修復結果...', 'info');
+                
+                const baseUrl = window.location.hostname === 'romarin-hsieh.github.io' && 
+                                window.location.pathname.startsWith('/investment-dashboard') 
+                                ? '/investment-dashboard' : '';
+
+                // 1. 檢查緩存狀態
+                addLog('🔍 檢查緩存狀態...', 'info');
+                const cachePrefix = 'investment_dashboard_cache_';
+                const stockOverviewCacheKey = cachePrefix + 'stock_overview_data';
+                const hasCachedData = localStorage.getItem(stockOverviewCacheKey) !== null;
+                
+                addLog(`StockOverview 緩存狀態: ${hasCachedData ? '❌ 仍然存在' : '✅ 已清除'}`, hasCachedData ? 'error' : 'success');
+                
+                // 2. 測試數據源
+                addLog('📊 測試數據源...', 'info');
+                
+                const dataSources = [
+                    { name: 'Universe', url: `${baseUrl}/config/universe.json`, checkRR: data => data.symbols.includes('RR') },
+                    { name: 'Quotes', url: `${baseUrl}/data/quotes/latest.json`, checkRR: data => data.items.some(item => item.symbol === 'RR') },
+                    { name: 'Metadata', url: `${baseUrl}/data/symbols_metadata.json`, checkRR: data => data.items.some(item => item.symbol === 'RR') }
+                ];
+                
+                let allSourcesValid = true;
+                for (const source of dataSources) {
+                    try {
+                        const response = await fetch(source.url + '?t=' + Date.now());
+                        if (response.ok) {
+                            const data = await response.json();
+                            const count = source.name === 'Universe' ? data.symbols.length : data.items.length;
+                            const hasRR = source.checkRR(data);
+                            
+                            addLog(`${source.name}: ${count} 個股票, RR ${hasRR ? '✅' : '❌'}`, hasRR && count >= 67 ? 'success' : 'warning');
+                            
+                            if (!hasRR || count < 67) {
+                                allSourcesValid = false;
+                            }
+                        } else {
+                            addLog(`${source.name}: ❌ HTTP ${response.status}`, 'error');
+                            allSourcesValid = false;
+                        }
+                    } catch (error) {
+                        addLog(`${source.name}: ❌ ${error.message}`, 'error');
+                        allSourcesValid = false;
+                    }
+                }
+                
+                // 3. 測試 symbolsConfig
+                addLog('⚙️ 測試 symbolsConfig...', 'info');
+                try {
+                    const configModule = await import('/src/utils/symbolsConfig.js');
+                    const staticSymbols = configModule.symbolsConfig.getStaticSymbols();
+                    const hasRRInStatic = staticSymbols.includes('RR');
+                    
+                    addLog(`SymbolsConfig 靜態符號: ${staticSymbols.length} 個, RR ${hasRRInStatic ? '✅' : '❌'}`, hasRRInStatic ? 'success' : 'error');
+                    
+                    if (!hasRRInStatic || staticSymbols.length < 67) {
+                        allSourcesValid = false;
+                    }
+                } catch (error) {
+                    addLog(`SymbolsConfig: ❌ ${error.message}`, 'error');
+                    allSourcesValid = false;
+                }
+                
+                // 4. 最終結果
+                if (allSourcesValid && !hasCachedData) {
+                    addLog('🎉 修復驗證成功！所有數據源都正常，緩存已清除', 'success');
+                    addLog('💡 現在可以安全地訪問 StockOverview 頁面，應該會顯示 67 個股票包括 RR', 'success');
+                } else {
+                    addLog('⚠️ 修復驗證發現問題，可能需要進一步處理', 'warning');
+                    if (hasCachedData) {
+                        addLog('  - 建議: 執行緊急修復以完全清除緩存', 'warning');
+                    }
+                    if (!allSourcesValid) {
+                        addLog('  - 建議: 檢查數據源文件是否正確更新', 'warning');
+                    }
+                }
+                
+                await updateStats();
+                
+            } catch (error) {
+                addLog(`❌ 驗證過程中發生錯誤: ${error.message}`, 'error');
+            }
+        }
+
+        // 頁面載入時初始化
+        window.addEventListener('load', async () => {
+            addLog('📄 緊急修復工具載入完成', 'info');
+            addLog('🔍 正在檢查當前狀態...', 'info');
+            await updateStats();
+            
+            // 檢查是否有緩存問題
+            const cachePrefix = 'investment_dashboard_cache_';
+            const stockOverviewCacheKey = cachePrefix + 'stock_overview_data';
+            const hasCachedData = localStorage.getItem(stockOverviewCacheKey) !== null;
+            
+            if (hasCachedData) {
+                addLog('⚠️ 檢測到 StockOverview 緩存存在，這可能是導致只顯示 24 個股票的原因', 'warning');
+                addLog('💡 建議執行緊急修復或精準修復來解決問題', 'warning');
+            } else {
+                addLog('✅ 沒有檢測到問題緩存', 'success');
+            }
+        });
+    </script>
+</body>
+</html>

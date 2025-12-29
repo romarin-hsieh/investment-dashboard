@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test RR Visibility in StockOverview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        .info { color: #17a2b8; }
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .status-card {
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .status-card.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+        .status-card.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        .status-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .status-label {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Test RR Visibility in StockOverview</h1>
+        <p>測試 RR 符號現在是否能在 StockOverview 組件中正確顯示</p>
+
+        <div class="test-section">
+            <div class="test-title">📊 RR 數據完整性檢查</div>
+            <div class="status-grid" id="status-grid"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🧩 StockOverview 組件模擬</div>
+            <div class="log" id="component-log"></div>
+        </div>
+
+        <div class="test-section">
+            <div class="test-title">🎯 RR 最終狀態</div>
+            <div class="log" id="final-status"></div>
+        </div>
+    </div>
+
+    <script>
+        const statusGrid = document.getElementById('status-grid');
+        const componentLog = document.getElementById('component-log');
+        const finalStatus = document.getElementById('final-status');
+        
+        function addLog(element, message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}\n`;
+            element.innerHTML += `<span class="${type}">${logEntry}</span>`;
+            element.scrollTop = element.scrollHeight;
+        }
+
+        function addStatusCard(title, value, isSuccess, details = '') {
+            const card = document.createElement('div');
+            card.className = `status-card ${isSuccess ? 'success' : 'error'}`;
+            card.innerHTML = `
+                <div class="status-value">${isSuccess ? '✅' : '❌'}</div>
+                <div class="status-label">${title}</div>
+                <div style="font-size: 10px; margin-top: 5px;">${details}</div>
+            `;
+            statusGrid.appendChild(card);
+        }
+
+        async function testRRVisibility() {
+            try {
+                addLog(componentLog, '🚀 開始測試 RR 在 StockOverview 中的可見性...', 'info');
+
+                // 1. 檢查所有數據源
+                addLog(componentLog, '📥 檢查所有數據源...', 'info');
+
+                // Universe
+                const universeResponse = await fetch('/config/universe.json');
+                const universeData = await universeResponse.json();
+                const rrInUniverse = universeData.symbols.includes('RR');
+                addStatusCard('Universe', rrInUniverse, rrInUniverse, `${universeData.symbols.length} symbols`);
+
+                // Quotes
+                const quotesResponse = await fetch('/data/quotes/latest.json');
+                const quotesData = await quotesResponse.json();
+                const rrQuote = quotesData.items.find(item => item.symbol === 'RR');
+                const rrInQuotes = !!rrQuote;
+                addStatusCard('Quotes', rrInQuotes, rrInQuotes, rrQuote ? `$${rrQuote.price_usd}` : 'No data');
+
+                // Metadata
+                const metadataResponse = await fetch('/data/symbols_metadata.json');
+                const metadataData = await metadataResponse.json();
+                const rrMetadata = metadataData.items.find(item => item.symbol === 'RR');
+                const rrInMetadata = !!rrMetadata;
+                addStatusCard('Metadata', rrInMetadata, rrInMetadata, rrMetadata ? `${rrMetadata.sector}` : 'No data');
+
+                // SymbolsConfig
+                const configModule = await import('/src/utils/symbolsConfig.js');
+                const configSymbols = configModule.symbolsConfig.getStaticSymbols();
+                const rrInConfig = configSymbols.includes('RR');
+                addStatusCard('Config', rrInConfig, rrInConfig, `${configSymbols.length} symbols`);
+
+                // 2. 模擬 StockOverview 組件邏輯
+                addLog(componentLog, '🧩 模擬 StockOverview 組件邏輯...', 'info');
+
+                // 過濾邏輯
+                const filteredQuotes = quotesData.items.filter(quote => 
+                    configSymbols.includes(quote.symbol)
+                );
+                const rrInFiltered = filteredQuotes.find(quote => quote.symbol === 'RR');
+                addLog(componentLog, `過濾後的 quotes: ${filteredQuotes.length} 個`, 'info');
+                addLog(componentLog, `RR 通過過濾: ${rrInFiltered ? '✅' : '❌'}`, rrInFiltered ? 'success' : 'error');
+
+                // 分組邏輯
+                if (rrInFiltered && rrMetadata) {
+                    const confidence = rrMetadata.confidence;
+                    const sector = confidence >= 0.7 ? (rrMetadata.sector || 'Unknown') : 'Unknown';
+                    addLog(componentLog, `RR confidence: ${confidence}`, 'info');
+                    addLog(componentLog, `RR 分組到: ${sector}`, 'info');
+                    addLog(componentLog, `RR 分組邏輯: ${confidence >= 0.7 ? '✅ 正常' : '❌ 信心度過低'}`, confidence >= 0.7 ? 'success' : 'error');
+                    
+                    // 創建分組數據結構
+                    const groups = {};
+                    filteredQuotes.forEach(quote => {
+                        const symbolMetadata = metadataData.items.find(m => m.symbol === quote.symbol);
+                        let sectorName = 'Unknown';
+                        if (symbolMetadata && symbolMetadata.confidence >= 0.7) {
+                            sectorName = symbolMetadata.sector || 'Unknown';
+                        }
+                        
+                        if (!groups[sectorName]) {
+                            groups[sectorName] = [];
+                        }
+                        
+                        groups[sectorName].push({
+                            quote,
+                            metadata: symbolMetadata
+                        });
+                    });
+                    
+                    // 檢查 RR 在哪個分組
+                    let rrSector = null;
+                    for (const [sectorName, stocks] of Object.entries(groups)) {
+                        const rrInSector = stocks.find(stock => stock.quote.symbol === 'RR');
+                        if (rrInSector) {
+                            rrSector = sectorName;
+                            break;
+                        }
+                    }
+                    
+                    if (rrSector) {
+                        addLog(componentLog, `✅ RR 找到在分組: ${rrSector}`, 'success');
+                        addStatusCard('Grouping', true, true, rrSector);
+                    } else {
+                        addLog(componentLog, `❌ RR 沒有出現在任何分組中`, 'error');
+                        addStatusCard('Grouping', false, false, 'Not grouped');
+                    }
+                }
+
+                // 3. 最終狀態報告
+                addLog(finalStatus, '📋 RR 最終狀態報告:', 'info');
+                addLog(finalStatus, `✅ Universe: ${rrInUniverse}`, 'success');
+                addLog(finalStatus, `✅ Quotes: ${rrInQuotes}`, 'success');
+                addLog(finalStatus, `✅ Metadata: ${rrInMetadata}`, 'success');
+                addLog(finalStatus, `✅ Config: ${rrInConfig}`, 'success');
+                addLog(finalStatus, `✅ Filtered: ${!!rrInFiltered}`, 'success');
+
+                if (rrMetadata) {
+                    addLog(finalStatus, `📊 RR Details:`, 'info');
+                    addLog(finalStatus, `   Sector: ${rrMetadata.sector}`, 'info');
+                    addLog(finalStatus, `   Industry: ${rrMetadata.industry}`, 'info');
+                    addLog(finalStatus, `   Confidence: ${rrMetadata.confidence}`, 'info');
+                    addLog(finalStatus, `   Exchange: ${rrMetadata.exchange}`, 'info');
+                }
+
+                if (rrQuote) {
+                    addLog(finalStatus, `💰 RR Quote:`, 'info');
+                    addLog(finalStatus, `   Price: $${rrQuote.price_usd}`, 'info');
+                    addLog(finalStatus, `   Change: ${rrQuote.change_percent}%`, 'info');
+                }
+
+                // 結論
+                const allChecksPass = rrInUniverse && rrInQuotes && rrInMetadata && rrInConfig && rrInFiltered;
+                if (allChecksPass) {
+                    addLog(finalStatus, '🎉 所有檢查都通過！RR 應該在 StockOverview 中可見', 'success');
+                    addLog(finalStatus, '💡 如果仍然看不到，請清除瀏覽器緩存並重新載入頁面', 'warning');
+                } else {
+                    addLog(finalStatus, '❌ 某些檢查失敗，RR 可能仍然不可見', 'error');
+                }
+
+            } catch (error) {
+                addLog(componentLog, `❌ 測試過程中發生錯誤: ${error.message}`, 'error');
+                console.error('Test error:', error);
+            }
+        }
+
+        // 開始測試
+        testRRVisibility();
+    </script>
+</body>
+</html>

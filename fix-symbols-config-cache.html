@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix SymbolsConfig Cache Issue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .alert {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            border-left: 4px solid;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .alert-warning {
+            background-color: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .button.success {
+            background: #28a745;
+        }
+        .button.success:hover {
+            background: #218838;
+        }
+        .button.danger {
+            background: #dc3545;
+        }
+        .button.danger:hover {
+            background: #c82333;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        .info { color: #17a2b8; }
+        .step {
+            background: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 修復 SymbolsConfig 緩存問題</h1>
+        
+        <div class="alert alert-danger">
+            <strong>問題診斷:</strong> StockOverview 頁面只顯示 24 個股票，根本原因是 <code>symbolsConfig</code> 緩存了舊的股票列表。
+        </div>
+
+        <div class="step">
+            <h3>🎯 問題分析</h3>
+            <ul>
+                <li><code>symbolsConfig.getSymbolsList()</code> 返回緩存的 24 個股票</li>
+                <li>StockOverview 使用這個列表過濾 quotes 數據</li>
+                <li>即使 <code>quotes/latest.json</code> 有 67 個股票，也只顯示 24 個</li>
+                <li>緩存有效期為 60 分鐘，導致舊數據持續被使用</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>🛠️ 修復步驟</h3>
+            <ol>
+                <li>清除 SymbolsConfig 內存緩存</li>
+                <li>清除 StockOverview 相關緩存</li>
+                <li>強制重新載入股票配置</li>
+                <li>驗證修復結果</li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <button class="button success" onclick="executeCompleteFix()">🚀 完整修復</button>
+            <button class="button" onclick="stepByStepFix()">📋 分步驟修復</button>
+            <button class="button danger" onclick="emergencyReset()">🆘 緊急重置</button>
+        </div>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="/" class="button">🏠 測試 StockOverview (應該顯示 67 個股票)</a>
+            <a href="/debug-symbols-config-cache.html" class="button">🔍 診斷工具</a>
+        </div>
+
+        <div class="log" id="log"></div>
+    </div>
+
+    <script>
+        const log = document.getElementById('log');
+        
+        function addLog(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = `[${timestamp}] ${message}\n`;
+            log.innerHTML += `<span class="${type}">${logEntry}</span>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        async function executeCompleteFix() {
+            try {
+                addLog('🚀 開始執行完整修復...', 'info');
+                
+                // 步驟 1: 清除 SymbolsConfig 緩存
+                addLog('步驟 1/5: 清除 SymbolsConfig 緩存', 'info');
+                await clearSymbolsConfigCache();
+                
+                // 步驟 2: 清除相關緩存
+                addLog('步驟 2/5: 清除相關緩存', 'info');
+                await clearRelatedCaches();
+                
+                // 步驟 3: 驗證數據源
+                addLog('步驟 3/5: 驗證數據源', 'info');
+                const dataValid = await verifyDataSources();
+                
+                if (!dataValid) {
+                    addLog('❌ 數據源驗證失敗，請檢查數據文件', 'error');
+                    return;
+                }
+                
+                // 步驟 4: 設置強制重新載入標記
+                addLog('步驟 4/5: 設置強制重新載入標記', 'info');
+                sessionStorage.setItem('force_reload_stock_overview', 'true');
+                sessionStorage.setItem('symbols_config_fix_applied', Date.now().toString());
+                
+                // 步驟 5: 重新導向到 StockOverview
+                addLog('步驟 5/5: 重新導向到 StockOverview 頁面', 'success');
+                addLog('✅ 完整修復完成！正在重新載入頁面...', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = '/#/stock-overview?nocache=' + Date.now();
+                }, 2000);
+                
+            } catch (error) {
+                addLog(`❌ 修復過程中發生錯誤: ${error.message}`, 'error');
+            }
+        }
+
+        async function stepByStepFix() {
+            try {
+                addLog('📋 開始分步驟修復...', 'info');
+                
+                // 步驟 1
+                addLog('🧹 步驟 1: 清除 SymbolsConfig 緩存', 'info');
+                await clearSymbolsConfigCache();
+                addLog('✅ SymbolsConfig 緩存清除完成', 'success');
+                
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // 步驟 2
+                addLog('🗑️ 步驟 2: 清除相關緩存', 'info');
+                await clearRelatedCaches();
+                addLog('✅ 相關緩存清除完成', 'success');
+                
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // 步驟 3
+                addLog('🔍 步驟 3: 驗證修復結果', 'info');
+                const result = await verifyFix();
+                addLog(`✅ 驗證完成: ${result ? '修復成功' : '仍有問題'}`, result ? 'success' : 'warning');
+                
+                if (result) {
+                    addLog('💡 請手動點擊 "測試 StockOverview" 按鈕來驗證修復結果', 'info');
+                } else {
+                    addLog('⚠️ 建議執行完整修復或緊急重置', 'warning');
+                }
+                
+            } catch (error) {
+                addLog(`❌ 分步驟修復過程中發生錯誤: ${error.message}`, 'error');
+            }
+        }
+
+        async function emergencyReset() {
+            try {
+                addLog('🆘 開始緊急重置...', 'warning');
+                
+                // 清除所有存儲
+                localStorage.clear();
+                sessionStorage.clear();
+                addLog('🗑️ 清除所有本地存儲', 'success');
+                
+                // 清除所有緩存
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                    addLog(`🗑️ 清除所有瀏覽器緩存 (${cacheNames.length} 個)`, 'success');
+                }
+                
+                // 清除 Service Worker
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    await Promise.all(registrations.map(reg => reg.unregister()));
+                    addLog('🗑️ 清除所有 Service Worker', 'success');
+                }
+                
+                addLog('✅ 緊急重置完成！', 'success');
+                addLog('🔄 正在重新載入頁面...', 'info');
+                
+                setTimeout(() => {
+                    window.location.reload(true);
+                }, 2000);
+                
+            } catch (error) {
+                addLog(`❌ 緊急重置過程中發生錯誤: ${error.message}`, 'error');
+            }
+        }
+
+        async function clearSymbolsConfigCache() {
+            try {
+                // 載入 symbolsConfig 模組並清除緩存
+                const configModule = await import('/src/utils/symbolsConfig.js');
+                const symbolsConfig = configModule.symbolsConfig;
+                
+                // 獲取清除前的狀態
+                const beforeSymbols = await symbolsConfig.getSymbolsList();
+                addLog(`清除前符號數量: ${beforeSymbols.length}`, 'info');
+                
+                // 清除緩存
+                await symbolsConfig.refresh();
+                
+                // 獲取清除後的狀態
+                const afterSymbols = await symbolsConfig.getSymbolsList();
+                addLog(`清除後符號數量: ${afterSymbols.length}`, afterSymbols.length >= 67 ? 'success' : 'error');
+                
+                const hasRR = afterSymbols.includes('RR');
+                addLog(`RR 符號存在: ${hasRR ? '✅' : '❌'}`, hasRR ? 'success' : 'error');
+                
+                return afterSymbols.length >= 67 && hasRR;
+                
+            } catch (error) {
+                addLog(`❌ 清除 SymbolsConfig 緩存時發生錯誤: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function clearRelatedCaches() {
+            // 清除 localStorage 中的相關項目
+            const cachePrefix = 'investment_dashboard_cache_';
+            const targetKeys = [
+                'stock_overview_data',
+                'quotes_snapshot',
+                'symbols_config'
+            ];
+            
+            let removedCount = 0;
+            targetKeys.forEach(targetKey => {
+                const fullKey = cachePrefix + targetKey;
+                if (localStorage.getItem(fullKey)) {
+                    localStorage.removeItem(fullKey);
+                    addLog(`  - 移除: ${fullKey}`, 'info');
+                    removedCount++;
+                }
+            });
+            
+            addLog(`清除了 ${removedCount} 個相關緩存項目`, 'success');
+        }
+
+        async function verifyDataSources() {
+            try {
+                const baseUrl = window.location.hostname === 'romarin-hsieh.github.io' && 
+                                window.location.pathname.startsWith('/investment-dashboard') 
+                                ? '/investment-dashboard' : '';
+
+                // 檢查關鍵數據源
+                const sources = [
+                    `${baseUrl}/config/universe.json`,
+                    `${baseUrl}/data/quotes/latest.json`
+                ];
+
+                let allValid = true;
+                
+                for (const source of sources) {
+                    try {
+                        const response = await fetch(source + '?t=' + Date.now());
+                        if (response.ok) {
+                            const data = await response.json();
+                            const hasRR = source.includes('universe') ? 
+                                data.symbols.includes('RR') :
+                                data.items.some(item => item.symbol === 'RR');
+                            
+                            const count = source.includes('universe') ? data.symbols.length : data.items.length;
+                            addLog(`✅ ${source.split('/').pop()}: ${count} 符號, RR ${hasRR ? '存在' : '不存在'}`, hasRR && count >= 67 ? 'success' : 'warning');
+                            
+                            if (!hasRR || count < 67) allValid = false;
+                        } else {
+                            addLog(`❌ ${source.split('/').pop()}: HTTP ${response.status}`, 'error');
+                            allValid = false;
+                        }
+                    } catch (error) {
+                        addLog(`❌ ${source.split('/').pop()}: ${error.message}`, 'error');
+                        allValid = false;
+                    }
+                }
+                
+                return allValid;
+            } catch (error) {
+                addLog(`❌ 驗證數據源時發生錯誤: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        async function verifyFix() {
+            try {
+                // 檢查 symbolsConfig 狀態
+                const configModule = await import('/src/utils/symbolsConfig.js');
+                const symbolsConfig = configModule.symbolsConfig;
+                
+                const symbols = await symbolsConfig.getSymbolsList();
+                const hasRR = symbols.includes('RR');
+                const countOK = symbols.length >= 67;
+                
+                addLog(`SymbolsConfig 驗證: ${symbols.length} 符號, RR ${hasRR ? '✅' : '❌'}`, countOK && hasRR ? 'success' : 'error');
+                
+                // 檢查緩存狀態
+                const cachePrefix = 'investment_dashboard_cache_';
+                const stockOverviewCacheKey = cachePrefix + 'stock_overview_data';
+                const hasCachedData = localStorage.getItem(stockOverviewCacheKey) !== null;
+                
+                addLog(`StockOverview 緩存狀態: ${hasCachedData ? '❌ 仍然存在' : '✅ 已清除'}`, hasCachedData ? 'warning' : 'success');
+                
+                return countOK && hasRR && !hasCachedData;
+                
+            } catch (error) {
+                addLog(`❌ 驗證修復時發生錯誤: ${error.message}`, 'error');
+                return false;
+            }
+        }
+
+        // 頁面載入時的初始化
+        window.addEventListener('load', () => {
+            addLog('📄 SymbolsConfig 修復工具載入完成', 'info');
+            addLog('💡 選擇一個修復選項來解決 SymbolsConfig 緩存問題', 'info');
+            
+            // 自動檢查當前狀態
+            setTimeout(async () => {
+                try {
+                    const configModule = await import('/src/utils/symbolsConfig.js');
+                    const symbols = await configModule.symbolsConfig.getSymbolsList();
+                    const hasRR = symbols.includes('RR');
+                    
+                    if (symbols.length < 67 || !hasRR) {
+                        addLog(`⚠️ 檢測到問題: 當前只有 ${symbols.length} 個符號, RR ${hasRR ? '存在' : '不存在'}`, 'warning');
+                        addLog('💡 建議執行完整修復來解決問題', 'warning');
+                    } else {
+                        addLog(`✅ 當前狀態正常: ${symbols.length} 個符號, RR 存在`, 'success');
+                    }
+                } catch (error) {
+                    addLog(`❌ 檢查當前狀態時發生錯誤: ${error.message}`, 'error');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

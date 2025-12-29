@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { widgetLoadManager } from '@/utils/widgetLoadManager'
+
 export default {
   name: 'LazyTradingViewWidget',
   props: {
@@ -119,7 +121,13 @@ export default {
           await new Promise(resolve => setTimeout(resolve, delay))
         }
 
-        await this.createWidget()
+        // 使用 Widget Load Manager 管理併發
+        const widgetId = `lazy-${this.widgetType}-${this.containerId}`
+        await widgetLoadManager.addToQueue(
+          () => this.createWidget(),
+          widgetId,
+          this.priority
+        )
       } catch (err) {
         console.error('Failed to load widget:', err)
         this.error = true

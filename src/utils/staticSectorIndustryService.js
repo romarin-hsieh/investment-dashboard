@@ -278,7 +278,7 @@ class StaticSectorIndustryService {
       'KSPI', 'LUNR', 'HOOD', 'APP', 'CHYM',
       'NU', 'COIN', 'CRCL', 'IBKR', 'CCJ',
       'UUUU', 'VRT', 'ETN', 'MSFT', 'ADBE',
-      'FIG', 'PAWN', 'CRWD', 'DDOG', 'DUOL',
+      'FIG', 'PANW', 'CRWD', 'DDOG', 'DUOL',
       'ZETA', 'AXON', 'ALAB', 'LRCX', 'BWXT',
       'UMAC', 'MP', 'RR'
     ];
@@ -339,7 +339,7 @@ class StaticSectorIndustryService {
       'MSFT': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'ADBE': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'FIG': { sector: 'Financial Services', industry: 'Asset Management' },
-      'PAWN': { sector: 'Financial Services', industry: 'Credit Services' },
+      'PANW': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'CRWD': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'DDOG': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'DUOL': { sector: 'Consumer Cyclical', industry: 'Education & Training Services' },

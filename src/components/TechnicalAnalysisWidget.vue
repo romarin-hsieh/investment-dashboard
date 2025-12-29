@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { widgetLoadManager } from '@/utils/widgetLoadManager'
+
 export default {
   name: 'TechnicalAnalysisWidget',
   props: {
@@ -40,7 +42,8 @@ export default {
       error: false,
       loadStartTime: 0,
       isVisible: false,
-      observer: null
+      observer: null,
+      retryCount: 0
     }
   },
   computed: {
@@ -102,7 +105,13 @@ export default {
           await new Promise(resolve => setTimeout(resolve, delay))
         }
 
-        await this.createWidget()
+        // 使用 Widget Load Manager 管理併發
+        const widgetId = `technical-analysis-${this.symbol}-${this.containerId}`
+        await widgetLoadManager.addToQueue(
+          () => this.createWidget(),
+          widgetId,
+          this.priority
+        )
 
       } catch (err) {
         console.error('Failed to load Technical Analysis widget:', err)
@@ -129,18 +138,27 @@ export default {
           script.async = true
           script.innerHTML = JSON.stringify(config)
           
-          // 設定超時
+          // 調整 timeout - 根據優先級和重試次數
+          const baseTimeouts = {
+            1: 8000,   // 高優先級：8秒
+            2: 12000,  // 中優先級：12秒
+            3: 15000   // 低優先級：15秒
+          }
+          
+          const retryCount = this.retryCount || 0
+          const timeoutDuration = baseTimeouts[this.priority] + (retryCount * 3000) // 每次重試增加 3 秒
+          
           const timeout = setTimeout(() => {
             this.error = true
-            reject(new Error('Widget load timeout'))
-          }, 5000)
+            reject(new Error(`Widget load timeout after ${timeoutDuration}ms (retry: ${retryCount})`))
+          }, timeoutDuration)
           
           script.onload = () => {
             clearTimeout(timeout)
             this.loaded = true
             
             const loadTime = performance.now() - this.loadStartTime
-            console.log(`Technical Analysis widget ${this.symbol} loaded in ${loadTime.toFixed(2)}ms`)
+            console.log(`Technical Analysis widget ${this.symbol} loaded in ${loadTime.toFixed(2)}ms (retry: ${retryCount})`)
             
             resolve()
           }
@@ -178,6 +196,21 @@ export default {
     },
 
     async retry() {
+      // 實施指數退避重試
+      this.retryCount = (this.retryCount || 0) + 1
+      const maxRetries = 2
+      
+      if (this.retryCount > maxRetries) {
+        console.error(`Technical Analysis widget ${this.symbol} exceeded max retries (${maxRetries})`)
+        return
+      }
+      
+      // 指數退避延遲
+      const backoffDelay = Math.min(1000 * Math.pow(2, this.retryCount - 1), 5000) // 最多 5 秒
+      console.log(`Technical Analysis widget ${this.symbol} retrying in ${backoffDelay}ms (attempt ${this.retryCount}/${maxRetries})`)
+      
+      await new Promise(resolve => setTimeout(resolve, backoffDelay))
+      
       this.setupIntersectionObserver()
     }
   }

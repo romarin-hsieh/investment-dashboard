@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test StockOverview Cache Fix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid;
+        }
+        .test-pass {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        .test-fail {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        .test-warning {
+            background-color: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 StockOverview 緩存修復測試</h1>
+        <p>測試 StockOverview 頁面是否能正確顯示 67 個股票（包括 RR）</p>
+
+        <div style="text-align: center; margin: 20px 0;">
+            <button class="button" onclick="runAllTests()">🧪 執行所有測試</button>
+            <button class="button" onclick="clearCacheAndTest()">🗑️ 清除緩存並測試</button>
+            <a href="/" class="button">🏠 前往 StockOverview</a>
+        </div>
+
+        <div id="test-results"></div>
+        <div class="log" id="log"></div>
+    </div>
+
+    <script>
+        const log = document.getElementById('log');
+        const resultsContainer = document.getElementById('test-results');
+        
+        function addLog(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            log.innerHTML += `[${timestamp}] ${message}\n`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function addTestResult(testName, passed, message) {
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${passed ? 'test-pass' : 'test-fail'}`;
+            resultDiv.innerHTML = `
+                <strong>${passed ? '✅' : '❌'} ${testName}</strong><br>
+                ${message}
+            `;
+            resultsContainer.appendChild(resultDiv);
+        }
+
+        function addWarningResult(testName, message) {
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'test-result test-warning';
+            resultDiv.innerHTML = `
+                <strong>⚠️ ${testName}</strong><br>
+                ${message}
+            `;
+            resultsContainer.appendChild(resultDiv);
+        }
+
+        async function runAllTests() {
+            resultsContainer.innerHTML = '';
+            addLog('🧪 開始執行所有測試...');
+
+            const baseUrl = window.location.hostname === 'romarin-hsieh.github.io' && 
+                            window.location.pathname.startsWith('/investment-dashboard') 
+                            ? '/investment-dashboard' : '';
+
+            // 測試 1: 檢查緩存狀態
+            addLog('測試 1: 檢查緩存狀態');
+            const cachePrefix = 'investment_dashboard_cache_';
+            const stockOverviewCacheKey = cachePrefix + 'stock_overview_data';
+            const hasCachedData = localStorage.getItem(stockOverviewCacheKey) !== null;
+            
+            if (hasCachedData) {
+                try {
+                    const cachedDataStr = localStorage.getItem(stockOverviewCacheKey);
+                    const cachedData = JSON.parse(cachedDataStr);
+                    const symbolCount = cachedData.data && cachedData.data.quotes ? cachedData.data.quotes.length : 0;
+                    
+                    if (symbolCount >= 60) {
+                        addTestResult('緩存數據檢查', true, `緩存包含 ${symbolCount} 個股票，數量正常`);
+                    } else {
+                        addTestResult('緩存數據檢查', false, `緩存只包含 ${symbolCount} 個股票，數量不足 (期望 ≥ 60)`);
+                    }
+                } catch (error) {
+                    addTestResult('緩存數據檢查', false, `緩存數據解析失敗: ${error.message}`);
+                }
+            } else {
+                addTestResult('緩存數據檢查', true, '沒有檢測到 StockOverview 緩存，將從數據源重新載入');
+            }
+
+            // 測試 2: 檢查 universe.json
+            addLog('測試 2: 檢查 universe.json');
+            try {
+                const universeResponse = await fetch(`${baseUrl}/config/universe.json?t=${Date.now()}`);
+                if (universeResponse.ok) {
+                    const universeData = await universeResponse.json();
+                    const hasRR = universeData.symbols.includes('RR');
+                    const symbolCount = universeData.symbols.length;
+                    
+                    if (symbolCount >= 67 && hasRR) {
+                        addTestResult('Universe 數據檢查', true, `包含 ${symbolCount} 個股票，RR 存在`);
+                    } else {
+                        addTestResult('Universe 數據檢查', false, `股票數: ${symbolCount}, RR 存在: ${hasRR}`);
+                    }
+                } else {
+                    addTestResult('Universe 數據檢查', false, `HTTP ${universeResponse.status}`);
+                }
+            } catch (error) {
+                addTestResult('Universe 數據檢查', false, error.message);
+            }
+
+            // 測試 3: 檢查 quotes/latest.json
+            addLog('測試 3: 檢查 quotes/latest.json');
+            try {
+                const quotesResponse = await fetch(`${baseUrl}/data/quotes/latest.json?t=${Date.now()}`);
+                if (quotesResponse.ok) {
+                    const quotesData = await quotesResponse.json();
+                    const rrQuote = quotesData.items.find(item => item.symbol === 'RR');
+                    const symbolCount = quotesData.items.length;
+                    
+                    if (symbolCount >= 67 && rrQuote) {
+                        addTestResult('Quotes 數據檢查', true, `包含 ${symbolCount} 個股票，RR 存在 (價格: $${rrQuote.price_usd})`);
+                    } else {
+                        addTestResult('Quotes 數據檢查', false, `股票數: ${symbolCount}, RR 存在: ${!!rrQuote}`);
+                    }
+                } else {
+                    addTestResult('Quotes 數據檢查', false, `HTTP ${quotesResponse.status}`);
+                }
+            } catch (error) {
+                addTestResult('Quotes 數據檢查', false, error.message);
+            }
+
+            // 測試 4: 檢查 symbols_metadata.json
+            addLog('測試 4: 檢查 symbols_metadata.json');
+            try {
+                const metadataResponse = await fetch(`${baseUrl}/data/symbols_metadata.json?t=${Date.now()}`);
+                if (metadataResponse.ok) {
+                    const metadataData = await metadataResponse.json();
+                    const rrMetadata = metadataData.items.find(item => item.symbol === 'RR');
+                    const symbolCount = metadataData.items.length;
+                    
+                    if (symbolCount >= 67 && rrMetadata && rrMetadata.confidence >= 0.7) {
+                        addTestResult('Metadata 數據檢查', true, `包含 ${symbolCount} 個股票，RR 存在 (sector: ${rrMetadata.sector}, confidence: ${rrMetadata.confidence})`);
+                    } else {
+                        const rrInfo = rrMetadata ? `confidence: ${rrMetadata.confidence}` : '不存在';
+                        addTestResult('Metadata 數據檢查', false, `股票數: ${symbolCount}, RR: ${rrInfo}`);
+                    }
+                } else {
+                    addTestResult('Metadata 數據檢查', false, `HTTP ${metadataResponse.status}`);
+                }
+            } catch (error) {
+                addTestResult('Metadata 數據檢查', false, error.message);
+            }
+
+            // 測試 5: 檢查 symbolsConfig
+            addLog('測試 5: 檢查 symbolsConfig');
+            try {
+                const configModule = await import('/src/utils/symbolsConfig.js');
+                const staticSymbols = configModule.symbolsConfig.getStaticSymbols();
+                const hasRR = staticSymbols.includes('RR');
+                const symbolCount = staticSymbols.length;
+                
+                if (symbolCount >= 67 && hasRR) {
+                    addTestResult('SymbolsConfig 檢查', true, `靜態配置包含 ${symbolCount} 個股票，RR 存在`);
+                } else {
+                    addTestResult('SymbolsConfig 檢查', false, `股票數: ${symbolCount}, RR 存在: ${hasRR}`);
+                }
+            } catch (error) {
+                addTestResult('SymbolsConfig 檢查', false, error.message);
+            }
+
+            // 測試 6: 檢查技術指標
+            addLog('測試 6: 檢查 RR 技術指標');
+            try {
+                const techResponse = await fetch(`${baseUrl}/data/technical-indicators/2025-12-27_RR.json?t=${Date.now()}`);
+                if (techResponse.ok) {
+                    const techData = await techResponse.json();
+                    const indicatorCount = Object.keys(techData.indicators).length;
+                    addTestResult('RR 技術指標檢查', true, `RR 技術指標文件存在，包含 ${indicatorCount} 個指標`);
+                } else {
+                    addTestResult('RR 技術指標檢查', false, `HTTP ${techResponse.status}`);
+                }
+            } catch (error) {
+                addTestResult('RR 技術指標檢查', false, error.message);
+            }
+
+            addLog('✅ 所有測試完成');
+        }
+
+        async function clearCacheAndTest() {
+            addLog('🗑️ 清除緩存並重新測試...');
+            
+            // 清除相關緩存
+            const cachePrefix = 'investment_dashboard_cache_';
+            const targetKeys = [
+                'stock_overview_data',
+                'quotes_snapshot',
+                'symbols_config'
+            ];
+            
+            targetKeys.forEach(targetKey => {
+                const fullKey = cachePrefix + targetKey;
+                localStorage.removeItem(fullKey);
+                addLog(`移除緩存: ${fullKey}`);
+            });
+            
+            // 設置強制重新載入標記
+            sessionStorage.setItem('force_reload_stock_overview', 'true');
+            
+            addLog('✅ 緩存清除完成，重新執行測試...');
+            
+            // 等待一秒後重新測試
+            setTimeout(runAllTests, 1000);
+        }
+
+        // 頁面載入時自動執行測試
+        window.addEventListener('load', () => {
+            addLog('📄 測試頁面載入完成');
+            setTimeout(runAllTests, 500);
+        });
+    </script>
+</body>
+</html>

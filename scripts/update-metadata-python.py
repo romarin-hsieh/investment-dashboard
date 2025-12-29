@@ -147,7 +147,7 @@ class YFinanceMetadataUpdater:
             'MSFT': {'sector': 'Technology', 'industry': 'Software - Infrastructure', 'exchange': 'NASDAQ'},
             'ADBE': {'sector': 'Technology', 'industry': 'Software - Infrastructure', 'exchange': 'NASDAQ'},
             'FIG': {'sector': 'Financial Services', 'industry': 'Asset Management', 'exchange': 'NYSE'},
-            'PAWN': {'sector': 'Financial Services', 'industry': 'Credit Services', 'exchange': 'NASDAQ'},
+            'PANW': {'sector': 'Technology', 'industry': 'Software - Infrastructure', 'exchange': 'NASDAQ'},
             'CRWD': {'sector': 'Technology', 'industry': 'Software - Infrastructure', 'exchange': 'NASDAQ'},
             'DDOG': {'sector': 'Technology', 'industry': 'Software - Infrastructure', 'exchange': 'NASDAQ'},
             'DUOL': {'sector': 'Consumer Cyclical', 'industry': 'Education & Training Services', 'exchange': 'NASDAQ'},

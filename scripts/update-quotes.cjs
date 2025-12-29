@@ -83,7 +83,7 @@ function generateMockQuote(symbol) {
     'CCJ': [40, 60],
     'MSFT': [400, 450],
     'ADBE': [500, 600],
-    'PAWN': [2, 5],
+    'PANW': [300, 400],
     'CRWD': [300, 400],
     'DDOG': [120, 160],
     'DUOL': [250, 350],

@@ -283,7 +283,7 @@ export default {
 
 <style scoped>
 .indicators-manager {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
 }

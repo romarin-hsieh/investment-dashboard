@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Industry Sorting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .test-info {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .test-link {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 5px;
+        }
+        .test-link:hover {
+            background: #218838;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .sector-detail {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+        }
+        .industry-list {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .industry-list li {
+            margin: 5px 0;
+            font-weight: 500;
+        }
+        .expected-stocks {
+            color: #28a745;
+            font-size: 0.9em;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🏭 Industry Sorting Test</h1>
+            <p>Testing the new industry-based sorting within each sector</p>
+        </div>
+
+        <div class="test-info">
+            <h3>📋 Test Information</h3>
+            <ul>
+                <li><strong>Component:</strong> StockOverview.vue (Industry-based Sorting)</li>
+                <li><strong>Change:</strong> Added industry priority sorting within each sector</li>
+                <li><strong>Behavior:</strong> Sector → Industry → Symbol (3-level sorting)</li>
+                <li><strong>Stock Count:</strong> 67 symbols across multiple sectors and industries</li>
+            </ul>
+        </div>
+
+        <div class="status success">
+            ✅ <strong>Development Server:</strong> Running on http://localhost:3002/
+        </div>
+
+        <div class="sector-detail">
+            <h3>🔧 Technology Sector Industry Order</h3>
+            <ol class="industry-list">
+                <li>Semiconductors <span class="expected-stocks">(TSM, NVDA, AVGO, LRCX)</span></li>
+                <li>Software - Infrastructure <span class="expected-stocks">(MDB, ORCL, PLTR, INTR, VRT, MSFT, ADBE, CRWD, DDOG)</span></li>
+                <li>Software - Application <span class="expected-stocks">(CRM, CRWV, GRAB, PATH, KSPI, APP, ZETA, RR)</span></li>
+                <li>Information Technology Services <span class="expected-stocks">(Others if any)</span></li>
+                <li>Communication Equipment <span class="expected-stocks">(ASTS, ONDS)</span></li>
+                <li>Computer Hardware <span class="expected-stocks">(IONQ)</span></li>
+            </ol>
+        </div>
+
+        <div class="sector-detail">
+            <h3>💰 Financial Services Sector Industry Order</h3>
+            <ol class="industry-list">
+                <li>Software - Infrastructure <span class="expected-stocks">(SOFI, PANW, NU)</span></li>
+                <li>Asset Management <span class="expected-stocks">(RBRK, FIG)</span></li>
+                <li>Capital Markets <span class="expected-stocks">(IREN, HOOD, COIN, IBKR, CRCL)</span></li>
+                <li>Banks - Regional <span class="expected-stocks">(Others if any)</span></li>
+                <li>Shell Companies <span class="expected-stocks">(UMAC)</span></li>
+            </ol>
+        </div>
+
+        <div class="sector-detail">
+            <h3>🛒 Consumer Cyclical Sector Industry Order</h3>
+            <ol class="industry-list">
+                <li>Internet Retail <span class="expected-stocks">(AMZN, MELI, SE)</span></li>
+                <li>Auto Manufacturers <span class="expected-stocks">(RIVN, TSLA)</span></li>
+                <li>Education & Training Services <span class="expected-stocks">(DUOL)</span></li>
+            </ol>
+        </div>
+
+        <div class="sector-detail">
+            <h3>🏭 Industrials Sector Industry Order</h3>
+            <ol class="industry-list">
+                <li>Aerospace & Defense <span class="expected-stocks">(PL, RDW, AVAV, RKLB, KTOS, LUNR, AXON)</span></li>
+                <li>Electrical Equipment & Parts <span class="expected-stocks">(ETN)</span></li>
+            </ol>
+        </div>
+
+        <div class="status info">
+            ℹ️ <strong>Key Changes:</strong>
+            <ul>
+                <li>Within Technology: Semiconductors appear first, then Software categories</li>
+                <li>Within Financial Services: Credit Services appear first, then Asset Management</li>
+                <li>Within Consumer Cyclical: Internet Retail appears first, then Auto Manufacturers</li>
+                <li>Within each industry: Stocks are sorted alphabetically by symbol</li>
+                <li>Unknown industries appear at the end of each sector</li>
+            </ul>
+        </div>
+
+        <div class="status warning">
+            ⚠️ <strong>Sorting Logic:</strong>
+            <br><strong>Level 1:</strong> Sector (Technology → Financial Services → ...)
+            <br><strong>Level 2:</strong> Industry (Semiconductors → Software - Infrastructure → ...)
+            <br><strong>Level 3:</strong> Symbol (A-Z within each industry)
+        </div>
+
+        <h3>🔗 Test Links</h3>
+        <a href="http://localhost:3002/#/stock-overview" class="test-link" target="_blank">
+            📊 Stock Overview Page (Industry Sorting)
+        </a>
+        <a href="http://localhost:3002/" class="test-link" target="_blank">
+            🏠 Home Page
+        </a>
+
+        <h3>🔍 What to Verify</h3>
+        <div class="test-info">
+            <ol>
+                <li><strong>Technology Sector:</strong> Semiconductors (TSM, NVDA, AVGO, LRCX) should appear first</li>
+                <li><strong>Software Categories:</strong> Infrastructure before Application</li>
+                <li><strong>Financial Services:</strong> Credit Services should appear before Capital Markets</li>
+                <li><strong>Symbol Order:</strong> Within each industry, symbols should be alphabetical</li>
+                <li><strong>RR Symbol:</strong> Should appear in Software - Application industry</li>
+                <li><strong>Industry Grouping:</strong> Stocks with same industry should be grouped together</li>
+            </ol>
+        </div>
+
+        <div class="status success">
+            🎯 <strong>Success Criteria:</strong>
+            <br>✅ Technology sector shows Semiconductors first (TSM, NVDA, AVGO, LRCX)
+            <br>✅ Software - Infrastructure appears before Software - Application
+            <br>✅ RR appears in Software - Application industry group
+            <br>✅ All stocks within each industry are alphabetically sorted
+            <br>✅ Industry grouping is clearly visible and correctly ordered
+        </div>
+    </div>
+
+    <script>
+        console.log('🧪 Industry Sorting Test Page Loaded');
+        console.log('🔗 Test URL: http://localhost:3002/#/stock-overview');
+        console.log('🎯 Expected: 3-level sorting (Sector → Industry → Symbol)');
+        
+        // Expected Technology sector industry order
+        const technologyIndustries = [
+            'Semiconductors',
+            'Software - Infrastructure', 
+            'Software - Application',
+            'Information Technology Services',
+            'Communication Equipment',
+            'Computer Hardware'
+        ];
+        
+        console.log('🔧 Technology Industries Order:', technologyIndustries);
+        console.log('💰 Financial Services should show Credit Services first');
+        console.log('🛒 Consumer Cyclical should show Internet Retail first');
+        console.log('🏭 Industrials should show Aerospace & Defense first');
+    </script>
+</body>
+</html>

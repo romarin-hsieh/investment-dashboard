@@ -457,7 +457,7 @@ export default {
 
 <style scoped>
 .proxy-diagnostic {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
 }

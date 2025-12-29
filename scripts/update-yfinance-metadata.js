@@ -368,7 +368,7 @@ class YFinanceMetadataUpdater {
       'MSFT': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'ADBE': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'FIG': { sector: 'Financial Services', industry: 'Asset Management' },
-      'PAWN': { sector: 'Financial Services', industry: 'Credit Services' },
+      'PANW': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'CRWD': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'DDOG': { sector: 'Technology', industry: 'Software - Infrastructure' },
       'DUOL': { sector: 'Consumer Cyclical', industry: 'Education & Training Services' },

@@ -96,6 +96,18 @@
             :priority="3"
           />
         </div>
+
+        <!-- MFI Volume Profile Block (Full Width) -->
+        <div class="insight-full-widget mfi-volume-profile">
+          <div class="widget-header">
+            <h4>MFI Volume Profile</h4>
+          </div>
+          <MFIVolumeProfilePanel
+            :symbol="symbol"
+            :exchange="exchange"
+            :priority="4"
+          />
+        </div>
         
         <!-- Daily and Weekly Insight (Two Columns) -->
         <div class="insight-widgets-container">
@@ -109,7 +121,7 @@
               :config="dailyInsightConfig"
               script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
               height="550px"
-              :priority="4"
+              :priority="5"
             />
           </div>
 
@@ -123,7 +135,7 @@
               :config="weeklyInsightConfig"
               script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
               height="550px"
-              :priority="5"
+              :priority="6"
             />
           </div>
         </div>
@@ -180,6 +192,7 @@ import FastTradingViewWidget from '@/components/FastTradingViewWidget.vue'
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import MarketRegimeWidget from '@/components/MarketRegimeWidget.vue'
 import TradingStrategyWidget from '@/components/TradingStrategyWidget.vue'
+import MFIVolumeProfilePanel from '@/components/MFIVolumeProfilePanel.vue'
 import TradingViewCompanyProfile from '@/components/TradingViewCompanyProfile.vue'
 import TradingViewFundamentalData from '@/components/TradingViewFundamentalData.vue'
 import TechnicalIndicators from '@/components/TechnicalIndicators.vue'
@@ -196,6 +209,7 @@ export default {
     LazyTradingViewWidget,
     MarketRegimeWidget,
     TradingStrategyWidget,
+    MFIVolumeProfilePanel,
     TradingViewCompanyProfile,
     TradingViewFundamentalData,
     TechnicalIndicators,
@@ -223,6 +237,7 @@ export default {
           'NMS': 'NASDAQ',  // NASDAQ Global Select Market
           'NCM': 'NASDAQ',  // NASDAQ Capital Market
           'NGM': 'NASDAQ',  // NASDAQ Global Market
+          'ASE': 'AMEX',    // NYSE American (原 American Stock Exchange)
           'NYSE': 'NYSE',   // 直接的 NYSE
           'NASDAQ': 'NASDAQ' // 直接的 NASDAQ
         }
@@ -358,8 +373,7 @@ export default {
   methods: {
     async initializePage() {
       try {
-        // 模擬載入時間
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        // Remove fixed delay for better performance
         this.loading = false
       } catch (err) {
         this.error = String(err)
@@ -626,6 +640,13 @@ export default {
   margin-bottom: 1.5rem;
 }
 
+/* MFI Volume Profile specific styling */
+.insight-full-widget.mfi-volume-profile {
+  /* 移除固定高度限制，讓內容自然展開 */
+  min-height: auto;
+  height: auto;
+}
+
 .insight-full-widget .widget-header {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #e9ecef;
@@ -646,6 +667,13 @@ export default {
   flex: 1;
   min-height: 850px;
   height: 850px;
+}
+
+/* MFI Volume Profile content area */
+.insight-full-widget.mfi-volume-profile > :not(.widget-header) {
+  /* 移除固定高度限制，讓內容自然展開 */
+  min-height: auto;
+  height: auto;
 }
 
 .insight-widget {
@@ -833,9 +861,21 @@ export default {
     height: 800px;
   }
   
+  .insight-full-widget.mfi-volume-profile {
+    /* 移除固定高度限制，讓內容自然展開 */
+    min-height: auto;
+    height: auto;
+  }
+  
   .insight-full-widget > :not(.widget-header) {
     min-height: 750px;
     height: 750px;
+  }
+  
+  .insight-full-widget.mfi-volume-profile > :not(.widget-header) {
+    /* 移除固定高度限制，讓內容自然展開 */
+    min-height: auto;
+    height: auto;
   }
   
   .symbol-insight-block {
@@ -893,9 +933,21 @@ export default {
     height: 700px;
   }
   
+  .insight-full-widget.mfi-volume-profile {
+    /* 移除固定高度限制，讓內容自然展開 */
+    min-height: auto;
+    height: auto;
+  }
+  
   .insight-full-widget > :not(.widget-header) {
     min-height: 650px;
     height: 650px;
+  }
+  
+  .insight-full-widget.mfi-volume-profile > :not(.widget-header) {
+    /* 移除固定高度限制，讓內容自然展開 */
+    min-height: auto;
+    height: auto;
   }
   
   .insight-widget {
@@ -972,9 +1024,21 @@ export default {
     margin-bottom: 1rem;
   }
   
+  .insight-full-widget.mfi-volume-profile {
+    /* 移除固定高度限制，讓內容自然展開 */
+    min-height: auto;
+    height: auto;
+  }
+  
   .insight-full-widget > :not(.widget-header) {
     min-height: 550px;
     height: 550px;
+  }
+  
+  .insight-full-widget.mfi-volume-profile > :not(.widget-header) {
+    /* 移除固定高度限制，讓內容自然展開 */
+    min-height: auto;
+    height: auto;
   }
   
   .insight-widget {

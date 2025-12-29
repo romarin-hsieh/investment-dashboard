@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockOverview 頁面渲染驗證</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        .warning { background-color: #fff3cd; border-color: #ffeaa7; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .test-result { margin: 10px 0; padding: 8px; border-radius: 3px; }
+        .pass { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+        button { padding: 8px 16px; margin: 5px; border: none; border-radius: 3px; cursor: pointer; }
+        .btn-primary { background-color: #007bff; color: white; }
+        .btn-success { background-color: #28a745; color: white; }
+        .btn-warning { background-color: #ffc107; color: black; }
+        .btn-danger { background-color: #dc3545; color: white; }
+        iframe { width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🎯 StockOverview 頁面渲染驗證</h1>
+    
+    <div class="test-section info">
+        <h2>📋 驗證目標</h2>
+        <p>確認 StockOverview 頁面能正確渲染並顯示所有 67 個股票：</p>
+        <ul>
+            <li>✅ 統一配置架構測試已通過</li>
+            <li>✅ 所有數據文件已更新為 67 個股票</li>
+            <li>🎯 StockOverview 頁面應該正常渲染</li>
+            <li>🎯 RR 符號應該出現在 Technology 分組</li>
+            <li>🎯 不應該再顯示空白頁面</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 測試控制</h2>
+        <button class="btn-primary" onclick="testStockOverviewPage()">測試 StockOverview 頁面</button>
+        <button class="btn-success" onclick="openStockOverview()">在新視窗開啟 StockOverview</button>
+        <button class="btn-warning" onclick="clearCacheAndTest()">清除緩存並測試</button>
+        <button class="btn-danger" onclick="clearResults()">清除結果</button>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 預期結果</h2>
+        <div class="success">
+            <h3>✅ 成功指標</h3>
+            <ul>
+                <li>頁面正常載入，不顯示空白</li>
+                <li>顯示 Market Index 區塊</li>
+                <li>顯示 9 個 sector 分組</li>
+                <li>Technology 分組包含 24 個股票</li>
+                <li>RR 符號出現在 Technology 分組中</li>
+                <li>總共顯示 67 個股票卡片</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="test-results"></div>
+
+    <div class="test-section">
+        <h2>🖥️ StockOverview 頁面預覽</h2>
+        <p>以下是 StockOverview 頁面的內嵌預覽：</p>
+        <iframe id="stock-overview-frame" src="/" title="StockOverview 頁面"></iframe>
+    </div>
+
+    <script>
+        window.testStockOverviewPage = async function() {
+            clearResults();
+            addResult('info', '🚀 開始測試 StockOverview 頁面...');
+            
+            try {
+                // 測試頁面是否可以載入
+                const response = await fetch('/', { method: 'HEAD' });
+                if (response.ok) {
+                    addResult('pass', '✅ StockOverview 頁面可以訪問');
+                } else {
+                    addResult('fail', `❌ StockOverview 頁面訪問失敗: ${response.status}`);
+                    return;
+                }
+                
+                // 測試是否能載入到 Vue 應用
+                const htmlResponse = await fetch('/');
+                const html = await htmlResponse.text();
+                
+                if (html.includes('Investment Dashboard')) {
+                    addResult('pass', '✅ 頁面標題正確');
+                } else {
+                    addResult('fail', '❌ 頁面標題不正確');
+                }
+                
+                if (html.includes('id="app"')) {
+                    addResult('pass', '✅ Vue 應用容器存在');
+                } else {
+                    addResult('fail', '❌ Vue 應用容器不存在');
+                }
+                
+                // 測試關鍵資源是否可以載入
+                const resources = [
+                    '/config/stocks.json',
+                    '/data/quotes/latest.json',
+                    '/data/daily/2025-12-28.json',
+                    '/data/symbols_metadata.json'
+                ];
+                
+                for (const resource of resources) {
+                    try {
+                        const resourceResponse = await fetch(resource + '?t=' + Date.now());
+                        if (resourceResponse.ok) {
+                            const data = await resourceResponse.json();
+                            let count = 0;
+                            
+                            if (resource.includes('stocks.json')) {
+                                count = data.stocks ? data.stocks.length : 0;
+                            } else if (resource.includes('quotes')) {
+                                count = data.items ? data.items.length : 0;
+                            } else if (resource.includes('daily')) {
+                                count = data.universe ? data.universe.length : 0;
+                            } else if (resource.includes('metadata')) {
+                                count = data.items ? data.items.length : 0;
+                            }
+                            
+                            addResult('pass', `✅ ${resource}: ${count} 個股票`);
+                        } else {
+                            addResult('fail', `❌ ${resource}: HTTP ${resourceResponse.status}`);
+                        }
+                    } catch (error) {
+                        addResult('fail', `❌ ${resource}: ${error.message}`);
+                    }
+                }
+                
+                // 測試 stocksConfigService 是否可以載入
+                try {
+                    const module = await import('/src/utils/stocksConfigService.js');
+                    const stocksConfig = module.stocksConfig;
+                    const symbols = await stocksConfig.getEnabledSymbols();
+                    addResult('pass', `✅ stocksConfigService 載入成功: ${symbols.length} 個符號`);
+                    
+                    // 檢查 RR 符號
+                    if (symbols.includes('RR')) {
+                        addResult('pass', '✅ RR 符號在服務中存在');
+                    } else {
+                        addResult('fail', '❌ RR 符號在服務中不存在');
+                    }
+                } catch (error) {
+                    addResult('fail', '❌ stocksConfigService 載入失敗: ' + error.message);
+                }
+                
+                addResult('info', '✅ StockOverview 頁面測試完成！');
+                addResult('info', '💡 請檢查下方的頁面預覽確認實際渲染效果');
+                
+            } catch (error) {
+                addResult('fail', '❌ StockOverview 頁面測試失敗: ' + error.message);
+            }
+        }
+
+        window.openStockOverview = function() {
+            window.open('/', '_blank');
+            addResult('info', '🔗 已在新視窗開啟 StockOverview 頁面');
+        }
+
+        window.clearCacheAndTest = function() {
+            addResult('info', '🗑️ 清除緩存...');
+            
+            // 清除各種緩存
+            sessionStorage.setItem('force_reload_stock_overview', Date.now().toString());
+            sessionStorage.setItem('emergency_fix_applied', Date.now().toString());
+            localStorage.clear();
+            
+            // 重新載入 iframe
+            const iframe = document.getElementById('stock-overview-frame');
+            iframe.src = iframe.src + '?t=' + Date.now();
+            
+            addResult('pass', '✅ 緩存已清除，iframe 已重新載入');
+            
+            // 延遲執行測試
+            setTimeout(() => {
+                testStockOverviewPage();
+            }, 2000);
+        }
+
+        window.clearResults = function() {
+            document.getElementById('test-results').innerHTML = '';
+        }
+
+        function addResult(type, message) {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${type}`;
+            resultDiv.innerHTML = `<pre>${message}</pre>`;
+            resultsDiv.appendChild(resultDiv);
+            
+            // 自動滾動到底部
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 頁面載入時自動執行測試
+        window.addEventListener('load', function() {
+            addResult('info', '🎯 StockOverview 頁面渲染驗證工具已載入');
+            addResult('info', '📊 統一配置架構測試已通過，現在驗證實際頁面渲染');
+            
+            // 延遲執行測試，讓 iframe 有時間載入
+            setTimeout(() => {
+                testStockOverviewPage();
+            }, 3000);
+        });
+
+        // 監聽 iframe 載入事件
+        document.getElementById('stock-overview-frame').addEventListener('load', function() {
+            addResult('info', '📱 StockOverview 頁面 iframe 已載入');
+        });
+    </script>
+</body>
+</html>

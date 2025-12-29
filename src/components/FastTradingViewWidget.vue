@@ -16,6 +16,7 @@
 import { widgetCache } from '@/utils/widgetCache'
 import { widgetThrottle } from '@/utils/widgetThrottle'
 import { widgetPreloader } from '@/utils/widgetPreloader'
+import { widgetLoadManager } from '@/utils/widgetLoadManager'
 
 export default {
   name: 'FastTradingViewWidget',
@@ -126,8 +127,13 @@ export default {
           return
         }
 
-        // 添加到載入佇列
-        const loadPromise = widgetThrottle.addToQueue(() => this.createWidget())
+        // 使用 Widget Load Manager 管理併發
+        const widgetId = `fast-${this.widgetType}-${this.symbol}-${this.containerId}`
+        const loadPromise = widgetLoadManager.addToQueue(
+          () => this.createWidget(),
+          widgetId,
+          this.priority
+        )
         widgetCache.setLoading(this.widgetType, this.symbol, this.exchange, loadPromise)
         
         await loadPromise

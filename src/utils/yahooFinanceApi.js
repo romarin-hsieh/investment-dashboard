@@ -76,11 +76,8 @@ class YahooFinanceAPI {
         
         // 獲取歷史數據用於計算技術指標
         const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
+          method: 'GET'
+          // 移除 headers 避免 CORS preflight
         });
         
         console.log(`Response status: ${response.status}`);
@@ -368,11 +365,8 @@ class YahooFinanceAPI {
         const url = `${proxy}${encodeURIComponent(targetUrl)}`;
         
         const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
+          method: 'GET'
+          // 完全移除 headers 避免 CORS preflight
         });
         
         if (!response.ok) {
@@ -519,6 +513,132 @@ class YahooFinanceAPI {
       apiCache: apiCacheStats,
       dailyCache: technicalIndicatorsCache.getCacheStats()
     };
+  }
+
+  // Build proxy URL for Yahoo Finance API requests
+  buildProxyUrl(targetUrl) {
+    const proxy = this.corsProxies[this.currentProxyIndex];
+    return `${proxy}${encodeURIComponent(targetUrl)}`;
+  }
+
+  // Get OHLCV data for MFI Volume Profile calculations
+  async getOhlcv(symbol, period = '1d', range = '3mo') {
+    const cacheKey = `ohlcv_${symbol}_${period}_${range}`;
+    
+    // Check cache first
+    if (this.cache.has(cacheKey)) {
+      const cached = this.cache.get(cacheKey);
+      if (Date.now() - cached.timestamp < this.cacheTimeout) {
+        console.log(`📊 Using cached OHLCV data for ${symbol}`);
+        return cached.data;
+      }
+    }
+
+    // Try multiple proxies for OHLCV data
+    for (let i = 0; i < this.corsProxies.length; i++) {
+      try {
+        const proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
+        const proxy = this.corsProxies[proxyIndex];
+        
+        console.log(`📊 Fetching OHLCV data for ${symbol} using proxy ${proxyIndex + 1}...`);
+        
+        // Build Yahoo Finance chart API URL
+        const targetUrl = `${this.baseUrl}${symbol}?interval=${period}&range=${range}&indicators=quote&includePrePost=false`;
+        const url = this.buildProxyUrl(targetUrl);
+        
+        const response = await fetch(url, {
+          method: 'GET'
+          // 移除 headers 避免 CORS preflight
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Validate data structure
+        if (!data.chart || !data.chart.result || data.chart.result.length === 0) {
+          throw new Error('No chart data available');
+        }
+        
+        const result = data.chart.result[0];
+        
+        if (!result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
+          throw new Error('Invalid data structure - missing indicators');
+        }
+        
+        const quotes = result.indicators.quote[0];
+        const timestamps = result.timestamp || [];
+        
+        // Extract and clean OHLCV data
+        const ohlcv = {
+          timestamps: timestamps,
+          open: quotes.open || [],
+          high: quotes.high || [],
+          low: quotes.low || [],
+          close: quotes.close || [],
+          volume: quotes.volume || []
+        };
+        
+        // Validate data quality
+        const length = ohlcv.timestamps.length;
+        if (length < 20) {
+          throw new Error(`Insufficient OHLCV data points: ${length} < 20`);
+        }
+        
+        // Count valid data points
+        let validPoints = 0;
+        for (let j = 0; j < length; j++) {
+          if (ohlcv.open[j] != null && ohlcv.high[j] != null && 
+              ohlcv.low[j] != null && ohlcv.close[j] != null && 
+              ohlcv.volume[j] != null) {
+            validPoints++;
+          }
+        }
+        
+        console.log(`📊 OHLCV data for ${symbol}: ${length} total points, ${validPoints} valid points`);
+        
+        if (validPoints < 15) {
+          throw new Error(`Insufficient valid OHLCV data: ${validPoints} < 15`);
+        }
+        
+        // Add metadata
+        const ohlcvResult = {
+          ...ohlcv,
+          metadata: {
+            symbol: symbol,
+            period: period,
+            range: range,
+            totalPoints: length,
+            validPoints: validPoints,
+            fetchedAt: new Date().toISOString(),
+            source: 'Yahoo Finance API',
+            proxy: `Proxy ${proxyIndex + 1}`
+          }
+        };
+        
+        // Cache the result
+        this.cache.set(cacheKey, {
+          data: ohlcvResult,
+          timestamp: Date.now()
+        });
+        
+        // Update successful proxy index
+        this.currentProxyIndex = proxyIndex;
+        
+        return ohlcvResult;
+        
+      } catch (error) {
+        console.warn(`📊 Proxy ${i + 1} failed for OHLCV ${symbol}:`, error.message);
+        
+        // If all proxies failed, throw error
+        if (i === this.corsProxies.length - 1) {
+          console.error(`📊 All proxies failed for OHLCV ${symbol}:`, error);
+          throw new Error(`Failed to fetch OHLCV data: ${error.message}`);
+        }
+      }
+    }
   }
 }
 
