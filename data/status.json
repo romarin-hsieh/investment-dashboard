@@ -1,72 +1,51 @@
 {
-  "description": "System health and job status information",
-  "last_updated": "2025-12-28T02:45:00Z",
-  "system_status": "operational",
-  "jobs": {
-    "hourly_quotes": {
-      "last_run": "2025-12-28T02:00:00Z",
-      "next_run": "2025-12-28T03:00:00Z",
-      "status": "success",
-      "duration_ms": 2340,
-      "symbols_updated": 67,
-      "errors": [],
-      "provider": "mock_generator"
+  "generated": "2025-12-29T11:43:44.856Z",
+  "date": "2025-12-29",
+  "status": "updated",
+  "data_sources": {
+    "ohlcv": {
+      "exists": true,
+      "size": 3731,
+      "modified": "2025-12-29T11:31:45.154Z",
+      "fileCount": 135,
+      "directory": "data/ohlcv/"
     },
-    "daily_snapshot": {
-      "last_run": "2025-12-28T07:00:00+08:00",
-      "next_run": "2025-12-29T07:00:00+08:00",
-      "status": "success",
-      "duration_ms": 45670,
-      "symbols_processed": 67,
-      "news_articles_collected": 0,
-      "macro_indicators_updated": 9,
-      "errors": []
+    "technical_indicators": {
+      "exists": true,
+      "size": 2989,
+      "modified": "2025-12-29T11:43:39.441Z",
+      "fileCount": 210,
+      "directory": "data/technical-indicators/"
     },
-    "metadata_refresh": {
-      "last_run": "2025-12-28T02:30:00Z",
-      "next_run": "2026-01-04T02:30:00Z",
-      "status": "success",
-      "duration_ms": 12450,
-      "symbols_updated": 67,
-      "ttl_days": 7,
-      "errors": []
-    }
-  },
-  "data_freshness": {
     "quotes": {
-      "age_minutes": 15,
-      "staleness": "fresh"
-    },
-    "daily_snapshot": {
-      "age_hours": 2.5,
-      "staleness": "fresh"
+      "exists": true,
+      "size": 29044,
+      "modified": "2025-12-28T06:31:05.677Z",
+      "file": "data/quotes/latest.json"
     },
     "metadata": {
-      "age_hours": 12,
-      "staleness": "fresh"
+      "exists": true,
+      "size": 115771,
+      "modified": "2025-12-29T09:33:15.575Z",
+      "file": "data/symbols_metadata.json"
+    },
+    "daily_snapshot": {
+      "exists": false,
+      "size": 0,
+      "modified": null,
+      "error": "ENOENT: no such file or directory, stat 'C:\\Users\\Romarin\\Documents\\Kiro\\investment-dashboard\\public\\data\\daily\\2025-12-29.json'",
+      "file": "data/daily/2025-12-29.json"
     }
   },
-  "system_health": {
-    "github_actions_quota": {
-      "used_minutes": 1240,
-      "total_minutes": 2000,
-      "reset_date": "2025-02-01"
-    },
-    "storage_usage": {
-      "data_files_mb": 2.3,
-      "total_repo_mb": 45.7
-    },
-    "api_limits": {
-      "quote_provider": {
-        "calls_today": 67,
-        "daily_limit": 1000,
-        "reset_time": "2025-12-29T00:00:00Z"
-      }
-    }
+  "update_info": {
+    "source": "GitHub Actions Daily Update",
+    "workflow": "daily-data-update.yml",
+    "next_update": "2025-12-30T11:43:44.856Z",
+    "update_frequency": "daily"
   },
-  "degradation_status": {
-    "enabled": true,
-    "active_fallbacks": [],
-    "cache_hits_last_hour": 0
+  "health_check": {
+    "all_systems": "operational",
+    "last_check": "2025-12-29T11:43:44.856Z",
+    "issues": []
   }
 }
