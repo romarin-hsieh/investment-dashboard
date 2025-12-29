@@ -258,21 +258,14 @@ class CacheWarmupService {
 
   // 獲取正確的 package.json URL (支援 GitHub Pages)
   getPackageJsonUrl() {
-    const hostname = window.location.hostname
-    const pathname = window.location.pathname
+    // 使用統一的 baseUrl helper
+    import('./baseUrl.js').then(({ paths }) => {
+      return paths.packageJson();
+    });
     
-    // GitHub Pages 檢測
-    if (hostname === 'romarin-hsieh.github.io') {
-      // 如果路徑包含 investment-dashboard，使用完整路徑
-      if (pathname.includes('/investment-dashboard/')) {
-        return '/investment-dashboard/package.json'
-      }
-      // 否則也使用完整路徑（防止直接訪問根域名的情況）
-      return '/investment-dashboard/package.json'
-    }
-    
-    // 本地開發環境
-    return '/package.json'
+    // 同步版本 - 直接使用 import.meta.env.BASE_URL
+    const base = import.meta.env.BASE_URL || '/';
+    return `${base}package.json`;
   }
 
   // 獲取上次預熱版本
@@ -376,20 +369,8 @@ class CacheWarmupService {
 
   // 檢測是否為正式環境
   isProductionEnvironment() {
-    const hostname = window.location.hostname
-    const pathname = window.location.pathname
-    
-    // GitHub Pages 正式環境
-    if (hostname === 'romarin-hsieh.github.io' && pathname.includes('/investment-dashboard/')) {
-      return true
-    }
-    
-    // 其他正式環境域名
-    if (hostname !== 'localhost' && hostname !== '127.0.0.1' && !hostname.includes('local')) {
-      return true
-    }
-    
-    return false
+    // 使用 Vite 的環境變數，更可靠
+    return import.meta.env.PROD;
   }
 
   // 更新配置

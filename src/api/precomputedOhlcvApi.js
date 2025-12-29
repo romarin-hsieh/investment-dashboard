@@ -1,9 +1,11 @@
 // Precomputed OHLCV API
 // Provides precomputed OHLCV data for MFI Volume Profile calculations
 
+import { paths } from '../utils/baseUrl.js';
+
 class PrecomputedOhlcvApi {
   constructor() {
-    this.baseUrl = './data/ohlcv'; // Static data directory (相對路徑支援 GitHub Pages)
+    // 不再需要 baseUrl，直接使用 paths helper
     this.cache = new Map();
     this.cacheTimeout = 30 * 60 * 1000; // 30 minutes cache
   }
@@ -28,9 +30,8 @@ class PrecomputedOhlcvApi {
     }
 
     try {
-      // Try to fetch precomputed data
-      const filename = `${symbol.toLowerCase()}_${period}_${days}d.json`;
-      const url = `${this.baseUrl}/${filename}`;
+      // 使用統一的 paths helper
+      const url = paths.ohlcvPrecomputed(symbol, period, days);
       
       console.log(`📊 Fetching precomputed OHLCV data: ${url}`);
       
@@ -106,7 +107,7 @@ class PrecomputedOhlcvApi {
    */
   async getAvailableSymbols() {
     try {
-      const response = await fetch(`${this.baseUrl}/index.json`);
+      const response = await fetch(paths.ohlcvIndex());
       if (!response.ok) {
         throw new Error('Index file not found');
       }

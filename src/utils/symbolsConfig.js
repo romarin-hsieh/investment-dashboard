@@ -99,21 +99,9 @@ export class SymbolsConfigManager {
    * 獲取正確的 universe.json URL (支援 GitHub Pages)
    */
   getUniverseJsonUrl() {
-    const hostname = window.location.hostname
-    const pathname = window.location.pathname
-    
-    // GitHub Pages 檢測
-    if (hostname === 'romarin-hsieh.github.io') {
-      // 如果路徑包含 investment-dashboard，使用完整路徑
-      if (pathname.includes('/investment-dashboard/')) {
-        return '/investment-dashboard/config/universe.json'
-      }
-      // 否則也使用完整路徑（防止直接訪問根域名的情況）
-      return '/investment-dashboard/config/universe.json'
-    }
-    
-    // 本地開發環境
-    return '/config/universe.json'
+    // 使用統一的 baseUrl helper
+    const base = import.meta.env.BASE_URL || '/';
+    return `${base}config/universe.json`;
   }
 
   /**

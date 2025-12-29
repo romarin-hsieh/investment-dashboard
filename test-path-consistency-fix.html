@@ -1,323 +1,216 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>路徑一致性修復測試</title>
+    <title>Path Consistency Fix Test</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
-        }
-        .test-section {
-            margin: 20px 0;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #fafafa;
-        }
-        .status {
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-            font-weight: bold;
-        }
-        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
-        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        button:hover { background: #0056b3; }
-        .url-display {
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
-            margin: 10px 0;
-            word-break: break-all;
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .stat-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            text-align: center;
-        }
-        .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #007bff;
-        }
-        .log {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            max-height: 300px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 12px;
-            white-space: pre-wrap;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .info { background-color: #d1ecf1; border-color: #bee5eb; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 3px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🔧 路徑一致性修復測試</h1>
-            <p>測試本地與生產環境的路徑一致性修復</p>
-        </div>
+    <h1>🔍 Path Consistency Fix Test</h1>
+    <p>Testing the unified baseUrl helper and path resolution across all services.</p>
 
-        <div class="test-section">
-            <h3>🌐 環境檢測</h3>
-            <div id="environment-info"></div>
-        </div>
-
-        <div class="test-section">
-            <h3>📁 配置文件載入測試</h3>
-            <button onclick="testConfigLoad()">測試 stocks.json 載入</button>
-            <button onclick="testFallbackUrls()">測試 Fallback URLs</button>
-            <div id="config-test-results"></div>
-        </div>
-
-        <div class="test-section">
-            <h3>📊 股票數據統計</h3>
-            <div id="stats-display" class="stats"></div>
-        </div>
-
-        <div class="test-section">
-            <h3>🔍 路徑解析測試</h3>
-            <button onclick="testPathResolution()">測試路徑解析</button>
-            <div id="path-test-results"></div>
-        </div>
-
-        <div class="test-section">
-            <h3>📝 測試日誌</h3>
-            <button onclick="clearLog()">清除日誌</button>
-            <div id="test-log" class="log"></div>
-        </div>
+    <div class="test-section info">
+        <h2>📊 Environment Information</h2>
+        <div id="env-info">Loading...</div>
     </div>
 
-    <script>
-        let testLog = [];
+    <div class="test-section">
+        <h2>🛠️ Base URL Helper Test</h2>
+        <div id="baseurl-test">Loading...</div>
+    </div>
 
-        function log(message, type = 'info') {
-            const timestamp = new Date().toLocaleTimeString();
-            const logEntry = `[${timestamp}] ${message}`;
-            testLog.push(logEntry);
-            
-            const logElement = document.getElementById('test-log');
-            logElement.textContent = testLog.join('\n');
-            logElement.scrollTop = logElement.scrollHeight;
-            
-            console.log(logEntry);
-        }
+    <div class="test-section">
+        <h2>📁 Path Generation Test</h2>
+        <div id="paths-test">Loading...</div>
+    </div>
 
-        function clearLog() {
-            testLog = [];
-            document.getElementById('test-log').textContent = '';
-        }
+    <div class="test-section">
+        <h2>🌐 Service Integration Test</h2>
+        <div id="services-test">Loading...</div>
+    </div>
 
-        function displayEnvironmentInfo() {
-            const info = {
-                hostname: window.location.hostname,
-                pathname: window.location.pathname,
-                origin: window.location.origin,
-                href: window.location.href,
-                userAgent: navigator.userAgent.substring(0, 100) + '...'
-            };
+    <div class="test-section">
+        <h2>📊 Data Availability Test</h2>
+        <div id="data-test">Loading...</div>
+    </div>
 
-            let html = '<div class="info">環境信息：</div>';
-            for (const [key, value] of Object.entries(info)) {
-                html += `<div class="url-display"><strong>${key}:</strong> ${value}</div>`;
-            }
-
-            document.getElementById('environment-info').innerHTML = html;
-            log(`環境檢測完成 - ${info.hostname}`);
-        }
-
-        async function testConfigLoad() {
-            const resultsDiv = document.getElementById('config-test-results');
-            resultsDiv.innerHTML = '<div class="info">正在測試配置載入...</div>';
-            
+    <script type="module">
+        // Test the unified baseUrl helper
+        async function testBaseUrlHelper() {
             try {
-                log('開始測試 stocks.json 載入');
+                const { withBase, paths, getEnvironmentInfo, debugPaths } = await import('./src/utils/baseUrl.js');
                 
-                // 模擬 stocksConfigService 的路徑邏輯
-                const configUrl = '/config/stocks.json';
-                const fullUrl = `${configUrl}?t=${Date.now()}`;
-                
-                log(`嘗試載入: ${fullUrl}`);
-                
-                const response = await fetch(fullUrl);
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status} - ${response.statusText}`);
-                }
-                
-                const config = await response.json();
-                
-                if (!config.stocks || !Array.isArray(config.stocks)) {
-                    throw new Error('配置格式無效：缺少 stocks 陣列');
-                }
-                
-                const stats = {
-                    total: config.stocks.length,
-                    enabled: config.stocks.filter(s => s.enabled).length,
-                    version: config.version,
-                    lastUpdated: config.last_updated
-                };
-                
-                resultsDiv.innerHTML = `
-                    <div class="success">✅ 配置載入成功！</div>
-                    <div class="url-display">載入 URL: ${fullUrl}</div>
-                    <div class="stats">
-                        <div class="stat-card">
-                            <div class="stat-number">${stats.total}</div>
-                            <div>總股票數</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">${stats.enabled}</div>
-                            <div>啟用股票</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">${stats.version}</div>
-                            <div>配置版本</div>
-                        </div>
-                    </div>
+                // Environment info
+                const envInfo = getEnvironmentInfo();
+                document.getElementById('env-info').innerHTML = `
+                    <pre>${JSON.stringify(envInfo, null, 2)}</pre>
                 `;
-                
-                displayStats(config);
-                log(`✅ 配置載入成功 - ${stats.enabled}/${stats.total} 股票啟用`);
-                
+
+                // Base URL helper test
+                const testPaths = [
+                    'data/ohlcv/AAPL.json',
+                    'config/universe.json',
+                    'data/technical-indicators/latest_index.json'
+                ];
+
+                let baseUrlResults = '<h3>withBase() Function Test:</h3>';
+                testPaths.forEach(path => {
+                    const result = withBase(path);
+                    baseUrlResults += `<div class="test-result success">✅ ${path} → ${result}</div>`;
+                });
+
+                document.getElementById('baseurl-test').innerHTML = baseUrlResults;
+
+                // Paths helper test
+                let pathsResults = '<h3>Paths Helper Test:</h3>';
+                const pathTests = [
+                    { name: 'OHLCV (AAPL)', func: () => paths.ohlcv('AAPL') },
+                    { name: 'OHLCV Precomputed (aapl)', func: () => paths.ohlcvPrecomputed('aapl') },
+                    { name: 'OHLCV Index', func: () => paths.ohlcvIndex() },
+                    { name: 'Technical Indicators Index', func: () => paths.technicalIndicatorsIndex() },
+                    { name: 'Symbols Metadata', func: () => paths.symbolsMetadata() },
+                    { name: 'Universe Config', func: () => paths.universe() },
+                    { name: 'Package JSON', func: () => paths.packageJson() }
+                ];
+
+                pathTests.forEach(test => {
+                    try {
+                        const result = test.func();
+                        pathsResults += `<div class="test-result success">✅ ${test.name}: ${result}</div>`;
+                    } catch (error) {
+                        pathsResults += `<div class="test-result error">❌ ${test.name}: ${error.message}</div>`;
+                    }
+                });
+
+                document.getElementById('paths-test').innerHTML = pathsResults;
+
+                // Debug paths
+                debugPaths();
+
             } catch (error) {
-                resultsDiv.innerHTML = `
-                    <div class="error">❌ 配置載入失敗</div>
-                    <div class="url-display">錯誤: ${error.message}</div>
+                document.getElementById('baseurl-test').innerHTML = `
+                    <div class="test-result error">❌ Failed to load baseUrl helper: ${error.message}</div>
                 `;
-                log(`❌ 配置載入失敗: ${error.message}`);
             }
         }
 
-        async function testFallbackUrls() {
-            const urls = [
-                '/config/stocks.json',
-                '/investment-dashboard/config/stocks.json'
+        // Test service integration
+        async function testServiceIntegration() {
+            let results = '<h3>Service Integration Results:</h3>';
+
+            // Test services that use the unified paths
+            const serviceTests = [
+                {
+                    name: 'OHLCV API',
+                    test: async () => {
+                        const { ohlcvApi } = await import('./src/services/ohlcvApi.js');
+                        return await ohlcvApi.isLocalAvailable('AAPL');
+                    }
+                },
+                {
+                    name: 'Precomputed OHLCV API',
+                    test: async () => {
+                        const { precomputedOhlcvApi } = await import('./src/api/precomputedOhlcvApi.js');
+                        const symbols = await precomputedOhlcvApi.getAvailableSymbols();
+                        return Array.isArray(symbols);
+                    }
+                },
+                {
+                    name: 'Direct Metadata Loader',
+                    test: async () => {
+                        const { directMetadataLoader } = await import('./src/utils/directMetadataLoader.js');
+                        const metadata = await directMetadataLoader.getSymbolMetadata('AAPL');
+                        return metadata && metadata.symbol === 'AAPL';
+                    }
+                },
+                {
+                    name: 'Static Sector Industry Service',
+                    test: async () => {
+                        const { staticSectorIndustryService } = await import('./src/utils/staticSectorIndustryService.js');
+                        const stats = await staticSectorIndustryService.getDataStats();
+                        return stats && typeof stats.totalSymbols === 'number';
+                    }
+                }
             ];
-            
-            log('開始測試 Fallback URLs');
-            
-            for (const url of urls) {
+
+            for (const serviceTest of serviceTests) {
                 try {
-                    const fullUrl = `${url}?t=${Date.now()}`;
-                    log(`測試 URL: ${fullUrl}`);
-                    
-                    const response = await fetch(fullUrl);
-                    
-                    if (response.ok) {
-                        const config = await response.json();
-                        log(`✅ ${url} - 成功 (${config.stocks?.length || 0} 股票)`);
+                    const result = await serviceTest.test();
+                    if (result) {
+                        results += `<div class="test-result success">✅ ${serviceTest.name}: Working correctly</div>`;
                     } else {
-                        log(`❌ ${url} - HTTP ${response.status}`);
+                        results += `<div class="test-result error">❌ ${serviceTest.name}: Test failed</div>`;
                     }
                 } catch (error) {
-                    log(`❌ ${url} - ${error.message}`);
+                    results += `<div class="test-result error">❌ ${serviceTest.name}: ${error.message}</div>`;
                 }
             }
+
+            document.getElementById('services-test').innerHTML = results;
         }
 
-        function displayStats(config) {
-            const enabledStocks = config.stocks.filter(s => s.enabled);
-            const exchanges = [...new Set(enabledStocks.map(s => s.exchange))];
-            const sectors = [...new Set(enabledStocks.map(s => s.sector))];
-            
-            const statsHtml = `
-                <div class="stat-card">
-                    <div class="stat-number">${config.stocks.length}</div>
-                    <div>總股票數</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${enabledStocks.length}</div>
-                    <div>啟用股票</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${exchanges.length}</div>
-                    <div>交易所數量</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${sectors.length}</div>
-                    <div>行業數量</div>
-                </div>
-            `;
-            
-            document.getElementById('stats-display').innerHTML = statsHtml;
-        }
+        // Test data availability
+        async function testDataAvailability() {
+            let results = '<h3>Data Availability Results:</h3>';
 
-        function testPathResolution() {
-            const resultsDiv = document.getElementById('path-test-results');
-            const { hostname, pathname } = window.location;
+            const { paths } = await import('./src/utils/baseUrl.js');
             
-            log('開始測試路徑解析邏輯');
-            
-            let expectedPath;
-            let environment;
-            
-            if (hostname === 'romarin-hsieh.github.io') {
-                expectedPath = '/investment-dashboard/config/stocks.json';
-                environment = 'GitHub Pages 生產環境';
-            } else if (hostname === 'localhost' || hostname === '127.0.0.1') {
-                expectedPath = '/config/stocks.json';
-                environment = '本地開發環境';
-            } else {
-                expectedPath = '/config/stocks.json';
-                environment = '其他環境';
+            const dataTests = [
+                { name: 'OHLCV Index', url: paths.ohlcvIndex() },
+                { name: 'Technical Indicators Index', url: paths.technicalIndicatorsIndex() },
+                { name: 'Symbols Metadata', url: paths.symbolsMetadata() },
+                { name: 'Universe Config', url: paths.universe() },
+                { name: 'Package JSON', url: paths.packageJson() },
+                { name: 'Sample OHLCV (AAPL)', url: paths.ohlcv('AAPL') }
+            ];
+
+            for (const test of dataTests) {
+                try {
+                    const response = await fetch(test.url);
+                    if (response.ok) {
+                        const contentType = response.headers.get('content-type');
+                        const size = response.headers.get('content-length') || 'unknown';
+                        results += `<div class="test-result success">✅ ${test.name}: Available (${size} bytes, ${contentType})</div>`;
+                    } else {
+                        results += `<div class="test-result error">❌ ${test.name}: HTTP ${response.status} ${response.statusText}</div>`;
+                    }
+                } catch (error) {
+                    results += `<div class="test-result error">❌ ${test.name}: ${error.message}</div>`;
+                }
             }
-            
-            resultsDiv.innerHTML = `
-                <div class="info">路徑解析結果：</div>
-                <div class="url-display"><strong>環境:</strong> ${environment}</div>
-                <div class="url-display"><strong>主機名:</strong> ${hostname}</div>
-                <div class="url-display"><strong>路徑:</strong> ${pathname}</div>
-                <div class="url-display"><strong>預期配置路徑:</strong> ${expectedPath}</div>
-                <div class="url-display"><strong>完整 URL:</strong> ${window.location.origin}${expectedPath}</div>
-            `;
-            
-            log(`路徑解析完成 - ${environment}: ${expectedPath}`);
+
+            document.getElementById('data-test').innerHTML = results;
         }
 
-        // 頁面載入時執行
-        document.addEventListener('DOMContentLoaded', function() {
-            displayEnvironmentInfo();
-            log('頁面載入完成，開始路徑一致性測試');
+        // Run all tests
+        async function runAllTests() {
+            console.log('🚀 Starting path consistency tests...');
+            
+            await testBaseUrlHelper();
+            await testServiceIntegration();
+            await testDataAvailability();
+            
+            console.log('✅ All tests completed');
+        }
+
+        // Start tests when page loads
+        runAllTests().catch(error => {
+            console.error('❌ Test execution failed:', error);
+            document.body.innerHTML += `
+                <div class="test-section error">
+                    <h2>❌ Test Execution Failed</h2>
+                    <pre>${error.message}\n${error.stack}</pre>
+                </div>
+            `;
         });
     </script>
 </body>

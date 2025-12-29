@@ -2,6 +2,7 @@
 // 按照最穩架構：Production 只用站內 JSON，避免 CORS proxy 翻車
 
 import { yahooFinanceAPI } from '../utils/yahooFinanceApi.js';
+import { paths } from '../utils/baseUrl.js';
 
 class OhlcvApi {
   constructor() {
@@ -75,10 +76,8 @@ class OhlcvApi {
    * @returns {Promise<Object|null>} 本地 OHLCV 數據
    */
   async fetchLocalOhlcv(symbol, period, range) {
-    // 構建本地 JSON 路徑
-    const filename = `${symbol.toUpperCase()}.json`;
-    // 使用相對路徑以支援 GitHub Pages 子目錄部署
-    const url = `./data/ohlcv/${filename}`;
+    // 使用統一的 baseUrl helper
+    const url = paths.ohlcv(symbol);
     
     const response = await fetch(url);
     

@@ -223,8 +223,8 @@ class AutoUpdateScheduler {
   async checkTechnicalIndicatorsAge() {
     try {
       // 檢查預計算數據的最新日期
-      const basePath = window.location.hostname === 'romarin-hsieh.github.io' ? '/investment-dashboard/' : '/';
-      const response = await fetch(`${basePath}data/technical-indicators/latest_index.json`)
+      const { paths } = await import('./baseUrl.js');
+      const response = await fetch(paths.technicalIndicatorsIndex())
       if (!response.ok) {
         console.log('📊 No precomputed data found, update needed')
         return true

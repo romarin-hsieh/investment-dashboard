@@ -1,0 +1,90 @@
+name: Daily Data Update
+
+on:
+  schedule:
+    # 每天 UTC 02:00 執行 (台北時間 10:00)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # 允許手動觸發
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Node.js dependencies
+      run: npm ci
+
+    - name: Install Python dependencies
+      run: |
+        pip install yfinance pandas numpy requests
+
+    - name: Create data directories
+      run: |
+        mkdir -p public/data/ohlcv
+        mkdir -p public/data/technical-indicators
+        mkdir -p public/data/quotes
+        mkdir -p public/data/daily
+
+    - name: Generate OHLCV data (兩種格式)
+      run: |
+        echo "🔄 Generating OHLCV data for all universe symbols..."
+        node scripts/generate-daily-ohlcv.js
+
+    - name: Generate Technical Indicators
+      run: |
+        echo "🔄 Generating technical indicators..."
+        node scripts/generate-daily-technical-indicators.js
+
+    - name: Update Metadata (weekly on Monday)
+      if: github.event.schedule == '0 2 * * 1' || github.event_name == 'workflow_dispatch'
+      run: |
+        echo "🔄 Updating metadata (weekly)..."
+        python scripts/update-metadata-python.py
+
+    - name: Generate Daily Snapshot
+      run: |
+        echo "🔄 Generating daily snapshot..."
+        node scripts/generate-daily-snapshot.js
+
+    - name: Update Status File
+      run: |
+        echo "🔄 Updating status file..."
+        node scripts/update-status.js
+
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # 檢查是否有變更
+        if ! git diff --quiet; then
+          git add public/data/
+          git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d) [skip ci]"
+          git push
+          echo "✅ Data updated and pushed"
+        else
+          echo "ℹ️ No changes to commit"
+        fi
+
+    - name: Summary
+      run: |
+        echo "📊 Daily Data Update Summary:"
+        echo "- OHLCV files: $(find public/data/ohlcv -name '*.json' | wc -l)"
+        echo "- Technical indicators: $(find public/data/technical-indicators -name '*.json' | wc -l)"
+        echo "- Generated at: $(date -u)"

@@ -3,13 +3,14 @@
  * 使用 GitHub Actions 生成的靜態 JSON 資料，完全避免 CORS 問題
  */
 
+import { paths } from './baseUrl.js';
+
 class StaticSectorIndustryService {
   constructor() {
     this.cache = new Map();
     this.lastFetch = null;
     this.cacheExpiry = 24 * 60 * 60 * 1000; // 24小時快取
-    this.dataUrl = 'data/sector_industry.json'; // 相對路徑，避免 hardcoded leading slash
-    this.fallbackUrl = 'data/symbols_metadata.json'; // 回退到現有格式
+    // 使用統一的 paths helper，不再 hardcode 路徑
   }
 
   /**
@@ -27,12 +28,12 @@ class StaticSectorIndustryService {
       console.log('🔄 Fetching sector industry data from static JSON...');
       
       // 嘗試主要資料來源
-      let data = await this.fetchFromUrl(this.dataUrl);
+      let data = await this.fetchFromUrl(paths.sectorIndustry());
       
       // 如果主要來源失敗，嘗試回退來源
       if (!data) {
         console.log('⚠️ Primary data source failed, trying fallback...');
-        data = await this.fetchFromUrl(this.fallbackUrl);
+        data = await this.fetchFromUrl(paths.symbolsMetadata());
       }
 
       if (!data) {
