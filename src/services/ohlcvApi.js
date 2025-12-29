@@ -77,7 +77,8 @@ class OhlcvApi {
   async fetchLocalOhlcv(symbol, period, range) {
     // 構建本地 JSON 路徑
     const filename = `${symbol.toUpperCase()}.json`;
-    const url = `/data/ohlcv/${filename}`;
+    // 使用相對路徑以支援 GitHub Pages 子目錄部署
+    const url = `./data/ohlcv/${filename}`;
     
     const response = await fetch(url);
     

@@ -3,7 +3,7 @@
 
 class PrecomputedOhlcvApi {
   constructor() {
-    this.baseUrl = '/data/ohlcv'; // Static data directory
+    this.baseUrl = './data/ohlcv'; // Static data directory (相對路徑支援 GitHub Pages)
     this.cache = new Map();
     this.cacheTimeout = 30 * 60 * 1000; // 30 minutes cache
   }
