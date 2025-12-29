@@ -9,21 +9,17 @@ class AutoUpdateScheduler {
     this.updateIntervals = new Map()
     this.isRunning = false
     this.config = {
-      // 技術指標更新配置 - 改為美股收盤後半小時觸發
+      // 技術指標更新配置 - 現在使用版本驅動檢查
       technicalIndicators: {
         enabled: true,
-        interval: 24 * 60 * 60 * 1000, // 24 小時 (每日更新)
-        marketHoursOnly: true,
-        updateTimeWindow: { start: 16.5, end: 17 }, // 美東時間 16:30-17:00 (收盤後半小時)
+        interval: 24 * 60 * 60 * 1000, // 24 小時 (每日檢查)
         retryAttempts: 3,
         retryDelay: 5 * 60 * 1000 // 5 分鐘
       },
-      // 元數據更新配置 - 改為美股收盤後半小時觸發
+      // 元數據更新配置 - 現在使用版本驅動檢查
       metadata: {
         enabled: true,
-        interval: 24 * 60 * 60 * 1000, // 24 小時 (每日更新)
-        marketHoursOnly: true,
-        updateTimeWindow: { start: 16.5, end: 17 }, // 美東時間 16:30-17:00 (收盤後半小時)
+        interval: 24 * 60 * 60 * 1000, // 24 小時 (每日檢查)
         retryAttempts: 2,
         retryDelay: 30 * 60 * 1000 // 30 分鐘
       },
@@ -33,13 +29,6 @@ class AutoUpdateScheduler {
         interval: 6 * 60 * 60 * 1000, // 6 小時
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 天
       }
-    }
-    
-    // 美股交易時間 (EST/EDT)
-    this.marketHours = {
-      preMarket: { start: 4, end: 9.5 }, // 04:00 - 09:30
-      regular: { start: 9.5, end: 16 },  // 09:30 - 16:00
-      afterMarket: { start: 16, end: 20 } // 16:00 - 20:00
     }
   }
 
@@ -141,7 +130,7 @@ class AutoUpdateScheduler {
     }
   }
 
-  // 檢查並更新技術指標
+  // 檢查並更新技術指標 (現在使用版本驅動檢查)
   async checkAndUpdateTechnicalIndicators() {
     const label = 'auto_update_technical_indicators'
     performanceMonitor.start(label)
@@ -149,41 +138,38 @@ class AutoUpdateScheduler {
     try {
       console.log('🔍 Checking technical indicators update...')
 
-      // 檢查是否在美股收盤後半小時的更新時間窗口內
-      if (this.config.technicalIndicators.marketHoursOnly && !this.isUpdateTimeWindow()) {
-        console.log('⏰ Outside update time window, skipping technical indicators update')
+      // 使用新的版本驅動檢查，完全取代時間窗口檢查
+      const { dataVersionService } = await import('./dataVersionService.js');
+      const versionChanged = await dataVersionService.checkDataVersionAndRefresh();
+      
+      if (versionChanged) {
+        console.log('✅ Data version changed - technical indicators refreshed automatically')
+        return
+      } else {
+        console.log('✅ Technical indicators are up to date (version unchanged)')
         return
       }
-
-      // 檢查是否需要更新
-      const needsUpdate = await this.checkTechnicalIndicatorsAge()
-      if (!needsUpdate) {
-        console.log('✅ Technical indicators are up to date')
-        return
-      }
-
-      console.log('🔄 Updating technical indicators...')
-      
-      // 執行更新 (使用現有的預計算腳本邏輯)
-      await this.updateTechnicalIndicatorsData()
-      
-      // 清除相關緩存
-      this.clearTechnicalIndicatorsCache()
-      
-      console.log('✅ Technical indicators updated successfully')
 
     } catch (error) {
-      console.error('❌ Technical indicators update failed:', error)
+      console.error('❌ Technical indicators version check failed:', error)
       
-      // 重試機制
-      await this.retryUpdate('technicalIndicators', error)
+      // 版本檢查失敗時的備用邏輯 - 檢查數據年齡
+      try {
+        const needsUpdate = await this.checkTechnicalIndicatorsAge()
+        if (needsUpdate) {
+          console.log('🔄 Fallback: Clearing cache due to data age')
+          this.clearTechnicalIndicatorsCache()
+        }
+      } catch (fallbackError) {
+        console.error('❌ Fallback check also failed:', fallbackError)
+      }
       
     } finally {
       performanceMonitor.end(label)
     }
   }
 
-  // 檢查並更新元數據
+  // 檢查並更新元數據 (現在使用版本驅動檢查)
   async checkAndUpdateMetadata() {
     const label = 'auto_update_metadata'
     performanceMonitor.start(label)
@@ -191,28 +177,31 @@ class AutoUpdateScheduler {
     try {
       console.log('🔍 Checking metadata update...')
 
-      // 檢查是否需要更新
-      const needsUpdate = await this.checkMetadataAge()
-      if (!needsUpdate) {
-        console.log('✅ Metadata is up to date')
+      // 使用版本驅動檢查，取代時間窗口檢查
+      const { dataVersionService } = await import('./dataVersionService.js');
+      const versionChanged = await dataVersionService.checkDataVersionAndRefresh();
+      
+      if (versionChanged) {
+        console.log('✅ Data version changed - metadata refreshed automatically')
+        return
+      } else {
+        console.log('✅ Metadata is up to date (version unchanged)')
         return
       }
 
-      console.log('🔄 Updating metadata...')
-      
-      // 執行更新
-      await this.updateMetadataData()
-      
-      // 清除相關緩存
-      this.clearMetadataCache()
-      
-      console.log('✅ Metadata updated successfully')
-
     } catch (error) {
-      console.error('❌ Metadata update failed:', error)
+      console.error('❌ Metadata version check failed:', error)
       
-      // 重試機制
-      await this.retryUpdate('metadata', error)
+      // 版本檢查失敗時的備用邏輯
+      try {
+        const needsUpdate = await this.checkMetadataAge()
+        if (needsUpdate) {
+          console.log('🔄 Fallback: Clearing metadata cache due to age')
+          this.clearMetadataCache()
+        }
+      } catch (fallbackError) {
+        console.error('❌ Metadata fallback check failed:', fallbackError)
+      }
       
     } finally {
       performanceMonitor.end(label)
@@ -387,62 +376,6 @@ class AutoUpdateScheduler {
         console.error(`❌ Retry failed for ${updateType}:`, retryError)
       }
     }, config.retryDelay)
-  }
-
-  // 檢查是否在更新時間窗口內 (美股收盤後半小時)
-  isUpdateTimeWindow() {
-    const now = new Date()
-    const estTime = this.convertToEST(now)
-    const hour = estTime.getHours() + estTime.getMinutes() / 60
-
-    // 檢查是否在美股收盤後半小時的更新窗口內 (16:30-17:00 EST)
-    const updateWindow = this.config.technicalIndicators.updateTimeWindow
-    const isInWindow = hour >= updateWindow.start && hour <= updateWindow.end
-
-    if (isInWindow) {
-      console.log(`📅 In update time window: ${estTime.toLocaleTimeString('en-US', { timeZone: 'America/New_York' })} EST`)
-    }
-
-    return isInWindow
-  }
-
-  // 檢查是否在市場時間內 (保留原有功能)
-  isMarketHours() {
-    const now = new Date()
-    const estTime = this.convertToEST(now)
-    const hour = estTime.getHours() + estTime.getMinutes() / 60
-
-    // 檢查是否在交易時間內 (包括盤前、正常、盤後)
-    return (
-      (hour >= this.marketHours.preMarket.start && hour <= this.marketHours.preMarket.end) ||
-      (hour >= this.marketHours.regular.start && hour <= this.marketHours.regular.end) ||
-      (hour >= this.marketHours.afterMarket.start && hour <= this.marketHours.afterMarket.end)
-    )
-  }
-
-  // 轉換為美東時間 (考慮夏令時)
-  convertToEST(date) {
-    // 使用 Intl.DateTimeFormat 來正確處理夏令時
-    const formatter = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'America/New_York',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-    })
-    
-    const parts = formatter.formatToParts(date)
-    const year = parseInt(parts.find(p => p.type === 'year').value)
-    const month = parseInt(parts.find(p => p.type === 'month').value) - 1
-    const day = parseInt(parts.find(p => p.type === 'day').value)
-    const hour = parseInt(parts.find(p => p.type === 'hour').value)
-    const minute = parseInt(parts.find(p => p.type === 'minute').value)
-    const second = parseInt(parts.find(p => p.type === 'second').value)
-    
-    return new Date(year, month, day, hour, minute, second)
   }
 
   // 獲取調度器狀態

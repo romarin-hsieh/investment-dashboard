@@ -30,6 +30,11 @@ jobs:
     - name: Install Node.js dependencies
       run: npm ci
 
+    - name: Install GitHub CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install gh
+
     - name: Install Python dependencies
       run: |
         pip install yfinance pandas numpy requests
@@ -67,6 +72,13 @@ jobs:
         echo "🔄 Updating status file..."
         node scripts/update-status.js
 
+    - name: Archive old technical indicators (30-day retention)
+      run: |
+        echo "🗂️ Archiving old technical indicators..."
+        node scripts/archive-old-technical-indicators.js
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
@@ -87,4 +99,5 @@ jobs:
         echo "📊 Daily Data Update Summary:"
         echo "- OHLCV files: $(find public/data/ohlcv -name '*.json' | wc -l)"
         echo "- Technical indicators: $(find public/data/technical-indicators -name '*.json' | wc -l)"
+        echo "- Retention policy: 30 days for technical indicators"
         echo "- Generated at: $(date -u)"

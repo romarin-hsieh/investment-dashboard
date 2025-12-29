@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Update Robustness Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #6c757d; cursor: not-allowed; }
+        .json-display {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .status-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Data Update Robustness Test Suite</h1>
+    <p>測試基於時間戳的版本驅動數據更新機制</p>
+
+    <!-- Task 1: Version-Driven Update Check -->
+    <div class="test-section">
+        <h2>Task 1: Version-Driven Update Check</h2>
+        <p>測試版本驅動的數據更新檢查機制</p>
+        
+        <button onclick="testVersionCheck()">Test Version Check</button>
+        <button onclick="simulateVersionChange()">Simulate Version Change</button>
+        <button onclick="resetVersionCheck()">Reset Version Check</button>
+        
+        <div id="versionTestResults"></div>
+        
+        <h3>Current Version Status</h3>
+        <div id="versionStatus" class="status-grid"></div>
+    </div>
+
+    <!-- Task 2: Cache Busting Strategy -->
+    <div class="test-section">
+        <h2>Task 2: Cache Busting Strategy</h2>
+        <p>測試選擇性快取清除策略</p>
+        
+        <button onclick="testCacheBusting()">Test Cache Busting</button>
+        <button onclick="testVersionedUrls()">Test Versioned URLs</button>
+        
+        <div id="cacheBustingResults"></div>
+    </div>
+
+    <!-- Task 3: Path Unification -->
+    <div class="test-section">
+        <h2>Task 3: Path Unification</h2>
+        <p>驗證所有路徑都使用 baseUrl.js</p>
+        
+        <button onclick="testPathUnification()">Test Path Unification</button>
+        <button onclick="testEnvironmentPaths()">Test Environment Paths</button>
+        
+        <div id="pathTestResults"></div>
+        
+        <h3>Environment Info</h3>
+        <div id="environmentInfo" class="json-display"></div>
+    </div>
+
+    <!-- Data Loading Test -->
+    <div class="test-section">
+        <h2>Data Loading Test</h2>
+        <p>測試各種數據文件的載入</p>
+        
+        <button onclick="testDataLoading()">Test All Data Loading</button>
+        <button onclick="clearAllCaches()">Clear All Caches</button>
+        
+        <div id="dataLoadingResults"></div>
+    </div>
+
+    <!-- Auto Update Scheduler Test -->
+    <div class="test-section">
+        <h2>Auto Update Scheduler Test</h2>
+        <p>測試自動更新調度器</p>
+        
+        <button onclick="testAutoUpdateScheduler()">Test Scheduler</button>
+        <button onclick="triggerManualUpdate()">Trigger Manual Update</button>
+        
+        <div id="schedulerResults"></div>
+    </div>
+
+    <script type="module">
+        // Import modules
+        let dataVersionService, autoUpdateScheduler, baseUrl;
+        
+        try {
+            const dataVersionModule = await import('./src/utils/dataVersionService.js');
+            dataVersionService = dataVersionModule.dataVersionService;
+            
+            const schedulerModule = await import('./src/utils/autoUpdateScheduler.js');
+            autoUpdateScheduler = schedulerModule.autoUpdateScheduler;
+            
+            baseUrl = await import('./src/utils/baseUrl.js');
+            
+            console.log('✅ All modules loaded successfully');
+            displayEnvironmentInfo();
+            displayVersionStatus();
+        } catch (error) {
+            console.error('❌ Failed to load modules:', error);
+            document.body.innerHTML += `<div class="test-result error">Failed to load modules: ${error.message}</div>`;
+        }
+
+        // Task 1: Version Check Tests
+        window.testVersionCheck = async function() {
+            const resultsDiv = document.getElementById('versionTestResults');
+            resultsDiv.innerHTML = '<div class="test-result info">Testing version check...</div>';
+            
+            try {
+                const versionChanged = await dataVersionService.checkDataVersionAndRefresh();
+                
+                resultsDiv.innerHTML += `
+                    <div class="test-result ${versionChanged ? 'warning' : 'success'}">
+                        Version check result: ${versionChanged ? 'Version changed - refresh triggered' : 'Version unchanged - no refresh needed'}
+                    </div>
+                `;
+                
+                displayVersionStatus();
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<div class="test-result error">Version check failed: ${error.message}</div>`;
+            }
+        };
+
+        window.simulateVersionChange = function() {
+            const oldVersion = localStorage.getItem('lastSeenDataVersion');
+            const newVersion = 'test-version-' + Date.now();
+            
+            // 模擬版本變更
+            localStorage.setItem('lastSeenDataVersion', 'old-version');
+            
+            const resultsDiv = document.getElementById('versionTestResults');
+            resultsDiv.innerHTML += `
+                <div class="test-result warning">
+                    Simulated version change: old-version → (will be updated on next check)
+                </div>
+            `;
+            
+            displayVersionStatus();
+        };
+
+        window.resetVersionCheck = function() {
+            localStorage.removeItem('lastSeenDataVersion');
+            
+            const resultsDiv = document.getElementById('versionTestResults');
+            resultsDiv.innerHTML += `<div class="test-result info">Version check reset - next check will be treated as first time</div>`;
+            
+            displayVersionStatus();
+        };
+
+        // Task 2: Cache Busting Tests
+        window.testCacheBusting = async function() {
+            const resultsDiv = document.getElementById('cacheBustingResults');
+            resultsDiv.innerHTML = '<div class="test-result info">Testing cache busting strategy...</div>';
+            
+            try {
+                // Test versioned URLs
+                const timestamp = Date.now();
+                const statusUrl = baseUrl.paths.status({ v: timestamp });
+                const indexUrl = baseUrl.paths.technicalIndicatorsIndex({ v: timestamp });
+                
+                resultsDiv.innerHTML += `
+                    <div class="test-result success">
+                        Versioned status URL: ${statusUrl}
+                    </div>
+                    <div class="test-result success">
+                        Versioned index URL: ${indexUrl}
+                    </div>
+                `;
+                
+                // Test regular URLs (no versioning)
+                const regularOhlcvUrl = baseUrl.paths.ohlcv('AAPL');
+                const regularTechUrl = baseUrl.paths.technicalIndicators('2025-12-29', 'AAPL');
+                
+                resultsDiv.innerHTML += `
+                    <div class="test-result info">
+                        Regular OHLCV URL: ${regularOhlcvUrl}
+                    </div>
+                    <div class="test-result info">
+                        Regular technical URL: ${regularTechUrl}
+                    </div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<div class="test-result error">Cache busting test failed: ${error.message}</div>`;
+            }
+        };
+
+        window.testVersionedUrls = async function() {
+            const resultsDiv = document.getElementById('cacheBustingResults');
+            
+            try {
+                // Test fetching with versioned URLs
+                const timestamp = Date.now();
+                const statusUrl = baseUrl.paths.status({ v: timestamp });
+                
+                const response = await fetch(statusUrl, {
+                    cache: 'no-cache',
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultsDiv.innerHTML += `
+                        <div class="test-result success">
+                            Successfully fetched versioned status.json
+                        </div>
+                        <div class="json-display">${JSON.stringify(data, null, 2)}</div>
+                    `;
+                } else {
+                    resultsDiv.innerHTML += `<div class="test-result error">Failed to fetch status.json: ${response.status}</div>`;
+                }
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<div class="test-result error">Versioned URL test failed: ${error.message}</div>`;
+            }
+        };
+
+        // Task 3: Path Unification Tests
+        window.testPathUnification = function() {
+            const resultsDiv = document.getElementById('pathTestResults');
+            resultsDiv.innerHTML = '<div class="test-result info">Testing path unification...</div>';
+            
+            try {
+                // Test all path functions
+                const paths = {
+                    'OHLCV (AAPL)': baseUrl.paths.ohlcv('AAPL'),
+                    'OHLCV Precomputed': baseUrl.paths.ohlcvPrecomputed('AAPL', '1d', 90),
+                    'OHLCV Index': baseUrl.paths.ohlcvIndex(),
+                    'Technical Indicators': baseUrl.paths.technicalIndicators('2025-12-29', 'AAPL'),
+                    'Technical Index': baseUrl.paths.technicalIndicatorsIndex(),
+                    'Symbols Metadata': baseUrl.paths.symbolsMetadata(),
+                    'Sector Industry': baseUrl.paths.sectorIndustry(),
+                    'Status': baseUrl.paths.status(),
+                    'Universe Config': baseUrl.paths.universe(),
+                    'Stocks Config': baseUrl.paths.stocks()
+                };
+                
+                let allPathsValid = true;
+                for (const [name, path] of Object.entries(paths)) {
+                    const isValid = path && typeof path === 'string' && path.length > 0;
+                    if (!isValid) allPathsValid = false;
+                    
+                    resultsDiv.innerHTML += `
+                        <div class="test-result ${isValid ? 'success' : 'error'}">
+                            ${name}: ${path || 'INVALID'}
+                        </div>
+                    `;
+                }
+                
+                resultsDiv.innerHTML += `
+                    <div class="test-result ${allPathsValid ? 'success' : 'error'}">
+                        Path unification test: ${allPathsValid ? 'PASSED' : 'FAILED'}
+                    </div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<div class="test-result error">Path unification test failed: ${error.message}</div>`;
+            }
+        };
+
+        window.testEnvironmentPaths = function() {
+            const resultsDiv = document.getElementById('pathTestResults');
+            
+            try {
+                const envInfo = baseUrl.getEnvironmentInfo();
+                const samplePath = baseUrl.paths.ohlcv('AAPL');
+                
+                resultsDiv.innerHTML += `
+                    <div class="test-result info">
+                        Base URL: ${envInfo.baseUrl}
+                    </div>
+                    <div class="test-result info">
+                        Environment: ${envInfo.mode}
+                    </div>
+                    <div class="test-result info">
+                        Sample path: ${samplePath}
+                    </div>
+                    <div class="test-result ${samplePath.includes(envInfo.baseUrl) ? 'success' : 'error'}">
+                        Path includes base URL: ${samplePath.includes(envInfo.baseUrl) ? 'YES' : 'NO'}
+                    </div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<div class="test-result error">Environment path test failed: ${error.message}</div>`;
+            }
+        };
+
+        // Data Loading Tests
+        window.testDataLoading = async function() {
+            const resultsDiv = document.getElementById('dataLoadingResults');
+            resultsDiv.innerHTML = '<div class="test-result info">Testing data loading...</div>';
+            
+            const testFiles = [
+                { name: 'Status', url: baseUrl.paths.status() },
+                { name: 'Technical Index', url: baseUrl.paths.technicalIndicatorsIndex() },
+                { name: 'OHLCV Index', url: baseUrl.paths.ohlcvIndex() },
+                { name: 'Symbols Metadata', url: baseUrl.paths.symbolsMetadata() },
+                { name: 'Universe Config', url: baseUrl.paths.universe() }
+            ];
+            
+            for (const file of testFiles) {
+                try {
+                    const response = await fetch(file.url);
+                    if (response.ok) {
+                        const data = await response.json();
+                        resultsDiv.innerHTML += `
+                            <div class="test-result success">
+                                ✅ ${file.name}: Loaded successfully (${Object.keys(data).length} keys)
+                            </div>
+                        `;
+                    } else {
+                        resultsDiv.innerHTML += `
+                            <div class="test-result error">
+                                ❌ ${file.name}: HTTP ${response.status}
+                            </div>
+                        `;
+                    }
+                } catch (error) {
+                    resultsDiv.innerHTML += `
+                        <div class="test-result error">
+                            ❌ ${file.name}: ${error.message}
+                        </div>
+                    `;
+                }
+            }
+        };
+
+        window.clearAllCaches = function() {
+            // Clear localStorage
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && (
+                    key.includes('technical_indicators_') || 
+                    key.includes('precomputed_') ||
+                    key.includes('ohlcv_') ||
+                    key.includes('metadata_') ||
+                    key.includes('lastSeenDataVersion')
+                )) {
+                    keysToRemove.push(key);
+                }
+            }
+            
+            keysToRemove.forEach(key => localStorage.removeItem(key));
+            
+            // Clear sessionStorage
+            sessionStorage.clear();
+            
+            const resultsDiv = document.getElementById('dataLoadingResults');
+            resultsDiv.innerHTML += `
+                <div class="test-result warning">
+                    🗑️ Cleared ${keysToRemove.length} cache entries from localStorage and all sessionStorage
+                </div>
+            `;
+        };
+
+        // Auto Update Scheduler Tests
+        window.testAutoUpdateScheduler = function() {
+            const resultsDiv = document.getElementById('schedulerResults');
+            resultsDiv.innerHTML = '<div class="test-result info">Testing auto update scheduler...</div>';
+            
+            try {
+                const status = autoUpdateScheduler.getStatus();
+                
+                resultsDiv.innerHTML += `
+                    <div class="test-result ${status.isRunning ? 'success' : 'warning'}">
+                        Scheduler running: ${status.isRunning ? 'YES' : 'NO'}
+                    </div>
+                    <div class="test-result info">
+                        Active intervals: ${status.activeIntervals.join(', ') || 'None'}
+                    </div>
+                    <div class="json-display">${JSON.stringify(status, null, 2)}</div>
+                `;
+                
+            } catch (error) {
+                resultsDiv.innerHTML += `<div class="test-result error">Scheduler test failed: ${error.message}</div>`;
+            }
+        };
+
+        window.triggerManualUpdate = async function() {
+            const resultsDiv = document.getElementById('schedulerResults');
+            resultsDiv.innerHTML += '<div class="test-result info">Triggering manual update...</div>';
+            
+            try {
+                await autoUpdateScheduler.triggerManualUpdate('technicalIndicators');
+                resultsDiv.innerHTML += '<div class="test-result success">Manual update completed</div>';
+            } catch (error) {
+                resultsDiv.innerHTML += `<div class="test-result error">Manual update failed: ${error.message}</div>`;
+            }
+        };
+
+        // Helper functions
+        function displayEnvironmentInfo() {
+            try {
+                const envInfo = baseUrl.getEnvironmentInfo();
+                document.getElementById('environmentInfo').textContent = JSON.stringify(envInfo, null, 2);
+            } catch (error) {
+                document.getElementById('environmentInfo').textContent = `Error: ${error.message}`;
+            }
+        }
+
+        function displayVersionStatus() {
+            try {
+                const status = dataVersionService.getStatus();
+                const schedulerStatus = autoUpdateScheduler.getStatus();
+                
+                document.getElementById('versionStatus').innerHTML = `
+                    <div class="status-card">
+                        <h4>Data Version Service</h4>
+                        <p><strong>Current Version:</strong> ${status.currentVersion || 'None'}</p>
+                        <p><strong>Is Checking:</strong> ${status.isChecking ? 'Yes' : 'No'}</p>
+                        <p><strong>Listeners:</strong> ${status.listenerCount}</p>
+                    </div>
+                    <div class="status-card">
+                        <h4>Auto Update Scheduler</h4>
+                        <p><strong>Running:</strong> ${schedulerStatus.isRunning ? 'Yes' : 'No'}</p>
+                        <p><strong>Active Intervals:</strong> ${schedulerStatus.activeIntervals.length}</p>
+                        <p><strong>Next Check:</strong> ${new Date(Date.now() + 24*60*60*1000).toLocaleString()}</p>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById('versionStatus').innerHTML = `<div class="test-result error">Status display error: ${error.message}</div>`;
+            }
+        }
+
+        // Auto-refresh status every 30 seconds
+        setInterval(displayVersionStatus, 30000);
+    </script>
+</body>
+</html>
