@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>真實 OHLCV 資料前端測試</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        .success { border-left: 4px solid #4CAF50; background: #f8fff8; }
+        .error { border-left: 4px solid #f44336; background: #fff8f8; }
+        .info { border-left: 4px solid #2196F3; background: #f8f9ff; }
+        .warning { border-left: 4px solid #ff9800; background: #fff8f0; }
+        
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        
+        button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #1976D2;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status.pass { background: #4CAF50; color: white; }
+        .status.fail { background: #f44336; color: white; }
+        .status.pending { background: #ff9800; color: white; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 真實 OHLCV 資料前端測試</h1>
+        <p>此頁面用於測試真實 OHLCV 資料的前端載入和 MFI Volume Profile 功能。</p>
+        
+        <div class="test-section info">
+            <h3>📋 測試檢查清單</h3>
+            <div id="checklist">
+                <div>⏳ 載入 OHLCV index.json... <span class="status pending" id="status-index">PENDING</span></div>
+                <div>⏳ 驗證 symbols 陣列... <span class="status pending" id="status-symbols">PENDING</span></div>
+                <div>⏳ 載入 ONDS 資料... <span class="status pending" id="status-onds">PENDING</span></div>
+                <div>⏳ 驗證時間戳... <span class="status pending" id="status-timestamp">PENDING</span></div>
+                <div>⏳ 驗證價格範圍... <span class="status pending" id="status-price">PENDING</span></div>
+                <div>⏳ 測試 precomputedOhlcvApi... <span class="status pending" id="status-api">PENDING</span></div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🔧 測試控制</h3>
+            <button onclick="runAllTests()">🚀 執行所有測試</button>
+            <button onclick="testIndexJson()">📋 測試 Index</button>
+            <button onclick="testOhlcvData()">📊 測試 OHLCV</button>
+            <button onclick="testPrecomputedApi()">🔌 測試 API</button>
+            <button onclick="clearResults()">🧹 清除結果</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>📊 測試結果</h3>
+            <div id="results"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>📈 OHLCV 資料預覽</h3>
+            <div id="data-preview"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>🔍 詳細日誌</h3>
+            <pre id="log"></pre>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {};
+        
+        function log(message) {
+            const logElement = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logElement.textContent += `[${timestamp}] ${message}\n`;
+            logElement.scrollTop = logElement.scrollHeight;
+            console.log(message);
+        }
+        
+        function updateStatus(testId, status, message = '') {
+            const statusElement = document.getElementById(`status-${testId}`);
+            if (statusElement) {
+                statusElement.className = `status ${status}`;
+                statusElement.textContent = status.toUpperCase();
+                if (message) {
+                    statusElement.title = message;
+                }
+            }
+            testResults[testId] = { status, message };
+        }
+        
+        function displayResults() {
+            const resultsDiv = document.getElementById('results');
+            let html = '<table><tr><th>測試項目</th><th>狀態</th><th>詳細資訊</th></tr>';
+            
+            for (const [testId, result] of Object.entries(testResults)) {
+                const statusClass = result.status === 'pass' ? 'success' : 
+                                  result.status === 'fail' ? 'error' : 'warning';
+                html += `<tr class="${statusClass}">
+                    <td>${testId}</td>
+                    <td><span class="status ${result.status}">${result.status.toUpperCase()}</span></td>
+                    <td>${result.message || '-'}</td>
+                </tr>`;
+            }
+            
+            html += '</table>';
+            resultsDiv.innerHTML = html;
+        }
+        
+        async function testIndexJson() {
+            log('🔍 測試 OHLCV index.json...');
+            
+            try {
+                const response = await fetch('/data/ohlcv/index.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const indexData = await response.json();
+                log(`✅ Index 載入成功: ${JSON.stringify(indexData, null, 2).substring(0, 200)}...`);
+                
+                // 驗證必要欄位
+                if (!indexData.symbols || !Array.isArray(indexData.symbols)) {
+                    throw new Error('缺少 symbols 陣列');
+                }
+                
+                if (indexData.symbols.length === 0) {
+                    throw new Error('symbols 陣列為空');
+                }
+                
+                updateStatus('index', 'pass', `載入 ${indexData.totalFiles} 個檔案`);
+                updateStatus('symbols', 'pass', `找到 ${indexData.symbols.length} 個符號`);
+                
+                log(`✅ 符號清單: ${indexData.symbols.join(', ')}`);
+                log(`✅ 成功率: ${indexData.report?.successRate || 'N/A'}`);
+                
+                return indexData;
+                
+            } catch (error) {
+                log(`❌ Index 測試失敗: ${error.message}`);
+                updateStatus('index', 'fail', error.message);
+                updateStatus('symbols', 'fail', error.message);
+                throw error;
+            }
+        }
+        
+        async function testOhlcvData() {
+            log('🔍 測試 ONDS OHLCV 資料...');
+            
+            try {
+                const response = await fetch('/data/ohlcv/onds_1d_90d.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const ohlcvData = await response.json();
+                log(`✅ ONDS 資料載入成功，包含 ${ohlcvData.timestamps?.length || 0} 個資料點`);
+                
+                // 驗證資料結構
+                const requiredFields = ['timestamps', 'open', 'high', 'low', 'close', 'volume'];
+                for (const field of requiredFields) {
+                    if (!Array.isArray(ohlcvData[field])) {
+                        throw new Error(`缺少必要欄位: ${field}`);
+                    }
+                }
+                
+                updateStatus('onds', 'pass', `${ohlcvData.timestamps.length} 個資料點`);
+                
+                // 驗證時間戳
+                const latestTimestamp = ohlcvData.timestamps[ohlcvData.timestamps.length - 1];
+                const latestDate = new Date(latestTimestamp);
+                const now = new Date();
+                const daysDiff = (now - latestDate) / (1000 * 60 * 60 * 24);
+                
+                log(`✅ 最新時間戳: ${latestDate.toISOString()}`);
+                log(`✅ 距今天數: ${daysDiff.toFixed(1)} 天`);
+                
+                if (daysDiff > 7) {
+                    updateStatus('timestamp', 'fail', `資料過舊 (${daysDiff.toFixed(1)} 天)`);
+                } else {
+                    updateStatus('timestamp', 'pass', `資料新鮮 (${daysDiff.toFixed(1)} 天)`);
+                }
+                
+                // 驗證價格範圍
+                const latestPrice = ohlcvData.close[ohlcvData.close.length - 1];
+                const minPrice = Math.min(...ohlcvData.low);
+                const maxPrice = Math.max(...ohlcvData.high);
+                
+                log(`✅ 價格範圍: $${minPrice.toFixed(2)} - $${maxPrice.toFixed(2)}`);
+                log(`✅ 最新價格: $${latestPrice.toFixed(2)}`);
+                
+                // ONDS 合理價格範圍檢查 ($3-15)
+                if (latestPrice >= 3 && latestPrice <= 15) {
+                    updateStatus('price', 'pass', `$${latestPrice.toFixed(2)} (合理範圍)`);
+                } else {
+                    updateStatus('price', 'fail', `$${latestPrice.toFixed(2)} (超出預期範圍)`);
+                }
+                
+                // 顯示資料預覽
+                displayDataPreview(ohlcvData);
+                
+                return ohlcvData;
+                
+            } catch (error) {
+                log(`❌ OHLCV 資料測試失敗: ${error.message}`);
+                updateStatus('onds', 'fail', error.message);
+                updateStatus('timestamp', 'fail', error.message);
+                updateStatus('price', 'fail', error.message);
+                throw error;
+            }
+        }
+        
+        async function testPrecomputedApi() {
+            log('🔍 測試 precomputedOhlcvApi 相容性...');
+            
+            try {
+                // 模擬 precomputedOhlcvApi 的行為
+                const indexResponse = await fetch('/data/ohlcv/index.json');
+                const indexData = await indexResponse.json();
+                
+                if (!indexData.symbols || indexData.symbols.length === 0) {
+                    throw new Error('getAvailableSymbols() 會失敗：無 symbols 陣列');
+                }
+                
+                // 測試單個符號載入
+                const testSymbol = 'ONDS';
+                const ohlcvResponse = await fetch(`/data/ohlcv/onds_1d_90d.json`);
+                const ohlcvData = await ohlcvResponse.json();
+                
+                // 驗證 API 預期的資料格式
+                if (!ohlcvData.timestamps || !ohlcvData.close || !ohlcvData.volume) {
+                    throw new Error('資料格式不符合 API 預期');
+                }
+                
+                log(`✅ precomputedOhlcvApi 相容性測試通過`);
+                log(`✅ getAvailableSymbols() 將回傳 ${indexData.symbols.length} 個符號`);
+                log(`✅ getOhlcv('${testSymbol}') 將回傳 ${ohlcvData.timestamps.length} 個資料點`);
+                
+                updateStatus('api', 'pass', `API 相容性正常`);
+                
+            } catch (error) {
+                log(`❌ precomputedOhlcvApi 測試失敗: ${error.message}`);
+                updateStatus('api', 'fail', error.message);
+                throw error;
+            }
+        }
+        
+        function displayDataPreview(ohlcvData) {
+            const previewDiv = document.getElementById('data-preview');
+            
+            // 取最後 5 個資料點
+            const lastIndex = ohlcvData.timestamps.length - 1;
+            const previewData = [];
+            
+            for (let i = Math.max(0, lastIndex - 4); i <= lastIndex; i++) {
+                previewData.push({
+                    date: new Date(ohlcvData.timestamps[i]).toLocaleDateString(),
+                    open: ohlcvData.open[i].toFixed(2),
+                    high: ohlcvData.high[i].toFixed(2),
+                    low: ohlcvData.low[i].toFixed(2),
+                    close: ohlcvData.close[i].toFixed(2),
+                    volume: ohlcvData.volume[i].toLocaleString()
+                });
+            }
+            
+            let html = '<h4>最近 5 個交易日資料</h4>';
+            html += '<table><tr><th>日期</th><th>開盤</th><th>最高</th><th>最低</th><th>收盤</th><th>成交量</th></tr>';
+            
+            previewData.forEach(row => {
+                html += `<tr>
+                    <td>${row.date}</td>
+                    <td>$${row.open}</td>
+                    <td>$${row.high}</td>
+                    <td>$${row.low}</td>
+                    <td>$${row.close}</td>
+                    <td>${row.volume}</td>
+                </tr>`;
+            });
+            
+            html += '</table>';
+            previewDiv.innerHTML = html;
+        }
+        
+        async function runAllTests() {
+            log('🚀 開始執行所有測試...');
+            clearResults();
+            
+            try {
+                await testIndexJson();
+                await testOhlcvData();
+                await testPrecomputedApi();
+                
+                log('🎉 所有測試完成！');
+                
+            } catch (error) {
+                log(`❌ 測試過程中發生錯誤: ${error.message}`);
+            } finally {
+                displayResults();
+            }
+        }
+        
+        function clearResults() {
+            testResults = {};
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('data-preview').innerHTML = '';
+            document.getElementById('log').textContent = '';
+            
+            // 重置狀態
+            ['index', 'symbols', 'onds', 'timestamp', 'price', 'api'].forEach(testId => {
+                updateStatus(testId, 'pending');
+            });
+        }
+        
+        // 頁面載入時自動執行測試
+        window.addEventListener('load', () => {
+            log('📋 頁面載入完成，準備執行測試...');
+            setTimeout(runAllTests, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,20 +1,20 @@
 {
-  "generated": "2025-12-29T11:43:44.856Z",
-  "date": "2025-12-29",
+  "generated": "2025-12-30T15:59:51.172Z",
+  "date": "2025-12-30",
   "status": "updated",
   "data_sources": {
     "ohlcv": {
       "exists": true,
-      "size": 3731,
-      "modified": "2025-12-29T11:31:45.154Z",
-      "fileCount": 135,
+      "size": 28463,
+      "modified": "2025-12-30T15:59:32.454Z",
+      "fileCount": 137,
       "directory": "data/ohlcv/"
     },
     "technical_indicators": {
       "exists": true,
       "size": 2989,
-      "modified": "2025-12-29T11:43:39.441Z",
-      "fileCount": 210,
+      "modified": "2025-12-30T15:59:39.606Z",
+      "fileCount": 278,
       "directory": "data/technical-indicators/"
     },
     "quotes": {
@@ -25,27 +25,27 @@
     },
     "metadata": {
       "exists": true,
-      "size": 115771,
-      "modified": "2025-12-29T09:33:15.575Z",
+      "size": 115774,
+      "modified": "2025-12-30T06:55:39.351Z",
       "file": "data/symbols_metadata.json"
     },
     "daily_snapshot": {
       "exists": false,
       "size": 0,
       "modified": null,
-      "error": "ENOENT: no such file or directory, stat 'C:\\Users\\Romarin\\Documents\\Kiro\\investment-dashboard\\public\\data\\daily\\2025-12-29.json'",
-      "file": "data/daily/2025-12-29.json"
+      "error": "ENOENT: no such file or directory, stat 'C:\\Users\\Romarin\\Documents\\Kiro\\investment-dashboard\\public\\data\\daily\\2025-12-30.json'",
+      "file": "data/daily/2025-12-30.json"
     }
   },
   "update_info": {
     "source": "GitHub Actions Daily Update",
     "workflow": "daily-data-update.yml",
-    "next_update": "2025-12-30T11:43:44.856Z",
+    "next_update": "2025-12-31T15:59:51.172Z",
     "update_frequency": "daily"
   },
   "health_check": {
     "all_systems": "operational",
-    "last_check": "2025-12-29T11:43:44.856Z",
+    "last_check": "2025-12-30T15:59:51.172Z",
     "issues": []
   }
 }

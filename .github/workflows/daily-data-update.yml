@@ -46,10 +46,25 @@ jobs:
         mkdir -p public/data/quotes
         mkdir -p public/data/daily
 
-    - name: Generate OHLCV data (兩種格式)
+    # ✅ T2：用真實行情重產 precomputed OHLCV（不經 CORS）
+    - name: Generate REAL OHLCV data (yfinance, 2 formats + index.json)
       run: |
-        echo "🔄 Generating OHLCV data for all universe symbols..."
-        node scripts/generate-daily-ohlcv.js
+        echo "🔄 Generating REAL OHLCV data for all universe symbols (yfinance)..."
+        python scripts/generate-real-ohlcv-yfinance.py --days 90 --interval 1d --min-rows 24
+
+    # ✅ 防呆：確保 index.json 含 symbols（避免 precomputedOhlcvApi.getAvailableSymbols() 爆掉）
+    - name: Validate OHLCV index schema (must include symbols)
+      run: |
+        python - <<'PY'
+        import json, sys
+        p = "public/data/ohlcv/index.json"
+        with open(p, "r", encoding="utf-8") as f:
+          idx = json.load(f)
+        if not isinstance(idx.get("symbols"), list) or len(idx["symbols"]) == 0:
+          print("❌ index.json missing symbols or empty symbols list")
+          sys.exit(2)
+        print(f"✅ index.json OK. symbols={len(idx['symbols'])}, totalFiles={idx.get('totalFiles')}")
+        PY
 
     - name: Generate Technical Indicators
       run: |
@@ -77,20 +92,22 @@ jobs:
         echo "🔄 Updating status file..."
         node scripts/update-status.js
 
+    # ✅ 更安全的 commit（包含新檔）
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
-        # 檢查是否有變更
-        if ! git diff --quiet; then
-          git add public/data/
-          git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d) [skip ci]"
-          git push
-          echo "✅ Data updated and pushed"
-        else
+        git add -A public/data
+        
+        if git diff --staged --quiet; then
           echo "ℹ️ No changes to commit"
+          exit 0
         fi
+        
+        git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d) [skip ci]"
+        git push
+        echo "✅ Data updated and pushed"
 
     - name: Summary
       run: |
