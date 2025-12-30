@@ -11,6 +11,12 @@ import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const DAY_MS = 24 * 60 * 60 * 1000
+
+function ymdToUtcEpoch(ymd) {
+  const [y, m, d] = ymd.split('-').map(Number)
+  return Date.UTC(y, m - 1, d)
+}
 
 class DailySnapshotGenerator {
   constructor() {
@@ -228,6 +234,7 @@ class DailySnapshotGenerator {
     console.log(`🏢 Stock symbols: ${symbols.length}`)
     
     return {
+      asOfDateTaipei: today,
       filename,
       filepath,
       symbolCount: symbols.length,
@@ -236,20 +243,21 @@ class DailySnapshotGenerator {
   }
 
   // 清理舊的快照文件 (保留最近 30 天)
-  cleanupOldSnapshots() {
+  cleanupOldSnapshots({ retentionDays = 30, asOfDateTaipei } = {}) {
     const files = fs.readdirSync(this.outputDir)
     const jsonFiles = files.filter(f => f.endsWith('.json'))
     
-    const cutoffDate = new Date()
-    cutoffDate.setDate(cutoffDate.getDate() - 30) // 30天前
+    const asOf = asOfDateTaipei || this.getTodayString()
+    const asOfEpoch = ymdToUtcEpoch(asOf)
+    const cutoffEpoch = asOfEpoch - (retentionDays - 1) * DAY_MS // 含 asOf 共 retentionDays 天
     
     let deletedCount = 0
     
     jsonFiles.forEach(filename => {
       const match = filename.match(/^(\d{4}-\d{2}-\d{2})\.json$/)
       if (match) {
-        const fileDate = new Date(match[1])
-        if (fileDate < cutoffDate) {
+        const fileEpoch = ymdToUtcEpoch(match[1])
+        if (fileEpoch < cutoffEpoch) {
           const filepath = path.join(this.outputDir, filename)
           fs.unlinkSync(filepath)
           deletedCount++
@@ -277,7 +285,7 @@ async function main() {
     const result = await generator.generateDailySnapshot()
     
     // 清理舊文件
-    generator.cleanupOldSnapshots()
+    generator.cleanupOldSnapshots({ retentionDays: 30, asOfDateTaipei: result.asOfDateTaipei })
     
     console.log('✅ Daily snapshot generation completed successfully!')
     console.log(`📄 File: ${result.filename}`)
