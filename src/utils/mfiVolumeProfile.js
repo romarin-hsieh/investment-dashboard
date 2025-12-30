@@ -8,10 +8,14 @@ import { calculateMFIWithMetadata } from './mfi.js';
  * @param {Object} ohlcv - OHLCV data object
  * @param {number} bins - Number of price bins for volume profile (default: 20)
  * @param {number} mfiPeriod - Period for MFI calculation (default: 14)
+ * @param {Object} options - Additional options
+ * @param {string} options.mfiAvgMode - 'weighted' (default) or 'legacy' for MFI averaging method
  * @returns {Object} Volume profile with MFI data
  */
-export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14) {
-  console.log(`📊 Calculating MFI Volume Profile with ${bins} bins, MFI period=${mfiPeriod}`);
+export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, options = {}) {
+  const { mfiAvgMode = 'weighted' } = options;
+  
+  console.log(`📊 Calculating MFI Volume Profile with ${bins} bins, MFI period=${mfiPeriod}, avgMode=${mfiAvgMode}`);
   
   if (!ohlcv || !ohlcv.high || !ohlcv.low || !ohlcv.close || !ohlcv.volume) {
     throw new Error('Invalid OHLCV data for MFI Volume Profile calculation');
@@ -55,9 +59,14 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14) {
       positiveVolume: 0, // Volume when MFI indicates buying pressure
       negativeVolume: 0, // Volume when MFI indicates selling pressure
       neutralVolume: 0,  // Volume when MFI is neutral
-      mfiAverage: 0,     // Average MFI for this price level
-      mfiCount: 0,       // Count of MFI values for averaging
-      candleCount: 0     // Number of candles in this bin
+      mfiAverage: 0,     // Volume-weighted average MFI for this price level
+      mfiCount: 0,       // Count of MFI values for averaging (legacy)
+      candleCount: 0,    // Number of candles in this bin
+      // New fields for volume-weighted MFI calculation
+      mfiWeightedSum: 0,     // Σ(mfi * volumeAllocation)
+      mfiWeightedVolume: 0,  // Σ(volumeAllocation) for MFI calculation
+      mfiAverageLegacy: 0,   // Legacy count-based average (for rollback)
+      mfiCountLegacy: 0      // Legacy count (for rollback)
     }));
     
     // Step 4: Distribute volume across price bins with MFI classification
@@ -112,14 +121,39 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14) {
             bin.neutralVolume += volumeAllocation;
           }
           
-          // Update MFI average for this bin
-          bin.mfiAverage = (bin.mfiAverage * bin.mfiCount + mfiValue) / (bin.mfiCount + 1);
+          // Legacy MFI averaging (count-based)
+          bin.mfiAverageLegacy = (bin.mfiAverageLegacy * bin.mfiCountLegacy + mfiValue) / (bin.mfiCountLegacy + 1);
+          bin.mfiCountLegacy++;
+          
+          // New volume-weighted MFI calculation
+          bin.mfiWeightedSum += mfiValue * volumeAllocation;
+          bin.mfiWeightedVolume += volumeAllocation;
+          
+          // Keep legacy fields for backward compatibility (but don't use for final mfiAverage)
           bin.mfiCount++;
         } else {
           bin.neutralVolume += volumeAllocation;
         }
       }
     }
+    
+    // Step 4.5: Calculate final MFI averages based on selected mode
+    volumeProfile.forEach(bin => {
+      if (mfiAvgMode === 'legacy') {
+        // Use legacy count-based average
+        bin.mfiAverage = bin.mfiAverageLegacy;
+      } else {
+        // Use volume-weighted average (default)
+        if (bin.mfiWeightedVolume > 0) {
+          bin.mfiAverage = bin.mfiWeightedSum / bin.mfiWeightedVolume;
+        } else {
+          bin.mfiAverage = 0;
+        }
+      }
+      
+      // Ensure MFI average is within valid range [0, 100]
+      bin.mfiAverage = Math.max(0, Math.min(100, bin.mfiAverage));
+    });
     
     // Step 5: Calculate additional metrics
     const totalVolume = volumeProfile.reduce((sum, bin) => sum + bin.volume, 0);
@@ -232,7 +266,8 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14) {
         calculatedAt: new Date().toISOString(),
         dataPoints: length,
         mfiPeriod: mfiPeriod,
-        algorithm: 'MFI Volume Profile v1.0'
+        mfiAvgMode: mfiAvgMode,
+        algorithm: `MFI Volume Profile v2.0 (${mfiAvgMode} averaging)`
       }
     };
     

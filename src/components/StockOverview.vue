@@ -508,6 +508,18 @@ export default {
     this.initializeNavigation()
   },
 
+  beforeRouteLeave(to, from, next) {
+    // 清理 focus query 參數當離開 stock-overview 頁面
+    if (this.$route.query.focus) {
+      console.log('Navigation: Clearing focus parameter on route leave')
+      // 不等待，避免阻塞導航
+      this.$router.replace({
+        query: { ...this.$route.query, focus: undefined }
+      }).catch(() => {}) // 忽略錯誤，因為用戶可能已經導航到其他頁面
+    }
+    next()
+  },
+
   beforeUnmount() {
     this.cleanupNavigation()
   },
@@ -611,8 +623,10 @@ export default {
       scrollSpyService.pause()
       
       try {
-        // 更新 URL query 參數
-        navigationService.updateQueryParam(symbol)
+        // 使用 Vue Router query 而非 NavigationService (Hash Router 兼容)
+        await this.$router.replace({
+          query: { ...this.$route.query, focus: symbol }
+        })
         
         // 滾動到目標
         await navigationService.scrollToSymbol(symbol)
@@ -691,8 +705,8 @@ export default {
         this.expandAllSections()
       }
       
-      // 檢查 URL query 參數
-      const focusSymbol = navigationService.getFocusSymbolFromQuery()
+      // 檢查 Vue Router query 參數 (Hash Router 兼容)
+      const focusSymbol = this.$route.query.focus
       if (focusSymbol && this.isSymbolValid(focusSymbol)) {
         console.log('Navigation: Found focus symbol in URL:', focusSymbol)
         

@@ -44,7 +44,26 @@
 
       <!-- Chart Container -->
       <div class="chart-container">
-        <div ref="chartContainer" class="chart-canvas"></div>
+        <div v-if="useCanvasVolumeProfile" class="chart-grid">
+          <!-- Left side - Candlestick chart -->
+          <div ref="chartContainer" class="chart-canvas"></div>
+          
+          <!-- Right side - Canvas Volume Profile -->
+          <MFIVolumeProfileCanvas
+            v-if="mfiVolumeProfile"
+            :profile="mfiVolumeProfile.volumeProfile"
+            :pointOfControl="mfiVolumeProfile.pointOfControl"
+            :valueArea="mfiVolumeProfile.valueArea"
+            :currentPrice="currentPrice"
+            :height="600"
+            :width="340"
+            :showAllLabelsOnDesktop="true"
+            :priceDecimals="2"
+          />
+        </div>
+        
+        <!-- Fallback - Original histogram chart -->
+        <div v-else ref="chartContainer" class="chart-canvas"></div>
       </div>
 
       <!-- Trading Signals -->
@@ -109,9 +128,13 @@ import { createChart, ColorType } from 'lightweight-charts';
 import { precomputedOhlcvApi } from '@/api/precomputedOhlcvApi.js';
 import { yahooFinanceAPI } from '@/utils/yahooFinanceApi.js';
 import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile.js';
+import MFIVolumeProfileCanvas from './MFIVolumeProfileCanvas.vue';
 
 export default {
   name: 'MFIVolumeProfileWidget',
+  components: {
+    MFIVolumeProfileCanvas
+  },
   props: {
     symbol: {
       type: String,
@@ -140,6 +163,15 @@ export default {
     mfiPeriod: {
       type: Number,
       default: 14
+    },
+    useCanvasVolumeProfile: {
+      type: Boolean,
+      default: true
+    },
+    mfiAvgMode: {
+      type: String,
+      default: 'weighted',
+      validator: value => ['weighted', 'legacy'].includes(value)
     }
   },
   data() {
@@ -206,8 +238,10 @@ export default {
           throw new Error('No OHLCV data available');
         }
         
-        // Step 3: Calculate MFI Volume Profile
-        this.mfiVolumeProfile = calculateMFIVolumeProfile(ohlcvData, this.bins, this.mfiPeriod);
+        // Step 3: Calculate MFI Volume Profile with options
+        this.mfiVolumeProfile = calculateMFIVolumeProfile(ohlcvData, this.bins, this.mfiPeriod, {
+          mfiAvgMode: this.mfiAvgMode
+        });
         
         // Step 4: Get current price for trading signals
         this.currentPrice = this.getCurrentPrice(ohlcvData);
@@ -304,27 +338,29 @@ export default {
         
         this.candlestickSeries.setData(candlestickData);
         
-        // Add volume profile as histogram series
-        const volumeProfileSeries = this.chart.addHistogramSeries({
-          color: '#26a69a',
-          priceFormat: {
-            type: 'volume',
-          },
-          priceScaleId: 'left',
-          scaleMargins: {
-            top: 0.8,
-            bottom: 0,
-          },
-        });
-        
-        // Prepare volume profile data - use price levels as time
-        const volumeProfileData = this.mfiVolumeProfile.volumeProfile.map((bin, index) => ({
-          time: ohlcvData.timestamps[Math.floor(index * ohlcvData.timestamps.length / this.mfiVolumeProfile.volumeProfile.length)] || ohlcvData.timestamps[ohlcvData.timestamps.length - 1],
-          value: bin.volume,
-          color: this.getVolumeProfileColor(bin)
-        }));
-        
-        volumeProfileSeries.setData(volumeProfileData);
+        // Add volume profile as histogram series (only if not using Canvas)
+        if (!this.useCanvasVolumeProfile) {
+          const volumeProfileSeries = this.chart.addHistogramSeries({
+            color: '#26a69a',
+            priceFormat: {
+              type: 'volume',
+            },
+            priceScaleId: 'left',
+            scaleMargins: {
+              top: 0.8,
+              bottom: 0,
+            },
+          });
+          
+          // Prepare volume profile data - use price levels as time
+          const volumeProfileData = this.mfiVolumeProfile.volumeProfile.map((bin, index) => ({
+            time: ohlcvData.timestamps[Math.floor(index * ohlcvData.timestamps.length / this.mfiVolumeProfile.volumeProfile.length)] || ohlcvData.timestamps[ohlcvData.timestamps.length - 1],
+            value: bin.volume,
+            color: this.getVolumeProfileColor(bin)
+          }));
+          
+          volumeProfileSeries.setData(volumeProfileData);
+        }
         
         // Add POC line
         if (this.candlestickSeries && this.mfiVolumeProfile.pointOfControl) {
@@ -559,9 +595,18 @@ export default {
   overflow: hidden;
 }
 
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 12px;
+  height: 100%;
+  padding: 12px;
+}
+
 .chart-canvas {
   width: 100%;
   height: 100%;
+  min-height: 600px;
 }
 
 /* Trading Signals */
@@ -685,6 +730,13 @@ export default {
 }
 
 /* Responsive Design */
+@media (max-width: 1023px) {
+  .chart-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
 @media (max-width: 768px) {
   .metrics-header {
     grid-template-columns: 1fr;
@@ -701,6 +753,10 @@ export default {
   }
   
   .chart-container {
+    min-height: 300px;
+  }
+  
+  .chart-canvas {
     min-height: 300px;
   }
 }

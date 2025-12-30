@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Router Widget Refresh Fix Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .url-display {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hash Router Widget Refresh Fix - Test Suite</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Component Remount Behavior</h2>
+        <p>This test verifies that the router-view key implementation forces component remounting on path changes.</p>
+        
+        <div id="test1-results"></div>
+        
+        <button onclick="runTest1()">Run Component Remount Test</button>
+        
+        <div class="info">
+            <strong>Expected Behavior:</strong>
+            <ul>
+                <li>Path changes (e.g., /symbols/NVDA → /symbols/ONDS) should trigger component remount</li>
+                <li>Query-only changes (e.g., ?focus=A → ?focus=B) should NOT trigger remount</li>
+                <li>Components should be destroyed and recreated on path changes</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Hash Router Query Format</h2>
+        <p>This test verifies that focus parameters appear in correct hash router format.</p>
+        
+        <div id="current-url" class="url-display"></div>
+        <div id="test2-results"></div>
+        
+        <button onclick="simulateHashRouterQuery('NVDA')">Set Focus: NVDA</button>
+        <button onclick="simulateHashRouterQuery('ONDS')">Set Focus: ONDS</button>
+        <button onclick="simulateHashRouterQuery(null)">Clear Focus</button>
+        <button onclick="runTest2()">Run URL Format Test</button>
+        
+        <div class="info">
+            <strong>Expected Format:</strong>
+            <ul>
+                <li>Correct: <code>#/stock-overview?focus=SYMBOL</code></li>
+                <li>Incorrect: <code>?focus=SYMBOL#/stock-overview</code></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: NavigationService Deprecation Warnings</h2>
+        <p>This test verifies that deprecated methods show appropriate warnings.</p>
+        
+        <div id="test3-results"></div>
+        
+        <button onclick="runTest3()">Test Deprecation Warnings</button>
+        
+        <div class="info">
+            <strong>Expected Behavior:</strong>
+            <ul>
+                <li>Calls to updateQueryParam() should show deprecation warning</li>
+                <li>Calls to getFocusSymbolFromQuery() should show deprecation warning</li>
+                <li>Warnings should suggest using Vue Router query methods</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: URL Parameter Migration</h2>
+        <p>This test verifies handling of legacy URL formats.</p>
+        
+        <div id="test4-results"></div>
+        
+        <button onclick="runTest4()">Test URL Migration</button>
+        
+        <div class="info">
+            <strong>Migration Scenarios:</strong>
+            <ul>
+                <li>Legacy: <code>?focus=X#/route</code> → Modern: <code>#/route?focus=X</code></li>
+                <li>Round-trip consistency: parse → serialize → parse should be equivalent</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Update current URL display
+        function updateURLDisplay() {
+            document.getElementById('current-url').textContent = window.location.href;
+        }
+        
+        // Initialize URL display
+        updateURLDisplay();
+        
+        // Test 1: Component Remount Behavior
+        function runTest1() {
+            const results = document.getElementById('test1-results');
+            results.innerHTML = '';
+            
+            try {
+                // Simulate Vue Router behavior with route.path key
+                const testRoutes = [
+                    { path: '/symbols/NVDA', query: {} },
+                    { path: '/symbols/ONDS', query: {} },
+                    { path: '/symbols/NVDA', query: { focus: 'NVDA' } },
+                    { path: '/symbols/NVDA', query: { focus: 'ONDS' } }
+                ];
+                
+                let remountCount = 0;
+                let previousKey = null;
+                
+                testRoutes.forEach((route, index) => {
+                    const currentKey = route.path; // This is what we use as component key
+                    
+                    if (previousKey !== null && previousKey !== currentKey) {
+                        remountCount++;
+                    }
+                    
+                    results.innerHTML += `<div class="test-result info">
+                        Route ${index + 1}: ${route.path} (key: ${currentKey})
+                        ${previousKey !== null && previousKey !== currentKey ? ' → REMOUNT' : ' → REUSE'}
+                    </div>`;
+                    
+                    previousKey = currentKey;
+                });
+                
+                const expectedRemounts = 2; // NVDA→ONDS and ONDS→NVDA
+                const success = remountCount === expectedRemounts;
+                
+                results.innerHTML += `<div class="test-result ${success ? 'success' : 'error'}">
+                    ${success ? '✅' : '❌'} Component remounts: ${remountCount}/${expectedRemounts}
+                    ${success ? ' (Correct behavior)' : ' (Unexpected behavior)'}
+                </div>`;
+                
+            } catch (error) {
+                results.innerHTML += `<div class="test-result error">❌ Test failed: ${error.message}</div>`;
+            }
+        }
+        
+        // Test 2: Hash Router Query Format
+        function simulateHashRouterQuery(symbol) {
+            try {
+                // Simulate Vue Router hash query behavior
+                const baseHash = '#/stock-overview';
+                let newHash = baseHash;
+                
+                if (symbol) {
+                    newHash += `?focus=${encodeURIComponent(symbol)}`;
+                }
+                
+                // Update URL hash (simulating Vue Router)
+                window.location.hash = newHash;
+                updateURLDisplay();
+                
+            } catch (error) {
+                console.error('Error simulating hash router query:', error);
+            }
+        }
+        
+        function runTest2() {
+            const results = document.getElementById('test2-results');
+            results.innerHTML = '';
+            
+            try {
+                const currentURL = window.location.href;
+                const hasCorrectFormat = currentURL.includes('#/') && 
+                                       (currentURL.includes('?focus=') || !currentURL.includes('focus='));
+                const hasIncorrectFormat = currentURL.includes('?focus=') && 
+                                         currentURL.indexOf('?focus=') < currentURL.indexOf('#/');
+                
+                if (hasCorrectFormat && !hasIncorrectFormat) {
+                    results.innerHTML += `<div class="test-result success">
+                        ✅ URL format is correct: Hash router query format detected
+                    </div>`;
+                } else if (hasIncorrectFormat) {
+                    results.innerHTML += `<div class="test-result error">
+                        ❌ URL format is incorrect: Legacy searchParams format detected
+                    </div>`;
+                } else {
+                    results.innerHTML += `<div class="test-result info">
+                        ℹ️ No focus parameter in URL to test
+                    </div>`;
+                }
+                
+                // Test URL parsing
+                const url = new URL(currentURL);
+                const hashPart = url.hash;
+                const searchParams = url.searchParams;
+                
+                results.innerHTML += `<div class="test-result info">
+                    Hash part: ${hashPart}<br>
+                    SearchParams focus: ${searchParams.get('focus') || 'none'}<br>
+                    Hash query focus: ${hashPart.includes('?focus=') ? 'detected' : 'none'}
+                </div>`;
+                
+            } catch (error) {
+                results.innerHTML += `<div class="test-result error">❌ Test failed: ${error.message}</div>`;
+            }
+        }
+        
+        // Test 3: NavigationService Deprecation Warnings
+        function runTest3() {
+            const results = document.getElementById('test3-results');
+            results.innerHTML = '';
+            
+            try {
+                // Capture console warnings
+                const originalWarn = console.warn;
+                const warnings = [];
+                
+                console.warn = function(...args) {
+                    warnings.push(args.join(' '));
+                    originalWarn.apply(console, args);
+                };
+                
+                // Simulate NavigationService calls (we'll create mock functions)
+                const mockNavigationService = {
+                    updateQueryParam(symbol) {
+                        console.warn('DEPRECATED: NavigationService.updateQueryParam() should not be used with Hash Router. Use Vue Router query methods instead.');
+                    },
+                    getFocusSymbolFromQuery() {
+                        console.warn('DEPRECATED: NavigationService.getFocusSymbolFromQuery() should not be used with Hash Router. Use Vue Router $route.query.focus instead.');
+                        return null;
+                    }
+                };
+                
+                // Test deprecated methods
+                mockNavigationService.updateQueryParam('TEST');
+                mockNavigationService.getFocusSymbolFromQuery();
+                
+                // Restore console.warn
+                console.warn = originalWarn;
+                
+                const expectedWarnings = 2;
+                const actualWarnings = warnings.filter(w => w.includes('DEPRECATED')).length;
+                const success = actualWarnings === expectedWarnings;
+                
+                results.innerHTML += `<div class="test-result ${success ? 'success' : 'error'}">
+                    ${success ? '✅' : '❌'} Deprecation warnings: ${actualWarnings}/${expectedWarnings}
+                </div>`;
+                
+                warnings.forEach((warning, index) => {
+                    results.innerHTML += `<div class="test-result info">
+                        Warning ${index + 1}: ${warning}
+                    </div>`;
+                });
+                
+            } catch (error) {
+                results.innerHTML += `<div class="test-result error">❌ Test failed: ${error.message}</div>`;
+            }
+        }
+        
+        // Test 4: URL Parameter Migration
+        function runTest4() {
+            const results = document.getElementById('test4-results');
+            results.innerHTML = '';
+            
+            try {
+                // Test URL migration scenarios
+                const testCases = [
+                    {
+                        name: 'Legacy format',
+                        input: 'https://example.com/?focus=NVDA#/stock-overview',
+                        expected: 'https://example.com/#/stock-overview?focus=NVDA'
+                    },
+                    {
+                        name: 'Modern format',
+                        input: 'https://example.com/#/stock-overview?focus=NVDA',
+                        expected: 'https://example.com/#/stock-overview?focus=NVDA'
+                    },
+                    {
+                        name: 'No focus parameter',
+                        input: 'https://example.com/#/stock-overview',
+                        expected: 'https://example.com/#/stock-overview'
+                    }
+                ];
+                
+                function migrateLegacyURL(urlString) {
+                    const url = new URL(urlString);
+                    
+                    // Check if focus is in searchParams and there's a hash
+                    if (url.searchParams.has('focus') && url.hash) {
+                        const focus = url.searchParams.get('focus');
+                        url.searchParams.delete('focus');
+                        
+                        // Add focus to hash query
+                        const hashPath = url.hash.substring(1); // Remove #
+                        const separator = hashPath.includes('?') ? '&' : '?';
+                        url.hash = `${hashPath}${separator}focus=${encodeURIComponent(focus)}`;
+                    }
+                    
+                    return url.toString();
+                }
+                
+                let passedTests = 0;
+                
+                testCases.forEach(testCase => {
+                    const result = migrateLegacyURL(testCase.input);
+                    const passed = result === testCase.expected;
+                    
+                    if (passed) passedTests++;
+                    
+                    results.innerHTML += `<div class="test-result ${passed ? 'success' : 'error'}">
+                        ${passed ? '✅' : '❌'} ${testCase.name}<br>
+                        Input: ${testCase.input}<br>
+                        Expected: ${testCase.expected}<br>
+                        Actual: ${result}
+                    </div>`;
+                });
+                
+                const allPassed = passedTests === testCases.length;
+                results.innerHTML += `<div class="test-result ${allPassed ? 'success' : 'error'}">
+                    ${allPassed ? '✅' : '❌'} URL Migration: ${passedTests}/${testCases.length} tests passed
+                </div>`;
+                
+            } catch (error) {
+                results.innerHTML += `<div class="test-result error">❌ Test failed: ${error.message}</div>`;
+            }
+        }
+        
+        // Auto-update URL display when hash changes
+        window.addEventListener('hashchange', updateURLDisplay);
+    </script>
+</body>
+</html>

@@ -73,9 +73,12 @@ export class NavigationService {
 
   /**
    * 更新 URL query 參數
+   * @deprecated 不建議在 Hash Router 環境下使用。請使用 Vue Router query 方法代替。
    * @param {string} symbol - 股票代碼
    */
   updateQueryParam(symbol) {
+    console.warn('DEPRECATED: NavigationService.updateQueryParam() should not be used with Hash Router. Use Vue Router query methods instead.')
+    
     try {
       const url = new URL(window.location)
       
@@ -96,9 +99,12 @@ export class NavigationService {
 
   /**
    * 從 URL query 參數讀取 focus symbol
+   * @deprecated 不建議在 Hash Router 環境下使用。請使用 Vue Router $route.query 代替。
    * @returns {string|null} focus symbol 或 null
    */
   getFocusSymbolFromQuery() {
+    console.warn('DEPRECATED: NavigationService.getFocusSymbolFromQuery() should not be used with Hash Router. Use Vue Router $route.query.focus instead.')
+    
     try {
       const url = new URL(window.location)
       return url.searchParams.get('focus')

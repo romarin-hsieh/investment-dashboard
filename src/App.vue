@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Layout>
-      <router-view />
+      <router-view v-slot="{ Component, route }">
+        <component :is="Component" :key="route.path" />
+      </router-view>
     </Layout>
   </div>
 </template>
