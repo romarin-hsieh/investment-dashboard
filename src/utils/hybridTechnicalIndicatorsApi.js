@@ -22,6 +22,12 @@ class HybridTechnicalIndicatorsAPI {
         const precomputedData = await this.tryPrecomputedData(symbol);
         if (precomputedData && this.isADXValid(precomputedData)) {
           console.log(`✅ Using precomputed data with valid ADX for ${symbol}`);
+          
+          // 合併 yfinance 資料
+          if (precomputedData.yf) {
+            precomputedData.yf = precomputedData.yf;
+          }
+          
           return precomputedData;
         } else if (precomputedData) {
           console.log(`⚠️ Precomputed data has invalid ADX for ${symbol}, falling back to real-time`);

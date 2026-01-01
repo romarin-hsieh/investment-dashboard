@@ -153,6 +153,60 @@
           {{ formatValue(technicalData?.vwma20?.value) }}
         </span>
       </div>
+
+      <!-- Row 5: yfinance Volume Indicators -->
+      <div class="indicator-item" v-if="hasYFinanceData">
+        <span class="indicator-label">Volume</span>
+        <div class="indicator-value-row">
+          <span class="indicator-value">
+            {{ formatVolume(technicalData?.yf?.volume_last_day) }}
+          </span>
+          <span class="price-diff" :class="getPercentChangeClass(technicalData?.yf?.volume_last_day_pct)">
+            {{ formatPercentChange(technicalData?.yf?.volume_last_day_pct) }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="indicator-item" v-if="hasYFinanceData">
+        <span class="indicator-label">5D Avg Volume</span>
+        <div class="indicator-value-row">
+          <span class="indicator-value">
+            {{ formatVolume(technicalData?.yf?.avg_volume_5d) }}
+          </span>
+          <span class="price-diff" :class="getPercentChangeClass(technicalData?.yf?.avg_volume_5d_pct)">
+            {{ formatPercentChange(technicalData?.yf?.avg_volume_5d_pct) }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="indicator-item" v-if="hasYFinanceData">
+        <span class="indicator-label">Market Cap</span>
+        <span class="indicator-value">
+          {{ formatMarketCap(technicalData?.yf?.market_cap) }}
+        </span>
+      </div>
+
+      <!-- Row 6: yfinance Beta Indicators -->
+      <div class="indicator-item" v-if="hasYFinanceData">
+        <span class="indicator-label">Beta (3mo)</span>
+        <span class="indicator-value">
+          {{ formatBeta(technicalData?.yf?.beta_3mo) }}
+        </span>
+      </div>
+      
+      <div class="indicator-item" v-if="hasYFinanceData">
+        <span class="indicator-label">Beta (1y)</span>
+        <span class="indicator-value">
+          {{ formatBeta(technicalData?.yf?.beta_1y) }}
+        </span>
+      </div>
+      
+      <div class="indicator-item" v-if="hasYFinanceData">
+        <span class="indicator-label">Beta (5y)</span>
+        <span class="indicator-value">
+          {{ formatBeta(technicalData?.yf?.beta_5y) }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -178,6 +232,12 @@ export default {
       error: null,
       technicalData: null,
       cacheInfo: null
+    }
+  },
+  computed: {
+    // 檢查是否有 yfinance 資料
+    hasYFinanceData() {
+      return this.technicalData && this.technicalData.yf;
     }
   },
   mounted() {
@@ -328,6 +388,54 @@ export default {
       
       if (Math.abs(diff) < 0.01) return 'neutral';
       return diff > 0 ? 'positive' : 'negative';
+    },
+
+    // yfinance 指標格式化函數
+    formatVolume(volume) {
+      if (volume === null || volume === undefined) return '--';
+      
+      // 格式化成易讀的數字格式
+      if (volume >= 1000000000) {
+        return `${(volume / 1000000000).toFixed(1)}B`;
+      } else if (volume >= 1000000) {
+        return `${(volume / 1000000).toFixed(1)}M`;
+      } else if (volume >= 1000) {
+        return `${(volume / 1000).toFixed(1)}K`;
+      } else {
+        return volume.toLocaleString();
+      }
+    },
+
+    formatMarketCap(marketCap) {
+      if (marketCap === null || marketCap === undefined) return '--';
+      
+      // 格式化市值
+      if (marketCap >= 1000000000000) {
+        return `$${(marketCap / 1000000000000).toFixed(1)}T`;
+      } else if (marketCap >= 1000000000) {
+        return `$${(marketCap / 1000000000).toFixed(1)}B`;
+      } else if (marketCap >= 1000000) {
+        return `$${(marketCap / 1000000).toFixed(1)}M`;
+      } else {
+        return `$${marketCap.toLocaleString()}`;
+      }
+    },
+
+    formatBeta(beta) {
+      if (beta === null || beta === undefined) return '--';
+      return beta.toFixed(2);
+    },
+
+    formatPercentChange(pct) {
+      if (pct === null || pct === undefined) return '';
+      const sign = pct > 0 ? '+' : '';
+      return `(${sign}${pct.toFixed(1)}%)`;
+    },
+
+    getPercentChangeClass(pct) {
+      if (pct === null || pct === undefined) return 'neutral';
+      if (Math.abs(pct) < 0.1) return 'neutral';
+      return pct > 0 ? 'positive' : 'negative';
     }
   }
 }

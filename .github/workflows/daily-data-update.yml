@@ -37,7 +37,7 @@ jobs:
 
     - name: Install Python dependencies
       run: |
-        pip install yfinance pandas numpy requests
+        pip install yfinance pandas numpy requests pytz
 
     - name: Create data directories
       run: |
@@ -70,6 +70,11 @@ jobs:
       run: |
         echo "🔄 Generating technical indicators..."
         node scripts/generate-daily-technical-indicators.js
+
+    - name: Generate yfinance Indicators
+      run: |
+        echo "🔄 Generating yfinance indicators (Volume, Market Cap, Beta)..."
+        python scripts/generate-yfinance-indicators.py
 
     - name: Cleanup old technical indicators (keep last 30 days)
       run: |

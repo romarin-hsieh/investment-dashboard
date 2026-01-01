@@ -1,29 +1,73 @@
 // 技術指標每日緩存系統
 // 為股票提供每日緩存，避免重複計算
+// 使用 latest_index.json timestamp 決定 cache bust
 
 class TechnicalIndicatorsCache {
   constructor() {
     this.cachePrefix = 'technical_indicators_';
     this.cacheTimeout = 24 * 60 * 60 * 1000; // 24 小時緩存
     this.memoryCache = new Map(); // 內存緩存，提高性能
+    this.indexCache = null; // latest_index.json 緩存
+    this.indexCacheTimestamp = null;
+    this.indexCacheTimeout = 5 * 60 * 1000; // 5分鐘緩存索引
   }
 
-  // 生成緩存鍵
-  getCacheKey(symbol) {
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-    return `${this.cachePrefix}${symbol}_${today}`;
+  // 獲取 latest_index.json 的 timestamp
+  async getLatestIndexTimestamp() {
+    // 檢查索引緩存
+    if (this.indexCache && this.indexCacheTimestamp && 
+        (Date.now() - this.indexCacheTimestamp < this.indexCacheTimeout)) {
+      return this.indexCache.generatedAt || this.indexCache.yf_updated;
+    }
+
+    try {
+      const baseUrl = import.meta.env.BASE_URL || '/';
+      const response = await fetch(`${baseUrl}data/technical-indicators/latest_index.json?t=${Date.now()}`);
+      
+      if (response.ok) {
+        const index = await response.json();
+        this.indexCache = index;
+        this.indexCacheTimestamp = Date.now();
+        
+        // 優先使用 yf_updated，其次是 generatedAt
+        return index.yf_updated || index.generatedAt;
+      }
+    } catch (error) {
+      console.warn('Failed to get latest_index timestamp:', error);
+    }
+    
+    return null;
+  }
+
+  // 生成緩存鍵（包含 timestamp）
+  async getCacheKey(symbol) {
+    const latestTimestamp = await this.getLatestIndexTimestamp();
+    if (latestTimestamp) {
+      // 使用 timestamp 的日期部分作為緩存鍵
+      const dateKey = new Date(latestTimestamp).toISOString().split('T')[0];
+      return `${this.cachePrefix}${symbol}_${dateKey}`;
+    } else {
+      // 回退到使用今天日期
+      const today = new Date().toISOString().split('T')[0];
+      return `${this.cachePrefix}${symbol}_${today}`;
+    }
   }
 
   // 從緩存獲取技術指標數據
   async getTechnicalIndicators(symbol) {
-    const cacheKey = this.getCacheKey(symbol);
+    const cacheKey = await this.getCacheKey(symbol);
+    const latestTimestamp = await this.getLatestIndexTimestamp();
     
     // 1. 先檢查內存緩存
     if (this.memoryCache.has(cacheKey)) {
       const cached = this.memoryCache.get(cacheKey);
-      if (Date.now() - cached.timestamp < this.cacheTimeout) {
+      
+      // 檢查是否需要根據 latest_index timestamp 更新
+      if (latestTimestamp && cached.indexTimestamp !== latestTimestamp) {
+        console.log(`Cache invalidated for ${symbol} due to index update`);
+        this.memoryCache.delete(cacheKey);
+      } else if (Date.now() - cached.timestamp < this.cacheTimeout) {
         console.log(`Using memory cache for ${symbol}`);
-        // 標記數據來源
         const dataWithSource = { ...cached.data, source: 'Daily Cache (Memory)' };
         return dataWithSource;
       } else {
@@ -36,17 +80,20 @@ class TechnicalIndicatorsCache {
       const cachedData = localStorage.getItem(cacheKey);
       if (cachedData) {
         const parsed = JSON.parse(cachedData);
-        if (Date.now() - parsed.timestamp < this.cacheTimeout) {
+        
+        // 檢查是否需要根據 latest_index timestamp 更新
+        if (latestTimestamp && parsed.indexTimestamp !== latestTimestamp) {
+          console.log(`LocalStorage cache invalidated for ${symbol} due to index update`);
+          localStorage.removeItem(cacheKey);
+        } else if (Date.now() - parsed.timestamp < this.cacheTimeout) {
           console.log(`Using localStorage cache for ${symbol}`);
           
           // 同時存入內存緩存
           this.memoryCache.set(cacheKey, parsed);
           
-          // 標記數據來源
           const dataWithSource = { ...parsed.data, source: 'Daily Cache (LocalStorage)' };
           return dataWithSource;
         } else {
-          // 過期的緩存，清除
           localStorage.removeItem(cacheKey);
         }
       }
@@ -60,12 +107,15 @@ class TechnicalIndicatorsCache {
 
   // 將技術指標數據存入緩存
   async setTechnicalIndicators(symbol, data) {
-    const cacheKey = this.getCacheKey(symbol);
+    const cacheKey = await this.getCacheKey(symbol);
+    const latestTimestamp = await this.getLatestIndexTimestamp();
+    
     const cacheData = {
       data: data,
       timestamp: Date.now(),
       symbol: symbol,
-      date: new Date().toISOString().split('T')[0]
+      date: new Date().toISOString().split('T')[0],
+      indexTimestamp: latestTimestamp // 記錄 index timestamp
     };
 
     try {
@@ -125,8 +175,8 @@ class TechnicalIndicatorsCache {
   }
 
   // 強制清除指定股票的緩存
-  clearSymbolCache(symbol) {
-    const cacheKey = this.getCacheKey(symbol);
+  async clearSymbolCache(symbol) {
+    const cacheKey = await this.getCacheKey(symbol);
     
     // 清除 localStorage
     localStorage.removeItem(cacheKey);

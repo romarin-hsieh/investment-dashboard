@@ -114,7 +114,10 @@ class PrecomputedIndicatorsAPI {
         lastUpdated: data.computedAt,
         dataAge: this.calculateDataAge(data.computedAt),
         precomputedDate: data.date,
-        symbol: symbol // 確保包含 symbol 信息
+        symbol: symbol, // 確保包含 symbol 信息
+        
+        // 包含 yfinance 資料
+        yf: data.indicators?.yf || null
       };
       
       // 緩存結果
