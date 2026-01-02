@@ -23,10 +23,11 @@ class HybridTechnicalIndicatorsAPI {
         if (precomputedData && this.isADXValid(precomputedData)) {
           console.log(`✅ Using precomputed data with valid ADX for ${symbol}`);
           
-          // 合併 yfinance 資料
-          if (precomputedData.yf) {
-            precomputedData.yf = precomputedData.yf;
-          }
+          // 確保 yfinance 資料正確傳遞
+          console.log(`🔍 YFinance data check for ${symbol}:`, {
+            hasYF: !!precomputedData.yf,
+            yfKeys: precomputedData.yf ? Object.keys(precomputedData.yf) : 'none'
+          });
           
           return precomputedData;
         } else if (precomputedData) {

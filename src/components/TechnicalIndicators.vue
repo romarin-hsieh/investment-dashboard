@@ -207,6 +207,16 @@
           {{ formatBeta(technicalData?.yf?.beta_5y) }}
         </span>
       </div>
+
+      <!-- Debug: YFinance Data Status -->
+      <div class="indicator-item" style="grid-column: 1 / -1; background: #fff3cd; border-color: #ffeaa7;">
+        <span class="indicator-label">🔍 YFinance Debug</span>
+        <div class="indicator-value" style="font-size: 0.7rem; color: #856404;">
+          hasYF: {{ hasYFinanceData }} | 
+          hasTechData: {{ !!technicalData }} | 
+          yfKeys: {{ technicalData?.yf ? Object.keys(technicalData.yf).join(', ') : 'none' }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -237,7 +247,14 @@ export default {
   computed: {
     // 檢查是否有 yfinance 資料
     hasYFinanceData() {
-      return this.technicalData && this.technicalData.yf;
+      const hasYF = this.technicalData && this.technicalData.yf;
+      console.log(`🔍 YFinance data check for ${this.symbol}:`, {
+        hasTechnicalData: !!this.technicalData,
+        hasYF: hasYF,
+        yfData: this.technicalData?.yf,
+        yfKeys: this.technicalData?.yf ? Object.keys(this.technicalData.yf) : 'none'
+      });
+      return hasYF;
     }
   },
   mounted() {
@@ -285,7 +302,10 @@ export default {
         console.log(`✅ Technical data loaded for ${this.symbol}:`, {
           source: this.technicalData.source,
           loadTime: `${loadTime}ms`,
-          hasADX: !!this.technicalData.adx14?.value
+          hasADX: !!this.technicalData.adx14?.value,
+          hasYFinance: !!this.technicalData.yf,
+          yfinanceKeys: this.technicalData.yf ? Object.keys(this.technicalData.yf) : 'none',
+          yfinanceData: this.technicalData.yf
         });
         
         // 驗證 ADX 數據
