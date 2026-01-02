@@ -114,11 +114,18 @@ class PrecomputedIndicatorsAPI {
         lastUpdated: data.computedAt,
         dataAge: this.calculateDataAge(data.computedAt),
         precomputedDate: data.date,
-        symbol: symbol, // 確保包含 symbol 信息
+        symbol: symbol // 確保包含 symbol 信息
         
-        // 包含 yfinance 資料
-        yf: data.indicators?.yf || null
+        // yfinance 資料已經包含在 ...data.indicators 中
       };
+      
+      // 調試：檢查 yfinance 數據
+      console.log(`🔍 YFinance data check for ${symbol}:`, {
+        hasYFInRaw: !!(data.indicators && data.indicators.yf),
+        hasYFInProcessed: !!indicators.yf,
+        yfKeys: indicators.yf ? Object.keys(indicators.yf) : 'none',
+        rawYF: data.indicators?.yf
+      });
       
       // 緩存結果
       this.cache.set(cacheKey, {
