@@ -1,0 +1,84 @@
+{
+  "description": "RSS feed configurations for financial news collection",
+  "version": "1.0.0",
+  "last_updated": "2025-01-22",
+  "sources": [
+    {
+      "id": "reuters_business",
+      "name": "Reuters Business News",
+      "rss_url": "https://feeds.reuters.com/reuters/businessNews",
+      "enabled": true,
+      "priority": 1,
+      "language": "en",
+      "update_frequency": "hourly",
+      "max_articles": 10
+    },
+    {
+      "id": "bloomberg_markets",
+      "name": "Bloomberg Markets",
+      "rss_url": "https://feeds.bloomberg.com/markets/news.rss",
+      "enabled": true,
+      "priority": 1,
+      "language": "en",
+      "update_frequency": "hourly",
+      "max_articles": 10
+    },
+    {
+      "id": "cnbc_finance",
+      "name": "CNBC Finance",
+      "rss_url": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=10000664",
+      "enabled": true,
+      "priority": 2,
+      "language": "en",
+      "update_frequency": "hourly",
+      "max_articles": 8
+    },
+    {
+      "id": "marketwatch_latest",
+      "name": "MarketWatch Latest",
+      "rss_url": "https://feeds.marketwatch.com/marketwatch/realtimeheadlines/",
+      "enabled": true,
+      "priority": 2,
+      "language": "en",
+      "update_frequency": "hourly",
+      "max_articles": 8
+    },
+    {
+      "id": "yahoo_finance",
+      "name": "Yahoo Finance",
+      "rss_url": "https://feeds.finance.yahoo.com/rss/2.0/headline",
+      "enabled": true,
+      "priority": 3,
+      "language": "en",
+      "update_frequency": "hourly",
+      "max_articles": 5
+    },
+    {
+      "id": "seeking_alpha",
+      "name": "Seeking Alpha Market News",
+      "rss_url": "https://seekingalpha.com/market_currents.xml",
+      "enabled": false,
+      "priority": 3,
+      "language": "en",
+      "update_frequency": "hourly",
+      "max_articles": 5,
+      "note": "May require authentication"
+    }
+  ],
+  "collection_settings": {
+    "total_max_articles": 50,
+    "deduplication": {
+      "enabled": true,
+      "similarity_threshold": 0.8,
+      "fields": ["title", "published_date", "source_domain"]
+    },
+    "content_filtering": {
+      "min_title_length": 10,
+      "max_title_length": 200,
+      "blocked_keywords": ["advertisement", "sponsored", "promoted"],
+      "required_keywords": ["stock", "market", "finance", "economy", "trading", "investment"]
+    },
+    "timeout_seconds": 15,
+    "retry_attempts": 2
+  }
+}
