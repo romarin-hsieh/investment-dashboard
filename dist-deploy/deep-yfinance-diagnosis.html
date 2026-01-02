@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep YFinance Diagnosis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .result { margin: 10px 0; padding: 15px; border-radius: 8px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .critical { background: #f8d7da; color: #721c24; border: 2px solid #dc3545; font-weight: bold; }
+        button { background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; margin: 8px; font-size: 14px; }
+        button:hover { background: #0056b3; }
+        button.success { background: #28a745; }
+        button.success:hover { background: #218838; }
+        button.critical { background: #dc3545; }
+        button.critical:hover { background: #c82333; }
+        .test-steps { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0; border: 1px solid #e9ecef; }
+        code { background: #f1f1f1; padding: 3px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 13px; }
+        .console-output { background: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 12px; margin: 10px 0; max-height: 400px; overflow-y: auto; }
+        .url-highlight { background: #ffeb3b; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
+        .step-number { background: #007bff; color: white; border-radius: 50%; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; margin-right: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Deep YFinance Diagnosis</h1>
+    
+    <div class="result critical">
+        <strong>🚨 重要發現：您目前在本地檔案系統測試！</strong>
+        <br><br>
+        <strong>問題</strong>: 診斷工具顯示您在 <code>file:///C:/Users/...</code>
+        <br><strong>需要</strong>: 必須在 GitHub Pages 網站上測試
+        <br><strong>原因</strong>: Vue 應用和 API 只在網站上運作，本地檔案無法存取
+    </div>
+
+    <div class="test-steps">
+        <h3>🎯 正確的測試步驟：</h3>
+        
+        <div style="display: flex; align-items: center; margin: 15px 0;">
+            <span class="step-number">1</span>
+            <div>
+                <strong>打開 GitHub Pages 網站</strong>
+                <br>
+                <span class="url-highlight">https://romarin-hsieh.github.io/investment-dashboard/</span>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin: 15px 0;">
+            <span class="step-number">2</span>
+            <div>
+                <strong>導航到 Stock Detail 頁面</strong>
+                <br>
+                點擊任一股票或直接訪問：
+                <br>
+                <span class="url-highlight">https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview/symbols/NVDA</span>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: center; margin: 15px 0;">
+            <span class="step-number">3</span>
+            <div>
+                <strong>在該頁面執行診斷</strong>
+                <br>
+                按 F12 → Console → 執行下方的診斷指令
+            </div>
+        </div>
+    </div>
+
+    <button onclick="openCorrectPage()" class="critical">🚀 打開正確的測試頁面</button>
+    <button onclick="showConsoleCommands()" class="success">📋 顯示 Console 診斷指令</button>
+    <button onclick="showTroubleshootingSteps()">🔧 顯示故障排除步驟</button>
+
+    <div id="results"></div>
+
+    <script>
+        function openCorrectPage() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result critical">
+                    <strong>🚀 請立即打開正確的測試頁面！</strong>
+                    <br><br>
+                    
+                    <h4>步驟 1: 打開 GitHub Pages 網站</h4>
+                    <a href="https://romarin-hsieh.github.io/investment-dashboard/" target="_blank" style="font-size: 1.2em; color: #dc3545; text-decoration: none; font-weight: bold;">
+                        👉 https://romarin-hsieh.github.io/investment-dashboard/
+                    </a>
+                    <br><br>
+                    
+                    <h4>步驟 2: 導航到 Stock Detail 頁面</h4>
+                    <a href="https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview/symbols/NVDA" target="_blank" style="font-size: 1.2em; color: #dc3545; text-decoration: none; font-weight: bold;">
+                        👉 https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview/symbols/NVDA
+                    </a>
+                    <br><br>
+                    
+                    <h4>步驟 3: 在新頁面執行診斷</h4>
+                    <strong>重要</strong>: 必須在上述網站頁面執行，不是在本地檔案！
+                    <br><br>
+                    
+                    <div style="background: #fff3cd; padding: 10px; border-radius: 4px; border: 1px solid #ffeaa7;">
+                        <strong>⚠️ 為什麼本地檔案不行？</strong>
+                        <br>• Vue 應用需要 HTTP/HTTPS 協議運行
+                        <br>• API 請求需要網路環境
+                        <br>• 路由系統需要 Web 伺服器
+                        <br>• 本地 file:// 協議無法模擬真實環境
+                    </div>
+                </div>
+            `;
+        }
+
+        function showConsoleCommands() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result info">
+                    <strong>📋 在 GitHub Pages 網站的 Console 中執行以下指令：</strong>
+                    <br><br>
+                    
+                    <h4>🔍 完整診斷指令 (複製貼上到 Console)</h4>
+                    <div class="console-output">
+// === YFinance 完整診斷 ===
+console.log('🚀 開始 YFinance 診斷...');
+
+// 1. 檢查頁面環境
+console.log('1️⃣ 頁面環境檢查:');
+console.log('URL:', window.location.href);
+console.log('Protocol:', window.location.protocol);
+console.log('Is GitHub Pages:', window.location.hostname.includes('github.io'));
+console.log('Is Stock Detail:', window.location.href.includes('/stock-overview/symbols/'));
+
+// 2. 檢查 Vue 應用
+console.log('\\n2️⃣ Vue 應用檢查:');
+const app = document.querySelector('#app');
+console.log('Vue App Element:', !!app);
+const techIndicators = document.querySelector('.technical-indicators');
+console.log('TechnicalIndicators Component:', !!techIndicators);
+
+if (techIndicators) {
+    // 3. 檢查 Build Stamp
+    console.log('\\n3️⃣ Build Stamp 檢查:');
+    const buildStamp = document.querySelector('.technical-indicators h4')?.textContent;
+    console.log('Build Stamp:', buildStamp);
+    console.log('Contains BUILD-2026-01-03-01:', buildStamp?.includes('BUILD-2026-01-03-01'));
+    
+    // 4. 檢查指標數量
+    console.log('\\n4️⃣ 指標數量檢查:');
+    const indicators = document.querySelectorAll('.indicator-item');
+    console.log('Total Indicators:', indicators.length);
+    console.log('Expected: 19 (18 indicators + 1 debug)');
+    
+    // 5. 檢查 YFinance 指標
+    console.log('\\n5️⃣ YFinance 指標檢查:');
+    const yfLabels = ['Volume', '5D Avg Volume', 'Market Cap', 'Beta (3mo)', 'Beta (1y)', 'Beta (5y)'];
+    const foundLabels = Array.from(document.querySelectorAll('.indicator-label'))
+        .map(el => el.textContent.trim())
+        .filter(text => yfLabels.includes(text));
+    console.log('Found YFinance Labels:', foundLabels);
+    console.log('Missing YFinance Labels:', yfLabels.filter(label => !foundLabels.includes(label)));
+    
+    // 6. 檢查 Debug 區塊
+    console.log('\\n6️⃣ Debug 區塊檢查:');
+    const debugBlock = document.querySelector('[style*="color: #856404"]');
+    if (debugBlock) {
+        const debugText = debugBlock.textContent;
+        console.log('Debug Block Found:', true);
+        console.log('Debug Content:', debugText);
+        console.log('Contains yfKeys:', debugText.includes('yfKeys:'));
+        console.log('Shows "none":', debugText.includes('yfKeys: none'));
+        
+        // 提取 yfKeys 內容
+        const yfKeysMatch = debugText.match(/yfKeys: ([^|]+)/);
+        if (yfKeysMatch) {
+            console.log('YF Keys Content:', yfKeysMatch[1].trim());
+        }
+    } else {
+        console.log('Debug Block Found:', false);
+    }
+} else {
+    console.log('❌ TechnicalIndicators 組件未找到！');
+    console.log('請確認：');
+    console.log('1. 在正確的 Stock Detail 頁面');
+    console.log('2. 頁面已完全載入');
+    console.log('3. 沒有 JavaScript 錯誤');
+}
+
+// 7. 檢查 API 資料
+console.log('\\n7️⃣ API 資料檢查:');
+const baseUrl = window.location.origin + window.location.pathname.replace(/\\/[^/]*$/, '/');
+const indexUrl = baseUrl + 'data/technical-indicators/latest_index.json';
+console.log('Testing API URL:', indexUrl);
+
+fetch(indexUrl)
+    .then(response => {
+        console.log('API Response Status:', response.status);
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('HTTP ' + response.status);
+        }
+    })
+    .then(data => {
+        console.log('✅ API 資料載入成功');
+        console.log('Available Symbols:', data.symbols?.length || 0);
+        console.log('Data Date:', data.date);
+        
+        // 測試單一股票資料
+        if (data.symbols && data.symbols.length > 0) {
+            const testSymbol = data.symbols[0];
+            const dataUrl = baseUrl + 'data/technical-indicators/' + data.date + '_' + testSymbol + '.json';
+            
+            return fetch(dataUrl).then(r => r.json()).then(stockData => {
+                console.log('\\n📊 股票資料檢查 (' + testSymbol + '):');
+                console.log('Has indicators:', !!stockData.indicators);
+                console.log('Has YF data:', !!(stockData.indicators && stockData.indicators.yf));
+                if (stockData.indicators && stockData.indicators.yf) {
+                    console.log('YF Keys:', Object.keys(stockData.indicators.yf));
+                    console.log('YF Data Sample:', stockData.indicators.yf);
+                }
+            });
+        }
+    })
+    .catch(error => {
+        console.log('❌ API 資料載入失敗:', error.message);
+    });
+
+console.log('\\n✅ 診斷完成！請查看上方結果。');
+                    </div>
+                    
+                    <br>
+                    <strong>📋 使用方法：</strong>
+                    <br>1. 複製上方整個程式碼區塊
+                    <br>2. 在 GitHub Pages 網站按 F12 開啟 Console
+                    <br>3. 貼上並按 Enter 執行
+                    <br>4. 查看詳細診斷結果
+                </div>
+            `;
+        }
+
+        function showTroubleshootingSteps() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result warning">
+                    <strong>🔧 故障排除步驟：</strong>
+                    <br><br>
+                    
+                    <h4>如果在正確網站上仍看到問題：</h4>
+                    
+                    <h5>1. 清除快取問題</h5>
+                    <strong>方法 A - 強制重新整理：</strong>
+                    <br>• Windows: Ctrl + Shift + R
+                    <br>• Mac: Cmd + Shift + R
+                    <br><br>
+                    
+                    <strong>方法 B - 開發者工具：</strong>
+                    <br>• 按 F12 → Network 面板
+                    <br>• 勾選 "Disable cache"
+                    <br>• 重新整理頁面
+                    <br><br>
+                    
+                    <strong>方法 C - 清除網站資料：</strong>
+                    <br>• 按 F12 → Application 面板
+                    <br>• 左側選擇 "Storage"
+                    <br>• 點擊 "Clear site data"
+                    <br><br>
+                    
+                    <h5>2. Service Worker 問題</h5>
+                    <br>• 按 F12 → Application 面板
+                    <br>• 左側選擇 "Service Workers"
+                    <br>• 如果有註冊的 SW，點擊 "Unregister"
+                    <br>• 重新整理頁面
+                    <br><br>
+                    
+                    <h5>3. 部署版本問題</h5>
+                    <br>• 檢查 GitHub Actions 是否完成
+                    <br>• 等待 2-3 分鐘讓 GitHub Pages 更新
+                    <br>• 確認最新 commit 已部署
+                    <br><br>
+                    
+                    <h5>4. 瀏覽器相容性</h5>
+                    <br>• 嘗試不同瀏覽器 (Chrome, Firefox, Edge)
+                    <br>• 確認 JavaScript 已啟用
+                    <br>• 檢查是否有擴充功能干擾
+                    <br><br>
+                    
+                    <div style="background: #f8d7da; padding: 10px; border-radius: 4px; border: 1px solid #f5c6cb;">
+                        <strong>🚨 如果所有步驟都無效：</strong>
+                        <br>1. 執行上方的 Console 診斷指令
+                        <br>2. 截圖 Console 輸出結果
+                        <br>3. 提供具體的錯誤訊息
+                        <br>4. 說明在哪個步驟卡住
+                    </div>
+                </div>
+            `;
+        }
+
+        // 自動顯示正確頁面指引
+        setTimeout(() => {
+            openCorrectPage();
+        }, 1000);
+    </script>
+</body>
+</html>

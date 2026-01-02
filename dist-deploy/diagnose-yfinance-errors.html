@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YFinance Errors Diagnosis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .result { margin: 10px 0; padding: 15px; border-radius: 8px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .critical { background: #f8d7da; color: #721c24; border: 2px solid #dc3545; font-weight: bold; }
+        button { background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; margin: 8px; font-size: 14px; }
+        button:hover { background: #0056b3; }
+        button.success { background: #28a745; }
+        button.success:hover { background: #218838; }
+        .test-steps { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0; border: 1px solid #e9ecef; }
+        code { background: #f1f1f1; padding: 3px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 13px; }
+        .console-output { background: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 12px; margin: 10px 0; max-height: 300px; overflow-y: auto; }
+        .error-item { background: #fed7d7; color: #c53030; padding: 8px; margin: 5px 0; border-radius: 4px; }
+        .success-item { background: #c6f6d5; color: #2f855a; padding: 8px; margin: 5px 0; border-radius: 4px; }
+        .warning-item { background: #fefcbf; color: #d69e2e; padding: 8px; margin: 5px 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 YFinance 錯誤診斷工具</h1>
+    
+    <div class="result critical">
+        <strong>🚨 根據截圖觀察到的問題：</strong>
+        <br><br>
+        <strong>1. 網路請求被阻擋</strong> - 看到多個 <code>net::ERR_BLOCKED_BY_CLIENT</code> 錯誤
+        <br><strong>2. CORS 政策問題</strong> - Content Security Policy 限制
+        <br><strong>3. TradingView 載入錯誤</strong> - Widget 相關問題
+        <br><br>
+        <strong>這些問題會導致 YFinance 資料無法載入，顯示 "yfKeys: none"</strong>
+    </div>
+
+    <div class="test-steps">
+        <h3>🎯 立即診斷步驟：</h3>
+        <ol>
+            <li><strong>檢查當前頁面類型</strong> - 確認是否在正確的 Stock Detail 頁面</li>
+            <li><strong>測試網路請求</strong> - 檢查 API 是否可以正常訪問</li>
+            <li><strong>檢查廣告攔截器</strong> - 暫時停用廣告攔截器</li>
+            <li><strong>測試緊急修復</strong> - 檢查組件內建的測試資料</li>
+            <li><strong>驗證部署版本</strong> - 確認是否為最新版本</li>
+        </ol>
+    </div>
+
+    <button onclick="runFullDiagnosis()" class="success">🚀 執行完整診斷</button>
+    <button onclick="testNetworkRequests()">🌐 測試網路請求</button>
+    <button onclick="checkAdBlocker()">🛡️ 檢查廣告攔截器</button>
+    <button onclick="testEmergencyFix()">🚨 測試緊急修復</button>
+    <button onclick="checkDeploymentVersion()">📦 檢查部署版本</button>
+
+    <div id="results"></div>
+
+    <script>
+        let diagnosticResults = [];
+
+        function logResult(type, message, details = null) {
+            const timestamp = new Date().toLocaleTimeString();
+            diagnosticResults.push({ type, message, details, timestamp });
+            updateResultsDisplay();
+        }
+
+        function updateResultsDisplay() {
+            const resultsDiv = document.getElementById('results');
+            let html = '<div class="console-output"><strong>診斷結果：</strong><br><br>';
+            
+            diagnosticResults.forEach(result => {
+                const className = result.type === 'error' ? 'error-item' : 
+                                result.type === 'success' ? 'success-item' : 'warning-item';
+                html += `<div class="${className}">[${result.timestamp}] ${result.message}`;
+                if (result.details) {
+                    html += `<br>詳細: ${result.details}`;
+                }
+                html += '</div>';
+            });
+            
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+
+        async function runFullDiagnosis() {
+            diagnosticResults = [];
+            logResult('info', '🚀 開始完整診斷...');
+
+            // 1. 檢查頁面類型
+            await checkPageType();
+            
+            // 2. 檢查 TechnicalIndicators 組件
+            await checkTechnicalIndicatorsComponent();
+            
+            // 3. 測試網路請求
+            await testNetworkRequests();
+            
+            // 4. 檢查緊急修復
+            await testEmergencyFix();
+            
+            // 5. 檢查部署版本
+            await checkDeploymentVersion();
+            
+            logResult('success', '✅ 診斷完成！請查看上方結果。');
+        }
+
+        async function checkPageType() {
+            const currentUrl = window.location.href;
+            const isStockDetail = currentUrl.includes('/stock-overview/symbols/');
+            const isStockOverview = currentUrl.includes('/stock-overview') && !currentUrl.includes('/symbols/');
+            
+            if (isStockDetail) {
+                const symbol = currentUrl.split('/symbols/')[1]?.split(/[?#]/)[0];
+                logResult('success', `✅ 正確頁面類型: Stock Detail (${symbol})`);
+            } else if (isStockOverview) {
+                logResult('error', '❌ 錯誤頁面類型: Stock Overview (沒有 TechnicalIndicators 組件)', 
+                    '請導航到 Stock Detail 頁面: /#/stock-overview/symbols/NVDA');
+            } else {
+                logResult('warning', '⚠️ 未知頁面類型', `當前 URL: ${currentUrl}`);
+            }
+        }
+
+        async function checkTechnicalIndicatorsComponent() {
+            const techIndicators = document.querySelector('.technical-indicators');
+            
+            if (techIndicators) {
+                logResult('success', '✅ 找到 TechnicalIndicators 組件');
+                
+                // 檢查 Build Stamp
+                const buildStamp = document.querySelector('.technical-indicators h4')?.textContent;
+                if (buildStamp && buildStamp.includes('BUILD-2026-01-03-01')) {
+                    logResult('success', '✅ Build Stamp 正確', buildStamp);
+                } else {
+                    logResult('error', '❌ Build Stamp 不正確或缺失', buildStamp || '未找到');
+                }
+                
+                // 檢查指標數量
+                const indicators = document.querySelectorAll('.indicator-item');
+                logResult('info', `📊 指標數量: ${indicators.length} (預期: 19)`);
+                
+                // 檢查 Debug 區塊
+                const debugBlock = document.querySelector('[style*="color: #856404"]');
+                if (debugBlock) {
+                    const debugText = debugBlock.textContent;
+                    if (debugText.includes('yfKeys:') && !debugText.includes('yfKeys: none')) {
+                        logResult('success', '✅ YFinance Debug 區塊正常', debugText.substring(0, 100) + '...');
+                    } else {
+                        logResult('error', '❌ YFinance Debug 顯示 "none"', debugText);
+                    }
+                } else {
+                    logResult('error', '❌ 未找到 Debug 區塊');
+                }
+                
+            } else {
+                logResult('error', '❌ 未找到 TechnicalIndicators 組件', '請確認在正確的 Stock Detail 頁面');
+            }
+        }
+
+        async function testNetworkRequests() {
+            logResult('info', '🌐 測試網路請求...');
+            
+            try {
+                // 測試基本連線
+                const baseUrl = window.location.origin + window.location.pathname;
+                logResult('info', `基礎 URL: ${baseUrl}`);
+                
+                // 測試 latest_index.json
+                const indexUrl = `${baseUrl}data/technical-indicators/latest_index.json`;
+                try {
+                    const indexResponse = await fetch(indexUrl);
+                    if (indexResponse.ok) {
+                        const indexData = await indexResponse.json();
+                        logResult('success', '✅ latest_index.json 載入成功', 
+                            `${indexData.symbols?.length || 0} 個股票, 日期: ${indexData.date || 'unknown'}`);
+                        
+                        // 測試單一股票資料
+                        if (indexData.symbols && indexData.symbols.length > 0) {
+                            const testSymbol = indexData.symbols[0];
+                            const dataUrl = `${baseUrl}data/technical-indicators/${indexData.date}_${testSymbol}.json`;
+                            
+                            try {
+                                const dataResponse = await fetch(dataUrl);
+                                if (dataResponse.ok) {
+                                    const stockData = await dataResponse.json();
+                                    const hasYF = !!(stockData.indicators && stockData.indicators.yf);
+                                    const yfKeys = hasYF ? Object.keys(stockData.indicators.yf) : [];
+                                    
+                                    if (hasYF && yfKeys.length >= 6) {
+                                        logResult('success', `✅ ${testSymbol} YFinance 資料正常`, 
+                                            `${yfKeys.length} 個 YF 指標: ${yfKeys.join(', ')}`);
+                                    } else {
+                                        logResult('error', `❌ ${testSymbol} YFinance 資料缺失`, 
+                                            `YF 指標: ${yfKeys.length} 個`);
+                                    }
+                                } else {
+                                    logResult('error', `❌ 無法載入 ${testSymbol} 資料`, `HTTP ${dataResponse.status}`);
+                                }
+                            } catch (error) {
+                                logResult('error', `❌ ${testSymbol} 資料請求失敗`, error.message);
+                            }
+                        }
+                        
+                    } else {
+                        logResult('error', '❌ latest_index.json 載入失敗', `HTTP ${indexResponse.status}`);
+                    }
+                } catch (error) {
+                    logResult('error', '❌ latest_index.json 請求失敗', error.message);
+                }
+                
+            } catch (error) {
+                logResult('error', '❌ 網路測試失敗', error.message);
+            }
+        }
+
+        async function checkAdBlocker() {
+            logResult('info', '🛡️ 檢查廣告攔截器...');
+            
+            // 檢查常見的廣告攔截器標誌
+            const adBlockerTests = [
+                () => window.uBlock !== undefined,
+                () => window.adblockDetector !== undefined,
+                () => document.querySelector('#adblock-detected') !== null,
+                () => {
+                    // 測試是否有請求被阻擋
+                    const testImg = new Image();
+                    testImg.src = 'https://googleads.g.doubleclick.net/pagead/id';
+                    return false; // 這個測試需要時間
+                }
+            ];
+            
+            let adBlockerDetected = false;
+            adBlockerTests.forEach((test, index) => {
+                try {
+                    if (test()) {
+                        adBlockerDetected = true;
+                    }
+                } catch (e) {
+                    // 忽略測試錯誤
+                }
+            });
+            
+            if (adBlockerDetected) {
+                logResult('warning', '⚠️ 偵測到廣告攔截器', '可能阻擋 API 請求，請嘗試暫時停用');
+            } else {
+                logResult('info', 'ℹ️ 未偵測到明顯的廣告攔截器');
+            }
+            
+            // 檢查 Console 中的 ERR_BLOCKED_BY_CLIENT 錯誤
+            logResult('info', '請檢查 Console 是否有 "net::ERR_BLOCKED_BY_CLIENT" 錯誤');
+            logResult('info', '如有此錯誤，請暫時停用廣告攔截器或將網站加入白名單');
+        }
+
+        async function testEmergencyFix() {
+            logResult('info', '🚨 測試緊急修復...');
+            
+            // 檢查 Console 中的緊急修復日誌
+            const expectedLogs = [
+                'BUILD_STAMP=2026-01-03_yf_fix_01',
+                '🚨 Vue component mounted - starting emergency YFinance fix',
+                '✅ Emergency YFinance data created in mounted()',
+                'EMERGENCY FIX: Using test data directly'
+            ];
+            
+            logResult('info', '請檢查 Console 是否包含以下緊急修復日誌：');
+            expectedLogs.forEach(log => {
+                logResult('info', `- ${log}`);
+            });
+            
+            // 檢查是否有測試資料
+            const debugBlock = document.querySelector('[style*="color: #856404"]');
+            if (debugBlock && debugBlock.textContent.includes('volume_last_day')) {
+                logResult('success', '✅ 緊急修復的測試資料已載入');
+            } else {
+                logResult('error', '❌ 緊急修復的測試資料未載入');
+            }
+        }
+
+        async function checkDeploymentVersion() {
+            logResult('info', '📦 檢查部署版本...');
+            
+            try {
+                // 嘗試檢查 JavaScript bundle 中的 BUILD_STAMP
+                const scripts = document.querySelectorAll('script[src]');
+                let foundBuildStamp = false;
+                
+                for (const script of scripts) {
+                    if (script.src.includes('assets/index') && script.src.includes('.js')) {
+                        try {
+                            const response = await fetch(script.src);
+                            const content = await response.text();
+                            
+                            if (content.includes('BUILD_STAMP=2026-01-03_yf_fix_01')) {
+                                logResult('success', '✅ 找到正確的 BUILD_STAMP', script.src);
+                                foundBuildStamp = true;
+                            }
+                            
+                            if (content.includes('EMERGENCY FIX')) {
+                                logResult('success', '✅ 找到緊急修復代碼');
+                            }
+                            
+                            break;
+                        } catch (error) {
+                            logResult('warning', '⚠️ 無法檢查 JavaScript bundle', error.message);
+                        }
+                    }
+                }
+                
+                if (!foundBuildStamp) {
+                    logResult('error', '❌ 未找到正確的 BUILD_STAMP', '可能是快取問題或部署未完成');
+                }
+                
+            } catch (error) {
+                logResult('error', '❌ 版本檢查失敗', error.message);
+            }
+        }
+
+        // 自動開始診斷
+        setTimeout(() => {
+            logResult('info', '🔍 自動診斷已啟動，點擊上方按鈕進行詳細測試');
+        }, 1000);
+    </script>
+</body>
+</html>

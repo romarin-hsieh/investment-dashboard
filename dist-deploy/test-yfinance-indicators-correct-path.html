@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YFinance Indicators - Correct Path Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .result { margin: 10px 0; padding: 15px; border-radius: 8px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .critical { background: #f8d7da; color: #721c24; border: 2px solid #dc3545; font-weight: bold; }
+        button { background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; margin: 8px; font-size: 14px; }
+        button:hover { background: #0056b3; }
+        button.success { background: #28a745; }
+        button.success:hover { background: #218838; }
+        .test-steps { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0; border: 1px solid #e9ecef; }
+        code { background: #f1f1f1; padding: 3px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 13px; }
+        .highlight { background: #ffeb3b; padding: 2px 4px; border-radius: 3px; }
+        h1 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        h3 { color: #495057; margin-top: 25px; }
+        .url-box { background: #e9ecef; padding: 10px; border-radius: 4px; font-family: monospace; margin: 10px 0; }
+        .checklist { background: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 15px 0; }
+        .checklist ul { margin: 0; padding-left: 20px; }
+        .checklist li { margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>🎯 YFinance Indicators 正確路徑測試</h1>
+    
+    <div class="result critical">
+        <strong>🚨 關鍵發現：我們一直在錯誤的頁面測試！</strong>
+        <br><br>
+        <strong>錯誤：</strong> 在 Stock Overview 頁面 (<code>/#/stock-overview</code>) 尋找 TechnicalIndicators
+        <br><strong>正確：</strong> TechnicalIndicators 組件只在 Stock Detail 頁面 (<code>/#/stock-overview/symbols/SYMBOL</code>)
+        <br><br>
+        <span class="highlight">這就是為什麼一直看到 "yfKeys: none" 的原因 - 我們根本不在正確的頁面上！</span>
+    </div>
+
+    <div class="test-steps">
+        <h3>📍 正確的測試路徑：</h3>
+        <div class="url-box">
+            ❌ 錯誤：https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview
+            <br>
+            ✅ 正確：https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview/symbols/NVDA
+        </div>
+        
+        <strong>組件位置確認：</strong>
+        <ul>
+            <li>✅ <code>src/pages/StockDetail.vue</code> - 包含 TechnicalIndicators 組件</li>
+            <li>❌ <code>src/components/StockOverview.vue</code> - 不包含 TechnicalIndicators 組件</li>
+        </ul>
+    </div>
+
+    <div class="checklist">
+        <h3>🔍 測試檢查清單：</h3>
+        <ul>
+            <li>□ 進入正確的 Stock Detail 頁面</li>
+            <li>□ 滾動到頁面下方找到 "Technical Indicators [BUILD-2026-01-03-01]" 區域</li>
+            <li>□ 計算指標項目數量（應該是 19 個，包含 1 個黃色除錯區塊）</li>
+            <li>□ 確認看到 6 個 YFinance 指標：Volume, 5D Avg Volume, Market Cap, Beta (3mo), Beta (1y), Beta (5y)</li>
+            <li>□ 檢查黃色除錯區塊顯示 <code>yfKeys: volume_last_day, volume_last_day_pct, ...</code></li>
+            <li>□ Console 中看到 <code>BUILD_STAMP=2026-01-03_yf_fix_01</code></li>
+        </ul>
+    </div>
+
+    <h3>🚀 立即測試：</h3>
+    <button onclick="openNVDADetail()" class="success">打開 NVDA Stock Detail</button>
+    <button onclick="openTSLADetail()" class="success">打開 TSLA Stock Detail</button>
+    <button onclick="openAAPLDetail()" class="success">打開 AAPL Stock Detail</button>
+    <button onclick="runConsoleTests()">Console 測試指令</button>
+    <button onclick="showDeploymentCheck()">檢查部署狀態</button>
+
+    <div id="results"></div>
+
+    <script>
+        function openNVDADetail() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result success">
+                    <strong>🚀 正在打開 NVDA Stock Detail 頁面...</strong>
+                    <br><br>
+                    <a href="https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview/symbols/NVDA" target="_blank" style="font-size: 1.3em; color: #007bff; text-decoration: none; font-weight: bold;">
+                        👉 點擊這裡打開 NVDA Stock Detail 頁面
+                    </a>
+                    <br><br>
+                    <strong>📋 在新頁面中檢查：</strong>
+                    <br>1. 頁面標題應該顯示 "NVDA Analysis"
+                    <br>2. 滾動到下方找到 "Technical Indicators [BUILD-2026-01-03-01]" 區域
+                    <br>3. 計算 .indicator-item 數量（應該是 19 個）
+                    <br>4. 確認看到 YFinance 指標：Volume, 5D Avg Volume, Market Cap, Beta 系列
+                    <br>5. 黃色除錯區塊應該顯示 yfKeys 而不是 "none"
+                    <br><br>
+                    <strong>🔍 如果仍然看到問題，請執行 Console 測試來診斷。</strong>
+                </div>
+            `;
+        }
+
+        function openTSLADetail() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result success">
+                    <strong>🚀 正在打開 TSLA Stock Detail 頁面...</strong>
+                    <br><br>
+                    <a href="https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview/symbols/TSLA" target="_blank" style="font-size: 1.3em; color: #007bff; text-decoration: none; font-weight: bold;">
+                        👉 點擊這裡打開 TSLA Stock Detail 頁面
+                    </a>
+                    <br><br>
+                    <strong>測試不同股票的 YFinance 指標是否正常工作</strong>
+                </div>
+            `;
+        }
+
+        function openAAPLDetail() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result success">
+                    <strong>🚀 正在打開 AAPL Stock Detail 頁面...</strong>
+                    <br><br>
+                    <a href="https://romarin-hsieh.github.io/investment-dashboard/#/stock-overview/symbols/AAPL" target="_blank" style="font-size: 1.3em; color: #007bff; text-decoration: none; font-weight: bold;">
+                        👉 點擊這裡打開 AAPL Stock Detail 頁面
+                    </a>
+                    <br><br>
+                    <strong>測試第三個股票的 YFinance 指標</strong>
+                </div>
+            `;
+        }
+
+        function runConsoleTests() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result warning">
+                    <strong>🔍 Console 診斷測試指令：</strong>
+                    <br><br>
+                    <strong>步驟 1：</strong> 先打開任一 Stock Detail 頁面，然後按 F12 開啟開發者工具
+                    <br><br>
+                    <strong>步驟 2：</strong> 在 Console 中依序執行以下命令：
+                    <br><br>
+                    
+                    <h4>A. 檢查頁面類型</h4>
+                    <code style="display: block; padding: 10px; background: #f8f9fa; margin: 5px 0;">
+                        console.log('Current URL:', window.location.href);
+                        console.log('Is Stock Detail page:', window.location.href.includes('/stock-overview/symbols/'));
+                    </code>
+                    
+                    <h4>B. 檢查 TechnicalIndicators 組件</h4>
+                    <code style="display: block; padding: 10px; background: #f8f9fa; margin: 5px 0;">
+                        const techIndicators = document.querySelector('.technical-indicators');
+                        console.log('TechnicalIndicators element found:', !!techIndicators);
+                        if (techIndicators) {
+                            console.log('Build stamp in title:', document.querySelector('.technical-indicators h4')?.textContent);
+                        }
+                    </code>
+                    
+                    <h4>C. 檢查指標數量</h4>
+                    <code style="display: block; padding: 10px; background: #f8f9fa; margin: 5px 0;">
+                        const indicators = document.querySelectorAll('.indicator-item');
+                        console.log('Total indicator items:', indicators.length);
+                        console.log('Should be 19 (18 indicators + 1 debug block)');
+                    </code>
+                    
+                    <h4>D. 檢查 YFinance 指標</h4>
+                    <code style="display: block; padding: 10px; background: #f8f9fa; margin: 5px 0;">
+                        const yfLabels = ['Volume', '5D Avg Volume', 'Market Cap', 'Beta (3mo)', 'Beta (1y)', 'Beta (5y)'];
+                        const foundLabels = Array.from(document.querySelectorAll('.indicator-label'))
+                            .map(el => el.textContent.trim())
+                            .filter(text => yfLabels.includes(text));
+                        console.log('Found YFinance indicators:', foundLabels);
+                        console.log('Missing YFinance indicators:', yfLabels.filter(label => !foundLabels.includes(label)));
+                    </code>
+                    
+                    <h4>E. 檢查除錯區塊</h4>
+                    <code style="display: block; padding: 10px; background: #f8f9fa; margin: 5px 0;">
+                        const debugBlock = document.querySelector('[style*="color: #856404"]');
+                        if (debugBlock) {
+                            console.log('Debug block content:', debugBlock.textContent);
+                            console.log('Contains yfKeys:', debugBlock.textContent.includes('yfKeys:'));
+                            console.log('Shows "none":', debugBlock.textContent.includes('yfKeys: none'));
+                        } else {
+                            console.log('Debug block not found');
+                        }
+                    </code>
+                    
+                    <br>
+                    <strong>🎯 預期結果：</strong>
+                    <br>• A: 應該顯示 Stock Detail URL 且 Is Stock Detail page: true
+                    <br>• B: 應該找到 TechnicalIndicators 元素且標題包含 BUILD-2026-01-03-01
+                    <br>• C: 應該顯示 19 個指標項目
+                    <br>• D: 應該找到全部 6 個 YFinance 指標
+                    <br>• E: 除錯區塊應該顯示 yfKeys 而不是 "none"
+                </div>
+            `;
+        }
+
+        function showDeploymentCheck() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="result info">
+                    <strong>🔍 部署狀態檢查：</strong>
+                    <br><br>
+                    <strong>如果在 Stock Detail 頁面仍然看到問題，可能的原因：</strong>
+                    <br><br>
+                    
+                    <h4>1. 快取問題</h4>
+                    <strong>解決方法：</strong>
+                    <br>• 按 Ctrl+Shift+R (Windows) 或 Cmd+Shift+R (Mac) 強制重新整理
+                    <br>• 或者按 F12 → Network 面板 → 勾選 "Disable cache" → 重新整理
+                    <br>• 或者按 F12 → Application → Storage → Clear site data
+                    <br><br>
+                    
+                    <h4>2. 部署未完成</h4>
+                    <strong>檢查方法：</strong>
+                    <br>• 檢查 GitHub Actions 是否完成部署
+                    <br>• 等待 2-3 分鐘後再測試
+                    <br>• 檢查 GitHub Pages 設定是否正確
+                    <br><br>
+                    
+                    <h4>3. Service Worker 快取</h4>
+                    <strong>解決方法：</strong>
+                    <br>• 按 F12 → Application → Service Workers → Unregister
+                    <br>• 然後清除快取並重新整理
+                    <br><br>
+                    
+                    <h4>4. 驗證部署版本</h4>
+                    <strong>在 Console 中執行：</strong>
+                    <br>
+                    <code style="display: block; padding: 10px; background: #f8f9fa; margin: 5px 0;">
+                        // 搜尋 BUILD_STAMP
+                        console.log('Searching for BUILD_STAMP in console history...');
+                        // 檢查原始碼
+                        fetch(window.location.origin + window.location.pathname + 'assets/index.js')
+                            .then(r => r.text())
+                            .then(text => {
+                                console.log('Contains BUILD_STAMP:', text.includes('BUILD_STAMP=2026-01-03_yf_fix_01'));
+                                console.log('Contains emergency fix:', text.includes('EMERGENCY FIX'));
+                            })
+                            .catch(e => console.log('Could not check build version:', e));
+                    </code>
+                </div>
+            `;
+        }
+
+        // 自動顯示 NVDA 測試
+        setTimeout(() => {
+            openNVDADetail();
+        }, 1000);
+    </script>
+</body>
+</html>

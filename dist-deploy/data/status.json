@@ -1,0 +1,50 @@
+{
+  "generated": "2026-01-02T03:29:29.115Z",
+  "date": "2026-01-02",
+  "status": "updated",
+  "data_sources": {
+    "ohlcv": {
+      "exists": true,
+      "size": 27293,
+      "modified": "2026-01-02T03:28:49.312Z",
+      "fileCount": 137,
+      "directory": "data/ohlcv/"
+    },
+    "technical_indicators": {
+      "exists": true,
+      "size": 5156,
+      "modified": "2026-01-02T03:29:28.891Z",
+      "fileCount": 363,
+      "directory": "data/technical-indicators/"
+    },
+    "quotes": {
+      "exists": true,
+      "size": 29044,
+      "modified": "2026-01-02T03:27:11.494Z",
+      "file": "data/quotes/latest.json"
+    },
+    "metadata": {
+      "exists": true,
+      "size": 114458,
+      "modified": "2026-01-02T03:27:11.495Z",
+      "file": "data/symbols_metadata.json"
+    },
+    "daily_snapshot": {
+      "exists": true,
+      "size": 28015,
+      "modified": "2026-01-02T03:29:29.063Z",
+      "file": "data/daily/2026-01-02.json"
+    }
+  },
+  "update_info": {
+    "source": "GitHub Actions Daily Update",
+    "workflow": "daily-data-update.yml",
+    "next_update": "2026-01-03T03:29:29.115Z",
+    "update_frequency": "daily"
+  },
+  "health_check": {
+    "all_systems": "operational",
+    "last_check": "2026-01-02T03:29:29.115Z",
+    "issues": []
+  }
+}
