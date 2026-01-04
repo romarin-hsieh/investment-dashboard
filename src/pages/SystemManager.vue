@@ -317,7 +317,7 @@
 </template>
 
 <script>
-import { hybridTechnicalIndicatorsAPI } from '@/utils/hybridTechnicalIndicatorsApi.js'
+import { hybridTechnicalIndicatorsAPI } from '@/api/hybridTechnicalIndicatorsApi.js'
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler.js'
 import { performanceCache } from '@/utils/performanceCache.js'
 import { performanceMonitor } from '@/utils/performanceMonitor.js'

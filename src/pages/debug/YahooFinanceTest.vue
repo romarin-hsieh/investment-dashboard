@@ -276,7 +276,7 @@
 </template>
 
 <script>
-import yahooFinanceAPI from '../utils/yahooFinanceApi.js'
+import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 
 export default {
   name: 'YahooFinanceTest',

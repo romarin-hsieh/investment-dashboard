@@ -168,7 +168,7 @@
 </template>
 
 <script>
-import hybridTechnicalIndicatorsAPI from '../utils/hybridTechnicalIndicatorsApi.js'
+import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
 
 export default {
   name: 'TechnicalIndicatorsManager',

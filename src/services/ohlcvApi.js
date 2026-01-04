@@ -1,7 +1,7 @@
 // OHLCV API Service - 優先本地 JSON，DEV 模式可 fallback 到 Yahoo Finance
 // 按照最穩架構：Production 只用站內 JSON，避免 CORS proxy 翻車
 
-import { yahooFinanceAPI } from '../utils/yahooFinanceApi.js';
+import { yahooFinanceAPI } from '@/api/yahooFinanceApi.js';
 import { paths } from '../utils/baseUrl.js';
 
 class OhlcvApi {
@@ -19,7 +19,7 @@ class OhlcvApi {
    */
   async getOhlcv(symbol, period = '1d', range = '3mo') {
     const cacheKey = `${symbol}_${period}_${range}`;
-    
+
     // 檢查記憶體快取
     if (this.cache.has(cacheKey)) {
       const cached = this.cache.get(cacheKey);
@@ -49,7 +49,7 @@ class OhlcvApi {
       try {
         console.log(`📊 DEV mode: trying Yahoo Finance fallback for ${symbol}`);
         const yahooData = await yahooFinanceAPI.getOhlcv(symbol, period, range);
-        
+
         if (yahooData && this.validateOhlcvData(yahooData)) {
           this.cache.set(cacheKey, {
             data: yahooData,
@@ -78,9 +78,9 @@ class OhlcvApi {
   async fetchLocalOhlcv(symbol, period, range) {
     // 使用統一的 baseUrl helper
     const url = paths.ohlcv(symbol);
-    
+
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       if (response.status === 404) {
         console.log(`📊 Local OHLCV not found for ${symbol} (404)`);
@@ -88,13 +88,13 @@ class OhlcvApi {
       }
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
-    
+
     const data = await response.json();
-    
+
     if (!this.validateOhlcvData(data)) {
       throw new Error('Invalid local OHLCV data structure');
     }
-    
+
     return {
       ...data,
       metadata: {
@@ -117,16 +117,16 @@ class OhlcvApi {
     if (!data || typeof data !== 'object') {
       return false;
     }
-    
+
     const requiredFields = ['timestamps', 'open', 'high', 'low', 'close', 'volume'];
-    
+
     for (const field of requiredFields) {
       if (!Array.isArray(data[field])) {
         console.error(`📊 OHLCV validation failed: missing ${field}`);
         return false;
       }
     }
-    
+
     // 檢查數組長度一致性
     const length = data.timestamps.length;
     for (const field of requiredFields) {
@@ -135,13 +135,13 @@ class OhlcvApi {
         return false;
       }
     }
-    
+
     // 檢查最小數據點
     if (length < 20) {
       console.error(`📊 OHLCV validation failed: insufficient data (${length} < 20)`);
       return false;
     }
-    
+
     return true;
   }
 
