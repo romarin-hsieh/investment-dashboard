@@ -12,30 +12,51 @@ class TechnicalIndicatorsCache {
     this.indexCacheTimeout = 5 * 60 * 1000; // 5分鐘緩存索引
   }
 
-  // 獲取 latest_index.json 的 timestamp
-  async getLatestIndexTimestamp() {
+  // 獲取 latest_index.json 的完整數據
+  async getLatestIndex() {
     // 檢查索引緩存
-    if (this.indexCache && this.indexCacheTimestamp && 
-        (Date.now() - this.indexCacheTimestamp < this.indexCacheTimeout)) {
-      return this.indexCache.generatedAt || this.indexCache.yf_updated;
+    if (this.indexCache && this.indexCacheTimestamp &&
+      (Date.now() - this.indexCacheTimestamp < this.indexCacheTimeout)) {
+      return this.indexCache;
+    }
+
+    // 檢查是否有正在進行的索引請求
+    if (this._indexFetchPromise) {
+      return this._indexFetchPromise;
     }
 
     try {
-      const baseUrl = import.meta.env.BASE_URL || '/';
-      const response = await fetch(`${baseUrl}data/technical-indicators/latest_index.json?t=${Date.now()}`);
-      
-      if (response.ok) {
-        const index = await response.json();
-        this.indexCache = index;
-        this.indexCacheTimestamp = Date.now();
-        
-        // 優先使用 yf_updated，其次是 generatedAt
-        return index.yf_updated || index.generatedAt;
-      }
+      this._indexFetchPromise = (async () => {
+        const baseUrl = import.meta.env.BASE_URL || '/';
+        // 移除 ?t= 時間戳，允許瀏覽器緩存，依賴 DataVersionService 進行版本控制
+        const response = await fetch(`${baseUrl}data/technical-indicators/latest_index.json`);
+
+        if (response.ok) {
+          const index = await response.json();
+          this.indexCache = index;
+          this.indexCacheTimestamp = Date.now();
+          return index;
+        }
+        return null;
+      })();
+
+      return await this._indexFetchPromise;
+
     } catch (error) {
-      console.warn('Failed to get latest_index timestamp:', error);
+      console.warn('Failed to get latest_index:', error);
+      return null;
+    } finally {
+      this._indexFetchPromise = null;
     }
-    
+  }
+
+  // 獲取 latest_index.json 的 timestamp (兼容舊 API)
+  async getLatestIndexTimestamp() {
+    const index = await this.getLatestIndex();
+    if (index) {
+      // 優先使用 yf_updated，其次是 generatedAt
+      return index.yf_updated || index.generatedAt;
+    }
     return null;
   }
 
@@ -57,11 +78,11 @@ class TechnicalIndicatorsCache {
   async getTechnicalIndicators(symbol) {
     const cacheKey = await this.getCacheKey(symbol);
     const latestTimestamp = await this.getLatestIndexTimestamp();
-    
+
     // 1. 先檢查內存緩存
     if (this.memoryCache.has(cacheKey)) {
       const cached = this.memoryCache.get(cacheKey);
-      
+
       // 檢查是否需要根據 latest_index timestamp 更新
       if (latestTimestamp && cached.indexTimestamp !== latestTimestamp) {
         console.log(`Cache invalidated for ${symbol} due to index update`);
@@ -80,17 +101,17 @@ class TechnicalIndicatorsCache {
       const cachedData = localStorage.getItem(cacheKey);
       if (cachedData) {
         const parsed = JSON.parse(cachedData);
-        
+
         // 檢查是否需要根據 latest_index timestamp 更新
         if (latestTimestamp && parsed.indexTimestamp !== latestTimestamp) {
           console.log(`LocalStorage cache invalidated for ${symbol} due to index update`);
           localStorage.removeItem(cacheKey);
         } else if (Date.now() - parsed.timestamp < this.cacheTimeout) {
           console.log(`Using localStorage cache for ${symbol}`);
-          
+
           // 同時存入內存緩存
           this.memoryCache.set(cacheKey, parsed);
-          
+
           const dataWithSource = { ...parsed.data, source: 'Daily Cache (LocalStorage)' };
           return dataWithSource;
         } else {
@@ -101,17 +122,78 @@ class TechnicalIndicatorsCache {
       console.warn(`Failed to read cache for ${symbol}:`, error);
     }
 
-    // 3. 緩存未命中，返回 null
+    // 3. 緩存未命中，執行網絡請求
+    try {
+      const baseUrl = import.meta.env.BASE_URL || '/';
+      const date = cacheKey.split('_').pop(); // 從 cacheKey 提取日期: '2026-01-03'
+      const url = `${baseUrl}data/technical-indicators/${date}_${symbol}.json`;
+
+      console.log(`Fetching from network: ${url}`);
+      const response = await fetch(url);
+
+      if (response.ok) {
+        const data = await response.json();
+
+        // 存入緩存
+        await this.setTechnicalIndicators(symbol, data);
+
+        return { ...data, source: 'Network' };
+      } else {
+        console.warn(`Failed to fetch indicators for ${symbol}: ${response.status}`);
+      }
+    } catch (error) {
+      console.error(`Network fetch error for ${symbol}:`, error);
+    }
+
+    // 4. 無法獲取數據，返回 null
     return null;
   }
 
-  // 將技術指標數據存入緩存
+  // 將技術指標數據存入緩存 (Merge Strategy)
   async setTechnicalIndicators(symbol, data) {
     const cacheKey = await this.getCacheKey(symbol);
     const latestTimestamp = await this.getLatestIndexTimestamp();
-    
+
+    // 嘗試獲取現有緩存以進行合併
+    let existingData = {};
+    try {
+      if (this.memoryCache.has(cacheKey)) {
+        existingData = this.memoryCache.get(cacheKey).data || {};
+      } else {
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          existingData = JSON.parse(cached).data || {};
+        }
+      }
+    } catch (e) {
+      // Ignore read errors
+    }
+
+    // 合併數據：保留這兩個來源的數據
+    // 如果 data 是實時計算的 (沒有 yf)，而 existing 是 JSON (有 yf)，我們希望保留 yf
+    // 如果 data 是 JSON (有 yf)，我們希望更新 yf
+    const mergedData = { ...existingData, ...data };
+
+    // 特別處理 indicators 對象 (如果存在)
+    if (data.indicators && existingData.indicators) {
+      mergedData.indicators = { ...existingData.indicators, ...data.indicators };
+    }
+
+    // 特別處理 yf (如果 data 沒有 yf 但 existing 有)
+    if (!data.yf && !data.indicators?.yf && (existingData.yf || existingData.indicators?.yf)) {
+      // 嘗試從不同結構中保留 YF 數據
+      const existingYf = existingData.yf || existingData.indicators?.yf;
+      // 根據新數據的結構決定放在哪裡
+      if (data.indicators) {
+        mergedData.indicators = mergedData.indicators || {}; // Ensure indicators object exists
+        mergedData.indicators.yf = existingYf;
+      } else {
+        mergedData.yf = existingYf;
+      }
+    }
+
     const cacheData = {
-      data: data,
+      data: mergedData,
       timestamp: Date.now(),
       symbol: symbol,
       date: new Date().toISOString().split('T')[0],
@@ -121,15 +203,15 @@ class TechnicalIndicatorsCache {
     try {
       // 1. 存入 localStorage
       localStorage.setItem(cacheKey, JSON.stringify(cacheData));
-      
+
       // 2. 存入內存緩存
       this.memoryCache.set(cacheKey, cacheData);
-      
-      console.log(`Cached technical indicators for ${symbol}`);
-      
+
+      console.log(`Cached technical indicators for ${symbol} (Merged)`);
+
       // 3. 清理舊的緩存條目
       this.cleanupOldCache();
-      
+
     } catch (error) {
       console.warn(`Failed to cache technical indicators for ${symbol}:`, error);
     }
@@ -139,7 +221,7 @@ class TechnicalIndicatorsCache {
   cleanupOldCache() {
     try {
       const keysToRemove = [];
-      
+
       // 檢查 localStorage 中的所有技術指標緩存
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
@@ -155,20 +237,20 @@ class TechnicalIndicatorsCache {
           }
         }
       }
-      
+
       // 刪除過期的緩存條目
       keysToRemove.forEach(key => {
         localStorage.removeItem(key);
         console.log(`Removed expired cache: ${key}`);
       });
-      
+
       // 清理內存緩存中的過期條目
       for (const [key, cached] of this.memoryCache.entries()) {
         if (Date.now() - cached.timestamp > this.cacheTimeout) {
           this.memoryCache.delete(key);
         }
       }
-      
+
     } catch (error) {
       console.warn('Failed to cleanup old cache:', error);
     }
@@ -177,13 +259,13 @@ class TechnicalIndicatorsCache {
   // 強制清除指定股票的緩存
   async clearSymbolCache(symbol) {
     const cacheKey = await this.getCacheKey(symbol);
-    
+
     // 清除 localStorage
     localStorage.removeItem(cacheKey);
-    
+
     // 清除內存緩存
     this.memoryCache.delete(cacheKey);
-    
+
     console.log(`Cleared cache for ${symbol}`);
   }
 
@@ -198,14 +280,14 @@ class TechnicalIndicatorsCache {
           keysToRemove.push(key);
         }
       }
-      
+
       keysToRemove.forEach(key => localStorage.removeItem(key));
-      
+
       // 清除內存緩存
       this.memoryCache.clear();
-      
+
       console.log(`Cleared all technical indicators cache (${keysToRemove.length} items)`);
-      
+
     } catch (error) {
       console.warn('Failed to clear all cache:', error);
     }

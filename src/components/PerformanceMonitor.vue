@@ -97,9 +97,10 @@ export default {
     this.setupPerformanceTracking()
     
     // 檢查是否在開發環境或有 debug 參數
-    const isDev = process.env.NODE_ENV === 'development'
+    // 檢查是否在開發環境或有 debug 參數
+    // const isDev = process.env.NODE_ENV === 'development' // 禁用自動開發模式顯示
     const hasDebug = new URLSearchParams(window.location.search).has('debug')
-    this.showMonitor = isDev || hasDebug
+    this.showMonitor = hasDebug
     
     // 監聽頁面載入完成
     if (document.readyState === 'complete') {

@@ -6,7 +6,7 @@
     :style="{ height: height }"
   >
     <!-- 載入前的佔位符 -->
-    <div v-if="!isVisible && !loaded" class="widget-placeholder">
+    <div v-if="!isVisible && !loaded" class="widget-overlay widget-placeholder">
       <div class="placeholder-content">
         <div class="placeholder-icon">📊</div>
         <div class="placeholder-text">{{ widgetType }} Widget</div>
@@ -15,16 +15,19 @@
     </div>
 
     <!-- 載入中狀態 -->
-    <div v-if="isVisible && !loaded && !error" class="widget-loading">
+    <div v-if="isVisible && !loaded && !error" class="widget-overlay widget-loading">
       <div class="loading-spinner"></div>
       <span>Loading {{ widgetType }}...</span>
     </div>
     
     <!-- 錯誤狀態 -->
-    <div v-if="error" class="widget-error">
+    <div v-if="error" class="widget-overlay widget-error">
       <span>⚠️ Failed to load</span>
       <button @click="retry" class="retry-btn">Retry</button>
     </div>
+
+    <!-- Widget Target Container (This must be separate!) -->
+    <div ref="widgetTarget" class="widget-target"></div>
   </div>
 </template>
 
@@ -137,17 +140,16 @@ export default {
     async createWidget() {
       return new Promise((resolve, reject) => {
         this.$nextTick(() => {
-          const container = this.$refs.container
-          if (!container) {
-            reject(new Error('Container not found'))
+          // Use specific widget target instead of broad container
+          const target = this.$refs.widgetTarget
+          
+          if (!target) {
+            reject(new Error('Widget target container not found'))
             return
           }
 
-          // 清除現有內容
-          const existingContent = container.querySelector('.widget-placeholder, .widget-loading')
-          if (existingContent) {
-            existingContent.style.display = 'none'
-          }
+          // 清除現有內容 (雖然理論上是空的，但在重試時有用)
+          target.innerHTML = ''
 
           try {
             // 創建 TradingView 容器結構
@@ -175,13 +177,12 @@ export default {
             
             // 調試信息
             console.log(`🔧 Creating ${this.widgetType} widget with config:`, this.config)
-            console.log(`📝 Config JSON:`, configJson)
             
-            // 設定超時 - 根據優先級調整
+            // 設定超時
             const timeouts = {
-              1: 8000,  // 高優先級：8秒超時
-              2: 10000, // 中優先級：10秒超時
-              3: 12000  // 低優先級：12秒超時
+              1: 8000,
+              2: 10000,
+              3: 12000
             }
             
             const timeout = setTimeout(() => {
@@ -209,7 +210,7 @@ export default {
             
             // 添加到 DOM
             widgetContent.appendChild(script)
-            container.appendChild(widgetContainer)
+            target.appendChild(widgetContainer)
             
           } catch (error) {
             console.error(`❌ ${this.widgetType} widget creation failed:`, error)
@@ -237,15 +238,27 @@ export default {
   border-radius: 8px;
 }
 
-/* 佔位符樣式 */
-.widget-placeholder {
+/* 統一的 Overlay 樣式 */
+.widget-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  background: white;
+}
+
+/* 佔位符樣式 */
+.widget-placeholder {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border: 2px dashed #dee2e6;
   border-radius: 8px;
+  box-sizing: border-box; /* 確保邊框包含在寬高內 */
   transition: all 0.3s ease;
 }
 
@@ -277,11 +290,6 @@ export default {
 
 /* 載入中樣式 */
 .widget-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
   background: #f8f9fa;
   border-radius: 8px;
   color: #6c757d;
@@ -309,15 +317,19 @@ export default {
 
 /* 錯誤樣式 */
 .widget-error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
   border-radius: 8px;
   color: #721c24;
+  box-sizing: border-box;
+}
+
+/* Widget Target Container */
+.widget-target {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  z-index: 1; /* 比 overlay 低 */
 }
 
 .retry-btn {

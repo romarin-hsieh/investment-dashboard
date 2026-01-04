@@ -14,36 +14,38 @@ class DirectMetadataLoader {
       return this.cache
     }
 
-    if (this.loading) {
-      // 等待載入完成
-      while (this.loading) {
-        await new Promise(resolve => setTimeout(resolve, 100))
-      }
-      return this.cache
+    if (this.loading && this._fetchPromise) {
+      console.log('🔄 Reusing existing metadata fetch request');
+      return this._fetchPromise;
     }
 
     this.loading = true
-    
+
     try {
-      const url = paths.symbolsMetadata()
-      console.log('🔍 DirectMetadataLoader fetching from:', url)
-      
-      const response = await fetch(url)
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
-      }
-      
-      const data = await response.json()
-      this.cache = data
-      
+      this._fetchPromise = (async () => {
+        const url = paths.symbolsMetadata()
+        console.log('🔍 DirectMetadataLoader fetching from:', url)
+
+        const response = await fetch(url)
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
+
+        const data = await response.json()
+        this.cache = data
+        return data
+      })();
+
+      const data = await this._fetchPromise;
       console.log('✅ DirectMetadataLoader loaded successfully:', data.items?.length, 'items')
-      return this.cache
-      
+      return data
+
     } catch (error) {
       console.error('❌ DirectMetadataLoader failed:', error)
       return null
     } finally {
       this.loading = false
+      this._fetchPromise = null
     }
   }
 
@@ -80,12 +82,12 @@ class DirectMetadataLoader {
 
   async getBatchMetadata(symbols) {
     const results = new Map()
-    
+
     for (const symbol of symbols) {
       const metadata = await this.getSymbolMetadata(symbol)
       results.set(symbol, metadata)
     }
-    
+
     return results
   }
 }

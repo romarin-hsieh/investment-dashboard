@@ -42,7 +42,7 @@ class MetadataService {
 
     // If no cached data or expired, fetch fresh metadata
     await this.refreshMetadata()
-    
+
     // Find the symbol in the metadata
     if (this.metadata && this.metadata.items) {
       const symbolMetadata = this.metadata.items.find(m => m.symbol === symbol)
@@ -85,20 +85,20 @@ class MetadataService {
       // 靜態文件模式的批量處理
       console.log(`🔄 getBatchMetadata (static mode) for ${symbols.length} symbols:`, symbols)
       const results = new Map()
-      
+
       // 先確保 metadata 已載入
       await this.refreshMetadata()
-      
+
       for (const symbol of symbols) {
         const metadata = await this.getStaticSymbolMetadata(symbol)
         results.set(symbol, metadata)
-        
+
         // 特別除錯 CRM 和 IONQ
         if (['CRM', 'IONQ'].includes(symbol)) {
           console.log(`🎯 getBatchMetadata result for ${symbol}:`, metadata)
         }
       }
-      
+
       console.log(`✅ getBatchMetadata completed, ${results.size} results`)
       return results
     }
@@ -113,31 +113,29 @@ class MetadataService {
   async refreshMetadata() {
     try {
       console.log('🔄 Refreshing metadata from dataFetcher...')
-      
+
       // 嘗試直接載入 JSON 檔案作為備用方案
       let result;
       try {
         result = await dataFetcher.fetchMetadataSnapshot()
       } catch (fetcherError) {
-        console.warn('❌ dataFetcher failed, trying direct fetch:', fetcherError)
-        
-        // 使用統一的 paths helper
-        const url = this.getMetadataUrl()
-        console.log('🔍 MetadataService fetching from:', url)
-        
-        const response = await fetch(url)
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        console.warn('❌ dataFetcher failed, trying direct loader:', fetcherError)
+
+        // 使用 DirectMetadataLoader (已優化)
+        try {
+          const data = await directMetadataLoader.loadMetadata()
+          result = { data }
+        } catch (loaderError) {
+          console.error('❌ Direct loader also failed:', loaderError)
+          throw loaderError
         }
-        const data = await response.json()
-        result = { data }
       }
-      
-      if (result.data) {
+
+      if (result && result.data) { // Check for result AND result.data
         this.metadata = result.data
         this.lastFetch = Date.now()
         console.log(`✅ Metadata refreshed successfully, ${this.metadata.items?.length || 0} items loaded`)
-        
+
         // Debug: Check if CRM is in the loaded data
         if (this.metadata.items) {
           const crmData = this.metadata.items.find(item => item.symbol === 'CRM')
@@ -160,13 +158,13 @@ class MetadataService {
   getDefaultExchange(symbol) {
     const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS']
     const nyseSymbols = ['TSM', 'ORCL', 'RDW']
-    
+
     if (nasdaqSymbols.includes(symbol)) {
       return 'NASDAQ'
     } else if (nyseSymbols.includes(symbol)) {
       return 'NYSE'
     }
-    
+
     return 'NASDAQ' // Default
   }
 
@@ -175,12 +173,12 @@ class MetadataService {
     if (this.useDynamicAPI) {
       return dynamicMetadataService.getIndustryDisplay(metadata)
     }
-    
+
     // 原有邏輯
     if (!metadata || metadata.confidence < 0.7) {
       return 'Unknown Industry'
     }
-    
+
     return metadata.industry || metadata.sector || 'Unknown Industry'
   }
 
@@ -189,10 +187,10 @@ class MetadataService {
     if (this.useDynamicAPI) {
       return dynamicMetadataService.getIndustryCategory(metadata)
     }
-    
+
     // 原有邏輯
     const industry = this.getIndustryDisplay(metadata)
-    
+
     const industryCategories = {
       'Industrial IoT Solutions': 'tech-iot',
       'Satellite Imaging & Analytics': 'tech-satellite',
@@ -205,7 +203,7 @@ class MetadataService {
       'Electric Vehicles': 'automotive',
       'Unknown Industry': 'unknown'
     }
-    
+
     return industryCategories[industry] || 'other'
   }
 
@@ -217,16 +215,16 @@ class MetadataService {
       // 靜態文件模式的預熱
       console.log(`Warming up static metadata cache for ${symbols.length} symbols...`)
       const startTime = Date.now()
-      
+
       await this.refreshMetadata()
-      
+
       for (const symbol of symbols) {
         await this.getStaticSymbolMetadata(symbol)
       }
-      
+
       const duration = Date.now() - startTime
       console.log(`Static cache warmup completed in ${duration}ms`)
-      
+
       return {
         duration,
         symbolsProcessed: symbols.length,
@@ -240,7 +238,7 @@ class MetadataService {
     this.cache.clear()
     this.metadata = null
     this.lastFetch = null
-    
+
     if (this.useDynamicAPI) {
       dynamicMetadataService.clearCache()
     }

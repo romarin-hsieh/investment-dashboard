@@ -1,14 +1,19 @@
 <template>
   <div class="fast-widget" :class="{ 'overview-widget': widgetType === 'overview' }" :id="containerId" ref="container">
-    <div v-if="!loaded && !error" class="fast-loading">
+    <!-- Overlay for Loading -->
+    <div v-if="!loaded && !error" class="widget-overlay fast-loading">
       <div class="loading-spinner"></div>
       <span>Loading {{ widgetType }}...</span>
     </div>
     
-    <div v-if="error" class="fast-error">
+    <!-- Overlay for Error -->
+    <div v-if="error" class="widget-overlay fast-error">
       <span>⚠️ Failed to load</span>
       <button @click="retry" class="retry-btn">Retry</button>
     </div>
+
+    <!-- Static Widget Target -->
+    <div ref="widgetTarget" class="widget-target"></div>
   </div>
 </template>
 
@@ -147,9 +152,10 @@ export default {
     async createWidget() {
       return new Promise((resolve, reject) => {
         this.$nextTick(async () => {
-          const container = this.$refs.container
-          if (!container) {
-            reject(new Error('Container not found'))
+          const target = this.$refs.widgetTarget
+          
+          if (!target) {
+            reject(new Error('Widget target container not found'))
             return
           }
 
@@ -172,11 +178,11 @@ export default {
           script.async = true
           script.innerHTML = JSON.stringify(config)
           
-          // 設定超時 - 根據優先級調整
+          // 設定超時
           const timeouts = {
-            1: 3000,  // 高優先級：3秒超時
-            2: 5000,  // 中優先級：5秒超時
-            3: 8000   // 低優先級：8秒超時
+            1: 3000,
+            2: 5000,
+            3: 8000
           }
           
           const timeout = setTimeout(() => {
@@ -206,7 +212,7 @@ export default {
             reject(new Error('Script load failed'))
           }
           
-          container.appendChild(script)
+          target.appendChild(script)
         })
       })
     },
@@ -279,8 +285,8 @@ export default {
 
     renderCachedWidget(cached) {
       this.$nextTick(() => {
-        const container = this.$refs.container
-        if (!container) return
+        const target = this.$refs.widgetTarget
+        if (!target) return
 
         const script = document.createElement('script')
         script.type = 'text/javascript'
@@ -294,7 +300,7 @@ export default {
           console.log(`Cached widget ${this.cacheKey} loaded in ${loadTime.toFixed(2)}ms`)
         }
         
-        container.appendChild(script)
+        target.appendChild(script)
       })
     },
 
@@ -321,12 +327,16 @@ export default {
 }
 
 .fast-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  min-height: 500px;
   background: #f8f9fa;
   border-radius: 8px;
   color: #6c757d;
@@ -334,7 +344,11 @@ export default {
 
 /* Symbol Overview 的 loading 狀態調整 */
 .fast-widget.overview-widget .fast-loading {
-  margin: -8px; /* 抵消容器的 padding */
+  margin: 0; /* 覆蓋舊樣式 */
+  left: 0; /* 確保對齊 */
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .loading-spinner {
@@ -358,12 +372,16 @@ export default {
 }
 
 .fast-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  min-height: 500px;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
   border-radius: 8px;
@@ -372,7 +390,15 @@ export default {
 
 /* Symbol Overview 的 error 狀態調整 */
 .fast-widget.overview-widget .fast-error {
-  margin: -8px; /* 抵消容器的 padding */
+  margin: 0;
+}
+
+/* Widget Target */
+.widget-target {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  z-index: 1; 
 }
 
 .retry-btn {

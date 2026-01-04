@@ -71,6 +71,7 @@
 import { stocksConfig } from '@/utils/stocksConfigService'
 import StockCard from './StockCard.vue'
 import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
+import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 
 export default {
   name: 'StockOverviewSimple',
@@ -185,11 +186,14 @@ export default {
           console.log(`✅ Loaded daily data`)
         }
         
-        // 4. 直接載入 metadata
-        const metadataResponse = await fetch('/data/symbols_metadata.json?t=' + Date.now())
-        if (metadataResponse.ok) {
-          this.metadata = await metadataResponse.json()
-          console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)
+        // 4. 使用 DirectMetadataLoader 載入元數據 (已優化去重和緩存)
+        try {
+          this.metadata = await directMetadataLoader.loadMetadata()
+          if (this.metadata && this.metadata.items) {
+             console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)
+          }
+        } catch (metaError) {
+          console.warn('❌ Failed to load metadata via loader:', metaError)
         }
         
         console.log('✅ Simple stock data load completed successfully!')

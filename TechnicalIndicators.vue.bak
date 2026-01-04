@@ -1,0 +1,619 @@
+<template>
+  <div class="technical-indicators">
+    <!-- Build Stamp -->
+    <h4 class="build-stamp">Technical Indicators - BUILD-2026-01-03-CACHE-FIX-V1</h4>
+    
+    <!-- Loading State -->
+    <div v-if="loading" class="loading-state">
+      <div class="loading-spinner"></div>
+      <p>Loading technical indicators...</p>
+    </div>
+    
+    <!-- Error State -->
+    <div v-else-if="error" class="error-state">
+      <p class="error-message">{{ error }}</p>
+      <button @click="loadData" class="retry-btn">Retry</button>
+    </div>
+    
+    <!-- Indicators Grid -->
+    <div v-else class="indicators-grid">
+      <!-- Technical Indicators (12 items) -->
+      <div 
+        v-for="indicator in technicalIndicators" 
+        :key="indicator.label"
+        class="indicator-card technical-indicator"
+      >
+        <div class="indicator-label">{{ indicator.label }}</div>
+        <div class="indicator-value">{{ indicator.value }}</div>
+        <div class="indicator-signal" :class="indicator.signalClass">{{ indicator.signal }}</div>
+      </div>
+      
+      <!-- YFinance Indicators (6 items) -->
+      <div 
+        v-for="indicator in yfinanceIndicators" 
+        :key="indicator.label"
+        class="indicator-card yfinance-indicator"
+      >
+        <div class="indicator-label">{{ indicator.label }}</div>
+        <div class="indicator-value">{{ indicator.value }}</div>
+        <div v-if="indicator.change" class="indicator-change" :class="indicator.changeClass">
+          {{ indicator.change }}
+        </div>
+        <div v-else class="indicator-info">{{ indicator.info }}</div>
+      </div>
+      
+      <!-- Status Indicator -->
+      <div class="indicator-card status-indicator">
+        <div class="indicator-label">Status</div>
+        <div class="indicator-value">✅ All Loaded</div>
+        <div class="indicator-info">
+          {{ technicalIndicators.length + yfinanceIndicators.length }} indicators
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache.js'
+
+export default {
+  name: 'TechnicalIndicators',
+  props: {
+    symbol: {
+      type: String,
+      required: true
+    },
+    exchange: {
+      type: String,
+      default: 'NASDAQ'
+    }
+  },
+  data() {
+    return {
+      loading: true,
+      error: null,
+      rawData: null,
+      technicalIndicators: [],
+      yfinanceIndicators: []
+    }
+  },
+  watch: {
+    symbol() {
+      this.loadData()
+    }
+  },
+  mounted() {
+    this.loadData()
+  },
+  methods: {
+    async loadData() {
+      this.loading = true
+      this.error = null
+      
+      try {
+        console.log(`🔄 Loading technical indicators for ${this.symbol}`)
+        
+        // 使用 technicalIndicatorsCache 獲取數據
+        const data = await technicalIndicatorsCache.getTechnicalIndicators(this.symbol)
+        
+        if (!data) {
+          throw new Error(`No data available for ${this.symbol}`)
+        }
+        
+        this.rawData = data
+        this.processTechnicalIndicators()
+        this.processYFinanceIndicators()
+        
+        console.log(`✅ Technical indicators loaded for ${this.symbol}`)
+        console.log('Technical indicators:', this.technicalIndicators.length)
+        console.log('YFinance indicators:', this.yfinanceIndicators.length)
+        
+      } catch (err) {
+        console.error('Error loading technical indicators:', err)
+        this.error = `Failed to load indicators: ${err.message}`
+      } finally {
+        this.loading = false
+      }
+    },
+    
+    processTechnicalIndicators() {
+      if (!this.rawData?.indicators) {
+        this.technicalIndicators = []
+        return
+      }
+      
+      const indicators = this.rawData.indicators
+      const result = []
+      
+      // SMA Indicators
+      if (indicators.sma) {
+        const smaData = indicators.sma
+        
+        if (smaData.sma5) {
+          const latestSMA5 = this.getLatestValue(smaData.sma5)
+          result.push({
+            label: 'SMA5',
+            value: this.formatPrice(latestSMA5),
+            signal: this.getTechnicalSignal(latestSMA5, 'sma'),
+            signalClass: this.getSignalClass(this.getTechnicalSignal(latestSMA5, 'sma'))
+          })
+        }
+        
+        if (smaData.sma10) {
+          const latestSMA10 = this.getLatestValue(smaData.sma10)
+          result.push({
+            label: 'SMA10',
+            value: this.formatPrice(latestSMA10),
+            signal: this.getTechnicalSignal(latestSMA10, 'sma'),
+            signalClass: this.getSignalClass(this.getTechnicalSignal(latestSMA10, 'sma'))
+          })
+        }
+        
+        if (smaData.sma20) {
+          const latestSMA20 = this.getLatestValue(smaData.sma20)
+          result.push({
+            label: 'SMA20',
+            value: this.formatPrice(latestSMA20),
+            signal: this.getTechnicalSignal(latestSMA20, 'sma'),
+            signalClass: this.getSignalClass(this.getTechnicalSignal(latestSMA20, 'sma'))
+          })
+        }
+        
+        if (smaData.sma50) {
+          const latestSMA50 = this.getLatestValue(smaData.sma50)
+          result.push({
+            label: 'SMA50',
+            value: this.formatPrice(latestSMA50),
+            signal: this.getTechnicalSignal(latestSMA50, 'sma'),
+            signalClass: this.getSignalClass(this.getTechnicalSignal(latestSMA50, 'sma'))
+          })
+        }
+      }
+      
+      // RSI Indicator
+      if (indicators.rsi?.rsi14) {
+        const latestRSI = this.getLatestValue(indicators.rsi.rsi14)
+        result.push({
+          label: 'RSI (14)',
+          value: this.formatNumber(latestRSI, 2),
+          signal: this.getRSISignal(latestRSI),
+          signalClass: this.getSignalClass(this.getRSISignal(latestRSI))
+        })
+      }
+      
+      // MACD Indicators
+      if (indicators.macd) {
+        const macdData = indicators.macd
+        
+        if (macdData.macd) {
+          const latestMACD = this.getLatestValue(macdData.macd)
+          result.push({
+            label: 'MACD',
+            value: this.formatNumber(latestMACD, 3),
+            signal: this.getMACDSignal(latestMACD),
+            signalClass: this.getSignalClass(this.getMACDSignal(latestMACD))
+          })
+        }
+        
+        if (macdData.signal) {
+          const latestSignal = this.getLatestValue(macdData.signal)
+          result.push({
+            label: 'MACD Signal',
+            value: this.formatNumber(latestSignal, 3),
+            signal: 'SIGNAL',
+            signalClass: 'signal-neutral'
+          })
+        }
+        
+        if (macdData.histogram) {
+          const latestHistogram = this.getLatestValue(macdData.histogram)
+          result.push({
+            label: 'MACD Histogram',
+            value: this.formatNumber(latestHistogram, 3),
+            signal: this.getMACDSignal(latestHistogram),
+            signalClass: this.getSignalClass(this.getMACDSignal(latestHistogram))
+          })
+        }
+      }
+      
+      // 補充其他技術指標到 12 個
+      const remainingSlots = 12 - result.length
+      for (let i = 0; i < remainingSlots; i++) {
+        result.push({
+          label: `Technical ${result.length + 1}`,
+          value: 'N/A',
+          signal: 'NEUTRAL',
+          signalClass: 'signal-neutral'
+        })
+      }
+      
+      this.technicalIndicators = result.slice(0, 12)
+    },
+    
+    processYFinanceIndicators() {
+      if (!this.rawData?.indicators?.yf) {
+        this.yfinanceIndicators = []
+        return
+      }
+      
+      const yf = this.rawData.indicators.yf
+      if (!yf) {
+        console.warn('YFinance data missing in payload', this.rawData)
+        this.yfinanceIndicators = []
+        return
+      }
+
+      const result = []
+      
+      // Volume (Last Day)
+      if (yf.volume_last_day !== undefined) {
+        result.push({
+          label: 'Volume',
+          value: this.formatVolume(yf.volume_last_day),
+          change: yf.volume_last_day_pct !== undefined ? this.formatPercentage(yf.volume_last_day_pct) : null,
+          changeClass: this.getChangeClass(yf.volume_last_day_pct)
+        })
+      }
+      
+      // 5D Average Volume
+      if (yf.avg_volume_5d !== undefined) {
+        result.push({
+          label: '5D Avg Volume',
+          value: this.formatVolume(yf.avg_volume_5d),
+          change: yf.avg_volume_5d_pct !== undefined ? this.formatPercentage(yf.avg_volume_5d_pct) : null,
+          changeClass: this.getChangeClass(yf.avg_volume_5d_pct)
+        })
+      }
+      
+      // Market Cap
+      if (yf.market_cap !== undefined) {
+        result.push({
+          label: 'Market Cap',
+          value: this.formatMarketCap(yf.market_cap),
+          info: this.getMarketCapCategory(yf.market_cap)
+        })
+      }
+      
+      // Beta (3mo)
+      if (yf.beta_3mo !== undefined) {
+        result.push({
+          label: 'Beta (3mo)',
+          value: this.formatBeta(yf.beta_3mo),
+          info: this.getBetaCategory(yf.beta_3mo)
+        })
+      }
+      
+      // Beta (1y)
+      if (yf.beta_1y !== undefined) {
+        result.push({
+          label: 'Beta (1y)',
+          value: this.formatBeta(yf.beta_1y),
+          info: this.getBetaCategory(yf.beta_1y)
+        })
+      }
+      
+      // Beta (5y)
+      if (yf.beta_5y !== undefined) {
+        result.push({
+          label: 'Beta (5y)',
+          value: this.formatBeta(yf.beta_5y),
+          info: this.getBetaCategory(yf.beta_5y)
+        })
+      }
+      
+      this.yfinanceIndicators = result
+    },
+    
+    // Utility Methods
+    getLatestValue(array) {
+      if (!array || array.length === 0) return null
+      // 從後往前找第一個非 null 值
+      for (let i = array.length - 1; i >= 0; i--) {
+        if (array[i] !== null && array[i] !== undefined) {
+          return array[i]
+        }
+      }
+      return null
+    },
+    
+    // Formatting Methods
+    formatPrice(value) {
+      if (value === null || value === undefined) return 'N/A'
+      return Number(value).toFixed(2)
+    },
+    
+    formatNumber(value, decimals = 2) {
+      if (value === null || value === undefined) return 'N/A'
+      return Number(value).toFixed(decimals)
+    },
+    
+    formatVolume(value) {
+      if (!value && value !== 0) return 'N/A'
+      if (value >= 1e9) return (value / 1e9).toFixed(1) + 'B'
+      if (value >= 1e6) return (value / 1e6).toFixed(1) + 'M'
+      if (value >= 1e3) return (value / 1e3).toFixed(1) + 'K'
+      return value.toLocaleString()
+    },
+    
+    formatMarketCap(value) {
+      if (!value && value !== 0) return 'N/A'
+      if (value >= 1e12) return '$' + (value / 1e12).toFixed(2) + 'T'
+      if (value >= 1e9) return '$' + (value / 1e9).toFixed(1) + 'B'
+      if (value >= 1e6) return '$' + (value / 1e6).toFixed(1) + 'M'
+      return '$' + value.toLocaleString()
+    },
+    
+    formatBeta(value) {
+      if (value === null || value === undefined) return 'N/A'
+      return Number(value).toFixed(2)
+    },
+    
+    formatPercentage(value) {
+      if (value === null || value === undefined) return null
+      const sign = value >= 0 ? '+' : ''
+      return sign + Number(value).toFixed(1) + '%'
+    },
+    
+    // Signal Methods
+    getTechnicalSignal(value, type) {
+      if (value === null || value === undefined) return 'N/A'
+      
+      // 簡化的信號邏輯
+      if (type === 'sma') {
+        return 'NEUTRAL'
+      }
+      return 'NEUTRAL'
+    },
+    
+    getRSISignal(value) {
+      if (value === null || value === undefined) return 'N/A'
+      if (value > 70) return 'OVERBOUGHT'
+      if (value < 30) return 'OVERSOLD'
+      return 'NEUTRAL'
+    },
+    
+    getMACDSignal(value) {
+      if (value === null || value === undefined) return 'N/A'
+      if (value > 0) return 'BULLISH'
+      if (value < 0) return 'BEARISH'
+      return 'NEUTRAL'
+    },
+    
+    // Style Methods
+    getSignalClass(signal) {
+      switch (signal) {
+        case 'BUY':
+        case 'BULLISH':
+          return 'signal-buy'
+        case 'SELL':
+        case 'BEARISH':
+          return 'signal-sell'
+        case 'OVERBOUGHT':
+          return 'signal-warning'
+        case 'OVERSOLD':
+          return 'signal-opportunity'
+        default:
+          return 'signal-neutral'
+      }
+    },
+    
+    getChangeClass(value) {
+      if (value === null || value === undefined) return ''
+      return value >= 0 ? 'change-positive' : 'change-negative'
+    },
+    
+    // Category Methods
+    getMarketCapCategory(value) {
+      if (!value) return 'Unknown'
+      if (value >= 200e9) return 'MEGA CAP'
+      if (value >= 10e9) return 'LARGE CAP'
+      if (value >= 2e9) return 'MID CAP'
+      if (value >= 300e6) return 'SMALL CAP'
+      return 'MICRO CAP'
+    },
+    
+    getBetaCategory(value) {
+      if (value === null || value === undefined) return 'Unknown'
+      if (value > 1.5) return 'HIGH VOLATILITY'
+      if (value > 1.0) return 'MODERATE VOLATILITY'
+      if (value > 0.5) return 'LOW VOLATILITY'
+      return 'VERY LOW VOLATILITY'
+    }
+  }
+}
+</script>
+
+<style scoped>
+.technical-indicators {
+  width: 100%;
+  padding: 0;
+}
+
+.build-stamp {
+  font-size: 0.9rem;
+  color: #28a745;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5rem;
+  background: #d4edda;
+  border-radius: 4px;
+  border: 1px solid #c3e6cb;
+}
+
+.loading-state, .error-state {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.retry-btn {
+  padding: 0.5rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.retry-btn:hover {
+  background: #0056b3;
+}
+
+.indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 0;
+}
+
+.indicator-card {
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.technical-indicator {
+  background: #f8f9fa;
+  border-left-color: #007bff;
+}
+
+.yfinance-indicator {
+  background: #fff3cd;
+  border-left-color: #ffc107;
+}
+
+.status-indicator {
+  background: #d4edda;
+  border-left-color: #28a745;
+}
+
+.indicator-label {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.yfinance-indicator .indicator-label {
+  color: #856404;
+}
+
+.indicator-value {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.indicator-signal, .indicator-change, .indicator-info {
+  font-size: 0.8em;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.signal-buy {
+  background: #d4edda;
+  color: #155724;
+}
+
+.signal-sell {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.signal-warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.signal-opportunity {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.signal-neutral {
+  background: #e2e3e5;
+  color: #6c757d;
+}
+
+.change-positive {
+  color: #28a745;
+}
+
+.change-negative {
+  color: #dc3545;
+}
+
+.indicator-info {
+  color: #6c757d;
+  background: #f8f9fa;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .indicators-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  
+  .indicator-card {
+    padding: 12px;
+    min-height: 70px;
+  }
+  
+  .indicator-value {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .indicators-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  
+  .indicator-card {
+    padding: 10px;
+    min-height: 65px;
+  }
+  
+  .indicator-label {
+    font-size: 0.8em;
+  }
+  
+  .indicator-value {
+    font-size: 1em;
+  }
+  
+  .indicator-signal, .indicator-change, .indicator-info {
+    font-size: 0.7em;
+  }
+}
+</style>

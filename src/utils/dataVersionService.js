@@ -19,79 +19,94 @@ class DataVersionService {
    * @returns {Promise<boolean>} 是否觸發了刷新
    */
   async checkDataVersionAndRefresh() {
-    if (this.isChecking) {
-      console.log('🔄 Version check already in progress');
+    // 防止短時間內重複檢查 (5秒緩衝)
+    if (Date.now() - (this._lastCheckTime || 0) < 5000) {
+      // console.log('✅ Skipping version check (throttled)');
       return false;
+    }
+
+    // 檢查是否有正在進行的版本檢查 (Promise 去重)
+    if (this._currentVersionCheckPromise) {
+      console.log('⏳ Waiting for existing version check...');
+      return this._currentVersionCheckPromise;
     }
 
     this.isChecking = true;
 
     try {
-      console.log('🔍 Checking data version...');
+      this._currentVersionCheckPromise = (async () => {
+        console.log('🔍 Checking data version...');
 
-      // 1. 強制 no-cache 讀取 status.json
-      const statusUrl = paths.status() + '?v=' + Date.now();
-      const response = await fetch(statusUrl, {
-        cache: 'no-cache',
-        headers: {
-          'Cache-Control': 'no-cache, no-store, must-revalidate',
-          'Pragma': 'no-cache'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`Status fetch failed: ${response.status}`);
-      }
-
-      const status = await response.json();
-      
-      // 2. 比較版本 - 使用 generatedAt 作為版本標識
-      const currentVersion = status.generated || status.generatedAt;
-      const lastSeenVersion = localStorage.getItem(this.STORAGE_KEY);
-
-      console.log('📊 Version check:', {
-        current: currentVersion,
-        lastSeen: lastSeenVersion,
-        changed: currentVersion !== lastSeenVersion
-      });
-
-      if (currentVersion !== lastSeenVersion) {
-        console.log('🔄 Data version changed - triggering refresh');
-        
-        // 3. 版本變更 - 清除相關快取
-        await this.clearRelevantCaches();
-        
-        // 4. 更新本地存儲
-        localStorage.setItem(this.STORAGE_KEY, currentVersion);
-        
-        // 5. 重新讀取索引文件 (no-cache)
-        await this.refreshIndexFiles(currentVersion);
-        
-        // 6. 通知監聽器
-        this.notifyListeners('versionChanged', {
-          oldVersion: lastSeenVersion,
-          newVersion: currentVersion,
-          status: status
+        // 1. 強制 no-cache 讀取 status.json
+        const statusUrl = paths.status() + '?v=' + Date.now();
+        const response = await fetch(statusUrl, {
+          cache: 'no-cache',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
         });
-        
-        // 7. 觸發頁面刷新 (可選擇軟刷新或硬刷新)
-        this.triggerRefresh();
-        
-        return true;
-      } else {
-        console.log('✅ Data version unchanged - no refresh needed');
-        return false;
-      }
+
+        if (!response.ok) {
+          throw new Error(`Status fetch failed: ${response.status}`);
+        }
+
+        const status = await response.json();
+
+        // 2. 比較版本 - 使用 generatedAt 作為版本標識
+        const currentVersion = String(status.generated || status.generatedAt);
+        const lastSeenVersion = localStorage.getItem(this.STORAGE_KEY);
+
+        // 更新最後檢查時間
+        this._lastCheckTime = Date.now();
+
+        console.log('📊 Version check:', {
+          current: currentVersion,
+          lastSeen: lastSeenVersion,
+          changed: currentVersion !== lastSeenVersion
+        });
+
+        if (currentVersion !== lastSeenVersion) {
+          console.log('🔄 Data version changed - triggering refresh');
+
+          // 3. 版本變更 - 清除相關快取
+          await this.clearRelevantCaches();
+
+          // 4. 更新本地存儲
+          localStorage.setItem(this.STORAGE_KEY, currentVersion);
+
+          // 5. 重新讀取索引文件 (no-cache)
+          await this.refreshIndexFiles(currentVersion);
+
+          // 6. 通知監聽器
+          this.notifyListeners('versionChanged', {
+            oldVersion: lastSeenVersion,
+            newVersion: currentVersion,
+            status: status
+          });
+
+          // 7. 觸發頁面刷新 (可選擇軟刷新或硬刷新)
+          this.triggerRefresh();
+
+          return true;
+        } else {
+          console.log('✅ Data version unchanged - no refresh needed');
+          return false;
+        }
+      })();
+
+      return await this._currentVersionCheckPromise;
 
     } catch (error) {
       console.error('❌ Version check failed:', error);
-      
+
       // 錯誤處理 - 不阻止應用運行
       this.notifyListeners('versionCheckError', { error });
       return false;
-      
+
     } finally {
-      this.isChecking = false;
+      this._isChecking = false; // Use _isChecking
+      this._currentVersionCheckPromise = null;
     }
   }
 
@@ -100,7 +115,7 @@ class DataVersionService {
    */
   async clearRelevantCaches() {
     console.log('🗑️ Clearing relevant caches...');
-    
+
     try {
       // 清除 localStorage 中的數據快取
       const keysToRemove = [];
@@ -110,12 +125,12 @@ class DataVersionService {
           keysToRemove.push(key);
         }
       }
-      
+
       keysToRemove.forEach(key => {
         localStorage.removeItem(key);
         console.log(`🗑️ Cleared cache key: ${key}`);
       });
-      
+
       // 清除 sessionStorage 中的相關快取
       const sessionKeysToRemove = [];
       for (let i = 0; i < sessionStorage.length; i++) {
@@ -124,14 +139,14 @@ class DataVersionService {
           sessionKeysToRemove.push(key);
         }
       }
-      
+
       sessionKeysToRemove.forEach(key => {
         sessionStorage.removeItem(key);
         console.log(`🗑️ Cleared session cache key: ${key}`);
       });
-      
+
       console.log(`✅ Cleared ${keysToRemove.length + sessionKeysToRemove.length} cache entries`);
-      
+
     } catch (error) {
       console.error('❌ Cache clearing failed:', error);
     }
@@ -154,7 +169,7 @@ class DataVersionService {
       'OHLCV_DATA',
       'hybrid_technical_'
     ];
-    
+
     return cachePatterns.some(pattern => key.includes(pattern));
   }
 
@@ -164,7 +179,7 @@ class DataVersionService {
    */
   async refreshIndexFiles(version) {
     console.log('🔄 Refreshing index files...');
-    
+
     try {
       // 重新讀取技術指標索引
       const techIndexUrl = paths.technicalIndicatorsIndex() + '?v=' + version;
@@ -174,12 +189,12 @@ class DataVersionService {
           'Cache-Control': 'no-cache, no-store, must-revalidate'
         }
       });
-      
+
       if (techResponse.ok) {
         const techIndex = await techResponse.json();
         console.log('✅ Technical indicators index refreshed:', techIndex.date);
       }
-      
+
       // 重新讀取 OHLCV 索引
       const ohlcvIndexUrl = paths.ohlcvIndex() + '?v=' + version;
       const ohlcvResponse = await fetch(ohlcvIndexUrl, {
@@ -188,12 +203,12 @@ class DataVersionService {
           'Cache-Control': 'no-cache, no-store, must-revalidate'
         }
       });
-      
+
       if (ohlcvResponse.ok) {
         const ohlcvIndex = await ohlcvResponse.json();
         console.log('✅ OHLCV index refreshed:', ohlcvIndex.symbols?.length, 'symbols');
       }
-      
+
     } catch (error) {
       console.error('❌ Index refresh failed:', error);
     }
@@ -204,17 +219,17 @@ class DataVersionService {
    */
   triggerRefresh() {
     console.log('🔄 Triggering page refresh...');
-    
+
     // 可以選擇軟刷新或硬刷新
     const refreshMethod = this.getRefreshMethod();
-    
+
     if (refreshMethod === 'hard') {
       // 硬刷新 - 重新載入整個頁面
       window.location.reload();
     } else {
       // 軟刷新 - 通知應用重新載入數據
       this.notifyListeners('softRefresh');
-      
+
       // 如果沒有監聽器處理軟刷新，則回退到硬刷新
       setTimeout(() => {
         if (this.listeners.size === 0) {
@@ -307,21 +322,21 @@ class DataVersionService {
 // 創建單例
 export const dataVersionService = new DataVersionService();
 
-// 自動啟動版本檢查 (在頁面載入後)
-if (typeof window !== 'undefined') {
-  // 延遲啟動，避免影響初始頁面載入
-  setTimeout(() => {
-    dataVersionService.checkDataVersionAndRefresh();
-  }, 2000); // 2 秒後檢查
-  
-  // 監聽頁面可見性變化，當頁面重新可見時檢查版本
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-      setTimeout(() => {
-        dataVersionService.checkDataVersionAndRefresh();
-      }, 1000);
-    }
-  });
-}
+// Auto-start is handled by AutoUpdateScheduler in main.js
+// if (typeof window !== 'undefined') {
+//   // 延遲啟動，避免影響初始頁面載入
+//   setTimeout(() => {
+//     dataVersionService.checkDataVersionAndRefresh();
+//   }, 2000); // 2 秒後檢查
+//   
+//   // 監聽頁面可見性變化，當頁面重新可見時檢查版本
+//   document.addEventListener('visibilitychange', () => {
+//     if (!document.hidden) {
+//       setTimeout(() => {
+//         dataVersionService.checkDataVersionAndRefresh();
+//       }, 1000);
+//     }
+//   });
+// }
 
 export default dataVersionService;

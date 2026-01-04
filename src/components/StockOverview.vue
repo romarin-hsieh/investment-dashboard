@@ -88,6 +88,7 @@ import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
 import NavigationPanel from './NavigationPanel.vue'
 import { navigationService } from '@/services/NavigationService.js'
 import { scrollSpyService } from '@/services/ScrollSpyService.js'
+import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 
 export default {
   name: 'StockOverview',
@@ -107,8 +108,8 @@ export default {
       configuredSymbols: [],
       // Navigation state
       activeSymbol: '',
-      searchQuery: ''
-      // 移除 expandedSections，因為不再需要展開/收合功能
+      searchQuery: '',
+      expandedSections: new Set()
     }
   },
   computed: {
@@ -560,11 +561,19 @@ export default {
           console.log(`✅ Loaded daily data`)
         }
         
-        // 4. 直接載入 metadata
-        const metadataResponse = await fetch(`${basePath}/data/symbols_metadata.json?t=` + Date.now())
-        if (metadataResponse.ok) {
-          this.metadata = await metadataResponse.json()
-          console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)
+        // 4. 使用 DirectMetadataLoader 載入元數據 (已優化去重和緩存)
+        try {
+          // directMetadataLoader 內部會處理 base URL
+          this.metadata = await directMetadataLoader.loadMetadata()
+          
+          if (this.metadata && this.metadata.items) {
+             console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)
+          } else {
+             console.warn('⚠️ Metadata loaded but likely empty or invalid')
+          }
+        } catch (metaError) {
+          console.warn('❌ Failed to load metadata via loader:', metaError)
+          // Fallback?? No, loader already handles errors gracefully returning null
         }
         
         console.log('✅ Simple stock data load completed successfully!')
