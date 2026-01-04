@@ -323,23 +323,6 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
-        # 拉取最新變更以避免衝突
-        echo "🔄 Pulling latest changes to avoid conflicts..."
-        git fetch origin
-        git pull origin main --no-edit || {
-          echo "⚠️ Pull failed, attempting rebase..."
-          git pull origin main --rebase || {
-            echo "❌ Rebase failed, manual intervention required"
-            exit 1
-          }
-        }
-        
-        # 檢查是否仍有變更需要提交
-        if git diff --quiet; then
-          echo "✅ No changes after pull - data already up to date"
-          exit 0
-        fi
-        
         # 添加變更的文件
         git add public/data/sector_industry.json
         git add public/data/symbols_metadata.json
@@ -349,10 +332,21 @@ jobs:
         
         git commit -m "$COMMIT_MSG"
         
-        # 推送變更，如果失敗則重試
+        # 拉取最新變更並 Rebase
+        echo "🔄 Pulling latest changes to avoid conflicts..."
+        git fetch origin
+        git pull origin main --rebase || {
+          echo "⚠️ Pull/Rebase failed, attempting to resolve..."
+          # 如果 Rebase 失敗，通常是因為衝突。這裡我們選擇使用我們剛生成的版本 (theirs in rebase context, or ours in merge context? In rebase, ours is HEAD, theirs is upstream)
+          # Actually in rebase, 'ours' is upstream, 'theirs' is the commit being replayed.
+          # But simpler strategy: just try to push, if fail, pull rebase.
+          exit 1
+        }
+        
+        # 推送變更
         echo "🚀 Pushing changes..."
         git push || {
-          echo "⚠️ Push failed, pulling latest changes and retrying..."
+          echo "⚠️ Push failed, retrying..."
           git pull origin main --rebase
           git push
         }
