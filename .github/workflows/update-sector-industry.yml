@@ -345,12 +345,7 @@ jobs:
         git add public/data/symbols_metadata.json
         
         # 創建提交訊息
-        COMMIT_MSG="🤖 Auto-update sector and industry data
-
-- Updated via Python yfinance library (no CORS issues)
-- Triggered by: ${{ github.event_name }}
-- Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
-- Schedule: Daily at 0:20 UTC (8:20 Taiwan time)"
+        COMMIT_MSG="🤖 Auto-update sector and industry data - Updated via Python yfinance library"
         
         git commit -m "$COMMIT_MSG"
         
