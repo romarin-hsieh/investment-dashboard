@@ -332,14 +332,11 @@ jobs:
         
         git commit -m "$COMMIT_MSG"
         
-        # 拉取最新變更並 Rebase
+        # 拉取最新變更並 Rebase (使用 -Xtheirs 策略解決衝突：保留我們剛生成的版本)
         echo "🔄 Pulling latest changes to avoid conflicts..."
         git fetch origin
-        git pull origin main --rebase || {
-          echo "⚠️ Pull/Rebase failed, attempting to resolve..."
-          # 如果 Rebase 失敗，通常是因為衝突。這裡我們選擇使用我們剛生成的版本 (theirs in rebase context, or ours in merge context? In rebase, ours is HEAD, theirs is upstream)
-          # Actually in rebase, 'ours' is upstream, 'theirs' is the commit being replayed.
-          # But simpler strategy: just try to push, if fail, pull rebase.
+        git pull origin main --rebase -Xtheirs || {
+          echo "⚠️ Pull/Rebase failed even with strategy..."
           exit 1
         }
         
