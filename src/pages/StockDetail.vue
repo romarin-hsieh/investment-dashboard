@@ -199,7 +199,6 @@ import TechnicalIndicators from '@/components/TechnicalIndicators.vue'
 import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 import StockNews from '@/components/StockNews.vue'
 import StockDetailSkeleton from '@/components/StockDetailSkeleton.vue'
-import { metadataService } from '@/utils/metadataService.js'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 
 export default {
@@ -363,9 +362,6 @@ export default {
     mounted() {
     // 頁面載入時滾動到頂部
     this.scrollToTop()
-    
-    // 啟用動態 API 模式以獲取最新的 sector/industry 信息
-    metadataService.setUseDynamicAPI(true)
     
     this.loadMetadata()
     this.initializePage()
