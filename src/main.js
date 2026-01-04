@@ -72,6 +72,6 @@ setTimeout(() => {
 // Initialize cache warmup service
 // Start earlier to preload data before users navigate
 setTimeout(() => {
-  console.log('🔥 Initializing cache warmup service...')
-  cacheWarmupService.start()
+  // console.log('🔥 Initializing cache warmup service...')
+  // cacheWarmupService.start()
 }, 5000) // Start after 5 seconds

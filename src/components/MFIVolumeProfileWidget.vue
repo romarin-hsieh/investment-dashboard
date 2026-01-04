@@ -125,7 +125,7 @@
 
 <script>
 import { createChart, ColorType } from 'lightweight-charts';
-import { precomputedOhlcvApi } from '@/api/precomputedOhlcvApi.js';
+import { precomputedIndicatorsApi } from '@/api/precomputedIndicatorsApi.js';
 import { yahooFinanceAPI } from '@/api/yahooFinanceApi.js';
 import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile.js';
 import MFIVolumeProfileCanvas from './MFIVolumeProfileCanvas.vue';

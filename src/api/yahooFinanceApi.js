@@ -1,8 +1,8 @@
 // Yahoo Finance API 整合
 // 使用 Yahoo Finance 的公開 API 端點
 
-import technicalIndicatorsCache from './technicalIndicatorsCache.js';
-import { calculateAllIndicators } from './technicalIndicatorsCore.js';
+import technicalIndicatorsCache from '../utils/technicalIndicatorsCache.js';
+import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
 
 class YahooFinanceAPI {
   constructor() {

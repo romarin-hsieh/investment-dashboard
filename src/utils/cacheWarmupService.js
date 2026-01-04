@@ -1,7 +1,7 @@
 // 緩存預熱服務
 // 在環境版本更新時預載所有股票的技術指標數據
 
-import { hybridTechnicalIndicatorsAPI } from './hybridTechnicalIndicatorsApi.js'
+import { hybridTechnicalIndicatorsAPI } from '@/api/hybridTechnicalIndicatorsApi.js'
 import { performanceCache, CACHE_KEYS } from './performanceCache.js'
 import { performanceMonitor } from './performanceMonitor.js'
 
@@ -12,7 +12,7 @@ class CacheWarmupService {
     this.warmupResults = new Map()
     this.warmupStartTime = null
     this.warmupEndTime = null
-    
+
     // 配置
     this.config = {
       maxConcurrent: 2, // 最大並發數，避免過多 API 請求
@@ -25,7 +25,7 @@ class CacheWarmupService {
       warmupInterval: 24 * 60 * 60 * 1000, // 24 小時自動預熱一次 (更長間隔)
       minCacheCoverage: 0.95 // 需要 95% 以上的緩存覆蓋率才不預熱
     }
-    
+
     // 追蹤的股票代碼
     this.trackedSymbols = [
       'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
@@ -37,29 +37,29 @@ class CacheWarmupService {
   // 啟動緩存預熱服務
   async start() {
     console.log('🔥 Starting Cache Warmup Service...')
-    
+
     // 🚀 開發環境檢測：完全停用預熱
     if (!this.isProductionEnvironment()) {
       console.log('🚫 Cache warmup disabled in development environment')
       return
     }
-    
+
     try {
       // 檢查是否需要預熱
       const shouldWarmup = await this.shouldPerformWarmup()
-      
+
       if (shouldWarmup.needed) {
         console.log(`🔥 Warmup needed: ${shouldWarmup.reason}`)
         await this.performWarmup()
       } else {
         console.log('✅ Cache warmup not needed')
       }
-      
+
       // 設置定期預熱
       if (this.config.enableAutoWarmup) {
         this.schedulePeriodicWarmup()
       }
-      
+
     } catch (error) {
       console.error('❌ Failed to start cache warmup service:', error)
     }
@@ -71,14 +71,14 @@ class CacheWarmupService {
       // 檢查版本變更
       const currentVersion = await this.getCurrentVersion()
       const lastWarmupVersion = this.getLastWarmupVersion()
-      
+
       if (this.config.warmupOnVersionChange && currentVersion !== lastWarmupVersion) {
         return {
           needed: true,
           reason: `Version changed from ${lastWarmupVersion} to ${currentVersion}`
         }
       }
-      
+
       // 檢查首次載入
       const lastWarmupTime = this.getLastWarmupTime()
       if (this.config.warmupOnFirstLoad && !lastWarmupTime) {
@@ -87,7 +87,7 @@ class CacheWarmupService {
           reason: 'First load - no previous warmup found'
         }
       }
-      
+
       // 檢查時間間隔
       if (lastWarmupTime) {
         const timeSinceLastWarmup = Date.now() - lastWarmupTime
@@ -98,7 +98,7 @@ class CacheWarmupService {
           }
         }
       }
-      
+
       // 檢查緩存覆蓋率
       const cacheStats = await this.getCacheStats()
       if (cacheStats.coverage < this.config.minCacheCoverage) { // 需要 95% 以上的緩存覆蓋率
@@ -107,9 +107,9 @@ class CacheWarmupService {
           reason: `Low cache coverage (${Math.round(cacheStats.coverage * 100)}%)`
         }
       }
-      
+
       return { needed: false, reason: 'Cache is fresh and complete' }
-      
+
     } catch (error) {
       console.error('Error checking warmup need:', error)
       return { needed: true, reason: 'Error checking - performing warmup as fallback' }
@@ -124,57 +124,57 @@ class CacheWarmupService {
     }
 
     console.log(`🔥 Starting cache warmup for ${this.trackedSymbols.length} symbols...`)
-    
+
     this.isWarming = true
     this.warmupProgress = 0
     this.warmupResults.clear()
     this.warmupStartTime = Date.now()
-    
+
     const label = 'cache_warmup_total'
     performanceMonitor.start(label)
-    
+
     try {
       // 分批處理股票
       const batches = this.createBatches(this.trackedSymbols, this.config.maxConcurrent)
-      
+
       for (let i = 0; i < batches.length; i++) {
         const batch = batches[i]
         console.log(`🔥 Processing batch ${i + 1}/${batches.length}: ${batch.join(', ')}`)
-        
+
         // 並行處理批次中的股票
         const batchPromises = batch.map(symbol => this.warmupSymbol(symbol))
         const batchResults = await Promise.all(batchPromises)
-        
+
         // 記錄結果
         batchResults.forEach((result, index) => {
           this.warmupResults.set(batch[index], result)
         })
-        
+
         // 更新進度
         this.warmupProgress = ((i + 1) / batches.length) * 100
         console.log(`📊 Warmup progress: ${Math.round(this.warmupProgress)}%`)
-        
+
         // 批次間延遲
         if (i < batches.length - 1) {
           console.log(`⏳ Waiting ${this.config.batchDelay}ms before next batch...`)
           await this.sleep(this.config.batchDelay)
         }
       }
-      
+
       this.warmupEndTime = Date.now()
       const duration = this.warmupEndTime - this.warmupStartTime
-      
+
       // 統計結果
       const stats = this.getWarmupStats()
-      
+
       console.log(`🎉 Cache warmup completed in ${Math.round(duration / 1000)}s`)
       console.log(`📊 Results: ${stats.successful}/${stats.total} successful (${stats.successRate}%)`)
-      
+
       // 保存預熱記錄
       this.saveWarmupRecord(stats)
-      
+
       return this.warmupResults
-      
+
     } catch (error) {
       console.error('❌ Cache warmup failed:', error)
       throw error
@@ -187,15 +187,15 @@ class CacheWarmupService {
   // 預熱單個股票
   async warmupSymbol(symbol, attempt = 1) {
     const startTime = Date.now()
-    
+
     try {
       console.log(`🔥 Warming up ${symbol} (attempt ${attempt}/${this.config.retryAttempts + 1})`)
-      
+
       // 獲取技術指標數據 (這會觸發緩存)
       const data = await hybridTechnicalIndicatorsAPI.getTechnicalIndicators(symbol)
-      
+
       const duration = Date.now() - startTime
-      
+
       if (data && !data.error) {
         console.log(`✅ ${symbol} warmed up successfully in ${duration}ms (${data.source})`)
         return {
@@ -207,10 +207,10 @@ class CacheWarmupService {
       } else {
         throw new Error(data?.error || 'Unknown error')
       }
-      
+
     } catch (error) {
       console.error(`❌ Failed to warm up ${symbol} (attempt ${attempt}): ${error.message}`)
-      
+
       // 重試機制
       if (attempt <= this.config.retryAttempts) {
         console.log(`🔄 Retrying ${symbol} in ${this.config.retryDelay}ms...`)
@@ -241,7 +241,7 @@ class CacheWarmupService {
     try {
       // 獲取正確的 package.json 路徑 (支援 GitHub Pages)
       const packageUrl = this.getPackageJsonUrl()
-      
+
       const response = await fetch(packageUrl)
       if (response.ok) {
         const pkg = await response.json()
@@ -252,7 +252,7 @@ class CacheWarmupService {
       // 如果無法獲取，使用構建時間戳
       return Date.now().toString()
     }
-    
+
     return '1.0.0'
   }
 
@@ -262,7 +262,7 @@ class CacheWarmupService {
     import('./baseUrl.js').then(({ paths }) => {
       return paths.packageJson();
     });
-    
+
     // 同步版本 - 直接使用 import.meta.env.BASE_URL
     const base = import.meta.env.BASE_URL || '/';
     return `${base}package.json`;
@@ -282,7 +282,7 @@ class CacheWarmupService {
   // 獲取緩存統計
   async getCacheStats() {
     let cachedCount = 0
-    
+
     for (const symbol of this.trackedSymbols) {
       try {
         // 檢查是否有緩存數據
@@ -294,7 +294,7 @@ class CacheWarmupService {
         // 忽略錯誤
       }
     }
-    
+
     return {
       total: this.trackedSymbols.length,
       cached: cachedCount,
@@ -307,7 +307,7 @@ class CacheWarmupService {
     const results = Array.from(this.warmupResults.values())
     const successful = results.filter(r => r.success).length
     const failed = results.filter(r => !r.success).length
-    
+
     return {
       total: results.length,
       successful,
@@ -321,18 +321,18 @@ class CacheWarmupService {
   // 保存預熱記錄
   saveWarmupRecord(stats) {
     const currentVersion = this.getCurrentVersion()
-    
+
     localStorage.setItem('cache_warmup_version', currentVersion)
     localStorage.setItem('cache_warmup_time', Date.now().toString())
     localStorage.setItem('cache_warmup_stats', JSON.stringify(stats))
-    
+
     console.log('💾 Warmup record saved')
   }
 
   // 設置定期預熱
   schedulePeriodicWarmup() {
     console.log(`⏰ Scheduled periodic warmup every ${this.config.warmupInterval / 3600000} hours`)
-    
+
     setInterval(async () => {
       console.log('⏰ Periodic warmup triggered')
       try {

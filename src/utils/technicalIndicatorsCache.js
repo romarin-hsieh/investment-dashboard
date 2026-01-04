@@ -83,11 +83,10 @@ class TechnicalIndicatorsCache {
     if (this.memoryCache.has(cacheKey)) {
       const cached = this.memoryCache.get(cacheKey);
 
-      // 檢查是否需要根據 latest_index timestamp 更新
-      if (latestTimestamp && cached.indexTimestamp !== latestTimestamp) {
-        console.log(`Cache invalidated for ${symbol} due to index update`);
-        this.memoryCache.delete(cacheKey);
-      } else if (Date.now() - cached.timestamp < this.cacheTimeout) {
+      // 只要 key (包含日期) 匹配且未過期，就視為有效
+      // 移除對 cached.indexTimestamp !== latestTimestamp 的嚴格檢查
+      // 因為 cacheKey 本身已經包含了日期 (YYYY-MM-DD)，這對於每日數據已經足夠
+      if (Date.now() - cached.timestamp < this.cacheTimeout) {
         console.log(`Using memory cache for ${symbol}`);
         const dataWithSource = { ...cached.data, source: 'Daily Cache (Memory)' };
         return dataWithSource;
@@ -102,11 +101,9 @@ class TechnicalIndicatorsCache {
       if (cachedData) {
         const parsed = JSON.parse(cachedData);
 
-        // 檢查是否需要根據 latest_index timestamp 更新
-        if (latestTimestamp && parsed.indexTimestamp !== latestTimestamp) {
-          console.log(`LocalStorage cache invalidated for ${symbol} due to index update`);
-          localStorage.removeItem(cacheKey);
-        } else if (Date.now() - parsed.timestamp < this.cacheTimeout) {
+        // 同樣移除對 indexTimestamp 的嚴格檢查
+        // 只要緩存未過期且 Key 匹配 (即日期匹配)
+        if (Date.now() - parsed.timestamp < this.cacheTimeout) {
           console.log(`Using localStorage cache for ${symbol}`);
 
           // 同時存入內存緩存

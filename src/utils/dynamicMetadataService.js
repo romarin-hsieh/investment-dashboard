@@ -1,5 +1,5 @@
 // 動態元數據服務 - 使用 Yahoo Finance API 獲取即時的 sector 和 industry 信息
-import { yahooFinanceAPI } from './yahooFinanceApi.js'
+import { yahooFinanceAPI } from '@/api/yahooFinanceApi.js'
 
 class DynamicMetadataService {
   constructor() {
@@ -22,10 +22,10 @@ class DynamicMetadataService {
       }
 
       console.log(`Fetching fresh metadata for ${symbol} from Yahoo Finance API...`)
-      
+
       // 從 Yahoo Finance API 獲取股票信息
       const stockInfo = await yahooFinanceAPI.getStockInfo(symbol)
-      
+
       if (stockInfo && !stockInfo.error && stockInfo.sector !== 'Unknown') {
         // 轉換為標準元數據格式
         const metadata = {
@@ -100,10 +100,10 @@ class DynamicMetadataService {
       'TSLA': { sector: 'Consumer Cyclical', industry: 'Auto Manufacturers', confidence: 0.90 }
     }
 
-    const fallbackData = staticData[symbol] || { 
-      sector: 'Unknown', 
-      industry: 'Unknown Industry', 
-      confidence: 0.0 
+    const fallbackData = staticData[symbol] || {
+      sector: 'Unknown',
+      industry: 'Unknown Industry',
+      confidence: 0.0
     }
 
     const metadata = {
@@ -144,7 +144,7 @@ class DynamicMetadataService {
   async getBatchMetadata(symbols) {
     const results = new Map()
     const batches = this.createBatches(symbols, this.batchSize)
-    
+
     console.log(`Fetching metadata for ${symbols.length} symbols in ${batches.length} batches...`)
 
     for (let i = 0; i < batches.length; i++) {
@@ -152,7 +152,7 @@ class DynamicMetadataService {
       console.log(`Processing batch ${i + 1}/${batches.length} (${batch.length} symbols)`)
 
       // 並行處理批次內的請求
-      const batchPromises = batch.map(symbol => 
+      const batchPromises = batch.map(symbol =>
         this.getSymbolMetadata(symbol).catch(error => {
           console.error(`Failed to fetch metadata for ${symbol}:`, error)
           return this.getDefaultMetadata(symbol)
@@ -160,7 +160,7 @@ class DynamicMetadataService {
       )
 
       const batchResults = await Promise.all(batchPromises)
-      
+
       // 存儲結果
       batch.forEach((symbol, index) => {
         results.set(symbol, batchResults[index])
@@ -203,13 +203,13 @@ class DynamicMetadataService {
   getDefaultExchange(symbol) {
     const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS']
     const nyseSymbols = ['TSM', 'ORCL', 'RDW']
-    
+
     if (nasdaqSymbols.includes(symbol)) {
       return 'NASDAQ'
     } else if (nyseSymbols.includes(symbol)) {
       return 'NYSE'
     }
-    
+
     return 'NASDAQ' // Default
   }
 
@@ -218,14 +218,14 @@ class DynamicMetadataService {
     if (!metadata || metadata.confidence < 0.7) {
       return 'Unknown Industry'
     }
-    
+
     return metadata.industry || metadata.sector || 'Unknown Industry'
   }
 
   // 獲取行業分類 (用於 CSS 樣式)
   getIndustryCategory(metadata) {
     const industry = this.getIndustryDisplay(metadata)
-    
+
     const industryCategories = {
       // 科技類
       'Software - Application': 'tech-software',
@@ -235,54 +235,54 @@ class DynamicMetadataService {
       'Internet Content & Information': 'tech-internet',
       'Semiconductors': 'tech-hardware',
       'Quantum Computing': 'tech-quantum',
-      
+
       // 工業類
       'Aerospace & Defense': 'industrial-aerospace',
       'Space Infrastructure': 'industrial-space',
       'Industrial IoT Solutions': 'tech-iot',
-      
+
       // 通訊類
       'Satellite Communications': 'communications',
       'Satellite Imaging & Analytics': 'tech-satellite',
-      
+
       // 汽車類
       'Auto Manufacturers': 'automotive',
       'Electric Vehicles': 'automotive',
-      
+
       // 零售類
       'Internet Retail': 'retail',
-      
+
       // 娛樂類
       'Entertainment': 'entertainment',
-      
+
       // 能源類
       'Uranium': 'energy-nuclear',
       'Nuclear Energy': 'energy-nuclear',
-      
+
       // 醫療類
       'Health Information Services': 'healthcare',
-      
+
       // 未知
       'Unknown Industry': 'unknown'
     }
-    
+
     return industryCategories[industry] || 'other'
   }
 
   // 生成行業統計
   generateSectorGrouping(metadataMap) {
     const sectorGrouping = {}
-    
+
     for (const [symbol, metadata] of metadataMap) {
       const sector = metadata.sector || 'Unknown'
-      
+
       if (!sectorGrouping[sector]) {
         sectorGrouping[sector] = []
       }
-      
+
       sectorGrouping[sector].push(symbol)
     }
-    
+
     return sectorGrouping
   }
 
@@ -294,10 +294,10 @@ class DynamicMetadataService {
       low_confidence_0_50: 0,
       unknown_confidence: 0
     }
-    
+
     for (const [symbol, metadata] of metadataMap) {
       const confidence = metadata.confidence || 0
-      
+
       if (confidence >= 0.90) {
         distribution.high_confidence_0_90++
       } else if (confidence >= 0.75) {
@@ -308,7 +308,7 @@ class DynamicMetadataService {
         distribution.unknown_confidence++
       }
     }
-    
+
     return distribution
   }
 
@@ -338,7 +338,7 @@ class DynamicMetadataService {
       totalCached: this.cache.size,
       cacheEntries: {}
     }
-    
+
     for (const [symbol, cached] of this.cache.entries()) {
       stats.cacheEntries[symbol] = {
         age: Date.now() - cached.timestamp,
@@ -348,20 +348,20 @@ class DynamicMetadataService {
         confidence: cached.data.confidence
       }
     }
-    
+
     return stats
   }
 
   // 預熱緩存 - 為常用股票預先獲取元數據
   async warmupCache(symbols) {
     console.log(`Warming up metadata cache for ${symbols.length} symbols...`)
-    
+
     const startTime = Date.now()
     const results = await this.getBatchMetadata(symbols)
     const duration = Date.now() - startTime
-    
+
     console.log(`Cache warmup completed in ${duration}ms for ${results.size} symbols`)
-    
+
     return {
       duration,
       symbolsProcessed: results.size,
