@@ -355,6 +355,7 @@ export default {
     
     onRangeChange() {
       console.log(`📊 Range changed to ${this.selectedRange} for ${this.symbol}`);
+      this.loading = true; // Force visual loading state
       this.loadData();
     },
     

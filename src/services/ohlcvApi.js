@@ -31,13 +31,17 @@ class OhlcvApi {
 
     // 步驟 1: 優先嘗試本地 JSON（Production 主要路徑）
     try {
-      const localData = await this.fetchLocalOhlcv(symbol, period, range);
+      let localData = await this.fetchLocalOhlcv(symbol, period, range);
+
       if (localData) {
+        // Filter data based on range (since local JSON contains full history)
+        localData = this.filterDataByRange(localData, range);
+
         this.cache.set(cacheKey, {
           data: localData,
           timestamp: Date.now()
         });
-        console.log(`📊 Loaded local OHLCV for ${symbol}: ${localData.timestamps?.length || 0} points`);
+        console.log(`📊 Loaded local OHLCV for ${symbol}: ${localData.timestamps?.length || 0} points (${range})`);
         return localData;
       }
     } catch (error) {
@@ -143,6 +147,62 @@ class OhlcvApi {
     }
 
     return true;
+  }
+
+  /**
+   * 根據時間範圍過濾 OHLCV 數據
+   * @param {Object} data - 完整 OHLCV 數據
+   * @param {string} range - 範圍 (3mo, 6mo, 1y)
+   * @returns {Object} 過濾後的數據
+   */
+  filterDataByRange(data, range) {
+    if (!data || !data.timestamps || data.timestamps.length === 0) return data;
+
+    const now = new Date();
+    let cutoffDate = new Date();
+
+    switch (range) {
+      case '1w':
+        cutoffDate.setDate(now.getDate() - 7);
+        break;
+      case '1m':
+        cutoffDate.setMonth(now.getMonth() - 1);
+        break;
+      case '3mo':
+        cutoffDate.setMonth(now.getMonth() - 3);
+        break;
+      case '6mo':
+        cutoffDate.setMonth(now.getMonth() - 6);
+        break;
+      case '1y':
+        cutoffDate.setFullYear(now.getFullYear() - 1);
+        break;
+      case '5y':
+        cutoffDate.setFullYear(now.getFullYear() - 5);
+        break;
+      default:
+        return data; // 'max' or unknown
+    }
+
+    const cutoffTime = cutoffDate.getTime();
+
+    // Find the starting index
+    const startIndex = data.timestamps.findIndex(t => t >= cutoffTime);
+
+    if (startIndex === -1 || startIndex === 0) {
+      return data; // Data is all within range or filter failed
+    }
+
+    // Slice all arrays
+    return {
+      ...data,
+      timestamps: data.timestamps.slice(startIndex),
+      open: data.open.slice(startIndex),
+      high: data.high.slice(startIndex),
+      low: data.low.slice(startIndex),
+      close: data.close.slice(startIndex),
+      volume: data.volume.slice(startIndex)
+    };
   }
 
   /**
