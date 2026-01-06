@@ -158,27 +158,28 @@ class OhlcvApi {
   filterDataByRange(data, range) {
     if (!data || !data.timestamps || data.timestamps.length === 0) return data;
 
-    const now = new Date();
-    let cutoffDate = new Date();
+    // Use the last timestamp in the dataset as "now" to handle historical/stale data correctly
+    const lastTimestamp = data.timestamps[data.timestamps.length - 1];
+    const cutoffDate = new Date(lastTimestamp);
 
     switch (range) {
       case '1w':
-        cutoffDate.setDate(now.getDate() - 7);
+        cutoffDate.setDate(cutoffDate.getDate() - 7);
         break;
       case '1m':
-        cutoffDate.setMonth(now.getMonth() - 1);
+        cutoffDate.setMonth(cutoffDate.getMonth() - 1);
         break;
       case '3mo':
-        cutoffDate.setMonth(now.getMonth() - 3);
+        cutoffDate.setMonth(cutoffDate.getMonth() - 3);
         break;
       case '6mo':
-        cutoffDate.setMonth(now.getMonth() - 6);
+        cutoffDate.setMonth(cutoffDate.getMonth() - 6);
         break;
       case '1y':
-        cutoffDate.setFullYear(now.getFullYear() - 1);
+        cutoffDate.setFullYear(cutoffDate.getFullYear() - 1);
         break;
       case '5y':
-        cutoffDate.setFullYear(now.getFullYear() - 5);
+        cutoffDate.setFullYear(cutoffDate.getFullYear() - 5);
         break;
       default:
         return data; // 'max' or unknown
@@ -190,7 +191,12 @@ class OhlcvApi {
     const startIndex = data.timestamps.findIndex(t => t >= cutoffTime);
 
     if (startIndex === -1 || startIndex === 0) {
-      return data; // Data is all within range or filter failed
+      // If filtering returns nothing (e.g. data gap), return reasonable fallback?
+      // Or if -1 (all data is older than cutoff?), return empty?
+      // Actually if startIndex is -1, it means NO data satisfies condition t >= cutoffTime.
+      // But we anchored to the last point, so the last point MUST satisfy it (t == last >= cutoff).
+      // So -1 shouldn't happen unless data is empty.
+      return data;
     }
 
     // Slice all arrays

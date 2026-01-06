@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 4,
+        "buy": 8,
+        "hold": 4,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 4,
         "buy": 6,
         "hold": 5,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 6,
         "hold": 4,
@@ -37,7 +45,7 @@
         "organization": "Galileo (ptc) Ltd",
         "pctHeld": 0.1527,
         "position": 52268715,
-        "value": 1454115635,
+        "value": 1386950344,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Crosslink Capital Inc",
         "pctHeld": 0.0854,
         "position": 29247206,
-        "value": 813657261,
+        "value": 776074606,
         "pctChange": 0
       },
       {
@@ -55,7 +63,7 @@
         "organization": "General Atlantic, L.P.",
         "pctHeld": 0.0561,
         "position": 19208760,
-        "value": 534387697,
+        "value": 509704443,
         "pctChange": 0
       },
       {
@@ -64,7 +72,7 @@
         "organization": "ICONIQ Capital, LLC",
         "pctHeld": 0.043899998,
         "position": 15034594,
-        "value": 418262400,
+        "value": 398942949,
         "pctChange": 0
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Tiger Global Management, LLC",
         "pctHeld": 0.0364,
         "position": 12470768,
-        "value": 346936761,
+        "value": 330911826,
         "pctChange": 0
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Coatue Management LLC",
         "pctHeld": 0.0313,
         "position": 10716284,
-        "value": 298127017,
+        "value": 284356594,
         "pctChange": -0.0098
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Dragoneer Investment Group, LLC",
         "pctHeld": 0.025,
         "position": 8548884,
-        "value": 237829950,
+        "value": 226844635,
         "pctChange": 0
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0201,
         "position": 6878057,
-        "value": 191347543,
+        "value": 182509241,
         "pctChange": 0.9001
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Softbank Group Corporation",
         "pctHeld": 0.0148,
         "position": 5067336,
-        "value": 140973285,
+        "value": 134461759,
         "pctChange": 0
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Orland Properties Ltd.",
         "pctHeld": 0.0135,
         "position": 4610050,
-        "value": 128251589,
+        "value": 122327676,
         "pctChange": 0
       }
     ]
@@ -142,7 +150,8 @@
           "calendarQuarter": "2Q2025",
           "difference": "4.47",
           "surprisePct": "102.68",
-          "periodEndDate": 1751241600
+          "periodEndDate": 1751241600,
+          "reportedDate": 1754598311
         },
         {
           "date": "3Q2025",
@@ -152,7 +161,8 @@
           "calendarQuarter": "3Q2025",
           "difference": "0.3",
           "surprisePct": "138.18",
-          "periodEndDate": 1759190400
+          "periodEndDate": 1759190400,
+          "reportedDate": 1762377014
         }
       ],
       "currentQuarterEstimate": 0.04,
@@ -193,24 +203,23 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0537879,
-    "regularMarketChange": 1.42,
-    "regularMarketTime": "2026-01-05T21:00:01.000Z",
+    "regularMarketChangePercent": -0.046189785,
+    "regularMarketChange": -1.2849998,
+    "regularMarketTime": "2026-01-06T16:37:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 27.82,
-    "regularMarketDayHigh": 27.88,
-    "regularMarketDayLow": 26.47,
-    "regularMarketVolume": 3295018,
-    "averageDailyVolume10Day": 2850660,
-    "averageDailyVolume3Month": 3860118,
-    "regularMarketPreviousClose": 26.4,
+    "regularMarketPrice": 26.535,
+    "regularMarketDayHigh": 27.95,
+    "regularMarketDayLow": 26.5101,
+    "regularMarketVolume": 795096,
+    "averageDailyVolume10Day": 2879820,
+    "averageDailyVolume3Month": 3851043,
+    "regularMarketPreviousClose": 27.82,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 26.5,
+    "regularMarketOpen": 27.93,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "CHYM",
     "underlyingSymbol": null,
@@ -222,13 +231,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 10420759552
+    "marketCap": 9939426304
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 9370762240,
-    "forwardPE": 34.774998,
+    "forwardPE": 33.16875,
     "profitMargins": -0.47674,
     "floatShares": 213112399,
     "sharesOutstanding": 342395697,
@@ -244,7 +253,7 @@
     "impliedSharesOutstanding": 374577986,
     "category": null,
     "bookValue": 3.855,
-    "priceToBook": 7.216602,
+    "priceToBook": 6.8832684,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -256,8 +265,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 4.537,
     "enterpriseToEbitda": -15.55,
-    "52WeekChange": -0.28860146,
-    "SandP52WeekChange": 0.16067612,
+    "52WeekChange": -0.25033683,
+    "SandP52WeekChange": 0.16805124,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -528,10 +537,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 27.82,
+    "currentPrice": 26.535,
     "targetHighPrice": 40,
     "targetLowPrice": 19,
-    "targetMeanPrice": 31.66667,
+    "targetMeanPrice": 31.86667,
     "targetMedianPrice": 33,
     "recommendationMean": 1.75,
     "recommendationKey": "buy",
@@ -554,6 +563,6 @@
     "profitMargins": -0.47674,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-06T10:44:07.914Z",
+  "lastUpdated": "2026-01-06T16:37:21.992Z",
   "source": "Static Build (yahoo-finance2)"
 }

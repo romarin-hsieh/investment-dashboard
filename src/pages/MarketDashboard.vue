@@ -51,9 +51,6 @@
       <div class="widget-container vix-container">
         <div class="widget-header">
           <h3>VIX Index (Volatility Index)</h3>
-          <button @click="refreshVixWidget" class="btn btn-sm btn-secondary">
-            🔄 Refresh VIX
-          </button>
         </div>
         <VixWidget :key="`vix-${vixKey}`" />
       </div>
@@ -179,11 +176,7 @@ export default {
       })
     },
 
-    // 強制刷新 VIX widget
-    refreshVixWidget() {
-      this.vixKey = Date.now()
-      console.log('VIX widget refreshed with key:', this.vixKey)
-    }
+
   },
   computed: {
     tickersConfig() {
