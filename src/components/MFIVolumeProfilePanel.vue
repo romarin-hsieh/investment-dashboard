@@ -20,37 +20,17 @@
 
     <!-- Main Content -->
     <div v-else-if="profileData" class="panel-content">
-      <!-- Header with Key Metrics -->
-      <div class="metrics-header">
-        <div class="metric-card">
-          <div class="metric-label">MFI Signal</div>
-          <div class="metric-value" :class="`signal-${profileData.mfi.signal.toLowerCase()}`">
-            {{ profileData.mfi.signal }}
+      <div class="mfi-header-row">
+          <div class="title-section">
+              <h4>MFI Volume Profile</h4>
+              <button class="header-info-btn inline-info-btn" @click="openInfo('analysis')" title="Analysis Logic">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
+                    <path d="M9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+              </button>
           </div>
-          <div class="metric-detail">{{ profileData.mfi.latest?.toFixed(2) || 'N/A' }}</div>
-        </div>
-        
-        <div class="metric-card">
-          <div class="metric-label">Market Sentiment</div>
-          <div class="metric-value" :class="`sentiment-${profileData.marketSentiment.toLowerCase()}`">
-            {{ profileData.marketSentiment }}
-          </div>
-          <div class="metric-detail">
-            Buy: {{ (profileData.statistics.buyingRatio * 100).toFixed(1) }}%
-          </div>
-        </div>
-        
-        <div class="metric-card">
-          <div class="metric-label">Point of Control</div>
-          <div class="metric-value">${{ profileData.pointOfControl.priceLevel.toFixed(2) }}</div>
-          <div class="metric-detail">{{ profileData.pointOfControl.percentage.toFixed(1) }}% volume</div>
-        </div>
-      </div>
-
-      <!-- Volume Profile Chart (DOM-based) -->
-      <div class="volume-profile-chart">
-        <div class="chart-header">
-          <h4>Volume Profile ({{ bins }} bins, MFI {{ mfiPeriod }})</h4>
           <div class="chart-controls">
             <select v-model="selectedRange" @change="onRangeChange" class="range-selector">
               <option value="3mo">3 Months</option>
@@ -58,7 +38,32 @@
               <option value="1y">1 Year</option>
             </select>
           </div>
+      </div>
+
+      <!-- Metrics Status Bar -->
+      <div class="metrics-status-bar">
+        <div class="status-item">
+          <span class="status-label">MFI Signal:</span>
+          <span class="status-value" :class="`signal-${profileData.mfi.signal.toLowerCase()}`">{{ profileData.mfi.signal }}</span>
+          <span class="status-detail">({{ profileData.mfi.latest?.toFixed(2) || 'N/A' }})</span>
         </div>
+        <div class="status-divider">|</div>
+        <div class="status-item">
+          <span class="status-label">Sentiment:</span>
+          <span class="status-value" :class="`sentiment-${profileData.marketSentiment.toLowerCase()}`">{{ profileData.marketSentiment }}</span>
+          <span class="status-detail">(Buy: {{ (profileData.statistics.buyingRatio * 100).toFixed(0) }}%)</span>
+        </div>
+        <div class="status-divider">|</div>
+        <div class="status-item">
+          <span class="status-label">POC:</span>
+          <span class="status-value">${{ profileData.pointOfControl.priceLevel.toFixed(2) }}</span>
+          <span class="status-detail">({{ profileData.pointOfControl.percentage.toFixed(1) }}% vol)</span>
+        </div>
+      </div>
+
+      <!-- Volume Profile Chart (DOM-based) -->
+      <div class="volume-profile-chart">
+        <div class="chart-header" style="display:none;"></div>
         
         <div class="chart-container" :style="{ height: totalChartHeight + 'px' }">
           <!-- Price Scale (Left) -->
@@ -121,33 +126,37 @@
       </div>
 
       <!-- Trading Signals -->
-      <div v-if="tradingSignals" class="trading-signals">
+      <div class="trading-signals">
         <div class="signals-header">
-          <h4>Trading Analysis</h4>
-          <div class="signal-badge" :class="`signal-${tradingSignals.signal.toLowerCase()}`">
+          <div style="display: flex; align-items: center;">
+             <h4>Trading Analysis</h4>
+             <button class="inline-info-btn" @click="openInfo('analysis')" title="Analysis Logic">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
+                    <path d="M9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+             </button>
+          </div>
+          <div v-if="tradingSignals" class="signal-badge" :class="`signal-${tradingSignals.signal.toLowerCase()}`">
             {{ tradingSignals.signal }}
           </div>
         </div>
         
-        <div class="signals-content">
-          <div class="confidence-bar">
-            <div class="confidence-label">Confidence: {{ (tradingSignals.confidence * 100).toFixed(0) }}%</div>
-            <div class="confidence-progress">
-              <div 
-                class="confidence-fill" 
-                :style="{ width: (tradingSignals.confidence * 100) + '%' }"
-              ></div>
-            </div>
-          </div>
-          
+        <div v-if="tradingSignals" class="signals-content">
           <div v-if="tradingSignals.recommendations.length > 0" class="recommendations">
             <div class="recommendation" v-for="(rec, index) in tradingSignals.recommendations" :key="index">
               {{ rec }}
             </div>
           </div>
         </div>
+        <div v-else class="no-signals">
+            <p>No clean trading signals detected at this moment. Market may be ranging or data insufficient.</p>
+        </div>
       </div>
     </div>
+
+
 
     <!-- No Data State -->
     <div v-else class="no-data-state">
@@ -156,6 +165,38 @@
       <div v-if="isDev" class="dev-fallback">
         <button @click="loadData" class="retry-btn">Try Yahoo Finance (DEV)</button>
       </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div v-if="showInfo" class="modal-overlay" @click.self="showInfo = false">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>MFI & Volume Profile Guide</h5>
+                <button class="close-btn" @click="showInfo = false">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h6>MFI (Money Flow Index)</h6>
+                <p>Volume-weighted RSI. Measures buying/selling pressure.</p>
+                <ul>
+                    <li><strong>>80:</strong> Overbought (Potential Top)</li>
+                    <li><strong><20:</strong> Oversold (Potential Bottom)</li>
+                </ul>
+
+                <h6>Volume Profile</h6>
+                <p>Displays trading activity at specific price levels.</p>
+                <ul>
+                    <li><strong>POC (Point of Control):</strong> Price level with highest volume. Acts as strong support/resistance.</li>
+                    <li><strong>Value Area (VA):</strong> Range where 70% of volume occurred.</li>
+                </ul>
+
+                <h6>Trading Analysis Logic</h6>
+                <ul>
+                    <li><strong>Bullish:</strong> Price above POC + Rising MFI (or Oversold MFI rebound).</li>
+                    <li><strong>Bearish:</strong> Price below POC + Falling MFI (or Overbought MFI rejection).</li>
+                    <li><strong>Buying/Selling Ratio:</strong> Derived from Up/Down volume in candles.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <!-- Tooltip -->
@@ -212,6 +253,7 @@ export default {
       currentPrice: null,
       selectedRange: '3mo',
       binHeight: 12, // Height per bin in pixels
+      showInfo: false,
       tooltip: {
         visible: false,
         data: null,
@@ -245,6 +287,9 @@ export default {
     }
   },
   methods: {
+    openInfo(section = null) {
+        this.showInfo = true;
+    },
     async loadData() {
       if (this.loading) return;
       
@@ -349,18 +394,40 @@ export default {
       const maxVolume = this.profileData.statistics.maxVolumeInBin;
       const widthPercent = maxVolume > 0 ? (bin.volume / maxVolume) * 100 : 0;
       
-      // Color based on MFI sentiment
-      let backgroundColor = '#9E9E9E'; // Neutral gray
-      if (bin.positiveVolume > bin.negativeVolume) {
-        backgroundColor = '#4CAF50'; // Green for buying pressure
-      } else if (bin.negativeVolume > bin.positiveVolume) {
-        backgroundColor = '#F44336'; // Red for selling pressure
+      // Define colors
+      const safeColor = '#10b981'; // Green/Teal (Profit/Support)
+      const trappedColor = '#ef4444'; // Red (Loss/Resistance)
+      const neutralColor = '#6b7280'; // Gray
+      
+      let backgroundColor = neutralColor;
+      let opacity = 0.7;
+
+      // Use this.currentPrice (fetched from OHLCV)
+      if (this.currentPrice) {
+          if (bin.maxPrice < this.currentPrice) {
+              // Bin is fully below current price -> Safe/Profit Zone (Support)
+              backgroundColor = safeColor;
+          } else if (bin.minPrice > this.currentPrice) {
+              // Bin is fully above current price -> Trapped/Loss Zone (Resistance)
+              backgroundColor = trappedColor;
+          } else {
+              // Bin represents current price level (At intersection)
+              backgroundColor = '#f59e0b'; // Amber
+              opacity = 0.9;
+          }
+      }
+      
+      // Highlight POC
+      if (bin.priceLevel === this.profileData.pointOfControl.priceLevel) {
+           opacity = 1;
+           // Optional: POC color override if desired
       }
       
       return {
-        width: `${Math.max(widthPercent, 1)}%`, // Minimum 1% for visibility
+        width: `${Math.max(widthPercent, 1)}%`,
         height: '80%',
         backgroundColor: backgroundColor,
+        opacity: opacity,
         borderRadius: '2px',
         transition: 'all 0.2s ease'
       };
@@ -511,63 +578,78 @@ export default {
   padding: 1rem;
 }
 
-/* Metrics Header */
-.metrics-header {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+/* New Layout Styles */
+.mfi-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
 }
 
-.metric-card {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 6px;
-  padding: 0.75rem;
-  text-align: center;
+.title-section {
+  display: flex;
+  align-items: center;
 }
 
-.metric-label {
-  font-size: 0.8rem;
-  color: #6c757d;
-  margin-bottom: 0.25rem;
-}
-
-.metric-value {
-  font-size: 1rem;
+.title-section h4 {
+  margin: 0;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  color: #374151;
 }
+
+.metrics-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow-x: auto; /* Handle overflow gracefully if screen is very narrow */
+  scrollbar-width: none; /* Hide scrollbar */
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-label {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.status-value {
+  font-weight: 700;
+}
+
+.status-detail {
+  font-size: 0.8em;
+  color: #9ca3af;
+}
+
+.status-divider {
+  color: #d1d5db;
+  font-size: 0.8rem;
+}
+
+/* Updated Colors for text */
+.signal-overbought, .signal-sell { color: #d32f2f; }
+.signal-oversold, .signal-buy { color: #10b981; }
+.signal-neutral, .signal-hold { color: #f59e0b; }
+
+.sentiment-bullish { color: #10b981; }
+.sentiment-bearish { color: #d32f2f; }
+.sentiment-neutral { color: #f59e0b; }
 
 .metric-detail {
   font-size: 0.75rem;
   color: #6c757d;
 }
 
-/* Signal Colors */
-.signal-overbought, .signal-sell {
-  color: #d32f2f;
-}
 
-.signal-oversold, .signal-buy {
-  color: #388e3c;
-}
-
-.signal-neutral, .signal-hold {
-  color: #f57c00;
-}
-
-.sentiment-bullish {
-  color: #388e3c;
-}
-
-.sentiment-bearish {
-  color: #d32f2f;
-}
-
-.sentiment-neutral {
-  color: #f57c00;
-}
 
 /* Volume Profile Chart */
 .volume-profile-chart {
@@ -748,29 +830,7 @@ export default {
   color: #856404;
 }
 
-/* Confidence Bar */
-.confidence-bar {
-  margin-bottom: 1rem;
-}
 
-.confidence-label {
-  font-size: 0.85rem;
-  color: #495057;
-  margin-bottom: 0.5rem;
-}
-
-.confidence-progress {
-  height: 6px;
-  background: #e9ecef;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.confidence-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #dc3545, #ffc107, #28a745);
-  transition: width 0.3s ease;
-}
 
 /* Recommendations */
 .recommendations {
@@ -796,6 +856,103 @@ export default {
   font-size: 0.8rem;
   pointer-events: none;
   max-width: 200px;
+}
+
+/* Info Button */
+.inline-info-btn {
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    color: #adb5bd;
+    cursor: pointer;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s;
+}
+
+.inline-info-btn:hover {
+    color: #007bff;
+}
+
+.no-signals {
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-style: italic;
+    padding: 0.5rem 0;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header h5 {
+    margin: 0;
+    font-size: 1rem;
+    color: #495057;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.modal-body {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    color: #212529;
+}
+
+.modal-body h6 {
+    margin: 1rem 0 0.5rem 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.modal-body h6:first-child {
+    margin-top: 0;
+}
+
+.modal-body ul {
+    margin: 0 0 1rem 0;
+    padding-left: 1.2rem;
+}
+
+.modal-body li {
+    margin-bottom: 0.4rem;
 }
 
 .tooltip-content div {

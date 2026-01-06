@@ -67,121 +67,177 @@
         </div>
       </div>
 
-      <!-- Symbol Insight Block -->
-      <div class="symbol-insight-block">
-        <div class="insight-header">
-          <h3>Symbol Insight</h3>
-        </div>
-        
-        <!-- Market Regime Block (Full Width) -->
-        <div class="insight-full-widget market-regime">
-          <div class="widget-header">
-            <h4>Market Regime</h4>
-          </div>
-          <MarketRegimeWidget
-            :symbol="symbol"
-            :exchange="exchange"
-            :priority="2"
-          />
-        </div>
-
-        <!-- Trading Strategy Block (Full Width) -->
-        <div class="insight-full-widget trading-strategy">
-          <div class="widget-header">
-            <h4>Trading Strategy</h4>
-          </div>
-          <TradingStrategyWidget
-            :symbol="symbol"
-            :exchange="exchange"
-            :priority="3"
-          />
-        </div>
-
-        <!-- MFI Volume Profile Block (Full Width) -->
-        <div class="insight-full-widget mfi-volume-profile">
-          <div class="widget-header">
-            <h4>MFI Volume Profile</h4>
-          </div>
-          <MFIVolumeProfilePanel
-            :symbol="symbol"
-            :exchange="exchange"
-            :priority="4"
-          />
-        </div>
-        
-        <!-- Daily and Weekly Insight (Two Columns) -->
-        <div class="insight-widgets-container">
-          <!-- Daily Insight (MA5) - Left -->
-          <div class="insight-widget daily-insight">
-            <div class="widget-header">
-              <h4>Daily Insight (MA5)</h4>
-            </div>
-            <LazyTradingViewWidget
-              widget-type="Daily Insight"
-              :config="dailyInsightConfig"
-              script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-              height="550px"
-              :priority="5"
-            />
-          </div>
-
-          <!-- Weekly Insight (MA4) - Right -->
-          <div class="insight-widget weekly-insight">
-            <div class="widget-header">
-              <h4>Weekly Insight (MA4)</h4>
-            </div>
-            <LazyTradingViewWidget
-              widget-type="Weekly Insight"
-              :config="weeklyInsightConfig"
-              script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
-              height="550px"
-              :priority="6"
-            />
-          </div>
-        </div>
+      <!-- Tab Navigation -->
+      <div class="tabs-nav">
+        <button 
+            class="tab-btn" 
+            :class="{ active: activeTab === 'overview' }"
+            @click="activeTab = 'overview'"
+        >
+            Overview & Technicals
+        </button>
+        <button 
+            class="tab-btn" 
+            :class="{ active: activeTab === 'analysis' }"
+            @click="activeTab = 'analysis'"
+        >
+            Fundamental Analysis
+        </button>
+        <button 
+            class="tab-btn" 
+            :class="{ active: activeTab === 'holdings' }"
+            @click="activeTab = 'holdings'"
+        >
+            Holdings & Sentiment
+        </button>
       </div>
 
-      <!-- Technical Indicators - Match Market Overview style -->
-      <div class="widget-container">
-        <div class="widget-header">
-          <h3>Technical Indicators</h3>
-        </div>
-        <TechnicalIndicators :symbol="symbol" :exchange="exchange" />
+      <!-- Tab Content: Overview -->
+      <div v-show="activeTab === 'overview'" class="tab-content">
+          
+          <!-- Technical Signals (Tactical) -->
+          <div class="widget-container">
+            <div class="widget-header flex-header">
+                <div style="display: flex; align-items: center;">
+                    <h3>Tactical Signals</h3>
+                    <button class="header-info-btn" @click="$refs.technicalSignals.openModal()" title="Signal Specifications" style="margin-left: 8px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
+                            <path d="M9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="tactical-grid">
+                 <TechnicalSignals ref="technicalSignals" :symbol="symbol" />
+                 <TechnicalIndicators :symbol="symbol" :exchange="exchange" />
+            </div>
+          </div>
+
+          <!-- Symbol Insight Block -->
+          <div class="symbol-insight-block">
+            <div class="insight-header">
+              <h3>Symbol Insight</h3>
+            </div>
+            
+            <!-- Market Regime Block (Full Width) -->
+            <div class="insight-full-widget market-regime">
+              <div class="widget-header">
+                <h4>Market Regime</h4>
+              </div>
+              <MarketRegimeWidget
+                :symbol="symbol"
+                :exchange="exchange"
+                :priority="2"
+              />
+            </div>
+
+            <!-- Trading Strategy Block (Full Width) -->
+            <div class="insight-full-widget trading-strategy">
+              <div class="widget-header">
+                <h4>Trading Strategy</h4>
+              </div>
+              <TradingStrategyWidget
+                :symbol="symbol"
+                :exchange="exchange"
+                :priority="3"
+              />
+            </div>
+
+            <!-- MFI Volume Profile Block (Full Width) -->
+            <div class="insight-full-widget mfi-volume-profile">
+              <div class="widget-header">
+                <h4>MFI Volume Profile</h4>
+              </div>
+              <MFIVolumeProfilePanel
+                :symbol="symbol"
+                :exchange="exchange"
+                :priority="4"
+              />
+            </div>
+            
+            <!-- Daily and Weekly Insight (Two Columns) -->
+            <div class="insight-widgets-container">
+              <!-- Daily Insight (MA5) - Left -->
+              <div class="insight-widget daily-insight">
+                <div class="widget-header">
+                  <h4>Daily Insight (MA5)</h4>
+                </div>
+                <LazyTradingViewWidget
+                  widget-type="Daily Insight"
+                  :config="dailyInsightConfig"
+                  script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+                  height="550px"
+                  :priority="5"
+                />
+              </div>
+
+              <!-- Weekly Insight (MA4) - Right -->
+              <div class="insight-widget weekly-insight">
+                <div class="widget-header">
+                  <h4>Weekly Insight (MA4)</h4>
+                </div>
+                <LazyTradingViewWidget
+                  widget-type="Weekly Insight"
+                  :config="weeklyInsightConfig"
+                  script-url="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+                  height="550px"
+                  :priority="6"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Monitor -->
+          <PerformanceMonitor />
+          
+          <!-- Latest News -->
+          <div class="widget-container">
+            <div class="widget-header">
+                <h3>Latest News</h3>
+            </div>
+            <StockNews :symbol="symbol" />
+          </div>
       </div>
 
-      <!-- Performance Monitor -->
-      <PerformanceMonitor />
-
-      <!-- Main Content Layout -->
-      <div class="content-layout">
-        <!-- Row 1: Stock News (Full Width) -->
-        <div class="widget-container">
-          <div class="widget-header">
-            <h3>Latest News</h3>
+      <!-- Tab Content: Analysis -->
+      <div v-if="activeTab === 'analysis'" class="tab-content">
+          <div class="widget-container">
+             <div class="widget-header"><h3>Deep Research</h3></div>
+             <FundamentalAnalysis :symbol="symbol" />
           </div>
-          <StockNews :symbol="symbol" />
-        </div>
+          
+          <div class="content-layout">
+            <!-- Row 2: Fundamental Data (Full Width) -->
+            <div class="widget-container">
+              <div class="widget-header">
+                <h3>Financials Overview</h3>
+              </div>
+              <TradingViewFundamentalData :symbol="symbol" :exchange="exchange" />
+            </div>
 
-        <!-- Row 2: Fundamental Data (Full Width) -->
-        <div class="widget-container">
-          <div class="widget-header">
-            <h3>Fundamental Data</h3>
+            <!-- Row 3: Company Profile (Full Width) -->
+            <div class="widget-container">
+              <div class="widget-header">
+                <h3>Company Profile</h3>
+              </div>
+              <TradingViewCompanyProfile 
+                :symbol="symbol" 
+                :exchange="exchange" 
+                color-theme="light"
+                :is-transparent="true"
+              />
+            </div>
           </div>
-          <TradingViewFundamentalData :symbol="symbol" :exchange="exchange" />
-        </div>
+      </div>
 
-        <!-- Row 3: Company Profile (Full Width) -->
-        <div class="widget-container">
-          <div class="widget-header">
-            <h3>Company Profile</h3>
+      <!-- Tab Content: Holdings -->
+      <div v-if="activeTab === 'holdings'" class="tab-content">
+          <div class="widget-container">
+             <div class="widget-header"><h3>Institutional & Insider Holdings</h3></div>
+             <HoldingsAnalysis :symbol="symbol" />
           </div>
-          <TradingViewCompanyProfile 
-            :symbol="symbol" 
-            :exchange="exchange" 
-            color-theme="light"
-            :is-transparent="true"
-          />
-        </div>
       </div>
     </div>
   </div>
@@ -199,6 +255,9 @@ import TechnicalIndicators from '@/components/TechnicalIndicators.vue'
 import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 import StockNews from '@/components/StockNews.vue'
 import StockDetailSkeleton from '@/components/StockDetailSkeleton.vue'
+import FundamentalAnalysis from '@/components/FundamentalAnalysis.vue'
+import HoldingsAnalysis from '@/components/HoldingsAnalysis.vue'
+import TechnicalSignals from '@/components/TechnicalSignals.vue'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 
 export default {
@@ -214,13 +273,17 @@ export default {
     TechnicalIndicators,
     PerformanceMonitor,
     StockNews,
-    StockDetailSkeleton
+    StockDetailSkeleton,
+    FundamentalAnalysis,
+    HoldingsAnalysis,
+    TechnicalSignals
   },
   data() {
     return {
       loading: true,
       error: null,
-      metadata: null
+      metadata: null,
+      activeTab: 'overview'
     }
   },
   computed: {
@@ -1066,5 +1129,69 @@ export default {
     height: 300px;
     min-height: 300px;
   }
+}
+/* Tabs Navigation */
+.tabs-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0px;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    color: #007bff;
+    background: rgba(0, 123, 255, 0.05);
+}
+
+.tab-btn.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+/* Tactical Grid for Overview Tab */
+.tactical-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .tactical-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-info-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: #adb5bd;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.header-info-btn:hover {
+  color: #495057;
 }
 </style>

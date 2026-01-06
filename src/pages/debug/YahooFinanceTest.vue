@@ -48,6 +48,24 @@
       <p>{{ error }}</p>
     </div>
 
+    <div v-if="stockInfo && !loading" class="results-section">
+      <h3>✅ {{ testSymbol }} 詳細基本面數據 (Stock Info)</h3>
+      
+      <div class="json-debug">
+        <h4>Financials</h4>
+        <pre>{{ JSON.stringify(stockInfo.financials, null, 2) }}</pre>
+        
+        <h4>Earnings</h4>
+        <pre>{{ JSON.stringify(stockInfo.earnings, null, 2) }}</pre>
+        
+        <h4>Holdings</h4>
+        <pre>{{ JSON.stringify(stockInfo.holders, null, 2) }}</pre>
+
+        <h4>Insider Transactions (Top 3)</h4>
+        <pre>{{ JSON.stringify(stockInfo.insiderTransactions.slice(0,3), null, 2) }}</pre>
+      </div>
+    </div>
+
     <div v-if="testData && !loading" class="results-section">
       <h3>✅ {{ testSymbol }} 技術指標結果</h3>
       
@@ -286,6 +304,7 @@ export default {
       loading: false,
       error: null,
       testData: null,
+      stockInfo: null,
       cacheStatus: null,
       presetSymbols: ['AAPL', 'TSLA', 'MSFT', 'GOOGL', 'ONDS', 'RDW']
     }
@@ -297,10 +316,19 @@ export default {
       this.loading = true;
       this.error = null;
       this.testData = null;
+      this.stockInfo = null; // New property
       
       try {
         console.log(`Testing Yahoo Finance API for ${this.testSymbol}...`);
-        this.testData = await yahooFinanceAPI.getTechnicalIndicators(this.testSymbol);
+        
+        // Parallel fetch for debugging
+        const [techData, infoData] = await Promise.all([
+            yahooFinanceAPI.getTechnicalIndicators(this.testSymbol),
+            yahooFinanceAPI.getStockInfo(this.testSymbol)
+        ]);
+        
+        this.testData = techData;
+        this.stockInfo = infoData;
         
         if (this.testData.error) {
           this.error = this.testData.error;

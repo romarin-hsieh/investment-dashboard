@@ -1,12 +1,24 @@
 <template>
   <div class="technical-indicators">
     <!-- Build Stamp -->
-    <h4 class="build-stamp">Technical Indicators - BUILD-2026-01-03-HYBRID-V2</h4>
-    
+    <div class="header-row">
+      <div style="display: flex; align-items: center;">
+          <h4 class="section-title">Technical Indicators</h4>
+          <button class="header-info-btn" @click="showInfo = true" title="Indicator Guide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
+                <path d="M9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>
+          </button>
+      </div>
+      <span class="last-updated" v-if="lastUpdated">Updated: {{ lastUpdated }}</span>
+    </div>
+
     <!-- Loading State -->
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
-      <p>Loading technical indicators...</p>
+      <p>Loading...</p>
     </div>
     
     <!-- Error State -->
@@ -15,33 +27,54 @@
       <button @click="loadData" class="retry-btn">Retry</button>
     </div>
     
-    <!-- Indicators Grid -->
-    <div v-else class="indicators-grid">
-      <!-- Combined Indicators List (18 items) -->
-      <div 
-        v-for="(indicator, index) in displayIndicators" 
-        :key="index"
-        class="indicator-card"
-        :class="getCardClass(indicator)"
-      >
-        <div class="indicator-label">{{ indicator.label }}</div>
-        
-        <div class="indicator-content">
-           <div class="indicator-value" :class="getSignalTextClass(indicator.signal)">
-             {{ indicator.value }}
-           </div>
-           
-           <!-- Change / Diff -->
-           <div v-if="indicator.change" class="price-diff" :class="indicator.changeClass">
-             {{ indicator.change }}
-           </div>
-           
-           <!-- Signal / Info -->
-           <div v-else-if="indicator.signal && indicator.signal !== 'N/A'" class="indicator-signal" :class="getSignalClass(indicator.signal)">
-             {{ indicator.signal }}
-           </div>
+    <!-- Grouped Indicators Grid -->
+    <div v-else class="grouped-grid">
+      <div v-for="(group, groupName) in groupedIndicators" :key="groupName" class="indicator-group" :class="groupName.toLowerCase()">
+        <h5 class="group-title">{{ groupName }}</h5>
+        <div class="group-table-container">
+            <table class="compact-table">
+                <tbody>
+                    <tr v-for="(indicator, idx) in group" :key="idx">
+                        <td class="col-label">{{ indicator.label }}</td>
+                        <td class="col-value" :class="getSignalTextClass(indicator.signal)">{{ indicator.value }}</td>
+                        <td class="col-meta">
+                            <span v-if="indicator.change" class="change-tag" :class="indicator.changeClass">{{ indicator.change }}</span>
+                            <span v-else-if="indicator.signal && indicator.signal !== 'N/A'" class="signal-tag" :class="getSignalClass(indicator.signal)">{{ indicator.signal }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
       </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div v-if="showInfo" class="modal-overlay" @click.self="showInfo = false">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Indicator Guide</h5>
+                <button class="close-btn" @click="showInfo = false">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h6>Trend Indicators</h6>
+                <ul>
+                    <li><strong>MA (Moving Average):</strong> Average price over specific days (5, 10, 30).</li>
+                    <li><strong>SMA (Simple Moving Average):</strong> Good for identifying trend direction & support/resistance.</li>
+                    <li><strong>VWMA (Volume Weighted MA):</strong> Weights price by volume. Rising VWMA > SMA implies strong uptrend.</li>
+                </ul>
+                <h6>Oscillators</h6>
+                <ul>
+                    <li><strong>RSI (Relative Strength Index):</strong> Momentum oscillator (0-100). >70 Overbought, <30 Oversold.</li>
+                    <li><strong>MACD:</strong> Trend-following momentum indicator. Signal line crossovers indicate Buy/Sell.</li>
+                    <li><strong>ADX (Avg Directional Index):</strong> Measure of trend strength. >25 indicates strong trend.</li>
+                    <li><strong>Ichimoku:</strong> Comprehensive trend system. Price above Cloud = Bullish.</li>
+                </ul>
+                <h6>Beta & Volatility</h6>
+                <ul>
+                    <li><strong>Beta:</strong> Stock's volatility in relation to the market. >1.0 means more volatile.</li>
+                </ul>
+            </div>
+        </div>
     </div>
   </div>
 </template>
@@ -66,7 +99,9 @@ export default {
       loading: true,
       error: null,
       rawData: null,
-      displayIndicators: []
+      groupedIndicators: {},
+      lastUpdated: null,
+      showInfo: false
     }
   },
   watch: {
@@ -93,7 +128,14 @@ export default {
         }
         
         this.rawData = data
-        this.processCombinedIndicators()
+        this.processGroupedIndicators()
+        
+        // Extract Last Updated
+        if (data.lastUpdated) {
+            this.lastUpdated = new Date(data.lastUpdated).toLocaleString();
+        } else {
+            this.lastUpdated = new Date().toLocaleString() + ' (Live)';
+        }
         
         console.log(`✅ Technical indicators loaded for ${this.symbol}`)
         
@@ -105,34 +147,29 @@ export default {
       }
     },
     
-    processCombinedIndicators() {
+    processGroupedIndicators() {
       const data = this.rawData;
-      const list = [];
-      const series = data.fullSeries || {}; // 實時計算時會提供完整序列
+      const groups = {
+          'Trend': [],
+          'Oscillators': [],
+          'Market': []
+      };
+      
+      const series = data.fullSeries || {};
       
       // Helper function to get value and diff
-      const getIndicator = (key, label, arrayKey) => {
+      const getIndicator = (key, label, arrayKey, group = 'Trend') => {
         let value = 'N/A';
         let signal = 'N/A';
         let change = null;
         let changeClass = '';
 
-        // Check if data is Flat (Realtime) or Nested (Precomputed)
-        // Flat: data[key] = { value, signal }
-        // Nested: data.indicators.sma... (Standardize to Flat first?)
-        
-        // 嘗試讀取 Flat 格式 (Realtime)
         if (data[key]) {
           value = this.formatNumber(data[key].value);
           signal = data[key].signal;
         } 
-        // 嘗試讀取 Nested 格式 (Precomputed fallback)
-        else if (data.indicators?.sma && key.startsWith('sma')) {
-             // Handle nested logic if strictly needed, but Hybrid likely forces Realtime if keys missing
-             // For simplicity, we assume Flat format from Hybrid normalization
-        }
         
-        // 計算變化 (如果 fullSeries 存在)
+        // Calculate Change
         if (series[arrayKey] && Array.isArray(series[arrayKey])) {
              const arr = series[arrayKey];
              const latest = this.getLatestValue(arr);
@@ -141,75 +178,61 @@ export default {
              if (latest !== null && prev !== null && prev !== 0) {
                  const diff = latest - prev;
                  const pct = (diff / prev) * 100;
+                 // Simplify change text for compact view
                  const sign = diff >= 0 ? '+' : '';
-                 change = `${sign}${diff.toFixed(2)} (${sign}${pct.toFixed(1)}%)`;
-                 changeClass = diff >= 0 ? 'positive' : 'negative';
+                 change = `${sign}${pct.toFixed(1)}%`;
+                 changeClass = diff >= 0 ? 'pos' : 'neg';
              }
         }
 
-        return { label, value, signal, change, changeClass, type: 'technical' };
+        return { label, value, signal, change, changeClass };
       };
 
-      // 1-3. MA (Hybrid 可能返回 ma5)
-      list.push(getIndicator('ma5', 'MA5', 'MA_5'));
-      list.push(getIndicator('ma10', 'MA10', 'MA_10'));
-      list.push(getIndicator('ma30', 'MA30', 'MA_30'));
+      // Group 1: Trend (MA, SMA, Ichimoku, VWMA)
+      groups['Trend'].push(getIndicator('ma5', 'MA(5)', 'MA_5'));
+      groups['Trend'].push(getIndicator('ma10', 'MA(10)', 'MA_10'));
+      groups['Trend'].push(getIndicator('ma30', 'MA(30)', 'MA_30'));
+      groups['Trend'].push(getIndicator('sma5', 'SMA(5)', 'SMA_5'));
+      groups['Trend'].push(getIndicator('sma10', 'SMA(10)', 'SMA_10'));
+      groups['Trend'].push(getIndicator('sma30', 'SMA(30)', 'SMA_30'));
+      groups['Trend'].push(getIndicator('vwma20', 'VWMA(20)', 'VWMA_20'));
+      
+      // Group 2: Oscillators & Ichimoku Components
+      groups['Oscillators'].push(getIndicator('rsi14', 'RSI (14)', 'RSI_14', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('adx14', 'ADX (14)', 'ADX_14', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('ichimokuConversionLine', 'Ichi Conv (9)', 'ICHIMOKU_CONVERSIONLINE_9', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('ichimokuBaseLine', 'Ichi Base (26)', 'ICHIMOKU_BASELINE_26', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', 'Ichi Lag (26)', 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));
 
-      // 4-6. SMA
-      list.push(getIndicator('sma5', 'SMA5', 'SMA_5'));
-      list.push(getIndicator('sma10', 'SMA10', 'SMA_10'));
-      list.push(getIndicator('sma30', 'SMA30', 'SMA_30'));
-
-      // 7-9. Ichimoku
-      list.push(getIndicator('ichimokuConversionLine', 'Ichimoku Conversion (9)', 'ICHIMOKU_CONVERSIONLINE_9'));
-      list.push(getIndicator('ichimokuBaseLine', 'Ichimoku Base (26)', 'ICHIMOKU_BASELINE_26'));
-      list.push(getIndicator('ichimokuLaggingSpan', 'Ichimoku Lagging (26)', 'ICHIMOKU_LAGGINGSPAN_26'));
-
-      // 10. ADX
-      list.push(getIndicator('adx14', 'ADX (14)', 'ADX_14'));
-
-      // 11. MACD
-      list.push(getIndicator('macd', 'MACD (12,26)', 'MACD_12_26_9'));
-
-      // 12. VWMA
-      list.push(getIndicator('vwma20', 'VWMA (20)', 'VWMA_20'));
-
-      // YFinance Data extraction
-      // 嘗試從 data.yf 或 data.indicators.yf 讀取
+      // Group 3: Market & Volume (YFinance)
       const yf = data.yf || data.indicators?.yf || {};
       
-      // 13. Volume
-      list.push({
+      groups['Market'].push({
           label: 'Volume',
           value: this.formatVolume(yf.volume_last_day),
-          change: yf.volume_last_day_pct !== undefined ? this.formatPercentage(yf.volume_last_day_pct) : null,
+          change: yf.volume_last_day_pct !== undefined ? (yf.volume_last_day_pct >= 0 ? '+' : '') + Number(yf.volume_last_day_pct).toFixed(1) + '%' : null,
           changeClass: this.getChangeClass(yf.volume_last_day_pct),
-          type: 'yfinance'
+          group: 'Market'
       });
-
-      // 14. 5D Avg Volume
-      list.push({
-          label: '5D Avg Volume',
+      groups['Market'].push({
+          label: '5D Avg Vol',
           value: this.formatVolume(yf.avg_volume_5d),
-          change: yf.avg_volume_5d_pct !== undefined ? this.formatPercentage(yf.avg_volume_5d_pct) : null,
+          change: yf.avg_volume_5d_pct !== undefined ? (yf.avg_volume_5d_pct >= 0 ? '+' : '') + Number(yf.avg_volume_5d_pct).toFixed(1) + '%' : null,
           changeClass: this.getChangeClass(yf.avg_volume_5d_pct),
-          type: 'yfinance'
+          group: 'Market'
       });
-
-      // 15. Market Cap
-      list.push({
+      groups['Market'].push({
           label: 'Market Cap',
           value: this.formatMarketCap(yf.market_cap),
           signal: this.getMarketCapCategory(yf.market_cap),
-          type: 'yfinance'
+          group: 'Market'
       });
+      groups['Market'].push({ label: 'Beta (3M)', value: this.formatBeta(yf.beta_3mo), signal: this.getBetaCategory(yf.beta_3mo), group: 'Market' });
+      groups['Market'].push({ label: 'Beta (1Y)', value: this.formatBeta(yf.beta_1y), signal: this.getBetaCategory(yf.beta_1y), group: 'Market' });
+      groups['Market'].push({ label: 'Beta (5Y)', value: this.formatBeta(yf.beta_5y), signal: this.getBetaCategory(yf.beta_5y), group: 'Market' });
 
-      // 16-18. Beta
-      list.push({ label: 'Beta (3mo)', value: this.formatBeta(yf.beta_3mo), signal: this.getBetaCategory(yf.beta_3mo), type: 'yfinance' });
-      list.push({ label: 'Beta (1y)', value: this.formatBeta(yf.beta_1y), signal: this.getBetaCategory(yf.beta_1y), type: 'yfinance' });
-      list.push({ label: 'Beta (5y)', value: this.formatBeta(yf.beta_5y), signal: this.getBetaCategory(yf.beta_5y), type: 'yfinance' });
-
-      this.displayIndicators = list;
+      this.groupedIndicators = groups;
     },
     
     // Utility Methods
@@ -260,51 +283,38 @@ export default {
       return Number(value).toFixed(2)
     },
     
-    formatPercentage(value) {
-      if (value === null || value === undefined) return null
-      const sign = value >= 0 ? '+' : ''
-      return sign + Number(value).toFixed(1) + '%'
-    },
-    
     // Style Methods
-    getCardClass(indicator) {
-        return indicator.type === 'yfinance' ? 'yfinance-indicator' : 'technical-indicator';
-    },
-
     getSignalClass(signal) {
       switch (signal) {
         case 'BUY':
         case 'BULLISH':
         case 'STRONG_TREND':
-          return 'signal-buy'
+        case 'MEGA CAP':
+        case 'LARGE CAP':
+          return 'tag-green'
         case 'SELL':
         case 'BEARISH':
         case 'WEAK_TREND':
-          return 'signal-sell'
+          return 'tag-red'
         case 'OVERBOUGHT':
         case 'HIGH VOLATILITY':
-          return 'signal-warning'
+          return 'tag-yellow'
         case 'OVERSOLD':
         case 'LOW VOLATILITY':
-          return 'signal-opportunity'
-        case 'MEGA CAP':
-        case 'LARGE CAP':
-            return 'signal-buy'
+          return 'tag-blue'
         default:
-          return 'signal-neutral'
+          return 'tag-gray'
       }
     },
     
     getSignalTextClass(signal) {
-       // Optional: color the main value based on signal?
-       // Matches screenshot "green numbers"
-       // We can use the logic from getSignalClass mapping
-       return ''; // Kept simple as per screenshot which has Green/Red numbers separately
+       // Optional color for values
+       return ''; 
     },
 
     getChangeClass(value) {
       if (value === null || value === undefined) return ''
-      return value >= 0 ? 'change-positive' : 'change-negative'
+      return value >= 0 ? 'pos' : 'neg'
     },
     
     // Category Methods
@@ -319,14 +329,102 @@ export default {
     
     getBetaCategory(value) {
       if (value === null || value === undefined) return null
-      if (value > 1.5) return 'HIGH VOLATILITY'
-      if (value > 1.0) return 'MODERATE VOLATILITY'
-      if (value > 0.5) return 'LOW VOLATILITY'
-      return 'VERY LOW VOLATILITY'
+      if (value > 1.5) return 'HIGH VOL'
+      if (value > 1.0) return 'MED VOL'
+      if (value > 0.5) return 'LOW VOL'
+      return 'VERY LOW'
     }
   }
 }
 </script>
+
+<style scoped>
+/* ... existing styles ... */
+.header-info-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: #adb5bd;
+  cursor: pointer;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.header-info-btn:hover {
+  color: #495057;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal-header h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-body ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: left;
+}
+
+.modal-body li {
+    margin-bottom: 6px;
+}
+
+.modal-body h6 {
+    font-size: 0.95rem;
+    color: #007bff;
+    margin: 10px 0 5px 0;
+    font-weight: 600;
+    text-align: left;
+}
+
+
 
 <style scoped>
 .technical-indicators {
@@ -334,31 +432,127 @@ export default {
   padding: 0;
 }
 
-.build-stamp {
-  font-size: 0.9rem;
-  color: #28a745;
-  margin: 0 0 1rem 0;
-  font-weight: 600;
-  text-align: center;
-  padding: 0.5rem;
-  background: #d4edda;
-  border-radius: 4px;
-  border: 1px solid #c3e6cb;
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+}
+
+.last-updated {
+  font-size: 0.75rem;
+  color: #adb5bd;
+}
+
+.grouped-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.indicator-group {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    padding: 0;
+    overflow: hidden;
+}
+
+.group-title {
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.group-table-container {
+    padding: 0;
+}
+
+.compact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.compact-table td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.compact-table tr:last-child td {
+    border-bottom: none;
+}
+
+.col-label {
+    color: #6c757d;
+    font-weight: 500;
+    width: 45%; /* Widened from 35% */
+}
+
+.col-value {
+    color: #212529;
+    font-weight: 700;
+    text-align: right;
+    width: 25%; /* Reduced from 30%*/
+}
+
+.col-meta {
+    text-align: right;
+    width: 30%; /* Reduced from 35% */
+}
+
+/* Tags */
+.change-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.change-tag.pos { color: #28a745; }
+.change-tag.neg { color: #dc3545; }
+
+.signal-tag {
+    font-size: 0.6rem; /* Smaller font */
+    padding: 2px 4px;   
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: lowercase; /* Changed to lowercase */
+    white-space: nowrap; 
+    display: inline-block;
+}
+
+.tag-green { color: #155724; background: #d4edda; }
+.tag-red { color: #721c24; background: #f8d7da; }
+.tag-yellow { color: #856404; background: #fff3cd; }
+.tag-blue { color: #004085; background: #cce5ff; }
+.tag-gray { color: #383d41; background: #e2e3e5; }
+
+/* Loading / Error */
 .loading-state, .error-state {
   text-align: center;
   padding: 2rem;
+  background: white;
+  border-radius: 8px;
 }
 
 .loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #007bff;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007bff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
+  margin: 0 auto 0.5rem;
 }
 
 @keyframes spin {
@@ -366,13 +560,8 @@ export default {
   100% { transform: rotate(360deg); }
 }
 
-.error-message {
-  color: #dc3545;
-  margin-bottom: 1rem;
-}
-
 .retry-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   background: #007bff;
   color: white;
   border: none;
@@ -380,98 +569,20 @@ export default {
   cursor: pointer;
 }
 
-.indicators-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin: 0;
-}
-
-.indicator-card {
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #e9ecef;
-  background: white;
-  min-height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-}
-
-.indicator-label {
-  font-size: 0.85rem;
-  color: #6c757d;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.indicator-value {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #343a40;
-  margin-bottom: 3px;
-}
-
-.price-diff {
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.price-diff.positive {
-  color: #28a745;
-}
-
-.price-diff.negative {
-  color: #dc3545;
-}
-
-.indicator-signal {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 12px;
-  display: inline-block;
-  margin-top: 4px;
-}
-
-.signal-buy {
-  color: #28a745;
-  background: #e6f4ea;
-}
-
-.signal-sell {
-  color: #dc3545;
-  background: #fce8e6;
-}
-
-.signal-warning {
-  color: #856404;
-  background: #fff3cd;
-}
-
-.signal-opportunity {
-  color: #0c5460;
-  background: #d1ecf1;
-}
-
-.signal-neutral {
-  color: #6c757d;
-  background: #e9ecef;
-}
-
-/* 響應式設計 */
-@media (max-width: 900px) {
-  .indicators-grid {
+/* Responsive */
+@media (max-width: 1024px) {
+  .grouped-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .indicators-grid {
+@media (max-width: 768px) {
+  .grouped-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .compact-table td {
+      padding: 0.5rem 0.75rem;
   }
 }
 </style>

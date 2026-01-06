@@ -393,6 +393,32 @@ class YahooFinanceAPI {
       }
     }
 
+    // 0. 嘗試從靜態數據文件獲取 (Static Data Pipeline)
+    try {
+      console.log(`Attempting to fetch static data for ${symbol}...`);
+      const staticResponse = await fetch(`/data/fundamentals/${symbol}.json?t=${Date.now()}`);
+      if (staticResponse.ok) {
+        const staticData = await staticResponse.json();
+        console.log(`✅ Loaded static fundamental data for ${symbol}`);
+
+        // Transform the raw static data using the shared logic
+        const stockInfo = this._processQuoteSummaryResult(symbol, staticData, 'Static Build', `Static File`);
+        stockInfo.isStatic = true;
+
+        // Cache result
+        this.cache.set(cacheKey, {
+          data: stockInfo,
+          timestamp: Date.now()
+        });
+
+        return stockInfo;
+      } else {
+        console.warn(`Static data for ${symbol} not found (HTTP ${staticResponse.status}), falling back to live API...`);
+      }
+    } catch (staticErr) {
+      console.warn(`Failed to fetch static data for ${symbol}:`, staticErr);
+    }
+
     // 嘗試多個代理服務獲取股票基本信息
     for (let i = 0; i < this.corsProxies.length; i++) {
       try {
@@ -402,7 +428,14 @@ class YahooFinanceAPI {
         console.log(`Fetching stock info for ${symbol} using proxy ${proxyIndex + 1}...`);
 
         // 使用 Yahoo Finance 的 quoteSummary API 獲取詳細信息
-        const targetUrl = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=summaryProfile,price,defaultKeyStatistics`;
+        // Modules: summaryProfile, price, defaultKeyStatistics, financialData, earnings, majorHoldersBreakdown, insiderTransactions, institutionOwnership, recommendationTrend
+        const modules = [
+          'summaryProfile', 'price', 'defaultKeyStatistics',
+          'financialData', 'earnings', 'majorHoldersBreakdown',
+          'insiderTransactions', 'institutionOwnership', 'recommendationTrend'
+        ].join(',');
+
+        const targetUrl = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=${modules}`;
         const url = `${proxy}${encodeURIComponent(targetUrl)}`;
 
         const response = await fetch(url, {
@@ -422,33 +455,9 @@ class YahooFinanceAPI {
         }
 
         const result = data.quoteSummary.result[0];
-        const summaryProfile = result.summaryProfile || {};
-        const price = result.price || {};
-        const keyStats = result.defaultKeyStatistics || {};
 
-        // 提取股票基本信息
-        const stockInfo = {
-          symbol: symbol,
-          sector: summaryProfile.sector || 'Unknown',
-          industry: summaryProfile.industry || 'Unknown Industry',
-          exchange: price.exchangeName || price.exchange || this.getDefaultExchange(symbol),
-          marketCap: price.marketCap ? price.marketCap.raw : null,
-          marketCapFormatted: price.marketCap ? price.marketCap.fmt : 'N/A',
-          currency: price.currency || 'USD',
-          country: summaryProfile.country || 'Unknown',
-          website: summaryProfile.website || null,
-          employees: summaryProfile.fullTimeEmployees || null,
-          businessSummary: summaryProfile.longBusinessSummary || null,
-
-          // 市值分類
-          marketCapCategory: this.getMarketCapCategory(price.marketCap ? price.marketCap.raw : null),
-
-          // 元數據
-          lastUpdated: new Date().toISOString(),
-          source: 'Yahoo Finance API (Live)',
-          proxy: `Proxy ${proxyIndex + 1}`,
-          confidence: 0.95 // yfinance API 的信心度很高
-        };
+        // Use shared transformation logic
+        const stockInfo = this._processQuoteSummaryResult(symbol, result, 'Yahoo Finance API (Live)', `Proxy ${proxyIndex + 1}`);
 
         console.log(`Stock info for ${symbol}:`, stockInfo);
 
@@ -470,24 +479,7 @@ class YahooFinanceAPI {
         if (i === this.corsProxies.length - 1) {
           console.error(`All proxies failed for stock info ${symbol}:`, error);
 
-          const defaultInfo = {
-            symbol: symbol,
-            sector: 'Unknown',
-            industry: 'Unknown Industry',
-            exchange: this.getDefaultExchange(symbol),
-            marketCap: null,
-            marketCapFormatted: 'N/A',
-            currency: 'USD',
-            country: 'Unknown',
-            website: null,
-            employees: null,
-            businessSummary: null,
-            marketCapCategory: 'unknown',
-            lastUpdated: new Date().toISOString(),
-            source: 'Default (API Failed)',
-            error: `All proxies failed: ${error.message}`,
-            confidence: 0.0
-          };
+          const defaultInfo = this._getFallbackStockInfo(symbol, error.message);
 
           // 短期緩存錯誤結果 (1小時)
           this.cache.set(cacheKey, {
@@ -499,6 +491,143 @@ class YahooFinanceAPI {
         }
       }
     }
+  }
+
+  // Helper: Process raw quoteSummary result into app structure
+  _processQuoteSummaryResult(symbol, result, source, proxyInfo) {
+    const summaryProfile = result.summaryProfile || {};
+    const price = result.price || {};
+    const keyStats = result.defaultKeyStatistics || {};
+    const financialData = result.financialData || {};
+    const earnings = result.earnings || {};
+    const holders = result.majorHoldersBreakdown || {};
+    const insiderTx = result.insiderTransactions || {};
+    const institutionOwn = result.institutionOwnership || {};
+    const trend = result.recommendationTrend || {};
+
+    // Robust helpers to handle both Raw API ({raw, fmt}) and yahoo-finance2 (value) formats
+    const getRaw = (val) => (val && typeof val === 'object' && val.raw !== undefined) ? val.raw : val;
+    const getFmt = (val) => (val && typeof val === 'object' && val.fmt !== undefined) ? val.fmt : (val !== null && val !== undefined ? String(val) : null);
+    // For percentages, yahoo-finance2 might return 0.12 for 12%, while API fmt returns "12%"
+    // We might need to format numbers if fmt is missing but components expect formatted strings?
+    // Let's rely on simple string conversion for start, or specific formatting if needed.
+    const getPercentFmt = (val) => {
+      if (val && typeof val === 'object' && val.fmt) return val.fmt;
+      if (typeof val === 'number') return (val * 100).toFixed(2) + '%';
+      return val || '0%';
+    };
+
+    // Helper to create the { raw, fmt } structure expected by the component
+    const createFmt = (val, formatter) => {
+      if (val && typeof val === 'object' && val.fmt) return val; // Already in correct format
+      return {
+        raw: val,
+        fmt: val !== null && val !== undefined ? formatter(val) : 'N/A'
+      };
+    };
+
+    return {
+      symbol: symbol,
+      sector: summaryProfile.sector || 'Unknown',
+      industry: summaryProfile.industry || 'Unknown Industry',
+      exchange: price.exchangeName || price.exchange || this.getDefaultExchange(symbol),
+      marketCap: getRaw(price.marketCap),
+      marketCapFormatted: getFmt(price.marketCap) || 'N/A',
+      currency: price.currency || 'USD',
+      country: summaryProfile.country || 'Unknown',
+      website: summaryProfile.website || null,
+      employees: summaryProfile.fullTimeEmployees || null,
+      businessSummary: summaryProfile.longBusinessSummary || null,
+
+      financials: {
+        targetPrice: getRaw(financialData.targetMeanPrice),
+        recommendationKey: financialData.recommendationKey || 'N/A',
+        revenueGrowth: getPercentFmt(financialData.revenueGrowth),
+        profitMargin: getPercentFmt(financialData.profitMargins),
+        forwardPE: getFmt(keyStats.forwardPE),
+        beta: getFmt(keyStats.beta),
+        totalRevenue: getFmt(financialData.totalRevenue),
+        ebitda: getFmt(financialData.ebitda)
+      },
+
+      earnings: {
+        history: (earnings.earningsChart && earnings.earningsChart.quarterly) ? earnings.earningsChart.quarterly.map(item => ({
+          date: item.date,
+          actual: createFmt(item.actual, v => v.toFixed(2)),
+          estimate: createFmt(item.estimate, v => v.toFixed(2))
+        })) : [],
+        financialsChart: (earnings.financialsChart && earnings.financialsChart.yearly) ? earnings.financialsChart.yearly.map(item => ({
+          date: item.date, // Year (number)
+          revenue: createFmt(item.revenue, v => Number(v) >= 1e9 ? (Number(v) / 1e9).toFixed(1) + 'B' : Number(v).toLocaleString()),
+          earnings: createFmt(item.earnings, v => Number(v) >= 1e9 ? (Number(v) / 1e9).toFixed(1) + 'B' : Number(v).toLocaleString())
+        })) : []
+      },
+
+      holders: {
+        insidersPercent: getPercentFmt(holders.insidersPercentHeld),
+        institutionsPercent: getPercentFmt(holders.institutionsPercentHeld),
+        institutionsCount: institutionOwn.ownershipList ? institutionOwn.ownershipList.length : 0,
+        topInstitutions: (institutionOwn.ownershipList || []).map(holder => {
+          return {
+            organization: holder.organization,
+            position: createFmt(holder.position, v => Number(v).toLocaleString()),
+            reportDate: createFmt(holder.reportDate, v => new Date(v).toLocaleDateString()),
+            pctHeld: createFmt(holder.pctHeld, v => (Number(v) * 100).toFixed(2) + '%'),
+            value: createFmt(holder.value, v => Number(v).toLocaleString())
+          };
+        })
+      },
+
+      insiderTransactions: (insiderTx.transactions || []).map(tx => ({
+        filerName: tx.filerName,
+        transactionText: tx.transactionText,
+        moneyText: tx.moneyText,
+        ownership: tx.ownership,
+        startDate: createFmt(tx.startDate, v => new Date(v).toLocaleDateString()),
+        startEpoch: tx.startEpoch,
+        shares: createFmt(tx.shares, v => Number(v).toLocaleString()),
+        value: createFmt(tx.value, v => Number(v).toLocaleString()),
+        filerRelation: tx.filerRelation,
+        filerUrl: tx.filerUrl,
+        transactionPrice: createFmt(tx.value && tx.shares ? tx.value / tx.shares : 0, v => v.toFixed(2))
+      })),
+      recommendationTrend: trend.trend || [],
+      marketCapCategory: this.getMarketCapCategory(getRaw(price.marketCap)),
+
+      lastUpdated: result.lastUpdated || new Date().toISOString(),
+      source: source,
+      proxy: proxyInfo,
+      confidence: 0.95
+    };
+  }
+
+  // Helper: Get Fallback Info
+  _getFallbackStockInfo(symbol, errorMessage) {
+    return {
+      symbol: symbol,
+      sector: 'Unknown',
+      industry: 'Unknown Industry',
+      exchange: this.getDefaultExchange(symbol),
+      marketCap: null,
+      marketCapFormatted: 'N/A',
+      currency: 'USD',
+      country: 'Unknown',
+      website: null,
+      employees: null,
+      businessSummary: null,
+      marketCapCategory: 'unknown',
+
+      financials: {},
+      earnings: { history: [], financialsChart: [] },
+      holders: { topInstitutions: [], insidersPercent: 'N/A', institutionsPercent: 'N/A' },
+      insiderTransactions: [],
+      recommendationTrend: [],
+
+      lastUpdated: new Date().toISOString(),
+      source: 'Default (API Failed)',
+      error: `All proxies failed: ${errorMessage}`,
+      confidence: 0.0
+    };
   }
 
   // 獲取默認交易所
@@ -629,8 +758,8 @@ class YahooFinanceAPI {
 
         // Validate data quality
         const length = ohlcv.timestamps.length;
-        if (length < 20) {
-          throw new Error(`Insufficient OHLCV data points: ${length} < 20`);
+        if (length < 14) {
+          throw new Error(`Insufficient OHLCV data points: ${length} < 14`);
         }
 
         // Count valid data points
