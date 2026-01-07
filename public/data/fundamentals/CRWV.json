@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.18942,
-    "institutionsPercentHeld": 0.53378,
-    "institutionsFloatPercentHeld": 0.65852,
+    "institutionsPercentHeld": 0.53373003,
+    "institutionsFloatPercentHeld": 0.65846,
     "institutionsCount": 792
   },
   "earnings": {
@@ -213,11 +213,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.018475782,
+    "preMarketChange": -1.4400024,
+    "preMarketTime": "2026-01-07T12:36:27.000Z",
+    "preMarketPrice": 76.5,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.001026454,
-    "postMarketChange": -0.08000183,
-    "postMarketTime": "2026-01-07T00:59:49.000Z",
-    "postMarketPrice": 77.86,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.014051545,
     "regularMarketChange": 1.0800018,
@@ -227,15 +227,15 @@
     "regularMarketDayHigh": 78.84,
     "regularMarketDayLow": 73.75,
     "regularMarketVolume": 23756925,
-    "averageDailyVolume10Day": 24550740,
-    "averageDailyVolume3Month": 28667090,
+    "averageDailyVolume10Day": 20031220,
+    "averageDailyVolume3Month": 28614198,
     "regularMarketPreviousClose": 76.86,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 78.61,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRWV",
     "underlyingSymbol": null,
@@ -263,7 +263,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0955,
     "heldPercentInsiders": 0.18942,
-    "heldPercentInstitutions": 0.53378,
+    "heldPercentInstitutions": 0.53373003,
     "shortRatio": 1.63,
     "shortPercentOfFloat": 0.1934,
     "impliedSharesOutstanding": 498317512,
@@ -281,8 +281,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 12.935,
     "enterpriseToEbitda": 25.505,
-    "52WeekChange": 0.92149997,
-    "SandP52WeekChange": 0.16623151,
+    "52WeekChange": 0.94850004,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -309,29 +309,6 @@
   },
   "insiderTransactions": {
     "transactions": [
-      {
-        "maxAge": 1,
-        "shares": 161427,
-        "value": 11662514,
-        "filerUrl": "",
-        "transactionText": "Sale at price 70.87 - 72.82 per share.",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 190357,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D/I"
-      },
       {
         "maxAge": 1,
         "shares": 65940,
@@ -377,6 +354,29 @@
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 161427,
+        "value": 11662514,
+        "filerUrl": "",
+        "transactionText": "Sale at price 70.87 - 72.82 per share.",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 190357,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -731,7 +731,7 @@
         "shares": 2116,
         "value": 157701,
         "filerUrl": "",
-        "transactionText": "Sale at price 73.60 - 75.96 per share.",
+        "transactionText": "Sale at price 73.60 - 75.97 per share.",
         "filerName": "MCVEETY KRISTEN J",
         "filerRelation": "General Counsel",
         "moneyText": "",
@@ -778,7 +778,7 @@
         "shares": 3640,
         "value": 255768,
         "filerUrl": "",
-        "transactionText": "Sale at price 66.62 - 72.04 per share.",
+        "transactionText": "Sale at price 66.62 - 72.03 per share.",
         "filerName": "AGRAWAL NITIN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -867,18 +867,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1000000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2000000,
         "value": 0,
         "filerUrl": "",
@@ -926,6 +914,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1000000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 281250,
         "value": 24630107,
         "filerUrl": "",
@@ -961,29 +961,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 82455,
-        "value": 9397534,
-        "filerUrl": "",
-        "transactionText": "Sale at price 112.73 - 118.30 per share.",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-05T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-05T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 19180,
         "value": 2268994,
         "filerUrl": "",
@@ -1004,6 +981,29 @@
         "moneyText": "",
         "startDate": "2025-11-05T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 82455,
+        "value": 9397534,
+        "filerUrl": "",
+        "transactionText": "Sale at price 112.73 - 118.30 per share.",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-05T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 50000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-05T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1592,6 +1592,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 691243,
+        "value": 96403190,
+        "filerUrl": "",
+        "transactionText": "Sale at price 137.89 - 140.60 per share.",
+        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-10-08T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 691243,
+        "value": 96403190,
+        "filerUrl": "",
+        "transactionText": "Sale at price 137.89 - 140.60 per share.",
+        "filerName": "MAGNETAR FINANCIAL LLC",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-10-08T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 129091,
         "value": 17284704,
         "filerUrl": "",
@@ -1621,30 +1645,6 @@
         "transactionText": "Sale at price 139.12 - 140.62 per share.",
         "filerName": "INTRATOR MICHAEL N",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-10-08T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 691243,
-        "value": 96403190,
-        "filerUrl": "",
-        "transactionText": "Sale at price 137.89 - 140.60 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-08T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 691243,
-        "value": 96403190,
-        "filerUrl": "",
-        "transactionText": "Sale at price 137.89 - 140.60 per share.",
-        "filerName": "MAGNETAR FINANCIAL LLC",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-10-08T00:00:00.000Z",
         "ownership": "I"
@@ -1755,17 +1755,6 @@
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 140358,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-30T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1887,6 +1876,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 140358,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1113847,
         "value": 151907029,
         "filerUrl": "",
@@ -1949,7 +1949,7 @@
         "shares": 625000,
         "value": 82392542,
         "filerUrl": "",
-        "transactionText": "Sale at price 127.82 - 135.47 per share.",
+        "transactionText": "Sale at price 127.81 - 135.47 per share.",
         "filerName": "MCBEE BRANNIN",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -2109,6 +2109,6 @@
     "profitMargins": -0.17802,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T06:27:59.845Z",
+  "lastUpdated": "2026-01-07T12:36:58.908Z",
   "source": "Static Build (yahoo-finance2)"
 }

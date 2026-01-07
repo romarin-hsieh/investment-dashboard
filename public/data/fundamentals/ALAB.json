@@ -126,8 +126,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.11404,
-    "institutionsPercentHeld": 0.76889,
-    "institutionsFloatPercentHeld": 0.86785007,
+    "institutionsPercentHeld": 0.76887,
+    "institutionsFloatPercentHeld": 0.86783,
     "institutionsCount": 853
   },
   "earnings": {
@@ -233,11 +233,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.012483664,
+    "preMarketChange": -2.0099945,
+    "preMarketTime": "2026-01-07T12:35:01.000Z",
+    "preMarketPrice": 159,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00086950744,
-    "postMarketChange": 0.13999939,
-    "postMarketTime": "2026-01-07T00:59:53.000Z",
-    "postMarketPrice": 161.15,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.03650294,
     "regularMarketChange": -6.100006,
@@ -247,15 +247,15 @@
     "regularMarketDayHigh": 166.89,
     "regularMarketDayLow": 151.1,
     "regularMarketVolume": 8016260,
-    "averageDailyVolume10Day": 4034500,
-    "averageDailyVolume3Month": 5896954,
+    "averageDailyVolume10Day": 3873760,
+    "averageDailyVolume3Month": 5931190,
     "regularMarketPreviousClose": 167.11,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 166.5,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ALAB",
     "underlyingSymbol": null,
@@ -283,7 +283,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0728,
     "heldPercentInsiders": 0.11404,
-    "heldPercentInstitutions": 0.76889,
+    "heldPercentInstitutions": 0.76887,
     "shortRatio": 1.82,
     "shortPercentOfFloat": 0.098400004,
     "impliedSharesOutstanding": 168903616,
@@ -301,8 +301,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 36.087,
     "enterpriseToEbitda": 233.871,
-    "52WeekChange": 0.27789247,
-    "SandP52WeekChange": 0.16623151,
+    "52WeekChange": 0.23124576,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -328,6 +328,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 1784071,
+        "filerUrl": "",
+        "transactionText": "Sale at price 172.65 - 182.12 per share.",
+        "filerName": "MAZZARA PHILIP",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 142000,
@@ -357,7 +369,7 @@
         "shares": 150000,
         "value": 24927221,
         "filerUrl": "",
-        "transactionText": "Sale at price 153.80 - 172.58 per share.",
+        "transactionText": "Sale at price 153.80 - 172.57 per share.",
         "filerName": "ALBA MANUEL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1972,6 +1984,6 @@
     "profitMargins": 0.27504,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T06:29:16.482Z",
+  "lastUpdated": "2026-01-07T12:38:16.187Z",
   "source": "Static Build (yahoo-finance2)"
 }

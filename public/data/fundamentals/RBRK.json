@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02308,
-    "institutionsPercentHeld": 0.71506,
-    "institutionsFloatPercentHeld": 0.73195,
+    "institutionsPercentHeld": 0.71516997,
+    "institutionsFloatPercentHeld": 0.73206,
     "institutionsCount": 597
   },
   "earnings": {
@@ -246,11 +246,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.00033310938,
+    "preMarketChange": -0.025001526,
+    "preMarketTime": "2026-01-07T12:35:08.000Z",
+    "preMarketPrice": 75.03,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00093196234,
-    "postMarketChange": 0.069999695,
-    "postMarketTime": "2026-01-07T00:59:15.000Z",
-    "postMarketPrice": 75.18,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.021904772,
     "regularMarketChange": 1.6100006,
@@ -260,15 +260,15 @@
     "regularMarketDayHigh": 75.1,
     "regularMarketDayLow": 71.86,
     "regularMarketVolume": 2852200,
-    "averageDailyVolume10Day": 2828450,
-    "averageDailyVolume3Month": 3161877,
+    "averageDailyVolume10Day": 1971640,
+    "averageDailyVolume3Month": 3157662,
     "regularMarketPreviousClose": 73.5,
     "regularMarketSource": "DELAYED",
     "regularMarketOpen": 75.02,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBRK",
     "underlyingSymbol": null,
@@ -296,7 +296,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0545,
     "heldPercentInsiders": 0.02308,
-    "heldPercentInstitutions": 0.71506,
+    "heldPercentInstitutions": 0.71516997,
     "shortRatio": 2.8,
     "shortPercentOfFloat": 0.0732,
     "impliedSharesOutstanding": 200141545,
@@ -313,8 +313,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 12.198,
     "enterpriseToEbitda": -40.977,
-    "52WeekChange": 0.16315877,
-    "SandP52WeekChange": 0.16623151,
+    "52WeekChange": 0.1886375,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -340,6 +340,29 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 13500,
+        "value": 996904,
+        "filerUrl": "",
+        "transactionText": "Sale at price 73.56 - 75.19 per share.",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-05T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 13500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-05T00:00:00.000Z",
+        "ownership": "D/I"
+      },
       {
         "maxAge": 1,
         "shares": 100000,
@@ -1130,28 +1153,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9641000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LIGHTSPEED VENTURE PARTNERS IX, LP",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9641000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 21924,
         "value": 1968288,
         "filerUrl": "",
@@ -1169,6 +1170,28 @@
         "transactionText": "",
         "filerName": "SALEM ENRIQUE T",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9641000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LIGHTSPEED VENTURE PARTNERS IX, LP",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9641000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-06-26T00:00:00.000Z",
         "ownership": "I"
@@ -1339,17 +1362,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2486913,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHANDNA ASHEEM",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 700000,
         "value": 63763000,
         "filerUrl": "",
@@ -1366,6 +1378,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SALEM ENRIQUE T",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-13T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2486913,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHANDNA ASHEEM",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-13T00:00:00.000Z",
@@ -1739,8 +1762,8 @@
         "value": 832155,
         "filerUrl": "",
         "transactionText": "Sale at price 62.98 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "I"
@@ -1751,8 +1774,8 @@
         "value": 832155,
         "filerUrl": "",
         "transactionText": "Sale at price 62.98 per share.",
-        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "I"
@@ -2056,29 +2079,6 @@
         "moneyText": "",
         "startDate": "2025-02-05T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9009,
-        "value": 639450,
-        "filerUrl": "",
-        "transactionText": "Sale at price 69.79 - 71.41 per share.",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-02-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9009,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-02-03T00:00:00.000Z",
-        "ownership": "I"
       }
     ],
     "maxAge": 1
@@ -2112,6 +2112,6 @@
     "profitMargins": -0.31485,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T06:28:15.810Z",
+  "lastUpdated": "2026-01-07T12:37:15.394Z",
   "source": "Static Build (yahoo-finance2)"
 }

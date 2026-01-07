@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.04219,
-    "institutionsPercentHeld": 0.57395,
-    "institutionsFloatPercentHeld": 0.59923,
-    "institutionsCount": 455
+    "institutionsPercentHeld": 0.57392,
+    "institutionsFloatPercentHeld": 0.5992,
+    "institutionsCount": 453
   },
   "earnings": {
     "maxAge": 86400,
@@ -202,11 +202,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0108439205,
+    "preMarketChange": -0.91999817,
+    "preMarketTime": "2026-01-07T12:37:32.000Z",
+    "preMarketPrice": 83.92,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0065999436,
-    "postMarketChange": 0.5600052,
-    "postMarketTime": "2026-01-07T00:59:40.000Z",
-    "postMarketPrice": 85.41,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00058956863,
     "regularMarketChange": 0.049995422,
@@ -216,15 +216,15 @@
     "regularMarketDayHigh": 86.2,
     "regularMarketDayLow": 82.05,
     "regularMarketVolume": 7352957,
-    "averageDailyVolume10Day": 8472600,
-    "averageDailyVolume3Month": 13504055,
+    "averageDailyVolume10Day": 7829010,
+    "averageDailyVolume3Month": 13405941,
     "regularMarketPreviousClose": 84.8,
     "regularMarketSource": "DELAYED",
     "regularMarketOpen": 84.575,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRCL",
     "underlyingSymbol": null,
@@ -252,7 +252,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.045100003,
     "heldPercentInsiders": 0.04219,
-    "heldPercentInstitutions": 0.57395,
+    "heldPercentInstitutions": 0.57392,
     "shortRatio": 0.64,
     "shortPercentOfFloat": 0.0547,
     "impliedSharesOutstanding": 254437614,
@@ -271,8 +271,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 7.793,
     "enterpriseToEbitda": -131.503,
-    "52WeekChange": 0.01886344,
-    "SandP52WeekChange": 0.16623151,
+    "52WeekChange": 0.019464135,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -297,6 +297,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 4438,
+        "value": 378073,
+        "filerUrl": "",
+        "transactionText": "Sale at price 85.19 per share.",
+        "filerName": "SCHULZ TAMARA L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7813,
+        "value": 703717,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.07 per share.",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D/I"
+      },
       {
         "maxAge": 1,
         "shares": 3048,
@@ -335,18 +359,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 7813,
-        "value": 703717,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.07 per share.",
-        "filerName": "ALLAIRE JEREMY D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 39564,
         "value": 399992,
         "filerUrl": "",
@@ -355,42 +367,6 @@
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-12-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1300,
-        "value": 117130,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.10 per share.",
-        "filerName": "TARBERT HEATH",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10000,
-        "value": 900000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.00 per share.",
-        "filerName": "CHANDHOK NIKHIL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10000,
-        "value": 258100,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
-        "filerName": "CHANDHOK NIKHIL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -454,6 +430,42 @@
       },
       {
         "maxAge": 1,
+        "shares": 1300,
+        "value": 117130,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.10 per share.",
+        "filerName": "TARBERT HEATH",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 900000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.00 per share.",
+        "filerName": "CHANDHOK NIKHIL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 258100,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "filerName": "CHANDHOK NIKHIL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 238500,
         "value": 0,
         "filerUrl": "",
@@ -489,6 +501,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1634,
+        "value": 124086,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 75.94 per share.",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 100000,
         "value": 7708004,
         "filerUrl": "",
@@ -507,18 +531,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1634,
-        "value": 124086,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 75.94 per share.",
-        "filerName": "ALLAIRE JEREMY D",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-01T00:00:00.000Z",
         "ownership": "D"
@@ -704,18 +716,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 50000,
-        "value": 6353750,
-        "filerUrl": "",
-        "transactionText": "Sale at price 127.08 per share.",
-        "filerName": "CHANDHOK NIKHIL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 357812,
         "value": 45468960,
         "filerUrl": "",
@@ -846,6 +846,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 50000,
+        "value": 6353750,
+        "filerUrl": "",
+        "transactionText": "Sale at price 127.08 per share.",
+        "filerName": "CHANDHOK NIKHIL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1634,
         "value": 274675,
         "filerUrl": "",
@@ -890,18 +902,6 @@
         "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 300000,
-        "value": 32310000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 107.70 per share.",
-        "filerName": "CHANDHOK NIKHIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1036,6 +1036,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 300000,
+        "value": 32310000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 107.70 per share.",
+        "filerName": "CHANDHOK NIKHIL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 160000,
         "value": 1617600,
         "filerUrl": "",
@@ -1078,6 +1090,6 @@
     "profitMargins": -0.08285,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T06:28:48.262Z",
+  "lastUpdated": "2026-01-07T12:37:47.743Z",
   "source": "Static Build (yahoo-finance2)"
 }

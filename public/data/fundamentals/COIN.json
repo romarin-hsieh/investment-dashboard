@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01069,
-    "institutionsPercentHeld": 0.66692,
-    "institutionsFloatPercentHeld": 0.67412,
-    "institutionsCount": 1840
+    "institutionsPercentHeld": 0.667,
+    "institutionsFloatPercentHeld": 0.67420995,
+    "institutionsCount": 1839
   },
   "earnings": {
     "maxAge": 86400,
@@ -251,11 +251,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0011973302,
+    "preMarketChange": -0.30000305,
+    "preMarketTime": "2026-01-07T12:37:38.000Z",
+    "preMarketPrice": 250.26,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0058249645,
-    "postMarketChange": 1.4595032,
-    "postMarketTime": "2026-01-07T00:59:57.000Z",
-    "postMarketPrice": 252.0195,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.017103408,
     "regularMarketChange": -4.3600006,
@@ -265,15 +265,15 @@
     "regularMarketDayHigh": 258.35,
     "regularMarketDayLow": 245.72,
     "regularMarketVolume": 8600571,
-    "averageDailyVolume10Day": 7479340,
-    "averageDailyVolume3Month": 9268932,
+    "averageDailyVolume10Day": 7279940,
+    "averageDailyVolume3Month": 9258450,
     "regularMarketPreviousClose": 254.92,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 255.22,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "COIN",
     "underlyingSymbol": null,
@@ -301,7 +301,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.059499998,
     "heldPercentInsiders": 0.01069,
-    "heldPercentInstitutions": 0.66692,
+    "heldPercentInstitutions": 0.667,
     "shortRatio": 1.63,
     "shortPercentOfFloat": 0.0795,
     "beta": 3.707,
@@ -321,8 +321,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.897,
     "enterpriseToEbitda": 27.33,
-    "52WeekChange": -0.019576192,
-    "SandP52WeekChange": 0.16623151,
+    "52WeekChange": -0.036344767,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -349,6 +349,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 25068,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WILSON FREDERICK R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 2343685,
+        "filerUrl": "",
+        "transactionText": "Sale at price 226.88 - 238.18 per share.",
+        "filerName": "WILSON FREDERICK R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 40000,
@@ -515,18 +539,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 976,
-        "value": 253761,
-        "filerUrl": "",
-        "transactionText": "Sale at price 260.00 per share.",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 40000,
         "value": 10292234,
         "filerUrl": "",
@@ -551,6 +563,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 976,
+        "value": 253761,
+        "filerUrl": "",
+        "transactionText": "Sale at price 260.00 per share.",
+        "filerName": "GREWAL PAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 11955,
         "value": 2943075,
         "filerUrl": "",
@@ -559,18 +583,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5902,
-        "value": 1478897,
-        "filerUrl": "",
-        "transactionText": "Sale at price 244.47 - 257.30 per share.",
-        "filerName": "BROCK LAWRENCE J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -587,24 +599,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 10789,
+        "shares": 5902,
+        "value": 1478897,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10485,
-        "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 244.47 - 257.30 per share.",
         "filerName": "BROCK LAWRENCE J",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
+        "startDate": "2025-11-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -614,17 +616,6 @@
         "transactionText": "",
         "filerName": "HAAS ALESIA J",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 28980,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHOI EMILIE MONICA",
-        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
         "ownership": "D"
@@ -671,6 +662,39 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
         "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28980,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHOI EMILIE MONICA",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10789,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GREWAL PAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10485,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BROCK LAWRENCE J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
@@ -737,29 +761,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 8016807,
-        "filerUrl": "",
-        "transactionText": "Sale at price 319.85 - 324.37 per share.",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-10T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-10T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 55688,
         "value": 17921077,
         "filerUrl": "",
@@ -777,6 +778,29 @@
         "transactionText": "",
         "filerName": "EHRSAM FREDERICK ERNEST III",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-11-10T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "value": 8016807,
+        "filerUrl": "",
+        "transactionText": "Sale at price 319.85 - 324.37 per share.",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-10T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-11-10T00:00:00.000Z",
         "ownership": "I"
@@ -1029,6 +1053,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1756,
+        "value": 527713,
+        "filerUrl": "",
+        "transactionText": "Sale at price 300.52 per share.",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 5903,
         "value": 1838022,
         "filerUrl": "",
@@ -1041,14 +1077,59 @@
       },
       {
         "maxAge": 1,
-        "shares": 1756,
-        "value": 527713,
+        "shares": 748,
         "filerUrl": "",
-        "transactionText": "Sale at price 300.52 per share.",
+        "transactionText": "",
+        "filerName": "DAVIES CHRISTINA MARGARET",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9970,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HAAS ALESIA J",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 869,
+        "value": 264819,
+        "filerUrl": "",
+        "transactionText": "Sale at price 304.74 per share.",
         "filerName": "JONES JENNIFER N",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5289,
+        "value": 64853,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28980,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHOI EMILIE MONICA",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1091,63 +1172,6 @@
         "transactionText": "",
         "filerName": "LEHANE CHRIS",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 748,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DAVIES CHRISTINA MARGARET",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9970,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HAAS ALESIA J",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 28980,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHOI EMILIE MONICA",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 869,
-        "value": 264819,
-        "filerUrl": "",
-        "transactionText": "Sale at price 304.74 per share.",
-        "filerName": "JONES JENNIFER N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5289,
-        "value": 64853,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
-        "filerName": "JONES JENNIFER N",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-20T00:00:00.000Z",
         "ownership": "D"
@@ -1352,6 +1376,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 1252,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DAVIES CHRISTINA MARGARET",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 54,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "EHRSAM FREDERICK ERNEST III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1952,
         "value": 546608,
         "filerUrl": "",
@@ -1379,28 +1425,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "LEHANE CHRIS",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1252,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DAVIES CHRISTINA MARGARET",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 54,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "EHRSAM FREDERICK ERNEST III",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-18T00:00:00.000Z",
@@ -1498,6 +1522,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 25000,
+        "value": 6178715,
+        "filerUrl": "",
+        "transactionText": "Sale at price 247.08 - 247.69 per share.",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 10000,
         "value": 2453593,
         "filerUrl": "",
@@ -1522,29 +1569,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 6178715,
-        "filerUrl": "",
-        "transactionText": "Sale at price 247.08 - 247.69 per share.",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 12931,
         "value": 3456378,
         "filerUrl": "",
@@ -1565,18 +1589,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5902,
-        "value": 1585608,
-        "filerUrl": "",
-        "transactionText": "Sale at price 264.71 - 276.62 per share.",
-        "filerName": "BROCK LAWRENCE J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-22T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1616,6 +1628,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 5902,
+        "value": 1585608,
+        "filerUrl": "",
+        "transactionText": "Sale at price 264.71 - 276.62 per share.",
+        "filerName": "BROCK LAWRENCE J",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 4723,
         "value": 1275597,
         "filerUrl": "",
@@ -1639,44 +1663,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 10789,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10485,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROCK LAWRENCE J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9969,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "HAAS ALESIA J",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 28980,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHOI EMILIE MONICA",
-        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-05-20T00:00:00.000Z",
         "ownership": "D"
@@ -1700,6 +1691,39 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
         "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28980,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHOI EMILIE MONICA",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10789,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GREWAL PAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10485,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BROCK LAWRENCE J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-20T00:00:00.000Z",
@@ -1742,29 +1766,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 6363832,
-        "filerUrl": "",
-        "transactionText": "Sale at price 254.10 - 255.99 per share.",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 45684,
         "value": 11672298,
         "filerUrl": "",
@@ -1782,6 +1783,29 @@
         "transactionText": "",
         "filerName": "EHRSAM FREDERICK ERNEST III",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "value": 6363832,
+        "filerUrl": "",
+        "transactionText": "Sale at price 254.10 - 255.99 per share.",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "I"
@@ -1823,30 +1847,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 1981209,
-        "filerUrl": "",
-        "transactionText": "Sale at price 197.92 - 198.71 per share.",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-04-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10000,
-        "value": 262600,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 26.26 per share.",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-04-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9316,
         "value": 1863200,
         "filerUrl": "",
@@ -1882,6 +1882,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 10000,
+        "value": 1981209,
+        "filerUrl": "",
+        "transactionText": "Sale at price 197.92 - 198.71 per share.",
+        "filerName": "GREWAL PAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-04-23T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 262600,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 26.26 per share.",
+        "filerName": "GREWAL PAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-04-23T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 15000,
         "value": 2681841,
         "filerUrl": "",
@@ -1908,7 +1932,7 @@
         "shares": 15000,
         "value": 2527965,
         "filerUrl": "",
-        "transactionText": "Sale at price 168.22 - 169.64 per share.",
+        "transactionText": "Sale at price 168.22 - 169.65 per share.",
         "filerName": "ARMSTRONG BRIAN",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -1998,6 +2022,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 25000,
+        "value": 5775905,
+        "filerUrl": "",
+        "transactionText": "Sale at price 229.44 - 232.15 per share.",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-03-03T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-03-03T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 10000,
         "value": 2185461,
         "filerUrl": "",
@@ -2034,29 +2081,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 5775905,
-        "filerUrl": "",
-        "transactionText": "Sale at price 229.44 - 232.15 per share.",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 10978,
         "value": 2326550,
         "filerUrl": "",
@@ -2065,30 +2089,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10978,
-        "value": 335588,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 26.26 - 74.63 per share.",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1974,
-        "value": 472457,
-        "filerUrl": "",
-        "transactionText": "Sale at price 239.34 per share.",
-        "filerName": "JONES JENNIFER N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-24T00:00:00.000Z",
         "ownership": "D"
       }
     ],
@@ -2126,6 +2126,6 @@
     "profitMargins": 0.43664002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T06:28:46.503Z",
+  "lastUpdated": "2026-01-07T12:37:45.885Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -136,7 +136,7 @@
     "insidersPercentHeld": 0.03591,
     "institutionsPercentHeld": 0.60282004,
     "institutionsFloatPercentHeld": 0.62528,
-    "institutionsCount": 3489
+    "institutionsCount": 3491
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,11 +253,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.00840248,
+    "preMarketChange": -1.5100098,
+    "preMarketTime": "2026-01-07T12:37:01.000Z",
+    "preMarketPrice": 178.2,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0011685867,
-    "postMarketChange": -0.21000671,
-    "postMarketTime": "2026-01-07T00:59:53.000Z",
-    "postMarketPrice": 179.5,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.032578796,
     "regularMarketChange": 5.6700134,
@@ -267,15 +267,15 @@
     "regularMarketDayHigh": 180.19,
     "regularMarketDayLow": 174.7701,
     "regularMarketVolume": 34713968,
-    "averageDailyVolume10Day": 35035000,
-    "averageDailyVolume3Month": 46575247,
+    "averageDailyVolume10Day": 30818870,
+    "averageDailyVolume3Month": 46384809,
     "regularMarketPreviousClose": 174.04,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 175.76,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "PLTR",
     "underlyingSymbol": null,
@@ -292,7 +292,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 422126977024,
+    "enterpriseValue": 422222790656,
     "forwardPE": 177.90605,
     "profitMargins": 0.28114,
     "floatShares": 2200054746,
@@ -321,10 +321,10 @@
     "trailingEps": 0.43,
     "forwardEps": 1.01014,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 108.344,
-    "enterpriseToEbitda": 481.992,
-    "52WeekChange": 1.5507841,
-    "SandP52WeekChange": 0.16623151,
+    "enterpriseToRevenue": 108.369,
+    "enterpriseToEbitda": 482.101,
+    "52WeekChange": 1.6338854,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -351,6 +351,42 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 12000,
+        "value": 2176200,
+        "filerUrl": "",
+        "transactionText": "Sale at price 181.35 per share.",
+        "filerName": "TAYLOR RYAN DOUGLAS",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20000,
+        "value": 3459615,
+        "filerUrl": "",
+        "transactionText": "Sale at price 167.30 - 181.04 per share.",
+        "filerName": "MOORE ALEXANDER D",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3400,
+        "value": 616590,
+        "filerUrl": "",
+        "transactionText": "Sale at price 181.35 per share.",
+        "filerName": "STAT LAUREN ELAINA FRIEDMAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 3831,
@@ -661,29 +697,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 409072,
-        "value": 62736619,
-        "filerUrl": "",
-        "transactionText": "Sale at price 143.12 - 157.18 per share.",
-        "filerName": "KARP ALEXANDER C.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 409072,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KARP ALEXANDER C.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2365,
         "value": 362700,
         "filerUrl": "",
@@ -702,6 +715,29 @@
         "transactionText": "Sale at price 143.12 - 157.18 per share.",
         "filerName": "TAYLOR RYAN DOUGLAS",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 409072,
+        "value": 62736619,
+        "filerUrl": "",
+        "transactionText": "Sale at price 143.12 - 157.18 per share.",
+        "filerName": "KARP ALEXANDER C.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 409072,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KARP ALEXANDER C.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D"
@@ -1004,6 +1040,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 1897,
+        "value": 239689,
+        "filerUrl": "",
+        "transactionText": "Sale at price 125.26 - 127.71 per share.",
+        "filerName": "BUCKLEY JEFFREY JOHANSING",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 39416,
+        "value": 4980241,
+        "filerUrl": "",
+        "transactionText": "Sale at price 125.26 - 127.71 per share.",
+        "filerName": "TAYLOR RYAN DOUGLAS",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 167545,
         "value": 21169439,
         "filerUrl": "",
@@ -1044,30 +1104,6 @@
         "transactionText": "",
         "filerName": "KARP ALEXANDER C.",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1897,
-        "value": 239689,
-        "filerUrl": "",
-        "transactionText": "Sale at price 125.26 - 127.71 per share.",
-        "filerName": "BUCKLEY JEFFREY JOHANSING",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 39416,
-        "value": 4980241,
-        "filerUrl": "",
-        "transactionText": "Sale at price 125.26 - 127.71 per share.",
-        "filerName": "TAYLOR RYAN DOUGLAS",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-21T00:00:00.000Z",
         "ownership": "D"
@@ -1160,7 +1196,7 @@
         "shares": 20000,
         "value": 1676580,
         "filerUrl": "",
-        "transactionText": "Sale at price 82.73 - 85.18 per share.",
+        "transactionText": "Sale at price 82.73 - 85.19 per share.",
         "filerName": "MOORE ALEXANDER D",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1309,18 +1345,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 22405,
-        "value": 2307897,
-        "filerUrl": "",
-        "transactionText": "Sale at price 96.43 - 108.28 per share.",
-        "filerName": "PLANISHEK HEATHER A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 432565,
         "value": 44557681,
         "filerUrl": "",
@@ -1367,6 +1391,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 22405,
+        "value": 2307897,
+        "filerUrl": "",
+        "transactionText": "Sale at price 96.43 - 108.28 per share.",
+        "filerName": "PLANISHEK HEATHER A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 232898,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "TAYLOR RYAN DOUGLAS",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 375000,
         "value": 38426081,
         "filerUrl": "",
@@ -1384,18 +1432,6 @@
         "transactionText": "",
         "filerName": "SANKAR SHYAM",
         "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-02-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 232898,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "TAYLOR RYAN DOUGLAS",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-20T00:00:00.000Z",
         "ownership": "D"
@@ -1699,11 +1735,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 22218,
-        "value": 1373027,
+        "shares": 77109,
+        "value": 4765179,
         "filerUrl": "",
         "transactionText": "Sale at price 60.68 - 63.07 per share.",
-        "filerName": "PLANISHEK HEATHER A",
+        "filerName": "TAYLOR RYAN DOUGLAS",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
@@ -1728,18 +1764,6 @@
         "transactionText": "",
         "filerName": "SANKAR SHYAM",
         "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 77109,
-        "value": 4765179,
-        "filerUrl": "",
-        "transactionText": "Sale at price 60.68 - 63.07 per share.",
-        "filerName": "TAYLOR RYAN DOUGLAS",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
         "ownership": "D"
@@ -1775,6 +1799,18 @@
         "transactionText": "Sale at price 60.68 - 63.07 per share.",
         "filerName": "GLAZER DAVID ALAN",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22218,
+        "value": 1373027,
+        "filerUrl": "",
+        "transactionText": "Sale at price 60.68 - 63.07 per share.",
+        "filerName": "PLANISHEK HEATHER A",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
         "ownership": "D"
@@ -1862,6 +1898,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 8054,
+        "value": 406646,
+        "filerUrl": "",
+        "transactionText": "Sale at price 50.49 per share.",
+        "filerName": "STAT LAUREN ELAINA FRIEDMAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-11-05T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 20000,
         "value": 999250,
         "filerUrl": "",
@@ -1883,18 +1931,6 @@
         "moneyText": "",
         "startDate": "2024-11-05T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8054,
-        "value": 406646,
-        "filerUrl": "",
-        "transactionText": "Sale at price 50.49 per share.",
-        "filerName": "STAT LAUREN ELAINA FRIEDMAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-11-05T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1969,30 +2005,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 34017,
-        "value": 1337500,
-        "filerUrl": "",
-        "transactionText": "Sale at price 37.63 - 39.95 per share.",
-        "filerName": "PLANISHEK HEATHER A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20000,
-        "value": 94400,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 4.72 per share.",
-        "filerName": "PLANISHEK HEATHER A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 195500,
         "value": 7820704,
         "filerUrl": "",
@@ -2010,6 +2022,30 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 4.72 per share.",
         "filerName": "TAYLOR RYAN DOUGLAS",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 34017,
+        "value": 1337500,
+        "filerUrl": "",
+        "transactionText": "Sale at price 37.63 - 39.95 per share.",
+        "filerName": "PLANISHEK HEATHER A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20000,
+        "value": 94400,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 4.72 per share.",
+        "filerName": "PLANISHEK HEATHER A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-04T00:00:00.000Z",
@@ -2086,41 +2122,6 @@
         "moneyText": "",
         "startDate": "2024-09-17T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9000000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KARP ALEXANDER C.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-09-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 6000,
-        "value": 218111,
-        "filerUrl": "",
-        "transactionText": "Sale at price 36.29 - 36.82 per share.",
-        "filerName": "STAT LAUREN ELAINA FRIEDMAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-09-16T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 160000,
-        "value": 5602773,
-        "filerUrl": "",
-        "transactionText": "Sale at price 35.01 - 35.02 per share.",
-        "filerName": "TAYLOR RYAN DOUGLAS",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-12T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -2157,6 +2158,6 @@
     "profitMargins": 0.28114,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T06:28:03.347Z",
+  "lastUpdated": "2026-01-07T12:37:02.839Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00212,
-    "institutionsPercentHeld": 0.86089,
-    "institutionsFloatPercentHeld": 0.86272,
-    "institutionsCount": 3481
+    "institutionsPercentHeld": 0.86087,
+    "institutionsFloatPercentHeld": 0.8627,
+    "institutionsCount": 3482
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,11 +253,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.00083335454,
+    "preMarketChange": -0.27999878,
+    "preMarketTime": "2026-01-07T12:34:40.000Z",
+    "preMarketPrice": 335.71,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0,
-    "postMarketChange": 0,
-    "postMarketTime": "2026-01-07T00:57:35.000Z",
-    "postMarketPrice": 335.99,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.013361059,
     "regularMarketChange": 4.4299927,
@@ -267,15 +267,15 @@
     "regularMarketDayHigh": 336.4,
     "regularMarketDayLow": 329.5,
     "regularMarketVolume": 3184269,
-    "averageDailyVolume10Day": 3515960,
-    "averageDailyVolume3Month": 3891624,
+    "averageDailyVolume10Day": 2963930,
+    "averageDailyVolume3Month": 3880243,
     "regularMarketPreviousClose": 331.56,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 330.5,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ADBE",
     "underlyingSymbol": null,
@@ -303,7 +303,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0277,
     "heldPercentInsiders": 0.00212,
-    "heldPercentInstitutions": 0.86089,
+    "heldPercentInstitutions": 0.86087,
     "shortRatio": 2.54,
     "shortPercentOfFloat": 0.0277,
     "beta": 1.526,
@@ -324,8 +324,8 @@
     "lastSplitDate": 1116892800,
     "enterpriseToRevenue": 5.897,
     "enterpriseToEbitda": 14.674,
-    "52WeekChange": -0.20978123,
-    "SandP52WeekChange": 0.16623151,
+    "52WeekChange": -0.19922304,
+    "SandP52WeekChange": 0.17345834,
     "lastDividendValue": 0.0065,
     "lastDividendDate": "2005-03-24T00:00:00.000Z",
     "latestShareClass": null,
@@ -391,6 +391,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1254,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-10-24T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 606,
         "filerUrl": "",
         "transactionText": "",
@@ -406,28 +417,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHAKRAVARTHY ANIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1254,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-10-24T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-24T00:00:00.000Z",
@@ -457,24 +446,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 1892,
+        "shares": 30,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WADHWANI DAVID",
+        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1892,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHAKRAVARTHY ANIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-15T00:00:00.000Z",
+        "startDate": "2025-10-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -490,10 +468,21 @@
       },
       {
         "maxAge": 1,
-        "shares": 116,
+        "shares": 1892,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
+        "filerName": "WADHWANI DAVID",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1892,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHAKRAVARTHY ANIL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
@@ -523,6 +512,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 116,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FORUSZ JILLIAN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 460,
         "filerUrl": "",
         "transactionText": "",
@@ -531,6 +531,17 @@
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1254,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-07-24T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -549,28 +560,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHAKRAVARTHY ANIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-07-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1254,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-07-24T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-24T00:00:00.000Z",
@@ -600,6 +589,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 30,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FORUSZ JILLIAN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-07-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5443,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-07-15T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 1894,
         "filerUrl": "",
         "transactionText": "",
@@ -622,28 +633,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 5443,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-07-15T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 117,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-07-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2833,
         "filerUrl": "",
         "transactionText": "",
@@ -659,6 +648,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHEN GLORIA T",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-07-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 117,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-15T00:00:00.000Z",
@@ -700,6 +700,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1254,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-04-24T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 606,
         "filerUrl": "",
         "transactionText": "",
@@ -722,14 +733,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 1254,
+        "shares": 606,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "DURN DANIEL J",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-04-24T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -755,13 +766,35 @@
       },
       {
         "maxAge": 1,
-        "shares": 606,
+        "shares": 633,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DURN DANIEL J",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "CALDERONI FRANCIS A",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-04-24T00:00:00.000Z",
+        "startDate": "2025-04-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 633,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BANSE AMY L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 633,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ROSENSWEIG DANIEL L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-22T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -813,50 +846,6 @@
         "shares": 633,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BANSE AMY L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 633,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ROSENSWEIG DANIEL L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 633,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CALDERONI FRANCIS A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 633,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BOULDEN MELANIE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 633,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "BIGGS M BRETT",
         "filerRelation": "Director",
         "moneyText": "",
@@ -887,6 +876,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 633,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BOULDEN MELANIE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5440,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-04-15T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 1892,
         "filerUrl": "",
         "transactionText": "",
@@ -909,14 +920,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 5440,
+        "shares": 2832,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "DURN DANIEL J",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -936,17 +947,6 @@
         "transactionText": "",
         "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-04-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2832,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DURN DANIEL J",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "D"
@@ -1023,6 +1023,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 39548,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-01-24T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 8262,
         "filerUrl": "",
         "transactionText": "",
@@ -1038,28 +1049,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHAKRAVARTHY ANIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 39548,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-01-24T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 442,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-24T00:00:00.000Z",
@@ -1100,24 +1089,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 1197,
+        "shares": 442,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WADHWANI DAVID",
+        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1197,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHAKRAVARTHY ANIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-15T00:00:00.000Z",
+        "startDate": "2025-01-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1133,10 +1111,21 @@
       },
       {
         "maxAge": 1,
-        "shares": 94,
+        "shares": 1197,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
+        "filerName": "WADHWANI DAVID",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1197,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHAKRAVARTHY ANIL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-15T00:00:00.000Z",
@@ -1170,6 +1159,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHEN GLORIA T",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 94,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-15T00:00:00.000Z",
@@ -1270,6 +1270,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 2561,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-10-24T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 605,
         "filerUrl": "",
         "transactionText": "",
@@ -1289,17 +1300,6 @@
         "moneyText": "",
         "startDate": "2024-10-24T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2561,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-10-24T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1348,6 +1348,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 3464,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-10-15T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 1198,
         "filerUrl": "",
         "transactionText": "",
@@ -1363,28 +1374,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHAKRAVARTHY ANIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3464,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-10-15T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 95,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-15T00:00:00.000Z",
@@ -1418,6 +1407,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHEN GLORIA T",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 95,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-15T00:00:00.000Z",
@@ -1506,6 +1506,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 2562,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-07-24T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 606,
         "filerUrl": "",
         "transactionText": "",
@@ -1525,17 +1536,6 @@
         "moneyText": "",
         "startDate": "2024-07-24T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2562,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-07-24T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1618,6 +1618,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 3465,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-07-15T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 1197,
         "filerUrl": "",
         "transactionText": "",
@@ -1637,17 +1648,6 @@
         "moneyText": "",
         "startDate": "2024-07-15T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3465,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-07-15T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1764,10 +1764,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 593,
+        "shares": 594,
         "value": 265644,
         "filerUrl": "",
-        "transactionText": "Sale at price 447.58 - 448.84 per share.",
+        "transactionText": "Sale at price 447.58 - 448.83 per share.",
         "filerName": "GARFIELD MARK S.",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -1823,6 +1823,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 2561,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NARAYEN SHANTANU",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-04-24T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 606,
         "filerUrl": "",
         "transactionText": "",
@@ -1842,17 +1853,6 @@
         "moneyText": "",
         "startDate": "2024-04-24T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2561,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NARAYEN SHANTANU",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-04-24T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1926,6 +1926,39 @@
         "shares": 836,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "CALDERONI FRANCIS A",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-04-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 836,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BANSE AMY L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-04-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 836,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ROSENSWEIG DANIEL L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-04-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 836,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "RICKS DAVID A",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1970,50 +2003,6 @@
         "shares": 836,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BANSE AMY L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 836,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ROSENSWEIG DANIEL L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 836,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CALDERONI FRANCIS A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 836,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BOULDEN MELANIE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 836,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "BIGGS M BRETT",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2026,6 +2015,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "OBERG KATHLEEN K",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-04-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 836,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PANDEY DHEERAJ",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-04-17T00:00:00.000Z",
@@ -2064,6 +2064,6 @@
     "profitMargins": 0.29997,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T06:29:01.203Z",
+  "lastUpdated": "2026-01-07T12:38:01.115Z",
   "source": "Static Build (yahoo-finance2)"
 }
