@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 8,
+        "sell": 1,
+        "strongSell": 2
+      },
+      {
+        "period": "-2m",
         "strongBuy": 0,
         "buy": 3,
         "hold": 8,
@@ -18,7 +26,7 @@
         "strongSell": 2
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 0,
         "buy": 3,
         "hold": 8,
@@ -257,15 +265,15 @@
     "regularMarketDayHigh": 35.95,
     "regularMarketDayLow": 34.32,
     "regularMarketVolume": 11474443,
-    "averageDailyVolume10Day": 11624690,
-    "averageDailyVolume3Month": 22047688,
+    "averageDailyVolume10Day": 11630000,
+    "averageDailyVolume3Month": 21868888,
     "regularMarketPreviousClose": 34.71,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 33.96,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "HIMS",
     "underlyingSymbol": null,
@@ -282,7 +290,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 8389959168,
+    "enterpriseValue": 8560695296,
     "forwardPE": 31.32232,
     "profitMargins": 0.060510002,
     "floatShares": 206021905,
@@ -311,10 +319,10 @@
     "trailingEps": 0.53,
     "forwardEps": 1.1321,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 3.795,
-    "enterpriseToEbitda": 49.791,
-    "52WeekChange": 0.2544272,
-    "SandP52WeekChange": 0.16805124,
+    "enterpriseToRevenue": 3.872,
+    "enterpriseToEbitda": 50.804,
+    "52WeekChange": 0.34900892,
+    "SandP52WeekChange": 0.16623151,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2118,9 +2126,10 @@
     "currentPrice": 35.46,
     "targetHighPrice": 85,
     "targetLowPrice": 25,
-    "targetMeanPrice": 44.66667,
-    "targetMedianPrice": 40.5,
-    "recommendationKey": "none",
+    "targetMeanPrice": 43.75,
+    "targetMedianPrice": 40,
+    "recommendationMean": 2.92857,
+    "recommendationKey": "hold",
     "numberOfAnalystOpinions": 12,
     "totalCash": 629744000,
     "totalCashPerShare": 2.766,
@@ -2144,6 +2153,6 @@
     "profitMargins": 0.060510002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T01:19:25.908Z",
+  "lastUpdated": "2026-01-07T06:28:05.348Z",
   "source": "Static Build (yahoo-finance2)"
 }

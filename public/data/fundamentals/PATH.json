@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 0,
+        "buy": 1,
+        "hold": 18,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 0,
         "buy": 2,
         "hold": 17,
         "sell": 0,
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 0,
         "buy": 2,
         "hold": 17,
@@ -259,15 +267,15 @@
     "regularMarketDayHigh": 17.3,
     "regularMarketDayLow": 15.905,
     "regularMarketVolume": 29793152,
-    "averageDailyVolume10Day": 30193570,
-    "averageDailyVolume3Month": 26578396,
+    "averageDailyVolume10Day": 30200800,
+    "averageDailyVolume3Month": 26318513,
     "regularMarketPreviousClose": 16.03,
     "regularMarketSource": "DELAYED",
     "regularMarketOpen": 15.83,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "PATH",
     "underlyingSymbol": null,
@@ -314,8 +322,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 5.119,
     "enterpriseToEbitda": 218.585,
-    "52WeekChange": 0.21439397,
-    "SandP52WeekChange": 0.16805124,
+    "52WeekChange": 0.19359648,
+    "SandP52WeekChange": 0.16623151,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2147,7 +2155,7 @@
     "currentPrice": 17.33,
     "targetHighPrice": 19,
     "targetLowPrice": 14,
-    "targetMeanPrice": 16.4,
+    "targetMeanPrice": 16.26667,
     "targetMedianPrice": 17,
     "recommendationMean": 2.95,
     "recommendationKey": "hold",
@@ -2173,6 +2181,6 @@
     "profitMargins": 0.14787,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T01:19:51.427Z",
+  "lastUpdated": "2026-01-07T06:28:30.051Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -5,9 +5,9 @@
         "period": "0m",
         "strongBuy": 0,
         "buy": 4,
-        "hold": 5,
+        "hold": 4,
         "sell": 0,
-        "strongSell": 1
+        "strongSell": 2
       },
       {
         "period": "-1m",
@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 0,
+        "buy": 4,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
         "strongBuy": 0,
         "buy": 4,
         "hold": 4,
@@ -259,15 +267,15 @@
     "regularMarketDayHigh": 97.909,
     "regularMarketDayLow": 90.19,
     "regularMarketVolume": 17448067,
-    "averageDailyVolume10Day": 18461990,
-    "averageDailyVolume3Month": 13780270,
+    "averageDailyVolume10Day": 18466560,
+    "averageDailyVolume3Month": 13708177,
     "regularMarketPreviousClose": 90.92,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 82,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "ASTS",
     "underlyingSymbol": null,
@@ -314,8 +322,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 1456.512,
     "enterpriseToEbitda": -117.195,
-    "52WeekChange": 2.9530435,
-    "SandP52WeekChange": 0.16805124,
+    "52WeekChange": 3.039094,
+    "SandP52WeekChange": 0.16623151,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1228,7 +1236,8 @@
     "targetLowPrice": 43,
     "targetMeanPrice": 71.5125,
     "targetMedianPrice": 80.5,
-    "recommendationKey": "none",
+    "recommendationMean": 2.4,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 8,
     "totalCash": 1204281984,
     "totalCashPerShare": 4.338,
@@ -1251,6 +1260,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T01:18:47.013Z",
+  "lastUpdated": "2026-01-07T06:27:25.543Z",
   "source": "Static Build (yahoo-finance2)"
 }
