@@ -23,7 +23,10 @@ try {
     const quote = result.indicators.quote[0];
 
     console.log('--- Data Inspection ---');
-    console.log('Symbol:', result.meta.symbol);
+    console.log('Meta Data Keys:', Object.keys(result.meta));
+    console.log('Meta Market Cap:', result.meta.marketCap);
+    console.log('Meta Previous Close:', result.meta.previousClose);
+    console.log('Meta Regular Market Price:', result.meta.regularMarketPrice);
     console.log('Timestamps:', result.timestamp.length);
 
     if (quote.volume) {

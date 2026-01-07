@@ -149,10 +149,10 @@ export default {
             yf: {
                 ...existingYf,
                 // Add extended market data
-                extVolume: stockInfo.volume?.raw || stockInfo.volume,
+                extVolume: stockInfo.volume?.raw || stockInfo.volume || existingYf.extVolume, // Fallback if added later
                 extAvgVol: stockInfo.averageVolume?.raw || stockInfo.averageVolume,
-                extAvgVol10D: stockInfo.averageDailyVolume10Day, // Direct map
-                extAvgVol3M: stockInfo.averageDailyVolume3Month, // Direct map
+                extAvgVol10D: stockInfo.averageDailyVolume10Day || existingYf.extAvgVol10D, // Fallback to pre-computed
+                extAvgVol3M: stockInfo.averageDailyVolume3Month || existingYf.extAvgVol3M,   // Fallback to pre-computed
                 extMarketCap: stockInfo.marketCap || stockInfo.marketCapFormatted, // Use raw for formatter
                 extBeta: stockInfo.beta || stockInfo.financials?.beta,
                 regularMarketChangePercent: stockInfo.financials?.regularMarketChangePercent

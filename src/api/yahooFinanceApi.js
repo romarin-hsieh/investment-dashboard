@@ -389,11 +389,25 @@ class YahooFinanceAPI {
           volumeChangePct = ((latestVolume - prevVolume) / prevVolume) * 100;
         }
 
+        // Calculate Average Volumes
+        const calcAvgVol = (days) => {
+          const validVols = ohlcv.volume.filter(v => v !== null && !isNaN(v));
+          if (validVols.length < days) return null;
+          const slice = validVols.slice(-days);
+          const sum = slice.reduce((a, b) => a + b, 0);
+          return sum / days;
+        };
+
+        const avgVol10d = calcAvgVol(10);
+        const avgVol3m = calcAvgVol(60); // approx 3 months
+
         // Add Volume Change and Beta to indicators (compatible with TechnicalIndicators.vue expectation)
         indicators.yf = {
           volume_last_day_pct: volumeChangePct,
           beta_10d: getLastValue(coreResults.BETA_10D)?.toFixed(2) || 'N/A',
-          beta_3mo: getLastValue(coreResults.BETA_3M)?.toFixed(2) || 'N/A'
+          beta_3mo: getLastValue(coreResults.BETA_3M)?.toFixed(2) || 'N/A',
+          extAvgVol10D: avgVol10d, // Pre-calculated
+          extAvgVol3M: avgVol3m
         };
 
         console.log(`Calculated indicators for ${symbol}:`, indicators);
