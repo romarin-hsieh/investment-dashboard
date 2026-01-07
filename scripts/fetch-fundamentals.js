@@ -37,7 +37,8 @@ async function fetchYahooData(symbol) {
             'majorHoldersBreakdown',
             'insiderTransactions',
             'institutionOwnership',
-            'recommendationTrend'
+            'recommendationTrend',
+            'upgradeDowngradeHistory'
         ]
     };
 

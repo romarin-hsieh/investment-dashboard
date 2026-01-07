@@ -67,19 +67,34 @@ class HybridTechnicalIndicatorsAPI {
     }
   }
 
-  // 檢查 ADX 是否有效
+  // 檢查數據完整性 (ADX, OBV, Beta)
   isADXValid(data) {
-    if (!data || !data.adx14) {
-      return false;
-    }
+    if (!data) return false;
 
-    // 檢查 ADX 值是否為 null 或 "N/A"
+    // 1. Check ADX (Existing Logic)
+    if (!data.adx14) return false;
     const adxValue = data.adx14.value;
-    if (adxValue === null || adxValue === undefined || adxValue === 'N/A') {
+    if (adxValue === null || adxValue === undefined || adxValue === 'N/A') return false;
+
+    // 2. Check OBV (New Requirement)
+    const obvObj = data.obv || (data.indicators && data.indicators.obv);
+    if (!obvObj || obvObj.value === null || obvObj.value === undefined || obvObj.value === 'N/A') {
+      console.log('Validation failed: Missing valid OBV');
       return false;
     }
 
-    // 檢查完整序列數據中的 ADX
+    // 3. Check Beta (New Requirement)
+    const yf = data.yf || (data.indicators && data.indicators.yf);
+    const hasBeta = yf && (
+      (yf.beta_10d !== undefined && yf.beta_10d !== null && yf.beta_10d !== 'N/A') ||
+      (yf.beta_3mo !== undefined && yf.beta_3mo !== null && yf.beta_3mo !== 'N/A')
+    );
+    if (!hasBeta) {
+      console.log('Validation failed: Missing valid Beta');
+      return false;
+    }
+
+    // k. Check Full Series ADX (Existing Logic)
     if (data.fullSeries && data.fullSeries.ADX_14) {
       const adxSeries = data.fullSeries.ADX_14;
       const validADXCount = adxSeries.filter(v => v !== null && v !== undefined && !isNaN(v)).length;

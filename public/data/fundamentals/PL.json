@@ -37,7 +37,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.1092,
         "position": 31942641,
-        "value": 692676153,
+        "value": 696030176,
         "pctChange": 0
       },
       {
@@ -46,7 +46,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0646,
         "position": 18906218,
-        "value": 409981327,
+        "value": 411966507,
         "pctChange": 0.1478
       },
       {
@@ -55,7 +55,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0634,
         "position": 18551697,
-        "value": 402293539,
+        "value": 404241494,
         "pctChange": 0.0968
       },
       {
@@ -64,7 +64,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.049099997,
         "position": 14372467,
-        "value": 311666939,
+        "value": 313176069,
         "pctChange": 1.3708
       },
       {
@@ -73,7 +73,7 @@
         "organization": "Canada Pension Plan Investment Board",
         "pctHeld": 0.026800001,
         "position": 7829200,
-        "value": 169776197,
+        "value": 170598275,
         "pctChange": 0.0011
       },
       {
@@ -82,7 +82,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.024400001,
         "position": 7141130,
-        "value": 154855400,
+        "value": 155605229,
         "pctChange": 0
       },
       {
@@ -91,7 +91,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0219,
         "position": 6416175,
-        "value": 139134751,
+        "value": 139808459,
         "pctChange": 2.8822
       },
       {
@@ -100,7 +100,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0215,
         "position": 6293344,
-        "value": 136471161,
+        "value": 137131971,
         "pctChange": 0.0476
       },
       {
@@ -109,7 +109,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.019299999,
         "position": 5631261,
-        "value": 122113891,
+        "value": 122705182,
         "pctChange": 0.111099996
       },
       {
@@ -118,7 +118,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0136,
         "position": 3974781,
-        "value": 86193123,
+        "value": 86610481,
         "pctChange": -0.0043
       }
     ]
@@ -241,17 +241,932 @@
     "financialCurrency": "USD",
     "defaultMethodology": "nongaap"
   },
+  "upgradeDowngradeHistory": {
+    "history": [
+      {
+        "epochGradeDate": "2025-12-29T14:07:33.000Z",
+        "firm": "Clear Street",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 22,
+        "priorPriceTarget": 16
+      },
+      {
+        "epochGradeDate": "2025-12-12T16:57:04.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 20,
+        "priorPriceTarget": 4.5
+      },
+      {
+        "epochGradeDate": "2025-12-12T15:45:01.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 19,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-12-11T18:02:36.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 17,
+        "priorPriceTarget": 16
+      },
+      {
+        "epochGradeDate": "2025-12-11T17:30:46.000Z",
+        "firm": "Clear Street",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 16,
+        "priorPriceTarget": 14
+      },
+      {
+        "epochGradeDate": "2025-12-11T14:31:54.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 20,
+        "priorPriceTarget": 17
+      },
+      {
+        "epochGradeDate": "2025-12-11T12:23:33.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 22,
+        "priorPriceTarget": 16
+      },
+      {
+        "epochGradeDate": "2025-12-04T17:53:27.000Z",
+        "firm": "Clear Street",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 14,
+        "priorPriceTarget": 12
+      },
+      {
+        "epochGradeDate": "2025-10-21T11:41:51.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Perform",
+        "fromGrade": "Market Outperform",
+        "action": "down",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-10-21T11:39:18.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 16,
+        "priorPriceTarget": 10
+      },
+      {
+        "epochGradeDate": "2025-10-20T09:48:25.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 16,
+        "priorPriceTarget": 12
+      },
+      {
+        "epochGradeDate": "2025-10-17T14:12:24.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 20,
+        "priorPriceTarget": 8.5
+      },
+      {
+        "epochGradeDate": "2025-10-02T11:54:41.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 17,
+        "priorPriceTarget": 11
+      },
+      {
+        "epochGradeDate": "2025-09-15T18:19:36.000Z",
+        "firm": "Clear Street",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 12,
+        "priorPriceTarget": 9
+      },
+      {
+        "epochGradeDate": "2025-09-09T12:31:49.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 11,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2025-09-09T11:20:45.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 12,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2025-07-22T13:49:35.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 6.5
+      },
+      {
+        "epochGradeDate": "2025-06-24T13:15:47.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 8.5,
+        "priorPriceTarget": 6.3
+      },
+      {
+        "epochGradeDate": "2025-06-06T16:58:23.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2025-06-05T13:35:10.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2025-06-05T11:05:39.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2025-05-14T16:30:28.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2025-04-11T10:45:47.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 3.5,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2025-03-24T11:45:57.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2025-03-21T15:25:09.000Z",
+        "firm": "Citizens Capital Markets",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 6.5,
+        "priorPriceTarget": 6.5
+      },
+      {
+        "epochGradeDate": "2025-03-21T14:19:24.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 6.3,
+        "priorPriceTarget": 6.3
+      },
+      {
+        "epochGradeDate": "2025-02-05T16:02:32.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2025-02-03T17:36:01.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 6.4,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2025-01-30T14:24:39.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 6.5,
+        "priorPriceTarget": 4.5
+      },
+      {
+        "epochGradeDate": "2025-01-30T13:02:54.000Z",
+        "firm": "Northland Capital Markets",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2025-01-30T10:38:17.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2025-01-17T12:01:36.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2024-12-17T12:18:14.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 4.5,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2024-12-16T15:44:41.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 4.05
+      },
+      {
+        "epochGradeDate": "2024-12-10T17:33:23.000Z",
+        "firm": "Craig-Hallum",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 3.5,
+        "priorPriceTarget": 2.5
+      },
+      {
+        "epochGradeDate": "2024-12-10T16:19:01.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 4.5,
+        "priorPriceTarget": 4.5
+      },
+      {
+        "epochGradeDate": "2024-12-10T11:15:12.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2024-12-09T16:04:30.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 4.5,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2024-09-26T15:10:15.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2024-09-20T14:26:42.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2024-09-10T14:05:02.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 3.1,
+        "priorPriceTarget": 3.5
+      },
+      {
+        "epochGradeDate": "2024-09-06T14:45:15.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2024-09-06T13:07:08.000Z",
+        "firm": "Craig-Hallum",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 2.5,
+        "priorPriceTarget": 2
+      },
+      {
+        "epochGradeDate": "2024-09-06T11:09:52.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2024-08-16T16:43:59.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2024-06-27T15:23:38.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2024-06-26T17:34:22.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2024-06-21T10:02:58.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2024-06-10T09:28:42.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2024-06-07T16:09:28.000Z",
+        "firm": "Craig-Hallum",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 2,
+        "priorPriceTarget": 3
+      },
+      {
+        "epochGradeDate": "2024-05-20T11:03:29.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2024-04-12T14:10:55.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4.2,
+        "priorPriceTarget": 4.8
+      },
+      {
+        "epochGradeDate": "2024-04-04T15:50:31.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 3.9,
+        "priorPriceTarget": 4.5
+      },
+      {
+        "epochGradeDate": "2024-04-02T16:22:07.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2024-04-01T13:07:22.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 5.5
+      },
+      {
+        "epochGradeDate": "2024-04-01T10:44:05.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2023-12-08T13:31:16.000Z",
+        "firm": "Craig-Hallum",
+        "toGrade": "Hold",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 3,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-10-12T10:18:22.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-09-08T16:27:33.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4.9,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2023-09-08T15:52:15.000Z",
+        "firm": "Northland Capital Markets",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2023-09-08T15:19:00.000Z",
+        "firm": "Craig-Hallum",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2023-09-08T14:01:25.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 6.5
+      },
+      {
+        "epochGradeDate": "2023-09-08T10:54:03.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2023-06-23T13:31:07.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 5.5,
+        "priorPriceTarget": 5.5
+      },
+      {
+        "epochGradeDate": "2023-06-16T11:08:32.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-06-15T12:25:20.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 5.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-06-13T12:43:57.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2023-06-12T14:06:21.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 5.5,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2023-06-09T15:55:34.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 5.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-06-09T14:35:18.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 6.5,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2023-06-09T14:11:53.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-06-09T09:36:51.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-05-31T12:28:24.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 5.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-05-19T10:09:08.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-05-02T09:31:36.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 5.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-04-20T11:03:21.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "reit",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-04-18T10:48:45.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-04-17T11:46:36.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-04-03T11:42:12.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 9
+      },
+      {
+        "epochGradeDate": "2023-03-30T13:38:06.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 11
+      },
+      {
+        "epochGradeDate": "2023-03-30T10:33:18.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 9
+      },
+      {
+        "epochGradeDate": "2023-01-23T10:19:45.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2022-11-08T13:41:26.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2022-09-13T10:03:17.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 9,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2022-06-15T11:41:01.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 10.5
+      },
+      {
+        "epochGradeDate": "2022-06-15T11:36:44.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 11,
+        "priorPriceTarget": 15
+      },
+      {
+        "epochGradeDate": "2022-06-13T13:35:04.000Z",
+        "firm": "Craig-Hallum",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 10,
+        "priorPriceTarget": 15
+      },
+      {
+        "epochGradeDate": "2022-01-27T11:18:17.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 10.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2022-01-12T10:35:14.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 11,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2022-01-07T12:22:34.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 10,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2022-01-07T09:39:01.000Z",
+        "firm": "Piper Sandler",
+        "toGrade": "Overweight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 10,
+        "priorPriceTarget": 0
+      }
+    ],
+    "maxAge": 86400
+  },
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.013791496,
-    "regularMarketChange": 0.29500008,
-    "regularMarketTime": "2026-01-06T16:35:52.000Z",
+    "regularMarketChangePercent": 0.018700399,
+    "regularMarketChange": 0.40000153,
+    "regularMarketTime": "2026-01-06T18:36:44.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 21.685,
-    "regularMarketDayHigh": 21.9299,
+    "regularMarketPrice": 21.79,
+    "regularMarketDayHigh": 22.0154,
     "regularMarketDayLow": 20.9701,
-    "regularMarketVolume": 4718696,
+    "regularMarketVolume": 6983000,
     "averageDailyVolume10Day": 11498330,
     "averageDailyVolume3Month": 10960985,
     "regularMarketPreviousClose": 21.39,
@@ -272,13 +1187,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 6801819648
+    "marketCap": 6834755072
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 6493317632,
-    "forwardPE": -288.70987,
+    "forwardPE": -290.10785,
     "profitMargins": -0.45868,
     "floatShares": 256621655,
     "sharesOutstanding": 292507135,
@@ -295,7 +1210,7 @@
     "impliedSharesOutstanding": 313664721,
     "category": null,
     "bookValue": 1.115,
-    "priceToBook": 19.44843,
+    "priceToBook": 19.5426,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -832,7 +1747,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 21.685,
+    "currentPrice": 21.79,
     "targetHighPrice": 22,
     "targetLowPrice": 12.3,
     "targetMeanPrice": 18.58889,
@@ -861,6 +1776,6 @@
     "profitMargins": -0.45868,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-06T16:35:56.934Z",
+  "lastUpdated": "2026-01-06T18:36:57.385Z",
   "source": "Static Build (yahoo-finance2)"
 }

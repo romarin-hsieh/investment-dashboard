@@ -12,6 +12,9 @@
             </svg>
           </button>
       </div>
+      <div style="font-size: 10px; color: #856404; background: #fff3cd; padding: 2px 5px; margin-left: 10px;">
+          DEBUG: 10D={{ rawData && rawData.yf ? rawData.yf.extAvgVol10D : '?' }} 3M={{ rawData && rawData.yf ? rawData.yf.extAvgVol3M : '?' }}
+      </div>
       <span class="last-updated" v-if="lastUpdated">Updated: {{ lastUpdated }}</span>
     </div>
 
@@ -60,17 +63,24 @@
                 <ul>
                     <li><strong>MA (Moving Average):</strong> Average price over specific days (5, 10, 30).</li>
                     <li><strong>SMA (Simple Moving Average):</strong> Good for identifying trend direction & support/resistance.</li>
+                    <li><strong>SuperTrend:</strong> Trend following indicator using ATR. Dynamic Stop-Loss level.</li>
+                    <li><strong>Parabolic SAR:</strong> Trend-following indicator. Dots below price = Uptrend, above element = Downtrend.</li>
                     <li><strong>VWMA (Volume Weighted MA):</strong> Weights price by volume. Rising VWMA > SMA implies strong uptrend.</li>
                 </ul>
                 <h6>Oscillators</h6>
                 <ul>
                     <li><strong>RSI (Relative Strength Index):</strong> Momentum oscillator (0-100). >70 Overbought, <30 Oversold.</li>
+                    <li><strong>Stochastic (%K/%D):</strong> Momentum indicator comparing closing price to a range. >80 Overbought, <20 Oversold.</li>
+                    <li><strong>CCI (Commodity Channel Index):</strong> Measures deviation from statistical average. >100 / <-100 implies strong move.</li>
                     <li><strong>MACD:</strong> Trend-following momentum indicator. Signal line crossovers indicate Buy/Sell.</li>
                     <li><strong>ADX (Avg Directional Index):</strong> Measure of trend strength. >25 indicates strong trend.</li>
                     <li><strong>Ichimoku:</strong> Comprehensive trend system. Price above Cloud = Bullish.</li>
                 </ul>
-                <h6>Beta & Volatility</h6>
+                <h6>Market & Volatility</h6>
                 <ul>
+                    <li><strong>ATR (Average True Range):</strong> Measures market volatility. Higher value = Higher volatility.</li>
+                    <li><strong>MFI (Money Flow Index):</strong> Volume-weighted RSI. >80 Overbought, <20 Oversold.</li>
+                    <li><strong>OBV (On-Balance Volume):</strong> Cumulative volume flow. Confirms trend direction.</li>
                     <li><strong>Beta:</strong> Stock's volatility in relation to the market. >1.0 means more volatile.</li>
                 </ul>
             </div>
@@ -81,6 +91,7 @@
 
 <script>
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
+import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 
 export default {
   name: 'TechnicalIndicators',
@@ -121,13 +132,33 @@ export default {
         console.log(`🔄 Loading technical indicators for ${this.symbol} via Hybrid API`)
         
         // 使用 Hybrid API 獲取數據 (自動回退到實時計算)
-        const data = await hybridTechnicalIndicatorsAPI.getTechnicalIndicators(this.symbol)
+        // 同時獲取 Stock Info 以補充 Market 數據 (Volume, Cap, Beta)
+        const [data, stockInfo] = await Promise.all([
+            hybridTechnicalIndicatorsAPI.getTechnicalIndicators(this.symbol),
+            yahooFinanceAPI.getStockInfo(this.symbol)
+        ]);
         
         if (!data) {
           throw new Error(`No data available for ${this.symbol}`)
         }
         
-        this.rawData = data
+        // Merge stockInfo into data as 'yf' for display, preserving existing yf data
+        const existingYf = data.yf || {};
+        this.rawData = {
+            ...data,
+            yf: {
+                ...existingYf,
+                // Add extended market data
+                extVolume: stockInfo.volume?.raw || stockInfo.volume,
+                extAvgVol: stockInfo.averageVolume?.raw || stockInfo.averageVolume,
+                extAvgVol10D: stockInfo.averageDailyVolume10Day, // Direct map
+                extAvgVol3M: stockInfo.averageDailyVolume3Month, // Direct map
+                extMarketCap: stockInfo.marketCap || stockInfo.marketCapFormatted, // Use raw for formatter
+                extBeta: stockInfo.beta || stockInfo.financials?.beta,
+                regularMarketChangePercent: stockInfo.financials?.regularMarketChangePercent
+            }
+        }
+        
         this.processGroupedIndicators()
         
         // Extract Last Updated
@@ -195,10 +226,15 @@ export default {
       groups['Trend'].push(getIndicator('sma5', 'SMA(5)', 'SMA_5'));
       groups['Trend'].push(getIndicator('sma10', 'SMA(10)', 'SMA_10'));
       groups['Trend'].push(getIndicator('sma30', 'SMA(30)', 'SMA_30'));
+      groups['Trend'].push(getIndicator('superTrend', 'SuperTrend', 'SUPERTREND_10_3'));
+      groups['Trend'].push(getIndicator('parabolicSAR', 'SAR', 'SAR'));
       groups['Trend'].push(getIndicator('vwma20', 'VWMA(20)', 'VWMA_20'));
       
       // Group 2: Oscillators & Ichimoku Components
       groups['Oscillators'].push(getIndicator('rsi14', 'RSI (14)', 'RSI_14', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('stochK', 'Stoch %K', 'STOCH_K', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('stochD', 'Stoch %D', 'STOCH_D', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('cci20', 'CCI (20)', 'CCI_20', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('adx14', 'ADX (14)', 'ADX_14', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuConversionLine', 'Ichi Conv (9)', 'ICHIMOKU_CONVERSIONLINE_9', 'Oscillators'));
@@ -207,30 +243,90 @@ export default {
 
       // Group 3: Market & Volume (YFinance)
       const yf = data.yf || data.indicators?.yf || {};
+
+      groups['Market'].push(getIndicator('atr14', 'ATR (14)', 'ATR_14', 'Market'));
+      groups['Market'].push(getIndicator('mfi14', 'MFI (14)', 'MFI_14', 'Market'));
+      groups['Market'].push(getIndicator('obv', 'OBV', 'OBV', 'Market'));
       
+      // Volume - Prefer real Volume from StockInfo, fallback to YF
+      // Volume - Prefer real Volume from StockInfo, fallback to YF
+      let volChange = yf.volume_last_day_pct;
+      if (volChange === undefined && series.volume) {
+           const latest = this.getLatestValue(series.volume);
+           const prev = this.getPreviousValue(series.volume);
+           if (latest && prev) {
+               volChange = ((latest - prev) / prev) * 100;
+           }
+      }
+
       groups['Market'].push({
           label: 'Volume',
-          value: this.formatVolume(yf.volume_last_day),
-          change: yf.volume_last_day_pct !== undefined ? (yf.volume_last_day_pct >= 0 ? '+' : '') + Number(yf.volume_last_day_pct).toFixed(1) + '%' : null,
-          changeClass: this.getChangeClass(yf.volume_last_day_pct),
-          group: 'Market'
+          value: this.formatVolume(yf.extVolume || yf.volume_last_day),
+          change: volChange !== undefined && volChange !== null ? (volChange >= 0 ? '+' : '') + Number(volChange).toFixed(1) + '%' : null,
+          changeClass: this.getChangeClass(volChange),
+          signal: this.getVolumeCategory(yf.extVolume || yf.volume_last_day, yf.extAvgVol || yf.avg_volume_5d),
+          class: 'text-white'
       });
+
+      // Average Volume - Compare 10D vs 3M for signal and change %
+      const avgVol10D = yf.extAvgVol10D || yf.avg_volume_10d || yf.extAvgVol; // Fallback
+      const avgVol3M = yf.extAvgVol3M || yf.avg_volume_3m || avgVol10D; // Fallback to 10D to avoid NaN if 3M missing
+      
+      let avgVolDiffPct = null;
+      if (avgVol10D && avgVol3M) {
+          avgVolDiffPct = ((avgVol10D - avgVol3M) / avgVol3M) * 100;
+      }
+      
       groups['Market'].push({
-          label: '5D Avg Vol',
-          value: this.formatVolume(yf.avg_volume_5d),
-          change: yf.avg_volume_5d_pct !== undefined ? (yf.avg_volume_5d_pct >= 0 ? '+' : '') + Number(yf.avg_volume_5d_pct).toFixed(1) + '%' : null,
-          changeClass: this.getChangeClass(yf.avg_volume_5d_pct),
-          group: 'Market'
+          label: 'Avg Vol (10D)',
+          value: this.formatVolume(avgVol10D),
+          change: avgVolDiffPct !== null ? (avgVolDiffPct >= 0 ? '+' : '') + avgVolDiffPct.toFixed(1) + '%' : null,
+          changeClass: this.getChangeClass(avgVolDiffPct),
+          signal: this.getVolumeCategory(avgVol10D, avgVol3M), // Compare short-term avg with medium-term avg
+          class: 'text-white'
       });
+      
       groups['Market'].push({
           label: 'Market Cap',
-          value: this.formatMarketCap(yf.market_cap),
-          signal: this.getMarketCapCategory(yf.market_cap),
-          group: 'Market'
+          value: this.formatMarketCap(yf.extMarketCap || yf.market_cap),
+          signal: this.getMarketCapCategory(yf.extMarketCap || yf.market_cap),
+          change: yf.regularMarketChangePercent !== undefined ? (yf.regularMarketChangePercent * 100 >= 0 ? '+' : '') + (yf.regularMarketChangePercent * 100).toFixed(1) + '%' : null,
+          changeClass: this.getChangeClass(yf.regularMarketChangePercent),
+          class: 'text-white'
       });
-      groups['Market'].push({ label: 'Beta (3M)', value: this.formatBeta(yf.beta_3mo), signal: this.getBetaCategory(yf.beta_3mo), group: 'Market' });
-      groups['Market'].push({ label: 'Beta (1Y)', value: this.formatBeta(yf.beta_1y), signal: this.getBetaCategory(yf.beta_1y), group: 'Market' });
-      groups['Market'].push({ label: 'Beta (5Y)', value: this.formatBeta(yf.beta_5y), signal: this.getBetaCategory(yf.beta_5y), group: 'Market' });
+
+      // Beta - Custom Periods
+      // Note: Standard API usually provides 5Y Beta.
+      
+      // Beta (10D)
+      groups['Market'].push({ 
+          label: 'Beta (10D)', 
+          value: yf.beta_10d || 'N/A', 
+          signal: this.getBetaCategory(yf.beta_10d)
+      });
+
+      // Beta (3M)
+      groups['Market'].push({ 
+          label: 'Beta (3M)', 
+          value: this.formatBeta(yf.beta_3mo), 
+          signal: this.getBetaCategory(yf.beta_3mo)
+      });
+
+      // Beta (1Y) - Map default Beta here as per request
+      groups['Market'].push({ 
+         label: 'Beta (1Y)', 
+         value: this.formatBeta(yf.extBeta || yf.beta || yf.beta_1y), 
+         signal: this.getBetaCategory(yf.extBeta || yf.beta || yf.beta_1y)
+      });
+      
+      // Beta (5Y) - Keep if available
+      if (yf.beta_5y) {
+          groups['Market'].push({ 
+              label: 'Beta (5Y)', 
+              value: this.formatBeta(yf.beta_5y), 
+              signal: this.getBetaCategory(yf.beta_5y) 
+          });
+      }
 
       this.groupedIndicators = groups;
     },
@@ -333,6 +429,15 @@ export default {
       if (value > 1.0) return 'MED VOL'
       if (value > 0.5) return 'LOW VOL'
       return 'VERY LOW'
+    },
+
+    getVolumeCategory(volume, avgVolume) {
+        if (!volume || !avgVolume) return null;
+        const ratio = volume / avgVolume;
+        if (ratio > 1.5) return 'HIGH VOL';
+        if (ratio > 1.0) return 'ABOVE AVG';
+        if (ratio < 0.5) return 'LOW VOL';
+        return 'BELOW AVG';
     }
   }
 }

@@ -183,8 +183,26 @@ class YahooFinanceAPI {
           throw new Error(`Insufficient data points (${length}) for technical analysis`);
         }
 
+        // Fetch Benchmark Data (S&P 500) for Beta Calculation
+        let benchmarkClose = null;
+        try {
+          const benchmarkData = await this.getBenchmarkHistory('6mo'); // Matches approx range
+          if (benchmarkData && benchmarkData.close) {
+            benchmarkClose = benchmarkData.close;
+            // Align Benchmark: Simple slicing if needed, but calculateAllIndicators handles length check
+            // Ideally usage aligns by Date, but here we assume recent correlation of similar length arrays
+            // If lengths differ significantly, calculation might be skew, but for daily data over 6mo it's close enough for 10D/3M estimate
+            // Better approach: Slice benchmark to match length of stock data if benchmark is longer
+            if (benchmarkClose.length > length) {
+              benchmarkClose = benchmarkClose.slice(benchmarkClose.length - length);
+            }
+          }
+        } catch (err) {
+          console.warn(`Failed to load benchmark for ${symbol}:`, err);
+        }
+
         // 使用新的技術指標核心計算所有指標
-        const coreResults = calculateAllIndicators(ohlcv);
+        const coreResults = calculateAllIndicators(ohlcv, benchmarkClose);
 
         // 轉換為舊格式以保持兼容性
         const getLastValue = (series) => {
@@ -300,6 +318,45 @@ class YahooFinanceAPI {
             };
           })(),
 
+          // Parabolic SAR
+          parabolicSAR: createIndicatorResult(coreResults.SAR, { type: 'price_comparison', buy: 1.0, sell: 1.0 }), // Simple price crossover
+
+          // Stochastic
+          stochK: createIndicatorResult(coreResults.STOCH_K, { type: 'rsi', overbought: 80, oversold: 20 }),
+          stochD: createIndicatorResult(coreResults.STOCH_D, { type: 'rsi', overbought: 80, oversold: 20 }),
+
+          // CCI
+          cci20: createIndicatorResult(coreResults.CCI_20, { type: 'rsi', overbought: 100, oversold: -100 }),
+
+          // ATR (Value only)
+          atr14: createIndicatorResult(coreResults.ATR_14),
+
+          // OBV
+          obv: (() => {
+            // Find last valid OBV value
+            const obvSeries = coreResults.OBV.filter(v => v !== null && v !== undefined && !isNaN(v));
+            const obvVal = obvSeries.length > 0 ? obvSeries[obvSeries.length - 1] : null;
+
+            // Get previous valid for signal
+            const prevObv = obvSeries.length > 1 ? obvSeries[obvSeries.length - 2] : null;
+
+            let signal = 'NEUTRAL';
+            if (obvVal !== null && prevObv !== null) {
+              if (obvVal > prevObv) signal = 'BULLISH';
+              else if (obvVal < prevObv) signal = 'BEARISH';
+            }
+            return {
+              value: obvVal !== null ? (obvVal / 1000000).toFixed(2) + 'M' : 'N/A', // Format as Millions
+              signal: signal
+            };
+          })(),
+
+          // SuperTrend
+          superTrend: createIndicatorResult(coreResults.SUPERTREND_10_3, { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
+
+          // MFI
+          mfi14: createIndicatorResult(coreResults.MFI_14, { type: 'rsi', overbought: 80, oversold: 20 }),
+
           // 元數據
           lastUpdated: new Date().toISOString(),
           dataPoints: length,
@@ -323,6 +380,21 @@ class YahooFinanceAPI {
           priceRange: indicators.priceRange,
           samplePrices: ohlcv.close.slice(-10).filter(p => !isNaN(p)) // 最後 10 個有效價格
         });
+
+        // Calculate Volume Change
+        const latestVolume = getLastValue(ohlcv.volume);
+        const prevVolume = getLastValue(ohlcv.volume.slice(0, -1));
+        let volumeChangePct = null;
+        if (latestVolume && prevVolume) {
+          volumeChangePct = ((latestVolume - prevVolume) / prevVolume) * 100;
+        }
+
+        // Add Volume Change and Beta to indicators (compatible with TechnicalIndicators.vue expectation)
+        indicators.yf = {
+          volume_last_day_pct: volumeChangePct,
+          beta_10d: getLastValue(coreResults.BETA_10D)?.toFixed(2) || 'N/A',
+          beta_3mo: getLastValue(coreResults.BETA_3M)?.toFixed(2) || 'N/A'
+        };
 
         console.log(`Calculated indicators for ${symbol}:`, indicators);
 
@@ -362,7 +434,15 @@ class YahooFinanceAPI {
             macd: { value: null, signal: 'N/A' },
             lastUpdated: new Date().toISOString(),
             error: `All proxies failed: ${error.message}`,
-            source: 'Error'
+            source: 'Error',
+            parabolicSAR: { value: null, signal: 'N/A' },
+            stochK: { value: null, signal: 'N/A' },
+            stochD: { value: null, signal: 'N/A' },
+            cci20: { value: null, signal: 'N/A' },
+            atr14: { value: null, signal: 'N/A' },
+            obv: { value: null, signal: 'N/A' },
+            superTrend: { value: null, signal: 'N/A' },
+            mfi14: { value: null, signal: 'N/A' }
           };
         }
       }
@@ -432,7 +512,8 @@ class YahooFinanceAPI {
         const modules = [
           'summaryProfile', 'price', 'defaultKeyStatistics',
           'financialData', 'earnings', 'majorHoldersBreakdown',
-          'insiderTransactions', 'institutionOwnership', 'recommendationTrend'
+          'insiderTransactions', 'institutionOwnership', 'recommendationTrend',
+          'upgradeDowngradeHistory'
         ].join(',');
 
         const targetUrl = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=${modules}`;
@@ -526,6 +607,11 @@ class YahooFinanceAPI {
       };
     };
 
+    // DEBUG: Trace missing data
+    console.log(`[YF_API] Processing ${symbol} from ${source}`);
+    console.log(`[YF_API] AvgVol10D (price):`, price.averageDailyVolume10Day);
+    console.log(`[YF_API] Upgrades (history present?):`, !!(result.upgradeDowngradeHistory && result.upgradeDowngradeHistory.history));
+
     return {
       symbol: symbol,
       sector: summaryProfile.sector || 'Unknown',
@@ -539,6 +625,13 @@ class YahooFinanceAPI {
       employees: summaryProfile.fullTimeEmployees || null,
       businessSummary: summaryProfile.longBusinessSummary || null,
 
+      // Volume & Price Stats
+      volume: createFmt(price.regularMarketVolume, v => Number(v).toLocaleString()),
+      averageVolume: createFmt(price.averageDailyVolume10Day || price.averageDailyVolume3Month, v => Number(v).toLocaleString()),
+      averageDailyVolume10Day: getRaw(price.averageDailyVolume10Day),
+      averageDailyVolume3Month: getRaw(price.averageDailyVolume3Month),
+      beta: getFmt(keyStats.beta) || 'N/A', // Expose beta at top level for easier access
+
       financials: {
         targetPrice: getRaw(financialData.targetMeanPrice),
         recommendationKey: financialData.recommendationKey || 'N/A',
@@ -547,7 +640,9 @@ class YahooFinanceAPI {
         forwardPE: getFmt(keyStats.forwardPE),
         beta: getFmt(keyStats.beta),
         totalRevenue: getFmt(financialData.totalRevenue),
-        ebitda: getFmt(financialData.ebitda)
+        ebitda: getFmt(financialData.ebitda),
+        // Add Market Change Percent for Market Cap visualization
+        regularMarketChangePercent: getRaw(price.regularMarketChangePercent)
       },
 
       earnings: {
@@ -592,6 +687,7 @@ class YahooFinanceAPI {
         transactionPrice: createFmt(tx.value && tx.shares ? tx.value / tx.shares : 0, v => v.toFixed(2))
       })),
       recommendationTrend: trend.trend || [],
+      upgradesDowngrades: (result.upgradeDowngradeHistory && result.upgradeDowngradeHistory.history) ? result.upgradeDowngradeHistory.history.slice(0, 50) : [],
       marketCapCategory: this.getMarketCapCategory(getRaw(price.marketCap)),
 
       lastUpdated: result.lastUpdated || new Date().toISOString(),
@@ -690,6 +786,32 @@ class YahooFinanceAPI {
     const proxy = this.corsProxies[this.currentProxyIndex];
     return `${proxy}${encodeURIComponent(targetUrl)}`;
   }
+
+  // Get Benchmark (SPY) OHLCV for Beta calculation
+  async getBenchmarkHistory(range = '6mo') {
+    const symbol = '^GSPC'; // S&P 500
+    const cacheKey = `ohlcv_${symbol}_1d_${range}`;
+
+    // Check cache (Longer timeout for benchmark)
+    if (this.cache.has(cacheKey)) {
+      const cached = this.cache.get(cacheKey);
+      if (Date.now() - cached.timestamp < 12 * 60 * 60 * 1000) { // 12 hours
+        return cached.data;
+      }
+    }
+
+    try {
+      // Reuse _getOhlcvInternal
+      const data = await this._getOhlcvInternal(symbol, '1d', range);
+      this.cache.set(cacheKey, { data, timestamp: Date.now() });
+      return data;
+    } catch (e) {
+      console.warn('Failed to fetch benchmark history:', e);
+      return null;
+    }
+  }
+
+
 
   // Get OHLCV data for MFI Volume Profile calculations (Wrapper)
   async getOhlcv(symbol, period = '1d', range = '3mo') {

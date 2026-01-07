@@ -37,7 +37,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0639,
         "position": 18411157,
-        "value": 252969292,
+        "value": 254626299,
         "pctChange": 0.1435
       },
       {
@@ -46,7 +46,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0539,
         "position": 15536862,
-        "value": 213476480,
+        "value": 214874800,
         "pctChange": 0.1665
       },
       {
@@ -55,7 +55,7 @@
         "organization": "Rubric Capital Management LP",
         "pctHeld": 0.0357,
         "position": 10300000,
-        "value": 141521997,
+        "value": 142448999,
         "pctChange": 1
       },
       {
@@ -64,7 +64,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0251,
         "position": 7246032,
-        "value": 99560478,
+        "value": 100212622,
         "pctChange": 0.2486
       },
       {
@@ -73,7 +73,7 @@
         "organization": "Electron Capital Partners, LLC",
         "pctHeld": 0.0229,
         "position": 6594701,
-        "value": 90611190,
+        "value": 91204714,
         "pctChange": -0.0551
       },
       {
@@ -82,7 +82,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.0228,
         "position": 6565509,
-        "value": 90210092,
+        "value": 90800988,
         "pctChange": -0.0677
       },
       {
@@ -91,7 +91,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0215,
         "position": 6207175,
-        "value": 85286583,
+        "value": 85845229,
         "pctChange": 0.1478
       },
       {
@@ -100,7 +100,7 @@
         "organization": "Stifel Financial Corporation",
         "pctHeld": 0.016,
         "position": 4624198,
-        "value": 63536479,
+        "value": 63952657,
         "pctChange": -0.070199996
       },
       {
@@ -109,7 +109,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0149,
         "position": 4301252,
-        "value": 59099201,
+        "value": 59486314,
         "pctChange": 0.0114
       },
       {
@@ -118,7 +118,7 @@
         "organization": "BNP Paribas Financial Markets",
         "pctHeld": 0.0115,
         "position": 3317491,
-        "value": 45582325,
+        "value": 45880900,
         "pctChange": 1.7607001
       }
     ]
@@ -241,22 +241,457 @@
     "financialCurrency": "USD",
     "defaultMethodology": "nongaap"
   },
+  "upgradeDowngradeHistory": {
+    "history": [
+      {
+        "epochGradeDate": "2025-12-17T13:35:39.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 16,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-11-11T18:06:46.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 12,
+        "priorPriceTarget": 8
+      },
+      {
+        "epochGradeDate": "2025-10-22T13:07:53.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 20,
+        "priorPriceTarget": 10
+      },
+      {
+        "epochGradeDate": "2025-10-15T14:36:48.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 22,
+        "priorPriceTarget": 10
+      },
+      {
+        "epochGradeDate": "2025-09-30T13:32:52.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 8,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2025-09-19T13:40:35.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 10,
+        "priorPriceTarget": 8.5
+      },
+      {
+        "epochGradeDate": "2025-09-05T16:35:07.000Z",
+        "firm": "Jefferies",
+        "toGrade": "Hold",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 6.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-09-05T13:22:18.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 10,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2025-06-09T17:42:55.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 8.5,
+        "priorPriceTarget": 9
+      },
+      {
+        "epochGradeDate": "2025-06-02T13:40:27.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2025-05-27T12:35:06.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 9,
+        "priorPriceTarget": 9
+      },
+      {
+        "epochGradeDate": "2025-04-15T12:38:36.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2025-03-18T14:07:15.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2025-03-05T13:40:33.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2025-02-20T16:31:50.000Z",
+        "firm": "Roth MKM",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2024-11-07T16:25:37.000Z",
+        "firm": "Roth MKM",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 4.5
+      },
+      {
+        "epochGradeDate": "2024-06-28T14:12:17.000Z",
+        "firm": "Roth MKM",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 4.5,
+        "priorPriceTarget": 4.5
+      },
+      {
+        "epochGradeDate": "2024-05-16T17:45:38.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 13,
+        "priorPriceTarget": 13
+      },
+      {
+        "epochGradeDate": "2024-05-16T16:58:05.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 3,
+        "priorPriceTarget": 7
+      },
+      {
+        "epochGradeDate": "2024-05-16T14:29:55.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 2.5,
+        "priorPriceTarget": 3
+      },
+      {
+        "epochGradeDate": "2024-05-16T13:09:24.000Z",
+        "firm": "Roth MKM",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4.5,
+        "priorPriceTarget": 6
+      },
+      {
+        "epochGradeDate": "2024-05-15T11:43:37.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 13,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2024-03-07T11:33:32.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 10
+      },
+      {
+        "epochGradeDate": "2024-03-06T15:39:05.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 7,
+        "priorPriceTarget": 12
+      },
+      {
+        "epochGradeDate": "2024-02-20T15:55:08.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 12,
+        "priorPriceTarget": 13
+      },
+      {
+        "epochGradeDate": "2023-12-05T09:14:36.000Z",
+        "firm": "Roth MKM",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-12-04T21:31:20.000Z",
+        "firm": "Roth MKM",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-11-08T20:47:33.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 2,
+        "priorPriceTarget": 5
+      },
+      {
+        "epochGradeDate": "2023-09-08T12:46:05.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 17,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2023-09-05T08:35:25.000Z",
+        "firm": "Seaport Global",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-09-01T13:59:13.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 5,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2023-09-01T13:02:45.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 15,
+        "priorPriceTarget": 13
+      },
+      {
+        "epochGradeDate": "2023-09-01T10:43:03.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 10,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-06-30T11:59:28.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 4,
+        "priorPriceTarget": 3
+      },
+      {
+        "epochGradeDate": "2023-06-22T11:02:19.000Z",
+        "firm": "EF Hutton",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 4.5,
+        "priorPriceTarget": 3.5
+      },
+      {
+        "epochGradeDate": "2023-06-02T13:10:09.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Market Perform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 2.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-05-11T11:26:12.000Z",
+        "firm": "EF Hutton",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 3.5,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2023-02-03T14:21:34.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 3,
+        "priorPriceTarget": 4
+      },
+      {
+        "epochGradeDate": "2022-12-02T12:32:32.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 11,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2022-03-22T08:47:37.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2021-11-22T11:54:18.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 21,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2021-11-11T13:01:01.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Hold",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2021-09-17T08:58:47.000Z",
+        "firm": "Johnson Rice",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 20,
+        "priorPriceTarget": 0
+      }
+    ],
+    "maxAge": 86400
+  },
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.020802356,
-    "regularMarketChange": 0.27999973,
-    "regularMarketTime": "2026-01-06T16:36:51.000Z",
+    "regularMarketChangePercent": 0.027488846,
+    "regularMarketChange": 0.3699999,
+    "regularMarketTime": "2026-01-06T18:37:55.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 13.74,
+    "regularMarketPrice": 13.83,
     "regularMarketDayHigh": 13.97,
     "regularMarketDayLow": 13.36,
-    "regularMarketVolume": 5235512,
+    "regularMarketVolume": 7300052,
     "averageDailyVolume10Day": 11866810,
     "averageDailyVolume3Month": 21894541,
     "regularMarketPreviousClose": 13.46,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 13.48,
+    "regularMarketOpen": 13.284,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -272,13 +707,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4453108736
+    "marketCap": 4482277888
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 5495421440,
-    "forwardPE": -89.470604,
+    "forwardPE": -90.056656,
     "profitMargins": 0,
     "floatShares": 283910247,
     "sharesOutstanding": 324098179,
@@ -1024,7 +1459,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 13.74,
+    "currentPrice": 13.83,
     "targetHighPrice": 22,
     "targetLowPrice": 12,
     "targetMeanPrice": 16.125,
@@ -1050,6 +1485,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-06T16:36:53.580Z",
+  "lastUpdated": "2026-01-06T18:37:55.513Z",
   "source": "Static Build (yahoo-finance2)"
 }

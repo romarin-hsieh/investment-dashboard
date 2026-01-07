@@ -45,7 +45,7 @@
         "organization": "General Catalyst Group Management, LLC",
         "pctHeld": 0.087799996,
         "position": 19001041,
-        "value": 1582828523,
+        "value": 1565685807,
         "pctChange": -0.0557
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.059899997,
         "position": 12959799,
-        "value": 1079579772,
+        "value": 1067887457,
         "pctChange": -0.0573
       },
       {
@@ -63,7 +63,7 @@
         "organization": "IDG China Capital Fund III Associates L.P.",
         "pctHeld": 0.0509,
         "position": 11026687,
-        "value": 918547289,
+        "value": 908599025,
         "pctChange": -0.0557
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0372,
         "position": 8059524,
-        "value": 671376082,
+        "value": 664104789,
         "pctChange": -0.0557
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.025799999,
         "position": 5578696,
-        "value": 464717651,
+        "value": 459684558,
         "pctChange": 0.6158
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0209,
         "position": 4519284,
-        "value": 376466301,
+        "value": 372389008,
         "pctChange": 0.3148
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0145000005,
         "position": 3148082,
-        "value": 262242157,
+        "value": 259401961,
         "pctChange": 3.5622
       },
       {
@@ -108,7 +108,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.0137,
         "position": 2966940,
-        "value": 247152630,
+        "value": 244475860,
         "pctChange": 0.0145000005
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Atlas Merchant Capital LLC",
         "pctHeld": 0.0078,
         "position": 1687376,
-        "value": 140562133,
+        "value": 139039784,
         "pctChange": -0.0557
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Sumitomo Mitsui Trust Group, Inc.",
         "pctHeld": 0.006,
         "position": 1299374,
-        "value": 108240713,
+        "value": 107068419,
         "pctChange": 2.821
       }
     ]
@@ -200,17 +200,392 @@
     "financialCurrency": "USD",
     "defaultMethodology": "gaap"
   },
+  "upgradeDowngradeHistory": {
+    "history": [
+      {
+        "epochGradeDate": "2026-01-06T17:56:41.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 88,
+        "priorPriceTarget": 79
+      },
+      {
+        "epochGradeDate": "2025-12-19T12:39:13.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 85,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-12-02T12:41:06.000Z",
+        "firm": "Wolfe Research",
+        "toGrade": "Underperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 60,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-11-21T17:41:29.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 80,
+        "priorPriceTarget": 92
+      },
+      {
+        "epochGradeDate": "2025-11-14T11:49:50.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Underperform",
+        "fromGrade": "Underperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 70,
+        "priorPriceTarget": 84
+      },
+      {
+        "epochGradeDate": "2025-11-14T10:32:18.000Z",
+        "firm": "Baird",
+        "toGrade": "Outperform",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 110,
+        "priorPriceTarget": 110
+      },
+      {
+        "epochGradeDate": "2025-11-13T15:45:45.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 128,
+        "priorPriceTarget": 160
+      },
+      {
+        "epochGradeDate": "2025-11-13T12:40:15.000Z",
+        "firm": "Baird",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 110,
+        "priorPriceTarget": 144
+      },
+      {
+        "epochGradeDate": "2025-11-13T12:34:38.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Underweight",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 100,
+        "priorPriceTarget": 94
+      },
+      {
+        "epochGradeDate": "2025-11-13T12:33:50.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 190,
+        "priorPriceTarget": 250
+      },
+      {
+        "epochGradeDate": "2025-11-13T11:39:23.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 90,
+        "priorPriceTarget": 147
+      },
+      {
+        "epochGradeDate": "2025-11-11T15:52:48.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Underweight",
+        "fromGrade": "Underweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 94,
+        "priorPriceTarget": 93
+      },
+      {
+        "epochGradeDate": "2025-11-10T20:18:35.000Z",
+        "firm": "Monness, Crespi, Hardt",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 150,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-10-24T12:50:32.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Underweight",
+        "fromGrade": "Underweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 93,
+        "priorPriceTarget": 89
+      },
+      {
+        "epochGradeDate": "2025-10-22T11:46:13.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 160,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-10-14T11:45:39.000Z",
+        "firm": "William Blair",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-10-03T11:52:06.000Z",
+        "firm": "Rothschild & Co",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 136,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-09-30T14:34:02.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Perform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-09-11T12:17:14.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 247,
+        "priorPriceTarget": 247
+      },
+      {
+        "epochGradeDate": "2025-09-08T10:17:37.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 250,
+        "priorPriceTarget": 250
+      },
+      {
+        "epochGradeDate": "2025-08-20T13:06:41.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 123,
+        "priorPriceTarget": 163
+      },
+      {
+        "epochGradeDate": "2025-08-20T10:31:49.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 250,
+        "priorPriceTarget": 250
+      },
+      {
+        "epochGradeDate": "2025-08-19T14:22:37.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Underweight",
+        "fromGrade": "Underweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 89,
+        "priorPriceTarget": 80
+      },
+      {
+        "epochGradeDate": "2025-08-18T19:33:00.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 247,
+        "priorPriceTarget": 247
+      },
+      {
+        "epochGradeDate": "2025-08-13T12:08:21.000Z",
+        "firm": "Baird",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 185,
+        "priorPriceTarget": 210
+      },
+      {
+        "epochGradeDate": "2025-07-22T10:29:14.000Z",
+        "firm": "Compass Point",
+        "toGrade": "Sell",
+        "fromGrade": "Neutral",
+        "action": "down",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 130,
+        "priorPriceTarget": 205
+      },
+      {
+        "epochGradeDate": "2025-07-11T11:58:39.000Z",
+        "firm": "Baird",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 210,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-07-08T12:33:05.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Underperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 85,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-30T14:34:53.000Z",
+        "firm": "Oppenheimer",
+        "toGrade": "Perform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-30T13:41:06.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 83,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-30T13:28:19.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Hold",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 155,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-30T12:54:18.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 215,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-30T12:35:37.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Underweight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 80,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-30T12:02:55.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 247,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-30T10:38:52.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 250,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-24T13:07:52.000Z",
+        "firm": "Compass Point",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 205,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-20T11:11:58.000Z",
+        "firm": "Seaport Global",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 235,
+        "priorPriceTarget": 0
+      }
+    ],
+    "maxAge": 86400
+  },
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.01765906,
-    "regularMarketChange": -1.4978027,
-    "regularMarketTime": "2026-01-06T16:37:27.000Z",
+    "regularMarketChangePercent": -0.028301904,
+    "regularMarketChange": -2.4000015,
+    "regularMarketTime": "2026-01-06T18:38:22.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 83.3022,
+    "regularMarketPrice": 82.4,
     "regularMarketDayHigh": 86.2,
-    "regularMarketDayLow": 83.2,
-    "regularMarketVolume": 3353419,
+    "regularMarketDayLow": 81.9481,
+    "regularMarketVolume": 4677466,
     "averageDailyVolume10Day": 8467460,
     "averageDailyVolume3Month": 13484303,
     "regularMarketPreviousClose": 84.8,
@@ -231,13 +606,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 21195212800
+    "marketCap": 20965660672
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 18783563776,
-    "forwardPE": 64.48687,
+    "forwardPE": 63.78845,
     "profitMargins": -0.08285,
     "floatShares": 154728656,
     "sharesOutstanding": 216487160,
@@ -253,7 +628,7 @@
     "impliedSharesOutstanding": 254437614,
     "category": null,
     "bookValue": 12.91,
-    "priceToBook": 6.4525332,
+    "priceToBook": 6.3826494,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1046,7 +1421,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 83.3022,
+    "currentPrice": 82.4,
     "targetHighPrice": 280,
     "targetLowPrice": 60,
     "targetMeanPrice": 141.60263,
@@ -1073,6 +1448,6 @@
     "profitMargins": -0.08285,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-06T16:37:28.455Z",
+  "lastUpdated": "2026-01-06T18:38:31.205Z",
   "source": "Static Build (yahoo-finance2)"
 }

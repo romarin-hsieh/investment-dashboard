@@ -84,12 +84,17 @@ class TechnicalIndicatorsCache {
       const cached = this.memoryCache.get(cacheKey);
 
       // 只要 key (包含日期) 匹配且未過期，就視為有效
-      // 移除對 cached.indexTimestamp !== latestTimestamp 的嚴格檢查
-      // 因為 cacheKey 本身已經包含了日期 (YYYY-MM-DD)，這對於每日數據已經足夠
       if (Date.now() - cached.timestamp < this.cacheTimeout) {
-        console.log(`Using memory cache for ${symbol}`);
-        const dataWithSource = { ...cached.data, source: 'Daily Cache (Memory)' };
-        return dataWithSource;
+
+        // [New] Validate Data Completeness
+        if (this._isValidData(cached.data)) {
+          console.log(`Using memory cache for ${symbol}`);
+          const dataWithSource = { ...cached.data, source: 'Daily Cache (Memory)' };
+          return dataWithSource;
+        } else {
+          console.warn(`Memory cache for ${symbol} is invalid/incomplete. Clearing.`);
+          this.memoryCache.delete(cacheKey);
+        }
       } else {
         this.memoryCache.delete(cacheKey);
       }
@@ -104,13 +109,18 @@ class TechnicalIndicatorsCache {
         // 同樣移除對 indexTimestamp 的嚴格檢查
         // 只要緩存未過期且 Key 匹配 (即日期匹配)
         if (Date.now() - parsed.timestamp < this.cacheTimeout) {
-          console.log(`Using localStorage cache for ${symbol}`);
 
-          // 同時存入內存緩存
-          this.memoryCache.set(cacheKey, parsed);
-
-          const dataWithSource = { ...parsed.data, source: 'Daily Cache (LocalStorage)' };
-          return dataWithSource;
+          // [New] Validate Data Completeness
+          if (this._isValidData(parsed.data)) {
+            console.log(`Using localStorage cache for ${symbol}`);
+            // 同時存入內存緩存
+            this.memoryCache.set(cacheKey, parsed);
+            const dataWithSource = { ...parsed.data, source: 'Daily Cache (LocalStorage)' };
+            return dataWithSource;
+          } else {
+            console.warn(`LocalStorage cache for ${symbol} is invalid/incomplete. Clearing.`);
+            localStorage.removeItem(cacheKey);
+          }
         } else {
           localStorage.removeItem(cacheKey);
         }
@@ -131,6 +141,12 @@ class TechnicalIndicatorsCache {
       if (response.ok) {
         const data = await response.json();
 
+        // [New] Validate Static/Network Data
+        if (!this._isValidData(data)) {
+          console.warn(`Static/Network data for ${symbol} is incomplete (missing OBV/Beta). Forcing Fallback.`);
+          return null; // Force null return so caller uses Live API
+        }
+
         // 存入緩存
         await this.setTechnicalIndicators(symbol, data);
 
@@ -144,6 +160,40 @@ class TechnicalIndicatorsCache {
 
     // 4. 無法獲取數據，返回 null
     return null;
+  }
+
+  // 驗證數據完整性
+  _isValidData(data) {
+    if (!data) return false;
+
+    // 檢查關鍵指標是否存在 (OBV, Beta)且有值
+    // 這是為了解決靜態文件可能缺少新指標的問題
+    const obvObj = data.obv || (data.indicators && data.indicators.obv);
+    const hasOBV = obvObj && (obvObj.value !== undefined && obvObj.value !== null);
+
+    // 檢查 Beta (通常在 yf 或 indicators.yf 中)
+    const yf = data.yf || (data.indicators && data.indicators.yf);
+    // Beta 可能是數字或對象
+    const hasBeta = yf && (
+      (yf.beta_10d !== undefined && yf.beta_10d !== null) ||
+      (yf.beta_3mo !== undefined && yf.beta_3mo !== null)
+    );
+
+    // 如果缺少關鍵數據，視為無效，強制走 Live API
+    if (!hasOBV) {
+      console.warn('Cache validation failed: Missing OBV');
+      return false;
+    }
+
+    // 我們暫時不強制 Beta，因為如果 Benchmark Fetch 失敗，Beta 可能為 null，但我們不想因此無限重試
+    // 只記錄警告
+    if (!hasBeta) {
+      console.warn('Cache partial warning: Missing Beta fields in static/cached data. Assuming live fetch needed if critical.');
+      // 決定: 強制失效以觸發 Live Calculation (包含 Beta)
+      return false;
+    }
+
+    return true;
   }
 
   // 將技術指標數據存入緩存 (Merge Strategy)

@@ -1,16 +1,17 @@
 <template>
   <div class="company-profile-container">
-    <div class="company-profile-widget" :id="widgetId" ref="container">
-      <div v-if="!loaded && !error" class="profile-loading">
-        <div class="loading-spinner"></div>
-        <span>Loading company profile...</span>
-      </div>
-      
-      <div v-if="error" class="profile-error">
-        <span>⚠️ Failed to load company profile</span>
-        <button @click="retry" class="retry-btn">Retry</button>
-      </div>
+    <div v-if="!loaded && !error" class="profile-loading">
+      <div class="loading-spinner"></div>
+      <span>Loading company profile...</span>
     </div>
+      
+    <div v-if="error" class="profile-error">
+      <span>⚠️ Failed to load company profile</span>
+      <button @click="retry" class="retry-btn">Retry</button>
+    </div>
+
+    <!-- Dedicated container for TradingView widget -->
+    <div ref="widgetContainer" class="company-profile-widget"></div>
   </div>
 </template>
 
@@ -52,88 +53,104 @@ export default {
     }
   },
   mounted() {
+    this.isMounted = true
     this.loadCompanyProfile()
+  },
+  beforeUnmount() {
+    this.isMounted = false
   },
   watch: {
     symbol() {
-      this.loadCompanyProfile()
+      if (this.isMounted) this.loadCompanyProfile()
     },
     exchange() {
-      this.loadCompanyProfile()
+      if (this.isMounted) this.loadCompanyProfile()
     }
   },
   methods: {
     async loadCompanyProfile() {
+      if (!this.isMounted) return
       this.loaded = false
       this.error = false
 
       try {
         await this.$nextTick()
-        this.createCompanyProfile()
+        if (this.isMounted) this.createCompanyProfile()
       } catch (err) {
         console.error('Failed to load company profile:', err)
-        this.error = true
+        if (this.isMounted) this.error = true
       }
     },
 
     createCompanyProfile() {
-      const container = this.$refs.container
+      if (!this.isMounted) return
+      const container = this.$refs.widgetContainer
       if (!container) return
 
-      // 清除現有的 widget
+      // Clean existing
       container.innerHTML = ''
-
-      // 創建 widget 容器結構
-      const widgetContainer = document.createElement('div')
-      widgetContainer.className = 'tradingview-widget-container'
-      widgetContainer.style.height = '100%'
-      widgetContainer.style.width = '100%'
-
-      const widgetContent = document.createElement('div')
-      widgetContent.className = 'tradingview-widget-container__widget'
-
-      widgetContainer.appendChild(widgetContent)
-      container.appendChild(widgetContainer)
-
-      // 創建配置
-      const config = {
-        "symbol": this.fullSymbol,
-        "colorTheme": this.colorTheme,
-        "isTransparent": this.isTransparent,
-        "locale": this.locale,
-        "width": "100%",
-        "height": "100%"
+      
+      try {
+          // 創建 widget 容器結構
+          const widgetContainer = document.createElement('div')
+          widgetContainer.className = 'tradingview-widget-container'
+          widgetContainer.style.height = '100%'
+          widgetContainer.style.width = '100%'
+    
+          const widgetContent = document.createElement('div')
+          widgetContent.className = 'tradingview-widget-container__widget'
+          
+          // Append securely
+          widgetContainer.appendChild(widgetContent)
+          if (container) container.appendChild(widgetContainer)
+    
+          // 創建配置
+          const config = {
+            "symbol": this.fullSymbol,
+            "colorTheme": this.colorTheme,
+            "isTransparent": this.isTransparent,
+            "locale": this.locale,
+            "width": "100%",
+            "height": "100%"
+          }
+    
+          console.log(`🏢 Creating Company Profile widget for ${this.fullSymbol}`, config)
+    
+          // 創建腳本
+          const script = document.createElement('script')
+          script.type = 'text/javascript'
+          script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js'
+          script.async = true
+          script.innerHTML = JSON.stringify(config)
+    
+          // 設定載入事件
+          script.onload = () => {
+            if (this.isMounted) {
+                this.loaded = true
+                console.log('TradingView Company Profile loaded successfully')
+            }
+          }
+    
+          script.onerror = () => {
+            if (this.isMounted) {
+                this.error = true
+                console.error('TradingView Company Profile failed to load')
+            }
+          }
+    
+          // 添加腳本到 widget 容器
+          widgetContent.appendChild(script)
+    
+          // 設定超時保護
+          setTimeout(() => {
+            if (this.isMounted && !this.loaded && !this.error) {
+              this.loaded = true
+            }
+          }, 8000)
+      } catch (e) {
+          console.error("Error creating widget:", e);
+          if (this.isMounted) this.error = true;
       }
-
-      console.log(`🏢 Creating Company Profile widget for ${this.fullSymbol}`, config)
-
-      // 創建腳本
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-symbol-profile.js'
-      script.async = true
-      script.innerHTML = JSON.stringify(config)
-
-      // 設定載入事件
-      script.onload = () => {
-        this.loaded = true
-        console.log('TradingView Company Profile loaded successfully')
-      }
-
-      script.onerror = () => {
-        this.error = true
-        console.error('TradingView Company Profile failed to load')
-      }
-
-      // 添加腳本到 widget 容器
-      widgetContent.appendChild(script)
-
-      // 設定超時保護
-      setTimeout(() => {
-        if (!this.loaded && !this.error) {
-          this.loaded = true
-        }
-      }, 8000)
     },
 
     async retry() {

@@ -45,7 +45,7 @@
         "organization": "Magnetar Financial LLC",
         "pctHeld": 0.21219999,
         "position": 81983325,
-        "value": 6113496520,
+        "value": 6143010567,
         "pctChange": -0.1444
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.069299996,
         "position": 26793956,
-        "value": 1998025290,
+        "value": 2007671131,
         "pctChange": 0.071100004
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Nvidia Corp                          ",
         "pctHeld": 0.062800005,
         "position": 24277573,
-        "value": 1810378611,
+        "value": 1819118552,
         "pctChange": 0
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0318,
         "position": 12297105,
-        "value": 916995116,
+        "value": 921422081,
         "pctChange": 1.4381
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.019199999,
         "position": 7433501,
-        "value": 554316167,
+        "value": 556992232,
         "pctChange": 1.0967
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Coatue Management LLC",
         "pctHeld": 0.0174,
         "position": 6724615,
-        "value": 501454538,
+        "value": 503875404,
         "pctChange": -0.6222
       },
       {
@@ -99,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0109,
         "position": 4230022,
-        "value": 315432739,
+        "value": 316955549,
         "pctChange": 0.8049
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0108,
         "position": 4172359,
-        "value": 311132809,
+        "value": 312634861,
         "pctChange": 4.8301
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.0107,
         "position": 4115456,
-        "value": 306889552,
+        "value": 308371119,
         "pctChange": 1
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0094,
         "position": 3623259,
-        "value": 270186422,
+        "value": 271490797,
         "pctChange": 4.4685
       }
     ]
@@ -211,17 +211,802 @@
     "financialCurrency": "USD",
     "defaultMethodology": "gaap"
   },
+  "upgradeDowngradeHistory": {
+    "history": [
+      {
+        "epochGradeDate": "2026-01-06T13:47:09.000Z",
+        "firm": "Truist Securities",
+        "toGrade": "Hold",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 84,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2026-01-05T20:05:52.000Z",
+        "firm": "Jefferies",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 120,
+        "priorPriceTarget": 155
+      },
+      {
+        "epochGradeDate": "2026-01-05T12:14:26.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Neutral",
+        "fromGrade": "Underperform",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 68,
+        "priorPriceTarget": 36
+      },
+      {
+        "epochGradeDate": "2025-12-05T17:55:02.000Z",
+        "firm": "Roth Capital",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 110,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-12-05T13:32:26.000Z",
+        "firm": "Freedom Capital Markets",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 100,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-11-17T14:32:06.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 105,
+        "priorPriceTarget": 120
+      },
+      {
+        "epochGradeDate": "2025-11-13T12:45:16.000Z",
+        "firm": "Compass Point",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 150,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-11-12T17:58:29.000Z",
+        "firm": "Loop Capital",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 120,
+        "priorPriceTarget": 165
+      },
+      {
+        "epochGradeDate": "2025-11-12T15:52:38.000Z",
+        "firm": "Barclays",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 120,
+        "priorPriceTarget": 140
+      },
+      {
+        "epochGradeDate": "2025-11-12T15:24:57.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 150,
+        "priorPriceTarget": 170
+      },
+      {
+        "epochGradeDate": "2025-11-12T11:32:31.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 180,
+        "priorPriceTarget": 180
+      },
+      {
+        "epochGradeDate": "2025-11-11T19:33:40.000Z",
+        "firm": "Jefferies",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 155,
+        "priorPriceTarget": 180
+      },
+      {
+        "epochGradeDate": "2025-11-11T19:04:25.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Underperform",
+        "fromGrade": "Underperform",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 36,
+        "priorPriceTarget": 36
+      },
+      {
+        "epochGradeDate": "2025-11-11T16:16:06.000Z",
+        "firm": "Macquarie",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 115,
+        "priorPriceTarget": 140
+      },
+      {
+        "epochGradeDate": "2025-11-11T15:47:07.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Neutral",
+        "fromGrade": "Overweight",
+        "action": "down",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 110,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-11-11T13:31:47.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 120,
+        "priorPriceTarget": 150
+      },
+      {
+        "epochGradeDate": "2025-11-11T11:49:51.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 99,
+        "priorPriceTarget": 91
+      },
+      {
+        "epochGradeDate": "2025-11-11T11:25:30.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 160,
+        "priorPriceTarget": 175
+      },
+      {
+        "epochGradeDate": "2025-11-11T11:23:53.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 140,
+        "priorPriceTarget": 168
+      },
+      {
+        "epochGradeDate": "2025-11-05T16:01:11.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 174,
+        "priorPriceTarget": 174
+      },
+      {
+        "epochGradeDate": "2025-09-30T10:12:05.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 175,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-09-29T16:34:57.000Z",
+        "firm": "Macquarie",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 140,
+        "priorPriceTarget": 115
+      },
+      {
+        "epochGradeDate": "2025-09-23T12:55:23.000Z",
+        "firm": "Melius Research",
+        "toGrade": "Buy",
+        "fromGrade": "Hold",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 165,
+        "priorPriceTarget": 128
+      },
+      {
+        "epochGradeDate": "2025-09-23T11:09:35.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Equal-Weight",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 170,
+        "priorPriceTarget": 105
+      },
+      {
+        "epochGradeDate": "2025-09-19T10:28:53.000Z",
+        "firm": "Loop Capital",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 165,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-09-16T14:49:08.000Z",
+        "firm": "Raymond James",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 130,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-09-16T12:45:48.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Perform",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 180,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-09-16T12:34:03.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 116,
+        "priorPriceTarget": 116
+      },
+      {
+        "epochGradeDate": "2025-09-15T11:52:01.000Z",
+        "firm": "Seaport Global",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-08-27T13:14:29.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 116,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-08-21T10:42:47.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 180,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-08-19T17:31:08.000Z",
+        "firm": "MoffettNathanson",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 65,
+        "priorPriceTarget": 56
+      },
+      {
+        "epochGradeDate": "2025-08-14T12:28:47.000Z",
+        "firm": "Argus Research",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 200,
+        "priorPriceTarget": 200
+      },
+      {
+        "epochGradeDate": "2025-08-13T17:44:14.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 168,
+        "priorPriceTarget": 185
+      },
+      {
+        "epochGradeDate": "2025-08-13T14:19:42.000Z",
+        "firm": "Macquarie",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 115,
+        "priorPriceTarget": 65
+      },
+      {
+        "epochGradeDate": "2025-08-13T12:54:40.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 105,
+        "priorPriceTarget": 60
+      },
+      {
+        "epochGradeDate": "2025-08-13T11:35:37.000Z",
+        "firm": "Stifel",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 120,
+        "priorPriceTarget": 115
+      },
+      {
+        "epochGradeDate": "2025-08-13T11:10:07.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-08-13T10:05:13.000Z",
+        "firm": "Needham",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "reit",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-07-31T12:30:20.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 91,
+        "priorPriceTarget": 58
+      },
+      {
+        "epochGradeDate": "2025-07-31T12:10:19.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 160,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-07-21T12:49:18.000Z",
+        "firm": "Barclays",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 140,
+        "priorPriceTarget": 100
+      },
+      {
+        "epochGradeDate": "2025-07-18T17:41:31.000Z",
+        "firm": "Northland Capital Markets",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 165,
+        "priorPriceTarget": 85
+      },
+      {
+        "epochGradeDate": "2025-07-17T12:15:06.000Z",
+        "firm": "HSBC",
+        "toGrade": "Reduce",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 32,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-07-14T10:41:34.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "reit",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-07-11T11:46:14.000Z",
+        "firm": "Argus Research",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 200,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-07-10T09:57:47.000Z",
+        "firm": "Needham",
+        "toGrade": "Hold",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 78,
+        "priorPriceTarget": 78
+      },
+      {
+        "epochGradeDate": "2025-07-08T14:32:52.000Z",
+        "firm": "Stifel",
+        "toGrade": "Hold",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 115,
+        "priorPriceTarget": 75
+      },
+      {
+        "epochGradeDate": "2025-07-08T14:06:23.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Neutral",
+        "fromGrade": "Outperform",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 150,
+        "priorPriceTarget": 70
+      },
+      {
+        "epochGradeDate": "2025-06-25T10:30:03.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-06-16T14:03:34.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 185,
+        "priorPriceTarget": 76
+      },
+      {
+        "epochGradeDate": "2025-06-10T16:12:01.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Underperform",
+        "fromGrade": "Underperform",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 36,
+        "priorPriceTarget": 36
+      },
+      {
+        "epochGradeDate": "2025-05-27T12:22:40.000Z",
+        "firm": "Barclays",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Overweight",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 100,
+        "priorPriceTarget": 70
+      },
+      {
+        "epochGradeDate": "2025-05-22T14:41:47.000Z",
+        "firm": "JMP Securities",
+        "toGrade": "Market Perform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-05-21T17:43:17.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 94,
+        "priorPriceTarget": 43
+      },
+      {
+        "epochGradeDate": "2025-05-16T16:45:58.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 61,
+        "priorPriceTarget": 54
+      },
+      {
+        "epochGradeDate": "2025-05-16T13:11:20.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 66,
+        "priorPriceTarget": 43
+      },
+      {
+        "epochGradeDate": "2025-05-16T10:51:31.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 78,
+        "priorPriceTarget": 55
+      },
+      {
+        "epochGradeDate": "2025-05-15T15:00:23.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 70,
+        "priorPriceTarget": 46
+      },
+      {
+        "epochGradeDate": "2025-05-15T14:39:40.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 58,
+        "priorPriceTarget": 46
+      },
+      {
+        "epochGradeDate": "2025-05-15T14:24:27.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 76,
+        "priorPriceTarget": 42
+      },
+      {
+        "epochGradeDate": "2025-05-15T13:29:52.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 60,
+        "priorPriceTarget": 50
+      },
+      {
+        "epochGradeDate": "2025-05-15T13:14:44.000Z",
+        "firm": "Macquarie",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 65,
+        "priorPriceTarget": 56
+      },
+      {
+        "epochGradeDate": "2025-05-15T12:51:49.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 70,
+        "priorPriceTarget": 60
+      },
+      {
+        "epochGradeDate": "2025-05-15T12:19:21.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Underperform",
+        "fromGrade": "Neutral",
+        "action": "down",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 36,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-05-15T11:35:01.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 55,
+        "priorPriceTarget": 55
+      },
+      {
+        "epochGradeDate": "2025-05-12T13:57:36.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 60,
+        "priorPriceTarget": 48
+      },
+      {
+        "epochGradeDate": "2025-05-08T14:02:46.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 50,
+        "priorPriceTarget": 41
+      },
+      {
+        "epochGradeDate": "2025-04-23T17:44:22.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 55,
+        "priorPriceTarget": 55
+      },
+      {
+        "epochGradeDate": "2025-04-22T15:29:37.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 55,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-04-22T13:12:09.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 46,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-04-22T12:00:51.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 41,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-04-22T11:40:49.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 43,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-04-22T11:18:01.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 48,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-04-22T11:15:50.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 43,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-04-22T10:58:07.000Z",
+        "firm": "Jefferies",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 51,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-04-22T10:47:20.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 55,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2025-03-25T11:59:51.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 47,
+        "priorPriceTarget": 0
+      }
+    ],
+    "maxAge": 86400
+  },
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.029794443,
-    "regularMarketChange": -2.290001,
-    "regularMarketTime": "2026-01-06T16:36:31.000Z",
+    "regularMarketChangePercent": -0.025110595,
+    "regularMarketChange": -1.9300003,
+    "regularMarketTime": "2026-01-06T18:37:31.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 74.57,
+    "regularMarketPrice": 74.93,
     "regularMarketDayHigh": 78.84,
-    "regularMarketDayLow": 74.5601,
-    "regularMarketVolume": 10760717,
+    "regularMarketDayLow": 73.75,
+    "regularMarketVolume": 16610790,
     "averageDailyVolume10Day": 24534250,
     "averageDailyVolume3Month": 28634679,
     "regularMarketPreviousClose": 76.86,
@@ -242,13 +1027,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 37159534592
+    "marketCap": 37338931200
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 55168425984,
-    "forwardPE": -280.31726,
+    "forwardPE": -281.67056,
     "profitMargins": -0.17802,
     "floatShares": 278699018,
     "sharesOutstanding": 386401201,
@@ -264,7 +1049,7 @@
     "impliedSharesOutstanding": 498317512,
     "category": null,
     "bookValue": 7.794,
-    "priceToBook": 9.5676155,
+    "priceToBook": 9.613806,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2075,7 +2860,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 74.57,
+    "currentPrice": 74.93,
     "targetHighPrice": 208,
     "targetLowPrice": 44,
     "targetMeanPrice": 126.61538,
@@ -2104,6 +2889,6 @@
     "profitMargins": -0.17802,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-06T16:36:32.650Z",
+  "lastUpdated": "2026-01-06T18:37:33.674Z",
   "source": "Static Build (yahoo-finance2)"
 }

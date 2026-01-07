@@ -1,16 +1,17 @@
 <template>
   <div class="fundamental-data-container">
-    <div class="fundamental-data-widget" :id="widgetId" ref="container">
-      <div v-if="!loaded && !error" class="fundamental-loading">
-        <div class="loading-spinner"></div>
-        <span>Loading fundamental data...</span>
-      </div>
-      
-      <div v-if="error" class="fundamental-error">
-        <span>⚠️ Failed to load fundamental data</span>
-        <button @click="retry" class="retry-btn">Retry</button>
-      </div>
+    <div v-if="!loaded && !error" class="loading-state">
+      <div class="spinner"></div>
+      <span>Loading fundamental data...</span>
     </div>
+    
+    <div v-if="error" class="error-state">
+      <span>⚠️ Failed to load data</span>
+      <button @click="retry" class="retry-btn">Retry</button>
+    </div>
+
+    <!-- Dedicated container that Vue ignores after mount -->
+    <div ref="widgetContainer" class="widget-host"></div>
   </div>
 </template>
 
@@ -56,87 +57,106 @@ export default {
     }
   },
   mounted() {
+    this.isMounted = true
     this.loadFundamentalData()
+  },
+  beforeUnmount() {
+    this.isMounted = false
   },
   watch: {
     symbol() {
-      this.loadFundamentalData()
+        if (this.isMounted) this.loadFundamentalData()
     },
     exchange() {
-      this.loadFundamentalData()
+        if (this.isMounted) this.loadFundamentalData()
     }
   },
   methods: {
     async loadFundamentalData() {
+      if (!this.isMounted) return
       this.loaded = false
       this.error = false
 
       try {
         await this.$nextTick()
-        this.createFundamentalData()
+        if (this.isMounted) this.createFundamentalData()
       } catch (err) {
         console.error('Failed to load fundamental data:', err)
-        this.error = true
+        if (this.isMounted) this.error = true
       }
     },
 
     createFundamentalData() {
-      const container = this.$refs.container
+      if (!this.isMounted) return
+      const container = this.$refs.widgetContainer
       if (!container) return
 
-      // 清除現有的 widget
+      // Clean existing
       container.innerHTML = ''
-
-      // 創建 widget 容器結構
-      const widgetContainer = document.createElement('div')
-      widgetContainer.className = 'tradingview-widget-container'
-      widgetContainer.style.height = '100%'
-      widgetContainer.style.width = '100%'
-
-      const widgetContent = document.createElement('div')
-      widgetContent.className = 'tradingview-widget-container__widget'
-
-      widgetContainer.appendChild(widgetContent)
-      container.appendChild(widgetContainer)
-
-      // 創建配置
-      const config = {
-        "symbol": this.fullSymbol,
-        "colorTheme": "light",
-        "displayMode": "regular",
-        "isTransparent": true,
-        "locale": "zh_TW",
-        "width": "100%",
-        "height": "100%"
+      
+      try {
+          // 創建 widget 容器結構
+          const widgetContainer = document.createElement('div')
+          widgetContainer.className = 'tradingview-widget-container'
+          widgetContainer.style.height = '100%'
+          widgetContainer.style.width = '100%'
+    
+          const widgetContent = document.createElement('div')
+          widgetContent.className = 'tradingview-widget-container__widget'
+          
+          // Append securely
+          widgetContainer.appendChild(widgetContent)
+          if (container) container.appendChild(widgetContainer)
+    
+          // 創建配置
+          const config = {
+            "symbol": this.fullSymbol,
+            "colorTheme": "light",
+            "displayMode": "regular",
+            "isTransparent": true,
+            "locale": "zh_TW",
+            "width": "100%",
+            "locale": "zh_TW",
+            "width": "100%",
+            "height": "100%",
+            "autosize": true
+          }
+    
+          // 創建腳本
+          const script = document.createElement('script')
+          script.type = 'text/javascript'
+          script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-financials.js'
+          script.async = true
+          script.innerHTML = JSON.stringify(config)
+    
+          // 設定載入事件
+          script.onload = () => {
+            if (this.isMounted) {
+                this.loaded = true
+                console.log('TradingView Fundamental Data loaded successfully')
+            }
+          }
+    
+          script.onerror = () => {
+            if (this.isMounted) {
+                this.error = true
+                console.error('TradingView Fundamental Data failed to load')
+            }
+          }
+    
+          // 添加腳本到 widget 容器
+          widgetContent.appendChild(script)
+    
+          // 設定超時保護
+          setTimeout(() => {
+            if (this.isMounted && !this.loaded && !this.error) {
+              this.loaded = true
+            }
+          }, 8000)
+      } catch (e) {
+          console.error("Error creating widget:", e);
+          if (this.isMounted) this.error = true;
       }
-
-      // 創建腳本
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-financials.js'
-      script.async = true
-      script.innerHTML = JSON.stringify(config)
-
-      // 設定載入事件
-      script.onload = () => {
-        this.loaded = true
-        console.log('TradingView Fundamental Data loaded successfully')
-      }
-
-      script.onerror = () => {
-        this.error = true
-        console.error('TradingView Fundamental Data failed to load')
-      }
-
-      // 添加腳本到 widget 容器
-      widgetContent.appendChild(script)
-
-      // 設定超時保護
-      setTimeout(() => {
-        if (!this.loaded && !this.error) {
-          this.loaded = true
-        }
-      }, 8000)
     },
 
     async retry() {
@@ -150,8 +170,7 @@ export default {
 .fundamental-data-container {
   height: 100%;
   width: 100%;
-  min-height: 950px;
-  overflow: hidden;
+  position: relative;
 }
 
 .fundamental-data-widget {
@@ -159,7 +178,12 @@ export default {
   width: 100%;
   position: relative;
   min-height: 950px;
-  overflow: hidden;
+  min-height: 950px;
+}
+
+.widget-host {
+    width: 100%;
+    height: 100%;
 }
 
 /* Loading 狀態 */
@@ -232,16 +256,14 @@ export default {
 
 :global(.fundamental-data-widget .tradingview-widget-container iframe) {
   width: 100% !important;
-  height: 950px !important;
+  height: 100% !important;
   min-height: 600px !important;
-  max-height: none !important;
 }
 
 /* Simplified TradingView overrides - 僅針對 Fundamental Data */
 :global(.fundamental-data-widget .tv-embed-widget-wrapper) {
-  height: 950px !important;
+  height: auto !important;
   min-height: 950px !important;
-  overflow: auto !important;
 }
 
 :global(.fundamental-data-widget .tv-feed-widget) {

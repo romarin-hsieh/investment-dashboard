@@ -66,6 +66,36 @@
              <Bar v-if="earningsChartData" :data="earningsChartData" :options="earningsChartOptions" />
         </div>
       </div>
+
+      <!-- Analyst Rating History -->
+      <div style="background: #ffeeba; padding: 10px; margin-bottom: 10px; color: #856404; border: 1px solid #bee5eb;">
+          DEBUG: Upgrades Loaded: {{ upgradesDowngrades ? upgradesDowngrades.length : 'undefined' }}
+      </div>
+      <div class="card history-card full-width" v-if="upgradesDowngrades && upgradesDowngrades.length > 0">
+        <h3>Analyst Rating History (Last 12 Months)</h3>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Firm</th>
+                        <th>Action</th>
+                        <th>From</th>
+                        <th>To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in upgradesDowngrades" :key="index">
+                        <td>{{ formatDate(item.epochGradeDate) }}</td>
+                        <td>{{ item.firm }}</td>
+                        <td>{{ item.action }}</td>
+                        <td>{{ item.fromGrade }}</td>
+                        <td><strong>{{ item.toGrade }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -91,6 +121,7 @@ export default {
       loading: true,
       error: null,
       metrics: {},
+      upgradesDowngrades: [],
       recommendationChartData: null,
       earningsChartData: null,
       recommendationChartOptions: {
@@ -148,6 +179,7 @@ export default {
             this.metrics = data.financials;
             this.processRecommendationTrend(data.recommendationTrend);
             this.processEarningsHistory(data.earnings);
+            this.upgradesDowngrades = data.upgradesDowngrades || [];
             
         } catch (err) {
             console.error('Fundamental load error:', err);
@@ -163,8 +195,8 @@ export default {
             return;
         }
         
-        // Take latest 9 months to fill width better
-        const recent = trend.slice(0, 9).reverse();
+        // Take latest 12 months (or as many as available) as requested
+        const recent = trend.slice(0, 12).reverse();
         const labels = recent.map(t => t.period);
         
         this.recommendationChartData = {
@@ -232,6 +264,11 @@ export default {
     getGrowthClass(val) {
         if (!val) return '';
         return val.includes('-') ? 'text-danger' : 'text-success';
+    },
+
+    formatDate(epoch) {
+        if (!epoch) return '-';
+        return new Date(epoch * 1000).toLocaleDateString();
     }
   }
 }
@@ -333,5 +370,33 @@ h3 {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.table-container {
+    overflow-x: auto;
+    max-height: 400px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+th {
+    background: #f8f9fa;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+tbody tr:hover {
+    background: #f1f3f5;
 }
 </style>
