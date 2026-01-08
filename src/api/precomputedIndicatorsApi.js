@@ -62,7 +62,8 @@ class PrecomputedIndicatorsAPI {
   }
 
   // 獲取預計算的技術指標數據
-  async getTechnicalIndicators(symbol) {
+  async getTechnicalIndicators(symbolInput) {
+    const symbol = symbolInput.toUpperCase();
     const cacheKey = `precomputed_${symbol}`;
 
     // 檢查緩存
