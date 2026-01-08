@@ -45,7 +45,7 @@
         "organization": "Rakuten Group, Inc.",
         "pctHeld": 0.1117,
         "position": 31020155,
-        "value": 2705267689,
+        "value": 2659357992,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0718,
         "position": 19919888,
-        "value": 1737213414,
+        "value": 1707732065,
         "pctChange": 0.1339
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0385,
         "position": 10676179,
-        "value": 931069560,
+        "value": 915268861,
         "pctChange": 0.0482
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.0322,
         "position": 8943486,
-        "value": 779961405,
+        "value": 766725084,
         "pctChange": 0
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0148,
         "position": 4120044,
-        "value": 359309033,
+        "value": 353211385,
         "pctChange": 0.216
       },
       {
@@ -90,7 +90,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.014199999,
         "position": 3946260,
-        "value": 344153330,
+        "value": 338312883,
         "pctChange": 0.8687
       },
       {
@@ -99,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.012999999,
         "position": 3600995,
-        "value": 314042770,
+        "value": 308713313,
         "pctChange": 0.16790001
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Broad Run Investment Management, LLC",
         "pctHeld": 0.0128,
         "position": 3557413,
-        "value": 310241984,
+        "value": 304977028,
         "pctChange": -0.0339
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0126,
         "position": 3510670,
-        "value": 306165527,
+        "value": 300969750,
         "pctChange": 0.3806
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0117999995,
         "position": 3289425,
-        "value": 286870751,
+        "value": 282002416,
         "pctChange": -0.4414
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-07T19:55:25.000Z",
+        "firm": "Scotiabank",
+        "toGrade": "Sector Underperform",
+        "fromGrade": "Sector Perform",
+        "action": "down",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 45.6,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2025-11-25T17:26:32.000Z",
         "firm": "Scotiabank",
@@ -669,14 +679,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.10613441,
-    "regularMarketChange": -10.355003,
-    "regularMarketTime": "2026-01-07T18:25:53.000Z",
+    "postMarketChangePercent": 0.00241332,
+    "postMarketChange": 0.20689392,
+    "postMarketTime": "2026-01-08T00:59:54.000Z",
+    "postMarketPrice": 85.9369,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.121304,
+    "regularMarketChange": -11.835,
+    "regularMarketTime": "2026-01-07T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 87.21,
+    "regularMarketPrice": 85.73,
     "regularMarketDayHigh": 95.3399,
-    "regularMarketDayLow": 86.14,
-    "regularMarketVolume": 15449485,
+    "regularMarketDayLow": 83.91,
+    "regularMarketVolume": 24292391,
     "averageDailyVolume10Day": 18247310,
     "averageDailyVolume3Month": 13779027,
     "regularMarketPreviousClose": 97.565,
@@ -685,7 +700,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "ASTS",
     "underlyingSymbol": null,
@@ -697,13 +712,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 32041068544
+    "marketCap": 31497316352
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 26969798656,
-    "forwardPE": -113.18771,
+    "forwardPE": -111.26686,
     "profitMargins": 0,
     "floatShares": 229726859,
     "sharesOutstanding": 278010950,
@@ -720,7 +735,7 @@
     "impliedSharesOutstanding": 367401320,
     "category": null,
     "bookValue": 4.561,
-    "priceToBook": 19.120808,
+    "priceToBook": 18.796318,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1641,7 +1656,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 87.21,
+    "currentPrice": 85.73,
     "targetHighPrice": 95,
     "targetLowPrice": 43,
     "targetMeanPrice": 71.5125,
@@ -1670,6 +1685,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T18:25:54.207Z",
+  "lastUpdated": "2026-01-08T01:19:29.221Z",
   "source": "Static Build (yahoo-finance2)"
 }

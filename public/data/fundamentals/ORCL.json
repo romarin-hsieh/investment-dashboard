@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0588,
         "position": 168960500,
-        "value": 32737785551,
+        "value": 32582342201,
         "pctChange": 0.028499998
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.048600003,
         "position": 139726142,
-        "value": 27073336506,
+        "value": 26944788711,
         "pctChange": 0.0326
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0345,
         "position": 99146740,
-        "value": 19210671797,
+        "value": 19119456978,
         "pctChange": 1.1719
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0255,
         "position": 73310844,
-        "value": 14204708730,
+        "value": 14137262888,
         "pctChange": -0.002
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0128999995,
         "position": 37069570,
-        "value": 7182599679,
+        "value": 7148495743,
         "pctChange": 0.020599999
       },
       {
@@ -90,7 +90,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0111,
         "position": 31977709,
-        "value": 6196000720,
+        "value": 6166581286,
         "pctChange": 0.2827
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0093,
         "position": 26629953,
-        "value": 5159819546,
+        "value": 5135320038,
         "pctChange": -0.13350001
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0081,
         "position": 23310827,
-        "value": 4516705711,
+        "value": 4495259793,
         "pctChange": 0.0116
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0072000003,
         "position": 20814621,
-        "value": 4033040850,
+        "value": 4013891437,
         "pctChange": 1.2391
       },
       {
@@ -126,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0068,
         "position": 19555311,
-        "value": 3789036951,
+        "value": 3771046101,
         "pctChange": 0.4703
       }
     ]
@@ -6159,14 +6159,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.00005158455,
-    "regularMarketChange": 0.009994507,
-    "regularMarketTime": "2026-01-07T18:26:04.000Z",
+    "postMarketChangePercent": -0.0016593656,
+    "postMarketChange": -0.31999207,
+    "postMarketTime": "2026-01-08T00:59:55.000Z",
+    "postMarketPrice": 192.52,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.00469679,
+    "regularMarketChange": -0.910004,
+    "regularMarketTime": "2026-01-07T21:03:23.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 193.76,
+    "regularMarketPrice": 192.84,
     "regularMarketDayHigh": 195.6,
     "regularMarketDayLow": 192,
-    "regularMarketVolume": 6254175,
+    "regularMarketVolume": 11125281,
     "averageDailyVolume10Day": 15890370,
     "averageDailyVolume3Month": 25416611,
     "regularMarketPreviousClose": 193.75,
@@ -6175,25 +6180,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "ORCL",
     "underlyingSymbol": null,
     "shortName": "Oracle Corporation",
     "longName": "Oracle Corporation",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 556697649152
+    "marketCap": 554054385664
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 669138944000,
-    "forwardPE": 24.36016,
+    "forwardPE": 24.244497,
     "profitMargins": 0.25280002,
     "floatShares": 1706007131,
     "sharesOutstanding": 2873130000,
@@ -6210,7 +6215,7 @@
     "impliedSharesOutstanding": 2873130000,
     "category": null,
     "bookValue": 10.425,
-    "priceToBook": 18.58609,
+    "priceToBook": 18.49784,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-05-31T00:00:00.000Z",
@@ -7626,7 +7631,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 193.76,
+    "currentPrice": 192.84,
     "targetHighPrice": 400,
     "targetLowPrice": 175.14314,
     "targetMeanPrice": 291.08087,
@@ -7656,6 +7661,6 @@
     "profitMargins": 0.25280002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-07T18:26:06.884Z",
+  "lastUpdated": "2026-01-08T01:19:42.091Z",
   "source": "Static Build (yahoo-finance2)"
 }
