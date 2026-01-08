@@ -287,6 +287,11 @@ export default {
 
     formatDate(epoch) {
         if (!epoch) return '-';
+        // Check if it's already a date string or object
+        if (typeof epoch === 'string' && epoch.includes('T')) {
+           return new Date(epoch).toLocaleDateString();
+        }
+        // Assume unix timestamp (seconds) if number
         return new Date(epoch * 1000).toLocaleDateString();
     }
   }
