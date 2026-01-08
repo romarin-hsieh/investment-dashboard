@@ -231,12 +231,24 @@ export default {
     },
     
     processEarningsHistory(earnings) {
-        if (!earnings || !earnings.financialsChart || earnings.financialsChart.length === 0) {
+        if (!earnings || !earnings.financialsChart) {
              this.earningsChartData = null;
              return;
         }
         
-        const history = earnings.financialsChart;
+        // Handle both array (legacy?) and object structure (yearly/quarterly)
+        let history = [];
+        if (Array.isArray(earnings.financialsChart)) {
+            history = earnings.financialsChart;
+        } else if (earnings.financialsChart.yearly) {
+            history = earnings.financialsChart.yearly;
+        }
+
+        if (history.length === 0) {
+            this.earningsChartData = null;
+            return;
+        }
+        
         const labels = history.map(item => item.date); // Year string usually
         
         this.earningsChartData = {
@@ -245,14 +257,15 @@ export default {
                 {
                     type: 'bar',
                     label: 'Revenue',
-                    data: history.map(item => item.revenue.raw),
+                    // Support both object with .raw (legacy/live API) and direct number (new static data)
+                    data: history.map(item => item.revenue?.raw !== undefined ? item.revenue.raw : item.revenue),
                     backgroundColor: 'rgba(54, 162, 235, 0.5)',
                     yAxisID: 'y1'
                 },
                 {
                     type: 'line',
                     label: 'Earnings',
-                    data: history.map(item => item.earnings.raw),
+                    data: history.map(item => item.earnings?.raw !== undefined ? item.earnings.raw : item.earnings),
                     borderColor: '#28a745',
                     backgroundColor: '#28a745',
                     fill: false,
