@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.074,
         "position": 1294151,
-        "value": 417971950,
+        "value": 373362563,
         "pctChange": 0.08180001
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.061300002,
         "position": 1072118,
-        "value": 346261951,
+        "value": 309306043,
         "pctChange": 0.087799996
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.0535,
         "position": 936477,
-        "value": 302453977,
+        "value": 270173614,
         "pctChange": 0.0668
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0509,
         "position": 890666,
-        "value": 287658399,
+        "value": 256957141,
         "pctChange": 0.16319999
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.0446,
         "position": 780986,
-        "value": 252235049,
+        "value": 225314461,
         "pctChange": 0.2586
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0382,
         "position": 667486,
-        "value": 215577954,
+        "value": 192569711,
         "pctChange": 0.1716
       },
       {
@@ -99,7 +99,7 @@
         "organization": "American Century Companies Inc",
         "pctHeld": 0.0253,
         "position": 442261,
-        "value": 142837035,
+        "value": 127592298,
         "pctChange": 0.78800005
       },
       {
@@ -108,7 +108,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0249,
         "position": 434858,
-        "value": 140446088,
+        "value": 125456533,
         "pctChange": -0.1042
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.022,
         "position": 385076,
-        "value": 124367996,
+        "value": 111094426,
         "pctChange": 0.1102
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.020499999,
         "position": 359426,
-        "value": 116083815,
+        "value": 103694401,
         "pctChange": 0.66199994
       }
     ]
@@ -193,10 +193,8 @@
       "currentQuarterEstimateYear": 2025,
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
-      "earningsDate": [
-        "2026-02-05T21:00:00.000Z"
-      ],
-      "isEarningsDateEstimate": true
+      "earningsDate": [],
+      "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
@@ -253,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-08T17:29:51.000Z",
+        "firm": "Roth Capital",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 125,
+        "priorPriceTarget": 117
+      },
       {
         "epochGradeDate": "2025-12-22T18:11:44.000Z",
         "firm": "B. Riley Securities",
@@ -648,46 +656,42 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.007245244,
-    "preMarketChange": -2.3399963,
-    "preMarketTime": "2026-01-08T12:21:47.000Z",
-    "preMarketPrice": 320.63,
     "preMarketSource": "DELAYED",
-    "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.0355253,
-    "regularMarketChange": 11.08,
-    "regularMarketTime": "2026-01-07T21:00:02.000Z",
+    "regularMarketChangePercent": -0.10672818,
+    "regularMarketChange": -34.47,
+    "regularMarketTime": "2026-01-08T18:06:57.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 322.97,
-    "regularMarketDayHigh": 272.701,
-    "regularMarketDayLow": 246.1101,
-    "regularMarketVolume": 1005074,
+    "regularMarketPrice": 288.5,
+    "regularMarketDayHigh": 317.98,
+    "regularMarketDayLow": 285.12,
+    "regularMarketVolume": 1073991,
     "averageDailyVolume10Day": 907190,
     "averageDailyVolume3Month": 1213695,
-    "regularMarketPreviousClose": 311.89,
-    "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 310.46,
+    "regularMarketPreviousClose": 322.97,
+    "regularMarketSource": "DELAYED",
+    "regularMarketOpen": 317.98,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "LEU",
     "underlyingSymbol": null,
     "shortName": "Centrus Energy Corp.",
     "longName": "Centrus Energy Corp.",
     "currency": "USD",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5881939968
+    "marketCap": 5254171136
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 5463940096,
-    "forwardPE": 65.70347,
+    "forwardPE": 58.69106,
     "profitMargins": 0.25039,
     "floatShares": 16839027,
     "sharesOutstanding": 17492832,
@@ -704,7 +708,7 @@
     "impliedSharesOutstanding": 18212032,
     "category": null,
     "bookValue": 19.937,
-    "priceToBook": 16.199528,
+    "priceToBook": 14.470582,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -870,6 +874,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3165,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CUTLIP LARRY B",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2473,
         "value": 0,
         "filerUrl": "",
@@ -887,18 +903,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "DONELSON JOHN M.A.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3165,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CUTLIP LARRY B",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-31T00:00:00.000Z",
@@ -1064,7 +1068,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 322.97,
+    "currentPrice": 288.5,
     "targetHighPrice": 390,
     "targetLowPrice": 125,
     "targetMeanPrice": 294.112,
@@ -1093,6 +1097,6 @@
     "profitMargins": 0.25039,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-08T12:37:09.265Z",
+  "lastUpdated": "2026-01-08T18:22:25.982Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.081099994,
         "position": 24954458,
-        "value": 15794175130,
+        "value": 15182333980,
         "pctChange": 0.3939
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.081,
         "position": 24929835,
-        "value": 15778590742,
+        "value": 15167353305,
         "pctChange": 0.31620002
       },
       {
@@ -63,7 +63,7 @@
         "organization": "IEQ Capital, LLC",
         "pctHeld": 0.0513,
         "position": 15779921,
-        "value": 9987427329,
+        "value": 9600530326,
         "pctChange": 284.4028
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.05,
         "position": 15365952,
-        "value": 9725418077,
+        "value": 9348670894,
         "pctChange": 2.2356
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0446,
         "position": 13706444,
-        "value": 8675082302,
+        "value": 8339023451,
         "pctChange": -0.047399998
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0385,
         "position": 11852466,
-        "value": 7501662578,
+        "value": 7211060136,
         "pctChange": 1.1107
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0218,
         "position": 6718998,
-        "value": 4252588099,
+        "value": 4087849619,
         "pctChange": 1.0165
       },
       {
@@ -108,7 +108,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.020299999,
         "position": 6245960,
-        "value": 3953192896,
+        "value": 3800052509,
         "pctChange": -0.0241
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0191,
         "position": 5877386,
-        "value": 3719915046,
+        "value": 3575811471,
         "pctChange": 0.0361
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0163,
         "position": 5022840,
-        "value": 3179055806,
+        "value": 3055904256,
         "pctChange": -0.0273
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-08T14:51:53.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 735,
+        "priorPriceTarget": 721
+      },
       {
         "epochGradeDate": "2025-12-11T19:36:58.000Z",
         "firm": "Jefferies",
@@ -2618,29 +2628,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.013919608,
-    "preMarketChange": -8.809998,
-    "preMarketTime": "2026-01-08T12:37:34.000Z",
-    "preMarketPrice": 624.11,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.025403399,
-    "regularMarketChange": 15.68,
-    "regularMarketTime": "2026-01-07T21:00:01.000Z",
+    "regularMarketChangePercent": -0.038738407,
+    "regularMarketChange": -24.51831,
+    "regularMarketTime": "2026-01-08T18:23:09.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 632.92,
-    "regularMarketDayHigh": 643.5799,
-    "regularMarketDayLow": 611.0001,
-    "regularMarketVolume": 2930318,
+    "regularMarketPrice": 608.4017,
+    "regularMarketDayHigh": 628.49,
+    "regularMarketDayLow": 607.23,
+    "regularMarketVolume": 1449167,
     "averageDailyVolume10Day": 2931990,
     "averageDailyVolume3Month": 4084806,
-    "regularMarketPreviousClose": 617.24,
+    "regularMarketPreviousClose": 632.92,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 618.3,
+    "regularMarketOpen": 622.3814,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "APP",
     "underlyingSymbol": null,
@@ -2652,13 +2657,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 214085140480
+    "marketCap": 205791821824
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 215743545344,
-    "forwardPE": 45.39345,
+    "forwardPE": 43.634983,
     "profitMargins": 0.44879,
     "floatShares": 242898397,
     "sharesOutstanding": 307597000,
@@ -2675,7 +2680,7 @@
     "impliedSharesOutstanding": 338249915,
     "category": null,
     "bookValue": 4.354,
-    "priceToBook": 145.36517,
+    "priceToBook": 139.73396,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2961,18 +2966,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHIKIN VASILY",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20236,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "FOROUGHI ARASH ADAM",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -3017,6 +3010,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 20236,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHIKIN VASILY",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-10-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 29,
         "value": 0,
         "filerUrl": "",
@@ -3033,7 +3038,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WEBB MAYNARD GEORGE JR",
+        "filerName": "MESSING BARBARA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
@@ -3045,7 +3050,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MESSING BARBARA",
+        "filerName": "WEBB MAYNARD GEORGE JR",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
@@ -3085,6 +3090,30 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7401,
+        "value": 3108170,
+        "filerUrl": "",
+        "transactionText": "Sale at price 412.91 - 430.91 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 26200,
+        "value": 11534004,
+        "filerUrl": "",
+        "transactionText": "Sale at price 428.93 - 445.93 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3134,30 +3163,6 @@
         "moneyText": "",
         "startDate": "2025-08-22T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7401,
-        "value": 3108170,
-        "filerUrl": "",
-        "transactionText": "Sale at price 412.91 - 430.91 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 26200,
-        "value": 11534004,
-        "filerUrl": "",
-        "transactionText": "Sale at price 428.93 - 445.93 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3498,43 +3503,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VIVAS EDUARDO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 720,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "HARVEY DAWSON ALYSSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 720,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WEBB MAYNARD GEORGE JR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 720,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CHEN HERALD Y",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
@@ -3583,6 +3552,42 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BILLINGS CRAIG SCOTT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 720,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VIVAS EDUARDO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 720,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WEBB MAYNARD GEORGE JR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 720,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CHEN HERALD Y",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
@@ -3889,18 +3894,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 37,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VIVAS EDUARDO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 48,
         "value": 0,
         "filerUrl": "",
@@ -3918,6 +3911,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MESSING BARBARA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 37,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VIVAS EDUARDO",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-01-15T00:00:00.000Z",
@@ -3997,18 +4002,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 8739,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "SHIKIN VASILY",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-12-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 54802,
         "value": 18817925,
         "filerUrl": "",
@@ -4027,6 +4020,18 @@
         "transactionText": "Sale at price 321.15 - 353.14 per share.",
         "filerName": "FOROUGHI ARASH ADAM",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-12-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8739,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "SHIKIN VASILY",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-12-10T00:00:00.000Z",
         "ownership": "D"
@@ -4212,18 +4217,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 165986,
-        "value": 51735181,
-        "filerUrl": "",
-        "transactionText": "Sale at price 304.52 - 322.27 per share.",
-        "filerName": "SHIKIN VASILY",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-11-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 21101,
         "value": 7019627,
         "filerUrl": "",
@@ -4236,38 +4229,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 593588,
-        "value": 189573540,
+        "shares": 165986,
+        "value": 51735181,
         "filerUrl": "",
-        "transactionText": "Sale at price 309.84 - 327.90 per share.",
+        "transactionText": "Sale at price 304.52 - 322.27 per share.",
         "filerName": "SHIKIN VASILY",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
+        "startDate": "2024-11-22T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5274246,
-        "value": 1634860909,
-        "filerUrl": "",
-        "transactionText": "Sale at price 305.57 - 329.06 per share.",
-        "filerName": "KKR DENALI HOLDINGS, L.P.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5205489,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KKR DENALI HOLDINGS, L.P.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4330,6 +4300,41 @@
       },
       {
         "maxAge": 1,
+        "shares": 593588,
+        "value": 189573540,
+        "filerUrl": "",
+        "transactionText": "Sale at price 309.84 - 327.90 per share.",
+        "filerName": "SHIKIN VASILY",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5274246,
+        "value": 1634860909,
+        "filerUrl": "",
+        "transactionText": "Sale at price 305.57 - 329.06 per share.",
+        "filerName": "KKR DENALI HOLDINGS, L.P.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5205489,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KKR DENALI HOLDINGS, L.P.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 119752,
         "value": 34264845,
         "filerUrl": "",
@@ -4342,24 +4347,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 33902,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHIKIN VASILY",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-11-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 67805,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "FOROUGHI ARASH ADAM",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-11-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 33902,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHIKIN VASILY",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-11-04T00:00:00.000Z",
         "ownership": "D"
@@ -4402,18 +4407,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 86,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VIVAS EDUARDO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 112,
         "value": 0,
         "filerUrl": "",
@@ -4431,6 +4424,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MESSING BARBARA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 86,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VIVAS EDUARDO",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-10-15T00:00:00.000Z",
@@ -4513,7 +4518,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 632.92,
+    "currentPrice": 608.4017,
     "targetHighPrice": 860,
     "targetLowPrice": 458,
     "targetMeanPrice": 739.9583,
@@ -4543,6 +4548,6 @@
     "profitMargins": 0.44879,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-08T12:37:56.092Z",
+  "lastUpdated": "2026-01-08T18:23:10.829Z",
   "source": "Static Build (yahoo-finance2)"
 }

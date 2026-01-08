@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0953,
         "position": 62437998,
-        "value": 4771511692,
+        "value": 4507711246,
         "pctChange": 0.0555
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.071,
         "position": 46523409,
-        "value": 3555318830,
+        "value": 3358757498,
         "pctChange": -0.060300004
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0608,
         "position": 39844020,
-        "value": 3044879935,
+        "value": 2876539011,
         "pctChange": 8.4854
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.060100004,
         "position": 39384410,
-        "value": 3009756540,
+        "value": 2843357467,
         "pctChange": 0.138
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.045500003,
         "position": 29768862,
-        "value": 2274936379,
+        "value": 2149162983,
         "pctChange": -0.0212
       },
       {
@@ -90,7 +90,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0356,
         "position": 23296603,
-        "value": 1780326358,
+        "value": 1681898246,
         "pctChange": -0.1168
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0293,
         "position": 19173365,
-        "value": 1465228518,
+        "value": 1384221080,
         "pctChange": 0.0573
       },
       {
@@ -108,7 +108,7 @@
         "organization": "IEQ Capital, LLC",
         "pctHeld": 0.026700001,
         "position": 17470398,
-        "value": 1335087783,
+        "value": 1261275378,
         "pctChange": -0.069699995
       },
       {
@@ -117,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.020399999,
         "position": 13369844,
-        "value": 1021723453,
+        "value": 965235883,
         "pctChange": 0.1102
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0198,
         "position": 12991408,
-        "value": 992803375,
+        "value": 937914696,
         "pctChange": -0.0793
       }
     ]
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-08T14:58:53.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 107,
+        "priorPriceTarget": 141
+      },
       {
         "epochGradeDate": "2025-12-12T13:58:34.000Z",
         "firm": "JP Morgan",
@@ -3066,29 +3076,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.0015702057,
-    "preMarketChange": -0.11999512,
-    "preMarketTime": "2026-01-08T12:23:06.000Z",
-    "preMarketPrice": 76.3,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.00778051,
-    "regularMarketChange": 0.589996,
-    "regularMarketTime": "2026-01-07T21:04:03.000Z",
+    "regularMarketChangePercent": -0.055286556,
+    "regularMarketChange": -4.2249985,
+    "regularMarketTime": "2026-01-08T18:22:51.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 76.42,
-    "regularMarketDayHigh": 77.63,
-    "regularMarketDayLow": 75.41,
-    "regularMarketVolume": 9893839,
+    "regularMarketPrice": 72.195,
+    "regularMarketDayHigh": 74.98,
+    "regularMarketDayLow": 71.78,
+    "regularMarketVolume": 7166119,
     "averageDailyVolume10Day": 6988490,
     "averageDailyVolume3Month": 7636408,
-    "regularMarketPreviousClose": 75.83,
+    "regularMarketPreviousClose": 76.42,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 76.265,
+    "regularMarketOpen": 74.86,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "RBLX",
     "underlyingSymbol": null,
@@ -3100,13 +3105,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 53641146368
+    "marketCap": 50675511296
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 52527685632,
-    "forwardPE": -47.11409,
+    "forwardPE": -44.509315,
     "profitMargins": -0.21700001,
     "floatShares": 626777363,
     "sharesOutstanding": 654855044,
@@ -3123,7 +3128,7 @@
     "impliedSharesOutstanding": 701925508,
     "category": null,
     "bookValue": 0.581,
-    "priceToBook": 131.53185,
+    "priceToBook": 124.2599,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -4231,6 +4236,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 24168,
+        "value": 1949319,
+        "filerUrl": "",
+        "transactionText": "Sale at price 80.61 - 81.25 per share.",
+        "filerName": "GUTHRIE MICHAEL",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 15852,
         "value": 1278576,
         "filerUrl": "",
@@ -4297,18 +4314,6 @@
         "transactionText": "Sale at price 80.61 - 81.21 per share.",
         "filerName": "BASZUCKI DAVID BRENT",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 24168,
-        "value": 1949319,
-        "filerUrl": "",
-        "transactionText": "Sale at price 80.61 - 81.25 per share.",
-        "filerName": "GUTHRIE MICHAEL",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-20T00:00:00.000Z",
         "ownership": "D"
@@ -4399,6 +4404,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 50000,
+        "value": 26500,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
+        "filerName": "GUTHRIE MICHAEL",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 35415,
         "value": 0,
         "filerUrl": "",
@@ -4439,18 +4456,6 @@
         "value": 3588622,
         "filerUrl": "",
         "transactionText": "Sale at price 71.46 - 72.40 per share.",
-        "filerName": "GUTHRIE MICHAEL",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "value": 26500,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
         "filerName": "GUTHRIE MICHAEL",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -4966,7 +4971,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 76.42,
+    "currentPrice": 72.195,
     "targetHighPrice": 180,
     "targetLowPrice": 65,
     "targetMeanPrice": 138.95912,
@@ -4995,6 +5000,6 @@
     "profitMargins": -0.21700001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-08T12:37:39.132Z",
+  "lastUpdated": "2026-01-08T18:22:54.479Z",
   "source": "Static Build (yahoo-finance2)"
 }
