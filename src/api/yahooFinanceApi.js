@@ -502,7 +502,8 @@ class YahooFinanceAPI {
     // 0. 嘗試從靜態數據文件獲取 (Static Data Pipeline)
     try {
       console.log(`Attempting to fetch static data for ${symbol}...`);
-      const staticResponse = await fetch(`/data/fundamentals/${symbol}.json?t=${Date.now()}`);
+      const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+      const staticResponse = await fetch(`${baseUrl}data/fundamentals/${symbol}.json?t=${Date.now()}`);
       if (staticResponse.ok) {
         const staticData = await staticResponse.json();
         console.log(`✅ Loaded static fundamental data for ${symbol}`);

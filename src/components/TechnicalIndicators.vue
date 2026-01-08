@@ -193,7 +193,7 @@ export default {
         let value = 'N/A';
         let signal = 'N/A';
         let change = null;
-        // let changeClass = ''; // Unused
+        let changeClass = '';
 
         if (data[key]) {
           value = this.formatNumber(data[key].value);
