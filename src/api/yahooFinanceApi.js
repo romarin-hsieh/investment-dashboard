@@ -96,27 +96,39 @@ class YahooFinanceAPI {
       }
     }
 
+    // Detect environment
+    const isNode = typeof window === 'undefined';
+
     // 嘗試多個代理服務
     for (let i = 0; i < this.corsProxies.length; i++) {
       try {
-        const proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
-        const proxy = this.corsProxies[proxyIndex];
+        // Node optimization: only try once
+        if (isNode && i > 0) break;
 
-        console.log(`Fetching data for ${symbol} using proxy ${proxyIndex + 1}...`);
+        let proxyIndex = -1;
 
-        // 構建請求 URL - 增加數據範圍以確保 ADX 計算有足夠數據
+        // 構建請求 URL
         const targetUrl = `${this.baseUrl}${symbol}?interval=1d&range=6mo&indicators=quote&includePrePost=false`;
-        const url = `${proxy}${encodeURIComponent(targetUrl)}`;
+        let url = '';
+        const headers = {};
+
+        if (isNode) {
+          url = targetUrl;
+          headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+        } else {
+          // Browser environment: Use Proxy
+          proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
+          const proxy = this.corsProxies[proxyIndex];
+          console.log(`Fetching data for ${symbol} using proxy ${proxyIndex + 1}...`);
+          url = `${proxy}${encodeURIComponent(targetUrl)}`;
+        }
 
         console.log(`Request URL: ${url}`);
 
-        // 獲取歷史數據用於計算技術指標
         const response = await fetch(url, {
-          method: 'GET'
-          // 移除 headers 避免 CORS preflight
+          method: 'GET',
+          headers: isNode ? headers : undefined
         });
-
-        console.log(`Response status: ${response.status}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -516,12 +528,11 @@ class YahooFinanceAPI {
     // 嘗試多個代理服務獲取股票基本信息
     for (let i = 0; i < this.corsProxies.length; i++) {
       try {
-        const proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
-        const proxy = this.corsProxies[proxyIndex];
+        const isNode = typeof window === 'undefined';
+        if (isNode && i > 0) break;
 
-        console.log(`Fetching stock info for ${symbol} using proxy ${proxyIndex + 1}...`);
+        let proxyIndex = -1;
 
-        // 使用 Yahoo Finance 的 quoteSummary API 獲取詳細信息
         // Modules: summaryProfile, price, defaultKeyStatistics, financialData, earnings, majorHoldersBreakdown, insiderTransactions, institutionOwnership, recommendationTrend
         const modules = [
           'summaryProfile', 'price', 'defaultKeyStatistics',
@@ -530,12 +541,25 @@ class YahooFinanceAPI {
           'upgradeDowngradeHistory'
         ].join(',');
 
-        const targetUrl = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${symbol}?modules=${modules}`;
-        const url = `${proxy}${encodeURIComponent(targetUrl)}`;
+        const targetUrl = `https://query1.finance.yahoo.com/v7/finance/quoteSummary/${symbol}?modules=${modules}`;
+
+        let url = '';
+        const headers = {};
+
+        if (isNode) {
+          // Node environment: Direct fetch with User-Agent
+          url = targetUrl;
+          headers['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+        } else {
+          proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
+          const proxy = this.corsProxies[proxyIndex];
+          console.log(`Fetching stock info for ${symbol} using proxy ${proxyIndex + 1}...`);
+          url = `${proxy}${encodeURIComponent(targetUrl)}`;
+        }
 
         const response = await fetch(url, {
-          method: 'GET'
-          // 完全移除 headers 避免 CORS preflight
+          method: 'GET',
+          headers: isNode ? headers : undefined
         });
 
         if (!response.ok) {
@@ -550,9 +574,10 @@ class YahooFinanceAPI {
         }
 
         const result = data.quoteSummary.result[0];
+        const proxyInfoStr = isNode ? 'Direct (Node)' : `Proxy ${proxyIndex + 1}`;
 
         // Use shared transformation logic
-        const stockInfo = this._processQuoteSummaryResult(symbol, result, 'Yahoo Finance API (Live)', `Proxy ${proxyIndex + 1}`);
+        const stockInfo = this._processQuoteSummaryResult(symbol, result, 'Yahoo Finance API (Live)', proxyInfoStr);
 
         console.log(`Stock info for ${symbol}:`, stockInfo);
 
@@ -563,9 +588,12 @@ class YahooFinanceAPI {
         });
 
         // 更新成功的代理索引
-        this.currentProxyIndex = proxyIndex;
+        if (!isNode) {
+          this.currentProxyIndex = proxyIndex;
+        }
 
         return stockInfo;
+
 
       } catch (error) {
         console.warn(`Proxy ${i + 1} failed for stock info ${symbol}:`, error.message);

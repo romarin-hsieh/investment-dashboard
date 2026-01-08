@@ -452,3 +452,56 @@ MIT License - 詳見 [LICENSE](./LICENSE) 文件
 ⭐ 如果這個專案對你有幫助，請給個 Star！
 
 **線上演示**: [https://romarin-hsieh.github.io/investment-dashboard/](https://romarin-hsieh.github.io/investment-dashboard/)
+
+---
+
+# Investment Dashboard - Deployment Guide
+
+This project is a modern investment information dashboard integrating market data, stock analysis, and technical indicators. It is built with Vue 3 and designed to be deployed on GitHub Pages.
+
+## 🚀 Deployment
+
+### Automated Deployment (GitHub Pages)
+
+This project uses **GitHub Actions** for a fully automated deployment pipeline.
+
+```bash
+# One-click deployment to Production
+./deploy-production.bat
+```
+
+### Manual Deployment Steps
+
+If you prefer to trigger the deployment manually or understand the process:
+
+1.  **Ensure Code Quality**:
+    - Run tests: `npm run test`
+    - Check linting: `npm run lint`
+
+2.  **Verify Data**:
+    - Ensure `public/data/symbols_metadata.json` lists all **67** supported stocks.
+    - Run pre-computation if needed: `node scripts/precompute-with-browser.js`
+
+3.  **Push to Main**:
+    - Any push to the `main` branch will automatically trigger the `.github/workflows/deploy.yml` workflow.
+    - The workflow will:
+        - Install dependencies
+        - Build the project (`npm run build`)
+        - Deploy the `dist` folder to the `gh-pages` branch.
+
+### Configuration
+
+-   **Environment Variables**:
+    -   `VITE_CACHE_SYMBOLS_MINUTES`: Cache duration for stock data (default: 10).
+    -   `VITE_SHEETS_TIMEOUT_MS`: Timeout for Google Sheets integration.
+
+-   **Vite Config**:
+    -   The `base` URL is set to `/investment-dashboard/` in `vite.config.js` to support GitHub Pages.
+
+### Troubleshooting
+
+-   **404 on Assets**: Verify proper `base` path in `vite.config.js`.
+-   **Data Not Loading**: Check the Network information in DevTools. Ensure `public/data/` JSON files are correctly generated and deployed.
+-   **TradingView Widget Issues**: Ensure the specific widget configuration (e.g., `autosize`) is compatible with the container dimensions.
+
+---

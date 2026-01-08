@@ -240,41 +240,59 @@ export default {
 }
 
 /* TradingView Widget 樣式覆蓋 - 僅針對 Fundamental Data */
-:global(.fundamental-data-widget .tradingview-widget-container) {
+:global(.fundamental-data-container) {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Force all immediate children (like widget-host) to fill space */
+:global(.fundamental-data-container > div) {
+  flex: 1;
+  height: 100% !important;
+  min-height: 100% !important;
+}
+
+:global(.fundamental-data-container .widget-host) {
+  height: 100% !important;
+  min-height: 100% !important;
+  width: 100% !important;
+}
+
+:global(.fundamental-data-container .tradingview-widget-container) {
   width: 100% !important;
   height: 100% !important;
-  min-height: 950px !important;
-  max-height: none !important;
+  min-height: 100% !important;
+  flex: 1;
 }
 
-:global(.fundamental-data-widget .tradingview-widget-container__widget) {
-  width: 100% !important;
-  height: calc(100% - 32px) !important;
-  min-height: 910px !important;
-  max-height: none !important;
-}
-
-:global(.fundamental-data-widget .tradingview-widget-container iframe) {
+:global(.fundamental-data-container .tradingview-widget-container__widget) {
   width: 100% !important;
   height: 100% !important;
-  min-height: 600px !important;
+  min-height: 100% !important;
 }
 
-/* Simplified TradingView overrides - 僅針對 Fundamental Data */
-:global(.fundamental-data-widget .tv-embed-widget-wrapper) {
-  height: auto !important;
-  min-height: 950px !important;
+:global(.fundamental-data-container .tradingview-widget-container iframe) {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  display: block; 
 }
 
-:global(.fundamental-data-widget .tv-feed-widget) {
-  height: 910px !important;
-  min-height: 910px !important;
-  overflow: auto !important;
+/* Simplified TradingView overrides */
+:global(.fundamental-data-container .tv-embed-widget-wrapper) {
+  height: 100% !important;
+  min-height: 100% !important;
 }
 
-:global(.fundamental-data-widget .tv-feed-widget__body) {
-  height: auto !important;
-  min-height: 850px !important;
-  overflow: auto !important;
+:global(.fundamental-data-container .tv-feed-widget) {
+  height: 100% !important;
+  min-height: 100% !important;
+  overflow: visible !important;
+}
+
+:global(.fundamental-data-container .tv-feed-widget__body) {
+  height: 100% !important;
+  min-height: 100% !important;
+  overflow: visible !important;
 }
 </style>

@@ -104,6 +104,7 @@
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js'
 import { Bar } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement)
 
@@ -182,8 +183,26 @@ export default {
             this.upgradesDowngrades = data.upgradesDowngrades || [];
             
         } catch (err) {
-            console.error('Fundamental load error:', err);
-            this.error = 'Failed to load fundamental data';
+            console.warn('Live API load error, trying precomputed fallback:', err);
+            
+            // Fallback to precomputed data
+            try {
+                const precomputed = await precomputedIndicatorsAPI.getTechnicalIndicators(this.symbol);
+                if (precomputed && precomputed.fundamentals) {
+                    console.log('Using precomputed fundamentals for', this.symbol);
+                    const data = precomputed.fundamentals;
+                    this.metrics = data.financials || {};
+                    this.processRecommendationTrend(data.recommendationTrend);
+                    this.processEarningsHistory(data.earnings);
+                    this.upgradesDowngrades = data.upgradesDowngrades || [];
+                    this.error = null; // Clear error if fallback succeeds
+                } else {
+                    throw new Error('No precomputed fundamentals available');
+                }
+            } catch (fallbackErr) {
+                console.error('Fallback failed:', fallbackErr);
+                this.error = 'Failed to load fundamental data';
+            }
         } finally {
             this.loading = false;
         }

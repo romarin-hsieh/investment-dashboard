@@ -91,6 +91,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
@@ -169,23 +170,43 @@ export default {
             
             this.holders = data.holders;
             this.insiderTransactions = data.insiderTransactions || [];
-            
-            // Fix insider transaction buy/sell class
-            this.insiderTransactions.forEach(tx => {
-                const text = tx.transactionText || '';
-                if (text.toLowerCase().includes('purchase')) tx.buySell = 'buy';
-                else if (text.toLowerCase().includes('sale')) tx.buySell = 'sell';
-                else tx.buySell = 'neutral';
-            });
-
+            this.processTransactions();
             this.processOwnershipChart();
             
         } catch (err) {
-            console.error('Holdings load error:', err);
-            this.error = 'Failed to load holdings data';
+            console.warn('Live API load error, trying precomputed fallback:', err);
+            
+            // Fallback to precomputed data
+            try {
+                const precomputed = await precomputedIndicatorsAPI.getTechnicalIndicators(this.symbol);
+                if (precomputed && precomputed.fundamentals) {
+                    console.log('Using precomputed fundamentals for', this.symbol);
+                    const data = precomputed.fundamentals;
+                    this.holders = data.holders || {};
+                    this.insiderTransactions = data.insiderTransactions || [];
+                    this.processTransactions();
+                    this.processOwnershipChart();
+                    this.error = null;
+                } else {
+                    throw new Error('No precomputed fundamentals available');
+                }
+            } catch (fallbackErr) {
+                console.error('Holdings fallback failed:', fallbackErr);
+                this.error = 'Failed to load holdings data';
+            }
         } finally {
             this.loading = false;
         }
+    },
+    
+    processTransactions() {
+         // Fix insider transaction buy/sell class
+        this.insiderTransactions.forEach(tx => {
+            const text = tx.transactionText || '';
+            if (text.toLowerCase().includes('purchase')) tx.buySell = 'buy';
+            else if (text.toLowerCase().includes('sale')) tx.buySell = 'sell';
+            else tx.buySell = 'neutral';
+        });
     },
     
     processOwnershipChart() {

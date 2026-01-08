@@ -22,12 +22,21 @@ jobs:
         
     - name: Install dependencies
       run: npm ci
+
+    - name: Install Puppeteer Dependencies
+      # Puppeteer might need some libs on linux if not using the installed chrome
+      # But ubuntu-latest usually has them. Adding this just in case if fails.
+      # Usually 'npm ci' installs puppeteer which brings a working chrome binary.
+      run: |
+        # Optional: verify
+        echo "Dependencies installed" 
       
     - name: Create output directory
       run: mkdir -p public/data/technical-indicators
       
-    - name: Run precomputation
-      run: node scripts/precompute-indicators.js
+    - name: Run precomputation (Puppeteer)
+      run: node scripts/precompute-with-browser.js
+      timeout-minutes: 60
       env:
         NODE_ENV: production
         

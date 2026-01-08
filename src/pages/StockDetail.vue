@@ -210,7 +210,7 @@
           
           <div class="content-layout">
             <!-- Row 2: Fundamental Data (Full Width) -->
-            <div class="widget-container">
+            <div class="widget-container financials-widget-container">
               <div class="widget-header">
                 <h3>Financials Overview</h3>
               </div>
@@ -310,7 +310,7 @@ export default {
       const symbol = this.symbol
       
       // NYSE 股票 (根據 symbols_metadata.json 的實際資料)
-      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS'].includes(symbol)) {
+      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS', 'UUUU'].includes(symbol)) {
         return 'NYSE'
       }
       // NASDAQ 股票
@@ -903,6 +903,19 @@ export default {
   margin-top: 0; /* 移除 margin-top */
 }
 
+.financials-widget-container {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 1000px !important;
+  min-height: 1000px !important;
+}
+
+.financials-widget-container .fundamental-data-container {
+  flex: 1 !important;
+  height: auto !important;
+  min-height: 100% !important;
+}
+
 /* 響應式設計 */
 @media (max-width: 1200px) {
   .widgets-container {
@@ -1124,11 +1137,12 @@ export default {
     margin-top: 0.75rem; /* 小螢幕進一步減少間隔 */
   }
   
-  .company-profile-row .widget-container,
-  .fundamental-data-row .widget-container {
+  .company-profile-row .widget-container {
     height: 300px;
     min-height: 300px;
   }
+
+
 }
 /* Tabs Navigation */
 .tabs-nav {

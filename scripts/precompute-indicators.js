@@ -55,11 +55,27 @@ import('../src/api/yahooFinanceApi.js').then(async ({ yahooFinanceAPI }) => {
         console.log(`Computing indicators for ${symbol} (attempt ${attempt}/${this.retryAttempts})`);
 
         const startTime = Date.now();
-        const indicators = await yahooFinanceAPI.fetchTechnicalIndicatorsFromAPI(symbol);
+
+        // Fetch technicals and fundamentals in parallel
+        const [indicators, stockInfo] = await Promise.all([
+          yahooFinanceAPI.fetchTechnicalIndicatorsFromAPI(symbol).catch(e => ({ error: e.message })),
+          yahooFinanceAPI.getStockInfo(symbol).catch(e => null)
+        ]);
+
         const duration = Date.now() - startTime;
 
         if (indicators && !indicators.error) {
-          console.log(`✅ ${symbol} completed in ${duration}ms`);
+          // Attach fundamentals if available
+          if (stockInfo) {
+            indicators.fundamentals = stockInfo;
+            // Also backfill N/A fields in yf object if possible
+            if (indicators.yf) {
+              if (stockInfo.marketCap) indicators.yf.marketCap = stockInfo.marketCap;
+              if (stockInfo.beta) indicators.yf.beta = stockInfo.beta;
+            }
+          }
+
+          console.log(`✅ ${symbol} completed in ${duration}ms (Foundamentals: ${!!stockInfo})`);
           return {
             symbol,
             success: true,
