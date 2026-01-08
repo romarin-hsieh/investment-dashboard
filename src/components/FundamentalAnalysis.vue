@@ -68,11 +68,15 @@
       </div>
 
       <!-- Analyst Rating History -->
-      <div style="background: #ffeeba; padding: 10px; margin-bottom: 10px; color: #856404; border: 1px solid #bee5eb;">
-          DEBUG: Upgrades Loaded: {{ upgradesDowngrades ? upgradesDowngrades.length : 'undefined' }}
-      </div>
+
       <div class="card history-card full-width" v-if="upgradesDowngrades && upgradesDowngrades.length > 0">
         <h3>Analyst Rating History (Last 12 Months)</h3>
+        
+        <!-- Price Target Trend Chart -->
+        <div class="chart-container large" v-if="targetPriceChartData" style="margin-bottom: 20px;">
+             <Line :data="targetPriceChartData" :options="targetPriceChartOptions" />
+        </div>
+
         <div class="table-container">
             <table>
                 <thead>
@@ -102,7 +106,7 @@
 
 <script>
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController } from 'chart.js'
-import { Bar } from 'vue-chartjs'
+import { Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
 
@@ -110,7 +114,7 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
 
 export default {
   name: 'FundamentalAnalysis',
-  components: { Bar },
+  components: { Bar, Line },
   props: {
     symbol: {
       type: String,
@@ -156,6 +160,21 @@ export default {
                 title: { display: true, text: 'Revenue' },
                 grid: { drawOnChartArea: false }
             }
+        },
+        targetPriceChartData: null,
+        targetPriceChartOptions: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: 'Price Target Values' }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    title: { display: true, text: 'Price ($)' }
+                }
+            }
         }
       }
     }
@@ -180,7 +199,10 @@ export default {
             this.metrics = data.financials;
             this.processRecommendationTrend(data.recommendationTrend);
             this.processEarningsHistory(data.earnings);
-            this.upgradesDowngrades = data.upgradesDowngrades || [];
+            
+            // Handle varying API structures
+            const history = data.upgradeDowngradeHistory?.history || data.upgradesDowngrades || [];
+            this.processUpgradesDowngrades(history);
             
         } catch (err) {
             console.warn('Live API load error, trying precomputed fallback:', err);
@@ -194,7 +216,10 @@ export default {
                     this.metrics = data.financials || {};
                     this.processRecommendationTrend(data.recommendationTrend);
                     this.processEarningsHistory(data.earnings);
-                    this.upgradesDowngrades = data.upgradesDowngrades || [];
+                    
+                    const history = data.upgradeDowngradeHistory?.history || [];
+                    this.processUpgradesDowngrades(history);
+                    
                     this.error = null; // Clear error if fallback succeeds
                 } else {
                     throw new Error('No precomputed fundamentals available');
@@ -276,6 +301,52 @@ export default {
         };
     },
     
+    processUpgradesDowngrades(history) {
+        if (!history || !Array.isArray(history)) {
+            this.upgradesDowngrades = [];
+            this.targetPriceChartData = null;
+            return;
+        }
+
+        const oneYearAgo = new Date();
+        oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+        // Filter valid items with dates
+        const validItems = history.filter(item => {
+             const d = new Date(item.epochGradeDate);
+             return !isNaN(d.getTime()) && d >= oneYearAgo;
+        });
+
+        // 1. Prepare Table Data (Newest First)
+        this.upgradesDowngrades = [...validItems].sort((a, b) => 
+             new Date(b.epochGradeDate) - new Date(a.epochGradeDate)
+        );
+
+        // 2. Prepare Chart Data (Oldest First)
+        // Filter out items without price targets for the chart
+        const chartItems = validItems
+            .filter(item => item.currentPriceTarget)
+            .sort((a, b) => new Date(a.epochGradeDate) - new Date(b.epochGradeDate));
+
+        if (chartItems.length > 0) {
+            this.targetPriceChartData = {
+                labels: chartItems.map(item => this.formatDate(item.epochGradeDate)),
+                datasets: [{
+                    label: 'Price Target',
+                    data: chartItems.map(item => item.currentPriceTarget),
+                    borderColor: '#ffc107',
+                    backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    fill: true,
+                    tension: 0.2
+                }]
+            };
+        } else {
+            this.targetPriceChartData = null;
+        }
+    },
+
     formatCurrency(val) {
         if (!val) return 'N/A';
         return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
