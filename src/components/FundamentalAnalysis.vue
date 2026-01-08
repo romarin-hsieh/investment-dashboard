@@ -101,12 +101,12 @@
 </template>
 
 <script>
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController } from 'chart.js'
 import { Bar } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement)
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController)
 
 export default {
   name: 'FundamentalAnalysis',
