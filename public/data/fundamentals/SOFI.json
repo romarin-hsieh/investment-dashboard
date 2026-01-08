@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0888,
         "position": 107102212,
-        "value": 2808209302,
+        "value": 2891759724,
         "pctChange": 0.068
       },
       {
@@ -54,7 +54,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0776,
         "position": 93580352,
-        "value": 2453667483,
+        "value": 2526669504,
         "pctChange": 18.621899
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0517,
         "position": 62379878,
-        "value": 1635594171,
+        "value": 1684256706,
         "pctChange": 0.2776
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0291,
         "position": 35034441,
-        "value": 918599544,
+        "value": 945929907,
         "pctChange": 0.19770001
       },
       {
@@ -81,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0202,
         "position": 24300498,
-        "value": 637156630,
+        "value": 656113446,
         "pctChange": 0.307
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.018,
         "position": 21691688,
-        "value": 568753893,
+        "value": 585675576,
         "pctChange": 0.1375
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0152,
         "position": 18277497,
-        "value": 479234145,
+        "value": 493492419,
         "pctChange": 0.6101
       },
       {
@@ -108,7 +108,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0128,
         "position": 15485524,
-        "value": 406028892,
+        "value": 418109148,
         "pctChange": -0.2391
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0106,
         "position": 12832802,
-        "value": 336474786,
+        "value": 346485654,
         "pctChange": -0.32560003
       },
       {
@@ -126,17 +126,17 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0089,
         "position": 10743114,
-        "value": 281683376,
+        "value": 290064078,
         "pctChange": 2.7851999
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.03016,
-    "institutionsPercentHeld": 0.5241,
-    "institutionsFloatPercentHeld": 0.5404,
-    "institutionsCount": 1147
+    "insidersPercentHeld": 0.02999,
+    "institutionsPercentHeld": 0.52120996,
+    "institutionsFloatPercentHeld": 0.53733003,
+    "institutionsCount": 1145
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-06T20:04:01.000Z",
+        "firm": "Barclays",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 28,
+        "priorPriceTarget": 23
+      },
       {
         "epochGradeDate": "2026-01-06T17:59:14.000Z",
         "firm": "Goldman Sachs",
@@ -1859,23 +1869,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.10451128,
-    "regularMarketChange": -3.0601006,
-    "regularMarketTime": "2026-01-06T18:37:50.000Z",
+    "postMarketChangePercent": -0.0018555677,
+    "postMarketChange": -0.050100327,
+    "postMarketTime": "2026-01-08T00:59:59.000Z",
+    "postMarketPrice": 26.9499,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.000555842,
+    "regularMarketChange": 0.0149994,
+    "regularMarketTime": "2026-01-07T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 26.2199,
-    "regularMarketDayHigh": 29.29,
-    "regularMarketDayLow": 26.03,
-    "regularMarketVolume": 80346562,
-    "averageDailyVolume10Day": 36297740,
-    "averageDailyVolume3Month": 67045738,
-    "regularMarketPreviousClose": 29.28,
+    "regularMarketPrice": 27,
+    "regularMarketDayHigh": 27.18,
+    "regularMarketDayLow": 26.365,
+    "regularMarketVolume": 43226772,
+    "averageDailyVolume10Day": 43908110,
+    "averageDailyVolume3Month": 67020682,
+    "regularMarketPreviousClose": 26.985,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 27.825,
+    "regularMarketOpen": 26.87,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "SOFI",
     "underlyingSymbol": null,
@@ -1887,13 +1902,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 33048834048
+    "marketCap": 34032109568
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 34849910784,
-    "forwardPE": 45.76298,
+    "enterpriseValue": 32076335104,
+    "forwardPE": 46.818104,
     "profitMargins": 0.19457,
     "floatShares": 1185872994,
     "sharesOutstanding": 1260448498,
@@ -1902,15 +1917,15 @@
     "sharesShortPreviousMonthDate": "2025-11-14T00:00:00.000Z",
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.094,
-    "heldPercentInsiders": 0.03016,
-    "heldPercentInstitutions": 0.5241,
+    "heldPercentInsiders": 0.02999,
+    "heldPercentInstitutions": 0.52120996,
     "shortRatio": 1.84,
     "shortPercentOfFloat": 0.0952,
     "beta": 1.932,
     "impliedSharesOutstanding": 1260448499,
     "category": null,
     "bookValue": 7.289,
-    "priceToBook": 3.5971875,
+    "priceToBook": 3.7042117,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1919,11 +1934,11 @@
     "earningsQuarterlyGrowth": 1.295,
     "netIncomeToCommon": 640243968,
     "trailingEps": 0.56,
-    "forwardEps": 0.57295,
+    "forwardEps": 0.5767,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 10.591,
-    "52WeekChange": 0.96378267,
-    "SandP52WeekChange": 0.16805124,
+    "enterpriseToRevenue": 9.748,
+    "52WeekChange": 0.8542955,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2169,6 +2184,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 83320,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 141347,
         "filerUrl": "",
         "transactionText": "",
@@ -2229,17 +2255,6 @@
         "transactionText": "",
         "filerName": "NOTO ANTHONY J.",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 83320,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WHITE DEREK JENSEN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
@@ -2328,6 +2343,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 152759,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 141345,
         "filerUrl": "",
         "transactionText": "",
@@ -2401,17 +2427,6 @@
         "transactionText": "",
         "filerName": "NOTO ANTHONY J.",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 152759,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WHITE DEREK JENSEN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D"
@@ -2589,6 +2604,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 148403,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 135249,
         "filerUrl": "",
         "transactionText": "",
@@ -2638,17 +2664,6 @@
         "transactionText": "",
         "filerName": "NOTO ANTHONY J.",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 148403,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WHITE DEREK JENSEN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
@@ -2725,6 +2740,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 148403,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 222821,
         "filerUrl": "",
         "transactionText": "",
@@ -2786,17 +2812,6 @@
         "transactionText": "",
         "filerName": "NOTO ANTHONY J.",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 148403,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WHITE DEREK JENSEN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -2886,6 +2901,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 148403,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 222825,
         "filerUrl": "",
         "transactionText": "",
@@ -2924,17 +2950,6 @@
         "transactionText": "",
         "filerName": "NOTO ANTHONY J.",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 148403,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WHITE DEREK JENSEN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-16T00:00:00.000Z",
         "ownership": "D"
@@ -2984,6 +2999,17 @@
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-06-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 148403,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-06-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3038,17 +3064,6 @@
         "transactionText": "",
         "filerName": "NOTO ANTHONY J.",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-06-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 148403,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WHITE DEREK JENSEN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-06-14T00:00:00.000Z",
         "ownership": "D"
@@ -3182,6 +3197,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 114361,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-03-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 131407,
         "filerUrl": "",
         "transactionText": "",
@@ -3248,17 +3274,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 114361,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WHITE DEREK JENSEN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-03-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 51246,
         "filerUrl": "",
         "transactionText": "",
@@ -3285,7 +3300,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 26.2199,
+    "currentPrice": 27,
     "targetHighPrice": 38,
     "targetLowPrice": 12,
     "targetMeanPrice": 27.11111,
@@ -3313,6 +3328,6 @@
     "profitMargins": 0.19457,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-06T18:37:51.129Z",
+  "lastUpdated": "2026-01-08T01:20:20.072Z",
   "source": "Static Build (yahoo-finance2)"
 }

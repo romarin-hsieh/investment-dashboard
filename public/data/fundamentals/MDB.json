@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1104,
         "position": 8985697,
-        "value": 3864658389,
+        "value": 3959098153,
         "pctChange": 0.0504
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.061300002,
         "position": 4987364,
-        "value": 2145015364,
+        "value": 2197432608,
         "pctChange": 0.0359
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0334,
         "position": 2720046,
-        "value": 1169864574,
+        "value": 1198452284,
         "pctChange": 0.5222
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0277,
         "position": 2250686,
-        "value": 967997533,
+        "value": 991652265,
         "pctChange": 0.3403
       },
       {
@@ -81,7 +81,7 @@
         "organization": "ValueAct Holdings, L.P.",
         "pctHeld": 0.025999999,
         "position": 2118200,
-        "value": 911016630,
+        "value": 933278932,
         "pctChange": 2.0676
       },
       {
@@ -90,7 +90,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.024400001,
         "position": 1985625,
-        "value": 853997448,
+        "value": 874866387,
         "pctChange": 0.98980004
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.024,
         "position": 1953085,
-        "value": 840002320,
+        "value": 860529262,
         "pctChange": 16.309399
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0216,
         "position": 1756628,
-        "value": 755508130,
+        "value": 773970307,
         "pctChange": 0.0375
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Amundi",
         "pctHeld": 0.0182,
         "position": 1483396,
-        "value": 637993780,
+        "value": 653584286,
         "pctChange": 0.6134
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0176,
         "position": 1434691,
-        "value": 617046246,
+        "value": 632124863,
         "pctChange": 0.026300002
       }
     ]
@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03019,
-    "institutionsPercentHeld": 0.93958,
-    "institutionsFloatPercentHeld": 0.96882004,
+    "institutionsPercentHeld": 0.93956,
+    "institutionsFloatPercentHeld": 0.96880996,
     "institutionsCount": 1135
   },
   "earnings": {
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-07T14:31:10.000Z",
+        "firm": "Truist Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 500,
+        "priorPriceTarget": 450
+      },
       {
         "epochGradeDate": "2026-01-06T11:48:19.000Z",
         "firm": "Needham",
@@ -5407,23 +5417,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.022028394,
-    "regularMarketChange": 9.269989,
-    "regularMarketTime": "2026-01-06T18:36:52.000Z",
+    "postMarketChangePercent": -0.0018157474,
+    "postMarketChange": -0.8000183,
+    "postMarketTime": "2026-01-08T00:58:23.000Z",
+    "postMarketPrice": 439.8,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.0108751,
+    "regularMarketChange": 4.74002,
+    "regularMarketTime": "2026-01-07T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 430.09,
-    "regularMarketDayHigh": 431.06,
-    "regularMarketDayLow": 418.94,
-    "regularMarketVolume": 715732,
-    "averageDailyVolume10Day": 1198100,
-    "averageDailyVolume3Month": 1700716,
-    "regularMarketPreviousClose": 420.82,
+    "regularMarketPrice": 440.6,
+    "regularMarketDayHigh": 444.72,
+    "regularMarketDayLow": 433.01,
+    "regularMarketVolume": 1373535,
+    "averageDailyVolume10Day": 1231620,
+    "averageDailyVolume3Month": 1706059,
+    "regularMarketPreviousClose": 435.86,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 404.08,
+    "regularMarketOpen": 434.5,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "MDB",
     "underlyingSymbol": null,
@@ -5435,15 +5450,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 35005779968
+    "marketCap": 35861209088
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 32011855872,
-    "forwardPE": 77.476944,
+    "enterpriseValue": 33235988480,
+    "forwardPE": 79.37023,
     "profitMargins": -0.030580001,
-    "floatShares": 79175462,
+    "floatShares": 79172207,
     "sharesOutstanding": 81391760,
     "sharesShort": 3643509,
     "sharesShortPriorMonth": "1970-02-15T11:51:28.000Z",
@@ -5451,14 +5466,14 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0448,
     "heldPercentInsiders": 0.03019,
-    "heldPercentInstitutions": 0.93958,
+    "heldPercentInstitutions": 0.93956,
     "shortRatio": 1.62,
     "shortPercentOfFloat": 0.0461,
     "beta": 1.381,
     "impliedSharesOutstanding": 81391760,
     "category": null,
     "bookValue": 35.503,
-    "priceToBook": 12.114188,
+    "priceToBook": 12.410219,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -5468,10 +5483,10 @@
     "trailingEps": -0.84,
     "forwardEps": 5.5512,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 13.815,
-    "enterpriseToEbitda": -243.371,
-    "52WeekChange": 0.71092856,
-    "SandP52WeekChange": 0.16805124,
+    "enterpriseToRevenue": 14.344,
+    "enterpriseToEbitda": -252.678,
+    "52WeekChange": 0.75269425,
+    "SandP52WeekChange": 0.17345834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -5498,6 +5513,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 1054,
+        "value": 445315,
+        "filerUrl": "",
+        "transactionText": "Sale at price 422.50 per share.",
+        "filerName": "MERRIMAN DWIGHT A",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "I"
+      },
       {
         "maxAge": 1,
         "shares": 2566,
@@ -5884,18 +5911,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1439,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HAZARD CHARLES M. JR.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1130,
         "value": 0,
         "filerUrl": "",
@@ -5913,6 +5928,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "D SOUZA FRANCISCO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1439,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HAZARD CHARLES M. JR.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
@@ -6352,24 +6379,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 1245,
-        "value": 291442,
-        "filerUrl": "",
-        "transactionText": "Sale at price 234.09 per share.",
-        "filerName": "GORDON MICHAEL LAWRENCE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 169,
         "value": 39561,
         "filerUrl": "",
         "transactionText": "Sale at price 234.09 per share.",
         "filerName": "BULL THOMAS",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1245,
+        "value": 291442,
+        "filerUrl": "",
+        "transactionText": "Sale at price 234.09 per share.",
+        "filerName": "GORDON MICHAEL LAWRENCE",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -6616,24 +6643,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 249,
-        "value": 0,
+        "shares": 3000,
+        "value": 768750,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GORDON MICHAEL LAWRENCE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-10-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1884,
-        "value": 482774,
-        "filerUrl": "",
-        "transactionText": "Sale at price 254.91 - 256.25 per share.",
-        "filerName": "GORDON MICHAEL LAWRENCE",
-        "filerRelation": "Chief Operating Officer",
+        "transactionText": "Sale at price 256.25 per share.",
+        "filerName": "MERRIMAN DWIGHT A",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-10-02T00:00:00.000Z",
         "ownership": "D"
@@ -6652,12 +6667,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 3000,
-        "value": 768750,
+        "shares": 249,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 256.25 per share.",
-        "filerName": "MERRIMAN DWIGHT A",
-        "filerRelation": "Director",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GORDON MICHAEL LAWRENCE",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2024-10-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1884,
+        "value": 482774,
+        "filerUrl": "",
+        "transactionText": "Sale at price 254.91 - 256.25 per share.",
+        "filerName": "GORDON MICHAEL LAWRENCE",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2024-10-02T00:00:00.000Z",
         "ownership": "D"
@@ -6808,6 +6835,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1000,
+        "value": 245000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 245.00 per share.",
+        "filerName": "MERRIMAN DWIGHT A",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-08-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 5000,
         "value": 1213258,
         "filerUrl": "",
@@ -6826,18 +6865,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 6.50 per share.",
         "filerName": "GORDON MICHAEL LAWRENCE",
         "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-08-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1000,
-        "value": 245000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 245.00 per share.",
-        "filerName": "MERRIMAN DWIGHT A",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-08-14T00:00:00.000Z",
         "ownership": "D"
@@ -6880,24 +6907,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 1569,
-        "value": 416240,
-        "filerUrl": "",
-        "transactionText": "Sale at price 265.29 per share.",
-        "filerName": "GORDON MICHAEL LAWRENCE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-07-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 273,
         "value": 72424,
         "filerUrl": "",
         "transactionText": "Sale at price 265.29 per share.",
         "filerName": "PECH CEDRIC",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-07-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 1061160,
+        "filerUrl": "",
+        "transactionText": "Sale at price 265.29 per share.",
+        "filerName": "MERRIMAN DWIGHT A",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-07-02T00:00:00.000Z",
         "ownership": "D"
@@ -6916,12 +6943,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 4000,
-        "value": 1061160,
+        "shares": 1569,
+        "value": 416240,
         "filerUrl": "",
         "transactionText": "Sale at price 265.29 per share.",
-        "filerName": "MERRIMAN DWIGHT A",
-        "filerRelation": "Director",
+        "filerName": "GORDON MICHAEL LAWRENCE",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2024-07-02T00:00:00.000Z",
         "ownership": "D"
@@ -7012,30 +7039,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1018,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HAZARD CHARLES M. JR.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1022,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HAZARD CHARLES M. JR.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 817,
         "value": 0,
         "filerUrl": "",
@@ -7077,6 +7080,30 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "D SOUZA FRANCISCO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1018,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HAZARD CHARLES M. JR.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1022,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HAZARD CHARLES M. JR.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-25T00:00:00.000Z",
@@ -7264,35 +7291,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 12413,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GORDON MICHAEL LAWRENCE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9316,
-        "value": 3243065,
-        "filerUrl": "",
-        "transactionText": "Sale at price 345.42 - 348.15 per share.",
-        "filerName": "GORDON MICHAEL LAWRENCE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 11716,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "PECH CEDRIC",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-04-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 170,
+        "value": 59180,
+        "filerUrl": "",
+        "transactionText": "Sale at price 346.70 - 348.15 per share.",
+        "filerName": "BULL THOMAS",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-04-02T00:00:00.000Z",
@@ -7303,11 +7318,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 430.09,
+    "currentPrice": 440.6,
     "targetHighPrice": 550,
     "targetLowPrice": 250,
-    "targetMeanPrice": 444.28568,
-    "targetMedianPrice": 452,
+    "targetMeanPrice": 445.63702,
+    "targetMedianPrice": 454,
     "recommendationMean": 1.7381,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 37,
@@ -7332,6 +7347,6 @@
     "profitMargins": -0.030580001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-06T18:37:05.831Z",
+  "lastUpdated": "2026-01-08T01:19:40.285Z",
   "source": "Static Build (yahoo-finance2)"
 }
