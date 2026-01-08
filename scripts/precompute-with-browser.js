@@ -212,16 +212,50 @@ async function main() {
     });
 
     // Chunking to avoid resource exhaustion
+    const successfulSymbols = [];
+
+    // Chunking to avoid resource exhaustion
     const CHUNK_SIZE = 5;
     for (let i = 0; i < symbols.length; i += CHUNK_SIZE) {
         const chunk = symbols.slice(i, i + CHUNK_SIZE);
-        await Promise.all(chunk.map(s => processSymbol(browser, s)));
+        const results = await Promise.all(chunk.map(async s => {
+            try {
+                await processSymbol(browser, s);
+                return s;
+            } catch (err) {
+                console.error(`Error processing ${s}:`, err);
+                return null;
+            }
+        }));
+
+        results.forEach(s => {
+            if (s) successfulSymbols.push(s);
+        });
+
         // delay
         await new Promise(r => setTimeout(r, 1000));
     }
 
     await browser.close();
-    console.log('Done.');
+
+    // Generate Index
+    console.log('Generating latest_index.json...');
+    const indexData = {
+        generatedAt: new Date().toISOString(),
+        date: new Date().toISOString().split('T')[0],
+        totalSymbols: successfulSymbols.length,
+        successful: successfulSymbols.length,
+        failed: symbols.length - successfulSymbols.length,
+        symbols: successfulSymbols.sort(),
+        failedSymbols: [] // TODO: Track actual failures better if needed
+    };
+
+    fs.writeFileSync(path.join(RAW_DATA_DIR, 'latest_index.json'), JSON.stringify(indexData, null, 2));
+    // Also save dated index for history
+    const dateStr = new Date().toISOString().split('T')[0];
+    fs.writeFileSync(path.join(RAW_DATA_DIR, `${dateStr}_index.json`), JSON.stringify(indexData, null, 2));
+
+    console.log(`Done. Index generated with ${successfulSymbols.length} symbols.`);
 }
 
 main().catch(console.error);
