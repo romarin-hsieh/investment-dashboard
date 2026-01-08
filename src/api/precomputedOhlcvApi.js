@@ -17,9 +17,10 @@ class PrecomputedOhlcvApi {
    * @param {number} days - Number of days of data (default: 90)
    * @returns {Promise<Object>} OHLCV data with timestamps
    */
-  async getOhlcv(symbol, period = '1d', days = 90) {
+  async getOhlcv(symbolInput, period = '1d', days = 90) {
+    const symbol = symbolInput.toUpperCase();
     const cacheKey = `${symbol}_${period}_${days}`;
-    
+
     // Check cache first
     if (this.cache.has(cacheKey)) {
       const cached = this.cache.get(cacheKey);
@@ -32,31 +33,31 @@ class PrecomputedOhlcvApi {
     try {
       // 使用統一的 paths helper
       const url = paths.ohlcvPrecomputed(symbol, period, days);
-      
+
       console.log(`📊 Fetching precomputed OHLCV data: ${url}`);
-      
+
       const response = await fetch(url);
-      
+
       if (!response.ok) {
         throw new Error(`Precomputed data not found: ${response.status}`);
       }
-      
+
       const data = await response.json();
-      
+
       // Validate data structure
       if (!this.validateOhlcvData(data)) {
         throw new Error('Invalid OHLCV data structure');
       }
-      
+
       // Cache the result
       this.cache.set(cacheKey, {
         data: data,
         timestamp: Date.now()
       });
-      
+
       console.log(`📊 Successfully loaded ${data.timestamps.length} OHLCV data points for ${symbol}`);
       return data;
-      
+
     } catch (error) {
       console.warn(`📊 Precomputed OHLCV data failed for ${symbol}:`, error.message);
       // 不要 throw，回傳 null 讓上層 fallback
@@ -73,16 +74,16 @@ class PrecomputedOhlcvApi {
     if (!data || typeof data !== 'object') {
       return false;
     }
-    
+
     const requiredFields = ['timestamps', 'open', 'high', 'low', 'close', 'volume'];
-    
+
     for (const field of requiredFields) {
       if (!Array.isArray(data[field])) {
         console.error(`Missing or invalid field: ${field}`);
         return false;
       }
     }
-    
+
     // Check that all arrays have the same length
     const length = data.timestamps.length;
     for (const field of requiredFields) {
@@ -91,13 +92,13 @@ class PrecomputedOhlcvApi {
         return false;
       }
     }
-    
+
     // Check for minimum data points
     if (length < 20) {
       console.error(`Insufficient data points: ${length} < 20`);
       return false;
     }
-    
+
     return true;
   }
 
@@ -111,10 +112,10 @@ class PrecomputedOhlcvApi {
       if (!response.ok) {
         throw new Error('Index file not found');
       }
-      
+
       const index = await response.json();
       return index.symbols || [];
-      
+
     } catch (error) {
       console.warn('📊 Could not load precomputed data index:', error.message);
       return [];
@@ -128,7 +129,8 @@ class PrecomputedOhlcvApi {
    * @param {number} days - Number of days
    * @returns {Promise<boolean>} True if available
    */
-  async isAvailable(symbol, period = '1d', days = 90) {
+  async isAvailable(symbolInput, period = '1d', days = 90) {
+    const symbol = symbolInput.toUpperCase();
     try {
       await this.getOhlcv(symbol, period, days);
       return true;
