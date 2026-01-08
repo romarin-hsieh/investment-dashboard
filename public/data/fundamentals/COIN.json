@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01069,
-    "institutionsPercentHeld": 0.667,
-    "institutionsFloatPercentHeld": 0.67420995,
-    "institutionsCount": 1839
+    "institutionsPercentHeld": 0.66700995,
+    "institutionsFloatPercentHeld": 0.67421997,
+    "institutionsCount": 1837
   },
   "earnings": {
     "maxAge": 86400,
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-08T12:04:19.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 340,
+        "priorPriceTarget": 340
+      },
       {
         "epochGradeDate": "2025-12-18T13:45:51.000Z",
         "firm": "Cantor Fitzgerald",
@@ -3906,11 +3916,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0047981455,
+    "preMarketChange": 1.1800079,
+    "preMarketTime": "2026-01-08T12:37:25.000Z",
+    "preMarketPrice": 247.11,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.001301213,
-    "postMarketChange": 0.32000732,
-    "postMarketTime": "2026-01-08T00:59:57.000Z",
-    "postMarketPrice": 246.25,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0184786,
     "regularMarketChange": -4.63,
@@ -3919,16 +3929,16 @@
     "regularMarketPrice": 245.93,
     "regularMarketDayHigh": 248.9399,
     "regularMarketDayLow": 240.25,
-    "regularMarketVolume": 7212449,
-    "averageDailyVolume10Day": 7285290,
-    "averageDailyVolume3Month": 9294337,
+    "regularMarketVolume": 7212338,
+    "averageDailyVolume10Day": 7406870,
+    "averageDailyVolume3Month": 9264572,
     "regularMarketPreviousClose": 250.56,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 248.28,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "COIN",
     "underlyingSymbol": null,
@@ -3956,7 +3966,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.059499998,
     "heldPercentInsiders": 0.01069,
-    "heldPercentInstitutions": 0.667,
+    "heldPercentInstitutions": 0.66700995,
     "shortRatio": 1.63,
     "shortPercentOfFloat": 0.0795,
     "beta": 3.707,
@@ -3972,12 +3982,12 @@
     "earningsQuarterlyGrowth": 4.73,
     "netIncomeToCommon": 3217709056,
     "trailingEps": 11.56,
-    "forwardEps": 6.73487,
+    "forwardEps": 6.87456,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.727,
     "enterpriseToEbitda": 26.81,
-    "52WeekChange": -0.031764448,
-    "SandP52WeekChange": 0.19182634,
+    "52WeekChange": -0.049656093,
+    "SandP52WeekChange": 0.1877265,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -5781,6 +5791,6 @@
     "profitMargins": 0.43664002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-08T06:27:53.130Z",
+  "lastUpdated": "2026-01-08T12:38:01.714Z",
   "source": "Static Build (yahoo-finance2)"
 }
