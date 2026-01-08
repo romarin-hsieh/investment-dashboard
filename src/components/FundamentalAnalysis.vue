@@ -140,25 +140,26 @@ export default {
           y: { stacked: true, beginAtZero: true }
         }
       },
-      earningsChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { position: 'top' }
-        },
-        scales: {
-            y: {
-                type: 'linear',
-                display: true,
-                position: 'left',
-                title: { display: true, text: 'EPS' }
+        earningsChartOptions: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'top' }
             },
-            y1: {
-                type: 'linear',
-                display: true,
-                position: 'right',
-                title: { display: true, text: 'Revenue' },
-                grid: { drawOnChartArea: false }
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    title: { display: true, text: 'EPS' }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    title: { display: true, text: 'Revenue' },
+                    grid: { drawOnChartArea: false }
+                }
             }
         },
         targetPriceChartData: null,
@@ -325,8 +326,14 @@ export default {
         // 2. Prepare Chart Data (Oldest First)
         // Filter out items without price targets for the chart
         const chartItems = validItems
-            .filter(item => item.currentPriceTarget)
+            .filter(item => {
+                const hasTarget = item.currentPriceTarget !== undefined && item.currentPriceTarget !== null;
+                if (!hasTarget) console.log('Item missing target:', item);
+                return hasTarget;
+            })
             .sort((a, b) => new Date(a.epochGradeDate) - new Date(b.epochGradeDate));
+        
+        console.log('Chart Items:', chartItems.length, chartItems);
 
         if (chartItems.length > 0) {
             this.targetPriceChartData = {
@@ -343,6 +350,7 @@ export default {
                 }]
             };
         } else {
+            console.warn('No chart items found despite history existing.');
             this.targetPriceChartData = null;
         }
     },

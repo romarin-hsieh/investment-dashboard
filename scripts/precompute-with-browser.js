@@ -183,11 +183,23 @@ async function processSymbol(browser, symbol) {
             }
         };
 
-        // Save
+        // Save Technical Indicators (Dated)
         const filename = `${new Date().toISOString().split('T')[0]}_${symbol}.json`;
-
         fs.writeFileSync(path.join(RAW_DATA_DIR, filename), JSON.stringify(finalData, null, 2));
-        console.log(`Saved ${symbol} data.`);
+
+        // Save OHLCV (Undated, UpperCase) for MFI Widget compatibility
+        // Format: { ohlcv: [[t,o,h,l,c,v], ...] }
+        const ohlcvData = {
+            symbol: symbol,
+            ohlcv: ohlcv // Assuming ohlcv variable is available here (it was used for indicators)
+        };
+        // Ensure ohlcv directory exists
+        const ohlcvDir = path.join(RAW_DATA_DIR, '..', 'ohlcv');
+        if (!fs.existsSync(ohlcvDir)) fs.mkdirSync(ohlcvDir, { recursive: true });
+
+        fs.writeFileSync(path.join(ohlcvDir, `${symbol.toUpperCase()}.json`), JSON.stringify(ohlcvData, null, 2));
+
+        console.log(`Saved ${symbol} data (Indicators + OHLCV).`);
 
     } catch (e) {
         console.error(`Failed ${symbol}: ${e.message}`);
