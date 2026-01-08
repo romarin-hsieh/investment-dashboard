@@ -5,9 +5,9 @@
         "period": "0m",
         "strongBuy": 7,
         "buy": 13,
-        "hold": 8,
+        "hold": 9,
         "sell": 0,
-        "strongSell": 1
+        "strongSell": 0
       },
       {
         "period": "-1m",
@@ -193,10 +193,8 @@
       "currentQuarterEstimateYear": 2025,
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
-      "earningsDate": [
-        "2026-01-29T13:30:00.000Z"
-      ],
-      "isEarningsDateEstimate": true
+      "earningsDate": [],
+      "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
@@ -4062,15 +4060,15 @@
     "regularMarketDayHigh": 333.12,
     "regularMarketDayLow": 320.57,
     "regularMarketVolume": 3161467,
-    "averageDailyVolume10Day": 2056160,
-    "averageDailyVolume3Month": 2742122,
+    "averageDailyVolume10Day": 2056210,
+    "averageDailyVolume3Month": 2751532,
     "regularMarketPreviousClose": 332.97,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 333,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "ETN",
     "underlyingSymbol": null,
@@ -4087,8 +4085,8 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 140069552128,
-    "forwardPE": 23.679386,
+    "enterpriseValue": 136069029888,
+    "forwardPE": 23.697266,
     "profitMargins": 0.14741,
     "floatShares": 387273640,
     "sharesOutstanding": 388400000,
@@ -4113,14 +4111,14 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.001,
     "netIncomeToCommon": 3926000128,
-    "trailingEps": 9.68,
+    "trailingEps": 10,
     "forwardEps": 13.61634,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1298937600,
-    "enterpriseToRevenue": 5.259,
-    "enterpriseToEbitda": 22.902,
-    "52WeekChange": -0.03517717,
-    "SandP52WeekChange": 0.17345834,
+    "enterpriseToRevenue": 5.109,
+    "enterpriseToEbitda": 22.248,
+    "52WeekChange": -0.024835289,
+    "SandP52WeekChange": 0.19182634,
     "lastDividendValue": 1.04,
     "lastDividendDate": "2025-08-07T00:00:00.000Z",
     "latestShareClass": null,
@@ -5651,10 +5649,10 @@
     "maxAge": 86400,
     "currentPrice": 322.67,
     "targetHighPrice": 474,
-    "targetLowPrice": 288,
-    "targetMeanPrice": 398.4296,
+    "targetLowPrice": 321,
+    "targetMeanPrice": 399.7496,
     "targetMedianPrice": 413,
-    "recommendationMean": 1.89655,
+    "recommendationMean": 1.86207,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 25,
     "totalCash": 565000000,
@@ -5679,6 +5677,6 @@
     "profitMargins": 0.14741,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-08T01:21:05.175Z",
+  "lastUpdated": "2026-01-08T06:29:22.640Z",
   "source": "Static Build (yahoo-finance2)"
 }
