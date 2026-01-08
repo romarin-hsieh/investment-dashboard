@@ -77,7 +77,8 @@ async function fetchYahooData(page, symbol) {
     // Chart Data
     console.log(`Fetching Chart data for ${symbol}...`);
     // Try v8 chart API
-    const chartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=6mo&indicators=quote&includePrePost=false`;
+    // Increased range to 2y to support MFI Volume Profile and longer-term indicators
+    const chartUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=2y&indicators=quote&includePrePost=false`;
     const chartData = await fetchJsonViaNav(chartUrl);
 
     return { quoteSummaryData, chartData };
