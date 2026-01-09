@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
   name: 'SystemManager',
@@ -156,8 +156,9 @@ export default {
       try {
         // 1. Fetch Technical Indicators Index (The heartbeat of the daily update)
         try {
-            const indexRes = await axios.get('/data/technical-indicators/latest_index.json?t=' + new Date().getTime());
-            const idx = indexRes.data;
+            const indexRes = await fetch('/data/technical-indicators/latest_index.json?t=' + new Date().getTime());
+            if (!indexRes.ok) throw new Error(`HTTP error! status: ${indexRes.status}`);
+            const idx = await indexRes.json();
             this.pipelineStatus = {
                 lastUpdate: idx.date,
                 generatedAt: idx.generatedAt,
@@ -175,8 +176,9 @@ export default {
 
         // 2. Fetch Symbols Metadata (Universe)
         try {
-            const metaRes = await axios.get('/data/symbols_metadata.json?t=' + new Date().getTime());
-            const meta = metaRes.data;
+            const metaRes = await fetch('/data/symbols_metadata.json?t=' + new Date().getTime());
+            if (!metaRes.ok) throw new Error(`HTTP error! status: ${metaRes.status}`);
+            const meta = await metaRes.json();
             const items = meta.items || meta.symbols || [];
             this.universeInfo = {
                 total: items.length,
