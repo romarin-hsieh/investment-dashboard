@@ -87,6 +87,11 @@ jobs:
         echo "🔄 Updating metadata (weekly)..."
         python scripts/update-metadata-python.py
 
+    - name: Fetch Fundamentals Data (yahoo-finance2)
+      run: |
+        echo "🔄 Fetching fundamental data (including analyst insights)..."
+        node scripts/fetch-fundamentals.js
+
     - name: Generate Daily Snapshot
       run: |
         echo "🔄 Generating daily snapshot..."

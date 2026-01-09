@@ -19,7 +19,8 @@ const __dirname = path.dirname(__filename);
 const CONFIG = {
   outputDir: path.join(__dirname, '../public/data/technical-indicators'),
   universeFile: path.join(__dirname, '../config/universe.json'),
-  ohlcvDir: path.join(__dirname, '../public/data/ohlcv')
+  ohlcvDir: path.join(__dirname, '../public/data/ohlcv'),
+  fundamentalsDir: path.join(__dirname, '../public/data/fundamentals')
 };
 
 /**
@@ -74,14 +75,14 @@ function calculateRSI(prices, period = 14) {
   const rsi = [];
   const gains = [];
   const losses = [];
-  
+
   // 計算價格變化
   for (let i = 1; i < prices.length; i++) {
     const change = prices[i] - prices[i - 1];
     gains.push(change > 0 ? change : 0);
     losses.push(change < 0 ? -change : 0);
   }
-  
+
   // 計算 RSI
   for (let i = 0; i < gains.length; i++) {
     if (i < period - 1) {
@@ -89,7 +90,7 @@ function calculateRSI(prices, period = 14) {
     } else {
       const avgGain = gains.slice(i - period + 1, i + 1).reduce((a, b) => a + b, 0) / period;
       const avgLoss = losses.slice(i - period + 1, i + 1).reduce((a, b) => a + b, 0) / period;
-      
+
       if (avgLoss === 0) {
         rsi.push(100);
       } else {
@@ -98,7 +99,7 @@ function calculateRSI(prices, period = 14) {
       }
     }
   }
-  
+
   return [null, ...rsi]; // 加回第一個 null 因為沒有價格變化
 }
 
@@ -108,7 +109,7 @@ function calculateRSI(prices, period = 14) {
 function calculateMACD(prices, fastPeriod = 12, slowPeriod = 26, signalPeriod = 9) {
   const ema12 = calculateEMA(prices, fastPeriod);
   const ema26 = calculateEMA(prices, slowPeriod);
-  
+
   const macdLine = [];
   for (let i = 0; i < prices.length; i++) {
     if (ema12[i] !== null && ema26[i] !== null) {
@@ -117,9 +118,9 @@ function calculateMACD(prices, fastPeriod = 12, slowPeriod = 26, signalPeriod = 
       macdLine.push(null);
     }
   }
-  
+
   const signalLine = calculateEMA(macdLine.filter(v => v !== null), signalPeriod);
-  
+
   // 補齊 signal line 長度
   const fullSignalLine = [];
   let signalIndex = 0;
@@ -131,7 +132,7 @@ function calculateMACD(prices, fastPeriod = 12, slowPeriod = 26, signalPeriod = 
       fullSignalLine.push(null);
     }
   }
-  
+
   const histogram = [];
   for (let i = 0; i < macdLine.length; i++) {
     if (macdLine[i] !== null && fullSignalLine[i] !== null) {
@@ -140,7 +141,7 @@ function calculateMACD(prices, fastPeriod = 12, slowPeriod = 26, signalPeriod = 
       histogram.push(null);
     }
   }
-  
+
   return {
     macd: macdLine,
     signal: fullSignalLine,
@@ -154,7 +155,7 @@ function calculateMACD(prices, fastPeriod = 12, slowPeriod = 26, signalPeriod = 
 function calculateEMA(prices, period) {
   const ema = [];
   const multiplier = 2 / (period + 1);
-  
+
   // 找到第一個非 null 值作為初始值
   let firstValidIndex = 0;
   for (let i = 0; i < prices.length; i++) {
@@ -163,7 +164,7 @@ function calculateEMA(prices, period) {
       break;
     }
   }
-  
+
   for (let i = 0; i < prices.length; i++) {
     if (i < firstValidIndex) {
       ema.push(null);
@@ -175,8 +176,27 @@ function calculateEMA(prices, period) {
       ema.push(ema[i - 1]); // 保持前一個值
     }
   }
-  
+
   return ema;
+}
+
+
+/**
+ * 載入基本面數據
+ */
+function loadFundamentals(symbol) {
+  try {
+    const filename = `${symbol.toUpperCase()}.json`;
+    const filepath = path.join(CONFIG.fundamentalsDir, filename);
+    if (fs.existsSync(filepath)) {
+      const data = fs.readFileSync(filepath, 'utf8');
+      return JSON.parse(data);
+    }
+    return null;
+  } catch (error) {
+    console.warn(`⚠️ Failed to load Fundamentals for ${symbol}:`, error.message);
+    return null;
+  }
 }
 
 /**
@@ -184,7 +204,8 @@ function calculateEMA(prices, period) {
  */
 function generateTechnicalIndicators(symbol, ohlcvData) {
   const { timestamps, open, high, low, close, volume } = ohlcvData;
-  
+  const fundamentals = loadFundamentals(symbol);
+
   // 計算各種技術指標
   const sma5 = calculateSMA(close, 5);
   const sma10 = calculateSMA(close, 10);
@@ -192,7 +213,7 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
   const sma50 = calculateSMA(close, 50);
   const rsi = calculateRSI(close, 14);
   const macd = calculateMACD(close);
-  
+
   return {
     symbol: symbol,
     timestamps: timestamps,
@@ -212,6 +233,7 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
         histogram: macd.histogram
       }
     },
+    fundamentals: fundamentals, // Embed fundamental data
     metadata: {
       generated: new Date().toISOString(),
       source: 'GitHub Actions Daily Update',
@@ -226,7 +248,7 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
  */
 async function generateAllTechnicalIndicators() {
   console.log('🚀 Starting daily technical indicators generation...');
-  
+
   // 確保輸出目錄存在
   if (!fs.existsSync(CONFIG.outputDir)) {
     fs.mkdirSync(CONFIG.outputDir, { recursive: true });
@@ -235,9 +257,9 @@ async function generateAllTechnicalIndicators() {
   const symbols = loadUniverse();
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
   const generatedFiles = [];
-  
+
   console.log(`📊 Generating technical indicators for ${symbols.length} symbols...`);
-  
+
   for (const symbol of symbols) {
     // 載入 OHLCV 數據
     const ohlcvData = loadOhlcvData(symbol);
@@ -245,17 +267,21 @@ async function generateAllTechnicalIndicators() {
       console.warn(`⚠️ Skipping ${symbol}: No OHLCV data available`);
       continue;
     }
-    
-    // 生成技術指標
-    const indicators = generateTechnicalIndicators(symbol, ohlcvData);
-    
-    // 保存文件
-    const filename = `${today}_${symbol}.json`;
-    const filepath = path.join(CONFIG.outputDir, filename);
-    fs.writeFileSync(filepath, JSON.stringify(indicators, null, 2));
-    generatedFiles.push(filename);
-    
-    console.log(`✅ Generated ${filename}`);
+
+    try {
+      // 生成技術指標
+      const indicators = generateTechnicalIndicators(symbol, ohlcvData);
+
+      // 保存文件
+      const filename = `${today}_${symbol}.json`;
+      const filepath = path.join(CONFIG.outputDir, filename);
+      fs.writeFileSync(filepath, JSON.stringify(indicators, null, 2));
+      generatedFiles.push(filename);
+
+      console.log(`✅ Generated ${filename}`);
+    } catch (err) {
+      console.error(`❌ Error generating for ${symbol}:`, err.message);
+    }
   }
 
   // 生成 latest_index.json
@@ -269,13 +295,13 @@ async function generateAllTechnicalIndicators() {
     indicators: ['SMA5', 'SMA10', 'SMA20', 'SMA50', 'RSI14', 'MACD'],
     note: 'Technical indicators for autoUpdateScheduler and precomputedIndicatorsApi'
   };
-  
+
   const indexPath = path.join(CONFIG.outputDir, 'latest_index.json');
   fs.writeFileSync(indexPath, JSON.stringify(indexData, null, 2));
-  
+
   console.log(`📋 Generated latest_index.json with ${generatedFiles.length} files`);
   console.log('🎉 Daily technical indicators generation completed!');
-  
+
   return {
     totalFiles: generatedFiles.length,
     symbols: symbols.length,
@@ -288,17 +314,17 @@ async function generateAllTechnicalIndicators() {
 async function main() {
   try {
     console.log('🚀 Daily Technical Indicators Generator');
-    console.log('=' .repeat(50));
-    
+    console.log('='.repeat(50));
+
     const result = await generateAllTechnicalIndicators();
     console.log('\n📊 Generation Summary:');
     console.log(`- Date: ${result.date}`);
     console.log(`- Total files: ${result.totalFiles}`);
     console.log(`- Symbols: ${result.symbols}`);
     console.log(`- Index file: ${result.indexFile}`);
-    
+
     console.log('\n🎉 Technical indicators ready for autoUpdateScheduler!');
-    
+
   } catch (error) {
     console.error('❌ Error generating daily technical indicators:', error);
     process.exit(1);

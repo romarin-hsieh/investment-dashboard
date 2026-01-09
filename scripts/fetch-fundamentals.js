@@ -76,6 +76,14 @@ async function fetchYahooData(symbol) {
 async function main() {
     console.log('Starting Stock Data Fetcher (yahoo-finance2)...');
 
+    // Parse command line args for specific symbols
+    const args = process.argv.slice(2);
+    let targetSymbols = [];
+    if (args.length > 0) {
+        targetSymbols = args.map(s => s.toUpperCase());
+        console.log(`Filtering for symbols: ${targetSymbols.join(', ')}`);
+    }
+
     // Load symbols
     let symbols = [];
     try {
@@ -91,7 +99,13 @@ async function main() {
         }
 
         symbols = symbols.map(s => (typeof s === 'string' ? s : s.symbol)).filter(s => s);
-        console.log(`Loaded ${symbols.length} symbols.`);
+
+        // Apply filter if args present
+        if (targetSymbols.length > 0) {
+            symbols = symbols.filter(s => targetSymbols.includes(s));
+        }
+
+        console.log(`Loaded ${symbols.length} symbols to fetch.`);
     } catch (err) {
         console.error('Failed to load symbols metadata:', err.message);
         process.exit(1);
@@ -109,6 +123,7 @@ async function main() {
             const filePath = path.join(OUTPUT_DIR, `${symbol}.json`);
             fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
             successCount++;
+            console.log(`✅ Saved ${symbol} data`);
         }
 
         await new Promise(resolve => setTimeout(resolve, DELAY_MS));

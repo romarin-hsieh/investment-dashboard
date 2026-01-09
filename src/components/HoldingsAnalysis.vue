@@ -182,7 +182,41 @@ export default {
                 if (precomputed && precomputed.fundamentals) {
                     console.log('Using precomputed fundamentals for', this.symbol);
                     const data = precomputed.fundamentals;
-                    this.holders = data.holders || {};
+                    
+                    // Handle pre-processed or raw data structures
+                    if (data.holders) {
+                         this.holders = data.holders;
+                    } else if (data.majorHoldersBreakdown || data.institutionOwnership) {
+                         // Adapting raw yahoo-finance2 structure to component structure
+                         const getPercentFmt = (val) => {
+                            if (val && typeof val === 'object' && val.fmt) return val.fmt;
+                            if (typeof val === 'number') return (val * 100).toFixed(2) + '%';
+                            return val || '0%';
+                         };
+                         const createFmt = (val, formatter) => {
+                            if (val && typeof val === 'object' && val.fmt) return val;
+                            return { raw: val, fmt: val !== null && val !== undefined ? formatter(val) : 'N/A' };
+                         };
+                         
+                         const holdersData = data.majorHoldersBreakdown || {};
+                         const instOwn = data.institutionOwnership || {};
+                         
+                         this.holders = {
+                            insidersPercent: getPercentFmt(holdersData.insidersPercentHeld),
+                            institutionsPercent: getPercentFmt(holdersData.institutionsPercentHeld),
+                            institutionsCount: holdersData.institutionsCount || (instOwn.ownershipList ? instOwn.ownershipList.length : 0),
+                            topInstitutions: (instOwn.ownershipList || []).map(h => ({
+                                organization: h.organization,
+                                position: createFmt(h.position, v => Number(v).toLocaleString()),
+                                reportDate: createFmt(h.reportDate, d => new Date(d).toLocaleDateString()),
+                                pctHeld: createFmt(h.pctHeld, v => (Number(v) * 100).toFixed(2) + '%'),
+                                value: createFmt(h.value, v => Number(v).toLocaleString())
+                            }))
+                         };
+                    } else {
+                        this.holders = {};
+                    }
+
                     this.insiderTransactions = data.insiderTransactions || [];
                     this.processTransactions();
                     this.processOwnershipChart();

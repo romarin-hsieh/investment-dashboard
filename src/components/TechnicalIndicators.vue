@@ -214,6 +214,11 @@ export default {
                  change = `${sign}${pct.toFixed(1)}%`;
                  changeClass = diff >= 0 ? 'pos' : 'neg';
              }
+
+             // Fallback: If value is 'N/A' but we have series data, use latest value
+             if (value === 'N/A' && latest !== null) {
+                 value = this.formatNumber(latest);
+             }
         }
 
         return { label, value, signal, change, changeClass };
@@ -261,7 +266,7 @@ export default {
 
       groups['Market'].push({
           label: 'Volume',
-          value: this.formatVolume(yf.extVolume || yf.volume_last_day),
+          value: this.formatVolume(yf.extVolume || yf.volume_last_day || this.getLatestValue(series.volume)),
           change: volChange !== undefined && volChange !== null ? (volChange >= 0 ? '+' : '') + Number(volChange).toFixed(1) + '%' : null,
           changeClass: this.getChangeClass(volChange),
           signal: this.getVolumeCategory(yf.extVolume || yf.volume_last_day, yf.extAvgVol || yf.avg_volume_5d),

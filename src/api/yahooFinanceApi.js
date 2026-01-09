@@ -25,6 +25,9 @@ class YahooFinanceAPI {
     this.activeRequests = 0;
     this.MAX_CONCURRENT_REQUESTS = 2; // 降低並發數以避免 429
     this.REQUEST_DELAY = 800; // 請求間隔 (ms) - 增加延遲以提高穩定性
+
+    // 請求去重 (Request Deduplication)
+    this.pendingRequests = new Map();
   }
 
   // 加入請求隊列
@@ -78,9 +81,21 @@ class YahooFinanceAPI {
     return freshData;
   }
 
-  // 從 API 獲取技術指標數據 (包裝器)
+  // 從 API 獲取技術指標數據 (包裝器) - 增加去重機制
   async fetchTechnicalIndicatorsFromAPI(symbol) {
-    return this.enqueueRequest(() => this._fetchTechnicalIndicatorsFromAPIInternal(symbol));
+    const requestKey = `tech_${symbol}`;
+    if (this.pendingRequests.has(requestKey)) {
+      console.log(`Using pending request for technical indicators: ${symbol}`);
+      return this.pendingRequests.get(requestKey);
+    }
+
+    const promise = this.enqueueRequest(() => this._fetchTechnicalIndicatorsFromAPIInternal(symbol))
+      .finally(() => {
+        this.pendingRequests.delete(requestKey);
+      });
+
+    this.pendingRequests.set(requestKey, promise);
+    return promise;
   }
 
   // 從 API 獲取技術指標數據 (內部實現)
@@ -480,9 +495,21 @@ class YahooFinanceAPI {
     this.cache.clear();
   }
 
-  // 獲取股票基本信息 (包裝器)
+  // 獲取股票基本信息 (包裝器) - 增加去重機制
   async getStockInfo(symbol) {
-    return this.enqueueRequest(() => this._getStockInfoInternal(symbol));
+    const requestKey = `info_${symbol}`;
+    if (this.pendingRequests.has(requestKey)) {
+      console.log(`Using pending request for stock info: ${symbol}`);
+      return this.pendingRequests.get(requestKey);
+    }
+
+    const promise = this.enqueueRequest(() => this._getStockInfoInternal(symbol))
+      .finally(() => {
+        this.pendingRequests.delete(requestKey);
+      });
+
+    this.pendingRequests.set(requestKey, promise);
+    return promise;
   }
 
   // 獲取股票基本信息 (內部實現)
@@ -677,6 +704,11 @@ class YahooFinanceAPI {
 
       financials: {
         targetPrice: getRaw(financialData.targetMeanPrice),
+        targetLowPrice: getRaw(financialData.targetLowPrice),
+        targetHighPrice: getRaw(financialData.targetHighPrice),
+        targetMeanPrice: getRaw(financialData.targetMeanPrice),
+        targetMedianPrice: getRaw(financialData.targetMedianPrice),
+        currentPrice: getRaw(financialData.currentPrice),
         recommendationKey: financialData.recommendationKey || 'N/A',
         revenueGrowth: getPercentFmt(financialData.revenueGrowth),
         profitMargin: getPercentFmt(financialData.profitMargins),
@@ -856,9 +888,21 @@ class YahooFinanceAPI {
 
 
 
-  // Get OHLCV data for MFI Volume Profile calculations (Wrapper)
+  // Get OHLCV data for MFI Volume Profile calculations (Wrapper) - 增加去重機制
   async getOhlcv(symbol, period = '1d', range = '3mo') {
-    return this.enqueueRequest(() => this._getOhlcvInternal(symbol, period, range));
+    const requestKey = `ohlcv_${symbol}_${period}_${range}`;
+    if (this.pendingRequests.has(requestKey)) {
+      console.log(`Using pending request for OHLCV: ${requestKey}`);
+      return this.pendingRequests.get(requestKey);
+    }
+
+    const promise = this.enqueueRequest(() => this._getOhlcvInternal(symbol, period, range))
+      .finally(() => {
+        this.pendingRequests.delete(requestKey);
+      });
+
+    this.pendingRequests.set(requestKey, promise);
+    return promise;
   }
 
   // Get OHLCV data (Internal Implementation)
