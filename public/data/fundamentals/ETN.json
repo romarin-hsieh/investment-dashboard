@@ -45,11 +45,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.099,
         "position": 38442856,
-<<<<<<< HEAD
-        "value": 12440492067,
-=======
         "value": 12411276294,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": 0.609
       },
       {
@@ -58,11 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.096999995,
         "position": 37672338,
-<<<<<<< HEAD
-        "value": 12191144748,
-=======
         "value": 12162514553,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": -0.0001
       },
       {
@@ -71,11 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0735,
         "position": 28559488,
-<<<<<<< HEAD
-        "value": 9242135493,
-=======
         "value": 9220430875,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": 0.0058999998
       },
       {
@@ -84,11 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0436,
         "position": 16944554,
-<<<<<<< HEAD
-        "value": 5483426871,
-=======
         "value": 5470549362,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": 0.0062
       },
       {
@@ -97,11 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.032899998,
         "position": 12777429,
-<<<<<<< HEAD
-        "value": 4134903611,
-=======
         "value": 4125193030,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": 0.0191
       },
       {
@@ -110,11 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0323,
         "position": 12560077,
-<<<<<<< HEAD
-        "value": 4064566333,
-=======
         "value": 4055020936,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": -0.043
       },
       {
@@ -123,11 +99,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0308,
         "position": 11967630,
-<<<<<<< HEAD
-        "value": 3872844568,
-=======
         "value": 3863749418,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": 0.0636
       },
       {
@@ -136,11 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0222,
         "position": 8607898,
-<<<<<<< HEAD
-        "value": 2785601745,
-=======
         "value": 2779059921,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": 0.0055
       },
       {
@@ -149,11 +117,7 @@
         "organization": "Massachusetts Financial Services Co.",
         "pctHeld": 0.0188,
         "position": 7289428,
-<<<<<<< HEAD
-        "value": 2358931688,
-=======
         "value": 2353391874,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": -0.105399996
       },
       {
@@ -162,11 +126,7 @@
         "organization": "Raymond James Financial, Inc.",
         "pctHeld": 0.0139,
         "position": 5384561,
-<<<<<<< HEAD
-        "value": 1742497706,
-=======
         "value": 1738405551,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "pctChange": -0.0149
       }
     ]
@@ -233,8 +193,10 @@
       "currentQuarterEstimateYear": 2025,
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-01-29T13:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -4087,21 +4049,6 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-<<<<<<< HEAD
-    "regularMarketChangePercent": 0.009454859,
-    "regularMarketChange": 3.0299988,
-    "regularMarketTime": "2026-01-09T18:27:32.000Z",
-    "priceHint": 2,
-    "regularMarketPrice": 323.61,
-    "regularMarketDayHigh": 325.215,
-    "regularMarketDayLow": 320.96,
-    "regularMarketVolume": 1197308,
-    "averageDailyVolume10Day": 2403260,
-    "averageDailyVolume3Month": 2804324,
-    "regularMarketPreviousClose": 320.58,
-    "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 322.15,
-=======
     "regularMarketChangePercent": 0.007049533,
     "regularMarketChange": 2.2600098,
     "regularMarketTime": "2026-01-09T14:33:17.000Z",
@@ -4115,7 +4062,6 @@
     "regularMarketPreviousClose": 320.59,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 320.11,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -4131,21 +4077,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-<<<<<<< HEAD
-    "marketCap": 125981368320
-=======
     "marketCap": 125685506048
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 135257268224,
-<<<<<<< HEAD
-    "forwardPE": 23.778732,
-=======
     "forwardPE": 23.722889,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
     "profitMargins": 0.14741,
     "floatShares": 387273640,
     "sharesOutstanding": 388400000,
@@ -4162,11 +4100,7 @@
     "impliedSharesOutstanding": 389300000,
     "category": null,
     "bookValue": 48.514,
-<<<<<<< HEAD
-    "priceToBook": 6.6704454,
-=======
     "priceToBook": 6.6547804,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -4453,11 +4387,7 @@
         "shares": 546,
         "filerUrl": "",
         "transactionText": "",
-<<<<<<< HEAD
-        "filerName": "PIANALTO SANDRA",
-=======
         "filerName": "THOMPSON DOROTHY C.",
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-02T00:00:00.000Z",
@@ -4468,11 +4398,7 @@
         "shares": 546,
         "filerUrl": "",
         "transactionText": "",
-<<<<<<< HEAD
-        "filerName": "THOMPSON DOROTHY C.",
-=======
         "filerName": "WILSON DARRYL L",
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-02T00:00:00.000Z",
@@ -4491,10 +4417,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 413,
+        "shares": 546,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "TERRELL KARENANN K",
+        "filerName": "PAGE GREGORY R",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-02T00:00:00.000Z",
@@ -4538,7 +4464,7 @@
         "shares": 546,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PAGE GREGORY R",
+        "filerName": "PIANALTO SANDRA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-02T00:00:00.000Z",
@@ -4549,20 +4475,6 @@
         "shares": 546,
         "filerUrl": "",
         "transactionText": "",
-<<<<<<< HEAD
-        "filerName": "WILSON DARRYL L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 546,
-        "filerUrl": "",
-        "transactionText": "",
-=======
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "filerName": "NAPOLI SILVIO",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4605,8 +4517,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-=======
         "shares": 495,
         "filerUrl": "",
         "transactionText": "",
@@ -4618,7 +4528,6 @@
       },
       {
         "maxAge": 1,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 4113,
         "filerUrl": "",
         "transactionText": "",
@@ -4641,20 +4550,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-        "shares": 495,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-=======
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 691,
         "filerUrl": "",
         "transactionText": "",
@@ -4721,8 +4616,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-=======
         "shares": 6072,
         "value": 0,
         "filerUrl": "",
@@ -4735,7 +4628,6 @@
       },
       {
         "maxAge": 1,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 53073,
         "value": 0,
         "filerUrl": "",
@@ -4760,21 +4652,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-        "shares": 6072,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-=======
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 5314,
         "value": 0,
         "filerUrl": "",
@@ -4835,8 +4712,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-=======
         "shares": 1270,
         "filerUrl": "",
         "transactionText": "",
@@ -4848,7 +4723,6 @@
       },
       {
         "maxAge": 1,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 11252,
         "filerUrl": "",
         "transactionText": "",
@@ -4871,20 +4745,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-        "shares": 1270,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-=======
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 1420,
         "filerUrl": "",
         "transactionText": "",
@@ -5299,11 +5159,7 @@
         "shares": 1051,
         "filerUrl": "",
         "transactionText": "",
-<<<<<<< HEAD
-        "filerName": "PIANALTO SANDRA",
-=======
         "filerName": "THOMPSON DOROTHY C.",
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
@@ -5314,11 +5170,7 @@
         "shares": 1051,
         "filerUrl": "",
         "transactionText": "",
-<<<<<<< HEAD
-        "filerName": "THOMPSON DOROTHY C.",
-=======
         "filerName": "WILSON DARRYL L",
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
@@ -5330,6 +5182,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SMITH GERALD B",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1051,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAGE GREGORY R",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
@@ -5362,7 +5225,7 @@
         "shares": 1051,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PAGE GREGORY R",
+        "filerName": "PIANALTO SANDRA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
@@ -5373,20 +5236,6 @@
         "shares": 1051,
         "filerUrl": "",
         "transactionText": "",
-<<<<<<< HEAD
-        "filerName": "WILSON DARRYL L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1051,
-        "filerUrl": "",
-        "transactionText": "",
-=======
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "filerName": "NAPOLI SILVIO",
         "filerRelation": "Director",
         "moneyText": "",
@@ -5515,8 +5364,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-=======
         "shares": 8387,
         "value": 0,
         "filerUrl": "",
@@ -5529,7 +5376,6 @@
       },
       {
         "maxAge": 1,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 76175,
         "value": 0,
         "filerUrl": "",
@@ -5566,21 +5412,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-        "shares": 8387,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-=======
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 8004,
         "value": 0,
         "filerUrl": "",
@@ -5640,8 +5471,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-=======
         "shares": 2014,
         "filerUrl": "",
         "transactionText": "",
@@ -5653,7 +5482,6 @@
       },
       {
         "maxAge": 1,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 18013,
         "filerUrl": "",
         "transactionText": "",
@@ -5687,20 +5515,6 @@
       },
       {
         "maxAge": 1,
-<<<<<<< HEAD
-        "shares": 2014,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-=======
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
         "shares": 2130,
         "filerUrl": "",
         "transactionText": "",
@@ -5830,11 +5644,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-<<<<<<< HEAD
-    "currentPrice": 323.61,
-=======
     "currentPrice": 322.85,
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
     "targetHighPrice": 474,
     "targetLowPrice": 321,
     "targetMeanPrice": 399.3096,
@@ -5864,10 +5674,6 @@
     "profitMargins": 0.14741,
     "financialCurrency": "USD"
   },
-<<<<<<< HEAD
-  "lastUpdated": "2026-01-09T18:27:33.163Z",
-=======
   "lastUpdated": "2026-01-09T14:33:37.587Z",
->>>>>>> f0917a3 (Fix Analyst UI Styling, Automated Data Scripts, and Holdings Fallback)
   "source": "Static Build (yahoo-finance2)"
 }
