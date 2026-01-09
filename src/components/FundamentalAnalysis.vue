@@ -70,7 +70,7 @@
       <!-- Analyst Rating History -->
 
       <div class="card history-card full-width" v-if="upgradesDowngrades && upgradesDowngrades.length > 0">
-        <h3>Analyst Rating History (Last 12 Months)</h3>
+        <h3>Analyst Rating History (Last 5 Years)</h3>
         
         <!-- Price Target Trend Chart -->
         <div class="chart-container large" v-if="targetPriceChartData" style="margin-bottom: 20px;">
@@ -308,8 +308,8 @@ export default {
             return;
         }
 
-        const oneYearAgo = new Date();
-        oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+        const fiveYearsAgo = new Date();
+        fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
 
         // Filter valid items with dates and normalize to milliseconds
         const validItems = history
@@ -324,7 +324,7 @@ export default {
             })
             .filter(item => {
                  const d = new Date(item.epochGradeDate);
-                 return !isNaN(d.getTime()) && d >= oneYearAgo;
+                 return !isNaN(d.getTime()) && d >= fiveYearsAgo;
             });
 
         // 1. Prepare Table Data (Newest First)
