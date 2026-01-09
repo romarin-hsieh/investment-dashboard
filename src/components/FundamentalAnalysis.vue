@@ -311,28 +311,32 @@ export default {
         const oneYearAgo = new Date();
         oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
-        // Filter valid items with dates
-        const validItems = history.filter(item => {
-             const d = new Date(item.epochGradeDate);
-             return !isNaN(d.getTime()) && d >= oneYearAgo;
-        });
+        // Filter valid items with dates and normalize to milliseconds
+        const validItems = history
+            .map(item => {
+                let d = new Date(item.epochGradeDate);
+                // Handle Unix timestamp in seconds (common in YF API)
+                if (!isNaN(d.getTime()) && d.getFullYear() === 1970 && typeof item.epochGradeDate === 'number') {
+                    d = new Date(item.epochGradeDate * 1000);
+                }
+                // Return new object with normalized date (millis)
+                return { ...item, epochGradeDate: d.getTime() };
+            })
+            .filter(item => {
+                 const d = new Date(item.epochGradeDate);
+                 return !isNaN(d.getTime()) && d >= oneYearAgo;
+            });
 
         // 1. Prepare Table Data (Newest First)
         this.upgradesDowngrades = [...validItems].sort((a, b) => 
-             new Date(b.epochGradeDate) - new Date(a.epochGradeDate)
+             b.epochGradeDate - a.epochGradeDate
         );
 
         // 2. Prepare Chart Data (Oldest First)
         // Filter out items without price targets for the chart
         const chartItems = validItems
-            .filter(item => {
-                const hasTarget = item.currentPriceTarget !== undefined && item.currentPriceTarget !== null;
-                if (!hasTarget) console.log('Item missing target:', item);
-                return hasTarget;
-            })
-            .sort((a, b) => new Date(a.epochGradeDate) - new Date(b.epochGradeDate));
-        
-        console.log('Chart Items:', chartItems.length, chartItems);
+            .filter(item => item.currentPriceTarget !== undefined && item.currentPriceTarget !== null)
+            .sort((a, b) => a.epochGradeDate - b.epochGradeDate);
 
         if (chartItems.length > 0) {
             this.targetPriceChartData = {
