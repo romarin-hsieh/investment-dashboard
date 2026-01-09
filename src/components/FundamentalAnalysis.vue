@@ -140,45 +140,44 @@ export default {
           y: { stacked: true, beginAtZero: true }
         }
       },
-        earningsChartOptions: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { position: 'top' }
-            },
-            scales: {
-                y: {
-                    type: 'linear',
-                    display: true,
-                    position: 'left',
-                    title: { display: true, text: 'EPS' }
-                },
-                y1: {
-                    type: 'linear',
-                    display: true,
-                    position: 'right',
-                    title: { display: true, text: 'Revenue' },
-                    grid: { drawOnChartArea: false }
-                }
-            }
+      earningsChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'top' }
         },
-        targetPriceChartData: null,
-        targetPriceChartOptions: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: { display: true, text: 'Price Target Values' }
-            },
-            scales: {
-                y: {
-                    beginAtZero: false,
-                    title: { display: true, text: 'Price ($)' }
-                }
-            }
+        scales: {
+          y: {
+            type: 'linear',
+            display: true,
+            position: 'left',
+            title: { display: true, text: 'EPS' }
+          },
+          y1: {
+            type: 'linear',
+            display: true,
+            position: 'right',
+            title: { display: true, text: 'Revenue' },
+            grid: { drawOnChartArea: false }
+          }
+        }
+      },
+      targetPriceChartData: null,
+      targetPriceChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Price Target Values' }
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            title: { display: true, text: 'Price ($)' }
+          }
         }
       }
-    }
+    };
   },
   watch: {
     symbol: {
