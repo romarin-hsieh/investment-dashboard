@@ -293,7 +293,19 @@ export default {
                 if (precomputed && precomputed.fundamentals) {
                     console.log('Using precomputed fundamentals for', this.symbol);
                     const data = precomputed.fundamentals;
-                    this.metrics = data.financials || {};
+                    // Fix mapping: financialData holds the metrics in raw JSON
+                    const rawMetrics = data.financialData || {};
+                    const rawStats = data.defaultKeyStatistics || {};
+                    
+                    this.metrics = {
+                        ...rawMetrics,
+                        ...rawStats,
+                        // specific overrides if needed
+                        profitMargins: this.formatPercent(rawMetrics.profitMargins || rawStats.profitMargins),
+                        revenueGrowth: this.formatPercent(rawMetrics.revenueGrowth),
+                        beta: rawStats.beta,
+                        forwardPE: rawStats.forwardPE
+                    };
                     this.processRecommendationTrend(data.recommendationTrend);
                     this.processEarningsHistory(data.earnings);
                     
@@ -397,7 +409,18 @@ export default {
             });
 
         // 1. Prepare Table Data (Newest First)
-        this.upgradesDowngrades = [...validItems].sort((a, b) => 
+        this.upgradesDowngrades = [...validItems].sort((a, b) => b.epochGradeDate - a.epochGradeDate);
+        
+        // 2. Prepare Chart Data
+        this.prepareTargetPriceChart(this.upgradesDowngrades);
+    },
+
+    formatPercent(val) {
+        if (val === undefined || val === null) return 'N/A';
+        // Handle both raw number (0.36) and object ({fmt: '36%'})
+        const num = typeof val === 'object' ? val.raw : val;
+        return (num * 100).toFixed(2) + '%';
+    },
              b.epochGradeDate - a.epochGradeDate
         );
 

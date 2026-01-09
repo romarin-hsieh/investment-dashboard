@@ -81,7 +81,7 @@ class OhlcvApi {
    */
   async fetchLocalOhlcv(symbol, period, range) {
     // 使用統一的 baseUrl helper
-    const url = paths.ohlcv(symbol);
+    const url = paths.ohlcv(symbol) + '?t=' + Date.now();
 
     const response = await fetch(url);
 
@@ -126,7 +126,7 @@ class OhlcvApi {
 
     for (const field of requiredFields) {
       if (!Array.isArray(data[field])) {
-        console.error(`📊 OHLCV validation failed: missing ${field}`);
+        console.error(`📊 OHLCV validation failed: missing ${field}. Keys found:`, Object.keys(data));
         return false;
       }
     }
