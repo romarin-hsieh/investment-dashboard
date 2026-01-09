@@ -37,7 +37,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0691,
         "position": 8241066,
-        "value": 161772118,
+        "value": 157363149,
         "pctChange": 0.033
       },
       {
@@ -46,7 +46,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0551,
         "position": 6573013,
-        "value": 129028239,
+        "value": 125511678,
         "pctChange": 0.0042
       },
       {
@@ -55,7 +55,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.051,
         "position": 6090059,
-        "value": 119547853,
+        "value": 116289672,
         "pctChange": 0.13350001
       },
       {
@@ -64,7 +64,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0224,
         "position": 2674077,
-        "value": 52492129,
+        "value": 51061498,
         "pctChange": 0.0312
       },
       {
@@ -73,7 +73,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0224,
         "position": 2677305,
-        "value": 52555494,
+        "value": 51123137,
         "pctChange": 0.18360001
       },
       {
@@ -82,7 +82,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.0223,
         "position": 2656684,
-        "value": 52150704,
+        "value": 50729379,
         "pctChange": 0.561
       },
       {
@@ -91,7 +91,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.021300001,
         "position": 2537866,
-        "value": 49818307,
+        "value": 48460549,
         "pctChange": 0.5341
       },
       {
@@ -100,7 +100,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.020599999,
         "position": 2453301,
-        "value": 48158296,
+        "value": 46845780,
         "pctChange": 35.8292
       },
       {
@@ -109,7 +109,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.0174,
         "position": 2073233,
-        "value": 40697562,
+        "value": 39588382,
         "pctChange": 0.7892
       },
       {
@@ -118,7 +118,7 @@
         "organization": "Gotham Asset Management, LLC",
         "pctHeld": 0.0171,
         "position": 2040000,
-        "value": 40045198,
+        "value": 38953798,
         "pctChange": 0
       }
     ]
@@ -243,6 +243,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-09T14:22:51.000Z",
+        "firm": "Stifel",
+        "toGrade": "Hold",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 20,
+        "priorPriceTarget": 18
+      },
       {
         "epochGradeDate": "2025-12-29T14:09:22.000Z",
         "firm": "Clear Street",
@@ -908,29 +918,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.025471218,
-    "preMarketChange": -0.5,
-    "preMarketTime": "2026-01-09T12:24:56.000Z",
-    "preMarketPrice": 19.13,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0542427,
-    "regularMarketChange": 1.01,
-    "regularMarketTime": "2026-01-08T21:00:01.000Z",
+    "regularMarketChangePercent": -0.027254196,
+    "regularMarketChange": -0.53499985,
+    "regularMarketTime": "2026-01-09T18:27:06.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 19.63,
-    "regularMarketDayHigh": 20.02,
-    "regularMarketDayLow": 18.6,
-    "regularMarketVolume": 10635722,
+    "regularMarketPrice": 19.095,
+    "regularMarketDayHigh": 19.245,
+    "regularMarketDayLow": 17.78,
+    "regularMarketVolume": 11062195,
     "averageDailyVolume10Day": 11724070,
     "averageDailyVolume3Month": 8812390,
-    "regularMarketPreviousClose": 18.62,
+    "regularMarketPreviousClose": 19.63,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 18.72,
+    "regularMarketOpen": 18.5,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "LUNR",
     "underlyingSymbol": null,
@@ -942,13 +947,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2342247168
+    "marketCap": 2278411264
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 2739515392,
-    "forwardPE": 5193.1216,
+    "forwardPE": 5051.5874,
     "profitMargins": -0.94378996,
     "floatShares": 112463669,
     "sharesOutstanding": 119319784,
@@ -2407,7 +2412,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 19.63,
+    "currentPrice": 19.095,
     "targetHighPrice": 20,
     "targetLowPrice": 9.5,
     "targetMeanPrice": 16.66667,
@@ -2435,6 +2440,6 @@
     "profitMargins": -0.94378996,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-09T12:36:37.836Z",
+  "lastUpdated": "2026-01-09T18:27:12.596Z",
   "source": "Static Build (yahoo-finance2)"
 }
