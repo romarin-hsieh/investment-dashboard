@@ -1,8 +1,17 @@
 <template>
   <div class="fundamental-analysis">
-    <div v-if="loading" class="text-center p-3">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+    <div v-if="loading" class="analyst-grid">
+        <!-- Price Targets Skeleton -->
+        <div class="section-card">
+           <WidgetSkeleton :bordered="false" :item-count="1" />
+        </div>
+        <!-- Recommendations Skeleton -->
+        <div class="section-card">
+           <WidgetSkeleton :bordered="false" :item-count="1" />
+        </div>
+        <!-- Key Metrics Skeleton -->
+        <div class="section-card">
+           <WidgetSkeleton :bordered="false" type="grid" :item-count="4" />
         </div>
     </div>
 
@@ -12,7 +21,7 @@
 
     <div v-else>
         <!-- Analyst Insights Section -->
-        <h5 class="section-title">Deep Research</h5>
+
         
         <div class="analyst-grid">
             <!-- 1. Analyst Price Targets -->
@@ -43,7 +52,7 @@
                     </div>
                     
                     <div class="marker current" :style="{ left: getPricePosition(priceTargets.current) }">
-                         <span class="label top" style="top: -45px; font-weight: bold; color: #28a745;">
+                         <span class="label top" style="top: -45px; font-weight: bold; color: var(--success-color);">
                             {{ formatCurrency(priceTargets.current) }}<br>Current
                          </span>
                     </div>
@@ -150,17 +159,24 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 import { Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
+import { useTheme } from '@/composables/useTheme.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController)
 
+import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
+
 export default {
   name: 'FundamentalAnalysis',
-  components: { Bar, Line },
+  components: { Bar, Line, WidgetSkeleton },
   props: {
     symbol: {
       type: String,
       required: true
     }
+  },
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
   },
   data() {
     return {
@@ -173,68 +189,112 @@ export default {
       earningsViewMode: 'yearly', // 'yearly' or 'quarterly'
       yearlyEarningsData: [],
       quarterlyEarningsData: [],
-      recommendationChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false }
-        },
-        scales: {
-          x: { stacked: true },
-          y: { stacked: true, beginAtZero: true }
-        }
-      },
-      recommendationTrend: [], // Initialize recommendationTrend
-      priceTargets: null, // Initialize priceTargets
-      earningsChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'top' }
-        },
-        scales: {
-          y: {
-            type: 'linear',
-            display: true,
-            position: 'left',
-            title: { display: true, text: 'EPS' }
-          },
-          y1: {
-            type: 'linear',
-            display: true,
-            position: 'right',
-            title: { display: true, text: 'Revenue' },
-            grid: { drawOnChartArea: false },
-            ticks: {
-                callback: function(value) {
-                    if (value >= 1000000000) {
-                        return (value / 1000000000).toFixed(1) + 'B';
-                    }
-                    if (value >= 1000000) {
-                        return (value / 1000000).toFixed(1) + 'M';
-                    }
-                    return value;
-                }
-            }
-          }
-        }
-      },
+      recommendationTrend: [], 
+      priceTargets: null, 
       targetPriceChartData: null,
-      targetPriceChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          title: { display: true, text: 'Price Target Values' }
-        },
-        scales: {
-          y: {
-            beginAtZero: false,
-            title: { display: true, text: 'Price ($)' }
-          }
-        }
-      }
     };
+  },
+  computed: {
+    isDark() {
+        return this.theme === 'dark';
+    },
+    commonChartColors() {
+        return {
+            text: this.isDark ? '#E6E1DC' : '#666',
+            grid: this.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+            tooltipBg: this.isDark ? 'rgba(30, 30, 30, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+            tooltipText: this.isDark ? '#fff' : '#000'
+        }
+    },
+    recommendationChartOptions() {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              x: { 
+                  stacked: true,
+                  ticks: { color: this.commonChartColors.text },
+                  grid: { color: this.commonChartColors.grid }
+              },
+              y: { 
+                  stacked: true, 
+                  beginAtZero: true,
+                  ticks: { color: this.commonChartColors.text },
+                  grid: { color: this.commonChartColors.grid }
+              }
+            }
+        }
+    },
+    earningsChartOptions() {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { 
+                  position: 'bottom',
+                  labels: { color: this.commonChartColors.text }
+              }
+            },
+            scales: {
+              x: {
+                  ticks: { color: this.commonChartColors.text },
+                  grid: { color: this.commonChartColors.grid }
+              },
+              y: {
+                type: 'linear',
+                display: true,
+                position: 'left',
+                title: { display: true, text: 'EPS', color: this.commonChartColors.text },
+                ticks: { color: this.commonChartColors.text },
+                grid: { color: this.commonChartColors.grid }
+              },
+              y1: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                title: { display: true, text: 'Revenue', color: this.commonChartColors.text },
+                grid: { drawOnChartArea: false },
+                ticks: {
+                    color: this.commonChartColors.text,
+                    callback: function(value) {
+                        if (value >= 1000000000) {
+                            return (value / 1000000000).toFixed(1) + 'B';
+                        }
+                        if (value >= 1000000) {
+                            return (value / 1000000).toFixed(1) + 'M';
+                        }
+                        return value;
+                    }
+                }
+              }
+            }
+        }
+    },
+    targetPriceChartOptions() {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              title: { display: true, text: 'Price Target Values', color: this.commonChartColors.text }
+            },
+            scales: {
+              x: {
+                  ticks: { color: this.commonChartColors.text },
+                  grid: { color: this.commonChartColors.grid }
+              },
+              y: {
+                beginAtZero: false,
+                title: { display: true, text: 'Price ($)', color: this.commonChartColors.text },
+                ticks: { color: this.commonChartColors.text },
+                grid: { color: this.commonChartColors.grid }
+              }
+            }
+        }
+    }
   },
   watch: {
     symbol: {
@@ -427,15 +487,16 @@ export default {
                     label: 'Revenue',
                     // Support both object with .raw (legacy/live API) and direct number (new static data)
                     data: history.map(item => item.revenue?.raw !== undefined ? item.revenue.raw : item.revenue),
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    backgroundColor: this.theme === 'dark' ? 'rgba(138, 154, 156, 0.6)' : 'rgba(107, 127, 130, 0.6)', // Primary Color with opacity
+                    hoverBackgroundColor: this.theme === 'dark' ? '#8A9A9C' : '#6B7F82',
                     yAxisID: 'y1'
                 },
                 {
                     type: 'line',
                     label: 'Earnings',
                     data: history.map(item => item.earnings?.raw !== undefined ? item.earnings.raw : item.earnings),
-                    borderColor: '#28a745',
-                    backgroundColor: '#28a745',
+                    borderColor: '#22ab94', // Success Color
+                    backgroundColor: '#22ab94',
                     fill: false,
                     tension: 0.4,
                     yAxisID: 'y'
@@ -589,16 +650,17 @@ export default {
 
 <style scoped>
 .fundamental-analysis {
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
+    /* padding: 1rem;  Removed to use parent container's spacing */
+    /* background: var(--bg-primary); Removed gray background */
+    /* border-radius: 8px; Removed */
+    background: transparent;
 }
 .section-title {
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid var(--border-color);
     font-weight: 600;
-    color: #495057;
+    color: var(--text-secondary);
 }
 
 /* Grid Layout */
@@ -609,27 +671,28 @@ export default {
     margin-bottom: 2rem;
 }
 .section-card {
-    background: white;
+    background: var(--bg-card);
     padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--border-color);
 }
 .metric-label {
     font-size: 0.95rem;
-    color: #6c757d;
+    color: var(--text-muted);
     margin-bottom: 1rem;
     font-weight: 600;
-    border-bottom: 1px solid #f1f3f5;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
 }
 
 /* Price Targets Visual */
 .price-target-visual {
     position: relative;
-    height: 80px; /* Increased height for labels */
+    height: 80px; 
     margin: 2rem 0;
     flex: 1;
     display: flex;
@@ -641,7 +704,7 @@ export default {
     left: 0;
     right: 0;
     height: 6px;
-    background: #e9ecef;
+    background: var(--bg-secondary);
     transform: translateY(-50%);
     border-radius: 3px;
 }
@@ -649,7 +712,7 @@ export default {
     position: absolute;
     top: 50%;
     height: 6px;
-    background: #adb5bd;
+    background: var(--text-muted);
     transform: translateY(-50%);
     opacity: 0.5;
 }
@@ -660,20 +723,20 @@ export default {
     height: 14px;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    border: 3px solid white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    border: 3px solid var(--bg-card);
+    box-shadow: var(--shadow-sm);
     z-index: 2;
 }
-.marker.low { background: #6c757d; }
-.marker.high { background: #6c757d; }
+.marker.low { background: var(--text-muted); }
+.marker.high { background: var(--text-muted); }
 .marker.avg { 
-    background: #0d6efd; 
+    background: var(--primary-color); 
     width: 18px; 
     height: 18px;
     z-index: 3;
 }
 .marker.current { 
-    background: #198754; 
+    background: var(--success-color); 
     width: 18px; 
     height: 18px;
     z-index: 4;
@@ -681,7 +744,7 @@ export default {
 .label {
     position: absolute;
     font-size: 0.85rem;
-    color: #495057;
+    color: var(--text-secondary);
     white-space: nowrap;
     transform: translateX(-50%);
     text-align: center;
@@ -699,7 +762,7 @@ export default {
 .rec-label {
     width: 70px;
     font-size: 0.9rem;
-    color: #495057;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 .rec-bar {
@@ -708,7 +771,7 @@ export default {
     display: flex;
     border-radius: 6px;
     overflow: hidden;
-    background: #e9ecef;
+    background: var(--bg-secondary);
 }
 .rec-segment {
     height: 100%;
@@ -719,12 +782,13 @@ export default {
     font-size: 0.8rem;
     font-weight: 700;
     transition: width 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-.bg-strong-buy { background-color: #157347; }
-.bg-buy { background-color: #198754; }
-.bg-hold { background-color: #ffc107; color: #333; }
-.bg-sell { background-color: #dc3545; }
-.bg-strong-sell { background-color: #bb2d3b; }
+.bg-strong-buy { background-color: #22ab94; } /* TradingView Green */
+.bg-buy { background-color: rgba(34, 171, 148, 0.7); }
+.bg-hold { background-color: #DCC070; color: #333; } /* Theme Warning */
+.bg-sell { background-color: rgba(247, 82, 95, 0.7); }
+.bg-strong-sell { background-color: #f7525f; } /* TradingView Red */
 
 .legend-row {
     display: flex;
@@ -733,7 +797,7 @@ export default {
     justify-content: center;
     margin-top: 1.5rem;
     font-size: 0.8rem;
-    color: #6c757d;
+    color: var(--text-muted);
 }
 .legend-item {
     display: flex;
@@ -756,6 +820,7 @@ export default {
     font-size: 1.25rem;
     font-weight: 700;
     margin-top: 0.2rem;
+    color: var(--text-primary);
 }
 
 /* Utilities */
@@ -763,9 +828,9 @@ export default {
     grid-column: 1 / -1;
     margin-top: 1rem;
 }
-.text-success { color: #198754 !important; }
-.text-danger { color: #dc3545 !important; }
-.text-warning { color: #ffc107 !important; }
+.text-success { color: var(--success-color) !important; }
+.text-danger { color: var(--error-color) !important; }
+.text-warning { color: var(--warning-color) !important; }
 
 /* Loading/Error */
 .loading-state, .error-state {
@@ -775,8 +840,8 @@ export default {
 .spinner {
     width: 40px; 
     height: 40px; 
-    border: 4px solid #f3f3f3; 
-    border-top: 4px solid #0d6efd; 
+    border: 4px solid var(--bg-secondary); 
+    border-top: 4px solid var(--primary-color); 
     border-radius: 50%; 
     animation: spin 1s linear infinite; 
     margin: 0 auto 1rem;
@@ -787,11 +852,12 @@ export default {
 }
 
 /* History Card & Tables */
-.history-card {
-    background: white;
+.earnings-card {
+    background: var(--bg-card);
     padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
 }
 .table-container {
     overflow-x: auto;
@@ -805,15 +871,16 @@ table {
 th, td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
 }
 th {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     font-weight: 600;
-    color: #495057;
+    color: var(--text-secondary);
 }
 tbody tr:hover {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
 }
 
 /* Chart Container */
@@ -832,6 +899,7 @@ tbody tr:hover {
 .chart-header h3 {
     margin: 0;
     font-size: 1.1rem;
+    color: var(--text-primary);
 }
 
 /* Button Group */
@@ -839,7 +907,7 @@ tbody tr:hover {
     display: inline-flex;
     border-radius: 6px;
     overflow: hidden;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--border-color);
 }
 .btn {
     border: none;
@@ -847,17 +915,18 @@ tbody tr:hover {
     font-size: 0.85rem;
     cursor: pointer;
     transition: all 0.2s;
-    background: white;
+    background: var(--bg-card);
+    color: var(--text-primary);
 }
 .btn-primary {
-    background: #0d6efd;
+    background: var(--primary-color);
     color: white;
 }
 .btn-outline-primary {
-    background: white;
-    color: #495057;
+    background: var(--bg-card);
+    color: var(--text-secondary);
 }
 .btn-outline-primary:hover {
-    background: #e9ecef;
+    background: var(--bg-secondary);
 }
 </style>

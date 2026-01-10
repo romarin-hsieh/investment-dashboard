@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import { useTheme } from '@/composables/useTheme.js'
+import { watch } from 'vue'
+
 export default {
   name: 'MarketRegimeWidget',
   props: {
@@ -39,6 +42,10 @@ export default {
       type: Number,
       default: 3
     }
+  },
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
   },
   data() {
     return {
@@ -56,6 +63,15 @@ export default {
   },
   async mounted() {
     this.setupIntersectionObserver()
+    
+    // Watch for theme changes specifically
+    watch(() => this.theme, () => {
+       if (this.isVisible) {
+          // Reload widget with new theme
+          this.loaded = false
+          this.loadWidget()
+       }
+    })
   },
   beforeUnmount() {
     if (this.observer) {
@@ -156,6 +172,7 @@ export default {
           
           const widgetContainer = container.querySelector('.tradingview-widget-container__widget')
           if (widgetContainer) {
+            widgetContainer.innerHTML = '' // Clear existing widget before reloading
             widgetContainer.appendChild(script)
           } else {
             container.appendChild(script)
@@ -179,10 +196,10 @@ export default {
         "save_image": true,
         "style": "9",
         "symbol": `${this.exchange}:${this.symbol}`,
-        "theme": "light",
+        "theme": this.theme === 'dark' ? 'dark' : 'light',
         "timezone": "Etc/UTC",
-        "backgroundColor": "#ffffff",
-        "gridColor": "rgba(46, 46, 46, 0.06)",
+        "backgroundColor": this.theme === 'dark' ? '#2C2C2C' : "#ffffff",
+        "gridColor": this.theme === 'dark' ? "rgba(255, 255, 255, 0.06)" : "rgba(46, 46, 46, 0.06)",
         "watchlist": [],
         "withdateranges": true,
         "range": "6M",
@@ -207,13 +224,16 @@ export default {
 
 <style scoped>
 .advanced-chart-widget {
-  width: 100%;
+  width: calc(100% + 2px); /* Expand to hide border */
   height: 100%;
   min-height: 850px;
   position: relative;
-  background: #ffffff;
-  padding: 8px;
+  background: transparent;
+  padding: 0;
   box-sizing: border-box;
+  margin-left: -1px; /* Shift left to crop */
+  margin-right: -1px;
+  margin-bottom: -1px; /* Crop bottom border */
 }
 
 .chart-loading {
@@ -322,5 +342,7 @@ export default {
 /* 禁用 TradingView iframe 的固定高度 - 全域樣式 */
 .advanced-chart-widget .tradingview-widget-container iframe {
   height: 100% !important;
+  border: none !important; /* Remove iframe border */
+  box-shadow: none !important; /* Remove any shadow */
 }
 </style>

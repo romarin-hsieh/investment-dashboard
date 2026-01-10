@@ -1,7 +1,7 @@
 <template>
   <div class="market-dashboard">
     <h2>Market Overview</h2>
-    <p class="text-muted mb-3">Global markets overview and macro indicators</p>
+    <p class="text-muted mb-3">Global market indices, volatility metrics, and trending market news</p>
 
     <!-- 載入狀態顯示骨架屏 -->
     <div v-if="loading" class="loading-with-skeleton">
@@ -114,6 +114,7 @@ import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
+import { useTheme } from '@/composables/useTheme.js'
 
 export default {
   name: 'MarketDashboard',
@@ -122,6 +123,10 @@ export default {
     VixWidget,
     ZeiiermanFearGreedGauge,
     MarketOverviewSkeleton
+  },
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
   },
   data() {
     return {
@@ -139,6 +144,10 @@ export default {
     $route() {
       // 當路由改變時，滾動到頂部
       this.scrollToTop()
+    },
+    theme() {
+      // Theme changed, re-render VIX widget
+      this.vixKey = Date.now()
     }
   },
   methods: {
@@ -180,16 +189,17 @@ export default {
   },
   computed: {
     tickersConfig() {
+      const isDark = this.theme === 'dark';
       return {
         "symbols": [
-          {"proName": "FOREXCOM:SPXUSD","title": "S&P 500 Index"},
-          {"proName": "NASDAQ:NDX","title": "NASDAQ 100 Index"},
-          {"proName": "OPOFINANCE:DJIUSD","title": "Dow Jone Index"},
-          {"proName": "CAPITALCOM:RTY","title": "US Russel 2000"},
+          {"proName": "FOREXCOM:SPXUSD","title": "S&P 500"},
+          {"proName": "NASDAQ:NDX","title": "NASDAQ 100"},
+          {"proName": "OPOFINANCE:DJIUSD","title": "Dow Jones"},
+          {"proName": "CAPITALCOM:RTY","title": "Russell 2000"},
           {"proName": "INDEX:BTCUSD","title": "BTC"},
-          {"proName": "TVC:GOLD","title": "GOLD"}
+          {"proName": "TVC:GOLD","title": "Gold"}
         ],
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "locale": "en",
         "largeChartUrl": "",
         "isTransparent": true,
@@ -198,10 +208,11 @@ export default {
     },
 
     topStoriesConfig() {
+      const isDark = this.theme === 'dark';
       return {
         "displayMode": "regular",
         "feedMode": "market",
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "isTransparent": true,
         "locale": "en",
         "market": "stock",
@@ -211,24 +222,30 @@ export default {
     },
 
     dailyConfig() {
+      const isDark = this.theme === 'dark';
+      const commonColors = {
+          bg: isDark ? '#2C2C2C' : '#ffffff',
+          text: isDark ? '#E6E1DC' : '#0F0F0F',
+          grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
+      }
       return {
         "lineWidth": 2,
         "lineType": 0,
         "chartType": "candlesticks",
         "showVolume": true,
         "fontColor": "rgb(106, 109, 120)",
-        "gridLineColor": "rgba(46, 46, 46, 0.06)",
+        "gridLineColor": commonColors.grid,
         "volumeUpColor": "rgba(34, 171, 148, 0.5)",
         "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-        "backgroundColor": "#ffffff",
-        "widgetFontColor": "#0F0F0F",
+        "backgroundColor": commonColors.bg,
+        "widgetFontColor": commonColors.text,
         "upColor": "#22ab94",
         "downColor": "#f7525f",
         "borderUpColor": "#22ab94",
         "borderDownColor": "#f7525f",
         "wickUpColor": "#22ab94",
         "wickDownColor": "#f7525f",
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "isTransparent": true,
         "locale": "en",
         "chartOnly": false,
@@ -256,24 +273,30 @@ export default {
     },
 
     weeklyConfig() {
+      const isDark = this.theme === 'dark';
+      const commonColors = {
+          bg: isDark ? '#2C2C2C' : '#ffffff',
+          text: isDark ? '#E6E1DC' : '#0F0F0F',
+          grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
+      }
       return {
         "lineWidth": 2,
         "lineType": 0,
         "chartType": "candlesticks",
         "showVolume": true,
         "fontColor": "rgb(106, 109, 120)",
-        "gridLineColor": "rgba(46, 46, 46, 0.06)",
+        "gridLineColor": commonColors.grid,
         "volumeUpColor": "rgba(34, 171, 148, 0.5)",
         "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-        "backgroundColor": "#ffffff",
-        "widgetFontColor": "#0F0F0F",
+        "backgroundColor": commonColors.bg,
+        "widgetFontColor": commonColors.text,
         "upColor": "#22ab94",
         "downColor": "#f7525f",
         "borderUpColor": "#22ab94",
         "borderDownColor": "#f7525f",
         "wickUpColor": "#22ab94",
         "wickDownColor": "#f7525f",
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "isTransparent": true,
         "locale": "en",
         "chartOnly": false,
@@ -301,6 +324,7 @@ export default {
     },
 
     heatmapConfig() {
+      const isDark = this.theme === 'dark';
       return {
         "exchanges": [],
         "dataSource": "SPX500",
@@ -309,7 +333,7 @@ export default {
         "blockColor": "change",
         "locale": "en",
         "symbolUrl": "",
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "hasTopBar": false,
         "isDataSetEnabled": false,
         "isZoomEnabled": true,
@@ -334,11 +358,7 @@ export default {
 }
 
 .text-muted {
-  color: #6c757d;
-}
-
-.text-muted {
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 .loading-with-skeleton {
@@ -348,10 +368,11 @@ export default {
 .error {
   text-align: center;
   padding: 2rem;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background-color: var(--bg-card);
+  border: 1px solid var(--error-color);
   border-radius: 8px;
   margin: 1rem 0;
+  color: var(--error-color);
 }
 
 .btn {
@@ -363,12 +384,12 @@ export default {
 }
 
 .btn-secondary {
-  background: #6c757d;
-  color: white;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .btn-secondary:hover {
-  background: #545b62;
+  background: var(--border-color);
 }
 
 .btn-sm {
@@ -378,24 +399,26 @@ export default {
 
 /* 統一的 Widget 容器樣式 - 限定在 market-dashboard 內 */
 .market-dashboard .widget-container {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1rem;
   margin-bottom: 2rem;
   overflow: hidden;
   position: relative;
+  box-shadow: var(--shadow-md);
 }
 
 /* Ticker 專用的 Widget 容器樣式 - 限定在 market-dashboard 內 */
 .market-dashboard .widget-container-ticker {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1rem;
   margin-bottom: 2rem;
   overflow: hidden;
   position: relative;
+  box-shadow: var(--shadow-md);
 }
 
 .market-dashboard .widget-header {
@@ -404,13 +427,13 @@ export default {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .market-dashboard .widget-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -429,26 +452,25 @@ export default {
 
 /* 第二個 insight-section 上方添加間隔線 */
 .market-dashboard .weekly-section {
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-color);
   padding-top: 1.5rem;
 }
 
 .market-dashboard .section-header {
   padding-bottom: 0.5rem;
-  /* 移除底線 border-bottom: 1px solid #f0f0f0; */
 }
 
 .market-dashboard .section-header h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #555;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 /* VIX 專用容器樣式 - 限定在 market-dashboard 內 */
 .market-dashboard .vix-container {
   min-height: 600px; /* 整體容器 600px */
-  overflow: hidden; /* 參考 LazyTradingViewWidget 的做法 */
+  overflow: hidden; 
 }
 
 /* 響應式設計 */

@@ -1,8 +1,25 @@
 <template>
   <div class="holdings-analysis">
-    <div v-if="loading" class="loading-state">
-      <div class="spinner"></div>
-      <p>Loading holdings data...</p>
+    <div v-if="loading" class="holdings-grid">
+      <!-- Ownership Skeleton -->
+      <div class="card ownership-card">
+        <h3>Ownership Structure</h3>
+        <div class="chart-container">
+          <WidgetSkeleton type="chart" :show-header="false" :bordered="false" />
+        </div>
+      </div>
+
+      <!-- Sentiment Skeleton -->
+      <div class="card sentiment-card">
+        <h3>Insider Sentiment (6M)</h3>
+         <WidgetSkeleton type="list" :item-count="3" :show-header="false" :bordered="false" />
+      </div>
+
+      <!-- Institutions Skeleton -->
+      <div class="card institutions-card full-width">
+        <h3>Top Institutional Holders</h3>
+         <WidgetSkeleton type="list" :item-count="5" :show-header="false" :bordered="false" />
+      </div>
     </div>
 
     <div v-else-if="error" class="error-state">
@@ -92,17 +109,24 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
+import { useTheme } from '@/composables/useTheme.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
+import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
+
 export default {
   name: 'HoldingsAnalysis',
-  components: { Doughnut },
+  components: { Doughnut, WidgetSkeleton },
   props: {
     symbol: {
       type: String,
       required: true
     }
+  },
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
   },
   data() {
     return {
@@ -111,18 +135,27 @@ export default {
       holders: {},
       insiderTransactions: [],
       ownershipChartData: null,
-      ownershipChartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { position: 'right' }
-        }
-      }
+      ownershipChartOptions: null // computed now
     }
   },
   computed: {
       recentInsiders() {
           return this.insiderTransactions.slice(0, 5);
+      },
+      isDark() {
+          return this.theme === 'dark';
+      },
+      ownershipChartOptions() {
+        return {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+              legend: { 
+                  position: 'right',
+                  labels: { color: this.isDark ? '#E6E1DC' : '#666' }
+              }
+          }
+        }
       },
       sentimentScore() {
           // Calculate simple sentiment score based on recent transactions
@@ -253,8 +286,13 @@ export default {
             labels: ['Insiders', 'Institutions', 'Public/Other'],
             datasets: [{
                 data: [insiders, institutions, publicFloat],
-                backgroundColor: ['#fd7e14', '#0d6efd', '#adb5bd'],
-                borderWidth: 0
+                // Match "Analyst Price Targets" palette:
+                // Insiders -> Green (Current Price)
+                // Institutions -> Blue (Average Target)
+                // Public -> Grey (Range/Background)
+                backgroundColor: ['#22ab94', '#2962FF', '#CFD8DC'],
+                borderColor: this.isDark ? '#2C2C2C' : '#ffffff',
+                borderWidth: 1
             }]
         };
     },
@@ -292,22 +330,24 @@ export default {
 
 <style scoped>
 .holdings-analysis {
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 8px;
+    /* padding: 1rem; Removed */
+    /* background: var(--bg-primary); Removed */
+    /* border-radius: 8px; Removed */
+    background: transparent;
 }
 
 .holdings-grid {
-    display: flex; /* Changed from grid to flex for filling space */
+    display: flex; 
     flex-wrap: wrap;
     gap: 1.5rem;
 }
 
 .card {
-    background: white;
+    background: var(--bg-card);
     padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
 }
 
 .full-width {
@@ -316,13 +356,13 @@ export default {
 
 /* Make cards flex to fill space if row has gap */
 .ownership-card { flex: 1; min-width: 300px; }
-.sentiment-card { flex: 2; min-width: 300px; } /* Give sentiment more weight */
+.sentiment-card { flex: 2; min-width: 300px; } 
 
 h3 {
     margin: 0 0 1rem 0;
     font-size: 1.1rem;
-    color: #495057;
-    border-bottom: 2px solid #e9ecef;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
 }
 
@@ -344,8 +384,8 @@ h3 {
     align-items: center;
 }
 
-.stat .label { font-size: 0.8rem; color: #6c757d; }
-.stat .value { font-size: 1.2rem; font-weight: bold; color: #212529; }
+.stat .label { font-size: 0.8rem; color: var(--text-muted); }
+.stat .value { font-size: 1.2rem; font-weight: bold; color: var(--text-primary); }
 
 /* Sentiment Meter Dual */
 .sentiment-meter {
@@ -354,7 +394,7 @@ h3 {
 
 .meter-bar-dual {
     height: 12px;
-    background: #e9ecef;
+    background: var(--bg-secondary);
     border-radius: 6px;
     overflow: hidden;
     display: flex;
@@ -366,8 +406,8 @@ h3 {
     transition: width 0.5s ease;
 }
 
-.segment.sell { background: #dc3545; }
-.segment.buy { background: #28a745; }
+.segment.sell { background: var(--error-color); }
+.segment.buy { background: var(--success-color); }
 
 .meter-labels {
     display: flex;
@@ -376,9 +416,9 @@ h3 {
     font-weight: 600;
 }
 
-.label-sell { color: #dc3545; }
-.label-buy { color: #28a745; }
-.label-sentiment { color: #495057; font-weight: 700; }
+.label-sell { color: var(--error-color); }
+.label-buy { color: var(--success-color); }
+.label-sentiment { color: var(--text-secondary); font-weight: 700; }
 
 /* Transactions List */
 .transaction-list {
@@ -390,18 +430,18 @@ h3 {
 
 .transaction-list li {
     display: flex;
-    align-items: center; /* Align vertical center */
+    align-items: center; 
     padding: 0.6rem 0;
-    border-bottom: 1px solid #f1f3f5;
+    border-bottom: 1px solid var(--border-color);
     font-size: 0.85rem;
 }
 
-.transaction-list li.buy .type { color: #28a745; font-weight: 600; }
-.transaction-list li.sell .type { color: #dc3545; font-weight: 600; }
-.transaction-list li.neutral .type { color: #6c757d; }
+.transaction-list li.buy .type { color: var(--success-color); font-weight: 600; }
+.transaction-list li.sell .type { color: var(--error-color); font-weight: 600; }
+.transaction-list li.neutral .type { color: var(--text-muted); }
 
 .date { 
-    color: #adb5bd; 
+    color: var(--text-muted); 
     width: 85px; 
     flex-shrink: 0;
 }
@@ -413,7 +453,7 @@ h3 {
     text-overflow: ellipsis; 
     padding-right: 15px;
     font-weight: 500;
-    color: #343a40;
+    color: var(--text-primary);
 }
 
 .type {
@@ -431,7 +471,7 @@ h3 {
     text-align: right; 
     font-family: 'Roboto Mono', monospace;
     font-weight: 500;
-    color: #495057;
+    color: var(--text-primary);
     flex-shrink: 0;
 }
 
@@ -449,34 +489,17 @@ table {
 th {
     text-align: left;
     padding: 0.75rem;
-    background: #f8f9fa;
-    color: #495057;
+    background: transparent; /* Removed gray header */
+    color: var(--text-secondary);
     font-weight: 600;
+    border-bottom: 2px solid var(--border-color); /* Added stronger border for separation */
 }
 
 td {
     padding: 0.75rem;
-    border-bottom: 1px solid #dee2e6;
-    color: #212529;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
 }
 
-.loading-state, .error-state {
-    text-align: center;
-    padding: 2rem;
-}
 
-.spinner {
-    width: 40px; 
-    height: 40px; 
-    border: 4px solid #f3f3f3; 
-    border-top: 4px solid #007bff; 
-    border-radius: 50%; 
-    animation: spin 1s linear infinite; 
-    margin: 0 auto 1rem;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
 </style>

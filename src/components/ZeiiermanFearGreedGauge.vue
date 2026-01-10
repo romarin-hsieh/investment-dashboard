@@ -64,18 +64,18 @@
               :y1="200"
               :x2="needleX"
               :y2="needleY"
-              stroke="#333"
+              :stroke="needleColor"
               stroke-width="4"
               stroke-linecap="round"
               class="gauge-needle"
             />
             <!-- Needle Center -->
-            <circle cx="200" cy="200" r="8" fill="#333" />
-            <circle cx="200" cy="200" r="4" fill="#fff" />
+            <circle cx="200" cy="200" r="8" :fill="needleColor" />
+            <circle cx="200" cy="200" r="4" :fill="needleDotColor" />
           </g>
           
           <!-- Value Display -->
-          <text x="200" y="230" text-anchor="middle" class="gauge-value">{{ fearGreedValue.toFixed(0) }}</text>
+          <text x="200" y="230" text-anchor="middle" class="gauge-value" :fill="textColor">{{ fearGreedValue.toFixed(0) }}</text>
         </svg>
         
         <!-- Labels -->
@@ -165,9 +165,14 @@
 
 <script>
 import { withBase } from '@/utils/baseUrl';
+import { useTheme } from '@/composables/useTheme.js';
 
 export default {
   name: 'ZeiiermanFearGreedGauge',
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
+  },
   data() {
     return {
       fearGreedValue: 50, // Default start value
@@ -238,6 +243,15 @@ export default {
       if (this.fearGreedValue <= 55) return 'Balanced market sentiment with mixed investor signals'
       if (this.fearGreedValue <= 75) return 'Optimistic market conditions with increased risk appetite'
       return 'Excessive market euphoria indicating potential overvaluation'
+    },
+    needleColor() {
+        return this.theme === 'dark' ? '#E6E1DC' : '#333333';
+    },
+    needleDotColor() {
+        return this.theme === 'dark' ? '#333333' : '#ffffff';
+    },
+    textColor() {
+        return this.theme === 'dark' ? '#E6E1DC' : '#333333';
     }
   },
   mounted() {
@@ -301,13 +315,14 @@ export default {
 
 <style scoped>
 .fear-greed-gauge-container {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 2rem;
   overflow: hidden; /* Prevent container overflow */
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .widget-header {
@@ -316,13 +331,13 @@ export default {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .widget-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -334,7 +349,7 @@ export default {
 
 .chart-description {
   font-size: 0.85rem;
-  color: #6c757d;
+  color: var(--text-muted);
   font-style: italic;
 }
 
@@ -360,7 +375,7 @@ export default {
   text-align: center;
   padding: 1.25rem;
   border-radius: 12px;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border: 2px solid transparent;
   transition: all 0.3s ease;
   max-width: 100%;
@@ -386,7 +401,7 @@ export default {
 .gauge-value {
   font-size: 24px;
   font-weight: 700;
-  fill: #333;
+  fill: var(--text-primary);
 }
 
 .needle-group {
@@ -420,13 +435,14 @@ export default {
   display: block;
   font-size: 0.7rem;
   opacity: 0.7;
+  color: var(--text-muted);
 }
 
-.label-item.extreme-fear .label-text { color: #a67c7c; }
-.label-item.fear .label-text { color: #b8956f; }
-.label-item.neutral .label-text { color: #b8b56f; }
-.label-item.greed .label-text { color: #7ca67c; }
-.label-item.extreme-greed .label-text { color: #7ca688; }
+.label-item.extreme-fear .label-text { color: #e57373; }
+.label-item.fear .label-text { color: #ffb74d; }
+.label-item.neutral .label-text { color: #fff176; }
+.label-item.greed .label-text { color: #81c784; }
+.label-item.extreme-greed .label-text { color: #4db6ac; }
 
 /* Components Section - Right side styling */
 .components-section {
@@ -437,10 +453,10 @@ export default {
 .components-section h4 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .components-grid {
@@ -460,14 +476,14 @@ export default {
 .component-name {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #495057;
+  color: var(--text-secondary);
   word-wrap: break-word;
 }
 
 .component-bar {
   position: relative;
   height: 24px;
-  background: #e9ecef;
+  background: var(--bg-secondary);
   border-radius: 12px;
   overflow: hidden;
   width: 100%;
@@ -487,7 +503,7 @@ export default {
   transform: translateY(-50%);
   font-size: 0.75rem;
   font-weight: 600;
-  color: #333;
+  color: #333; /* Always dark text on bar? Or adaptive? The bar has colors so dark text is probably safer */
   text-shadow: 0 0 3px rgba(255,255,255,0.8);
 }
 
@@ -509,49 +525,52 @@ export default {
 .sentiment-text {
   font-size: 1.4rem;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
 .sentiment-description {
   font-size: 0.95rem;
-  color: #6c757d;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
-/* Sentiment Colors */
+/* Sentiment Colors - Simplified for theme compatibility */
+/* Use backgrounds with opacity or borders */
+
 .extreme-fear {
-  background: linear-gradient(135deg, #f5f0f0, #f8f5f5);
-  border-color: #a67c7c;
+  border-color: #e57373;
+  background: rgba(229, 115, 115, 0.1); 
 }
-.extreme-fear .sentiment-dot { background: #a67c7c; }
-.extreme-fear .sentiment-text { color: #a67c7c; }
+.extreme-fear .sentiment-dot { background: #e57373; }
+.extreme-fear .sentiment-text { color: #e57373; }
 
 .fear {
-  background: linear-gradient(135deg, #f5f3f0, #f8f6f5);
-  border-color: #b8956f;
+  border-color: #ffb74d;
+  background: rgba(255, 183, 77, 0.1); 
 }
-.fear .sentiment-dot { background: #b8956f; }
-.fear .sentiment-text { color: #b8956f; }
+.fear .sentiment-dot { background: #ffb74d; }
+.fear .sentiment-text { color: #ffb74d; }
 
 .neutral {
-  background: linear-gradient(135deg, #f5f5f0, #f8f8f5);
-  border-color: #b8b56f;
+  border-color: #fff176;
+  background: rgba(255, 241, 118, 0.1); 
 }
-.neutral .sentiment-dot { background: #b8b56f; }
-.neutral .sentiment-text { color: #a6a35f; }
+.neutral .sentiment-dot { background: #fff176; }
+.neutral .sentiment-text { color: #d4a900; } /* Darker yellow for text visibility */
 
 .greed {
-  background: linear-gradient(135deg, #f0f5f0, #f5f8f5);
-  border-color: #7ca67c;
+  border-color: #81c784;
+  background: rgba(129, 199, 132, 0.1); 
 }
-.greed .sentiment-dot { background: #7ca67c; }
-.greed .sentiment-text { color: #7ca67c; }
+.greed .sentiment-dot { background: #81c784; }
+.greed .sentiment-text { color: #81c784; }
 
 .extreme-greed {
-  background: linear-gradient(135deg, #f0f5f2, #f5f8f6);
-  border-color: #7ca688;
+  border-color: #4db6ac;
+  background: rgba(77, 182, 172, 0.1); 
 }
-.extreme-greed .sentiment-dot { background: #7ca688; }
-.extreme-greed .sentiment-text { color: #6f9577; }
+.extreme-greed .sentiment-dot { background: #4db6ac; }
+.extreme-greed .sentiment-text { color: #4db6ac; }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }

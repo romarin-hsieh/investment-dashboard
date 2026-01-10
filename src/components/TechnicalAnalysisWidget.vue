@@ -19,9 +19,14 @@
 
 <script>
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
+import { useTheme } from '@/composables/useTheme.js'
 
 export default {
   name: 'TechnicalAnalysisWidget',
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
+  },
   props: {
     symbol: {
       type: String,
@@ -181,8 +186,9 @@ export default {
     },
 
     getWidgetConfig() {
+      const isDark = this.theme === 'dark';
       return {
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "displayMode": "single",
         "isTransparent": true,
         "locale": "en",
@@ -227,7 +233,7 @@ export default {
 
 /* 使用與 Symbol Overview 相同的樣式 */
 .fast-widget.overview-widget {
-  background: #ffffff;
+  background: var(--bg-card);
   padding: 8px;
   box-sizing: border-box;
 }
@@ -239,9 +245,9 @@ export default {
   justify-content: center;
   height: 100%;
   min-height: 500px;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 8px;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 /* 載入狀態調整 */
@@ -252,8 +258,8 @@ export default {
 .loading-spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid #e9ecef;
-  border-top: 3px solid #007bff;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -276,10 +282,10 @@ export default {
   justify-content: center;
   height: 100%;
   min-height: 500px;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background: var(--bg-card);
+  border: 1px solid var(--error-color);
   border-radius: 8px;
-  color: #721c24;
+  color: var(--error-color);
 }
 
 /* 錯誤狀態調整 */
@@ -290,7 +296,7 @@ export default {
 .retry-btn {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #dc3545;
+  background: var(--error-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -300,7 +306,7 @@ export default {
 }
 
 .retry-btn:hover {
-  background: #c82333;
+  opacity: 0.9;
 }
 
 /* TradingView Widget 樣式 */

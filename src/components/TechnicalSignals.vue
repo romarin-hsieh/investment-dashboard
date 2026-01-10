@@ -1,16 +1,21 @@
 <template>
   <div class="technical-signals">
     
-    <div v-if="loading" class="loading-simple">Loading signals...</div>
+    <div v-if="loading" class="loading-container" style="padding: 1rem;">
+      <WidgetSkeleton :showHeader="false" :itemCount="5" type="list" :bordered="false" />
+      <div style="margin-top: 1.5rem">
+        <WidgetSkeleton :showHeader="true" :itemCount="2" type="grid" :bordered="false" />
+      </div>
+    </div>
     
     <div v-else class="signals-container">
       
       <!-- Pivot Points -->
       <div class="signal-block pivots-block">
-                <h4 class="section-title">
-                    Pivot Points (Standard)
-
-                </h4>
+                <div class="section-header">
+                    <h4>Pivot Points (Standard)</h4>
+                </div>
+                <div class="block-content">
                 <div class="pivot-grid">
                     <div class="pivot-row resistance">
                         <span class="label">R2</span>
@@ -36,25 +41,30 @@
                 <div class="current-zone" v-if="currentZone">
                     Currently: <strong>{{ currentZone }}</strong>
                 </div>
-              </div>
+                </div>
+      </div>
         
               <!-- Patterns -->
               <div class="signal-block patterns-block">
-                <h4>Candlestick Patterns</h4>
+                <div class="section-header">
+                    <h4>Candlestick Patterns</h4>
+                </div>
+                <div class="block-content">
                 <div class="patterns-list" v-if="patterns.length > 0">
                     <div v-for="(p, idx) in patterns" :key="idx" class="pattern-badge" :class="p.type">
                         {{ p.name }}
                     </div>
                 </div>
                 <div v-else class="no-patterns">No recent patterns detected</div>
-              </div>
+                </div>
+      </div>
         
               <!-- Volatility -->
               <div class="signal-block risk-block">
-                <h4 class="section-title">
-                    Risk & Volatility
-
-                </h4>
+                <div class="section-header">
+                    <h4>Risk & Volatility</h4>
+                </div>
+                <div class="block-content">
                 <div class="risk-metric">
                     <span class="label">ATR (14)</span>
                     <span class="value">{{ formatPrice(risk.atr) }}</span>
@@ -65,6 +75,7 @@
               </div>
             </div>
           </div>
+        </div>
             
             <!-- Info Modal -->
             <div v-if="showInfo" class="modal-overlay" @click.self="showInfo = false">
@@ -97,9 +108,11 @@
 
 <script>
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import WidgetSkeleton from './WidgetSkeleton.vue'
 
 export default {
   name: 'TechnicalSignals',
+  components: { WidgetSkeleton },
   props: {
     symbol: {
       type: String,
@@ -273,52 +286,46 @@ export default {
 
 <style scoped>
 .technical-signals {
-    background: white;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: 0; /* Remove padding to allow full-width headers */
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* Ensure headers don't overflow corners */
 }
 
 .loading-simple {
+    padding: 2rem;
     font-size: 0.9rem;
-    color: #999;
+    color: var(--text-muted);
     text-align: center;
 }
 
+.section-header {
+    background: transparent;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.signal-block:first-child .section-header {
+    border-top: none;
+}
+
 h4 {
-    margin: 0 0 0.8rem 0;
-    font-size: 0.95rem;
-    color: #495057;
-    border-bottom: 1px solid #e9ecef;
-    padding-bottom: 0.4rem;
-}
-
-.section-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.inline-info-btn {
-    background: none;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
     border: none;
-    padding: 2px 4px;
-    color: #adb5bd;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    transition: color 0.2s;
+    padding: 0;
 }
 
-.inline-info-btn:hover {
-    color: #007bff;
+.block-content {
+    padding: 1rem;
 }
 
 .signal-block {
-    margin-bottom: 1.5rem;
-}
-
-.signal-block:last-child {
     margin-bottom: 0;
 }
 
@@ -336,17 +343,18 @@ h4 {
     padding: 2px 0;
 }
 
-.pivot-row.resistance { color: #dc3545; }
-.pivot-row.support { color: #28a745; }
-.pivot-row.main { font-weight: bold; color: #495057; border-top: 1px dashed #dee2e6; border-bottom: 1px dashed #dee2e6; padding: 4px 0; }
+.pivot-row.resistance { color: var(--error-color); }
+.pivot-row.support { color: var(--success-color); }
+.pivot-row.main { font-weight: bold; color: var(--text-secondary); border-top: 1px dashed var(--border-color); border-bottom: 1px dashed var(--border-color); padding: 4px 0; }
 
 .current-zone {
     margin-top: 0.5rem;
     font-size: 0.8rem;
-    background: #e9ecef;
+    background: var(--bg-secondary);
     padding: 4px 8px;
     border-radius: 4px;
     text-align: center;
+    color: var(--text-primary);
 }
 
 /* Patterns */
@@ -363,13 +371,13 @@ h4 {
     font-weight: 600;
 }
 
-.pattern-badge.bullish { background: #d4edda; color: #155724; }
-.pattern-badge.bearish { background: #f8d7da; color: #721c24; }
-.pattern-badge.neutral { background: #e2e3e5; color: #383d41; }
+.pattern-badge.bullish { background: rgba(34, 171, 148, 0.15); color: var(--success-color); border: 1px solid rgba(34, 171, 148, 0.3); }
+.pattern-badge.bearish { background: rgba(247, 82, 95, 0.15); color: var(--error-color); border: 1px solid rgba(247, 82, 95, 0.3); }
+.pattern-badge.neutral { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-color); }
 
 .no-patterns {
     font-size: 0.8rem;
-    color: #adb5bd;
+    color: var(--text-muted);
     font-style: italic;
 }
 
@@ -401,7 +409,7 @@ h4 {
 }
 
 .modal-content {
-    background: white;
+    background: var(--bg-card);
     width: 90%;
     max-width: 400px;
     border-radius: 8px;
@@ -414,14 +422,14 @@ h4 {
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 1rem;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .modal-header h5 {
     margin: 0;
     font-size: 1rem;
-    color: #495057;
+    color: var(--text-secondary);
 }
 
 .close-btn {
@@ -430,20 +438,20 @@ h4 {
     font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
-    color: #6c757d;
+    color: var(--text-muted);
 }
 
 .modal-body {
     padding: 1rem;
     font-size: 0.9rem;
-    color: #212529;
+    color: var(--text-primary);
 }
 
 .modal-body h6 {
     margin: 0.5rem 0 0.5rem 0;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #007bff;
+    color: var(--primary-color);
 }
 
 .modal-body ul {

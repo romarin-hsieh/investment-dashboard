@@ -63,7 +63,7 @@ export default {
     },
     newsCount: {
       type: Number,
-      default: 9
+      default: 20
     }
   },
   data() {
@@ -94,7 +94,9 @@ export default {
         const response = await this.fetchYahooNews(this.symbol);
         
         if (response && response.length > 0) {
-          this.news = response.slice(0, this.newsCount);
+          // Ensure sorting by publish time descending (Newest first)
+          this.news = response.sort((a, b) => (b.providerPublishTime || 0) - (a.providerPublishTime || 0))
+                             .slice(0, this.newsCount);
           console.log(`Loaded ${this.news.length} news articles for ${this.symbol}`);
         } else {
           this.news = [];
@@ -233,13 +235,13 @@ export default {
 }
 
 .news-item {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .news-item:hover {
@@ -259,7 +261,7 @@ export default {
 .news-title {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.3;
   flex: 1;
@@ -267,7 +269,7 @@ export default {
 
 .news-date {
   font-size: 0.75rem;
-  color: #6c757d;
+  color: var(--text-secondary);
   white-space: nowrap;
   font-weight: 500;
 }
@@ -284,7 +286,7 @@ export default {
 
 .news-summary {
   font-size: 0.8rem;
-  color: #495057;
+  color: var(--text-secondary);
   line-height: 1.4;
   margin: 0 0 0.5rem 0;
 }
@@ -303,8 +305,8 @@ export default {
 
 .news-type {
   font-size: 0.7rem;
-  color: #6c757d;
-  background: #f8f9fa;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
   text-transform: uppercase;
@@ -317,7 +319,7 @@ export default {
   height: 50px;
   border-radius: 4px;
   overflow: hidden;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .news-thumbnail img {
@@ -330,7 +332,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   padding-top: 0.5rem;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-color);
 }
 
 .read-more {

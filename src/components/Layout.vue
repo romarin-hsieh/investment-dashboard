@@ -2,25 +2,27 @@
   <div class="layout">
     <header class="header">
       <nav class="nav">
-        <div class="container">
+        <div class="container nav-container">
           <div class="nav-brand">
             <h1>Investment Dashboard</h1>
           </div>
-          <ul class="nav-list">
-            <li>
-              <router-link to="/market-overview" class="nav-link">Market Overview</router-link>
-            </li>
-            <li>
-              <router-link to="/stock-overview" class="nav-link">Stock Overview</router-link>
-            </li>
-            <!-- Settings temporarily hidden -->
-            <!-- <li>
-              <router-link to="/settings" class="nav-link">Settings</router-link>
-            </li> -->
-            <li>
-              <router-link to="/system-manager" class="nav-link">Control Panel</router-link>
-            </li>
-          </ul>
+          <div class="nav-controls">
+            <ul class="nav-list">
+              <li>
+                <router-link to="/market-overview" class="nav-link">Market Overview</router-link>
+              </li>
+              <li>
+                <router-link to="/stock-overview" class="nav-link">Stock Overview</router-link>
+              </li>
+              <li>
+                <router-link to="/system-manager" class="nav-link">Control Panel</router-link>
+              </li>
+            </ul>
+            <button @click="toggleTheme" class="theme-toggle" :title="theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'">
+               <span v-if="theme === 'dark'">☀️</span>
+               <span v-else>🌙</span>
+            </button>
+          </div>
         </div>
       </nav>
     </header>
@@ -49,8 +51,14 @@
 </template>
 
 <script>
+import { useTheme } from '../composables/useTheme.js'
+
 export default {
-  name: 'Layout'
+  name: 'Layout',
+  setup() {
+    const { theme, toggleTheme } = useTheme()
+    return { theme, toggleTheme }
+  }
 }
 </script>
 
@@ -59,6 +67,8 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .header {
@@ -66,34 +76,94 @@ export default {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: white;
-  border-bottom: 1px solid #e9ecef;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
 }
 
-.nav-brand h1 {
-  color: #007bff;
-  font-size: 1.5rem;
-  margin-bottom: 0;
-}
-
-.nav .container {
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 64px;
+}
+
+.nav-brand h1 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+  background-color: var(--bg-secondary);
+}
+
+.nav-link.router-link-active {
+  color: var(--bg-card); /* White in Light / Dark in Dark (if background is primary) */
+  color: #fff; /* Always white for active pill if primary color is dark */
+  background-color: var(--primary-color);
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .main-content {
   flex: 1;
-  padding-top: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 }
 
 .footer {
   flex-shrink: 0;
-  background: #f8f9fa;
-  padding: 0.75rem 0;
-  margin-top: 2rem;
-  border-top: 1px solid #e9ecef;
+  background: var(--bg-header);
+  padding: 1.5rem 0;
+  margin-top: auto;
+  border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
@@ -102,82 +172,47 @@ export default {
   align-items: center;
   gap: 0.75rem;
   font-size: 0.875rem;
-  color: #6c757d;
-}
-
-.copyright {
-  font-weight: 500;
+  color: var(--text-muted);
 }
 
 .separator {
-  color: #dee2e6;
-  font-weight: bold;
-}
-
-.attribution {
-  color: #6c757d;
+  color: var(--border-color);
 }
 
 .tradingview-link {
-  color: #007bff;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease;
 }
 
 .tradingview-link:hover {
-  color: #0056b3;
   text-decoration: underline;
 }
 
-/* 響應式設計 */
 @media (max-width: 768px) {
-  .footer-content {
+  .nav-container {
     flex-direction: column;
-    gap: 0.25rem;
-    text-align: center;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
   }
   
-  .separator {
-    display: none;
+  .nav-controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
   }
-}
-
-/* Navigation styling */
-.nav-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 1rem;
-}
-
-.nav-list li {
-  display: flex;
-  align-items: center;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: #495057;
-  font-weight: 500;
-  border-radius: 6px;
-  transition: all 0.2s;
-}
-
-.nav-link:hover {
-  background-color: #e9ecef;
-  color: #007bff;
-}
-
-.nav-link.router-link-active {
-  background-color: #007bff;
-  color: white;
+  
+  .nav-list {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .separator { display: none; }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="technical-indicators">
     <!-- Build Stamp -->
-    <div class="header-row">
+    <div class="header-row" v-if="showTitle">
       <div style="display: flex; align-items: center;">
           <h4 class="section-title">Technical Indicators</h4>
           <button class="header-info-btn" @click="showInfo = true" title="Indicator Guide">
@@ -12,16 +12,15 @@
             </svg>
           </button>
       </div>
-      <div style="font-size: 10px; color: #856404; background: #fff3cd; padding: 2px 5px; margin-left: 10px;">
-          DEBUG: 10D={{ rawData && rawData.yf ? rawData.yf.extAvgVol10D : '?' }} 3M={{ rawData && rawData.yf ? rawData.yf.extAvgVol3M : '?' }}
-      </div>
+
       <span class="last-updated" v-if="lastUpdated">Updated: {{ lastUpdated }}</span>
     </div>
 
     <!-- Loading State -->
-    <div v-if="loading" class="loading-state">
-      <div class="loading-spinner"></div>
-      <p>Loading...</p>
+    <div v-if="loading" class="grouped-grid">
+      <div v-for="i in 3" :key="i" class="indicator-group" style="border: none; box-shadow: none;">
+         <WidgetSkeleton :showHeader="true" :itemCount="8" type="list" />
+      </div>
     </div>
     
     <!-- Error State -->
@@ -92,9 +91,11 @@
 <script>
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import WidgetSkeleton from './WidgetSkeleton.vue'
 
 export default {
   name: 'TechnicalIndicators',
+  components: { WidgetSkeleton },
   props: {
     symbol: {
       type: String,
@@ -103,6 +104,10 @@ export default {
     exchange: {
       type: String,
       default: 'NASDAQ'
+    },
+    showTitle: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -449,94 +454,6 @@ export default {
 </script>
 
 <style scoped>
-/* ... existing styles ... */
-.header-info-btn {
-  background: none;
-  border: none;
-  padding: 4px;
-  color: #adb5bd;
-  cursor: pointer;
-  margin-left: 8px;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s;
-}
-
-.header-info-btn:hover {
-  color: #495057;
-}
-
-/* Modal Styles */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.modal-header h5 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #666;
-    padding: 0;
-    line-height: 1;
-}
-
-.modal-body ul {
-    padding-left: 20px;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-    color: #555;
-    text-align: left;
-}
-
-.modal-body li {
-    margin-bottom: 6px;
-}
-
-.modal-body h6 {
-    font-size: 0.95rem;
-    color: #007bff;
-    margin: 10px 0 5px 0;
-    font-weight: 600;
-    text-align: left;
-}
-
-
-
-<style scoped>
 .technical-indicators {
   width: 100%;
   padding: 0;
@@ -552,13 +469,13 @@ export default {
 .section-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #495057;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .last-updated {
   font-size: 0.75rem;
-  color: #adb5bd;
+  color: var(--text-muted);
 }
 
 .grouped-grid {
@@ -568,21 +485,22 @@ export default {
 }
 
 .indicator-group {
-    background: white;
-    border-radius: 8px;
-    border: 1px solid #e9ecef;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
     padding: 0;
     overflow: hidden;
 }
 
 .group-title {
-    background: #f8f9fa;
+    background: transparent;
     margin: 0;
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #495057;
-    border-bottom: 1px solid #e9ecef;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .group-table-container {
@@ -597,7 +515,7 @@ export default {
 
 .compact-table td {
     padding: 0.6rem 1rem;
-    border-bottom: 1px solid #f1f3f5;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .compact-table tr:last-child td {
@@ -605,21 +523,25 @@ export default {
 }
 
 .col-label {
-    color: #6c757d;
+    color: var(--text-muted);
     font-weight: 500;
-    width: 45%; /* Widened from 35% */
+    width: 45%; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .col-value {
-    color: #212529;
+    color: var(--text-primary);
     font-weight: 700;
     text-align: right;
-    width: 25%; /* Reduced from 30%*/
+    width: 25%; 
+    white-space: nowrap;
 }
 
 .col-meta {
     text-align: right;
-    width: 30%; /* Reduced from 35% */
+    width: 30%; 
 }
 
 /* Tags */
@@ -628,38 +550,39 @@ export default {
     font-weight: 600;
 }
 
-.change-tag.pos { color: #28a745; }
-.change-tag.neg { color: #dc3545; }
+.change-tag.pos { color: var(--success-color); }
+.change-tag.neg { color: var(--error-color); }
 
 .signal-tag {
-    font-size: 0.6rem; /* Smaller font */
+    font-size: 0.6rem; 
     padding: 2px 4px;   
     border-radius: 4px;
     font-weight: 700;
-    text-transform: lowercase; /* Changed to lowercase */
+    text-transform: lowercase; 
     white-space: nowrap; 
     display: inline-block;
 }
 
-.tag-green { color: #155724; background: #d4edda; }
-.tag-red { color: #721c24; background: #f8d7da; }
-.tag-yellow { color: #856404; background: #fff3cd; }
-.tag-blue { color: #004085; background: #cce5ff; }
-.tag-gray { color: #383d41; background: #e2e3e5; }
+.tag-green { color: var(--tag-text-green); background: var(--tag-bg-green); }
+.tag-red { color: var(--tag-text-red); background: var(--tag-bg-red); }
+.tag-yellow { color: var(--tag-text-yellow); background: var(--tag-bg-yellow); }
+.tag-blue { color: var(--tag-text-blue); background: var(--tag-bg-blue); }
+.tag-gray { color: var(--text-secondary); background: var(--bg-secondary); }
 
 /* Loading / Error */
 .loading-state, .error-state {
   text-align: center;
   padding: 2rem;
-  background: white;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
 }
 
 .loading-spinner {
   width: 30px;
   height: 30px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #007bff;
+  border: 3px solid var(--bg-secondary);
+  border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 0.5rem;
@@ -672,11 +595,60 @@ export default {
 
 .retry-btn {
   padding: 0.4rem 0.8rem;
-  background: #007bff;
+  background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* Header Info Button */
+.header-info-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.header-info-btn:hover {
+  color: var(--text-secondary);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h5 {
+    color: var(--text-primary);
+}
+
+.close-btn {
+    color: var(--text-muted);
+}
+
+.modal-body ul {
+    color: var(--text-secondary);
+}
+
+.modal-body h6 {
+    color: var(--primary-color);
 }
 
 /* Responsive */

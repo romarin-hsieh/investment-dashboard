@@ -1,9 +1,8 @@
 <template>
   <div class="fast-widget" :class="{ 'overview-widget': widgetType === 'overview' }" :id="containerId" ref="container">
     <!-- Overlay for Loading -->
-    <div v-if="!loaded && !error" class="widget-overlay fast-loading">
-      <div class="loading-spinner"></div>
-      <span>Loading {{ widgetType }}...</span>
+    <div v-if="!loaded && !error" class="widget-overlay skeleton-overlay">
+      <WidgetSkeleton :bordered="false" :show-header="false" type="chart" />
     </div>
     
     <!-- Overlay for Error -->
@@ -22,9 +21,15 @@ import { widgetCache } from '@/utils/widgetCache'
 import { widgetThrottle } from '@/utils/widgetThrottle'
 import { widgetPreloader } from '@/utils/widgetPreloader'
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
+import { useTheme } from '@/composables/useTheme.js'
+import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
+import { watch } from 'vue'
 
 export default {
   name: 'FastTradingViewWidget',
+  components: {
+    WidgetSkeleton
+  },
   props: {
     widgetType: {
       type: String,
@@ -44,6 +49,10 @@ export default {
       default: 1 // 1=高優先級, 2=中優先級, 3=低優先級
     }
   },
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
+  },
   data() {
     return {
       loaded: false,
@@ -60,6 +69,14 @@ export default {
     
     cacheKey() {
       return `${this.widgetType}-${this.symbol}-${this.exchange}`
+    }
+  },
+  watch: {
+    theme() {
+      // Reload on theme change if visible
+      if (this.isVisible) {
+        this.loadWidget()
+      }
     }
   },
   async mounted() {
@@ -158,6 +175,9 @@ export default {
             reject(new Error('Widget target container not found'))
             return
           }
+          
+          // Clear existing content for theme reload
+          target.innerHTML = ''
 
           const config = this.getWidgetConfig()
           const scriptUrl = this.getScriptUrl()
@@ -195,13 +215,6 @@ export default {
             this.loaded = true
             
             const loadTime = performance.now() - this.loadStartTime
-            console.log(`Widget ${this.cacheKey} loaded in ${loadTime.toFixed(2)}ms (Priority: ${this.priority})`)
-            
-            // 快取 widget 配置
-            widgetCache.set(this.widgetType, this.symbol, this.exchange, {
-              config,
-              scriptUrl
-            })
             
             resolve()
           }
@@ -218,6 +231,13 @@ export default {
     },
 
     getWidgetConfig() {
+      const isDark = this.theme === 'dark';
+      const commonColors = {
+          bg: isDark ? '#2C2C2C' : '#ffffff',
+          text: isDark ? '#E6E1DC' : '#0F0F0F',
+          grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
+      }
+
       if (this.widgetType === 'overview') {
         return {
           "lineWidth": 2,
@@ -225,18 +245,18 @@ export default {
           "chartType": "candlesticks",
           "showVolume": true,
           "fontColor": "rgb(106, 109, 120)",
-          "gridLineColor": "rgba(46, 46, 46, 0.06)",
+          "gridLineColor": commonColors.grid,
           "volumeUpColor": "rgba(34, 171, 148, 0.5)",
           "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-          "backgroundColor": "#ffffff",
-          "widgetFontColor": "#0F0F0F",
+          "backgroundColor": commonColors.bg,
+          "widgetFontColor": commonColors.text,
           "upColor": "#22ab94",
           "downColor": "#f7525f",
           "borderUpColor": "#22ab94",
           "borderDownColor": "#f7525f",
           "wickUpColor": "#22ab94",
           "wickDownColor": "#f7525f",
-          "colorTheme": "light",
+          "colorTheme": isDark ? "dark" : "light",
           "isTransparent": true,
           "locale": "en",
           "chartOnly": false,
@@ -266,11 +286,11 @@ export default {
           "interval": "1D",
           "width": "100%",
           "height": "100%",
-          "isTransparent": false,
+          "isTransparent": true,
           "symbol": `${this.exchange}:${this.symbol}`,
           "showIntervalTabs": true,
           "locale": "en",
-          "colorTheme": "light"
+          "colorTheme": isDark ? "dark" : "light"
         }
       }
     },
@@ -321,55 +341,29 @@ export default {
 
 /* Symbol Overview 特殊樣式 - 白底和 padding */
 .fast-widget.overview-widget {
-  background: #ffffff;
+  background: var(--bg-card);
   padding: 8px;
   box-sizing: border-box;
 }
 
-.fast-loading {
+/* Skeleton Overlay Style */
+.skeleton-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #f8f9fa;
-  border-radius: 8px;
-  color: #6c757d;
+  background: var(--bg-card);
+  padding: 0;
 }
 
-/* Symbol Overview 的 loading 狀態調整 */
-.fast-widget.overview-widget .fast-loading {
-  margin: 0; /* 覆蓋舊樣式 */
-  left: 0; /* 確保對齊 */
-  top: 0;
-  width: 100%;
-  height: 100%;
+/* Symbol Overview 的 padding 調整 */
+.fast-widget.overview-widget .skeleton-overlay {
+  padding: 0; /* Skeleton 內部有 padding, 這邊不需要 */
 }
 
-.loading-spinner {
-  width: 32px;
-  height: 32px;
-  border: 3px solid #e9ecef;
-  border-top: 3px solid #007bff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.fast-loading span {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
 
 .fast-error {
   position: absolute;
@@ -382,10 +376,10 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background: var(--bg-card);
+  border: 1px solid var(--error-color);
   border-radius: 8px;
-  color: #721c24;
+  color: var(--error-color);
 }
 
 /* Symbol Overview 的 error 狀態調整 */
@@ -404,7 +398,7 @@ export default {
 .retry-btn {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #dc3545;
+  background: var(--error-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -414,6 +408,6 @@ export default {
 }
 
 .retry-btn:hover {
-  background: #c82333;
+  opacity: 0.9;
 }
 </style>

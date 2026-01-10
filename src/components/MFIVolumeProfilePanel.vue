@@ -472,8 +472,8 @@ export default {
   /* 移除 height: 100% 限制，讓內容自然展開 */
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
@@ -596,7 +596,7 @@ export default {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--text-primary);
 }
 
 .metrics-status-bar {
@@ -619,11 +619,12 @@ export default {
 
 .status-label {
   font-weight: 600;
-  color: #6b7280;
+  color: var(--text-secondary);
 }
 
 .status-value {
   font-weight: 700;
+  color: var(--text-primary);
 }
 
 .status-detail {
@@ -632,7 +633,7 @@ export default {
 }
 
 .status-divider {
-  color: #d1d5db;
+  color: var(--border-color);
   font-size: 0.8rem;
 }
 
@@ -657,7 +658,7 @@ export default {
   /* 移除 flex: 1，改用固定高度模式 */
   display: flex;
   flex-direction: column;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -670,22 +671,23 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e9ecef;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .chart-header h4 {
   margin: 0;
   font-size: 0.9rem;
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .range-selector {
   padding: 0.25rem 0.5rem;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 0.8rem;
-  background: white;
+  background: var(--bg-card);
+  color: var(--text-primary);
 }
 
 .chart-container {
@@ -699,8 +701,8 @@ export default {
 
 .price-scale {
   width: 80px;
-  background: #f8f9fa;
-  border-right: 1px solid #e9ecef;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
   flex-shrink: 0;
 }
 
@@ -710,8 +712,8 @@ export default {
   justify-content: flex-end;
   padding-right: 0.5rem;
   font-size: 0.7rem;
-  color: #6c757d;
-  border-bottom: 1px solid #f0f0f0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .volume-bars {
@@ -721,7 +723,7 @@ export default {
 
 .volume-bar-row {
   position: relative;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
 }
@@ -773,8 +775,8 @@ export default {
 
 .volume-scale {
   width: 80px;
-  background: #f8f9fa;
-  border-left: 1px solid #e9ecef;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-color);
   flex-shrink: 0;
 }
 
@@ -784,16 +786,18 @@ export default {
   justify-content: flex-start;
   padding-left: 0.5rem;
   font-size: 0.7rem;
-  color: #6c757d;
-  border-bottom: 1px solid #f0f0f0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* Trading Signals */
 .trading-signals {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 6px;
-  padding: 1rem;
+  background: transparent;
+  border: none;
+  padding: 1rem 0 0 0;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  border-radius: 0;
 }
 
 .signals-header {
@@ -806,7 +810,7 @@ export default {
 .signals-header h4 {
   margin: 0;
   font-size: 1rem;
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .signal-badge {
@@ -840,12 +844,12 @@ export default {
 
 .recommendation {
   font-size: 0.85rem;
-  color: #495057;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  background: #ffffff;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
   border-left: 3px solid #007bff;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
 }
 
 /* Tooltip */

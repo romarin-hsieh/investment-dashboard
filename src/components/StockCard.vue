@@ -15,13 +15,8 @@
         </div>
       </div>
       <div class="header-actions">
-        <button 
-          @click="goToDetail" 
-          class="detail-btn"
-          :title="`View detailed analysis for ${quote.symbol}`"
-        >
-          Detail
-          <span class="btn-icon">→</span>
+        <button class="btn btn-renaissance" @click.stop="goToDetail" :title="`View detailed analysis for ${quote.symbol}`">
+            Detail <span>→</span>
         </button>
       </div>
     </div>
@@ -46,20 +41,29 @@
         <div class="widget-header">
           <h4>Technical Analysis</h4>
         </div>
-        <TechnicalAnalysisWidget 
+        <FastTradingViewWidget 
+          widget-type="technical"
           :symbol="quote.symbol" 
           :exchange="getExchange()"
           :priority="2"
+          class="technical-overview-style"
         />
       </div>
     </div>
 
     <!-- Additional Info (Optional) -->
     <div v-if="dailyData" class="additional-info">
-      <div class="brief-section">
-        <h5>Daily Brief</h5>
-        <p class="brief-text">{{ dailyData.short_brief_zh }}</p>
-      </div>
+    <div class="trading-analysis-section">
+        <div class="analysis-header">
+            <h5>Trading Analysis</h5>
+            <span class="trend-badge" :class="analysisTrendClass">{{ analysisTrend }}</span>
+        </div>
+        <div class="analysis-content">
+            <div v-for="(point, idx) in tradingAnalysis" :key="idx" class="analysis-point" :class="point.type">
+                {{ point.text }}
+            </div>
+        </div>
+    </div>
     </div>
 
     <!-- Technical Indicators -->
@@ -81,14 +85,12 @@
 
 <script>
 import FastTradingViewWidget from './FastTradingViewWidget.vue'
-import TechnicalAnalysisWidget from './TechnicalAnalysisWidget.vue'
 import TechnicalIndicators from './TechnicalIndicators.vue'
 
 export default {
   name: 'StockCard',
   components: {
     FastTradingViewWidget,
-    TechnicalAnalysisWidget,
     TechnicalIndicators
   },
   props: {
@@ -112,6 +114,27 @@ export default {
 
     domId() {
       return `sym-${this.sanitizeSymbol(this.quote.symbol)}`
+    },
+    
+    tradingAnalysis() {
+        return this.generateTradingAnalysis();
+    },
+    
+    analysisTrend() {
+        // Support both real API (regularMarket...) and Mock Data (change_percent...) keys
+        const change = this.quote.change_percent !== undefined ? this.quote.change_percent : (this.quote.regularMarketChangePercent || 0);
+        
+        if (change > 0.5) return 'Bullish';
+        if (change < -0.5) return 'Bearish';
+        return 'Neutral';
+    },
+    
+    analysisTrendClass() {
+         const change = this.quote.change_percent !== undefined ? this.quote.change_percent : (this.quote.regularMarketChangePercent || 0);
+
+         if (change > 0.5) return 'trend-badge tag-green';
+         if (change < -0.5) return 'trend-badge tag-red';
+         return 'trend-badge tag-gray';
     }
   },
   methods: {
@@ -209,6 +232,61 @@ export default {
       // 將 symbol 轉換為有效的 DOM ID
       // 替換非字母數字字符為底線
       return symbol.replace(/[^a-zA-Z0-9]/g, '_')
+    },
+
+    generateTradingAnalysis() {
+        if (!this.quote) return [];
+        
+        const analysis = [];
+        // Support both real API (regularMarket...) and Mock Data (change_percent...) keys
+        const change = this.quote.change_percent !== undefined ? this.quote.change_percent : (this.quote.regularMarketChangePercent || 0);
+        const price = this.quote.price_usd !== undefined ? this.quote.price_usd : (this.quote.regularMarketPrice || 0);
+        
+        // Mock data lacks MA, so we rely on price action/change for trend if MA is missing
+        const fiftyDayAverage = this.quote.fiftyDayAverage;
+        const twoHundredDayAverage = this.quote.twoHundredDayAverage;
+        
+        const volume = this.quote.volume !== undefined ? this.quote.volume : (this.quote.regularMarketVolume || 0);
+        const avgVolume = this.quote.averageDailyVolume3Month || 0;
+        
+        // 1. Trend Analysis
+        if (fiftyDayAverage && twoHundredDayAverage) {
+            if (price > fiftyDayAverage && price > twoHundredDayAverage) {
+                analysis.push({ text: "Primary trend is bullish; price is sustaining above key moving averages.", type: 'bullish' });
+            } else if (price < fiftyDayAverage && price < twoHundredDayAverage) {
+                analysis.push({ text: "Primary trend is bearish, trading below major resistance levels.", type: 'bearish' });
+            } else if (Math.abs(change) < 0.5) {
+                analysis.push({ text: "Price action is consolidating sideways, awaiting a directional catalyst.", type: 'neutral' });
+            } else {
+                analysis.push({ text: "Market structure is mixed; monitor local support levels closely.", type: 'neutral' });
+            }
+        } else {
+            // Fallback for Mock Data (No MA) - Use Change % Intensity
+            if (change > 3.0) {
+                 analysis.push({ text: "Strong bullish momentum detected; price is surging significantly.", type: 'bullish' });
+            } else if (change > 0.5) {
+                 analysis.push({ text: "Positive price action observed; trend inclination is bullish.", type: 'bullish' });
+            } else if (change < -3.0) {
+                 analysis.push({ text: "Strong bearish pressure; sharp decline suggests caution.", type: 'bearish' });
+            } else if (change < -0.5) {
+                 analysis.push({ text: "Minor weakness in price action; short-term bias is bearish.", type: 'bearish' });
+            } else {
+                 analysis.push({ text: "Price is ranging tightly; market sentiment appears neutral.", type: 'neutral' });
+            }
+        }
+        
+        // 2. Momentum / Volume Analysis
+        if (avgVolume > 0 && volume > avgVolume * 1.5) {
+             const direction = change > 0 ? "buying pressure" : "selling pressure";
+             analysis.push({ text: `Significant volume spike detected, indicating strong ${direction}.`, type: change > 0 ? 'bullish' : 'bearish' });
+        } else if (Math.abs(change) > 2.0) {
+             const sentiment = change > 0 ? "Positive" : "Negative";
+             analysis.push({ text: `${sentiment} momentum is accelerating in the short term.`, type: change > 0 ? 'bullish' : 'bearish' });
+        } else {
+             analysis.push({ text: "Volatility remains within standard ranges.", type: 'neutral' });
+        }
+        
+        return analysis;
     }
   }
 }
@@ -217,14 +295,15 @@ export default {
 <style scoped>
 /* Stock Card Pair Container */
 .stock-card-pair {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   transition: all 0.2s;
   position: relative;
   width: 100%;
-  scroll-margin-top: 80px; /* Handle sticky header offset */
+  scroll-margin-top: 80px; 
+  box-shadow: var(--shadow-md);
 }
 
 /* Stock Info Header */
@@ -234,13 +313,13 @@ export default {
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .symbol-info .symbol {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
 }
 
@@ -253,94 +332,22 @@ export default {
 
 .exchange-tag {
   font-size: 0.75rem;
-  color: #007bff;
-  background-color: #e7f3ff;
+  color: var(--tag-text-blue);
+  background-color: var(--tag-bg-blue);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-weight: 500;
-  border: 1px solid #90caf9;
-  display: inline-block;
+  border: 1px solid transparent; 
 }
 
 .industry-tag {
   font-size: 0.75rem;
-  color: #666;
-  background-color: #e8f4fd;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-weight: 500;
-  border: 1px solid #b3d9ff;
-  display: inline-block;
-}
-
-/* Industry Category Specific Styles */
-.industry-tech-iot {
-  background-color: #e3f2fd;
-  color: #1565c0;
-  border-color: #90caf9;
-}
-
-.industry-tech-satellite {
-  background-color: #f3e5f5;
-  color: #7b1fa2;
-  border-color: #ce93d8;
-}
-
-.industry-tech-software {
-  background-color: #e8f5e8;
-  color: #2e7d32;
-  border-color: #a5d6a7;
-}
-
-.industry-tech-hardware {
-  background-color: #fff3e0;
-  color: #ef6c00;
-  border-color: #ffcc80;
-}
-
-.industry-industrial-aerospace {
-  background-color: #fce4ec;
-  color: #c2185b;
-  border-color: #f8bbd9;
-}
-
-.industry-industrial-space {
-  background-color: #f1f8e9;
-  color: #558b2f;
-  border-color: #c5e1a5;
-}
-
-.industry-communications {
-  background-color: #e0f2f1;
-  color: #00695c;
-  border-color: #80cbc4;
-}
-
-.industry-automotive {
-  background-color: #fff8e1;
-  color: #ff8f00;
-  border-color: #ffcc02;
-}
-
-.industry-unknown {
-  background-color: #f5f5f5;
-  color: #757575;
-  border-color: #e0e0e0;
-}
-
-.industry-other {
-  background-color: #fafafa;
-  color: #616161;
-  border-color: #bdbdbd;
-}
-
-.exchange-info .exchange {
-  font-size: 0.9rem;
-  color: #007bff;
-  background-color: #e7f3ff;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  font-weight: 600;
+  border: 1px solid transparent;
 }
 
 /* Header Actions */
@@ -350,34 +357,7 @@ export default {
   gap: 1rem;
 }
 
-.detail-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
-  line-height: 1;
-  min-height: 36px;
-}
-
-.detail-btn:hover {
-  background: linear-gradient(135deg, #0056b3, #004085);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-}
-
-.detail-btn:active {
-  transform: translateY(0);
-}
+/* Orphaned .detail-btn styles removed */
 
 .btn-icon {
   font-size: 1rem;
@@ -389,87 +369,121 @@ export default {
 /* Widgets Container */
 .widgets-container {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* 2/3 和 1/3 的比例 */
+  grid-template-columns: 2fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 0px; /* 移除下方 padding */
-  min-height: 450px; /* 減少高度從 600px 到 450px */
-  will-change: transform; /* 優化動畫性能 */
+  margin-bottom: 0px; 
+  min-height: 450px; 
+  will-change: transform; 
 }
 
 .widget-overview,
 .widget-technical {
-  background: #fafafa;
-  border: 1px solid #e9ecef;
+  background: var(--bg-card); /* Should match card bg or slightly different? Usually plain bg is fine */
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  contain: layout style paint; /* CSS containment 優化 */
+  contain: layout style paint; 
 }
 
 .widget-overview {
-  min-height: 440px; /* Symbol Overview 對齊 Technical Analysis 高度 */
+  min-height: 440px; 
   height: 440px;
 }
 
 .widget-technical {
-  min-height: 440px; /* Technical Analysis 適度增加到 440px 避免 scroll bar */
+  min-height: 440px; 
   height: 440px;
 }
 
 .widget-header {
-  background: #f8f9fa;
+  background: transparent;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e9ecef;
-  flex-shrink: 0; /* 防止 header 被壓縮 */
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0; 
 }
 
 .widget-header h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #495057;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 /* 確保 widget 內容區域有足夠高度 */
 .widget-overview > :not(.widget-header) {
   flex: 1;
-  min-height: 390px; /* Symbol Overview 內容區域對齊 */
+  min-height: 390px; 
 }
 
 .widget-technical > :not(.widget-header) {
   flex: 1;
-  min-height: 390px; /* Technical Analysis 內容區域適度增加到 390px */
+  min-height: 390px; 
 }
 
-/* Additional Info */
+/* Trading Analysis Section */
+.trading-analysis-section {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.analysis-header h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.trend-badge {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* Colors now handled by global utilities: .tag-green, .tag-red, .tag-gray */
+
+
+.analysis-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.analysis-point {
+    padding: 0.8rem 1rem;
+    background: rgba(0, 0, 0, 0.02); /* Very subtle background */
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-left: 3px solid var(--border-color);
+    line-height: 1.5;
+}
+
+/* Dark mode adjustment for very subtle background */
+@media (prefers-color-scheme: dark) {
+    .analysis-point {
+        background: rgba(255, 255, 255, 0.03); 
+    }
+}
+
+/* Dynamic Accent Colors */
+.analysis-point.bullish { border-left-color: var(--success-color); }
+.analysis-point.bearish { border-left-color: var(--error-color); }
+.analysis-point.neutral { border-left-color: var(--text-muted); }
+
 .additional-info {
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; Removed logic */ 
 }
-
-.brief-section {
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 6px;
-  border-left: 4px solid #007bff;
-  display: none; /* 隱藏 brief-section，後續會用別的方式實作內容 */
-}
-
-.brief-section h5 {
-  font-size: 0.9rem;
-  color: #495057;
-  margin: 0 0 0.5rem 0;
-  font-weight: 600;
-}
-
-.brief-text {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #6c757d;
-  margin: 0;
-}
-
-
 
 /* Stale Indicator */
 .stale-indicator {
@@ -486,14 +500,28 @@ export default {
 }
 
 .stale-badge.stale-very_stale {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: var(--tag-bg-red);
+  color: var(--tag-text-red);
+}
+
+/* Technical Analysis 仿照 Symbol Overview 樣式 */
+.technical-overview-style {
+  background: transparent !important;
+  padding: 0px !important; 
+  box-sizing: border-box !important;
+}
+
+/* Technical Analysis loading 狀態調整 - Override */
+.technical-overview-style .fast-loading {
+  background: var(--bg-card); 
+  border-radius: 0; 
+  margin: 0; 
 }
 
 /* 響應式設計 */
 
 /* 大螢幕 (桌機) - 1200px 以上 */
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   .stock-card-pair {
     padding: 2rem;
   }
@@ -507,22 +535,26 @@ export default {
   }
 }
 
-/* 中等螢幕 (平板橫向) - 768px 到 1199px */
-@media (min-width: 768px) and (max-width: 1199px) {
+/* 類似 StockDetail: 1200px 以下就轉為單欄，避免 Technical Widget 過窄出現卷軸 */
+@media (max-width: 1200px) {
   .stock-card-pair {
     padding: 1.5rem;
   }
-  
-  .symbol-info .symbol {
-    font-size: 1.4rem;
-  }
-  
+
   .widgets-container {
-    gap: 1.25rem;
+    grid-template-columns: 1fr; /* Switch to 1 column earlier */
+    gap: 1.5rem;
+  }
+
+  /* 讓 Overview 和 Technical 高度一致或自適應 */
+  .widget-overview,
+  .widget-technical {
+    min-height: 450px;
+    height: 450px;
   }
 }
 
-/* 小螢幕 (平板直向和手機) - 768px 以下 */
+/* 中小螢幕調整 - 768px 以下 */
 @media (max-width: 767px) {
   .stock-card-pair {
     padding: 1rem;
@@ -539,7 +571,7 @@ export default {
     justify-content: space-between;
   }
   
-  .detail-btn {
+  .btn-renaissance {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }
@@ -555,26 +587,17 @@ export default {
   }
   
   .widget-overview {
-    height: 380px; /* 手機版對齊高度 */
+    height: 380px; 
     min-height: 380px;
   }
   
   .widget-technical {
-    height: 380px; /* 手機版 Technical Analysis 適度調整 */
+    height: 380px; 
     min-height: 380px;
   }
   
   .widget-header h4 {
     font-size: 0.9rem;
-  }
-  
-  .brief-section {
-    padding: 0.75rem;
-    display: none; /* 隱藏 brief-section */
-  }
-  
-  .brief-text {
-    font-size: 0.8rem;
   }
 }
 
@@ -599,22 +622,17 @@ export default {
   }
   
   .widget-overview {
-    height: 330px; /* 小螢幕對齊高度 */
+    height: 330px; 
     min-height: 330px;
   }
   
   .widget-technical {
-    height: 330px; /* 小螢幕 Technical Analysis 適度調整 */
+    height: 330px; 
     min-height: 330px;
   }
   
   .widget-header {
     padding: 0.5rem 0.75rem;
-  }
-  
-  .brief-section {
-    padding: 0.5rem;
-    display: none; /* 隱藏 brief-section */
   }
 }
 </style>

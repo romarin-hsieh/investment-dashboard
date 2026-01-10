@@ -1,8 +1,7 @@
 <template>
   <div class="fundamental-data-container">
-    <div v-if="!loaded && !error" class="loading-state">
-      <div class="spinner"></div>
-      <span>Loading fundamental data...</span>
+    <div v-if="!loaded && !error" class="loading-state skeleton-overlay">
+      <WidgetSkeleton :bordered="false" :show-header="false" type="chart" />
     </div>
     
     <div v-if="error" class="error-state">
@@ -16,8 +15,13 @@
 </template>
 
 <script>
+import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
+
 export default {
   name: 'TradingViewFundamentalData',
+  components: {
+    WidgetSkeleton
+  },
   props: {
     symbol: {
       type: String,
@@ -187,28 +191,16 @@ export default {
 }
 
 /* Loading 狀態 */
-.fundamental-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+/* Skeleton Overlay Style */
+.skeleton-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  color: #6c757d;
-  font-size: 0.9rem;
-}
-
-.loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #e9ecef;
-  border-top: 2px solid #007bff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  z-index: 10;
+  background: var(--bg-card);
+  padding: 0;
 }
 
 /* Error 狀態 */

@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="header-actions">
-            <button @click="goBack" class="detail-btn">
+            <button @click="goBack" class="btn btn-renaissance">
               <span class="btn-icon">←</span>
               Back to Stock Overview
             </button>
@@ -99,7 +99,7 @@
           <div class="widget-container">
             <div class="widget-header flex-header">
                 <div style="display: flex; align-items: center;">
-                    <h3>Tactical Signals</h3>
+                    <h3>Technical Indicators</h3>
                     <button class="header-info-btn" @click="$refs.technicalSignals.openModal()" title="Signal Specifications" style="margin-left: 8px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -111,7 +111,7 @@
             </div>
             <div class="tactical-grid">
                  <TechnicalSignals ref="technicalSignals" :symbol="symbol" />
-                 <TechnicalIndicators :symbol="symbol" :exchange="exchange" />
+                 <TechnicalIndicators :symbol="symbol" :exchange="exchange" :showTitle="false" />
             </div>
           </div>
 
@@ -259,6 +259,7 @@ import FundamentalAnalysis from '@/components/FundamentalAnalysis.vue'
 import HoldingsAnalysis from '@/components/HoldingsAnalysis.vue'
 import TechnicalSignals from '@/components/TechnicalSignals.vue'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
+import { useTheme } from '@/composables/useTheme.js'
 
 export default {
   name: 'StockDetail',
@@ -277,6 +278,10 @@ export default {
     FundamentalAnalysis,
     HoldingsAnalysis,
     TechnicalSignals
+  },
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
   },
   data() {
     return {
@@ -322,24 +327,30 @@ export default {
     },
 
     dailyInsightConfig() {
+      const isDark = this.theme === 'dark';
+      const commonColors = {
+          bg: isDark ? '#2C2C2C' : '#ffffff',
+          text: isDark ? '#E6E1DC' : '#0F0F0F',
+          grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
+      }
       return {
         "lineWidth": 2,
         "lineType": 0,
         "chartType": "candlesticks",
         "showVolume": true,
         "fontColor": "rgb(106, 109, 120)",
-        "gridLineColor": "rgba(46, 46, 46, 0.06)",
+        "gridLineColor": commonColors.grid,
         "volumeUpColor": "rgba(34, 171, 148, 0.5)",
         "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-        "backgroundColor": "#ffffff",
-        "widgetFontColor": "#0F0F0F",
+        "backgroundColor": commonColors.bg,
+        "widgetFontColor": commonColors.text,
         "upColor": "#22ab94",
         "downColor": "#f7525f",
         "borderUpColor": "#22ab94",
         "borderDownColor": "#f7525f",
         "wickUpColor": "#22ab94",
         "wickDownColor": "#f7525f",
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "isTransparent": true,
         "locale": "en",
         "chartOnly": false,
@@ -367,24 +378,30 @@ export default {
     },
 
     weeklyInsightConfig() {
+      const isDark = this.theme === 'dark';
+      const commonColors = {
+          bg: isDark ? '#2C2C2C' : '#ffffff',
+          text: isDark ? '#E6E1DC' : '#0F0F0F',
+          grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
+      }
       return {
         "lineWidth": 2,
         "lineType": 0,
         "chartType": "candlesticks",
         "showVolume": true,
         "fontColor": "rgb(106, 109, 120)",
-        "gridLineColor": "rgba(46, 46, 46, 0.06)",
+        "gridLineColor": commonColors.grid,
         "volumeUpColor": "rgba(34, 171, 148, 0.5)",
         "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-        "backgroundColor": "#ffffff",
-        "widgetFontColor": "#0F0F0F",
+        "backgroundColor": commonColors.bg,
+        "widgetFontColor": commonColors.text,
         "upColor": "#22ab94",
         "downColor": "#f7525f",
         "borderUpColor": "#22ab94",
         "borderDownColor": "#f7525f",
         "wickUpColor": "#22ab94",
         "wickDownColor": "#f7525f",
-        "colorTheme": "light",
+        "colorTheme": isDark ? "dark" : "light",
         "isTransparent": true,
         "locale": "en",
         "chartOnly": false,
@@ -525,7 +542,7 @@ export default {
 
 <style scoped>
 .stock-detail {
-  background: #f5f5f5; /* 與 main-content 相同的背景色 */
+  background: var(--bg-primary);
   padding: 1rem;
   min-height: 100vh;
 }
@@ -539,7 +556,7 @@ export default {
 }
 
 .breadcrumb-link {
-  color: #007bff;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
 }
@@ -550,21 +567,22 @@ export default {
 
 .breadcrumb-separator {
   margin: 0 0.5rem;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 .breadcrumb-current {
-  color: #495057;
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
 /* Stock Header - Match Stock Overview Style */
 .stock-header {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .stock-info-header {
@@ -572,25 +590,25 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1.5rem;
 }
 
 /* Widgets Container - Same as StockCard */
 .widgets-container {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* 2/3 和 1/3 的比例 */
+  grid-template-columns: 2fr 1fr; 
   gap: 1.5rem;
-  margin-bottom: 0px; /* 移除下方 padding */
+  margin-bottom: 0px; 
   min-height: 450px;
   will-change: transform;
 }
 
 .widget-overview,
 .widget-technical {
-  background: #fafafa;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -598,84 +616,84 @@ export default {
 }
 
 .widget-overview {
-  min-height: 440px; /* Symbol Overview 對齊 Technical Analysis 高度 */
+  min-height: 440px; 
   height: 440px;
 }
 
 .widget-technical {
-  min-height: 440px; /* Technical Analysis 適度增加到 440px 避免 scroll bar */
+  min-height: 440px; 
   height: 440px;
 }
 
 .widget-header {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e9ecef;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-bottom: 1px solid var(--border-color);
+  background: transparent; /* Removed gray background */
   flex-shrink: 0;
-  margin: 0; /* 確保 Symbol Overview 和 Technical Analysis 的 header 沒有 margin */
+  margin: 0; 
 }
 
 .widget-header h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #495057;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 /* 確保 widget 內容區域有足夠高度 */
 .widget-overview > :not(.widget-header) {
   flex: 1;
-  min-height: 390px; /* Symbol Overview 內容區域對齊 */
+  min-height: 390px;
 }
 
 .widget-technical > :not(.widget-header) {
   flex: 1;
-  min-height: 390px; /* Technical Analysis 內容區域適度增加到 390px */
+  min-height: 390px; 
 }
 
 /* Technical Analysis 仿照 Symbol Overview 樣式 */
 .technical-overview-style {
-  background: #ffffff !important;
-  padding: 0px !important; /* 改為 0px 避免雙重框框效果 */
+  background: transparent !important;
+  padding: 0px !important; 
   box-sizing: border-box !important;
 }
 
 /* Technical Analysis loading 狀態調整 */
 .technical-overview-style .fast-loading {
-  background: #ffffff; /* 白色背景 */
-  border-radius: 0; /* 移除圓角 */
-  margin: 0; /* 不再需要抵消 padding */
+  background: var(--bg-card); 
+  border-radius: 0; 
+  margin: 0; 
 }
 
 /* Technical Analysis error 狀態調整 */
 .technical-overview-style .fast-error {
-  background: #ffffff; /* 白色背景 */
-  border: 1px solid #e0e0e0; /* 統一邊框顏色 */
-  border-radius: 0; /* 移除圓角 */
-  color: #6c757d; /* 調整文字顏色 */
-  margin: 0; /* 不再需要抵消 padding */
+  background: var(--bg-card); 
+  border: 1px solid var(--border-color); 
+  border-radius: 0; 
+  color: var(--error-color); 
+  margin: 0; 
 }
 
 /* Symbol Insight Block - Match stock-card style */
 .symbol-insight-block {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .insight-header {
   padding-bottom: 1rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1.5rem;
 }
 
 .insight-header h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #495057;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -688,15 +706,22 @@ export default {
 
 /* Full Width Insight Widgets */
 .insight-full-widget {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 900px; /* 850px + header space */
+  min-height: 900px; 
   height: 900px;
   margin-bottom: 1.5rem;
+}
+
+/* Remove borders from full-width chart widgets to avoid double borders */
+.insight-full-widget.market-regime,
+.insight-full-widget.trading-strategy {
+  border: none !important;
+  background: transparent !important;
 }
 
 /* MFI Volume Profile specific styling */
@@ -708,9 +733,10 @@ export default {
 
 .insight-full-widget .widget-header {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e9ecef;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-bottom: 1px solid var(--border-color);
+  /* border-top-left-radius: 8px; Removed */
+  /* border-top-right-radius: 8px; Removed */
+  background: transparent; /* Removed gray background */
   flex-shrink: 0;
   margin: 0;
 }
@@ -718,7 +744,7 @@ export default {
 .insight-full-widget .widget-header h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #495057;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -736,9 +762,9 @@ export default {
 }
 
 .insight-widget {
-  background: white; /* 改為白底 */
-  border: 1px solid #e0e0e0; /* 統一邊框顏色 */
-  border-radius: 8px;
+  background: var(--bg-card); /* 改為變量 */
+  border: 1px solid var(--border-color); /* 統一邊框顏色 */
+  border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -748,7 +774,7 @@ export default {
 
 .insight-widget .widget-header {
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1rem;
   flex-shrink: 0;
   height: auto; /* 改為 auto 讓高度自適應 */
@@ -759,7 +785,7 @@ export default {
 .insight-widget .widget-header h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #495057;
+  color: var(--text-secondary);
   margin: 0;
   line-height: 1.2;
 }
@@ -780,7 +806,7 @@ export default {
 .symbol-info .symbol {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-primary);
   margin: 0 0 0.5rem 0;
 }
 
@@ -793,41 +819,28 @@ export default {
 
 .exchange-tag {
   font-size: 0.75rem;
-  color: #007bff;
-  background-color: #e7f3ff;
+  color: var(--tag-text-blue);
+  background-color: var(--tag-bg-blue);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-weight: 500;
-  border: 1px solid #90caf9;
+  border: 1px solid transparent;
   display: inline-block;
 }
 
 .industry-tag {
   font-size: 0.75rem;
-  color: #666;
-  background-color: #f5f5f5;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-weight: 500;
-  border: 1px solid #e0e0e0;
+  border: 1px solid transparent;
   display: inline-block;
 }
 
 /* 統一使用灰色樣式，移除彩色分類 */
-.industry-tag.industry-tech-iot,
-.industry-tag.industry-tech-satellite,
-.industry-tag.industry-tech-software,
-.industry-tag.industry-tech-hardware,
-.industry-tag.industry-industrial-aerospace,
-.industry-tag.industry-industrial-space,
-.industry-tag.industry-communications,
-.industry-tag.industry-automotive,
-.industry-tag.industry-unknown,
-.industry-tag.industry-other {
-  background-color: #f5f5f5;
-  color: #666;
-  border-color: #e0e0e0;
-}
+/* Removed granular industry tag colors to match StockOverview uniformity */
 
 /* Header Actions */
 .header-actions {
@@ -870,9 +883,9 @@ export default {
 
 /* Widget Container - Match Market Overview Style */
 .widget-container {
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1rem;
   margin-bottom: 2rem;
   overflow: hidden;
@@ -885,13 +898,14 @@ export default {
   align-items: center;
   margin-bottom: 1rem; /* 保持 widget-container 內的 header margin */
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
+  background: transparent; /* Ensure transparent */
 }
 
 .widget-container .widget-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -1178,7 +1192,7 @@ export default {
 /* Tactical Grid for Overview Tab */
 .tactical-grid {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr; /* 1:3 ratio ensures all 4 inner columns are effectively equal (25% each) */
     gap: 1.5rem;
     align-items: start;
 }
@@ -1198,7 +1212,7 @@ export default {
   background: none;
   border: none;
   padding: 4px;
-  color: #adb5bd;
+  color: var(--text-muted);
   cursor: pointer;
   transition: color 0.2s;
   display: flex;
@@ -1206,6 +1220,6 @@ export default {
 }
 
 .header-info-btn:hover {
-  color: #495057;
+  color: var(--text-secondary);
 }
 </style>

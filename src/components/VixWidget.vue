@@ -12,8 +12,14 @@
 </template>
 
 <script>
+import { useTheme } from '@/composables/useTheme.js';
+
 export default {
   name: 'VixWidget',
+  setup() {
+    const { theme } = useTheme()
+    return { theme }
+  },
   data() {
     return {
       loading: true,
@@ -81,24 +87,31 @@ export default {
             script.async = true
             
             // VIX 配置 - 使用 FRED:VIXCLS，參考 Market Daily Insight 的配置
+            const isDark = this.theme === 'dark';
+            const commonColors = {
+                bg: isDark ? '#2C2C2C' : '#ffffff',
+                text: isDark ? '#E6E1DC' : '#0F0F0F',
+                grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
+            }
+
             const vixConfig = {
               "lineWidth": 2,
               "lineType": 2,
               "chartType": "line",
               "showVolume": false,
               "fontColor": "rgb(106, 109, 120)",
-              "gridLineColor": "rgba(46, 46, 46, 0.06)",
+              "gridLineColor": commonColors.grid,
               "volumeUpColor": "rgba(34, 171, 148, 0.5)",
               "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-              "backgroundColor": "#ffffff",
-              "widgetFontColor": "#0F0F0F",
+              "backgroundColor": commonColors.bg,
+              "widgetFontColor": commonColors.text,
               "upColor": "#22ab94",
               "downColor": "#f7525f",
               "borderUpColor": "#22ab94",
               "borderDownColor": "#f7525f",
               "wickUpColor": "#22ab94",
               "wickDownColor": "#f7525f",
-              "colorTheme": "light",
+              "colorTheme": isDark ? "dark" : "light",
               "isTransparent": true,
               "locale": "en",
               "chartOnly": false,
@@ -182,15 +195,15 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100%;
-  background: #f8f9fa;
-  color: #6c757d;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
 }
 
 .loading-spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid #e9ecef;
-  border-top: 3px solid #007bff;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -207,15 +220,15 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100%;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
-  color: #721c24;
+  background: var(--bg-card);
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
 }
 
 .retry-btn {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #dc3545;
+  background: var(--error-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -224,7 +237,7 @@ export default {
 }
 
 .retry-btn:hover {
-  background: #c82333;
+  opacity: 0.9;
 }
 
 :global(.vix-widget-container .tradingview-widget-container) {

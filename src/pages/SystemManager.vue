@@ -236,12 +236,12 @@ export default {
 
 .manager-header h2 {
     font-size: 2rem;
-    color: #2c3e50;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .manager-header p {
-    color: #666;
+    color: var(--text-secondary);
 }
 
 /* Status Cards */
@@ -256,11 +256,12 @@ export default {
 }
 
 .overview-card {
-    background: white;
+    background: var(--bg-card);
     padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border-top: 5px solid #e9ecef; /* Default gray */
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    border-top: 5px solid var(--border-color); 
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -268,7 +269,7 @@ export default {
 
 .card-icon {
     font-size: 2.5rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     width: 60px;
     height: 60px;
     display: flex;
@@ -280,7 +281,7 @@ export default {
 .card-content h3 {
     margin: 0;
     font-size: 1rem;
-    color: #6c757d;
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -289,15 +290,16 @@ export default {
     font-size: 1.8rem;
     font-weight: 800;
     margin: 0.2rem 0;
+    color: var(--text-primary);
 }
 
 .sub-text {
     font-size: 0.9rem;
-    color: #adb5bd;
+    color: var(--text-muted);
 }
 
-.text-dark { color: #343a40; }
-.text-blue { color: #0d6efd; }
+.text-dark { color: var(--text-primary); }
+.text-blue { color: var(--primary-color); }
 
 /* Details */
 .details-grid {
@@ -307,24 +309,27 @@ export default {
 }
 
 .detail-card {
-    background: white;
+    background: var(--bg-card);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
 }
 
 .detail-card h3 {
     margin-top: 0;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .info-row {
     display: flex;
     justify-content: space-between;
     padding: 0.8rem 0;
-    border-bottom: 1px solid #f8f9fa;
+    border-bottom: 1px solid var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .actions {
@@ -338,22 +343,22 @@ export default {
     padding: 0.6rem 1.2rem;
     border: none;
     border-radius: 6px;
-    background: #0d6efd;
+    background: var(--primary-color);
     color: white;
     cursor: pointer;
     font-weight: 600;
     transition: background 0.2s;
 }
 
-.btn:hover { background: #0b5ed7; }
-.btn:disabled { background: #ccc; cursor: not-allowed; }
-.btn.warning { background: #ffc107; color: #000; }
+.btn:hover { background: var(--primary-hover); }
+.btn:disabled { background: var(--border-color); cursor: not-allowed; }
+.btn.warning { background: var(--warning-color); color: #000; }
 
 /* Logs */
 .logs-container {
     max-height: 400px;
     overflow-y: auto;
-    background: #1e1e1e;
+    background: #1e1e1e; /* Logs always dark looks fine, or use bg-secondary? Let's keep logs dark terminal style */
     color: #fff;
     border-radius: 8px;
     padding: 1rem;

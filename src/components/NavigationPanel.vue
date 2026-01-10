@@ -3,15 +3,18 @@
     <div class="panel-header">
       <h3>Quick Navigation</h3>
       <div class="search-container">
+        <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
         <input
           v-model="localSearchQuery"
           type="text"
-          placeholder="Search stocks, sectors, industries..."
+          placeholder="Search..."
           class="search-input"
           aria-label="Search stocks"
           @input="onSearchChange"
         />
-        <span class="search-icon">🔍</span>
       </div>
     </div>
 
@@ -117,22 +120,26 @@ export default {
 <style scoped>
 .navigation-panel {
   position: sticky;
-  top: 80px; /* Account for header height */
-  height: calc(100vh - 100px);
-  width: 350px; /* 從 300px 增加到 350px */
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  top: 84px; /* Exact header height (64px) + 20px gap */
+  height: calc(100vh - 104px) !important; /* Force exact viewport fit */
+  width: 300px;
+  align-self: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  transition: none !important; /* Kill drift jitter */
+  will-change: transform; /* Opt-in for compositor */
 }
 
 .panel-header {
   padding: 1rem;
-  border-bottom: 1px solid #e9ecef;
-  background: #f8f9fa;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
   flex-shrink: 0;
 }
 
@@ -140,42 +147,54 @@ export default {
   margin: 0 0 0.75rem 0;
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .search-container {
+  display: flex;
+  align-items: center;
   position: relative;
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.5rem 2rem 0.5rem 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  background: white;
-  transition: border-color 0.2s;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
 }
 
 .search-icon {
   position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #666;
+  left: 0.75rem;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
   pointer-events: none;
 }
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  background: var(--bg-primary); /* Slightly distinct from card bg */
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 3px var(--shadow-color); /* Soft ring if shadow-color defined, or fallback */
+}
+
+
 
 .panel-content {
   flex: 1;
   overflow-y: auto;
   padding: 0.5rem;
+  background: var(--bg-card);
 }
 
 /* 響應式設計 */
@@ -191,16 +210,16 @@ export default {
 }
 
 .panel-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--bg-secondary);
   border-radius: 3px;
 }
 
 .panel-content::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: var(--border-color);
   border-radius: 3px;
 }
 
 .panel-content::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: var(--text-muted);
 }
 </style>

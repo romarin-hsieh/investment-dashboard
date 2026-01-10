@@ -95,18 +95,27 @@ export default {
 }
 
 .sector-label {
-  font-weight: 600;
-  color: #333;
-  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: transparent;
+  padding: 0.5rem 0.5rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
-  background: transparent;
   border: none;
-  border-radius: 4px;
   text-align: left;
   width: 100%;
-  cursor: default; /* 移除 pointer cursor，因為不再可點擊 */
+  cursor: default;
+  font-size: 0.95rem; /* Slightly larger heading */
+  letter-spacing: 0.02em;
+  margin-top: 1.5rem; /* Use whitespace for separation */
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.sector-node:first-child .sector-label {
+  margin-top: 0.5rem;
 }
 
 /* Industry Styles - Level 1 */
@@ -115,19 +124,24 @@ export default {
 }
 
 .industry-label {
-  font-weight: 500;
-  color: #495057;
-  padding: 0.375rem 0.75rem;
-  padding-left: 2rem; /* 階層縮排 - Level 1 */
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.75rem;
+  padding-left: 0.75rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   background: transparent;
   border: none;
-  border-radius: 3px;
   text-align: left;
   width: 100%;
-  cursor: default; /* 移除 pointer cursor，因為不再可點擊 */
+  cursor: default;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  margin-top: 0.5rem;
 }
 
 /* Symbol Styles - Level 2 */
@@ -136,38 +150,41 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.375rem 0.75rem;
-  padding-left: 3.25rem; /* 階層縮排 - Level 2 */
-  margin-bottom: 0.0625rem;
+  padding: 0.5rem 0.75rem;
+  padding-left: 1.5rem;
+  margin-bottom: 2px;
   background: transparent;
   border: none;
-  border-radius: 3px;
+  border-left: 3px solid transparent;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   text-align: left;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 .symbol-node:hover {
-  background: #e7f3ff;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .symbol-node.is-active {
-  background: #007bff;
-  color: white;
-  font-weight: 500;
+  background: var(--bg-secondary);
+  color: var(--primary-color);
+  font-weight: 600;
+  border-left-color: var(--primary-color);
 }
 
 .symbol-node.is-active .exchange-badge {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--primary-color);
   color: white;
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--primary-color);
 }
 
 /* Text Content Styles */
 .label-text {
   flex: 1;
-  min-width: 0; /* 允許文字收縮 */
+  min-width: 0; 
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -187,17 +204,17 @@ export default {
 .exchange-badge {
   font-size: 0.7rem;
   padding: 0.125rem 0.25rem;
-  background: #e9ecef;
-  color: #495057;
-  border: 1px solid #ced4da;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
   border-radius: 2px;
   font-weight: 400;
-  flex-shrink: 0; /* 防止 badge 被壓縮 */
+  flex-shrink: 0; 
 }
 
 .item-count {
   font-size: 0.75rem;
-  color: #6c757d;
+  color: var(--text-muted);
   font-weight: 400;
   flex-shrink: 0;
 }
@@ -208,7 +225,7 @@ export default {
 
 /* Focus styles for accessibility */
 .symbol-node:focus {
-  outline: 2px solid #007bff;
+  outline: 2px solid var(--primary-color);
   outline-offset: 1px;
 }
 
@@ -222,7 +239,7 @@ export default {
 /* Responsive adjustments */
 @media (max-width: 320px) {
   .industry-label {
-    padding-left: 1.5rem; /* 減少小螢幕的縮排 */
+    padding-left: 1.5rem; 
   }
   
   .symbol-node {

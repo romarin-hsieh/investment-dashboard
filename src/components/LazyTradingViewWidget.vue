@@ -5,22 +5,12 @@
     ref="container"
     :style="{ height: height }"
   >
-    <!-- 載入前的佔位符 -->
-    <div v-if="!isVisible && !loaded" class="widget-overlay widget-placeholder">
-      <div class="placeholder-content">
-        <div class="placeholder-icon">📊</div>
-        <div class="placeholder-text">{{ widgetType }} Widget</div>
-        <div class="placeholder-subtext">Scroll to load</div>
-      </div>
-    </div>
-
-    <!-- 載入中狀態 -->
-    <div v-if="isVisible && !loaded && !error" class="widget-overlay widget-loading">
-      <div class="loading-spinner"></div>
-      <span>Loading {{ widgetType }}...</span>
+    <!-- Loading State with Skeleton -->
+    <div v-if="!loaded && !error" class="widget-overlay skeleton-overlay">
+      <WidgetSkeleton :bordered="false" :show-header="false" type="list" :item-count="3" />
     </div>
     
-    <!-- 錯誤狀態 -->
+    <!-- Error State -->
     <div v-if="error" class="widget-overlay widget-error">
       <span>⚠️ Failed to load</span>
       <button @click="retry" class="retry-btn">Retry</button>
@@ -33,9 +23,15 @@
 
 <script>
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
+import { useTheme } from '@/composables/useTheme.js'
+import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
+import { watch, computed } from 'vue'
 
 export default {
   name: 'LazyTradingViewWidget',
+  components: {
+    WidgetSkeleton
+  },
   props: {
     widgetType: {
       type: String,
@@ -58,6 +54,22 @@ export default {
       default: 1 // 1=高優先級, 2=中優先級, 3=低優先級
     }
   },
+  setup(props) {
+      const { theme } = useTheme()
+      const themeConfig = computed(() => {
+          const isDark = theme.value === 'dark'
+          return {
+              ...props.config,
+              colorTheme: isDark ? 'dark' : 'light',
+              // 如果 config 本身指定了背景色，則視情況覆蓋或保留
+              backgroundColor: isDark ? '#2C2C2C' : '#ffffff',
+              gridLineColor: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
+              fontColor: isDark ? '#B0AAA5' : 'rgb(106, 109, 120)',
+              widgetFontColor: isDark ? '#E6E1DC' : '#0F0F0F'
+          }
+      })
+      return { theme, themeConfig }
+  },
   data() {
     return {
       isVisible: false,
@@ -70,6 +82,13 @@ export default {
   computed: {
     containerId() {
       return `lazy-widget-${this.widgetType}-${Date.now()}`
+    }
+  },
+  watch: {
+    theme() {
+        if (this.isVisible) {
+            this.loadWidget()
+        }
     }
   },
   mounted() {
@@ -172,11 +191,12 @@ export default {
             script.async = true
             
             // 將配置作為 script 的內容
-            const configJson = JSON.stringify(this.config)
+            const finalConfig = this.themeConfig || this.config
+            const configJson = JSON.stringify(finalConfig)
             script.innerHTML = configJson
             
             // 調試信息
-            console.log(`🔧 Creating ${this.widgetType} widget with config:`, this.config)
+            // console.log(`🔧 Creating ${this.widgetType} widget with config:`, finalConfig)
             
             // 設定超時
             const timeouts = {
@@ -235,7 +255,7 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
 }
 
 /* 統一的 Overlay 樣式 */
@@ -250,77 +270,22 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: var(--bg-card);
 }
 
-/* 佔位符樣式 */
-.widget-placeholder {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border: 2px dashed #dee2e6;
-  border-radius: 8px;
-  box-sizing: border-box; /* 確保邊框包含在寬高內 */
-  transition: all 0.3s ease;
-}
-
-.widget-placeholder:hover {
-  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-  border-color: #adb5bd;
-}
-
-.placeholder-content {
-  text-align: center;
-  color: #6c757d;
-}
-
-.placeholder-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.placeholder-text {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.placeholder-subtext {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-/* 載入中樣式 */
-.widget-loading {
-  background: #f8f9fa;
-  border-radius: 8px;
-  color: #6c757d;
-}
-
-.loading-spinner {
-  width: 32px;
-  height: 32px;
-  border: 3px solid #e9ecef;
-  border-top: 3px solid #007bff;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.widget-loading span {
-  font-size: 0.9rem;
-  font-weight: 500;
+.skeleton-overlay {
+  padding: 1rem;
+  box-sizing: border-box;
+  align-items: stretch; /* Let skeleton fill width */
+  justify-content: flex-start; /* Start from top */
 }
 
 /* 錯誤樣式 */
 .widget-error {
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background: var(--bg-card);
+  border: 1px solid var(--error-color);
   border-radius: 8px;
-  color: #721c24;
+  color: var(--error-color);
   box-sizing: border-box;
 }
 
@@ -335,7 +300,7 @@ export default {
 .retry-btn {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #dc3545;
+  background: var(--error-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -346,7 +311,7 @@ export default {
 }
 
 .retry-btn:hover {
-  background: #c82333;
+  opacity: 0.9;
 }
 
 /* TradingView 容器樣式 */
@@ -359,5 +324,13 @@ export default {
 :global(.lazy-widget .tradingview-widget-container__widget) {
   width: 100% !important;
   height: 100% !important;
+}
+</style>
+
+<!-- Global override for iframe border -->
+<style>
+.lazy-widget .tradingview-widget-container iframe {
+  border: none !important;
+  box-shadow: none !important;
 }
 </style>
