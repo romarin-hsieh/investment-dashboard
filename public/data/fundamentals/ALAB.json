@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 6,
+        "buy": 11,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 10,
         "hold": 5,
@@ -126,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.11404,
-    "institutionsPercentHeld": 0.77193,
-    "institutionsFloatPercentHeld": 0.87127995,
+    "institutionsPercentHeld": 0.77228,
+    "institutionsFloatPercentHeld": 0.87169,
     "institutionsCount": 855
   },
   "earnings": {
@@ -1024,8 +1032,8 @@
     "regularMarketDayHigh": 164.5,
     "regularMarketDayLow": 155.64,
     "regularMarketVolume": 4077395,
-    "averageDailyVolume10Day": 4039830,
-    "averageDailyVolume3Month": 5925124,
+    "averageDailyVolume10Day": 4320840,
+    "averageDailyVolume3Month": 5895527,
     "regularMarketPreviousClose": 156.73,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 158.06,
@@ -1060,7 +1068,7 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0728,
     "heldPercentInsiders": 0.11404,
-    "heldPercentInstitutions": 0.77193,
+    "heldPercentInstitutions": 0.77228,
     "shortRatio": 1.82,
     "shortPercentOfFloat": 0.098400004,
     "impliedSharesOutstanding": 168903616,
@@ -1078,8 +1086,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 36.46,
     "enterpriseToEbitda": 236.293,
-    "52WeekChange": 0.23225093,
-    "SandP52WeekChange": 0.18594909,
+    "52WeekChange": 0.278481,
+    "SandP52WeekChange": 0.19362879,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2738,7 +2746,8 @@
     "targetLowPrice": 140,
     "targetMeanPrice": 197.26315,
     "targetMedianPrice": 200,
-    "recommendationKey": "none",
+    "recommendationMean": 1.72727,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 19,
     "totalCash": 1134428032,
     "totalCashPerShare": 6.716,
@@ -2761,6 +2770,6 @@
     "profitMargins": 0.27504,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-10T06:26:09.121Z",
+  "lastUpdated": "2026-01-10T12:33:11.070Z",
   "source": "Static Build (yahoo-finance2)"
 }
