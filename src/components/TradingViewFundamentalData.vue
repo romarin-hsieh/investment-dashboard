@@ -73,6 +73,9 @@ export default {
     },
     exchange() {
         if (this.isMounted) this.loadFundamentalData()
+    },
+    colorTheme() {
+        if (this.isMounted) this.loadFundamentalData()
     }
   },
   methods: {
@@ -115,7 +118,7 @@ export default {
           // 創建配置
           const config = {
             "symbol": this.fullSymbol,
-            "colorTheme": "light",
+            "colorTheme": this.colorTheme,
             "displayMode": "regular",
             "isTransparent": true,
             "locale": "zh_TW",

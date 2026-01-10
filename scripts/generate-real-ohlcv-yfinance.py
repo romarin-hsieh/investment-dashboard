@@ -227,7 +227,7 @@ def df_to_payload(symbol: str, df: pd.DataFrame, interval: str, days: int) -> Di
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--days", type=int, default=90)
+    parser.add_argument("--days", type=int, default=1825)
     parser.add_argument("--interval", type=str, default="1d", choices=["1d", "1h", "1wk", "1mo"])
     parser.add_argument("--output-dir", type=str, default="public/data/ohlcv")
     parser.add_argument("--min-rows", type=int, default=24)

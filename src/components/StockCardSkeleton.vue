@@ -11,21 +11,17 @@
     
     <!-- Stock Card Content -->
     <div class="skeleton-content">
-      <div class="skeleton-info-section">
-        <div class="skeleton-company-name"></div>
-        <div class="skeleton-market-info">
-          <div class="skeleton-market-cap"></div>
-          <div class="skeleton-exchange"></div>
+      <!-- Widgets Container Skeleton -->
+      <div class="skeleton-widgets-container">
+        <!-- Overview Widget Skeleton -->
+        <div class="skeleton-widget overview">
+           <div class="skeleton-widget-header"></div>
+           <div class="skeleton-chart"></div>
         </div>
-        <div class="skeleton-description"></div>
-        <div class="skeleton-description short"></div>
-      </div>
-      
-      <div class="skeleton-chart-section">
-        <div class="skeleton-chart"></div>
-        <div class="skeleton-chart-info">
-          <div class="skeleton-chart-label"></div>
-          <div class="skeleton-chart-value"></div>
+        <!-- Technical Widget Skeleton -->
+        <div class="skeleton-widget technical">
+           <div class="skeleton-widget-header"></div>
+           <div class="skeleton-chart"></div>
         </div>
       </div>
     </div>
@@ -63,15 +59,15 @@ export default {
 
 /* 通用骨架樣式 */
 .skeleton-base {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;
 }
 
 .stock-card-skeleton {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 1rem;
@@ -114,80 +110,78 @@ export default {
 
 /* Content 骨架 */
 .skeleton-content {
-  display: flex;
-  gap: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.skeleton-info-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.skeleton-company-name {
-  @extend .skeleton-base;
-  width: 200px;
-  height: 20px;
-}
-
-.skeleton-market-info {
-  display: flex;
-  gap: 1rem;
-}
-
-.skeleton-market-cap {
-  @extend .skeleton-base;
-  width: 120px;
-  height: 16px;
-}
-
-.skeleton-exchange {
-  @extend .skeleton-base;
-  width: 60px;
-  height: 16px;
-}
-
-.skeleton-description {
-  @extend .skeleton-base;
-  height: 16px;
+.skeleton-widgets-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
   width: 100%;
 }
 
-.skeleton-description.short {
-  width: 75%;
-}
-
-.skeleton-chart-section {
-  width: 300px;
+.skeleton-widget {
+  background: var(--bg-primary); /* Slightly different from card base */
+  border-radius: 8px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+}
+
+.skeleton-widget.overview {
+  height: 440px;
+}
+
+.skeleton-widget.technical {
+  height: 440px;
+}
+
+.skeleton-widget-header {
+  @extend .skeleton-base;
+  width: 120px;
+  height: 20px;
 }
 
 .skeleton-chart {
   @extend .skeleton-base;
+  flex: 1;
   width: 100%;
-  height: 120px;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
-.skeleton-chart-info {
-  display: flex;
-  justify-content: space-between;
+/* 響應式設計 */
+@media (max-width: 1200px) {
+  .skeleton-widgets-container {
+    grid-template-columns: 1fr;
+  }
 }
 
-.skeleton-chart-label {
-  @extend .skeleton-base;
-  width: 80px;
-  height: 14px;
+@media (max-width: 768px) {
+  .skeleton-widget.overview,
+  .skeleton-widget.technical {
+    height: 380px;
+  }
 }
 
-.skeleton-chart-value {
-  @extend .skeleton-base;
-  width: 60px;
-  height: 14px;
+@media (max-width: 480px) {
+  .stock-card-skeleton {
+    padding: 1rem;
+  }
+  
+  .skeleton-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .skeleton-price-group {
+    align-items: flex-start;
+  }
+
+  .skeleton-widget.overview,
+  .skeleton-widget.technical {
+    height: 330px;
+  }
 }
 
 /* Footer 骨架 */
@@ -249,7 +243,7 @@ export default {
 .skeleton-tag,
 .skeleton-confidence,
 .skeleton-source {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;

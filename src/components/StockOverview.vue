@@ -52,7 +52,7 @@
           <!-- Loading Skeletons for Sectors -->
           <div v-if="loading" class="sector-skeletons">
              <div v-for="i in 3" :key="`skeleton-sector-${i}`" class="sector-group skeleton-group">
-                <WidgetSkeleton :show-header="true" :show-subtitle="false" type="list" :item-count="2" />
+                <StockCardSkeleton v-for="j in 2" :key="`skeleton-card-${i}-${j}`" />
              </div>
           </div>
 
@@ -94,6 +94,7 @@ import StockCard from './StockCard.vue'
 import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
 import NavigationPanel from './NavigationPanel.vue'
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
+import StockCardSkeleton from './StockCardSkeleton.vue'
 import { navigationService } from '@/services/NavigationService.js'
 import { scrollSpyService } from '@/services/ScrollSpyService.js'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
@@ -106,7 +107,8 @@ export default {
     StockCard,
     LazyTradingViewWidget,
     NavigationPanel,
-    WidgetSkeleton
+    WidgetSkeleton,
+    StockCardSkeleton
   },
   setup() {
     const { theme } = useTheme()

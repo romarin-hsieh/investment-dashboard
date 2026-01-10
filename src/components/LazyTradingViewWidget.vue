@@ -7,7 +7,9 @@
   >
     <!-- Loading State with Skeleton -->
     <div v-if="!loaded && !error" class="widget-overlay skeleton-overlay">
-      <WidgetSkeleton :bordered="false" :show-header="false" type="list" :item-count="3" />
+    <div v-if="!loaded && !error" class="widget-overlay skeleton-overlay">
+      <WidgetSkeleton :bordered="false" :show-header="false" :type="skeletonType" />
+    </div>
     </div>
     
     <!-- Error State -->
@@ -52,6 +54,10 @@ export default {
     priority: {
       type: Number,
       default: 1 // 1=高優先級, 2=中優先級, 3=低優先級
+    },
+    skeletonType: {
+      type: String,
+      default: 'chart' // Most TV widgets are charts/visuals
     }
   },
   setup(props) {

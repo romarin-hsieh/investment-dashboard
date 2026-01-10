@@ -484,14 +484,14 @@ export default {
   align-items: center;
   justify-content: center;
   height: 400px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #007bff;
+  border: 3px solid var(--bg-secondary);
+  border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -509,7 +509,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 400px;
-  color: #666;
+  color: var(--text-secondary);
   padding: 2rem;
   text-align: center;
 }
@@ -521,7 +521,7 @@ export default {
 
 .error-message {
   margin-bottom: 1rem;
-  color: #d32f2f;
+  color: var(--error-color);
   max-width: 400px;
 }
 
@@ -558,7 +558,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 400px;
-  color: #666;
+  color: var(--text-secondary);
   text-align: center;
 }
 

@@ -123,7 +123,7 @@ class YahooFinanceAPI {
         let proxyIndex = -1;
 
         // 構建請求 URL
-        const targetUrl = `${this.baseUrl}${symbol}?interval=1d&range=6mo&indicators=quote&includePrePost=false`;
+        const targetUrl = `${this.baseUrl}${symbol}?interval=1d&range=5y&indicators=quote&includePrePost=false`;
         let url = '';
         const headers = {};
 
@@ -213,7 +213,7 @@ class YahooFinanceAPI {
         // Fetch Benchmark Data (S&P 500) for Beta Calculation
         let benchmarkClose = null;
         try {
-          const benchmarkData = await this.getBenchmarkHistory('6mo'); // Matches approx range
+          const benchmarkData = await this.getBenchmarkHistory('5y'); // Matches approx range
           if (benchmarkData && benchmarkData.close) {
             benchmarkClose = benchmarkData.close;
             // Align Benchmark: Simple slicing if needed, but calculateAllIndicators handles length check

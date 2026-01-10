@@ -40,7 +40,7 @@
         <div class="overview-card">
             <div class="card-icon">📈</div>
             <div class="card-content">
-                <h3>Universe Coverage</h3>
+                <h3>Symbol Coverage</h3>
                 <div class="status-val text-blue">
                     {{ pipelineStatus.symbolsCount || universeInfo.total }}
                 </div>
@@ -63,10 +63,10 @@
                     <span>Generated Files:</span> 
                     <strong>{{ pipelineStatus.totalFiles }}</strong>
                 </div>
-                <div class="info-row">
-                    <span>Universe Total:</span> 
-                    <strong>{{ universeInfo.total }}</strong>
-                </div>
+                <div class="stat-item">
+              <span class="stat-label">Symbol Total:</span>
+              <span class="stat-value">{{ universeInfo.total }}</span>
+            </div>
                 <hr>
                 <div class="actions">
                     <button class="btn" @click="refreshStatus" :disabled="loading">

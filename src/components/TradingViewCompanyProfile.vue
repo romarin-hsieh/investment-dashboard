@@ -65,6 +65,9 @@ export default {
     },
     exchange() {
       if (this.isMounted) this.loadCompanyProfile()
+    },
+    colorTheme() {
+      if (this.isMounted) this.loadCompanyProfile()
     }
   },
   methods: {

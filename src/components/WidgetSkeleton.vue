@@ -96,7 +96,7 @@ export default {
 .skeleton-label,
 .skeleton-value,
 .skeleton-line {
-  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-color) 50%, var(--bg-secondary) 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;
@@ -174,7 +174,7 @@ export default {
   width: 100%;
   height: 100%;
   min-height: 200px;
-  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-color) 50%, var(--bg-secondary) 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;

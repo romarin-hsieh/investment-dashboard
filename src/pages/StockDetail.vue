@@ -214,7 +214,11 @@
               <div class="widget-header">
                 <h3>Financials Overview</h3>
               </div>
-              <TradingViewFundamentalData :symbol="symbol" :exchange="exchange" />
+              <TradingViewFundamentalData 
+                :symbol="symbol" 
+                :exchange="exchange" 
+                :color-theme="theme"
+              />
             </div>
 
             <!-- Row 3: Company Profile (Full Width) -->
@@ -225,7 +229,7 @@
               <TradingViewCompanyProfile 
                 :symbol="symbol" 
                 :exchange="exchange" 
-                color-theme="light"
+                :color-theme="theme"
                 :is-transparent="true"
               />
             </div>

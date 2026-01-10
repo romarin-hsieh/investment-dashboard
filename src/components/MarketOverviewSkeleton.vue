@@ -115,7 +115,7 @@ export default {
 
 /* 通用骨架樣式 */
 .skeleton-base {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;
@@ -123,8 +123,8 @@ export default {
 
 /* Widget 容器骨架 */
 .skeleton-widget-container {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -314,7 +314,7 @@ export default {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  background: #f8f9fa;
+  background: var(--bg-primary);
   border-radius: 8px;
 }
 
@@ -344,7 +344,7 @@ export default {
 .skeleton-heatmap-cell,
 .skeleton-performance-label,
 .skeleton-performance-value {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;

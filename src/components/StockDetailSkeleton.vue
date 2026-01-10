@@ -143,8 +143,7 @@ export default {
 }
 </script>
 
-<style scoped>
-<style scoped>
+<style scoped lang="scss">
 /* 基礎骨架動畫 */
 @keyframes shimmer {
   0% {
@@ -156,7 +155,7 @@ export default {
 }
 
 .stock-detail-skeleton {
-  background: #f8f9fa;
+  background: var(--bg-primary);
   padding: 1rem;
   min-height: 100vh;
   overflow-x: hidden;
@@ -165,7 +164,7 @@ export default {
 
 /* 通用骨架樣式 */
 .skeleton-base {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;
@@ -186,7 +185,7 @@ export default {
 }
 
 .skeleton-breadcrumb-separator {
-  color: #6c757d;
+  color: var(--text-muted);
   margin: 0 0.25rem;
 }
 
@@ -198,8 +197,8 @@ export default {
 
 /* Stock Header 骨架 */
 .skeleton-stock-header {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
@@ -210,7 +209,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1.5rem;
 }
 
@@ -261,8 +260,8 @@ export default {
 
 .skeleton-widget-overview,
 .skeleton-widget-technical {
-  background: #fafafa;
-  border: 1px solid #e9ecef;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
   display: flex;
@@ -270,9 +269,9 @@ export default {
 }
 
 .skeleton-widget-header {
-  background: #f8f9fa;
+  background: var(--bg-card);
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid var(--border-color);
   flex-shrink: 0;
 }
 
@@ -300,8 +299,8 @@ export default {
 }
 
 .skeleton-insight-widget {
-  background: #fafafa;
-  border: 1px solid #e9ecef;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
   display: flex;
@@ -319,8 +318,8 @@ export default {
 
 /* Widget 容器骨架 */
 .skeleton-widget-container {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1.5rem;
@@ -341,7 +340,7 @@ export default {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  background: #f8f9fa;
+  background: var(--skeleton-bg);
   border-radius: 8px;
 }
 
@@ -377,7 +376,7 @@ export default {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  background: #f8f9fa;
+  background: var(--skeleton-bg);
   border-radius: 8px;
 }
 
@@ -403,8 +402,8 @@ export default {
 .skeleton-news-row,
 .skeleton-fundamental-row,
 .skeleton-profile-row {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   overflow: hidden;
@@ -423,7 +422,7 @@ export default {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .skeleton-news-title {
@@ -460,7 +459,7 @@ export default {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  background: #f8f9fa;
+  background: var(--skeleton-bg);
   border-radius: 8px;
 }
 
@@ -492,7 +491,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem;
-  background: #f8f9fa;
+  background: var(--skeleton-bg);
   border-radius: 8px;
 }
 
@@ -530,7 +529,7 @@ export default {
 .skeleton-fundamental-value,
 .skeleton-profile-label,
 .skeleton-profile-value {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;

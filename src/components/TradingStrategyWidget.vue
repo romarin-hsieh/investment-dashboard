@@ -244,17 +244,17 @@ export default {
   justify-content: center;
   height: 100%;
   min-height: 850px;
-  background: #f8f9fa;
+  background: var(--bg-card);
   border-radius: 8px;
-  color: #6c757d;
+  color: var(--text-secondary);
   margin: -8px;
 }
 
 .loading-spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid #e9ecef;
-  border-top: 3px solid #007bff;
+  border: 3px solid var(--bg-secondary);
+  border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;

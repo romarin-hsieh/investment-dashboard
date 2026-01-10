@@ -50,7 +50,7 @@ jobs:
     - name: Generate REAL OHLCV data (yfinance, 2 formats + index.json)
       run: |
         echo "🔄 Generating REAL OHLCV data for all universe symbols (yfinance)..."
-        python scripts/generate-real-ohlcv-yfinance.py --days 90 --interval 1d --min-rows 24
+        python scripts/generate-real-ohlcv-yfinance.py --days 1825 --interval 1d --min-rows 24
 
     # ✅ 防呆：確保 index.json 含 symbols（避免 precomputedOhlcvApi.getAvailableSymbols() 爆掉）
     - name: Validate OHLCV index schema (must include symbols)
