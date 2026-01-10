@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1432,
         "position": 24172022,
-        "value": 2598748521,
+        "value": 2748358827,
         "pctChange": -0.0694
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.09819999,
         "position": 16581527,
-        "value": 1782689870,
+        "value": 1885319569,
         "pctChange": -0.0777
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0505,
         "position": 8534274,
-        "value": 917524894,
+        "value": 970346927,
         "pctChange": -0.0858
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0255,
         "position": 4297608,
-        "value": 462038402,
+        "value": 488638016,
         "pctChange": 0.0881
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Franklin Resources, Inc.",
         "pctHeld": 0.0254,
         "position": 4287426,
-        "value": 460943729,
+        "value": 487480323,
         "pctChange": -0.1571
       },
       {
@@ -90,7 +90,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.021300001,
         "position": 3604328,
-        "value": 387503455,
+        "value": 409812082,
         "pctChange": -0.20040001
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0189,
         "position": 3186488,
-        "value": 342581227,
+        "value": 362303675,
         "pctChange": 0.338
       },
       {
@@ -108,7 +108,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0182,
         "position": 3068863,
-        "value": 329935293,
+        "value": 348929713,
         "pctChange": 0.29479998
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.018,
         "position": 3046194,
-        "value": 327498136,
+        "value": 346352248,
         "pctChange": 0.073699996
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0171,
         "position": 2888869,
-        "value": 310584031,
+        "value": 328464396,
         "pctChange": -0.024600001
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01775,
-    "institutionsPercentHeld": 0.9413,
-    "institutionsFloatPercentHeld": 0.95831,
-    "institutionsCount": 812
+    "institutionsPercentHeld": 0.94198,
+    "institutionsFloatPercentHeld": 0.959,
+    "institutionsCount": 813
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-09T15:19:51.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 128,
+        "priorPriceTarget": 105
+      },
       {
         "epochGradeDate": "2026-01-05T16:40:16.000Z",
         "firm": "Jones Trading",
@@ -1389,23 +1399,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.033358287,
-    "regularMarketChange": 3.4705963,
-    "regularMarketTime": "2026-01-09T14:32:42.000Z",
+    "postMarketChangePercent": 0.004837318,
+    "postMarketChange": 0.55000305,
+    "postMarketTime": "2026-01-10T00:59:53.000Z",
+    "postMarketPrice": 114.25,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.092848904,
+    "regularMarketChange": 9.66,
+    "regularMarketTime": "2026-01-09T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 107.5106,
-    "regularMarketDayHigh": 108,
+    "regularMarketPrice": 113.7,
+    "regularMarketDayHigh": 115.4499,
     "regularMarketDayLow": 104.66,
-    "regularMarketVolume": 406303,
-    "averageDailyVolume10Day": 3052250,
-    "averageDailyVolume3Month": 3033845,
+    "regularMarketVolume": 6039246,
+    "averageDailyVolume10Day": 3539710,
+    "averageDailyVolume3Month": 3013182,
     "regularMarketPreviousClose": 104.04,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 105.48,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "KTOS",
     "underlyingSymbol": null,
@@ -1417,13 +1432,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 18152165376
+    "marketCap": 19197188096
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 17134586880,
-    "forwardPE": 142.02005,
+    "enterpriseValue": 18765588480,
+    "forwardPE": 150.19617,
     "profitMargins": 0.015570001,
     "floatShares": 166242250,
     "sharesOutstanding": 168840708,
@@ -1433,14 +1448,14 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0531,
     "heldPercentInsiders": 0.01775,
-    "heldPercentInstitutions": 0.9413,
+    "heldPercentInstitutions": 0.94198,
     "shortRatio": 4.26,
     "shortPercentOfFloat": 0.0543,
     "beta": 1.093,
     "impliedSharesOutstanding": 168840708,
     "category": null,
     "bookValue": 11.736,
-    "priceToBook": 9.160753,
+    "priceToBook": 9.688139,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-29T00:00:00.000Z",
@@ -1448,14 +1463,14 @@
     "mostRecentQuarter": "2025-09-28T00:00:00.000Z",
     "earningsQuarterlyGrowth": 1.719,
     "netIncomeToCommon": 20000000,
-    "trailingEps": 0.12,
+    "trailingEps": 0.13,
     "forwardEps": 0.75701,
     "lastSplitFactor": "1:10",
     "lastSplitDate": 1252627200,
-    "enterpriseToRevenue": 13.336,
-    "enterpriseToEbitda": 249.412,
-    "52WeekChange": 2.54239,
-    "SandP52WeekChange": 0.18781745,
+    "enterpriseToRevenue": 14.606,
+    "enterpriseToEbitda": 273.153,
+    "52WeekChange": 2.6808028,
+    "SandP52WeekChange": 0.19362879,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1498,6 +1513,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 15500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MENDOZA MARIE C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CERVANTES DE BURGREEN MARIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 50000,
         "filerUrl": "",
         "transactionText": "",
@@ -1520,14 +1557,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
+        "shares": 150000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "ADELMAN JONAH",
-        "filerRelation": "Officer",
+        "filerName": "DEMARCO ERIC M",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1554,14 +1591,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 150000,
+        "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DEMARCO ERIC M",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "ADELMAN JONAH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1580,28 +1617,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CARTER DAVID M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15500,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MENDOZA MARIE C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12500,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CERVANTES DE BURGREEN MARIA",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
@@ -1656,6 +1671,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1567,
+        "value": 119515,
+        "filerUrl": "",
+        "transactionText": "Sale at price 76.27 per share.",
+        "filerName": "MENDOZA MARIE C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 15401,
         "value": 1147482,
         "filerUrl": "",
@@ -1674,18 +1701,6 @@
         "transactionText": "Sale at price 75.77 - 76.24 per share.",
         "filerName": "CARRAI PHILLIP D",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1567,
-        "value": 119515,
-        "filerUrl": "",
-        "transactionText": "Sale at price 76.27 per share.",
-        "filerName": "MENDOZA MARIE C",
-        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
@@ -1715,18 +1730,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 55000,
-        "value": 4022971,
-        "filerUrl": "",
-        "transactionText": "Sale at price 71.45 - 76.30 per share.",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 400000,
         "value": 29221212,
         "filerUrl": "",
@@ -1736,6 +1739,18 @@
         "moneyText": "",
         "startDate": "2025-12-02T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 55000,
+        "value": 4022971,
+        "filerUrl": "",
+        "transactionText": "Sale at price 71.45 - 76.30 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1799,6 +1814,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1408,
+        "value": 101503,
+        "filerUrl": "",
+        "transactionText": "Sale at price 72.09 per share.",
+        "filerName": "MENDOZA MARIE C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-11-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 41113,
         "value": 0,
         "filerUrl": "",
@@ -1817,18 +1844,6 @@
         "transactionText": "Sale at price 72.04 - 72.61 per share.",
         "filerName": "CARRAI PHILLIP D",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1408,
-        "value": 101503,
-        "filerUrl": "",
-        "transactionText": "Sale at price 72.09 per share.",
-        "filerName": "MENDOZA MARIE C",
-        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-11-17T00:00:00.000Z",
         "ownership": "D"
@@ -1871,24 +1886,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 6000,
-        "value": 581389,
-        "filerUrl": "",
-        "transactionText": "Sale at price 95.71 - 98.27 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1440,
         "value": 139824,
         "filerUrl": "",
         "transactionText": "Sale at price 97.10 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6000,
+        "value": 581389,
+        "filerUrl": "",
+        "transactionText": "Sale at price 95.71 - 98.27 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
         "ownership": "D"
@@ -1943,18 +1958,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 6000,
-        "value": 412919,
-        "filerUrl": "",
-        "transactionText": "Sale at price 68.43 - 69.32 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1408,
         "value": 97786,
         "filerUrl": "",
@@ -1972,6 +1975,18 @@
         "filerUrl": "",
         "transactionText": "Sale at price 68.66 - 71.24 per share.",
         "filerName": "CERVANTES DE BURGREEN MARIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6000,
+        "value": 412919,
+        "filerUrl": "",
+        "transactionText": "Sale at price 68.43 - 69.32 per share.",
+        "filerName": "CARRAI PHILLIP D",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
@@ -2051,24 +2066,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 6000,
-        "value": 406691,
-        "filerUrl": "",
-        "transactionText": "Sale at price 66.56 - 68.98 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2000,
         "value": 136708,
         "filerUrl": "",
         "transactionText": "Sale at price 67.63 - 69.38 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6000,
+        "value": 406691,
+        "filerUrl": "",
+        "transactionText": "Sale at price 66.56 - 68.98 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-15T00:00:00.000Z",
         "ownership": "D"
@@ -2099,24 +2114,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 6000,
-        "value": 308504,
-        "filerUrl": "",
-        "transactionText": "Sale at price 51.29 - 52.00 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-07-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2000,
         "value": 101942,
         "filerUrl": "",
         "transactionText": "Sale at price 50.93 - 51.78 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-07-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6000,
+        "value": 308504,
+        "filerUrl": "",
+        "transactionText": "Sale at price 51.29 - 52.00 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-15T00:00:00.000Z",
         "ownership": "D"
@@ -2147,24 +2162,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 6000,
-        "value": 252968,
-        "filerUrl": "",
-        "transactionText": "Sale at price 42.16 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2419,
         "value": 101282,
         "filerUrl": "",
         "transactionText": "Sale at price 41.73 - 42.21 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6000,
+        "value": 252968,
+        "filerUrl": "",
+        "transactionText": "Sale at price 42.16 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D"
@@ -2467,6 +2482,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2031,
+        "value": 63699,
+        "filerUrl": "",
+        "transactionText": "Sale at price 31.36 per share.",
+        "filerName": "MENDOZA MARIE C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 6000,
         "value": 188298,
         "filerUrl": "",
@@ -2479,14 +2506,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 2031,
-        "value": 63699,
+        "shares": 21667,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 31.36 per share.",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
         "moneyText": "",
-        "startDate": "2025-03-17T00:00:00.000Z",
+        "startDate": "2025-03-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16667,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CERVANTES DE BURGREEN MARIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2527,15 +2566,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 20000,
+        "shares": 200000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ADELMAN JONAH",
-        "filerRelation": "Officer",
+        "filerName": "DEMARCO ERIC M",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-03-13T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2551,15 +2590,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 200000,
+        "shares": 20000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DEMARCO ERIC M",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "ADELMAN JONAH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-13T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2580,30 +2619,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "CARTER DAVID M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 21667,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MENDOZA MARIE C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-03-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16667,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CERVANTES DE BURGREEN MARIA",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-13T00:00:00.000Z",
@@ -2659,18 +2674,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 6000,
-        "value": 158986,
-        "filerUrl": "",
-        "transactionText": "Sale at price 26.50 per share.",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9500,
         "value": 250322,
         "filerUrl": "",
@@ -2680,6 +2683,18 @@
         "moneyText": "",
         "startDate": "2025-03-03T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6000,
+        "value": 158986,
+        "filerUrl": "",
+        "transactionText": "Sale at price 26.50 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-03-03T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2826,6 +2841,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 15000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MENDOZA MARIE C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-01-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CERVANTES DE BURGREEN MARIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 50000,
         "filerUrl": "",
         "transactionText": "",
@@ -2859,14 +2896,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
+        "shares": 120000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "ADELMAN JONAH",
-        "filerRelation": "Officer",
+        "filerName": "DEMARCO ERIC M",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2881,14 +2918,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
+        "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DEMARCO ERIC M",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "ADELMAN JONAH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2917,44 +2954,10 @@
         "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MENDOZA MARIE C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12500,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CERVANTES DE BURGREEN MARIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "MILLS THOMAS E IV",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 6000,
-        "value": 158875,
-        "filerUrl": "",
-        "transactionText": "Sale at price 26.48 per share.",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2968,6 +2971,18 @@
         "moneyText": "",
         "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6000,
+        "value": 158875,
+        "filerUrl": "",
+        "transactionText": "Sale at price 26.48 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-01-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2995,24 +3010,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 3500,
-        "value": 97818,
-        "filerUrl": "",
-        "transactionText": "Sale at price 27.95 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1500,
         "value": 41942,
         "filerUrl": "",
         "transactionText": "Sale at price 27.96 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3500,
+        "value": 97818,
+        "filerUrl": "",
+        "transactionText": "Sale at price 27.95 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -3090,24 +3105,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 3500,
-        "value": 87502,
-        "filerUrl": "",
-        "transactionText": "Sale at price 25.00 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-11-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 884,
         "value": 22569,
         "filerUrl": "",
         "transactionText": "Sale at price 25.53 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-11-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3500,
+        "value": 87502,
+        "filerUrl": "",
+        "transactionText": "Sale at price 25.00 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-11-15T00:00:00.000Z",
         "ownership": "D"
@@ -3174,24 +3189,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 3500,
-        "value": 87237,
-        "filerUrl": "",
-        "transactionText": "Sale at price 24.92 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1355,
         "value": 33817,
         "filerUrl": "",
         "transactionText": "Sale at price 24.96 per share.",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3500,
+        "value": 87237,
+        "filerUrl": "",
+        "transactionText": "Sale at price 24.92 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-15T00:00:00.000Z",
         "ownership": "D"
@@ -3221,6 +3236,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2423,
+        "value": 60575,
+        "filerUrl": "",
+        "transactionText": "Sale at price 25.00 per share.",
+        "filerName": "MENDOZA MARIE C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 4000,
         "value": 94695,
         "filerUrl": "",
@@ -3242,28 +3269,16 @@
         "moneyText": "",
         "startDate": "2024-10-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
-        "value": 94711,
-        "filerUrl": "",
-        "transactionText": "Sale at price 23.68 per share.",
-        "filerName": "CARTER DAVID M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-01T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 107.5106,
+    "currentPrice": 113.7,
     "targetHighPrice": 150,
     "targetLowPrice": 83,
-    "targetMeanPrice": 103.83333,
+    "targetMeanPrice": 105.66667,
     "targetMedianPrice": 100,
     "recommendationMean": 1.5,
     "recommendationKey": "strong_buy",
@@ -3290,6 +3305,6 @@
     "profitMargins": 0.015570001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-09T14:32:43.279Z",
+  "lastUpdated": "2026-01-10T18:23:46.587Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 4,
+        "buy": 8,
+        "hold": 6,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
         "strongBuy": 3,
         "buy": 7,
         "hold": 7,
@@ -18,7 +26,7 @@
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 6,
         "hold": 7,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.074200004,
         "position": 11593468,
-        "value": 1293599180,
+        "value": 1220908086,
         "pctChange": 0.3339
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0551,
         "position": 8615597,
-        "value": 961328329,
+        "value": 907308499,
         "pctChange": 0.1774
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.045500003,
         "position": 7102234,
-        "value": 792467282,
+        "value": 747936245,
         "pctChange": 0.71830004
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.0222,
         "position": 3474993,
-        "value": 387739725,
+        "value": 365951504,
         "pctChange": 0.6102
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0168,
         "position": 2630742,
-        "value": 293538197,
+        "value": 277043433,
         "pctChange": 0.17
       },
       {
@@ -82,7 +90,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0162,
         "position": 2523487,
-        "value": 281570684,
+        "value": 265748409,
         "pctChange": 0.77059996
       },
       {
@@ -91,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.015800001,
         "position": 2476036,
-        "value": 276276101,
+        "value": 260751345,
         "pctChange": 0.1578
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0147,
         "position": 2295349,
-        "value": 256115045,
+        "value": 241723197,
         "pctChange": 0.77599996
       },
       {
@@ -109,7 +117,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.013200001,
         "position": 2063448,
-        "value": 230239531,
+        "value": 217301703,
         "pctChange": 4.0352
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.0068,
         "position": 1070065,
-        "value": 119397854,
+        "value": 112688542,
         "pctChange": 0.3858
       }
     ]
@@ -126,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.19618,
-    "institutionsPercentHeld": 0.44298,
-    "institutionsFloatPercentHeld": 0.5511,
+    "institutionsPercentHeld": 0.44362998,
+    "institutionsFloatPercentHeld": 0.55191004,
     "institutionsCount": 791
   },
   "earnings": {
@@ -609,23 +617,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.14312059,
-    "regularMarketChange": 13.970001,
-    "regularMarketTime": "2026-01-09T14:33:03.000Z",
+    "postMarketChangePercent": 0.010350432,
+    "postMarketChange": 1.090004,
+    "postMarketTime": "2026-01-10T00:59:56.000Z",
+    "postMarketPrice": 106.4,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.0789959,
+    "regularMarketChange": 7.71,
+    "regularMarketTime": "2026-01-09T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 111.58,
+    "regularMarketPrice": 105.31,
     "regularMarketDayHigh": 115.67,
-    "regularMarketDayLow": 111,
-    "regularMarketVolume": 6173390,
-    "averageDailyVolume10Day": 10921000,
-    "averageDailyVolume3Month": 14725979,
-    "regularMarketPreviousClose": 97.61,
+    "regularMarketDayLow": 104.03,
+    "regularMarketVolume": 33788891,
+    "averageDailyVolume10Day": 13789070,
+    "averageDailyVolume3Month": 14637233,
+    "regularMarketPreviousClose": 97.6,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 96.71,
+    "regularMarketOpen": 114.35,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "OKLO",
     "underlyingSymbol": null,
@@ -637,15 +650,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 17434048512
+    "marketCap": 16454378496
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 14329775104,
-    "forwardPE": -178.42236,
+    "enterpriseValue": 15534440448,
+    "forwardPE": -168.3963,
     "profitMargins": 0,
-    "floatShares": 127158557,
+    "floatShares": 127358553,
     "sharesOutstanding": 156247075,
     "sharesShort": 20667407,
     "sharesShortPriorMonth": "1970-08-04T11:08:52.000Z",
@@ -653,14 +666,14 @@
     "dateShortInterest": "2025-12-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.13229999,
     "heldPercentInsiders": 0.19618,
-    "heldPercentInstitutions": 0.44298,
+    "heldPercentInstitutions": 0.44362998,
     "shortRatio": 1.64,
     "shortPercentOfFloat": 0.1328,
     "beta": 0.773,
     "impliedSharesOutstanding": 156247075,
     "category": null,
     "bookValue": 7.719,
-    "priceToBook": 14.455241,
+    "priceToBook": 13.642959,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -670,9 +683,9 @@
     "trailingEps": -0.56,
     "forwardEps": -0.62537,
     "lastSplitFactor": null,
-    "enterpriseToEbitda": -147.555,
-    "52WeekChange": 2.866878,
-    "SandP52WeekChange": 0.18781745,
+    "enterpriseToEbitda": -159.959,
+    "52WeekChange": 3.6027098,
+    "SandP52WeekChange": 0.19362879,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -866,6 +879,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 50000,
+        "value": 6687912,
+        "filerUrl": "",
+        "transactionText": "Sale at price 133.40 - 135.20 per share.",
+        "filerName": "KLEIN MICHAEL STUART",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-09-22T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 25000,
         "value": 3046112,
         "filerUrl": "",
@@ -884,18 +909,6 @@
         "transactionText": "Stock Gift at price 121.84 per share.",
         "filerName": "COCHRAN CAROLINE",
         "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-09-22T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "value": 6687912,
-        "filerUrl": "",
-        "transactionText": "Sale at price 133.40 - 135.20 per share.",
-        "filerName": "KLEIN MICHAEL STUART",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-09-22T00:00:00.000Z",
         "ownership": "I"
@@ -1210,28 +1223,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3775528,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DEWITTE JACOB",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-11-19T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3775528,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "COCHRAN CAROLINE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-11-19T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 581100,
         "filerUrl": "",
         "transactionText": "",
@@ -1243,26 +1234,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 22102052,
-        "value": 0,
+        "shares": 3775528,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "DEWITTE JACOB",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-05-09T00:00:00.000Z",
+        "startDate": "2024-11-19T00:00:00.000Z",
         "ownership": "D/I"
       },
       {
         "maxAge": 1,
-        "shares": 22102052,
-        "value": 0,
+        "shares": 3775528,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "COCHRAN CAROLINE",
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
-        "startDate": "2024-05-09T00:00:00.000Z",
+        "startDate": "2024-11-19T00:00:00.000Z",
         "ownership": "D/I"
       },
       {
@@ -1298,18 +1287,43 @@
         "moneyText": "",
         "startDate": "2024-05-09T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22102052,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DEWITTE JACOB",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-05-09T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22102052,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "COCHRAN CAROLINE",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2024-05-09T00:00:00.000Z",
+        "ownership": "D/I"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 111.58,
+    "currentPrice": 105.31,
     "targetHighPrice": 175,
     "targetLowPrice": 14,
     "targetMeanPrice": 115.83294,
     "targetMedianPrice": 111,
-    "recommendationKey": "none",
+    "recommendationMean": 2,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 17,
     "totalCash": 921600000,
     "totalCashPerShare": 5.898,
@@ -1328,6 +1342,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-09T14:33:04.678Z",
+  "lastUpdated": "2026-01-10T18:24:05.839Z",
   "source": "Static Build (yahoo-finance2)"
 }
