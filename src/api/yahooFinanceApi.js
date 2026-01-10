@@ -711,7 +711,7 @@ class YahooFinanceAPI {
         currentPrice: getRaw(financialData.currentPrice),
         recommendationKey: financialData.recommendationKey || 'N/A',
         revenueGrowth: getPercentFmt(financialData.revenueGrowth),
-        profitMargin: getPercentFmt(financialData.profitMargins),
+        profitMargins: getPercentFmt(financialData.profitMargins),
         forwardPE: getFmt(keyStats.forwardPE),
         beta: getFmt(keyStats.beta),
         totalRevenue: getFmt(financialData.totalRevenue),

@@ -82,20 +82,53 @@ class OhlcvApi {
   async fetchLocalOhlcv(symbol, period, range) {
     // 使用統一的 baseUrl helper
     const url = paths.ohlcv(symbol) + '?t=' + Date.now();
+    console.warn(`🔍 Fetching local OHLCV from: ${url}`);
 
     const response = await fetch(url);
+    console.warn(`🔍 Fetch status: ${response.status} ${response.statusText}`);
 
     if (!response.ok) {
       if (response.status === 404) {
-        console.log(`📊 Local OHLCV not found for ${symbol} (404)`);
+        console.warn(`📊 Local OHLCV not found for ${symbol} (404)`);
         return null;
       }
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const json = await response.json();
+    console.warn(`🔍 Raw JSON keys for ${symbol}:`, Object.keys(json));
+
+    // Handle { symbol, ohlcv: { ... } } structure
+    let data = json;
+    if (json.ohlcv) {
+      console.warn('🔍 Detected nested ohlcv object, unwrapping...');
+      data = json.ohlcv;
+      // Copy symbol if missing in child
+      if (!data.symbol && json.symbol) {
+        data.symbol = json.symbol;
+      }
+    } else {
+      console.warn('🔍 No nested ohlcv object found in root.');
+    }
+
+    // Handle timestamp vs timestamps mismatch
+    if (data.timestamp && !data.timestamps) {
+      console.warn('🔍 Normalizing "timestamp" to "timestamps"');
+      data.timestamps = data.timestamp;
+    }
+
+    console.warn(`🔍 Data keys before validation:`, Object.keys(data));
+    if (data.timestamps) {
+      console.warn(`🔍 Timestamps count: ${data.timestamps.length}`);
+      if (data.timestamps.length > 0) {
+        console.warn(`🔍 First timestamp sample: ${data.timestamps[0]}`);
+      }
+    } else {
+      console.warn(`🔍 Timestamps MISSING!`);
+    }
 
     if (!this.validateOhlcvData(data)) {
+      console.error('Data structure:', Object.keys(data));
       throw new Error('Invalid local OHLCV data structure');
     }
 

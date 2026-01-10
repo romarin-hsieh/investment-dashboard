@@ -3,7 +3,7 @@
     <div class="widget-header">
       <h3>Fear & Greed Index Gauge</h3>
       <div class="chart-info">
-        <span class="chart-description">Based on Zeiierman's Algorithm</span>
+        <span class="chart-description">Source: CNN Money</span>
       </div>
     </div>
     
@@ -164,31 +164,40 @@
 </template>
 
 <script>
+import { withBase } from '@/utils/baseUrl';
+
 export default {
   name: 'ZeiiermanFearGreedGauge',
   data() {
     return {
-      // Mock data based on Zeiierman's algorithm components - Adjusted for index value of 58
+      fearGreedValue: 50, // Default start value
+      currentSentimentText: 'Neutral',
+      loading: true,
+      error: false,
+      lastUpdate: new Date(),
+      // Default placeholder components
       components: {
-        sp125: 65,        // S&P 500 vs 125-day moving average
-        hl52: 52,         // 52-week high/low strength  
-        mcsi: 60,         // McClellan Summation Index (Market Breadth)
-        putCall: 45,      // Put/Call ratio (inverted)
-        vix50: 55,        // VIX vs 50-day MA (inverted)
-        safe: 62,         // Safe Haven Demand (Stock vs Bond performance)
-        yieldSpread: 67   // Junk Bond Demand (Yield spread)
+        sp125: 50,
+        hl52: 50,
+        mcsi: 50,
+        putCall: 50,
+        vix50: 50,
+        safe: 50,
+        yieldSpread: 50
       },
-      lastUpdate: new Date()
+      // Mapping for indicator names to our component keys
+      indicatorMap: {
+        'MARKET MOMENTUM': 'sp125',
+        'STOCK PRICE STRENGTH': 'hl52',
+        'STOCK PRICE BREADTH': 'mcsi',
+        'PUT AND CALL OPTIONS': 'putCall',
+        'MARKET VOLATILITY': 'vix50',
+        'SAFE HAVEN DEMAND': 'safe',
+        'JUNK BOND DEMAND': 'yieldSpread'
+      }
     }
   },
   computed: {
-    fearGreedValue() {
-      // Calculate average of all components (Zeiierman's method)
-      const values = Object.values(this.components)
-      const average = values.reduce((sum, val) => sum + val, 0) / values.length
-      return average
-    },
-    
     needleAngle() {
       // Convert 0-100 value to -90 to +90 degrees (180 degree arc)
       return (this.fearGreedValue - 50) * 1.8
@@ -205,6 +214,9 @@ export default {
     },
     
     currentSentiment() {
+      // Use API text if available, otherwise calculate
+      if (this.currentSentimentText && !this.loading) return this.currentSentimentText;
+      
       if (this.fearGreedValue <= 25) return 'Extreme Fear'
       if (this.fearGreedValue <= 45) return 'Fear'
       if (this.fearGreedValue <= 55) return 'Neutral'
@@ -229,15 +241,59 @@ export default {
     }
   },
   mounted() {
-    // 不执行自动更新，保持固定的58值
-    console.log('Zeiierman Fear & Greed Index loaded with fixed value:', this.fearGreedValue)
+    this.fetchData();
   },
   methods: {
-    // 保留方法以备将来需要手动更新
-    updateComponents() {
-      // 在生产环境中，这里会获取真实的市场数据
-      this.lastUpdate = new Date()
-      console.log('Zeiierman Fear & Greed Index:', this.fearGreedValue)
+    async fetchData() {
+      this.loading = true;
+      try {
+        const url = withBase('data/market-sentiment.json?t=' + Date.now());
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Data not found');
+        
+        const data = await response.json();
+        
+        // Update main value
+        if (data.value !== null) {
+          this.fearGreedValue = data.value;
+        }
+        
+        if (data.sentiment) {
+          this.currentSentimentText = data.sentiment;
+        }
+
+        if (data.lastUpdated) {
+           this.lastUpdate = data.lastUpdated; // Keep as string or parse date
+        }
+
+        // Map indicators to components
+        if (data.indicators && Array.isArray(data.indicators)) {
+          data.indicators.forEach(ind => {
+            const key = this.indicatorMap[ind.name.toUpperCase()];
+            if (key) {
+              this.components[key] = this.sentimentToValue(ind.sentiment);
+            }
+          });
+        }
+        
+        this.error = false;
+      } catch (err) {
+        console.error('Failed to load FearGreed data:', err);
+        this.error = true;
+        // Keep defaults if failed
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    sentimentToValue(sentiment) {
+      if (!sentiment) return 50;
+      const s = sentiment.toUpperCase();
+      if (s.includes('EXTREME FEAR')) return 15;
+      if (s.includes('EXTREME GREED')) return 85;
+      if (s.includes('FEAR')) return 35;
+      if (s.includes('GREED')) return 65;
+      return 50; // Neutral
     }
   }
 }

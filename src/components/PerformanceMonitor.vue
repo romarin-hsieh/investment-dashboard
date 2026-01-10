@@ -111,6 +111,9 @@ export default {
   },
   beforeUnmount() {
     window.removeEventListener('load', this.calculatePageLoadTime)
+    if (this.performanceObserver) {
+      this.performanceObserver.disconnect()
+    }
   },
   methods: {
     setupPerformanceTracking() {
@@ -131,7 +134,7 @@ export default {
       // 使用 Performance Observer 監聽資源載入
       if (typeof PerformanceObserver !== 'undefined') {
         try {
-          const observer = new PerformanceObserver((list) => {
+          this.performanceObserver = new PerformanceObserver((list) => {
             for (const entry of list.getEntries()) {
               // 只監聽 TradingView 相關的資源
               if (entry.name.includes('tradingview') || entry.name.includes('widget')) {
@@ -144,14 +147,10 @@ export default {
             }
           })
           
-          observer.observe({ entryTypes: ['resource', 'navigation'] })
-          
-          // 組件銷毀時斷開觀察者
-          this.$once('hook:beforeDestroy', () => {
-            observer.disconnect()
-          })
+          this.performanceObserver.observe({ entryTypes: ['resource', 'navigation'] })
         } catch (error) {
           console.warn('PerformanceObserver not supported:', error)
+          this.performanceObserver = null;
         }
       }
     },

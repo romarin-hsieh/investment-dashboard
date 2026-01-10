@@ -126,45 +126,21 @@
 
       <!-- Earnings Trend -->
       <div class="card earnings-card full-width">
-        <h3>Earnings & Revenue History</h3>
+        <div class="chart-header">
+            <h3>Earnings & Revenue History</h3>
+            <!-- Toggle removed as Quarterly data is unavailable -->
+            <!-- <div class="btn-group" role="group">
+                <button type="button" class="btn btn-sm" :class="earningsViewMode === 'yearly' ? 'btn-primary' : 'btn-outline-primary'" @click="setEarningsView('yearly')">Yearly</button>
+                <button type="button" class="btn btn-sm" :class="earningsViewMode === 'quarterly' ? 'btn-primary' : 'btn-outline-primary'" @click="setEarningsView('quarterly')">Quarterly</button>
+            </div> -->
+        </div>
         <div class="chart-container large">
              <Bar v-if="earningsChartData" :data="earningsChartData" :options="earningsChartOptions" />
         </div>
       </div>
 
       <!-- Analyst Rating History -->
-
-      <div class="card history-card full-width" v-if="upgradesDowngrades && upgradesDowngrades.length > 0">
-        <h3>Analyst Rating History (Last 5 Years)</h3>
-        
-        <!-- Price Target Trend Chart -->
-        <div class="chart-container large" v-if="targetPriceChartData" style="margin-bottom: 20px;">
-             <Line :data="targetPriceChartData" :options="targetPriceChartOptions" />
-        </div>
-
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Firm</th>
-                        <th>Action</th>
-                        <th>From</th>
-                        <th>To</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(item, index) in upgradesDowngrades" :key="index">
-                        <td>{{ formatDate(item.epochGradeDate) }}</td>
-                        <td>{{ item.firm }}</td>
-                        <td>{{ item.action }}</td>
-                        <td>{{ item.fromGrade }}</td>
-                        <td><strong>{{ item.toGrade }}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-      </div>
+      <!-- ... (rest of template) ... -->
     </div>
   </div>
 </template>
@@ -194,6 +170,9 @@ export default {
       upgradesDowngrades: [],
       recommendationChartData: null,
       earningsChartData: null,
+      earningsViewMode: 'yearly', // 'yearly' or 'quarterly'
+      yearlyEarningsData: [],
+      quarterlyEarningsData: [],
       recommendationChartOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -225,7 +204,18 @@ export default {
             display: true,
             position: 'right',
             title: { display: true, text: 'Revenue' },
-            grid: { drawOnChartArea: false }
+            grid: { drawOnChartArea: false },
+            ticks: {
+                callback: function(value) {
+                    if (value >= 1000000000) {
+                        return (value / 1000000000).toFixed(1) + 'B';
+                    }
+                    if (value >= 1000000) {
+                        return (value / 1000000).toFixed(1) + 'M';
+                    }
+                    return value;
+                }
+            }
           }
         }
       },
@@ -339,23 +329,95 @@ export default {
     processEarningsHistory(earnings) {
         if (!earnings || !earnings.financialsChart) {
              this.earningsChartData = null;
+             this.yearlyEarningsData = [];
+             this.quarterlyEarningsData = [];
              return;
         }
         
-        // Handle both array (legacy?) and object structure (yearly/quarterly)
-        let history = [];
-        if (Array.isArray(earnings.financialsChart)) {
-            history = earnings.financialsChart;
-        } else if (earnings.financialsChart.yearly) {
-            history = earnings.financialsChart.yearly;
+        // Extract Yearly Data
+        if (earnings.financialsChart.yearly) {
+            this.yearlyEarningsData = earnings.financialsChart.yearly;
+        } else if (Array.isArray(earnings.financialsChart)) {
+            // Legacy handling, assuming array is yearly if not specified
+            this.yearlyEarningsData = earnings.financialsChart;
+        } else {
+            this.yearlyEarningsData = [];
         }
 
-        if (history.length === 0) {
+        // Extract Quarterly Data
+        if (earnings.financialsChart.quarterly) {
+            this.quarterlyEarningsData = earnings.financialsChart.quarterly;
+        } else {
+            this.quarterlyEarningsData = [];
+        }
+
+        // Synthesis Logic: Fill missing yearly data (e.g., 2025) from quarterly data
+        if (this.yearlyEarningsData.length > 0 && this.quarterlyEarningsData.length > 0) {
+            // Find the last year present in yearly data
+            const lastYearlyDate = this.yearlyEarningsData[this.yearlyEarningsData.length - 1].date;
+            const lastYear = typeof lastYearlyDate === 'string' ? parseInt(lastYearlyDate) : lastYearlyDate;
+
+            // Group quarterly data by year
+            const quarterlyByYear = {};
+            this.quarterlyEarningsData.forEach(q => {
+                if (!q.date) return;
+                // Parse year from "1Q2025" or similar
+                const yearMatch = q.date.toString().match(/(\d{4})/);
+                if (yearMatch) {
+                    const year = parseInt(yearMatch[1]);
+                    // Only synthesize if it's a NEWER year than what we have
+                    if (year > lastYear) {
+                        if (!quarterlyByYear[year]) {
+                            quarterlyByYear[year] = { revenue: 0, earnings: 0, count: 0 };
+                        }
+                        
+                        const rev = q.revenue?.raw !== undefined ? q.revenue.raw : q.revenue;
+                        const earn = q.earnings?.raw !== undefined ? q.earnings.raw : q.earnings;
+                        
+                        quarterlyByYear[year].revenue += (rev || 0);
+                        quarterlyByYear[year].earnings += (earn || 0);
+                        quarterlyByYear[year].count++;
+                    }
+                }
+            });
+
+            // Append synthesized years
+            Object.keys(quarterlyByYear).sort().forEach(yearStr => {
+                const year = parseInt(yearStr);
+                const data = quarterlyByYear[year];
+                // Push synthesized aggregation
+                this.yearlyEarningsData.push({
+                    date: year,
+                    revenue: data.revenue,
+                    earnings: data.earnings,
+                    synthesized: true // logic marker (optional usage)
+                });
+            });
+        }
+
+        // Initialize view
+        this.setEarningsView(this.earningsViewMode);
+    },
+
+    setEarningsView(mode) {
+        // Enforce yearly view as quarterly data is unavailable/blocked
+        this.earningsViewMode = 'yearly';
+        const data = this.yearlyEarningsData;
+
+        if (!data || data.length === 0) {
+             this.updateEarningsChart(data);
+             return;
+        }
+        this.updateEarningsChart(data);
+    },
+
+    updateEarningsChart(history) {
+        if (!history || history.length === 0) {
             this.earningsChartData = null;
             return;
         }
         
-        const labels = history.map(item => item.date); // Year string usually
+        const labels = history.map(item => item.date); // Year string or '1Q2025'
         
         this.earningsChartData = {
             labels,
@@ -421,10 +483,9 @@ export default {
         const num = typeof val === 'object' ? val.raw : val;
         return (num * 100).toFixed(2) + '%';
     },
-             b.epochGradeDate - a.epochGradeDate
-        );
 
-        // 2. Prepare Chart Data (Oldest First)
+    prepareTargetPriceChart(validItems) {
+        if (!validItems) return;
         // Filter out items without price targets for the chart, and ensure target > 0
         const chartItems = validItems
             .filter(item => item.currentPriceTarget !== undefined && item.currentPriceTarget !== null && item.currentPriceTarget > 0)
@@ -759,5 +820,44 @@ tbody tr:hover {
 .chart-container.large {
     height: 350px;
     position: relative;
+}
+
+/* Chart Header (for Toggle) */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.chart-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Button Group */
+.btn-group {
+    display: inline-flex;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #ced4da;
+}
+.btn {
+    border: none;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+}
+.btn-primary {
+    background: #0d6efd;
+    color: white;
+}
+.btn-outline-primary {
+    background: white;
+    color: #495057;
+}
+.btn-outline-primary:hover {
+    background: #e9ecef;
 }
 </style>
