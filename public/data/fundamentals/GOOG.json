@@ -4,8 +4,8 @@
       {
         "period": "0m",
         "strongBuy": 13,
-        "buy": 44,
-        "hold": 10,
+        "buy": 46,
+        "hold": 8,
         "sell": 0,
         "strongSell": 0
       },
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0764,
         "position": 412885548,
-        "value": 135062664836,
+        "value": 135897155316,
         "pctChange": -0.0093
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.066300005,
         "position": 358535293,
-        "value": 117283669396,
+        "value": 118008311590,
         "pctChange": -0.0083
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0368,
         "position": 199059484,
-        "value": 65116118740,
+        "value": 65518441479,
         "pctChange": 1.1725
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0344,
         "position": 186149073,
-        "value": 60892879341,
+        "value": 61269108614,
         "pctChange": -0.0146
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.020399999,
         "position": 110104325,
-        "value": 36017205292,
+        "value": 36239739143,
         "pctChange": 0.0813
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.02,
         "position": 108236788,
-        "value": 35406298649,
+        "value": 35625057987,
         "pctChange": 0.0044
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.016,
         "position": 86250183,
-        "value": 28214064684,
+        "value": 28388386496,
         "pctChange": -0.0639
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.013300001,
         "position": 71982882,
-        "value": 23546960925,
+        "value": 23692446835,
         "pctChange": -0.0297
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.013099999,
         "position": 70709406,
-        "value": 23130382861,
+        "value": 23273294926,
         "pctChange": -0.039
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0099,
         "position": 53714386,
-        "value": 17570990673,
+        "value": 17679553794,
         "pctChange": -0.0089
       }
     ]
@@ -187,7 +187,7 @@
           "reportedDate": 1761768108
         }
       ],
-      "currentQuarterEstimate": 2.63454,
+      "currentQuarterEstimate": 2.64729,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-09T18:12:42.000Z",
+        "firm": "Scotiabank",
+        "toGrade": "Sector Outperform",
+        "fromGrade": "Sector Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 375,
+        "priorPriceTarget": 336
+      },
       {
         "epochGradeDate": "2025-12-12T13:48:07.000Z",
         "firm": "TD Cowen",
@@ -7119,14 +7129,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0034013884,
-    "regularMarketChange": 1.1088867,
-    "regularMarketTime": "2026-01-09T14:32:18.000Z",
+    "postMarketChangePercent": 0.0022786655,
+    "postMarketChange": 0.75,
+    "postMarketTime": "2026-01-10T00:59:56.000Z",
+    "postMarketPrice": 329.89,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.0096009495,
+    "regularMarketChange": 3.13,
+    "regularMarketTime": "2026-01-09T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 327.1189,
-    "regularMarketDayHigh": 327.8,
+    "regularMarketPrice": 329.14,
+    "regularMarketDayHigh": 331.48,
     "regularMarketDayLow": 326.25,
-    "regularMarketVolume": 1037666,
+    "regularMarketVolume": 16971547,
     "averageDailyVolume10Day": 15447310,
     "averageDailyVolume3Month": 23011716,
     "regularMarketPreviousClose": 326.01,
@@ -7135,7 +7150,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "GOOG",
     "underlyingSymbol": null,
@@ -7147,13 +7162,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 3948924895232
+    "marketCap": 3973323423744
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 3879661731840,
-    "forwardPE": 29.221132,
+    "forwardPE": 29.295534,
     "profitMargins": 0.32233003,
     "floatShares": 10798396290,
     "sharesOutstanding": 5407000000,
@@ -7169,7 +7184,7 @@
     "impliedSharesOutstanding": 12071833288,
     "category": null,
     "bookValue": 32.033,
-    "priceToBook": 10.211934,
+    "priceToBook": 10.275029,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -7178,7 +7193,7 @@
     "earningsQuarterlyGrowth": 0.33,
     "netIncomeToCommon": 124250996736,
     "trailingEps": 10.14,
-    "forwardEps": 11.19479,
+    "forwardEps": 11.23516,
     "lastSplitFactor": "20:1",
     "lastSplitDate": 1658102400,
     "enterpriseToRevenue": 10.065,
@@ -7212,6 +7227,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 32500,
+        "value": 10439486,
+        "filerUrl": "",
+        "transactionText": "Sale at price 315.39 - 326.05 per share.",
+        "filerName": "PICHAI SUNDAR",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-01-07T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 17829,
@@ -7254,17 +7281,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 955,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "O TOOLE AMIE THUENER",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-24T00:00:00.000Z",
@@ -7316,6 +7332,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 955,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 600,
         "value": 184915,
         "filerUrl": "",
@@ -7328,24 +7355,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2778,
-        "value": 867569,
-        "filerUrl": "",
-        "transactionText": "Sale at price 312.30 per share.",
-        "filerName": "O TOOLE AMIE THUENER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 32500,
         "value": 9743373,
         "filerUrl": "",
         "transactionText": "Sale at price 298.11 - 307.47 per share.",
         "filerName": "PICHAI SUNDAR",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2778,
+        "value": 867569,
+        "filerUrl": "",
+        "transactionText": "Sale at price 312.30 per share.",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
@@ -7506,24 +7533,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2778,
-        "value": 694651,
-        "filerUrl": "",
-        "transactionText": "Sale at price 247.49 - 252.31 per share.",
-        "filerName": "O TOOLE AMIE THUENER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 32500,
         "value": 8129735,
         "filerUrl": "",
         "transactionText": "Sale at price 247.48 - 252.28 per share.",
         "filerName": "PICHAI SUNDAR",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2778,
+        "value": 694651,
+        "filerUrl": "",
+        "transactionText": "Sale at price 247.49 - 252.31 per share.",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
         "ownership": "D"
@@ -7542,24 +7569,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 953,
-        "value": 229864,
-        "filerUrl": "",
-        "transactionText": "Sale at price 241.20 per share.",
-        "filerName": "O TOOLE AMIE THUENER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 32500,
         "value": 7910743,
         "filerUrl": "",
         "transactionText": "Sale at price 240.08 - 246.93 per share.",
         "filerName": "PICHAI SUNDAR",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 953,
+        "value": 229864,
+        "filerUrl": "",
+        "transactionText": "Sale at price 241.20 per share.",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
@@ -7613,17 +7640,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 954,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "O TOOLE AMIE THUENER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 18361,
         "filerUrl": "",
         "transactionText": "",
@@ -7662,6 +7678,17 @@
         "transactionText": "",
         "filerName": "PICHAI SUNDAR",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 954,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-25T00:00:00.000Z",
         "ownership": "D"
@@ -7921,18 +7948,18 @@
         "shares": 17804,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
+        "filerName": "PORAT RUTH M",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 953,
+        "shares": 17804,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "O TOOLE AMIE THUENER",
+        "filerName": "WALKER JOHN KENT",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
@@ -7962,22 +7989,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 17804,
+        "shares": 37196,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PORAT RUTH M",
-        "filerRelation": "President",
+        "filerName": "PICHAI SUNDAR",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 37196,
+        "shares": 953,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PICHAI SUNDAR",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
@@ -7996,11 +8023,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 7,
+        "shares": 5,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CHAVEZ R MARTIN",
+        "filerName": "WASHINGTON ROBIN L",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
@@ -8008,11 +8035,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 5,
+        "shares": 7,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WASHINGTON ROBIN L",
+        "filerName": "CHAVEZ R MARTIN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
@@ -8589,18 +8616,18 @@
         "shares": 16822,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
+        "filerName": "PORAT RUTH M",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2024-12-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 1368,
+        "shares": 16822,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "O TOOLE AMIE THUENER",
+        "filerName": "WALKER JOHN KENT",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-24T00:00:00.000Z",
@@ -8630,22 +8657,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 16822,
+        "shares": 36958,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PORAT RUTH M",
-        "filerRelation": "President",
+        "filerName": "PICHAI SUNDAR",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-12-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 36958,
+        "shares": 1368,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PICHAI SUNDAR",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-24T00:00:00.000Z",
         "ownership": "D"
@@ -8700,24 +8727,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 1367,
-        "value": 232950,
-        "filerUrl": "",
-        "transactionText": "Sale at price 170.41 per share.",
-        "filerName": "O TOOLE AMIE THUENER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 54400,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "PICHAI SUNDAR",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-12-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1367,
+        "value": 232950,
+        "filerUrl": "",
+        "transactionText": "Sale at price 170.41 per share.",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-02T00:00:00.000Z",
         "ownership": "D"
@@ -8929,6 +8956,17 @@
         "shares": 16804,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "PORAT RUTH M",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2024-09-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16804,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "WALKER JOHN KENT",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -8945,42 +8983,20 @@
         "moneyText": "",
         "startDate": "2024-09-25T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1368,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "O TOOLE AMIE THUENER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 17825,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ASHKENAZI ANAT",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-09-25T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 327.1189,
+    "currentPrice": 329.14,
     "targetHighPrice": 386,
     "targetLowPrice": 185,
-    "targetMeanPrice": 328.20557,
+    "targetMeanPrice": 328.3,
     "targetMedianPrice": 340,
     "recommendationMean": 1.46269,
     "recommendationKey": "strong_buy",
-    "numberOfAnalystOpinions": 18,
+    "numberOfAnalystOpinions": 19,
     "totalCash": 98496004096,
     "totalCashPerShare": 8.162,
     "ebitda": 145174003712,
@@ -9003,6 +9019,6 @@
     "profitMargins": 0.32233003,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-09T14:32:19.866Z",
+  "lastUpdated": "2026-01-10T01:17:12.967Z",
   "source": "Static Build (yahoo-finance2)"
 }

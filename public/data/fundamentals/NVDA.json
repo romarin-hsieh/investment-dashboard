@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0915,
         "position": 2223533800,
-        "value": 409554901398,
+        "value": 411042459625,
         "pctChange": -0.004
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0794,
         "position": 1929259144,
-        "value": 355352159923,
+        "value": 356642846537,
         "pctChange": 0.010199999
       },
       {
@@ -63,7 +63,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0404,
         "position": 982706616,
-        "value": 181005708669,
+        "value": 181663145633,
         "pctChange": -0.0153
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0403,
         "position": 980029103,
-        "value": 180512534887,
+        "value": 181168180578,
         "pctChange": 0.0019
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0402,
         "position": 977238564,
-        "value": 179998542735,
+        "value": 180652321537,
         "pctChange": 1.1126
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0241,
         "position": 585419652,
-        "value": 107829027762,
+        "value": 108220677226,
         "pctChange": 0.0107
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0163,
         "position": 395742700,
-        "value": 72892241385,
+        "value": 73156995763,
         "pctChange": -0.025999999
       },
       {
@@ -108,7 +108,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0134000005,
         "position": 325253897,
-        "value": 59908838676,
+        "value": 60126435597,
         "pctChange": 0.0037
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.013300001,
         "position": 322956343,
-        "value": 59485649920,
+        "value": 59701709764,
         "pctChange": -0.0085
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0107,
         "position": 259439810,
-        "value": 47786476555,
+        "value": 47960043434,
         "pctChange": -0.0066000004
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-09T17:56:54.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 275,
+        "priorPriceTarget": 245
+      },
       {
         "epochGradeDate": "2025-12-29T15:08:46.000Z",
         "firm": "Stifel",
@@ -10009,14 +10019,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.004372904,
-    "regularMarketChange": -0.80900574,
-    "regularMarketTime": "2026-01-09T14:32:09.000Z",
+    "postMarketChangePercent": 0.0005955435,
+    "postMarketChange": 0.11009216,
+    "postMarketTime": "2026-01-10T00:59:59.000Z",
+    "postMarketPrice": 184.9701,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.000756753,
+    "regularMarketChange": -0.139999,
+    "regularMarketTime": "2026-01-09T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 184.191,
-    "regularMarketDayHigh": 185.25,
-    "regularMarketDayLow": 183.72,
-    "regularMarketVolume": 6439051,
+    "regularMarketPrice": 184.86,
+    "regularMarketDayHigh": 186.34,
+    "regularMarketDayLow": 183.6701,
+    "regularMarketVolume": 125882963,
     "averageDailyVolume10Day": 137731210,
     "averageDailyVolume3Month": 187031112,
     "regularMarketPreviousClose": 185,
@@ -10025,7 +10040,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "NVDA",
     "underlyingSymbol": null,
@@ -10037,13 +10052,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4484498456576
+    "marketCap": 4500786511872
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4446685757440,
-    "forwardPE": 24.34283,
+    "forwardPE": 24.431248,
     "profitMargins": 0.53007,
     "floatShares": 23330430000,
     "sharesOutstanding": 24305000000,
@@ -10060,7 +10075,7 @@
     "impliedSharesOutstanding": 24347000000,
     "category": null,
     "bookValue": 4.892,
-    "priceToBook": 37.65147,
+    "priceToBook": 37.788223,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-26T00:00:00.000Z",
@@ -10118,18 +10133,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 24590,
-        "value": 4425727,
-        "filerUrl": "",
-        "transactionText": "Sale at price 176.91 - 180.88 per share.",
-        "filerName": "ROBERTSON DONALD F JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 222500,
         "value": 40087380,
         "filerUrl": "",
@@ -10142,6 +10145,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 24590,
+        "value": 4425727,
+        "filerUrl": "",
+        "transactionText": "Sale at price 176.91 - 180.88 per share.",
+        "filerName": "ROBERTSON DONALD F JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 258650,
         "value": 0,
         "filerUrl": "",
@@ -10150,6 +10165,18 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-18T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 141488,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "HUANG JEN-HSUN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -10166,18 +10193,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 141488,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "HUANG JEN-HSUN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 250000,
         "value": 44333450,
         "filerUrl": "",
@@ -10186,6 +10201,18 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 229840,
+        "value": 41414515,
+        "filerUrl": "",
+        "transactionText": "Sale at price 175.14 - 185.16 per share.",
+        "filerName": "SHOQUIST DEBORA C",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -10199,18 +10226,6 @@
         "moneyText": "",
         "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 229840,
-        "value": 41414515,
-        "filerUrl": "",
-        "transactionText": "Sale at price 175.14 - 185.16 per share.",
-        "filerName": "SHOQUIST DEBORA C",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -10250,18 +10265,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 626,
-        "value": 112317,
-        "filerUrl": "",
-        "transactionText": "Sale at price 179.42 per share.",
-        "filerName": "DABIRI JOHN O",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 520000,
         "value": 0,
         "filerUrl": "",
@@ -10271,6 +10274,18 @@
         "moneyText": "",
         "startDate": "2025-11-24T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 626,
+        "value": 112317,
+        "filerUrl": "",
+        "transactionText": "Sale at price 179.42 per share.",
+        "filerName": "DABIRI JOHN O",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-11-24T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -10418,15 +10433,27 @@
       },
       {
         "maxAge": 1,
-        "shares": 50500,
-        "value": 8908172,
+        "shares": 350000,
+        "value": 61737305,
         "filerUrl": "",
-        "transactionText": "Sale at price 175.99 - 177.56 per share.",
-        "filerName": "KRESS COLETTE M.",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 176.39 per share.",
+        "filerName": "STEVENS MARK A",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-19T00:00:00.000Z",
-        "ownership": "D/I"
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 225000,
+        "value": 39181549,
+        "filerUrl": "",
+        "transactionText": "Sale at price 169.09 - 177.54 per share.",
+        "filerName": "HUANG JEN-HSUN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-19T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -10454,27 +10481,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 350000,
-        "value": 61737305,
+        "shares": 50500,
+        "value": 8908172,
         "filerUrl": "",
-        "transactionText": "Sale at price 176.39 per share.",
-        "filerName": "STEVENS MARK A",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 175.99 - 177.56 per share.",
+        "filerName": "KRESS COLETTE M.",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-09-19T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 225000,
-        "value": 39181549,
-        "filerUrl": "",
-        "transactionText": "Sale at price 169.09 - 177.54 per share.",
-        "filerName": "HUANG JEN-HSUN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-19T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -10514,11 +10529,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 28000,
-        "value": 4972344,
+        "shares": 497797,
+        "value": 88558438,
         "filerUrl": "",
-        "transactionText": "Sale at price 177.58 per share.",
-        "filerName": "NEAL STEPHEN C.",
+        "transactionText": "Sale at price 177.47 - 178.19 per share.",
+        "filerName": "STEVENS MARK A",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-12T00:00:00.000Z",
@@ -10526,11 +10541,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 497797,
-        "value": 88558438,
+        "shares": 28000,
+        "value": 4972344,
         "filerUrl": "",
-        "transactionText": "Sale at price 177.47 - 178.19 per share.",
-        "filerName": "STEVENS MARK A",
+        "transactionText": "Sale at price 177.58 per share.",
+        "filerName": "NEAL STEPHEN C.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-12T00:00:00.000Z",
@@ -10598,18 +10613,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1700,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "NEAL STEPHEN C.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-29T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 55172,
         "value": 0,
         "filerUrl": "",
@@ -10627,6 +10630,18 @@
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "SEAWELL A BROOKE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-29T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1700,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "NEAL STEPHEN C.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-08-29T00:00:00.000Z",
@@ -10742,18 +10757,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 47650,
-        "value": 8142671,
-        "filerUrl": "",
-        "transactionText": "Sale at price 170.03 - 171.68 per share.",
-        "filerName": "KRESS COLETTE M.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-07-15T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 225000,
         "value": 37594046,
         "filerUrl": "",
@@ -10763,6 +10766,18 @@
         "moneyText": "",
         "startDate": "2025-07-15T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 47650,
+        "value": 8142671,
+        "filerUrl": "",
+        "transactionText": "Sale at price 170.03 - 171.68 per share.",
+        "filerName": "KRESS COLETTE M.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-07-15T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -10866,66 +10881,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DRELL PERSIS S",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1799,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "OCHOA ELLEN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1799,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHAH AARTI S",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1799,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "NEAL STEPHEN C.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1799,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DABIRI JOHN O",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1799,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BURGESS ROBERT KENNETH",
         "filerRelation": "Director",
         "moneyText": "",
@@ -11018,6 +10973,66 @@
       },
       {
         "maxAge": 1,
+        "shares": 1799,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DRELL PERSIS S",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1799,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "OCHOA ELLEN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1799,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHAH AARTI S",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1799,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "NEAL STEPHEN C.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1799,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DABIRI JOHN O",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 168195,
         "value": 25673040,
         "filerUrl": "",
@@ -11054,18 +11069,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 50500,
-        "value": 7282459,
-        "filerUrl": "",
-        "transactionText": "Sale at price 143.54 - 145.91 per share.",
-        "filerName": "KRESS COLETTE M.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-20T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 4500,
         "value": 646469,
         "filerUrl": "",
@@ -11075,6 +11078,18 @@
         "moneyText": "",
         "startDate": "2025-06-20T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 50500,
+        "value": 7282459,
+        "filerUrl": "",
+        "transactionText": "Sale at price 143.54 - 145.91 per share.",
+        "filerName": "KRESS COLETTE M.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-20T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -11138,18 +11153,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 660,
-        "value": 91608,
-        "filerUrl": "",
-        "transactionText": "Sale at price 138.80 per share.",
-        "filerName": "DABIRI JOHN O",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 6740820,
         "filerUrl": "",
@@ -11162,14 +11165,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 66660,
-        "value": 7787993,
+        "shares": 660,
+        "value": 91608,
         "filerUrl": "",
-        "transactionText": "Sale at price 116.25 - 117.70 per share.",
-        "filerName": "KRESS COLETTE M.",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 138.80 per share.",
+        "filerName": "DABIRI JOHN O",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-03-21T00:00:00.000Z",
+        "startDate": "2025-05-30T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -11192,6 +11195,18 @@
         "transactionText": "Sale at price 116.31 - 117.77 per share.",
         "filerName": "ROBERTSON DONALD F JR",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 66660,
+        "value": 7787993,
+        "filerUrl": "",
+        "transactionText": "Sale at price 116.25 - 117.70 per share.",
+        "filerName": "KRESS COLETTE M.",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-03-21T00:00:00.000Z",
         "ownership": "D"
@@ -11222,12 +11237,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 57106,
+        "shares": 57489,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KRESS COLETTE M.",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "SHOQUIST DEBORA C",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-10T00:00:00.000Z",
         "ownership": "D"
@@ -11258,18 +11273,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 57489,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHOQUIST DEBORA C",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 55559,
         "value": 0,
         "filerUrl": "",
@@ -11294,12 +11297,36 @@
       },
       {
         "maxAge": 1,
-        "shares": 139640,
+        "shares": 57106,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "KRESS COLETTE M.",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-03-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 122220,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHOQUIST DEBORA C",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 956480,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HUANG JEN-HSUN",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-03-03T00:00:00.000Z",
         "ownership": "D"
@@ -11318,18 +11345,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 122220,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHOQUIST DEBORA C",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 135240,
         "value": 0,
         "filerUrl": "",
@@ -11342,12 +11357,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 956480,
+        "shares": 139640,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HUANG JEN-HSUN",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "KRESS COLETTE M.",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-03-03T00:00:00.000Z",
         "ownership": "D"
@@ -11414,24 +11429,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 66670,
-        "value": 9027318,
-        "filerUrl": "",
-        "transactionText": "Sale at price 133.24 - 138.88 per share.",
-        "filerName": "KRESS COLETTE M.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-12-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4500,
         "value": 608775,
         "filerUrl": "",
         "transactionText": "Sale at price 133.34 - 138.78 per share.",
         "filerName": "ROBERTSON DONALD F JR",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 66670,
+        "value": 9027318,
+        "filerUrl": "",
+        "transactionText": "Sale at price 133.24 - 138.88 per share.",
+        "filerName": "KRESS COLETTE M.",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-12-13T00:00:00.000Z",
         "ownership": "D"
@@ -11474,18 +11489,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 48324,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "TETER TIMOTHY S",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-10-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 125000,
         "value": 15325950,
         "filerUrl": "",
@@ -11495,6 +11498,18 @@
         "moneyText": "",
         "startDate": "2024-10-03T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 48324,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "TETER TIMOTHY S",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-10-03T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -11522,30 +11537,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 66670,
-        "value": 7772851,
-        "filerUrl": "",
-        "transactionText": "Sale at price 116.19 - 118.05 per share.",
-        "filerName": "KRESS COLETTE M.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-09-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4500,
-        "value": 524293,
-        "filerUrl": "",
-        "transactionText": "Sale at price 116.18 - 118.15 per share.",
-        "filerName": "ROBERTSON DONALD F JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2000000,
         "value": 235741095,
         "filerUrl": "",
@@ -11567,6 +11558,30 @@
         "moneyText": "",
         "startDate": "2024-09-20T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4500,
+        "value": 524293,
+        "filerUrl": "",
+        "transactionText": "Sale at price 116.18 - 118.15 per share.",
+        "filerName": "ROBERTSON DONALD F JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 66670,
+        "value": 7772851,
+        "filerUrl": "",
+        "transactionText": "Sale at price 116.19 - 118.05 per share.",
+        "filerName": "KRESS COLETTE M.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-09-20T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -11750,18 +11765,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 100110,
-        "value": 13023949,
-        "filerUrl": "",
-        "transactionText": "Sale at price 127.76 - 131.40 per share.",
-        "filerName": "PURI AJAY K",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-07-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 156023,
         "value": 20254063,
         "filerUrl": "",
@@ -11783,6 +11786,18 @@
         "moneyText": "",
         "startDate": "2024-07-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100110,
+        "value": 13023949,
+        "filerUrl": "",
+        "transactionText": "Sale at price 127.76 - 131.40 per share.",
+        "filerName": "PURI AJAY K",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-07-12T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -11834,6 +11849,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 240000,
+        "value": 29738301,
+        "filerUrl": "",
+        "transactionText": "Sale at price 118.94 - 127.19 per share.",
+        "filerName": "HUANG JEN-HSUN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 48359,
         "value": 0,
         "filerUrl": "",
@@ -11847,13 +11874,13 @@
       {
         "maxAge": 1,
         "shares": 240000,
-        "value": 29738301,
+        "value": 29912143,
         "filerUrl": "",
-        "transactionText": "Sale at price 118.94 - 127.19 per share.",
+        "transactionText": "Sale at price 122.88 - 128.04 per share.",
         "filerName": "HUANG JEN-HSUN",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
+        "startDate": "2024-06-27T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -11862,7 +11889,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DRELL PERSIS S",
+        "filerName": "BURGESS ROBERT KENNETH",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-27T00:00:00.000Z",
@@ -11874,7 +11901,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHAH AARTI S",
+        "filerName": "SEAWELL A BROOKE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-27T00:00:00.000Z",
@@ -11886,19 +11913,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "NEAL STEPHEN C.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2088,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DABIRI JOHN O",
+        "filerName": "COXE TENCH C",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-27T00:00:00.000Z",
@@ -11909,7 +11924,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 184.191,
+    "currentPrice": 184.86,
     "targetHighPrice": 352,
     "targetLowPrice": 140,
     "targetMeanPrice": 252.2814,
@@ -11939,6 +11954,6 @@
     "profitMargins": 0.53007,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-09T14:32:13.569Z",
+  "lastUpdated": "2026-01-10T01:17:07.232Z",
   "source": "Static Build (yahoo-finance2)"
 }
