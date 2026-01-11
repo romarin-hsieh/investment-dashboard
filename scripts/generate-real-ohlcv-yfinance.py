@@ -69,6 +69,7 @@ def load_symbols() -> List[str]:
     """
     candidates = [
         Path("config/universe.json"),
+        Path("public/config/stocks.json"),
         Path("universe.json"),
         Path("stocks.json"),
     ]
@@ -250,19 +251,45 @@ def main() -> int:
     items = []
     files_all: List[str] = []
     
+    # Special mapping for Fear & Greed indices
+    # Key: Yahoo Finance Ticker, Value: Output Filename (stem)
+    # Note: Regular stocks use their symbol as filename
+    SPECIAL_MAPPING = {
+        "^GSPC": "FOREXCOM_SPXUSD",
+        "^VIX": "TVC_VIX",
+        "TLT": "NASDAQ_TLT",
+        "JNK": "NASDAQ_JNK"
+    }
+    
+    # Add special symbols to the list if not present
+    for yf_ticker in SPECIAL_MAPPING.keys():
+        if yf_ticker not in symbols:
+            symbols.append(yf_ticker)
+
     print(f"🚀 Starting real OHLCV data generation for {len(symbols)} symbols...")
     
     for sym in symbols:
         sym = sym.upper()
-        lower = sym.lower()
         
-        target_a = out_dir / f"{sym}.json"
-        target_b = out_dir / f"{lower}_{args.interval}_{args.days}d.json"
+        # Determine output filename
+        # If it's a special symbol, use the mapped name. Otherwise use symbol.
+        if sym in SPECIAL_MAPPING:
+            out_name = SPECIAL_MAPPING[sym]
+        else:
+            # Standard cleanup for Windows/URL safety
+            out_name = sym.replace(":", "_")
+            
+        target_a = out_dir / f"{out_name}.json"
+        target_b = out_dir / f"{out_name.lower()}_{args.interval}_{args.days}d.json"
         
         try:
-            print(f"📊 Fetching {sym}...")
+            print(f"📊 Fetching {sym} (saving as {out_name})...")
             df = fetch_ohlcv_yfinance(sym, args.interval, args.days)
-            payload = df_to_payload(sym, df, args.interval, args.days)
+            # Pass the mapped name as symbol in metadata so frontend matches it?
+            # Or keep original? Frontend likely ignores metadata symbol for logic, uses filename/request.
+            # But let's use the mapped name in metadata to be safe and consistent.
+            payload_symbol = out_name 
+            payload = df_to_payload(payload_symbol, df, args.interval, args.days)
             
             err = sanity_check(sym, payload, min_rows=args.min_rows)
             if err:

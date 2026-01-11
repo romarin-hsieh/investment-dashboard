@@ -81,7 +81,9 @@ class OhlcvApi {
    */
   async fetchLocalOhlcv(symbol, period, range) {
     // 使用統一的 baseUrl helper
-    const url = paths.ohlcv(symbol) + '?t=' + Date.now();
+    // Sanitize symbol for Windows compatibility (replace : with _)
+    const safeSymbol = symbol.replace(/:/g, '_');
+    const url = paths.ohlcv(safeSymbol) + '?t=' + Date.now();
     console.warn(`🔍 Fetching local OHLCV from: ${url}`);
 
     const response = await fetch(url);

@@ -145,6 +145,28 @@
               />
             </div>
 
+            <!-- Trendlines & SR Zones Block (Full Width) -->
+            <div class="insight-full-widget trendlines-sr">
+              <div class="widget-header">
+                <h4>Trendlines & SR Zones</h4>
+              </div>
+              <TrendlinesSRWidget
+                :symbol="symbol"
+                :exchange="exchange"
+              />
+            </div>
+
+            <!-- CISD Projections Block (Full Width) -->
+            <div class="insight-full-widget cisd-projections">
+              <div class="widget-header">
+                <h4>CISD Projections</h4>
+              </div>
+              <CisdWidget
+                :symbol="symbol"
+                :exchange="exchange"
+              />
+            </div>
+
             <!-- MFI Volume Profile Block (Full Width) -->
             <div class="insight-full-widget mfi-volume-profile">
               <div class="widget-header">
@@ -262,6 +284,8 @@ import StockDetailSkeleton from '@/components/StockDetailSkeleton.vue'
 import FundamentalAnalysis from '@/components/FundamentalAnalysis.vue'
 import HoldingsAnalysis from '@/components/HoldingsAnalysis.vue'
 import TechnicalSignals from '@/components/TechnicalSignals.vue'
+import TrendlinesSRWidget from '@/components/TrendlinesSRWidget.vue'
+import CisdWidget from '@/components/CisdWidget.vue'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { useTheme } from '@/composables/useTheme.js'
 
@@ -281,7 +305,9 @@ export default {
     StockDetailSkeleton,
     FundamentalAnalysis,
     HoldingsAnalysis,
-    TechnicalSignals
+    TechnicalSignals,
+    TrendlinesSRWidget,
+    CisdWidget
   },
   setup() {
     const { theme } = useTheme()
@@ -723,7 +749,9 @@ export default {
 
 /* Remove borders from full-width chart widgets to avoid double borders */
 .insight-full-widget.market-regime,
-.insight-full-widget.trading-strategy {
+.insight-full-widget.trading-strategy,
+.insight-full-widget.trendlines-sr,
+.insight-full-widget.cisd-projections {
   border: none !important;
   background: transparent !important;
 }

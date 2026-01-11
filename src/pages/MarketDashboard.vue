@@ -35,6 +35,7 @@
         <div class="widget-header">
           <h3>Top Stories</h3>
         </div>
+        <LazyTradingViewWidget
           :config="topStoriesConfig"
           script-url="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
           height="650px"

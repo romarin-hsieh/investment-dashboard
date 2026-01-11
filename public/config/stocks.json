@@ -12,7 +12,7 @@
       "priority": 1
     },
     {
-      "symbol": "RIVN", 
+      "symbol": "RIVN",
       "exchange": "NASDAQ",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
@@ -21,7 +21,7 @@
     },
     {
       "symbol": "PL",
-      "exchange": "NYSE", 
+      "exchange": "NYSE",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
       "enabled": true,
@@ -30,7 +30,7 @@
     {
       "symbol": "ONDS",
       "exchange": "NASDAQ",
-      "sector": "Technology", 
+      "sector": "Technology",
       "industry": "Communication Equipment",
       "enabled": true,
       "priority": 1
@@ -39,7 +39,7 @@
       "symbol": "RDW",
       "exchange": "NYSE",
       "sector": "Industrials",
-      "industry": "Aerospace & Defense", 
+      "industry": "Aerospace & Defense",
       "enabled": true,
       "priority": 1
     },
@@ -538,15 +538,43 @@
       "industry": "Software - Application",
       "enabled": true,
       "priority": 2
+    },
+    {
+      "symbol": "SNDK",
+      "exchange": "NASDAQ",
+      "sector": "Technology",
+      "industry": "Computer Hardware",
+      "enabled": true,
+      "priority": 2
+    },
+    {
+      "symbol": "MU",
+      "exchange": "NASDAQ",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "enabled": true,
+      "priority": 2
+    },
+    {
+      "symbol": "BE",
+      "exchange": "NYSE",
+      "sector": "Industrials",
+      "industry": "Electrical Equipment & Parts",
+      "enabled": true,
+      "priority": 2
     }
   ],
   "metadata": {
-    "total_stocks": 67,
-    "enabled_stocks": 67,
-    "exchanges": ["NYSE", "NASDAQ", "AMEX"],
+    "total_stocks": 70,
+    "enabled_stocks": 70,
+    "exchanges": [
+      "NYSE",
+      "NASDAQ",
+      "AMEX"
+    ],
     "sectors": [
       "Technology",
-      "Consumer Cyclical", 
+      "Consumer Cyclical",
       "Industrials",
       "Communication Services",
       "Energy",
