@@ -52,8 +52,52 @@ class QuotesSnapshotGenerator {
     }
   }
 
-  // 生成模擬股票報價數據
-  generateMockQuote(symbol) {
+  // 生成(或讀取)股票報價數據
+  generateQuote(symbol) {
+    // 嘗試從本地 OHLCV 讀取真實數據
+    try {
+      // 處理符號名稱 (如 FOREXCOM:SPXUSD -> FOREXCOM_SPXUSD)
+      const safeSymbol = symbol.replace(/:/g, '_')
+      const ohlcvPath = path.join(this.projectRoot, 'public', 'data', 'ohlcv', `${safeSymbol}.json`)
+
+      if (fs.existsSync(ohlcvPath)) {
+        const fileContent = fs.readFileSync(ohlcvPath, 'utf8')
+        const data = JSON.parse(fileContent)
+
+        if (data.timestamps && data.timestamps.length > 0) {
+          const lastIdx = data.timestamps.length - 1
+          const prevIdx = Math.max(0, lastIdx - 1)
+
+          const closePrice = data.close[lastIdx]
+          const prevClose = data.close[prevIdx]
+          const volume = data.volume[lastIdx] || 0
+
+          const changeAmount = closePrice - prevClose
+          const changePercent = prevClose !== 0 ? (changeAmount / prevClose) * 100 : 0
+
+          return {
+            symbol,
+            price_usd: parseFloat(closePrice.toFixed(2)),
+            price_type: "close",
+            market_state: "closed",
+            is_delayed: true,
+            stale_level: "fresh",
+            error: null,
+            change_percent: parseFloat(changePercent.toFixed(2)),
+            change_amount: parseFloat(changeAmount.toFixed(2)),
+            volume: volume,
+            close_price: parseFloat(closePrice.toFixed(2)),
+            after_hours_price: null,
+            after_hours_change_percent: null,
+            after_hours_change_amount: null
+          }
+        }
+      }
+    } catch (err) {
+      console.warn(`⚠️ Failed to read real data for ${symbol}, falling back to mock:`, err.message)
+    }
+
+    // --- Fallback to Mock Data (if file missing) ---
     // 基礎價格範圍 (根據股票類型)
     const priceRanges = {
       // 高價股
@@ -76,7 +120,7 @@ class QuotesSnapshotGenerator {
       'AVAV': [80, 120],
       'ASTS': [20, 40],
       'RIVN': [10, 20],
-      'ONDS': [35, 50],
+      'ONDS': [0.5, 2.0], // Updated to realistic range
       'RDW': [60, 80],
       'LEU': [40, 60],
       'SMR': [20, 30],
@@ -127,7 +171,7 @@ class QuotesSnapshotGenerator {
       'MP': [40, 60],
       'UUUU': [5, 10],
       'MU': [80, 130],
-      'SNDK': [70, 90], // Assuming historical/mock
+      'SNDK': [70, 90],
       'BE': [10, 20],
       'UMAC': [8, 15]
     }
@@ -188,7 +232,7 @@ class QuotesSnapshotGenerator {
     console.log(`📊 Generating quotes snapshot for ${symbols.length} symbols...`)
 
     // 生成所有股票的報價數據
-    const items = symbols.map(symbol => this.generateMockQuote(symbol))
+    const items = symbols.map(symbol => this.generateQuote(symbol))
 
     // 構建完整的快照數據
     const snapshot = {
