@@ -44,4 +44,5 @@ jobs:
         with:
           commit_message: "data: update daily market data (OHLCV)"
           file_pattern: 'public/data/ohlcv/*.json'
+          add_options: '-f'
           branch: main
