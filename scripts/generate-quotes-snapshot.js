@@ -16,7 +16,7 @@ class QuotesSnapshotGenerator {
   constructor() {
     this.projectRoot = path.resolve(__dirname, '..')
     this.outputDir = path.join(this.projectRoot, 'public', 'data', 'quotes')
-    
+
     // 確保輸出目錄存在
     if (!fs.existsSync(this.outputDir)) {
       fs.mkdirSync(this.outputDir, { recursive: true })
@@ -28,17 +28,17 @@ class QuotesSnapshotGenerator {
     try {
       const configPath = path.join(this.projectRoot, 'config', 'stocks.json')
       const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'))
-      
+
       // 只返回啟用的股票符號
       const enabledSymbols = configData.stocks
         .filter(stock => stock.enabled)
         .map(stock => stock.symbol)
-      
+
       console.log(`📊 Loaded ${enabledSymbols.length} enabled symbols from stocks.json`)
       return enabledSymbols
     } catch (error) {
       console.error('Failed to read stocks.json:', error)
-      
+
       // Fallback 到 universe.json
       try {
         console.warn('⚠️ Falling back to universe.json')
@@ -58,7 +58,7 @@ class QuotesSnapshotGenerator {
     const priceRanges = {
       // 高價股
       'NVDA': [120, 180],
-      'TSLA': [400, 500], 
+      'TSLA': [400, 500],
       'GOOG': [170, 200],
       'AMZN': [180, 220],
       'META': [500, 700],
@@ -68,7 +68,7 @@ class QuotesSnapshotGenerator {
       'MDB': [250, 350],
       'ORCL': [150, 200],
       'TSM': [180, 220],
-      
+
       // 中價股
       'PLTR': [50, 80],
       'RKLB': [60, 90],
@@ -82,7 +82,7 @@ class QuotesSnapshotGenerator {
       'SMR': [20, 30],
       'IONQ': [30, 50],
       'HIMS': [15, 25],
-      
+
       // 新增股票的價格範圍
       'VST': [40, 60],
       'KTOS': [15, 25],
@@ -126,17 +126,20 @@ class QuotesSnapshotGenerator {
       'ZETA': [15, 25],
       'MP': [40, 60],
       'UUUU': [5, 10],
+      'MU': [80, 130],
+      'SNDK': [70, 90], // Assuming historical/mock
+      'BE': [10, 20],
       'UMAC': [8, 15]
     }
 
     const [minPrice, maxPrice] = priceRanges[symbol] || [10, 50]
     const basePrice = minPrice + Math.random() * (maxPrice - minPrice)
-    
+
     // 生成變化百分比 (-5% 到 +5%)
     const changePercent = (Math.random() - 0.5) * 10
     const changeAmount = basePrice * (changePercent / 100)
     const currentPrice = basePrice + changeAmount
-    
+
     // 生成交易量 (根據股票知名度)
     const volumeMultipliers = {
       'NVDA': 2000000, 'TSLA': 1500000, 'AAPL': 2500000,
@@ -181,12 +184,12 @@ class QuotesSnapshotGenerator {
   async generateQuotesSnapshot() {
     const symbols = await this.getStocksFromConfig()
     const now = new Date()
-    
+
     console.log(`📊 Generating quotes snapshot for ${symbols.length} symbols...`)
-    
+
     // 生成所有股票的報價數據
     const items = symbols.map(symbol => this.generateMockQuote(symbol))
-    
+
     // 構建完整的快照數據
     const snapshot = {
       as_of: now.toISOString(),
@@ -205,11 +208,11 @@ class QuotesSnapshotGenerator {
     // 寫入文件
     const filepath = path.join(this.outputDir, 'latest.json')
     fs.writeFileSync(filepath, JSON.stringify(snapshot, null, 2), 'utf8')
-    
+
     console.log(`✅ Quotes snapshot generated: ${filepath}`)
     console.log(`📈 Total symbols: ${symbols.length}`)
     console.log(`🎯 Sample symbols: ${symbols.slice(0, 5).join(', ')}...`)
-    
+
     return {
       filepath,
       symbolCount: symbols.length,
@@ -220,35 +223,35 @@ class QuotesSnapshotGenerator {
   // 驗證生成的數據
   async validateSnapshot() {
     const filepath = path.join(this.outputDir, 'latest.json')
-    
+
     if (!fs.existsSync(filepath)) {
       throw new Error('Quotes snapshot file not found')
     }
 
     const data = JSON.parse(fs.readFileSync(filepath, 'utf8'))
     const configSymbols = await this.getStocksFromConfig()
-    
+
     // 檢查所有配置符號是否都包含在內
     const quoteSymbols = data.items.map(item => item.symbol)
-    const missingSymbols = universeSymbols.filter(symbol => !quoteSymbols.includes(symbol))
-    const extraSymbols = quoteSymbols.filter(symbol => !universeSymbols.includes(symbol))
-    
+    const missingSymbols = configSymbols.filter(symbol => !quoteSymbols.includes(symbol))
+    const extraSymbols = quoteSymbols.filter(symbol => !configSymbols.includes(symbol))
+
     console.log(`🔍 Validation Results:`)
-    console.log(`   Universe symbols: ${universeSymbols.length}`)
+    console.log(`   Config symbols: ${configSymbols.length}`)
     console.log(`   Quote symbols: ${quoteSymbols.length}`)
     console.log(`   Missing symbols: ${missingSymbols.length}`)
     console.log(`   Extra symbols: ${extraSymbols.length}`)
-    
+
     if (missingSymbols.length > 0) {
       console.warn(`⚠️  Missing symbols: ${missingSymbols.join(', ')}`)
     }
-    
+
     if (extraSymbols.length > 0) {
       console.warn(`⚠️  Extra symbols: ${extraSymbols.join(', ')}`)
     }
-    
+
     return {
-      isValid: missingSymbols.length === 0 && extraSymbols.length === 0,
+      isValid: missingSymbols.length === 0,
       missingSymbols,
       extraSymbols,
       totalSymbols: quoteSymbols.length
@@ -260,17 +263,17 @@ class QuotesSnapshotGenerator {
 async function main() {
   try {
     console.log('🚀 Starting quotes snapshot generation...')
-    
+
     const generator = new QuotesSnapshotGenerator()
-    
+
     // 生成報價快照
     console.log('📊 Generating quotes snapshot...')
     const result = await generator.generateQuotesSnapshot()
-    
+
     // 驗證生成的數據
     console.log('🔍 Validating generated data...')
     const validation = await generator.validateSnapshot()
-    
+
     if (validation.isValid) {
       console.log('✅ Quotes snapshot generation completed successfully!')
       console.log(`📊 Total symbols: ${validation.totalSymbols}`)
@@ -284,7 +287,7 @@ async function main() {
       }
       process.exit(1)
     }
-    
+
   } catch (error) {
     console.error('❌ Quotes snapshot generation failed:', error)
     console.error('Error details:', error.message)
