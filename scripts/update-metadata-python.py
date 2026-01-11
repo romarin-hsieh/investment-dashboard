@@ -24,7 +24,7 @@ class YFinanceMetadataUpdater:
         self.project_root = Path(__file__).parent.parent
         self.output_file = self.project_root / 'public' / 'data' / 'symbols_metadata.json'
         self.sector_file = self.project_root / 'public' / 'data' / 'sector_industry.json'
-        self.universe_file = self.project_root / 'config' / 'universe.json'
+        self.stocks_config_file = self.project_root / 'public' / 'config' / 'stocks.json'
         
         # 確保輸出目錄存在
         self.output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -33,20 +33,26 @@ class YFinanceMetadataUpdater:
         print(f"📁 輸出文件: {self.output_file}")
 
     def load_universe_symbols(self):
-        """從 universe.json 載入股票列表"""
+        """從 public/config/stocks.json 載入股票列表"""
         try:
-            with open(self.universe_file, 'r', encoding='utf-8') as f:
-                universe_data = json.load(f)
-                symbols = universe_data.get('symbols', [])
-                print(f"📊 從 universe.json 載入 {len(symbols)} 個股票")
+            with open(self.stocks_config_file, 'r', encoding='utf-8') as f:
+                config_data = json.load(f)
+                # stocks.json 結構是 {"stocks": [{"symbol": "..."}]}
+                if 'stocks' in config_data:
+                    symbols = [item['symbol'] for item in config_data['stocks'] if item.get('enabled', True)]
+                else:
+                    # 兼容舊格式
+                    symbols = config_data.get('symbols', [])
+                    
+                print(f"📊 從 stocks.json 載入 {len(symbols)} 個股票")
                 return symbols
         except Exception as e:
-            print(f"⚠️ 無法載入 universe.json: {e}")
+            print(f"⚠️ 無法載入 stocks.json: {e}")
             # Fallback 股票列表
             fallback_symbols = [
                 'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
                 'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
-                'IONQ', 'PLTR', 'HIMS', 'TSLA'
+                'IONQ', 'PLTR', 'HIMS', 'TSLA', 'SNDK', 'MU', 'BE'
             ]
             print(f"🔄 使用 fallback 股票列表: {len(fallback_symbols)} 個股票")
             return fallback_symbols
