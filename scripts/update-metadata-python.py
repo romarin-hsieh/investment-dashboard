@@ -69,6 +69,17 @@ class YFinanceMetadataUpdater:
             if not info or 'symbol' not in info:
                 raise Exception("無效的股票資訊")
             
+            # Check for invalid sector/industry
+            sector = info.get('sector', 'Unknown')
+            industry = info.get('industry', 'Unknown Industry')
+            
+            if sector == "Unknown" or industry == "Unknown Industry":
+                 # If yfinance returns unknown, try to force fallback if available
+                 fallback_check = self.get_fallback_metadata(symbol)
+                 if fallback_check['sector'] != 'Unknown':
+                     print(f"⚠️ YFinance returned 'Unknown' for {symbol}, switching to fallback data")
+                     raise Exception("YFinance missing sector/industry data")
+            
             # 提取需要的資訊
             metadata = {
                 'symbol': symbol,
@@ -164,7 +175,11 @@ class YFinanceMetadataUpdater:
             'BWXT': {'sector': 'Energy', 'industry': 'Nuclear Energy', 'exchange': 'NYSE'},
             'UMAC': {'sector': 'Industrials', 'industry': 'Aerospace & Defense', 'exchange': 'AMEX'},
             'MP': {'sector': 'Basic Materials', 'industry': 'Other Industrial Metals & Mining', 'exchange': 'NYSE'},
-            'RR': {'sector': 'Technology', 'industry': 'Information Technology Services', 'exchange': 'NASDAQ'}
+            'RR': {'sector': 'Technology', 'industry': 'Information Technology Services', 'exchange': 'NASDAQ'},
+            # New entries
+            'SNDK': {'sector': 'Technology', 'industry': 'Computer Hardware', 'exchange': 'NASDAQ'},
+            'MU': {'sector': 'Technology', 'industry': 'Semiconductors', 'exchange': 'NASDAQ'},
+            'BE': {'sector': 'Industrials', 'industry': 'Electrical Equipment & Parts', 'exchange': 'NYSE'}
         }
         
         data = fallback_data.get(symbol, {
