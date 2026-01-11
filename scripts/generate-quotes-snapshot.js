@@ -26,7 +26,7 @@ class QuotesSnapshotGenerator {
   // 從統一配置文件讀取股票列表
   async getStocksFromConfig() {
     try {
-      const configPath = path.join(this.projectRoot, 'config', 'stocks.json')
+      const configPath = path.join(this.projectRoot, 'public', 'config', 'stocks.json')
       const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'))
 
       // 只返回啟用的股票符號
@@ -340,9 +340,7 @@ async function main() {
   }
 }
 
-// 如果直接執行此腳本
-if (import.meta.url === `file://${process.argv[1]}`) {
-  main()
-}
+// 直接執行主函數
+main().catch(console.error)
 
 export { QuotesSnapshotGenerator }
