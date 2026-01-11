@@ -61,35 +61,38 @@ export function getEnvironmentInfo() {
 export const paths = {
   // OHLCV 數據路徑
   ohlcv: (symbol) => withBase(`data/ohlcv/${symbol.toUpperCase()}.json`),
-  ohlcvPrecomputed: (symbol, period = '1d', days = 90) => 
+  ohlcvPrecomputed: (symbol, period = '1d', days = 90) =>
     withBase(`data/ohlcv/${symbol.toLowerCase()}_${period}_${days}d.json`),
   ohlcvIndex: (options = {}) => {
     const url = withBase('data/ohlcv/index.json');
     return options.v ? `${url}?v=${options.v}` : url;
   },
-  
+
   // 技術指標路徑
-  technicalIndicators: (date, symbol) => 
+  technicalIndicators: (date, symbol) =>
     withBase(`data/technical-indicators/${date}_${symbol}.json`),
   technicalIndicatorsIndex: (options = {}) => {
     const url = withBase('data/technical-indicators/latest_index.json');
     return options.v ? `${url}?v=${options.v}` : url;
   },
-  
+
   // Metadata 路徑
-  symbolsMetadata: () => withBase('data/symbols_metadata.json'),
+  symbolsMetadata: (options = {}) => {
+    const url = withBase('data/symbols_metadata.json');
+    return options.v ? `${url}?v=${options.v}` : url;
+  },
   sectorIndustry: () => withBase('data/sector_industry.json'),
-  
+
   // 配置文件路徑
   universe: () => withBase('config/universe.json'),
   stocks: () => withBase('config/stocks.json'),
-  
+
   // 狀態和索引文件 (需要 cache busting)
   status: (options = {}) => {
     const url = withBase('data/status.json');
     return options.v ? `${url}?v=${options.v}` : url;
   },
-  
+
   // 其他常用路徑
   packageJson: () => withBase('package.json'),
   quotesLatest: () => withBase('data/quotes/latest.json'),

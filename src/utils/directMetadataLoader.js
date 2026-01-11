@@ -23,7 +23,7 @@ class DirectMetadataLoader {
 
     try {
       this._fetchPromise = (async () => {
-        const url = paths.symbolsMetadata()
+        const url = paths.symbolsMetadata({ v: Date.now() })
         console.log('🔍 DirectMetadataLoader fetching from:', url)
 
         const response = await fetch(url)
