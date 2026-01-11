@@ -1,5 +1,5 @@
 {
-  "generated": "2026-01-10T21:57:26Z",
+  "generated": "2026-01-11T17:32:36Z",
   "symbols": [
     "ASTS",
     "RIVN",
@@ -67,7 +67,11 @@
     "BWXT",
     "UMAC",
     "MP",
-    "RR"
+    "RR",
+    "^GSPC",
+    "^VIX",
+    "TLT",
+    "JNK"
   ],
   "files": [
     "ASTS.json",
@@ -203,16 +207,24 @@
     "MP.json",
     "mp_1d_1825d.json",
     "RR.json",
-    "rr_1d_1825d.json"
+    "rr_1d_1825d.json",
+    "FOREXCOM_SPXUSD.json",
+    "forexcom_spxusd_1d_1825d.json",
+    "TVC_VIX.json",
+    "tvc_vix_1d_1825d.json",
+    "NASDAQ_TLT.json",
+    "nasdaq_tlt_1d_1825d.json",
+    "NASDAQ_JNK.json",
+    "nasdaq_jnk_1d_1825d.json"
   ],
-  "totalFiles": 134,
+  "totalFiles": 142,
   "dataPoints": 1825,
   "period": "1d",
   "source": "yfinance",
   "note": "Real OHLCV data for both ohlcvApi and precomputedOhlcvApi",
   "report": {
-    "totalSymbols": 67,
-    "ok": 67,
+    "totalSymbols": 71,
+    "ok": 71,
     "failed": 0,
     "successRate": "100.0%",
     "items": [
@@ -1218,6 +1230,66 @@
           "min": 0.3019999861717224,
           "max": 12.289999961853027,
           "latest": 3.7899999618530273
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "^GSPC",
+        "files": [
+          "FOREXCOM_SPXUSD.json",
+          "forexcom_spxusd_1d_1825d.json"
+        ],
+        "rows": 1825,
+        "lastTimestamp": 1767934800000,
+        "priceRange": {
+          "min": 2191.860107421875,
+          "max": 6978.35986328125,
+          "latest": 6966.27978515625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "^VIX",
+        "files": [
+          "TVC_VIX.json",
+          "tvc_vix_1d_1825d.json"
+        ],
+        "rows": 1758,
+        "lastTimestamp": 1767938400000,
+        "priceRange": {
+          "min": 10.619999885559082,
+          "max": 85.47000122070312,
+          "latest": 14.489999771118164
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "TLT",
+        "files": [
+          "NASDAQ_TLT.json",
+          "nasdaq_tlt_1d_1825d.json"
+        ],
+        "rows": 1825,
+        "lastTimestamp": 1767934800000,
+        "priceRange": {
+          "min": 82.41999816894531,
+          "max": 179.6999969482422,
+          "latest": 87.93000030517578
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "JNK",
+        "files": [
+          "NASDAQ_JNK.json",
+          "nasdaq_jnk_1d_1825d.json"
+        ],
+        "rows": 1825,
+        "lastTimestamp": 1767934800000,
+        "priceRange": {
+          "min": 83.18000030517578,
+          "max": 110.33000183105469,
+          "latest": 97.69000244140625
         },
         "status": "ok"
       }
