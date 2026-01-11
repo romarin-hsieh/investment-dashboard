@@ -28,9 +28,10 @@ const CONFIG = {
  */
 function loadUniverse() {
   try {
-    const data = fs.readFileSync(CONFIG.universeFile, 'utf8');
-    const universe = JSON.parse(data);
-    return universe.symbols || [];
+    const stocksPath = path.join(__dirname, '../public/config/stocks.json');
+    const data = fs.readFileSync(stocksPath, 'utf8');
+    const config = JSON.parse(data);
+    return config.stocks.map(s => s.symbol) || [];
   } catch (error) {
     console.error('❌ Failed to load universe:', error);
     return [];
