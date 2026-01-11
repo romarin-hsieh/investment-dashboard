@@ -19,7 +19,7 @@ on:
       force_update:
         description: 'Force update all metadata'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 jobs:
@@ -79,6 +79,9 @@ jobs:
         - Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
         
         git commit -m "$COMMIT_MSG"
+        
+        # 嘗試拉取最新變更以避免衝突
+        git pull --rebase origin main || true
         git push
     
     - name: Create summary

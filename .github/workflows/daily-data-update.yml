@@ -116,6 +116,9 @@ jobs:
         fi
         
         git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d) [skip ci]"
+        
+        # 嘗試拉取最新變更以避免衝突
+        git pull --rebase origin main || true
         git push
         echo "✅ Data updated and pushed"
 
