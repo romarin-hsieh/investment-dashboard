@@ -362,7 +362,7 @@ export default {
         const ma = slice.reduce((a, b) => a + b, 0) / period;
         const diff = (current - ma) / ma; 
         // Tuned: Lower multiplier to reducing Greed spikes
-        const score = 50 + (diff * 300); 
+        const score = 50 + (diff * 200); 
         return this.normalize(score);
     },
 
@@ -391,7 +391,7 @@ export default {
         const diff = (current - ma) / ma;
         // High VIX = Fear. 
         // Increased sensitivity to VIX spikes (Fear)
-        const score = 50 - (diff * 150); 
+        const score = 50 - (diff * 100); 
         return this.normalize(score);
     },
 
@@ -400,7 +400,7 @@ export default {
         const stockRet = this.getReturn(stocks, period);
         const bondRet = this.getReturn(bonds, period);
         const diff = stockRet - bondRet; 
-        const score = 50 + (diff * 400); 
+        const score = 50 + (diff * 300); 
         return this.normalize(score);
     },
 
@@ -409,7 +409,7 @@ export default {
         const riskyRet = this.getReturn(risky, period);
         const safeRet = this.getReturn(safe, period);
         const diff = riskyRet - safeRet;
-        const score = 50 + (diff * 400);
+        const score = 50 + (diff * 300);
         return this.normalize(score);
     },
 
