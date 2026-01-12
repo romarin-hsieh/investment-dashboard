@@ -254,6 +254,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-12T12:03:17.000Z",
+        "firm": "Keybanc",
+        "toGrade": "Sector Weight",
+        "fromGrade": "Overweight",
+        "action": "down",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
         "epochGradeDate": "2026-01-09T19:32:55.000Z",
         "firm": "Berenberg",
         "toGrade": "Buy",
@@ -7168,11 +7178,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.019357825,
+    "preMarketChange": -9.109985,
+    "preMarketTime": "2026-01-12T12:35:48.000Z",
+    "preMarketPrice": 461.5,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0007796538,
-    "postMarketChange": 0.36691284,
-    "postMarketTime": "2026-01-10T00:59:44.000Z",
-    "postMarketPrice": 470.9769,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.014529911,
     "regularMarketChange": 6.73999,
@@ -7190,7 +7200,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRWD",
     "underlyingSymbol": null,
@@ -9088,6 +9098,6 @@
     "profitMargins": -0.06882,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T06:31:46.725Z",
+  "lastUpdated": "2026-01-12T12:39:30.090Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -252,6 +252,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-12T11:54:27.000Z",
+        "firm": "Keybanc",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 170,
+        "priorPriceTarget": 230
+      },
+      {
         "epochGradeDate": "2026-01-07T14:29:42.000Z",
         "firm": "Truist Securities",
         "toGrade": "Hold",
@@ -4166,11 +4176,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0035859188,
+    "preMarketChange": -0.44999695,
+    "preMarketTime": "2026-01-12T12:37:09.000Z",
+    "preMarketPrice": 125.04,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00034824427,
-    "postMarketChange": 0.043701172,
-    "postMarketTime": "2026-01-10T00:59:59.000Z",
-    "postMarketPrice": 125.5337,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.039715298,
     "regularMarketChange": -5.189995,
@@ -4188,7 +4198,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4206,7 +4216,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 41144651776,
-    "forwardPE": 53.551083,
+    "forwardPE": 53.679592,
     "profitMargins": 0.033239998,
     "floatShares": 323318431,
     "sharesOutstanding": 325443373,
@@ -4232,7 +4242,7 @@
     "earningsQuarterlyGrowth": -0.345,
     "netIncomeToCommon": 106768000,
     "trailingEps": 0.31,
-    "forwardEps": 2.34337,
+    "forwardEps": 2.33776,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 12.811,
     "enterpriseToEbitda": 6609.582,
@@ -6036,9 +6046,9 @@
     "maxAge": 86400,
     "currentPrice": 125.49,
     "targetHighPrice": 260,
-    "targetLowPrice": 140,
-    "targetMeanPrice": 208.49286,
-    "targetMedianPrice": 215,
+    "targetLowPrice": 113,
+    "targetMeanPrice": 205.35,
+    "targetMedianPrice": 212.5,
     "recommendationMean": 1.42222,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 42,
@@ -6064,6 +6074,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T06:31:48.450Z",
+  "lastUpdated": "2026-01-12T12:39:31.743Z",
   "source": "Static Build (yahoo-finance2)"
 }

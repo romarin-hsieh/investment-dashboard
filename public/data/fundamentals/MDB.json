@@ -252,6 +252,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-12T09:57:50.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 500,
+        "priorPriceTarget": 500
+      },
+      {
         "epochGradeDate": "2026-01-07T14:31:10.000Z",
         "firm": "Truist Securities",
         "toGrade": "Buy",
@@ -5416,11 +5426,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0077183032,
+    "preMarketChange": -3.149994,
+    "preMarketTime": "2026-01-12T12:36:09.000Z",
+    "preMarketPrice": 404.97,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0005390601,
-    "postMarketChange": 0.22000122,
-    "postMarketTime": "2026-01-10T00:58:52.000Z",
-    "postMarketPrice": 408.34,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.013058606,
     "regularMarketChange": -5.399994,
@@ -5438,7 +5448,7 @@
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MDB",
     "underlyingSymbol": null,
@@ -7321,7 +7331,7 @@
     "currentPrice": 408.12,
     "targetHighPrice": 550,
     "targetLowPrice": 250,
-    "targetMeanPrice": 446.98837,
+    "targetMeanPrice": 448.74515,
     "targetMedianPrice": 455,
     "recommendationMean": 1.7381,
     "recommendationKey": "buy",
@@ -7347,6 +7357,6 @@
     "profitMargins": -0.030580001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T06:30:17.797Z",
+  "lastUpdated": "2026-01-12T12:38:00.637Z",
   "source": "Static Build (yahoo-finance2)"
 }

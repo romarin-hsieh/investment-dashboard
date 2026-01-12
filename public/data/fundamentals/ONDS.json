@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 2,
-        "buy": 5,
+        "buy": 6,
         "hold": 0,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-2m",
+        "strongBuy": 2,
+        "buy": 5,
+        "hold": 0,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 3,
         "buy": 3,
         "hold": 1,
@@ -408,11 +416,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.002191431,
+    "preMarketChange": 0.030000687,
+    "preMarketTime": "2026-01-12T12:37:42.000Z",
+    "preMarketPrice": 13.72,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.021183344,
-    "postMarketChange": 0.28999996,
-    "postMarketTime": "2026-01-10T00:59:56.000Z",
-    "postMarketPrice": 13.98,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.022840807,
     "regularMarketChange": -0.3199997,
@@ -430,7 +438,7 @@
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
@@ -450,7 +458,7 @@
     "enterpriseValue": 4611762688,
     "forwardPE": -136.9,
     "profitMargins": -1.7249401,
-    "floatShares": 365161950,
+    "floatShares": 365246696,
     "sharesOutstanding": 385649155,
     "sharesShort": 78942517,
     "sharesShortPriorMonth": "1972-08-30T07:52:14.000Z",
@@ -950,11 +958,12 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 13.69,
-    "targetHighPrice": 13,
+    "targetHighPrice": 17,
     "targetLowPrice": 10,
-    "targetMeanPrice": 11.5,
+    "targetMeanPrice": 12,
     "targetMedianPrice": 12,
-    "recommendationKey": "none",
+    "recommendationMean": 1.25,
+    "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 8,
     "totalCash": 451627840,
     "totalCashPerShare": 1.226,
@@ -977,6 +986,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T06:30:12.378Z",
+  "lastUpdated": "2026-01-12T12:37:55.112Z",
   "source": "Static Build (yahoo-finance2)"
 }

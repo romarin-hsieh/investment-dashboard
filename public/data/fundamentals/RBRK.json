@@ -247,6 +247,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-12T11:40:50.000Z",
+        "firm": "Keybanc",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 95,
+        "priorPriceTarget": 113
+      },
+      {
         "epochGradeDate": "2026-01-05T17:25:20.000Z",
         "firm": "Piper Sandler",
         "toGrade": "Overweight",
@@ -1361,11 +1371,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.006875053,
+    "preMarketChange": -0.4850006,
+    "preMarketTime": "2026-01-12T12:36:35.000Z",
+    "preMarketPrice": 70.06,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0001416455,
-    "postMarketChange": -0.009994507,
-    "postMarketTime": "2026-01-10T00:59:46.000Z",
-    "postMarketPrice": 70.55,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": -0.04,
     "regularMarketChange": -2.94,
@@ -1383,14 +1393,14 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBRK",
     "underlyingSymbol": null,
     "shortName": "Rubrik, Inc.",
     "longName": null,
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -1403,7 +1413,7 @@
     "enterpriseValue": 13685452800,
     "forwardPE": 919.34845,
     "profitMargins": -0.31485,
-    "floatShares": 148487014,
+    "floatShares": 148489015,
     "sharesOutstanding": 151894462,
     "sharesShort": 10900159,
     "sharesShortPriorMonth": "1970-05-26T10:45:10.000Z",
@@ -3227,6 +3237,6 @@
     "profitMargins": -0.31485,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T06:30:57.655Z",
+  "lastUpdated": "2026-01-12T12:38:40.796Z",
   "source": "Static Build (yahoo-finance2)"
 }
