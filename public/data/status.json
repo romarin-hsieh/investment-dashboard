@@ -1,51 +1,50 @@
 {
-  "generated": "2026-01-10T22:01:54.986Z",
-  "date": "2026-01-10",
+  "generated": "2026-01-12T03:49:17.778Z",
+  "date": "2026-01-12",
   "status": "updated",
   "data_sources": {
     "ohlcv": {
       "exists": true,
-      "size": 28878,
-      "modified": "2026-01-10T21:58:07.021Z",
-      "fileCount": 271,
+      "size": 29404,
+      "modified": "2026-01-12T03:46:32.539Z",
+      "fileCount": 353,
       "directory": "data/ohlcv/"
     },
     "technical_indicators": {
       "exists": true,
-      "size": 2989,
-      "modified": "2026-01-10T21:58:21.577Z",
-      "fileCount": 408,
+      "size": 5236,
+      "modified": "2026-01-12T03:47:13.226Z",
+      "fileCount": 548,
       "directory": "data/technical-indicators/"
     },
     "quotes": {
       "exists": true,
-      "size": 30129,
-      "modified": "2026-01-04T09:49:13.735Z",
+      "size": 30372,
+      "modified": "2026-01-12T03:45:13.443Z",
       "file": "data/quotes/latest.json"
     },
     "metadata": {
       "exists": true,
-      "size": 71540,
-      "modified": "2026-01-10T19:56:34.922Z",
+      "size": 70080,
+      "modified": "2026-01-12T03:45:13.443Z",
       "file": "data/symbols_metadata.json"
     },
     "daily_snapshot": {
-      "exists": false,
-      "size": 0,
-      "modified": null,
-      "error": "ENOENT: no such file or directory, stat 'C:\\Users\\Romarin\\Documents\\Kiro\\investment-dashboard\\public\\data\\daily\\2026-01-10.json'",
-      "file": "data/daily/2026-01-10.json"
+      "exists": true,
+      "size": 28011,
+      "modified": "2026-01-12T03:49:17.727Z",
+      "file": "data/daily/2026-01-12.json"
     }
   },
   "update_info": {
     "source": "GitHub Actions Daily Update",
     "workflow": "daily-data-update.yml",
-    "next_update": "2026-01-11T22:01:54.986Z",
+    "next_update": "2026-01-13T03:49:17.778Z",
     "update_frequency": "daily"
   },
   "health_check": {
     "all_systems": "operational",
-    "last_check": "2026-01-10T22:01:54.986Z",
+    "last_check": "2026-01-12T03:49:17.778Z",
     "issues": []
   }
 }
