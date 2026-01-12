@@ -30,63 +30,46 @@ class OhlcvApi {
       }
     }
 
-    // Request Deduplication
-    if (this.inflightRequests.has(cacheKey)) {
-      console.log(`⏳ Reusing in-flight request for ${symbol}`);
-      return this.inflightRequests.get(cacheKey);
+    // 步驟 1: 優先嘗試本地 JSON（Production 主要路徑）
+    try {
+      let localData = await this.fetchLocalOhlcv(symbol, period, range);
+      if (localData) {
+        // Filter data based on range (since local JSON contains full history)
+        localData = this.filterDataByRange(localData, range);
+
+        this.cache.set(cacheKey, {
+          data: localData,
+          timestamp: Date.now()
+        });
+        console.log(`📊 Loaded local OHLCV for ${symbol}: ${localData.timestamps?.length || 0} points (${range})`);
+        return localData;
+      }
+    } catch (error) {
+      console.warn(`📊 Local OHLCV failed for ${symbol}:`, error.message);
     }
 
-    const fetchPromise = (async () => {
+    // 步驟 2: DEV 模式 fallback 到 Yahoo Finance
+    if (import.meta.env.DEV || new URLSearchParams(window.location.search).has('debug')) {
       try {
-        // 步驟 1: 優先嘗試本地 JSON（Production 主要路徑）
-        try {
-          let localData = await this.fetchLocalOhlcv(symbol, period, range);
-          if (localData) {
-            // Filter data based on range (since local JSON contains full history)
-            localData = this.filterDataByRange(localData, range);
+        console.log(`📊 DEV mode: trying Yahoo Finance fallback for ${symbol}`);
+        const yahooData = await yahooFinanceAPI.getOhlcv(symbol, period, range);
 
-            this.cache.set(cacheKey, {
-              data: localData,
-              timestamp: Date.now()
-            });
-            console.log(`📊 Loaded local OHLCV for ${symbol}: ${localData.timestamps?.length || 0} points (${range})`);
-            return localData;
-          }
-        } catch (error) {
-          console.warn(`📊 Local OHLCV failed for ${symbol}:`, error.message);
+        if (yahooData && this.validateOhlcvData(yahooData)) {
+          this.cache.set(cacheKey, {
+            data: yahooData,
+            timestamp: Date.now()
+          });
+          console.log(`📊 Yahoo Finance fallback success for ${symbol}`);
+          return yahooData;
         }
-
-        // 步驟 2: DEV 模式 fallback 到 Yahoo Finance
-        if (import.meta.env.DEV || new URLSearchParams(window.location.search).has('debug')) {
-          try {
-            console.log(`📊 DEV mode: trying Yahoo Finance fallback for ${symbol}`);
-            const yahooData = await yahooFinanceAPI.getOhlcv(symbol, period, range);
-
-            if (yahooData && this.validateOhlcvData(yahooData)) {
-              this.cache.set(cacheKey, {
-                data: yahooData,
-                timestamp: Date.now()
-              });
-              console.log(`📊 Yahoo Finance fallback success for ${symbol}`);
-              return yahooData;
-            }
-          } catch (error) {
-            console.warn(`📊 Yahoo Finance fallback failed for ${symbol}:`, error.message);
-          }
-        }
-
-        // 步驟 3: 都失敗了，回傳 null（不 throw）
-        console.warn(`📊 No OHLCV data available for ${symbol}`);
-        return null;
-
-      } finally {
-        // Remove from inflight requests when done
-        this.inflightRequests.delete(cacheKey);
+      } catch (error) {
+        console.warn(`📊 Yahoo Finance fallback failed for ${symbol}:`, error.message);
       }
-    })();
+    }
 
-    this.inflightRequests.set(cacheKey, fetchPromise);
-    return fetchPromise;
+    // 步驟 3: 都失敗了，回傳 null（不 throw）
+    console.warn(`📊 No OHLCV data available for ${symbol}`);
+    return null;
   }
 
   /**
@@ -97,73 +80,78 @@ class OhlcvApi {
    * @returns {Promise<Object|null>} 本地 OHLCV 數據
    */
   async fetchLocalOhlcv(symbol, period, range) {
-    // 使用統一的 baseUrl helper
-    // Sanitize symbol for Windows compatibility (replace : with _)
-    const safeSymbol = symbol.replace(/:/g, '_');
-    // Use unified Cache Busting: Change every 60 seconds to allow basic CDN caching but prevent stale data
-    const timestamp = Math.floor(Date.now() / 60000);
-    const url = paths.ohlcv(safeSymbol) + '?t=' + timestamp;
-    console.warn(`🔍 Fetching local OHLCV from: ${url}`);
+    // Request Deduplication at FETCH level (per symbol/file)
+    // 這樣不同 range 的請求 (e.g. 3mo, 1y) 可以共享同一個 fetch
+    const requestId = `fetch_${symbol}`;
 
-    const response = await fetch(url);
-    console.warn(`🔍 Fetch status: ${response.status} ${response.statusText}`);
+    if (this.inflightRequests.has(requestId)) {
+      console.log(`⏳ Reusing in-flight request for ${symbol}`);
+      return this.inflightRequests.get(requestId);
+    }
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        console.warn(`📊 Local OHLCV not found for ${symbol} (404)`);
-        return null;
+    const fetchPromise = (async () => {
+      try {
+        // 使用統一的 baseUrl helper
+        // Sanitize symbol for Windows compatibility (replace : with _)
+        const safeSymbol = symbol.replace(/:/g, '_');
+        // Use unified Cache Busting: Change every 60 seconds to allow basic CDN caching but prevent stale data
+        const timestamp = Math.floor(Date.now() / 60000);
+        const url = paths.ohlcv(safeSymbol) + '?t=' + timestamp;
+        console.warn(`🔍 Fetching local OHLCV from: ${url}`);
+
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          // 如果是 404，不視為錯誤，而是回傳 null
+          if (response.status === 404) {
+            console.warn(`⚠️ Local OHLCV file not found for ${symbol}`);
+            return null;
+          }
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const rawJson = await response.json();
+
+        // Handle { symbol, ohlcv: { ... } } structure
+        let data = rawJson;
+        if (rawJson.ohlcv) {
+          // console.warn('🔍 Detected nested ohlcv object, unwrapping...');
+          data = rawJson.ohlcv;
+          // Copy symbol if missing in child
+          if (!data.symbol && rawJson.symbol) {
+            data.symbol = rawJson.symbol;
+          }
+        }
+
+        // Handle timestamp vs timestamps mismatch
+        if (data.timestamp && !data.timestamps) {
+          data.timestamps = data.timestamp;
+        }
+
+        if (!this.validateOhlcvData(data)) {
+          console.error('Data structure invalid:', Object.keys(data));
+          throw new Error('Invalid local OHLCV data structure');
+        }
+
+        return {
+          ...data,
+          metadata: {
+            ...data.metadata,
+            source: 'Local JSON',
+            symbol: symbol,
+            period: period,
+            range: range,
+            loadedAt: new Date().toISOString()
+          }
+        };
+
+      } finally {
+        this.inflightRequests.delete(requestId);
       }
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
+    })();
 
-    const json = await response.json();
-    console.warn(`🔍 Raw JSON keys for ${symbol}:`, Object.keys(json));
-
-    // Handle { symbol, ohlcv: { ... } } structure
-    let data = json;
-    if (json.ohlcv) {
-      console.warn('🔍 Detected nested ohlcv object, unwrapping...');
-      data = json.ohlcv;
-      // Copy symbol if missing in child
-      if (!data.symbol && json.symbol) {
-        data.symbol = json.symbol;
-      }
-    } else {
-      console.warn('🔍 No nested ohlcv object found in root.');
-    }
-
-    // Handle timestamp vs timestamps mismatch
-    if (data.timestamp && !data.timestamps) {
-      console.warn('🔍 Normalizing "timestamp" to "timestamps"');
-      data.timestamps = data.timestamp;
-    }
-
-    console.warn(`🔍 Data keys before validation:`, Object.keys(data));
-    if (data.timestamps) {
-      console.warn(`🔍 Timestamps count: ${data.timestamps.length}`);
-      if (data.timestamps.length > 0) {
-        console.warn(`🔍 First timestamp sample: ${data.timestamps[0]}`);
-      }
-    } else {
-      console.warn(`🔍 Timestamps MISSING!`);
-    }
-
-    if (!this.validateOhlcvData(data)) {
-      console.error('Data structure:', Object.keys(data));
-      throw new Error('Invalid local OHLCV data structure');
-    }
-
-    return {
-      ...data,
-      metadata: {
-        ...data.metadata,
-        source: 'Local JSON',
-        symbol: symbol,
-        period: period,
-        range: range,
-        loadedAt: new Date().toISOString()
-      }
-    };
+    this.inflightRequests.set(requestId, fetchPromise);
+    return fetchPromise;
   }
 
   /**
@@ -180,7 +168,7 @@ class OhlcvApi {
 
     for (const field of requiredFields) {
       if (!Array.isArray(data[field])) {
-        console.error(`📊 OHLCV validation failed: missing ${field}. Keys found:`, Object.keys(data));
+        // console.error(`📊 OHLCV validation failed: missing ${field}`);
         return false;
       }
     }
@@ -245,11 +233,6 @@ class OhlcvApi {
     const startIndex = data.timestamps.findIndex(t => t >= cutoffTime);
 
     if (startIndex === -1 || startIndex === 0) {
-      // If filtering returns nothing (e.g. data gap), return reasonable fallback?
-      // Or if -1 (all data is older than cutoff?), return empty?
-      // Actually if startIndex is -1, it means NO data satisfies condition t >= cutoffTime.
-      // But we anchored to the last point, so the last point MUST satisfy it (t == last >= cutoff).
-      // So -1 shouldn't happen unless data is empty.
       return data;
     }
 
