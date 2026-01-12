@@ -45,7 +45,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.8133,
         "position": 16101140,
-        "value": 220424599,
+        "value": 211166447,
         "pctChange": 1.1352
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.6777,
         "position": 13415432,
-        "value": 183657258,
+        "value": 175943387,
         "pctChange": 1.0992
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.4725,
         "position": 9353156,
-        "value": 128044701,
+        "value": 122666638,
         "pctChange": 9.7955
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Renaissance Technologies, LLC",
         "pctHeld": 0.42119998,
         "position": 8338100,
-        "value": 114148585,
+        "value": 109354179,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.31059998,
         "position": 6148637,
-        "value": 84174837,
+        "value": 80639372,
         "pctChange": 3.7635
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.2581,
         "position": 5108938,
-        "value": 69941359,
+        "value": 67003720,
         "pctChange": 10.6167
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.2543,
         "position": 5034975,
-        "value": 68928805,
+        "value": 66033695,
         "pctChange": 1.8952
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.2308,
         "position": 4568238,
-        "value": 62539176,
+        "value": 59912440,
         "pctChange": 13.2589
       },
       {
@@ -117,7 +117,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.2085,
         "position": 4128112,
-        "value": 56513851,
+        "value": 54140187,
         "pctChange": 71173.34
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.1758,
         "position": 3481130,
-        "value": 47656668,
+        "value": 45655019,
         "pctChange": 1.589
       }
     ]
@@ -194,7 +194,7 @@
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
       "earningsDate": [],
-      "isEarningsDateEstimate": true
+      "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-12T17:54:03.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 17,
+        "priorPriceTarget": 13
+      },
       {
         "epochGradeDate": "2025-12-11T10:51:21.000Z",
         "firm": "Needham",
@@ -416,29 +426,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.002191431,
-    "preMarketChange": 0.030000687,
-    "preMarketTime": "2026-01-12T12:37:42.000Z",
-    "preMarketPrice": 13.72,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.022840807,
-    "regularMarketChange": -0.3199997,
-    "regularMarketTime": "2026-01-09T21:00:01.000Z",
+    "regularMarketChangePercent": -0.04200145,
+    "regularMarketChange": -0.5749998,
+    "regularMarketTime": "2026-01-12T18:26:46.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 13.69,
-    "regularMarketDayHigh": 15.1,
-    "regularMarketDayLow": 13.59,
-    "regularMarketVolume": 114277970,
+    "regularMarketPrice": 13.115,
+    "regularMarketDayHigh": 15.28,
+    "regularMarketDayLow": 12.86,
+    "regularMarketVolume": 87680224,
     "averageDailyVolume10Day": 98481170,
     "averageDailyVolume3Month": 89800053,
-    "regularMarketPreviousClose": 14.009999,
+    "regularMarketPreviousClose": 13.69,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 13.963,
+    "regularMarketOpen": 13.71,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
@@ -450,13 +455,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5279536640
+    "marketCap": 5057788416
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4611762688,
-    "forwardPE": -136.9,
+    "forwardPE": -131.15,
     "profitMargins": -1.7249401,
     "floatShares": 365246696,
     "sharesOutstanding": 385649155,
@@ -473,7 +478,7 @@
     "impliedSharesOutstanding": 385649156,
     "category": null,
     "bookValue": 1.475,
-    "priceToBook": 9.281356,
+    "priceToBook": 8.891525,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -957,7 +962,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 13.69,
+    "currentPrice": 13.115,
     "targetHighPrice": 17,
     "targetLowPrice": 10,
     "targetMeanPrice": 12,
@@ -986,6 +991,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T12:37:55.112Z",
+  "lastUpdated": "2026-01-12T18:26:48.465Z",
   "source": "Static Build (yahoo-finance2)"
 }
