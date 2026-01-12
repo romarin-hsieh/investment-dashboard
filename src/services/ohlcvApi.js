@@ -8,6 +8,7 @@ class OhlcvApi {
   constructor() {
     this.cache = new Map();
     this.cacheTimeout = 30 * 60 * 1000; // 30 minutes
+    this.inflightRequests = new Map(); // Request deduplication
   }
 
   /**
@@ -29,47 +30,63 @@ class OhlcvApi {
       }
     }
 
-    // 步驟 1: 優先嘗試本地 JSON（Production 主要路徑）
-    try {
-      let localData = await this.fetchLocalOhlcv(symbol, period, range);
-
-      if (localData) {
-        // Filter data based on range (since local JSON contains full history)
-        localData = this.filterDataByRange(localData, range);
-
-        this.cache.set(cacheKey, {
-          data: localData,
-          timestamp: Date.now()
-        });
-        console.log(`📊 Loaded local OHLCV for ${symbol}: ${localData.timestamps?.length || 0} points (${range})`);
-        return localData;
-      }
-    } catch (error) {
-      console.warn(`📊 Local OHLCV failed for ${symbol}:`, error.message);
+    // Request Deduplication
+    if (this.inflightRequests.has(cacheKey)) {
+      console.log(`⏳ Reusing in-flight request for ${symbol}`);
+      return this.inflightRequests.get(cacheKey);
     }
 
-    // 步驟 2: DEV 模式 fallback 到 Yahoo Finance（已修正 headers）
-    if (import.meta.env.DEV || new URLSearchParams(window.location.search).has('debug')) {
+    const fetchPromise = (async () => {
       try {
-        console.log(`📊 DEV mode: trying Yahoo Finance fallback for ${symbol}`);
-        const yahooData = await yahooFinanceAPI.getOhlcv(symbol, period, range);
+        // 步驟 1: 優先嘗試本地 JSON（Production 主要路徑）
+        try {
+          let localData = await this.fetchLocalOhlcv(symbol, period, range);
+          if (localData) {
+            // Filter data based on range (since local JSON contains full history)
+            localData = this.filterDataByRange(localData, range);
 
-        if (yahooData && this.validateOhlcvData(yahooData)) {
-          this.cache.set(cacheKey, {
-            data: yahooData,
-            timestamp: Date.now()
-          });
-          console.log(`📊 Yahoo Finance fallback success for ${symbol}`);
-          return yahooData;
+            this.cache.set(cacheKey, {
+              data: localData,
+              timestamp: Date.now()
+            });
+            console.log(`📊 Loaded local OHLCV for ${symbol}: ${localData.timestamps?.length || 0} points (${range})`);
+            return localData;
+          }
+        } catch (error) {
+          console.warn(`📊 Local OHLCV failed for ${symbol}:`, error.message);
         }
-      } catch (error) {
-        console.warn(`📊 Yahoo Finance fallback failed for ${symbol}:`, error.message);
-      }
-    }
 
-    // 步驟 3: 都失敗了，回傳 null（不 throw）
-    console.warn(`📊 No OHLCV data available for ${symbol}`);
-    return null;
+        // 步驟 2: DEV 模式 fallback 到 Yahoo Finance
+        if (import.meta.env.DEV || new URLSearchParams(window.location.search).has('debug')) {
+          try {
+            console.log(`📊 DEV mode: trying Yahoo Finance fallback for ${symbol}`);
+            const yahooData = await yahooFinanceAPI.getOhlcv(symbol, period, range);
+
+            if (yahooData && this.validateOhlcvData(yahooData)) {
+              this.cache.set(cacheKey, {
+                data: yahooData,
+                timestamp: Date.now()
+              });
+              console.log(`📊 Yahoo Finance fallback success for ${symbol}`);
+              return yahooData;
+            }
+          } catch (error) {
+            console.warn(`📊 Yahoo Finance fallback failed for ${symbol}:`, error.message);
+          }
+        }
+
+        // 步驟 3: 都失敗了，回傳 null（不 throw）
+        console.warn(`📊 No OHLCV data available for ${symbol}`);
+        return null;
+
+      } finally {
+        // Remove from inflight requests when done
+        this.inflightRequests.delete(cacheKey);
+      }
+    })();
+
+    this.inflightRequests.set(cacheKey, fetchPromise);
+    return fetchPromise;
   }
 
   /**
@@ -83,7 +100,9 @@ class OhlcvApi {
     // 使用統一的 baseUrl helper
     // Sanitize symbol for Windows compatibility (replace : with _)
     const safeSymbol = symbol.replace(/:/g, '_');
-    const url = paths.ohlcv(safeSymbol) + '?t=' + Date.now();
+    // Use unified Cache Busting: Change every 60 seconds to allow basic CDN caching but prevent stale data
+    const timestamp = Math.floor(Date.now() / 60000);
+    const url = paths.ohlcv(safeSymbol) + '?t=' + timestamp;
     console.warn(`🔍 Fetching local OHLCV from: ${url}`);
 
     const response = await fetch(url);

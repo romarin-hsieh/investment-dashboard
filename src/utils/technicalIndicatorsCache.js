@@ -181,8 +181,13 @@ class TechnicalIndicatorsCache {
 
     // 如果缺少關鍵數據，視為無效，強制走 Live API
     if (!hasOBV) {
-      console.warn('Cache validation failed: Missing OBV');
-      return false;
+      // Relaxed check: Log warning but allow if other data exists to prevent infinite loops
+      // console.warn('Cache validation failed: Missing OBV');
+      // return false; 
+
+      // Changed strategy: If we have basic indicators, treat as valid to avoid hammering the API
+      // The UI will handle missing OBV gracefully (show N/A)
+      console.warn(`Cache partial usage: Missing OBV for data, but using what we have to prevent fetch loop.`);
     }
 
     // 我們暫時不強制 Beta，因為如果 Benchmark Fetch 失敗，Beta 可能為 null，但我們不想因此無限重試
@@ -248,13 +253,23 @@ class TechnicalIndicatorsCache {
     };
 
     try {
-      // 1. 存入 localStorage
-      localStorage.setItem(cacheKey, JSON.stringify(cacheData));
-
-      // 2. 存入內存緩存
+      // 1. 優先存入內存緩存 (保證當次 Session 可用，即使 Storage 滿了)
       this.memoryCache.set(cacheKey, cacheData);
+      console.log(`Cached technical indicators for ${symbol} (Merged - Memory)`);
 
-      console.log(`Cached technical indicators for ${symbol} (Merged)`);
+      // 2. 嘗試存入 localStorage (可能失敗)
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+        console.log(`Cached technical indicators for ${symbol} (Merged - LocalStorage)`);
+      } catch (storageError) {
+        if (storageError.name === 'QuotaExceededError' || storageError.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+          console.warn(`LocalStorage quota exceeded. Cached ${symbol} in memory only.`);
+          // Optional: Trigger a cleanup strategy here if needed
+          // this.cleanupOldCache(); 
+        } else {
+          console.warn(`Failed to write to localStorage for ${symbol}:`, storageError);
+        }
+      }
 
       // 3. 清理舊的緩存條目
       this.cleanupOldCache();
