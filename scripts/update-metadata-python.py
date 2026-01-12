@@ -106,6 +106,7 @@ class YFinanceMetadataUpdater:
             # 返回 fallback 資料
             return self.get_fallback_metadata(symbol)
 
+
     def get_fallback_metadata(self, symbol):
         """獲取 fallback metadata"""
         fallback_data = {
@@ -298,6 +299,13 @@ class YFinanceMetadataUpdater:
             }
         }
         
+        # 安全檢查：確保我們沒有丟失股票
+        EXPECTED_COUNT = 70
+        if len(metadata_items) < EXPECTED_COUNT:
+            print(f"❌ CRITICAL ERROR: Generated only {len(metadata_items)} items, expected {EXPECTED_COUNT}.")
+            print("❌ Aborting save to prevent data corruption.")
+            sys.exit(1)
+
         # 保存到文件
         with open(self.output_file, 'w', encoding='utf-8') as f:
             json.dump(output_data, f, indent=2, ensure_ascii=False)
