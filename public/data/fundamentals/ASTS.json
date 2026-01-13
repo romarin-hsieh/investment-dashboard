@@ -4,8 +4,8 @@
       {
         "period": "0m",
         "strongBuy": 0,
-        "buy": 4,
-        "hold": 4,
+        "buy": 3,
+        "hold": 5,
         "sell": 0,
         "strongSell": 2
       },
@@ -45,7 +45,7 @@
         "organization": "Rakuten Group, Inc.",
         "pctHeld": 0.1117,
         "position": 31020155,
-        "value": 3052073031,
+        "value": 2957771731,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0718,
         "position": 19919888,
-        "value": 1959917768,
+        "value": 1899361290,
         "pctChange": 0.1339
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0385,
         "position": 10676179,
-        "value": 1050429245,
+        "value": 1017973651,
         "pctChange": 0.0482
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.0322,
         "position": 8943486,
-        "value": 879949582,
+        "value": 852761376,
         "pctChange": 0
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0148,
         "position": 4120044,
-        "value": 405371126,
+        "value": 392846189,
         "pctChange": 0.216
       },
       {
@@ -90,7 +90,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.014199999,
         "position": 3946260,
-        "value": 388272518,
+        "value": 376275884,
         "pctChange": 0.8687
       },
       {
@@ -99,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.012999999,
         "position": 3600995,
-        "value": 354301895,
+        "value": 343354867,
         "pctChange": 0.16790001
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Broad Run Investment Management, LLC",
         "pctHeld": 0.0128,
         "position": 3557413,
-        "value": 350013862,
+        "value": 339199324,
         "pctChange": -0.0339
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0126,
         "position": 3510670,
-        "value": 345414819,
+        "value": 334742379,
         "pctChange": 0.3806
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0117999995,
         "position": 3289425,
-        "value": 323646523,
+        "value": 313646668,
         "pctChange": -0.4414
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-13T13:52:12.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 105,
+        "priorPriceTarget": 95
+      },
       {
         "epochGradeDate": "2026-01-07T19:55:25.000Z",
         "firm": "Scotiabank",
@@ -678,29 +688,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.01544869,
-    "preMarketChange": -1.5199966,
-    "preMarketTime": "2026-01-13T12:37:35.000Z",
-    "preMarketPrice": 96.87,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.00737177,
-    "regularMarketChange": 98.39,
-    "regularMarketTime": "2026-01-12T21:00:02.000Z",
+    "regularMarketChangePercent": -0.030897457,
+    "regularMarketChange": -3.040001,
+    "regularMarketTime": "2026-01-13T18:26:43.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 98.39,
-    "regularMarketDayHigh": 101.29,
-    "regularMarketDayLow": 93.51,
-    "regularMarketVolume": 13168945,
+    "regularMarketPrice": 95.35,
+    "regularMarketDayHigh": 98.28,
+    "regularMarketDayLow": 93.15,
+    "regularMarketVolume": 7279642,
     "averageDailyVolume10Day": 17683520,
     "averageDailyVolume3Month": 13487643,
-    "regularMarketPreviousClose": 97.67,
+    "regularMarketPreviousClose": 98.39,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 95.42,
+    "regularMarketOpen": 96.74,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "ASTS",
     "underlyingSymbol": null,
@@ -712,13 +717,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 36148613120
+    "marketCap": 35031715840
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 27219664896,
-    "forwardPE": -124.3224,
+    "forwardPE": -120.48116,
     "profitMargins": 0,
     "floatShares": 229726859,
     "sharesOutstanding": 278010950,
@@ -735,7 +740,7 @@
     "impliedSharesOutstanding": 367401320,
     "category": null,
     "bookValue": 4.561,
-    "priceToBook": 21.572023,
+    "priceToBook": 20.905504,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -801,18 +806,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 773400,
-        "filerUrl": "",
-        "transactionText": "Sale at price 77.34 per share.",
-        "filerName": "GUPTA SHANTI B.",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-12-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 675,
         "value": 49079,
         "filerUrl": "",
@@ -822,6 +815,18 @@
         "moneyText": "",
         "startDate": "2025-12-10T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 773400,
+        "filerUrl": "",
+        "transactionText": "Sale at price 77.34 per share.",
+        "filerName": "GUPTA SHANTI B.",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-12-10T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -837,24 +842,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 40000,
-        "value": 2940800,
-        "filerUrl": "",
-        "transactionText": "Sale at price 73.52 per share.",
-        "filerName": "YAO HUIWEN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 6000,
         "value": 442560,
         "filerUrl": "",
         "transactionText": "Sale at price 73.76 per share.",
         "filerName": "BERNAL MAYA",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 40000,
+        "value": 2940800,
+        "filerUrl": "",
+        "transactionText": "Sale at price 73.52 per share.",
+        "filerName": "YAO HUIWEN",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-12-05T00:00:00.000Z",
         "ownership": "D"
@@ -1101,18 +1106,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 541200,
-        "filerUrl": "",
-        "transactionText": "Sale at price 36.08 per share.",
-        "filerName": "GUPTA SHANTI B.",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-06-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 1782500,
         "filerUrl": "",
@@ -1125,6 +1118,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 15000,
+        "value": 541200,
+        "filerUrl": "",
+        "transactionText": "Sale at price 36.08 per share.",
+        "filerName": "GUPTA SHANTI B.",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-06-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 4810,
         "value": 0,
         "filerUrl": "",
@@ -1241,6 +1246,18 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YAO HUIWEN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1254,18 +1271,6 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YAO HUIWEN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1293,24 +1298,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 24425,
-        "value": 683900,
-        "filerUrl": "",
-        "transactionText": "Sale at price 28.00 per share.",
-        "filerName": "GUPTA SHANTI B.",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-03-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 35871,
         "value": 1016943,
         "filerUrl": "",
         "transactionText": "Sale at price 28.35 per share.",
         "filerName": "WISNIEWSKI SCOTT",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 24425,
+        "value": 683900,
+        "filerUrl": "",
+        "transactionText": "Sale at price 28.00 per share.",
+        "filerName": "GUPTA SHANTI B.",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-03-17T00:00:00.000Z",
         "ownership": "D"
@@ -1378,18 +1383,6 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 2322000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 23.22 per share.",
-        "filerName": "YAO HUIWEN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-10-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 100000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
@@ -1398,6 +1391,18 @@
         "moneyText": "",
         "startDate": "2024-10-03T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 2322000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 23.22 per share.",
+        "filerName": "YAO HUIWEN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-10-03T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1656,10 +1661,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 98.39,
-    "targetHighPrice": 100,
+    "currentPrice": 95.35,
+    "targetHighPrice": 105,
     "targetLowPrice": 43,
-    "targetMeanPrice": 73.3875,
+    "targetMeanPrice": 74.6375,
     "targetMedianPrice": 80.5,
     "recommendationMean": 2.4,
     "recommendationKey": "buy",
@@ -1685,6 +1690,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-13T12:37:45.176Z",
+  "lastUpdated": "2026-01-13T18:26:53.361Z",
   "source": "Static Build (yahoo-finance2)"
 }

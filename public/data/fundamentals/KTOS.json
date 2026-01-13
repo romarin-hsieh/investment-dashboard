@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1432,
         "position": 24172022,
-        "value": 2848914527,
+        "value": 2898467246,
         "pctChange": -0.0694
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.09819999,
         "position": 16581527,
-        "value": 1954298782,
+        "value": 1988290963,
         "pctChange": -0.0777
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0505,
         "position": 8534274,
-        "value": 1005849538,
+        "value": 1023344826,
         "pctChange": -0.0858
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0255,
         "position": 4297608,
-        "value": 506516081,
+        "value": 515326191,
         "pctChange": 0.0881
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Franklin Resources, Inc.",
         "pctHeld": 0.0254,
         "position": 4287426,
-        "value": 505316030,
+        "value": 514105267,
         "pctChange": -0.1571
       },
       {
@@ -90,7 +90,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.021300001,
         "position": 3604328,
-        "value": 424806100,
+        "value": 432194983,
         "pctChange": -0.20040001
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0189,
         "position": 3186488,
-        "value": 375559477,
+        "value": 382091787,
         "pctChange": 0.338
       },
       {
@@ -108,7 +108,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0182,
         "position": 3068863,
-        "value": 361696195,
+        "value": 367987373,
         "pctChange": 0.29479998
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.018,
         "position": 3046194,
-        "value": 359024426,
+        "value": 365269133,
         "pctChange": 0.073699996
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0171,
         "position": 2888869,
-        "value": 340482102,
+        "value": 346404292,
         "pctChange": -0.024600001
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-13T18:00:28.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 134,
+        "priorPriceTarget": 112
+      },
       {
         "epochGradeDate": "2026-01-12T12:25:17.000Z",
         "firm": "Citizens",
@@ -1408,29 +1418,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.007805856,
-    "preMarketChange": 0.91999817,
-    "preMarketTime": "2026-01-13T12:37:56.000Z",
-    "preMarketPrice": 118.78,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0365875,
-    "regularMarketChange": 117.86,
-    "regularMarketTime": "2026-01-12T21:00:01.000Z",
+    "regularMarketChangePercent": 0.017393544,
+    "regularMarketChange": 2.050003,
+    "regularMarketTime": "2026-01-13T18:26:55.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 117.86,
-    "regularMarketDayHigh": 119.63,
-    "regularMarketDayLow": 114.5,
-    "regularMarketVolume": 5026673,
+    "regularMarketPrice": 119.91,
+    "regularMarketDayHigh": 121.57,
+    "regularMarketDayLow": 117.2,
+    "regularMarketVolume": 2302439,
     "averageDailyVolume10Day": 3883500,
     "averageDailyVolume3Month": 3026033,
-    "regularMarketPreviousClose": 113.7,
+    "regularMarketPreviousClose": 117.86,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 116.84,
+    "regularMarketOpen": 118.8953,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "KTOS",
     "underlyingSymbol": null,
@@ -1442,13 +1447,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 19899566080
+    "marketCap": 20245690368
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 19467966464,
-    "forwardPE": 154.9607,
+    "forwardPE": 157.656,
     "profitMargins": 0.015570001,
     "floatShares": 166242250,
     "sharesOutstanding": 168840708,
@@ -1465,7 +1470,7 @@
     "impliedSharesOutstanding": 168840708,
     "category": null,
     "bookValue": 11.736,
-    "priceToBook": 10.0426035,
+    "priceToBook": 10.21728,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-29T00:00:00.000Z",
@@ -1509,6 +1514,29 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 20568,
+        "value": 2355667,
+        "filerUrl": "",
+        "transactionText": "Sale at price 100.05 - 118.97 per share.",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DEMARCO ERIC M",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-01-09T00:00:00.000Z",
+        "ownership": "I"
+      },
       {
         "maxAge": 1,
         "shares": 12123,
@@ -2291,11 +2319,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 5000,
-        "value": 175018,
+        "shares": 3800,
+        "value": 132544,
         "filerUrl": "",
-        "transactionText": "Sale at price 35.00 per share.",
-        "filerName": "DOORENBOS BOBBI",
+        "transactionText": "Sale at price 34.88 per share.",
+        "filerName": "BOYD BRADLEY L",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-22T00:00:00.000Z",
@@ -2303,11 +2331,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 3800,
-        "value": 132544,
+        "shares": 5000,
+        "value": 175018,
         "filerUrl": "",
-        "transactionText": "Sale at price 34.88 per share.",
-        "filerName": "BOYD BRADLEY L",
+        "transactionText": "Sale at price 35.00 per share.",
+        "filerName": "DOORENBOS BOBBI",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-22T00:00:00.000Z",
@@ -2897,17 +2925,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 75000,
         "filerUrl": "",
         "transactionText": "",
@@ -2956,6 +2973,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CARTER DAVID M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ROCK STACEY G",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
@@ -3256,39 +3284,16 @@
         "moneyText": "",
         "startDate": "2024-10-15T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HAGEN DANIEL J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-10-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
-        "value": 94711,
-        "filerUrl": "",
-        "transactionText": "Sale at price 23.68 per share.",
-        "filerName": "CARTER DAVID M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-01T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 117.86,
+    "currentPrice": 119.91,
     "targetHighPrice": 150,
     "targetLowPrice": 83,
-    "targetMeanPrice": 108.05556,
+    "targetMeanPrice": 109.27778,
     "targetMedianPrice": 105,
     "recommendationMean": 1.5,
     "recommendationKey": "strong_buy",
@@ -3315,6 +3320,6 @@
     "profitMargins": 0.015570001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-13T12:38:32.440Z",
+  "lastUpdated": "2026-01-13T18:27:40.955Z",
   "source": "Static Build (yahoo-finance2)"
 }
