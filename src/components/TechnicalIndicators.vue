@@ -134,52 +134,60 @@ export default {
       this.error = null
       
       try {
-        console.log(`🔄 Loading technical indicators for ${this.symbol} via Hybrid API`)
+        console.log(`🔄 Loading technical indicators for ${this.symbol} via Hybrid API (Progressive)`)
         
-        // 使用 Hybrid API 獲取數據 (自動回退到實時計算)
-        // 同時獲取 Stock Info 以補充 Market 數據 (Volume, Cap, Beta)
-        const [data, stockInfo] = await Promise.all([
-            hybridTechnicalIndicatorsAPI.getTechnicalIndicators(this.symbol),
-            yahooFinanceAPI.getStockInfo(this.symbol)
-        ]);
+        // Step 1: Load Technical Indicators (Fast - Precomputed)
+        const data = await hybridTechnicalIndicatorsAPI.getTechnicalIndicators(this.symbol);
         
         if (!data) {
           throw new Error(`No data available for ${this.symbol}`)
         }
+
+        // Render immediately with available data (using precomputed YF data if available)
+        this.rawData = data;
+        this.processGroupedIndicators();
         
-        // Merge stockInfo into data as 'yf' for display, preserving existing yf data
-        const existingYf = data.yf || {};
-        this.rawData = {
-            ...data,
-            yf: {
-                ...existingYf,
-                // Add extended market data
-                extVolume: stockInfo.volume?.raw || stockInfo.volume || existingYf.extVolume, // Fallback if added later
-                extAvgVol: stockInfo.averageVolume?.raw || stockInfo.averageVolume,
-                extAvgVol10D: stockInfo.averageDailyVolume10Day || existingYf.extAvgVol10D, // Fallback to pre-computed
-                extAvgVol3M: stockInfo.averageDailyVolume3Month || existingYf.extAvgVol3M,   // Fallback to pre-computed
-                extMarketCap: stockInfo.marketCap || stockInfo.marketCapFormatted, // Use raw for formatter
-                extBeta: stockInfo.beta || stockInfo.financials?.beta,
-                regularMarketChangePercent: stockInfo.financials?.regularMarketChangePercent
-            }
-        }
-        
-        this.processGroupedIndicators()
-        
-        // Extract Last Updated
         if (data.lastUpdated) {
             this.lastUpdated = new Date(data.lastUpdated).toLocaleString();
         } else {
             this.lastUpdated = new Date().toLocaleString() + ' (Live)';
         }
         
-        console.log(`✅ Technical indicators loaded for ${this.symbol}`)
+        console.log(`✅ Technical indicators loaded for ${this.symbol} (Fast Render)`);
+        this.loading = false; // Unblock UI
+        
+        // Step 2: Load Real-time Stock Info (Slow - Background)
+        // Only if we want to enrich with latest Volume/MarketCap
+        try {
+            const stockInfo = await yahooFinanceAPI.getStockInfo(this.symbol);
+            if (stockInfo) {
+                const existingYf = this.rawData.yf || {};
+                this.rawData = {
+                    ...this.rawData,
+                    yf: {
+                        ...existingYf,
+                        // Add extended market data from Real-time source
+                        extVolume: stockInfo.volume?.raw || stockInfo.volume || existingYf.extVolume, 
+                        extAvgVol: stockInfo.averageVolume?.raw || stockInfo.averageVolume,
+                        extAvgVol10D: stockInfo.averageDailyVolume10Day || existingYf.extAvgVol10D, 
+                        extAvgVol3M: stockInfo.averageDailyVolume3Month || existingYf.extAvgVol3M,   
+                        extMarketCap: stockInfo.marketCap || stockInfo.marketCapFormatted, 
+                        extBeta: stockInfo.beta || stockInfo.financials?.beta,
+                        regularMarketChangePercent: stockInfo.financials?.regularMarketChangePercent
+                    }
+                };
+                this.processGroupedIndicators();
+                console.log(`✅ Stock Info enriched for ${this.symbol}`);
+            }
+        } catch (infoErr) {
+            console.warn('⚠️ Failed to load background stock info:', infoErr);
+            // Non-critical, ignore
+        }
         
       } catch (err) {
         console.error('Error loading technical indicators:', err)
         this.error = `Failed to load indicators: ${err.message}`
-      } finally {
-        this.loading = false
+        this.loading = false;
       }
     },
     

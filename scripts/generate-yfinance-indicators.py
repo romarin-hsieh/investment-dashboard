@@ -21,7 +21,7 @@ class YFinanceIndicatorsGenerator:
         self.base_dir = Path(__file__).parent.parent
         self.config_dir = self.base_dir / 'config'
         self.output_dir = self.base_dir / 'public' / 'data' / 'technical-indicators'
-        self.universe_file = self.config_dir / 'universe.json'
+        self.universe_file = self.base_dir / 'public' / 'config' / 'stocks.json'
         
         # 確保輸出目錄存在
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -30,8 +30,11 @@ class YFinanceIndicatorsGenerator:
         """載入 universe 配置"""
         try:
             with open(self.universe_file, 'r', encoding='utf-8') as f:
-                universe = json.load(f)
-            return universe.get('symbols', [])
+                data = json.load(f)
+            # Support both new stocks.json and old universe.json format
+            if 'stocks' in data:
+                return [s['symbol'] for s in data['stocks']]
+            return data.get('symbols', [])
         except Exception as e:
             print(f"❌ Failed to load universe: {e}")
             return []

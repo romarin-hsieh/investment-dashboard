@@ -76,8 +76,9 @@ class PrecomputedIndicatorsAPI {
     }
 
     // 檢查是否有正在進行的請求 (去重)
+    // 檢查是否有正在進行的請求 (去重)
     if (this.fetchingPromises.has(cacheKey)) {
-      console.log(`⏳ Waiting for existing request for ${symbol}...`);
+      console.log(`⏳ [Dedup] Waiting for existing precomputed request for ${symbol}`);
       return this.fetchingPromises.get(cacheKey);
     }
 
@@ -99,7 +100,9 @@ class PrecomputedIndicatorsAPI {
         }
 
         // 使用最新日期構建 URL - 只載入當前股票的數據
-        const dataUrl = `${this.baseUrl}${latestDate}_${symbol}.json`;
+        // Add Minute-based Cache Busting
+        const timestamp = Math.floor(Date.now() / 60000);
+        const dataUrl = `${this.baseUrl}${latestDate}_${symbol}.json?t=${timestamp}`;
 
         console.log(`🔍 Fetching precomputed data for ${symbol} from ${dataUrl}`);
 
@@ -112,15 +115,66 @@ class PrecomputedIndicatorsAPI {
         const data = await response.json();
 
         // 轉換數據格式以匹配原有 API
+        const raw = data.indicators;
+
+        // Helper to get last valid value
+        const getLast = (arr) => {
+          if (!arr || arr.length === 0) return null;
+          // Find last non-null value? Or just last?
+          // Typically last value is most relevant.
+          for (let i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] !== null && arr[i] !== undefined) return arr[i];
+          }
+          return null;
+        };
+
+        // 轉換數據格式以匹配原有 API
+        // Map new hierarchical structure to flat keys expected by UI/Validation
         const indicators = {
-          ...data.indicators,
+          ...raw,
+          // Extract Latest Values for Summary/Validation
+          sma5: { value: getLast(raw.sma?.sma5), signal: 'N/A' },
+          sma10: { value: getLast(raw.sma?.sma10), signal: 'N/A' },
+          sma20: { value: getLast(raw.sma?.sma20), signal: 'N/A' },
+          sma30: { value: getLast(raw.sma?.sma30), signal: 'N/A' },
+          sma50: { value: getLast(raw.sma?.sma50), signal: 'N/A' },
+
+          rsi14: { value: getLast(raw.rsi?.rsi14), signal: 'N/A' },
+          adx14: { value: getLast(raw.adx?.adx), signal: 'N/A' },
+
+          macd: {
+            value: getLast(raw.macd?.macd),
+            signal: getLast(raw.macd?.signal),
+            histogram: getLast(raw.macd?.histogram)
+          },
+
+          ichimokuConversionLine: { value: getLast(raw.ichimoku?.conversion), signal: 'N/A' },
+          ichimokuBaseLine: { value: getLast(raw.ichimoku?.base), signal: 'N/A' },
+          ichimokuLaggingSpan: { value: getLast(raw.ichimoku?.lagging), signal: 'N/A' },
+          ichimokuLeadingSpanA: { value: getLast(raw.ichimoku?.spanA), signal: 'N/A' },
+          ichimokuLeadingSpanB: { value: getLast(raw.ichimoku?.spanB), signal: 'N/A' },
+
+          vwma20: { value: getLast(raw.vwma?.vwma), signal: 'N/A' },
+
+          // Full Series for Charts (Mapping to Expected Keys)
+          fullSeries: {
+            SMA_5: raw.sma?.sma5 || [],
+            SMA_10: raw.sma?.sma10 || [],
+            SMA_30: raw.sma?.sma30 || [], // Ensure this exists
+            SMA_50: raw.sma?.sma50 || [],
+            RSI_14: raw.rsi?.rsi14 || [],
+            ADX_14: raw.adx?.adx || [],
+            MACD: raw.macd?.macd || [],
+            MACD_Signal: raw.macd?.signal || [],
+            MACD_Hist: raw.macd?.histogram || [],
+            // Add other series if UI needs them
+          },
+
           source: 'Precomputed',
           lastUpdated: data.computedAt,
           dataAge: this.calculateDataAge(data.computedAt),
           precomputedDate: data.date,
-          symbol: symbol // 確保包含 symbol 信息
-
-          // yfinance 資料已經包含在 ...data.indicators 中
+          symbol: symbol
         };
 
         // 調試：檢查 yfinance 數據
