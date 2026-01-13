@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0691,
         "position": 8241066,
-        "value": 156580254,
+        "value": 158228473,
         "pctChange": 0.033
       },
       {
@@ -54,7 +54,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0551,
         "position": 6573013,
-        "value": 124887247,
+        "value": 126201854,
         "pctChange": 0.0042
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.051,
         "position": 6090059,
-        "value": 115711121,
+        "value": 116929137,
         "pctChange": 0.13350001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0224,
         "position": 2674077,
-        "value": 50807463,
+        "value": 51342280,
         "pctChange": 0.0312
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0224,
         "position": 2677305,
-        "value": 50868795,
+        "value": 51404258,
         "pctChange": 0.18360001
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.0223,
         "position": 2656684,
-        "value": 50476996,
+        "value": 51008334,
         "pctChange": 0.561
       },
       {
@@ -99,7 +99,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.021300001,
         "position": 2537866,
-        "value": 48219454,
+        "value": 48727029,
         "pctChange": 0.5341
       },
       {
@@ -108,7 +108,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.020599999,
         "position": 2453301,
-        "value": 46612719,
+        "value": 47103381,
         "pctChange": 35.8292
       },
       {
@@ -117,7 +117,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.0174,
         "position": 2073233,
-        "value": 39391427,
+        "value": 39806075,
         "pctChange": 0.7892
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Gotham Asset Management, LLC",
         "pctHeld": 0.0171,
         "position": 2040000,
-        "value": 38760000,
+        "value": 39168001,
         "pctChange": 0
       }
     ]
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-12T19:03:12.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 22.5,
+        "priorPriceTarget": 15.5
+      },
       {
         "epochGradeDate": "2026-01-09T14:22:51.000Z",
         "firm": "Stifel",
@@ -927,14 +937,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.023706924,
-    "regularMarketChange": 0.44000053,
-    "regularMarketTime": "2026-01-12T18:27:47.000Z",
+    "postMarketChangePercent": -0.009369849,
+    "postMarketChange": -0.17990112,
+    "postMarketTime": "2026-01-13T00:57:22.000Z",
+    "postMarketPrice": 19.0201,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.0344828,
+    "regularMarketChange": 0.640001,
+    "regularMarketTime": "2026-01-12T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 19,
-    "regularMarketDayHigh": 19.33,
+    "regularMarketPrice": 19.2,
+    "regularMarketDayHigh": 19.412,
     "regularMarketDayLow": 17.94,
-    "regularMarketVolume": 6221046,
+    "regularMarketVolume": 9590150,
     "averageDailyVolume10Day": 12562990,
     "averageDailyVolume3Month": 8823687,
     "regularMarketPreviousClose": 18.56,
@@ -943,7 +958,7 @@
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "LUNR",
     "underlyingSymbol": null,
@@ -955,13 +970,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2267075840
+    "marketCap": 2290939904
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 2611843072,
-    "forwardPE": 5026.455,
+    "forwardPE": 5079.365,
     "profitMargins": -0.94378996,
     "floatShares": 112463669,
     "sharesOutstanding": 119319784,
@@ -1053,23 +1068,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 2000000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ALTEMUS STEPHEN J",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 350000,
         "value": 5339694,
         "filerUrl": "",
         "transactionText": "Sale at price 12.06 - 16.04 per share.",
         "filerName": "CRAIN TIMOTHY PRICE II",
         "filerRelation": "Officer and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2000000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALTEMUS STEPHEN J",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-22T00:00:00.000Z",
         "ownership": "D"
@@ -1286,17 +1301,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 161016,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GHAFFARIAN KAMAL SEYED",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 72168,
         "value": 866016,
         "filerUrl": "",
@@ -1306,6 +1310,17 @@
         "moneyText": "",
         "startDate": "2025-05-13T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 161016,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GHAFFARIAN KAMAL SEYED",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1591,23 +1606,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 138568,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ALTEMUS STEPHEN J",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-11-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 400000,
         "value": 4841560,
         "filerUrl": "",
         "transactionText": "Sale at price 12.10 per share.",
         "filerName": "CRAIN TIMOTHY PRICE II",
         "filerRelation": "Officer and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-11-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 138568,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALTEMUS STEPHEN J",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-11-13T00:00:00.000Z",
         "ownership": "D"
@@ -1833,17 +1848,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 606456,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GHAFFARIAN KAMAL SEYED",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-09-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 746744,
         "value": 4494050,
         "filerUrl": "",
@@ -1853,6 +1857,17 @@
         "moneyText": "",
         "startDate": "2024-09-13T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 606456,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GHAFFARIAN KAMAL SEYED",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-09-13T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1914,32 +1929,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 1200,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GHAFFARIAN KAMAL SEYED",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-08-30T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 214,
         "value": 1064,
         "filerUrl": "",
         "transactionText": "Sale at price 4.97 per share.",
-        "filerName": "ALTEMUS STEPHEN J",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-08-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 214,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "ALTEMUS STEPHEN J",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -1954,6 +1947,28 @@
         "transactionText": "Sale at price 4.97 per share.",
         "filerName": "CRAIN TIMOTHY PRICE II",
         "filerRelation": "Officer and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-08-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1200,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GHAFFARIAN KAMAL SEYED",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-08-30T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 214,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALTEMUS STEPHEN J",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-08-30T00:00:00.000Z",
         "ownership": "D"
@@ -1983,32 +1998,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 148290,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GHAFFARIAN KAMAL SEYED",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-08-20T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 1295992,
         "value": 6636131,
         "filerUrl": "",
         "transactionText": "Sale at price 4.95 - 6.01 per share.",
-        "filerName": "ALTEMUS STEPHEN J",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1295992,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "ALTEMUS STEPHEN J",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2023,6 +2016,28 @@
         "transactionText": "Sale at price 5.15 - 6.02 per share.",
         "filerName": "CRAIN TIMOTHY PRICE II",
         "filerRelation": "Officer and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 148290,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GHAFFARIAN KAMAL SEYED",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-08-20T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1295992,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALTEMUS STEPHEN J",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-08-20T00:00:00.000Z",
         "ownership": "D"
@@ -2420,7 +2435,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 19,
+    "currentPrice": 19.2,
     "targetHighPrice": 22.5,
     "targetLowPrice": 9.5,
     "targetMeanPrice": 17.66667,
@@ -2449,6 +2464,6 @@
     "profitMargins": -0.94378996,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T18:27:56.898Z",
+  "lastUpdated": "2026-01-13T01:16:48.521Z",
   "source": "Static Build (yahoo-finance2)"
 }

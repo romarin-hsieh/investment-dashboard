@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 1,
-        "buy": 5,
+        "buy": 6,
         "hold": 3,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 5,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 5,
         "hold": 3,
@@ -37,7 +45,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.1092,
         "position": 31942641,
-        "value": 800092885,
+        "value": 812620804,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0646,
         "position": 18906218,
-        "value": 473559168,
+        "value": 480974196,
         "pctChange": 0.1478
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0634,
         "position": 18551697,
-        "value": 464679197,
+        "value": 471955181,
         "pctChange": 0.0968
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.049099997,
         "position": 14372467,
-        "value": 359998679,
+        "value": 365635568,
         "pctChange": 1.3708
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Canada Pension Plan Investment Board",
         "pctHeld": 0.026800001,
         "position": 7829200,
-        "value": 196104236,
+        "value": 199174852,
         "pctChange": 0.0011
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.024400001,
         "position": 7141130,
-        "value": 178869596,
+        "value": 181670351,
         "pctChange": 0
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0219,
         "position": 6416175,
-        "value": 160711068,
+        "value": 163227495,
         "pctChange": 2.8822
       },
       {
@@ -100,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0215,
         "position": 6293344,
-        "value": 157634422,
+        "value": 160102674,
         "pctChange": 0.0476
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.019299999,
         "position": 5631261,
-        "value": 141050699,
+        "value": 143259282,
         "pctChange": 0.111099996
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0136,
         "position": 3974781,
-        "value": 99559519,
+        "value": 101118430,
         "pctChange": -0.0043
       }
     ]
@@ -1159,14 +1167,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.102941476,
-    "regularMarketChange": 2.337801,
-    "regularMarketTime": "2026-01-12T18:26:44.000Z",
+    "postMarketChangePercent": 0.010609251,
+    "postMarketChange": 0.26989937,
+    "postMarketTime": "2026-01-13T00:58:53.000Z",
+    "postMarketPrice": 25.7099,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.120211,
+    "regularMarketChange": 2.73,
+    "regularMarketTime": "2026-01-12T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 25.0478,
-    "regularMarketDayHigh": 25.05,
+    "regularMarketPrice": 25.44,
+    "regularMarketDayHigh": 25.5599,
     "regularMarketDayLow": 23.16,
-    "regularMarketVolume": 12117713,
+    "regularMarketVolume": 18174344,
     "averageDailyVolume10Day": 10641550,
     "averageDailyVolume3Month": 10745072,
     "regularMarketPreviousClose": 22.71,
@@ -1175,7 +1188,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "PL",
     "underlyingSymbol": null,
@@ -1187,13 +1200,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 7856611840
+    "marketCap": 7979631104
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 6907354624,
-    "forwardPE": -333.48154,
+    "forwardPE": -338.70322,
     "profitMargins": -0.45868,
     "floatShares": 256621655,
     "sharesOutstanding": 292507135,
@@ -1210,7 +1223,7 @@
     "impliedSharesOutstanding": 313664721,
     "category": null,
     "bookValue": 1.115,
-    "priceToBook": 22.464394,
+    "priceToBook": 22.816143,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -1313,9 +1326,9 @@
       {
         "maxAge": 1,
         "shares": 376748,
-        "value": 5903264,
+        "value": 877823,
         "filerUrl": "",
-        "transactionText": "Sale at price 15.67 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 2.33 per share.",
         "filerName": "BASS CARL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1325,9 +1338,9 @@
       {
         "maxAge": 1,
         "shares": 376748,
-        "value": 877823,
+        "value": 5903264,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 2.33 per share.",
+        "transactionText": "Sale at price 15.67 per share.",
         "filerName": "BASS CARL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1380,6 +1393,18 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-07-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32468,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAYMOND JOHN W.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-07-10T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1444,18 +1469,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 32468,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAYMOND JOHN W.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 94500,
         "value": 0,
         "filerUrl": "",
@@ -1492,6 +1505,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 11140,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAYMOND JOHN W.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 511153,
         "value": 0,
         "filerUrl": "",
@@ -1510,18 +1535,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SCHINGLER ROBERT H",
         "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-03-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11140,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAYMOND JOHN W.",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-10T00:00:00.000Z",
         "ownership": "D"
@@ -1747,12 +1760,13 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 25.0478,
-    "targetHighPrice": 22,
+    "currentPrice": 25.44,
+    "targetHighPrice": 30,
     "targetLowPrice": 12.3,
-    "targetMeanPrice": 18.58889,
+    "targetMeanPrice": 20.58889,
     "targetMedianPrice": 20,
-    "recommendationKey": "none",
+    "recommendationMean": 1.7,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
     "totalCash": 677324032,
     "totalCashPerShare": 2.159,
@@ -1775,6 +1789,6 @@
     "profitMargins": -0.45868,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T18:26:46.505Z",
+  "lastUpdated": "2026-01-13T01:15:39.625Z",
   "source": "Static Build (yahoo-finance2)"
 }

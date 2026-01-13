@@ -45,7 +45,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.099,
         "position": 38442856,
-        "value": 12610410006,
+        "value": 12651544144,
         "pctChange": 0.609
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.096999995,
         "position": 37672338,
-        "value": 12357656988,
+        "value": 12397966665,
         "pctChange": -0.0001
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0735,
         "position": 28559488,
-        "value": 9368368813,
+        "value": 9398927675,
         "pctChange": 0.0058999998
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0436,
         "position": 16944554,
-        "value": 5558322027,
+        "value": 5576452824,
         "pctChange": 0.0062
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.032899998,
         "position": 12777429,
-        "value": 4191380019,
+        "value": 4205051961,
         "pctChange": 0.0191
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0323,
         "position": 12560077,
-        "value": 4120082042,
+        "value": 4133521417,
         "pctChange": -0.043
       },
       {
@@ -99,7 +99,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0308,
         "position": 11967630,
-        "value": 3925741654,
+        "value": 3938547106,
         "pctChange": 0.0636
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0222,
         "position": 8607898,
-        "value": 2823648770,
+        "value": 2832859284,
         "pctChange": 0.0055
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Massachusetts Financial Services Co.",
         "pctHeld": 0.0188,
         "position": 7289428,
-        "value": 2391151057,
+        "value": 2398950799,
         "pctChange": -0.105399996
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Raymond James Financial, Inc.",
         "pctHeld": 0.0139,
         "position": 5384561,
-        "value": 1766297538,
+        "value": 1772059057,
         "pctChange": -0.0149
       }
     ]
@@ -187,7 +187,7 @@
           "reportedDate": 1762255800
         }
       ],
-      "currentQuarterEstimate": 3.33636,
+      "currentQuarterEstimate": 3.3338,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-12T21:19:20.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 435,
+        "priorPriceTarget": 442
+      },
       {
         "epochGradeDate": "2026-01-12T15:29:51.000Z",
         "firm": "Morgan Stanley",
@@ -4059,14 +4069,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.010847089,
-    "regularMarketChange": 3.519989,
-    "regularMarketTime": "2026-01-12T18:28:00.000Z",
+    "postMarketChangePercent": 0,
+    "postMarketChange": 0,
+    "postMarketTime": "2026-01-13T00:50:38.000Z",
+    "postMarketPrice": 329.1,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.0141444,
+    "regularMarketChange": 4.59,
+    "regularMarketTime": "2026-01-12T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 328.03,
+    "regularMarketPrice": 329.1,
     "regularMarketDayHigh": 330.15,
     "regularMarketDayLow": 323.09,
-    "regularMarketVolume": 880321,
+    "regularMarketVolume": 2165542,
     "averageDailyVolume10Day": 2595670,
     "averageDailyVolume3Month": 2812806,
     "regularMarketPreviousClose": 324.51,
@@ -4075,7 +4090,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "ETN",
     "underlyingSymbol": null,
@@ -4087,13 +4102,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 127702081536
+    "marketCap": 128118628352
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 136783683584,
-    "forwardPE": 24.155039,
+    "forwardPE": 24.261145,
     "profitMargins": 0.14741,
     "floatShares": 387273640,
     "sharesOutstanding": 388400000,
@@ -4110,7 +4125,7 @@
     "impliedSharesOutstanding": 389300000,
     "category": null,
     "bookValue": 48.514,
-    "priceToBook": 6.7615533,
+    "priceToBook": 6.783609,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -4119,7 +4134,7 @@
     "earningsQuarterlyGrowth": 0.001,
     "netIncomeToCommon": 3926000128,
     "trailingEps": 9.99,
-    "forwardEps": 13.58019,
+    "forwardEps": 13.5649,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1298937600,
     "enterpriseToRevenue": 5.136,
@@ -4262,24 +4277,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 3660,
-        "value": 299791,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 81.91 per share.",
-        "filerName": "RUIZ STERNADT PAULO",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 140,
         "value": 45809,
         "filerUrl": "",
         "transactionText": "Sale at price 327.21 per share.",
         "filerName": "THOMPSON DOROTHY C.",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3660,
+        "value": 299791,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 81.91 per share.",
+        "filerName": "RUIZ STERNADT PAULO",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-05-20T00:00:00.000Z",
         "ownership": "D"
@@ -4397,61 +4412,6 @@
         "shares": 546,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NAPOLI SILVIO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 256,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHULTEN ANDRE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 546,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "THOMPSON DOROTHY C.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 546,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WILSON DARRYL L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 413,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "TERRELL KARENANN K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 546,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "RYERKERK LORI J",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4485,6 +4445,61 @@
         "shares": 546,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "THOMPSON DOROTHY C.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 413,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "TERRELL KARENANN K",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 546,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WILSON DARRYL L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 546,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NAPOLI SILVIO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 256,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHULTEN ANDRE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 546,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "SMITH GERALD B",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4504,6 +4519,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 3627,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEONETTI OLIVIER C",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-03-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 938,
         "value": 99858,
         "filerUrl": "",
@@ -4516,21 +4542,21 @@
       },
       {
         "maxAge": 1,
-        "shares": 3627,
+        "shares": 889,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LEONETTI OLIVIER C",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "MONESMITH HEATH B",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
+        "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 691,
+        "shares": 4113,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "RUIZ STERNADT PAULO",
+        "filerName": "ARNOLD CRAIG",
         "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
@@ -4604,24 +4630,25 @@
       },
       {
         "maxAge": 1,
-        "shares": 889,
+        "shares": 691,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MONESMITH HEATH B",
-        "filerRelation": "Officer",
+        "filerName": "RUIZ STERNADT PAULO",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 4113,
+        "shares": 6072,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARNOLD CRAIG",
-        "filerRelation": "Officer and Director",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MARSHALL ERNEST W JR",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
+        "startDate": "2025-02-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4686,12 +4713,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 6072,
+        "shares": 53073,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
+        "filerName": "ARNOLD CRAIG",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-02-26T00:00:00.000Z",
         "ownership": "D"
@@ -4710,23 +4737,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 53073,
-        "value": 0,
+        "shares": 11252,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "ARNOLD CRAIG",
         "filerRelation": "Officer and Director",
         "moneyText": "",
-        "startDate": "2025-02-26T00:00:00.000Z",
+        "startDate": "2025-02-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 1420,
+        "shares": 2146,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "RUIZ STERNADT PAULO",
-        "filerRelation": "Officer and Director",
+        "filerName": "MONESMITH HEATH B",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-24T00:00:00.000Z",
         "ownership": "D"
@@ -4788,21 +4814,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 2146,
+        "shares": 1420,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MONESMITH HEATH B",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11252,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARNOLD CRAIG",
+        "filerName": "RUIZ STERNADT PAULO",
         "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-02-24T00:00:00.000Z",
@@ -4977,18 +4992,6 @@
       {
         "maxAge": 1,
         "shares": 2205,
-        "value": 662162,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 300.30 per share.",
-        "filerName": "THOMPSON DOROTHY C.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-09-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2205,
         "value": 661809,
         "filerUrl": "",
         "transactionText": "Sale at price 300.14 per share.",
@@ -4997,6 +5000,18 @@
         "moneyText": "",
         "startDate": "2024-09-03T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2205,
+        "value": 662162,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 300.30 per share.",
+        "filerName": "THOMPSON DOROTHY C.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-09-03T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5169,7 +5184,29 @@
         "shares": 1051,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NAPOLI SILVIO",
+        "filerName": "RYERKERK LORI J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1051,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PRAGADA ROBERT V",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1051,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PIANALTO SANDRA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
@@ -5202,29 +5239,7 @@
         "shares": 1051,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "RYERKERK LORI J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1051,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PRAGADA ROBERT V",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1051,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PIANALTO SANDRA",
+        "filerName": "NAPOLI SILVIO",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
@@ -5302,11 +5317,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 7050,
-        "value": 471542,
+        "shares": 2615,
+        "value": 767956,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 56.55 - 71.89 per share.",
-        "filerName": "SZMAGALA TARAS G JR.",
+        "transactionText": "Sale at price 293.67 per share.",
+        "filerName": "YELTON MICHAEL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-03-01T00:00:00.000Z",
@@ -5314,11 +5329,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 2615,
-        "value": 767956,
+        "shares": 7050,
+        "value": 471542,
         "filerUrl": "",
-        "transactionText": "Sale at price 293.67 per share.",
-        "filerName": "YELTON MICHAEL",
+        "transactionText": "Conversion of Exercise of derivative security at price 56.55 - 71.89 per share.",
+        "filerName": "SZMAGALA TARAS G JR.",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-03-01T00:00:00.000Z",
@@ -5358,6 +5373,30 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-02-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6863,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CHERUVATATH NANDAKUMAR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8387,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MARSHALL ERNEST W JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-02-28T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -5410,24 +5449,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 6863,
+        "shares": 76175,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CHERUVATATH NANDAKUMAR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8387,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
+        "filerName": "ARNOLD CRAIG",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2024-02-28T00:00:00.000Z",
         "ownership": "D"
@@ -5458,22 +5485,32 @@
       },
       {
         "maxAge": 1,
-        "shares": 76175,
-        "value": 0,
+        "shares": 18013,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "ARNOLD CRAIG",
         "filerRelation": "Officer and Director",
         "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
+        "startDate": "2024-02-23T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 2130,
+        "shares": 910,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "RUIZ STERNADT PAULO",
+        "filerName": "HOPGOOD DANIEL ROY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-02-23T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3364,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MONESMITH HEATH B",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-02-23T00:00:00.000Z",
@@ -5514,17 +5551,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1544,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHERUVATATH NANDAKUMAR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2014,
         "filerUrl": "",
         "transactionText": "",
@@ -5536,10 +5562,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 910,
+        "shares": 2130,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HOPGOOD DANIEL ROY",
+        "filerName": "RUIZ STERNADT PAULO",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-02-23T00:00:00.000Z",
@@ -5547,22 +5573,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 3364,
+        "shares": 1544,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MONESMITH HEATH B",
+        "filerName": "CHERUVATATH NANDAKUMAR",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 18013,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARNOLD CRAIG",
-        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2024-02-23T00:00:00.000Z",
         "ownership": "D"
@@ -5654,10 +5669,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 328.03,
+    "currentPrice": 329.1,
     "targetHighPrice": 474,
     "targetLowPrice": 321,
-    "targetMeanPrice": 398.0696,
+    "targetMeanPrice": 397.7896,
     "targetMedianPrice": 405,
     "recommendationMean": 1.86207,
     "recommendationKey": "buy",
@@ -5684,6 +5699,6 @@
     "profitMargins": 0.14741,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T18:28:17.244Z",
+  "lastUpdated": "2026-01-13T01:17:09.180Z",
   "source": "Static Build (yahoo-finance2)"
 }

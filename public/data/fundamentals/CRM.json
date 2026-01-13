@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0956,
         "position": 89572253,
-        "value": 23318343420,
+        "value": 23235041881,
         "pctChange": 0.0084
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0866,
         "position": 81175886,
-        "value": 21132517312,
+        "value": 21057024332,
         "pctChange": -0.0055
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.052699998,
         "position": 49420657,
-        "value": 12865678973,
+        "value": 12819718124,
         "pctChange": 0.0032
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0279,
         "position": 26108922,
-        "value": 6796935313,
+        "value": 6772654207,
         "pctChange": 0.4647
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0224,
         "position": 20991211,
-        "value": 5464641677,
+        "value": 5445120005,
         "pctChange": 0.0056
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.0214,
         "position": 20051119,
-        "value": 5219907540,
+        "value": 5201260146,
         "pctChange": 0.094399996
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.020499999,
         "position": 19189909,
-        "value": 4995708752,
+        "value": 4977862277,
         "pctChange": -0.0619
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0185,
         "position": 17325206,
-        "value": 4510270645,
+        "value": 4494158330,
         "pctChange": 1.5900999
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0113,
         "position": 10567153,
-        "value": 2750946798,
+        "value": 2741119423,
         "pctChange": -0.012999999
       },
       {
@@ -126,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0111,
         "position": 10363597,
-        "value": 2697955067,
+        "value": 2688316998,
         "pctChange": -0.0375
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-12T20:12:16.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 338,
+        "priorPriceTarget": 330
+      },
       {
         "epochGradeDate": "2026-01-05T14:45:59.000Z",
         "firm": "RBC Capital",
@@ -8909,14 +8919,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0015002851,
-    "regularMarketChange": 0.38998413,
-    "regularMarketTime": "2026-01-12T18:26:58.000Z",
+    "postMarketChangePercent": -0.00077093946,
+    "postMarketChange": -0.19998169,
+    "postMarketTime": "2026-01-13T00:59:20.000Z",
+    "postMarketPrice": 259.2,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.00207744,
+    "regularMarketChange": -0.540009,
+    "regularMarketTime": "2026-01-12T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 260.33,
+    "regularMarketPrice": 259.4,
     "regularMarketDayHigh": 261.559,
     "regularMarketDayLow": 255.77,
-    "regularMarketVolume": 2599471,
+    "regularMarketVolume": 3927078,
     "averageDailyVolume10Day": 5201400,
     "averageDailyVolume3Month": 7921443,
     "regularMarketPreviousClose": 259.94,
@@ -8925,25 +8940,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "CRM",
     "underlyingSymbol": null,
     "shortName": "Salesforce, Inc.",
     "longName": "Salesforce, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 247834148864
+    "marketCap": 246948790272
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 243875774464,
-    "forwardPE": 19.86133,
+    "forwardPE": 19.790377,
     "profitMargins": 0.17913,
     "floatShares": 911654150,
     "sharesOutstanding": 937000000,
@@ -8960,7 +8975,7 @@
     "impliedSharesOutstanding": 952000000,
     "category": null,
     "bookValue": 63.717,
-    "priceToBook": 4.0857224,
+    "priceToBook": 4.071127,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -9011,7 +9026,7 @@
         "shares": 1016,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NILES SABASTIAN",
+        "filerName": "MILANO MIGUEL",
         "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-12-22T00:00:00.000Z",
@@ -9022,8 +9037,19 @@
         "shares": 1016,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MILANO MIGUEL",
+        "filerName": "NILES SABASTIAN",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2271,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HARRIS G PARKER",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-12-22T00:00:00.000Z",
         "ownership": "D"
@@ -9046,17 +9072,6 @@
         "transactionText": "",
         "filerName": "REDDY SUNDEEP G",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2271,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HARRIS G PARKER",
-        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-12-22T00:00:00.000Z",
         "ownership": "D"
@@ -9114,17 +9129,6 @@
         "shares": 1662,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NILES SABASTIAN",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-11-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1662,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "MILANO MIGUEL",
         "filerRelation": "President",
         "moneyText": "",
@@ -9144,10 +9148,21 @@
       },
       {
         "maxAge": 1,
+        "shares": 1662,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NILES SABASTIAN",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-11-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 274,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "ALBER LAURA",
+        "filerName": "CONWAY CRAIG",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
@@ -9169,29 +9184,7 @@
         "shares": 274,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WEBB MAYNARD GEORGE JR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 274,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DONALD ARNOLD WAYNE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-21T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 274,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CONWAY CRAIG",
+        "filerName": "KROES NEELIE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
@@ -9235,11 +9228,33 @@
         "shares": 274,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KROES NEELIE",
+        "filerName": "ALBER LAURA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 274,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEBB MAYNARD GEORGE JR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-11-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 274,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DONALD ARNOLD WAYNE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-11-21T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -9462,6 +9477,17 @@
         "shares": 1786,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "HARRIS G PARKER",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-10-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1786,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "TALLAPRAGADA SRINIVAS D.",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -9475,17 +9501,6 @@
         "transactionText": "",
         "filerName": "REDDY SUNDEEP G",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1786,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HARRIS G PARKER",
-        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-10-22T00:00:00.000Z",
         "ownership": "D"
@@ -9972,6 +9987,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 2250,
+        "value": 558438,
+        "filerUrl": "",
+        "transactionText": "Sale at price 244.08 - 250.10 per share.",
+        "filerName": "BENIOFF MARC RUSSELL",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-22T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1015,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MILANO MIGUEL",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-09-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1015,
         "filerUrl": "",
         "transactionText": "",
@@ -9983,11 +10021,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 1015,
+        "shares": 2272,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MILANO MIGUEL",
-        "filerRelation": "President",
+        "filerName": "HARRIS G PARKER",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-09-22T00:00:00.000Z",
         "ownership": "D"
@@ -10013,29 +10051,6 @@
         "moneyText": "",
         "startDate": "2025-09-22T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2272,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HARRIS G PARKER",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-09-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2250,
-        "value": 558438,
-        "filerUrl": "",
-        "transactionText": "Sale at price 244.08 - 250.10 per share.",
-        "filerName": "BENIOFF MARC RUSSELL",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-22T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -10207,24 +10222,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 4278,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "KIRK DAVID BLAIR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-09-10T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 2250,
         "value": 554976,
         "filerUrl": "",
         "transactionText": "Sale at price 242.54 - 253.81 per share.",
         "filerName": "BENIOFF MARC RUSSELL",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-10T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4278,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "KIRK DAVID BLAIR",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-10T00:00:00.000Z",
         "ownership": "I"
@@ -10240,18 +10255,6 @@
         "moneyText": "",
         "startDate": "2025-09-10T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3400,
-        "value": 865827,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 254.66 per share.",
-        "filerName": "KIRK DAVID BLAIR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-09-09T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -10276,6 +10279,18 @@
         "moneyText": "",
         "startDate": "2025-09-09T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3400,
+        "value": 865827,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 254.66 per share.",
+        "filerName": "KIRK DAVID BLAIR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-09T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -10519,14 +10534,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 1663,
+        "shares": 2250,
+        "value": 557264,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NILES SABASTIAN",
-        "filerRelation": "President",
+        "transactionText": "Sale at price 245.22 - 249.02 per share.",
+        "filerName": "BENIOFF MARC RUSSELL",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -10552,34 +10568,21 @@
       },
       {
         "maxAge": 1,
-        "shares": 2250,
-        "value": 557264,
+        "shares": 1663,
         "filerUrl": "",
-        "transactionText": "Sale at price 245.22 - 249.02 per share.",
-        "filerName": "BENIOFF MARC RUSSELL",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "",
+        "filerName": "NILES SABASTIAN",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2250,
-        "value": 363375,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 161.50 per share.",
-        "filerName": "BENIOFF MARC RUSSELL",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
         "shares": 274,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "ALBER LAURA",
+        "filerName": "CONWAY CRAIG",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-08-22T00:00:00.000Z",
@@ -10601,29 +10604,7 @@
         "shares": 274,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WEBB MAYNARD GEORGE JR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 274,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DONALD ARNOLD WAYNE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 274,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CONWAY CRAIG",
+        "filerName": "KROES NEELIE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-08-22T00:00:00.000Z",
@@ -10667,11 +10648,45 @@
         "shares": 274,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KROES NEELIE",
+        "filerName": "ALBER LAURA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-08-22T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 274,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEBB MAYNARD GEORGE JR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 274,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DONALD ARNOLD WAYNE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2250,
+        "value": 363375,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 161.50 per share.",
+        "filerName": "BENIOFF MARC RUSSELL",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -10774,11 +10789,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 260.33,
+    "currentPrice": 259.4,
     "targetHighPrice": 475,
     "targetLowPrice": 223,
-    "targetMeanPrice": 330.15698,
-    "targetMedianPrice": 332,
+    "targetMeanPrice": 329.11926,
+    "targetMedianPrice": 330,
     "recommendationMean": 1.63793,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 53,
@@ -10804,6 +10819,6 @@
     "profitMargins": 0.17913,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T18:27:01.514Z",
+  "lastUpdated": "2026-01-13T01:15:54.362Z",
   "source": "Static Build (yahoo-finance2)"
 }

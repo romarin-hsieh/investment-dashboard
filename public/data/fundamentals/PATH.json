@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.103999995,
         "position": 47895884,
-        "value": 823330271,
+        "value": 825725029,
         "pctChange": 0.0493
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0545,
         "position": 25104101,
-        "value": 431539509,
+        "value": 432794695,
         "pctChange": 0.069699995
       },
       {
@@ -63,7 +63,7 @@
         "organization": "TFG Asset Management GP Ltd",
         "pctHeld": 0.0368,
         "position": 16950000,
-        "value": 291370509,
+        "value": 292217996,
         "pctChange": 0.2352
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Senvest Management LLC",
         "pctHeld": 0.023599999,
         "position": 10862245,
-        "value": 186721997,
+        "value": 187265101,
         "pctChange": 0.098000005
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0224,
         "position": 10306502,
-        "value": 177168774,
+        "value": 177684092,
         "pctChange": -0.0049
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.017,
         "position": 7815348,
-        "value": 134345836,
+        "value": 134736597,
         "pctChange": -0.027
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Federated Hermes, Inc.",
         "pctHeld": 0.0161,
         "position": 7427722,
-        "value": 127682545,
+        "value": 128053925,
         "pctChange": -0.0771
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.0153,
         "position": 7034337,
-        "value": 120920256,
+        "value": 121271968,
         "pctChange": 0
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.0146,
         "position": 6710035,
-        "value": 115345505,
+        "value": 115681001,
         "pctChange": 0.0851
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.013099999,
         "position": 6047374,
-        "value": 103954362,
+        "value": 104256726,
         "pctChange": 0.1121
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-12T20:17:55.000Z",
+        "firm": "Barclays",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 18,
+        "priorPriceTarget": 16
+      },
       {
         "epochGradeDate": "2026-01-05T15:56:42.000Z",
         "firm": "RBC Capital",
@@ -2619,14 +2629,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.053308878,
-    "regularMarketChange": 0.87000084,
-    "regularMarketTime": "2026-01-12T18:27:48.000Z",
+    "postMarketChangePercent": -0.0005800597,
+    "postMarketChange": -0.010000229,
+    "postMarketTime": "2026-01-13T00:59:47.000Z",
+    "postMarketPrice": 17.23,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.056372598,
+    "regularMarketChange": 0.92,
+    "regularMarketTime": "2026-01-12T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 17.19,
-    "regularMarketDayHigh": 17.295,
+    "regularMarketPrice": 17.24,
+    "regularMarketDayHigh": 17.35,
     "regularMarketDayLow": 16.34,
-    "regularMarketVolume": 11571390,
+    "regularMarketVolume": 18616696,
     "averageDailyVolume10Day": 29825720,
     "averageDailyVolume3Month": 24152591,
     "regularMarketPreviousClose": 16.32,
@@ -2635,7 +2650,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "PATH",
     "underlyingSymbol": null,
@@ -2647,13 +2662,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 9192347648
+    "marketCap": 9219084288
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 7410937856,
-    "forwardPE": 22.644045,
+    "forwardPE": 22.709908,
     "profitMargins": 0.14787,
     "floatShares": 417500468,
     "sharesOutstanding": 460443681,
@@ -2670,7 +2685,7 @@
     "impliedSharesOutstanding": 534749684,
     "category": null,
     "bookValue": 3.6,
-    "priceToBook": 4.775,
+    "priceToBook": 4.788889,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -2904,6 +2919,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 9615297,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DINES DANIEL",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 90000,
         "value": 1584212,
         "filerUrl": "",
@@ -2913,17 +2939,6 @@
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9615297,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DINES DANIEL",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3299,10 +3314,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 240874,
-        "value": 4162059,
+        "shares": 148009,
+        "value": 111495,
         "filerUrl": "",
-        "transactionText": "Sale at price 17.01 - 18.53 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.75 per share.",
         "filerName": "GUPTA ASHIM A",
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
@@ -3311,10 +3326,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 148009,
-        "value": 111495,
+        "shares": 240874,
+        "value": 4162059,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.75 per share.",
+        "transactionText": "Sale at price 17.01 - 18.53 per share.",
         "filerName": "GUPTA ASHIM A",
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
@@ -3419,18 +3434,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 122733,
-        "value": 1817443,
-        "filerUrl": "",
-        "transactionText": "Sale at price 14.81 per share.",
-        "filerName": "DINES DANIEL",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-30T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 16083,
         "value": 241263,
         "filerUrl": "",
@@ -3440,6 +3443,18 @@
         "moneyText": "",
         "startDate": "2025-09-30T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 122733,
+        "value": 1817443,
+        "filerUrl": "",
+        "transactionText": "Sale at price 14.81 per share.",
+        "filerName": "DINES DANIEL",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-30T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3878,6 +3893,30 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SPRINGER DANIEL D",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16064,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "TERRELL KARENANN K",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16064,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "WONG RICHARD P.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -3910,18 +3949,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 45000,
-        "value": 556983,
-        "filerUrl": "",
-        "transactionText": "Sale at price 12.38 per share.",
-        "filerName": "DINES DANIEL",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 16064,
         "value": 0,
         "filerUrl": "",
@@ -3946,27 +3973,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 16064,
-        "value": 0,
+        "shares": 45000,
+        "value": 556983,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SPRINGER DANIEL D",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 12.38 per share.",
+        "filerName": "DINES DANIEL",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16064,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "TERRELL KARENANN K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4413,6 +4428,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 102291,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BRUBAKER BRAD C",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 245499,
         "value": 0,
         "filerUrl": "",
@@ -4430,18 +4457,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "RAMANI HITESH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 102291,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BRUBAKER BRAD C",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-02T00:00:00.000Z",
@@ -4489,7 +4504,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WONG RICHARD P.",
+        "filerName": "SPRINGER DANIEL D",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-20T00:00:00.000Z",
@@ -4501,7 +4516,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "STURDY LAELA",
+        "filerName": "TERRELL KARENANN K",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-20T00:00:00.000Z",
@@ -4512,7 +4527,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 17.19,
+    "currentPrice": 17.24,
     "targetHighPrice": 19,
     "targetLowPrice": 14,
     "targetMeanPrice": 16.4,
@@ -4541,6 +4556,6 @@
     "profitMargins": 0.14787,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-12T18:27:49.987Z",
+  "lastUpdated": "2026-01-13T01:16:41.355Z",
   "source": "Static Build (yahoo-finance2)"
 }
