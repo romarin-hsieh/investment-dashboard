@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01732,
-    "institutionsPercentHeld": 0.50314,
-    "institutionsFloatPercentHeld": 0.512,
-    "institutionsCount": 364
+    "institutionsPercentHeld": 0.5032,
+    "institutionsFloatPercentHeld": 0.51207,
+    "institutionsCount": 366
   },
   "earnings": {
     "maxAge": 86400,
@@ -686,11 +686,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.00653987,
+    "preMarketChange": 0.11000061,
+    "preMarketTime": "2026-01-14T12:37:45.000Z",
+    "preMarketPrice": 16.93,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.038596936,
-    "postMarketChange": 0.64920044,
-    "postMarketTime": "2026-01-14T00:59:55.000Z",
-    "postMarketPrice": 17.4692,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0427775,
     "regularMarketChange": 0.690001,
@@ -700,15 +700,15 @@
     "regularMarketDayHigh": 17.76,
     "regularMarketDayLow": 16.2,
     "regularMarketVolume": 30221823,
-    "averageDailyVolume10Day": 15733320,
-    "averageDailyVolume3Month": 21229232,
+    "averageDailyVolume10Day": 17631760,
+    "averageDailyVolume3Month": 21375853,
     "regularMarketPreviousClose": 16.13,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 16.585,
+    "regularMarketOpen": 15.26,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "EOSE",
     "underlyingSymbol": null,
@@ -736,7 +736,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2497,
     "heldPercentInsiders": 0.01732,
-    "heldPercentInstitutions": 0.50314,
+    "heldPercentInstitutions": 0.5032,
     "shortRatio": 5.48,
     "shortPercentOfFloat": 0.2561,
     "beta": 2.12,
@@ -754,8 +754,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 101.861,
     "enterpriseToEbitda": -31.184,
-    "52WeekChange": 2.101923,
-    "SandP52WeekChange": 0.1726681,
+    "52WeekChange": 2.2346153,
+    "SandP52WeekChange": 0.17039418,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -926,18 +926,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 99375,
-        "value": 590288,
-        "filerUrl": "",
-        "transactionText": "Sale at price 5.94 per share.",
-        "filerName": "KROEKER NATHAN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-07-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 65625,
         "value": 389812,
         "filerUrl": "",
@@ -974,13 +962,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 58333,
+        "shares": 99375,
+        "value": 590288,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PURI SUMEET",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 5.94 per share.",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-07-25T00:00:00.000Z",
+        "startDate": "2025-07-29T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1018,14 +1007,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 71378,
-        "value": 358176,
+        "shares": 58333,
         "filerUrl": "",
-        "transactionText": "Sale at price 4.92 - 5.21 per share.",
-        "filerName": "KROEKER NATHAN",
-        "filerRelation": "Chief Operating Officer",
+        "transactionText": "",
+        "filerName": "PURI SUMEET",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-07-08T00:00:00.000Z",
+        "startDate": "2025-07-25T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1036,6 +1024,18 @@
         "transactionText": "Sale at price 4.92 per share.",
         "filerName": "MASTRANGELO JOE",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-07-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 71378,
+        "value": 358176,
+        "filerUrl": "",
+        "transactionText": "Sale at price 4.92 - 5.21 per share.",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-07-08T00:00:00.000Z",
         "ownership": "D"
@@ -1060,18 +1060,6 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-07-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 152856,
-        "value": 1048592,
-        "filerUrl": "",
-        "transactionText": "Sale at price 6.86 per share.",
-        "filerName": "KROEKER NATHAN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1112,13 +1100,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 78947,
+        "shares": 152856,
+        "value": 1048592,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DEMBY CLAUDE Z",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 6.86 per share.",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
+        "startDate": "2025-05-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1200,13 +1189,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 82250,
+        "shares": 78947,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PURI SUMEET",
-        "filerRelation": "Officer",
+        "filerName": "DEMBY CLAUDE Z",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-05-08T00:00:00.000Z",
+        "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1238,6 +1227,17 @@
         "transactionText": "",
         "filerName": "MASTRANGELO JOE",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 82250,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PURI SUMEET",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-08T00:00:00.000Z",
         "ownership": "D"
@@ -1361,17 +1361,6 @@
         "shares": 32328,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DEMBY CLAUDE Z",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 32328,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "BORNSTEIN JEFFREY S",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1428,6 +1417,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "STIDOLPH RUSSELL MONOKI",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-04-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32328,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DEMBY CLAUDE Z",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-04-30T00:00:00.000Z",
@@ -1499,6 +1499,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-14T06:28:36.423Z",
+  "lastUpdated": "2026-01-14T12:37:52.005Z",
   "source": "Static Build (yahoo-finance2)"
 }

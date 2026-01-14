@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.34095,
-    "institutionsPercentHeld": 0.44425,
-    "institutionsFloatPercentHeld": 0.67407,
-    "institutionsCount": 1022
+    "institutionsPercentHeld": 0.44428003,
+    "institutionsFloatPercentHeld": 0.67411005,
+    "institutionsCount": 1023
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-14T11:58:55.000Z",
+        "firm": "UBS",
+        "toGrade": "Sell",
+        "fromGrade": "Neutral",
+        "action": "down",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 15,
+        "priorPriceTarget": 13
+      },
       {
         "epochGradeDate": "2026-01-12T16:15:20.000Z",
         "firm": "Wolfe Research",
@@ -2908,11 +2918,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.028647263,
+    "preMarketChange": -0.5400009,
+    "preMarketTime": "2026-01-14T12:36:05.000Z",
+    "preMarketPrice": 18.31,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0010610322,
-    "postMarketChange": -0.020000458,
-    "postMarketTime": "2026-01-14T00:59:50.000Z",
-    "postMarketPrice": 18.83,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.015665801,
     "regularMarketChange": -0.299999,
@@ -2920,17 +2930,17 @@
     "priceHint": 2,
     "regularMarketPrice": 18.85,
     "regularMarketDayHigh": 19.15,
-    "regularMarketDayLow": 18.649,
-    "regularMarketVolume": 23403483,
-    "averageDailyVolume10Day": 32994450,
-    "averageDailyVolume3Month": 48007118,
+    "regularMarketDayLow": 18.645,
+    "regularMarketVolume": 23405803,
+    "averageDailyVolume10Day": 33395640,
+    "averageDailyVolume3Month": 47631511,
     "regularMarketPreviousClose": 19.15,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 19.05,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RIVN",
     "underlyingSymbol": null,
@@ -2958,7 +2968,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1257,
     "heldPercentInsiders": 0.34095,
-    "heldPercentInstitutions": 0.44425,
+    "heldPercentInstitutions": 0.44428003,
     "shortRatio": 3.37,
     "shortPercentOfFloat": 0.1453,
     "beta": 1.776,
@@ -2977,8 +2987,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.64,
     "enterpriseToEbitda": -8.131,
-    "52WeekChange": 0.3737446,
-    "SandP52WeekChange": 0.1726681,
+    "52WeekChange": 0.35222387,
+    "SandP52WeekChange": 0.17039418,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4357,6 +4367,6 @@
     "profitMargins": -0.61337,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-14T06:27:44.913Z",
+  "lastUpdated": "2026-01-14T12:37:00.781Z",
   "source": "Static Build (yahoo-finance2)"
 }

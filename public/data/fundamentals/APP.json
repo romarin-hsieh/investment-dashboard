@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.18721001,
-    "institutionsPercentHeld": 0.83101,
-    "institutionsFloatPercentHeld": 1.0224199,
+    "institutionsPercentHeld": 0.83102,
+    "institutionsFloatPercentHeld": 1.02243,
     "institutionsCount": 1988
   },
   "earnings": {
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-14T12:27:33.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 835,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-13T15:56:07.000Z",
         "firm": "Morgan Stanley",
@@ -2638,11 +2648,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.004277381,
+    "preMarketChange": 2.8599854,
+    "preMarketTime": "2026-01-14T12:36:09.000Z",
+    "preMarketPrice": 671.49,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0018245827,
-    "postMarketChange": 1.2199707,
-    "postMarketTime": "2026-01-14T00:59:58.000Z",
-    "postMarketPrice": 669.85,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0151522,
     "regularMarketChange": 9.97998,
@@ -2652,15 +2662,15 @@
     "regularMarketDayHigh": 679.69,
     "regularMarketDayLow": 642.8,
     "regularMarketVolume": 3768793,
-    "averageDailyVolume10Day": 3533710,
-    "averageDailyVolume3Month": 3996973,
+    "averageDailyVolume10Day": 3589090,
+    "averageDailyVolume3Month": 3993412,
     "regularMarketPreviousClose": 658.65,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 655.11,
+    "regularMarketOpen": 637,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "APP",
     "underlyingSymbol": null,
@@ -2688,7 +2698,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0464,
     "heldPercentInsiders": 0.18721001,
-    "heldPercentInstitutions": 0.83101,
+    "heldPercentInstitutions": 0.83102,
     "shortRatio": 4.51,
     "shortPercentOfFloat": 0.053400002,
     "beta": 2.502,
@@ -2708,8 +2718,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 36.118,
     "enterpriseToEbitda": 58.206,
-    "52WeekChange": 0.96594334,
-    "SandP52WeekChange": 0.1726681,
+    "52WeekChange": 0.9957317,
+    "SandP52WeekChange": 0.17039418,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4563,6 +4573,6 @@
     "profitMargins": 0.44879,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-14T06:29:00.159Z",
+  "lastUpdated": "2026-01-14T12:38:16.472Z",
   "source": "Static Build (yahoo-finance2)"
 }
