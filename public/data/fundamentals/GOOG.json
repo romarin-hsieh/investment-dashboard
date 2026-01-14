@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0764,
         "position": 412885548,
-        "value": 139919475539,
+        "value": 138907081889,
         "pctChange": -0.0093
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.066300005,
         "position": 358535293,
-        "value": 121501153048,
+        "value": 120622025997,
         "pctChange": -0.0083
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0368,
         "position": 199059484,
-        "value": 67457673772,
+        "value": 66969580744,
         "pctChange": 1.1725
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0344,
         "position": 186149073,
-        "value": 63082568020,
+        "value": 62626131265,
         "pctChange": -0.0146
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.020399999,
         "position": 110104325,
-        "value": 37312372601,
+        "value": 37042397253,
         "pctChange": 0.0813
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.02,
         "position": 108236788,
-        "value": 36679497949,
+        "value": 36414101794,
         "pctChange": 0.0044
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.016,
         "position": 86250183,
-        "value": 29228633525,
+        "value": 29017148434,
         "pctChange": -0.0639
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.013300001,
         "position": 71982882,
-        "value": 24393702191,
+        "value": 24217200464,
         "pctChange": -0.0297
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.013099999,
         "position": 70709406,
-        "value": 23962144112,
+        "value": 23788764942,
         "pctChange": -0.039
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0099,
         "position": 53714386,
-        "value": 18202837940,
+        "value": 18071130488,
         "pctChange": -0.0089
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-13T18:48:26.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 355,
+        "priorPriceTarget": 350
+      },
       {
         "epochGradeDate": "2026-01-09T18:12:42.000Z",
         "firm": "Scotiabank",
@@ -7129,14 +7139,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.01848923,
-    "regularMarketChange": 6.1519775,
-    "regularMarketTime": "2026-01-13T18:27:18.000Z",
+    "postMarketChangePercent": 0.0046072537,
+    "postMarketChange": 1.5500183,
+    "postMarketTime": "2026-01-14T00:59:52.000Z",
+    "postMarketPrice": 337.98,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.0111201,
+    "regularMarketChange": 3.69998,
+    "regularMarketTime": "2026-01-13T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 338.882,
+    "regularMarketPrice": 336.43,
     "regularMarketDayHigh": 341.17,
     "regularMarketDayLow": 334.35,
-    "regularMarketVolume": 15090035,
+    "regularMarketVolume": 24438649,
     "averageDailyVolume10Day": 18340280,
     "averageDailyVolume3Month": 23122759,
     "regularMarketPreviousClose": 332.73,
@@ -7145,7 +7160,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "GOOG",
     "underlyingSymbol": null,
@@ -7157,13 +7172,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4090926989312
+    "marketCap": 4061326999552
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3960751783936,
-    "forwardPE": 30.078194,
+    "enterpriseValue": 4005206687744,
+    "forwardPE": 29.860563,
     "profitMargins": 0.32233003,
     "floatShares": 10798516960,
     "sharesOutstanding": 5407000000,
@@ -7179,7 +7194,7 @@
     "impliedSharesOutstanding": 12071833288,
     "category": null,
     "bookValue": 32.033,
-    "priceToBook": 10.579152,
+    "priceToBook": 10.502606,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -7191,8 +7206,8 @@
     "forwardEps": 11.2667,
     "lastSplitFactor": "20:1",
     "lastSplitDate": 1658102400,
-    "enterpriseToRevenue": 10.275,
-    "enterpriseToEbitda": 27.283,
+    "enterpriseToRevenue": 10.39,
+    "enterpriseToEbitda": 27.589,
     "52WeekChange": 0.74158597,
     "SandP52WeekChange": 0.19414294,
     "lastDividendValue": 0.21,
@@ -8984,7 +8999,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 338.882,
+    "currentPrice": 336.43,
     "targetHighPrice": 386,
     "targetLowPrice": 185,
     "targetMeanPrice": 331.81668,
@@ -9014,6 +9029,6 @@
     "profitMargins": 0.32233003,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-13T18:27:19.937Z",
+  "lastUpdated": "2026-01-14T01:22:19.811Z",
   "source": "Static Build (yahoo-finance2)"
 }

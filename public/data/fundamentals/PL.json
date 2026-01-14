@@ -45,7 +45,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.1092,
         "position": 31942641,
-        "value": 824120113,
+        "value": 808787660,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0646,
         "position": 18906218,
-        "value": 487780409,
+        "value": 478705433,
         "pctChange": 0.1478
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0634,
         "position": 18551697,
-        "value": 478633768,
+        "value": 469728962,
         "pctChange": 0.0968
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.049099997,
         "position": 14372467,
-        "value": 370809637,
+        "value": 363910860,
         "pctChange": 1.3708
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Canada Pension Plan Investment Board",
         "pctHeld": 0.026800001,
         "position": 7829200,
-        "value": 201993354,
+        "value": 198235341,
         "pctChange": 0.0011
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.024400001,
         "position": 7141130,
-        "value": 184241148,
+        "value": 180813409,
         "pctChange": 0
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0219,
         "position": 6416175,
-        "value": 165537310,
+        "value": 162457549,
         "pctChange": 2.8822
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0215,
         "position": 6293344,
-        "value": 162368270,
+        "value": 159347468,
         "pctChange": 0.0476
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.019299999,
         "position": 5631261,
-        "value": 145286529,
+        "value": 142583526,
         "pctChange": 0.111099996
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0136,
         "position": 3974781,
-        "value": 102549346,
+        "value": 100641453,
         "pctChange": -0.0043
       }
     ]
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-13T19:16:06.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 30,
+        "priorPriceTarget": 19
+      },
       {
         "epochGradeDate": "2026-01-13T13:22:06.000Z",
         "firm": "Wedbush",
@@ -1177,14 +1187,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.014150892,
-    "regularMarketChange": 0.3599987,
-    "regularMarketTime": "2026-01-13T18:26:55.000Z",
+    "postMarketChangePercent": 0.011007104,
+    "postMarketChange": 0.27869987,
+    "postMarketTime": "2026-01-14T00:58:15.000Z",
+    "postMarketPrice": 25.5987,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.00471701,
+    "regularMarketChange": -0.120001,
+    "regularMarketTime": "2026-01-13T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 25.8,
+    "regularMarketPrice": 25.32,
     "regularMarketDayHigh": 26.59,
-    "regularMarketDayLow": 25.33,
-    "regularMarketVolume": 11347623,
+    "regularMarketDayLow": 25.12,
+    "regularMarketVolume": 16532567,
     "averageDailyVolume10Day": 11686150,
     "averageDailyVolume3Month": 10858369,
     "regularMarketPreviousClose": 25.44,
@@ -1193,7 +1208,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "PL",
     "underlyingSymbol": null,
@@ -1205,13 +1220,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 8092550144
+    "marketCap": 7941990912
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 7763659264,
-    "forwardPE": -342.3567,
+    "enterpriseValue": 7726019584,
+    "forwardPE": -335.98724,
     "profitMargins": -0.45868,
     "floatShares": 256621655,
     "sharesOutstanding": 292507135,
@@ -1228,7 +1243,7 @@
     "impliedSharesOutstanding": 313664721,
     "category": null,
     "bookValue": 1.115,
-    "priceToBook": 23.139013,
+    "priceToBook": 22.708519,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -1238,8 +1253,8 @@
     "trailingEps": -0.43,
     "forwardEps": -0.07536,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 27.486,
-    "enterpriseToEbitda": -208.79,
+    "enterpriseToRevenue": 27.353,
+    "enterpriseToEbitda": -207.778,
     "52WeekChange": 5.8203754,
     "SandP52WeekChange": 0.19414294,
     "latestShareClass": null,
@@ -1765,7 +1780,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 25.8,
+    "currentPrice": 25.32,
     "targetHighPrice": 30,
     "targetLowPrice": 12.3,
     "targetMeanPrice": 21.81111,
@@ -1794,6 +1809,6 @@
     "profitMargins": -0.45868,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-13T18:26:57.154Z",
+  "lastUpdated": "2026-01-14T01:21:58.389Z",
   "source": "Static Build (yahoo-finance2)"
 }
