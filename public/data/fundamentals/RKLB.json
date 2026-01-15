@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01771,
-    "institutionsPercentHeld": 0.58206004,
-    "institutionsFloatPercentHeld": 0.59256,
-    "institutionsCount": 886
+    "institutionsPercentHeld": 0.58177,
+    "institutionsFloatPercentHeld": 0.59226,
+    "institutionsCount": 889
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-15T11:20:17.000Z",
+        "firm": "Keybanc",
+        "toGrade": "Sector Weight",
+        "fromGrade": "Overweight",
+        "action": "down",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2025-12-23T11:55:20.000Z",
         "firm": "Needham",
@@ -1208,11 +1218,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.01971683,
+    "preMarketChange": -1.8100052,
+    "preMarketTime": "2026-01-15T12:36:52.000Z",
+    "preMarketPrice": 89.99,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.019607875,
-    "postMarketChange": -1.800003,
-    "postMarketTime": "2026-01-15T00:59:59.000Z",
-    "postMarketPrice": 90,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0602911,
     "regularMarketChange": 5.22,
@@ -1221,16 +1231,16 @@
     "regularMarketPrice": 91.8,
     "regularMarketDayHigh": 92.19,
     "regularMarketDayLow": 84.5,
-    "regularMarketVolume": 27489468,
-    "averageDailyVolume10Day": 28257440,
-    "averageDailyVolume3Month": 22455386,
+    "regularMarketVolume": 27530355,
+    "averageDailyVolume10Day": 28052390,
+    "averageDailyVolume3Month": 22546448,
     "regularMarketPreviousClose": 86.58,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 86.28,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RKLB",
     "underlyingSymbol": null,
@@ -1258,7 +1268,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0739,
     "heldPercentInsiders": 0.01771,
-    "heldPercentInstitutions": 0.58206004,
+    "heldPercentInstitutions": 0.58177,
     "shortRatio": 1.51,
     "shortPercentOfFloat": 0.083500005,
     "beta": 2.166,
@@ -1277,8 +1287,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 87.597,
     "enterpriseToEbitda": -252.688,
-    "52WeekChange": 2.5137987,
-    "SandP52WeekChange": 0.17287207,
+    "52WeekChange": 2.7256494,
+    "SandP52WeekChange": 0.16661668,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2248,6 +2258,6 @@
     "profitMargins": -0.35639,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-15T06:27:43.584Z",
+  "lastUpdated": "2026-01-15T12:37:09.100Z",
   "source": "Static Build (yahoo-finance2)"
 }

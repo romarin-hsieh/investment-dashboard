@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.04329,
-    "institutionsPercentHeld": 0.69496,
-    "institutionsFloatPercentHeld": 0.7264,
-    "institutionsCount": 6914
+    "institutionsPercentHeld": 0.69498,
+    "institutionsFloatPercentHeld": 0.72642,
+    "institutionsCount": 6915
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-15T10:04:38.000Z",
+        "firm": "RBC Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 240,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-09T17:56:54.000Z",
         "firm": "Mizuho",
@@ -10008,11 +10018,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.010538429,
+    "preMarketChange": 1.9300079,
+    "preMarketTime": "2026-01-15T12:37:11.000Z",
+    "preMarketPrice": 185.07,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0021376803,
-    "postMarketChange": -0.39149475,
-    "postMarketTime": "2026-01-15T00:59:56.000Z",
-    "postMarketPrice": 182.7485,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0143695,
     "regularMarketChange": -2.67,
@@ -10022,15 +10032,15 @@
     "regularMarketDayHigh": 184.45,
     "regularMarketDayLow": 180.83,
     "regularMarketVolume": 155014442,
-    "averageDailyVolume10Day": 148184570,
-    "averageDailyVolume3Month": 183334236,
+    "averageDailyVolume10Day": 154342150,
+    "averageDailyVolume3Month": 182945991,
     "regularMarketPreviousClose": 185.81,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 184.33,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "NVDA",
     "underlyingSymbol": null,
@@ -10058,7 +10068,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0106,
     "heldPercentInsiders": 0.04329,
-    "heldPercentInstitutions": 0.69496,
+    "heldPercentInstitutions": 0.69498,
     "shortRatio": 1.56,
     "shortPercentOfFloat": 0.011,
     "beta": 2.314,
@@ -10074,13 +10084,13 @@
     "earningsQuarterlyGrowth": 0.653,
     "netIncomeToCommon": 99198001152,
     "trailingEps": 4.05,
-    "forwardEps": 7.59786,
+    "forwardEps": 7.59771,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1717977600,
     "enterpriseToRevenue": 23.514,
     "enterpriseToEbitda": 39.048,
-    "52WeekChange": 0.39110577,
-    "SandP52WeekChange": 0.17287207,
+    "52WeekChange": 0.37111628,
+    "SandP52WeekChange": 0.16661668,
     "lastDividendValue": 0.01,
     "lastDividendDate": "2025-12-04T00:00:00.000Z",
     "latestShareClass": null,
@@ -11944,6 +11954,6 @@
     "profitMargins": 0.53007,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-15T06:27:47.411Z",
+  "lastUpdated": "2026-01-15T12:37:12.799Z",
   "source": "Static Build (yahoo-finance2)"
 }

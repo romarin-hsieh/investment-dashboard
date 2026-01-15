@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.11404,
-    "institutionsPercentHeld": 0.77281,
-    "institutionsFloatPercentHeld": 0.87227994,
-    "institutionsCount": 861
+    "institutionsPercentHeld": 0.77291,
+    "institutionsFloatPercentHeld": 0.8724,
+    "institutionsCount": 865
   },
   "earnings": {
     "maxAge": 86400,
@@ -243,6 +243,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-15T10:27:43.000Z",
+        "firm": "RBC Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 225,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2025-12-09T17:28:59.000Z",
         "firm": "Northland Capital Markets",
@@ -1018,11 +1028,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.025792973,
+    "preMarketChange": 4.4400024,
+    "preMarketTime": "2026-01-15T12:38:35.000Z",
+    "preMarketPrice": 176.58,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.001164132,
-    "postMarketChange": -0.20039368,
-    "postMarketTime": "2026-01-15T00:59:18.000Z",
-    "postMarketPrice": 171.9396,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0466327,
     "regularMarketChange": -8.42,
@@ -1032,15 +1042,15 @@
     "regularMarketDayHigh": 175.52,
     "regularMarketDayLow": 167.1,
     "regularMarketVolume": 3578081,
-    "averageDailyVolume10Day": 4807920,
-    "averageDailyVolume3Month": 5600291,
+    "averageDailyVolume10Day": 4929310,
+    "averageDailyVolume3Month": 5568279,
     "regularMarketPreviousClose": 180.56,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 175.37,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ALAB",
     "underlyingSymbol": null,
@@ -1068,7 +1078,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.069299996,
     "heldPercentInsiders": 0.11404,
-    "heldPercentInstitutions": 0.77281,
+    "heldPercentInstitutions": 0.77291,
     "shortRatio": 2.2,
     "shortPercentOfFloat": 0.0938,
     "impliedSharesOutstanding": 168903616,
@@ -1082,12 +1092,12 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": 198864992,
     "trailingEps": 1.22,
-    "forwardEps": 2.36976,
+    "forwardEps": 2.36742,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 38.687,
     "enterpriseToEbitda": 250.721,
-    "52WeekChange": 0.4117279,
-    "SandP52WeekChange": 0.17287207,
+    "52WeekChange": 0.34589517,
+    "SandP52WeekChange": 0.16661668,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2770,6 +2780,6 @@
     "profitMargins": 0.27504,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-15T06:29:20.734Z",
+  "lastUpdated": "2026-01-15T12:38:44.253Z",
   "source": "Static Build (yahoo-finance2)"
 }

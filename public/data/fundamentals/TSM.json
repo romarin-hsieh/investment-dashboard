@@ -135,24 +135,13 @@
     "maxAge": 1,
     "insidersPercentHeld": 0.00039,
     "institutionsPercentHeld": 0.16252,
-    "institutionsFloatPercentHeld": 0.16259001,
-    "institutionsCount": 3743
+    "institutionsFloatPercentHeld": 0.16258,
+    "institutionsCount": 3745
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": 2.24,
-          "estimate": 2.22497,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "0.02",
-          "surprisePct": "0.68",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1737006608
-        },
         {
           "date": "1Q2025",
           "actual": 2.12,
@@ -185,14 +174,25 @@
           "surprisePct": "11.23",
           "periodEndDate": 1759190400,
           "reportedDate": 1760572800
+        },
+        {
+          "date": "4Q2025",
+          "actual": 3.14,
+          "estimate": 2.97556,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.16",
+          "surprisePct": "5.53",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1768456831
         }
       ],
-      "currentQuarterEstimate": 2.97556,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
+      "currentQuarterEstimate": 2.9401,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
       "earningsDate": [
         "2026-01-15T13:30:00.000Z"
       ],
@@ -200,11 +200,6 @@
     },
     "financialsChart": {
       "yearly": [
-        {
-          "date": 2021,
-          "revenue": 1587415000000,
-          "earnings": 596540000000
-        },
         {
           "date": 2022,
           "revenue": 2263891000000,
@@ -219,15 +214,14 @@
           "date": 2024,
           "revenue": 2894308000000,
           "earnings": 1173268000000
+        },
+        {
+          "date": 2025,
+          "revenue": 3809054000000,
+          "earnings": 1717883000000
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2024",
-          "revenue": 868461000000,
-          "earnings": 374680000000
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -245,6 +239,12 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 989918000000,
           "earnings": 452302000000
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2025",
+          "revenue": 1046090000000,
+          "earnings": 505744000000
         }
       ]
     },
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-15T12:05:35.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 410,
+        "priorPriceTarget": 360
+      },
       {
         "epochGradeDate": "2025-12-08T13:25:28.000Z",
         "firm": "Bernstein",
@@ -1108,11 +1118,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.05829489,
+    "preMarketChange": 19.070007,
+    "preMarketTime": "2026-01-15T12:37:04.000Z",
+    "preMarketPrice": 346.2,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0027208421,
-    "postMarketChange": 0.89001465,
-    "postMarketTime": "2026-01-15T00:59:59.000Z",
-    "postMarketPrice": 328,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0123789,
     "regularMarketChange": -4.10001,
@@ -1122,15 +1132,15 @@
     "regularMarketDayHigh": 329.85,
     "regularMarketDayLow": 324.85,
     "regularMarketVolume": 11049065,
-    "averageDailyVolume10Day": 12504760,
-    "averageDailyVolume3Month": 12212367,
+    "averageDailyVolume10Day": 12996820,
+    "averageDailyVolume3Month": 12194606,
     "regularMarketPreviousClose": 331.21,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 329.86,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "TSM",
     "underlyingSymbol": null,
@@ -1148,7 +1158,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 6798110097408,
-    "forwardPE": 24.668127,
+    "forwardPE": 19.877686,
     "profitMargins": 0.43287,
     "floatShares": 24172224271,
     "sharesOutstanding": 5186504904,
@@ -1174,13 +1184,13 @@
     "earningsQuarterlyGrowth": 0.391,
     "netIncomeToCommon": 1571930898432,
     "trailingEps": 9.58,
-    "forwardEps": 13.26043,
+    "forwardEps": 16.45614,
     "lastSplitFactor": "1005:1000",
     "lastSplitDate": 1247616000,
     "enterpriseToRevenue": 1.872,
     "enterpriseToEbitda": 2.736,
-    "52WeekChange": 0.5420178,
-    "SandP52WeekChange": 0.17287207,
+    "52WeekChange": 0.52292943,
+    "SandP52WeekChange": 0.16661668,
     "lastDividendValue": 0.835,
     "lastDividendDate": "2025-12-11T00:00:00.000Z",
     "latestShareClass": null,
@@ -1240,6 +1250,6 @@
     "profitMargins": 0.43287,
     "financialCurrency": "TWD"
   },
-  "lastUpdated": "2026-01-15T06:27:41.886Z",
+  "lastUpdated": "2026-01-15T12:37:07.372Z",
   "source": "Static Build (yahoo-finance2)"
 }

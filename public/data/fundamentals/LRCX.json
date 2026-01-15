@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0027599998,
-    "institutionsPercentHeld": 0.88367,
-    "institutionsFloatPercentHeld": 0.88611,
-    "institutionsCount": 2858
+    "institutionsPercentHeld": 0.88364,
+    "institutionsFloatPercentHeld": 0.88609004,
+    "institutionsCount": 2866
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-15T10:50:00.000Z",
+        "firm": "RBC Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 260,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-14T15:23:51.000Z",
         "firm": "Stifel",
@@ -5028,11 +5038,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.07289622,
+    "preMarketChange": 15.220001,
+    "preMarketTime": "2026-01-15T12:34:32.000Z",
+    "preMarketPrice": 224.01,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0015326756,
-    "postMarketChange": 0.32000732,
-    "postMarketTime": "2026-01-15T00:58:43.000Z",
-    "postMarketPrice": 209.11,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.026075201,
     "regularMarketChange": -5.59001,
@@ -5040,17 +5050,17 @@
     "priceHint": 2,
     "regularMarketPrice": 208.79,
     "regularMarketDayHigh": 211.125,
-    "regularMarketDayLow": 206.62,
+    "regularMarketDayLow": 206.61,
     "regularMarketVolume": 18145222,
-    "averageDailyVolume10Day": 12691410,
-    "averageDailyVolume3Month": 11189990,
+    "averageDailyVolume10Day": 13942510,
+    "averageDailyVolume3Month": 11302761,
     "regularMarketPreviousClose": 214.38,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 211.125,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "LRCX",
     "underlyingSymbol": null,
@@ -5078,7 +5088,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026400002,
     "heldPercentInsiders": 0.0027599998,
-    "heldPercentInstitutions": 0.88367,
+    "heldPercentInstitutions": 0.88364,
     "shortRatio": 3.31,
     "shortPercentOfFloat": 0.0295,
     "beta": 1.779,
@@ -5094,13 +5104,13 @@
     "earningsQuarterlyGrowth": 0.405,
     "netIncomeToCommon": 5810433024,
     "trailingEps": 4.53,
-    "forwardEps": 5.74778,
+    "forwardEps": 5.74623,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1727913600,
     "enterpriseToRevenue": 13.273,
     "enterpriseToEbitda": 37.909,
-    "52WeekChange": 1.7061348,
-    "SandP52WeekChange": 0.17287207,
+    "52WeekChange": 1.6355717,
+    "SandP52WeekChange": 0.16661668,
     "lastDividendValue": 0.26,
     "lastDividendDate": "2025-12-03T00:00:00.000Z",
     "latestShareClass": null,
@@ -6181,6 +6191,6 @@
     "profitMargins": 0.29657,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-15T06:29:22.440Z",
+  "lastUpdated": "2026-01-15T12:38:45.843Z",
   "source": "Static Build (yahoo-finance2)"
 }
