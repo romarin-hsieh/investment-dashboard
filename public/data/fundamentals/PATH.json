@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.103999995,
         "position": 47895884,
-        "value": 725617873,
+        "value": 736159731,
         "pctChange": 0.0493
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0545,
         "position": 25104101,
-        "value": 380324630,
+        "value": 385850029,
         "pctChange": 0.069699995
       },
       {
@@ -63,7 +63,7 @@
         "organization": "TFG Asset Management GP Ltd",
         "pctHeld": 0.0368,
         "position": 16950000,
-        "value": 256790812,
+        "value": 260521498,
         "pctChange": 0.2352
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Senvest Management LLC",
         "pctHeld": 0.023599999,
         "position": 10862245,
-        "value": 164561930,
+        "value": 166952704,
         "pctChange": 0.098000005
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0224,
         "position": 10306502,
-        "value": 156142479,
+        "value": 158410934,
         "pctChange": -0.0049
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.017,
         "position": 7815348,
-        "value": 118401744,
+        "value": 120121897,
         "pctChange": -0.027
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Federated Hermes, Inc.",
         "pctHeld": 0.0161,
         "position": 7427722,
-        "value": 112529248,
+        "value": 114164086,
         "pctChange": -0.0771
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.0153,
         "position": 7034337,
-        "value": 106569505,
+        "value": 108117758,
         "pctChange": 0
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.0146,
         "position": 6710035,
-        "value": 101656362,
+        "value": 103133237,
         "pctChange": 0.0851
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.013099999,
         "position": 6047374,
-        "value": 91617114,
+        "value": 92948137,
         "pctChange": 0.1121
       }
     ]
@@ -2629,14 +2629,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.05136442,
-    "regularMarketChange": -0.82009983,
-    "regularMarketTime": "2026-01-14T18:28:36.000Z",
+    "postMarketChangePercent": -0.00780741,
+    "postMarketChange": -0.119999886,
+    "postMarketTime": "2026-01-15T01:00:00.000Z",
+    "postMarketPrice": 15.25,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0375705,
+    "regularMarketChange": -0.6,
+    "regularMarketTime": "2026-01-14T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 15.1499,
+    "regularMarketPrice": 15.37,
     "regularMarketDayHigh": 15.901,
-    "regularMarketDayLow": 15.14,
-    "regularMarketVolume": 16972521,
+    "regularMarketDayLow": 15.06,
+    "regularMarketVolume": 29729861,
     "averageDailyVolume10Day": 31562290,
     "averageDailyVolume3Month": 24053340,
     "regularMarketPreviousClose": 15.97,
@@ -2645,25 +2650,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "PATH",
     "underlyingSymbol": null,
     "shortName": "UiPath, Inc.",
     "longName": "UiPath Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 8101404672
+    "marketCap": 8219102720
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 7223775232,
-    "forwardPE": 19.956661,
+    "forwardPE": 20.246593,
     "profitMargins": 0.14787,
     "floatShares": 417500468,
     "sharesOutstanding": 460443681,
@@ -2680,7 +2685,7 @@
     "impliedSharesOutstanding": 534749684,
     "category": null,
     "bookValue": 3.6,
-    "priceToBook": 4.208306,
+    "priceToBook": 4.2694445,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -4522,7 +4527,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 15.1499,
+    "currentPrice": 15.37,
     "targetHighPrice": 19,
     "targetLowPrice": 14,
     "targetMeanPrice": 16.4,
@@ -4551,6 +4556,6 @@
     "profitMargins": 0.14787,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-14T18:28:42.483Z",
+  "lastUpdated": "2026-01-15T01:18:29.328Z",
   "source": "Static Build (yahoo-finance2)"
 }

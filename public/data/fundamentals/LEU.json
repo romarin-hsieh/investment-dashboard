@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.074,
         "position": 1294151,
-        "value": 392295998,
+        "value": 398042032,
         "pctChange": 0.08180001
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.061300002,
         "position": 1072118,
-        "value": 324991134,
+        "value": 329751341,
         "pctChange": 0.087799996
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.0535,
         "position": 936477,
-        "value": 283874277,
+        "value": 288032237,
         "pctChange": 0.0668
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0509,
         "position": 890666,
-        "value": 269987588,
+        "value": 273942148,
         "pctChange": 0.16319999
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.0446,
         "position": 780986,
-        "value": 236740289,
+        "value": 240207869,
         "pctChange": 0.2586
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0382,
         "position": 667486,
-        "value": 202335034,
+        "value": 205298673,
         "pctChange": 0.1716
       },
       {
@@ -99,7 +99,7 @@
         "organization": "American Century Companies Inc",
         "pctHeld": 0.0253,
         "position": 442261,
-        "value": 134062579,
+        "value": 136026219,
         "pctChange": 0.78800005
       },
       {
@@ -108,7 +108,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0249,
         "position": 434858,
-        "value": 131818507,
+        "value": 133749278,
         "pctChange": -0.1042
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.022,
         "position": 385076,
-        "value": 116728089,
+        "value": 118437828,
         "pctChange": 0.1102
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.020499999,
         "position": 359426,
-        "value": 108952805,
+        "value": 110548657,
         "pctChange": 0.66199994
       }
     ]
@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2025,
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-02-05T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -657,23 +659,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.016294016,
-    "regularMarketChange": 4.860016,
-    "regularMarketTime": "2026-01-14T18:13:02.000Z",
+    "postMarketChangePercent": 0.0046493243,
+    "postMarketChange": 1.4299927,
+    "postMarketTime": "2026-01-15T00:59:55.000Z",
+    "postMarketPrice": 309,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0311799,
+    "regularMarketChange": 9.30002,
+    "regularMarketTime": "2026-01-14T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 303.13,
-    "regularMarketDayHigh": 312.5,
-    "regularMarketDayLow": 286,
-    "regularMarketVolume": 690689,
+    "regularMarketPrice": 307.57,
+    "regularMarketDayHigh": 272.701,
+    "regularMarketDayLow": 246.1101,
+    "regularMarketVolume": 1005074,
     "averageDailyVolume10Day": 1135720,
     "averageDailyVolume3Month": 1175801,
     "regularMarketPreviousClose": 298.27,
-    "regularMarketSource": "DELAYED",
+    "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 296.14,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "LEU",
     "underlyingSymbol": null,
@@ -685,13 +692,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5520613376
+    "marketCap": 5601474560
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 5014103040,
-    "forwardPE": 61.667316,
+    "forwardPE": 62.57057,
     "profitMargins": 0.25039,
     "floatShares": 16839027,
     "sharesOutstanding": 17492832,
@@ -708,7 +715,7 @@
     "impliedSharesOutstanding": 18212032,
     "category": null,
     "bookValue": 19.937,
-    "priceToBook": 15.204394,
+    "priceToBook": 15.427095,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1068,7 +1075,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 303.13,
+    "currentPrice": 307.57,
     "targetHighPrice": 390,
     "targetLowPrice": 125,
     "targetMeanPrice": 294.112,
@@ -1097,6 +1104,6 @@
     "profitMargins": 0.25039,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-14T18:28:07.656Z",
+  "lastUpdated": "2026-01-15T01:17:54.323Z",
   "source": "Static Build (yahoo-finance2)"
 }

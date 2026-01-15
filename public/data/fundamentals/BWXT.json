@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1348,
         "position": 12325403,
-        "value": 2512040355,
+        "value": 2515368266,
         "pctChange": 0.19450001
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1004,
         "position": 9181311,
-        "value": 1871242972,
+        "value": 1873721965,
         "pctChange": -0.0214
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.039300002,
         "position": 3591751,
-        "value": 732034762,
+        "value": 733004550,
         "pctChange": -0.0134000005
       },
       {
@@ -72,7 +72,7 @@
         "organization": "T. Rowe Price Investment Management, Inc.",
         "pctHeld": 0.0328,
         "position": 2996364,
-        "value": 610688939,
+        "value": 611497970,
         "pctChange": -0.3434
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0279,
         "position": 2549150,
-        "value": 519542255,
+        "value": 520230536,
         "pctChange": 0.60080004
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Franklin Resources, Inc.",
         "pctHeld": 0.0241,
         "position": 2204688,
-        "value": 449337455,
+        "value": 449932731,
         "pctChange": -0.077800006
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0196,
         "position": 1787859,
-        "value": 364383538,
+        "value": 364866267,
         "pctChange": 0.0276
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Alkeon Capital Management LLC",
         "pctHeld": 0.0173,
         "position": 1578048,
-        "value": 321621959,
+        "value": 322048038,
         "pctChange": 1.6299001
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Snyder Capital Management, LP",
         "pctHeld": 0.017,
         "position": 1555146,
-        "value": 316954302,
+        "value": 317374198,
         "pctChange": -0.0538
       },
       {
@@ -126,7 +126,7 @@
         "organization": "William Blair Investment Management, LLC",
         "pctHeld": 0.0137,
         "position": 1255310,
-        "value": 255844728,
+        "value": 256183667,
         "pctChange": -0.1727
       }
     ]
@@ -1047,14 +1047,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.031965405,
-    "regularMarketChange": -6.7299957,
-    "regularMarketTime": "2026-01-14T18:29:26.000Z",
+    "postMarketChangePercent": 0.0045080273,
+    "postMarketChange": 0.91999817,
+    "postMarketTime": "2026-01-15T01:00:00.000Z",
+    "postMarketPrice": 205,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.030683,
+    "regularMarketChange": -6.45999,
+    "regularMarketTime": "2026-01-14T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 203.81,
+    "regularMarketPrice": 204.08,
     "regularMarketDayHigh": 208.57,
     "regularMarketDayLow": 200.33,
-    "regularMarketVolume": 727529,
+    "regularMarketVolume": 1272362,
     "averageDailyVolume10Day": 972170,
     "averageDailyVolume3Month": 1203885,
     "regularMarketPreviousClose": 210.54,
@@ -1063,25 +1068,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "BWXT",
     "underlyingSymbol": null,
     "shortName": "BWX Technologies, Inc.",
     "longName": "BWX Technologies, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 18633684992
+    "marketCap": 18658369536
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 20678705152,
-    "forwardPE": 47.518345,
+    "forwardPE": 47.5813,
     "profitMargins": 0.100360006,
     "floatShares": 91024466,
     "sharesOutstanding": 91426744,
@@ -1098,7 +1103,7 @@
     "impliedSharesOutstanding": 91426744,
     "category": null,
     "bookValue": 13.583,
-    "priceToBook": 15.004785,
+    "priceToBook": 15.024663,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1807,7 +1812,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 203.81,
+    "currentPrice": 204.08,
     "targetHighPrice": 272,
     "targetLowPrice": 182,
     "targetMeanPrice": 221,
@@ -1837,6 +1842,6 @@
     "profitMargins": 0.100360006,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-14T18:29:32.143Z",
+  "lastUpdated": "2026-01-15T01:19:19.066Z",
   "source": "Static Build (yahoo-finance2)"
 }
