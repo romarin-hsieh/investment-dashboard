@@ -45,7 +45,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.014099999,
         "position": 73186514,
-        "value": 25003441715,
+        "value": 25074066433,
         "pctChange": 0.192
       },
       {
@@ -54,7 +54,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0094,
         "position": 48984724,
-        "value": 16735141824,
+        "value": 16782411904,
         "pctChange": 0.726
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Sanders Capital, LLC",
         "pctHeld": 0.0062,
         "position": 32280404,
-        "value": 11028277695,
+        "value": 11059428167,
         "pctChange": -0.1567
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0053,
         "position": 27740880,
-        "value": 9477394649,
+        "value": 9504164497,
         "pctChange": -0.13
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.0049,
         "position": 25643671,
-        "value": 8760904136,
+        "value": 8785650184,
         "pctChange": 0.0007
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Fisher Asset Management, LLC",
         "pctHeld": 0.0034,
         "position": 17833127,
-        "value": 6092509769,
+        "value": 6109718671,
         "pctChange": 0.0095
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0033000002,
         "position": 17180892,
-        "value": 5869680194,
+        "value": 5886259692,
         "pctChange": 0.18969999
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Massachusetts Financial Services Co.",
         "pctHeld": 0.003,
         "position": 15759419,
-        "value": 5384048138,
+        "value": 5399255919,
         "pctChange": 0.0356
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.003,
         "position": 15714138,
-        "value": 5368578336,
+        "value": 5383742422,
         "pctChange": -0.0857
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0029,
         "position": 15091532,
-        "value": 5155871213,
+        "value": 5170434486,
         "pctChange": 0.098000005
       }
     ]
@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-04-16T13:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-16T16:15:04.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 450,
+        "priorPriceTarget": 380
+      },
+      {
+        "epochGradeDate": "2026-01-16T14:28:37.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 370,
+        "priorPriceTarget": 325
+      },
       {
         "epochGradeDate": "2026-01-15T12:05:35.000Z",
         "firm": "Needham",
@@ -1116,29 +1138,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.00845618,
-    "preMarketChange": 2.8899841,
-    "preMarketTime": "2026-01-16T12:34:39.000Z",
-    "preMarketPrice": 344.65,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.044419397,
-    "regularMarketChange": 14.53,
-    "regularMarketTime": "2026-01-15T21:00:02.000Z",
+    "regularMarketChangePercent": 0.0028245999,
+    "regularMarketChange": 0.96499634,
+    "regularMarketTime": "2026-01-16T18:26:22.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 341.64,
-    "regularMarketDayHigh": 351.33,
-    "regularMarketDayLow": 337.94,
-    "regularMarketVolume": 42052151,
+    "regularMarketPrice": 342.605,
+    "regularMarketDayHigh": 349.85,
+    "regularMarketDayLow": 341.46,
+    "regularMarketVolume": 11738471,
     "averageDailyVolume10Day": 16398990,
     "averageDailyVolume3Month": 12450337,
-    "regularMarketPreviousClose": 327.11,
+    "regularMarketPreviousClose": 341.64,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 342.805,
+    "regularMarketOpen": 346.51,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "TSM",
     "underlyingSymbol": null,
@@ -1150,13 +1167,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 1771917541376
+    "marketCap": 1776922525696
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 6828010242048,
-    "forwardPE": 18.895151,
+    "forwardPE": 18.948523,
     "profitMargins": 0.45099998,
     "floatShares": 24179492011,
     "sharesOutstanding": 5186504904,
@@ -1172,7 +1189,7 @@
     "impliedSharesOutstanding": 5186504904,
     "category": null,
     "bookValue": 6.6239986,
-    "priceToBook": 51.5761,
+    "priceToBook": 51.721783,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1181,7 +1198,7 @@
     "earningsQuarterlyGrowth": 0.406,
     "netIncomeToCommon": 1717882978304,
     "trailingEps": 10.49,
-    "forwardEps": 18.08083,
+    "forwardEps": 17.99786,
     "lastSplitFactor": "1005:1000",
     "lastSplitDate": 1247616000,
     "enterpriseToRevenue": 1.793,
@@ -1216,7 +1233,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 341.64,
+    "currentPrice": 342.605,
     "targetHighPrice": 520,
     "targetLowPrice": 210,
     "targetMeanPrice": 403.55188,
@@ -1246,6 +1263,6 @@
     "profitMargins": 0.45099998,
     "financialCurrency": "TWD"
   },
-  "lastUpdated": "2026-01-16T12:35:44.332Z",
+  "lastUpdated": "2026-01-16T18:26:25.901Z",
   "source": "Static Build (yahoo-finance2)"
 }
