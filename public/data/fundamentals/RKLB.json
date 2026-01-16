@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01771,
-    "institutionsPercentHeld": 0.58177,
-    "institutionsFloatPercentHeld": 0.59226,
-    "institutionsCount": 889
+    "institutionsPercentHeld": 0.58221,
+    "institutionsFloatPercentHeld": 0.59271,
+    "institutionsCount": 896
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-16T10:14:06.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Overweight",
+        "fromGrade": "Equal-Weight",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 105,
+        "priorPriceTarget": 67
+      },
       {
         "epochGradeDate": "2026-01-15T11:20:17.000Z",
         "firm": "Keybanc",
@@ -1218,11 +1228,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.027545173,
+    "preMarketChange": 2.5,
+    "preMarketTime": "2026-01-16T12:35:42.000Z",
+    "preMarketPrice": 93.26,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0050683017,
-    "postMarketChange": 0.45999908,
-    "postMarketTime": "2026-01-16T00:59:59.000Z",
-    "postMarketPrice": 91.22,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.011329,
     "regularMarketChange": -1.04,
@@ -1232,15 +1242,15 @@
     "regularMarketDayHigh": 92.459,
     "regularMarketDayLow": 86.66,
     "regularMarketVolume": 24634168,
-    "averageDailyVolume10Day": 28076870,
-    "averageDailyVolume3Month": 22529334,
+    "averageDailyVolume10Day": 28783430,
+    "averageDailyVolume3Month": 22563696,
     "regularMarketPreviousClose": 91.8,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 89.265,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RKLB",
     "underlyingSymbol": null,
@@ -1268,7 +1278,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0739,
     "heldPercentInsiders": 0.01771,
-    "heldPercentInstitutions": 0.58177,
+    "heldPercentInstitutions": 0.58221,
     "shortRatio": 1.51,
     "shortPercentOfFloat": 0.083500005,
     "beta": 2.166,
@@ -1287,8 +1297,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 86.595,
     "enterpriseToEbitda": -249.798,
-    "52WeekChange": 2.825,
-    "SandP52WeekChange": 0.15507638,
+    "52WeekChange": 2.7816668,
+    "SandP52WeekChange": 0.15805626,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2258,6 +2268,6 @@
     "profitMargins": -0.35639,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-16T06:28:15.173Z",
+  "lastUpdated": "2026-01-16T12:35:46.302Z",
   "source": "Static Build (yahoo-finance2)"
 }
