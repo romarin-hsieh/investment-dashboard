@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1288,
         "position": 41902227,
-        "value": 5002706855,
+        "value": 4987202916,
         "pctChange": 0.3032
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0837,
         "position": 27230765,
-        "value": 3251081016,
+        "value": 3241005558,
         "pctChange": 0.31370002
       },
       {
@@ -63,7 +63,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0502,
         "position": 16342587,
-        "value": 1951141451,
+        "value": 1945094649,
         "pctChange": 0.5118
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0422,
         "position": 13732777,
-        "value": 1639556237,
+        "value": 1634475072,
         "pctChange": 1.0676999
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0414,
         "position": 13466821,
-        "value": 1607803750,
+        "value": 1602820990,
         "pctChange": 1.2325
       },
       {
@@ -90,7 +90,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.035099998,
         "position": 11413479,
-        "value": 1362655250,
+        "value": 1358432232,
         "pctChange": -0.045500003
       },
       {
@@ -99,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0325,
         "position": 10561176,
-        "value": 1260898796,
+        "value": 1256991132,
         "pctChange": 1.0464
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0272,
         "position": 8858270,
-        "value": 1057588849,
+        "value": 1054311265,
         "pctChange": 0.52
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Janus Henderson Group PLC",
         "pctHeld": 0.0248,
         "position": 8078980,
-        "value": 964549417,
+        "value": 961560172,
         "pctChange": -0.0336
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0188,
         "position": 6113794,
-        "value": 729925861,
+        "value": 727663741,
         "pctChange": -0.0324
       }
     ]
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-16T18:45:28.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 175,
+        "priorPriceTarget": 200
+      },
       {
         "epochGradeDate": "2026-01-12T17:39:22.000Z",
         "firm": "Barclays",
@@ -4197,14 +4207,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.01215731,
-    "regularMarketChange": -1.4700012,
-    "regularMarketTime": "2026-01-16T18:27:49.000Z",
+    "postMarketChangePercent": 0.0014283801,
+    "postMarketChange": 0.1700058,
+    "postMarketTime": "2026-01-17T00:59:40.000Z",
+    "postMarketPrice": 119.19,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.015224299,
+    "regularMarketChange": -1.84,
+    "regularMarketTime": "2026-01-16T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 119.39,
+    "regularMarketPrice": 119.02,
     "regularMarketDayHigh": 121.79,
     "regularMarketDayLow": 117.8067,
-    "regularMarketVolume": 2776270,
+    "regularMarketVolume": 5811393,
     "averageDailyVolume10Day": 5144880,
     "averageDailyVolume3Month": 4341245,
     "regularMarketPreviousClose": 120.86,
@@ -4213,7 +4228,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4225,13 +4240,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 41866579968
+    "marketCap": 41736830976
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 39521046528,
-    "forwardPE": 51.0755,
+    "forwardPE": 50.917213,
     "profitMargins": 0.033239998,
     "floatShares": 323314924,
     "sharesOutstanding": 325443373,
@@ -4248,7 +4263,7 @@
     "impliedSharesOutstanding": 350670749,
     "category": null,
     "bookValue": 9.811,
-    "priceToBook": 12.168994,
+    "priceToBook": 12.131281,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -4304,6 +4319,17 @@
       {
         "maxAge": 1,
         "shares": 43106,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-01-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 43106,
         "value": 5773036,
         "filerUrl": "",
         "transactionText": "Sale at price 133.25 - 135.60 per share.",
@@ -4315,21 +4341,9 @@
       },
       {
         "maxAge": 1,
-        "shares": 43106,
+        "shares": 32418,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2026-01-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 32418,
-        "value": 4468788,
-        "filerUrl": "",
-        "transactionText": "Sale at price 137.81 - 138.32 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -4339,8 +4353,9 @@
       {
         "maxAge": 1,
         "shares": 32418,
+        "value": 4468788,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 137.81 - 138.32 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -4384,18 +4399,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "CALLAHAN MICHAEL JAMES",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 348000,
         "value": 0,
         "filerUrl": "",
@@ -4409,8 +4412,9 @@
       {
         "maxAge": 1,
         "shares": 15000,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "CALLAHAN MICHAEL JAMES",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4427,6 +4431,17 @@
         "moneyText": "",
         "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CALLAHAN MICHAEL JAMES",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4454,33 +4469,33 @@
       },
       {
         "maxAge": 1,
-        "shares": 53912,
-        "value": 8305201,
-        "filerUrl": "",
-        "transactionText": "Sale at price 153.24 - 155.01 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 53912,
-        "value": 8305201,
-        "filerUrl": "",
-        "transactionText": "Sale at price 153.24 - 155.01 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 16698,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 53912,
+        "value": 8305201,
+        "filerUrl": "",
+        "transactionText": "Sale at price 153.24 - 155.01 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 53912,
+        "value": 8305201,
+        "filerUrl": "",
+        "transactionText": "Sale at price 153.24 - 155.01 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -4678,18 +4693,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 53912,
-        "value": 10673913,
-        "filerUrl": "",
-        "transactionText": "Sale at price 196.78 - 201.43 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-11-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10688,
         "filerUrl": "",
         "transactionText": "",
@@ -4710,6 +4713,18 @@
         "moneyText": "",
         "startDate": "2025-11-11T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 53912,
+        "value": 10673913,
+        "filerUrl": "",
+        "transactionText": "Sale at price 196.78 - 201.43 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-11-11T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4876,18 +4891,6 @@
       {
         "maxAge": 1,
         "shares": 41468,
-        "value": 6259029,
-        "filerUrl": "",
-        "transactionText": "Sale at price 144.52 - 154.09 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 41468,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "LE-QUOC ALEXIS T",
@@ -4906,6 +4909,18 @@
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 41468,
+        "value": 6259029,
+        "filerUrl": "",
+        "transactionText": "Sale at price 144.52 - 154.09 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5109,18 +5124,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 55352,
-        "value": 7407864,
-        "filerUrl": "",
-        "transactionText": "Sale at price 132.64 - 135.23 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-09-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 41468,
         "filerUrl": "",
         "transactionText": "",
@@ -5138,6 +5141,18 @@
         "transactionText": "Sale at price 133.85 per share.",
         "filerName": "POMEL OLIVIER",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 55352,
+        "value": 7407864,
+        "filerUrl": "",
+        "transactionText": "Sale at price 132.64 - 135.23 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-09-02T00:00:00.000Z",
         "ownership": "D"
@@ -5251,9 +5266,8 @@
       {
         "maxAge": 1,
         "shares": 41468,
-        "value": 5576005,
         "filerUrl": "",
-        "transactionText": "Sale at price 133.05 - 139.66 per share.",
+        "transactionText": "",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -5263,8 +5277,9 @@
       {
         "maxAge": 1,
         "shares": 41468,
+        "value": 5576005,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 133.05 - 139.66 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -5309,9 +5324,9 @@
       {
         "maxAge": 1,
         "shares": 41468,
-        "value": 5775377,
+        "value": 142774,
         "filerUrl": "",
-        "transactionText": "Sale at price 136.78 - 140.58 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.91 - 10.74 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -5321,9 +5336,9 @@
       {
         "maxAge": 1,
         "shares": 41468,
-        "value": 142774,
+        "value": 5775377,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.91 - 10.74 per share.",
+        "transactionText": "Sale at price 136.78 - 140.58 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -5641,18 +5656,6 @@
       {
         "maxAge": 1,
         "shares": 127105,
-        "value": 15247342,
-        "filerUrl": "",
-        "transactionText": "Sale at price 119.79 - 121.17 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 127105,
         "value": 169039,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 0.31 - 10.74 per share.",
@@ -5685,6 +5688,18 @@
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 127105,
+        "value": 15247342,
+        "filerUrl": "",
+        "transactionText": "Sale at price 119.79 - 121.17 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5760,18 +5775,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10216,
-        "value": 1193648,
-        "filerUrl": "",
-        "transactionText": "Sale at price 116.84 per share.",
-        "filerName": "GALLOREESE DAVID",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 35016,
         "value": 4111048,
         "filerUrl": "",
@@ -5784,12 +5787,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 13766,
-        "value": 1608433,
+        "shares": 10216,
+        "value": 1193648,
         "filerUrl": "",
         "transactionText": "Sale at price 116.84 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "GALLOREESE DAVID",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
@@ -5800,6 +5803,17 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "AGARWAL AMIT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3304,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "AGARWAL AMIT",
         "filerRelation": "Director",
         "moneyText": "",
@@ -5820,14 +5834,27 @@
       },
       {
         "maxAge": 1,
-        "shares": 3304,
+        "shares": 15227,
+        "value": 1779138,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGARWAL AMIT",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 116.84 per share.",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 13766,
+        "value": 1608433,
+        "filerUrl": "",
+        "transactionText": "Sale at price 116.84 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5837,18 +5864,6 @@
         "transactionText": "Sale at price 116.84 per share.",
         "filerName": "WALTERS SEAN MICHAEL",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15227,
-        "value": 1779138,
-        "filerUrl": "",
-        "transactionText": "Sale at price 116.84 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
@@ -5926,9 +5941,9 @@
       {
         "maxAge": 1,
         "shares": 127105,
-        "value": 13451672,
+        "value": 169039,
         "filerUrl": "",
-        "transactionText": "Sale at price 104.92 - 107.48 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.31 - 10.74 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -5938,9 +5953,9 @@
       {
         "maxAge": 1,
         "shares": 127105,
-        "value": 169039,
+        "value": 13451672,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.31 - 10.74 per share.",
+        "transactionText": "Sale at price 104.92 - 107.48 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -5961,23 +5976,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 75000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGARWAL AMIT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 107365,
         "value": 46020,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 0.31 - 0.91 per share.",
         "filerName": "POMEL OLIVIER",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AGARWAL AMIT",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
         "ownership": "D"
@@ -6020,18 +6035,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 127105,
-        "value": 12760406,
-        "filerUrl": "",
-        "transactionText": "Sale at price 99.13 - 100.91 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 66269,
         "value": 0,
         "filerUrl": "",
@@ -6053,13 +6056,25 @@
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 38815,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LI YANBING",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 119.39,
+    "currentPrice": 119.02,
     "targetHighPrice": 260,
     "targetLowPrice": 113,
     "targetMeanPrice": 200.99286,
@@ -6089,6 +6104,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-16T18:27:54.931Z",
+  "lastUpdated": "2026-01-17T01:17:55.916Z",
   "source": "Static Build (yahoo-finance2)"
 }

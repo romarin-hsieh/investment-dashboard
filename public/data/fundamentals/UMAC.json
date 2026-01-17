@@ -45,7 +45,7 @@
         "organization": "Tudor Investment Corp Et Al",
         "pctHeld": 0.0327,
         "position": 1207460,
-        "value": 22510676,
+        "value": 22350084,
         "pctChange": 2.0103998
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0315,
         "position": 1162795,
-        "value": 21677986,
+        "value": 21523335,
         "pctChange": 0.13319999
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0308,
         "position": 1134604,
-        "value": 21152421,
+        "value": 21001520,
         "pctChange": 1.3622999
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.0228,
         "position": 840301,
-        "value": 15665731,
+        "value": 15553971,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.014099999,
         "position": 521505,
-        "value": 9722417,
+        "value": 9653057,
         "pctChange": 0.1432
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Shellback Capital, LP",
         "pctHeld": 0.0113,
         "position": 418101,
-        "value": 7794656,
+        "value": 7739049,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0075,
         "position": 278000,
-        "value": 5182753,
+        "value": 5145780,
         "pctChange": 0.24700001
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.0075,
         "position": 276976,
-        "value": 5163663,
+        "value": 5126825,
         "pctChange": 1.2142
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0064,
         "position": 234246,
-        "value": 4367048,
+        "value": 4335893,
         "pctChange": 4.1142
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0049,
         "position": 179226,
-        "value": 3341310,
+        "value": 3317473,
         "pctChange": 1
       }
     ]
@@ -327,14 +327,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0677549,
-    "regularMarketChange": 1.1830006,
-    "regularMarketTime": "2026-01-16T18:28:05.000Z",
+    "postMarketChangePercent": -0.0032414622,
+    "postMarketChange": -0.059999466,
+    "postMarketTime": "2026-01-17T00:59:32.000Z",
+    "postMarketPrice": 18.45,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0601375,
+    "regularMarketChange": 1.05,
+    "regularMarketTime": "2026-01-16T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 18.643,
-    "regularMarketDayHigh": 18.8399,
+    "regularMarketPrice": 18.51,
+    "regularMarketDayHigh": 18.9798,
     "regularMarketDayLow": 17.05,
-    "regularMarketVolume": 3570995,
+    "regularMarketVolume": 5993040,
     "averageDailyVolume10Day": 5252950,
     "averageDailyVolume3Month": 3476037,
     "regularMarketPreviousClose": 17.46,
@@ -343,25 +348,25 @@
     "exchange": "ASE",
     "exchangeName": "NYSE American",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "UMAC",
     "underlyingSymbol": null,
     "shortName": "Unusual Machines, Inc.",
     "longName": "Unusual Machines, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 710483072
+    "marketCap": 705414464
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 563994752,
-    "forwardPE": -66.58214,
+    "forwardPE": -66.10714,
     "profitMargins": 0,
     "floatShares": 34072639,
     "sharesOutstanding": 38109911,
@@ -377,7 +382,7 @@
     "impliedSharesOutstanding": 38109911,
     "category": null,
     "bookValue": 3.358,
-    "priceToBook": 5.5518165,
+    "priceToBook": 5.5122094,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1394,7 +1399,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 18.643,
+    "currentPrice": 18.51,
     "targetHighPrice": 25,
     "targetLowPrice": 15,
     "targetMeanPrice": 19.2,
@@ -1423,6 +1428,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-16T18:28:07.555Z",
+  "lastUpdated": "2026-01-17T01:18:08.746Z",
   "source": "Static Build (yahoo-finance2)"
 }
