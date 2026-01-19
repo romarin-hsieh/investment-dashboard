@@ -300,9 +300,21 @@ class YFinanceMetadataUpdater:
         }
         
         # 安全檢查：確保我們沒有丟失股票
-        EXPECTED_COUNT = 70
-        if len(metadata_items) < EXPECTED_COUNT:
-            print(f"❌ CRITICAL ERROR: Generated only {len(metadata_items)} items, expected {EXPECTED_COUNT}.")
+        # 從 stocks.json 讀取期望數量，或者直接使用 symbols 列表的長度作為基準
+        try:
+             with open(self.stocks_config_file, 'r', encoding='utf-8') as f:
+                cfg = json.load(f)
+                expected_count = cfg.get('metadata', {}).get('total_stocks', len(symbols))
+        except:
+            expected_count = len(symbols)
+
+        # 允許少量誤差 (例如停牌)，但如果掉太多則報錯 (例如 API 失敗導致 fallback 嚴重不足)
+        # 設定容許誤差為 10%
+        tolerance = int(expected_count * 0.1)
+        min_required = expected_count - tolerance
+
+        if len(metadata_items) < min_required:
+            print(f"❌ CRITICAL ERROR: Generated only {len(metadata_items)} items, expected approx {expected_count} (min {min_required}).")
             print("❌ Aborting save to prevent data corruption.")
             sys.exit(1)
 
