@@ -163,6 +163,7 @@
 <script>
 import { useTheme } from '@/composables/useTheme.js';
 import { ohlcvApi } from '@/services/ohlcvApi.js';
+import { withBase } from '@/utils/baseUrl.js';
 
 export default {
   name: 'ZeiiermanFearGreedGauge',
@@ -216,7 +217,8 @@ export default {
     },
     async fetchExternalSentiment() {
         try {
-            const res = await fetch('/data/technical-indicators/market-sentiment.json');
+            const url = withBase('data/technical-indicators/market-sentiment.json');
+            const res = await fetch(url);
             if (res.ok) {
                 this.externalSentiment = await res.json();
                 console.log('Loaded External Sentiment:', this.externalSentiment);
