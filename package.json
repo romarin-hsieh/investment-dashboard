@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "fetch-fundamentals": "node scripts/fetch-fundamentals.js"
+    "update:sentiment": "python scripts/update_sentiment.py",
+    "fetch:fundamentals": "node scripts/fetch-fundamentals.js"
   },
   "dependencies": {
     "chart.js": "^4.5.1",

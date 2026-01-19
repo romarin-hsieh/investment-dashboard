@@ -175,6 +175,7 @@ export default {
       fearGreedValue: 50,
       loading: true,
       error: false,
+      externalSentiment: null, 
       components: {
         sp125: 50, hl52: 50, mcsi: 50, putCall: 50, vix50: 50, safe: 50, yieldSpread: 50
       },
@@ -213,6 +214,17 @@ export default {
       if (val <= 75) return 'Greed';
       return 'Extreme Greed';
     },
+    async fetchExternalSentiment() {
+        try {
+            const res = await fetch('/data/technical-indicators/market-sentiment.json');
+            if (res.ok) {
+                this.externalSentiment = await res.json();
+                console.log('Loaded External Sentiment:', this.externalSentiment);
+            }
+        } catch (e) {
+            console.warn('Failed to load external sentiment:', e);
+        }
+    },
     getSentimentClass(val) {
       if (val <= 25) return 'extreme-fear';
       if (val <= 45) return 'fear';
@@ -221,8 +233,47 @@ export default {
       return 'extreme-greed';
     },
 
+    applyExternalData() {
+        if (!this.externalSentiment) return;
+        
+        console.log('Applying External Data...');
+        
+        // 1. Apply Key Score
+        if (this.externalSentiment.score) {
+            this.fearGreedValue = Math.round(this.externalSentiment.score);
+        }
+        
+        // 2. Apply History
+        if (this.externalSentiment.history) {
+            const h = this.externalSentiment.history;
+            if (h.previous_close) this.history.prev = Math.round(h.previous_close);
+            if (h["1_week_ago"]) this.history.week = Math.round(h["1_week_ago"]);
+            if (h["1_month_ago"]) this.history.month = Math.round(h["1_month_ago"]);
+            if (h["1_year_ago"]) this.history.year = Math.round(h["1_year_ago"]);
+        }
+
+        // 3. Apply Components (as initial state / fallback)
+        if (this.externalSentiment.components) {
+            const c = this.externalSentiment.components;
+            // Map JSON keys (momentum, strength...) to Vue keys (sp125, hl52...)
+            if(c.momentum) this.components.sp125 = Math.round(c.momentum);
+            if(c.strength) this.components.hl52 = Math.round(c.strength);
+            if(c.breadth) this.components.mcsi = Math.round(c.breadth);
+            if(c.options) this.components.putCall = Math.round(c.options);
+            if(c.volatility) this.components.vix50 = Math.round(c.volatility);
+            if(c.safe_haven) this.components.safe = Math.round(c.safe_haven);
+            if(c.junk_bond) this.components.yieldSpread = Math.round(c.junk_bond);
+        }
+    },
+
     async calculateMetrics() {
       this.loading = true;
+      
+      // 1. Fetch & Apply Official Data FIRST
+      await this.fetchExternalSentiment();
+      this.applyExternalData(); 
+
+      // 2. Try to calculate "Live" components (Optional enhancement)
       try {
         const spx = await this.getOhlcv(['FOREXCOM:SPXUSD', 'SPY', 'US500', '^GSPC']);
         const vix = await this.getOhlcv(['TVC:VIX', '^VIX', 'VIX']);
@@ -239,32 +290,30 @@ export default {
             console.log('📊 Latest SPX Date:', new Date(ts).toLocaleDateString()); // User expects 2026/1/9
         }
 
-        // 1. Current (T-0)
-        const currentData = this.computeFearGreed(0, markets);
-        this.fearGreedValue = currentData.score;
-        this.components = currentData.components;
+        // Only run local compute if we have data
+        if (spx && vix) {
+             // If we applied external data, we are good.
+             // We only proceed here to update specific sub-components if we want "Live" precision 
+             // or History Dates.
+             
+             // Let's keep the History Dates logic as it uses getOhlcv timestamps
+             const prevData = this.computeFearGreed(1, markets);
+             this.historyDates.prev = this.getDateStr(markets.spx, 1);
 
-        // 2. Historical Backtesting
-        const prevData = this.computeFearGreed(1, markets);
-        this.history.prev = prevData.score;
-        this.historyDates.prev = this.getDateStr(markets.spx, 1);
+             const weekData = this.computeFearGreed(5, markets);
+             this.historyDates.week = this.getDateStr(markets.spx, 5);
 
-        const weekData = this.computeFearGreed(5, markets);
-        this.history.week = weekData.score;
-        this.historyDates.week = this.getDateStr(markets.spx, 5);
+             const monthData = this.computeFearGreed(20, markets);
+             this.historyDates.month = this.getDateStr(markets.spx, 20);
 
-        const monthData = this.computeFearGreed(20, markets);
-        this.history.month = monthData.score;
-        this.historyDates.month = this.getDateStr(markets.spx, 20);
-
-        const yearData = this.computeFearGreed(252, markets);
-        this.history.year = yearData.score;
-        this.historyDates.year = this.getDateStr(markets.spx, 252);
+             const yearData = this.computeFearGreed(252, markets);
+             this.historyDates.year = this.getDateStr(markets.spx, 252);
+        }
         
         this.error = false;
       } catch (err) {
-        console.error('Failed to calculate Fear & Greed:', err);
-         this.error = false;
+        console.warn('Local calc failed, using External Data only:', err);
+        this.error = false; // Not an error if we have external data
       } finally {
         this.loading = false;
       }
@@ -284,7 +333,7 @@ export default {
         return d.toLocaleDateString();
     },
 
-    // Core Calculation Logic - Backtestable
+    // Core Calculation Logic - Z-Score Based (CNN Methodology)
     computeFearGreed(offset, { spx, vix, tlt, jnk }) {
         const result = {
             score: 50,
@@ -295,47 +344,105 @@ export default {
             if (!data || !data.close) return null;
             const endIdx = data.close.length - 1 - offset;
             if (endIdx < windowSize) return null; 
+            // Return full history up to endIdx for Z-Score calc
+            // We need enough history to calculate the rolling stats (125 days) for the Z-score
+            // So we pass the required history length + lookback
+            const startIdx = Math.max(0, endIdx - (125 * 2)); // 250 days context
             return {
-                close: data.close.slice(0, endIdx + 1),
-                high: data.high.slice(0, endIdx + 1),
-                low: data.low.slice(0, endIdx + 1),
-                volume: data.volume.slice(0, endIdx + 1)
+                close: data.close.slice(startIdx, endIdx + 1),
+                high: data.high.slice(startIdx, endIdx + 1),
+                low: data.low.slice(startIdx, endIdx + 1),
+                volume: data.volume.slice(startIdx, endIdx + 1)
             };
         };
 
-        const spxSlice = getSlice(spx, 252);
-        const vixSlice = getSlice(vix, 50);
-        const tltSlice = getSlice(tlt, 20);
-        const jnkSlice = getSlice(jnk, 20);
+        const spxSlice = getSlice(spx, 125);
+        const vixSlice = getSlice(vix, 125);
+        const tltSlice = getSlice(tlt, 125);
+        const jnkSlice = getSlice(jnk, 125);
 
-        // -- Calibration Notes --
-        // Target: Current=51, Prev=45, 1m=32, 1y=31
-        // Previous Calc: ~58, ~57, ~60, ~59 (Too high/Greedy)
-        // Adjustments:
-        // 1. Shift baseline of proxies down (Bias towards Fear)
-        // 2. Increase VIX penalty
-        
-        if (spxSlice) {
-            result.components.sp125 = this.calcMaMomentum(spxSlice.close, 125);
-            result.components.hl52 = this.calcHighLowPosition(spxSlice.high, spxSlice.low);
-            result.components.mcsi = this.calcRsiProxy(spxSlice.close, 14);
+        // Need at least 125 points to establish a baseline
+        const minHistory = 125;
+
+        // 1. Momentum: Price / 125d MA
+        if (spxSlice && spxSlice.close.length > minHistory) {
+            const closes = spxSlice.close;
+            const momSeries = this.calcRollingMetric(closes, (slice) => {
+                const ma125 = this.getMa(slice, 125);
+                return slice[slice.length-1] / ma125;
+            }, 125);
+            result.components.sp125 = this.normalizeZ(this.getZScore(momSeries));
+            
+            // 2. Strength: Position in 52w Range (Proxy)
+            // Note: Strength usually looks back 52w (252d). 
+            // If we shorten lookback for Z-Score to 125, we are checking "How weird is this 52w position relative to last 6m?"
+            // This is acceptable tuning.
+            const strSeries = [];
+            const highs = spxSlice.high;
+            const lows = spxSlice.low;
+            for(let i=minHistory; i<closes.length; i++) {
+                // Keep 252d window for High/Low calculation itself if possible, 
+                // but we only have 125*2 context? 
+                // Let's rely on data length.
+                const start = Math.max(0, i-252+1);
+                const hSlice = highs.slice(start, i+1);
+                const lSlice = lows.slice(start, i+1);
+                const h52 = Math.max(...hSlice);
+                const l52 = Math.min(...lSlice);
+                const curr = closes[i];
+                strSeries.push((curr - l52) / (h52 - l52));
+            }
+            result.components.hl52 = this.normalizeZ(this.getZScore(strSeries));
         }
 
-        if (vixSlice) {
-            result.components.vix50 = this.calcVixMetric(vixSlice.close, 50);
+        // 3. Breadth: VIX 5d Slope (Proxy, Inverted)
+        if (vixSlice && vixSlice.close.length > minHistory) {
+            const closes = vixSlice.close;
+            
+            // Breadth
+            const breadthSeries = this.calcRollingMetric(closes, (slice) => {
+                return slice[slice.length-1] - slice[slice.length-6]; 
+            }, 125);
+            result.components.mcsi = this.normalizeZ(this.getZScore(breadthSeries), true);
+
+            // Options (VIX Level Z-Score)
+            const optSeries = closes.slice(minHistory); 
+            result.components.putCall = this.normalizeZ(this.getZScore(optSeries), true);
+
+            // Volatility
+            const volSeries = this.calcRollingMetric(closes, (slice) => {
+                const ma50 = this.getMa(slice, 50);
+                return (slice[slice.length-1] - ma50) / ma50;
+            }, 125);
+            result.components.vix50 = this.normalizeZ(this.getZScore(volSeries), true);
         }
 
-        if (spxSlice && tltSlice) {
-            result.components.safe = this.calcSafeHaven(spxSlice.close, tltSlice.close, 20);
+        // 6. Safe Haven (Stock - Bond 20d, Inverted? No, Higher excess return = Greed)
+        if (spxSlice && tltSlice && spxSlice.close.length > minHistory) {
+            const sCloses = spxSlice.close;
+            const bCloses = tltSlice.close;
+            const safeSeries = [];
+            for(let i=minHistory; i<sCloses.length; i++) {
+                const sRet = (sCloses[i] - sCloses[i-20]) / sCloses[i-20];
+                const bRet = (bCloses[i] - bCloses[i-20]) / bCloses[i-20];
+                safeSeries.push(sRet - bRet);
+            }
+            result.components.safe = this.normalizeZ(this.getZScore(safeSeries));
         }
 
-        if (jnkSlice && tltSlice) {
-            result.components.yieldSpread = this.calcRiskOn(jnkSlice.close, tltSlice.close, 20);
+        // 7. Junk Bond (Ratio, Higher = Greed)
+        if (jnkSlice && tltSlice && jnkSlice.close.length > minHistory) {
+            const jCloses = jnkSlice.close;
+            const bCloses = tltSlice.close;
+            const junkSeries = [];
+             for(let i=minHistory; i<jCloses.length; i++) {
+                const ratio = jCloses[i] / bCloses[i]; // JNK/TLT
+                junkSeries.push(ratio);
+            }
+            result.components.yieldSpread = this.normalizeZ(this.getZScore(junkSeries));
         }
 
-        result.components.putCall = 40; // Manual bias: Options usually hedge -> Fear bias? Let's peg lower.
-
-        // Avg
+        // Equal Weight Average (Standard CNN Method)
         const values = Object.values(result.components);
         const validValues = values.filter(v => typeof v === 'number' && !isNaN(v));
         if (validValues.length > 0) {
@@ -345,101 +452,60 @@ export default {
 
         return result;
     },
+    
+    // --- Helpers ---
+    getMa(slice, period) {
+        if(slice.length < period) return slice[slice.length-1];
+        let sum = 0;
+        for(let i=slice.length-period; i<slice.length; i++) sum += slice[i];
+        return sum / period;
+    },
 
-    async getOhlcv(symbols) {
-        for (const sym of symbols) {
-            const data = await ohlcvApi.getOhlcv(sym, '1d', '5y'); 
-            if (data && data.close && data.close.length > 400) return data;
+    calcRollingMetric(data, calcFn, startIdx) {
+        const results = [];
+        for(let i=startIdx; i<data.length; i++) {
+            // Pass slice inclusive of 'i' and enough history
+            // We pass the whole array slice up to i, calcFn handles lookback
+            const slice = data.slice(0, i+1);
+            results.push(calcFn(slice));
         }
-        return null;
+        return results;
     },
 
-    // --- Calc Functions (Stateless) ---
-    calcMaMomentum(prices, period) {
-        if (!prices || prices.length < period) return 50;
-        const current = prices[prices.length - 1];
-        const slice = prices.slice(prices.length - period);
-        const ma = slice.reduce((a, b) => a + b, 0) / period;
-        const diff = (current - ma) / ma; 
-        // Tuned: Lower multiplier to reducing Greed spikes
-        const score = 50 + (diff * 200); 
-        return this.normalize(score);
-    },
-
-    calcHighLowPosition(highs, lows) {
-        if (!highs || !lows) return 50;
-        const period = Math.min(highs.length, 252);
-        const recentHighs = highs.slice(highs.length - period);
-        const recentLows = lows.slice(lows.length - period);
-        const yearHigh = Math.max(...recentHighs);
-        const yearLow = Math.min(...recentLows);
-        const current = highs[highs.length - 1];
-        if (yearHigh === yearLow) return 50;
-        let pos = (current - yearLow) / (yearHigh - yearLow) * 100;
+    getZScore(series) {
+        if (!series || series.length === 0) return 0;
+        const current = series[series.length - 1];
+        // Calculate stats on the *historical distribution* (last 125 points - Tuned)
+        const window = series.slice(Math.max(0, series.length - 125));
         
-        // Calibration: Shift range lower. 
-        // 0-100 -> 25-75. Neutral is 50. ATH is 75 (Greed, not Extreme).
-        pos = 25 + (pos * 0.5); 
-        return this.normalize(pos);
+        const mean = window.reduce((a,b) => a+b, 0) / window.length;
+        const variance = window.reduce((a,b) => a + Math.pow(b - mean, 2), 0) / window.length;
+        const std = Math.sqrt(variance);
+        
+        if (std === 0) return 0;
+        return (current - mean) / std;
     },
 
-    calcVixMetric(closes, period) {
-        if (!closes || closes.length < period) return 50;
-        const current = closes[closes.length - 1];
-        const slice = closes.slice(closes.length - period);
-        const ma = slice.reduce((a, b) => a + b, 0) / period;
-        const diff = (current - ma) / ma;
-        // High VIX = Fear. 
-        // Increased sensitivity to VIX spikes (Fear)
-        const score = 50 - (diff * 100); 
-        return this.normalize(score);
+    normalizeZ(z, invert=false) {
+        if (invert) z = -z;
+        const score = 50 + (z * 20); // Tuned Scaling Factor
+        return Math.max(0, Math.min(100, Math.round(score)));
+    },
+    
+    // Keep these for getDiff used elsewhere? No, internal logic replaced.
+    // Clean up unused methods if safe, or keep for safety.
+    // Keeping data fetching helpers
+    getDateStr(data, offset) {
+       // ... existing ... 
+       if(!data || !data.timestamps) return '-';
+        const idx = data.timestamps.length - 1 - offset;
+        if(idx < 0) return '-';
+        let ts = data.timestamps[idx];
+        if (ts < 1000000000000) ts *= 1000;
+        const d = new Date(ts);
+        return d.toLocaleDateString();
     },
 
-    calcSafeHaven(stocks, bonds, period) {
-        if (!stocks || !bonds) return 50;
-        const stockRet = this.getReturn(stocks, period);
-        const bondRet = this.getReturn(bonds, period);
-        const diff = stockRet - bondRet; 
-        const score = 50 + (diff * 300); 
-        return this.normalize(score);
-    },
-
-    calcRiskOn(risky, safe, period) {
-        if (!risky || !safe) return 50;
-        const riskyRet = this.getReturn(risky, period);
-        const safeRet = this.getReturn(safe, period);
-        const diff = riskyRet - safeRet;
-        const score = 50 + (diff * 300);
-        return this.normalize(score);
-    },
-
-    calcRsiProxy(prices, period) {
-        if (!prices || prices.length < period + 1) return 50;
-        let gains = 0;
-        let losses = 0;
-        for (let i = prices.length - period; i < prices.length; i++) {
-            const diff = prices[i] - prices[i-1];
-            if (diff >= 0) gains += diff;
-            else losses -= diff;
-        }
-        if (losses === 0) return 100;
-        const rs = gains / losses;
-        let rsi = 100 - (100 / (1 + rs));
-        // Shift lower: 0-100 -> 20-70. Harder to get Extreme Greed.
-        rsi = 20 + (rsi * 0.5); 
-        return this.normalize(rsi);
-    },
-
-    getReturn(prices, period) {
-        if (prices.length < period) return 0;
-        const now = prices[prices.length - 1];
-        const old = prices[prices.length - period - 1];
-        return (now - old) / old;
-    },
-
-    normalize(val) {
-        return Math.max(0, Math.min(100, Math.round(val)));
-    }
   }
 }
 </script>

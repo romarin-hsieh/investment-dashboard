@@ -1,110 +1,62 @@
-# 投資儀表板部署指南
+# Deployment & Operations Guide
 
-## 🚀 部署選項
+## ⚙️ Automated CI/CD Pipelines
+The project relies heavily on GitHub Actions to maintain its "Static-First" architecture.
 
-### 1. GitHub Pages (免費推薦)
+### 1. Daily Data Refresh (`daily-update.yml`)
+- **Schedule**: `0 0 * * *` (Daily at Midnight UTC)
+- **Core Script**: `scripts/generate-real-ohlcv-yfinance.py`
+- **Output**: Updates `public/data/ohlcv/*.json`
+- **Logic**:
+  1. Fetches list of symbols from `scripts/symbols_config.py`.
+  2. For each symbol, downloads 1Y historic data from Yahoo Finance.
+  3. Validates data integrity (Checks for nulls/gaps).
+  4. Commits changes to the repo.
+- **Failure Handling**: If a symbol fails, the script logs an error but continues. The previous day's JSON remains (Stale is better than broken).
 
-**步驟：**
-1. 將代碼推送到 GitHub repository
-2. 在 GitHub repository 設置中啟用 GitHub Pages
-3. 選擇 "GitHub Actions" 作為部署源
-4. 代碼推送到 main 分支時會自動部署
+### 2. Technical Analysis Pre-compute (`precompute-indicators.yml`)
+- **Schedule**: `0 22 * * 1-5` (Weekdays Post-market)
+- **Core Script**: `scripts/precompute-with-browser.js` (Puppeteer)
+- **Purpose**:
+  - Scrapes CNN Fear & Greed Index (which has no public API).
+  - Calculates complex indicators (e.g., specific MFI logic) server-side.
+- **Environment**: Requires `ubuntu-latest` with Chrome installed.
 
-**訪問地址：** `https://yourusername.github.io/investment-dashboard/`
+### 3. Production Deployment (`deploy.yml`)
+- **Trigger**: Push to `main` branch.
+- **Steps**:
+  1. `npm ci` (Clean install)
+  2. `npm run build` (Vite production build)
+  3. Deploy `dist/` folder to `gh-pages` branch.
 
-### 2. Zeabur 部署
+## �️ Data Redundancy & Fallback Logic
 
-**步驟：**
-1. 註冊 [Zeabur](https://zeabur.com) 帳號
-2. 連接 GitHub repository
-3. 選擇 Node.js 模板
-4. 自動檢測 `zeabur.json` 配置並部署
+### Data Availability Hierarchy
+When the CI/CD pipelines run, they create a "Golden Source" of static data. If this pipeline fails or GitHub Pages is down, the app degrades gracefully:
 
-**特點：** 
-- 免費額度充足
-- 支持自定義域名
-- 自動 HTTPS
+| Scenario | System Behavior | User Impact |
+|:--- |:--- |:--- |
+| **Normal Operation** | Loads cached/static JSON. | ⚡ Instant load, 0 API calls. |
+| **Static Data Stale/Missing** | `YahooFinanceAPI.js` detects 404/Stale. Switches to **Tier 3 (Proxy Fallback)**. | ⚠️ Slower load (2-3s delay), Loading spinners visible. |
+| **Proxy Failure** | `YahooFinanceAPI` rotates through proxy list. | ⏳ Significant delay. |
+| **Total Outage** | Displays "Data Unavailable" error state with Retry button. | ❌ Widget specific error (whole app does not crash). |
 
-### 3. Vercel 部署
+## �️ Manual Operations
 
-**步驟：**
-1. 註冊 [Vercel](https://vercel.com) 帳號
-2. 導入 GitHub repository
-3. 自動檢測 Vue.js 項目並部署
+### Emergency Cache Flush
+IF users report seeing old data despite a successful deployment:
+1.  Instruct users to Hard Refresh (`Ctrl+F5`).
+2.  (Dev) Bump the version in `package.json` or `src/utils/cacheWarmupService.js`.
+3.  (Dev) `widgetCache` timestamp logic will invalidate entries older than 24h automatically.
 
-**命令行部署：**
-```bash
-npm install -g vercel
-vercel login
-npm run deploy:vercel
+### Manual Deployment (Windows)
+If GitHub Actions is down, you can deploy from a local machine:
+```batch
+cd investment-dashboard
+./deploy-production.bat
 ```
+*Note: This script performs a safety check on your git status before building.*
 
-### 4. Netlify 部署
-
-**步驟：**
-1. 註冊 [Netlify](https://netlify.com) 帳號
-2. 拖拽 `dist` 文件夾到 Netlify 部署區域
-3. 或連接 GitHub repository 自動部署
-
-**命令行部署：**
-```bash
-npm install -g netlify-cli
-netlify login
-npm run build
-npm run deploy:netlify
-```
-
-### 5. Docker 部署
-
-**本地構建：**
-```bash
-docker build -t investment-dashboard .
-docker run -p 80:80 investment-dashboard
-```
-
-**Docker Compose：**
-```yaml
-version: '3.8'
-services:
-  web:
-    build: .
-    ports:
-      - "80:80"
-    restart: unless-stopped
-```
-
-## 🔧 環境變量配置
-
-如果需要配置環境變量（如 Google Sheets API），在各平台添加：
-
-```env
-VITE_GOOGLE_SHEETS_API_KEY=your_api_key
-VITE_GOOGLE_SHEETS_ID=your_sheet_id
-```
-
-## 📊 性能優化
-
-部署前建議：
-1. 運行 `npm run build` 確保構建成功
-2. 運行 `npm run preview` 本地預覽生產版本
-3. 檢查 `dist` 文件夾大小（應該 < 10MB）
-
-## 🌐 自定義域名
-
-大部分平台都支持自定義域名：
-- **GitHub Pages**: 在 repository 設置中添加 CNAME
-- **Vercel/Netlify**: 在項目設置中添加域名
-- **Zeabur**: 在服務設置中綁定域名
-
-## 🔒 安全考慮
-
-- 所有平台都提供免費 HTTPS
-- 敏感配置使用環境變量
-- 定期更新依賴包
-
-## 📈 監控和分析
-
-建議添加：
-- Google Analytics
-- 錯誤監控 (Sentry)
-- 性能監控 (Web Vitals)
+## 📈 Performance Monitoring
+- **Build Size**: Monitor the `npm run build` output. Warning if `index.js` exceeds 500kB.
+- **Rate Limits**: If "Too Many Requests" errors spike in Proxy Fallback mode, increase `REQUEST_DELAY` in `YahooFinanceAPI.js`.

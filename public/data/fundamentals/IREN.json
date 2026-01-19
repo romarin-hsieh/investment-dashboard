@@ -4,9 +4,9 @@
       {
         "period": "0m",
         "strongBuy": 1,
-        "buy": 9,
+        "buy": 10,
         "hold": 2,
-        "sell": 1,
+        "sell": 0,
         "strongSell": 1
       },
       {
@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 9,
+        "hold": 2,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
         "strongBuy": 0,
         "buy": 9,
         "hold": 2,
@@ -37,7 +45,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.040599998,
         "position": 11710138,
-        "value": 589371266,
+        "value": 677080175,
         "pctChange": 0.4022
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.037100002,
         "position": 10717054,
-        "value": 539389347,
+        "value": 619660059,
         "pctChange": 1
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Wells Fargo & Company",
         "pctHeld": 0.0273,
         "position": 7882103,
-        "value": 396706258,
+        "value": 455743193,
         "pctChange": 11.5397
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.025,
         "position": 7220421,
-        "value": 363403802,
+        "value": 417484740,
         "pctChange": 0.12810001
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Citigroup Inc.",
         "pctHeld": 0.0223,
         "position": 6427716,
-        "value": 323506958,
+        "value": 371650537,
         "pctChange": 1.1201999
       },
       {
@@ -82,7 +90,7 @@
         "organization": "BIT Capital GmbH",
         "pctHeld": 0.0201,
         "position": 5794227,
-        "value": 291623455,
+        "value": 335022203,
         "pctChange": -0.64309996
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.0178,
         "position": 5143276,
-        "value": 258861090,
+        "value": 297384216,
         "pctChange": 4.4972
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0156,
         "position": 4509672,
-        "value": 226971800,
+        "value": 260749233,
         "pctChange": -0.175
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Value Aligned Research Advisors, LLC                          ",
         "pctHeld": 0.0134000005,
         "position": 3873337,
-        "value": 194945058,
+        "value": 223956344,
         "pctChange": 0.1859
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.012,
         "position": 3465876,
-        "value": 174437545,
+        "value": 200396949,
         "pctChange": -0.3323
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.041300002,
-    "institutionsPercentHeld": 0.52838004,
-    "institutionsFloatPercentHeld": 0.55114,
-    "institutionsCount": 442
+    "institutionsPercentHeld": 0.52664,
+    "institutionsFloatPercentHeld": 0.54933,
+    "institutionsCount": 447
   },
   "earnings": {
     "maxAge": 86400,
@@ -241,6 +249,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-13T16:44:52.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Sell",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 80,
+        "priorPriceTarget": 56
+      },
       {
         "epochGradeDate": "2025-12-18T11:15:04.000Z",
         "firm": "Goldman Sachs",
@@ -1317,28 +1335,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0021458713,
-    "postMarketChange": -0.10800171,
-    "postMarketTime": "2026-01-13T00:59:53.000Z",
-    "postMarketPrice": 50.222,
+    "postMarketChangePercent": 0.007436878,
+    "postMarketChange": 0.4300003,
+    "postMarketTime": "2026-01-17T00:59:57.000Z",
+    "postMarketPrice": 58.25,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0934174,
-    "regularMarketChange": 4.3,
-    "regularMarketTime": "2026-01-12T21:00:02.000Z",
+    "regularMarketChangePercent": 0.11428022,
+    "regularMarketChange": 5.9300003,
+    "regularMarketTime": "2026-01-16T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 50.33,
-    "regularMarketDayHigh": 51.625,
-    "regularMarketDayLow": 45.85,
-    "regularMarketVolume": 52916730,
-    "averageDailyVolume10Day": 29683880,
-    "averageDailyVolume3Month": 37444054,
-    "regularMarketPreviousClose": 46.03,
+    "regularMarketPrice": 57.82,
+    "regularMarketDayHigh": 58.75,
+    "regularMarketDayLow": 51.92,
+    "regularMarketVolume": 53965869,
+    "averageDailyVolume10Day": 41028650,
+    "averageDailyVolume3Month": 37506566,
+    "regularMarketPreviousClose": 51.89,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 46.725,
+    "regularMarketOpen": 52.39,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "IREN",
     "underlyingSymbol": null,
@@ -1350,43 +1368,43 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 16525437952
+    "marketCap": 18984716288
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 14200186880,
-    "forwardPE": 60.147953,
+    "enterpriseValue": 16323343360,
+    "forwardPE": 69.09904,
     "profitMargins": 0.75992996,
     "floatShares": 257979108,
     "sharesOutstanding": 328341694,
-    "sharesShort": 50792069,
-    "sharesShortPriorMonth": "1971-11-25T19:16:18.000Z",
-    "sharesShortPreviousMonthDate": "2025-11-14T00:00:00.000Z",
-    "dateShortInterest": "2025-12-15T00:00:00.000Z",
-    "sharesPercentSharesOut": 0.1547,
+    "sharesShort": 50009607,
+    "sharesShortPriorMonth": "1971-09-24T02:53:22.000Z",
+    "sharesShortPreviousMonthDate": "2025-11-28T00:00:00.000Z",
+    "dateShortInterest": "2025-12-31T00:00:00.000Z",
+    "sharesPercentSharesOut": 0.1523,
     "heldPercentInsiders": 0.041300002,
-    "heldPercentInstitutions": 0.52838004,
-    "shortRatio": 1.29,
-    "shortPercentOfFloat": 0.1603,
+    "heldPercentInstitutions": 0.52664,
+    "shortRatio": 1.5,
+    "shortPercentOfFloat": 0.1578,
     "beta": 4.266,
     "impliedSharesOutstanding": 328341695,
     "category": null,
     "bookValue": 10.168,
-    "priceToBook": 4.949843,
+    "priceToBook": 5.686467,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-06-30T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-06-30T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": 523255008,
-    "trailingEps": 1.9,
+    "trailingEps": 1.74,
     "forwardEps": 0.83677,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 20.623,
-    "enterpriseToEbitda": 61.175,
-    "52WeekChange": 3.1959891,
-    "SandP52WeekChange": 0.19226205,
+    "enterpriseToRevenue": 23.707,
+    "enterpriseToEbitda": 70.321,
+    "52WeekChange": 4.348751,
+    "SandP52WeekChange": 0.14725316,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1526,12 +1544,13 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 50.33,
+    "currentPrice": 57.82,
     "targetHighPrice": 136,
     "targetLowPrice": 39,
-    "targetMeanPrice": 83,
+    "targetMeanPrice": 84.84615,
     "targetMedianPrice": 80,
-    "recommendationKey": "none",
+    "recommendationMean": 1.57143,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 13,
     "totalCash": 1032262976,
     "totalCashPerShare": 3.642,
@@ -1554,6 +1573,6 @@
     "profitMargins": 0.75992996,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-13T03:28:00.400Z",
+  "lastUpdated": "2026-01-19T17:37:23.440Z",
   "source": "Static Build (yahoo-finance2)"
 }

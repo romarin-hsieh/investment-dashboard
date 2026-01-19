@@ -1,46 +1,71 @@
-## 目標
-在單一股票 Symbol 的詳情頁中，同時呈現：
-1) TradingView K 線（官方 embed widget）
-2) 自繪的 MFI Volume Profile（不疊在 widget 上，而是同頁並列/上下排列）
+# System Requirements & Specifications
 
-## 核心原則（避免翻車）
-- Production 不依賴免費 CORS proxy
-- OHLCV 資料以站內 JSON 供應（GitHub Pages 同源載入）
-- 所有第三方載入失敗（TradingView / analytics / dev proxy）必須 graceful fallback，不可讓整頁崩潰
+## 1. Functional Specifications
 
-## 功能需求
+### 1.1 Market Dashboard (Home)
+- **Objective**: Provide a macro view of the global market status.
+- **Components**:
+  - **Market Indices**: S&P 500, NASDAQ, DJI, VIX (Real-time via Widget).
+  - **Fear & Greed Index**:
+    - *Primary Source*: Pre-computed JSON (`public/data/technical-indicators/fear-greed.json`).
+    - *Update Freq*: Daily.
+  - **Sector Performance**: Heatmap visualization (Real-time).
 
-### R1. Stock Detail 頁（單一 symbol）
-- 路由為 hash router（#/...）
-- 同頁只顯示一檔 symbol
-- 顯示：
-  - TradingView Advanced Chart widget
-  - MFI Volume Profile panel（自繪）
+### 1.2 Stock Detail Page
+- **Route**: `#/stock/:symbol`
+- **Layout Logic**:
+  - **Header**: Static metadata (Sector, Industry, Market Cap) loaded from `src/api/` (Cached).
+  - **Main Chart**: TradingView Advanced Real-time Chart (Widget).
+  - **Analysis Panel**: Custom implementation using `lightweight-charts`.
+    - *Data Source*: `public/data/ohlcv/{symbol}.json`.
+    - *Indicators*: MFI, Volume Profile, RSI, MACD.
+    - *Rendering targets*: < 100ms render time.
 
-### R2. 資料來源策略
-- Production：
-  - 由 /data/ohlcv/{symbol}.json 讀取 OHLCV（約 60kb）
-  - 前端計算 MFI(預設 14) + Volume Profile bins(預設 50) + lookback(預設 200)
-- Dev / Debug（可選）：
-  - 若本地 OHLCV 不存在，可嘗試用 Yahoo API 抓（經 CORS proxy）
-  - 僅限 DEV 或 querystring debug 模式
-  - GET request 不得送 Content-Type，避免 preflight
+## 2. Data Strategy & Architecture
 
-### R3. 互動
-- 使用者可切換 time range / interval（例如 3M / 6M / 1Y 或 D / W）
-- 切換後：
-  - 若本地資料足夠：recompute（不重新 fetch）
-  - 若本地資料不足：提示「資料範圍不足」或在 DEV 模式下嘗試遠端抓取
+### 2.1 The "3-Tier" Data Fetching Strategy
+To ensure 99.9% availability without a dynamic backend, the application uses a strict fallback hierarchy implemented in `YahooFinanceAPI.js`:
 
-### R4. 錯誤/降級
-- TradingView widget 載入失敗或被外掛阻擋：
-  - 顯示可讀訊息 +「Open in TradingView」連結 + Retry
-- OHLCV 讀取失敗：
-  - 顯示訊息 + Retry
-- precomputed 指標缺 symbol：
-  - 不得 throw 造成整頁崩潰；顯示「未支援」或 fallback
+1.  **Tier 1: In-Memory / LocalStorage Cache**
+    -   *TTL*: 5 minutes (Intraday), 24 hours (Metadata).
+    -   *Mechanism*: Rapid retrieval to prevent network requests on page navigation.
 
-## 非功能需求
-- 首次進頁：MFI Volume Profile 計算 + render 期望在 100ms 內完成（一般桌機）
-- 不得在 console 產生未捕捉例外（Uncaught）
-- 不因任何第三方服務失敗影響主要內容（K 線與自繪 panel 兩者互不拖累）
+2.  **Tier 2: Static JSON (The "Golden Source")**
+    -   *Path*: `https://[domain]/data/[type]/[symbol].json`
+    -   *Content*: OHLCV, Fundamentals, Pre-calc Indicators.
+    -   *Reliability*: Extremely High (Served typically via CDN/GitHub Pages).
+
+3.  **Tier 3: Live API Fallback (CORS Proxy)**
+    -   *Triggers*: Only if Tier 2 returns 404/Empty or data is stale (>24h).
+    -   *Proxies*: Rotational list (`corsproxy.io`, `cors-anywhere`) to mitigate rate limits.
+    -   *Logic*: Request throttling (2 concurrent requests max) + Deduplication.
+
+### 2.2 Pre-computation Logic
+Certain complex indicators are too heavy to calculate client-side for hundreds of symbols or require scraping.
+- **Engine**: Puppeteer (Headless Chrome) running in GitHub Actions.
+- **Output**: JSON files stored in `public/data/`.
+- **Why**: Avoids CORS issues completely for difficult data sources (e.g., CNN Fear & Greed).
+
+## 3. Performance Requirements
+
+### 3.1 Widget Performance
+- **Lazy Loading**: `FastTradingViewWidget.vue` must use `IntersectionObserver`.
+- **Prioritization**:
+  - *Priority 1*: First screen charts (Load immediately).
+  - *Priority 2*: Secondary charts (300ms delay).
+  - *Priority 3*: Below-fold widgets (Load only when close to viewport).
+- **Goal**: Maintain 60fps scrolling and Time to Interactive (TTI) < 1.5s.
+
+### 3.2 Bundle Size
+- **Strategy**: Route-based code splitting.
+- **Target**: Initial chunk size < 500kb.
+
+## 4. Technical Constraints
+1.  **NO Backend Server**: The app must remain deployable on any static file host (S3, Pages, Netlify).
+2.  **CORS Handling**: Production code must assume *NO* access to 3rd party APIs directly from the browser, unless proxied or JSONP-supported.
+3.  **Mobile Responsiveness**: Layouts must collapse to single-column on screens < 768px.
+
+## 5. Security & Maintenance
+- **API Keys**: No secret keys should be exposed in the frontend bundle. Public keys only.
+- **Data Integrity**: `validation.ts` schema checks must pass before rendering any external JSON data.
+- **Rate Limiting**: Client must respect `YahooFinanceAPI`'s internal rate limiter (800ms delay between proxy calls).
