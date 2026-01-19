@@ -456,6 +456,23 @@ export default {
     },
     
     // --- Helpers ---
+    async getOhlcv(symbols) {
+        if (!Array.isArray(symbols)) symbols = [symbols];
+        
+        for (const symbol of symbols) {
+            try {
+                // Try standard API (Local JSON first)
+                const data = await ohlcvApi.getOhlcv(symbol);
+                if (data && data.close && data.close.length > 50) { // Basic validation
+                    return data;
+                }
+            } catch (e) {
+                // Continue to next symbol
+            }
+        }
+        return null; // No valid data found for any candidate
+    },
+
     getMa(slice, period) {
         if(slice.length < period) return slice[slice.length-1];
         let sum = 0;

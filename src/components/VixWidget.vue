@@ -1,5 +1,5 @@
 <template>
-  <div class="vix-widget-container" ref="vixContainer" :style="{ height: '600px' }">
+  <div class="vix-widget-container" :style="{ height: '600px' }">
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
       <span>Loading VIX Index...</span>
@@ -8,6 +8,8 @@
       <span>⚠️ Failed to load VIX</span>
       <button @click="loadVixWidget" class="retry-btn">Retry</button>
     </div>
+    <!-- Dedicated Mount Point that Vue doesn't touch internally, but we manage manually -->
+    <div ref="tvMountPoint" class="tv-mount-point" v-show="!loading && !error"></div>
   </div>
 </template>
 
@@ -36,8 +38,8 @@ export default {
       this.error = false
       
       try {
-        // 清除容器
-        const container = this.$refs.vixContainer
+        // 清除容器 (Only the mount point)
+        const container = this.$refs.tvMountPoint
         if (!container) return
         
         // 移除所有子元素
@@ -60,7 +62,7 @@ export default {
     async createWidget() {
       return new Promise((resolve, reject) => {
         this.$nextTick(() => {
-          const container = this.$refs.vixContainer
+          const container = this.$refs.tvMountPoint
           if (!container) {
             reject(new Error('Container not found'))
             return
@@ -249,5 +251,10 @@ export default {
 :global(.vix-widget-container .tradingview-widget-container__widget) {
   width: 100% !important;
   height: 100% !important;
+}
+
+.tv-mount-point {
+  width: 100%;
+  height: 100%;
 }
 </style>

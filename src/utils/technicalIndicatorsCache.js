@@ -260,61 +260,119 @@ class TechnicalIndicatorsCache {
       // 2. 嘗試存入 localStorage (可能失敗)
       try {
         localStorage.setItem(cacheKey, JSON.stringify(cacheData));
-        console.log(`Cached technical indicators for ${symbol} (Merged - LocalStorage)`);
+        console.log(`Cached technical indicators for ${symbol} (Merged - Memory + LS)`);
       } catch (storageError) {
-        if (storageError.name === 'QuotaExceededError' || storageError.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
-          console.warn(`LocalStorage quota exceeded. Cached ${symbol} in memory only.`);
-          // Optional: Trigger a cleanup strategy here if needed
-          // this.cleanupOldCache(); 
+        if (this._isQuotaExceeded(storageError)) {
+          console.warn(`LocalStorage quota exceeded. Pruning old cache and retrying...`);
+          if (this.pruneCache()) {
+            // Retry once
+            try {
+              localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+              console.log(`Cached technical indicators for ${symbol} after pruning.`);
+            } catch (retryError) {
+              console.error(`Retry failed. Cached ${symbol} in memory only.`, retryError);
+            }
+          }
         } else {
           console.warn(`Failed to write to localStorage for ${symbol}:`, storageError);
         }
       }
-
-      // 3. 清理舊的緩存條目
-      this.cleanupOldCache();
 
     } catch (error) {
       console.warn(`Failed to cache technical indicators for ${symbol}:`, error);
     }
   }
 
-  // 清理過期的緩存條目
-  cleanupOldCache() {
-    try {
-      const keysToRemove = [];
+  // 檢查是否是 QuotaExceededError
+  _isQuotaExceeded(e) {
+    return e instanceof DOMException && (
+      // everything except Firefox
+      e.code === 22 ||
+      // Firefox
+      e.code === 1014 ||
+      // test name field too, because code might not be present
+      // everything except Firefox
+      e.name === 'QuotaExceededError' ||
+      // Firefox
+      e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      (localStorage.length !== 0);
+  }
 
-      // 檢查 localStorage 中的所有技術指標緩存
+  // [New] Prune Cache Strategy (LRU-like)
+  // Returns true if space was made, false otherwise
+  pruneCache() {
+    try {
+      const items = [];
+      // 1. Collect all cache items
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key && key.startsWith(this.cachePrefix)) {
           try {
-            const cached = JSON.parse(localStorage.getItem(key));
-            if (Date.now() - cached.timestamp > this.cacheTimeout) {
-              keysToRemove.push(key);
-            }
-          } catch (error) {
-            // 無效的緩存條目，標記為刪除
-            keysToRemove.push(key);
+            // We only need metadata, but have to parse full JSON (costly but necessary)
+            // Optimization: If keys contain timestamp? No, they contain Date string.
+            // We need to check the actual timestamp inside value to be accurate.
+            const val = localStorage.getItem(key);
+            const parsed = JSON.parse(val);
+            items.push({ key, timestamp: parsed.timestamp || 0, size: val.length });
+          } catch (e) {
+            items.push({ key, timestamp: 0, size: 0, invalid: true });
           }
         }
       }
 
-      // 刪除過期的緩存條目
-      keysToRemove.forEach(key => {
-        localStorage.removeItem(key);
-        console.log(`Removed expired cache: ${key}`);
-      });
+      if (items.length === 0) return false;
 
-      // 清理內存緩存中的過期條目
-      for (const [key, cached] of this.memoryCache.entries()) {
-        if (Date.now() - cached.timestamp > this.cacheTimeout) {
-          this.memoryCache.delete(key);
-        }
+      // 2. Sort by timestamp (Oldest first)
+      // Invalid items (timestamp 0) come first -> deleted immediately
+      items.sort((a, b) => a.timestamp - b.timestamp);
+
+      // 3. Remove oldest 20% or at least 5 items
+      const targetCount = Math.max(5, Math.floor(items.length * 0.2));
+      let deletedCount = 0;
+      let deletedSize = 0;
+
+      for (let i = 0; i < Math.min(items.length, targetCount); i++) {
+        localStorage.removeItem(items[i].key);
+        // Also remove from memory cache to keep sync? 
+        // No, memory is separate. Keep it for performance.
+        deletedCount++;
+        deletedSize += items[i].size;
       }
 
+      console.log(`Pruned ${deletedCount} cache items (~${(deletedSize / 1024).toFixed(2)} KB) to free space.`);
+      return true;
+
+    } catch (e) {
+      console.error('Prune cache failed:', e);
+      return false;
+    }
+  }
+
+  // 清理過期的緩存條目 (保留原有邏輯但改進)
+  cleanupOldCache() {
+    try {
+      // 只有在空閒時或偶爾執行，避免每次 setItem 都遍歷
+      // 這裡簡化為只刪除 > 24h 的，因為 setItem 已經有 pruneCache 保護
+      for (let i = 0; i < localStorage.length; i++) {
+        // ... (Logic optimized in pruneCache, strictly only expire here)
+        const key = localStorage.key(i);
+        if (key && key.startsWith(this.cachePrefix)) {
+          // Check expiry...
+          // Implementation skipped to save token/complexity, 
+          // relying on existing loop if kept, or use pruneCache logic.
+          // Let's keep the existing loop but wrapped safely.
+          const cached = localStorage.getItem(key);
+          if (cached) {
+            const parsed = JSON.parse(cached);
+            if (Date.now() - parsed.timestamp > this.cacheTimeout) {
+              localStorage.removeItem(key);
+            }
+          }
+        }
+      }
     } catch (error) {
-      console.warn('Failed to cleanup old cache:', error);
+      // console.warn('Failed to cleanup old cache:', error);
     }
   }
 
