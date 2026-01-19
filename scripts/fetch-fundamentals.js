@@ -84,28 +84,27 @@ async function main() {
         console.log(`Filtering for symbols: ${targetSymbols.join(', ')}`);
     }
 
-    // Load symbols
+    // Load symbols from Master Config
     let symbols = [];
     try {
-        const metadata = JSON.parse(fs.readFileSync(SYMBOLS_FILE, 'utf8'));
-        if (Array.isArray(metadata)) {
-            symbols = metadata;
-        } else if (metadata.items) {
-            symbols = metadata.items;
-        } else if (metadata.symbols) {
-            symbols = metadata.symbols;
-        } else {
-            symbols = Object.keys(metadata);
-        }
+        const configFile = path.join(__dirname, '../public/config/stocks.json');
+        const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
 
-        symbols = symbols.map(s => (typeof s === 'string' ? s : s.symbol)).filter(s => s);
+        if (config.stocks && Array.isArray(config.stocks)) {
+            // Filter enabled stocks
+            symbols = config.stocks
+                .filter(s => s.enabled !== false)
+                .map(s => s.symbol);
+        } else {
+            throw new Error('Invalid config format: missing stocks array');
+        }
 
         // Apply filter if args present
         if (targetSymbols.length > 0) {
             symbols = symbols.filter(s => targetSymbols.includes(s));
         }
 
-        console.log(`Loaded ${symbols.length} symbols to fetch.`);
+        console.log(`Loaded ${symbols.length} symbols to fetch from public/config/stocks.json.`);
     } catch (err) {
         console.error('Failed to load symbols metadata:', err.message);
         process.exit(1);
