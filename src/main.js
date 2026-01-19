@@ -17,13 +17,6 @@ import MarketDashboard from './pages/MarketDashboard.vue'
 import StockDashboard from './pages/StockDashboard.vue'
 import Settings from './pages/Settings.vue'
 import StockDetail from './pages/StockDetail.vue'
-import TopStoriesTest from './pages/debug/TopStoriesTest.vue'
-import StockMarketInsightTest from './pages/debug/StockMarketInsightTest.vue'
-import YahooFinanceTest from './pages/debug/YahooFinanceTest.vue'
-import TechnicalIndicatorsValidation from './pages/debug/TechnicalIndicatorsValidation.vue'
-import MetadataServiceTest from './pages/debug/MetadataServiceTest.vue'
-import ProxyDiagnosticTest from './pages/debug/ProxyDiagnosticTest.vue'
-
 import TechnicalIndicatorsManager from './pages/TechnicalIndicatorsManager.vue'
 import AutoUpdateMonitor from './pages/AutoUpdateMonitor.vue'
 import SystemManager from './pages/SystemManager.vue'
@@ -39,13 +32,7 @@ const routes = [
   { path: '/stock-dashboard', redirect: '/stock-overview' },
   { path: '/stock-dashboard/symbols/:symbol', redirect: to => `/stock-overview/symbols/${to.params.symbol}` },
   { path: '/settings', component: Settings, name: 'settings' },
-  // Development/Testing pages
-  { path: '/top-stories-test', component: TopStoriesTest, name: 'top-stories-test' },
-  { path: '/stock-market-insight-test', component: StockMarketInsightTest, name: 'stock-market-insight-test' },
-  { path: '/yahoo-finance-test', component: YahooFinanceTest, name: 'yahoo-finance-test' },
-  { path: '/proxy-diagnostic', component: ProxyDiagnosticTest, name: 'proxy-diagnostic' },
-  { path: '/technical-validation', component: TechnicalIndicatorsValidation, name: 'technical-validation' },
-  { path: '/metadata-test', component: MetadataServiceTest, name: 'metadata-test' },
+  // Tools
   { path: '/technical-manager', component: TechnicalIndicatorsManager, name: 'technical-manager' },
   { path: '/auto-update-monitor', component: AutoUpdateMonitor, name: 'auto-update-monitor' },
   { path: '/system-manager', component: SystemManager, name: 'system-manager' },

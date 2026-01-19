@@ -348,6 +348,16 @@ class YFinanceMetadataUpdater:
                 print(f"❌ {symbol}: 未找到資料")
         
         print("\n✅ YFinance Metadata 更新完成！")
+        
+        # 清理備份文件 (CI 環境不需要保留)
+        try:
+            backup_file = self.output_file.with_suffix('.json.backup')
+            if backup_file.exists():
+                backup_file.unlink()
+                print(f"🧹 已清理備份文件: {backup_file}")
+        except Exception as e:
+            print(f"⚠️ 清理備份文件失敗: {e}")
+            
         return True
 
 def main():
