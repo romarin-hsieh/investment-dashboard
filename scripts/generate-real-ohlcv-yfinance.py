@@ -61,30 +61,27 @@ def write_json_atomic(path: Path, data: Any) -> None:
 
 
 def load_symbols() -> List[str]:
-    """Try to load symbols from common locations.
-    Priority:
-    1) config/universe.json  (your earlier design)
-    2) universe.json
-    3) stocks.json
+    """Load symbols from the master configuration file.
+    
+    Source of Truth: public/config/stocks.json
     """
     candidates = [
-        Path("config/universe.json"),
         Path("public/config/stocks.json"),
-        Path("universe.json"),
         Path("stocks.json"),
     ]
     for p in candidates:
         if p.exists():
             raw = read_json(p)
-            # universe.json commonly: { "symbols": ["TSM", ...] } or ["TSM", ...]
+            # stocks.json: { "stocks": [ { "symbol": "AAPL", ... } ] }
+            if isinstance(raw, dict) and "stocks" in raw and isinstance(raw["stocks"], list):
+                return [str(item["symbol"]).upper().strip() for item in raw["stocks"] if item.get("enabled", True)]
+            
+            # Legacy simple list fallback
             if isinstance(raw, dict):
-                if "symbols" in raw and isinstance(raw["symbols"], list):
+                 if "symbols" in raw and isinstance(raw["symbols"], list):
                     return [str(s).upper().strip() for s in raw["symbols"] if str(s).strip()]
-                if "tickers" in raw and isinstance(raw["tickers"], list):
-                    return [str(s).upper().strip() for s in raw["tickers"] if str(s).strip()]
-            if isinstance(raw, list):
-                return [str(s).upper().strip() for s in raw if str(s).strip()]
-    raise FileNotFoundError("No symbols file found. Tried: config/universe.json, universe.json, stocks.json")
+            
+    raise FileNotFoundError("Master config 'public/config/stocks.json' not found.")
 
 
 def to_epoch_ms_index(dt_index: pd.DatetimeIndex) -> List[int]:
