@@ -24,7 +24,12 @@
       <div class="stock-header">
         <div class="stock-info-header">
           <div class="symbol-info">
-            <h3 class="symbol">{{ symbol }}</h3>
+            <div class="symbol-wrapper">
+              <h3 class="symbol">{{ symbol }}</h3>
+              <a :href="`https://finance.yahoo.com/chart/${symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" title="View Realtime Chart on Yahoo Finance">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
             <div class="symbol-tags">
               <span class="exchange-tag">{{ exchange }}</span>
               <span class="industry-tag" :class="`industry-${getIndustryCategory()}`">{{ getIndustry() }}</span>
@@ -603,6 +608,35 @@ export default {
 .breadcrumb-current {
   color: var(--text-secondary);
   font-weight: 600;
+}
+
+/* Symbol Wrapper & Realtime Btn */
+.symbol-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.symbol-wrapper .symbol {
+  margin: 0; /* Remove bottom margin as it is handled by wrapper */
+}
+
+.realtime-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted); /* Subtle color */
+  opacity: 0.6;
+  transition: all 0.2s ease;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.realtime-btn:hover {
+  opacity: 1;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
 }
 
 /* Stock Header - Match Stock Overview Style */
