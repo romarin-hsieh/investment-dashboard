@@ -177,10 +177,14 @@
         },
         {
           "date": "3Q2025",
+          "actual": 0.00806,
           "estimate": 0.14333,
           "fiscalQuarter": "1Q2026",
           "calendarQuarter": "3Q2025",
-          "periodEndDate": 1759190400
+          "difference": "-0.14",
+          "surprisePct": "-94.38",
+          "periodEndDate": 1759190400,
+          "reportedDate": 1762463312
         }
       ],
       "currentQuarterEstimate": -0.24178,
@@ -240,7 +244,7 @@
           "date": "3Q2025",
           "fiscalQuarter": "1Q2026",
           "revenue": 244000000,
-          "earnings": 0
+          "earnings": 2916180
         }
       ]
     },
@@ -1334,11 +1338,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.046004843,
+    "preMarketChange": -2.6599998,
+    "preMarketTime": "2026-01-20T12:40:46.000Z",
+    "preMarketPrice": 55.16,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.007436878,
-    "postMarketChange": 0.4300003,
-    "postMarketTime": "2026-01-17T00:59:57.000Z",
-    "postMarketPrice": 58.25,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.11428022,
     "regularMarketChange": 5.9300003,
@@ -1356,7 +1360,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "IREN",
     "underlyingSymbol": null,
@@ -1573,6 +1577,6 @@
     "profitMargins": 0.75992996,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T06:30:59.223Z",
+  "lastUpdated": "2026-01-20T12:40:50.596Z",
   "source": "Static Build (yahoo-finance2)"
 }

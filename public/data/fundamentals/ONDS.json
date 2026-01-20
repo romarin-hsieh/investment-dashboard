@@ -252,6 +252,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-20T11:29:20.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 25,
+        "priorPriceTarget": 12
+      },
+      {
         "epochGradeDate": "2026-01-12T17:54:03.000Z",
         "firm": "Stifel",
         "toGrade": "Buy",
@@ -426,11 +436,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.018703159,
+    "preMarketChange": -0.22700024,
+    "preMarketTime": "2026-01-20T12:39:49.000Z",
+    "preMarketPrice": 11.91,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.012327339,
-    "postMarketChange": 0.14990044,
-    "postMarketTime": "2026-01-17T00:59:59.000Z",
-    "postMarketPrice": 12.3099,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.05497153,
     "regularMarketChange": -0.7059994,
@@ -448,7 +458,7 @@
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
@@ -996,6 +1006,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T06:30:01.303Z",
+  "lastUpdated": "2026-01-20T12:39:55.361Z",
   "source": "Static Build (yahoo-finance2)"
 }

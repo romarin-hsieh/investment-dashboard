@@ -134,7 +134,7 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00247,
-    "institutionsPercentHeld": 0.83487,
+    "institutionsPercentHeld": 0.83488,
     "institutionsFloatPercentHeld": 0.83694,
     "institutionsCount": 2942
   },
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-20T12:10:09.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 500,
+        "priorPriceTarget": 500
+      },
       {
         "epochGradeDate": "2026-01-15T20:00:12.000Z",
         "firm": "Citigroup",
@@ -8186,11 +8196,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0021502378,
+    "preMarketChange": -0.7799988,
+    "preMarketTime": "2026-01-20T12:41:46.000Z",
+    "preMarketPrice": 361.97,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.001155083,
-    "postMarketChange": 0.41900635,
-    "postMarketTime": "2026-01-17T00:59:58.000Z",
-    "postMarketPrice": 363.169,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0775926,
     "regularMarketChange": 26.119995,
@@ -8208,7 +8218,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MU",
     "underlyingSymbol": null,
@@ -8236,7 +8246,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026700001,
     "heldPercentInsiders": 0.00247,
-    "heldPercentInstitutions": 0.83487,
+    "heldPercentInstitutions": 0.83488,
     "shortRatio": 1.14,
     "shortPercentOfFloat": 0.026700001,
     "beta": 1.503,
@@ -10101,6 +10111,6 @@
     "profitMargins": 0.28146,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T06:32:01.632Z",
+  "lastUpdated": "2026-01-20T12:41:53.052Z",
   "source": "Static Build (yahoo-finance2)"
 }

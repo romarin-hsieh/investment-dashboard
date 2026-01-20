@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0027599998,
-    "institutionsPercentHeld": 0.88411003,
-    "institutionsFloatPercentHeld": 0.88655,
-    "institutionsCount": 2879
+    "institutionsPercentHeld": 0.88413,
+    "institutionsFloatPercentHeld": 0.88658,
+    "institutionsCount": 2881
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-20T12:16:31.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 250,
+        "priorPriceTarget": 160
+      },
       {
         "epochGradeDate": "2026-01-15T13:52:14.000Z",
         "firm": "Wells Fargo",
@@ -5048,11 +5058,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.024488728,
+    "preMarketChange": -5.4600067,
+    "preMarketTime": "2026-01-20T12:41:28.000Z",
+    "preMarketPrice": 217.5,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.002421929,
-    "postMarketChange": 0.5399933,
-    "postMarketTime": "2026-01-17T00:59:39.000Z",
-    "postMarketPrice": 223.5,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.025244886,
     "regularMarketChange": 5.4900055,
@@ -5070,7 +5080,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "LRCX",
     "underlyingSymbol": null,
@@ -5088,7 +5098,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 277835350016,
-    "forwardPE": 38.318626,
+    "forwardPE": 38.244617,
     "profitMargins": 0.29657,
     "floatShares": 1251156604,
     "sharesOutstanding": 1256030000,
@@ -5098,7 +5108,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026400002,
     "heldPercentInsiders": 0.0027599998,
-    "heldPercentInstitutions": 0.88411003,
+    "heldPercentInstitutions": 0.88413,
     "shortRatio": 3.31,
     "shortPercentOfFloat": 0.0295,
     "beta": 1.779,
@@ -6201,6 +6211,6 @@
     "profitMargins": 0.29657,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T06:31:50.491Z",
+  "lastUpdated": "2026-01-20T12:41:42.104Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0039,
-    "institutionsPercentHeld": 0.95241,
-    "institutionsFloatPercentHeld": 0.95614,
-    "institutionsCount": 877
+    "institutionsPercentHeld": 0.9529,
+    "institutionsFloatPercentHeld": 0.95663,
+    "institutionsCount": 879
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-20T12:26:36.000Z",
+        "firm": "Seaport Global",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2025-11-13T11:32:47.000Z",
         "firm": "B of A Securities",
@@ -1048,11 +1058,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.026802499,
+    "preMarketChange": -5.8399963,
+    "preMarketTime": "2026-01-20T12:28:13.000Z",
+    "preMarketPrice": 212.05,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.006930077,
-    "postMarketChange": 1.5099945,
-    "postMarketTime": "2026-01-17T00:59:41.000Z",
-    "postMarketPrice": 219.4,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": 0.021758499,
     "regularMarketChange": 4.64,
@@ -1070,14 +1080,14 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "BWXT",
     "underlyingSymbol": null,
     "shortName": "BWX Technologies, Inc.",
     "longName": "BWX Technologies, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -1098,7 +1108,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0301,
     "heldPercentInsiders": 0.0039,
-    "heldPercentInstitutions": 0.95241,
+    "heldPercentInstitutions": 0.9529,
     "shortRatio": 2.93,
     "shortPercentOfFloat": 0.0379,
     "beta": 0.852,
@@ -1844,6 +1854,6 @@
     "profitMargins": 0.100360006,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T06:31:52.454Z",
+  "lastUpdated": "2026-01-20T12:41:44.059Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -252,6 +252,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-20T12:01:31.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 500,
+        "priorPriceTarget": 500
+      },
+      {
         "epochGradeDate": "2026-01-12T20:08:44.000Z",
         "firm": "Barclays",
         "toGrade": "Overweight",
@@ -5436,11 +5446,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.034420677,
+    "preMarketChange": -13.76001,
+    "preMarketTime": "2026-01-20T11:55:26.000Z",
+    "preMarketPrice": 386,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.004287622,
-    "postMarketChange": -1.7140198,
-    "postMarketTime": "2026-01-17T00:58:36.000Z",
-    "postMarketPrice": 398.046,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.027132573,
     "regularMarketChange": 10.559998,
@@ -5458,7 +5468,7 @@
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MDB",
     "underlyingSymbol": null,
@@ -5476,7 +5486,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 30297745408,
-    "forwardPE": 72.01326,
+    "forwardPE": 71.95765,
     "profitMargins": -0.030580001,
     "floatShares": 79188485,
     "sharesOutstanding": 81391760,
@@ -7367,6 +7377,6 @@
     "profitMargins": -0.030580001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T06:30:06.934Z",
+  "lastUpdated": "2026-01-20T12:40:00.532Z",
   "source": "Static Build (yahoo-finance2)"
 }
