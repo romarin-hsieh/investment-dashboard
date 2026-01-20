@@ -1038,7 +1038,12 @@ function calculateAllIndicators(ohlcv, benchmarkClose = null) {
 
     // Beta (Requires Benchmark)
     BETA_10D: calculateBeta(close, benchmarkClose, 14),
-    BETA_3M: calculateBeta(close, benchmarkClose, 90)
+    BETA_3M: calculateBeta(close, benchmarkClose, 90),
+
+    // Phase 6 New Indicators
+    EMA_20: calculateMA(close, 20),
+    WILLR_14: calculateWilliamsR(high, low, close, 14),
+    CMF_20: calculateCMF(high, low, close, volume, 20)
   };
 
   // 驗證所有結果長度一致
@@ -1117,6 +1122,84 @@ function calculateBeta(close, benchmarkClose, period = 14) {
   return beta;
 }
 
+
+/**
+ * Williams %R - 威廉指標
+ * @param {Array} high 
+ * @param {Array} low 
+ * @param {Array} close 
+ * @param {Number} period 
+ */
+function calculateWilliamsR(high, low, close, period = 14) {
+  const length = close.length;
+  const result = new Array(length).fill(NaN);
+
+  for (let i = period - 1; i < length; i++) {
+    let highestHigh = -Infinity;
+    let lowestLow = Infinity;
+
+    for (let j = i - period + 1; j <= i; j++) {
+      highestHigh = Math.max(highestHigh, high[j]);
+      lowestLow = Math.min(lowestLow, low[j]);
+    }
+
+    if (highestHigh === lowestLow) {
+      result[i] = -50; // Avoid division by zero, neutral value
+    } else {
+      // Formula: ((Highest High - Close) / (Highest High - Lowest Low)) * -100
+      result[i] = ((highestHigh - close[i]) / (highestHigh - lowestLow)) * -100;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Chaikin Money Flow (CMF) - 蔡金資金流向
+ * @param {Array} high 
+ * @param {Array} low 
+ * @param {Array} close 
+ * @param {Array} volume 
+ * @param {Number} period 
+ */
+function calculateCMF(high, low, close, volume, period = 20) {
+  const length = close.length;
+  const cmf = new Array(length).fill(NaN);
+
+  // Money Flow Multiplier (MFM) = ((Close - Low) - (High - Close)) / (High - Low)
+  // Money Flow Volume (MFV) = MFM * Volume
+  const mfv = new Array(length).fill(0);
+
+  for (let i = 0; i < length; i++) {
+    const range = high[i] - low[i];
+    if (range === 0) {
+      mfv[i] = 0;
+    } else {
+      const mfm = ((close[i] - low[i]) - (high[i] - close[i])) / range;
+      mfv[i] = mfm * volume[i];
+    }
+  }
+
+  // CMF = Sum(MFV, period) / Sum(Volume, period)
+  for (let i = period - 1; i < length; i++) {
+    let sumMFV = 0;
+    let sumVol = 0;
+
+    for (let j = i - period + 1; j <= i; j++) {
+      sumMFV += mfv[j];
+      sumVol += volume[j];
+    }
+
+    if (sumVol === 0) {
+      cmf[i] = 0;
+    } else {
+      cmf[i] = sumMFV / sumVol;
+    }
+  }
+
+  return cmf;
+}
+
 // =========================
 // 4) 導出
 // =========================
@@ -1147,6 +1230,8 @@ export {
   calculateSuperTrend,
   calculateMFI,
   calculateBeta,
+  calculateWilliamsR,
+  calculateCMF,
 
   // 統一接口
   calculateAllIndicators,
@@ -1166,5 +1251,7 @@ export default {
   calculateRSI,
   calculateADX,
   calculateMACD,
-  calculateBeta
+  calculateBeta,
+  calculateWilliamsR,
+  calculateCMF
 };

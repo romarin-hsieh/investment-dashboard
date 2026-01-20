@@ -202,14 +202,14 @@ export default {
       const series = data.fullSeries || {};
       
       // Helper function to get value and diff
-      const getIndicator = (key, label, arrayKey, group = 'Trend') => {
+      const getIndicator = (key, label, arrayKey, group = 'Trend', forcedValue = null) => {
         let value = 'N/A';
         let signal = 'N/A';
         let change = null;
         let changeClass = '';
 
         if (data[key]) {
-          value = this.formatNumber(data[key].value);
+          value = forcedValue !== null ? forcedValue : this.formatNumber(data[key].value);
           signal = data[key].signal;
         } 
         
@@ -222,7 +222,6 @@ export default {
              if (latest !== null && prev !== null && prev !== 0) {
                  const diff = latest - prev;
                  const pct = (diff / prev) * 100;
-                 // Simplify change text for compact view
                  const sign = diff >= 0 ? '+' : '';
                  change = `${sign}${pct.toFixed(1)}%`;
                  changeClass = diff >= 0 ? 'pos' : 'neg';
@@ -230,7 +229,7 @@ export default {
 
              // Fallback: If value is 'N/A' but we have series data, use latest value
              if (value === 'N/A' && latest !== null) {
-                 value = this.formatNumber(latest);
+                 value = forcedValue !== null ? forcedValue : this.formatNumber(latest);
              }
         }
 
@@ -238,9 +237,12 @@ export default {
       };
 
       // Group 1: Trend (MA, SMA, Ichimoku, VWMA)
-      groups['Trend'].push(getIndicator('ma5', 'MA(5)', 'MA_5'));
-      groups['Trend'].push(getIndicator('ma10', 'MA(10)', 'MA_10'));
-      groups['Trend'].push(getIndicator('ma30', 'MA(30)', 'MA_30'));
+      groups['Trend'].push(getIndicator('ma5', 'EMA(5)', 'MA_5'));
+      groups['Trend'].push(getIndicator('ma10', 'EMA(10)', 'MA_10'));
+      // New: EMA (20) placed between 10 and 30 for correct sequence
+      groups['Trend'].push(getIndicator('ema20', 'EMA(20)', 'EMA_20')); 
+      groups['Trend'].push(getIndicator('ma30', 'EMA(30)', 'MA_30')); 
+      
       groups['Trend'].push(getIndicator('sma5', 'SMA(5)', 'SMA_5'));
       groups['Trend'].push(getIndicator('sma10', 'SMA(10)', 'SMA_10'));
       groups['Trend'].push(getIndicator('sma30', 'SMA(30)', 'SMA_30'));
@@ -250,6 +252,9 @@ export default {
       
       // Group 2: Oscillators & Ichimoku Components
       groups['Oscillators'].push(getIndicator('rsi14', 'RSI (14)', 'RSI_14', 'Oscillators'));
+      // New: Williams %R (14)
+      groups['Oscillators'].push(getIndicator('willr14', 'Will %R (14)', 'WILLR_14', 'Oscillators'));
+      
       groups['Oscillators'].push(getIndicator('stochK', 'Stoch %K', 'STOCH_K', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('stochD', 'Stoch %D', 'STOCH_D', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('cci20', 'CCI (20)', 'CCI_20', 'Oscillators'));
@@ -264,6 +269,9 @@ export default {
 
       groups['Market'].push(getIndicator('atr14', 'ATR (14)', 'ATR_14', 'Market'));
       groups['Market'].push(getIndicator('mfi14', 'MFI (14)', 'MFI_14', 'Market'));
+      // New: CMF (20)
+      groups['Market'].push(getIndicator('cmf20', 'CMF (20)', 'CMF_20', 'Market', this.formatNumber(this.getLatestValue(series.CMF_20), 3))); // CMF is small decimal
+
       groups['Market'].push(getIndicator('obv', 'OBV', 'OBV', 'Market'));
       
       // Volume - Prefer real Volume from StockInfo, fallback to YF
