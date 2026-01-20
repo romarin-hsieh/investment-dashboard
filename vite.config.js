@@ -24,6 +24,11 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000
   },
+  esbuild: {
+    // Drop console.log in production, but keep warn and error for debugging
+    pure: process.env.NODE_ENV === 'production' ? ['console.log'] : [],
+    drop: process.env.NODE_ENV === 'production' ? ['debugger'] : []
+  },
   test: {
     globals: true,
     environment: 'jsdom',
