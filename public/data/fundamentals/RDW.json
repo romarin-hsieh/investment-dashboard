@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 0,
         "buy": 7,
-        "hold": 1,
+        "hold": 2,
         "sell": 0,
         "strongSell": 1
       },
       {
         "period": "-2m",
+        "strongBuy": 0,
+        "buy": 7,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 6,
         "hold": 1,
@@ -1497,9 +1505,10 @@
     "currentPrice": 11.71,
     "targetHighPrice": 22,
     "targetLowPrice": 6,
-    "targetMeanPrice": 12,
-    "targetMedianPrice": 11,
-    "recommendationKey": "none",
+    "targetMeanPrice": 12.55556,
+    "targetMedianPrice": 13,
+    "recommendationMean": 1.7,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
     "totalCash": 52282000,
     "totalCashPerShare": 0.317,
@@ -1522,6 +1531,6 @@
     "profitMargins": -0.70319,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-19T18:00:50.163Z",
+  "lastUpdated": "2026-01-20T01:18:58.417Z",
   "source": "Static Build (yahoo-finance2)"
 }
