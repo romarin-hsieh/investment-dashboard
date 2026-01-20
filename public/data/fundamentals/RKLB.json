@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0783,
         "position": 41809723,
-        "value": 4026276452,
+        "value": 3779389770,
         "pctChange": 0.053600002
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0588,
         "position": 31413140,
-        "value": 3025085477,
+        "value": 2839590684,
         "pctChange": 0.3803
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0271,
         "position": 14462103,
-        "value": 1392700563,
+        "value": 1307301752,
         "pctChange": 0.094
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0232,
         "position": 12399571,
-        "value": 1194078725,
+        "value": 1120859178,
         "pctChange": 0.1363
       },
       {
@@ -81,7 +81,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0227,
         "position": 12125910,
-        "value": 1167725170,
+        "value": 1096121593,
         "pctChange": 1.7614999
       },
       {
@@ -90,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0209,
         "position": 11145610,
-        "value": 1073322277,
+        "value": 1007507378,
         "pctChange": 0.9978
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0178,
         "position": 9513652,
-        "value": 916164716,
+        "value": 859986540,
         "pctChange": -0.1711
       },
       {
@@ -108,7 +108,7 @@
         "organization": "VK Services, LLC",
         "pctHeld": 0.0156,
         "position": 8323617,
-        "value": 801564342,
+        "value": 752413330,
         "pctChange": -0.6097
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0153,
         "position": 8179566,
-        "value": 787692230,
+        "value": 739391841,
         "pctChange": 0.1691
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.013300001,
         "position": 7125310,
-        "value": 686167374,
+        "value": 644092373,
         "pctChange": 1.0594001
       }
     ]
@@ -253,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-20T17:50:14.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 69,
+        "priorPriceTarget": 47
+      },
+      {
+        "epochGradeDate": "2026-01-20T14:10:08.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 120,
+        "priorPriceTarget": 60
+      },
       {
         "epochGradeDate": "2026-01-16T10:14:06.000Z",
         "firm": "Morgan Stanley",
@@ -1228,29 +1248,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.029491214,
-    "preMarketChange": -2.840004,
-    "preMarketTime": "2026-01-20T12:39:56.000Z",
-    "preMarketPrice": 93.46,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.061040115,
-    "regularMarketChange": 5.540001,
-    "regularMarketTime": "2026-01-16T21:00:00.000Z",
+    "regularMarketChangePercent": -0.061318856,
+    "regularMarketChange": -5.9050064,
+    "regularMarketTime": "2026-01-20T18:30:07.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 96.3,
-    "regularMarketDayHigh": 99.58,
-    "regularMarketDayLow": 92.401,
-    "regularMarketVolume": 36105306,
+    "regularMarketPrice": 90.395,
+    "regularMarketDayHigh": 98.2699,
+    "regularMarketDayLow": 89.5927,
+    "regularMarketVolume": 19391811,
     "averageDailyVolume10Day": 29250040,
     "averageDailyVolume3Month": 22826308,
-    "regularMarketPreviousClose": 90.76,
+    "regularMarketPreviousClose": 96.3,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 92.525,
+    "regularMarketOpen": 93.74,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "RKLB",
     "underlyingSymbol": null,
@@ -1262,13 +1277,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 51439255552
+    "marketCap": 48285057024
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 50979139584,
-    "forwardPE": -825.405,
+    "forwardPE": -774.7921,
     "profitMargins": -0.35639,
     "floatShares": 488929316,
     "sharesOutstanding": 534156333,
@@ -1285,7 +1300,7 @@
     "impliedSharesOutstanding": 534156333,
     "category": null,
     "bookValue": 2.581,
-    "priceToBook": 37.31112,
+    "priceToBook": 35.023243,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2251,11 +2266,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 96.3,
-    "targetHighPrice": 105,
+    "currentPrice": 90.395,
+    "targetHighPrice": 120,
     "targetLowPrice": 55,
-    "targetMeanPrice": 78.9625,
-    "targetMedianPrice": 77.775,
+    "targetMeanPrice": 83.9625,
+    "targetMedianPrice": 82.775,
     "recommendationMean": 1.8,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 12,
@@ -2280,6 +2295,6 @@
     "profitMargins": -0.35639,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T12:40:05.811Z",
+  "lastUpdated": "2026-01-20T18:30:14.521Z",
   "source": "Static Build (yahoo-finance2)"
 }
