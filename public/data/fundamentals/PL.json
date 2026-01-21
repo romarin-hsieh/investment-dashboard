@@ -45,7 +45,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.1092,
         "position": 31942641,
-        "value": 907969546,
+        "value": 894393948,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0646,
         "position": 18906218,
-        "value": 537409232,
+        "value": 529374104,
         "pctChange": 0.1478
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0634,
         "position": 18551697,
-        "value": 527331973,
+        "value": 519447516,
         "pctChange": 0.0968
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.049099997,
         "position": 14372467,
-        "value": 408537363,
+        "value": 402429076,
         "pctChange": 1.3708
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Canada Pension Plan Investment Board",
         "pctHeld": 0.026800001,
         "position": 7829200,
-        "value": 222545004,
+        "value": 219217600,
         "pctChange": 0.0011
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.024400001,
         "position": 7141130,
-        "value": 202986614,
+        "value": 199951640,
         "pctChange": 0
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0219,
         "position": 6416175,
-        "value": 182379769,
+        "value": 179652900,
         "pctChange": 2.8822
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0215,
         "position": 6293344,
-        "value": 178888298,
+        "value": 176213632,
         "pctChange": 0.0476
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.019299999,
         "position": 5631261,
-        "value": 160068589,
+        "value": 157675308,
         "pctChange": 0.111099996
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0136,
         "position": 3974781,
-        "value": 112983146,
+        "value": 111293868,
         "pctChange": -0.0043
       }
     ]
@@ -1197,14 +1197,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.012335005,
-    "regularMarketChange": -0.35500145,
-    "regularMarketTime": "2026-01-20T18:29:55.000Z",
+    "postMarketChangePercent": 0.006785733,
+    "postMarketChange": 0.19000053,
+    "postMarketTime": "2026-01-21T01:00:00.000Z",
+    "postMarketPrice": 28.19,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0271022,
+    "regularMarketChange": -0.780001,
+    "regularMarketTime": "2026-01-20T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 28.425,
+    "regularMarketPrice": 28,
     "regularMarketDayHigh": 29.72,
     "regularMarketDayLow": 27.4351,
-    "regularMarketVolume": 10801607,
+    "regularMarketVolume": 15462670,
     "averageDailyVolume10Day": 15389400,
     "averageDailyVolume3Month": 11134188,
     "regularMarketPreviousClose": 28.78,
@@ -1213,25 +1218,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "PL",
     "underlyingSymbol": null,
     "shortName": "Planet Labs PBC",
     "longName": "Planet Labs PBC",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 9340122112
+    "marketCap": 9200472064
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 8811299840,
-    "forwardPE": -426.7377,
+    "forwardPE": -420.3573,
     "profitMargins": -0.45868,
     "floatShares": 257242711,
     "sharesOutstanding": 306262586,
@@ -1248,7 +1253,7 @@
     "impliedSharesOutstanding": 328588276,
     "category": null,
     "bookValue": 1.115,
-    "priceToBook": 25.493273,
+    "priceToBook": 25.112108,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -1840,7 +1845,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 28.425,
+    "currentPrice": 28,
     "targetHighPrice": 30,
     "targetLowPrice": 16.4,
     "targetMeanPrice": 24.15556,
@@ -1869,6 +1874,6 @@
     "profitMargins": -0.45868,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T18:30:01.495Z",
+  "lastUpdated": "2026-01-21T01:21:46.342Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -45,7 +45,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.16219999,
         "position": 35572170,
-        "value": 1108073081,
+        "value": 1083883995,
         "pctChange": 11.9808
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.114700004,
         "position": 25145814,
-        "value": 783292096,
+        "value": 766192935,
         "pctChange": 0.016
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.088999994,
         "position": 19518015,
-        "value": 607986159,
+        "value": 594713903,
         "pctChange": 0.045300003
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0857,
         "position": 18783194,
-        "value": 585096485,
+        "value": 572323908,
         "pctChange": 0.0121
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Farallon Capital Management LLC",
         "pctHeld": 0.049000002,
         "position": 10746852,
-        "value": 334764435,
+        "value": 327456573,
         "pctChange": 0.3084
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0421,
         "position": 9223511,
-        "value": 287312364,
+        "value": 281040373,
         "pctChange": 0.1299
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Renaissance Technologies, LLC",
         "pctHeld": 0.041500002,
         "position": 9096852,
-        "value": 283366936,
+        "value": 277181074,
         "pctChange": 0.32419997
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0332,
         "position": 7276096,
-        "value": 226650387,
+        "value": 221702640,
         "pctChange": 0.316
       },
       {
@@ -117,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0327,
         "position": 7173214,
-        "value": 223445613,
+        "value": 218567825,
         "pctChange": 0.0188
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0224,
         "position": 4900814,
-        "value": 152660354,
+        "value": 149327799,
         "pctChange": 0.0326
       }
     ]
@@ -1297,14 +1297,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.007329495,
-    "regularMarketChange": -0.22999954,
-    "regularMarketTime": "2026-01-20T18:30:34.000Z",
+    "postMarketChangePercent": -0.0006563358,
+    "postMarketChange": -0.01999855,
+    "postMarketTime": "2026-01-21T00:59:55.000Z",
+    "postMarketPrice": 30.45,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0289994,
+    "regularMarketChange": -0.91,
+    "regularMarketTime": "2026-01-20T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 31.15,
+    "regularMarketPrice": 30.47,
     "regularMarketDayHigh": 31.3,
     "regularMarketDayLow": 30.0233,
-    "regularMarketVolume": 10148315,
+    "regularMarketVolume": 15130865,
     "averageDailyVolume10Day": 16539620,
     "averageDailyVolume3Month": 18942181,
     "regularMarketPreviousClose": 31.38,
@@ -1313,25 +1318,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "HIMS",
     "underlyingSymbol": null,
     "shortName": "Hims & Hers Health, Inc.",
     "longName": "Hims & Hers Health, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 7091251200
+    "marketCap": 6936450048
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 7631889408,
-    "forwardPE": 27.732521,
+    "forwardPE": 27.127125,
     "profitMargins": 0.060510002,
     "floatShares": 206024182,
     "sharesOutstanding": 219270891,
@@ -1348,7 +1353,7 @@
     "impliedSharesOutstanding": 227648514,
     "category": null,
     "bookValue": 2.554,
-    "priceToBook": 12.196555,
+    "priceToBook": 11.9303055,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -3163,7 +3168,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 31.15,
+    "currentPrice": 30.47,
     "targetHighPrice": 85,
     "targetLowPrice": 25,
     "targetMeanPrice": 42.69231,
@@ -3193,6 +3198,6 @@
     "profitMargins": 0.060510002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T18:30:38.570Z",
+  "lastUpdated": "2026-01-21T01:22:22.942Z",
   "source": "Static Build (yahoo-finance2)"
 }

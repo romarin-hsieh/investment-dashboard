@@ -45,7 +45,7 @@
         "organization": "Ameriprise Financial, Inc.",
         "pctHeld": 0.1254,
         "position": 29647240,
-        "value": 4487999335,
+        "value": 4498968670,
         "pctChange": -0.3456
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.088,
         "position": 20807920,
-        "value": 3149903031,
+        "value": 3157601860,
         "pctChange": 0.0634
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0874,
         "position": 20671360,
-        "value": 3129230577,
+        "value": 3136878880,
         "pctChange": 0.0034
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.05,
         "position": 11817904,
-        "value": 1788994365,
+        "value": 1793366932,
         "pctChange": 0.9774
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0372,
         "position": 8797089,
-        "value": 1331703375,
+        "value": 1334958255,
         "pctChange": -0.2195
       },
       {
@@ -90,7 +90,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.034,
         "position": 8038641,
-        "value": 1216889513,
+        "value": 1219863771,
         "pctChange": 1.1583
       },
       {
@@ -99,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0225,
         "position": 5320582,
-        "value": 805429729,
+        "value": 807398318,
         "pctChange": 0.0473
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0212,
         "position": 5007799,
-        "value": 758080637,
+        "value": 759933498,
         "pctChange": 0.052800003
       },
       {
@@ -117,7 +117,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.020299999,
         "position": 4809978,
-        "value": 728134493,
+        "value": 729914161,
         "pctChange": 3.0152
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Graticule Asia Macro Advisors LLC",
         "pctHeld": 0.0201,
         "position": 4759305,
-        "value": 720463614,
+        "value": 722224533,
         "pctChange": 1
       }
     ]
@@ -2357,14 +2357,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.012585807,
-    "regularMarketChange": 1.8800049,
-    "regularMarketTime": "2026-01-20T18:32:05.000Z",
+    "postMarketChangePercent": -0.005008201,
+    "postMarketChange": -0.7599945,
+    "postMarketTime": "2026-01-21T00:59:55.000Z",
+    "postMarketPrice": 150.99,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0150502,
+    "regularMarketChange": 2.25,
+    "regularMarketTime": "2026-01-20T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 151.38,
+    "regularMarketPrice": 151.75,
     "regularMarketDayHigh": 155.31,
     "regularMarketDayLow": 143.2,
-    "regularMarketVolume": 10306870,
+    "regularMarketVolume": 16393460,
     "averageDailyVolume10Day": 14071390,
     "averageDailyVolume3Month": 13853791,
     "regularMarketPreviousClose": 149.5,
@@ -2373,25 +2378,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "BE",
     "underlyingSymbol": null,
     "shortName": "Bloom Energy Corporation",
     "longName": "Bloom Energy Corporation",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 35803000832
+    "marketCap": 35890507776
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 36303736832,
-    "forwardPE": 138.70004,
+    "forwardPE": 139.03905,
     "profitMargins": 0.0084,
     "floatShares": 220234085,
     "sharesOutstanding": 236510755,
@@ -2408,7 +2413,7 @@
     "impliedSharesOutstanding": 236510755,
     "category": null,
     "bookValue": 2.763,
-    "priceToBook": 54.788277,
+    "priceToBook": 54.922184,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -3704,7 +3709,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 151.38,
+    "currentPrice": 151.75,
     "targetHighPrice": 157,
     "targetLowPrice": 39,
     "targetMeanPrice": 114.36364,
@@ -3733,6 +3738,6 @@
     "profitMargins": 0.0084,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-20T18:32:07.485Z",
+  "lastUpdated": "2026-01-21T01:23:49.047Z",
   "source": "Static Build (yahoo-finance2)"
 }
