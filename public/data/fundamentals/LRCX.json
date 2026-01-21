@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0027599998,
-    "institutionsPercentHeld": 0.88413,
-    "institutionsFloatPercentHeld": 0.88658,
-    "institutionsCount": 2881
+    "institutionsPercentHeld": 0.88475996,
+    "institutionsFloatPercentHeld": 0.88721,
+    "institutionsCount": 2888
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1761163500
         }
       ],
-      "currentQuarterEstimate": 1.16768,
+      "currentQuarterEstimate": 1.16868,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-21T10:39:09.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 260,
+        "priorPriceTarget": 195
+      },
       {
         "epochGradeDate": "2026-01-20T18:32:22.000Z",
         "firm": "UBS",
@@ -5068,11 +5078,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.00067440263,
+    "preMarketChange": 0.1499939,
+    "preMarketTime": "2026-01-21T12:41:06.000Z",
+    "preMarketPrice": 222.56,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0057101254,
-    "postMarketChange": 1.269989,
-    "postMarketTime": "2026-01-21T00:59:32.000Z",
-    "postMarketPrice": 223.68,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00246682,
     "regularMarketChange": -0.550003,
@@ -5082,15 +5092,15 @@
     "regularMarketDayHigh": 226.1475,
     "regularMarketDayLow": 217.611,
     "regularMarketVolume": 11577016,
-    "averageDailyVolume10Day": 15214460,
-    "averageDailyVolume3Month": 11576146,
+    "averageDailyVolume10Day": 14750060,
+    "averageDailyVolume3Month": 11576934,
     "regularMarketPreviousClose": 222.96,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 218.21,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "LRCX",
     "underlyingSymbol": null,
@@ -5108,7 +5118,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 277144535040,
-    "forwardPE": 38.052826,
+    "forwardPE": 37.91795,
     "profitMargins": 0.29657,
     "floatShares": 1251156604,
     "sharesOutstanding": 1256030000,
@@ -5118,7 +5128,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026400002,
     "heldPercentInsiders": 0.0027599998,
-    "heldPercentInstitutions": 0.88413,
+    "heldPercentInstitutions": 0.88475996,
     "shortRatio": 3.31,
     "shortPercentOfFloat": 0.0295,
     "beta": 1.779,
@@ -5139,8 +5149,8 @@
     "lastSplitDate": 1727913600,
     "enterpriseToRevenue": 14.146,
     "enterpriseToEbitda": 40.403,
-    "52WeekChange": 1.6781981,
-    "SandP52WeekChange": 0.14025438,
+    "52WeekChange": 1.6715915,
+    "SandP52WeekChange": 0.116734624,
     "lastDividendValue": 0.26,
     "lastDividendDate": "2025-12-03T00:00:00.000Z",
     "latestShareClass": null,
@@ -6194,7 +6204,7 @@
     "currentPrice": 222.41,
     "targetHighPrice": 265,
     "targetLowPrice": 115,
-    "targetMeanPrice": 204.03226,
+    "targetMeanPrice": 206.12903,
     "targetMedianPrice": 200,
     "recommendationMean": 1.72222,
     "recommendationKey": "buy",
@@ -6221,6 +6231,6 @@
     "profitMargins": 0.29657,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-21T06:31:56.955Z",
+  "lastUpdated": "2026-01-21T12:41:45.264Z",
   "source": "Static Build (yahoo-finance2)"
 }

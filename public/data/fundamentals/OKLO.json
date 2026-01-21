@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.19499001,
-    "institutionsPercentHeld": 0.44625,
-    "institutionsFloatPercentHeld": 0.55434,
+    "institutionsPercentHeld": 0.44564,
+    "institutionsFloatPercentHeld": 0.55358005,
     "institutionsCount": 796
   },
   "earnings": {
@@ -241,6 +241,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-21T11:25:03.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 127,
+        "priorPriceTarget": 111
+      },
       {
         "epochGradeDate": "2025-12-08T13:07:33.000Z",
         "firm": "Seaport Global",
@@ -616,11 +626,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.033646647,
+    "preMarketChange": 3.0250015,
+    "preMarketTime": "2026-01-21T12:40:00.000Z",
+    "preMarketPrice": 92.93,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.001268738,
-    "postMarketChange": -0.114097595,
-    "postMarketTime": "2026-01-21T00:59:50.000Z",
-    "postMarketPrice": 89.8159,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0528699,
     "regularMarketChange": -5.02,
@@ -630,15 +640,15 @@
     "regularMarketDayHigh": 97,
     "regularMarketDayLow": 88.93,
     "regularMarketVolume": 12488369,
-    "averageDailyVolume10Day": 15842700,
-    "averageDailyVolume3Month": 13279558,
+    "averageDailyVolume10Day": 15114330,
+    "averageDailyVolume3Month": 13267445,
     "regularMarketPreviousClose": 94.95,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 90.835,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "OKLO",
     "underlyingSymbol": null,
@@ -666,7 +676,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1086,
     "heldPercentInsiders": 0.19499001,
-    "heldPercentInstitutions": 0.44625,
+    "heldPercentInstitutions": 0.44564,
     "shortRatio": 1.74,
     "shortPercentOfFloat": 0.109,
     "beta": 0.773,
@@ -684,8 +694,8 @@
     "forwardEps": -0.63077,
     "lastSplitFactor": null,
     "enterpriseToEbitda": -135.215,
-    "52WeekChange": 1.7787533,
-    "SandP52WeekChange": 0.14025438,
+    "52WeekChange": 1.6318407,
+    "SandP52WeekChange": 0.116734624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1390,6 +1400,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-21T06:31:06.804Z",
+  "lastUpdated": "2026-01-21T12:40:55.494Z",
   "source": "Static Build (yahoo-finance2)"
 }

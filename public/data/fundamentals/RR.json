@@ -110,8 +110,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01743,
-    "institutionsPercentHeld": 0.21937999,
-    "institutionsFloatPercentHeld": 0.22328,
+    "institutionsPercentHeld": 0.21938999,
+    "institutionsFloatPercentHeld": 0.22329001,
     "institutionsCount": 185
   },
   "earnings": {
@@ -157,8 +157,10 @@
       "currentQuarterEstimateYear": 2025,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1767139200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-02-12T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -200,6 +202,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-21T11:34:58.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 6
+      },
+      {
         "epochGradeDate": "2025-09-19T11:12:29.000Z",
         "firm": "HC Wainwright & Co.",
         "toGrade": "Buy",
@@ -234,11 +246,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0025906712,
+    "preMarketChange": 0.00999999,
+    "preMarketTime": "2026-01-21T12:40:57.000Z",
+    "preMarketPrice": 3.87,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.005155462,
-    "postMarketChange": 0.019900084,
-    "postMarketTime": "2026-01-21T00:59:54.000Z",
-    "postMarketPrice": 3.8799,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0051547005,
     "regularMarketChange": -0.0200002,
@@ -248,15 +260,15 @@
     "regularMarketDayHigh": 4.25,
     "regularMarketDayLow": 3.67,
     "regularMarketVolume": 42643730,
-    "averageDailyVolume10Day": 30944590,
-    "averageDailyVolume3Month": 27009760,
+    "averageDailyVolume10Day": 31941950,
+    "averageDailyVolume3Month": 27270960,
     "regularMarketPreviousClose": 3.88,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 3.68,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RR",
     "underlyingSymbol": null,
@@ -283,7 +295,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.15609999,
     "heldPercentInsiders": 0.01743,
-    "heldPercentInstitutions": 0.21937999,
+    "heldPercentInstitutions": 0.21938999,
     "shortRatio": 1.06,
     "shortPercentOfFloat": 0.19680001,
     "impliedSharesOutstanding": 215095973,
@@ -300,8 +312,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 114.771,
     "enterpriseToEbitda": -37.057,
-    "52WeekChange": 0.2012384,
-    "SandP52WeekChange": 0.14025438,
+    "52WeekChange": 0.19504642,
+    "SandP52WeekChange": 0.116734624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -552,6 +564,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-21T06:32:04.545Z",
+  "lastUpdated": "2026-01-21T12:41:52.461Z",
   "source": "Static Build (yahoo-finance2)"
 }

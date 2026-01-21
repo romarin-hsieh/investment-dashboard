@@ -5,9 +5,9 @@
         "period": "0m",
         "strongBuy": 8,
         "buy": 22,
-        "hold": 13,
+        "hold": 14,
         "sell": 1,
-        "strongSell": 1
+        "strongSell": 0
       },
       {
         "period": "-1m",
@@ -143,17 +143,6 @@
     "earningsChart": {
       "quarterly": [
         {
-          "date": "4Q2024",
-          "actual": 0.427,
-          "estimate": 0.41955,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "0.01",
-          "surprisePct": "1.78",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1737493340
-        },
-        {
           "date": "1Q2025",
           "actual": 0.661,
           "estimate": 0.56584,
@@ -185,17 +174,29 @@
           "surprisePct": "-15.79",
           "periodEndDate": 1759190400,
           "reportedDate": 1761076945
+        },
+        {
+          "date": "4Q2025",
+          "actual": 0.56,
+          "estimate": 0.55208,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.01",
+          "surprisePct": "1.43",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1768943274
         }
       ],
-      "currentQuarterEstimate": 0.55208,
-      "currentQuarterActual": 0.56,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentQuarterEstimate": 0.76281,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [
+        "2026-04-16T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -252,6 +253,46 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-21T12:33:40.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 94,
+        "priorPriceTarget": 105
+      },
+      {
+        "epochGradeDate": "2026-01-21T12:12:13.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 120,
+        "priorPriceTarget": 150
+      },
+      {
+        "epochGradeDate": "2026-01-21T11:31:15.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 100,
+        "priorPriceTarget": 112
+      },
+      {
+        "epochGradeDate": "2026-01-21T10:52:47.000Z",
+        "firm": "Pivotal Research",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 95,
+        "priorPriceTarget": 105
+      },
       {
         "epochGradeDate": "2026-01-16T15:05:55.000Z",
         "firm": "Keybanc",
@@ -9847,11 +9888,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.07240418,
+    "preMarketChange": -6.3030014,
+    "preMarketTime": "2026-01-21T12:40:19.000Z",
+    "preMarketPrice": 80.75,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.050670423,
-    "postMarketChange": -4.421501,
-    "postMarketTime": "2026-01-21T01:00:00.000Z",
-    "postMarketPrice": 82.8385,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00840907,
     "regularMarketChange": -0.739998,
@@ -9861,15 +9902,15 @@
     "regularMarketDayHigh": 89.9,
     "regularMarketDayLow": 87.02,
     "regularMarketVolume": 97340491,
-    "averageDailyVolume10Day": 43018420,
-    "averageDailyVolume3Month": 45450696,
+    "averageDailyVolume10Day": 49998770,
+    "averageDailyVolume3Month": 46492272,
     "regularMarketPreviousClose": 88,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 88.93,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "NFLX",
     "underlyingSymbol": null,
@@ -9887,7 +9928,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 377507971072,
-    "forwardPE": 26.997927,
+    "forwardPE": 22.463985,
     "profitMargins": 0.24047,
     "floatShares": 4209950231,
     "sharesOutstanding": 4237323340,
@@ -9913,13 +9954,13 @@
     "earningsQuarterlyGrowth": 0.078,
     "netIncomeToCommon": 10431287296,
     "trailingEps": 2.53,
-    "forwardEps": 3.89794,
+    "forwardEps": 3.86753,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1763337600,
     "enterpriseToRevenue": 8.703,
     "enterpriseToEbitda": 29.107,
-    "52WeekChange": -0.07755846,
-    "SandP52WeekChange": 0.14025438,
+    "52WeekChange": -0.08531535,
+    "SandP52WeekChange": 0.116734624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -11734,10 +11775,10 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 87.26,
-    "targetHighPrice": 152.5,
-    "targetLowPrice": 77,
-    "targetMeanPrice": 122.95725,
-    "targetMedianPrice": 120,
+    "targetHighPrice": 151.4,
+    "targetLowPrice": 79,
+    "targetMeanPrice": 119.09475,
+    "targetMedianPrice": 117.545,
     "recommendationMean": 1.91111,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 40,
@@ -11763,6 +11804,6 @@
     "profitMargins": 0.24047,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-21T06:30:31.137Z",
+  "lastUpdated": "2026-01-21T12:40:21.078Z",
   "source": "Static Build (yahoo-finance2)"
 }

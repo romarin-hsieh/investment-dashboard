@@ -187,14 +187,16 @@
           "reportedDate": 1768942860
         }
       ],
-      "currentQuarterEstimate": 0.57434,
+      "currentQuarterEstimate": 0.58732,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-04-14T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -1406,11 +1408,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.006992029,
+    "preMarketChange": -0.5,
+    "preMarketTime": "2026-01-21T12:07:01.000Z",
+    "preMarketPrice": 71.01,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.017619943,
-    "postMarketChange": -1.2600021,
-    "postMarketTime": "2026-01-21T01:00:00.000Z",
-    "postMarketPrice": 70.25,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.025218101,
     "regularMarketChange": -1.85,
@@ -1420,15 +1422,15 @@
     "regularMarketDayHigh": 73.03,
     "regularMarketDayLow": 70.79,
     "regularMarketVolume": 8923467,
-    "averageDailyVolume10Day": 4450750,
-    "averageDailyVolume3Month": 4020151,
+    "averageDailyVolume10Day": 4849160,
+    "averageDailyVolume3Month": 4106168,
     "regularMarketPreviousClose": 73.36,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 71.7,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "IBKR",
     "underlyingSymbol": null,
@@ -1446,7 +1448,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": -41280012288,
-    "forwardPE": 27.729523,
+    "forwardPE": 26.54565,
     "profitMargins": 0.15293999,
     "floatShares": 432644518,
     "sharesOutstanding": 445363717,
@@ -1472,12 +1474,12 @@
     "earningsQuarterlyGrowth": 0.429,
     "netIncomeToCommon": 917000000,
     "trailingEps": 2.22,
-    "forwardEps": 2.59598,
+    "forwardEps": 2.69385,
     "lastSplitFactor": "4:1",
     "lastSplitDate": 1750204800,
     "enterpriseToRevenue": -6.885,
-    "52WeekChange": 0.3987987,
-    "SandP52WeekChange": 0.14025438,
+    "52WeekChange": 0.36352372,
+    "SandP52WeekChange": 0.116734624,
     "lastDividendValue": 0.08,
     "lastDividendDate": "2025-12-01T00:00:00.000Z",
     "latestShareClass": null,
@@ -2231,10 +2233,10 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 71.51,
-    "targetHighPrice": 84,
-    "targetLowPrice": 52,
-    "targetMeanPrice": 76.77778,
-    "targetMedianPrice": 80,
+    "targetHighPrice": 91,
+    "targetLowPrice": 56,
+    "targetMeanPrice": 78.44444,
+    "targetMedianPrice": 82,
     "recommendationMean": 1.55556,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
@@ -2258,6 +2260,6 @@
     "profitMargins": 0.15293999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-21T06:31:29.404Z",
+  "lastUpdated": "2026-01-21T12:41:17.698Z",
   "source": "Static Build (yahoo-finance2)"
 }
