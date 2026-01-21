@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1187,
         "position": 52859085,
-        "value": 3779953281,
+        "value": 4007775808,
         "pctChange": 0.2643
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0695,
         "position": 30968967,
-        "value": 2214590896,
+        "value": 2348067068,
         "pctChange": -0.23030001
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0419,
         "position": 18648758,
-        "value": 1333572724,
+        "value": 1413948825,
         "pctChange": 0.2325
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.040599998,
         "position": 18100912,
-        "value": 1294396255,
+        "value": 1372411142,
         "pctChange": 0.78360003
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Cantillon Capital Management LLC",
         "pctHeld": 0.028399998,
         "position": 12664026,
-        "value": 905604526,
+        "value": 960186447,
         "pctChange": -0.0109
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Kayne Anderson Rudnick Investment Management LLC",
         "pctHeld": 0.0273,
         "position": 12174526,
-        "value": 870600380,
+        "value": 923072557,
         "pctChange": -0.0253
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Wellington Management Group, LLP",
         "pctHeld": 0.024500001,
         "position": 10901171,
-        "value": 779542761,
+        "value": 826526781,
         "pctChange": 0.1759
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Greenwich Wealth Management Llc",
         "pctHeld": 0.0233,
         "position": 10367276,
-        "value": 741363928,
+        "value": 786046863,
         "pctChange": -0.0458
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0232,
         "position": 10344360,
-        "value": 739725205,
+        "value": 784309372,
         "pctChange": 0.5479
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Orbis Allan Gray Ltd",
         "pctHeld": 0.0214,
         "position": 9543872,
-        "value": 682482307,
+        "value": 723616372,
         "pctChange": -0.0201
       }
     ]
@@ -253,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-21T14:35:16.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 83,
+        "priorPriceTarget": 82
+      },
+      {
+        "epochGradeDate": "2026-01-21T13:30:25.000Z",
+        "firm": "BMO Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 82,
+        "priorPriceTarget": 80
+      },
       {
         "epochGradeDate": "2026-01-08T21:03:20.000Z",
         "firm": "Barclays",
@@ -1408,29 +1428,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.006992029,
-    "preMarketChange": -0.5,
-    "preMarketTime": "2026-01-21T12:07:01.000Z",
-    "preMarketPrice": 71.01,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.025218101,
-    "regularMarketChange": -1.85,
-    "regularMarketTime": "2026-01-20T21:00:02.000Z",
+    "regularMarketChangePercent": 0.060271252,
+    "regularMarketChange": 4.3099976,
+    "regularMarketTime": "2026-01-21T18:38:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 71.51,
-    "regularMarketDayHigh": 73.03,
-    "regularMarketDayLow": 70.79,
-    "regularMarketVolume": 8923467,
+    "regularMarketPrice": 75.82,
+    "regularMarketDayHigh": 76.37,
+    "regularMarketDayLow": 70.89,
+    "regularMarketVolume": 6498265,
     "averageDailyVolume10Day": 4849160,
     "averageDailyVolume3Month": 4106168,
-    "regularMarketPreviousClose": 73.36,
+    "regularMarketPreviousClose": 71.51,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 71.7,
+    "regularMarketOpen": 72,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "IBKR",
     "underlyingSymbol": null,
@@ -1442,13 +1457,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 121562537984
+    "marketCap": 128889266176
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": -41280012288,
-    "forwardPE": 26.54565,
+    "forwardPE": 28.14559,
     "profitMargins": 0.15293999,
     "floatShares": 432644518,
     "sharesOutstanding": 445363717,
@@ -1465,7 +1480,7 @@
     "impliedSharesOutstanding": 1699937533,
     "category": null,
     "bookValue": 11.466,
-    "priceToBook": 6.2367,
+    "priceToBook": 6.612594,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1474,7 +1489,7 @@
     "earningsQuarterlyGrowth": 0.429,
     "netIncomeToCommon": 917000000,
     "trailingEps": 2.22,
-    "forwardEps": 2.69385,
+    "forwardEps": 2.73274,
     "lastSplitFactor": "4:1",
     "lastSplitDate": 1750204800,
     "enterpriseToRevenue": -6.885,
@@ -2232,7 +2247,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 71.51,
+    "currentPrice": 75.82,
     "targetHighPrice": 91,
     "targetLowPrice": 56,
     "targetMeanPrice": 78.44444,
@@ -2260,6 +2275,6 @@
     "profitMargins": 0.15293999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-21T12:41:17.698Z",
+  "lastUpdated": "2026-01-21T18:38:12.953Z",
   "source": "Static Build (yahoo-finance2)"
 }
