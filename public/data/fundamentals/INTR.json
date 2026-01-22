@@ -45,7 +45,7 @@
         "organization": "Softbank Group Corporation",
         "pctHeld": 0.1999,
         "position": 64506636,
-        "value": 568303490,
+        "value": 585720249,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "WCM Investment Management, LLC",
         "pctHeld": 0.0328,
         "position": 10586349,
-        "value": 93265739,
+        "value": 96124048,
         "pctChange": 0.2134
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Samlyn Capital, LLC",
         "pctHeld": 0.026400002,
         "position": 8515741,
-        "value": 75023681,
+        "value": 77322927,
         "pctChange": 0.19940001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0207,
         "position": 6673562,
-        "value": 58794084,
+        "value": 60595942,
         "pctChange": 0.0813
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Squadra Investments - Gestao De Recursos Ltda",
         "pctHeld": 0.0183,
         "position": 5896781,
-        "value": 51950643,
+        "value": 53542771,
         "pctChange": 13.5239
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Wasatch Advisors LP",
         "pctHeld": 0.0176,
         "position": 5680704,
-        "value": 50047004,
+        "value": 51580791,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "FIL LTD",
         "pctHeld": 0.0167,
         "position": 5403293,
-        "value": 47603013,
+        "value": 49061900,
         "pctChange": 32.9962
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0147,
         "position": 4753265,
-        "value": 41876266,
+        "value": 43159645,
         "pctChange": 0.0094
       },
       {
@@ -117,7 +117,7 @@
         "organization": "William Blair Investment Management, LLC",
         "pctHeld": 0.0108,
         "position": 3484335,
-        "value": 30696992,
+        "value": 31637761,
         "pctChange": 1.0889
       },
       {
@@ -126,7 +126,7 @@
         "organization": "ClearBridge Investments, LLC",
         "pctHeld": 0.0107,
         "position": 3464132,
-        "value": 30519004,
+        "value": 31454318,
         "pctChange": 1
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-22T14:13:46.000Z",
+        "firm": "UBS",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 11,
+        "priorPriceTarget": 10.5
+      },
       {
         "epochGradeDate": "2025-11-19T10:34:01.000Z",
         "firm": "Itau BBA",
@@ -409,24 +419,23 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.052568797,
-    "regularMarketChange": 0.440001,
-    "regularMarketTime": "2026-01-21T21:00:01.000Z",
+    "regularMarketChangePercent": 0.030646935,
+    "regularMarketChange": 0.2699995,
+    "regularMarketTime": "2026-01-22T18:27:12.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 8.81,
-    "regularMarketDayHigh": 8.855,
-    "regularMarketDayLow": 8.51,
-    "regularMarketVolume": 2053067,
+    "regularMarketPrice": 9.08,
+    "regularMarketDayHigh": 9.24,
+    "regularMarketDayLow": 8.93,
+    "regularMarketVolume": 1896757,
     "averageDailyVolume10Day": 2897310,
     "averageDailyVolume3Month": 2537977,
-    "regularMarketPreviousClose": 8.37,
+    "regularMarketPreviousClose": 8.81,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 8.52,
+    "regularMarketOpen": 8.93,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "INTR",
     "underlyingSymbol": null,
@@ -438,13 +447,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 3878010880
+    "marketCap": 3996859904
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 23628118016,
-    "forwardPE": 10.813664,
+    "forwardPE": 11.14507,
     "profitMargins": 0.21556,
     "floatShares": 204165597,
     "sharesOutstanding": 323145718,
@@ -461,7 +470,7 @@
     "impliedSharesOutstanding": 440182823,
     "category": null,
     "bookValue": 4.089414,
-    "priceToBook": 2.154343,
+    "priceToBook": 2.220367,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -502,7 +511,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 8.81,
+    "currentPrice": 9.08,
     "targetHighPrice": 11.5,
     "targetLowPrice": 4.6,
     "targetMeanPrice": 9.7824,
@@ -527,6 +536,6 @@
     "profitMargins": 0.21556,
     "financialCurrency": "BRL"
   },
-  "lastUpdated": "2026-01-22T12:40:19.570Z",
+  "lastUpdated": "2026-01-22T18:27:27.113Z",
   "source": "Static Build (yahoo-finance2)"
 }

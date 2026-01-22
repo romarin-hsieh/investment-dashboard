@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.094399996,
         "position": 701986682,
-        "value": 311759295060,
+        "value": 317234804033,
         "pctChange": -0.0044
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0796,
         "position": 591860058,
-        "value": 262850961688,
+        "value": 267467480978,
         "pctChange": 0.0177
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0427,
         "position": 317615796,
-        "value": 141056346508,
+        "value": 143533755533,
         "pctChange": 1.0223
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0403,
         "position": 299761678,
-        "value": 133127154425,
+        "value": 135465301002,
         "pctChange": 0.0019
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.028299998,
         "position": 210487489,
-        "value": 93479595656,
+        "value": 95121401924,
         "pctChange": 0.0271
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024300002,
         "position": 180707258,
-        "value": 80253897703,
+        "value": 81663417624,
         "pctChange": 0.0095
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0178,
         "position": 132176105,
-        "value": 58700728055,
+        "value": 59731704094,
         "pctChange": -0.0343
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0162,
         "position": 120240122,
-        "value": 53399838820,
+        "value": 54337713973,
         "pctChange": 0.0095999995
       },
       {
@@ -117,7 +117,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0137,
         "position": 101513194,
-        "value": 45083023100,
+        "value": 45874827872,
         "pctChange": -0.035099998
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0109,
         "position": 81165798,
-        "value": 36046541360,
+        "value": 36679636071,
         "pctChange": -0.0045
       }
     ]
@@ -253,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-22T15:46:51.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 630,
+        "priorPriceTarget": 665
+      },
+      {
+        "epochGradeDate": "2026-01-22T14:18:16.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 586,
+        "priorPriceTarget": 586
+      },
       {
         "epochGradeDate": "2026-01-21T19:23:52.000Z",
         "firm": "Citigroup",
@@ -8778,29 +8798,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.009524692,
-    "preMarketChange": 4.230011,
-    "preMarketTime": "2026-01-22T12:39:52.000Z",
-    "preMarketPrice": 448.34,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.022903299,
-    "regularMarketChange": -10.41,
-    "regularMarketTime": "2026-01-21T21:00:02.000Z",
+    "regularMarketChangePercent": 0.01756326,
+    "regularMarketChange": 7.8000183,
+    "regularMarketTime": "2026-01-22T18:27:52.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 444.11,
-    "regularMarketDayHigh": 452.69,
-    "regularMarketDayLow": 438.685,
-    "regularMarketVolume": 37424042,
+    "regularMarketPrice": 451.91,
+    "regularMarketDayHigh": 452.84,
+    "regularMarketDayLow": 444.735,
+    "regularMarketVolume": 13393128,
     "averageDailyVolume10Day": 26393160,
     "averageDailyVolume3Month": 24641970,
-    "regularMarketPreviousClose": 454.52,
+    "regularMarketPreviousClose": 444.11,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 452.35,
+    "regularMarketOpen": 448.04,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "MSFT",
     "underlyingSymbol": null,
@@ -8812,13 +8827,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 3301143478272
+    "marketCap": 3359122128896
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 3319156178944,
-    "forwardPE": 23.706198,
+    "forwardPE": 24.122555,
     "profitMargins": 0.35707,
     "floatShares": 7421452060,
     "sharesOutstanding": 7432377655,
@@ -8835,7 +8850,7 @@
     "impliedSharesOutstanding": 7433166379,
     "category": null,
     "bookValue": 48.84,
-    "priceToBook": 9.093161,
+    "priceToBook": 9.252867,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-06-30T00:00:00.000Z",
@@ -9025,6 +9040,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 4358,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "COLEMAN AMY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 26151,
         "value": 0,
         "filerUrl": "",
@@ -9050,18 +9077,6 @@
       {
         "maxAge": 1,
         "shares": 4022,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "COLEMAN AMY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4358,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
@@ -10120,7 +10135,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 444.11,
+    "currentPrice": 451.91,
     "targetHighPrice": 730,
     "targetLowPrice": 450,
     "targetMeanPrice": 619.6898,
@@ -10150,6 +10165,6 @@
     "profitMargins": 0.35707,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T12:40:48.309Z",
+  "lastUpdated": "2026-01-22T18:27:54.198Z",
   "source": "Static Build (yahoo-finance2)"
 }
