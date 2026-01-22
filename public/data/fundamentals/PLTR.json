@@ -4,7 +4,7 @@
       {
         "period": "0m",
         "strongBuy": 1,
-        "buy": 4,
+        "buy": 5,
         "hold": 16,
         "sell": 2,
         "strongSell": 2
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03593,
-    "institutionsPercentHeld": 0.6037,
-    "institutionsFloatPercentHeld": 0.62619996,
-    "institutionsCount": 3505
+    "institutionsPercentHeld": 0.60371,
+    "institutionsFloatPercentHeld": 0.62621,
+    "institutionsCount": 3507
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-22T10:15:01.000Z",
+        "firm": "Phillip Securities",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 208,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-12T15:24:08.000Z",
         "firm": "Citigroup",
@@ -2108,11 +2118,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.019173764,
+    "preMarketChange": 3.1699982,
+    "preMarketTime": "2026-01-22T12:39:17.000Z",
+    "preMarketPrice": 168.5,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00786308,
-    "postMarketChange": 1.300003,
-    "postMarketTime": "2026-01-22T00:59:59.000Z",
-    "postMarketPrice": 166.63,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.019259501,
     "regularMarketChange": -3.2467,
@@ -2122,15 +2132,15 @@
     "regularMarketDayHigh": 169.49,
     "regularMarketDayLow": 161.11,
     "regularMarketVolume": 47414969,
-    "averageDailyVolume10Day": 38253140,
-    "averageDailyVolume3Month": 45917536,
+    "averageDailyVolume10Day": 39532800,
+    "averageDailyVolume3Month": 45945695,
     "regularMarketPreviousClose": 168.5767,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 168.402,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "PLTR",
     "underlyingSymbol": null,
@@ -2158,7 +2168,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0197,
     "heldPercentInsiders": 0.03593,
-    "heldPercentInstitutions": 0.6037,
+    "heldPercentInstitutions": 0.60371,
     "shortRatio": 1.36,
     "shortPercentOfFloat": 0.0216,
     "beta": 1.545,
@@ -2178,8 +2188,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 99.572,
     "enterpriseToEbitda": 442.967,
-    "52WeekChange": 1.1338313,
-    "SandP52WeekChange": 0.110832214,
+    "52WeekChange": 1.0933146,
+    "SandP52WeekChange": 0.123704195,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3986,11 +3996,11 @@
     "currentPrice": 165.33,
     "targetHighPrice": 255,
     "targetLowPrice": 50,
-    "targetMeanPrice": 189.48216,
+    "targetMeanPrice": 190.25375,
     "targetMedianPrice": 200,
-    "recommendationMean": 2.84,
+    "recommendationMean": 2.88,
     "recommendationKey": "hold",
-    "numberOfAnalystOpinions": 23,
+    "numberOfAnalystOpinions": 24,
     "totalCash": 6437816832,
     "totalCashPerShare": 2.701,
     "ebitda": 875796992,
@@ -4013,6 +4023,6 @@
     "profitMargins": 0.28114,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T06:29:15.551Z",
+  "lastUpdated": "2026-01-22T12:39:50.224Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01768,
-    "institutionsPercentHeld": 0.94196,
-    "institutionsFloatPercentHeld": 0.95891,
+    "institutionsPercentHeld": 0.94194,
+    "institutionsFloatPercentHeld": 0.95889,
     "institutionsCount": 818
   },
   "earnings": {
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-22T09:27:30.000Z",
+        "firm": "Piper Sandler",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 99,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-20T17:46:23.000Z",
         "firm": "Goldman Sachs",
@@ -1428,11 +1438,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0118583655,
+    "preMarketChange": 1.4300003,
+    "preMarketTime": "2026-01-22T12:38:29.000Z",
+    "preMarketPrice": 122.02,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0019164275,
-    "postMarketChange": 0.23110199,
-    "postMarketTime": "2026-01-22T00:59:48.000Z",
-    "postMarketPrice": 120.8211,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0628691,
     "regularMarketChange": -8.09,
@@ -1442,15 +1452,15 @@
     "regularMarketDayHigh": 128,
     "regularMarketDayLow": 114.275,
     "regularMarketVolume": 6624719,
-    "averageDailyVolume10Day": 4894430,
-    "averageDailyVolume3Month": 2966643,
+    "averageDailyVolume10Day": 5267520,
+    "averageDailyVolume3Month": 3026886,
     "regularMarketPreviousClose": 128.68,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 127.33,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "KTOS",
     "underlyingSymbol": null,
@@ -1478,7 +1488,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0514,
     "heldPercentInsiders": 0.01768,
-    "heldPercentInstitutions": 0.94196,
+    "heldPercentInstitutions": 0.94194,
     "shortRatio": 4.21,
     "shortPercentOfFloat": 0.0525,
     "beta": 1.093,
@@ -1499,8 +1509,8 @@
     "lastSplitDate": 1252627200,
     "enterpriseToRevenue": 15.511,
     "enterpriseToEbitda": 290.086,
-    "52WeekChange": 2.7223027,
-    "SandP52WeekChange": 0.110832214,
+    "52WeekChange": 2.4882846,
+    "SandP52WeekChange": 0.123704195,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3310,8 +3320,8 @@
     "targetLowPrice": 83,
     "targetMeanPrice": 115.52632,
     "targetMedianPrice": 115,
-    "recommendationMean": 1.5,
-    "recommendationKey": "strong_buy",
+    "recommendationMean": 1.57895,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 19,
     "totalCash": 565900032,
     "totalCashPerShare": 3.352,
@@ -3335,6 +3345,6 @@
     "profitMargins": 0.015570001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T06:29:22.799Z",
+  "lastUpdated": "2026-01-22T12:39:57.368Z",
   "source": "Static Build (yahoo-finance2)"
 }

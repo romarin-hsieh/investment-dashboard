@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00247,
-    "institutionsPercentHeld": 0.83514,
-    "institutionsFloatPercentHeld": 0.8372,
-    "institutionsCount": 2947
+    "institutionsPercentHeld": 0.83529997,
+    "institutionsFloatPercentHeld": 0.83737,
+    "institutionsCount": 2966
   },
   "earnings": {
     "maxAge": 86400,
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-22T11:21:31.000Z",
+        "firm": "William Blair",
+        "toGrade": "Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-20T18:21:47.000Z",
         "firm": "TD Cowen",
@@ -8216,11 +8226,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.021562064,
+    "preMarketChange": 8.390015,
+    "preMarketTime": "2026-01-22T12:41:16.000Z",
+    "preMarketPrice": 397.5,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.015394159,
-    "postMarketChange": 5.9900208,
-    "postMarketTime": "2026-01-22T00:59:58.000Z",
-    "postMarketPrice": 395.1,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0660548,
     "regularMarketChange": 24.11,
@@ -8230,15 +8240,15 @@
     "regularMarketDayHigh": 394.2,
     "regularMarketDayLow": 366.73,
     "regularMarketVolume": 54105807,
-    "averageDailyVolume10Day": 33912680,
-    "averageDailyVolume3Month": 27854238,
+    "averageDailyVolume10Day": 34672680,
+    "averageDailyVolume3Month": 28321093,
     "regularMarketPreviousClose": 365,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 372.87,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MU",
     "underlyingSymbol": null,
@@ -8266,7 +8276,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026700001,
     "heldPercentInsiders": 0.00247,
-    "heldPercentInstitutions": 0.83514,
+    "heldPercentInstitutions": 0.83529997,
     "shortRatio": 1.14,
     "shortPercentOfFloat": 0.026700001,
     "beta": 1.503,
@@ -8287,8 +8297,8 @@
     "lastSplitDate": 957225600,
     "enterpriseToRevenue": 10.402,
     "enterpriseToEbitda": 19.795,
-    "52WeekChange": 2.4814956,
-    "SandP52WeekChange": 0.110832214,
+    "52WeekChange": 2.7114651,
+    "SandP52WeekChange": 0.123704195,
     "lastDividendValue": 0.115,
     "lastDividendDate": "2025-12-29T00:00:00.000Z",
     "latestShareClass": null,
@@ -10130,6 +10140,6 @@
     "profitMargins": 0.28146,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T06:30:40.782Z",
+  "lastUpdated": "2026-01-22T12:41:18.193Z",
   "source": "Static Build (yahoo-finance2)"
 }

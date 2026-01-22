@@ -8,6 +8,14 @@
         "hold": 0,
         "sell": 1,
         "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 0,
+        "buy": 1,
+        "hold": 0,
+        "sell": 1,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -109,10 +117,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.01743,
-    "institutionsPercentHeld": 0.21938999,
-    "institutionsFloatPercentHeld": 0.22329001,
-    "institutionsCount": 185
+    "insidersPercentHeld": 0.02317,
+    "institutionsPercentHeld": 0.21943001,
+    "institutionsFloatPercentHeld": 0.22463,
+    "institutionsCount": 186
   },
   "earnings": {
     "maxAge": 86400,
@@ -246,11 +254,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.020642128,
+    "preMarketChange": 0.089999676,
+    "preMarketTime": "2026-01-22T12:41:00.000Z",
+    "preMarketPrice": 4.45,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0045871516,
-    "postMarketChange": -0.01999998,
-    "postMarketTime": "2026-01-22T00:59:56.000Z",
-    "postMarketPrice": 4.34,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.12953399,
     "regularMarketChange": 0.5,
@@ -260,15 +268,15 @@
     "regularMarketDayHigh": 4.39,
     "regularMarketDayLow": 3.73,
     "regularMarketVolume": 68484368,
-    "averageDailyVolume10Day": 31958380,
-    "averageDailyVolume3Month": 27019020,
+    "averageDailyVolume10Day": 35502590,
+    "averageDailyVolume3Month": 27709160,
     "regularMarketPreviousClose": 3.86,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 3.92,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RR",
     "underlyingSymbol": null,
@@ -294,10 +302,11 @@
     "sharesShortPreviousMonthDate": "2025-11-28T00:00:00.000Z",
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.15609999,
-    "heldPercentInsiders": 0.01743,
-    "heldPercentInstitutions": 0.21938999,
+    "heldPercentInsiders": 0.02317,
+    "heldPercentInstitutions": 0.21943001,
     "shortRatio": 1.06,
     "shortPercentOfFloat": 0.19680001,
+    "beta": -3.665,
     "impliedSharesOutstanding": 215653217,
     "category": null,
     "bookValue": 1.387,
@@ -312,8 +321,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 136.089,
     "enterpriseToEbitda": -43.94,
-    "52WeekChange": 0.118840575,
-    "SandP52WeekChange": 0.110832214,
+    "52WeekChange": 0.26376808,
+    "SandP52WeekChange": 0.123704195,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -332,6 +341,7 @@
     "sectorKey": "industrials",
     "sectorDisp": "Industrials",
     "longBusinessSummary": "Richtech Robotics Inc. develops, manufactures, deploys, and sells robotic solutions for automation in the service industry in the United States. The company offers commercial robotic products, including Matradee, a line of restaurant service robots for bussing, serving, hosting, advertising, and entertaining; and ADAM and Scorpion, which are dual-arm AI-powered service robots for beverage preparation and customer interaction in hospitality and retail environments. It also provides industrial robotic products, such as Titan, a line of heavy-duty autonomous mobile robots (AMR) delivery focused robots; DUST-E, an autonomous commercial cleaning robot product line; and Dex, an industrial humanoid robot designed for real-world manufacturing, logistics, and material-handling environments. In addition, the company offers data generation services for frontier embodied AI training. Further, it operates the Clouffee & Tea robotic restaurant brand that offers coffee and tea products. The company markets its products through digital marketing, sales outreach, industry exhibitions, client referrals, online inquiries, and a network of distribution channels. It serves the food service, retail, industrial manufacturing, automotive, healthcare, and hospitality industries. The company was formerly known as Richtech Creative Displays LLC and changed its name to Richtech Robotics Inc. on June 22, 2022. Richtech Robotics Inc. was incorporated in 2016 and is headquartered in Las Vegas, Nevada.",
+    "fullTimeEmployees": 55,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -540,7 +550,8 @@
     "targetLowPrice": 2.5,
     "targetMeanPrice": 4.25,
     "targetMedianPrice": 4.25,
-    "recommendationKey": "none",
+    "recommendationMean": 3,
+    "recommendationKey": "hold",
     "numberOfAnalystOpinions": 2,
     "totalCash": 251936992,
     "totalCashPerShare": 1.171,
@@ -554,7 +565,7 @@
     "returnOnAssets": -0.07111,
     "returnOnEquity": -0.10182,
     "grossProfits": 3289000,
-    "freeCashflow": -13771875,
+    "freeCashflow": -10047875,
     "operatingCashflow": -9043000,
     "revenueGrowth": 1.75,
     "grossMargins": 0.65193003,
@@ -563,6 +574,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T06:30:37.565Z",
+  "lastUpdated": "2026-01-22T12:41:13.958Z",
   "source": "Static Build (yahoo-finance2)"
 }

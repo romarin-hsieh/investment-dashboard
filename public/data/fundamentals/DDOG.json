@@ -4,8 +4,8 @@
       {
         "period": "0m",
         "strongBuy": 10,
-        "buy": 30,
-        "hold": 4,
+        "buy": 31,
+        "hold": 3,
         "sell": 1,
         "strongSell": 0
       },
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0076200003,
-    "institutionsPercentHeld": 0.93795997,
-    "institutionsFloatPercentHeld": 0.94517,
-    "institutionsCount": 1436
+    "institutionsPercentHeld": 0.93764,
+    "institutionsFloatPercentHeld": 0.94484,
+    "institutionsCount": 1441
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-22T10:41:13.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Hold",
+        "action": "up",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 160,
+        "priorPriceTarget": 205
+      },
       {
         "epochGradeDate": "2026-01-21T18:12:12.000Z",
         "firm": "TD Cowen",
@@ -4228,11 +4238,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.028511293,
+    "preMarketChange": 3.5200043,
+    "preMarketTime": "2026-01-22T12:36:24.000Z",
+    "preMarketPrice": 126.98,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.02946055,
-    "postMarketChange": 3.6371994,
-    "postMarketTime": "2026-01-22T00:59:58.000Z",
-    "postMarketPrice": 127.0972,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0552137,
     "regularMarketChange": 6.46,
@@ -4242,15 +4252,15 @@
     "regularMarketDayHigh": 126.27,
     "regularMarketDayLow": 118.75,
     "regularMarketVolume": 9690117,
-    "averageDailyVolume10Day": 5585780,
-    "averageDailyVolume3Month": 4476680,
+    "averageDailyVolume10Day": 6192280,
+    "averageDailyVolume3Month": 4562242,
     "regularMarketPreviousClose": 117,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 118.802,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4268,7 +4278,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 40432787456,
-    "forwardPE": 52.811237,
+    "forwardPE": 52.81666,
     "profitMargins": 0.033239998,
     "floatShares": 323321937,
     "sharesOutstanding": 325443373,
@@ -4278,7 +4288,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026500002,
     "heldPercentInsiders": 0.0076200003,
-    "heldPercentInstitutions": 0.93795997,
+    "heldPercentInstitutions": 0.93764,
     "shortRatio": 2.7,
     "shortPercentOfFloat": 0.029000001,
     "beta": 1.263,
@@ -4294,12 +4304,12 @@
     "earningsQuarterlyGrowth": -0.345,
     "netIncomeToCommon": 106768000,
     "trailingEps": 0.31,
-    "forwardEps": 2.33776,
+    "forwardEps": 2.33752,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 12.589,
     "enterpriseToEbitda": 6495.227,
-    "52WeekChange": -0.16547787,
-    "SandP52WeekChange": 0.110832214,
+    "52WeekChange": -0.11940086,
+    "SandP52WeekChange": 0.123704195,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -6099,9 +6109,9 @@
     "currentPrice": 123.46,
     "targetHighPrice": 260,
     "targetLowPrice": 113,
-    "targetMeanPrice": 199.44524,
-    "targetMedianPrice": 204.35,
-    "recommendationMean": 1.48889,
+    "targetMeanPrice": 198.37381,
+    "targetMedianPrice": 201.85,
+    "recommendationMean": 1.44444,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 42,
     "totalCash": 4140338944,
@@ -6126,6 +6136,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T06:30:21.078Z",
+  "lastUpdated": "2026-01-22T12:40:57.491Z",
   "source": "Static Build (yahoo-finance2)"
 }
