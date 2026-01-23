@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01696,
-    "institutionsPercentHeld": 0.33299,
-    "institutionsFloatPercentHeld": 0.33873,
-    "institutionsCount": 207
+    "institutionsPercentHeld": 0.3332,
+    "institutionsFloatPercentHeld": 0.33895,
+    "institutionsCount": 208
   },
   "earnings": {
     "maxAge": 86400,
@@ -194,7 +194,7 @@
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
       "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -476,11 +476,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0066023315,
+    "preMarketChange": 0.08329964,
+    "preMarketTime": "2026-01-23T12:33:57.000Z",
+    "preMarketPrice": 12.7,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0047543915,
-    "postMarketChange": 0.06000042,
-    "postMarketTime": "2026-01-23T00:59:57.000Z",
-    "postMarketPrice": 12.68,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00557766,
     "regularMarketChange": 0.0699997,
@@ -490,15 +490,15 @@
     "regularMarketDayHigh": 13.33,
     "regularMarketDayLow": 12.35,
     "regularMarketVolume": 115440208,
-    "averageDailyVolume10Day": 122179140,
-    "averageDailyVolume3Month": 100958543,
+    "averageDailyVolume10Day": 126804420,
+    "averageDailyVolume3Month": 101223290,
     "regularMarketPreviousClose": 12.55,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 12.51,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
@@ -515,7 +515,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 4216294912,
+    "enterpriseValue": 4217510656,
     "forwardPE": -140.22221,
     "profitMargins": -1.7249401,
     "floatShares": 365548833,
@@ -526,7 +526,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2066,
     "heldPercentInsiders": 0.01696,
-    "heldPercentInstitutions": 0.33299,
+    "heldPercentInstitutions": 0.3332,
     "shortRatio": 0.99,
     "shortPercentOfFloat": 0.20799999,
     "beta": 2.4,
@@ -543,10 +543,10 @@
     "trailingEps": -0.36,
     "forwardEps": -0.09,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 170.363,
-    "enterpriseToEbitda": -109.301,
-    "52WeekChange": 5.151961,
-    "SandP52WeekChange": 0.12692177,
+    "enterpriseToRevenue": 170.412,
+    "enterpriseToEbitda": -109.333,
+    "52WeekChange": 5.1862745,
+    "SandP52WeekChange": 0.13310575,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -590,6 +590,17 @@
         "shares": 85663,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 85663,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "SEIDL RANDALL P",
         "filerRelation": "Director",
         "moneyText": "",
@@ -620,9 +631,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 85663,
+        "shares": 4526,
+        "value": 42906,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 9.48 per share.",
+        "filerName": "LAIRD NEIL J",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25861,
+        "value": 245162,
+        "filerUrl": "",
+        "transactionText": "Sale at price 9.48 per share.",
         "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
@@ -648,30 +672,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 9.48 per share.",
         "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4526,
-        "value": 42906,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.48 per share.",
-        "filerName": "LAIRD NEIL J",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25861,
-        "value": 245162,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.48 per share.",
-        "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-22T00:00:00.000Z",
@@ -706,6 +706,17 @@
         "shares": 21035,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 21035,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "SEIDL RANDALL P",
         "filerRelation": "Director",
         "moneyText": "",
@@ -725,9 +736,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 21035,
+        "shares": 7567,
+        "value": 12788,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 1.69 per share.",
         "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
@@ -741,18 +753,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 1.69 per share.",
         "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7567,
-        "value": 12788,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1.69 per share.",
-        "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-17T00:00:00.000Z",
@@ -780,6 +780,17 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 21035,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-20T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -817,13 +828,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 21035,
+        "shares": 52946,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-03-20T00:00:00.000Z",
+        "startDate": "2024-12-19T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -850,9 +861,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 52946,
+        "shares": 25306,
+        "value": 32645,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 1.29 per share.",
         "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
@@ -885,18 +897,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25306,
-        "value": 32645,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1.29 per share.",
-        "filerName": "COHEN RICHARD M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 45049,
         "value": 32751,
         "filerUrl": "",
@@ -905,6 +905,17 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-06-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78948,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-07T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -931,26 +942,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 78948,
+        "shares": 29512,
+        "value": 18140,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 0.59 - 0.64 per share.",
         "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 100000,
-        "value": 67020,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 0.67 per share.",
-        "filerName": "POPOLO JOSEPH V",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-06-07T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -978,15 +978,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 29512,
-        "value": 18140,
+        "shares": 100000,
+        "value": 67020,
         "filerUrl": "",
-        "transactionText": "Sale at price 0.59 - 0.64 per share.",
-        "filerName": "COHEN RICHARD M",
-        "filerRelation": "Director",
+        "transactionText": "Purchase at price 0.67 per share.",
+        "filerName": "POPOLO JOSEPH V",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1046,6 +1046,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-23T06:28:19.262Z",
+  "lastUpdated": "2026-01-23T12:37:54.318Z",
   "source": "Static Build (yahoo-finance2)"
 }

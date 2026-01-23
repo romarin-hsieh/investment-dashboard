@@ -105,15 +105,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Massachusetts Financial Services Co.",
-        "pctHeld": 0.003,
-        "position": 15759419,
-        "value": 5159160921,
-        "pctChange": 0.0356
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.003,
         "position": 15714138,
@@ -128,15 +119,24 @@
         "position": 15091532,
         "value": 4940514757,
         "pctChange": 0.098000005
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Bank of America Corporation",
+        "pctHeld": 0.0029,
+        "position": 14935893,
+        "value": 4889563218,
+        "pctChange": 0.0088
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00039,
-    "institutionsPercentHeld": 0.16243,
-    "institutionsFloatPercentHeld": 0.16249001,
-    "institutionsCount": 3763
+    "institutionsPercentHeld": 0.16136,
+    "institutionsFloatPercentHeld": 0.16142,
+    "institutionsCount": 3770
   },
   "earnings": {
     "maxAge": 86400,
@@ -1138,11 +1138,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.011332717,
+    "preMarketChange": 3.7099915,
+    "preMarketTime": "2026-01-23T12:37:22.000Z",
+    "preMarketPrice": 331.08,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.003085224,
-    "postMarketChange": 1.0100098,
-    "postMarketTime": "2026-01-23T00:59:56.000Z",
-    "postMarketPrice": 328.38,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0038329398,
     "regularMarketChange": 1.25,
@@ -1152,15 +1152,15 @@
     "regularMarketDayHigh": 335.05,
     "regularMarketDayLow": 326.9,
     "regularMarketVolume": 11894021,
-    "averageDailyVolume10Day": 17035420,
-    "averageDailyVolume3Month": 12697560,
+    "averageDailyVolume10Day": 17135280,
+    "averageDailyVolume3Month": 12698311,
     "regularMarketPreviousClose": 326.12,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 333.42,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "TSM",
     "underlyingSymbol": null,
@@ -1188,7 +1188,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0046,
     "heldPercentInsiders": 0.00039,
-    "heldPercentInstitutions": 0.16243,
+    "heldPercentInstitutions": 0.16136,
     "shortRatio": 2.33,
     "shortPercentOfFloat": 0.0046,
     "beta": 1.274,
@@ -1209,8 +1209,8 @@
     "lastSplitDate": 1247616000,
     "enterpriseToRevenue": 1.695,
     "enterpriseToEbitda": 2.461,
-    "52WeekChange": 0.46980345,
-    "SandP52WeekChange": 0.12692177,
+    "52WeekChange": 0.47543716,
+    "SandP52WeekChange": 0.13310575,
     "lastDividendValue": 0.835,
     "lastDividendDate": "2025-12-11T00:00:00.000Z",
     "latestShareClass": null,
@@ -1269,6 +1269,6 @@
     "profitMargins": 0.45099998,
     "financialCurrency": "TWD"
   },
-  "lastUpdated": "2026-01-23T06:28:27.949Z",
+  "lastUpdated": "2026-01-23T12:38:03.042Z",
   "source": "Static Build (yahoo-finance2)"
 }
