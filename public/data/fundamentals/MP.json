@@ -45,7 +45,7 @@
         "organization": "Hancock Prospecting Pty Ltd",
         "pctHeld": 0.083900005,
         "position": 14861212,
-        "value": 1049944650,
+        "value": 1016061105,
         "pctChange": 0.0721
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0791,
         "position": 14020574,
-        "value": 990553574,
+        "value": 958586682,
         "pctChange": 0.026700001
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0716,
         "position": 12694298,
-        "value": 896852173,
+        "value": 867909189,
         "pctChange": -0.1415
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.032899998,
         "position": 5828368,
-        "value": 411774208,
+        "value": 398485536,
         "pctChange": -0.104399994
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0328,
         "position": 5811104,
-        "value": 410554506,
+        "value": 397305196,
         "pctChange": 0.8175
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0216,
         "position": 3829891,
-        "value": 270581804,
+        "value": 261849658,
         "pctChange": -0.047199998
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0196,
         "position": 3466113,
-        "value": 244880888,
+        "value": 236978155,
         "pctChange": 4.5537
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0178,
         "position": 3152247,
-        "value": 222706255,
+        "value": 215519136,
         "pctChange": 0.039100002
       },
       {
@@ -117,7 +117,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0175,
         "position": 3093222,
-        "value": 218536139,
+        "value": 211483596,
         "pctChange": -0.3879
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Cooperman, Leon G.",
         "pctHeld": 0.016900001,
         "position": 3000000,
-        "value": 211950004,
+        "value": 205110008,
         "pctChange": -0.074099995
       }
     ]
@@ -1147,14 +1147,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.09282896,
-    "regularMarketChange": 6,
-    "regularMarketTime": "2026-01-22T18:28:16.000Z",
+    "postMarketChangePercent": 0.005557953,
+    "postMarketChange": 0.37999725,
+    "postMarketTime": "2026-01-23T00:59:58.000Z",
+    "postMarketPrice": 68.75,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0575406,
+    "regularMarketChange": 3.72,
+    "regularMarketTime": "2026-01-22T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 70.65,
-    "regularMarketDayHigh": 70.9,
+    "regularMarketPrice": 68.37,
+    "regularMarketDayHigh": 70.92,
     "regularMarketDayLow": 65.79,
-    "regularMarketVolume": 7284413,
+    "regularMarketVolume": 10466947,
     "averageDailyVolume10Day": 10914560,
     "averageDailyVolume3Month": 9584744,
     "regularMarketPreviousClose": 64.65,
@@ -1163,25 +1168,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "MP",
     "underlyingSymbol": null,
     "shortName": "MP Materials Corp.",
     "longName": "MP Materials Corp.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 12521333760
+    "marketCap": 12117248000
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 10966067200,
-    "forwardPE": 112.40692,
+    "forwardPE": 108.77936,
     "profitMargins": -0.50546,
     "floatShares": 142229235,
     "sharesOutstanding": 177230483,
@@ -1198,7 +1203,7 @@
     "impliedSharesOutstanding": 177230483,
     "category": null,
     "bookValue": 11.087,
-    "priceToBook": 6.3723283,
+    "priceToBook": 6.1666822,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1238,7 +1243,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 70.65,
+    "currentPrice": 68.37,
     "targetHighPrice": 94,
     "targetLowPrice": 69,
     "targetMeanPrice": 79.07692,
@@ -1267,6 +1272,6 @@
     "profitMargins": -0.50546,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T18:28:17.823Z",
+  "lastUpdated": "2026-01-23T01:21:39.388Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -45,7 +45,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.8133,
         "position": 16101140,
-        "value": 205371654,
+        "value": 203196384,
         "pctChange": 1.1352
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.6777,
         "position": 13415432,
-        "value": 171115180,
+        "value": 169302750,
         "pctChange": 1.0992
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.4725,
         "position": 9353156,
-        "value": 119300442,
+        "value": 118036827,
         "pctChange": 9.7955
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Renaissance Technologies, LLC",
         "pctHeld": 0.42119998,
         "position": 8338100,
-        "value": 106353301,
+        "value": 105226821,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.31059998,
         "position": 6148637,
-        "value": 78426481,
+        "value": 77595798,
         "pctChange": 3.7635
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.2581,
         "position": 5108938,
-        "value": 65165016,
+        "value": 64474796,
         "pctChange": 10.6167
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.2543,
         "position": 5034975,
-        "value": 64221610,
+        "value": 63541383,
         "pctChange": 1.8952
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.2308,
         "position": 4568238,
-        "value": 58268333,
+        "value": 57651163,
         "pctChange": 13.2589
       },
       {
@@ -117,7 +117,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.2085,
         "position": 4128112,
-        "value": 52654482,
+        "value": 52096772,
         "pctChange": 71173.34
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.1758,
         "position": 3481130,
-        "value": 44402162,
+        "value": 43931860,
         "pctChange": 1.589
       }
     ]
@@ -477,14 +477,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.016342634,
-    "regularMarketChange": 0.20510006,
-    "regularMarketTime": "2026-01-22T18:26:23.000Z",
+    "postMarketChangePercent": 0.0047543915,
+    "postMarketChange": 0.06000042,
+    "postMarketTime": "2026-01-23T00:59:57.000Z",
+    "postMarketPrice": 12.68,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.00557766,
+    "regularMarketChange": 0.0699997,
+    "regularMarketTime": "2026-01-22T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 12.7551,
-    "regularMarketDayHigh": 12.99,
+    "regularMarketPrice": 12.62,
+    "regularMarketDayHigh": 13.33,
     "regularMarketDayLow": 12.35,
-    "regularMarketVolume": 71117235,
+    "regularMarketVolume": 115440208,
     "averageDailyVolume10Day": 122120320,
     "averageDailyVolume3Month": 99888972,
     "regularMarketPreviousClose": 12.55,
@@ -493,25 +498,24 @@
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
     "shortName": "Ondas Holdings Inc.",
     "longName": "Ondas Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5162831360
+    "marketCap": 5108147200
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4191718656,
-    "forwardPE": -141.72333,
+    "forwardPE": -140.22221,
     "profitMargins": -1.7249401,
     "floatShares": 365548833,
     "sharesOutstanding": 404766027,
@@ -528,7 +532,7 @@
     "impliedSharesOutstanding": 404766027,
     "category": null,
     "bookValue": 1.475,
-    "priceToBook": 8.647526,
+    "priceToBook": 8.555932,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1012,7 +1016,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 12.7551,
+    "currentPrice": 12.62,
     "targetHighPrice": 25,
     "targetLowPrice": 10,
     "targetMeanPrice": 17.625,
@@ -1041,6 +1045,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-22T18:26:24.197Z",
+  "lastUpdated": "2026-01-23T01:19:45.806Z",
   "source": "Static Build (yahoo-finance2)"
 }
