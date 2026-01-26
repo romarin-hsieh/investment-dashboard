@@ -67,8 +67,8 @@ jobs:
         git config --local user.name "GitHub Action"
         
         # 添加變更的文件
-        git add public/data/symbols_metadata.json
-        git add public/data/sector_industry.json
+        # 添加所有變更的文件 (包含 .backup 或新生成的檔案)
+        git add public/data/
         
         # 創建提交訊息
         COMMIT_MSG="🤖 Auto-update metadata via Python yfinance
