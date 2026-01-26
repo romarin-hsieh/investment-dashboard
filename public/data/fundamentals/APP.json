@@ -3,9 +3,9 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 6,
+        "strongBuy": 7,
         "buy": 17,
-        "hold": 3,
+        "hold": 2,
         "sell": 1,
         "strongSell": 1
       },
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.081099994,
         "position": 24954458,
-        "value": 13086366649,
+        "value": 13347390828,
         "pctChange": 0.3939
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.081,
         "position": 24929835,
-        "value": 13073454102,
+        "value": 13334220724,
         "pctChange": 0.31620002
       },
       {
@@ -63,7 +63,7 @@
         "organization": "IEQ Capital, LLC",
         "pctHeld": 0.0513,
         "position": 15779921,
-        "value": 8275147947,
+        "value": 8440206268,
         "pctChange": 284.4028
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.05,
         "position": 15365952,
-        "value": 8058058475,
+        "value": 8218786671,
         "pctChange": 2.2356
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0446,
         "position": 13706444,
-        "value": 7187795929,
+        "value": 7331165635,
         "pctChange": -0.047399998
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0385,
         "position": 11852466,
-        "value": 6215551376,
+        "value": 6339528431,
         "pctChange": 1.1107
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0218,
         "position": 6718998,
-        "value": 3523509560,
+        "value": 3593790427,
         "pctChange": 1.0165
       },
       {
@@ -108,7 +108,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.02,
         "position": 6166349,
-        "value": 3233694913,
+        "value": 3298195059,
         "pctChange": -0.0127
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0191,
         "position": 5877386,
-        "value": 3082159834,
+        "value": 3143637421,
         "pctChange": 0.0361
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0163,
         "position": 5022840,
-        "value": 2634027389,
+        "value": 2686566406,
         "pctChange": -0.0273
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-26T12:50:44.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Hold",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 700,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-14T12:27:33.000Z",
         "firm": "Evercore ISI Group",
@@ -2648,29 +2658,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.023340615,
-    "preMarketChange": 12.240051,
-    "preMarketTime": "2026-01-26T12:37:52.000Z",
-    "preMarketPrice": 536.65,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0047322884,
-    "regularMarketChange": 2.4699707,
-    "regularMarketTime": "2026-01-23T21:00:01.000Z",
+    "regularMarketChangePercent": 0.01994627,
+    "regularMarketChange": 10.460022,
+    "regularMarketTime": "2026-01-26T18:30:12.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 524.41,
-    "regularMarketDayHigh": 535.7,
-    "regularMarketDayLow": 509.04,
-    "regularMarketVolume": 4835106,
+    "regularMarketPrice": 534.87,
+    "regularMarketDayHigh": 558.37,
+    "regularMarketDayLow": 530.59,
+    "regularMarketVolume": 3243231,
     "averageDailyVolume10Day": 5980250,
     "averageDailyVolume3Month": 4308591,
-    "regularMarketPreviousClose": 521.94,
+    "regularMarketPreviousClose": 524.41,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 521.5,
+    "regularMarketOpen": 532.79,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "APP",
     "underlyingSymbol": null,
@@ -2682,13 +2687,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 177381638144
+    "marketCap": 180919730176
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 179072040960,
-    "forwardPE": 37.611042,
+    "forwardPE": 38.36124,
     "profitMargins": 0.44879,
     "floatShares": 242898397,
     "sharesOutstanding": 307597000,
@@ -2705,7 +2710,7 @@
     "impliedSharesOutstanding": 338249915,
     "category": null,
     "bookValue": 4.354,
-    "priceToBook": 120.44326,
+    "priceToBook": 122.84566,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2879,6 +2884,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 25694,
+        "value": 13374883,
+        "filerUrl": "",
+        "transactionText": "Sale at price 490.63 - 561.89 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-21T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
         "shares": 34957,
         "value": 18095174,
         "filerUrl": "",
@@ -2912,18 +2929,6 @@
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25694,
-        "value": 13374883,
-        "filerUrl": "",
-        "transactionText": "Sale at price 490.63 - 561.89 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-21T00:00:00.000Z",
-        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -3215,18 +3220,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 90927,
-        "value": 38276071,
-        "filerUrl": "",
-        "transactionText": "Sale at price 393.34 - 431.33 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 16599,
         "value": 6917026,
         "filerUrl": "",
@@ -3236,6 +3229,18 @@
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 90927,
+        "value": 38276071,
+        "filerUrl": "",
+        "transactionText": "Sale at price 393.34 - 431.33 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -3552,6 +3557,18 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BILLINGS CRAIG SCOTT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 720,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "VIVAS EDUARDO",
         "filerRelation": "Director",
         "moneyText": "",
@@ -3613,18 +3630,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MESSING BARBARA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 720,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BILLINGS CRAIG SCOTT",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
@@ -4254,24 +4259,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 21101,
-        "value": 7019627,
-        "filerUrl": "",
-        "transactionText": "Sale at price 332.19 - 333.86 per share.",
-        "filerName": "STUMPF MATTHEW",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-11-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 165986,
         "value": 51735181,
         "filerUrl": "",
         "transactionText": "Sale at price 304.52 - 322.27 per share.",
         "filerName": "SHIKIN VASILY",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-11-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 21101,
+        "value": 7019627,
+        "filerUrl": "",
+        "transactionText": "Sale at price 332.19 - 333.86 per share.",
+        "filerName": "STUMPF MATTHEW",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-11-22T00:00:00.000Z",
         "ownership": "D"
@@ -4287,6 +4292,18 @@
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 18000,
+        "value": 5740954,
+        "filerUrl": "",
+        "transactionText": "Sale at price 314.59 - 326.86 per share.",
+        "filerName": "BILLINGS CRAIG SCOTT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4314,15 +4331,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 18000,
-        "value": 5740954,
+        "shares": 5205489,
         "filerUrl": "",
-        "transactionText": "Sale at price 314.59 - 326.86 per share.",
-        "filerName": "BILLINGS CRAIG SCOTT",
-        "filerRelation": "Director",
+        "transactionText": "",
+        "filerName": "KKR DENALI HOLDINGS, L.P.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4342,17 +4358,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "KKR GROUP PARTNERSHIP, L.P.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5205489,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KKR DENALI HOLDINGS, L.P.",
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
@@ -4543,14 +4548,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 524.41,
+    "currentPrice": 534.87,
     "targetHighPrice": 860,
     "targetLowPrice": 458,
-    "targetMeanPrice": 745.92,
-    "targetMedianPrice": 771,
+    "targetMeanPrice": 741.0769,
+    "targetMedianPrice": 760.5,
     "recommendationMean": 1.67857,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 25,
+    "numberOfAnalystOpinions": 26,
     "totalCash": 1666898944,
     "totalCashPerShare": 4.932,
     "ebitda": 3913881088,
@@ -4573,6 +4578,6 @@
     "profitMargins": 0.44879,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-26T12:39:29.594Z",
+  "lastUpdated": "2026-01-26T18:30:18.987Z",
   "source": "Static Build (yahoo-finance2)"
 }
