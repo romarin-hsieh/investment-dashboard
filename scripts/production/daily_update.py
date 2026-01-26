@@ -11,6 +11,7 @@ sys.path.append(os.getcwd())
 from scripts.core.strategy_selector import QuantSystem, DataProvider, MarketRegime
 
 DATA_DIR = "public/data"
+OHLCV_DIR = "public/data/ohlcv"
 OUTPUT_JSON = "public/data/dashboard_status.json"
 OUTPUT_IMG_DIR = "public/assets"
 
@@ -25,7 +26,10 @@ class DailyUpdate:
         print("Loading Market Data...")
         # SPY
         try:
-            with open(f"{DATA_DIR}/SPY.json", 'r', encoding='utf-8') as f:
+            spy_path = f"{OHLCV_DIR}/SPY.json"
+            if not os.path.exists(spy_path): spy_path = f"{DATA_DIR}/SPY.json"
+            
+            with open(spy_path, 'r', encoding='utf-8') as f:
                 c = json.load(f)
                 self.spy_data = pd.DataFrame(c) if isinstance(c, list) else pd.DataFrame({'date':pd.to_datetime(c['timestamps'],unit='ms'),'close':c['close']})
                 if 'time' in self.spy_data.columns: self.spy_data['date'] = pd.to_datetime(self.spy_data['time'])
@@ -33,11 +37,18 @@ class DailyUpdate:
         except: pass
         
         # Symbols
-        files = [f for f in os.listdir(DATA_DIR) if f.endswith('.json') and not f.startswith('index') and 'SPY' not in f and 'sector' not in f]
+        # Scan OHLCV directory for symbol data
+        if os.path.exists(OHLCV_DIR):
+            files = [f for f in os.listdir(OHLCV_DIR) if f.endswith('.json') and not f.startswith('index') and 'SPY' not in f and 'sector' not in f]
+            dir_to_scan = OHLCV_DIR
+        else:
+            files = [f for f in os.listdir(DATA_DIR) if f.endswith('.json') and not f.startswith('index') and 'SPY' not in f and 'sector' not in f]
+            dir_to_scan = DATA_DIR
+
         for fname in files:
             try:
                 sym = fname.replace('.json', '').upper()
-                with open(f"{DATA_DIR}/{fname}", 'r', encoding='utf-8') as f: c = json.load(f)
+                with open(f"{dir_to_scan}/{fname}", 'r', encoding='utf-8') as f: c = json.load(f)
                 df = pd.DataFrame(c) if isinstance(c, list) else pd.DataFrame({'date':pd.to_datetime(c['timestamps'],unit='ms'),'close':c['close'],'open':c['open'],'high':c['high'],'low':c['low']})
                 if 'time' in df.columns: df['date'] = pd.to_datetime(df['time'])
                 df = df.set_index('date').sort_index()
