@@ -144,7 +144,7 @@ const renderChartsSequentially = async () => {
         Plotly.newPlot(chartStockSide.value, [
             { x: history.map(p => p.x_trend), y: history.map(p => p.z_structure), mode: 'lines', line: { color: '#8E24AA', width: 2 }, type: 'scatter', hoverinfo: 'none' },
             { x: [d.coordinates.x_trend], y: [d.coordinates.z_structure], mode: 'markers', marker: { size: 8, color: '#F23645' }, type: 'scatter' }
-        ], { ...commonLayout('Stock Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.0, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
+        ], { ...commonLayout('Stock Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
     }
 
     await nextFrame();
@@ -169,7 +169,7 @@ const renderChartsSequentially = async () => {
         Plotly.newPlot(chartSectorSide.value, [
             { x: validSector.map(p => p.x_trend), y: validSector.map(p => p.z_structure), mode: 'lines', line: { color: '#888888', width: 2, dash: 'dot' }, type: 'scatter', hoverinfo: 'none' },
             { x: [last.x_trend], y: [last.z_structure], mode: 'markers', marker: { size: 6, color: '#888888' }, type: 'scatter' }
-        ], { ...commonLayout('Sector Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.0, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
+        ], { ...commonLayout('Sector Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
     }
 
     await nextFrame();
