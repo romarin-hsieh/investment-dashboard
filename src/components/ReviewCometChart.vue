@@ -155,7 +155,10 @@ const renderChartsSequentially = async () => {
         Plotly.newPlot(chartSectorTop.value, [
             { x: validSector.map(p => p.x_trend), y: validSector.map(p => p.y_momentum), mode: 'lines', line: { color: '#888888', width: 2, dash: 'dot' }, type: 'scatter', hoverinfo: 'none' },
             { x: [last.x_trend], y: [last.y_momentum], mode: 'markers', marker: { size: 6, color: '#888888' }, type: 'scatter' }
-        ], commonLayout('Sector Top', 'Trend (X)', 'Momentum (Y)'), { displayModeBar: false, responsive: true });
+        ], { ...commonLayout('Sector Top', 'Trend (X)', 'Momentum (Y)'), shapes: [
+            { type: 'line', x0: -3, x1: 3, y0: 0.5, y1: 0.5, line: { color: c.grid, width: 1, dash: 'dot' } },
+            { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }
+        ] }, { displayModeBar: false, responsive: true });
     }
 
     await nextFrame();
