@@ -97,6 +97,11 @@ jobs:
         echo "🔄 Generating daily snapshot..."
         node scripts/generate-daily-snapshot.js
 
+    - name: Generate Dashboard Status (Trend/Comet)
+      run: |
+        echo "🔄 Generating dashboard status (Trend Continuation)..."
+        python scripts/production/daily_update.py
+
     - name: Update Status File
       run: |
         echo "🔄 Updating status file..."
@@ -115,7 +120,7 @@ jobs:
           exit 0
         fi
         
-        git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d) [skip ci]"
+        git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d)"
         
         # 嘗試拉取最新變更以避免衝突
         git pull --rebase origin main || true

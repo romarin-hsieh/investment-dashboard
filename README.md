@@ -9,8 +9,14 @@ Investment Dashboard is a high-performance market visualization tool designed to
 
 ## 🏗️ Architecture Design
 
-### Core Philosophy: "Static-First"
+### core Philosophy: "Static-First"
 The application avoids direct runtime dependencies on external APIs where possible. Instead, it relies on a "Static Data Pipeline" where data is pre-fetched, processed, and frozen into JSON files during the CI/CD build process.
+
+## 🧠 Quant Strategy Documentation
+Detailed documentation on the algorithmic core and validation reports:
+*   [**Strategy Dossier**](docs/QUANT_STRATEGY_DOSSIER.md): The mathematical core of the 3D Kinetic Market State.
+*   [**Category Strategy Matrix**](docs/CATEGORY_STRATEGY_MATRIX.md): Tag-based parameter mapping (Growth vs Value logic).
+*   [**Tag Validation Report**](docs/TAG_VALIDATION_REPORT.md): Evidence-based validation of the strategy parameters (2018-2025).
 
 ### Data Flow Diagram
 ```mermaid
@@ -114,3 +120,24 @@ node scripts/fetch-fundamentals.js
 - **Adding Symbols**: Update `public/data/symbols_metadata.json` or the relevant `scripts/` config.
 - **Styling**: Maintain the "Glassmorphism" aesthetic. Use `var(--bg-card)` and `var(--text-primary)`.
 - **Performance**: Use `<FastTradingViewWidget>` instead of direct embeddings.
+
+## 🔄 Deployment & Operations
+
+### Automated Data Pipeline
+This dashboard relies on **Daily Automated Updates** powered by GitHub Actions. The data pipeline is defined in `.github/workflows/daily-data-update.yml` and performs the following tasks every day at 02:00 UTC (10:00 Taipei Time):
+
+1.  **Market Data Sync**: Fetches latest OHLCV data via `yfinance`.
+2.  **Indicator Pre-computation**: Calculates heavy technical indicators (RSI, Bollinger Bands, etc.) server-side using Node.js and Python.
+3.  **Quant Strategy Analysis**:
+    *   Executes `scripts/production/daily_update.py`.
+    *   Generates `public/data/dashboard_status.json` which drives the **Comet Chart (Trend Continuation)** and **Market Status** components.
+    *   Applies the 3D Kinetic Market State algorithm (Trend, Momentum, Structure) to classify stocks (e.g., "Trend Continuation", "Launchpad").
+4.  **Auto-Deployment**: Pushes the fresh data to the `main` branch, which automatically triggers a **GitHub Pages** deployment to update the live site.
+
+### Manual Data Update
+To force a data update immediately:
+1.  Go to the [Actions](https://github.com/romarin-hsieh/investment-dashboard/actions) tab in the GitHub repository.
+2.  Select **"Daily Data Update"** workflow.
+3.  Click **"Run workflow"**.
+4.  Wait for the process to complete (approx. 5-10 mins). The site will re-deploy automatically afterward.
+

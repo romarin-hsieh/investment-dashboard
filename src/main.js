@@ -36,6 +36,10 @@ const routes = [
   { path: '/technical-manager', component: TechnicalIndicatorsManager, name: 'technical-manager' },
   { path: '/auto-update-monitor', component: AutoUpdateMonitor, name: 'auto-update-monitor' },
   { path: '/system-manager', component: SystemManager, name: 'system-manager' },
+  // Quant Strategy (Dev Only)
+  ...(process.env.NODE_ENV === 'development' ? [
+    { path: '/quant-strategy', component: () => import('./pages/QuantDashboard.vue'), name: 'quant-strategy' }
+  ] : []),
   // Catch-all route for 404s
   { path: '/:pathMatch(.*)*', redirect: '/market-overview' }
 ]

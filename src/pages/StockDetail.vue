@@ -118,6 +118,12 @@
                  <TechnicalSignals ref="technicalSignals" :symbol="symbol" />
                  <TechnicalIndicators :symbol="symbol" :exchange="exchange" :showTitle="false" />
             </div>
+            
+            <!-- Quant Review Block -->
+            <div class="review-block">
+              <div class="widget-header"><h3>Quant Kinetic State</h3></div>
+              <ReviewCometChart :symbol="symbol" :theme="theme" />
+            </div>
           </div>
 
           <!-- Symbol Insight Block -->
@@ -291,6 +297,7 @@ import HoldingsAnalysis from '@/components/HoldingsAnalysis.vue'
 import TechnicalSignals from '@/components/TechnicalSignals.vue'
 import TrendlinesSRWidget from '@/components/TrendlinesSRWidget.vue'
 import CisdWidget from '@/components/CisdWidget.vue'
+import ReviewCometChart from '@/components/ReviewCometChart.vue'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { useTheme } from '@/composables/useTheme.js'
 
@@ -312,7 +319,8 @@ export default {
     HoldingsAnalysis,
     TechnicalSignals,
     TrendlinesSRWidget,
-    CisdWidget
+    CisdWidget,
+    ReviewCometChart
   },
   setup() {
     const { theme } = useTheme()
@@ -795,6 +803,22 @@ export default {
   /* 移除固定高度限制，讓內容自然展開 */
   min-height: auto;
   height: auto;
+}
+
+/* Quant Review Block Styling */
+.review-block {
+    margin-top: 2rem; 
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm); /* Added Shadow */
+}
+
+.review-block .widget-header {
+    background: transparent;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .insight-full-widget .widget-header {
