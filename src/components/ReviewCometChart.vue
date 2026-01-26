@@ -131,7 +131,10 @@ const renderChartsSequentially = async () => {
         Plotly.newPlot(chartStockTop.value, [
             { x: history.map(p => p.x_trend), y: history.map(p => p.y_momentum), mode: 'lines', line: { color: '#2962FF', width: 2 }, type: 'scatter', hoverinfo: 'none' },
             { x: [d.coordinates.x_trend], y: [d.coordinates.y_momentum], mode: 'markers', marker: { size: 8, color: '#F23645' }, type: 'scatter' }
-        ], { ...commonLayout('Stock Top', 'Trend (X)', 'Momentum (Y)'), shapes: [{ type: 'line', x0: -3, x1: 3, y0: 0.5, y1: 0.5, line: { color: c.grid, width: 1, dash: 'dot' } }] }, { displayModeBar: false, responsive: true });
+        ], { ...commonLayout('Stock Top', 'Trend (X)', 'Momentum (Y)'), shapes: [
+            { type: 'line', x0: -3, x1: 3, y0: 0.5, y1: 0.5, line: { color: c.grid, width: 1, dash: 'dot' } },
+            { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }
+        ] }, { displayModeBar: false, responsive: true });
     }
     
     await nextFrame();
