@@ -41,6 +41,15 @@
     "ownershipList": [
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "BAILLIE GIFFORD & CO",
+        "pctHeld": 0.12149999,
+        "position": 4861445,
+        "value": 758263913,
+        "pctChange": 0.71910006
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1046,
@@ -65,15 +74,6 @@
         "position": 3178395,
         "value": 495750179,
         "pctChange": 0.15100001
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "BAILLIE GIFFORD & CO",
-        "pctHeld": 0.070700005,
-        "position": 2827834,
-        "value": 441071425,
-        "pctChange": 0.286
       },
       {
         "maxAge": 1,
@@ -1866,11 +1866,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0025965618,
+    "preMarketChange": -0.40499878,
+    "preMarketTime": "2026-01-26T12:34:14.000Z",
+    "preMarketPrice": 155.57,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0065715266,
-    "postMarketChange": 1.0249939,
-    "postMarketTime": "2026-01-24T00:59:26.000Z",
-    "postMarketPrice": 157,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.014801521,
     "regularMarketChange": 2.274994,
@@ -1888,7 +1888,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DUOL",
     "underlyingSymbol": null,
@@ -3785,6 +3785,6 @@
     "profitMargins": 0.40032002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-26T06:32:48.618Z",
+  "lastUpdated": "2026-01-26T12:39:58.775Z",
   "source": "Static Build (yahoo-finance2)"
 }

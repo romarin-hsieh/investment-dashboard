@@ -87,15 +87,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "BAILLIE GIFFORD & CO",
-        "pctHeld": 0.035099998,
-        "position": 11413479,
-        "value": 1485236077,
-        "pctChange": -0.045500003
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0325,
         "position": 10561176,
@@ -128,6 +119,15 @@
         "position": 6113794,
         "value": 795588043,
         "pctChange": -0.0324
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Jennison Associates LLC",
+        "pctHeld": 0.0163,
+        "position": 5306999,
+        "value": 690599805,
+        "pctChange": -0.0429
       }
     ]
   },
@@ -4238,11 +4238,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0024591356,
+    "preMarketChange": -0.32000732,
+    "preMarketTime": "2026-01-26T12:31:27.000Z",
+    "preMarketPrice": 129.81,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0010412514,
-    "postMarketChange": 0.13549805,
-    "postMarketTime": "2026-01-24T00:59:52.000Z",
-    "postMarketPrice": 130.2655,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.008533296,
     "regularMarketChange": -1.1199951,
@@ -4260,7 +4260,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -6136,6 +6136,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-26T06:32:46.699Z",
+  "lastUpdated": "2026-01-26T12:39:57.035Z",
   "source": "Static Build (yahoo-finance2)"
 }

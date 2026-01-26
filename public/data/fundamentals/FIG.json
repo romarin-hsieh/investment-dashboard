@@ -95,6 +95,15 @@
       },
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "BAILLIE GIFFORD & CO",
+        "pctHeld": 0.0139,
+        "position": 5763613,
+        "value": 166741325,
+        "pctChange": 0.9382
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Durable Capital Partners Lp",
         "pctHeld": 0.0128999995,
@@ -118,15 +127,6 @@
         "pctHeld": 0.0099,
         "position": 4132853,
         "value": 119563438,
-        "pctChange": 1
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "SCHF (GPE), LLC",
-        "pctHeld": 0.0094,
-        "position": 3917596,
-        "value": 113336053,
         "pctChange": 1
       }
     ]
@@ -417,11 +417,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.003109888,
+    "preMarketChange": -0.09000015,
+    "preMarketTime": "2026-01-26T12:24:27.000Z",
+    "preMarketPrice": 28.85,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00069133966,
-    "postMarketChange": 0.020000458,
-    "postMarketTime": "2026-01-24T00:59:56.000Z",
-    "postMarketPrice": 28.95,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0179451,
     "regularMarketChange": 0.51,
@@ -439,7 +439,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "FIG",
     "underlyingSymbol": null,
@@ -1428,6 +1428,6 @@
     "profitMargins": -0.95577,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-26T06:32:41.301Z",
+  "lastUpdated": "2026-01-26T12:39:51.415Z",
   "source": "Static Build (yahoo-finance2)"
 }

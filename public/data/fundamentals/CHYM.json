@@ -203,6 +203,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-01-26T11:08:15.000Z",
+        "firm": "Rothschild & Co",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 29,
+        "priorPriceTarget": 0
+      },
+      {
         "epochGradeDate": "2026-01-06T17:55:46.000Z",
         "firm": "Goldman Sachs",
         "toGrade": "Buy",
@@ -457,11 +467,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0045351074,
+    "preMarketChange": -0.11999893,
+    "preMarketTime": "2026-01-26T10:16:53.000Z",
+    "preMarketPrice": 26.34,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0022675537,
-    "postMarketChange": -0.059999466,
-    "postMarketTime": "2026-01-24T00:56:56.000Z",
-    "postMarketPrice": 26.4,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.020000033,
     "regularMarketChange": -0.5400009,
@@ -479,7 +489,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CHYM",
     "underlyingSymbol": null,
@@ -930,6 +940,6 @@
     "profitMargins": -0.47674,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-26T06:32:20.641Z",
+  "lastUpdated": "2026-01-26T12:39:31.582Z",
   "source": "Static Build (yahoo-finance2)"
 }
