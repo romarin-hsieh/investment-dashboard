@@ -14,9 +14,7 @@
               <li>
                 <router-link to="/stock-overview" class="nav-link">Stock Overview</router-link>
               </li>
-              <li>
-                <router-link to="/quant-strategy" class="nav-link">Quant Strategy</router-link>
-              </li>
+
               <li>
                 <router-link to="/system-manager" class="nav-link">Control Panel</router-link>
               </li>

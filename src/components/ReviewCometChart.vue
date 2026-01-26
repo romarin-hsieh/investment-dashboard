@@ -141,7 +141,7 @@ const renderChartsSequentially = async () => {
         Plotly.newPlot(chartStockSide.value, [
             { x: history.map(p => p.x_trend), y: history.map(p => p.z_structure), mode: 'lines', line: { color: '#8E24AA', width: 2 }, type: 'scatter', hoverinfo: 'none' },
             { x: [d.coordinates.x_trend], y: [d.coordinates.z_structure], mode: 'markers', marker: { size: 8, color: '#F23645' }, type: 'scatter' }
-        ], { ...commonLayout('Stock Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0, y1: 0.2, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
+        ], { ...commonLayout('Stock Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.0, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
     }
 
     await nextFrame();
@@ -163,7 +163,7 @@ const renderChartsSequentially = async () => {
         Plotly.newPlot(chartSectorSide.value, [
             { x: validSector.map(p => p.x_trend), y: validSector.map(p => p.z_structure), mode: 'lines', line: { color: '#888888', width: 2, dash: 'dot' }, type: 'scatter', hoverinfo: 'none' },
             { x: [last.x_trend], y: [last.z_structure], mode: 'markers', marker: { size: 6, color: '#888888' }, type: 'scatter' }
-        ], { ...commonLayout('Sector Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0, y1: 0.2, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
+        ], { ...commonLayout('Sector Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.0, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
     }
 
     await nextFrame();
@@ -173,7 +173,7 @@ const renderChartsSequentially = async () => {
         Plotly.newPlot(chart3D.value, [
             { x: history.map(p => p.x_trend), y: history.map(p => p.y_momentum), z: history.map(p => p.z_structure), mode: 'lines', line: { color: '#2962FF', width: 4 }, type: 'scatter3d', hoverinfo: 'none' },
             { x: [d.coordinates.x_trend], y: [d.coordinates.y_momentum], z: [d.coordinates.z_structure], mode: 'markers', marker: { size: 5, color: '#F23645' }, type: 'scatter3d' },
-            { type: "mesh3d", x: [-3, 3, 3, -3], y: [0, 0, 1, 1], z: [0.2, 0.2, 0.2, 0.2], color: '#FFD700', opacity: 0.1 }
+            { type: "mesh3d", x: [-3, 3, 3, -3], y: [0, 0, 1, 1], z: [0.8, 0.8, 0.8, 0.8], color: '#FFD700', opacity: 0.1 }
         ], {
             paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', font: { color: c.text, size: 9 }, margin: { l: 0, r: 0, b: 0, t: 0 }, showlegend: false,
             scene: { xaxis: { title: 'X', range: [-3, 3], gridcolor: c.grid }, yaxis: { title: 'Y', range: [0, 1], gridcolor: c.grid }, zaxis: { title: 'Z', range: [0, 1], gridcolor: c.grid }, camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } } }
@@ -283,9 +283,9 @@ onUnmounted(() => {
                 <span>Squeeze Potential</span>
                  <button class="info-btn" @click.stop="togglePopover('stock-side')">?</button>
                  <div v-if="activePopover === 'stock-side'" class="popover">
-                    <strong>Trend (X) vs Structure (Z)</strong>
-                    <p>Z < 0.2: Squeeze (Yellow)</p>
-                    <p>Low Z = High Explosive Potential</p>
+                     <strong>Trend (X) vs Structure (Z)</strong>
+                    <p>Z > 0.8: Squeeze (Yellow)</p>
+                    <p>High Z = Tight Structure (Explosive Potential)</p>
                 </div>
             </div>
             <div class="chart-canvas" ref="chartStockSide"></div>
@@ -365,112 +365,17 @@ onUnmounted(() => {
     justify-content: space-between;
     align-items: center;
     position: relative; /* Anchor for Popover */
+    z-index: 100; /* Ensure header is above chart content */
 }
 
-.chart-canvas {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-}
+/* ... existing styles ... */
 
-/* Card Internals - Tech Signal Style */
-.inner-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    gap: 1.2rem;
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid;
-    border-color: rgba(128, 128, 128, 0.2); 
-}
-
-.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: 600; }
-
-.metrics-table {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    font-size: 0.85rem;
-}
-
-.table-row {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    padding: 8px 4px;
-    align-items: center;
-}
-
-.table-row.header {
-    font-weight: 600;
-    opacity: 0.6;
-    font-size: 0.75rem;
-    padding-bottom: 4px;
-}
-
-.table-row.dashed {
-    border-bottom: 1px dashed;
-    border-color: inherit;
-}
-
-/* Dashed lines color adaptation */
-.review-comet-container.dark .table-row.dashed { border-color: #2A2E39; }
-.review-comet-container.light .table-row.dashed { border-color: #E0E3EB; }
-
-.col-val { text-align: right; font-family: 'Roboto Mono', monospace; }
-.col-val.highlight { font-weight: bold; color: #2962FF; }
-.col-val.muted { opacity: 0.6; font-size: 0.8rem; }
-
-.commentary {
-    /* margin-top: auto; Removed to allow being pushed to top */
-    margin-bottom: 0.8rem; /* Add spacing below */
-    font-size: 0.85rem;
-    line-height: 1.4;
-    font-weight: 500;
-    color: var(--text-color); /* Improve contrast */
-    background: rgba(41, 98, 255, 0.08); /* Highlight bg */
-    border-left: 3px solid #2962FF; /* Accent bar */
-    padding: 0.75rem;
-    border-radius: 4px;
-}
-
-.signal-badge {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 0.5px;
-}
-.signal-badge.dip_buy { background: #089981; }
-.signal-badge.launchpad { background: #FFD700; color: #000; }
-.signal-badge.climax { background: #F23645; }
-.signal-badge.wait { background: #787B86; }
-
-/* Popover */
-.info-btn {
-    opacity: 0.6; /* Increased base opacity */
-    transition: all 0.2s;
-    border-radius: 50%;
-    border: 1px solid currentColor;
-    width: 18px; height: 18px; /* Bigger hit area */
-    font-size: 11px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-}
-.info-btn:hover { opacity: 1; background: rgba(128,128,128, 0.1); }
 .popover {
     position: absolute; top: 30px; right: 10px;
     background: var(--bg-card, #1E222D);
     border: 1px solid var(--border-color, #2A2E39);
-    padding: 0.8rem; border-radius: 4px; z-index: 999;
+    padding: 0.8rem; border-radius: 4px; 
+    z-index: 10000; /* Super high Z-index */
     width: 180px; font-size: 0.75rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }

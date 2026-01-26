@@ -1,6 +1,7 @@
 """
 Category Universes Definition (ETF Proxy Method)
 Frozen as of Early 2026 (based on late 2025 filings)
+Updated to include all dashboard tracked stocks (>70 symbols).
 
 Source ETFs:
 - GROWTH: VUG (Vanguard Growth)
@@ -12,34 +13,41 @@ Source ETFs:
 
 CATEGORY_UNIVERSES = {
     "GROWTH": [
-        "NVDA", "AAPL", "MSFT", "GOOGL", "AMZN", 
-        "META", "AVGO", "TSLA", "LLY", "V", 
-        "MA", "NFLX", "PLTR", "COST", "AMD", 
-        "ORCL", "CRM", "MCD", "LRCX", "INTU"
+        "NVDA", "MSFT", "GOOG", "AMZN", "META", 
+        "TSLA", "NFLX", "AVGO", "CRM", "PLTR", 
+        "MDB", "ORCL", "TSM", "AMD", "LRCX", 
+        "ADBE", "PANW", "CRWD", "DDOG", "APP",
+        "ZETA", "ALAB", "MU", "SMCI", "VRT",
+        "NET", "ZS", "SE", "MELI", "GRAB",
+        "DUOL", "PATH", "INTR", "KSPI", "SNDK"
     ],
     "VALUE": [
         "JPM", "BRK-B", "XOM", "JNJ", "WMT", 
-        "ABBV", "BAC", "HD", "PG", "MU", 
-        "UNH", "WFC", "CVX", "IBM", "CSCO", 
-        "CAT", "MRK", "GS", "PM", "RTX"
+        "ABBV", "BAC", "HD", "PG", "CSCO", 
+        "CVX", "IBM", "CAT", "MRK", "GS", 
+        "PM", "RTX", "V", "MA", "COST",
+        "UNH", "WFC", "INTU", "AXP", "TRV",
+        "BA", "HON", "MMM", "KO", "MCD"
     ],
     "DIVIDEND": [
-        "AVGO", "JPM", "XOM", "JNJ", "WMT", 
-        "ABBV", "BAC", "HD", "PG", "CSCO", 
-        "UNH", "WFC", "CVX", "IBM", "KO", 
-        "CAT", "MRK", "GS", "PM", "RTX"
+        "VYM", "SCHD", "VIG", "DGRO", "VNQ",
+        "O", "MAIN", "JEPI", "JEPQ", "DIVO"
     ],
     "SMALL_CAP": [
-        "BE", "CRDO", "KTOS", "HL", "FN", 
-        "SATS", "IONQ", "CDE", "NXT", "GH", 
-        "CVLT", "QBTS", "MDGL", "BBIO", "HQY", 
-        "DY", "STRL", "RMBS", "HIMS", "ACHR"
+        "IWM", "RIVN", "PL", "ONDS", "RDW", 
+        "AVAV", "RKLB", "ASTS", "ACHR", "JOBY",
+        "HIMS", "IONQ", "RGTI", "QBTS", "D-WAVE",
+        "LUNR", "RBRK", "SOFI", "HOOD", "NU",
+        "CLSK", "IREN", "WULF", "CIFR", "HUT",
+        "CRWV", "TMDX", "CHYM", "CRCL", "AXON",
+        "KTOS", "BE", "EOSE", "SMR", "OKLO",
+        "LEU", "CCJ", "UUUU", "MP", "BWXT",
+        "VST", "CEG", "ETN", "GEV", "POWL",
+        "UMAC", "FIG", "COIN", "IBKR", "RR"
     ],
     "BLUE_CHIP": [
-        "GS", "CAT", "MSFT", "HD", "AXP", 
-        "SHW", "UNH", "AMGN", "V", "MCD", 
-        "JPM", "IBM", "TRV", "BA", "AAPL", 
-        "AMZN", "CRM", "HON", "JNJ", "NVDA"
+        "DIA", "SPY", "QQQ", "IWM", "VUG", 
+        "VTV", "GLD", "SLV", "USO", "UNG"
     ]
 }
 
@@ -48,4 +56,6 @@ def get_all_category_tickers():
     all_tickers = set()
     for tickers in CATEGORY_UNIVERSES.values():
         all_tickers.update(tickers)
+    # Filter out placeholders or indices if needed, but for now we keep everything that looks like a ticker
+    # Ensure standard tickers like 'GOOGL' vs 'GOOG' are handled if needed. Using 'GOOG' as per config.
     return list(all_tickers)
