@@ -7,16 +7,17 @@
  * 3. localStorage 快照 (last-known-good)
  * 4. 顯示 N/A + stale indicator
  */
+/// <reference types="vite/client" />
 
-import type { 
-  SystemStatus, 
-  QuotesSnapshot, 
-  DailySnapshot, 
+import type {
+  SystemStatus,
+  QuotesSnapshot,
+  DailySnapshot,
   MetadataSnapshot
 } from '@/types'
-import { 
+import {
   validateSystemStatus,
-  validateQuotesSnapshot, 
+  validateQuotesSnapshot,
   validateDailySnapshot,
   validateMetadataSnapshot
 } from '@/utils/validation'
@@ -51,7 +52,7 @@ export class DataFetcher {
 
       const data = await response.json()
       const validation = validateSystemStatus(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid status.json: ${validation.error?.message}`)
       }
@@ -64,7 +65,7 @@ export class DataFetcher {
       }
     } catch (error) {
       console.warn('Failed to fetch system status:', error)
-      
+
       // Fallback to cached status if available
       const state = StateManager.loadState()
       if (state.cache.last_daily_snapshot) {
@@ -78,7 +79,7 @@ export class DataFetcher {
 
       return {
         data: null,
-        source: 'fallback', 
+        source: 'fallback',
         stale_level: 'very_stale',
         error: String(error)
       }
@@ -93,7 +94,7 @@ export class DataFetcher {
       // 1. 先檢查 status.json 獲取時間戳
       const statusResult = await this.fetchSystemStatus()
       let cacheBuster = ''
-      
+
       if (this.cacheBustingEnabled && statusResult.data?.last_updated) {
         const timestamp = new Date(statusResult.data.last_updated).getTime()
         cacheBuster = `?t=${timestamp}`
@@ -107,13 +108,12 @@ export class DataFetcher {
 
       const data = await response.json()
       const validation = validateQuotesSnapshot(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid quotes snapshot: ${validation.error?.message}`)
       }
 
       // 3. 成功時更新 localStorage cache
-      const userState = StateManager.loadState()
       StateManager.updateCache({
         last_quotes_snapshot: validation.data!
       })
@@ -127,7 +127,7 @@ export class DataFetcher {
 
     } catch (error) {
       console.warn('Failed to fetch quotes snapshot:', error)
-      
+
       // 4. Fallback to localStorage cache
       const userState = StateManager.loadState()
       if (userState.cache.last_quotes_snapshot) {
@@ -157,10 +157,10 @@ export class DataFetcher {
     try {
       // 使用今天的日期 (Taipei timezone) 如果沒有指定
       const targetDate = date || this.getTaipeiDateString()
-      
+
       const statusResult = await this.fetchSystemStatus()
       let cacheBuster = ''
-      
+
       if (this.cacheBustingEnabled && statusResult.data?.last_updated) {
         const timestamp = new Date(statusResult.data.last_updated).getTime()
         cacheBuster = `?t=${timestamp}`
@@ -173,7 +173,7 @@ export class DataFetcher {
 
       const data = await response.json()
       const validation = validateDailySnapshot(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid daily snapshot: ${validation.error?.message}`)
       }
@@ -192,7 +192,7 @@ export class DataFetcher {
 
     } catch (error) {
       console.warn('Failed to fetch daily snapshot:', error)
-      
+
       // Fallback to cache
       const userState = StateManager.loadState()
       if (userState.cache.last_daily_snapshot) {
@@ -221,7 +221,7 @@ export class DataFetcher {
     try {
       const statusResult = await this.fetchSystemStatus()
       let cacheBuster = ''
-      
+
       if (this.cacheBustingEnabled && statusResult.data?.last_updated) {
         const timestamp = new Date(statusResult.data.last_updated).getTime()
         cacheBuster = `?t=${timestamp}`
@@ -234,7 +234,7 @@ export class DataFetcher {
 
       const data = await response.json()
       const validation = validateMetadataSnapshot(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid metadata snapshot: ${validation.error?.message}`)
       }
@@ -253,7 +253,7 @@ export class DataFetcher {
 
     } catch (error) {
       console.warn('Failed to fetch metadata snapshot:', error)
-      
+
       // Fallback to cache
       const userState = StateManager.loadState()
       if (userState.cache.last_metadata) {
@@ -305,18 +305,9 @@ export class DataFetcher {
 
 // 導出單例實例 - 根據環境設置正確的基礎路徑
 const getBaseUrl = () => {
-  if (typeof window !== 'undefined') {
-    // 在瀏覽器環境中，檢查是否在 GitHub Pages
-    const hostname = window.location.hostname
-    const pathname = window.location.pathname
-    
-    if (hostname === 'romarin-hsieh.github.io' && pathname.startsWith('/investment-dashboard')) {
-      return '/investment-dashboard'
-    }
-  }
-  
-  // 開發環境或其他環境使用相對路徑
-  return ''
+  // Use Standard Vite Environment Variable
+  const startUrl = import.meta.env.BASE_URL;
+  return startUrl.endsWith('/') ? startUrl.slice(0, -1) : startUrl;
 }
 
 export const dataFetcher = new DataFetcher(getBaseUrl())

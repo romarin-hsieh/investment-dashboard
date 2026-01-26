@@ -551,7 +551,9 @@ export default {
         console.log('?? Starting simple stock data load...')
         
         // ???脣? base path
-        const basePath = import.meta.env.PROD ? '/investment-dashboard' : ''
+        const basePath = import.meta.env.BASE_URL.endsWith('/') 
+            ? import.meta.env.BASE_URL.slice(0, -1) 
+            : import.meta.env.BASE_URL;
         
         // 1. 頛?蔭
         this.configuredSymbols = await stocksConfig.getEnabledSymbols()

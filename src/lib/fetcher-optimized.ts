@@ -8,15 +8,15 @@
  * 4. 更好的錯誤處理
  */
 
-import type { 
-  SystemStatus, 
-  QuotesSnapshot, 
-  DailySnapshot, 
+import type {
+  SystemStatus,
+  QuotesSnapshot,
+  DailySnapshot,
   MetadataSnapshot
 } from '@/types'
-import { 
+import {
   validateSystemStatus,
-  validateQuotesSnapshot, 
+  validateQuotesSnapshot,
   validateDailySnapshot,
   validateMetadataSnapshot
 } from '@/utils/validation'
@@ -47,7 +47,7 @@ export class OptimizedDataFetcher {
    */
   async fetchSystemStatus(): Promise<FetchResult<SystemStatus>> {
     const startTime = performance.now()
-    
+
     try {
       // 使用 AbortController 實現超時
       const controller = new AbortController()
@@ -56,16 +56,16 @@ export class OptimizedDataFetcher {
       const response = await fetch(`${this.baseUrl}/data/status.json`, {
         signal: controller.signal
       })
-      
+
       clearTimeout(timeoutId)
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
 
       const data = await response.json()
       const validation = validateSystemStatus(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid status.json: ${validation.error?.message}`)
       }
@@ -80,7 +80,7 @@ export class OptimizedDataFetcher {
     } catch (error) {
       const loadTime = performance.now() - startTime
       console.warn(`Status.json failed after ${loadTime.toFixed(2)}ms:`, error)
-      
+
       return {
         data: null,
         source: 'fallback',
@@ -96,29 +96,29 @@ export class OptimizedDataFetcher {
    */
   async fetchQuotesSnapshot(): Promise<FetchResult<QuotesSnapshot>> {
     const startTime = performance.now()
-    
+
     try {
       // 並行載入 status 和 quotes，但不讓 status 阻塞 quotes
       const statusPromise = this.fetchSystemStatus()
       const quotesPromise = this.fetchQuotesDirectly()
-      
+
       // 等待 quotes 載入，status 可以稍後完成
       const quotesResult = await quotesPromise
-      
+
       // 如果 quotes 成功，嘗試使用 status 的時間戳進行緩存破壞
       try {
         const statusResult = await Promise.race([
           statusPromise,
           new Promise(resolve => setTimeout(() => resolve(null), 1000)) // 1秒後放棄等待 status
         ])
-        
-        if (statusResult && statusResult.data) {
+
+        if (statusResult && (statusResult as any).data) {
           console.log('✅ Status loaded for cache busting')
         }
       } catch (error) {
         console.warn('⚠️ Status loading failed, continuing without cache busting')
       }
-      
+
       return {
         ...quotesResult,
         loadTime: performance.now() - startTime
@@ -127,7 +127,7 @@ export class OptimizedDataFetcher {
     } catch (error) {
       const loadTime = performance.now() - startTime
       console.warn('Failed to fetch quotes snapshot:', error)
-      
+
       // Fallback to cache
       const userState = StateManager.loadState()
       if (userState.cache.last_quotes_snapshot) {
@@ -161,20 +161,20 @@ export class OptimizedDataFetcher {
     try {
       // 使用簡單的時間戳緩存破壞
       const cacheBuster = this.cacheBustingEnabled ? `?t=${Date.now()}` : ''
-      
+
       const response = await fetch(`${this.baseUrl}/data/quotes/latest.json${cacheBuster}`, {
         signal: controller.signal
       })
-      
+
       clearTimeout(timeoutId)
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
 
       const data = await response.json()
       const validation = validateQuotesSnapshot(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid quotes snapshot: ${validation.error?.message}`)
       }
@@ -202,7 +202,7 @@ export class OptimizedDataFetcher {
    */
   async fetchDailySnapshot(date?: string): Promise<FetchResult<DailySnapshot>> {
     const startTime = performance.now()
-    
+
     try {
       const targetDate = date || this.getTaipeiDateString()
       const controller = new AbortController()
@@ -210,20 +210,20 @@ export class OptimizedDataFetcher {
 
       // 直接載入，不等待 status.json
       const cacheBuster = this.cacheBustingEnabled ? `?t=${Date.now()}` : ''
-      
+
       const response = await fetch(`${this.baseUrl}/data/daily/${targetDate}.json${cacheBuster}`, {
         signal: controller.signal
       })
-      
+
       clearTimeout(timeoutId)
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
 
       const data = await response.json()
       const validation = validateDailySnapshot(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid daily snapshot: ${validation.error?.message}`)
       }
@@ -244,7 +244,7 @@ export class OptimizedDataFetcher {
     } catch (error) {
       const loadTime = performance.now() - startTime
       console.warn('Failed to fetch daily snapshot:', error)
-      
+
       // Fallback to cache
       const userState = StateManager.loadState()
       if (userState.cache.last_daily_snapshot) {
@@ -273,26 +273,26 @@ export class OptimizedDataFetcher {
    */
   async fetchMetadataSnapshot(): Promise<FetchResult<MetadataSnapshot>> {
     const startTime = performance.now()
-    
+
     try {
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), this.dataTimeout)
 
       const cacheBuster = this.cacheBustingEnabled ? `?t=${Date.now()}` : ''
-      
+
       const response = await fetch(`${this.baseUrl}/data/symbols_metadata.json${cacheBuster}`, {
         signal: controller.signal
       })
-      
+
       clearTimeout(timeoutId)
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
 
       const data = await response.json()
       const validation = validateMetadataSnapshot(data)
-      
+
       if (!validation.success) {
         throw new Error(`Invalid metadata snapshot: ${validation.error?.message}`)
       }
@@ -313,7 +313,7 @@ export class OptimizedDataFetcher {
     } catch (error) {
       const loadTime = performance.now() - startTime
       console.warn('Failed to fetch metadata snapshot:', error)
-      
+
       // Fallback to cache
       const userState = StateManager.loadState()
       if (userState.cache.last_metadata) {
@@ -347,21 +347,21 @@ export class OptimizedDataFetcher {
     totalTime: number
   }> {
     const startTime = performance.now()
-    
+
     // 並行載入所有數據
     const [quotes, daily, metadata] = await Promise.all([
       this.fetchQuotesSnapshot(),
       this.fetchDailySnapshot(),
       this.fetchMetadataSnapshot()
     ])
-    
+
     const totalTime = performance.now() - startTime
-    
+
     console.log(`📊 Batch load completed in ${totalTime.toFixed(2)}ms:`)
     console.log(`   Quotes: ${quotes.loadTime?.toFixed(2)}ms (${quotes.source})`)
     console.log(`   Daily: ${daily.loadTime?.toFixed(2)}ms (${daily.source})`)
     console.log(`   Metadata: ${metadata.loadTime?.toFixed(2)}ms (${metadata.source})`)
-    
+
     return { quotes, daily, metadata, totalTime }
   }
 
@@ -413,18 +413,13 @@ export class OptimizedDataFetcher {
   }
 }
 
+/// <reference types="vite/client" />
+
 // 導出優化版本的實例
 const getBaseUrl = () => {
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname
-    const pathname = window.location.pathname
-    
-    if (hostname === 'romarin-hsieh.github.io' && pathname.startsWith('/investment-dashboard')) {
-      return '/investment-dashboard'
-    }
-  }
-  
-  return ''
+  // Use Standard Vite Environment Variable
+  const startUrl = import.meta.env.BASE_URL;
+  return startUrl.endsWith('/') ? startUrl.slice(0, -1) : startUrl;
 }
 
 export const optimizedDataFetcher = new OptimizedDataFetcher(getBaseUrl())

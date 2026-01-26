@@ -22,7 +22,10 @@ class QuantDataService {
         }
 
         // Fetch new data
-        this.fetchPromise = fetch('/data/dashboard_status.json')
+        const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+            ? import.meta.env.BASE_URL.slice(0, -1)
+            : import.meta.env.BASE_URL;
+        this.fetchPromise = fetch(`${baseUrl}/data/dashboard_status.json`)
             .then(res => {
                 if (!res.ok) throw new Error('Network response was not ok');
                 return res.json();

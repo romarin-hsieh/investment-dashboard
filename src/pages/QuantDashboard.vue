@@ -17,7 +17,10 @@ const fetchData = async () => {
         loading.value = true;
         // Fetch the generated analysis report
         // Fetch the generated analysis report
-        const response = await fetch('/data/dashboard_status.json');
+        const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
+            ? import.meta.env.BASE_URL.slice(0, -1) 
+            : import.meta.env.BASE_URL;
+        const response = await fetch(`${baseUrl}/data/dashboard_status.json`);
         if (!response.ok) throw new Error('Failed to load analysis data');
         
         const jsonData = await response.json();
