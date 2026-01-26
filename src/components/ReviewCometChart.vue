@@ -368,7 +368,105 @@ onUnmounted(() => {
     z-index: 100; /* Ensure header is above chart content */
 }
 
-/* ... existing styles ... */
+.chart-canvas {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+/* Card Internals - Tech Signal Style */
+.inner-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 1.2rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid;
+    border-color: rgba(128, 128, 128, 0.2); 
+}
+
+.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: 600; }
+
+.metrics-table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 0.85rem;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    padding: 8px 4px;
+    align-items: center;
+}
+
+.table-row.header {
+    font-weight: 600;
+    opacity: 0.6;
+    font-size: 0.75rem;
+    padding-bottom: 4px;
+}
+
+.table-row.dashed {
+    border-bottom: 1px dashed;
+    border-color: inherit;
+}
+
+/* Dashed lines color adaptation */
+.review-comet-container.dark .table-row.dashed { border-color: #2A2E39; }
+.review-comet-container.light .table-row.dashed { border-color: #E0E3EB; }
+
+.col-val { text-align: right; font-family: 'Roboto Mono', monospace; }
+.col-val.highlight { font-weight: bold; color: #2962FF; }
+.col-val.muted { opacity: 0.6; font-size: 0.8rem; }
+
+.commentary {
+    /* margin-top: auto; Removed to allow being pushed to top */
+    margin-bottom: 0.8rem; /* Add spacing below */
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: var(--text-color); /* Improve contrast */
+    background: rgba(41, 98, 255, 0.08); /* Highlight bg */
+    border-left: 3px solid #2962FF; /* Accent bar */
+    padding: 0.75rem;
+    border-radius: 4px;
+}
+
+.signal-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.signal-badge.dip_buy { background: #089981; }
+.signal-badge.launchpad { background: #FFD700; color: #000; }
+.signal-badge.climax { background: #F23645; }
+.signal-badge.wait { background: #787B86; }
+
+/* Popover */
+.info-btn {
+    opacity: 0.6; /* Increased base opacity */
+    transition: all 0.2s;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    width: 18px; height: 18px; /* Bigger hit area */
+    font-size: 11px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+}
+.info-btn:hover { opacity: 1; background: rgba(128,128,128, 0.1); }
 
 .popover {
     position: absolute; top: 30px; right: 10px;
