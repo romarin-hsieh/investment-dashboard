@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1016,
         "position": 38833036,
-        "value": 7085281654,
+        "value": 7037710948,
         "pctChange": 0.0217
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.094399996,
         "position": 36083094,
-        "value": 6583540981,
+        "value": 6539338971,
         "pctChange": 0.0238
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0254,
         "position": 9726516,
-        "value": 1774651494,
+        "value": 1762736453,
         "pctChange": -0.0623
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0221,
         "position": 8459323,
-        "value": 1543445793,
+        "value": 1533083071,
         "pctChange": 0.0229
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0221,
         "position": 8453402,
-        "value": 1542365477,
+        "value": 1532010008,
         "pctChange": 1.0168
       },
       {
@@ -90,7 +90,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.020499999,
         "position": 7831810,
-        "value": 1428952907,
+        "value": 1419358892,
         "pctChange": -0.1172
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0186,
         "position": 7121309,
-        "value": 1299318446,
+        "value": 1290594799,
         "pctChange": 1.995
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.018099999,
         "position": 6922091,
-        "value": 1262970126,
+        "value": 1254490522,
         "pctChange": 0.0352
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.016900001,
         "position": 6445091,
-        "value": 1175939090,
+        "value": 1168043814,
         "pctChange": -0.2216
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0153,
         "position": 5852587,
-        "value": 1067833771,
+        "value": 1060664317,
         "pctChange": -0.013300001
       }
     ]
@@ -1679,14 +1679,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.00019183157,
-    "regularMarketChange": -0.035003662,
-    "regularMarketTime": "2026-01-26T18:30:30.000Z",
+    "postMarketChangePercent": -0.00022067697,
+    "postMarketChange": -0.039993286,
+    "postMarketTime": "2026-01-27T01:00:00.000Z",
+    "postMarketPrice": 181.19,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.00690454,
+    "regularMarketChange": -1.26001,
+    "regularMarketTime": "2026-01-26T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 182.455,
+    "regularMarketPrice": 181.23,
     "regularMarketDayHigh": 185.32,
     "regularMarketDayLow": 180.08,
-    "regularMarketVolume": 1702574,
+    "regularMarketVolume": 2999989,
     "averageDailyVolume10Day": 4516160,
     "averageDailyVolume3Month": 6419232,
     "regularMarketPreviousClose": 182.49,
@@ -1695,25 +1700,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "VRT",
     "underlyingSymbol": null,
     "shortName": "Vertiv Holdings, LLC",
     "longName": "Vertiv Holdings Co",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 69759533056
+    "marketCap": 69291171840
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 71020519424,
-    "forwardPE": 34.276466,
+    "forwardPE": 34.046333,
     "profitMargins": 0.10666,
     "floatShares": 375899736,
     "sharesOutstanding": 382338313,
@@ -1730,7 +1735,7 @@
     "impliedSharesOutstanding": 382338313,
     "category": null,
     "bookValue": 9.179,
-    "priceToBook": 19.877438,
+    "priceToBook": 19.74398,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -3218,7 +3223,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 182.455,
+    "currentPrice": 181.23,
     "targetHighPrice": 249,
     "targetLowPrice": 147,
     "targetMeanPrice": 200.15625,
@@ -3248,6 +3253,6 @@
     "profitMargins": 0.10666,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-26T18:30:33.065Z",
+  "lastUpdated": "2026-01-27T01:26:28.412Z",
   "source": "Static Build (yahoo-finance2)"
 }
