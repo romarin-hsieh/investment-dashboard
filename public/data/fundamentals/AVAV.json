@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00772,
-    "institutionsPercentHeld": 0.88665,
-    "institutionsFloatPercentHeld": 0.89355004,
+    "institutionsPercentHeld": 0.88691,
+    "institutionsFloatPercentHeld": 0.89381,
     "institutionsCount": 766
   },
   "earnings": {
@@ -1468,11 +1468,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0047906353,
+    "preMarketChange": 1.4499817,
+    "preMarketTime": "2026-01-27T12:38:45.000Z",
+    "preMarketPrice": 304.12,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0014868081,
-    "postMarketChange": -0.4500122,
-    "postMarketTime": "2026-01-27T00:56:20.000Z",
-    "postMarketPrice": 302.22,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0165069,
     "regularMarketChange": -5.07999,
@@ -1482,15 +1482,15 @@
     "regularMarketDayHigh": 309.9299,
     "regularMarketDayLow": 298.53,
     "regularMarketVolume": 1345066,
-    "averageDailyVolume10Day": 1912150,
-    "averageDailyVolume3Month": 1204465,
+    "averageDailyVolume10Day": 1858330,
+    "averageDailyVolume3Month": 1206924,
     "regularMarketPreviousClose": 307.75,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 307.07,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVAV",
     "underlyingSymbol": null,
@@ -1518,7 +1518,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0629,
     "heldPercentInsiders": 0.00772,
-    "heldPercentInstitutions": 0.88665,
+    "heldPercentInstitutions": 0.88691,
     "shortRatio": 2.65,
     "shortPercentOfFloat": 0.0838,
     "beta": 1.162,
@@ -1537,8 +1537,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.155,
     "enterpriseToEbitda": 145.133,
-    "52WeekChange": 0.75816953,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": 0.7291477,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1699,6 +1699,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1791,
+        "value": 498023,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
+        "filerName": "MCDONNELL KEVIN PATRICK",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 609,
         "value": 169345,
         "filerUrl": "",
@@ -1843,18 +1855,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1791,
-        "value": 498023,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
-        "filerName": "MCDONNELL KEVIN PATRICK",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 609,
         "value": 169345,
         "filerUrl": "",
@@ -1863,6 +1863,28 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2280,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SHACKLEY BRIAN CHARLES",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17115,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCDONNELL KEVIN PATRICK",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1894,28 +1916,6 @@
         "transactionText": "",
         "filerName": "BROWN MELISSA ANN",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2280,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SHACKLEY BRIAN CHARLES",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 17115,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCDONNELL KEVIN PATRICK",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-06-24T00:00:00.000Z",
         "ownership": "D"
@@ -2114,6 +2114,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2465,
+        "value": 433027,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "MCDONNELL KEVIN PATRICK",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 910,
         "value": 159860,
         "filerUrl": "",
@@ -2246,18 +2258,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2465,
-        "value": 433027,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "MCDONNELL KEVIN PATRICK",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 910,
         "value": 159860,
         "filerUrl": "",
@@ -2266,6 +2266,28 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 448,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SHACKLEY BRIAN CHARLES",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5052,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCDONNELL KEVIN PATRICK",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2319,28 +2341,6 @@
         "transactionText": "",
         "filerName": "BROWN MELISSA ANN",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 448,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SHACKLEY BRIAN CHARLES",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5052,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCDONNELL KEVIN PATRICK",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-06-26T00:00:00.000Z",
         "ownership": "D"
@@ -2403,6 +2403,6 @@
     "profitMargins": -0.050780002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:29:18.063Z",
+  "lastUpdated": "2026-01-27T12:39:02.747Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -133,10 +133,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.18917999,
-    "institutionsPercentHeld": 0.53728,
-    "institutionsFloatPercentHeld": 0.66263,
-    "institutionsCount": 803
+    "insidersPercentHeld": 0.18903999,
+    "institutionsPercentHeld": 0.53756,
+    "institutionsFloatPercentHeld": 0.66287005,
+    "institutionsCount": 802
   },
   "earnings": {
     "maxAge": 86400,
@@ -213,6 +213,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-27T12:18:59.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 100,
+        "priorPriceTarget": 92
+      },
+      {
+        "epochGradeDate": "2026-01-27T12:14:30.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "Hold",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 140,
+        "priorPriceTarget": 100
+      },
       {
         "epochGradeDate": "2026-01-26T18:48:36.000Z",
         "firm": "DA Davidson",
@@ -1038,11 +1058,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.045163285,
+    "preMarketChange": 4.4400024,
+    "preMarketTime": "2026-01-27T12:39:26.000Z",
+    "preMarketPrice": 102.75,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00712038,
-    "postMarketChange": 0.7000046,
-    "postMarketTime": "2026-01-27T00:59:59.000Z",
-    "postMarketPrice": 99.01,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0573241,
     "regularMarketChange": 5.32999,
@@ -1052,15 +1072,15 @@
     "regularMarketDayHigh": 108.65,
     "regularMarketDayLow": 98.05,
     "regularMarketVolume": 49113364,
-    "averageDailyVolume10Day": 29093480,
-    "averageDailyVolume3Month": 28948270,
+    "averageDailyVolume10Day": 31385850,
+    "averageDailyVolume3Month": 29280706,
     "regularMarketPreviousClose": 92.98,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 101.82,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRWV",
     "underlyingSymbol": null,
@@ -1087,8 +1107,8 @@
     "sharesShortPreviousMonthDate": "2025-11-28T00:00:00.000Z",
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.106000006,
-    "heldPercentInsiders": 0.18917999,
-    "heldPercentInstitutions": 0.53728,
+    "heldPercentInsiders": 0.18903999,
+    "heldPercentInstitutions": 0.53756,
     "shortRatio": 1.87,
     "shortPercentOfFloat": 0.2149,
     "impliedSharesOutstanding": 498317512,
@@ -1106,8 +1126,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 15.292,
     "enterpriseToEbitda": 30.153,
-    "52WeekChange": 1.3245001,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": 1.4577501,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1424,6 +1444,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 121119,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 190357,
         "filerUrl": "",
         "transactionText": "",
@@ -1440,17 +1471,6 @@
         "transactionText": "",
         "filerName": "VENTURO BRIAN M",
         "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 121119,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
         "ownership": "D"
@@ -2192,18 +2212,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 12500,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BAKER JEFFREY R",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 281250,
         "filerUrl": "",
         "transactionText": "",
@@ -2248,6 +2256,18 @@
         "moneyText": "",
         "startDate": "2025-10-29T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12500,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BAKER JEFFREY R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-29T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2925,6 +2945,6 @@
     "profitMargins": -0.17802,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:29:43.438Z",
+  "lastUpdated": "2026-01-27T12:39:28.602Z",
   "source": "Static Build (yahoo-finance2)"
 }

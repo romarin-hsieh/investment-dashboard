@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.07683,
-    "institutionsPercentHeld": 0.70911,
-    "institutionsFloatPercentHeld": 0.76812,
+    "institutionsPercentHeld": 0.70922995,
+    "institutionsFloatPercentHeld": 0.76825994,
     "institutionsCount": 644
   },
   "earnings": {
@@ -2628,11 +2628,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.009721788,
+    "preMarketChange": 0.14500046,
+    "preMarketTime": "2026-01-27T12:32:55.000Z",
+    "preMarketPrice": 15.06,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0046948153,
-    "postMarketChange": 0.069999695,
-    "postMarketTime": "2026-01-27T00:59:37.000Z",
-    "postMarketPrice": 14.98,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00743241,
     "regularMarketChange": 0.11,
@@ -2642,15 +2642,15 @@
     "regularMarketDayHigh": 15.5,
     "regularMarketDayLow": 14.7,
     "regularMarketVolume": 21526376,
-    "averageDailyVolume10Day": 27343040,
-    "averageDailyVolume3Month": 23908983,
+    "averageDailyVolume10Day": 28055810,
+    "averageDailyVolume3Month": 23942196,
     "regularMarketPreviousClose": 14.8,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 14.73,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "PATH",
     "underlyingSymbol": null,
@@ -2678,7 +2678,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.096999995,
     "heldPercentInsiders": 0.07683,
-    "heldPercentInstitutions": 0.70911,
+    "heldPercentInstitutions": 0.70922995,
     "shortRatio": 1.79,
     "shortPercentOfFloat": 0.1415,
     "beta": 1.079,
@@ -2697,8 +2697,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 4.286,
     "enterpriseToEbitda": 183.009,
-    "52WeekChange": -0.02567476,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": -0.018433154,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2725,6 +2725,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 135000,
+        "value": 2037226,
+        "filerUrl": "",
+        "transactionText": "Sale at price 15.01 - 15.23 per share.",
+        "filerName": "DINES DANIEL",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 45000,
@@ -4509,18 +4521,6 @@
         "moneyText": "",
         "startDate": "2024-10-02T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 47671,
-        "value": 575398,
-        "filerUrl": "",
-        "transactionText": "Sale at price 12.07 - 12.10 per share.",
-        "filerName": "GUPTA ASHIM A",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-09-13T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -4556,6 +4556,6 @@
     "profitMargins": 0.14787,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:30:15.033Z",
+  "lastUpdated": "2026-01-27T12:40:00.349Z",
   "source": "Static Build (yahoo-finance2)"
 }

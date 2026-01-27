@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.06311,
-    "institutionsPercentHeld": 0.94514,
-    "institutionsFloatPercentHeld": 1.0088,
-    "institutionsCount": 687
+    "institutionsPercentHeld": 0.94505,
+    "institutionsFloatPercentHeld": 1.00871,
+    "institutionsCount": 685
   },
   "earnings": {
     "maxAge": 86400,
@@ -1296,11 +1296,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0036679856,
+    "preMarketChange": 0.11109924,
+    "preMarketTime": "2026-01-27T12:37:11.000Z",
+    "preMarketPrice": 30.4,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0015455949,
-    "postMarketChange": -0.046800613,
-    "postMarketTime": "2026-01-27T00:59:55.000Z",
-    "postMarketPrice": 30.2332,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0222822,
     "regularMarketChange": 0.66,
@@ -1310,15 +1310,15 @@
     "regularMarketDayHigh": 30.95,
     "regularMarketDayLow": 29.42,
     "regularMarketVolume": 12615550,
-    "averageDailyVolume10Day": 18240040,
-    "averageDailyVolume3Month": 18723365,
+    "averageDailyVolume10Day": 16971860,
+    "averageDailyVolume3Month": 18624913,
     "regularMarketPreviousClose": 29.62,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 29.64,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "HIMS",
     "underlyingSymbol": null,
@@ -1346,7 +1346,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2947,
     "heldPercentInsiders": 0.06311,
-    "heldPercentInstitutions": 0.94514,
+    "heldPercentInstitutions": 0.94505,
     "shortRatio": 5.4,
     "shortPercentOfFloat": 0.3646,
     "beta": 2.37,
@@ -1366,8 +1366,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.339,
     "enterpriseToEbitda": 43.915,
-    "52WeekChange": -0.06087506,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": -0.039949298,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1456,24 +1456,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 10021,
-        "value": 367871,
-        "filerUrl": "",
-        "transactionText": "Sale at price 36.71 per share.",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 13750,
         "value": 504762,
         "filerUrl": "",
         "transactionText": "Sale at price 36.71 per share.",
         "filerName": "CHI MICHAEL Y",
         "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10021,
+        "value": 367871,
+        "filerUrl": "",
+        "transactionText": "Sale at price 36.71 per share.",
+        "filerName": "CARROLL PATRICK HARRISON",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-12-17T00:00:00.000Z",
         "ownership": "D"
@@ -3199,6 +3199,6 @@
     "profitMargins": 0.060510002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:29:49.117Z",
+  "lastUpdated": "2026-01-27T12:39:34.165Z",
   "source": "Static Build (yahoo-finance2)"
 }

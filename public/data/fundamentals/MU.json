@@ -133,10 +133,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.00247,
-    "institutionsPercentHeld": 0.83505994,
-    "institutionsFloatPercentHeld": 0.83712,
-    "institutionsCount": 2990
+    "insidersPercentHeld": 0.00243,
+    "institutionsPercentHeld": 0.83571,
+    "institutionsFloatPercentHeld": 0.83774,
+    "institutionsCount": 3000
   },
   "earnings": {
     "maxAge": 86400,
@@ -8226,11 +8226,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.04410292,
+    "preMarketChange": 17.160004,
+    "preMarketTime": "2026-01-27T12:40:57.000Z",
+    "preMarketPrice": 406.25,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.00020557344,
-    "postMarketChange": -0.07998657,
-    "postMarketTime": "2026-01-27T00:59:54.000Z",
-    "postMarketPrice": 389.01,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.026423099,
     "regularMarketChange": -10.56,
@@ -8240,15 +8240,15 @@
     "regularMarketDayHigh": 398,
     "regularMarketDayLow": 384.3,
     "regularMarketVolume": 28709415,
-    "averageDailyVolume10Day": 35535640,
-    "averageDailyVolume3Month": 28896705,
+    "averageDailyVolume10Day": 35114360,
+    "averageDailyVolume3Month": 28901262,
     "regularMarketPreviousClose": 399.65,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 395.63,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MU",
     "underlyingSymbol": null,
@@ -8275,8 +8275,8 @@
     "sharesShortPreviousMonthDate": "2025-11-28T00:00:00.000Z",
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026700001,
-    "heldPercentInsiders": 0.00247,
-    "heldPercentInstitutions": 0.83505994,
+    "heldPercentInsiders": 0.00243,
+    "heldPercentInstitutions": 0.83571,
     "shortRatio": 1.14,
     "shortPercentOfFloat": 0.026700001,
     "beta": 1.503,
@@ -8297,8 +8297,8 @@
     "lastSplitDate": 957225600,
     "enterpriseToRevenue": 10.401,
     "enterpriseToEbitda": 19.794,
-    "52WeekChange": 3.5286117,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": 3.4089518,
+    "SandP52WeekChange": 0.14544725,
     "lastDividendValue": 0.115,
     "lastDividendDate": "2025-12-29T00:00:00.000Z",
     "latestShareClass": null,
@@ -8327,6 +8327,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 26623,
+        "value": 10410771,
+        "filerUrl": "",
+        "transactionText": "Sale at price 388.78 - 395.87 per share.",
+        "filerName": "BHATIA MANISH H",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-22T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 269,
@@ -8735,22 +8747,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 439578,
+        "shares": 145108,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MEHROTRA SANJAY",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "SADANA SUMIT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 145108,
+        "shares": 439578,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SADANA SUMIT",
-        "filerRelation": "Officer",
+        "filerName": "MEHROTRA SANJAY",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-10-13T00:00:00.000Z",
         "ownership": "D"
@@ -10092,18 +10104,6 @@
         "moneyText": "",
         "startDate": "2024-02-27T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7000,
-        "value": 640798,
-        "filerUrl": "",
-        "transactionText": "Sale at price 91.09 - 92.17 per share.",
-        "filerName": "MEHROTRA SANJAY",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-02-27T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -10140,6 +10140,6 @@
     "profitMargins": 0.28146,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:31:11.912Z",
+  "lastUpdated": "2026-01-27T12:40:59.934Z",
   "source": "Static Build (yahoo-finance2)"
 }

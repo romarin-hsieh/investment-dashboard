@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01637,
-    "institutionsPercentHeld": 0.70072,
-    "institutionsFloatPercentHeld": 0.71239,
-    "institutionsCount": 445
+    "institutionsPercentHeld": 0.70082,
+    "institutionsFloatPercentHeld": 0.71249,
+    "institutionsCount": 447
   },
   "earnings": {
     "maxAge": 86400,
@@ -695,11 +695,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0001287012,
+    "preMarketChange": 0.002998352,
+    "preMarketTime": "2026-01-27T12:36:35.000Z",
+    "preMarketPrice": 23.3,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.01074157,
-    "postMarketChange": -0.2506008,
-    "postMarketTime": "2026-01-27T00:59:59.000Z",
-    "postMarketPrice": 23.0794,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.085098,
     "regularMarketChange": -2.17,
@@ -709,15 +709,15 @@
     "regularMarketDayHigh": 26.96,
     "regularMarketDayLow": 22.51,
     "regularMarketVolume": 25438491,
-    "averageDailyVolume10Day": 17656620,
-    "averageDailyVolume3Month": 13788418,
+    "averageDailyVolume10Day": 18709270,
+    "averageDailyVolume3Month": 13981088,
     "regularMarketPreviousClose": 25.5,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 26.76,
     "exchange": "ASE",
     "exchangeName": "NYSE American",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "UUUU",
     "underlyingSymbol": null,
@@ -745,7 +745,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1582,
     "heldPercentInsiders": 0.01637,
-    "heldPercentInstitutions": 0.70072,
+    "heldPercentInstitutions": 0.70082,
     "shortRatio": 4.48,
     "shortPercentOfFloat": 0.1608,
     "beta": 1.848,
@@ -765,8 +765,8 @@
     "lastSplitDate": 1383609600,
     "enterpriseToRevenue": 67.371,
     "enterpriseToEbitda": -56.973,
-    "52WeekChange": 3.8387098,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": 3.4269452,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1240,6 +1240,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 22958,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MORRISON ALEXANDER G.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-01-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 18859,
         "value": 0,
         "filerUrl": "",
@@ -1276,18 +1288,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 99319,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FRYDENLUND DAVID C.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 18859,
         "value": 0,
         "filerUrl": "",
@@ -1300,12 +1300,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 22958,
+        "shares": 22814,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MORRISON ALEXANDER G.",
-        "filerRelation": "Director",
+        "filerName": "BAKKEN SCOTT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-29T00:00:00.000Z",
         "ownership": "D"
@@ -1468,6 +1468,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 99319,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "FRYDENLUND DAVID C.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 51432,
         "value": 0,
         "filerUrl": "",
@@ -1510,18 +1522,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "ESHLEMAN BENJAMIN III",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-01-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 22814,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BAKKEN SCOTT",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-29T00:00:00.000Z",
         "ownership": "D"
@@ -1780,6 +1780,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 25750,
+        "value": 150337,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 5.84 per share.",
+        "filerName": "KIRKWOOD ROBERT WILLIAM",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-07T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
         "shares": 5000,
         "value": 29600,
         "filerUrl": "",
@@ -1936,18 +1948,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25750,
-        "value": 150337,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 5.84 per share.",
-        "filerName": "KIRKWOOD ROBERT WILLIAM",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-07T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 1000,
         "value": 5635,
         "filerUrl": "",
@@ -2003,6 +2003,6 @@
     "profitMargins": -1.24166,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:30:38.152Z",
+  "lastUpdated": "2026-01-27T12:40:24.528Z",
   "source": "Static Build (yahoo-finance2)"
 }

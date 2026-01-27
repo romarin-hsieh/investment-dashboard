@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.020060001,
-    "institutionsPercentHeld": 0.78928,
-    "institutionsFloatPercentHeld": 0.80544,
-    "institutionsCount": 5574
+    "institutionsPercentHeld": 0.78925,
+    "institutionsFloatPercentHeld": 0.8054,
+    "institutionsCount": 5582
   },
   "earnings": {
     "maxAge": 86400,
@@ -5958,11 +5958,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.011389816,
+    "preMarketChange": 3.6999817,
+    "preMarketTime": "2026-01-27T12:38:56.000Z",
+    "preMarketPrice": 328.55,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0050484347,
-    "postMarketChange": 1.6399841,
-    "postMarketTime": "2026-01-27T00:59:55.000Z",
-    "postMarketPrice": 326.49,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0152990995,
     "regularMarketChange": 4.89502,
@@ -5972,15 +5972,15 @@
     "regularMarketDayHigh": 328.68,
     "regularMarketDayLow": 317.6,
     "regularMarketVolume": 23423893,
-    "averageDailyVolume10Day": 26414510,
-    "averageDailyVolume3Month": 29906845,
+    "averageDailyVolume10Day": 26664900,
+    "averageDailyVolume3Month": 29826181,
     "regularMarketPreviousClose": 319.955,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 319.95,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVGO",
     "underlyingSymbol": null,
@@ -6008,7 +6008,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0116,
     "heldPercentInsiders": 0.020060001,
-    "heldPercentInstitutions": 0.78928,
+    "heldPercentInstitutions": 0.78925,
     "shortRatio": 1.37,
     "shortPercentOfFloat": 0.013200001,
     "beta": 1.218,
@@ -6029,8 +6029,8 @@
     "lastSplitDate": 1721001600,
     "enterpriseToRevenue": 2.55,
     "enterpriseToEbitda": 4.654,
-    "52WeekChange": 0.54345095,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": 0.56659913,
+    "SandP52WeekChange": 0.14544725,
     "lastDividendValue": 0.65,
     "lastDividendDate": "2025-12-22T00:00:00.000Z",
     "latestShareClass": null,
@@ -6336,6 +6336,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3550,
+        "value": 1227870,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 339.38 - 363.38 per share.",
+        "filerName": "YOU HARRY L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 148154,
         "value": 49879007,
         "filerUrl": "",
@@ -6357,18 +6369,6 @@
         "moneyText": "",
         "startDate": "2025-09-10T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3550,
-        "value": 1227870,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 339.38 - 363.38 per share.",
-        "filerName": "YOU HARRY L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-09-10T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -7497,6 +7497,6 @@
     "profitMargins": 0.36198002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:29:30.453Z",
+  "lastUpdated": "2026-01-27T12:39:15.849Z",
   "source": "Static Build (yahoo-finance2)"
 }

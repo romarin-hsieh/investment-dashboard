@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00823,
-    "institutionsPercentHeld": 1.0586699,
-    "institutionsFloatPercentHeld": 1.06745,
-    "institutionsCount": 731
+    "institutionsPercentHeld": 1.05839,
+    "institutionsFloatPercentHeld": 1.06718,
+    "institutionsCount": 727
   },
   "earnings": {
     "maxAge": 86400,
@@ -1866,11 +1866,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.004222746,
+    "preMarketChange": 0.6399994,
+    "preMarketTime": "2026-01-27T12:35:26.000Z",
+    "preMarketPrice": 152.2,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0028372128,
-    "postMarketChange": 0.43000793,
-    "postMarketTime": "2026-01-27T00:52:51.000Z",
-    "postMarketPrice": 151.99,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0283059,
     "regularMarketChange": -4.41501,
@@ -1880,15 +1880,15 @@
     "regularMarketDayHigh": 155.89,
     "regularMarketDayLow": 148.83,
     "regularMarketVolume": 1688577,
-    "averageDailyVolume10Day": 2393440,
-    "averageDailyVolume3Month": 2051225,
+    "averageDailyVolume10Day": 2464050,
+    "averageDailyVolume3Month": 2045785,
     "regularMarketPreviousClose": 155.975,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 155.53,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DUOL",
     "underlyingSymbol": null,
@@ -1916,7 +1916,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1393,
     "heldPercentInsiders": 0.00823,
-    "heldPercentInstitutions": 1.0586699,
+    "heldPercentInstitutions": 1.05839,
     "shortRatio": 4.53,
     "shortPercentOfFloat": 0.18020001,
     "beta": 0.862,
@@ -1936,8 +1936,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 6.204,
     "enterpriseToEbitda": 47.523,
-    "52WeekChange": -0.555272,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": -0.56786036,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2012,24 +2012,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
-        "value": 22254000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 185.45 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 60000,
         "value": 11127000,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 185.45 per share.",
         "filerName": "HACKER SEVERIN",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 120000,
+        "value": 22254000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 185.45 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-01T00:00:00.000Z",
         "ownership": "D"
@@ -3785,6 +3785,6 @@
     "profitMargins": 0.40032002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:30:54.567Z",
+  "lastUpdated": "2026-01-27T12:40:41.382Z",
   "source": "Static Build (yahoo-finance2)"
 }

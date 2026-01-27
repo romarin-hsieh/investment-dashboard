@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.029979998,
-    "institutionsPercentHeld": 0.95417,
-    "institutionsFloatPercentHeld": 0.98367,
-    "institutionsCount": 1162
+    "institutionsPercentHeld": 0.95456004,
+    "institutionsFloatPercentHeld": 0.98407,
+    "institutionsCount": 1164
   },
   "earnings": {
     "maxAge": 86400,
@@ -5446,11 +5446,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.010796359,
+    "preMarketChange": 4.4400024,
+    "preMarketTime": "2026-01-27T12:00:10.000Z",
+    "preMarketPrice": 415.69,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0018480481,
-    "postMarketChange": 0.76000977,
-    "postMarketTime": "2026-01-27T00:53:52.000Z",
-    "postMarketPrice": 412.01,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0315032,
     "regularMarketChange": 12.56,
@@ -5460,15 +5460,15 @@
     "regularMarketDayHigh": 413.58,
     "regularMarketDayLow": 399.83,
     "regularMarketVolume": 955799,
-    "averageDailyVolume10Day": 1444230,
-    "averageDailyVolume3Month": 1775453,
+    "averageDailyVolume10Day": 1420820,
+    "averageDailyVolume3Month": 1762034,
     "regularMarketPreviousClose": 398.69,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 401.72,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MDB",
     "underlyingSymbol": null,
@@ -5496,7 +5496,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0414,
     "heldPercentInsiders": 0.029979998,
-    "heldPercentInstitutions": 0.95417,
+    "heldPercentInstitutions": 0.95456004,
     "shortRatio": 1.67,
     "shortPercentOfFloat": 0.042600002,
     "beta": 1.381,
@@ -5515,8 +5515,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 13.479,
     "enterpriseToEbitda": -237.45,
-    "52WeekChange": 0.40383804,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": 0.44806337,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -5965,6 +5965,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1130,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KILLALEA PETER THOMAS",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1439,
         "value": 0,
         "filerUrl": "",
@@ -6006,18 +6018,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "LEWNES ANN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1130,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KILLALEA PETER THOMAS",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
@@ -7377,6 +7377,6 @@
     "profitMargins": -0.030580001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:29:19.992Z",
+  "lastUpdated": "2026-01-27T12:39:04.792Z",
   "source": "Static Build (yahoo-finance2)"
 }

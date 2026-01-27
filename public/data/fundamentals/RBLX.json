@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.044359997,
-    "institutionsPercentHeld": 0.82668,
-    "institutionsFloatPercentHeld": 0.86504996,
-    "institutionsCount": 1352
+    "institutionsPercentHeld": 0.82532996,
+    "institutionsFloatPercentHeld": 0.86364,
+    "institutionsCount": 1351
   },
   "earnings": {
     "maxAge": 86400,
@@ -3088,11 +3088,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.00817617,
+    "preMarketChange": 0.6049957,
+    "preMarketTime": "2026-01-27T12:31:46.000Z",
+    "preMarketPrice": 74.6,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0054046954,
-    "postMarketChange": 0.40000153,
-    "postMarketTime": "2026-01-27T00:59:20.000Z",
-    "postMarketPrice": 74.41,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00148409,
     "regularMarketChange": -0.110001,
@@ -3102,15 +3102,15 @@
     "regularMarketDayHigh": 74.2999,
     "regularMarketDayLow": 70.55,
     "regularMarketVolume": 15505689,
-    "averageDailyVolume10Day": 14235620,
-    "averageDailyVolume3Month": 9298108,
+    "averageDailyVolume10Day": 14671960,
+    "averageDailyVolume3Month": 9404368,
     "regularMarketPreviousClose": 74.12,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 73.25,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBLX",
     "underlyingSymbol": null,
@@ -3138,7 +3138,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0214,
     "heldPercentInsiders": 0.044359997,
-    "heldPercentInstitutions": 0.82668,
+    "heldPercentInstitutions": 0.82532996,
     "shortRatio": 2.2,
     "shortPercentOfFloat": 0.0241,
     "beta": 1.641,
@@ -3157,8 +3157,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.389,
     "enterpriseToEbitda": -57.392,
-    "52WeekChange": 0.083150625,
-    "SandP52WeekChange": 0.13974154,
+    "52WeekChange": 0.08154321,
+    "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3953,6 +3953,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 150000,
+        "value": 510750,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
+        "filerName": "REINSTRA MARK",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 64925,
         "value": 4090,
         "filerUrl": "",
@@ -3974,18 +3986,6 @@
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 150000,
-        "value": 510750,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
-        "filerName": "REINSTRA MARK",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4301,6 +4301,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 40322,
+        "value": 3252232,
+        "filerUrl": "",
+        "transactionText": "Sale at price 80.61 - 81.25 per share.",
+        "filerName": "BRONSTEIN MANUEL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 6391,
         "value": 515506,
         "filerUrl": "",
@@ -4373,14 +4385,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 40322,
-        "value": 3252232,
+        "shares": 68722,
+        "value": 5497808,
         "filerUrl": "",
-        "transactionText": "Sale at price 80.61 - 81.25 per share.",
+        "transactionText": "Sale at price 80.00 per share.",
         "filerName": "BRONSTEIN MANUEL",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
+        "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4390,18 +4402,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 79.94 per share.",
         "filerName": "KAUFMAN MATTHEW D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 68722,
-        "value": 5497808,
-        "filerUrl": "",
-        "transactionText": "Sale at price 80.00 per share.",
-        "filerName": "BRONSTEIN MANUEL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
@@ -5017,6 +5017,6 @@
     "profitMargins": -0.21700001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T06:30:09.708Z",
+  "lastUpdated": "2026-01-27T12:39:54.549Z",
   "source": "Static Build (yahoo-finance2)"
 }
