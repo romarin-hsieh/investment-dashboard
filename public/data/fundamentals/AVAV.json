@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00772,
-    "institutionsPercentHeld": 0.88691,
-    "institutionsFloatPercentHeld": 0.89381,
+    "institutionsPercentHeld": 0.88728,
+    "institutionsFloatPercentHeld": 0.89418,
     "institutionsCount": 766
   },
   "earnings": {
@@ -1468,11 +1468,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.01922015,
+    "preMarketChange": 5.9499817,
+    "preMarketTime": "2026-01-28T12:39:45.000Z",
+    "preMarketPrice": 315.52,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0022934761,
-    "postMarketChange": 0.70999146,
-    "postMarketTime": "2026-01-28T00:56:05.000Z",
-    "postMarketPrice": 310.28,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0227971,
     "regularMarketChange": 6.89999,
@@ -1482,15 +1482,15 @@
     "regularMarketDayHigh": 311.7,
     "regularMarketDayLow": 299.01,
     "regularMarketVolume": 1182532,
-    "averageDailyVolume10Day": 1858750,
-    "averageDailyVolume3Month": 1218595,
+    "averageDailyVolume10Day": 1824810,
+    "averageDailyVolume3Month": 1218285,
     "regularMarketPreviousClose": 302.67,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 302.21,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVAV",
     "underlyingSymbol": null,
@@ -1518,7 +1518,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0629,
     "heldPercentInsiders": 0.00772,
-    "heldPercentInstitutions": 0.88691,
+    "heldPercentInstitutions": 0.88728,
     "shortRatio": 2.65,
     "shortPercentOfFloat": 0.0838,
     "beta": 1.162,
@@ -1537,8 +1537,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.406,
     "enterpriseToEbitda": 148.39,
-    "52WeekChange": 0.76710653,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": 0.8073914,
+    "SandP52WeekChange": 0.15552938,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1867,6 +1867,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 7911,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BROWN MELISSA ANN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2280,
         "filerUrl": "",
         "transactionText": "",
@@ -1905,17 +1916,6 @@
         "transactionText": "",
         "filerName": "NAWABI WAHID",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7911,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROWN MELISSA ANN",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-24T00:00:00.000Z",
         "ownership": "D"
@@ -2270,6 +2270,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 2334,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BROWN MELISSA ANN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 448,
         "filerUrl": "",
         "transactionText": "",
@@ -2336,17 +2347,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2334,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROWN MELISSA ANN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1000,
         "value": 176770,
         "filerUrl": "",
@@ -2376,8 +2376,8 @@
     "maxAge": 86400,
     "currentPrice": 309.57,
     "targetHighPrice": 450,
-    "targetLowPrice": 285,
-    "targetMeanPrice": 388.6244,
+    "targetLowPrice": 315,
+    "targetMeanPrice": 391.4369,
     "targetMedianPrice": 395.5,
     "recommendationMean": 1.41176,
     "recommendationKey": "strong_buy",
@@ -2403,6 +2403,6 @@
     "profitMargins": -0.050780002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:30:26.759Z",
+  "lastUpdated": "2026-01-28T12:39:49.154Z",
   "source": "Static Build (yahoo-finance2)"
 }

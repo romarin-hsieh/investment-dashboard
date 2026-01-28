@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.044359997,
-    "institutionsPercentHeld": 0.82532996,
-    "institutionsFloatPercentHeld": 0.86364,
-    "institutionsCount": 1351
+    "institutionsPercentHeld": 0.82262003,
+    "institutionsFloatPercentHeld": 0.8608,
+    "institutionsCount": 1343
   },
   "earnings": {
     "maxAge": 86400,
@@ -3088,11 +3088,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.008454617,
+    "preMarketChange": 0.6100006,
+    "preMarketTime": "2026-01-28T12:25:25.000Z",
+    "preMarketPrice": 72.76,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0012059604,
-    "postMarketChange": -0.086997986,
-    "postMarketTime": "2026-01-28T00:57:47.000Z",
-    "postMarketPrice": 72.053,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": -0.0252669,
     "regularMarketChange": -1.87,
@@ -3102,22 +3102,22 @@
     "regularMarketDayHigh": 75.16,
     "regularMarketDayLow": 72.02,
     "regularMarketVolume": 8134943,
-    "averageDailyVolume10Day": 14673340,
-    "averageDailyVolume3Month": 9433088,
+    "averageDailyVolume10Day": 14332680,
+    "averageDailyVolume3Month": 9412034,
     "regularMarketPreviousClose": 74.01,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 74.72,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBLX",
     "underlyingSymbol": null,
     "shortName": "Roblox Corporation",
     "longName": "Roblox Corporation",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -3138,7 +3138,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0214,
     "heldPercentInsiders": 0.044359997,
-    "heldPercentInstitutions": 0.82532996,
+    "heldPercentInstitutions": 0.82262003,
     "shortRatio": 2.2,
     "shortPercentOfFloat": 0.0241,
     "beta": 1.641,
@@ -3157,8 +3157,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.095,
     "enterpriseToEbitda": -55.91,
-    "52WeekChange": 0.05607879,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": 0.029394984,
+    "SandP52WeekChange": 0.15552938,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4121,18 +4121,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 949998,
-        "value": 83572221,
-        "filerUrl": "",
-        "transactionText": "Sale at price 87.92 - 88.76 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 12985,
         "value": 1158948,
         "filerUrl": "",
@@ -4142,6 +4130,18 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 949998,
+        "value": 83572221,
+        "filerUrl": "",
+        "transactionText": "Sale at price 87.92 - 88.76 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -4589,18 +4589,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 12985,
-        "value": 936981,
-        "filerUrl": "",
-        "transactionText": "Sale at price 72.02 - 72.55 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1899997,
         "value": 137161289,
         "filerUrl": "",
@@ -4610,6 +4598,18 @@
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
         "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12985,
+        "value": 936981,
+        "filerUrl": "",
+        "transactionText": "Sale at price 72.02 - 72.55 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4637,15 +4637,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 1455002,
-        "value": 4057339,
+        "shares": 973875,
+        "value": 67197,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 - 3.34 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
+        "filerName": "BASZUCKI GREGORY",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D/I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4661,15 +4661,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 973875,
-        "value": 67197,
+        "shares": 1455002,
+        "value": 4057339,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
-        "filerName": "BASZUCKI GREGORY",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 - 3.34 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -4781,18 +4781,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 12985,
-        "value": 784920,
-        "filerUrl": "",
-        "transactionText": "Sale at price 58.80 - 60.86 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 21200,
         "value": 1300963,
         "filerUrl": "",
@@ -4806,9 +4794,9 @@
       {
         "maxAge": 1,
         "shares": 12985,
-        "value": 818,
+        "value": 784920,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
+        "transactionText": "Sale at price 58.80 - 60.86 per share.",
         "filerName": "CARVALHO CHRISTOPHER",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4822,6 +4810,18 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
         "filerName": "BASZUCKI GREGORY",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12985,
+        "value": 818,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
@@ -5017,6 +5017,6 @@
     "profitMargins": -0.21700001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:31:19.714Z",
+  "lastUpdated": "2026-01-28T12:40:39.528Z",
   "source": "Static Build (yahoo-finance2)"
 }

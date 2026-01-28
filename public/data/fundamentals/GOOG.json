@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.06678,
-    "institutionsPercentHeld": 0.6064,
-    "institutionsFloatPercentHeld": 0.64980006,
-    "institutionsCount": 5763
+    "institutionsPercentHeld": 0.60648996,
+    "institutionsFloatPercentHeld": 0.64989,
+    "institutionsCount": 5775
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1761768108
         }
       ],
-      "currentQuarterEstimate": 2.64844,
+      "currentQuarterEstimate": 2.64384,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -7148,11 +7148,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.004208966,
+    "preMarketChange": 1.4100037,
+    "preMarketTime": "2026-01-28T12:39:30.000Z",
+    "preMarketPrice": 336.41,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0029551948,
-    "postMarketChange": 0.98999023,
-    "postMarketTime": "2026-01-28T00:59:51.000Z",
-    "postMarketPrice": 335.99,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00422676,
     "regularMarketChange": 1.41,
@@ -7162,15 +7162,15 @@
     "regularMarketDayHigh": 338.2,
     "regularMarketDayLow": 333.75,
     "regularMarketVolume": 15676208,
-    "averageDailyVolume10Day": 21212010,
-    "averageDailyVolume3Month": 23592898,
+    "averageDailyVolume10Day": 20428380,
+    "averageDailyVolume3Month": 23469367,
     "regularMarketPreviousClose": 333.59,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 335.585,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "GOOG",
     "underlyingSymbol": null,
@@ -7188,7 +7188,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 3988143996928,
-    "forwardPE": 29.766216,
+    "forwardPE": 29.76693,
     "profitMargins": 0.32233003,
     "floatShares": 10798396290,
     "sharesOutstanding": 5407000000,
@@ -7198,7 +7198,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0044,
     "heldPercentInsiders": 0.06678,
-    "heldPercentInstitutions": 0.6064,
+    "heldPercentInstitutions": 0.60648996,
     "shortRatio": 1.9,
     "beta": 1.086,
     "impliedSharesOutstanding": 12071833288,
@@ -7218,8 +7218,8 @@
     "lastSplitDate": 1658102400,
     "enterpriseToRevenue": 10.346,
     "enterpriseToEbitda": 27.471,
-    "52WeekChange": 0.6918044,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": 0.6989553,
+    "SandP52WeekChange": 0.15552938,
     "lastDividendValue": 0.21,
     "lastDividendDate": "2025-12-08T00:00:00.000Z",
     "latestShareClass": null,
@@ -7247,6 +7247,17 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 932,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-23T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 32500,
@@ -7345,17 +7356,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 17831,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 22225,
         "filerUrl": "",
         "transactionText": "",
@@ -7383,6 +7383,17 @@
         "transactionText": "",
         "filerName": "ASHKENAZI ANAT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17831,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WALKER JOHN KENT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-24T00:00:00.000Z",
         "ownership": "D"
@@ -7697,17 +7708,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 17819,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 954,
         "filerUrl": "",
         "transactionText": "",
@@ -7735,6 +7735,17 @@
         "transactionText": "",
         "filerName": "ASHKENAZI ANAT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-09-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17819,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WALKER JOHN KENT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-25T00:00:00.000Z",
         "ownership": "D"
@@ -8013,17 +8024,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 17804,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 953,
         "filerUrl": "",
         "transactionText": "",
@@ -8051,6 +8051,17 @@
         "transactionText": "",
         "filerName": "ASHKENAZI ANAT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17804,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WALKER JOHN KENT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
@@ -8353,17 +8364,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 17782,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 22165,
         "filerUrl": "",
         "transactionText": "",
@@ -8391,6 +8391,17 @@
         "transactionText": "",
         "filerName": "ASHKENAZI ANAT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-03-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17782,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WALKER JOHN KENT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-25T00:00:00.000Z",
         "ownership": "D"
@@ -8681,17 +8692,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 16822,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1368,
         "filerUrl": "",
         "transactionText": "",
@@ -8719,6 +8719,17 @@
         "transactionText": "",
         "filerName": "ASHKENAZI ANAT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-12-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16822,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WALKER JOHN KENT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-24T00:00:00.000Z",
         "ownership": "D"
@@ -8771,11 +8782,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 1,
+        "shares": 5,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHRIRAM KAVITARK RAM",
+        "filerName": "ARNOLD FRANCES H PH.D.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
@@ -8783,11 +8794,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 5,
+        "shares": 1,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ARNOLD FRANCES H PH.D.",
+        "filerName": "SHRIRAM KAVITARK RAM",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
@@ -8994,18 +9005,6 @@
         "moneyText": "",
         "startDate": "2024-10-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16802,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "WALKER JOHN KENT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -9042,6 +9041,6 @@
     "profitMargins": 0.32233003,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:30:43.806Z",
+  "lastUpdated": "2026-01-28T12:40:05.835Z",
   "source": "Static Build (yahoo-finance2)"
 }

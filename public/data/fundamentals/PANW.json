@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00892,
-    "institutionsPercentHeld": 0.84585,
-    "institutionsFloatPercentHeld": 0.85346,
-    "institutionsCount": 3285
+    "institutionsPercentHeld": 0.84483004,
+    "institutionsFloatPercentHeld": 0.85243,
+    "institutionsCount": 3283
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-28T12:15:25.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 230,
+        "priorPriceTarget": 230
+      },
       {
         "epochGradeDate": "2026-01-13T16:09:36.000Z",
         "firm": "UBS",
@@ -8478,11 +8488,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.001634894,
+    "preMarketChange": 0.30000305,
+    "preMarketTime": "2026-01-28T12:39:36.000Z",
+    "preMarketPrice": 183.8,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0015803449,
-    "postMarketChange": 0.2899933,
-    "postMarketTime": "2026-01-28T00:59:59.000Z",
-    "postMarketPrice": 183.79,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00390838,
     "regularMarketChange": -0.720001,
@@ -8492,15 +8502,15 @@
     "regularMarketDayHigh": 189.39,
     "regularMarketDayLow": 182.53,
     "regularMarketVolume": 5010601,
-    "averageDailyVolume10Day": 6069710,
-    "averageDailyVolume3Month": 5883568,
+    "averageDailyVolume10Day": 6195310,
+    "averageDailyVolume3Month": 5877893,
     "regularMarketPreviousClose": 184.22,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 187.54,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "PANW",
     "underlyingSymbol": null,
@@ -8528,7 +8538,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0675,
     "heldPercentInsiders": 0.00892,
-    "heldPercentInstitutions": 0.84585,
+    "heldPercentInstitutions": 0.84483004,
     "shortRatio": 8.91,
     "shortPercentOfFloat": 0.0681,
     "beta": 0.754,
@@ -8549,8 +8559,8 @@
     "lastSplitDate": 1734307200,
     "enterpriseToRevenue": 12.988,
     "enterpriseToEbitda": 89.778,
-    "52WeekChange": -0.0064718127,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": -0.0103548765,
+    "SandP52WeekChange": 0.15552938,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -9042,6 +9052,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14393,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "PAUL JOSHUA D.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-19T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -10270,24 +10292,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 1475,
-        "value": 500202,
-        "filerUrl": "",
-        "transactionText": "Sale at price 333.02 - 341.18 per share.",
-        "filerName": "JENKINS WILLIAM D JR",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 66668,
         "value": 22436132,
         "filerUrl": "",
         "transactionText": "Sale at price 333.69 - 340.54 per share.",
         "filerName": "ARORA NIKESH",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1475,
+        "value": 500202,
+        "filerUrl": "",
+        "transactionText": "Sale at price 333.02 - 341.18 per share.",
+        "filerName": "JENKINS WILLIAM D JR",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
         "ownership": "D"
@@ -10363,18 +10385,6 @@
         "moneyText": "",
         "startDate": "2024-06-04T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 60000,
-        "value": 17505167,
-        "filerUrl": "",
-        "transactionText": "Sale at price 289.72 - 295.25 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-06-04T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -10411,6 +10421,6 @@
     "profitMargins": 0.11687,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:31:59.207Z",
+  "lastUpdated": "2026-01-28T12:41:20.651Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.19499001,
-    "institutionsPercentHeld": 0.44591,
-    "institutionsFloatPercentHeld": 0.55392,
-    "institutionsCount": 792
+    "institutionsPercentHeld": 0.44641998,
+    "institutionsFloatPercentHeld": 0.55455,
+    "institutionsCount": 799
   },
   "earnings": {
     "maxAge": 86400,
@@ -241,6 +241,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-28T09:06:18.000Z",
+        "firm": "Texas Capital Securities",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 138,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-21T11:25:03.000Z",
         "firm": "B of A Securities",
@@ -626,11 +636,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.028504403,
+    "preMarketChange": 2.4300003,
+    "preMarketTime": "2026-01-28T12:40:29.000Z",
+    "preMarketPrice": 87.68,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.011485876,
-    "postMarketChange": 0.97940063,
-    "postMarketTime": "2026-01-28T00:59:56.000Z",
-    "postMarketPrice": 86.2494,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0359616,
     "regularMarketChange": 2.96,
@@ -640,15 +650,15 @@
     "regularMarketDayHigh": 86.85,
     "regularMarketDayLow": 81.21,
     "regularMarketVolume": 8937891,
-    "averageDailyVolume10Day": 12642920,
-    "averageDailyVolume3Month": 12669451,
+    "averageDailyVolume10Day": 12486590,
+    "averageDailyVolume3Month": 12634077,
     "regularMarketPreviousClose": 82.31,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 82.81,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "OKLO",
     "underlyingSymbol": null,
@@ -676,7 +686,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1086,
     "heldPercentInsiders": 0.19499001,
-    "heldPercentInstitutions": 0.44591,
+    "heldPercentInstitutions": 0.44641998,
     "shortRatio": 1.74,
     "shortPercentOfFloat": 0.109,
     "beta": 0.773,
@@ -694,8 +704,8 @@
     "forwardEps": -0.66731,
     "lastSplitFactor": null,
     "enterpriseToEbitda": -127.717,
-    "52WeekChange": 1.331728,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": 1.4155807,
+    "SandP52WeekChange": 0.15552938,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1400,6 +1410,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:31:23.191Z",
+  "lastUpdated": "2026-01-28T12:40:43.102Z",
   "source": "Static Build (yahoo-finance2)"
 }

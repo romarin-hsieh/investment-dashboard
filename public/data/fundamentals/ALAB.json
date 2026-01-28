@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.11404,
-    "institutionsPercentHeld": 0.76774,
-    "institutionsFloatPercentHeld": 0.86656,
+    "institutionsPercentHeld": 0.7675,
+    "institutionsFloatPercentHeld": 0.86629,
     "institutionsCount": 877
   },
   "earnings": {
@@ -1028,11 +1028,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.01404089,
+    "preMarketChange": 2.4000092,
+    "preMarketTime": "2026-01-28T12:36:56.000Z",
+    "preMarketPrice": 173.33,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0032176203,
-    "postMarketChange": -0.5499878,
-    "postMarketTime": "2026-01-28T00:56:15.000Z",
-    "postMarketPrice": 170.38,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0470444,
     "regularMarketChange": 7.67999,
@@ -1042,15 +1042,15 @@
     "regularMarketDayHigh": 171.69,
     "regularMarketDayLow": 161,
     "regularMarketVolume": 3371696,
-    "averageDailyVolume10Day": 4797890,
-    "averageDailyVolume3Month": 5606425,
+    "averageDailyVolume10Day": 4691990,
+    "averageDailyVolume3Month": 5569927,
     "regularMarketPreviousClose": 163.25,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 164.36,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ALAB",
     "underlyingSymbol": null,
@@ -1078,7 +1078,7 @@
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.069299996,
     "heldPercentInsiders": 0.11404,
-    "heldPercentInstitutions": 0.76774,
+    "heldPercentInstitutions": 0.7675,
     "shortRatio": 2.2,
     "shortPercentOfFloat": 0.0938,
     "impliedSharesOutstanding": 168903616,
@@ -1096,8 +1096,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 38.404,
     "enterpriseToEbitda": 248.889,
-    "52WeekChange": 0.80526376,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": 0.8901913,
+    "SandP52WeekChange": 0.15552938,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1149,6 +1149,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 559230,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 150000,
         "value": 24927221,
         "filerUrl": "",
@@ -1173,18 +1185,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 559230,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2500,
         "value": 373873,
         "filerUrl": "",
@@ -1193,30 +1193,6 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4620,
-        "value": 668477,
-        "filerUrl": "",
-        "transactionText": "Sale at price 143.51 - 146.42 per share.",
-        "filerName": "MAZZARA PHILIP",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-11-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 90459,
-        "value": 13088904,
-        "filerUrl": "",
-        "transactionText": "Sale at price 143.25 - 146.65 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1239,6 +1215,30 @@
         "transactionText": "Sale at price 143.25 - 146.65 per share.",
         "filerName": "GAJENDRA SANJAY",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-11-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4620,
+        "value": 668477,
+        "filerUrl": "",
+        "transactionText": "Sale at price 143.51 - 146.42 per share.",
+        "filerName": "MAZZARA PHILIP",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-11-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 90459,
+        "value": 13088904,
+        "filerUrl": "",
+        "transactionText": "Sale at price 143.25 - 146.65 per share.",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-11-17T00:00:00.000Z",
         "ownership": "D"
@@ -1281,18 +1281,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 183000,
-        "value": 31707713,
-        "filerUrl": "",
-        "transactionText": "Sale at price 168.23 - 180.10 per share.",
-        "filerName": "ALBA MANUEL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-09-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 480668,
         "value": 0,
         "filerUrl": "",
@@ -1302,6 +1290,18 @@
         "moneyText": "",
         "startDate": "2025-09-02T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 183000,
+        "value": 31707713,
+        "filerUrl": "",
+        "transactionText": "Sale at price 168.23 - 180.10 per share.",
+        "filerName": "ALBA MANUEL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-02T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1353,30 +1353,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 7237,
-        "value": 1328065,
-        "filerUrl": "",
-        "transactionText": "Sale at price 183.17 - 183.83 per share.",
-        "filerName": "MAZZARA PHILIP",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 91441,
-        "value": 16780383,
-        "filerUrl": "",
-        "transactionText": "Sale at price 183.17 - 183.83 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 18861,
         "value": 3461184,
         "filerUrl": "",
@@ -1395,6 +1371,30 @@
         "transactionText": "Sale at price 183.17 - 183.83 per share.",
         "filerName": "GAJENDRA SANJAY",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7237,
+        "value": 1328065,
+        "filerUrl": "",
+        "transactionText": "Sale at price 183.17 - 183.83 per share.",
+        "filerName": "MAZZARA PHILIP",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 91441,
+        "value": 16780383,
+        "filerUrl": "",
+        "transactionText": "Sale at price 183.17 - 183.83 per share.",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-08-18T00:00:00.000Z",
         "ownership": "D"
@@ -1461,18 +1461,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 152517,
-        "value": 25977885,
-        "filerUrl": "",
-        "transactionText": "Sale at price 170.33 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-07T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 100000,
         "value": 17138485,
         "filerUrl": "",
@@ -1503,6 +1491,18 @@
         "transactionText": "Sale at price 165.75 - 174.89 per share.",
         "filerName": "GAJENDRA SANJAY",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-08-07T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 152517,
+        "value": 25977885,
+        "filerUrl": "",
+        "transactionText": "Sale at price 170.33 per share.",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-08-07T00:00:00.000Z",
         "ownership": "I"
@@ -1833,6 +1833,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 9107,
+        "value": 825715,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.33 - 92.16 per share.",
+        "filerName": "TATE MICHAEL TRUETT",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 91337,
         "value": 8281408,
         "filerUrl": "",
@@ -1851,18 +1863,6 @@
         "transactionText": "Sale at price 90.33 - 92.15 per share.",
         "filerName": "MOHAN JITENDRA",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9107,
-        "value": 825715,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.33 - 92.16 per share.",
-        "filerName": "TATE MICHAEL TRUETT",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-16T00:00:00.000Z",
         "ownership": "D"
@@ -1881,18 +1881,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 75000,
-        "value": 6817740,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.90 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 196,
         "value": 14403,
         "filerUrl": "",
@@ -1906,13 +1894,13 @@
       {
         "maxAge": 1,
         "shares": 75000,
-        "value": 5328758,
+        "value": 6817740,
         "filerUrl": "",
-        "transactionText": "Sale at price 71.05 per share.",
+        "transactionText": "Sale at price 90.90 per share.",
         "filerName": "MOHAN JITENDRA",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-05-08T00:00:00.000Z",
+        "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -1923,6 +1911,18 @@
         "transactionText": "Sale at price 70.57 - 73.14 per share.",
         "filerName": "GAJENDRA SANJAY",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-05-08T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75000,
+        "value": 5328758,
+        "filerUrl": "",
+        "transactionText": "Sale at price 71.05 per share.",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-08T00:00:00.000Z",
         "ownership": "I"
@@ -2005,8 +2005,8 @@
         "value": 31390706,
         "filerUrl": "",
         "transactionText": "Sale at price 87.83 - 92.35 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "GAJENDRA SANJAY",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-02-19T00:00:00.000Z",
         "ownership": "D"
@@ -2017,8 +2017,8 @@
         "value": 31390706,
         "filerUrl": "",
         "transactionText": "Sale at price 87.83 - 92.35 per share.",
-        "filerName": "GAJENDRA SANJAY",
-        "filerRelation": "President",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-02-19T00:00:00.000Z",
         "ownership": "D"
@@ -2073,18 +2073,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11000,
-        "value": 1292531,
-        "filerUrl": "",
-        "transactionText": "Sale at price 115.53 - 121.05 per share.",
-        "filerName": "ALBA MANUEL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-04T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 16000,
         "value": 1885472,
         "filerUrl": "",
@@ -2097,14 +2085,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 126000,
-        "value": 13593865,
+        "shares": 11000,
+        "value": 1292531,
         "filerUrl": "",
-        "transactionText": "Sale at price 101.60 - 116.63 per share.",
+        "transactionText": "Sale at price 115.53 - 121.05 per share.",
         "filerName": "ALBA MANUEL",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-12-03T00:00:00.000Z",
+        "startDate": "2024-12-04T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -2115,6 +2103,18 @@
         "transactionText": "Sale at price 101.62 - 117.10 per share.",
         "filerName": "TATE MICHAEL TRUETT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-12-03T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 126000,
+        "value": 13593865,
+        "filerUrl": "",
+        "transactionText": "Sale at price 101.60 - 116.63 per share.",
+        "filerName": "ALBA MANUEL",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-03T00:00:00.000Z",
         "ownership": "I"
@@ -2193,24 +2193,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2513,
-        "value": 228211,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.81 per share.",
-        "filerName": "MAZZARA PHILIP",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-11-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 7398,
         "value": 671834,
         "filerUrl": "",
         "transactionText": "Sale at price 90.81 per share.",
         "filerName": "TATE MICHAEL TRUETT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-11-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2513,
+        "value": 228211,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.81 per share.",
+        "filerName": "MAZZARA PHILIP",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2024-11-18T00:00:00.000Z",
         "ownership": "D"
@@ -2253,24 +2253,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2302,
-        "value": 230218,
-        "filerUrl": "",
-        "transactionText": "Sale at price 100.01 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-11-11T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 4601515,
         "filerUrl": "",
         "transactionText": "Sale at price 91.34 - 97.35 per share.",
         "filerName": "DYCKERHOFF STEFAN A",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-11-11T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2302,
+        "value": 230218,
+        "filerUrl": "",
+        "transactionText": "Sale at price 100.01 per share.",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-11-11T00:00:00.000Z",
         "ownership": "I"
@@ -2313,18 +2313,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 423783,
-        "value": 38961041,
-        "filerUrl": "",
-        "transactionText": "Sale at price 91.94 per share.",
-        "filerName": "MOHAN JITENDRA",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-11-06T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 56567,
         "value": 5076123,
         "filerUrl": "",
@@ -2337,14 +2325,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 47667,
-        "value": 3348993,
+        "shares": 423783,
+        "value": 38961041,
         "filerUrl": "",
-        "transactionText": "Sale at price 70.26 per share.",
+        "transactionText": "Sale at price 91.94 per share.",
         "filerName": "MOHAN JITENDRA",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-10-11T00:00:00.000Z",
+        "startDate": "2024-11-06T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -2373,15 +2361,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 1518565,
+        "shares": 47667,
+        "value": 3348993,
         "filerUrl": "",
-        "transactionText": "Sale at price 60.23 - 61.64 per share.",
-        "filerName": "MAZZARA PHILIP",
-        "filerRelation": "General Counsel",
+        "transactionText": "Sale at price 70.26 per share.",
+        "filerName": "MOHAN JITENDRA",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-10-09T00:00:00.000Z",
-        "ownership": "D"
+        "startDate": "2024-10-11T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2409,6 +2397,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 25000,
+        "value": 1518565,
+        "filerUrl": "",
+        "transactionText": "Sale at price 60.23 - 61.64 per share.",
+        "filerName": "MAZZARA PHILIP",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-10-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1033780,
         "value": 0,
         "filerUrl": "",
@@ -2433,18 +2433,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 5011810,
-        "filerUrl": "",
-        "transactionText": "Sale at price 50.00 - 51.00 per share.",
-        "filerName": "ALBA MANUEL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-09-23T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 25000,
         "value": 1268040,
         "filerUrl": "",
@@ -2454,6 +2442,18 @@
         "moneyText": "",
         "startDate": "2024-09-23T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 5011810,
+        "filerUrl": "",
+        "transactionText": "Sale at price 50.00 - 51.00 per share.",
+        "filerName": "ALBA MANUEL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-09-23T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2529,24 +2529,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 7260,
-        "value": 303395,
-        "filerUrl": "",
-        "transactionText": "Sale at price 41.79 per share.",
-        "filerName": "MAZZARA PHILIP",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-08-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 13915,
         "value": 581508,
         "filerUrl": "",
         "transactionText": "Sale at price 41.79 per share.",
         "filerName": "TATE MICHAEL TRUETT",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-08-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7260,
+        "value": 303395,
+        "filerUrl": "",
+        "transactionText": "Sale at price 41.79 per share.",
+        "filerName": "MAZZARA PHILIP",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2024-08-16T00:00:00.000Z",
         "ownership": "D"
@@ -2589,6 +2589,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 5533,
+        "value": 424242,
+        "filerUrl": "",
+        "transactionText": "Sale at price 76.40 - 77.48 per share.",
+        "filerName": "TATE MICHAEL TRUETT",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-05-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1055,
         "value": 80889,
         "filerUrl": "",
@@ -2601,15 +2613,39 @@
       },
       {
         "maxAge": 1,
-        "shares": 5533,
-        "value": 424242,
+        "shares": 10000,
+        "value": 700000,
         "filerUrl": "",
-        "transactionText": "Sale at price 76.40 - 77.48 per share.",
-        "filerName": "TATE MICHAEL TRUETT",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Purchase at price 70.00 per share.",
+        "filerName": "LAZAR JACK R",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-05-16T00:00:00.000Z",
+        "startDate": "2024-03-22T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 21747,
+        "value": 1522290,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 70.00 per share.",
+        "filerName": "HURLSTON MICHAEL E.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-03-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5000,
+        "value": 350000,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 70.00 per share.",
+        "filerName": "ALBA MANUEL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-03-22T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2668,42 +2704,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 700000,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 70.00 per share.",
-        "filerName": "LAZAR JACK R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-03-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 21747,
-        "value": 1522290,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 70.00 per share.",
-        "filerName": "HURLSTON MICHAEL E.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-03-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5000,
-        "value": 350000,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 70.00 per share.",
-        "filerName": "ALBA MANUEL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-03-22T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 87500,
         "filerUrl": "",
         "transactionText": "",
@@ -2747,6 +2747,6 @@
     "profitMargins": 0.27504,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:32:10.627Z",
+  "lastUpdated": "2026-01-28T12:41:31.977Z",
   "source": "Static Build (yahoo-finance2)"
 }

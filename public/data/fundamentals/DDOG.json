@@ -133,10 +133,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.0076200003,
-    "institutionsPercentHeld": 0.91362,
-    "institutionsFloatPercentHeld": 0.92063004,
-    "institutionsCount": 1449
+    "insidersPercentHeld": 0.0076800003,
+    "institutionsPercentHeld": 0.91075,
+    "institutionsFloatPercentHeld": 0.91779,
+    "institutionsCount": 1444
   },
   "earnings": {
     "maxAge": 86400,
@@ -4258,11 +4258,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.004847682,
+    "preMarketChange": 0.66999817,
+    "preMarketTime": "2026-01-28T12:40:37.000Z",
+    "preMarketPrice": 138.88,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0076694703,
-    "postMarketChange": 1.0599976,
-    "postMarketTime": "2026-01-28T00:59:57.000Z",
-    "postMarketPrice": 139.27,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.011490099,
     "regularMarketChange": 1.57001,
@@ -4272,15 +4272,15 @@
     "regularMarketDayHigh": 141.9,
     "regularMarketDayLow": 136.35,
     "regularMarketVolume": 5926489,
-    "averageDailyVolume10Day": 6267360,
-    "averageDailyVolume3Month": 4808903,
+    "averageDailyVolume10Day": 6182380,
+    "averageDailyVolume3Month": 4827267,
     "regularMarketPreviousClose": 136.64,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 140.95,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4307,8 +4307,8 @@
     "sharesShortPreviousMonthDate": "2025-11-28T00:00:00.000Z",
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026500002,
-    "heldPercentInsiders": 0.0076200003,
-    "heldPercentInstitutions": 0.91362,
+    "heldPercentInsiders": 0.0076800003,
+    "heldPercentInstitutions": 0.91075,
     "shortRatio": 2.7,
     "shortPercentOfFloat": 0.029000001,
     "beta": 1.263,
@@ -4328,8 +4328,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 14.2,
     "enterpriseToEbitda": 7326.134,
-    "52WeekChange": -0.06231129,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": -0.051537216,
+    "SandP52WeekChange": 0.15552938,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4485,18 +4485,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 348000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 15000,
         "value": 0,
         "filerUrl": "",
@@ -4506,6 +4494,18 @@
         "moneyText": "",
         "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 348000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5695,24 +5695,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 20000,
-        "value": 31000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 1.55 per share.",
-        "filerName": "OBSTLER DAVID M",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 127105,
         "value": 169039,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 0.31 - 10.74 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20000,
+        "value": 31000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 1.55 per share.",
+        "filerName": "OBSTLER DAVID M",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
         "ownership": "D"
@@ -5827,6 +5827,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 3304,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AGARWAL AMIT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 22500,
         "value": 34875,
         "filerUrl": "",
@@ -5836,17 +5847,6 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3304,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGARWAL AMIT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5886,18 +5886,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3304,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "AGARWAL AMIT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 35016,
         "value": 4111048,
         "filerUrl": "",
@@ -5931,6 +5919,18 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3304,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "AGARWAL AMIT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -6129,9 +6129,9 @@
     "currentPrice": 138.21,
     "targetHighPrice": 260,
     "targetLowPrice": 113,
-    "targetMeanPrice": 198.17908,
+    "targetMeanPrice": 197.3186,
     "targetMedianPrice": 200,
-    "recommendationMean": 1.44444,
+    "recommendationMean": 1.43478,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 43,
     "totalCash": 4140338944,
@@ -6156,6 +6156,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:32:03.076Z",
+  "lastUpdated": "2026-01-28T12:41:24.017Z",
   "source": "Static Build (yahoo-finance2)"
 }

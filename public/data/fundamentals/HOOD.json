@@ -133,10 +133,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.00693,
-    "institutionsPercentHeld": 0.76168996,
-    "institutionsFloatPercentHeld": 0.76701,
-    "institutionsCount": 1745
+    "insidersPercentHeld": 0.00694,
+    "institutionsPercentHeld": 0.76128,
+    "institutionsFloatPercentHeld": 0.76661,
+    "institutionsCount": 1747
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1762376700
         }
       ],
-      "currentQuarterEstimate": 0.63275,
+      "currentQuarterEstimate": 0.62813,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-28T12:09:35.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 135,
+        "priorPriceTarget": 135
+      },
       {
         "epochGradeDate": "2026-01-09T18:34:13.000Z",
         "firm": "Argus Research",
@@ -2948,11 +2958,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0047510453,
+    "preMarketChange": 0.5,
+    "preMarketTime": "2026-01-28T12:40:35.000Z",
+    "preMarketPrice": 105.74,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0019954303,
-    "postMarketChange": 0.20999908,
-    "postMarketTime": "2026-01-28T00:59:54.000Z",
-    "postMarketPrice": 105.45,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0164486,
     "regularMarketChange": -1.76,
@@ -2962,15 +2972,15 @@
     "regularMarketDayHigh": 109.049,
     "regularMarketDayLow": 104.66,
     "regularMarketVolume": 18246223,
-    "averageDailyVolume10Day": 20615300,
-    "averageDailyVolume3Month": 25053723,
+    "averageDailyVolume10Day": 20732070,
+    "averageDailyVolume3Month": 24942668,
     "regularMarketPreviousClose": 107,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 107.8,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "HOOD",
     "underlyingSymbol": null,
@@ -2997,8 +3007,8 @@
     "sharesShortPreviousMonthDate": "2025-11-28T00:00:00.000Z",
     "dateShortInterest": "2025-12-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.040599998,
-    "heldPercentInsiders": 0.00693,
-    "heldPercentInstitutions": 0.76168996,
+    "heldPercentInsiders": 0.00694,
+    "heldPercentInstitutions": 0.76128,
     "shortRatio": 1.6,
     "shortPercentOfFloat": 0.0471,
     "beta": 2.447,
@@ -3017,8 +3027,8 @@
     "forwardEps": 2.60743,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 21.741,
-    "52WeekChange": 1.0918865,
-    "SandP52WeekChange": 0.15083182,
+    "52WeekChange": 1.057478,
+    "SandP52WeekChange": 0.15552938,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4817,6 +4827,6 @@
     "profitMargins": 0.52188,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-28T06:31:34.339Z",
+  "lastUpdated": "2026-01-28T12:40:54.400Z",
   "source": "Static Build (yahoo-finance2)"
 }
