@@ -4,8 +4,8 @@
       {
         "period": "0m",
         "strongBuy": 2,
-        "buy": 15,
-        "hold": 12,
+        "buy": 16,
+        "hold": 11,
         "sell": 1,
         "strongSell": 0
       },
@@ -45,7 +45,7 @@
         "organization": "Magnetar Financial LLC",
         "pctHeld": 0.21219999,
         "position": 81983325,
-        "value": 9008122992,
+        "value": 8924704809,
         "pctChange": -0.1444
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.069299996,
         "position": 26793956,
-        "value": 2944052965,
+        "value": 2916790066,
         "pctChange": 0.071100004
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Nvidia Corp                          ",
         "pctHeld": 0.062800005,
         "position": 24277573,
-        "value": 2667559086,
+        "value": 2642856611,
         "pctChange": 0
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0318,
         "position": 12297105,
-        "value": 1351175184,
+        "value": 1338662857,
         "pctChange": 1.4381
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.019199999,
         "position": 7433501,
-        "value": 816774524,
+        "value": 809210923,
         "pctChange": 1.0967
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Coatue Management LLC",
         "pctHeld": 0.0174,
         "position": 6724615,
-        "value": 738883901,
+        "value": 732041593,
         "pctChange": -0.6222
       },
       {
@@ -99,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0109,
         "position": 4230022,
-        "value": 464784252,
+        "value": 460480197,
         "pctChange": 0.8049
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0108,
         "position": 4172359,
-        "value": 458448386,
+        "value": 454203003,
         "pctChange": 4.8301
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.0107,
         "position": 4115456,
-        "value": 452196026,
+        "value": 448008542,
         "pctChange": 1
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0094,
         "position": 3623259,
-        "value": 398114649,
+        "value": 394427976,
         "pctChange": 4.4685
       }
     ]
@@ -176,7 +176,7 @@
           "reportedDate": 1762808932
         }
       ],
-      "currentQuarterEstimate": -0.66663,
+      "currentQuarterEstimate": -0.67481,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -213,6 +213,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-27T19:58:41.000Z",
+        "firm": "Macquarie",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 115,
+        "priorPriceTarget": 115
+      },
       {
         "epochGradeDate": "2026-01-27T12:18:59.000Z",
         "firm": "Mizuho",
@@ -1059,14 +1069,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.11768451,
-    "regularMarketChange": 11.567505,
-    "regularMarketTime": "2026-01-27T18:32:55.000Z",
+    "postMarketChangePercent": 0.021225428,
+    "postMarketChange": 2.3106003,
+    "postMarketTime": "2026-01-28T00:59:57.000Z",
+    "postMarketPrice": 111.1706,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.107314,
+    "regularMarketChange": 10.55,
+    "regularMarketTime": "2026-01-27T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 109.8775,
-    "regularMarketDayHigh": 111.74,
+    "regularMarketPrice": 108.86,
+    "regularMarketDayHigh": 111.78,
     "regularMarketDayLow": 101.86,
-    "regularMarketVolume": 34558912,
+    "regularMarketVolume": 48048176,
     "averageDailyVolume10Day": 31385850,
     "averageDailyVolume3Month": 29280706,
     "regularMarketPreviousClose": 98.31,
@@ -1075,7 +1090,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "CRWV",
     "underlyingSymbol": null,
@@ -1087,13 +1102,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 54753882112
+    "marketCap": 54246842368
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 65857339392,
-    "forwardPE": -522.75323,
+    "enterpriseValue": 71114588160,
+    "forwardPE": -498.32916,
     "profitMargins": -0.17802,
     "floatShares": 278848513,
     "sharesOutstanding": 386401201,
@@ -1109,18 +1124,18 @@
     "impliedSharesOutstanding": 498317512,
     "category": null,
     "bookValue": 7.794,
-    "priceToBook": 14.097703,
+    "priceToBook": 13.9671545,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": -824729024,
-    "trailingEps": -1.66,
+    "trailingEps": -1.84,
     "forwardEps": -0.21845,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 15.292,
-    "enterpriseToEbitda": 30.153,
+    "enterpriseToRevenue": 16.513,
+    "enterpriseToEbitda": 32.56,
     "52WeekChange": 1.4577501,
     "SandP52WeekChange": 0.14544725,
     "latestShareClass": null,
@@ -2911,10 +2926,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 109.8775,
+    "currentPrice": 108.86,
     "targetHighPrice": 208,
     "targetLowPrice": 44,
-    "targetMeanPrice": 124.25926,
+    "targetMeanPrice": 125.74074,
     "targetMedianPrice": 120,
     "recommendationMean": 2,
     "recommendationKey": "buy",
@@ -2940,6 +2955,6 @@
     "profitMargins": -0.17802,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-27T18:32:56.768Z",
+  "lastUpdated": "2026-01-28T01:21:25.395Z",
   "source": "Static Build (yahoo-finance2)"
 }
