@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.23448,
-    "institutionsPercentHeld": 0.50792,
-    "institutionsFloatPercentHeld": 0.6635,
-    "institutionsCount": 799
+    "institutionsPercentHeld": 0.50853,
+    "institutionsFloatPercentHeld": 0.66429,
+    "institutionsCount": 806
   },
   "earnings": {
     "maxAge": 86400,
@@ -1068,11 +1068,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.005847907,
+    "preMarketChange": -0.6199951,
+    "preMarketTime": "2026-01-29T12:46:16.000Z",
+    "preMarketPrice": 105.4,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.007357091,
-    "postMarketChange": -0.7799988,
-    "postMarketTime": "2026-01-29T00:59:56.000Z",
-    "postMarketPrice": 105.24,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.026088601,
     "regularMarketChange": -2.84,
@@ -1082,15 +1082,15 @@
     "regularMarketDayHigh": 114.45,
     "regularMarketDayLow": 102.64,
     "regularMarketVolume": 36051521,
-    "averageDailyVolume10Day": 31963250,
-    "averageDailyVolume3Month": 29874420,
+    "averageDailyVolume10Day": 33544200,
+    "averageDailyVolume3Month": 29978504,
     "regularMarketPreviousClose": 108.86,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 114.12,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRWV",
     "underlyingSymbol": null,
@@ -1118,7 +1118,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0986,
     "heldPercentInsiders": 0.23448,
-    "heldPercentInstitutions": 0.50792,
+    "heldPercentInstitutions": 0.50853,
     "shortRatio": 1.76,
     "shortPercentOfFloat": 0.1999,
     "impliedSharesOutstanding": 521253292,
@@ -1136,8 +1136,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 16.185,
     "enterpriseToEbitda": 31.912,
-    "52WeekChange": 1.7214999,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 1.6505,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1164,6 +1164,87 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 105830,
+        "value": 10736793,
+        "filerUrl": "",
+        "transactionText": "Sale at price 98.58 - 108.00 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 19291,
+        "value": 1955781,
+        "filerUrl": "",
+        "transactionText": "Sale at price 98.58 - 107.99 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2000,
+        "value": 202983,
+        "filerUrl": "",
+        "transactionText": "Sale at price 98.58 - 106.52 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 33335,
+        "value": 3381893,
+        "filerUrl": "",
+        "transactionText": "Sale at price 98.58 - 107.99 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 105830,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 33335,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "I"
+      },
       {
         "maxAge": 1,
         "shares": 281250,
@@ -2222,6 +2303,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 12500,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BAKER JEFFREY R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 804514,
         "value": 111412046,
         "filerUrl": "",
@@ -2255,18 +2348,6 @@
         "moneyText": "",
         "startDate": "2025-10-29T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12500,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BAKER JEFFREY R",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-29T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2838,90 +2919,6 @@
         "moneyText": "",
         "startDate": "2025-10-06T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1149406,
-        "value": 160196853,
-        "filerUrl": "",
-        "transactionText": "Sale at price 138.50 - 139.46 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 901524,
-        "value": 124605999,
-        "filerUrl": "",
-        "transactionText": "Sale at price 137.45 - 140.81 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 149524,
-        "value": 20664788,
-        "filerUrl": "",
-        "transactionText": "Sale at price 138.03 - 140.53 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 149524,
-        "value": 20664788,
-        "filerUrl": "",
-        "transactionText": "Sale at price 138.03 - 140.53 per share.",
-        "filerName": "MAGNETAR FINANCIAL LLC",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 286323,
-        "value": 39257747,
-        "filerUrl": "",
-        "transactionText": "Sale at price 137.11 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 732944,
-        "value": 102280892,
-        "filerUrl": "",
-        "transactionText": "Sale at price 137.00 - 142.05 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-09-30T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 581484,
-        "value": 81145574,
-        "filerUrl": "",
-        "transactionText": "Sale at price 137.10 - 142.01 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-09-30T00:00:00.000Z",
-        "ownership": "I"
       }
     ],
     "maxAge": 1
@@ -2957,6 +2954,6 @@
     "profitMargins": -0.17802,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:41:27.405Z",
+  "lastUpdated": "2026-01-29T12:46:27.387Z",
   "source": "Static Build (yahoo-finance2)"
 }

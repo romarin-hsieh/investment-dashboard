@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01957,
-    "institutionsPercentHeld": 0.72094,
-    "institutionsFloatPercentHeld": 0.73533,
-    "institutionsCount": 381
+    "institutionsPercentHeld": 0.71981,
+    "institutionsFloatPercentHeld": 0.73418,
+    "institutionsCount": 383
   },
   "earnings": {
     "maxAge": 86400,
@@ -1198,11 +1198,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0021521298,
+    "preMarketChange": 0.060001373,
+    "preMarketTime": "2026-01-29T12:43:01.000Z",
+    "preMarketPrice": 27.94,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.006814872,
-    "postMarketChange": -0.18999863,
-    "postMarketTime": "2026-01-29T00:59:20.000Z",
-    "postMarketPrice": 27.69,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00676881,
     "regularMarketChange": -0.190001,
@@ -1212,15 +1212,15 @@
     "regularMarketDayHigh": 28.4,
     "regularMarketDayLow": 26.81,
     "regularMarketVolume": 12711785,
-    "averageDailyVolume10Day": 16532570,
-    "averageDailyVolume3Month": 11960668,
+    "averageDailyVolume10Day": 16145790,
+    "averageDailyVolume3Month": 11973375,
     "regularMarketPreviousClose": 28.07,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 28.05,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "PL",
     "underlyingSymbol": null,
@@ -1248,7 +1248,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1177,
     "heldPercentInsiders": 0.01957,
-    "heldPercentInstitutions": 0.72094,
+    "heldPercentInstitutions": 0.71981,
     "shortRatio": 2.93,
     "shortPercentOfFloat": 0.1425,
     "beta": 1.943,
@@ -1267,8 +1267,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 30.196,
     "enterpriseToEbitda": -229.373,
-    "52WeekChange": 3.8230243,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 3.790378,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1591,6 +1591,18 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAYMOND JOHN W.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-07-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32468,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SMITH GARY BRIAN",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1647,18 +1659,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 32468,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAYMOND JOHN W.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 94500,
         "value": 0,
         "filerUrl": "",
@@ -1695,6 +1695,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 11140,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAYMOND JOHN W.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 511153,
         "value": 0,
         "filerUrl": "",
@@ -1713,18 +1725,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SCHINGLER ROBERT H",
         "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-03-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11140,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAYMOND JOHN W.",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-10T00:00:00.000Z",
         "ownership": "D"
@@ -1979,6 +1979,6 @@
     "profitMargins": -0.45868,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:40:56.963Z",
+  "lastUpdated": "2026-01-29T12:45:56.816Z",
   "source": "Static Build (yahoo-finance2)"
 }

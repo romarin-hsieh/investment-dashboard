@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.44414002,
-    "institutionsPercentHeld": 0.37616003,
-    "institutionsFloatPercentHeld": 0.67673,
-    "institutionsCount": 597
+    "institutionsPercentHeld": 0.37657002,
+    "institutionsFloatPercentHeld": 0.67746,
+    "institutionsCount": 594
   },
   "earnings": {
     "maxAge": 86400,
@@ -628,11 +628,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.013183616,
+    "preMarketChange": -0.27000046,
+    "preMarketTime": "2026-01-29T12:45:21.000Z",
+    "preMarketPrice": 20.21,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.019985344,
-    "postMarketChange": -0.40929985,
-    "postMarketTime": "2026-01-29T00:59:55.000Z",
-    "postMarketPrice": 20.0707,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.066666596,
     "regularMarketChange": 1.28,
@@ -642,15 +642,15 @@
     "regularMarketDayHigh": 20.925,
     "regularMarketDayLow": 19.01,
     "regularMarketVolume": 29074059,
-    "averageDailyVolume10Day": 28171880,
-    "averageDailyVolume3Month": 25871318,
+    "averageDailyVolume10Day": 29152760,
+    "averageDailyVolume3Month": 25930811,
     "regularMarketPreviousClose": 19.2,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 19.41,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SMR",
     "underlyingSymbol": null,
@@ -678,7 +678,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.115200005,
     "heldPercentInsiders": 0.44414002,
-    "heldPercentInstitutions": 0.37616003,
+    "heldPercentInstitutions": 0.37657002,
     "shortRatio": 1.19,
     "shortPercentOfFloat": 0.1912,
     "beta": 2.132,
@@ -697,8 +697,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 36.748,
     "enterpriseToEbitda": -17.745,
-    "52WeekChange": -0.18575066,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": -0.13146734,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -821,24 +821,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2138619,
-        "value": 79973689,
-        "filerUrl": "",
-        "transactionText": "Sale at price 35.86 - 40.05 per share.",
-        "filerName": "FLUOR CORP",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 66000,
         "value": 2412970,
         "filerUrl": "",
         "transactionText": "Sale at price 36.50 - 36.62 per share.",
         "filerName": "REYES JOSE N. JR",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2138619,
+        "value": 79973689,
+        "filerUrl": "",
+        "transactionText": "Sale at price 35.86 - 40.05 per share.",
+        "filerName": "FLUOR CORP",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "I"
@@ -1895,6 +1895,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 15776,
+        "value": 95287,
+        "filerUrl": "",
+        "transactionText": "Sale at price 6.04 per share.",
+        "filerName": "REYES JOSE N. JR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-05-03T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 7191,
         "value": 43434,
         "filerUrl": "",
@@ -1916,18 +1928,6 @@
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15776,
-        "value": 95287,
-        "filerUrl": "",
-        "transactionText": "Sale at price 6.04 per share.",
-        "filerName": "REYES JOSE N. JR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2010,6 +2010,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 9589,
+        "value": 29889,
+        "filerUrl": "",
+        "transactionText": "Sale at price 3.12 per share.",
+        "filerName": "TEMPLE ROBERT K",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-02-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10328,
+        "value": 32192,
+        "filerUrl": "",
+        "transactionText": "Sale at price 3.12 per share.",
+        "filerName": "REYES JOSE N. JR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-02-29T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 13451,
         "value": 41927,
         "filerUrl": "",
@@ -2043,30 +2067,6 @@
         "moneyText": "",
         "startDate": "2024-02-29T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9589,
-        "value": 29889,
-        "filerUrl": "",
-        "transactionText": "Sale at price 3.12 per share.",
-        "filerName": "TEMPLE ROBERT K",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-02-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10328,
-        "value": 32192,
-        "filerUrl": "",
-        "transactionText": "Sale at price 3.12 per share.",
-        "filerName": "REYES JOSE N. JR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-02-29T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2156,6 +2156,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:41:25.640Z",
+  "lastUpdated": "2026-01-29T12:46:25.741Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -187,14 +187,16 @@
           "reportedDate": 1769634300
         }
       ],
-      "currentQuarterEstimate": 1.20061,
+      "currentQuarterEstimate": 1.2638,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "3Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-04-22T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-29T12:12:28.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 300,
+        "priorPriceTarget": 250
+      },
       {
         "epochGradeDate": "2026-01-22T18:49:23.000Z",
         "firm": "Citigroup",
@@ -5086,11 +5098,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.037732672,
+    "preMarketChange": 9.039993,
+    "preMarketTime": "2026-01-29T12:46:34.000Z",
+    "preMarketPrice": 248.62,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.05476248,
-    "postMarketChange": 13.119995,
-    "postMarketTime": "2026-01-29T00:59:43.000Z",
-    "postMarketPrice": 252.7,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0046967804,
     "regularMarketChange": 1.12,
@@ -5100,15 +5112,15 @@
     "regularMarketDayHigh": 243.99,
     "regularMarketDayLow": 237.14,
     "regularMarketVolume": 15128759,
-    "averageDailyVolume10Day": 12937010,
-    "averageDailyVolume3Month": 11469008,
+    "averageDailyVolume10Day": 13209330,
+    "averageDailyVolume3Month": 11534437,
     "regularMarketPreviousClose": 238.46,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 241.27,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "LRCX",
     "underlyingSymbol": null,
@@ -5126,7 +5138,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 298710564864,
-    "forwardPE": 40.092644,
+    "forwardPE": 38.196636,
     "profitMargins": 0.29657,
     "floatShares": 1251156604,
     "sharesOutstanding": 1256030000,
@@ -5142,8 +5154,8 @@
     "beta": 1.779,
     "impliedSharesOutstanding": 1261032300,
     "category": null,
-    "bookValue": 8.095,
-    "priceToBook": 29.596046,
+    "bookValue": 7.773,
+    "priceToBook": 30.822077,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-06-29T00:00:00.000Z",
@@ -5152,13 +5164,13 @@
     "earningsQuarterlyGrowth": 0.405,
     "netIncomeToCommon": 5810433024,
     "trailingEps": 4.86,
-    "forwardEps": 6.18474,
+    "forwardEps": 6.44074,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1727913600,
     "enterpriseToRevenue": 15.247,
     "enterpriseToEbitda": 43.547,
-    "52WeekChange": 1.9537966,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 1.96767,
+    "SandP52WeekChange": 0.1493715,
     "lastDividendValue": 0.26,
     "lastDividendDate": "2025-12-03T00:00:00.000Z",
     "latestShareClass": null,
@@ -6210,10 +6222,10 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 239.58,
-    "targetHighPrice": 265,
+    "targetHighPrice": 295,
     "targetLowPrice": 115,
-    "targetMeanPrice": 216.80646,
-    "targetMedianPrice": 225,
+    "targetMeanPrice": 232.77419,
+    "targetMedianPrice": 250,
     "recommendationMean": 1.72222,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 31,
@@ -6239,6 +6251,6 @@
     "profitMargins": 0.29657,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:42:43.864Z",
+  "lastUpdated": "2026-01-29T12:47:48.207Z",
   "source": "Static Build (yahoo-finance2)"
 }

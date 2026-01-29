@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03714,
-    "institutionsPercentHeld": 0.7397,
-    "institutionsFloatPercentHeld": 0.76822996,
-    "institutionsCount": 317
+    "institutionsPercentHeld": 0.73981005,
+    "institutionsFloatPercentHeld": 0.76834,
+    "institutionsCount": 319
   },
   "earnings": {
     "maxAge": 86400,
@@ -419,11 +419,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.024463324,
+    "preMarketChange": -0.7350006,
+    "preMarketTime": "2026-01-29T12:43:28.000Z",
+    "preMarketPrice": 29.31,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0063206465,
-    "postMarketChange": -0.18999863,
-    "postMarketTime": "2026-01-29T00:59:43.000Z",
-    "postMarketPrice": 29.87,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.056219302,
     "regularMarketChange": 1.6,
@@ -433,15 +433,15 @@
     "regularMarketDayHigh": 30.25,
     "regularMarketDayLow": 28.32,
     "regularMarketVolume": 6871464,
-    "averageDailyVolume10Day": 10455660,
-    "averageDailyVolume3Month": 7587516,
+    "averageDailyVolume10Day": 9781490,
+    "averageDailyVolume3Month": 7586477,
     "regularMarketPreviousClose": 28.46,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 28.85,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "FIG",
     "underlyingSymbol": null,
@@ -469,7 +469,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0298,
     "heldPercentInsiders": 0.03714,
-    "heldPercentInstitutions": 0.7397,
+    "heldPercentInstitutions": 0.73981005,
     "shortRatio": 2.72,
     "shortPercentOfFloat": 0.0744,
     "impliedSharesOutstanding": 495591718,
@@ -487,8 +487,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 13.81,
     "enterpriseToEbitda": -12.964,
-    "52WeekChange": -0.7535931,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": -0.73974025,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -898,6 +898,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 37532,
+        "value": 1646662,
+        "filerUrl": "",
+        "transactionText": "Sale at price 42.97 - 45.00 per share.",
+        "filerName": "MELWANI PRAVEER",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-11-12T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
         "shares": 304504,
         "value": 13285087,
         "filerUrl": "",
@@ -919,18 +931,6 @@
         "moneyText": "",
         "startDate": "2025-11-12T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 37532,
-        "value": 1646662,
-        "filerUrl": "",
-        "transactionText": "Sale at price 42.97 - 45.00 per share.",
-        "filerName": "MELWANI PRAVEER",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-12T00:00:00.000Z",
-        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -1430,6 +1430,6 @@
     "profitMargins": -0.95577,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:42:29.296Z",
+  "lastUpdated": "2026-01-29T12:47:33.159Z",
   "source": "Static Build (yahoo-finance2)"
 }

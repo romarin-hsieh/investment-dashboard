@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02871,
-    "institutionsPercentHeld": 0.8821,
-    "institutionsFloatPercentHeld": 0.90817,
-    "institutionsCount": 1241
+    "institutionsPercentHeld": 0.88209,
+    "institutionsFloatPercentHeld": 0.90816003,
+    "institutionsCount": 1243
   },
   "earnings": {
     "maxAge": 86400,
@@ -1428,11 +1428,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.003976184,
+    "preMarketChange": 0.30000305,
+    "preMarketTime": "2026-01-29T12:38:36.000Z",
+    "preMarketPrice": 75.75,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0027461776,
-    "postMarketChange": -0.2071991,
-    "postMarketTime": "2026-01-29T00:50:17.000Z",
-    "postMarketPrice": 75.2428,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.000397541,
     "regularMarketChange": -0.0300064,
@@ -1442,15 +1442,15 @@
     "regularMarketDayHigh": 76.38,
     "regularMarketDayLow": 74.7,
     "regularMarketVolume": 4144743,
-    "averageDailyVolume10Day": 6483660,
-    "averageDailyVolume3Month": 4320711,
+    "averageDailyVolume10Day": 6589450,
+    "averageDailyVolume3Month": 4326850,
     "regularMarketPreviousClose": 75.48,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 75.92,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "IBKR",
     "underlyingSymbol": null,
@@ -1478,7 +1478,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0253,
     "heldPercentInsiders": 0.02871,
-    "heldPercentInstitutions": 0.8821,
+    "heldPercentInstitutions": 0.88209,
     "shortRatio": 3.02,
     "shortPercentOfFloat": 0.025999999,
     "beta": 1.24,
@@ -1498,8 +1498,8 @@
     "lastSplitFactor": "4:1",
     "lastSplitDate": 1750204800,
     "enterpriseToRevenue": -5.161,
-    "52WeekChange": 0.37756085,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 0.37701333,
+    "SandP52WeekChange": 0.1493715,
     "lastDividendValue": 0.08,
     "lastDividendDate": "2025-12-01T00:00:00.000Z",
     "latestShareClass": null,
@@ -1526,6 +1526,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 155000,
+        "value": 11755911,
+        "filerUrl": "",
+        "transactionText": "Sale at price 75.07 - 77.98 per share.",
+        "filerName": "NEMSER EARL H",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "I"
+      },
       {
         "maxAge": 1,
         "shares": 245000,
@@ -2362,6 +2374,6 @@
     "profitMargins": 0.15858,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:42:17.302Z",
+  "lastUpdated": "2026-01-29T12:47:19.815Z",
   "source": "Static Build (yahoo-finance2)"
 }

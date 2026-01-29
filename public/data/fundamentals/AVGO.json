@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.020060001,
-    "institutionsPercentHeld": 0.78917,
-    "institutionsFloatPercentHeld": 0.80531996,
-    "institutionsCount": 5593
+    "institutionsPercentHeld": 0.7893,
+    "institutionsFloatPercentHeld": 0.80546,
+    "institutionsCount": 5607
   },
   "earnings": {
     "maxAge": 86400,
@@ -5958,11 +5958,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.01008278,
+    "preMarketChange": -3.3599854,
+    "preMarketTime": "2026-01-29T12:46:00.000Z",
+    "preMarketPrice": 329.88,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.003300851,
-    "postMarketChange": -1.0999756,
-    "postMarketTime": "2026-01-29T00:59:46.000Z",
-    "postMarketPrice": 332.14,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00135215,
     "regularMarketChange": 0.449982,
@@ -5972,15 +5972,15 @@
     "regularMarketDayHigh": 339.99,
     "regularMarketDayLow": 326.7,
     "regularMarketVolume": 22628693,
-    "averageDailyVolume10Day": 27129210,
-    "averageDailyVolume3Month": 29982643,
+    "averageDailyVolume10Day": 27590400,
+    "averageDailyVolume3Month": 29866860,
     "regularMarketPreviousClose": 332.79,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 338.85,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVGO",
     "underlyingSymbol": null,
@@ -6008,7 +6008,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.012200001,
     "heldPercentInsiders": 0.020060001,
-    "heldPercentInstitutions": 0.78917,
+    "heldPercentInstitutions": 0.7893,
     "shortRatio": 1.62,
     "shortPercentOfFloat": 0.0139,
     "beta": 1.218,
@@ -6029,8 +6029,8 @@
     "lastSplitDate": 1721001600,
     "enterpriseToRevenue": 2.604,
     "enterpriseToEbitda": 4.752,
-    "52WeekChange": 0.5431235,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 0.54521,
+    "SandP52WeekChange": 0.1493715,
     "lastDividendValue": 0.65,
     "lastDividendDate": "2025-12-22T00:00:00.000Z",
     "latestShareClass": null,
@@ -6144,18 +6144,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 6093,
-        "value": 2028440,
-        "filerUrl": "",
-        "transactionText": "Sale at price 322.58 - 346.49 per share.",
-        "filerName": "SPEARS KIRSTEN MARGRETA",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 38281,
         "value": 12542615,
         "filerUrl": "",
@@ -6174,6 +6162,18 @@
         "transactionText": "Sale at price 322.33 - 345.99 per share.",
         "filerName": "KAWWAS CHARLIE B",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6093,
+        "value": 2028440,
+        "filerUrl": "",
+        "transactionText": "Sale at price 322.58 - 346.49 per share.",
+        "filerName": "SPEARS KIRSTEN MARGRETA",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-12-17T00:00:00.000Z",
         "ownership": "D"
@@ -7104,18 +7104,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3450,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "TAN HOCK E",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-06-21T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 30,
         "value": 0,
         "filerUrl": "",
@@ -7125,6 +7113,18 @@
         "moneyText": "",
         "startDate": "2024-06-21T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3450,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "TAN HOCK E",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-06-21T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -7497,6 +7497,6 @@
     "profitMargins": 0.36198002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:41:15.281Z",
+  "lastUpdated": "2026-01-29T12:46:15.314Z",
   "source": "Static Build (yahoo-finance2)"
 }

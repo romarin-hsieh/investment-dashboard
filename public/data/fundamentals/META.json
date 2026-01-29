@@ -143,17 +143,6 @@
     "earningsChart": {
       "quarterly": [
         {
-          "date": "4Q2024",
-          "actual": 8.02,
-          "estimate": 6.75838,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "1.26",
-          "surprisePct": "18.67",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1738186740
-        },
-        {
           "date": "1Q2025",
           "actual": 6.43,
           "estimate": 5.22294,
@@ -185,15 +174,25 @@
           "surprisePct": "-84.34",
           "periodEndDate": 1759190400,
           "reportedDate": 1761768300
+        },
+        {
+          "date": "4Q2025",
+          "actual": 8.88,
+          "estimate": 8.22253,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.66",
+          "surprisePct": "8.0",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1769634260
         }
       ],
-      "currentQuarterEstimate": 8.22253,
-      "currentQuarterActual": 8.88,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
+      "currentQuarterEstimate": 6.54123,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
       "earningsDate": [],
       "isEarningsDateEstimate": false
     },
@@ -4387,11 +4386,11 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.066200145,
-    "postMarketChange": 44.27002,
-    "postMarketTime": "2026-01-29T01:00:00.000Z",
-    "postMarketPrice": 713,
+    "preMarketChangePercent": 0.085639976,
+    "preMarketChange": 57.27002,
+    "preMarketTime": "2026-01-29T12:46:19.000Z",
+    "preMarketPrice": 726,
+    "preMarketSource": "DELAYED",
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00630042,
     "regularMarketChange": -4.23999,
@@ -4401,22 +4400,22 @@
     "regularMarketDayHigh": 677.6775,
     "regularMarketDayLow": 666.1,
     "regularMarketVolume": 16982940,
-    "averageDailyVolume10Day": 16712840,
-    "averageDailyVolume3Month": 19205158,
+    "averageDailyVolume10Day": 17399430,
+    "averageDailyVolume3Month": 19298455,
     "regularMarketPreviousClose": 672.97,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 674.615,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "META",
     "underlyingSymbol": null,
     "shortName": "Meta Platforms, Inc.",
     "longName": "Meta Platforms, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -4427,7 +4426,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 1692164423680,
-    "forwardPE": 22.474821,
+    "forwardPE": 20.112064,
     "profitMargins": 0.30892,
     "floatShares": 2173324921,
     "sharesOutstanding": 2177889269,
@@ -4453,12 +4452,12 @@
     "earningsQuarterlyGrowth": -0.827,
     "netIncomeToCommon": 58527997952,
     "trailingEps": 23.47,
-    "forwardEps": 33.15169,
+    "forwardEps": 33.92125,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.932,
     "enterpriseToEbitda": 17.197,
-    "52WeekChange": -0.020422101,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": -0.026593864,
+    "SandP52WeekChange": 0.1493715,
     "lastDividendValue": 0.525,
     "lastDividendDate": "2025-12-15T00:00:00.000Z",
     "latestShareClass": null,
@@ -4486,6 +4485,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 517,
+        "value": 343805,
+        "filerUrl": "",
+        "transactionText": "Sale at price 665.00 per share.",
+        "filerName": "OLIVAN JAVIER",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 517,
@@ -5325,18 +5336,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 16751,
-        "value": 13018081,
-        "filerUrl": "",
-        "transactionText": "Sale at price 775.00 - 782.13 per share.",
-        "filerName": "BOSWORTH ANDREW",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 25207,
         "value": 19395767,
         "filerUrl": "",
@@ -5346,6 +5345,18 @@
         "moneyText": "",
         "startDate": "2025-08-18T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16751,
+        "value": 13018081,
+        "filerUrl": "",
+        "transactionText": "Sale at price 775.00 - 782.13 per share.",
+        "filerName": "BOSWORTH ANDREW",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6235,18 +6246,6 @@
         "moneyText": "",
         "startDate": "2025-06-09T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1462,
-        "value": 1025053,
-        "filerUrl": "",
-        "transactionText": "Sale at price 700.48 - 702.22 per share.",
-        "filerName": "ZUCKERBERG MARK",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "I"
       }
     ],
     "maxAge": 1
@@ -6255,9 +6254,9 @@
     "maxAge": 86400,
     "currentPrice": 668.73,
     "targetHighPrice": 1117,
-    "targetLowPrice": 685,
-    "targetMeanPrice": 832.77966,
-    "targetMedianPrice": 825,
+    "targetLowPrice": 700,
+    "targetMeanPrice": 840.0678,
+    "targetMedianPrice": 850,
     "recommendationMean": 1.32836,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 59,
@@ -6283,6 +6282,6 @@
     "profitMargins": 0.30892,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:41:20.665Z",
+  "lastUpdated": "2026-01-29T12:46:20.559Z",
   "source": "Static Build (yahoo-finance2)"
 }

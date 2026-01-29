@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01768,
-    "institutionsPercentHeld": 0.94189,
-    "institutionsFloatPercentHeld": 0.95884,
-    "institutionsCount": 818
+    "institutionsPercentHeld": 0.94177,
+    "institutionsFloatPercentHeld": 0.95872,
+    "institutionsCount": 821
   },
   "earnings": {
     "maxAge": 86400,
@@ -1448,11 +1448,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0007100544,
+    "preMarketChange": 0.08000183,
+    "preMarketTime": "2026-01-29T12:45:19.000Z",
+    "preMarketPrice": 112.75,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.004171485,
-    "postMarketChange": -0.47000122,
-    "postMarketTime": "2026-01-29T00:59:40.000Z",
-    "postMarketPrice": 112.2,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.045654703,
     "regularMarketChange": -5.39,
@@ -1462,15 +1462,15 @@
     "regularMarketDayHigh": 120,
     "regularMarketDayLow": 109.26,
     "regularMarketVolume": 3732805,
-    "averageDailyVolume10Day": 4376960,
-    "averageDailyVolume3Month": 3126271,
+    "averageDailyVolume10Day": 4340560,
+    "averageDailyVolume3Month": 3136531,
     "regularMarketPreviousClose": 118.06,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 120,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "KTOS",
     "underlyingSymbol": null,
@@ -1498,7 +1498,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.053200003,
     "heldPercentInsiders": 0.01768,
-    "heldPercentInstitutions": 0.94189,
+    "heldPercentInstitutions": 0.94177,
     "shortRatio": 2.79,
     "shortPercentOfFloat": 0.0544,
     "beta": 1.093,
@@ -1519,8 +1519,8 @@
     "lastSplitDate": 1252627200,
     "enterpriseToRevenue": 14.47,
     "enterpriseToEbitda": 270.621,
-    "52WeekChange": 2.5084696,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 2.3482912,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1549,6 +1549,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 7000,
+        "value": 755824,
+        "filerUrl": "",
+        "transactionText": "Sale at price 107.28 - 108.49 per share.",
+        "filerName": "FENDLEY STEVEN S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 1676,
@@ -1746,22 +1758,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
+        "shares": 75000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MILLS THOMAS E IV",
-        "filerRelation": "Officer",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 75000,
+        "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "MILLS THOMAS E IV",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -2974,6 +2986,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 50000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
@@ -3011,17 +3034,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "FENDLEY STEVEN S",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CARRAI PHILLIP D",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
@@ -3073,22 +3085,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
+        "shares": 75000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MILLS THOMAS E IV",
-        "filerRelation": "Officer",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 75000,
+        "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "MILLS THOMAS E IV",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
         "ownership": "D"
@@ -3307,18 +3319,6 @@
         "moneyText": "",
         "startDate": "2024-11-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7000,
-        "value": 168074,
-        "filerUrl": "",
-        "transactionText": "Sale at price 24.01 per share.",
-        "filerName": "FENDLEY STEVEN S",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-28T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -3355,6 +3355,6 @@
     "profitMargins": 0.015570001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:41:38.434Z",
+  "lastUpdated": "2026-01-29T12:46:38.893Z",
   "source": "Static Build (yahoo-finance2)"
 }

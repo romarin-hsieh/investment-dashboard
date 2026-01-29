@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.18721001,
-    "institutionsPercentHeld": 0.83108,
-    "institutionsFloatPercentHeld": 1.0225,
-    "institutionsCount": 2012
+    "institutionsPercentHeld": 0.83093,
+    "institutionsFloatPercentHeld": 1.02233,
+    "institutionsCount": 2010
   },
   "earnings": {
     "maxAge": 86400,
@@ -2658,11 +2658,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.015930407,
+    "preMarketChange": 8.640015,
+    "preMarketTime": "2026-01-29T12:44:58.000Z",
+    "preMarketPrice": 551,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.010730893,
-    "postMarketChange": 5.8200073,
-    "postMarketTime": "2026-01-29T00:59:55.000Z",
-    "postMarketPrice": 548.18,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00220769,
     "regularMarketChange": -1.20001,
@@ -2672,15 +2672,15 @@
     "regularMarketDayHigh": 557.9699,
     "regularMarketDayLow": 537.68,
     "regularMarketVolume": 4683154,
-    "averageDailyVolume10Day": 6219880,
-    "averageDailyVolume3Month": 4397076,
+    "averageDailyVolume10Day": 6317830,
+    "averageDailyVolume3Month": 4402995,
     "regularMarketPreviousClose": 543.56,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 546.2704,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "APP",
     "underlyingSymbol": null,
@@ -2708,7 +2708,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.043,
     "heldPercentInsiders": 0.18721001,
-    "heldPercentInstitutions": 0.83108,
+    "heldPercentInstitutions": 0.83093,
     "shortRatio": 3.93,
     "shortPercentOfFloat": 0.0494,
     "beta": 2.502,
@@ -2728,8 +2728,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 29.352,
     "enterpriseToEbitda": 47.303,
-    "52WeekChange": 0.48712754,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 0.48384452,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2889,6 +2889,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 15931,
+        "value": 8238139,
+        "filerUrl": "",
+        "transactionText": "Sale at price 504.62 - 528.76 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-21T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 4884,
         "value": 2518953,
         "filerUrl": "",
@@ -2922,18 +2934,6 @@
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
         "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15931,
-        "value": 8238139,
-        "filerUrl": "",
-        "transactionText": "Sale at price 504.62 - 528.76 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-21T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3225,18 +3225,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 16599,
-        "value": 6917026,
-        "filerUrl": "",
-        "transactionText": "Sale at price 411.82 - 430.60 per share.",
-        "filerName": "VALENZUELA VICTORIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 90927,
         "value": 38276071,
         "filerUrl": "",
@@ -3246,6 +3234,18 @@
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16599,
+        "value": 6917026,
+        "filerUrl": "",
+        "transactionText": "Sale at price 411.82 - 430.60 per share.",
+        "filerName": "VALENZUELA VICTORIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3550,6 +3550,18 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 720,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MESSING BARBARA",
         "filerRelation": "Director",
         "moneyText": "",
@@ -3575,18 +3587,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "VIVAS EDUARDO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 720,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
@@ -4336,6 +4336,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 5205489,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KKR DENALI HOLDINGS, L.P.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 18000,
         "value": 486540,
         "filerUrl": "",
@@ -4352,17 +4363,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "KKR GROUP PARTNERSHIP, L.P.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5205489,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KKR DENALI HOLDINGS, L.P.",
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
@@ -4490,24 +4490,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 125042,
-        "value": 13250798,
-        "filerUrl": "",
-        "transactionText": "Sale at price 105.31 - 111.92 per share.",
-        "filerName": "VALENZUELA VICTORIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 200000,
         "value": 21559657,
         "filerUrl": "",
         "transactionText": "Sale at price 98.08 - 112.33 per share.",
         "filerName": "FOROUGHI ARASH ADAM",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-09-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 125042,
+        "value": 13250798,
+        "filerUrl": "",
+        "transactionText": "Sale at price 105.31 - 111.92 per share.",
+        "filerName": "VALENZUELA VICTORIA",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-13T00:00:00.000Z",
         "ownership": "D"
@@ -4583,6 +4583,6 @@
     "profitMargins": 0.44879,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:42:08.168Z",
+  "lastUpdated": "2026-01-29T12:47:10.797Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00772,
-    "institutionsPercentHeld": 0.88728,
-    "institutionsFloatPercentHeld": 0.89418,
-    "institutionsCount": 766
+    "institutionsPercentHeld": 0.88751,
+    "institutionsFloatPercentHeld": 0.89441,
+    "institutionsCount": 768
   },
   "earnings": {
     "maxAge": 86400,
@@ -1478,11 +1478,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0013031665,
+    "preMarketChange": 0.3999939,
+    "preMarketTime": "2026-01-29T12:39:26.000Z",
+    "preMarketPrice": 307.34,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0034534356,
-    "postMarketChange": 1.0599976,
-    "postMarketTime": "2026-01-29T00:59:25.000Z",
-    "postMarketPrice": 308,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00849567,
     "regularMarketChange": -2.63,
@@ -1492,15 +1492,15 @@
     "regularMarketDayHigh": 321.04,
     "regularMarketDayLow": 300.3901,
     "regularMarketVolume": 2104257,
-    "averageDailyVolume10Day": 1825240,
-    "averageDailyVolume3Month": 1227473,
+    "averageDailyVolume10Day": 1876820,
+    "averageDailyVolume3Month": 1241891,
     "regularMarketPreviousClose": 309.57,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 314.8461,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVAV",
     "underlyingSymbol": null,
@@ -1528,7 +1528,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0664,
     "heldPercentInsiders": 0.00772,
-    "heldPercentInstitutions": 0.88728,
+    "heldPercentInstitutions": 0.88751,
     "shortRatio": 2.41,
     "shortPercentOfFloat": 0.0884,
     "beta": 1.162,
@@ -1547,8 +1547,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.31,
     "enterpriseToEbitda": 147.149,
-    "52WeekChange": 0.8000349,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": 0.78474236,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2280,6 +2280,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 2334,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BROWN MELISSA ANN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 448,
         "filerUrl": "",
         "transactionText": "",
@@ -2346,17 +2357,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2334,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROWN MELISSA ANN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1000,
         "value": 176770,
         "filerUrl": "",
@@ -2413,6 +2413,6 @@
     "profitMargins": -0.050780002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:41:02.381Z",
+  "lastUpdated": "2026-01-29T12:46:02.469Z",
   "source": "Static Build (yahoo-finance2)"
 }

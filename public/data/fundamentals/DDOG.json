@@ -133,10 +133,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.0076800003,
-    "institutionsPercentHeld": 0.91075,
-    "institutionsFloatPercentHeld": 0.91779,
-    "institutionsCount": 1444
+    "insidersPercentHeld": 0.0076200003,
+    "institutionsPercentHeld": 0.91073,
+    "institutionsFloatPercentHeld": 0.91772,
+    "institutionsCount": 1446
   },
   "earnings": {
     "maxAge": 86400,
@@ -4258,11 +4258,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.052361984,
+    "preMarketChange": -7.3600006,
+    "preMarketTime": "2026-01-29T12:44:45.000Z",
+    "preMarketPrice": 133.2,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.024331234,
-    "postMarketChange": -3.4199982,
-    "postMarketTime": "2026-01-29T00:59:32.000Z",
-    "postMarketPrice": 137.14,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.017003,
     "regularMarketChange": 2.34999,
@@ -4272,15 +4272,15 @@
     "regularMarketDayHigh": 143.39,
     "regularMarketDayLow": 139.1,
     "regularMarketVolume": 6254763,
-    "averageDailyVolume10Day": 6182650,
-    "averageDailyVolume3Month": 4835956,
+    "averageDailyVolume10Day": 6297430,
+    "averageDailyVolume3Month": 4860904,
     "regularMarketPreviousClose": 138.21,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 140.11,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4307,8 +4307,8 @@
     "sharesShortPreviousMonthDate": "2025-12-15T00:00:00.000Z",
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0247,
-    "heldPercentInsiders": 0.0076800003,
-    "heldPercentInstitutions": 0.91075,
+    "heldPercentInsiders": 0.0076200003,
+    "heldPercentInstitutions": 0.91073,
     "shortRatio": 2.15,
     "shortPercentOfFloat": 0.027,
     "beta": 1.263,
@@ -4328,8 +4328,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 14.456,
     "enterpriseToEbitda": 7458.515,
-    "52WeekChange": -0.03085339,
-    "SandP52WeekChange": 0.14946544,
+    "52WeekChange": -0.014374852,
+    "SandP52WeekChange": 0.1493715,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4485,18 +4485,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "CALLAHAN MICHAEL JAMES",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 348000,
         "value": 0,
         "filerUrl": "",
@@ -4506,6 +4494,18 @@
         "moneyText": "",
         "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "CALLAHAN MICHAEL JAMES",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -6156,6 +6156,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-29T06:42:34.685Z",
+  "lastUpdated": "2026-01-29T12:47:38.961Z",
   "source": "Static Build (yahoo-finance2)"
 }
