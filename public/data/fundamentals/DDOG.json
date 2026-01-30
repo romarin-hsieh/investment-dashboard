@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1288,
         "position": 41912928,
-        "value": 5372398804,
+        "value": 5362884999,
         "pctChange": 0.00029999999
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0837,
         "position": 27230765,
-        "value": 3490439258,
+        "value": 3484258153,
         "pctChange": 0.31370002
       },
       {
@@ -63,7 +63,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0502,
         "position": 16342587,
-        "value": 2094792681,
+        "value": 2091083082,
         "pctChange": 0.5118
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0422,
         "position": 13732777,
-        "value": 1760267255,
+        "value": 1757150055,
         "pctChange": 1.0676999
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0414,
         "position": 13466821,
-        "value": 1726177017,
+        "value": 1723120186,
         "pctChange": 1.2325
       },
       {
@@ -90,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0325,
         "position": 10561176,
-        "value": 1353731462,
+        "value": 1351334183,
         "pctChange": 1.0464
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0272,
         "position": 8858270,
-        "value": 1135452983,
+        "value": 1133442247,
         "pctChange": 0.52
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Janus Henderson Group PLC",
         "pctHeld": 0.0248,
         "position": 8078980,
-        "value": 1035563597,
+        "value": 1033729751,
         "pctChange": -0.0336
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0188,
         "position": 6113794,
-        "value": 783666070,
+        "value": 782278301,
         "pctChange": -0.0324
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Jennison Associates LLC",
         "pctHeld": 0.0163,
         "position": 5306999,
-        "value": 680251092,
+        "value": 679046458,
         "pctChange": -0.0429
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-30T13:10:08.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 185,
+        "priorPriceTarget": 200
+      },
       {
         "epochGradeDate": "2026-01-27T13:19:35.000Z",
         "firm": "Daiwa Capital",
@@ -4258,29 +4268,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.008035507,
-    "preMarketChange": -1.0299911,
-    "preMarketTime": "2026-01-30T12:42:17.000Z",
-    "preMarketPrice": 127.15,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.08807629,
-    "regularMarketChange": -12.38,
-    "regularMarketTime": "2026-01-29T21:00:02.000Z",
+    "regularMarketChangePercent": -0.0017707706,
+    "regularMarketChange": -0.22698975,
+    "regularMarketTime": "2026-01-30T18:37:16.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 128.18,
-    "regularMarketDayHigh": 136.64,
-    "regularMarketDayLow": 125.61,
-    "regularMarketVolume": 9759593,
+    "regularMarketPrice": 127.953,
+    "regularMarketDayHigh": 130.4199,
+    "regularMarketDayLow": 127.2,
+    "regularMarketVolume": 2609125,
     "averageDailyVolume10Day": 6791190,
     "averageDailyVolume3Month": 4979729,
-    "regularMarketPreviousClose": 140.56,
+    "regularMarketPreviousClose": 128.18,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 134,
+    "regularMarketOpen": 127.99,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4292,13 +4297,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 44948975616
+    "marketCap": 44869373952
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 42087956480,
-    "forwardPE": 54.75648,
+    "forwardPE": 54.659515,
     "profitMargins": 0.033239998,
     "floatShares": 323321937,
     "sharesOutstanding": 325443373,
@@ -4315,7 +4320,7 @@
     "impliedSharesOutstanding": 350670749,
     "category": null,
     "bookValue": 9.811,
-    "priceToBook": 13.064926,
+    "priceToBook": 13.04179,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -4324,7 +4329,7 @@
     "earningsQuarterlyGrowth": -0.345,
     "netIncomeToCommon": 106768000,
     "trailingEps": 0.31,
-    "forwardEps": 2.34091,
+    "forwardEps": 2.34239,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 13.105,
     "enterpriseToEbitda": 6761.117,
@@ -6126,10 +6131,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 128.18,
+    "currentPrice": 127.953,
     "targetHighPrice": 260,
     "targetLowPrice": 113,
-    "targetMeanPrice": 197.3186,
+    "targetMeanPrice": 196.2721,
     "targetMedianPrice": 200,
     "recommendationMean": 1.43478,
     "recommendationKey": "strong_buy",
@@ -6156,6 +6161,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T12:45:06.261Z",
+  "lastUpdated": "2026-01-30T18:37:19.943Z",
   "source": "Static Build (yahoo-finance2)"
 }
