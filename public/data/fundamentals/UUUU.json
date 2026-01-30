@@ -41,6 +41,15 @@
     "ownershipList": [
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Vanguard Group Inc",
+        "pctHeld": 0.0631,
+        "position": 14978848,
+        "value": 372673725,
+        "pctChange": 0.26049998
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Alps Advisors Inc.",
         "pctHeld": 0.056700002,
@@ -65,15 +74,6 @@
         "position": 12246295,
         "value": 304687809,
         "pctChange": 0.115100004
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Vanguard Group Inc",
-        "pctHeld": 0.050100002,
-        "position": 11883042,
-        "value": 295650074,
-        "pctChange": 0.5057
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01637,
-    "institutionsPercentHeld": 0.69565004,
-    "institutionsFloatPercentHeld": 0.70723,
-    "institutionsCount": 448
+    "institutionsPercentHeld": 0.70899004,
+    "institutionsFloatPercentHeld": 0.72079,
+    "institutionsCount": 449
   },
   "earnings": {
     "maxAge": 86400,
@@ -705,11 +705,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0315451,
+    "preMarketChange": -0.78499985,
+    "preMarketTime": "2026-01-30T12:40:34.000Z",
+    "preMarketPrice": 24.1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.01085211,
-    "postMarketChange": 0.27000046,
-    "postMarketTime": "2026-01-30T00:59:59.000Z",
-    "postMarketPrice": 25.15,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.102453,
     "regularMarketChange": -2.84,
@@ -719,15 +719,15 @@
     "regularMarketDayHigh": 26.62,
     "regularMarketDayLow": 23.02,
     "regularMarketVolume": 25589506,
-    "averageDailyVolume10Day": 21063720,
-    "averageDailyVolume3Month": 13787090,
+    "averageDailyVolume10Day": 22019620,
+    "averageDailyVolume3Month": 13981059,
     "regularMarketPreviousClose": 27.72,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 26.2,
     "exchange": "ASE",
     "exchangeName": "NYSE American",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "UUUU",
     "underlyingSymbol": null,
@@ -755,7 +755,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.15720001,
     "heldPercentInsiders": 0.01637,
-    "heldPercentInstitutions": 0.69565004,
+    "heldPercentInstitutions": 0.70899004,
     "shortRatio": 3.43,
     "shortPercentOfFloat": 0.1598,
     "beta": 1.848,
@@ -775,8 +775,8 @@
     "lastSplitDate": 1383609600,
     "enterpriseToRevenue": 72.042,
     "enterpriseToEbitda": -60.923,
-    "52WeekChange": 4.220339,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 3.6854992,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -804,6 +804,78 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 4724,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HIGGS DENNIS LYLE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4409,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BOVAIRD J BIRKS",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4724,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HERRERA JAQUELINE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14440,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LONGENECKER NATHAN M.",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 13422,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VAN AKKOOI MICHIEL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5039,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ESHLEMAN BENJAMIN III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 2722,
@@ -902,18 +974,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 389500,
-        "filerUrl": "",
-        "transactionText": "Sale at price 15.58 per share.",
-        "filerName": "MOORE CURTIS H.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 38739,
         "value": 588736,
         "filerUrl": "",
@@ -926,14 +986,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 148500,
+        "shares": 25000,
+        "value": 389500,
         "filerUrl": "",
-        "transactionText": "Sale at price 14.85 per share.",
-        "filerName": "BOVAIRD J BIRKS",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 15.58 per share.",
+        "filerName": "MOORE CURTIS H.",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-09-19T00:00:00.000Z",
+        "startDate": "2025-11-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -943,6 +1003,18 @@
         "filerUrl": "",
         "transactionText": "Sale at price 14.33 - 15.24 per share.",
         "filerName": "HIGGS DENNIS LYLE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 148500,
+        "filerUrl": "",
+        "transactionText": "Sale at price 14.85 per share.",
+        "filerName": "BOVAIRD J BIRKS",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-19T00:00:00.000Z",
@@ -1790,6 +1862,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 1600,
+        "value": 9242,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 5.78 per share.",
+        "filerName": "MORRISON ALEXANDER G.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1700,
+        "value": 9825,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 5.78 per share.",
+        "filerName": "FILAS BARBARA APPELIN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1000,
         "value": 5741,
         "filerUrl": "",
@@ -1934,30 +2030,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1600,
-        "value": 9242,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 5.78 per share.",
-        "filerName": "MORRISON ALEXANDER G.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1700,
-        "value": 9825,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 5.78 per share.",
-        "filerName": "FILAS BARBARA APPELIN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1000,
         "value": 5635,
         "filerUrl": "",
@@ -2013,6 +2085,6 @@
     "profitMargins": -1.24166,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:43:34.492Z",
+  "lastUpdated": "2026-01-30T12:44:50.929Z",
   "source": "Static Build (yahoo-finance2)"
 }

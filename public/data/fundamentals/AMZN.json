@@ -41,12 +41,12 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.0795,
-        "position": 850338457,
-        "value": 205552311577,
-        "pctChange": 0.0007
+        "pctHeld": 0.0791,
+        "position": 845400528,
+        "value": 204358666021,
+        "pctChange": -0.0058
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.09178001,
-    "institutionsPercentHeld": 0.66765,
-    "institutionsFloatPercentHeld": 0.73512,
-    "institutionsCount": 7229
+    "institutionsPercentHeld": 0.66713995,
+    "institutionsFloatPercentHeld": 0.73455,
+    "institutionsCount": 7235
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-30T12:08:46.000Z",
+        "firm": "Telsey Advisory Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 300,
+        "priorPriceTarget": 300
+      },
       {
         "epochGradeDate": "2026-01-29T15:40:34.000Z",
         "firm": "Wedbush",
@@ -10198,11 +10208,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.006701672,
+    "preMarketChange": -1.6199951,
+    "preMarketTime": "2026-01-30T12:43:32.000Z",
+    "preMarketPrice": 240.11,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.004302293,
-    "postMarketChange": -1.0399933,
-    "postMarketTime": "2026-01-30T00:59:53.000Z",
-    "postMarketPrice": 240.69,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0052672704,
     "regularMarketChange": -1.28,
@@ -10212,15 +10222,15 @@
     "regularMarketDayHigh": 243,
     "regularMarketDayLow": 236.742,
     "regularMarketVolume": 44419437,
-    "averageDailyVolume10Day": 40274570,
-    "averageDailyVolume3Month": 43413663,
+    "averageDailyVolume10Day": 40847830,
+    "averageDailyVolume3Month": 43474803,
     "regularMarketPreviousClose": 243.01,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 242.955,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AMZN",
     "underlyingSymbol": null,
@@ -10248,7 +10258,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0073,
     "heldPercentInsiders": 0.09178001,
-    "heldPercentInstitutions": 0.66765,
+    "heldPercentInstitutions": 0.66713995,
     "shortRatio": 2.02,
     "shortPercentOfFloat": 0.0081,
     "beta": 1.376,
@@ -10264,13 +10274,13 @@
     "earningsQuarterlyGrowth": 0.382,
     "netIncomeToCommon": 76482002944,
     "trailingEps": 7.08,
-    "forwardEps": 7.87307,
+    "forwardEps": 7.88278,
     "lastSplitFactor": "20:1",
     "lastSplitDate": 1654473600,
     "enterpriseToRevenue": 3.834,
     "enterpriseToEbitda": 18.972,
-    "52WeekChange": 0.022425056,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 0.017039776,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -12077,6 +12087,6 @@
     "profitMargins": 0.11063,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:42:27.967Z",
+  "lastUpdated": "2026-01-30T12:43:43.987Z",
   "source": "Static Build (yahoo-finance2)"
 }

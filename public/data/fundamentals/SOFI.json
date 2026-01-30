@@ -41,12 +41,12 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.0888,
-        "position": 107102212,
-        "value": 2609009949,
-        "pctChange": 0.068
+        "pctHeld": 0.092,
+        "position": 111003107,
+        "value": 2704035754,
+        "pctChange": 0.0364
       },
       {
         "maxAge": 1,
@@ -104,12 +104,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "UBS Group AG",
-        "pctHeld": 0.0128,
-        "position": 15485524,
-        "value": 377227374,
-        "pctChange": -0.2391
+        "pctHeld": 0.0127,
+        "position": 15371200,
+        "value": 374442441,
+        "pctChange": -0.0074
       },
       {
         "maxAge": 1,
@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03002,
-    "institutionsPercentHeld": 0.52424,
-    "institutionsFloatPercentHeld": 0.54047,
+    "institutionsPercentHeld": 0.52645,
+    "institutionsFloatPercentHeld": 0.54274,
     "institutionsCount": 1177
   },
   "earnings": {
@@ -188,6 +188,7 @@
         }
       ],
       "currentQuarterEstimate": 0.112,
+      "currentQuarterActual": 0.13,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -1868,11 +1869,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.06321835,
+    "preMarketChange": 1.539999,
+    "preMarketTime": "2026-01-30T12:43:58.000Z",
+    "preMarketPrice": 25.9,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.014778272,
-    "postMarketChange": 0.3599987,
-    "postMarketTime": "2026-01-30T00:59:59.000Z",
-    "postMarketPrice": 24.72,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00975609,
     "regularMarketChange": -0.24,
@@ -1882,15 +1883,15 @@
     "regularMarketDayHigh": 25.12,
     "regularMarketDayLow": 24.05,
     "regularMarketVolume": 66555880,
-    "averageDailyVolume10Day": 41038920,
-    "averageDailyVolume3Month": 57921870,
+    "averageDailyVolume10Day": 43685990,
+    "averageDailyVolume3Month": 58076181,
     "regularMarketPreviousClose": 24.6,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 24.83,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SOFI",
     "underlyingSymbol": null,
@@ -1918,7 +1919,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.09,
     "heldPercentInsiders": 0.03002,
-    "heldPercentInstitutions": 0.52424,
+    "heldPercentInstitutions": 0.52645,
     "shortRatio": 2.52,
     "shortPercentOfFloat": 0.0911,
     "beta": 1.932,
@@ -1937,8 +1938,8 @@
     "forwardEps": 0.54565,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.788,
-    "52WeekChange": 0.5589354,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 0.5437262,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2616,6 +2617,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 271751,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RISHEL JEREMY DYLAN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-03-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 71353,
         "filerUrl": "",
         "transactionText": "",
@@ -2665,17 +2677,6 @@
         "transactionText": "",
         "filerName": "LAPOINTE CHRISTOPHER",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-03-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 271751,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RISHEL JEREMY DYLAN",
-        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
@@ -3340,6 +3341,6 @@
     "profitMargins": 0.19457,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:42:54.320Z",
+  "lastUpdated": "2026-01-30T12:44:10.287Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -50,21 +50,21 @@
       },
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Vanguard Group Inc",
+        "pctHeld": 0.0272,
+        "position": 4490385,
+        "value": 57521833,
+        "pctChange": 0.3847
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Blackrock Inc.",
         "pctHeld": 0.024300002,
         "position": 4019150,
         "value": 51485313,
         "pctChange": 0.4373
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Vanguard Group Inc",
-        "pctHeld": 0.0196,
-        "position": 3242848,
-        "value": 41540884,
-        "pctChange": 0.028900001
       },
       {
         "maxAge": 1,
@@ -83,6 +83,15 @@
         "position": 2266098,
         "value": 29028716,
         "pctChange": 1
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "UBS Group AG",
+        "pctHeld": 0.0124,
+        "position": 2039902,
+        "value": 26131145,
+        "pctChange": 1.4083
       },
       {
         "maxAge": 1,
@@ -119,24 +128,15 @@
         "position": 1201384,
         "value": 15389729,
         "pctChange": 0.2845
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0069999998,
-        "position": 1154542,
-        "value": 14789683,
-        "pctChange": 52.119
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01377,
-    "institutionsPercentHeld": 0.62109,
-    "institutionsFloatPercentHeld": 0.62976,
-    "institutionsCount": 247
+    "institutionsPercentHeld": 0.63663,
+    "institutionsFloatPercentHeld": 0.64552003,
+    "institutionsCount": 246
   },
   "earnings": {
     "maxAge": 86400,
@@ -706,11 +706,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.003124997,
+    "preMarketChange": -0.03999996,
+    "preMarketTime": "2026-01-30T12:42:11.000Z",
+    "preMarketPrice": 12.76,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.016237253,
-    "postMarketChange": 0.20799923,
-    "postMarketTime": "2026-01-30T00:59:52.000Z",
-    "postMarketPrice": 13.018,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0361173,
     "regularMarketChange": -0.48,
@@ -720,15 +720,15 @@
     "regularMarketDayHigh": 13.6,
     "regularMarketDayLow": 12.28,
     "regularMarketVolume": 38716405,
-    "averageDailyVolume10Day": 43481530,
-    "averageDailyVolume3Month": 17285785,
+    "averageDailyVolume10Day": 44692400,
+    "averageDailyVolume3Month": 17640883,
     "regularMarketPreviousClose": 13.29,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 13.59,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RDW",
     "underlyingSymbol": null,
@@ -756,7 +756,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1258,
     "heldPercentInsiders": 0.01377,
-    "heldPercentInstitutions": 0.62109,
+    "heldPercentInstitutions": 0.63663,
     "shortRatio": 1.05,
     "shortPercentOfFloat": 0.1832,
     "beta": 2.45,
@@ -775,8 +775,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.094,
     "enterpriseToEbitda": -19.773,
-    "52WeekChange": -0.444398,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": -0.4644649,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1531,6 +1531,6 @@
     "profitMargins": -0.70319,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:42:11.218Z",
+  "lastUpdated": "2026-01-30T12:43:27.480Z",
   "source": "Static Build (yahoo-finance2)"
 }

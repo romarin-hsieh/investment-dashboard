@@ -41,12 +41,12 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.093,
-        "position": 104653450,
-        "value": 45606927869,
-        "pctChange": 0.0074
+        "pctHeld": 0.0947,
+        "position": 106608094,
+        "value": 46458742195,
+        "pctChange": 0.0187
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00243,
-    "institutionsPercentHeld": 0.83599997,
-    "institutionsFloatPercentHeld": 0.83803004,
-    "institutionsCount": 3028
+    "institutionsPercentHeld": 0.83495003,
+    "institutionsFloatPercentHeld": 0.83698,
+    "institutionsCount": 3039
   },
   "earnings": {
     "maxAge": 86400,
@@ -8236,11 +8236,11 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.036278933,
-    "postMarketChange": 15.809998,
-    "postMarketTime": "2026-01-30T00:59:59.000Z",
-    "postMarketPrice": 451.6,
+    "preMarketChangePercent": 0.04270402,
+    "preMarketChange": 18.609985,
+    "preMarketTime": "2026-01-30T12:45:23.000Z",
+    "preMarketPrice": 454.4,
+    "preMarketSource": "DELAYED",
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00117168,
     "regularMarketChange": 0.51001,
@@ -8250,22 +8250,22 @@
     "regularMarketDayHigh": 444.71,
     "regularMarketDayLow": 417.7,
     "regularMarketVolume": 41477866,
-    "averageDailyVolume10Day": 38315050,
-    "averageDailyVolume3Month": 29817465,
+    "averageDailyVolume10Day": 40512430,
+    "averageDailyVolume3Month": 30021293,
     "regularMarketPreviousClose": 435.28,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 440,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MU",
     "underlyingSymbol": null,
     "shortName": "Micron Technology, Inc.",
     "longName": "Micron Technology, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -8286,7 +8286,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.024500001,
     "heldPercentInsiders": 0.00243,
-    "heldPercentInstitutions": 0.83599997,
+    "heldPercentInstitutions": 0.83495003,
     "shortRatio": 0.88,
     "shortPercentOfFloat": 0.024600001,
     "beta": 1.503,
@@ -8307,8 +8307,8 @@
     "lastSplitDate": 957225600,
     "enterpriseToRevenue": 11.644,
     "enterpriseToEbitda": 22.158,
-    "52WeekChange": 3.7707148,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 3.7763042,
+    "SandP52WeekChange": 0.15370834,
     "lastDividendValue": 0.115,
     "lastDividendDate": "2025-12-29T00:00:00.000Z",
     "latestShareClass": null,
@@ -8337,6 +8337,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 12268,
+        "value": 5025987,
+        "filerUrl": "",
+        "transactionText": "Sale at price 401.16 - 415.65 per share.",
+        "filerName": "RAY MICHAEL CHARLES",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 26623,
@@ -10102,18 +10114,6 @@
         "moneyText": "",
         "startDate": "2024-03-05T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7000,
-        "value": 197400,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 28.20 per share.",
-        "filerName": "MEHROTRA SANJAY",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-02-27T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -10150,6 +10150,6 @@
     "profitMargins": 0.28146,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:44:09.141Z",
+  "lastUpdated": "2026-01-30T12:45:25.879Z",
   "source": "Static Build (yahoo-finance2)"
 }

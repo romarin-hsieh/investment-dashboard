@@ -41,12 +41,12 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.0953,
-        "position": 62437998,
-        "value": 4728429798,
-        "pctChange": 0.0555
+        "pctHeld": 0.09689999,
+        "position": 63458784,
+        "value": 4805733925,
+        "pctChange": 0.0163
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.044359997,
-    "institutionsPercentHeld": 0.8226,
-    "institutionsFloatPercentHeld": 0.86078,
-    "institutionsCount": 1342
+    "institutionsPercentHeld": 0.82384,
+    "institutionsFloatPercentHeld": 0.86208,
+    "institutionsCount": 1336
   },
   "earnings": {
     "maxAge": 86400,
@@ -3098,11 +3098,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.009111349,
+    "preMarketChange": -0.69000244,
+    "preMarketTime": "2026-01-30T12:42:56.000Z",
+    "preMarketPrice": 75.04,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0030371496,
-    "postMarketChange": -0.23000336,
-    "postMarketTime": "2026-01-30T00:59:31.000Z",
-    "postMarketPrice": 75.5,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0061114198,
     "regularMarketChange": 0.460007,
@@ -3112,15 +3112,15 @@
     "regularMarketDayHigh": 75.75,
     "regularMarketDayLow": 72.43,
     "regularMarketVolume": 8392630,
-    "averageDailyVolume10Day": 12711090,
-    "averageDailyVolume3Month": 9129633,
+    "averageDailyVolume10Day": 12384770,
+    "averageDailyVolume3Month": 9131072,
     "regularMarketPreviousClose": 75.27,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 75.13,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBLX",
     "underlyingSymbol": null,
@@ -3148,7 +3148,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.023,
     "heldPercentInsiders": 0.044359997,
-    "heldPercentInstitutions": 0.8226,
+    "heldPercentInstitutions": 0.82384,
     "shortRatio": 1.68,
     "shortPercentOfFloat": 0.025899999,
     "beta": 1.641,
@@ -3167,8 +3167,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.659,
     "enterpriseToEbitda": -58.755,
-    "52WeekChange": 0.059096694,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 0.06556916,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3304,6 +3304,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 16782,
+        "value": 1598373,
+        "filerUrl": "",
+        "transactionText": "Sale at price 93.36 - 97.07 per share.",
+        "filerName": "REINSTRA MARK",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10584,
         "value": 1008013,
         "filerUrl": "",
@@ -3322,18 +3334,6 @@
         "transactionText": "Sale at price 93.34 - 96.98 per share.",
         "filerName": "CHOPRA NAVEEN KUMAR",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16782,
-        "value": 1598373,
-        "filerUrl": "",
-        "transactionText": "Sale at price 93.36 - 97.07 per share.",
-        "filerName": "REINSTRA MARK",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
         "ownership": "D"
@@ -5027,6 +5027,6 @@
     "profitMargins": -0.21700001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:43:05.767Z",
+  "lastUpdated": "2026-01-30T12:44:21.490Z",
   "source": "Static Build (yahoo-finance2)"
 }

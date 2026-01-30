@@ -41,12 +41,12 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.103999995,
-        "position": 47895884,
-        "value": 634620463,
-        "pctChange": 0.0493
+        "pctHeld": 0.1067,
+        "position": 49114941,
+        "value": 650772968,
+        "pctChange": 0.0255
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.07654,
-    "institutionsPercentHeld": 0.70919997,
-    "institutionsFloatPercentHeld": 0.76798,
-    "institutionsCount": 647
+    "institutionsPercentHeld": 0.71448,
+    "institutionsFloatPercentHeld": 0.77369004,
+    "institutionsCount": 651
   },
   "earnings": {
     "maxAge": 86400,
@@ -2628,11 +2628,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0055911904,
+    "preMarketChange": -0.073999405,
+    "preMarketTime": "2026-01-30T12:44:12.000Z",
+    "preMarketPrice": 13.161,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0021887005,
-    "postMarketChange": 0.029000282,
-    "postMarketTime": "2026-01-30T00:59:51.000Z",
-    "postMarketPrice": 13.279,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0609497,
     "regularMarketChange": -0.86,
@@ -2642,15 +2642,15 @@
     "regularMarketDayHigh": 13.87,
     "regularMarketDayLow": 13.01,
     "regularMarketVolume": 31627824,
-    "averageDailyVolume10Day": 24731980,
-    "averageDailyVolume3Month": 23914183,
+    "averageDailyVolume10Day": 24940350,
+    "averageDailyVolume3Month": 24047318,
     "regularMarketPreviousClose": 14.11,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 13.9,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "PATH",
     "underlyingSymbol": null,
@@ -2678,7 +2678,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1069,
     "heldPercentInsiders": 0.07654,
-    "heldPercentInstitutions": 0.70919997,
+    "heldPercentInstitutions": 0.71448,
     "shortRatio": 2.1,
     "shortPercentOfFloat": 0.1559,
     "beta": 1.079,
@@ -2697,8 +2697,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.715,
     "enterpriseToEbitda": 158.605,
-    "52WeekChange": -0.00773561,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": -0.06821376,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3254,24 +3254,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 45000,
-        "value": 702900,
-        "filerUrl": "",
-        "transactionText": "Sale at price 15.62 per share.",
-        "filerName": "DINES DANIEL",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-10-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10000,
         "value": 157345,
         "filerUrl": "",
         "transactionText": "Sale at price 15.73 per share.",
         "filerName": "RAMANI HITESH",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 45000,
+        "value": 702900,
+        "filerUrl": "",
+        "transactionText": "Sale at price 15.62 per share.",
+        "filerName": "DINES DANIEL",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-10-17T00:00:00.000Z",
         "ownership": "D"
@@ -4555,6 +4555,6 @@
     "profitMargins": 0.14787,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:43:11.341Z",
+  "lastUpdated": "2026-01-30T12:44:27.268Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -41,21 +41,21 @@
     "ownershipList": [
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Vanguard Group Inc",
+        "pctHeld": 0.0646,
+        "position": 18616874,
+        "value": 299917851,
+        "pctChange": 0.1982
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0639,
         "position": 18411157,
         "value": 296603750,
         "pctChange": 0.1435
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Vanguard Group Inc",
-        "pctHeld": 0.0539,
-        "position": 15536862,
-        "value": 250298856,
-        "pctChange": 0.1665
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01745,
-    "institutionsPercentHeld": 0.51232,
-    "institutionsFloatPercentHeld": 0.52141,
-    "institutionsCount": 377
+    "institutionsPercentHeld": 0.5152,
+    "institutionsFloatPercentHeld": 0.52435,
+    "institutionsCount": 381
   },
   "earnings": {
     "maxAge": 86400,
@@ -686,11 +686,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.014897623,
+    "preMarketChange": -0.24000072,
+    "preMarketTime": "2026-01-30T12:39:02.000Z",
+    "preMarketPrice": 15.87,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.006828095,
-    "postMarketChange": -0.11000061,
-    "postMarketTime": "2026-01-30T00:59:48.000Z",
-    "postMarketPrice": 16,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0341726,
     "regularMarketChange": -0.57,
@@ -700,15 +700,15 @@
     "regularMarketDayHigh": 16.9899,
     "regularMarketDayLow": 15.23,
     "regularMarketVolume": 20968992,
-    "averageDailyVolume10Day": 25248070,
-    "averageDailyVolume3Month": 21335036,
+    "averageDailyVolume10Day": 23536990,
+    "averageDailyVolume3Month": 21338634,
     "regularMarketPreviousClose": 16.68,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 16.355,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "EOSE",
     "underlyingSymbol": null,
@@ -736,7 +736,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2468,
     "heldPercentInsiders": 0.01745,
-    "heldPercentInstitutions": 0.51232,
+    "heldPercentInstitutions": 0.5152,
     "shortRatio": 4.77,
     "shortPercentOfFloat": 0.2531,
     "beta": 2.12,
@@ -754,8 +754,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 98.636,
     "enterpriseToEbitda": -30.197,
-    "52WeekChange": 1.9059234,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 1.8066201,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1523,6 +1523,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:42:58.375Z",
+  "lastUpdated": "2026-01-30T12:44:14.135Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -50,12 +50,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.070700005,
-        "position": 3530073,
-        "value": 1035088009,
-        "pctChange": 0.0149
+        "pctHeld": 0.0709,
+        "position": 3537264,
+        "value": 1037196554,
+        "pctChange": 0.002
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00772,
-    "institutionsPercentHeld": 0.88751,
-    "institutionsFloatPercentHeld": 0.89441,
-    "institutionsCount": 768
+    "institutionsPercentHeld": 0.89438003,
+    "institutionsFloatPercentHeld": 0.90134,
+    "institutionsCount": 767
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-01-30T10:51:32.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 450,
+        "priorPriceTarget": 450
+      },
       {
         "epochGradeDate": "2026-01-28T14:25:37.000Z",
         "firm": "Keybanc",
@@ -1478,11 +1488,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.010435842,
+    "preMarketChange": -3.0599976,
+    "preMarketTime": "2026-01-30T12:29:50.000Z",
+    "preMarketPrice": 290.16,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0007844314,
-    "postMarketChange": 0.23001099,
-    "postMarketTime": "2026-01-30T00:59:49.000Z",
-    "postMarketPrice": 293.45,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0446993,
     "regularMarketChange": -13.72,
@@ -1491,16 +1501,16 @@
     "regularMarketPrice": 293.22,
     "regularMarketDayHigh": 306,
     "regularMarketDayLow": 288.3,
-    "regularMarketVolume": 1434303,
-    "averageDailyVolume10Day": 1877040,
-    "averageDailyVolume3Month": 1249278,
+    "regularMarketVolume": 1432147,
+    "averageDailyVolume10Day": 1826580,
+    "averageDailyVolume3Month": 1252513,
     "regularMarketPreviousClose": 306.94,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 305.23,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVAV",
     "underlyingSymbol": null,
@@ -1528,7 +1538,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0664,
     "heldPercentInsiders": 0.00772,
-    "heldPercentInstitutions": 0.88751,
+    "heldPercentInstitutions": 0.89438003,
     "shortRatio": 2.41,
     "shortPercentOfFloat": 0.0884,
     "beta": 1.162,
@@ -1547,8 +1557,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 10.813,
     "enterpriseToEbitda": 140.672,
-    "52WeekChange": 0.70380235,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 0.6276436,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2357,24 +2367,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 1000,
-        "value": 176770,
-        "filerUrl": "",
-        "transactionText": "Sale at price 176.77 per share.",
-        "filerName": "BROWN MELISSA ANN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-03-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1913,
         "value": 350079,
         "filerUrl": "",
         "transactionText": "Sale at price 183.00 per share.",
         "filerName": "STEVENSON TRACE E",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-03-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1000,
+        "value": 176770,
+        "filerUrl": "",
+        "transactionText": "Sale at price 176.77 per share.",
+        "filerName": "BROWN MELISSA ANN",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2024-03-07T00:00:00.000Z",
         "ownership": "D"
@@ -2413,6 +2423,6 @@
     "profitMargins": -0.050780002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:42:12.987Z",
+  "lastUpdated": "2026-01-30T12:43:29.427Z",
   "source": "Static Build (yahoo-finance2)"
 }

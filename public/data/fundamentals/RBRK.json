@@ -41,12 +41,12 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.0857,
-        "position": 13016248,
-        "value": 754551912,
-        "pctChange": 0.082600005
+        "pctHeld": 0.0967,
+        "position": 14694503,
+        "value": 851840356,
+        "pctChange": 0.1289
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.022950001,
-    "institutionsPercentHeld": 0.72028,
-    "institutionsFloatPercentHeld": 0.73721004,
-    "institutionsCount": 609
+    "institutionsPercentHeld": 0.72475,
+    "institutionsFloatPercentHeld": 0.74178004,
+    "institutionsCount": 610
   },
   "earnings": {
     "maxAge": 86400,
@@ -1371,11 +1371,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0035372586,
+    "preMarketChange": -0.20500183,
+    "preMarketTime": "2026-01-30T12:34:36.000Z",
+    "preMarketPrice": 57.75,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0053475513,
-    "postMarketChange": 0.30999756,
-    "postMarketTime": "2026-01-30T00:59:55.000Z",
-    "postMarketPrice": 58.28,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.08260801,
     "regularMarketChange": -5.22,
@@ -1385,15 +1385,15 @@
     "regularMarketDayHigh": 62.505,
     "regularMarketDayLow": 56.87,
     "regularMarketVolume": 8359173,
-    "averageDailyVolume10Day": 3961560,
-    "averageDailyVolume3Month": 3353466,
+    "averageDailyVolume10Day": 4485830,
+    "averageDailyVolume3Month": 3435657,
     "regularMarketPreviousClose": 63.19,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 62.2,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBRK",
     "underlyingSymbol": null,
@@ -1421,7 +1421,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0594,
     "heldPercentInsiders": 0.022950001,
-    "heldPercentInstitutions": 0.72028,
+    "heldPercentInstitutions": 0.72475,
     "shortRatio": 3.66,
     "shortPercentOfFloat": 0.0798,
     "impliedSharesOutstanding": 200141545,
@@ -1438,8 +1438,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 9.331,
     "enterpriseToEbitda": -31.346,
-    "52WeekChange": -0.13757336,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": -0.2088167,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1609,8 +1609,9 @@
       {
         "maxAge": 1,
         "shares": 13500,
+        "value": 996904,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 73.56 - 75.19 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1620,9 +1621,8 @@
       {
         "maxAge": 1,
         "shares": 13500,
-        "value": 996904,
         "filerUrl": "",
-        "transactionText": "Sale at price 73.56 - 75.19 per share.",
+        "transactionText": "",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1677,18 +1677,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 31450,
-        "value": 2396176,
-        "filerUrl": "",
-        "transactionText": "Sale at price 76.19 per share.",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 6779,
         "value": 516452,
         "filerUrl": "",
@@ -1713,12 +1701,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 25002,
-        "value": 1947906,
+        "shares": 31450,
+        "value": 2396176,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 77.91 per share.",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 76.19 per share.",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 40625,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -1730,6 +1729,18 @@
         "transactionText": "",
         "filerName": "CHOUDARY KIRAN KUMAR",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25002,
+        "value": 1947906,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 77.91 per share.",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -1753,17 +1764,6 @@
         "transactionText": "",
         "filerName": "MCCARTHY BRIAN KEITH",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 40625,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -1829,8 +1829,9 @@
       {
         "maxAge": 1,
         "shares": 9009,
+        "value": 619345,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 68.40 - 69.83 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1840,9 +1841,8 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "value": 619345,
         "filerUrl": "",
-        "transactionText": "Sale at price 68.40 - 69.83 per share.",
+        "transactionText": "",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1910,8 +1910,9 @@
       {
         "maxAge": 1,
         "shares": 9009,
+        "value": 679721,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 74.43 - 76.21 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1921,9 +1922,8 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "value": 679721,
         "filerUrl": "",
-        "transactionText": "Sale at price 74.43 - 76.21 per share.",
+        "transactionText": "",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1968,8 +1968,9 @@
       {
         "maxAge": 1,
         "shares": 9009,
+        "value": 745607,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 82.27 - 83.77 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1990,18 +1991,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9009,
-        "value": 745607,
-        "filerUrl": "",
-        "transactionText": "Sale at price 82.27 - 83.77 per share.",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 2000,
         "filerUrl": "",
         "transactionText": "",
@@ -2010,6 +1999,17 @@
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9009,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2048,24 +2048,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 40170,
-        "value": 2981016,
-        "filerUrl": "",
-        "transactionText": "Sale at price 74.21 per share.",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4670,
         "value": 346561,
         "filerUrl": "",
         "transactionText": "Sale at price 74.21 per share.",
         "filerName": "MCCARTHY BRIAN KEITH",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 40170,
+        "value": 2981016,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.21 per share.",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-09-16T00:00:00.000Z",
         "ownership": "D"
@@ -2164,8 +2164,9 @@
       {
         "maxAge": 1,
         "shares": 9009,
+        "value": 791267,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 86.62 - 88.35 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2187,9 +2188,8 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "value": 791267,
         "filerUrl": "",
-        "transactionText": "Sale at price 86.62 - 88.35 per share.",
+        "transactionText": "",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2245,8 +2245,9 @@
       {
         "maxAge": 1,
         "shares": 9009,
+        "value": 786369,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 84.58 - 90.46 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2268,9 +2269,8 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "value": 786369,
         "filerUrl": "",
-        "transactionText": "Sale at price 84.58 - 90.46 per share.",
+        "transactionText": "",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2349,8 +2349,9 @@
       {
         "maxAge": 1,
         "shares": 9009,
+        "value": 774456,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 84.41 - 89.24 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2372,9 +2373,8 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "value": 774456,
         "filerUrl": "",
-        "transactionText": "Sale at price 84.41 - 89.24 per share.",
+        "transactionText": "",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2419,17 +2419,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 700000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SALEM ENRIQUE T",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 21924,
         "value": 1968288,
         "filerUrl": "",
@@ -2442,11 +2431,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 9641000,
+        "shares": 700000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LIGHTSPEED VENTURE PARTNERS IX, LP",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "SALEM ENRIQUE T",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-26T00:00:00.000Z",
         "ownership": "I"
@@ -2464,21 +2453,21 @@
       },
       {
         "maxAge": 1,
+        "shares": 9641000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LIGHTSPEED VENTURE PARTNERS IX, LP",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 3500,
         "value": 318500,
         "filerUrl": "",
         "transactionText": "Sale at price 91.00 per share.",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2000,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "CHOUDARY KIRAN KUMAR",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -2559,14 +2548,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 43128,
-        "value": 3819541,
+        "shares": 2000,
         "filerUrl": "",
-        "transactionText": "Sale at price 88.56 per share.",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
+        "transactionText": "",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
+        "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2589,6 +2577,18 @@
         "transactionText": "Sale at price 88.56 per share.",
         "filerName": "MCCARTHY BRIAN KEITH",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 43128,
+        "value": 3819541,
+        "filerUrl": "",
+        "transactionText": "Sale at price 88.56 per share.",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-06-17T00:00:00.000Z",
         "ownership": "D"
@@ -2629,8 +2629,9 @@
       {
         "maxAge": 1,
         "shares": 700000,
+        "value": 63763000,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 91.09 per share.",
         "filerName": "SALEM ENRIQUE T",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2640,9 +2641,8 @@
       {
         "maxAge": 1,
         "shares": 700000,
-        "value": 63763000,
         "filerUrl": "",
-        "transactionText": "Sale at price 91.09 per share.",
+        "transactionText": "",
         "filerName": "SALEM ENRIQUE T",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2685,18 +2685,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 97445,
-        "value": 9649184,
-        "filerUrl": "",
-        "transactionText": "Sale at price 98.28 - 101.29 per share.",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 30000,
         "value": 3007200,
         "filerUrl": "",
@@ -2715,6 +2703,18 @@
         "transactionText": "Sale at price 100.18 per share.",
         "filerName": "MCCARTHY BRIAN KEITH",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 97445,
+        "value": 9649184,
+        "filerUrl": "",
+        "transactionText": "Sale at price 98.28 - 101.29 per share.",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-06-05T00:00:00.000Z",
         "ownership": "D"
@@ -2756,8 +2756,9 @@
       {
         "maxAge": 1,
         "shares": 9009,
+        "value": 884803,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 95.41 - 99.41 per share.",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2779,9 +2780,8 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "value": 884803,
         "filerUrl": "",
-        "transactionText": "Sale at price 95.41 - 99.41 per share.",
+        "transactionText": "",
         "filerName": "THOMPSON JOHN WENDELL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2944,17 +2944,6 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9009,
         "value": 643727,
         "filerUrl": "",
         "transactionText": "Sale at price 70.97 - 71.60 per share.",
@@ -2975,6 +2964,17 @@
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9009,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-01T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3061,17 +3061,6 @@
       {
         "maxAge": 1,
         "shares": 9009,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9009,
         "value": 542250,
         "filerUrl": "",
         "transactionText": "Sale at price 59.55 - 61.15 per share.",
@@ -3092,6 +3081,17 @@
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9009,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3240,6 +3240,6 @@
     "profitMargins": -0.31485,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:42:56.368Z",
+  "lastUpdated": "2026-01-30T12:44:12.108Z",
   "source": "Static Build (yahoo-finance2)"
 }

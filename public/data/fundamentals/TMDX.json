@@ -59,12 +59,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.105500005,
-        "position": 3605607,
-        "value": 501071209,
-        "pctChange": 0.0027
+        "position": 3605279,
+        "value": 501025627,
+        "pctChange": -0.0001
       },
       {
         "maxAge": 1,
@@ -96,15 +96,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "UBS Group AG",
-        "pctHeld": 0.025,
-        "position": 856063,
-        "value": 118967076,
-        "pctChange": 0.7979
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0238,
         "position": 813571,
@@ -128,15 +119,24 @@
         "position": 738158,
         "value": 102581818,
         "pctChange": -0.1357
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Goldman Sachs Group Inc",
+        "pctHeld": 0.020599999,
+        "position": 703578,
+        "value": 97776235,
+        "pctChange": 1.2183
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02949,
-    "institutionsPercentHeld": 1.11586,
-    "institutionsFloatPercentHeld": 1.14977,
-    "institutionsCount": 524
+    "institutionsPercentHeld": 1.1110901,
+    "institutionsFloatPercentHeld": 1.14485,
+    "institutionsCount": 527
   },
   "earnings": {
     "maxAge": 86400,
@@ -1286,11 +1286,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0133841885,
+    "preMarketChange": -1.8600006,
+    "preMarketTime": "2026-01-30T10:55:52.000Z",
+    "preMarketPrice": 137.11,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.011081589,
-    "postMarketChange": -1.5400085,
-    "postMarketTime": "2026-01-30T00:17:58.000Z",
-    "postMarketPrice": 137.43,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0143273,
     "regularMarketChange": -2.02,
@@ -1300,15 +1300,15 @@
     "regularMarketDayHigh": 144.8,
     "regularMarketDayLow": 135.4,
     "regularMarketVolume": 1205480,
-    "averageDailyVolume10Day": 803690,
-    "averageDailyVolume3Month": 790688,
+    "averageDailyVolume10Day": 832060,
+    "averageDailyVolume3Month": 797488,
     "regularMarketPreviousClose": 140.99,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 143.59,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "TMDX",
     "underlyingSymbol": null,
@@ -1336,7 +1336,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.213,
     "heldPercentInsiders": 0.02949,
-    "heldPercentInstitutions": 1.11586,
+    "heldPercentInstitutions": 1.1110901,
     "shortRatio": 10.65,
     "shortPercentOfFloat": 0.36540002,
     "beta": 2.019,
@@ -1356,8 +1356,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.479,
     "enterpriseToEbitda": 39.837,
-    "52WeekChange": 1.0871947,
-    "SandP52WeekChange": 0.15520155,
+    "52WeekChange": 1.0572908,
+    "SandP52WeekChange": 0.15370834,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2250,24 +2250,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2060,
-        "value": 280016,
-        "filerUrl": "",
-        "transactionText": "Sale at price 135.93 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-06-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2960,
         "value": 393986,
         "filerUrl": "",
         "transactionText": "Sale at price 129.92 - 135.97 per share.",
         "filerName": "KHAYAL TAMER I.",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-06-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2060,
+        "value": 280016,
+        "filerUrl": "",
+        "transactionText": "Sale at price 135.93 per share.",
+        "filerName": "GORDON STEPHEN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-06-03T00:00:00.000Z",
         "ownership": "D"
@@ -2442,24 +2442,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 576900,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 38.46 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 30000,
         "value": 398400,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "value": 576900,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 38.46 per share.",
+        "filerName": "GORDON STEPHEN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-05-06T00:00:00.000Z",
         "ownership": "D"
@@ -3027,6 +3027,6 @@
     "profitMargins": 0.16203,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-01-30T06:43:01.921Z",
+  "lastUpdated": "2026-01-30T12:44:17.859Z",
   "source": "Static Build (yahoo-finance2)"
 }
