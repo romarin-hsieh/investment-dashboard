@@ -992,7 +992,8 @@ async function generateAllTechnicalIndicators() {
     source: 'GitHub Actions Daily Update',
     indicators: [
       'SMA', 'RSI', 'MACD', 'ADX', 'Ichimoku',
-      'VWMA', 'Stochastic', 'CCI', 'PSAR', 'SuperTrend', 'OBV'
+      'VWMA', 'Stochastic', 'CCI', 'PSAR', 'SuperTrend', 'OBV',
+      'WilliamsR', 'CMF'
     ],
     note: 'Extended Technical indicators for optimized precomputed loading'
   };
