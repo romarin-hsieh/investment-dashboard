@@ -179,10 +179,13 @@ class PrecomputedIndicatorsAPI {
           atr14: { value: getLast(raw.atr?.atr14), signal: 'N/A' },
           mfi14: { value: getLast(raw.mfi?.mfi14), signal: 'N/A' },
           cmf20: { value: getLast(raw.cmf?.cmf20), signal: 'N/A' },
-          williamsR14: { value: getLast(raw.williamsR?.r14), signal: 'N/A' },
+          willr14: { value: getLast(raw.williamsR?.r14), signal: 'N/A' },
 
-          // Beta and other fundamentals
-          beta: { value: raw.fundamentals?.defaultKeyStatistics?.beta || 'N/A', signal: 'N/A' },
+          // Other fundamentals (grouped under 'yf' for compatibility)
+          yf: {
+            beta: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A'
+          },
+          beta: { value: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A', signal: 'N/A' },
 
           // Full Series for Charts (Mapping to Expected Keys)
           fullSeries: {
@@ -207,13 +210,9 @@ class PrecomputedIndicatorsAPI {
             MFI_14: raw.mfi?.mfi14 || [],
             CCI_20: raw.cci?.cci20 || [],
             SAR: raw.psar?.sar || [],
-            ATR_14: raw.atr?.atr14 || [],
-            MFI_14: raw.mfi?.mfi14 || [],
-            CCI_20: raw.cci?.cci20 || [],
-            SAR: raw.psar?.sar || [],
             SUPERTREND: raw.supertrend?.supertrend || [],
             CMF_20: raw.cmf?.cmf20 || [],
-            WilliamsR_14: raw.williamsR?.r14 || []
+            WILLR_14: raw.williamsR?.r14 || []
           },
 
           source: 'Precomputed',
