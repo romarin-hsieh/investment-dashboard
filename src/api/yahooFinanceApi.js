@@ -6,6 +6,7 @@ import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
 
 class YahooFinanceAPI {
   constructor() {
+    console.warn("YahooFinanceAPI: Loaded version with Nested JSON Fix - DEBUG_REV2");
     // 使用多個 CORS 代理服務來解決跨域問題 - 2024年12月修正版
     // 優先使用真正無限制的免費代理服務
     this.corsProxies = [
