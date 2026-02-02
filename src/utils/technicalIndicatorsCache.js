@@ -4,7 +4,7 @@
 
 class TechnicalIndicatorsCache {
   constructor() {
-    this.cachePrefix = 'technical_indicators_';
+    this.cachePrefix = 'technical_indicators_v2_';
     this.cacheTimeout = 24 * 60 * 60 * 1000; // 24 小時緩存
     this.memoryCache = new Map(); // 內存緩存，提高性能
     this.indexCache = null; // latest_index.json 緩存
