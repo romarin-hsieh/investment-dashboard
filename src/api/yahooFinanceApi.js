@@ -1206,6 +1206,53 @@ class YahooFinanceAPI {
       }
     }
 
+    // 0. Try Static Local JSON (Priority 1)
+    // This duplicates logic from ohlcvApi.js to ensure direct consumers of yahooFinanceAPI also benefit
+    try {
+      const isNode = typeof window === 'undefined';
+      if (!isNode) {
+        const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+        // Use standard path for static OHLCV
+        const safeSymbol = symbol.replace(/:/g, '_').toUpperCase(); // Matches generated filenames (mostly)
+        // Note: generate-real-ohlcv-yfinance.py uses sym.replace(":", "_") but casing depends on input. 
+        // universe.json usually has UPPERCASE. 
+        // Let's try UPPERCASE first as per usual convention.
+
+        const staticUrl = `${baseUrl}data/ohlcv/${safeSymbol}.json?t=${Math.floor(Date.now() / 60000)}`; // Simple cache bust
+        console.log(`📊 Attempting static OHLCV fetch: ${staticUrl}`);
+
+        const resp = await fetch(staticUrl);
+        if (resp.ok) {
+          const raw = await resp.json();
+          let data = raw;
+          // Unwrap if necessary (OhlcvApi logic)
+          if (raw.ohlcv) {
+            data = raw.ohlcv;
+            if (!data.symbol && raw.symbol) data.symbol = raw.symbol;
+          }
+
+          // Validate minimal structure
+          if (data.timestamps && data.close && data.timestamps.length === data.close.length) {
+            console.log(`📊 Loaded static OHLCV for ${symbol}`);
+
+            const result = {
+              ...data,
+              metadata: {
+                symbol: symbol,
+                source: 'Static Local JSON',
+                fetchedAt: new Date().toISOString()
+              }
+            };
+
+            this.cache.set(cacheKey, { data: result, timestamp: Date.now() });
+            return result;
+          }
+        }
+      }
+    } catch (e) {
+      console.warn(`Static OHLCV fetch failed for ${symbol}`, e);
+    }
+
     // Try multiple proxies for OHLCV data
     for (let i = 0; i < this.corsProxies.length; i++) {
       try {
