@@ -237,16 +237,16 @@ export default {
       };
 
       // Group 1: Trend (MA, SMA, Ichimoku, VWMA)
-      groups['Trend'].push(getIndicator('ma5', 'EMA(5)', 'MA_5'));
-      groups['Trend'].push(getIndicator('ma10', 'EMA(10)', 'MA_10'));
+      groups['Trend'].push(getIndicator('ma5', 'EMA(5)', 'EMA_5'));
+      groups['Trend'].push(getIndicator('ma10', 'EMA(10)', 'EMA_10'));
       // New: EMA (20) placed between 10 and 30 for correct sequence
       groups['Trend'].push(getIndicator('ema20', 'EMA(20)', 'EMA_20')); 
-      groups['Trend'].push(getIndicator('ma30', 'EMA(30)', 'MA_30')); 
+      groups['Trend'].push(getIndicator('ma30', 'EMA(30)', 'EMA_30')); 
       
       groups['Trend'].push(getIndicator('sma5', 'SMA(5)', 'SMA_5'));
       groups['Trend'].push(getIndicator('sma10', 'SMA(10)', 'SMA_10'));
       groups['Trend'].push(getIndicator('sma30', 'SMA(30)', 'SMA_30'));
-      groups['Trend'].push(getIndicator('superTrend', 'SuperTrend', 'SUPERTREND_10_3'));
+      groups['Trend'].push(getIndicator('superTrend', 'SuperTrend', 'SUPERTREND'));
       groups['Trend'].push(getIndicator('parabolicSAR', 'SAR', 'SAR'));
       groups['Trend'].push(getIndicator('vwma20', 'VWMA(20)', 'VWMA_20'));
       
@@ -259,7 +259,7 @@ export default {
       groups['Oscillators'].push(getIndicator('stochD', 'Stoch %D', 'STOCH_D', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('cci20', 'CCI (20)', 'CCI_20', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('adx14', 'ADX (14)', 'ADX_14', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators', this.formatNumber(data.macd?.signal, 2)));
       groups['Oscillators'].push(getIndicator('ichimokuConversionLine', 'Ichi Conv (9)', 'ICHIMOKU_CONVERSIONLINE_9', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuBaseLine', 'Ichi Base (26)', 'ICHIMOKU_BASELINE_26', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', 'Ichi Lag (26)', 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));
@@ -272,7 +272,7 @@ export default {
       // New: CMF (20)
       groups['Market'].push(getIndicator('cmf20', 'CMF (20)', 'CMF_20', 'Market', this.formatNumber(this.getLatestValue(series.CMF_20), 3))); // CMF is small decimal
 
-      groups['Market'].push(getIndicator('obv', 'OBV', 'OBV', 'Market'));
+      groups['Market'].push(getIndicator('obv', 'OBV', 'OBV', 'Market', this.formatVolume(data.obv?.value)));
       
       // Volume - Prefer real Volume from StockInfo, fallback to YF
       // Volume - Prefer real Volume from StockInfo, fallback to YF
@@ -327,7 +327,7 @@ export default {
       // Beta (10D)
       groups['Market'].push({ 
           label: 'Beta (10D)', 
-          value: yf.beta_10d || 'N/A', 
+          value: this.formatBeta(yf.beta_10d), 
           signal: this.getBetaCategory(yf.beta_10d)
       });
 

@@ -214,7 +214,8 @@ class PrecomputedIndicatorsAPI {
             SAR: raw.psar?.sar || [],
             SUPERTREND: raw.supertrend?.supertrend || [],
             CMF_20: raw.cmf?.cmf20 || [],
-            WILLR_14: raw.williamsR?.r14 || []
+            WILLR_14: raw.williamsR?.r14 || [],
+            VWMA_20: raw.vwma?.vwma || []
           },
 
           source: 'Precomputed',
