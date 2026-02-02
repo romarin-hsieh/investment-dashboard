@@ -88,7 +88,115 @@ function standardDeviation(data) {
   return Math.sqrt(avgSquareDiff);
 }
 
+function variance(data) {
+  if (!data || data.length === 0) return 0;
+  const avg = average(data);
+  return data.reduce((acc, val) => acc + Math.pow(val - avg, 2), 0) / data.length;
+}
+
+function covariance(data1, data2) {
+  if (!data1 || !data2 || data1.length !== data2.length || data1.length === 0) return 0;
+  const avg1 = average(data1);
+  const avg2 = average(data2);
+  let sum = 0;
+  for (let i = 0; i < data1.length; i++) {
+    sum += (data1[i] - avg1) * (data2[i] - avg2);
+  }
+  return sum / data1.length;
+}
+
 // ---------------------- Indicators ----------------------
+
+/**
+ * 計算 Beta
+ * @param {Array} stockPrices - Stock closing prices
+ * @param {Array} marketPrices - Market closing prices (e.g., SPY/SPX)
+ * @param {Array} stockDates - Stock timestamps (epoch ms)
+ * @param {Array} marketDates - Market timestamps (epoch ms)
+ * @param {Number} period - Calculation period (e.g., 10 or 63)
+ */
+function calculateBeta(stockPrices, marketPrices, stockDates, marketDates, period) {
+  if (!stockPrices || !marketPrices || stockPrices.length < period + 1) return null;
+
+  // 1. Calculate Daily Returns
+  const getReturns = (prices, dates) => {
+    const returns = [];
+    const validDates = [];
+    for (let i = 1; i < prices.length; i++) {
+      if (prices[i - 1] !== 0) {
+        returns.push((prices[i] - prices[i - 1]) / prices[i - 1]);
+        validDates.push(dates[i]);
+      }
+    }
+    return { returns, dates: validDates };
+  };
+
+  const stockRetObj = getReturns(stockPrices, stockDates);
+  const marketRetObj = getReturns(marketPrices, marketDates);
+
+  // 2. Map Dates to Returns for easy lookup
+  const stockRetMap = new Map();
+  stockRetObj.dates.forEach((date, i) => stockRetMap.set(date, stockRetObj.returns[i]));
+
+  const marketRetMap = new Map();
+  marketRetObj.dates.forEach((date, i) => marketRetMap.set(date, marketRetObj.returns[i]));
+
+  // 3. Rolling Beta Calculation
+  const betas = new Array(stockPrices.length).fill(null);
+
+  // Iterate through stock dates to maintain alignment with output array
+  // Note: stockPrices[i] corresponds to stockDates[i]
+  // Valid returns start from index 1.
+
+  for (let i = period; i < stockPrices.length; i++) {
+    const currentDate = stockDates[i];
+
+    // Collect matched returns looking back 'period' valid trading days
+    const matchedStockRet = [];
+    const matchedMarketRet = [];
+
+    let lookbackIdx = i;
+    while (matchedStockRet.length < period && lookbackIdx > 0) {
+      const date = stockDates[lookbackIdx];
+      if (stockRetMap.has(date) && marketRetMap.has(date)) {
+        matchedStockRet.unshift(stockRetMap.get(date));
+        matchedMarketRet.unshift(marketRetMap.get(date));
+      }
+      lookbackIdx--;
+    }
+
+    if (matchedStockRet.length === period) {
+      const cov = covariance(matchedStockRet, matchedMarketRet);
+      const marketVar = variance(matchedMarketRet);
+      if (marketVar !== 0) {
+        betas[i] = cov / marketVar;
+      }
+    }
+  }
+
+  return betas;
+}
+
+/**
+ * 載入 Benchmark 數據 (SPX)
+ */
+function loadBenchmarkData() {
+  try {
+    const filepath = path.join(CONFIG.ohlcvDir, 'FOREXCOM_SPXUSD.json');
+    if (fs.existsSync(filepath)) {
+      const data = JSON.parse(fs.readFileSync(filepath, 'utf8'));
+      console.log('✅ Loaded Benchmark Data: FOREXCOM_SPXUSD');
+      return data;
+    } else {
+      console.warn('⚠️ Benchmark data (FOREXCOM_SPXUSD.json) not found.');
+      return null;
+    }
+  } catch (error) {
+    console.error('❌ Failed to load benchmark data:', error.message);
+    return null;
+  }
+}
+
 
 /**
  * 計算簡單移動平均線
@@ -828,9 +936,9 @@ function calculateCMF(high, low, close, volume, period = 20) {
 
 
 /**
- * 生成技術指標數據
+ * 生成單個股票的技術指標
  */
-function generateTechnicalIndicators(symbol, ohlcvData) {
+function generateTechnicalIndicators(symbol, ohlcvData, benchmarkData = null) {
   const { timestamps, open, high, low, close, volume } = ohlcvData;
   const fundamentals = loadFundamentals(symbol);
 
@@ -841,6 +949,15 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
   const sma30 = calculateSMA(close, 30);
   const sma50 = calculateSMA(close, 50);
   const sma60 = calculateSMA(close, 60);
+
+  // Beta Calculation (10D, 3M/63D)
+  let beta10d = null;
+  let beta3m = null;
+
+  if (benchmarkData && benchmarkData.close && benchmarkData.timestamps) {
+    beta10d = calculateBeta(close, benchmarkData.close, timestamps, benchmarkData.timestamps, 10);
+    beta3m = calculateBeta(close, benchmarkData.close, timestamps, benchmarkData.timestamps, 63);
+  }
 
   // EMA Calculations
   const ema5 = calculateEMA(close, 5);
@@ -925,6 +1042,11 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
       },
       cmf: {
         cmf20: cmf
+      },
+      // Custom Beta
+      beta: {
+        beta10d: beta10d,
+        beta3m: beta3m
       }
     },
     fundamentals: fundamentals, // Embed fundamental data
@@ -935,7 +1057,8 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
       indicators: [
         'SMA (5,10,20,30,50,60)', 'RSI14', 'MACD',
         'ADX14', 'Ichimoku', 'VWMA20', 'Stoch',
-        'CCI20', 'PSAR', 'SuperTrend', 'OBV', 'WilliamsR14', 'CMF20'
+        'CCI20', 'PSAR', 'SuperTrend', 'OBV', 'WilliamsR14', 'CMF20',
+        'Beta (10D, 3M vs SPX)'
       ]
     }
   };
@@ -956,6 +1079,9 @@ async function generateAllTechnicalIndicators() {
   const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
   const generatedFiles = [];
 
+  // Load Benchmark Data (SPX)
+  const benchmarkData = loadBenchmarkData();
+
   console.log(`📊 Generating technical indicators for ${symbols.length} symbols...`);
 
   for (const symbol of symbols) {
@@ -968,7 +1094,7 @@ async function generateAllTechnicalIndicators() {
 
     try {
       // 生成技術指標
-      const indicators = generateTechnicalIndicators(symbol, ohlcvData);
+      const indicators = generateTechnicalIndicators(symbol, ohlcvData, benchmarkData);
 
       // 保存文件
       const filename = `${today}_${symbol}.json`;

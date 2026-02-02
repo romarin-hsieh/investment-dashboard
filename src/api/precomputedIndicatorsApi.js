@@ -183,7 +183,9 @@ class PrecomputedIndicatorsAPI {
 
           // Other fundamentals (grouped under 'yf' for compatibility)
           yf: {
-            beta: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A'
+            beta: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A',
+            beta_10d: getLast(raw.beta?.beta10d),
+            beta_3mo: getLast(raw.beta?.beta3m)
           },
           beta: { value: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A', signal: 'N/A' },
 
