@@ -1,0 +1,80 @@
+# Data Operations & Workflow
+
+> [!IMPORTANT]
+> This document serves as the **Single Source of Truth** for maintaining the data integrity of the Investment Dashboard. All future agents and developers must follow these procedures.
+
+## 1. Golden Rule: The Master Config
+There is ONE and ONLY ONE source of truth for the list of stocks (symbols) in this project.
+
+*   **File**: `public/config/stocks.json`
+*   **Format**: JSON Object with a `stocks` array.
+*   **Schema**:
+    ```json
+    {
+      "version": "2.0.0",
+      "stocks": [
+        {
+          "symbol": "ASTS",
+          "exchange": "NASDAQ",
+          "sector": "Technology",
+          "industry": "Communication Equipment",
+          "enabled": true,
+          "priority": 1
+        }
+      ]
+    }
+    ```
+
+**Legacy Terminology Alert**: You may encounter the term "universe" in older code/docs. This refers to the collection of stocks. Do NOT create `universe.json`. Always use `stocks.json`.
+
+## 2. Adding/Removing Stocks
+To change the list of tracked stocks, edit ONLY `public/config/stocks.json`.
+
+1.  Add the new object to the `stocks` array.
+2.  Ensure `enabled` is `true`.
+3.  Commit the change.
+4.  **Action**: This will trigger the GitHub Action (`daily-update.yml`).
+
+## 3. Data Update Pipelines
+
+### A. Fundamentals (Static Build)
+*   **Script**: `scripts/fetch-fundamentals.js`
+*   **Trigger**: Updates basic info (Market Cap, P/E, Description) into `public/data/fundamentals/*.json`.
+*   **Command**: `npm run fetch:fundamentals`
+*   **Dependency**: Reads directly from `public/config/stocks.json`.
+
+### B. Market Data (OHLCV)
+*   **Script**: `scripts/generate-real-ohlcv-yfinance.py`
+*   **Trigger**: Runs daily via GitHub Actions (`daily-update.yml`).
+*   **Command**: `npm run update:market` (if alias exists) or `python scripts/generate-real-ohlcv-yfinance.py`
+*   **Dependency**: Reads directly from `public/config/stocks.json`.
+
+### C. Market Sentiment (Fear & Greed)
+*   **Script**: `scripts/update_sentiment.py`
+*   **Command**: `npm run update:sentiment`
+*   **Source**: Official CNN API (with Z-Score fallback).
+*   **Output**: `public/data/technical-indicators/market-sentiment.json`
+
+## 4. GitHub Actions Architecture
+The project follows a **Static-First** approach.
+
+*   **`daily-update.yml`**:
+    *   Runs daily at 00:00 UTC.
+    *   Executes `scripts/generate-real-ohlcv-yfinance.py`.
+    *   **Crucial**: It must use the `stocks.json` master list. If `universe.json` exists, it might override this (Legacy Behavior - REMOVED).
+    *   Auto-commits changes to `public/data/ohlcv/`.
+
+## 5. Troubleshooting Discrepancies
+If the number of stocks in the dashboard != number of stocks in config:
+
+1.  **Check Config**: Verify `public/config/stocks.json` count.
+2.  **Check Generated Files**: Look at `public/data/fundamentals/` count.
+    *   If low, run `npm run fetch:fundamentals`.
+3.  **Check Pipeline Logs**: Look at GitHub Actions logs for `generate-real-ohlcv-yfinance.py`.
+    *   Did it load the correct config file?
+    *   Did some downloads fail? (Script is designed to skip failures but report them).
+
+## 6. Vibe Coding Guidelines
+*   **Be Deterministic**: Do not hardcode lists of symbols in scripts. Always read from the config file.
+*   **Be Transparent**: Logs should explicitly state *which* config file is being loaded (e.g., "Loaded 70 symbols from public/config/stocks.json").
+*   **Clean Up**: If you modify the architecture, remove the old artifacts immediately. Don't leave `universe.json` lying around.

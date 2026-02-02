@@ -1,0 +1,63 @@
+name: Daily Market Data Update
+
+on:
+  schedule:
+    # Run at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/daily-update.yml'
+      - 'scripts/**'
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas yfinance
+
+      - name: Generate OHLCV Data
+        run: |
+          # Run the script to fetch Yahoo Finance data
+          # This will read public/config/stocks.json and generate files in public/data/ohlcv
+          python scripts/generate-real-ohlcv-yfinance.py --days=1095 --interval=1d
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git status
+          if [ -n "$(git status --porcelain public/data/ohlcv/*.json)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add -f public/data/ohlcv/*.json
+          git commit -m "data: update daily market data (OHLCV)"
+          
+          # Pull with rebase to handle race conditions (e.g. metadata updates)
+          git pull --rebase origin main
+          git push origin main

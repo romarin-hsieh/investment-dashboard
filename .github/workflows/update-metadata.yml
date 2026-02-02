@@ -1,0 +1,114 @@
+name: Update YFinance Metadata
+
+on:
+  # 每週日凌晨 2 點執行 (UTC)
+  schedule:
+    - cron: '0 2 * * 0'
+  
+  # 每次部署到 main 分支時執行
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'README.md'
+      - 'docs/**'
+      - '*.md'
+  
+  # 允許手動觸發
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update all metadata'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  update-metadata:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install yfinance requests
+    
+    - name: Update YFinance Metadata (Python)
+      run: |
+        echo "🚀 Starting YFinance metadata update with Python..."
+        python scripts/update-metadata-python.py
+        echo "✅ YFinance metadata update completed"
+    
+    - name: Check for changes
+      id: changes
+      run: |
+        if git diff --quiet; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "No changes detected"
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "Changes detected:"
+          git diff --name-only
+        fi
+    
+    - name: Commit and push changes
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # 添加變更的文件
+        # 添加所有變更的文件 (包含 .backup 或新生成的檔案)
+        git add public/data/
+        
+        # 創建提交訊息
+        COMMIT_MSG="🤖 Auto-update metadata via Python yfinance
+        
+        - Updated YFinance sector/industry data via Python (no CORS issues)
+        - Direct API access from GitHub Actions server
+        - Triggered by: ${{ github.event_name }}
+        - Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+        
+        git commit -m "$COMMIT_MSG"
+        
+        # 嘗試拉取最新變更以避免衝突
+        git pull --rebase origin main || true
+        git push
+    
+    - name: Create summary
+      if: always()
+      run: |
+        echo "## 📊 Metadata Update Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+        echo "**Changes:** ${{ steps.changes.outputs.changed }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.changes.outputs.changed }}" == "true" ]; then
+          echo "### 📝 Files Updated:" >> $GITHUB_STEP_SUMMARY
+          git diff --name-only HEAD~1 | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
+        else
+          echo "### ✅ No updates needed" >> $GITHUB_STEP_SUMMARY
+          echo "All metadata is up to date." >> $GITHUB_STEP_SUMMARY
+        fi
+    
+    - name: Notify on failure
+      if: failure()
+      run: |
+        echo "## ❌ Metadata Update Failed" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "The metadata update process encountered an error." >> $GITHUB_STEP_SUMMARY
+        echo "Please check the workflow logs for details." >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Timestamp:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY

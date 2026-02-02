@@ -1,0 +1,309 @@
+/* Investment Dashboard - Renaissance Theme Design System */
+
+:root {
+  /* --- PALETTE: Renaissance Light (Earthy, Plaster, Refined) --- */
+  --bg-primary: #F9F7F5;
+  /* Warm Plaster White */
+  --bg-secondary: #EBE7E4;
+  /* Soft Stone */
+  --bg-card: #FFFFFF;
+  /* Pure White */
+  --bg-header: #FFFFFF;
+
+  --text-primary: #2C2C2C;
+  /* Soft Charcoal */
+  --text-secondary: #595959;
+  /* Muted Grey */
+  --text-muted: #8C8C8C;
+
+  --border-color: #E0DDD9;
+
+  /* Accents - Classic Art Tones */
+  --primary-color: #6B7F82;
+  /* Florentine Blue/Grey */
+  --primary-hover: #5A6B6E;
+  --secondary-color: #A09080;
+  /* Warm Taupe */
+
+  /* Functional Colors */
+  --success-color: #22ab94;
+  /* TradingView Green */
+  --error-color: #f7525f;
+  /* TradingView Red */
+  --warning-color: #C29B40;
+  /* Antique Gold */
+
+  /* Tags (for Pills) */
+  --tag-bg-green: #E8F0E9;
+  --tag-text-green: #2D5232;
+  --tag-bg-red: #F5E6E6;
+  --tag-text-red: #8A3C3C;
+  --tag-bg-blue: #E6EEF0;
+  --tag-text-blue: #4A6366;
+  --tag-bg-yellow: #F7F3E1;
+  --tag-text-yellow: #8F7225;
+
+  /* Spacing & Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* Skeleton Colors */
+  --skeleton-bg: #FFFFFF;
+  --skeleton-base: #f0f0f0;
+  --skeleton-highlight: #e0e0e0;
+
+  /* Layout */
+  --container-max-width: 1600px;
+}
+
+/* --- DARK MODE (Deep, Museum-like, Elegant) --- */
+.dark-mode {
+  --bg-primary: #1A1A1A;
+  /* Deep Charcoal */
+  --bg-secondary: #242424;
+  /* Lighter Charcoal */
+  --bg-card: #2C2C2C;
+  /* Card Grey */
+  --bg-header: #242424;
+
+  --text-primary: #E6E1DC;
+  /* Bone White */
+  --text-secondary: #B0AAA5;
+  /* Warm Grey */
+  --text-muted: #7A7570;
+
+  --border-color: #3D3D3D;
+
+  --primary-color: #8A9A9C;
+  /* Lighter Florentine Blue */
+  --primary-hover: #9DAEB0;
+  --secondary-color: #B5A89A;
+
+  --success-color: #22ab94;
+  --error-color: #f7525f;
+  --warning-color: #DCC070;
+
+  /* Dark Tags */
+  --tag-bg-green: #2A382C;
+  --tag-text-green: #A3C9A8;
+  --tag-bg-red: #3D2929;
+  --tag-text-red: #E6A8A8;
+  --tag-bg-blue: #293336;
+  --tag-text-blue: #A8C4C7;
+  --tag-bg-yellow: #3D3624;
+  --tag-text-yellow: #E6D8A8;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* Dark Skeleton Colors */
+  --skeleton-bg: #2C2C2C;
+  --skeleton-base: #3D3D3D;
+  --skeleton-highlight: #4D4D4D;
+}
+
+/* Base Reset & Typos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 1600px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+nav.nav {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.card,
+.section-card,
+.widget-overview,
+.widget-technical,
+.insight-full-widget,
+.insight-widget {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Utility Overrides for Theme */
+/* Buttons */
+.btn {
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+/* Unified Renaissance Button */
+.btn-renaissance {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-renaissance:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .btn-renaissance {
+  background-color: var(--primary-color);
+  /* Maintain readability in dark mode */
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-success {
+  color: var(--success-color) !important;
+}
+
+.text-danger {
+  color: var(--error-color) !important;
+}
+
+.text-warning {
+  color: var(--warning-color) !important;
+}
+
+/* Grid Layouts */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Tags Utility */
+.tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tag-green {
+  background-color: var(--tag-bg-green);
+  color: var(--tag-text-green);
+}
+
+.tag-red {
+  background-color: var(--tag-bg-red);
+  color: var(--tag-text-red);
+}
+
+.tag-blue {
+  background-color: var(--tag-bg-blue);
+  color: var(--tag-text-blue);
+}
+
+.tag-yellow {
+  background-color: var(--tag-bg-yellow);
+  color: var(--tag-text-yellow);
+}
+
+.tag-gray {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

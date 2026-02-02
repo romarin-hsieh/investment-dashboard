@@ -1,0 +1,133 @@
+name: Daily Data Update
+
+on:
+  schedule:
+    # 每天 UTC 02:00 執行 (台北時間 10:00)
+    - cron: '0 2 * * *'
+  workflow_dispatch: # 允許手動觸發
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Node.js dependencies
+      run: npm ci
+
+    - name: Install GitHub CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install gh
+
+    - name: Install Python dependencies
+      run: |
+        pip install yfinance pandas numpy requests pytz
+
+    - name: Create data directories
+      run: |
+        mkdir -p public/data/ohlcv
+        mkdir -p public/data/technical-indicators
+        mkdir -p public/data/quotes
+        mkdir -p public/data/daily
+
+    # ✅ T2：用真實行情重產 precomputed OHLCV（不經 CORS）
+    - name: Generate REAL OHLCV data (yfinance, 2 formats + index.json)
+      run: |
+        echo "🔄 Generating REAL OHLCV data for all universe symbols (yfinance)..."
+        python scripts/generate-real-ohlcv-yfinance.py --days 1825 --interval 1d --min-rows 24
+
+    # ✅ 防呆：確保 index.json 含 symbols（避免 precomputedOhlcvApi.getAvailableSymbols() 爆掉）
+    - name: Validate OHLCV index schema (must include symbols)
+      run: |
+        python - <<'PY'
+        import json, sys
+        p = "public/data/ohlcv/index.json"
+        with open(p, "r", encoding="utf-8") as f:
+          idx = json.load(f)
+        if not isinstance(idx.get("symbols"), list) or len(idx["symbols"]) == 0:
+          print("❌ index.json missing symbols or empty symbols list")
+          sys.exit(2)
+        print(f"✅ index.json OK. symbols={len(idx['symbols'])}, totalFiles={idx.get('totalFiles')}")
+        PY
+
+    - name: Generate Technical Indicators
+      run: |
+        echo "🔄 Generating technical indicators..."
+        node scripts/generate-daily-technical-indicators.js
+
+
+
+    - name: Cleanup old technical indicators (keep last 30 days)
+      run: |
+        echo "🧹 Cleaning old technical indicator day-files..."
+        node scripts/cleanup-old-technical-indicators.js --retention-days=30 --verbose
+
+    - name: Update Metadata (weekly on Monday)
+      if: github.event.schedule == '0 2 * * 1' || github.event_name == 'workflow_dispatch'
+      run: |
+        echo "🔄 Updating metadata (weekly)..."
+        python scripts/update-metadata-python.py
+
+    - name: Fetch Fundamentals Data (yahoo-finance2)
+      run: |
+        echo "🔄 Fetching fundamental data (including analyst insights)..."
+        node scripts/fetch-fundamentals.js
+
+    - name: Generate Daily Snapshot
+      run: |
+        echo "🔄 Generating daily snapshot..."
+        node scripts/generate-daily-snapshot.js
+
+    - name: Generate Dashboard Status (Trend/Comet)
+      run: |
+        echo "🔄 Generating dashboard status (Trend Continuation)..."
+        python scripts/production/daily_update.py
+
+    - name: Update Status File
+      run: |
+        echo "🔄 Updating status file..."
+        node scripts/update-status.js
+
+    # ✅ 更安全的 commit（包含新檔）
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        git add -A public/data
+        
+        if git diff --staged --quiet; then
+          echo "ℹ️ No changes to commit"
+          exit 0
+        fi
+        
+        git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d)"
+        
+        # 嘗試拉取最新變更以避免衝突
+        git pull --rebase origin main || true
+        git push
+        echo "✅ Data updated and pushed"
+
+    - name: Summary
+      run: |
+        echo "📊 Daily Data Update Summary:"
+        echo "- OHLCV files: $(find public/data/ohlcv -name '*.json' | wc -l)"
+        echo "- Technical indicators: $(find public/data/technical-indicators -name '*.json' | wc -l)"
+        echo "- Retention policy: 30 days for technical indicators"
+        echo "- Generated at: $(date -u)"
