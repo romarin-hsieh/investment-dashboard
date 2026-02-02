@@ -202,6 +202,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-02-02T11:37:48.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 6
+      },
+      {
         "epochGradeDate": "2026-01-21T11:34:58.000Z",
         "firm": "HC Wainwright & Co.",
         "toGrade": "Buy",
@@ -246,11 +256,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.011173175,
+    "preMarketChange": -0.03999996,
+    "preMarketTime": "2026-02-02T12:50:47.000Z",
+    "preMarketPrice": 3.54,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0055865874,
-    "postMarketChange": -0.01999998,
-    "postMarketTime": "2026-01-31T00:59:50.000Z",
-    "postMarketPrice": 3.56,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.109452754,
     "regularMarketChange": -0.44000006,
@@ -268,7 +278,7 @@
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RR",
     "underlyingSymbol": null,
@@ -566,6 +576,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T07:44:15.449Z",
+  "lastUpdated": "2026-02-02T12:51:05.581Z",
   "source": "Static Build (yahoo-finance2)"
 }

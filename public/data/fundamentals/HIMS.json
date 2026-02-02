@@ -244,6 +244,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-02-02T10:49:48.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 60,
+        "priorPriceTarget": 85
+      },
+      {
         "epochGradeDate": "2026-01-12T13:32:27.000Z",
         "firm": "Evercore ISI Group",
         "toGrade": "In-Line",
@@ -1288,11 +1298,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.004798858,
+    "preMarketChange": -0.13000107,
+    "preMarketTime": "2026-02-02T12:49:36.000Z",
+    "preMarketPrice": 26.96,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0022148197,
-    "postMarketChange": 0.059999466,
-    "postMarketTime": "2026-01-31T00:59:57.000Z",
-    "postMarketPrice": 27.15,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.09306999,
     "regularMarketChange": -2.7800007,
@@ -1310,7 +1320,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "HIMS",
     "underlyingSymbol": null,
@@ -3191,6 +3201,6 @@
     "profitMargins": 0.060510002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T07:42:55.555Z",
+  "lastUpdated": "2026-02-02T12:49:44.769Z",
   "source": "Static Build (yahoo-finance2)"
 }

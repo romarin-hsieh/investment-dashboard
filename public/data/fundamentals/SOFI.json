@@ -254,6 +254,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-02-02T11:22:28.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 33,
+        "priorPriceTarget": 36
+      },
+      {
         "epochGradeDate": "2026-01-06T20:04:01.000Z",
         "firm": "Barclays",
         "toGrade": "Equal-Weight",
@@ -1868,11 +1878,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.010521691,
+    "preMarketChange": -0.23999977,
+    "preMarketTime": "2026-02-02T12:49:51.000Z",
+    "preMarketPrice": 22.57,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.001319591,
-    "postMarketChange": -0.030099869,
-    "postMarketTime": "2026-01-31T00:59:57.000Z",
-    "postMarketPrice": 22.7799,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.063628875,
     "regularMarketChange": -1.5499992,
@@ -1890,7 +1900,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SOFI",
     "underlyingSymbol": null,
@@ -3338,6 +3348,6 @@
     "profitMargins": 0.13432999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T07:43:04.727Z",
+  "lastUpdated": "2026-02-02T12:49:54.105Z",
   "source": "Static Build (yahoo-finance2)"
 }
