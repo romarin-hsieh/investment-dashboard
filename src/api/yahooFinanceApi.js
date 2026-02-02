@@ -546,15 +546,25 @@ class YahooFinanceAPI {
 
       // 3. Fetch specific file
       const fileUrl = `${baseUrl}${this.staticTechBaseUrl}${filename}`;
+      console.warn(`[DEBUG_REV3] Fetching static data for ${symbol}... url=${fileUrl}`);
+
       const dataResp = await fetch(fileUrl);
+      if (!dataResp.ok) {
+        console.warn(`[DEBUG_REV3] Static fetch failed: ${dataResp.status}`);
+        return null;
+      }
 
-      if (!dataResp.ok) return null;
-
+      console.warn(`[DEBUG_REV3] Static fetch OK, parsing JSON...`);
       const staticRaw = await dataResp.json();
+      console.warn(`[DEBUG_REV3] JSON parsed. Keys: ${Object.keys(staticRaw)}`);
 
       // 4. Transform static data to runtime format
       const ind = staticRaw.indicators;
-      if (!ind) return null;
+      if (!ind) {
+        console.warn(`[DEBUG_REV3] 'indicators' key missing or falsy!`);
+        return null;
+      }
+      console.warn(`[DEBUG_REV3] 'indicators' found. SMA? ${!!ind.sma}`);
 
       // Map nested structure (Generator output) to Flat CoreResults (Mapper input)
       // Structure: { sma: { sma5: [] }, rsi: { rsi14: [] }, ... }
