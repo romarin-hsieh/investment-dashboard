@@ -1,8 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const { parseArgs } = require('util');
 
-// Parse command line arguments
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// ES Module equivalent of __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Parse command line arguments manually since 'util.parseArgs' might not be available in older Node 18 environments or just for simplicity
 const args = process.argv.slice(2);
 let retentionDays = 30;
 let verbose = false;
@@ -41,12 +46,6 @@ function cleanup() {
         const files = fs.readdirSync(TARGET_DIR);
 
         files.forEach(file => {
-            // Skip special files if needed (e.g., latest_index.json)
-            // But typically we rely on modification time.
-            // latest_index.json usually gets updated daily, so it won't be old.
-            // However, to be safe, we can explicitly skip known non-timestamped files if they shouldn't be touched.
-            // For now, reliance on mtime is standard for cleanup.
-
             const filePath = path.join(TARGET_DIR, file);
             try {
                 const stats = fs.statSync(filePath);
