@@ -211,7 +211,12 @@ export default {
         if (data[key]) {
           value = forcedValue !== null ? forcedValue : this.formatNumber(data[key].value);
           signal = data[key].signal;
-        } 
+
+          // Format numeric signals (like MACD Signal Line)
+          if (typeof signal === 'number') {
+              signal = this.formatNumber(signal, 2);
+          }
+        }  
         
         // Calculate Change
         if (series[arrayKey] && Array.isArray(series[arrayKey])) {
@@ -259,7 +264,7 @@ export default {
       groups['Oscillators'].push(getIndicator('stochD', 'Stoch %D', 'STOCH_D', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('cci20', 'CCI (20)', 'CCI_20', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('adx14', 'ADX (14)', 'ADX_14', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators', this.formatNumber(data.macd?.signal, 2)));
+      groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuConversionLine', 'Ichi Conv (9)', 'ICHIMOKU_CONVERSIONLINE_9', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuBaseLine', 'Ichi Base (26)', 'ICHIMOKU_BASELINE_26', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', 'Ichi Lag (26)', 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));

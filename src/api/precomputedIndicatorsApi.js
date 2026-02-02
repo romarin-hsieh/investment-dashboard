@@ -214,8 +214,17 @@ class PrecomputedIndicatorsAPI {
             SAR: raw.psar?.sar || [],
             SUPERTREND: raw.supertrend?.supertrend || [],
             CMF_20: raw.cmf?.cmf20 || [],
+            SUPERTREND: raw.supertrend?.supertrend || [],
+            CMF_20: raw.cmf?.cmf20 || [],
             WILLR_14: raw.williamsR?.r14 || [],
-            VWMA_20: raw.vwma?.vwma || []
+            VWMA_20: raw.vwma?.vwma || [],
+
+            // New: Stoch and Ichimoku for % change
+            STOCH_K: raw.stoch?.k || [],
+            STOCH_D: raw.stoch?.d || [],
+            ICHIMOKU_CONVERSIONLINE_9: raw.ichimoku?.conversion || [],
+            ICHIMOKU_BASELINE_26: raw.ichimoku?.base || [],
+            ICHIMOKU_LAGGINGSPAN_26: raw.ichimoku?.lagging || []
           },
 
           source: 'Precomputed',
