@@ -22,7 +22,7 @@ class DailySnapshotGenerator {
   constructor() {
     this.projectRoot = path.resolve(__dirname, '..')
     this.outputDir = path.join(this.projectRoot, 'public', 'data', 'daily')
-    
+
     // 確保輸出目錄存在
     if (!fs.existsSync(this.outputDir)) {
       fs.mkdirSync(this.outputDir, { recursive: true })
@@ -47,17 +47,17 @@ class DailySnapshotGenerator {
     try {
       const configPath = path.join(this.projectRoot, 'config', 'stocks.json')
       const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'))
-      
+
       // 只返回啟用的股票符號
       const enabledSymbols = configData.stocks
         .filter(stock => stock.enabled)
         .map(stock => stock.symbol)
-      
+
       console.log(`📊 Loaded ${enabledSymbols.length} enabled symbols from stocks.json`)
       return enabledSymbols
     } catch (error) {
       console.warn('Failed to read stocks.json, falling back to universe.json:', error)
-      
+
       // Fallback 到 universe.json
       try {
         const universePath = path.join(this.projectRoot, 'config', 'universe.json')
@@ -66,7 +66,7 @@ class DailySnapshotGenerator {
       } catch (fallbackError) {
         console.warn('Failed to read universe.json, using hardcoded fallback:', fallbackError)
         return [
-          'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 
+          'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW',
           'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
           'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
           'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
@@ -112,7 +112,7 @@ class DailySnapshotGenerator {
   generateMacroData() {
     const now = new Date()
     const utcString = now.toISOString()
-    
+
     return {
       items: [
         {
@@ -123,7 +123,7 @@ class DailySnapshotGenerator {
           quality_flag: "good"
         },
         {
-          id: "nasdaq_composite", 
+          id: "nasdaq_composite",
           value: 19500 + Math.random() * 500, // 模擬 NASDAQ
           as_of: utcString,
           source_name: "financial_api",
@@ -226,13 +226,13 @@ class DailySnapshotGenerator {
     // 寫入文件
     const filename = `${today}.json`
     const filepath = path.join(this.outputDir, filename)
-    
+
     fs.writeFileSync(filepath, JSON.stringify(snapshot, null, 2), 'utf8')
-    
+
     console.log(`✅ Daily snapshot generated: ${filepath}`)
     console.log(`📈 Macro indicators: ${snapshot.macro.items.length}`)
     console.log(`🏢 Stock symbols: ${symbols.length}`)
-    
+
     return {
       asOfDateTaipei: today,
       filename,
@@ -246,13 +246,13 @@ class DailySnapshotGenerator {
   cleanupOldSnapshots({ retentionDays = 30, asOfDateTaipei } = {}) {
     const files = fs.readdirSync(this.outputDir)
     const jsonFiles = files.filter(f => f.endsWith('.json'))
-    
+
     const asOf = asOfDateTaipei || this.getTodayString()
     const asOfEpoch = ymdToUtcEpoch(asOf)
     const cutoffEpoch = asOfEpoch - (retentionDays - 1) * DAY_MS // 含 asOf 共 retentionDays 天
-    
+
     let deletedCount = 0
-    
+
     jsonFiles.forEach(filename => {
       const match = filename.match(/^(\d{4}-\d{2}-\d{2})\.json$/)
       if (match) {
@@ -265,7 +265,7 @@ class DailySnapshotGenerator {
         }
       }
     })
-    
+
     if (deletedCount > 0) {
       console.log(`🧹 Cleaned up ${deletedCount} old snapshot files`)
     } else {
@@ -278,20 +278,20 @@ class DailySnapshotGenerator {
 async function main() {
   try {
     console.log('🚀 Starting daily snapshot generation...')
-    
+
     const generator = new DailySnapshotGenerator()
-    
+
     // 生成今日快照
     const result = await generator.generateDailySnapshot()
-    
+
     // 清理舊文件
     generator.cleanupOldSnapshots({ retentionDays: 30, asOfDateTaipei: result.asOfDateTaipei })
-    
+
     console.log('✅ Daily snapshot generation completed successfully!')
     console.log(`📄 File: ${result.filename}`)
     console.log(`📊 Symbols: ${result.symbolCount}`)
     console.log(`📈 Macro indicators: ${result.macroCount}`)
-    
+
   } catch (error) {
     console.error('❌ Daily snapshot generation failed:', error)
     process.exit(1)
@@ -299,7 +299,8 @@ async function main() {
 }
 
 // 如果直接執行此腳本
-if (import.meta.url === `file://${process.argv[1]}`) {
+import { pathToFileURL } from 'url'
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   main()
 }
 

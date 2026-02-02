@@ -575,10 +575,60 @@ export default {
         }
         
         // 3. ?湔頛 daily ?豢?
-        const dailyResponse = await fetch(`${basePath}/data/daily/2025-12-28.json?t=` + Date.now())
-        if (dailyResponse.ok) {
-          this.dailyData = await dailyResponse.json()
-          console.log(`??Loaded daily data`)
+        // 3. 根據 quotes 數據中的日期提取 daily 數據
+        let dailyDateStr = ''
+        try {
+          // 優先使用 quotesData.as_of
+          if (quotesData.as_of) {
+             const asOfDate = new Date(quotesData.as_of)
+             // 轉換為 YYYY-MM-DD 格式 (本地時間)
+             // 注意：這裡假設 as_of 是 ISO 格式，我們需要它的日期部分
+             // 如果在台北時間運行，可能需要考慮時區，但這裡簡單取 ISO 的日期部分通常足夠
+             // 或者根據 generate-daily-snapshot.js 的邏輯，它生成的是 "Taipei" date filename
+             
+             // 嘗試解析出台北時間的日期 (簡單處理: 依賴後端生成時的約定)
+             // generate-daily-snapshot.js 使用: return taipeiTime.toISOString().split('T')[0]
+             
+             // 如果 as_of 是 ISO String (e.g. 2025-02-02T15:00:00.000Z)
+             // 我們直接嘗試用 split('T')[0] 
+             dailyDateStr = quotesData.as_of.split('T')[0] 
+          }
+        } catch (e) {
+          console.warn('Failed to parse date from quotes data', e)
+        }
+
+        // 如果無法從 quotes 獲取，回退到今天
+        if (!dailyDateStr) {
+           const now = new Date()
+           const taipeiTime = new Date(now.getTime() + (8 * 60 * 60 * 1000))
+           dailyDateStr = taipeiTime.toISOString().split('T')[0]
+        }
+        
+        console.log(`??Fetching daily data for date: ${dailyDateStr}`)
+
+        try {
+           const dailyResponse = await fetch(`${basePath}/data/daily/${dailyDateStr}.json?t=` + Date.now())
+           if (dailyResponse.ok) {
+             this.dailyData = await dailyResponse.json()
+             console.log(`??Loaded daily data for ${dailyDateStr}`)
+           } else {
+             // 嘗試回退到昨天 (以防今天數據尚未生成)
+             console.warn(`??Daily data for ${dailyDateStr} not found, trying yesterday...`)
+             // 簡單減去一天
+             const dateObj = new Date(dailyDateStr)
+             dateObj.setDate(dateObj.getDate() - 1)
+             const prevDateStr = dateObj.toISOString().split('T')[0]
+             
+             const prevDailyResponse = await fetch(`${basePath}/data/daily/${prevDateStr}.json?t=` + Date.now())
+             if (prevDailyResponse.ok) {
+                this.dailyData = await prevDailyResponse.json()
+                console.log(`??Loaded daily data for ${prevDateStr} (fallback)`)
+             } else {
+                console.warn(`??Daily data for ${prevDateStr} also not found.`)
+             }
+           }
+        } catch (dailyErr) {
+            console.warn('??Failed to fetch daily data:', dailyErr)
         }
         
         // 4. 雿輻 DirectMetadataLoader 頛???(撌脣???蝺拙?)

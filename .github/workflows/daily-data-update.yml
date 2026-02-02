@@ -89,6 +89,11 @@ jobs:
         echo "🔄 Fetching fundamental data (including analyst insights)..."
         node scripts/fetch-fundamentals.js
 
+    - name: Generate Quotes Snapshot
+      run: |
+        echo "🔄 Generating quotes snapshot (latest.json)..."
+        node scripts/generate-quotes-snapshot.js
+
     - name: Generate Daily Snapshot
       run: |
         echo "🔄 Generating daily snapshot..."
