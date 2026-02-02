@@ -6,12 +6,13 @@ on:
     - cron: '20 0 * * *'
   
   # 每次部署到 main 分支時執行
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - 'README.md'
-      - 'docs/**'
-      - '*.md'
+  # 每次部署到 main 分支時執行
+  # push:
+  #   branches: [ main ]
+  #   paths-ignore:
+  #     - 'README.md'
+  #     - 'docs/**'
+  #     - '*.md'
   
   # 允許手動觸發
   workflow_dispatch:
