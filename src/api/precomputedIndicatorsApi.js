@@ -171,9 +171,9 @@ class PrecomputedIndicatorsAPI {
           },
 
           source: 'Precomputed',
-          lastUpdated: data.computedAt,
-          dataAge: this.calculateDataAge(data.computedAt),
-          precomputedDate: data.date,
+          lastUpdated: data.metadata?.generated || data.computedAt || new Date().toISOString(),
+          dataAge: this.calculateDataAge(data.metadata?.generated || data.computedAt),
+          precomputedDate: data.date || (data.metadata?.generated ? data.metadata.generated.split('T')[0] : null),
           symbol: symbol
         };
 
