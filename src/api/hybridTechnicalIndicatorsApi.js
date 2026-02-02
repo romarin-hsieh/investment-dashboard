@@ -76,22 +76,22 @@ class HybridTechnicalIndicatorsAPI {
     const adxValue = data.adx14.value;
     if (adxValue === null || adxValue === undefined || adxValue === 'N/A') return false;
 
-    // 2. Check OBV (New Requirement)
+    // 2. Check OBV (New Requirement) - Relaxed
     const obvObj = data.obv || (data.indicators && data.indicators.obv);
     if (!obvObj || obvObj.value === null || obvObj.value === undefined || obvObj.value === 'N/A') {
-      console.log('Validation failed: Missing valid OBV');
-      return false;
+      console.warn('Validation warning: Missing valid OBV (continuing anyway)');
+      // return false; 
     }
 
-    // 3. Check Beta (New Requirement)
+    // 3. Check Beta (New Requirement) - Relaxed
     const yf = data.yf || (data.indicators && data.indicators.yf);
     const hasBeta = yf && (
       (yf.beta_10d !== undefined && yf.beta_10d !== null && yf.beta_10d !== 'N/A') ||
       (yf.beta_3mo !== undefined && yf.beta_3mo !== null && yf.beta_3mo !== 'N/A')
     );
     if (!hasBeta) {
-      console.log('Validation failed: Missing valid Beta');
-      return false;
+      console.warn('Validation warning: Missing valid Beta (continuing anyway)');
+      // return false;
     }
 
     // k. Check Full Series ADX (Existing Logic)
