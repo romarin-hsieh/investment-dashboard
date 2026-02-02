@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 10,
+        "buy": 32,
+        "hold": 3,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 9,
         "buy": 31,
         "hold": 5,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 8,
         "buy": 31,
         "hold": 6,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1288,
         "position": 41912928,
-        "value": 5420180155,
+        "value": 5413054395,
         "pctChange": 0.00029999999
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0837,
         "position": 27230765,
-        "value": 3521482729,
+        "value": 3516853133,
         "pctChange": 0.31370002
       },
       {
@@ -55,7 +63,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0502,
         "position": 16342587,
-        "value": 2113423470,
+        "value": 2110645011,
         "pctChange": 0.5118
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0422,
         "position": 13732777,
-        "value": 1775922822,
+        "value": 1773588065,
         "pctChange": 1.0676999
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0414,
         "position": 13466821,
-        "value": 1741529390,
+        "value": 1739239849,
         "pctChange": 1.2325
       },
       {
@@ -82,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0325,
         "position": 10561176,
-        "value": 1365771357,
+        "value": 1363975815,
         "pctChange": 1.0464
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0272,
         "position": 8858270,
-        "value": 1145551541,
+        "value": 1144045516,
         "pctChange": 0.52
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Janus Henderson Group PLC",
         "pctHeld": 0.0248,
         "position": 8078980,
-        "value": 1044773752,
+        "value": 1043400217,
         "pctChange": -0.0336
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Jennison Associates LLC",
         "pctHeld": 0.0234,
         "position": 7623993,
-        "value": 985934830,
+        "value": 984638649,
         "pctChange": 0.4366
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0188,
         "position": 6113794,
-        "value": 790635884,
+        "value": 789596457,
         "pctChange": -0.0324
       }
     ]
@@ -245,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-02T13:20:09.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 175,
+        "priorPriceTarget": 215
+      },
       {
         "epochGradeDate": "2026-01-30T13:10:08.000Z",
         "firm": "Rosenblatt",
@@ -4260,29 +4278,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.0078101587,
-    "preMarketChange": -1.0100098,
-    "preMarketTime": "2026-02-02T12:50:42.000Z",
-    "preMarketPrice": 128.31,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.008893738,
-    "regularMarketChange": 1.1399994,
-    "regularMarketTime": "2026-01-30T21:00:03.000Z",
+    "regularMarketChangePercent": -0.0013146722,
+    "regularMarketChange": -0.17001343,
+    "regularMarketTime": "2026-02-02T18:38:33.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 129.32,
-    "regularMarketDayHigh": 130.4199,
-    "regularMarketDayLow": 127.2,
-    "regularMarketVolume": 5338864,
+    "regularMarketPrice": 129.15,
+    "regularMarketDayHigh": 131.44,
+    "regularMarketDayLow": 127.7201,
+    "regularMarketVolume": 2457176,
     "averageDailyVolume10Day": 6705490,
     "averageDailyVolume3Month": 5001060,
-    "regularMarketPreviousClose": 128.18001,
+    "regularMarketPreviousClose": 129.32,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 127.99,
+    "regularMarketOpen": 129.69,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4294,13 +4307,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 45348745216
+    "marketCap": 45289123840
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 42487717888,
-    "forwardPE": 55.205746,
+    "forwardPE": 55.133167,
     "profitMargins": 0.033239998,
     "floatShares": 323321937,
     "sharesOutstanding": 325443373,
@@ -4317,7 +4330,7 @@
     "impliedSharesOutstanding": 350670749,
     "category": null,
     "bookValue": 9.811,
-    "priceToBook": 13.181124,
+    "priceToBook": 13.163795,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -4358,6 +4371,29 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 32418,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-01-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32418,
+        "value": 4570511,
+        "filerUrl": "",
+        "transactionText": "Sale at price 139.89 - 142.74 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-01-28T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 7916,
@@ -4676,11 +4712,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 2554,
-        "value": 405061,
+        "shares": 6715,
+        "value": 1064989,
         "filerUrl": "",
         "transactionText": "Sale at price 158.60 per share.",
-        "filerName": "GALLOREESE DAVID",
+        "filerName": "LI YANBING",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-02T00:00:00.000Z",
@@ -4688,11 +4724,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 6715,
-        "value": 1064989,
+        "shares": 2554,
+        "value": 405061,
         "filerUrl": "",
         "transactionText": "Sale at price 158.60 per share.",
-        "filerName": "LI YANBING",
+        "filerName": "GALLOREESE DAVID",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-02T00:00:00.000Z",
@@ -5733,24 +5769,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 20000,
-        "value": 2405000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 120.25 per share.",
-        "filerName": "OBSTLER DAVID M",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 127105,
         "value": 15247342,
         "filerUrl": "",
         "transactionText": "Sale at price 119.79 - 121.17 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20000,
+        "value": 2405000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 120.25 per share.",
+        "filerName": "OBSTLER DAVID M",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
         "ownership": "D"
@@ -6098,37 +6134,13 @@
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 127105,
-        "value": 12760406,
-        "filerUrl": "",
-        "transactionText": "Sale at price 99.13 - 100.91 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 66269,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "OBSTLER DAVID M",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 129.32,
+    "currentPrice": 129.15,
     "targetHighPrice": 260,
     "targetLowPrice": 113,
     "targetMeanPrice": 194.63571,
@@ -6158,6 +6170,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T12:50:48.893Z",
+  "lastUpdated": "2026-02-02T18:38:39.751Z",
   "source": "Static Build (yahoo-finance2)"
 }

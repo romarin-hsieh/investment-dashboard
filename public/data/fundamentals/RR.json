@@ -8,6 +8,14 @@
         "hold": 0,
         "sell": 1,
         "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 0,
+        "buy": 1,
+        "hold": 0,
+        "sell": 1,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -21,7 +29,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0479,
         "position": 8385468,
-        "value": 30019974,
+        "value": 30103829,
         "pctChange": 0.8178
       },
       {
@@ -30,7 +38,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0305,
         "position": 5339528,
-        "value": 19115509,
+        "value": 19168905,
         "pctChange": 0.1705
       },
       {
@@ -39,7 +47,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.018099999,
         "position": 3169629,
-        "value": 11347271,
+        "value": 11378967,
         "pctChange": 23.9825
       },
       {
@@ -48,7 +56,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0127,
         "position": 2226398,
-        "value": 7970504,
+        "value": 7992768,
         "pctChange": 0.5876
       },
       {
@@ -57,7 +65,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0117999995,
         "position": 2067250,
-        "value": 7400754,
+        "value": 7421427,
         "pctChange": 0.4124
       },
       {
@@ -66,7 +74,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.010299999,
         "position": 1804574,
-        "value": 6460374,
+        "value": 6478420,
         "pctChange": 4.1217003
       },
       {
@@ -75,7 +83,7 @@
         "organization": "Group One Trading, LLC",
         "pctHeld": 0.0088,
         "position": 1535351,
-        "value": 5496556,
+        "value": 5511909,
         "pctChange": 1
       },
       {
@@ -84,7 +92,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0085,
         "position": 1494765,
-        "value": 5351258,
+        "value": 5366206,
         "pctChange": 1
       },
       {
@@ -93,7 +101,7 @@
         "organization": "HRT Financial LP",
         "pctHeld": 0.0084,
         "position": 1472999,
-        "value": 5273336,
+        "value": 5288066,
         "pctChange": 1
       },
       {
@@ -102,7 +110,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.0073,
         "position": 1277238,
-        "value": 4572511,
+        "value": 4585284,
         "pctChange": 1
       }
     ]
@@ -256,29 +264,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.011173175,
-    "preMarketChange": -0.03999996,
-    "preMarketTime": "2026-02-02T12:50:47.000Z",
-    "preMarketPrice": 3.54,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.109452754,
-    "regularMarketChange": -0.44000006,
-    "regularMarketTime": "2026-01-30T21:00:01.000Z",
+    "regularMarketChangePercent": 0.0027932937,
+    "regularMarketChange": 0.00999999,
+    "regularMarketTime": "2026-02-02T18:38:55.000Z",
     "priceHint": 4,
-    "regularMarketPrice": 3.58,
-    "regularMarketDayHigh": 3.92,
-    "regularMarketDayLow": 3.35,
-    "regularMarketVolume": 45815029,
+    "regularMarketPrice": 3.59,
+    "regularMarketDayHigh": 3.7588,
+    "regularMarketDayLow": 3.45,
+    "regularMarketVolume": 18582207,
     "averageDailyVolume10Day": 68505810,
     "averageDailyVolume3Month": 33002411,
-    "regularMarketPreviousClose": 4.02,
+    "regularMarketPreviousClose": 3.58,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 3.88,
+    "regularMarketOpen": 3.57,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "RR",
     "underlyingSymbol": null,
@@ -290,7 +293,7 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 800473536
+    "marketCap": 802709504
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
@@ -312,7 +315,7 @@
     "impliedSharesOutstanding": 223595973,
     "category": null,
     "bookValue": 1.387,
-    "priceToBook": 2.5811102,
+    "priceToBook": 2.58832,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-09-30T00:00:00.000Z",
@@ -547,7 +550,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 3.58,
+    "currentPrice": 3.59,
     "targetHighPrice": 6,
     "targetLowPrice": 3,
     "targetMeanPrice": 4.5,
@@ -576,6 +579,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T12:51:05.581Z",
+  "lastUpdated": "2026-02-02T18:38:56.704Z",
   "source": "Static Build (yahoo-finance2)"
 }
