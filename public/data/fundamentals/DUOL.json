@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 6,
+        "buy": 7,
+        "hold": 9,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 6,
         "buy": 5,
         "hold": 10,
         "sell": 1,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 6,
         "buy": 5,
         "hold": 11,
@@ -1890,7 +1898,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "DUOL",
     "underlyingSymbol": null,
@@ -1921,7 +1929,7 @@
     "heldPercentInstitutions": 1.07026,
     "shortRatio": 4.5,
     "shortPercentOfFloat": 0.2079,
-    "beta": 0.862,
+    "beta": 0.852,
     "impliedSharesOutstanding": 46227357,
     "category": null,
     "bookValue": 28.358,
@@ -3787,6 +3795,6 @@
     "profitMargins": 0.40032002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T01:50:04.056Z",
+  "lastUpdated": "2026-02-02T07:44:01.060Z",
   "source": "Static Build (yahoo-finance2)"
 }

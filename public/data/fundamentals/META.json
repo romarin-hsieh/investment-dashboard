@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 11,
+        "buy": 51,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 10,
         "buy": 50,
         "hold": 7,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 10,
         "buy": 50,
         "hold": 8,
@@ -179,7 +187,7 @@
           "reportedDate": 1769634260
         }
       ],
-      "currentQuarterEstimate": 6.5872,
+      "currentQuarterEstimate": 6.58982,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -4400,7 +4408,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "META",
     "underlyingSymbol": null,
@@ -4418,9 +4426,9 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 1815915528192,
-    "forwardPE": 20.493773,
+    "forwardPE": 20.21497,
     "profitMargins": 0.30084,
-    "floatShares": 2181109199,
+    "floatShares": 2182626932,
     "sharesOutstanding": 2187177748,
     "sharesShort": 32561725,
     "sharesShortPriorMonth": "1971-01-05T20:16:16.000Z",
@@ -4431,7 +4439,7 @@
     "heldPercentInstitutions": 0.79246,
     "shortRatio": 2.29,
     "shortPercentOfFloat": 0.015,
-    "beta": 1.287,
+    "beta": 1.284,
     "impliedSharesOutstanding": 2529555464,
     "category": null,
     "bookValue": 85.867,
@@ -4444,7 +4452,7 @@
     "earningsQuarterlyGrowth": 0.093,
     "netIncomeToCommon": 60458000384,
     "trailingEps": 23.5,
-    "forwardEps": 35.44539,
+    "forwardEps": 35.44403,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 9.036,
     "enterpriseToEbitda": 17.822,
@@ -6247,7 +6255,7 @@
     "currentPrice": 716.5,
     "targetHighPrice": 1144,
     "targetLowPrice": 700,
-    "targetMeanPrice": 857.77966,
+    "targetMeanPrice": 858.71185,
     "targetMedianPrice": 855,
     "recommendationMean": 1.31343,
     "recommendationKey": "strong_buy",
@@ -6274,6 +6282,6 @@
     "profitMargins": 0.30084,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T01:48:44.722Z",
+  "lastUpdated": "2026-02-02T07:42:43.621Z",
   "source": "Static Build (yahoo-finance2)"
 }

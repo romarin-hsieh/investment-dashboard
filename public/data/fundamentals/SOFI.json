@@ -15,10 +15,18 @@
         "buy": 5,
         "hold": 11,
         "sell": 2,
-        "strongSell": 2
+        "strongSell": 3
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 5,
+        "hold": 11,
+        "sell": 2,
+        "strongSell": 2
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 5,
         "hold": 11,
@@ -1882,7 +1890,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "SOFI",
     "underlyingSymbol": null,
@@ -1913,7 +1921,7 @@
     "heldPercentInstitutions": 0.5269,
     "shortRatio": 2.52,
     "shortPercentOfFloat": 0.0911,
-    "beta": 1.932,
+    "beta": 2.178,
     "impliedSharesOutstanding": 1263657704,
     "category": null,
     "bookValue": 8.256,
@@ -3330,6 +3338,6 @@
     "profitMargins": 0.13432999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T01:49:06.956Z",
+  "lastUpdated": "2026-02-02T07:43:04.727Z",
   "source": "Static Build (yahoo-finance2)"
 }
