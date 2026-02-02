@@ -520,12 +520,12 @@ class YahooFinanceAPI {
 
   // 嘗試獲取靜態生成的技術指標
   async _fetchStaticTechnicalIndicators(symbol) {
-    if (typeof window === 'undefined') return null; // Node env doesn't need this, or can read FS if needed
+    if (typeof window === 'undefined') return null; // Node env doesn't need this
 
     try {
       const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
-      // 1. Get/Refresh Index
+      // 1. Get/Refresh Index (Check availability)
       if (!this.latestIndex || Date.now() - this.latestIndexTimestamp > 60 * 60 * 1000) {
         const indexUrl = `${baseUrl}${this.staticTechBaseUrl}latest_index.json?t=${Date.now()}`;
         const resp = await fetch(indexUrl);
@@ -538,7 +538,8 @@ class YahooFinanceAPI {
       // 2. Validate Index and Symbol
       if (!this.latestIndex || !this.latestIndex.date) return null;
 
-      // Check if symbol might exist
+      // Check if symbol data exists
+      // The static file naming convention: YYYY-MM-DD_SYMBOL.json
       const dateStr = this.latestIndex.date;
       const filename = `${dateStr}_${symbol}.json`;
 
@@ -550,21 +551,207 @@ class YahooFinanceAPI {
 
       const staticRaw = await dataResp.json();
 
-      // 4. Transform static data to runtime format (if needed)
-      // The static file already matches the expected structure mostly, check compatibility
-      if (staticRaw.indicators && staticRaw.indicators.sma) {
-        return staticRaw.indicators; // The structure in file is nested under indicators
-        // Note: The UI expects a flat object with keys like ma5, rsi14, etc.
-        // We need to map `staticRaw.indicators` (Generator output) to `Component Props` (Frontend expectation)
-        // See createIndicatorResult usage in _fetchTechnicalIndicatorsFromAPIInternal for target format.
-      }
+      // 4. Transform static data to runtime format
+      // staticRaw contains the raw arrays (coreResults) under 'indicators' or directly?
+      // Based on generate-daily-technical-indicators.js, it saves the 'output' which contains 'indicators' property
+      // and 'indicators' property contains the arrays (e.g. sma5: [...]).
+      // BUT `generate-daily-technical-indicators.js` maps keys like 'SMA_5' to 'sma5' (lowercase).
+      // Let's verify the keys. The coreResults use UPPERCASE specific names (SMA_5). 
+      // The generator output uses result keys like 'sma5' (see `generate-daily-technical-indicators.js`).
+      // Wait, the generator script actually saves a structure that matches the `coreResults` keys?
+      // Let's assume the static file contains the raw coreResults or equivalent.
 
-      return null; // Format mismatch?
+      // Adaptation: The generator script (generate-daily-technical-indicators.js) output structure:
+      // it calls `calculateAllIndicators` which returns coreResults (e.g. SMA_5).
+      // Then it maps them to lowercase keys: sma5: coreResults.SMA_5
+      // So the static file has keys like `sma5`, `rsi14`.
+
+      // However, our new _mapCoreResultsToIndicators expects coreResults (UPPERCASE keys).
+      // We need to map the static file's lowercase keys back to what our mapper expects OR adjust the mapper.
+      // Easiest is to adjust the mapper to handle the static file structure directly since it's already close.
+
+      // Actually, looking at `generate-daily-technical-indicators.js`:
+      // const indicators = { sma5: results.SMA_5, ... }
+      // So existing static files have lowercase keys.
+      // _fetchTechnicalIndicatorsFromAPIInternal calculates coreResults (UPPERCASE) then maps to Frontend Object ({value, signal}).
+      // We need a mapper that takes the Series (from either source) and produces {value, signal}.
+
+      const indicatorsData = staticRaw.indicators || staticRaw; // Handle nesting
+
+      // We need to reconstruct "coreResults" style object or just map manually.
+      // Since static files keys (sma5) differ from coreResults keys (SMA_5), 
+      // we need a bridge.
+
+      // Let's construct a compatible object for the mapper
+      const compatibleResults = {
+        MA_5: indicatorsData.ma5,
+        SMA_5: indicatorsData.sma5,
+        MA_10: indicatorsData.ma10,
+        SMA_10: indicatorsData.sma10,
+        MA_30: indicatorsData.ma30,
+        SMA_30: indicatorsData.sma30,
+
+        ICHIMOKU_BASELINE_26: indicatorsData.ichimokuBaseLine,
+        ICHIMOKU_CONVERSIONLINE_9: indicatorsData.ichimokuConversionLine,
+        ICHIMOKU_LAGGINGSPAN_26: indicatorsData.ichimokuLaggingSpan,
+
+        VWMA_20: indicatorsData.vwma20,
+        RSI_14: indicatorsData.rsi14,
+
+        ADX_14: indicatorsData.adx14,
+        ADX_14_PLUS_DI: indicatorsData.adx14plus || indicatorsData.plusDI, // Check generator output keys
+        ADX_14_MINUS_DI: indicatorsData.adx14minus || indicatorsData.minusDI,
+
+        MACD_12_26_9: indicatorsData.macd,
+        MACD_SIGNAL_9: indicatorsData.macdSignal,
+        MACD_HIST: indicatorsData.macdHist,
+
+        SAR: indicatorsData.parabolicSAR,
+        STOCH_K: indicatorsData.stochK,
+        STOCH_D: indicatorsData.stochD,
+        CCI_20: indicatorsData.cci20,
+        ATR_14: indicatorsData.atr14,
+        OBV: indicatorsData.obv,
+        SUPERTREND_10_3: indicatorsData.superTrend,
+        MFI_14: indicatorsData.mfi14,
+
+        BETA_10D: indicatorsData.beta10d, // Generator might not have these?
+        BETA_3M: indicatorsData.beta3m
+      };
+
+      // Also need OHLCV for current price comparison
+      // The static file usually includes metadata or last price?
+      // If not, we might lack currentPrice for signals.
+      // `generate-daily-technical-indicators.js` saves `metadata.priceRange.latest`.
+      const currentPrice = staticRaw.metadata?.priceRange?.latest || null;
+
+      // Use the helper to map
+      const mapped = this._mapCoreResultsToIndicators(compatibleResults, currentPrice, 'Static JSON');
+
+      // Merge extras from static header if any
+      mapped.lastUpdated = staticRaw.metadata?.generated || new Date().toISOString();
+      mapped.source = 'Static Pre-computed';
+
+      return mapped;
 
     } catch (e) {
-      // Quiet fail
+      console.warn('Failed to process static data:', e);
       return null;
     }
+  }
+
+  // Helper: map core data series to frontend { value, signal } format
+  _mapCoreResultsToIndicators(coreResults, currentPrice, sourceLabel) {
+    const getLastValue = (series) => {
+      if (!series || !Array.isArray(series)) return null;
+      for (let i = series.length - 1; i >= 0; i--) {
+        const val = series[i];
+        if (val !== null && val !== undefined && !isNaN(val)) return val;
+      }
+      return null;
+    };
+
+    const createIndicatorResult = (series, signalThresholds = null) => {
+      const lastValue = getLastValue(series);
+      // Use provided currentPrice or try to find it? 
+      // If currentPrice is passed as null, signal calculation might be limited.
+
+      let signal = 'NEUTRAL';
+      if (signalThresholds && lastValue !== null && currentPrice !== null) {
+        if (signalThresholds.type === 'price_comparison') {
+          if (currentPrice > lastValue * signalThresholds.buy) signal = 'BUY';
+          else if (currentPrice < lastValue * signalThresholds.sell) signal = 'SELL';
+        } else if (signalThresholds.type === 'rsi') {
+          if (lastValue > signalThresholds.overbought) signal = 'OVERBOUGHT';
+          else if (lastValue < signalThresholds.oversold) signal = 'OVERSOLD';
+        } else if (signalThresholds.type === 'adx') {
+          if (lastValue > signalThresholds.strong) signal = 'STRONG_TREND';
+          else if (lastValue < signalThresholds.weak) signal = 'WEAK_TREND';
+        }
+      }
+
+      return {
+        value: lastValue !== null ? lastValue.toFixed(2) : null,
+        signal: signal,
+        currentPrice: currentPrice !== null ? currentPrice.toFixed(2) : null
+      };
+    };
+
+    return {
+      ma5: createIndicatorResult(coreResults.MA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma5: createIndicatorResult(coreResults.SMA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma10: createIndicatorResult(coreResults.MA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma10: createIndicatorResult(coreResults.SMA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma30: createIndicatorResult(coreResults.MA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma30: createIndicatorResult(coreResults.SMA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma50: { value: null, signal: 'N/A' },
+
+      ichimokuBaseLine: createIndicatorResult(coreResults.ICHIMOKU_BASELINE_26, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+      ichimokuConversionLine: createIndicatorResult(coreResults.ICHIMOKU_CONVERSIONLINE_9, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+      ichimokuLaggingSpan: createIndicatorResult(coreResults.ICHIMOKU_LAGGINGSPAN_26),
+
+      vwma20: createIndicatorResult(coreResults.VWMA_20, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+
+      rsi14: createIndicatorResult(coreResults.RSI_14, { type: 'rsi', overbought: 70, oversold: 30 }),
+
+      adx14: (() => {
+        const adxValue = getLastValue(coreResults.ADX_14);
+        const plusDI = getLastValue(coreResults.ADX_14_PLUS_DI);
+        const minusDI = getLastValue(coreResults.ADX_14_MINUS_DI);
+        let signal = 'NEUTRAL';
+        if (adxValue !== null && !isNaN(adxValue)) {
+          if (adxValue > 25) signal = 'STRONG_TREND';
+          else if (adxValue < 20) signal = 'WEAK_TREND';
+        }
+        return {
+          value: adxValue !== null ? adxValue.toFixed(2) : null,
+          signal: signal,
+          plusDI: plusDI !== null ? plusDI.toFixed(2) : null,
+          minusDI: minusDI !== null ? minusDI.toFixed(2) : null
+        };
+      })(),
+
+      macd: (() => {
+        const macdValue = getLastValue(coreResults.MACD_12_26_9);
+        const signalValue = getLastValue(coreResults.MACD_SIGNAL_9);
+        const histValue = getLastValue(coreResults.MACD_HIST);
+        let signal = 'NEUTRAL';
+        if (macdValue !== null && signalValue !== null && histValue !== null) {
+          if (macdValue > signalValue && histValue > 0) signal = 'BUY';
+          else if (macdValue < signalValue && histValue < 0) signal = 'SELL';
+        }
+        return {
+          value: macdValue !== null ? macdValue.toFixed(2) : null,
+          signal: signal,
+          signalLine: signalValue !== null ? signalValue.toFixed(2) : null,
+          histogram: histValue !== null ? histValue.toFixed(2) : null
+        };
+      })(),
+
+      parabolicSAR: createIndicatorResult(coreResults.SAR, { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
+      stochK: createIndicatorResult(coreResults.STOCH_K, { type: 'rsi', overbought: 80, oversold: 20 }),
+      stochD: createIndicatorResult(coreResults.STOCH_D, { type: 'rsi', overbought: 80, oversold: 20 }),
+      cci20: createIndicatorResult(coreResults.CCI_20, { type: 'rsi', overbought: 100, oversold: -100 }),
+      atr14: createIndicatorResult(coreResults.ATR_14),
+
+      obv: (() => {
+        const obvSeries = (coreResults.OBV || []).filter(v => v !== null && !isNaN(v));
+        const obvVal = obvSeries.length > 0 ? obvSeries[obvSeries.length - 1] : null;
+        const prevObv = obvSeries.length > 1 ? obvSeries[obvSeries.length - 2] : null;
+        let signal = 'NEUTRAL';
+        if (obvVal !== null && prevObv !== null) {
+          if (obvVal > prevObv) signal = 'BULLISH';
+          else if (obvVal < prevObv) signal = 'BEARISH';
+        }
+        return {
+          value: obvVal !== null ? (obvVal / 1000000).toFixed(2) + 'M' : 'N/A',
+          signal: signal
+        };
+      })(),
+
+      superTrend: createIndicatorResult(coreResults.SUPERTREND_10_3, { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
+      mfi14: createIndicatorResult(coreResults.MFI_14, { type: 'rsi', overbought: 80, oversold: 20 })
+    };
   }
 
   // Helper to transform Static JSON format -> Frontend Format
