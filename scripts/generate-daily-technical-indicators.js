@@ -758,6 +758,9 @@ function calculateMFI(high, low, close, volume, period = 14) {
 /**
  * 計算 OBV
  */
+/**
+ * 計算 OBV
+ */
 function calculateOBV(close, volume) {
   const obv = new Array(close.length).fill(0);
   obv[0] = volume[0]; // Or 0? Usually acc from start.
@@ -772,6 +775,55 @@ function calculateOBV(close, volume) {
     }
   }
   return { obv };
+}
+
+/**
+ * 計算 Williams %R
+ */
+function calculateWilliamsR(high, low, close, period = 14) {
+  const result = new Array(close.length).fill(null);
+  for (let i = period - 1; i < close.length; i++) {
+    let highestHigh = -Infinity;
+    let lowestLow = Infinity;
+    for (let j = 0; j < period; j++) {
+      if (high[i - j] > highestHigh) highestHigh = high[i - j];
+      if (low[i - j] < lowestLow) lowestLow = low[i - j];
+    }
+    if (highestHigh === lowestLow) {
+      result[i] = 0; // Avoid division by zero
+    } else {
+      result[i] = ((highestHigh - close[i]) / (highestHigh - lowestLow)) * -100;
+    }
+  }
+  return result;
+}
+
+/**
+ * 計算 Chaikin Money Flow (CMF)
+ */
+function calculateCMF(high, low, close, volume, period = 20) {
+  const ad = new Array(close.length).fill(0);
+  for (let i = 0; i < close.length; i++) {
+    if (high[i] === low[i]) {
+      ad[i] = 0;
+    } else {
+      const moneyFlowMultiplier = ((close[i] - low[i]) - (high[i] - close[i])) / (high[i] - low[i]);
+      ad[i] = moneyFlowMultiplier * volume[i];
+    }
+  }
+
+  const cmf = new Array(close.length).fill(null);
+  for (let i = period - 1; i < close.length; i++) {
+    let sumAD = 0;
+    let sumVol = 0;
+    for (let j = 0; j < period; j++) {
+      sumAD += ad[i - j];
+      sumVol += volume[i - j];
+    }
+    if (sumVol === 0) cmf[i] = 0;
+    else cmf[i] = sumAD / sumVol;
+  }
+  return cmf;
 }
 
 
@@ -816,6 +868,8 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
   const psar = calculatePSAR(high, low, close);
   const supertrend = calculateSuperTrend(high, low, close, 10, 3);
   const obv = calculateOBV(close, volume);
+  const williamsR = calculateWilliamsR(high, low, close, 14);
+  const cmf = calculateCMF(high, low, close, volume, 20);
 
   return {
     symbol: symbol,
@@ -865,6 +919,12 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
       },
       mfi: {
         mfi14: mfi
+      },
+      williamsR: {
+        r14: williamsR
+      },
+      cmf: {
+        cmf20: cmf
       }
     },
     fundamentals: fundamentals, // Embed fundamental data
@@ -875,7 +935,7 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
       indicators: [
         'SMA (5,10,20,30,50,60)', 'RSI14', 'MACD',
         'ADX14', 'Ichimoku', 'VWMA20', 'Stoch',
-        'CCI20', 'PSAR', 'SuperTrend', 'OBV'
+        'CCI20', 'PSAR', 'SuperTrend', 'OBV', 'WilliamsR14', 'CMF20'
       ]
     }
   };
