@@ -55,6 +55,21 @@ To change the list of tracked stocks, edit ONLY `public/config/stocks.json`.
 *   **Source**: Official CNN API (with Z-Score fallback).
 *   **Output**: `public/data/technical-indicators/market-sentiment.json`
 
+### D. Technical Indicators Precomputation
+*   **Script**: `scripts/generate-daily-technical-indicators.js`
+*   **Trigger**: Runs after Market Data update via GitHub Actions.
+*   **Command**: `npm run generate:indicators`
+*   **Dependencies**: 
+    *   `public/config/stocks.json` (Source list)
+    *   `public/data/ohlcv/FOREXCOM_SPXUSD.json` (Benchmark for Beta calc)
+*   **Output**: 
+    *   Individual files: `public/data/technical-indicators/YYYY-MM-DD_{SYMBOL}.json`
+    *   Index: `public/data/technical-indicators/latest_index.json`
+*   **Key Features**:
+    *   Calculates 30+ indicators including Custom Beta (10D/3M).
+    *   Pre-computes full history for sparklines and percentage changes.
+    *   Frontend `precomputedIndicatorsApi.js` caches this data for instant loading.
+
 ## 4. GitHub Actions Architecture
 The project follows a **Static-First** approach.
 

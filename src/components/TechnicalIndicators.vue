@@ -265,14 +265,8 @@ export default {
       groups['Oscillators'].push(getIndicator('cci20', 'CCI (20)', 'CCI_20', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('adx14', 'ADX (14)', 'ADX_14', 'Oscillators'));
       
-      // MACD with custom coloring for Signal Value based on Histogram (Trend Strength)
-      const macdInd = getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators');
-      // If Histogram > 0 (or MACD > Signal), color Green. Else Red.
-      // We can check data.macd.histogram directly if available
-      if (data.macd?.histogram !== undefined && data.macd?.histogram !== null) {
-          macdInd.signalClass = data.macd.histogram >= 0 ? 'tag-green' : 'tag-red';
-      }
-      groups['Oscillators'].push(macdInd);
+      // MACD (Note: Reverted to default gray styling as per user request)
+      groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuConversionLine', 'Ichi Conv (9)', 'ICHIMOKU_CONVERSIONLINE_9', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuBaseLine', 'Ichi Base (26)', 'ICHIMOKU_BASELINE_26', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', 'Ichi Lag (26)', 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));
