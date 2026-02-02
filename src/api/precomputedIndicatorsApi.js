@@ -120,8 +120,6 @@ class PrecomputedIndicatorsAPI {
         // Helper to get last valid value
         const getLast = (arr) => {
           if (!arr || arr.length === 0) return null;
-          // Find last non-null value? Or just last?
-          // Typically last value is most relevant.
           for (let i = arr.length - 1; i >= 0; i--) {
             if (arr[i] !== null && arr[i] !== undefined) return arr[i];
           }
@@ -130,17 +128,32 @@ class PrecomputedIndicatorsAPI {
 
         // 轉換數據格式以匹配原有 API
         // Map new hierarchical structure to flat keys expected by UI/Validation
+        // Note: UI props 'ma5' usually refer to EMA in modern context if distinct from 'sma5'
         const indicators = {
           ...raw,
-          // Extract Latest Values for Summary/Validation
+          // SMA
           sma5: { value: getLast(raw.sma?.sma5), signal: 'N/A' },
           sma10: { value: getLast(raw.sma?.sma10), signal: 'N/A' },
           sma20: { value: getLast(raw.sma?.sma20), signal: 'N/A' },
           sma30: { value: getLast(raw.sma?.sma30), signal: 'N/A' },
           sma50: { value: getLast(raw.sma?.sma50), signal: 'N/A' },
+          sma60: { value: getLast(raw.sma?.sma60), signal: 'N/A' },
 
+          // EMA (Mapped to 'ma' or 'ema' keys as per UI requirement)
+          // UI uses 'ma5', 'ma10', 'ma30' for EMA
+          ma5: { value: getLast(raw.ema?.ema5), signal: 'N/A' },
+          ma10: { value: getLast(raw.ema?.ema10), signal: 'N/A' },
+          ema20: { value: getLast(raw.ema?.ema20), signal: 'N/A' }, // UI uses 'ema20' explicitly?
+          ma30: { value: getLast(raw.ema?.ema30), signal: 'N/A' },
+          ma50: { value: getLast(raw.ema?.ema50), signal: 'N/A' },
+          ma60: { value: getLast(raw.ema?.ema60), signal: 'N/A' },
+
+          // Oscillators
           rsi14: { value: getLast(raw.rsi?.rsi14), signal: 'N/A' },
           adx14: { value: getLast(raw.adx?.adx), signal: 'N/A' },
+          stochK: { value: getLast(raw.stoch?.k), signal: 'N/A' },
+          stochD: { value: getLast(raw.stoch?.d), signal: 'N/A' },
+          cci20: { value: getLast(raw.cci?.cci20), signal: 'N/A' },
 
           macd: {
             value: getLast(raw.macd?.macd),
@@ -148,26 +161,47 @@ class PrecomputedIndicatorsAPI {
             histogram: getLast(raw.macd?.histogram)
           },
 
+          // Ichimoku
           ichimokuConversionLine: { value: getLast(raw.ichimoku?.conversion), signal: 'N/A' },
           ichimokuBaseLine: { value: getLast(raw.ichimoku?.base), signal: 'N/A' },
           ichimokuLaggingSpan: { value: getLast(raw.ichimoku?.lagging), signal: 'N/A' },
           ichimokuLeadingSpanA: { value: getLast(raw.ichimoku?.spanA), signal: 'N/A' },
           ichimokuLeadingSpanB: { value: getLast(raw.ichimoku?.spanB), signal: 'N/A' },
 
+          // Other Trends
           vwma20: { value: getLast(raw.vwma?.vwma), signal: 'N/A' },
+          parabolicSAR: { value: getLast(raw.psar?.sar), signal: 'N/A' }, // Mapped from psar.sar
+          superTrend: { value: getLast(raw.supertrend?.supertrend), signal: 'N/A' },
+
+          // Market
+          obv: { value: getLast(raw.obv?.value), signal: 'N/A' }, // Mapped from obv.value
+          atr14: { value: getLast(raw.atr?.atr14), signal: 'N/A' },
+          mfi14: { value: getLast(raw.mfi?.mfi14), signal: 'N/A' },
 
           // Full Series for Charts (Mapping to Expected Keys)
           fullSeries: {
             SMA_5: raw.sma?.sma5 || [],
             SMA_10: raw.sma?.sma10 || [],
-            SMA_30: raw.sma?.sma30 || [], // Ensure this exists
+            SMA_30: raw.sma?.sma30 || [],
             SMA_50: raw.sma?.sma50 || [],
+
+            EMA_5: raw.ema?.ema5 || [],
+            EMA_10: raw.ema?.ema10 || [],
+            EMA_20: raw.ema?.ema20 || [],
+            EMA_30: raw.ema?.ema30 || [],
+
             RSI_14: raw.rsi?.rsi14 || [],
             ADX_14: raw.adx?.adx || [],
             MACD: raw.macd?.macd || [],
             MACD_Signal: raw.macd?.signal || [],
             MACD_Hist: raw.macd?.histogram || [],
-            // Add other series if UI needs them
+
+            OBV: raw.obv?.value || [],
+            ATR_14: raw.atr?.atr14 || [],
+            MFI_14: raw.mfi?.mfi14 || [],
+            CCI_20: raw.cci?.cci20 || [],
+            SAR: raw.psar?.sar || [],
+            SUPERTREND: raw.supertrend?.supertrend || []
           },
 
           source: 'Precomputed',

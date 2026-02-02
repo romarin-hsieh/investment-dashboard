@@ -710,6 +710,52 @@ function calculateSuperTrend(high, low, close, period = 10, multiplier = 3) {
 }
 
 /**
+ * 計算 MFI (Money Flow Index)
+ */
+function calculateMFI(high, low, close, volume, period = 14) {
+  const tp = high.map((h, i) => (h + low[i] + close[i]) / 3);
+  const rawMoneyFlow = tp.map((p, i) => p * volume[i]);
+
+  const mfi = new Array(close.length).fill(null);
+
+  // Need at least period + 1 data points (start from index 1 for direction)
+  if (close.length <= period) return mfi;
+
+  for (let i = period; i < close.length; i++) {
+    let posMF = 0;
+    let negMF = 0;
+
+    // Look back 'period' days. Since we need direction, loop from j=0 to period-1
+    // relative to current i. Comparison is current vs prev.
+    // Range: [i-period+1, i]
+
+    for (let j = 0; j < period; j++) {
+      const idx = i - j;
+      const prevIdx = idx - 1;
+
+      if (prevIdx < 0) continue;
+
+      if (tp[idx] > tp[prevIdx]) {
+        posMF += rawMoneyFlow[idx];
+      } else if (tp[idx] < tp[prevIdx]) {
+        negMF += rawMoneyFlow[idx];
+      }
+      // If equal, discarded
+    }
+
+    if (negMF === 0) {
+      if (posMF === 0) mfi[i] = 50; // No volume/move?
+      else mfi[i] = 100;
+    } else {
+      const mfr = posMF / negMF;
+      mfi[i] = 100 - (100 / (1 + mfr));
+    }
+  }
+
+  return mfi;
+}
+
+/**
  * 計算 OBV
  */
 function calculateOBV(close, volume) {
@@ -740,17 +786,33 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
   const sma5 = calculateSMA(close, 5);
   const sma10 = calculateSMA(close, 10);
   const sma20 = calculateSMA(close, 20);
-  const sma30 = calculateSMA(close, 30); // Added 30
+  const sma30 = calculateSMA(close, 30);
   const sma50 = calculateSMA(close, 50);
-  const sma60 = calculateSMA(close, 60); // Added for Ichimoku context or general use
+  const sma60 = calculateSMA(close, 60);
+
+  // EMA Calculations
+  const ema5 = calculateEMA(close, 5);
+  const ema10 = calculateEMA(close, 10);
+  const ema20 = calculateEMA(close, 20);
+  const ema30 = calculateEMA(close, 30);
+  const ema50 = calculateEMA(close, 50);
+  const ema60 = calculateEMA(close, 60);
 
   const rsi = calculateRSI(close, 14);
   const macd = calculateMACD(close);
   const adx = calculateADX(high, low, close, 14);
   const ichimoku = calculateIchimoku(high, low, close);
   const vwma = calculateVWMA(close, volume, 20);
-  const stoch = calculateStochastic(high, low, close, 14, 3, 3); // using smooth 3 for Fast Stoch often too noisy
+  const stoch = calculateStochastic(high, low, close, 14, 3, 3);
   const cci = calculateCCI(high, low, close, 20);
+
+  // ATR & MFI
+  const tr = calculateTR(high, low, close);
+  const atr = calculateATR(tr, 14);
+
+  // MFI Calculation
+  const mfi = calculateMFI(high, low, close, volume, 14);
+
   const psar = calculatePSAR(high, low, close);
   const supertrend = calculateSuperTrend(high, low, close, 10, 3);
   const obv = calculateOBV(close, volume);
@@ -767,6 +829,14 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
         sma50: sma50,
         sma60: sma60
       },
+      ema: {
+        ema5: ema5,
+        ema10: ema10,
+        ema20: ema20,
+        ema30: ema30,
+        ema50: ema50,
+        ema60: ema60
+      },
       rsi: {
         rsi14: rsi
       },
@@ -775,15 +845,27 @@ function generateTechnicalIndicators(symbol, ohlcvData) {
         signal: macd.signal,
         histogram: macd.histogram
       },
-      // New Indicators
-      adx: adx,
-      ichimoku: ichimoku,
-      vwma: vwma,
-      stoch: stoch,
-      cci: cci,
-      psar: psar,
-      supertrend: supertrend,
-      obv: obv
+      adx: adx, // Should be { adx, pdi, mdi }
+      ichimoku: ichimoku, // { conversion, base, spanA, spanB, lagging }
+      vwma: vwma, // { vwma }
+      stoch: stoch, // { k, d }
+      cci: {
+        cci20: cci.cci
+      },
+      psar: {
+        sar: psar.psar,
+        trend: psar.trend
+      },
+      supertrend: supertrend, // { supertrend, direction }
+      obv: {
+        value: obv.obv
+      },
+      atr: {
+        atr14: atr
+      },
+      mfi: {
+        mfi14: mfi
+      }
     },
     fundamentals: fundamentals, // Embed fundamental data
     metadata: {
