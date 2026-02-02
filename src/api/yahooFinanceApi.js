@@ -552,78 +552,62 @@ class YahooFinanceAPI {
       const staticRaw = await dataResp.json();
 
       // 4. Transform static data to runtime format
-      // staticRaw contains the raw arrays (coreResults) under 'indicators' or directly?
-      // Based on generate-daily-technical-indicators.js, it saves the 'output' which contains 'indicators' property
-      // and 'indicators' property contains the arrays (e.g. sma5: [...]).
-      // BUT `generate-daily-technical-indicators.js` maps keys like 'SMA_5' to 'sma5' (lowercase).
-      // Let's verify the keys. The coreResults use UPPERCASE specific names (SMA_5). 
-      // The generator output uses result keys like 'sma5' (see `generate-daily-technical-indicators.js`).
-      // Wait, the generator script actually saves a structure that matches the `coreResults` keys?
-      // Let's assume the static file contains the raw coreResults or equivalent.
+      const ind = staticRaw.indicators;
+      if (!ind) return null;
 
-      // Adaptation: The generator script (generate-daily-technical-indicators.js) output structure:
-      // it calls `calculateAllIndicators` which returns coreResults (e.g. SMA_5).
-      // Then it maps them to lowercase keys: sma5: coreResults.SMA_5
-      // So the static file has keys like `sma5`, `rsi14`.
-
-      // However, our new _mapCoreResultsToIndicators expects coreResults (UPPERCASE keys).
-      // We need to map the static file's lowercase keys back to what our mapper expects OR adjust the mapper.
-      // Easiest is to adjust the mapper to handle the static file structure directly since it's already close.
-
-      // Actually, looking at `generate-daily-technical-indicators.js`:
-      // const indicators = { sma5: results.SMA_5, ... }
-      // So existing static files have lowercase keys.
-      // _fetchTechnicalIndicatorsFromAPIInternal calculates coreResults (UPPERCASE) then maps to Frontend Object ({value, signal}).
-      // We need a mapper that takes the Series (from either source) and produces {value, signal}.
-
-      const indicatorsData = staticRaw.indicators || staticRaw; // Handle nesting
-
-      // We need to reconstruct "coreResults" style object or just map manually.
-      // Since static files keys (sma5) differ from coreResults keys (SMA_5), 
-      // we need a bridge.
-
-      // Let's construct a compatible object for the mapper
+      // Map nested structure (Generator output) to Flat CoreResults (Mapper input)
+      // Structure: { sma: { sma5: [] }, rsi: { rsi14: [] }, ... }
       const compatibleResults = {
-        MA_5: indicatorsData.ma5,
-        SMA_5: indicatorsData.sma5,
-        MA_10: indicatorsData.ma10,
-        SMA_10: indicatorsData.sma10,
-        MA_30: indicatorsData.ma30,
-        SMA_30: indicatorsData.sma30,
+        // SMA
+        MA_5: ind.sma?.sma5,
+        SMA_5: ind.sma?.sma5,
+        MA_10: ind.sma?.sma10,
+        SMA_10: ind.sma?.sma10,
+        MA_30: ind.sma?.sma30,
+        SMA_30: ind.sma?.sma30,
+        SMA_50: ind.sma?.sma50,
 
-        ICHIMOKU_BASELINE_26: indicatorsData.ichimokuBaseLine,
-        ICHIMOKU_CONVERSIONLINE_9: indicatorsData.ichimokuConversionLine,
-        ICHIMOKU_LAGGINGSPAN_26: indicatorsData.ichimokuLaggingSpan,
+        // Ichimoku
+        ICHIMOKU_BASELINE_26: ind.ichimoku?.base,
+        ICHIMOKU_CONVERSIONLINE_9: ind.ichimoku?.conversion,
+        ICHIMOKU_LAGGINGSPAN_26: ind.ichimoku?.lagging,
 
-        VWMA_20: indicatorsData.vwma20,
-        RSI_14: indicatorsData.rsi14,
+        // VWMA
+        VWMA_20: ind.vwma?.vwma,
 
-        ADX_14: indicatorsData.adx14,
-        ADX_14_PLUS_DI: indicatorsData.adx14plus || indicatorsData.plusDI, // Check generator output keys
-        ADX_14_MINUS_DI: indicatorsData.adx14minus || indicatorsData.minusDI,
+        // RSI
+        RSI_14: ind.rsi?.rsi14,
 
-        MACD_12_26_9: indicatorsData.macd,
-        MACD_SIGNAL_9: indicatorsData.macdSignal,
-        MACD_HIST: indicatorsData.macdHist,
+        // ADX
+        ADX_14: ind.adx?.adx,
+        ADX_14_PLUS_DI: ind.adx?.pdi,
+        ADX_14_MINUS_DI: ind.adx?.mdi,
 
-        SAR: indicatorsData.parabolicSAR,
-        STOCH_K: indicatorsData.stochK,
-        STOCH_D: indicatorsData.stochD,
-        CCI_20: indicatorsData.cci20,
-        ATR_14: indicatorsData.atr14,
-        OBV: indicatorsData.obv,
-        SUPERTREND_10_3: indicatorsData.superTrend,
-        MFI_14: indicatorsData.mfi14,
+        // MACD
+        MACD_12_26_9: ind.macd?.macd,
+        MACD_SIGNAL_9: ind.macd?.signal,
+        MACD_HIST: ind.macd?.histogram,
 
-        BETA_10D: indicatorsData.beta10d, // Generator might not have these?
-        BETA_3M: indicatorsData.beta3m
+        // Others
+        SAR: ind.psar?.psar,
+        STOCH_K: ind.stoch?.k,
+        STOCH_D: ind.stoch?.d,
+        CCI_20: ind.cci?.cci,
+
+        ATR_14: null, // Not available in static JSON
+
+        OBV: ind.obv?.obv,
+        SUPERTREND_10_3: ind.supertrend?.supertrend,
+
+        BETA_10D: null,
+        BETA_3M: null
       };
 
       // Also need OHLCV for current price comparison
-      // The static file usually includes metadata or last price?
-      // If not, we might lack currentPrice for signals.
-      // `generate-daily-technical-indicators.js` saves `metadata.priceRange.latest`.
-      const currentPrice = staticRaw.metadata?.priceRange?.latest || null;
+      // Static JSON doesn't include Close Price array unfortunately.
+      // So signals relying on price comparison will be incomplete unless we fetch OHLCV.
+      // For now, pass null to avoid breaking chart rendering (values will render, signals N/A).
+      const currentPrice = null;
 
       // Use the helper to map
       const mapped = this._mapCoreResultsToIndicators(compatibleResults, currentPrice, 'Static JSON');
