@@ -4,7 +4,7 @@
 
 class TechnicalIndicatorsCache {
   constructor() {
-    this.cachePrefix = 'technical_indicators_v2_';
+    this.cachePrefix = 'technical_indicators_v3_';
     this.cacheTimeout = 24 * 60 * 60 * 1000; // 24 小時緩存
     this.memoryCache = new Map(); // 內存緩存，提高性能
     this.indexCache = null; // latest_index.json 緩存
@@ -129,36 +129,10 @@ class TechnicalIndicatorsCache {
       console.warn(`Failed to read cache for ${symbol}:`, error);
     }
 
-    // 3. 緩存未命中，執行網絡請求
-    try {
-      const baseUrl = import.meta.env.BASE_URL || '/';
-      const date = cacheKey.split('_').pop(); // 從 cacheKey 提取日期: '2026-01-03'
-      const url = `${baseUrl}data/technical-indicators/${date}_${symbol}.json`;
-
-      console.log(`Fetching from network: ${url}`);
-      const response = await fetch(url);
-
-      if (response.ok) {
-        const data = await response.json();
-
-        // [New] Validate Static/Network Data
-        if (!this._isValidData(data)) {
-          console.warn(`Static/Network data for ${symbol} is incomplete (missing OBV/Beta). Forcing Fallback.`);
-          return null; // Force null return so caller uses Live API
-        }
-
-        // 存入緩存
-        await this.setTechnicalIndicators(symbol, data);
-
-        return { ...data, source: 'Network' };
-      } else {
-        console.warn(`Failed to fetch indicators for ${symbol}: ${response.status}`);
-      }
-    } catch (error) {
-      console.error(`Network fetch error for ${symbol}:`, error);
-    }
-
-    // 4. 無法獲取數據，返回 null
+    // 3. 緩存未命中，返回 null (讓 YahooFinanceAPI 處理獲取和映射)
+    // 我們移除這裡的網絡請求，因為這裡獲取的數據是原始 JSON，缺少必要的格式映射
+    // YahooFinanceAPI._fetchStaticTechnicalIndicators 會處理映射，然後存回緩存
+    console.log(`Cache miss for ${symbol}, delegating to API`);
     return null;
   }
 
