@@ -217,8 +217,8 @@ export default {
     },
     async fetchExternalSentiment() {
         try {
-            const url = withBase('data/technical-indicators/market-sentiment.json');
-            const res = await fetch(url);
+            const url = withBase(`data/technical-indicators/market-sentiment.json?t=${new Date().getTime()}`);
+            const res = await fetch(url, { cache: 'no-store' });
             if (res.ok) {
                 this.externalSentiment = await res.json();
                 console.log('Loaded External Sentiment:', this.externalSentiment);
