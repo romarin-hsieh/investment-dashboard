@@ -246,6 +246,16 @@
   "upgradeDowngradeHistory": {
     "history": [
       {
+        "epochGradeDate": "2026-02-03T11:02:08.000Z",
+        "firm": "Piper Sandler",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 280,
+        "priorPriceTarget": 315
+      },
+      {
         "epochGradeDate": "2026-01-12T20:12:16.000Z",
         "firm": "Barclays",
         "toGrade": "Overweight",
@@ -8910,11 +8920,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.01580072,
+    "preMarketChange": -3.3300018,
+    "preMarketTime": "2026-02-03T12:47:34.000Z",
+    "preMarketPrice": 207.42,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.003225691,
-    "postMarketChange": 0.68000793,
-    "postMarketTime": "2026-02-03T00:59:26.000Z",
-    "postMarketPrice": 211.49,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00697158,
     "regularMarketChange": -1.48,
@@ -8924,15 +8934,15 @@
     "regularMarketDayHigh": 216.89,
     "regularMarketDayLow": 209.81,
     "regularMarketVolume": 7825618,
-    "averageDailyVolume10Day": 11364520,
-    "averageDailyVolume3Month": 8303690,
+    "averageDailyVolume10Day": 10768990,
+    "averageDailyVolume3Month": 8297847,
     "regularMarketPreviousClose": 212.29,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 214.35,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRM",
     "underlyingSymbol": null,
@@ -8981,8 +8991,8 @@
     "lastSplitDate": 1366243200,
     "enterpriseToRevenue": 4.907,
     "enterpriseToEbitda": 16.765,
-    "52WeekChange": -0.38312894,
-    "SandP52WeekChange": 0.14924943,
+    "52WeekChange": -0.38742954,
+    "SandP52WeekChange": 0.15544534,
     "lastDividendValue": 0.416,
     "lastDividendDate": "2025-12-18T00:00:00.000Z",
     "latestShareClass": null,
@@ -10808,6 +10818,6 @@
     "profitMargins": 0.17913,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T06:44:08.618Z",
+  "lastUpdated": "2026-02-03T12:49:39.119Z",
   "source": "Static Build (yahoo-finance2)"
 }

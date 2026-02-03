@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 8,
+        "buy": 10,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 8,
         "buy": 9,
         "hold": 2,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 8,
         "buy": 9,
         "hold": 2,
@@ -1770,11 +1778,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.03910959,
+    "preMarketChange": 17.99002,
+    "preMarketTime": "2026-02-03T12:27:07.000Z",
+    "preMarketPrice": 477.98,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.04106614,
-    "postMarketChange": 18.890015,
-    "postMarketTime": "2026-02-03T00:59:12.000Z",
-    "postMarketPrice": 478.88,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.048782002,
     "regularMarketChange": -23.59,
@@ -1784,15 +1792,15 @@
     "regularMarketDayHigh": 491.26,
     "regularMarketDayLow": 459.5,
     "regularMarketVolume": 1144503,
-    "averageDailyVolume10Day": 785490,
-    "averageDailyVolume3Month": 902513,
+    "averageDailyVolume10Day": 832440,
+    "averageDailyVolume3Month": 906536,
     "regularMarketPreviousClose": 483.58,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 482.16,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AXON",
     "underlyingSymbol": null,
@@ -1840,8 +1848,8 @@
     "lastSplitDate": 1101772800,
     "enterpriseToRevenue": 14.055,
     "enterpriseToEbitda": 504.955,
-    "52WeekChange": -0.27051938,
-    "SandP52WeekChange": 0.14924943,
+    "52WeekChange": -0.3061049,
+    "SandP52WeekChange": 0.15544534,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3378,6 +3386,6 @@
     "profitMargins": 0.100509994,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T06:45:39.923Z",
+  "lastUpdated": "2026-02-03T12:51:11.767Z",
   "source": "Static Build (yahoo-finance2)"
 }

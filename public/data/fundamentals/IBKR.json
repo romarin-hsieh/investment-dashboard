@@ -24,6 +24,14 @@
         "hold": 0,
         "sell": 0,
         "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 6,
+        "hold": 0,
+        "sell": 0,
+        "strongSell": 1
       }
     ],
     "maxAge": 86400
@@ -179,7 +187,7 @@
           "reportedDate": 1768942860
         }
       ],
-      "currentQuarterEstimate": 0.59056,
+      "currentQuarterEstimate": 0.59485,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -1420,11 +1428,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0057127713,
+    "preMarketChange": 0.4300003,
+    "preMarketTime": "2026-02-03T12:45:13.000Z",
+    "preMarketPrice": 75.7,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0043842415,
-    "postMarketChange": 0.33000183,
-    "postMarketTime": "2026-02-03T00:48:19.000Z",
-    "postMarketPrice": 75.6,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00520833,
     "regularMarketChange": 0.389999,
@@ -1434,15 +1442,15 @@
     "regularMarketDayHigh": 77.975,
     "regularMarketDayLow": 73.1,
     "regularMarketVolume": 6755590,
-    "averageDailyVolume10Day": 6135070,
-    "averageDailyVolume3Month": 4299980,
+    "averageDailyVolume10Day": 6412050,
+    "averageDailyVolume3Month": 4342557,
     "regularMarketPreviousClose": 74.88,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 74.775,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "IBKR",
     "underlyingSymbol": null,
@@ -1460,7 +1468,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": -32101648384,
-    "forwardPE": 27.508652,
+    "forwardPE": 27.408484,
     "profitMargins": 0.15858,
     "floatShares": 433051147,
     "sharesOutstanding": 445363717,
@@ -1490,8 +1498,8 @@
     "lastSplitFactor": "4:1",
     "lastSplitDate": 1750204800,
     "enterpriseToRevenue": -5.174,
-    "52WeekChange": 0.3523569,
-    "SandP52WeekChange": 0.14924943,
+    "52WeekChange": 0.3594004,
+    "SandP52WeekChange": 0.15544534,
     "lastDividendValue": 0.08,
     "lastDividendDate": "2025-12-01T00:00:00.000Z",
     "latestShareClass": null,
@@ -2342,6 +2350,6 @@
     "profitMargins": 0.15858,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T06:45:16.346Z",
+  "lastUpdated": "2026-02-03T12:50:47.516Z",
   "source": "Static Build (yahoo-finance2)"
 }
