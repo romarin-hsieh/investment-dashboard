@@ -1047,7 +1047,15 @@ function generateTechnicalIndicators(symbol, ohlcvData, benchmarkData = null) {
       beta: {
         beta10d: beta10d,
         beta3m: beta3m
-      }
+      },
+      // Market volume stats
+      market: {
+        volumeLastDay: volume[volume.length - 1],
+        avgVolume10d: calculateSMA(volume, 10).slice(-1)[0],
+        avgVolume3m: calculateSMA(volume, 63).slice(-1)[0]
+      },
+      // Pass through fundamentals
+      fundamentals: fundamentals
     },
     fundamentals: fundamentals, // Embed fundamental data
     metadata: {

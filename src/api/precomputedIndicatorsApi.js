@@ -185,7 +185,22 @@ class PrecomputedIndicatorsAPI {
           yf: {
             beta: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A',
             beta_10d: getLast(raw.beta?.beta10d),
-            beta_3mo: getLast(raw.beta?.beta3m)
+            beta_3mo: getLast(raw.beta?.beta3m),
+
+            // Market Cap with multiple fallbacks
+            market_cap: data.fundamentals?.price?.marketCap
+              || data.fundamentals?.summaryDetail?.marketCap
+              || (data.fundamentals?.defaultKeyStatistics?.sharesOutstanding && data.fundamentals?.financialData?.currentPrice ? data.fundamentals.defaultKeyStatistics.sharesOutstanding * data.fundamentals.financialData.currentPrice : null)
+              || data.fundamentals?.quoteType?.marketCap
+              || 'N/A',
+
+            // Volume Stats (Calculated from OHLCV in generation script)
+            avg_volume_10d: raw.market?.avgVolume10d || data.fundamentals?.price?.averageDailyVolume10Day || 'N/A',
+            volume_last_day: raw.market?.volumeLastDay || data.fundamentals?.price?.regularMarketVolume || 'N/A',
+
+            // Legacy fallbacks if needed (for older files without 'market' object)
+            extAvgVol10D: raw.market?.avgVolume10d,
+            extVolume: raw.market?.volumeLastDay
           },
           beta: { value: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A', signal: 'N/A' },
 

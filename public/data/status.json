@@ -1,50 +1,51 @@
 {
-  "generated": "2026-02-03T04:15:10.253Z",
-  "date": "2026-02-03",
+  "generated": "2026-02-02T07:44:25.787Z",
+  "date": "2026-02-02",
   "status": "updated",
   "data_sources": {
     "ohlcv": {
       "exists": true,
-      "size": 30598,
-      "modified": "2026-02-03T04:12:51.889Z",
-      "fileCount": 359,
+      "size": 30567,
+      "modified": "2026-02-02T07:41:28.132Z",
+      "fileCount": 149,
       "directory": "data/ohlcv/"
     },
     "technical_indicators": {
       "exists": true,
-      "size": 3186,
-      "modified": "2026-02-03T04:12:55.071Z",
-      "fileCount": 1255,
+      "size": 3158,
+      "modified": "2026-02-02T07:41:29.826Z",
+      "fileCount": 1185,
       "directory": "data/technical-indicators/"
     },
     "quotes": {
-      "exists": true,
-      "size": 30393,
-      "modified": "2026-02-03T04:15:03.652Z",
+      "exists": false,
+      "size": 0,
+      "modified": null,
+      "error": "ENOENT: no such file or directory, stat '/home/runner/work/investment-dashboard/investment-dashboard/public/data/quotes/latest.json'",
       "file": "data/quotes/latest.json"
     },
     "metadata": {
       "exists": true,
-      "size": 73161,
-      "modified": "2026-02-03T04:11:30.896Z",
+      "size": 120922,
+      "modified": "2026-02-02T07:42:16.165Z",
       "file": "data/symbols_metadata.json"
     },
     "daily_snapshot": {
       "exists": true,
-      "size": 28013,
-      "modified": "2026-02-03T04:15:03.706Z",
-      "file": "data/daily/2026-02-03.json"
+      "size": 28016,
+      "modified": "2026-02-02T07:44:22.549Z",
+      "file": "data/daily/2026-02-02.json"
     }
   },
   "update_info": {
     "source": "GitHub Actions Daily Update",
     "workflow": "daily-data-update.yml",
-    "next_update": "2026-02-04T04:15:10.253Z",
+    "next_update": "2026-02-03T07:44:25.787Z",
     "update_frequency": "daily"
   },
   "health_check": {
     "all_systems": "operational",
-    "last_check": "2026-02-03T04:15:10.253Z",
+    "last_check": "2026-02-02T07:44:25.787Z",
     "issues": []
   }
 }

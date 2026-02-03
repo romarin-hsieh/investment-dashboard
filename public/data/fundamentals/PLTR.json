@@ -4,8 +4,8 @@
       {
         "period": "0m",
         "strongBuy": 1,
-        "buy": 8,
-        "hold": 14,
+        "buy": 6,
+        "hold": 16,
         "sell": 2,
         "strongSell": 2
       },
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0988,
         "position": 215444098,
-        "value": 31834018737,
+        "value": 32221818770,
         "pctChange": 0.0073
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0864,
         "position": 188505957,
-        "value": 27853639170,
+        "value": 28192950468,
         "pctChange": 0.0636
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0464,
         "position": 101258899,
-        "value": 14962014360,
+        "value": 15144280687,
         "pctChange": 0.0717
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0318,
         "position": 69332036,
-        "value": 10244501258,
+        "value": 10369299134,
         "pctChange": 3.3122
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024500001,
         "position": 53395218,
-        "value": 7889677118,
+        "value": 7985788673,
         "pctChange": 0.074200004
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0139,
         "position": 30240527,
-        "value": 4468340103,
+        "value": 4522773144,
         "pctChange": -0.082200006
       },
       {
@@ -99,7 +99,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0111,
         "position": 24262451,
-        "value": 3585019626,
+        "value": 3628692112,
         "pctChange": 0.3491
       },
       {
@@ -108,7 +108,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.010299999,
         "position": 22430790,
-        "value": 3314373407,
+        "value": 3354748897,
         "pctChange": 0.17809999
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.01,
         "position": 21798785,
-        "value": 3220988351,
+        "value": 3260226231,
         "pctChange": 0.059
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0097,
         "position": 21088462,
-        "value": 3116031029,
+        "value": 3153990325,
         "pctChange": 0.0379
       }
     ]
@@ -142,6 +142,17 @@
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
+        {
+          "date": "4Q2024",
+          "actual": 0.14,
+          "estimate": 0.11316,
+          "fiscalQuarter": "4Q2024",
+          "calendarQuarter": "4Q2024",
+          "difference": "0.03",
+          "surprisePct": "23.72",
+          "periodEndDate": 1735603200,
+          "reportedDate": 1738616700
+        },
         {
           "date": "1Q2025",
           "actual": 0.13,
@@ -174,30 +185,26 @@
           "surprisePct": "25.46",
           "periodEndDate": 1759190400,
           "reportedDate": 1762203900
-        },
-        {
-          "date": "4Q2025",
-          "actual": 0.25,
-          "estimate": 0.2302,
-          "fiscalQuarter": "4Q2025",
-          "calendarQuarter": "4Q2025",
-          "difference": "0.02",
-          "surprisePct": "8.6",
-          "periodEndDate": 1767139200,
-          "reportedDate": 1770066300
         }
       ],
-      "currentQuarterEstimate": 0.2773,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
-      "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
+      "currentQuarterEstimate": 0.2302,
+      "currentQuarterEstimateDate": "4Q",
+      "currentCalendarQuarter": "4Q2025",
+      "currentQuarterEstimateYear": 2025,
+      "currentFiscalQuarter": "4Q2025",
+      "currentPeriodEndDate": 1767139200,
+      "earningsDate": [
+        "2026-02-02T21:00:00.000Z"
+      ],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
+        {
+          "date": 2021,
+          "revenue": 1541889000,
+          "earnings": 308082000
+        },
         {
           "date": 2022,
           "revenue": 1905871000,
@@ -212,14 +219,15 @@
           "date": 2024,
           "revenue": 2865507000,
           "earnings": 1001849000
-        },
-        {
-          "date": 2025,
-          "revenue": 4475446000,
-          "earnings": 1915638000
         }
       ],
       "quarterly": [
+        {
+          "date": "4Q2024",
+          "fiscalQuarter": "4Q2024",
+          "revenue": 827519000,
+          "earnings": 341947000
+        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -237,12 +245,6 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 1181092000,
           "earnings": 528709000
-        },
-        {
-          "date": "4Q2025",
-          "fiscalQuarter": "4Q2025",
-          "revenue": 1406802000,
-          "earnings": 647973000
         }
       ]
     },
@@ -2116,29 +2118,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.10438169,
-    "preMarketChange": 15.425003,
-    "preMarketTime": "2026-02-03T12:49:52.000Z",
-    "preMarketPrice": 163.2,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.007981431,
-    "regularMarketChange": 1.17,
-    "regularMarketTime": "2026-02-02T21:00:03.000Z",
+    "regularMarketChangePercent": 0.020260599,
+    "regularMarketChange": 2.9700012,
+    "regularMarketTime": "2026-02-02T18:37:33.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 147.76,
+    "regularMarketPrice": 149.56,
     "regularMarketDayHigh": 151.4,
-    "regularMarketDayLow": 146.655,
-    "regularMarketVolume": 67446846,
-    "averageDailyVolume10Day": 41561670,
-    "averageDailyVolume3Month": 44839132,
+    "regularMarketDayLow": 148.08,
+    "regularMarketVolume": 30741267,
+    "averageDailyVolume10Day": 40393560,
+    "averageDailyVolume3Month": 45000642,
     "regularMarketPreviousClose": 146.59,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 150.89,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "PLTR",
     "underlyingSymbol": null,
@@ -2150,13 +2147,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 352176537600
+    "marketCap": 356466720768
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 346071990272,
-    "forwardPE": 92.672035,
+    "enterpriseValue": 343283367936,
+    "forwardPE": 147.64212,
     "profitMargins": 0.28114,
     "floatShares": 2200030912,
     "sharesOutstanding": 2284334012,
@@ -2173,7 +2170,7 @@
     "impliedSharesOutstanding": 2383436338,
     "category": null,
     "bookValue": 2.765,
-    "priceToBook": 53.43942,
+    "priceToBook": 54.090412,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2181,13 +2178,13 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 2.314,
     "netIncomeToCommon": 1095366016,
-    "trailingEps": 0.64,
-    "forwardEps": 1.60872,
+    "trailingEps": 0.43,
+    "forwardEps": 1.01299,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 88.824,
-    "enterpriseToEbitda": 395.151,
-    "52WeekChange": 0.42309546,
-    "SandP52WeekChange": 0.15544534,
+    "enterpriseToRevenue": 88.108,
+    "enterpriseToEbitda": 391.967,
+    "52WeekChange": 0.7505374,
+    "SandP52WeekChange": 0.1575526,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2252,10 +2249,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 9000,
-        "value": 42480,
+        "shares": 3831,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 4.72 per share.",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "GLAZER DAVID ALAN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -2264,10 +2261,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3831,
-        "value": 0,
+        "shares": 9000,
+        "value": 42480,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 4.72 per share.",
         "filerName": "GLAZER DAVID ALAN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -2324,22 +2321,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 168876,
+        "shares": 404889,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SANKAR SHYAM",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "KARP ALEXANDER C.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 404889,
+        "shares": 168876,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KARP ALEXANDER C.",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "SANKAR SHYAM",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
         "ownership": "D"
@@ -2560,17 +2557,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 351884,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "COHEN STEPHEN ANDREW",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 409072,
         "filerUrl": "",
         "transactionText": "",
@@ -2582,12 +2568,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 17680,
-        "value": 2711464,
+        "shares": 351884,
         "filerUrl": "",
-        "transactionText": "Sale at price 143.12 - 157.18 per share.",
-        "filerName": "GLAZER DAVID ALAN",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "",
+        "filerName": "COHEN STEPHEN ANDREW",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D"
@@ -2600,6 +2585,18 @@
         "transactionText": "Sale at price 143.12 - 157.18 per share.",
         "filerName": "BUCKLEY JEFFREY JOHANSING",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17680,
+        "value": 2711464,
+        "filerUrl": "",
+        "transactionText": "Sale at price 143.12 - 157.18 per share.",
+        "filerName": "GLAZER DAVID ALAN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D"
@@ -2859,30 +2856,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MOORE ALEXANDER D",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2348,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHIFF ALEXANDRA W",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2348,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "STAT LAUREN ELAINA FRIEDMAN",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2903,13 +2876,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 167545,
+        "shares": 2348,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SANKAR SHYAM",
-        "filerRelation": "Officer",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MOORE ALEXANDER D",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-05-21T00:00:00.000Z",
+        "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2348,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHIFF ALEXANDRA W",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2919,6 +2905,17 @@
         "transactionText": "",
         "filerName": "KARP ALEXANDER C.",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 167545,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SANKAR SHYAM",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-21T00:00:00.000Z",
         "ownership": "D"
@@ -3293,8 +3290,8 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GLAZER DAVID ALAN",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "TAYLOR RYAN DOUGLAS",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-20T00:00:00.000Z",
         "ownership": "D"
@@ -3305,8 +3302,8 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "TAYLOR RYAN DOUGLAS",
-        "filerRelation": "Officer",
+        "filerName": "GLAZER DAVID ALAN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-02-20T00:00:00.000Z",
         "ownership": "D"
@@ -3397,18 +3394,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 96273,
-        "value": 7024559,
-        "filerUrl": "",
-        "transactionText": "Sale at price 72.83 - 75.96 per share.",
-        "filerName": "GLAZER DAVID ALAN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1800,
         "value": 137322,
         "filerUrl": "",
@@ -3418,6 +3403,18 @@
         "moneyText": "",
         "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 96273,
+        "value": 7024559,
+        "filerUrl": "",
+        "transactionText": "Sale at price 72.83 - 75.96 per share.",
+        "filerName": "GLAZER DAVID ALAN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-01-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3916,18 +3913,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3050,
-        "value": 111806,
-        "filerUrl": "",
-        "transactionText": "Sale at price 36.59 - 37.27 per share.",
-        "filerName": "STAT LAUREN ELAINA FRIEDMAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 12412322,
         "value": 457353248,
         "filerUrl": "",
@@ -3937,6 +3922,18 @@
         "moneyText": "",
         "startDate": "2024-10-01T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3050,
+        "value": 111806,
+        "filerUrl": "",
+        "transactionText": "Sale at price 36.59 - 37.27 per share.",
+        "filerName": "STAT LAUREN ELAINA FRIEDMAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-10-01T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3990,12 +3987,12 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 147.76,
+    "currentPrice": 149.56,
     "targetHighPrice": 255,
     "targetLowPrice": 50,
-    "targetMeanPrice": 188.17043,
-    "targetMedianPrice": 199,
-    "recommendationMean": 2.66667,
+    "targetMeanPrice": 189.83708,
+    "targetMedianPrice": 200,
+    "recommendationMean": 2.74074,
     "recommendationKey": "hold",
     "numberOfAnalystOpinions": 24,
     "totalCash": 6437816832,
@@ -4020,6 +4017,6 @@
     "profitMargins": 0.28114,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T12:49:59.419Z",
+  "lastUpdated": "2026-02-02T18:37:34.345Z",
   "source": "Static Build (yahoo-finance2)"
 }
