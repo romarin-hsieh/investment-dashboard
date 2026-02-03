@@ -5,7 +5,7 @@
         "period": "0m",
         "strongBuy": 2,
         "buy": 9,
-        "hold": 10,
+        "hold": 11,
         "sell": 1,
         "strongSell": 0
       },
@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 2,
         "buy": 9,
+        "hold": 10,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 2,
+        "buy": 9,
         "hold": 8,
         "sell": 3,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 2,
         "buy": 8,
         "hold": 7,
@@ -37,7 +45,7 @@
         "organization": "General Catalyst Group Management, LLC",
         "pctHeld": 0.087799996,
         "position": 19001041,
-        "value": 1147377828,
+        "value": 1118401284,
         "pctChange": -0.0557
       },
       {
@@ -46,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.059899997,
         "position": 12959799,
-        "value": 782577440,
+        "value": 762813777,
         "pctChange": -0.0573
       },
       {
@@ -55,7 +63,7 @@
         "organization": "IDG China Capital Fund III Associates L.P.",
         "pctHeld": 0.0509,
         "position": 11026687,
-        "value": 665846475,
+        "value": 649030803,
         "pctChange": -0.0557
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0372,
         "position": 8059524,
-        "value": 486674343,
+        "value": 474383587,
         "pctChange": -0.0557
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.026099999,
         "position": 5653110,
-        "value": 341363037,
+        "value": 332742058,
         "pctChange": 0.013300001
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0209,
         "position": 4519284,
-        "value": 272896956,
+        "value": 266005058,
         "pctChange": 0.3148
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0145000005,
         "position": 3148082,
-        "value": 190096926,
+        "value": 185296108,
         "pctChange": 3.5622
       },
       {
@@ -100,7 +108,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.0137,
         "position": 2966940,
-        "value": 179158666,
+        "value": 174634090,
         "pctChange": 0.0145000005
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Sumitomo Mitsui Trust Group, Inc.",
         "pctHeld": 0.0119,
         "position": 2575684,
-        "value": 155532674,
+        "value": 151604761,
         "pctChange": 0.9822
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Atlas Merchant Capital LLC",
         "pctHeld": 0.0078,
         "position": 1687376,
-        "value": 101892196,
+        "value": 99318952,
         "pctChange": -0.0557
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.041750003,
-    "institutionsPercentHeld": 0.59226,
-    "institutionsFloatPercentHeld": 0.61806,
-    "institutionsCount": 488
+    "institutionsPercentHeld": 0.59299,
+    "institutionsFloatPercentHeld": 0.61882,
+    "institutionsCount": 495
   },
   "earnings": {
     "maxAge": 86400,
@@ -591,24 +599,29 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0231952,
+    "preMarketChange": 1.3655014,
+    "preMarketTime": "2026-02-03T13:29:01.000Z",
+    "preMarketPrice": 60.2355,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.055451304,
-    "regularMarketChange": -3.545002,
-    "regularMarketTime": "2026-02-02T18:38:19.000Z",
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0793055,
+    "regularMarketChange": -5.07,
+    "regularMarketTime": "2026-02-02T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 60.385,
+    "regularMarketPrice": 58.86,
     "regularMarketDayHigh": 61.8503,
-    "regularMarketDayLow": 59.56,
-    "regularMarketVolume": 8774678,
-    "averageDailyVolume10Day": 11158980,
-    "averageDailyVolume3Month": 13600291,
+    "regularMarketDayLow": 58.411,
+    "regularMarketVolume": 14369496,
+    "averageDailyVolume10Day": 11610820,
+    "averageDailyVolume3Month": 13688808,
     "regularMarketPreviousClose": 63.93,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 61.5,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRCL",
     "underlyingSymbol": null,
@@ -620,13 +633,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 15364214784
+    "marketCap": 14976198656
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 13869187072,
-    "forwardPE": 50.453274,
+    "enterpriseValue": 12675325952,
+    "forwardPE": 51.02731,
     "profitMargins": -0.08285,
     "floatShares": 154950003,
     "sharesOutstanding": 216487160,
@@ -636,13 +649,13 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0622,
     "heldPercentInsiders": 0.041750003,
-    "heldPercentInstitutions": 0.59226,
+    "heldPercentInstitutions": 0.59299,
     "shortRatio": 1.53,
     "shortPercentOfFloat": 0.0754,
     "impliedSharesOutstanding": 254437614,
     "category": null,
     "bookValue": 12.91,
-    "priceToBook": 4.677382,
+    "priceToBook": 4.5592566,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -651,12 +664,12 @@
     "earningsQuarterlyGrowth": 2.02,
     "netIncomeToCommon": -200704992,
     "trailingEps": -0.86,
-    "forwardEps": 1.19685,
+    "forwardEps": 1.1535,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 5.751,
-    "enterpriseToEbitda": -97.037,
-    "52WeekChange": -0.23188752,
-    "SandP52WeekChange": 0.1575526,
+    "enterpriseToRevenue": 5.256,
+    "enterpriseToEbitda": -88.684,
+    "52WeekChange": -0.29280305,
+    "SandP52WeekChange": 0.15544534,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1494,14 +1507,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 60.385,
+    "currentPrice": 58.86,
     "targetHighPrice": 280,
     "targetLowPrice": 60,
-    "targetMeanPrice": 137.60263,
-    "targetMedianPrice": 110,
-    "recommendationMean": 2.18182,
+    "targetMeanPrice": 134.0225,
+    "targetMedianPrice": 107,
+    "recommendationMean": 2.21739,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 19,
+    "numberOfAnalystOpinions": 20,
     "totalCash": 1348900992,
     "totalCashPerShare": 5.728,
     "ebitda": -142927008,
@@ -1521,6 +1534,6 @@
     "profitMargins": -0.08285,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T18:38:19.552Z",
+  "lastUpdated": "2026-02-03T13:29:03.921Z",
   "source": "Static Build (yahoo-finance2)"
 }

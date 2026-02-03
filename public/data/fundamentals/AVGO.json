@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 9,
+        "buy": 40,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 9,
         "buy": 37,
         "hold": 2,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 8,
         "buy": 36,
         "hold": 3,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1018,
         "position": 482707302,
-        "value": 161183212872,
+        "value": 159829207694,
         "pctChange": 0.0082
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0797,
         "position": 377927942,
-        "value": 126195811982,
+        "value": 125135715339,
         "pctChange": 0.0034999999
       },
       {
@@ -55,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0396,
         "position": 187897716,
-        "value": 62741867443,
+        "value": 62214809992,
         "pctChange": 0.9964
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.039,
         "position": 185043550,
-        "value": 61788818579,
+        "value": 61269767129,
         "pctChange": -0.0013
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.0309,
         "position": 146477213,
-        "value": 48910939830,
+        "value": 48500067850,
         "pctChange": -0.0312
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0286,
         "position": 135586932,
-        "value": 45274511557,
+        "value": 44894187068,
         "pctChange": -0.0857
       },
       {
@@ -91,7 +99,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0255,
         "position": 120822806,
-        "value": 40344548297,
+        "value": 40005637524,
         "pctChange": 0.0317
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0231,
         "position": 109728581,
-        "value": 36640020062,
+        "value": 36332228847,
         "pctChange": 0.010299999
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0185,
         "position": 87716681,
-        "value": 29289916285,
+        "value": 29043868960,
         "pctChange": -0.0418
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0175,
         "position": 83054439,
-        "value": 27733123708,
+        "value": 27500154080,
         "pctChange": 0.062800005
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.020060001,
-    "institutionsPercentHeld": 0.79024005,
-    "institutionsFloatPercentHeld": 0.80641997,
-    "institutionsCount": 5631
+    "institutionsPercentHeld": 0.79116,
+    "institutionsFloatPercentHeld": 0.80735,
+    "institutionsCount": 5654
   },
   "earnings": {
     "maxAge": 86400,
@@ -5950,24 +5958,29 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.009982008,
+    "preMarketChange": 3.3049927,
+    "preMarketTime": "2026-02-03T13:27:52.000Z",
+    "preMarketPrice": 334.4,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.007893211,
-    "regularMarketChange": 2.6150208,
-    "regularMarketTime": "2026-02-02T18:37:14.000Z",
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.000573506,
+    "regularMarketChange": -0.190002,
+    "regularMarketTime": "2026-02-02T21:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 333.915,
-    "regularMarketDayHigh": 336.055,
+    "regularMarketPrice": 331.11,
+    "regularMarketDayHigh": 334.4,
     "regularMarketDayLow": 325.75,
-    "regularMarketVolume": 8616611,
-    "averageDailyVolume10Day": 27240770,
-    "averageDailyVolume3Month": 29914786,
+    "regularMarketVolume": 16728520,
+    "averageDailyVolume10Day": 25838730,
+    "averageDailyVolume3Month": 29915965,
     "regularMarketPreviousClose": 331.3,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 325.75,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVGO",
     "underlyingSymbol": null,
@@ -5979,13 +5992,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 1583182381056
+    "marketCap": 1569883029504
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 165543297024,
-    "forwardPE": 23.259094,
+    "enterpriseValue": 165465210880,
+    "forwardPE": 23.063707,
     "profitMargins": 0.36198002,
     "floatShares": 405866610,
     "sharesOutstanding": 4741273799,
@@ -5995,14 +6008,14 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.012200001,
     "heldPercentInsiders": 0.020060001,
-    "heldPercentInstitutions": 0.79024005,
+    "heldPercentInstitutions": 0.79116,
     "shortRatio": 1.62,
     "shortPercentOfFloat": 0.0139,
     "beta": 1.221,
     "impliedSharesOutstanding": 4741273799,
     "category": null,
     "bookValue": 59.221,
-    "priceToBook": 5.638456,
+    "priceToBook": 5.5910907,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-11-02T00:00:00.000Z",
@@ -6014,10 +6027,10 @@
     "forwardEps": 14.35632,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1721001600,
-    "enterpriseToRevenue": 2.591,
-    "enterpriseToEbitda": 4.729,
-    "52WeekChange": 0.5216093,
-    "SandP52WeekChange": 0.1575526,
+    "enterpriseToRevenue": 2.59,
+    "enterpriseToEbitda": 4.727,
+    "52WeekChange": 0.48860312,
+    "SandP52WeekChange": 0.15544534,
     "lastDividendValue": 0.65,
     "lastDividendDate": "2025-12-22T00:00:00.000Z",
     "latestShareClass": null,
@@ -7454,7 +7467,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 333.915,
+    "currentPrice": 331.11,
     "targetHighPrice": 535,
     "targetLowPrice": 370,
     "targetMeanPrice": 458.5886,
@@ -7484,6 +7497,6 @@
     "profitMargins": 0.36198002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T18:37:18.323Z",
+  "lastUpdated": "2026-02-03T13:28:01.059Z",
   "source": "Static Build (yahoo-finance2)"
 }

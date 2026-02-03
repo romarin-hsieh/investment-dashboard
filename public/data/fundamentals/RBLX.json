@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.09689999,
         "position": 63458784,
-        "value": 4352637762,
+        "value": 4282198957,
         "pctChange": 0.0163
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.071,
         "position": 46523409,
-        "value": 3191040452,
+        "value": 3139399795,
         "pctChange": -0.060300004
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0608,
         "position": 39844020,
-        "value": 2732901185,
+        "value": 2688674603,
         "pctChange": 8.4854
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.060100004,
         "position": 39384410,
-        "value": 2701376537,
+        "value": 2657660119,
         "pctChange": 0.138
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.045500003,
         "position": 29768862,
-        "value": 2041846135,
+        "value": 2008802907,
         "pctChange": -0.0212
       },
       {
@@ -90,7 +90,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.032899998,
         "position": 21543528,
-        "value": 1477670506,
+        "value": 1453757341,
         "pctChange": -0.0753
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0293,
         "position": 19173365,
-        "value": 1315101035,
+        "value": 1293818734,
         "pctChange": 0.0573
       },
       {
@@ -108,7 +108,7 @@
         "organization": "IEQ Capital, LLC",
         "pctHeld": 0.026700001,
         "position": 17470398,
-        "value": 1198294534,
+        "value": 1178902515,
         "pctChange": -0.069699995
       },
       {
@@ -117,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.020399999,
         "position": 13369844,
-        "value": 917037550,
+        "value": 902197118,
         "pctChange": 0.1102
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0198,
         "position": 12991408,
-        "value": 891080627,
+        "value": 876660255,
         "pctChange": -0.0793
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.044359997,
-    "institutionsPercentHeld": 0.82377,
-    "institutionsFloatPercentHeld": 0.86200994,
-    "institutionsCount": 1336
+    "institutionsPercentHeld": 0.82392,
+    "institutionsFloatPercentHeld": 0.86216,
+    "institutionsCount": 1337
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-03T12:57:40.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 140,
+        "priorPriceTarget": 160
+      },
       {
         "epochGradeDate": "2026-01-30T14:41:56.000Z",
         "firm": "Wedbush",
@@ -3108,24 +3118,29 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0031041715,
+    "preMarketChange": 0.20920563,
+    "preMarketTime": "2026-02-03T13:27:23.000Z",
+    "preMarketPrice": 67.6042,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.043035194,
-    "regularMarketChange": 2.8299942,
-    "regularMarketTime": "2026-02-02T18:37:41.000Z",
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0261557,
+    "regularMarketChange": 1.72,
+    "regularMarketTime": "2026-02-02T21:01:38.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 68.59,
+    "regularMarketPrice": 67.48,
     "regularMarketDayHigh": 69.41,
     "regularMarketDayLow": 66.32,
-    "regularMarketVolume": 7341828,
-    "averageDailyVolume10Day": 13955120,
-    "averageDailyVolume3Month": 9330596,
+    "regularMarketVolume": 11852968,
+    "averageDailyVolume10Day": 13603300,
+    "averageDailyVolume3Month": 9302440,
     "regularMarketPreviousClose": 65.76,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 67.02,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBLX",
     "underlyingSymbol": null,
@@ -3137,15 +3152,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 48145068032
+    "marketCap": 47365935104
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 45045161984,
-    "forwardPE": -44.174946,
+    "enterpriseValue": 46252474368,
+    "forwardPE": -43.46006,
     "profitMargins": -0.21700001,
-    "floatShares": 625977168,
+    "floatShares": 630771319,
     "sharesOutstanding": 654855044,
     "sharesShort": 16148913,
     "sharesShortPriorMonth": "1970-06-11T03:05:34.000Z",
@@ -3153,14 +3168,14 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.023,
     "heldPercentInsiders": 0.044359997,
-    "heldPercentInstitutions": 0.82377,
+    "heldPercentInstitutions": 0.82392,
     "shortRatio": 1.68,
     "shortPercentOfFloat": 0.025899999,
     "beta": 1.635,
     "impliedSharesOutstanding": 701925508,
     "category": null,
     "bookValue": 0.581,
-    "priceToBook": 118.05508,
+    "priceToBook": 116.14459,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -3170,10 +3185,10 @@
     "trailingEps": -1.42,
     "forwardEps": -1.55269,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 10.091,
-    "enterpriseToEbitda": -50.854,
-    "52WeekChange": -0.06960952,
-    "SandP52WeekChange": 0.1575526,
+    "enterpriseToRevenue": 10.362,
+    "enterpriseToEbitda": -52.217,
+    "52WeekChange": -0.085512936,
+    "SandP52WeekChange": 0.15544534,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3573,18 +3588,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 22420,
-        "value": 2739036,
-        "filerUrl": "",
-        "transactionText": "Sale at price 115.58 - 129.58 per share.",
-        "filerName": "BRONSTEIN MANUEL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10401,
         "value": 1224428,
         "filerUrl": "",
@@ -3602,6 +3605,18 @@
         "filerUrl": "",
         "transactionText": "Sale at price 115.96 - 118.69 per share.",
         "filerName": "REINSTRA MARK",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22420,
+        "value": 2739036,
+        "filerUrl": "",
+        "transactionText": "Sale at price 115.58 - 129.58 per share.",
+        "filerName": "BRONSTEIN MANUEL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-20T00:00:00.000Z",
@@ -3645,23 +3660,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 50000,
-        "value": 0,
+        "shares": 1143191,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "LEE ANTHONY P",
-        "filerRelation": "Director",
+        "transactionText": "",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-08-07T00:00:00.000Z",
         "ownership": "I"
       },
       {
         "maxAge": 1,
-        "shares": 1143191,
+        "shares": 50000,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "LEE ANTHONY P",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-08-07T00:00:00.000Z",
         "ownership": "I"
@@ -3788,18 +3803,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 41851,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 139507,
         "value": 475021,
         "filerUrl": "",
@@ -3809,6 +3812,18 @@
         "moneyText": "",
         "startDate": "2025-06-26T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 41851,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3824,18 +3839,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 72162,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 240545,
         "value": 819056,
         "filerUrl": "",
@@ -3845,6 +3848,18 @@
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 72162,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-25T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3872,18 +3887,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 136488,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 454963,
         "value": 1549149,
         "filerUrl": "",
@@ -3893,6 +3896,18 @@
         "moneyText": "",
         "startDate": "2025-06-17T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 136488,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3908,18 +3923,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 69761,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 232540,
         "value": 791788,
         "filerUrl": "",
@@ -3929,18 +3932,6 @@
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 64925,
-        "value": 4090,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3957,11 +3948,59 @@
       {
         "maxAge": 1,
         "shares": 64925,
+        "value": 4090,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 69761,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 321324,
+        "value": 32292837,
+        "filerUrl": "",
+        "transactionText": "Sale at price 100.50 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 64925,
         "value": 6497739,
         "filerUrl": "",
         "transactionText": "Sale at price 100.08 per share.",
         "filerName": "CARVALHO CHRISTOPHER",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 150000,
+        "value": 14962365,
+        "filerUrl": "",
+        "transactionText": "Sale at price 99.75 per share.",
+        "filerName": "REINSTRA MARK",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D"
@@ -3980,26 +4019,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 321324,
-        "value": 32292837,
+        "shares": 60047,
+        "value": 204460,
         "filerUrl": "",
-        "transactionText": "Sale at price 100.50 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
         "filerName": "BASZUCKI DAVID BRENT",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 150000,
-        "value": 14962365,
-        "filerUrl": "",
-        "transactionText": "Sale at price 99.75 per share.",
-        "filerName": "REINSTRA MARK",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
+        "startDate": "2025-06-11T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4016,18 +4043,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 60047,
-        "value": 204460,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 94982,
         "value": 9118040,
         "filerUrl": "",
@@ -4040,18 +4055,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 394486,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 1314953,
         "value": 4477415,
         "filerUrl": "",
@@ -4061,6 +4064,18 @@
         "moneyText": "",
         "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 394486,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4124,18 +4139,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 206250,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 687500,
         "value": 2303134,
         "filerUrl": "",
@@ -4160,27 +4163,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 12985,
-        "value": 1158948,
+        "shares": 206250,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 87.85 - 89.81 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 24335,
-        "value": 2190150,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.00 per share.",
-        "filerName": "BRONSTEIN MANUEL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4196,6 +4187,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 12985,
+        "value": 1158948,
+        "filerUrl": "",
+        "transactionText": "Sale at price 87.85 - 89.81 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 66000,
         "value": 5800849,
         "filerUrl": "",
@@ -4205,6 +4208,18 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 24335,
+        "value": 2190150,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.00 per share.",
+        "filerName": "BRONSTEIN MANUEL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4352,6 +4367,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 15021,
+        "value": 1211520,
+        "filerUrl": "",
+        "transactionText": "Sale at price 80.61 - 81.23 per share.",
+        "filerName": "KAUFMAN MATTHEW D",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 40322,
         "value": 3252232,
         "filerUrl": "",
@@ -4388,14 +4415,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 15021,
-        "value": 1211520,
+        "shares": 6000,
+        "value": 479640,
         "filerUrl": "",
-        "transactionText": "Sale at price 80.61 - 81.23 per share.",
+        "transactionText": "Sale at price 79.94 per share.",
         "filerName": "KAUFMAN MATTHEW D",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
+        "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4405,18 +4432,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 80.00 per share.",
         "filerName": "BRONSTEIN MANUEL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 6000,
-        "value": 479640,
-        "filerUrl": "",
-        "transactionText": "Sale at price 79.94 per share.",
-        "filerName": "KAUFMAN MATTHEW D",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
@@ -4436,18 +4451,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 170834,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Officer, Director and Beneficial Owner",
-        "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 569450,
         "value": 1904810,
         "filerUrl": "",
@@ -4457,6 +4460,18 @@
         "moneyText": "",
         "startDate": "2025-05-13T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 170834,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Officer, Director and Beneficial Owner",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4484,18 +4499,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 35415,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 118051,
         "value": 394881,
         "filerUrl": "",
@@ -4517,6 +4520,18 @@
         "moneyText": "",
         "startDate": "2025-05-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35415,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-12T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4568,42 +4583,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 412498,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 292162,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI GREGORY",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12985,
-        "value": 818,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1455002,
         "value": 4057339,
         "filerUrl": "",
@@ -4629,9 +4608,9 @@
       {
         "maxAge": 1,
         "shares": 12985,
-        "value": 936981,
+        "value": 818,
         "filerUrl": "",
-        "transactionText": "Sale at price 72.02 - 72.55 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
         "filerName": "CARVALHO CHRISTOPHER",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4640,15 +4619,27 @@
       },
       {
         "maxAge": 1,
-        "shares": 68722,
-        "value": 4936030,
+        "shares": 412498,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 71.82 - 72.60 per share.",
-        "filerName": "BRONSTEIN MANUEL",
-        "filerRelation": "Officer",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 292162,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI GREGORY",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4661,6 +4652,18 @@
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
         "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12985,
+        "value": 936981,
+        "filerUrl": "",
+        "transactionText": "Sale at price 72.02 - 72.55 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4688,6 +4691,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 68722,
+        "value": 4936030,
+        "filerUrl": "",
+        "transactionText": "Sale at price 71.82 - 72.60 per share.",
+        "filerName": "BRONSTEIN MANUEL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7896,
         "value": 0,
         "filerUrl": "",
@@ -4696,6 +4711,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-04-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 229167,
+        "value": 121459,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-04-07T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4709,18 +4736,6 @@
         "moneyText": "",
         "startDate": "2025-04-07T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 229167,
-        "value": 121459,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-04-07T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4772,15 +4787,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 29216,
-        "value": 0,
+        "shares": 97387,
+        "value": 6720,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
         "filerName": "BASZUCKI GREGORY",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4796,15 +4811,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 97387,
-        "value": 6720,
+        "shares": 29216,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "BASZUCKI GREGORY",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4844,18 +4859,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10228,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-17T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 34099,
         "value": 18072,
         "filerUrl": "",
@@ -4865,6 +4868,18 @@
         "moneyText": "",
         "startDate": "2025-03-17T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10228,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-03-17T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4880,18 +4895,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 29216,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BASZUCKI GREGORY",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-10T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 97388,
         "value": 6720,
         "filerUrl": "",
@@ -4901,6 +4904,18 @@
         "moneyText": "",
         "startDate": "2025-03-10T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 29216,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BASZUCKI GREGORY",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-10T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5003,7 +5018,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 68.59,
+    "currentPrice": 67.48,
     "targetHighPrice": 180,
     "targetLowPrice": 65,
     "targetMeanPrice": 127.665,
@@ -5032,6 +5047,6 @@
     "profitMargins": -0.21700001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T18:37:56.171Z",
+  "lastUpdated": "2026-02-03T13:28:40.063Z",
   "source": "Static Build (yahoo-finance2)"
 }
