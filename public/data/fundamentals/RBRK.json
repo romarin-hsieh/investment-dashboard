@@ -37,7 +37,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0967,
         "position": 14694503,
-        "value": 814663226,
+        "value": 800115699,
         "pctChange": 0.1289
       },
       {
@@ -46,7 +46,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.066700004,
         "position": 10126964,
-        "value": 561438870,
+        "value": 551413197,
         "pctChange": 0.21219999
       },
       {
@@ -55,7 +55,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0326,
         "position": 4947785,
-        "value": 274305193,
+        "value": 269406897,
         "pctChange": 0.1087
       },
       {
@@ -64,7 +64,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.0235,
         "position": 3569026,
-        "value": 197866796,
+        "value": 194333468,
         "pctChange": 0.17979999
       },
       {
@@ -73,7 +73,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.0176,
         "position": 2679219,
-        "value": 148535897,
+        "value": 145883476,
         "pctChange": 0.5996
       },
       {
@@ -82,7 +82,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0172,
         "position": 2619379,
-        "value": 145218368,
+        "value": 142625188,
         "pctChange": -0.118
       },
       {
@@ -91,7 +91,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0161,
         "position": 2445943,
-        "value": 135603076,
+        "value": 133181598,
         "pctChange": -0.42369998
       },
       {
@@ -100,7 +100,7 @@
         "organization": "Federated Hermes, Inc.",
         "pctHeld": 0.016,
         "position": 2437768,
-        "value": 135149854,
+        "value": 132736469,
         "pctChange": 1.0175
       },
       {
@@ -109,7 +109,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0155,
         "position": 2349935,
-        "value": 130280393,
+        "value": 127953962,
         "pctChange": 0.2057
       },
       {
@@ -118,7 +118,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0143,
         "position": 2173824,
-        "value": 120516799,
+        "value": 118364718,
         "pctChange": 0.65559995
       }
     ]
@@ -1364,14 +1364,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.00911532,
-    "regularMarketChange": -0.51000214,
-    "regularMarketTime": "2026-02-02T18:37:39.000Z",
+    "postMarketChangePercent": 0.02479336,
+    "postMarketChange": 1.3499985,
+    "postMarketTime": "2026-02-03T01:00:00.000Z",
+    "postMarketPrice": 55.8,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0268097,
+    "regularMarketChange": -1.5,
+    "regularMarketTime": "2026-02-02T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 55.44,
+    "regularMarketPrice": 54.45,
     "regularMarketDayHigh": 56.59,
-    "regularMarketDayLow": 54.95,
-    "regularMarketVolume": 1759620,
+    "regularMarketDayLow": 54.03,
+    "regularMarketVolume": 4069143,
     "averageDailyVolume10Day": 4618370,
     "averageDailyVolume3Month": 3471870,
     "regularMarketPreviousClose": 55.95,
@@ -1380,25 +1385,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "RBRK",
     "underlyingSymbol": null,
     "shortName": "Rubrik, Inc.",
     "longName": null,
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 11095846912
+    "marketCap": 10897708032
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 10761383936,
-    "forwardPE": 722.3452,
+    "forwardPE": 709.4462,
     "profitMargins": -0.31485,
     "floatShares": 148481009,
     "sharesOutstanding": 151894462,
@@ -1426,7 +1431,7 @@
     "enterpriseToRevenue": 8.993,
     "enterpriseToEbitda": -30.211,
     "52WeekChange": -0.21052629,
-    "SandP52WeekChange": 0.1575526,
+    "SandP52WeekChange": 0.14924943,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3200,7 +3205,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 55.44,
+    "currentPrice": 54.45,
     "targetHighPrice": 130,
     "targetLowPrice": 91,
     "targetMeanPrice": 110.86364,
@@ -3226,6 +3231,6 @@
     "profitMargins": -0.31485,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T18:37:46.822Z",
+  "lastUpdated": "2026-02-03T01:48:08.516Z",
   "source": "Static Build (yahoo-finance2)"
 }

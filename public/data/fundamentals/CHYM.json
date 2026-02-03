@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 4,
         "buy": 8,
-        "hold": 4,
+        "hold": 5,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-2m",
+        "strongBuy": 4,
+        "buy": 8,
+        "hold": 4,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 6,
         "hold": 5,
@@ -37,7 +45,7 @@
         "organization": "Galileo (ptc) Ltd",
         "pctHeld": 0.1527,
         "position": 52268715,
-        "value": 1294173395,
+        "value": 1256017257,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Crosslink Capital Inc",
         "pctHeld": 0.0854,
         "position": 29247206,
-        "value": 724160827,
+        "value": 702810380,
         "pctChange": 0
       },
       {
@@ -55,7 +63,7 @@
         "organization": "General Atlantic, L.P.",
         "pctHeld": 0.0561,
         "position": 19208760,
-        "value": 475608901,
+        "value": 461586515,
         "pctChange": 0
       },
       {
@@ -64,7 +72,7 @@
         "organization": "ICONIQ Capital, LLC",
         "pctHeld": 0.043899998,
         "position": 15034594,
-        "value": 372256550,
+        "value": 361281304,
         "pctChange": 0
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Tiger Global Management, LLC",
         "pctHeld": 0.0364,
         "position": 12470768,
-        "value": 308776218,
+        "value": 299672563,
         "pctChange": 0
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Coatue Management LLC",
         "pctHeld": 0.0313,
         "position": 10716284,
-        "value": 265335194,
+        "value": 257512311,
         "pctChange": -0.0098
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Dragoneer Investment Group, LLC",
         "pctHeld": 0.025,
         "position": 8548884,
-        "value": 211670369,
+        "value": 205429688,
         "pctChange": 0
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0201,
         "position": 6878057,
-        "value": 170300692,
+        "value": 165279714,
         "pctChange": 0.9001
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Ashton Thomas Private Wealth, LLC                          ",
         "pctHeld": 0.015,
         "position": 5128770,
-        "value": 126988346,
+        "value": 123244346,
         "pctChange": 1
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Softbank Group Corporation",
         "pctHeld": 0.0148,
         "position": 5067336,
-        "value": 125467240,
+        "value": 121768087,
         "pctChange": 0
       }
     ]
@@ -462,14 +470,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.02597402,
-    "regularMarketChange": -0.65999985,
-    "regularMarketTime": "2026-02-02T18:38:13.000Z",
+    "postMarketChangePercent": 0.006242181,
+    "postMarketChange": 0.14999962,
+    "postMarketTime": "2026-02-03T00:56:08.000Z",
+    "postMarketPrice": 24.18,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.05468133,
+    "regularMarketChange": -1.3899994,
+    "regularMarketTime": "2026-02-02T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 24.76,
+    "regularMarketPrice": 24.03,
     "regularMarketDayHigh": 25.82,
-    "regularMarketDayLow": 24.75,
-    "regularMarketVolume": 1552950,
+    "regularMarketDayLow": 23.93,
+    "regularMarketVolume": 3717720,
     "averageDailyVolume10Day": 2523040,
     "averageDailyVolume3Month": 3962421,
     "regularMarketPreviousClose": 25.42,
@@ -478,7 +491,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "CHYM",
     "underlyingSymbol": null,
@@ -490,13 +503,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 9274551296
+    "marketCap": 9001109504
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 8471775232,
-    "forwardPE": 31.623583,
+    "forwardPE": 30.691223,
     "profitMargins": -0.47674,
     "floatShares": 213206044,
     "sharesOutstanding": 342395697,
@@ -512,7 +525,7 @@
     "impliedSharesOutstanding": 374577986,
     "category": null,
     "bookValue": 3.855,
-    "priceToBook": 6.4228277,
+    "priceToBook": 6.2334633,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -525,7 +538,7 @@
     "enterpriseToRevenue": 4.101,
     "enterpriseToEbitda": -14.058,
     "52WeekChange": -0.31500942,
-    "SandP52WeekChange": 0.1575526,
+    "SandP52WeekChange": 0.14924943,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -903,7 +916,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 24.76,
+    "currentPrice": 24.03,
     "targetHighPrice": 40,
     "targetLowPrice": 19,
     "targetMeanPrice": 32.625,
@@ -929,6 +942,6 @@
     "profitMargins": -0.47674,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T18:38:13.981Z",
+  "lastUpdated": "2026-02-03T01:48:36.123Z",
   "source": "Static Build (yahoo-finance2)"
 }

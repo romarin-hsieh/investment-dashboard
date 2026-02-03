@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 7,
+        "buy": 20,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 6,
         "buy": 18,
         "hold": 4,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 6,
         "buy": 18,
         "hold": 4,
@@ -37,7 +45,7 @@
         "organization": "Uber Technologies, Inc",
         "pctHeld": 0.1371,
         "position": 535902982,
-        "value": 2347255122,
+        "value": 2363332068,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "SB Investment Advisers (UK) LTD",
         "pctHeld": 0.1028,
         "position": 401796672,
-        "value": 1759869469,
+        "value": 1771923262,
         "pctChange": 0
       },
       {
@@ -55,7 +63,7 @@
         "organization": "TOYOTA MOTOR CORP/",
         "pctHeld": 0.056999996,
         "position": 222906079,
-        "value": 976328651,
+        "value": 983015774,
         "pctChange": 0
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.037100002,
         "position": 144869377,
-        "value": 634527887,
+        "value": 638873930,
         "pctChange": -0.0219
       },
       {
@@ -73,7 +81,7 @@
         "organization": "MUFG Bank Ltd",
         "pctHeld": 0.0366,
         "position": 142913428,
-        "value": 625960830,
+        "value": 630248195,
         "pctChange": 0
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0335,
         "position": 130995276,
-        "value": 573759323,
+        "value": 577689147,
         "pctChange": 0.078600004
       },
       {
@@ -91,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.028499998,
         "position": 111580096,
-        "value": 488720833,
+        "value": 492068206,
         "pctChange": 0.8457
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Tiger Global Management, LLC",
         "pctHeld": 0.0238,
         "position": 92923788,
-        "value": 407006202,
+        "value": 409793890,
         "pctChange": 0
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.020399999,
         "position": 79797848,
-        "value": 349514583,
+        "value": 351908497,
         "pctChange": 0.2491
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0156,
         "position": 61139140,
-        "value": 267789440,
+        "value": 269623598,
         "pctChange": 0.32479998
       }
     ]
@@ -851,23 +859,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.018604632,
-    "regularMarketChange": 0.07999992,
-    "regularMarketTime": "2026-02-02T18:37:53.000Z",
+    "postMarketChangePercent": 0.007845864,
+    "postMarketChange": 0.034600258,
+    "postMarketTime": "2026-02-03T00:59:23.000Z",
+    "postMarketPrice": 4.4446,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.025581315,
+    "regularMarketChange": 0.10999966,
+    "regularMarketTime": "2026-02-02T21:00:02.000Z",
     "priceHint": 4,
-    "regularMarketPrice": 4.38,
+    "regularMarketPrice": 4.41,
     "regularMarketDayHigh": 4.43,
     "regularMarketDayLow": 4.25,
-    "regularMarketVolume": 20963784,
+    "regularMarketVolume": 75699068,
     "averageDailyVolume10Day": 57048950,
-    "averageDailyVolume3Month": 50741000,
+    "averageDailyVolume3Month": 50260605,
     "regularMarketPreviousClose": 4.3,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 4.27,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "GRAB",
     "underlyingSymbol": null,
@@ -879,13 +892,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 17901060096
+    "marketCap": 18023669760
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 4,
     "enterpriseValue": 12643099648,
-    "forwardPE": 42.249447,
+    "forwardPE": 42.538822,
     "profitMargins": 0.03779,
     "floatShares": 2681358090,
     "sharesOutstanding": 3965000000,
@@ -902,7 +915,7 @@
     "impliedSharesOutstanding": 4087000000,
     "category": null,
     "bookValue": 1.583,
-    "priceToBook": 2.7668984,
+    "priceToBook": 2.7858496,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -915,8 +928,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.917,
     "enterpriseToEbitda": 66.194,
-    "52WeekChange": -0.05286342,
-    "SandP52WeekChange": 0.1575526,
+    "52WeekChange": -0.15851271,
+    "SandP52WeekChange": 0.14924943,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -941,7 +954,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 4.38,
+    "currentPrice": 4.41,
     "targetHighPrice": 8,
     "targetLowPrice": 5.6,
     "targetMeanPrice": 6.80222,
@@ -971,6 +984,6 @@
     "profitMargins": 0.03779,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T18:37:54.413Z",
+  "lastUpdated": "2026-02-03T01:48:15.767Z",
   "source": "Static Build (yahoo-finance2)"
 }

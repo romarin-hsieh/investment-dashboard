@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 3,
         "buy": 6,
+        "hold": 11,
+        "sell": 4,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
+        "buy": 6,
         "hold": 12,
         "sell": 2,
         "strongSell": 2
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 3,
         "buy": 6,
         "hold": 14,
@@ -37,7 +45,7 @@
         "organization": "Amazon.com, Inc.",
         "pctHeld": 0.1296,
         "position": 158363834,
-        "value": 2331115678,
+        "value": 2286773696,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.066599995,
         "position": 81409278,
-        "value": 1198344593,
+        "value": 1175549940,
         "pctChange": -0.0032
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0419,
         "position": 51233449,
-        "value": 754156382,
+        "value": 739810982,
         "pctChange": 0.024300002
       },
       {
@@ -64,7 +72,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0358,
         "position": 43781355,
-        "value": 644461557,
+        "value": 632202747,
         "pctChange": -0.0257
       },
       {
@@ -73,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0162,
         "position": 19759911,
-        "value": 290865895,
+        "value": 285333106,
         "pctChange": 0.0304
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.015,
         "position": 18351127,
-        "value": 270128594,
+        "value": 264990266,
         "pctChange": 0.13350001
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.0137,
         "position": 16794685,
-        "value": 247217767,
+        "value": 242515244,
         "pctChange": 0.1664
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.012,
         "position": 14723362,
-        "value": 216727892,
+        "value": 212605341,
         "pctChange": 0.0075
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Two Sigma Advisers, LP",
         "pctHeld": 0.0117,
         "position": 14280100,
-        "value": 210203075,
+        "value": 206204638,
         "pctChange": -0.0555
       },
       {
@@ -118,7 +126,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0114,
         "position": 13939881,
-        "value": 205195052,
+        "value": 201291875,
         "pctChange": -0.2858
       }
     ]
@@ -2911,23 +2919,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0020338802,
-    "regularMarketChange": -0.029999733,
-    "regularMarketTime": "2026-02-02T18:36:44.000Z",
+    "postMarketChangePercent": 0.0043213866,
+    "postMarketChange": 0.062400818,
+    "postMarketTime": "2026-02-03T00:59:59.000Z",
+    "postMarketPrice": 14.5024,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.021016978,
+    "regularMarketChange": -0.31000042,
+    "regularMarketTime": "2026-02-02T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 14.72,
+    "regularMarketPrice": 14.44,
     "regularMarketDayHigh": 14.75,
-    "regularMarketDayLow": 14.43,
-    "regularMarketVolume": 10831720,
+    "regularMarketDayLow": 14.39,
+    "regularMarketVolume": 18790865,
     "averageDailyVolume10Day": 22803910,
-    "averageDailyVolume3Month": 45993626,
+    "averageDailyVolume3Month": 46114095,
     "regularMarketPreviousClose": 14.75,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 14.69,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "RIVN",
     "underlyingSymbol": null,
@@ -2939,13 +2952,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 18045440000
+    "marketCap": 17702184960
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 16212218880,
-    "forwardPE": -6.0836,
+    "forwardPE": -5.947649,
     "profitMargins": -0.61337,
     "floatShares": 806074651,
     "sharesOutstanding": 1222000615,
@@ -2962,7 +2975,7 @@
     "impliedSharesOutstanding": 1225913115,
     "category": null,
     "bookValue": 4.132,
-    "priceToBook": 3.5624397,
+    "priceToBook": 3.4946756,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2974,8 +2987,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 2.778,
     "enterpriseToEbitda": -6.207,
-    "52WeekChange": 0.19047618,
-    "SandP52WeekChange": 0.1575526,
+    "52WeekChange": 0.1460762,
+    "SandP52WeekChange": 0.14924943,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4313,7 +4326,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 14.72,
+    "currentPrice": 14.44,
     "targetHighPrice": 25,
     "targetLowPrice": 10,
     "targetMeanPrice": 16.96,
@@ -4342,6 +4355,6 @@
     "profitMargins": -0.61337,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-02T18:36:57.666Z",
+  "lastUpdated": "2026-02-03T01:47:19.485Z",
   "source": "Static Build (yahoo-finance2)"
 }
