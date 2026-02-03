@@ -104,6 +104,11 @@ jobs:
         echo "🔄 Generating dashboard status (Trend Continuation)..."
         python scripts/production/daily_update.py
 
+    - name: Update Market Sentiment (Fear & Greed)
+      run: |
+        echo "🔄 Updating Fear & Greed Index..."
+        python scripts/update_sentiment.py
+
     - name: Update Status File
       run: |
         echo "🔄 Updating status file..."
