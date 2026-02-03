@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.092,
         "position": 111003107,
-        "value": 2450948594,
+        "value": 2345806365,
         "pctChange": 0.0364
       },
       {
@@ -54,7 +54,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0776,
         "position": 93580352,
-        "value": 2066254165,
+        "value": 1977614783,
         "pctChange": 18.621899
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0517,
         "position": 62379878,
-        "value": 1377347701,
+        "value": 1318261432,
         "pctChange": 0.2776
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0291,
         "position": 35034441,
-        "value": 773560454,
+        "value": 740375804,
         "pctChange": 0.19770001
       },
       {
@@ -81,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0202,
         "position": 24300498,
-        "value": 536554993,
+        "value": 513537543,
         "pctChange": 0.307
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.018,
         "position": 21691688,
-        "value": 478952469,
+        "value": 458406085,
         "pctChange": 0.1375
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0152,
         "position": 18277497,
-        "value": 403567132,
+        "value": 386254673,
         "pctChange": 0.6101
       },
       {
@@ -108,7 +108,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0127,
         "position": 15371200,
-        "value": 339396094,
+        "value": 324836482,
         "pctChange": -0.0074
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0106,
         "position": 12832802,
-        "value": 283348267,
+        "value": 271193027,
         "pctChange": -0.32560003
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0089,
         "position": 10743114,
-        "value": 237207956,
+        "value": 227032070,
         "pctChange": 2.7851999
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-03T16:01:17.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 31,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-02-02T11:22:28.000Z",
         "firm": "Needham",
@@ -1878,29 +1888,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.038496394,
-    "preMarketChange": 0.8500004,
-    "preMarketTime": "2026-02-03T13:28:21.000Z",
-    "preMarketPrice": 22.93,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0320035,
-    "regularMarketChange": -0.73,
-    "regularMarketTime": "2026-02-02T21:00:00.000Z",
+    "regularMarketChangePercent": -0.042898588,
+    "regularMarketChange": -0.9472008,
+    "regularMarketTime": "2026-02-03T18:51:40.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 22.08,
-    "regularMarketDayHigh": 22.78,
-    "regularMarketDayLow": 21.86,
-    "regularMarketVolume": 63345212,
+    "regularMarketPrice": 21.1328,
+    "regularMarketDayHigh": 23.36,
+    "regularMarketDayLow": 21.06,
+    "regularMarketVolume": 60323312,
     "averageDailyVolume10Day": 54396380,
     "averageDailyVolume3Month": 58707965,
-    "regularMarketPreviousClose": 22.81,
+    "regularMarketPreviousClose": 22.08,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 22.535,
+    "regularMarketOpen": 23.05,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "SOFI",
     "underlyingSymbol": null,
@@ -1912,13 +1917,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 27901562880
+    "marketCap": 26704625664
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 25046581248,
-    "forwardPE": 28.850677,
+    "forwardPE": 27.613024,
     "profitMargins": 0.13432999,
     "floatShares": 1249528257,
     "sharesOutstanding": 1263657704,
@@ -1935,7 +1940,7 @@
     "impliedSharesOutstanding": 1263657704,
     "category": null,
     "bookValue": 8.256,
-    "priceToBook": 2.6744187,
+    "priceToBook": 2.55969,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -3321,7 +3326,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 22.08,
+    "currentPrice": 21.1328,
     "targetHighPrice": 38,
     "targetLowPrice": 12,
     "targetMeanPrice": 26.69444,
@@ -3348,6 +3353,6 @@
     "profitMargins": 0.13432999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T13:28:28.403Z",
+  "lastUpdated": "2026-02-03T18:51:44.776Z",
   "source": "Static Build (yahoo-finance2)"
 }

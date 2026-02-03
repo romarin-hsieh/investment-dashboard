@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0791,
         "position": 845400528,
-        "value": 205398517958,
+        "value": 199439202743,
         "pctChange": -0.0058
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.067600004,
         "position": 722344070,
-        "value": 175500720096,
+        "value": 170408842502,
         "pctChange": 0.0134000005
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0357,
         "position": 381681441,
-        "value": 92733325467,
+        "value": 90042813759,
         "pctChange": 0.020299999
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0342,
         "position": 365321874,
-        "value": 88758604959,
+        "value": 86183413520,
         "pctChange": 0.8948
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0308,
         "position": 328881582,
-        "value": 79905071370,
+        "value": 77586751295,
         "pctChange": -0.0442
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0208,
         "position": 222641670,
-        "value": 54093021637,
+        "value": 52523597622,
         "pctChange": 0.0273
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0152,
         "position": 162864808,
-        "value": 39569634845,
+        "value": 38421584073,
         "pctChange": 0.0147
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0134000005,
         "position": 142999597,
-        "value": 34743183047,
+        "value": 33735164189,
         "pctChange": -0.096099995
       },
       {
@@ -117,7 +117,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0117,
         "position": 125065004,
-        "value": 30385794211,
+        "value": 29504198143,
         "pctChange": 0.0063
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0091,
         "position": 97051517,
-        "value": 23579637221,
+        "value": 22895511103,
         "pctChange": 0.0047
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-03T14:03:00.000Z",
+        "firm": "UBS",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 311,
+        "priorPriceTarget": 310
+      },
       {
         "epochGradeDate": "2026-02-02T16:00:22.000Z",
         "firm": "Citizens",
@@ -10148,29 +10158,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.007532049,
-    "preMarketChange": 1.8299866,
-    "preMarketTime": "2026-02-03T13:27:54.000Z",
-    "preMarketPrice": 244.79,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.015294599,
-    "regularMarketChange": 3.66,
-    "regularMarketTime": "2026-02-02T21:00:02.000Z",
+    "regularMarketChangePercent": -0.029013429,
+    "regularMarketChange": -7.049103,
+    "regularMarketTime": "2026-02-03T18:51:16.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 242.96,
-    "regularMarketDayHigh": 245.6299,
-    "regularMarketDayLow": 238.17,
-    "regularMarketVolume": 35407386,
+    "regularMarketPrice": 235.9109,
+    "regularMarketDayHigh": 246.35,
+    "regularMarketDayLow": 235.9,
+    "regularMarketVolume": 32167899,
     "averageDailyVolume10Day": 40370940,
     "averageDailyVolume3Month": 40553236,
-    "regularMarketPreviousClose": 239.3,
+    "regularMarketPreviousClose": 242.96,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 238.31,
+    "regularMarketOpen": 245.07,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "AMZN",
     "underlyingSymbol": null,
@@ -10182,13 +10187,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2597294964736
+    "marketCap": 2521938526208
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 2663535869952,
-    "forwardPE": 30.878454,
+    "forwardPE": 29.982563,
     "profitMargins": 0.11063,
     "floatShares": 9701905541,
     "sharesOutstanding": 10690216011,
@@ -10205,7 +10210,7 @@
     "impliedSharesOutstanding": 10690216011,
     "category": null,
     "bookValue": 34.587,
-    "priceToBook": 7.0246043,
+    "priceToBook": 6.8207965,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -11997,7 +12002,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 242.96,
+    "currentPrice": 235.9109,
     "targetHighPrice": 360,
     "targetLowPrice": 230,
     "targetMeanPrice": 296.47327,
@@ -12027,6 +12032,6 @@
     "profitMargins": 0.11063,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T13:28:02.826Z",
+  "lastUpdated": "2026-02-03T18:51:18.574Z",
   "source": "Static Build (yahoo-finance2)"
 }
