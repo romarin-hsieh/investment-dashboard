@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00823,
-    "institutionsPercentHeld": 1.07082,
-    "institutionsFloatPercentHeld": 1.0797,
+    "institutionsPercentHeld": 1.07097,
+    "institutionsFloatPercentHeld": 1.07986,
     "institutionsCount": 713
   },
   "earnings": {
@@ -1886,11 +1886,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0009145378,
+    "preMarketChange": 0.11000061,
+    "preMarketTime": "2026-02-04T12:50:42.000Z",
+    "preMarketPrice": 120.39,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0034087435,
-    "postMarketChange": 0.41000366,
-    "postMarketTime": "2026-02-04T00:58:29.000Z",
-    "postMarketPrice": 120.69,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.08830439,
     "regularMarketChange": -11.65,
@@ -1900,15 +1900,15 @@
     "regularMarketDayHigh": 129.2025,
     "regularMarketDayLow": 119.61,
     "regularMarketVolume": 4854076,
-    "averageDailyVolume10Day": 2023340,
-    "averageDailyVolume3Month": 2098460,
+    "averageDailyVolume10Day": 2318840,
+    "averageDailyVolume3Month": 2146278,
     "regularMarketPreviousClose": 131.93,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 128.955,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DUOL",
     "underlyingSymbol": null,
@@ -1936,7 +1936,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1608,
     "heldPercentInsiders": 0.00823,
-    "heldPercentInstitutions": 1.07082,
+    "heldPercentInstitutions": 1.07097,
     "shortRatio": 4.5,
     "shortPercentOfFloat": 0.2079,
     "beta": 0.852,
@@ -1956,8 +1956,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 4.704,
     "enterpriseToEbitda": 36.036,
-    "52WeekChange": -0.66344386,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": -0.6931633,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2080,6 +2080,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 5005,
+        "value": 885291,
+        "filerUrl": "",
+        "transactionText": "Sale at price 173.80 - 177.95 per share.",
+        "filerName": "GLANCE NATALIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2796,
         "value": 494397,
         "filerUrl": "",
@@ -2098,18 +2110,6 @@
         "transactionText": "Sale at price 174.04 - 177.95 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5005,
-        "value": 885291,
-        "filerUrl": "",
-        "transactionText": "Sale at price 173.80 - 177.95 per share.",
-        "filerName": "GLANCE NATALIE",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-18T00:00:00.000Z",
         "ownership": "D"
@@ -2367,6 +2367,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 187,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "GLANCE NATALIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2471,
         "value": 907091,
         "filerUrl": "",
@@ -2379,14 +2391,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 187,
+        "shares": 750,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2533,
+        "value": 833433,
+        "filerUrl": "",
+        "transactionText": "Sale at price 329.03 per share.",
         "filerName": "GLANCE NATALIE",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
+        "startDate": "2025-08-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2421,30 +2445,6 @@
         "transactionText": "Sale at price 329.03 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2533,
-        "value": 833433,
-        "filerUrl": "",
-        "transactionText": "Sale at price 329.03 per share.",
-        "filerName": "GLANCE NATALIE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 750,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-08-15T00:00:00.000Z",
         "ownership": "D"
@@ -2726,24 +2726,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 5251039,
-        "filerUrl": "",
-        "transactionText": "Sale at price 519.15 - 531.12 per share.",
-        "filerName": "HACKER SEVERIN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "VON AHN LUIS ARELLANO",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 5251039,
+        "filerUrl": "",
+        "transactionText": "Sale at price 519.15 - 531.12 per share.",
+        "filerName": "HACKER SEVERIN",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-06-05T00:00:00.000Z",
         "ownership": "D"
@@ -3168,24 +3168,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 2905357,
-        "filerUrl": "",
-        "transactionText": "Sale at price 286.16 - 294.74 per share.",
-        "filerName": "HACKER SEVERIN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-03-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9020,
         "value": 2621157,
         "filerUrl": "",
         "transactionText": "Sale at price 286.19 - 294.36 per share.",
         "filerName": "GLANCE NATALIE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 2905357,
+        "filerUrl": "",
+        "transactionText": "Sale at price 286.16 - 294.74 per share.",
+        "filerName": "HACKER SEVERIN",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
         "ownership": "D"
@@ -3252,6 +3252,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2667,
+        "value": 1160892,
+        "filerUrl": "",
+        "transactionText": "Sale at price 435.28 per share.",
+        "filerName": "GLANCE NATALIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1272,
         "value": 553676,
         "filerUrl": "",
@@ -3294,18 +3306,6 @@
         "transactionText": "Sale at price 435.28 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2667,
-        "value": 1160892,
-        "filerUrl": "",
-        "transactionText": "Sale at price 435.28 per share.",
-        "filerName": "GLANCE NATALIE",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
@@ -3805,6 +3805,6 @@
     "profitMargins": 0.40032002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:46:20.643Z",
+  "lastUpdated": "2026-02-04T12:50:46.130Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -3,8 +3,8 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 6,
-        "buy": 25,
+        "strongBuy": 5,
+        "buy": 26,
         "hold": 2,
         "sell": 0,
         "strongSell": 0
@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 6,
+        "buy": 25,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 6,
         "buy": 24,
         "hold": 3,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 6,
         "buy": 24,
         "hold": 3,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.25862,
-    "institutionsPercentHeld": 0.72079,
-    "institutionsFloatPercentHeld": 0.97224,
-    "institutionsCount": 1345
+    "institutionsPercentHeld": 0.72059,
+    "institutionsFloatPercentHeld": 0.97196,
+    "institutionsCount": 1341
   },
   "earnings": {
     "maxAge": 86400,
@@ -2318,11 +2326,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0023098954,
+    "preMarketChange": -0.25,
+    "preMarketTime": "2026-02-04T12:39:39.000Z",
+    "preMarketPrice": 107.98,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0018484711,
-    "postMarketChange": 0.20000458,
-    "postMarketTime": "2026-02-04T00:59:58.000Z",
-    "postMarketPrice": 108.4,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0474514,
     "regularMarketChange": -5.39,
@@ -2332,15 +2340,15 @@
     "regularMarketDayHigh": 113.25,
     "regularMarketDayLow": 105.2,
     "regularMarketVolume": 9402002,
-    "averageDailyVolume10Day": 5558670,
-    "averageDailyVolume3Month": 5149870,
+    "averageDailyVolume10Day": 5980190,
+    "averageDailyVolume3Month": 5234496,
     "regularMarketPreviousClose": 113.59,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 113.03,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SE",
     "underlyingSymbol": null,
@@ -2368,7 +2376,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0277,
     "heldPercentInsiders": 0.25862,
-    "heldPercentInstitutions": 0.72079,
+    "heldPercentInstitutions": 0.72059,
     "shortRatio": 3.79,
     "shortPercentOfFloat": 0.0557,
     "beta": 1.587,
@@ -2388,8 +2396,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 2.798,
     "enterpriseToEbitda": 32.84,
-    "52WeekChange": -0.07710433,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": -0.120896995,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4079,6 +4087,6 @@
     "profitMargins": 0.06742,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:45:44.357Z",
+  "lastUpdated": "2026-02-04T12:50:08.932Z",
   "source": "Static Build (yahoo-finance2)"
 }

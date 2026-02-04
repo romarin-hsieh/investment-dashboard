@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 5,
+        "buy": 11,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 5,
         "buy": 10,
         "hold": 1,
         "sell": 0,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00772,
-    "institutionsPercentHeld": 0.89408,
-    "institutionsFloatPercentHeld": 0.90102994,
-    "institutionsCount": 771
+    "institutionsPercentHeld": 0.89976996,
+    "institutionsFloatPercentHeld": 0.90677,
+    "institutionsCount": 770
   },
   "earnings": {
     "maxAge": 86400,
@@ -1480,11 +1488,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.011106769,
+    "preMarketChange": 3.169983,
+    "preMarketTime": "2026-02-04T12:44:29.000Z",
+    "preMarketPrice": 288.58,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0032931953,
-    "postMarketChange": 0.9399109,
-    "postMarketTime": "2026-02-04T00:59:24.000Z",
-    "postMarketPrice": 286.3499,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0571133,
     "regularMarketChange": 15.42,
@@ -1494,15 +1502,15 @@
     "regularMarketDayHigh": 285.59,
     "regularMarketDayLow": 270.06,
     "regularMarketVolume": 1052504,
-    "averageDailyVolume10Day": 1749170,
-    "averageDailyVolume3Month": 1290275,
+    "averageDailyVolume10Day": 1505310,
+    "averageDailyVolume3Month": 1286822,
     "regularMarketPreviousClose": 269.99,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 273.54,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVAV",
     "underlyingSymbol": null,
@@ -1530,7 +1538,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0664,
     "heldPercentInsiders": 0.00772,
-    "heldPercentInstitutions": 0.89408,
+    "heldPercentInstitutions": 0.89976996,
     "shortRatio": 2.41,
     "shortPercentOfFloat": 0.0884,
     "beta": 1.239,
@@ -1549,8 +1557,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 10.529,
     "enterpriseToEbitda": 136.985,
-    "52WeekChange": 0.4518714,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": 0.5347924,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1879,6 +1887,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 39938,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NAWABI WAHID",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7911,
         "filerUrl": "",
         "transactionText": "",
@@ -1917,17 +1936,6 @@
         "transactionText": "",
         "filerName": "STEVENSON TRACE E",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 39938,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NAWABI WAHID",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-24T00:00:00.000Z",
         "ownership": "D"
@@ -2102,6 +2110,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 319,
+        "value": 56039,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "SHACKLEY BRIAN CHARLES",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2465,
         "value": 433027,
         "filerUrl": "",
@@ -2228,18 +2248,6 @@
         "transactionText": "Stock Award(Grant) at price 175.67 per share.",
         "filerName": "BROWN MELISSA ANN",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 319,
-        "value": 56039,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "SHACKLEY BRIAN CHARLES",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
         "ownership": "D"
@@ -2415,6 +2423,6 @@
     "profitMargins": -0.050780002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:44:45.157Z",
+  "lastUpdated": "2026-02-04T12:49:06.267Z",
   "source": "Static Build (yahoo-finance2)"
 }

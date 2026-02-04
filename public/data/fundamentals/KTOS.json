@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 3,
+        "buy": 12,
+        "hold": 4,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
         "buy": 11,
         "hold": 3,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 3,
         "buy": 10,
         "hold": 3,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01765,
-    "institutionsPercentHeld": 0.94244003,
-    "institutionsFloatPercentHeld": 0.95936996,
-    "institutionsCount": 823
+    "institutionsPercentHeld": 0.9418,
+    "institutionsFloatPercentHeld": 0.95872,
+    "institutionsCount": 822
   },
   "earnings": {
     "maxAge": 86400,
@@ -1440,11 +1448,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.011608754,
+    "preMarketChange": 1.199997,
+    "preMarketTime": "2026-02-04T12:40:12.000Z",
+    "preMarketPrice": 104.57,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0026120178,
-    "postMarketChange": -0.27000427,
-    "postMarketTime": "2026-02-04T00:59:22.000Z",
-    "postMarketPrice": 103.1,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0749792,
     "regularMarketChange": 7.21,
@@ -1454,15 +1462,15 @@
     "regularMarketDayHigh": 103.492,
     "regularMarketDayLow": 97.15,
     "regularMarketVolume": 3316013,
-    "averageDailyVolume10Day": 4129150,
-    "averageDailyVolume3Month": 3202318,
+    "averageDailyVolume10Day": 3999760,
+    "averageDailyVolume3Month": 3204314,
     "regularMarketPreviousClose": 96.16,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 98.6,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "KTOS",
     "underlyingSymbol": null,
@@ -1490,7 +1498,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.053200003,
     "heldPercentInsiders": 0.01765,
-    "heldPercentInstitutions": 0.94244003,
+    "heldPercentInstitutions": 0.9418,
     "shortRatio": 2.79,
     "shortPercentOfFloat": 0.0544,
     "beta": 1.094,
@@ -1511,8 +1519,8 @@
     "lastSplitDate": 1252627200,
     "enterpriseToRevenue": 13.248,
     "enterpriseToEbitda": 247.765,
-    "52WeekChange": 1.8051343,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": 2.015461,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1662,12 +1670,33 @@
       },
       {
         "maxAge": 1,
-        "shares": 5000,
-        "value": 389561,
+        "shares": 27500,
         "filerUrl": "",
-        "transactionText": "Sale at price 75.32 - 79.61 per share.",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CERVANTES DE BURGREEN MARIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 50000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FENDLEY STEVEN S",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -1701,39 +1730,6 @@
         "transactionText": "",
         "filerName": "MENDOZA MARIE C",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12500,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CERVANTES DE BURGREEN MARIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FENDLEY STEVEN S",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 27500,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -1778,6 +1774,18 @@
         "transactionText": "",
         "filerName": "MILLS THOMAS E IV",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5000,
+        "value": 389561,
+        "filerUrl": "",
+        "transactionText": "Sale at price 75.32 - 79.61 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -2430,12 +2438,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 515511,
+        "shares": 10000,
         "filerUrl": "",
-        "transactionText": "Sale at price 34.37 per share.",
-        "filerName": "FENDLEY STEVEN S",
-        "filerRelation": "Officer",
+        "transactionText": "",
+        "filerName": "DOORENBOS BOBBI",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-21T00:00:00.000Z",
         "ownership": "D"
@@ -2453,11 +2460,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
+        "shares": 15000,
+        "value": 515511,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DOORENBOS BOBBI",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 34.37 per share.",
+        "filerName": "FENDLEY STEVEN S",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-21T00:00:00.000Z",
         "ownership": "D"
@@ -2990,10 +2998,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 50000,
+        "shares": 12500,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CARRAI PHILLIP D",
+        "filerName": "GOODWIN BENJAMIN M",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
@@ -3004,19 +3012,8 @@
         "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CARTER DAVID M",
+        "filerName": "ROCK STACEY G",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MENDOZA MARIE C",
-        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
         "ownership": "D"
@@ -3045,10 +3042,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 12500,
+        "shares": 50000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "GOODWIN BENJAMIN M",
+        "filerName": "CARRAI PHILLIP D",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
@@ -3059,8 +3056,19 @@
         "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "ROCK STACEY G",
+        "filerName": "CARTER DAVID M",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MENDOZA MARIE C",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
         "ownership": "D"
@@ -3111,6 +3119,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 190000,
+        "value": 983700000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 19674.00 per share.",
+        "filerName": "DEMARCO ERIC M",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-01-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 4000,
         "value": 105952,
         "filerUrl": "",
@@ -3132,18 +3152,6 @@
         "moneyText": "",
         "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 190000,
-        "value": 983700000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 19674.00 per share.",
-        "filerName": "DEMARCO ERIC M",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-01-02T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3347,6 +3355,6 @@
     "profitMargins": 0.015570001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:45:20.626Z",
+  "lastUpdated": "2026-02-04T12:49:44.508Z",
   "source": "Static Build (yahoo-finance2)"
 }

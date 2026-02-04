@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 9,
+        "buy": 21,
+        "hold": 13,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 8,
         "buy": 20,
         "hold": 13,
@@ -18,7 +26,7 @@
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 8,
         "buy": 26,
         "hold": 13,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00559,
-    "institutionsPercentHeld": 0.8584,
-    "institutionsFloatPercentHeld": 0.86323,
-    "institutionsCount": 4473
+    "institutionsPercentHeld": 0.85888,
+    "institutionsFloatPercentHeld": 0.86370003,
+    "institutionsCount": 4470
   },
   "earnings": {
     "maxAge": 86400,
@@ -9820,11 +9828,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.00025024108,
+    "preMarketChange": -0.020004272,
+    "preMarketTime": "2026-02-04T12:48:02.000Z",
+    "preMarketPrice": 79.92,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0006255072,
-    "postMarketChange": -0.05000305,
-    "postMarketTime": "2026-02-04T00:59:57.000Z",
-    "postMarketPrice": 79.89,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0340744,
     "regularMarketChange": -2.82,
@@ -9834,15 +9842,15 @@
     "regularMarketDayHigh": 82.45,
     "regularMarketDayLow": 79.62,
     "regularMarketVolume": 47649871,
-    "averageDailyVolume10Day": 61727780,
-    "averageDailyVolume3Month": 45662810,
+    "averageDailyVolume10Day": 55717200,
+    "averageDailyVolume3Month": 45727745,
     "regularMarketPreviousClose": 82.76,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 82.19,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "NFLX",
     "underlyingSymbol": null,
@@ -9870,7 +9878,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0167,
     "heldPercentInsiders": 0.00559,
-    "heldPercentInstitutions": 0.8584,
+    "heldPercentInstitutions": 0.85888,
     "shortRatio": 1.85,
     "shortPercentOfFloat": 0.0168,
     "beta": 1.712,
@@ -9891,8 +9899,8 @@
     "lastSplitDate": 1763337600,
     "enterpriseToRevenue": 7.645,
     "enterpriseToEbitda": 25.288,
-    "52WeekChange": -0.18149358,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": -0.20938373,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -9918,6 +9926,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 390970,
+        "value": 3968736,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 10.15 per share.",
+        "filerName": "HASTINGS REED",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 390970,
+        "value": 32695591,
+        "filerUrl": "",
+        "transactionText": "Sale at price 83.22 - 84.96 per share.",
+        "filerName": "HASTINGS REED",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-02T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 105781,
@@ -10956,24 +10988,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 686,
-        "value": 782915,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1141.28 per share.",
-        "filerName": "NEUMANN SPENCER ADAM",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2027,
         "value": 2311283,
         "filerUrl": "",
         "transactionText": "Sale at price 1140.25 per share.",
         "filerName": "SARANDOS THEODORE ANTHONY JR.",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 686,
+        "value": 782915,
+        "filerUrl": "",
+        "transactionText": "Sale at price 1141.28 per share.",
+        "filerName": "NEUMANN SPENCER ADAM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-06T00:00:00.000Z",
         "ownership": "D"
@@ -11563,18 +11595,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11985,
-        "value": 2833246,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 336.63 - 378.81 per share.",
-        "filerName": "PETERS GREGORY K.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 160,
         "value": 51859,
         "filerUrl": "",
@@ -11587,10 +11607,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 9975,
-        "value": 9984982,
+        "shares": 11985,
+        "value": 2833246,
         "filerUrl": "",
-        "transactionText": "Sale at price 994.54 - 1005.00 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 336.63 - 378.81 per share.",
         "filerName": "PETERS GREGORY K.",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -11605,6 +11625,18 @@
         "transactionText": "Sale at price 1000.00 per share.",
         "filerName": "KARBOWSKI JEFFREY WILLIAM",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9975,
+        "value": 9984982,
+        "filerUrl": "",
+        "transactionText": "Sale at price 994.54 - 1005.00 per share.",
+        "filerName": "PETERS GREGORY K.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-02-04T00:00:00.000Z",
         "ownership": "D"
@@ -11677,29 +11709,6 @@
         "moneyText": "",
         "startDate": "2025-02-03T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4037,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SARANDOS THEODORE ANTHONY JR.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 32067,
-        "value": 31373997,
-        "filerUrl": "",
-        "transactionText": "Sale at price 965.14 - 986.39 per share.",
-        "filerName": "HASTINGS REED",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-02-03T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -11736,6 +11745,6 @@
     "profitMargins": 0.24304001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:45:04.379Z",
+  "lastUpdated": "2026-02-04T12:49:27.355Z",
   "source": "Static Build (yahoo-finance2)"
 }

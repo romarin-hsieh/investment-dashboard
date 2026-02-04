@@ -126,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.07349,
-    "institutionsPercentHeld": 0.27387,
-    "institutionsFloatPercentHeld": 0.29559,
-    "institutionsCount": 116
+    "institutionsPercentHeld": 0.28170002,
+    "institutionsFloatPercentHeld": 0.30403998,
+    "institutionsCount": 117
   },
   "earnings": {
     "maxAge": 86400,
@@ -320,11 +320,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.009715002,
+    "preMarketChange": -0.14999962,
+    "preMarketTime": "2026-02-04T12:40:48.000Z",
+    "preMarketPrice": 15.29,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.01752106,
-    "postMarketChange": -0.2699995,
-    "postMarketTime": "2026-02-04T00:55:58.000Z",
-    "postMarketPrice": 15.14,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.13392201,
     "regularMarketChange": 1.82,
@@ -334,15 +334,15 @@
     "regularMarketDayHigh": 15.47,
     "regularMarketDayLow": 13.3,
     "regularMarketVolume": 2595175,
-    "averageDailyVolume10Day": 3643630,
-    "averageDailyVolume3Month": 3147656,
+    "averageDailyVolume10Day": 3357690,
+    "averageDailyVolume3Month": 3139003,
     "regularMarketPreviousClose": 13.59,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 13.88,
     "exchange": "ASE",
     "exchangeName": "NYSE American",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "UMAC",
     "underlyingSymbol": null,
@@ -370,7 +370,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.14310001,
     "heldPercentInsiders": 0.07349,
-    "heldPercentInstitutions": 0.27387,
+    "heldPercentInstitutions": 0.28170002,
     "shortRatio": 1.41,
     "shortPercentOfFloat": 0.1523,
     "impliedSharesOutstanding": 38109911,
@@ -388,8 +388,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 58.809,
     "enterpriseToEbitda": -27.007,
-    "52WeekChange": 0.1715517,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": 0.3284483,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -502,30 +502,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11087,
-        "value": 128831,
-        "filerUrl": "",
-        "transactionText": "Sale at price 11.62 per share.",
-        "filerName": "RICH SANFORD",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11087,
-        "value": 128831,
-        "filerUrl": "",
-        "transactionText": "Sale at price 11.62 per share.",
-        "filerName": "EVANS ALLAN THOMAS",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 65789,
         "value": 130920,
         "filerUrl": "",
@@ -556,6 +532,30 @@
         "transactionText": "Conversion of Exercise of derivative security at price 1.99 per share.",
         "filerName": "LOWRY ROBERT PAUL",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11087,
+        "value": 128831,
+        "filerUrl": "",
+        "transactionText": "Sale at price 11.62 per share.",
+        "filerName": "RICH SANFORD",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11087,
+        "value": 128831,
+        "filerUrl": "",
+        "transactionText": "Sale at price 11.62 per share.",
+        "filerName": "EVANS ALLAN THOMAS",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-29T00:00:00.000Z",
         "ownership": "D"
@@ -1469,6 +1469,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:46:31.831Z",
+  "lastUpdated": "2026-02-04T12:50:56.851Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -43,7 +43,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "FMR, LLC",
-        "pctHeld": 0.14899999,
+        "pctHeld": 0.148,
         "position": 21834489,
         "value": 15186105657,
         "pctChange": 0.0018000001
@@ -52,7 +52,7 @@
         "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
-        "pctHeld": 0.1158,
+        "pctHeld": 0.115,
         "position": 16976485,
         "value": 11807315248,
         "pctChange": -0.033299997
@@ -61,7 +61,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Blackrock Inc.",
-        "pctHeld": 0.1095,
+        "pctHeld": 0.1087,
         "position": 16042732,
         "value": 11157880689,
         "pctChange": -0.0431
@@ -70,7 +70,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "State Street Corporation",
-        "pctHeld": 0.0299,
+        "pctHeld": 0.0297,
         "position": 4376589,
         "value": 3043961458,
         "pctChange": 0.0234
@@ -79,7 +79,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Price (T.Rowe) Associates Inc",
-        "pctHeld": 0.0226,
+        "pctHeld": 0.0224,
         "position": 3308074,
         "value": 2300798580,
         "pctChange": -0.415
@@ -88,7 +88,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0226,
+        "pctHeld": 0.0224,
         "position": 3310712,
         "value": 2302633335,
         "pctChange": 1.1214
@@ -97,7 +97,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Morgan Stanley",
-        "pctHeld": 0.0189,
+        "pctHeld": 0.0188,
         "position": 2770816,
         "value": 1927130263,
         "pctChange": 0.5127
@@ -106,7 +106,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Slate Path Capital, LP",
-        "pctHeld": 0.0184,
+        "pctHeld": 0.0183,
         "position": 2693657,
         "value": 1873465406,
         "pctChange": -0.4316
@@ -115,7 +115,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Arrowstreet Capital, Limited Partnership",
-        "pctHeld": 0.018099999,
+        "pctHeld": 0.018,
         "position": 2649670,
         "value": 1842872007,
         "pctChange": 0.9227
@@ -124,7 +124,7 @@
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Geode Capital Management, LLC",
-        "pctHeld": 0.0172,
+        "pctHeld": 0.0171,
         "position": 2522584,
         "value": 1754482422,
         "pctChange": 0.0543
@@ -133,10 +133,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.05303,
-    "institutionsPercentHeld": 0.8607,
-    "institutionsFloatPercentHeld": 0.9089,
-    "institutionsCount": 791
+    "insidersPercentHeld": 0.053189997,
+    "institutionsPercentHeld": 0.86504,
+    "institutionsFloatPercentHeld": 0.91363,
+    "institutionsCount": 802
   },
   "earnings": {
     "maxAge": 86400,
@@ -866,11 +866,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.025750937,
+    "preMarketChange": -17.910034,
+    "preMarketTime": "2026-02-04T12:50:58.000Z",
+    "preMarketPrice": 677.6,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.023723597,
-    "postMarketChange": -16.5,
-    "postMarketTime": "2026-02-04T00:59:59.000Z",
-    "postMarketPrice": 679.01,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.045502402,
     "regularMarketChange": 30.27,
@@ -880,15 +880,15 @@
     "regularMarketDayHigh": 725,
     "regularMarketDayLow": 646.2,
     "regularMarketVolume": 30601967,
-    "averageDailyVolume10Day": 21755130,
-    "averageDailyVolume3Month": 14336446,
+    "averageDailyVolume10Day": 23068470,
+    "averageDailyVolume3Month": 14609714,
     "regularMarketPreviousClose": 665.24,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 694.925,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SNDK",
     "underlyingSymbol": null,
@@ -915,8 +915,8 @@
     "sharesShortPreviousMonthDate": "2025-12-15T00:00:00.000Z",
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0481,
-    "heldPercentInsiders": 0.05303,
-    "heldPercentInstitutions": 0.8607,
+    "heldPercentInsiders": 0.053189997,
+    "heldPercentInstitutions": 0.86504,
     "shortRatio": 0.67,
     "shortPercentOfFloat": 0.075100005,
     "impliedSharesOutstanding": 147567249,
@@ -935,8 +935,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.413,
     "enterpriseToEbitda": 71.515,
-    "52WeekChange": 17.47889,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": 18.319723,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1308,6 +1308,6 @@
     "profitMargins": -0.11659,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:46:37.462Z",
+  "lastUpdated": "2026-02-04T12:51:02.399Z",
   "source": "Static Build (yahoo-finance2)"
 }

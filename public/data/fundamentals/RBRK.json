@@ -126,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.022950001,
-    "institutionsPercentHeld": 0.72446,
-    "institutionsFloatPercentHeld": 0.74148005,
-    "institutionsCount": 613
+    "institutionsPercentHeld": 0.72420996,
+    "institutionsFloatPercentHeld": 0.74122,
+    "institutionsCount": 610
   },
   "earnings": {
     "maxAge": 86400,
@@ -1363,11 +1363,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0017261249,
+    "preMarketChange": -0.09000015,
+    "preMarketTime": "2026-02-04T12:44:38.000Z",
+    "preMarketPrice": 52.05,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.005369104,
-    "postMarketChange": 0.27999878,
-    "postMarketTime": "2026-02-04T00:59:46.000Z",
-    "postMarketPrice": 52.43,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": -0.0422406,
     "regularMarketChange": -2.3,
@@ -1377,22 +1377,22 @@
     "regularMarketDayHigh": 54.775,
     "regularMarketDayLow": 50.01,
     "regularMarketVolume": 5569503,
-    "averageDailyVolume10Day": 4630120,
-    "averageDailyVolume3Month": 3517718,
+    "averageDailyVolume10Day": 4968220,
+    "averageDailyVolume3Month": 3567063,
     "regularMarketPreviousClose": 54.45,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 54,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBRK",
     "underlyingSymbol": null,
     "shortName": "Rubrik, Inc.",
     "longName": null,
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -1413,7 +1413,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0594,
     "heldPercentInsiders": 0.022950001,
-    "heldPercentInstitutions": 0.72446,
+    "heldPercentInstitutions": 0.72420996,
     "shortRatio": 3.66,
     "shortPercentOfFloat": 0.0798,
     "impliedSharesOutstanding": 200141545,
@@ -1430,8 +1430,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.358,
     "enterpriseToEbitda": -28.076,
-    "52WeekChange": -0.2796666,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": -0.31009394,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1478,18 +1478,6 @@
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-01-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5693,
-        "value": 400421,
-        "filerUrl": "",
-        "transactionText": "Sale at price 70.05 - 70.40 per share.",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2026-01-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1548,6 +1536,18 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MHATRE RAVI",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5693,
+        "value": 400421,
+        "filerUrl": "",
+        "transactionText": "Sale at price 70.05 - 70.40 per share.",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2026-01-15T00:00:00.000Z",
         "ownership": "D"
@@ -1624,8 +1624,9 @@
       {
         "maxAge": 1,
         "shares": 100000,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "NITHRAKASHYAP ARVIND",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -1635,9 +1636,8 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 0,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "NITHRAKASHYAP ARVIND",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -1717,23 +1717,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 16668,
-        "value": 1298604,
+        "shares": 7187,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 77.91 per share.",
-        "filerName": "MCLAUGHLIN MARK D",
-        "filerRelation": "Director",
+        "transactionText": "",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 7187,
+        "shares": 16668,
+        "value": 1298604,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 77.91 per share.",
+        "filerName": "MCLAUGHLIN MARK D",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -2062,18 +2062,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 40170,
-        "value": 2981016,
-        "filerUrl": "",
-        "transactionText": "Sale at price 74.21 per share.",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4670,
         "value": 346561,
         "filerUrl": "",
@@ -2086,13 +2074,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 765807,
+        "shares": 40170,
+        "value": 2981016,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SINHA BIPUL",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Sale at price 74.21 per share.",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2025-09-12T00:00:00.000Z",
+        "startDate": "2025-09-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2101,6 +2090,17 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "SINHA BIPUL",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 765807,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "SINHA BIPUL",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2166,18 +2166,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9009,
-        "value": 791267,
-        "filerUrl": "",
-        "transactionText": "Sale at price 86.62 - 88.35 per share.",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-09-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 12500,
         "value": 1098008,
         "filerUrl": "",
@@ -2187,6 +2175,18 @@
         "moneyText": "",
         "startDate": "2025-09-02T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9009,
+        "value": 791267,
+        "filerUrl": "",
+        "transactionText": "Sale at price 86.62 - 88.35 per share.",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-02T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2247,18 +2247,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9009,
-        "value": 786369,
-        "filerUrl": "",
-        "transactionText": "Sale at price 84.58 - 90.46 per share.",
-        "filerName": "THOMPSON JOHN WENDELL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 12500,
         "value": 1091103,
         "filerUrl": "",
@@ -2268,6 +2256,18 @@
         "moneyText": "",
         "startDate": "2025-08-01T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9009,
+        "value": 786369,
+        "filerUrl": "",
+        "transactionText": "Sale at price 84.58 - 90.46 per share.",
+        "filerName": "THOMPSON JOHN WENDELL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-01T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2375,6 +2375,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 294951,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "NITHRAKASHYAP ARVIND",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 16984,
         "value": 1519558,
         "filerUrl": "",
@@ -2396,18 +2408,6 @@
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 294951,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "NITHRAKASHYAP ARVIND",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-30T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2453,29 +2453,6 @@
         "moneyText": "",
         "startDate": "2025-06-26T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3500,
-        "value": 318500,
-        "filerUrl": "",
-        "transactionText": "Sale at price 91.00 per share.",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2551,6 +2528,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 2000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3500,
+        "value": 318500,
+        "filerUrl": "",
+        "transactionText": "Sale at price 91.00 per share.",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7187,
         "filerUrl": "",
         "transactionText": "",
@@ -2596,24 +2596,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 6757,
-        "value": 598420,
-        "filerUrl": "",
-        "transactionText": "Sale at price 88.56 per share.",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4782,
         "value": 423508,
         "filerUrl": "",
         "transactionText": "Sale at price 88.56 per share.",
         "filerName": "MCCARTHY BRIAN KEITH",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6757,
+        "value": 598420,
+        "filerUrl": "",
+        "transactionText": "Sale at price 88.56 per share.",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-06-17T00:00:00.000Z",
         "ownership": "D"
@@ -3114,8 +3114,8 @@
         "shares": 7772062,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LIGHTSPEED VENTURE PARTNERS IX, LP",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-03-25T00:00:00.000Z",
         "ownership": "I"
@@ -3125,8 +3125,8 @@
         "shares": 7772062,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "LIGHTSPEED VENTURE PARTNERS IX, LP",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-03-25T00:00:00.000Z",
         "ownership": "I"
@@ -3231,6 +3231,6 @@
     "profitMargins": -0.31485,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:45:26.133Z",
+  "lastUpdated": "2026-02-04T12:49:50.326Z",
   "source": "Static Build (yahoo-finance2)"
 }

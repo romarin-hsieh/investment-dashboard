@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0076200003,
-    "institutionsPercentHeld": 0.9159,
-    "institutionsFloatPercentHeld": 0.92294,
-    "institutionsCount": 1453
+    "institutionsPercentHeld": 0.91823995,
+    "institutionsFloatPercentHeld": 0.92529,
+    "institutionsCount": 1457
   },
   "earnings": {
     "maxAge": 86400,
@@ -4288,11 +4288,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0038442814,
+    "preMarketChange": -0.4600067,
+    "preMarketTime": "2026-02-04T12:44:28.000Z",
+    "preMarketPrice": 119.2,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0038442176,
-    "postMarketChange": 0.45999908,
-    "postMarketTime": "2026-02-04T00:59:19.000Z",
-    "postMarketPrice": 120.12,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0727625,
     "regularMarketChange": -9.39,
@@ -4302,15 +4302,15 @@
     "regularMarketDayHigh": 128.72,
     "regularMarketDayLow": 117.3,
     "regularMarketVolume": 7717483,
-    "averageDailyVolume10Day": 6587560,
-    "averageDailyVolume3Month": 5027171,
+    "averageDailyVolume10Day": 6867980,
+    "averageDailyVolume3Month": 5071536,
     "regularMarketPreviousClose": 129.05,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 128.16,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DDOG",
     "underlyingSymbol": null,
@@ -4338,7 +4338,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0247,
     "heldPercentInsiders": 0.0076200003,
-    "heldPercentInstitutions": 0.9159,
+    "heldPercentInstitutions": 0.91823995,
     "shortRatio": 2.15,
     "shortPercentOfFloat": 0.027,
     "beta": 1.286,
@@ -4358,8 +4358,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 12.174,
     "enterpriseToEbitda": 6281.163,
-    "52WeekChange": -0.10907835,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": -0.17390406,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4538,18 +4538,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 348000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 15000,
         "value": 0,
         "filerUrl": "",
@@ -4559,6 +4547,18 @@
         "moneyText": "",
         "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 348000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4809,18 +4809,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 436116,
-        "value": 87067466,
-        "filerUrl": "",
-        "transactionText": "Sale at price 198.43 - 201.07 per share.",
-        "filerName": "JACOBSON MATTHEW",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-11T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 53912,
         "value": 10673913,
         "filerUrl": "",
@@ -4830,6 +4818,18 @@
         "moneyText": "",
         "startDate": "2025-11-11T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 436116,
+        "value": 87067466,
+        "filerUrl": "",
+        "transactionText": "Sale at price 198.43 - 201.07 per share.",
+        "filerName": "JACOBSON MATTHEW",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-11-11T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4983,17 +4983,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 41468,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 45444,
         "filerUrl": "",
         "transactionText": "",
@@ -5002,6 +4991,17 @@
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 41468,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5204,24 +5204,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 15357,
-        "value": 2055491,
-        "filerUrl": "",
-        "transactionText": "Sale at price 133.85 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 55352,
         "value": 7407864,
         "filerUrl": "",
         "transactionText": "Sale at price 132.64 - 135.23 per share.",
         "filerName": "LE-QUOC ALEXIS T",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-09-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15357,
+        "value": 2055491,
+        "filerUrl": "",
+        "transactionText": "Sale at price 133.85 per share.",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-09-02T00:00:00.000Z",
         "ownership": "D"
@@ -5299,18 +5299,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11195,
-        "value": 1455350,
-        "filerUrl": "",
-        "transactionText": "Sale at price 130.00 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 683511,
         "value": 87106996,
         "filerUrl": "",
@@ -5320,6 +5308,18 @@
         "moneyText": "",
         "startDate": "2025-08-27T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11195,
+        "value": 1455350,
+        "filerUrl": "",
+        "transactionText": "Sale at price 130.00 per share.",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-27T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5748,6 +5748,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 20000,
+        "value": 31000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 1.55 per share.",
+        "filerName": "OBSTLER DAVID M",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 127105,
         "value": 169039,
         "filerUrl": "",
@@ -5760,12 +5772,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 20000,
-        "value": 31000,
+        "shares": 127105,
+        "value": 15247342,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 1.55 per share.",
-        "filerName": "OBSTLER DAVID M",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 119.79 - 121.17 per share.",
+        "filerName": "LE-QUOC ALEXIS T",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
         "ownership": "D"
@@ -5781,18 +5793,6 @@
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 127105,
-        "value": 15247342,
-        "filerUrl": "",
-        "transactionText": "Sale at price 119.79 - 121.17 per share.",
-        "filerName": "LE-QUOC ALEXIS T",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5880,17 +5880,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3304,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGARWAL AMIT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 22500,
         "value": 34875,
         "filerUrl": "",
@@ -5900,6 +5889,17 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3304,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AGARWAL AMIT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -6158,7 +6158,7 @@
     "currentPrice": 119.66,
     "targetHighPrice": 260,
     "targetLowPrice": 113,
-    "targetMeanPrice": 194.41164,
+    "targetMeanPrice": 194.06279,
     "targetMedianPrice": 195,
     "recommendationMean": 1.43478,
     "recommendationKey": "strong_buy",
@@ -6185,6 +6185,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:46:18.927Z",
+  "lastUpdated": "2026-02-04T12:50:44.039Z",
   "source": "Static Build (yahoo-finance2)"
 }

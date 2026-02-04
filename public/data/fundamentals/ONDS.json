@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.016239999,
-    "institutionsPercentHeld": 0.33492002,
-    "institutionsFloatPercentHeld": 0.34045,
-    "institutionsCount": 225
+    "institutionsPercentHeld": 0.33696,
+    "institutionsFloatPercentHeld": 0.34252,
+    "institutionsCount": 228
   },
   "earnings": {
     "maxAge": 86400,
@@ -194,7 +194,7 @@
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
       "earningsDate": [],
-      "isEarningsDateEstimate": true
+      "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
@@ -476,11 +476,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0009665799,
+    "preMarketChange": 0.01099968,
+    "preMarketTime": "2026-02-04T12:48:20.000Z",
+    "preMarketPrice": 11.391,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0061951117,
-    "postMarketChange": -0.070500374,
-    "postMarketTime": "2026-02-04T00:59:58.000Z",
-    "postMarketPrice": 11.3095,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0695488,
     "regularMarketChange": 0.74,
@@ -490,15 +490,15 @@
     "regularMarketDayHigh": 11.42,
     "regularMarketDayLow": 10.515,
     "regularMarketVolume": 101433098,
-    "averageDailyVolume10Day": 102925990,
-    "averageDailyVolume3Month": 102756533,
+    "averageDailyVolume10Day": 98024200,
+    "averageDailyVolume3Month": 102738988,
     "regularMarketPreviousClose": 10.64,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 11.01,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
@@ -526,7 +526,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1991,
     "heldPercentInsiders": 0.016239999,
-    "heldPercentInstitutions": 0.33492002,
+    "heldPercentInstitutions": 0.33696,
     "shortRatio": 0.89,
     "shortPercentOfFloat": 0.20040001,
     "beta": 2.465,
@@ -545,8 +545,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 151.951,
     "enterpriseToEbitda": -97.489,
-    "52WeekChange": 5.487805,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": 5.9390244,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -587,6 +587,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 12500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAIRD NEIL J",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 85663,
         "filerUrl": "",
         "transactionText": "",
@@ -614,17 +625,6 @@
         "transactionText": "",
         "filerName": "SOOD JASPREET K",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12500,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LAIRD NEIL J",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-12-22T00:00:00.000Z",
         "ownership": "D"
@@ -912,6 +912,17 @@
         "shares": 78948,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78948,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "SEIDL RANDALL P",
         "filerRelation": "Director",
         "moneyText": "",
@@ -924,17 +935,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 78948,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
@@ -1046,6 +1046,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:44:41.933Z",
+  "lastUpdated": "2026-02-04T12:49:02.502Z",
   "source": "Static Build (yahoo-finance2)"
 }

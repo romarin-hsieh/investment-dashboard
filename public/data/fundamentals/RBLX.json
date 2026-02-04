@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.044359997,
-    "institutionsPercentHeld": 0.82392,
-    "institutionsFloatPercentHeld": 0.86216,
-    "institutionsCount": 1337
+    "institutionsPercentHeld": 0.82404,
+    "institutionsFloatPercentHeld": 0.86228997,
+    "institutionsCount": 1333
   },
   "earnings": {
     "maxAge": 86400,
@@ -3118,11 +3118,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.002064095,
+    "preMarketChange": 0.13500214,
+    "preMarketTime": "2026-02-04T12:47:49.000Z",
+    "preMarketPrice": 65.54,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0022936014,
-    "postMarketChange": -0.15000153,
-    "postMarketTime": "2026-02-04T00:59:31.000Z",
-    "postMarketPrice": 65.25,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.030824,
     "regularMarketChange": -2.08,
@@ -3132,15 +3132,15 @@
     "regularMarketDayHigh": 66.855,
     "regularMarketDayLow": 63.13,
     "regularMarketVolume": 12006453,
-    "averageDailyVolume10Day": 13603640,
-    "averageDailyVolume3Month": 9294090,
+    "averageDailyVolume10Day": 13800040,
+    "averageDailyVolume3Month": 9410768,
     "regularMarketPreviousClose": 67.48,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 66.945,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBLX",
     "underlyingSymbol": null,
@@ -3168,7 +3168,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.023,
     "heldPercentInsiders": 0.044359997,
-    "heldPercentInstitutions": 0.82392,
+    "heldPercentInstitutions": 0.82404,
     "shortRatio": 1.68,
     "shortPercentOfFloat": 0.025899999,
     "beta": 1.635,
@@ -3187,8 +3187,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 10.035,
     "enterpriseToEbitda": -50.569,
-    "52WeekChange": -0.10586989,
-    "SandP52WeekChange": 0.15094662,
+    "52WeekChange": -0.13343048,
+    "SandP52WeekChange": 0.1412741,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3360,6 +3360,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 20867,
+        "value": 2005239,
+        "filerUrl": "",
+        "transactionText": "Sale at price 93.49 - 98.21 per share.",
+        "filerName": "KAUFMAN MATTHEW D",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2642,
         "value": 251637,
         "filerUrl": "",
@@ -3377,18 +3389,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 93.40 - 97.05 per share.",
         "filerName": "CHAKRAVARTHY ARVIND",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20867,
-        "value": 2005239,
-        "filerUrl": "",
-        "transactionText": "Sale at price 93.49 - 98.21 per share.",
-        "filerName": "KAUFMAN MATTHEW D",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
@@ -3660,17 +3660,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1143191,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-07T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 0,
         "filerUrl": "",
@@ -3692,6 +3681,17 @@
         "moneyText": "",
         "startDate": "2025-08-07T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1143191,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-07T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3803,18 +3803,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 139507,
-        "value": 475021,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 41851,
         "value": 0,
         "filerUrl": "",
@@ -3839,14 +3827,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 240545,
-        "value": 819056,
+        "shares": 139507,
+        "value": 475021,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
         "filerName": "BASZUCKI DAVID BRENT",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
+        "startDate": "2025-06-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3875,6 +3863,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 240545,
+        "value": 819056,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 6000,
         "value": 620100,
         "filerUrl": "",
@@ -3883,18 +3883,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 454963,
-        "value": 1549149,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3923,38 +3911,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 232540,
-        "value": 791788,
+        "shares": 454963,
+        "value": 1549149,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
         "filerName": "BASZUCKI DAVID BRENT",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 150000,
-        "value": 510750,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
-        "filerName": "REINSTRA MARK",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 64925,
-        "value": 4090,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
+        "startDate": "2025-06-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4019,14 +3983,38 @@
       },
       {
         "maxAge": 1,
-        "shares": 60047,
-        "value": 204460,
+        "shares": 232540,
+        "value": 791788,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
         "filerName": "BASZUCKI DAVID BRENT",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-06-11T00:00:00.000Z",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 150000,
+        "value": 510750,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
+        "filerName": "REINSTRA MARK",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 64925,
+        "value": 4090,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4055,14 +4043,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 1314953,
-        "value": 4477415,
+        "shares": 60047,
+        "value": 204460,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
         "filerName": "BASZUCKI DAVID BRENT",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
+        "startDate": "2025-06-11T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4091,14 +4079,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 50000,
-        "value": 26500,
+        "shares": 1314953,
+        "value": 4477415,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
-        "filerName": "GUTHRIE MICHAEL",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-06-05T00:00:00.000Z",
+        "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4127,6 +4115,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 50000,
+        "value": 26500,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
+        "filerName": "GUTHRIE MICHAEL",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 26798,
         "value": 2417180,
         "filerUrl": "",
@@ -4135,30 +4135,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 687500,
-        "value": 2303134,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.34 - 3.40 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12985,
-        "value": 818,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4217,6 +4193,30 @@
         "transactionText": "Sale at price 90.00 per share.",
         "filerName": "BRONSTEIN MANUEL",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 687500,
+        "value": 2303134,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.34 - 3.40 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12985,
+        "value": 818,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
@@ -4284,9 +4284,9 @@
       {
         "maxAge": 1,
         "shares": 50000,
-        "value": 170250,
+        "value": 4232025,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
+        "transactionText": "Sale at price 84.64 per share.",
         "filerName": "REINSTRA MARK",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -4296,9 +4296,9 @@
       {
         "maxAge": 1,
         "shares": 50000,
-        "value": 4232025,
+        "value": 170250,
         "filerUrl": "",
-        "transactionText": "Sale at price 84.64 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.40 per share.",
         "filerName": "REINSTRA MARK",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -4451,18 +4451,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 569450,
-        "value": 1904810,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 3.34 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Officer, Director and Beneficial Owner",
-        "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 170834,
         "value": 0,
         "filerUrl": "",
@@ -4499,26 +4487,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 118051,
-        "value": 394881,
+        "shares": 569450,
+        "value": 1904810,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 3.34 per share.",
         "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
+        "filerRelation": "Officer, Director and Beneficial Owner",
         "moneyText": "",
-        "startDate": "2025-05-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "value": 26500,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
-        "filerName": "GUTHRIE MICHAEL",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-12T00:00:00.000Z",
+        "startDate": "2025-05-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4559,6 +4535,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 118051,
+        "value": 394881,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 3.34 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 50000,
+        "value": 26500,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
+        "filerName": "GUTHRIE MICHAEL",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 50000,
         "value": 0,
         "filerUrl": "",
@@ -4580,42 +4580,6 @@
         "moneyText": "",
         "startDate": "2025-05-06T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1455002,
-        "value": 4057339,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 - 3.34 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 973875,
-        "value": 67197,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
-        "filerName": "BASZUCKI GREGORY",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12985,
-        "value": 818,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4703,6 +4667,42 @@
       },
       {
         "maxAge": 1,
+        "shares": 1455002,
+        "value": 4057339,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 - 3.34 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 973875,
+        "value": 67197,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
+        "filerName": "BASZUCKI GREGORY",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12985,
+        "value": 818,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7896,
         "value": 0,
         "filerUrl": "",
@@ -4711,18 +4711,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-04-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 229167,
-        "value": 121459,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-04-07T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4751,14 +4739,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 50000,
-        "value": 26500,
+        "shares": 229167,
+        "value": 121459,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
-        "filerName": "GUTHRIE MICHAEL",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-04-03T00:00:00.000Z",
+        "startDate": "2025-04-07T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4787,26 +4775,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 97387,
-        "value": 6720,
+        "shares": 50000,
+        "value": 26500,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
-        "filerName": "BASZUCKI GREGORY",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
+        "filerName": "GUTHRIE MICHAEL",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12985,
-        "value": 818,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
-        "filerName": "CARVALHO CHRISTOPHER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
+        "startDate": "2025-04-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4859,14 +4835,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 34099,
-        "value": 18072,
+        "shares": 97387,
+        "value": 6720,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
-        "filerName": "BASZUCKI DAVID BRENT",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
+        "filerName": "BASZUCKI GREGORY",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-03-17T00:00:00.000Z",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12985,
+        "value": 818,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.06 per share.",
+        "filerName": "CARVALHO CHRISTOPHER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4895,14 +4883,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 97388,
-        "value": 6720,
+        "shares": 34099,
+        "value": 18072,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
-        "filerName": "BASZUCKI GREGORY",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
+        "filerName": "BASZUCKI DAVID BRENT",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-03-10T00:00:00.000Z",
+        "startDate": "2025-03-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4923,6 +4911,18 @@
         "value": 5215397,
         "filerUrl": "",
         "transactionText": "Sale at price 53.00 - 54.45 per share.",
+        "filerName": "BASZUCKI GREGORY",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 97388,
+        "value": 6720,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.07 per share.",
         "filerName": "BASZUCKI GREGORY",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4992,9 +4992,9 @@
       {
         "maxAge": 1,
         "shares": 50000,
-        "value": 26500,
+        "value": 3006854,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
+        "transactionText": "Sale at price 59.71 - 60.51 per share.",
         "filerName": "GUTHRIE MICHAEL",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -5004,9 +5004,9 @@
       {
         "maxAge": 1,
         "shares": 50000,
-        "value": 3006854,
+        "value": 26500,
         "filerUrl": "",
-        "transactionText": "Sale at price 59.71 - 60.51 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.53 per share.",
         "filerName": "GUTHRIE MICHAEL",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -5047,6 +5047,6 @@
     "profitMargins": -0.21700001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T06:45:35.733Z",
+  "lastUpdated": "2026-02-04T12:49:59.638Z",
   "source": "Static Build (yahoo-finance2)"
 }
