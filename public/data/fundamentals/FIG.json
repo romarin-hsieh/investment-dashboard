@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 1,
-        "buy": 1,
+        "buy": 2,
         "hold": 7,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 1,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 1,
         "hold": 7,
@@ -37,7 +45,7 @@
         "organization": "Index Venture Associates VI Ltd",
         "pctHeld": 0.13859999,
         "position": 57658069,
-        "value": 1209954613,
+        "value": 1233306060,
         "pctChange": 1
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Sc Us (ttgp), Ltd.",
         "pctHeld": 0.060700003,
         "position": 25261320,
-        "value": 530108815,
+        "value": 540339619,
         "pctChange": 1
       },
       {
@@ -55,7 +63,7 @@
         "organization": "ICONIQ Capital, LLC",
         "pctHeld": 0.0514,
         "position": 21378048,
-        "value": 448618350,
+        "value": 457276433,
         "pctChange": 1
       },
       {
@@ -64,7 +72,7 @@
         "organization": "a16z Capital Management, L.L.C.",
         "pctHeld": 0.039100002,
         "position": 16246129,
-        "value": 340925026,
+        "value": 347504689,
         "pctChange": 1
       },
       {
@@ -73,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0182,
         "position": 7589849,
-        "value": 159272985,
+        "value": 162346865,
         "pctChange": 1
       },
       {
@@ -82,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.014400001,
         "position": 5981282,
-        "value": 125517206,
+        "value": 127939618,
         "pctChange": 1
       },
       {
@@ -91,7 +99,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0139,
         "position": 5763613,
-        "value": 120949422,
+        "value": 123283678,
         "pctChange": 0.9382
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Durable Capital Partners Lp",
         "pctHeld": 0.0128999995,
         "position": 5369380,
-        "value": 112676442,
+        "value": 114851034,
         "pctChange": 1
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Thrive Capital Management, LLC",
         "pctHeld": 0.0106,
         "position": 4396256,
-        "value": 92255434,
+        "value": 94035913,
         "pctChange": 1
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Greenoaks Capital Partners LLC",
         "pctHeld": 0.0099,
         "position": 4132853,
-        "value": 86727922,
+        "value": 88401723,
         "pctChange": 1
       }
     ]
@@ -422,14 +430,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.12562497,
-    "regularMarketChange": -3.0149994,
-    "regularMarketTime": "2026-02-03T18:52:34.000Z",
+    "postMarketChangePercent": 0.0004675189,
+    "postMarketChange": 0.010000229,
+    "postMarketTime": "2026-02-04T00:59:24.000Z",
+    "postMarketPrice": 21.4,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.10875,
+    "regularMarketChange": -2.61,
+    "regularMarketTime": "2026-02-03T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 20.985,
+    "regularMarketPrice": 21.39,
     "regularMarketDayHigh": 23.41,
     "regularMarketDayLow": 20.9421,
-    "regularMarketVolume": 17477900,
+    "regularMarketVolume": 24874332,
     "averageDailyVolume10Day": 10117720,
     "averageDailyVolume3Month": 7780798,
     "regularMarketPreviousClose": 24,
@@ -438,7 +451,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "FIG",
     "underlyingSymbol": null,
@@ -450,13 +463,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 10399992832
+    "marketCap": 10600706048
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 10377904128,
-    "forwardPE": 88.07975,
+    "forwardPE": 89.77964,
     "profitMargins": -0.95577,
     "floatShares": 198856177,
     "sharesOutstanding": 415909379,
@@ -472,7 +485,7 @@
     "impliedSharesOutstanding": 495591718,
     "category": null,
     "bookValue": 2.818,
-    "priceToBook": 7.4467707,
+    "priceToBook": 7.5904894,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1401,12 +1414,13 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 20.985,
+    "currentPrice": 21.39,
     "targetHighPrice": 96,
-    "targetLowPrice": 38,
-    "targetMeanPrice": 56,
-    "targetMedianPrice": 52,
-    "recommendationKey": "none",
+    "targetLowPrice": 35,
+    "targetMeanPrice": 52.11111,
+    "targetMedianPrice": 48,
+    "recommendationMean": 2.5,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
     "totalCash": 1577533056,
     "totalCashPerShare": 3.183,
@@ -1426,6 +1440,6 @@
     "profitMargins": -0.95577,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T18:52:35.213Z",
+  "lastUpdated": "2026-02-04T01:44:09.010Z",
   "source": "Static Build (yahoo-finance2)"
 }

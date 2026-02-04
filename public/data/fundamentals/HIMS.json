@@ -45,7 +45,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.16219999,
         "position": 35572170,
-        "value": 877743267,
+        "value": 908513254,
         "pctChange": 11.9808
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.114700004,
         "position": 25145814,
-        "value": 620472941,
+        "value": 642224112,
         "pctChange": 0.016
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0954,
         "position": 20925666,
-        "value": 516340792,
+        "value": 534441528,
         "pctChange": 0.0721
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0857,
         "position": 18783194,
-        "value": 463475297,
+        "value": 479722791,
         "pctChange": 0.0121
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Farallon Capital Management LLC",
         "pctHeld": 0.049000002,
         "position": 10746852,
-        "value": 265178564,
+        "value": 274474609,
         "pctChange": 0.3084
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0421,
         "position": 9223511,
-        "value": 227590126,
+        "value": 235568479,
         "pctChange": 0.1299
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Renaissance Technologies, LLC",
         "pctHeld": 0.041500002,
         "position": 9096852,
-        "value": 224464816,
+        "value": 232333608,
         "pctChange": 0.32419997
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0332,
         "position": 7276096,
-        "value": 179537663,
+        "value": 185831498,
         "pctChange": 0.316
       },
       {
@@ -117,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0327,
         "position": 7173214,
-        "value": 176999049,
+        "value": 183203892,
         "pctChange": 0.0188
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0224,
         "position": 4900814,
-        "value": 120927581,
+        "value": 125166794,
         "pctChange": 0.0326
       }
     ]
@@ -1309,14 +1309,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.06675496,
-    "regularMarketChange": -1.7650013,
-    "regularMarketTime": "2026-02-03T18:51:33.000Z",
+    "postMarketChangePercent": 0.00039147693,
+    "postMarketChange": 0.0099983215,
+    "postMarketTime": "2026-02-04T00:59:59.000Z",
+    "postMarketPrice": 25.55,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.0340393,
+    "regularMarketChange": -0.9,
+    "regularMarketTime": "2026-02-03T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 24.675,
+    "regularMarketPrice": 25.54,
     "regularMarketDayHigh": 26.82,
-    "regularMarketDayLow": 24.67,
-    "regularMarketVolume": 13895699,
+    "regularMarketDayLow": 24.64,
+    "regularMarketVolume": 19879995,
     "averageDailyVolume10Day": 17475780,
     "averageDailyVolume3Month": 18235163,
     "regularMarketPreviousClose": 26.44,
@@ -1325,7 +1330,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "HIMS",
     "underlyingSymbol": null,
@@ -1337,13 +1342,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5617226752
+    "marketCap": 5814142976
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 6507305472,
-    "forwardPE": 22.12548,
+    "forwardPE": 22.901108,
     "profitMargins": 0.060510002,
     "floatShares": 206024182,
     "sharesOutstanding": 219270891,
@@ -1360,7 +1365,7 @@
     "impliedSharesOutstanding": 227648514,
     "category": null,
     "bookValue": 2.554,
-    "priceToBook": 9.661316,
+    "priceToBook": 10.000001,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -3176,10 +3181,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 24.675,
-    "targetHighPrice": 85,
+    "currentPrice": 25.54,
+    "targetHighPrice": 68,
     "targetLowPrice": 25,
-    "targetMeanPrice": 41.61538,
+    "targetMeanPrice": 39.69231,
     "targetMedianPrice": 37,
     "recommendationMean": 2.86667,
     "recommendationKey": "hold",
@@ -3206,6 +3211,6 @@
     "profitMargins": 0.060510002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T18:51:35.971Z",
+  "lastUpdated": "2026-02-04T01:43:11.132Z",
   "source": "Static Build (yahoo-finance2)"
 }

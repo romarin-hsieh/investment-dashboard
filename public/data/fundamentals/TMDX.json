@@ -24,6 +24,14 @@
         "hold": 3,
         "sell": 0,
         "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 7,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.156,
         "position": 5331598,
-        "value": 713234489,
+        "value": 723604487,
         "pctChange": 0.0207
       },
       {
@@ -46,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.14819999,
         "position": 5064370,
-        "value": 677486065,
+        "value": 687336302,
         "pctChange": 0.0081
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.105500005,
         "position": 3605279,
-        "value": 482296176,
+        "value": 489308470,
         "pctChange": -0.0001
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0374,
         "position": 1279541,
-        "value": 171170589,
+        "value": 173659306,
         "pctChange": -0.0073
       },
       {
@@ -73,7 +81,7 @@
         "organization": "UBS AM, a distinct business unit of UBS ASSET MANAGEMENT AMERICAS LLC",
         "pctHeld": 0.0313,
         "position": 1069492,
-        "value": 143071285,
+        "value": 145151455,
         "pctChange": 0.1191
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Macquarie Group Limited",
         "pctHeld": 0.026500002,
         "position": 906268,
-        "value": 121235996,
+        "value": 122998694,
         "pctChange": -0.0481
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0238,
         "position": 813571,
-        "value": 108835455,
+        "value": 110417857,
         "pctChange": 0.0111
       },
       {
@@ -100,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.023,
         "position": 784712,
-        "value": 104974843,
+        "value": 106501113,
         "pctChange": 0.6903
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.0216,
         "position": 738158,
-        "value": 98747081,
+        "value": 100182804,
         "pctChange": -0.1357
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.020599999,
         "position": 703578,
-        "value": 94121142,
+        "value": 95489607,
         "pctChange": 1.2183
       }
     ]
@@ -1279,14 +1287,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0016046838,
-    "regularMarketChange": -0.2150116,
-    "regularMarketTime": "2026-02-03T18:51:49.000Z",
+    "postMarketChangePercent": -0.005305049,
+    "postMarketChange": -0.7200012,
+    "postMarketTime": "2026-02-04T00:08:30.000Z",
+    "postMarketPrice": 135,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.0129114,
+    "regularMarketChange": 1.73,
+    "regularMarketTime": "2026-02-03T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 133.775,
+    "regularMarketPrice": 135.72,
     "regularMarketDayHigh": 139.59,
-    "regularMarketDayLow": 133.41,
-    "regularMarketVolume": 303995,
+    "regularMarketDayLow": 132.88,
+    "regularMarketVolume": 539057,
     "averageDailyVolume10Day": 842510,
     "averageDailyVolume3Month": 776777,
     "regularMarketPreviousClose": 133.99,
@@ -1295,7 +1308,7 @@
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "TMDX",
     "underlyingSymbol": null,
@@ -1307,13 +1320,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4571670016
+    "marketCap": 4638139392
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4632193024,
-    "forwardPE": 45.30062,
+    "forwardPE": 45.959263,
     "profitMargins": 0.16203,
     "floatShares": 33027435,
     "sharesOutstanding": 34174325,
@@ -1330,7 +1343,7 @@
     "impliedSharesOutstanding": 34174325,
     "category": null,
     "bookValue": 10.403,
-    "priceToBook": 12.859271,
+    "priceToBook": 13.046237,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2960,7 +2973,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 133.775,
+    "currentPrice": 135.72,
     "targetHighPrice": 170,
     "targetLowPrice": 114,
     "targetMeanPrice": 144.2,
@@ -2990,6 +3003,6 @@
     "profitMargins": 0.16203,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T18:51:52.493Z",
+  "lastUpdated": "2026-02-04T01:43:27.429Z",
   "source": "Static Build (yahoo-finance2)"
 }

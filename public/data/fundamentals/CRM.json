@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 8,
+        "buy": 36,
+        "hold": 13,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 8,
         "buy": 33,
         "hold": 13,
         "sell": 0,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0959,
         "position": 89843166,
-        "value": 17439906661,
+        "value": 17643401377,
         "pctChange": 0.003
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0866,
         "position": 81175886,
-        "value": 15757457556,
+        "value": 15941320889,
         "pctChange": -0.0055
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.052699998,
         "position": 49420657,
-        "value": 9593291105,
+        "value": 9705228862,
         "pctChange": 0.0032
       },
       {
@@ -64,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0279,
         "position": 26108922,
-        "value": 5068133537,
+        "value": 5127270229,
         "pctChange": 0.4647
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0224,
         "position": 20991211,
-        "value": 4074709038,
+        "value": 4122254118,
         "pctChange": 0.0056
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.0214,
         "position": 20051119,
-        "value": 3892223074,
+        "value": 3937638847,
         "pctChange": 0.094399996
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.020499999,
         "position": 19189909,
-        "value": 3725049290,
+        "value": 3768514423,
         "pctChange": -0.0619
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0185,
         "position": 17325206,
-        "value": 3363082457,
+        "value": 3402324038,
         "pctChange": 1.5900999
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0113,
         "position": 10567153,
-        "value": 2051242962,
+        "value": 2075177557,
         "pctChange": -0.012999999
       },
       {
@@ -118,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0111,
         "position": 10363597,
-        "value": 2011729688,
+        "value": 2035203229,
         "pctChange": -0.0375
       }
     ]
@@ -8921,14 +8929,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0791945,
-    "regularMarketChange": -16.694992,
-    "regularMarketTime": "2026-02-03T18:51:11.000Z",
+    "postMarketChangePercent": -0.001425801,
+    "postMarketChange": -0.27999878,
+    "postMarketTime": "2026-02-04T00:59:48.000Z",
+    "postMarketPrice": 196.1,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0684502,
+    "regularMarketChange": -14.43,
+    "regularMarketTime": "2026-02-03T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 194.115,
+    "regularMarketPrice": 196.38,
     "regularMarketDayHigh": 205.28,
-    "regularMarketDayLow": 193.35,
-    "regularMarketVolume": 12895920,
+    "regularMarketDayLow": 193.12,
+    "regularMarketVolume": 18641137,
     "averageDailyVolume10Day": 10768990,
     "averageDailyVolume3Month": 8297847,
     "regularMarketPreviousClose": 210.81,
@@ -8937,25 +8950,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "CRM",
     "underlyingSymbol": null,
     "shortName": "Salesforce, Inc.",
     "longName": "Salesforce, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 184797478912
+    "marketCap": 186953760768
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 197840977920,
-    "forwardPE": 14.801127,
+    "forwardPE": 14.973832,
     "profitMargins": 0.17913,
     "floatShares": 911644780,
     "sharesOutstanding": 937000000,
@@ -8972,7 +8985,7 @@
     "impliedSharesOutstanding": 952000000,
     "category": null,
     "bookValue": 63.717,
-    "priceToBook": 3.0465183,
+    "priceToBook": 3.082066,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -10783,10 +10796,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 194.115,
+    "currentPrice": 196.38,
     "targetHighPrice": 475,
     "targetLowPrice": 223,
-    "targetMeanPrice": 328.51547,
+    "targetMeanPrice": 327.8551,
     "targetMedianPrice": 330,
     "recommendationMean": 1.63793,
     "recommendationKey": "buy",
@@ -10813,6 +10826,6 @@
     "profitMargins": 0.17913,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-03T18:51:12.712Z",
+  "lastUpdated": "2026-02-04T01:42:49.194Z",
   "source": "Static Build (yahoo-finance2)"
 }
