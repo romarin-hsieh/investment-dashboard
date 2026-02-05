@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 1,
         "buy": 5,
+        "hold": 8,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
+        "buy": 5,
         "hold": 7,
         "sell": 1,
         "strongSell": 2
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 5,
         "hold": 7,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.055,
         "position": 15545018,
-        "value": 241180959,
+        "value": 251829303,
         "pctChange": 0.4052
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0353,
         "position": 9994281,
-        "value": 155061273,
+        "value": 161907359,
         "pctChange": 0.0911
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.025799999,
         "position": 7310961,
-        "value": 113429562,
+        "value": 118437573,
         "pctChange": 0.2258
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.0187,
         "position": 5287814,
-        "value": 82040436,
+        "value": 85662590,
         "pctChange": 0.672
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Samsung C&T Corp",
         "pctHeld": 0.0183,
         "position": 5185804,
-        "value": 80457750,
+        "value": 84010028,
         "pctChange": 0.98910004
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Clear Street Group Inc.",
         "pctHeld": 0.0153,
         "position": 4322653,
-        "value": 67065962,
+        "value": 70026981,
         "pctChange": 1
       },
       {
@@ -91,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0148,
         "position": 4185320,
-        "value": 64935241,
+        "value": 67802187,
         "pctChange": 0.692
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Tidal Investments LLC",
         "pctHeld": 0.014400001,
         "position": 4064976,
-        "value": 63068104,
+        "value": 65852614,
         "pctChange": 6.3929
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0106,
         "position": 2984473,
-        "value": 46304099,
+        "value": 48348464,
         "pctChange": 0.045500003
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.010299999,
         "position": 2916373,
-        "value": 45247528,
+        "value": 47245244,
         "pctChange": -0.0795
       }
     ]
@@ -621,23 +629,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.13238169,
-    "regularMarketChange": -2.3649988,
-    "regularMarketTime": "2026-02-04T18:42:54.000Z",
+    "postMarketChangePercent": 0.0037036706,
+    "postMarketChange": 0.059999466,
+    "postMarketTime": "2026-02-05T00:59:59.000Z",
+    "postMarketPrice": 16.26,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.0939596,
+    "regularMarketChange": -1.68,
+    "regularMarketTime": "2026-02-04T21:03:43.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 15.515,
+    "regularMarketPrice": 16.2,
     "regularMarketDayHigh": 17.645,
-    "regularMarketDayLow": 15.23,
-    "regularMarketVolume": 18256973,
-    "averageDailyVolume10Day": 28716520,
-    "averageDailyVolume3Month": 26515736,
+    "regularMarketDayLow": 15.18,
+    "regularMarketVolume": 25497287,
+    "averageDailyVolume10Day": 28722670,
+    "averageDailyVolume3Month": 26716316,
     "regularMarketPreviousClose": 17.88,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 17.635,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "SMR",
     "underlyingSymbol": null,
@@ -649,13 +662,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4388316672
+    "marketCap": 4582064640
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 1912071296,
-    "forwardPE": -26.033192,
+    "enterpriseValue": 1630403712,
+    "forwardPE": -27.182579,
     "profitMargins": 0,
     "floatShares": 95631190,
     "sharesOutstanding": 282843482,
@@ -672,7 +685,7 @@
     "impliedSharesOutstanding": 282843482,
     "category": null,
     "bookValue": 4.945,
-    "priceToBook": 3.1375127,
+    "priceToBook": 3.2760365,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -682,10 +695,10 @@
     "trailingEps": -2.14,
     "forwardEps": -0.59597,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 29.925,
-    "enterpriseToEbitda": -14.451,
-    "52WeekChange": -0.27169043,
-    "SandP52WeekChange": 0.1412741,
+    "enterpriseToRevenue": 25.517,
+    "enterpriseToEbitda": -12.322,
+    "52WeekChange": -0.23096776,
+    "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2115,10 +2128,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 15.515,
+    "currentPrice": 16.2,
     "targetHighPrice": 60,
     "targetLowPrice": 15,
-    "targetMeanPrice": 34.19231,
+    "targetMeanPrice": 33.96154,
     "targetMedianPrice": 28,
     "recommendationMean": 2.5,
     "recommendationKey": "buy",
@@ -2143,6 +2156,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T18:42:56.046Z",
+  "lastUpdated": "2026-02-05T01:44:26.450Z",
   "source": "Static Build (yahoo-finance2)"
 }

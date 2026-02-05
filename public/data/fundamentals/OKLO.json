@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 4,
+        "buy": 9,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 4,
         "buy": 8,
         "hold": 6,
         "sell": 0,
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 3,
         "buy": 7,
         "hold": 7,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.074499995,
         "position": 11637504,
-        "value": 758067003,
+        "value": 794026936,
         "pctChange": 0.0038
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0551,
         "position": 8615597,
-        "value": 561219983,
+        "value": 587842212,
         "pctChange": 0.1774
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.045500003,
         "position": 7102234,
-        "value": 462639518,
+        "value": 484585449,
         "pctChange": 0.71830004
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.0222,
         "position": 3474993,
-        "value": 226361041,
+        "value": 237098784,
         "pctChange": 0.6102
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0168,
         "position": 2630742,
-        "value": 171366532,
+        "value": 179495535,
         "pctChange": 0.17
       },
       {
@@ -82,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.015800001,
         "position": 2476036,
-        "value": 161288983,
+        "value": 168939944,
         "pctChange": 0.1578
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0147,
         "position": 2295349,
-        "value": 149519032,
+        "value": 156611669,
         "pctChange": 0.77599996
       },
       {
@@ -100,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.013200001,
         "position": 2063448,
-        "value": 134413001,
+        "value": 140789063,
         "pctChange": 4.0352
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.0068,
         "position": 1070065,
-        "value": 69704033,
+        "value": 73010538,
         "pctChange": 0.3858
       },
       {
@@ -118,7 +126,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0064,
         "position": 1003080,
-        "value": 65340630,
+        "value": 68440151,
         "pctChange": -0.6025
       }
     ]
@@ -629,14 +637,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.16487178,
-    "regularMarketChange": -12.860001,
-    "regularMarketTime": "2026-02-04T18:43:23.000Z",
+    "postMarketChangePercent": 0.0041037486,
+    "postMarketChange": 0.27999878,
+    "postMarketTime": "2026-02-05T00:59:46.000Z",
+    "postMarketPrice": 68.51,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.125256,
+    "regularMarketChange": -9.77,
+    "regularMarketTime": "2026-02-04T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 65.14,
+    "regularMarketPrice": 68.23,
     "regularMarketDayHigh": 77.15,
     "regularMarketDayLow": 64,
-    "regularMarketVolume": 11488726,
+    "regularMarketVolume": 17410344,
     "averageDailyVolume10Day": 12651090,
     "averageDailyVolume3Month": 12610355,
     "regularMarketPreviousClose": 78,
@@ -645,25 +658,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "OKLO",
     "underlyingSymbol": null,
     "shortName": "Oklo Inc.",
     "longName": "Oklo Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 10177934336
+    "marketCap": 10660738048
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 11267333120,
-    "forwardPE": -97.6158,
+    "enterpriseValue": 9740798976,
+    "forwardPE": -102.24634,
     "profitMargins": 0,
     "floatShares": 127777295,
     "sharesOutstanding": 156247075,
@@ -680,7 +693,7 @@
     "impliedSharesOutstanding": 156247075,
     "category": null,
     "bookValue": 7.719,
-    "priceToBook": 8.438917,
+    "priceToBook": 8.839229,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -690,9 +703,9 @@
     "trailingEps": -0.56,
     "forwardEps": -0.66731,
     "lastSplitFactor": null,
-    "enterpriseToEbitda": -116.021,
+    "enterpriseToEbitda": -100.302,
     "52WeekChange": 0.5445545,
-    "SandP52WeekChange": 0.1412741,
+    "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1372,10 +1385,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 65.14,
+    "currentPrice": 68.23,
     "targetHighPrice": 175,
     "targetLowPrice": 14,
-    "targetMeanPrice": 116.77412,
+    "targetMeanPrice": 115.89176,
     "targetMedianPrice": 122,
     "recommendationMean": 1.89474,
     "recommendationKey": "buy",
@@ -1397,6 +1410,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-04T18:43:26.012Z",
+  "lastUpdated": "2026-02-05T01:44:57.131Z",
   "source": "Static Build (yahoo-finance2)"
 }
