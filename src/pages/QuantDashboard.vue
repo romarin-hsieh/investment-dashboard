@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
 import SignalCard from '@/components/SignalCard.vue';
 
@@ -15,7 +15,6 @@ const sectorTrace = ref([]);
 const fetchData = async () => {
     try {
         loading.value = true;
-        // Fetch the generated analysis report
         // Fetch the generated analysis report
         const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
             ? import.meta.env.BASE_URL.slice(0, -1) 
@@ -51,6 +50,10 @@ const selectTicker = (ticker) => {
     }
 };
 
+const currentTickerData = computed(() => {
+    return latestData.value.find(d => d.ticker === selectedTicker.value);
+});
+
 onMounted(() => {
     fetchData();
 });
@@ -75,10 +78,13 @@ onMounted(() => {
       <!-- Left Panel: Comet Chart -->
       <div class="chart-panel">
         <ThreeDKineticChart 
-          v-if="currentDataPoint" 
+          v-if="currentDataPoint && currentTickerData" 
           :dataPoint="currentDataPoint"
           :historyTrace="historyTrace"
           :sectorTrace="sectorTrace"
+          :signal="currentTickerData.signal"
+          :commentary="currentTickerData.commentary"
+          :ticker="selectedTicker"
         />
       </div>
 
@@ -100,13 +106,13 @@ onMounted(() => {
 
         <!-- Active Signal Card -->
         <SignalCard 
-          v-if="currentDataPoint"
+          v-if="currentTickerData"
           :ticker="selectedTicker"
-          :signal="latestData.find(d => d.ticker === selectedTicker).signal"
-          :commentary="latestData.find(d => d.ticker === selectedTicker).commentary"
-          :price="latestData.find(d => d.ticker === selectedTicker).price"
-          :changePercent="latestData.find(d => d.ticker === selectedTicker).change_percent"
-          :coordinates="latestData.find(d => d.ticker === selectedTicker).coordinates"
+          :signal="currentTickerData.signal"
+          :commentary="currentTickerData.commentary"
+          :price="currentTickerData.price"
+          :changePercent="currentTickerData.change_percent"
+          :coordinates="currentTickerData.coordinates"
         />
       </div>
     </div>
