@@ -55,6 +55,11 @@
         <VixWidget :key="`vix-${vixKey}`" />
       </div>
 
+      <!-- Smart Money Sector Rotation -->
+      <div class="widget-container">
+        <SectorRotationChart />
+      </div>
+
       <!-- Stock Market Insight -->
       <div class="widget-container">
         <div class="widget-header">
@@ -115,6 +120,7 @@ import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
 import { useTheme } from '@/composables/useTheme.js'
+import { defineAsyncComponent } from 'vue'
 
 export default {
   name: 'MarketDashboard',
@@ -122,7 +128,8 @@ export default {
     LazyTradingViewWidget,
     VixWidget,
     ZeiiermanFearGreedGauge,
-    MarketOverviewSkeleton
+    MarketOverviewSkeleton,
+    SectorRotationChart: defineAsyncComponent(() => import('@/components/SectorRotationChart.vue'))
   },
   setup() {
     const { theme } = useTheme()

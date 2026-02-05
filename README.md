@@ -1,150 +1,115 @@
-# Investment Dashboard 📈
+# Kiro Investment Dashboard 🚀
 
-> **Project Status**: Stable / Maintenance Mode
-> **Architecture**: Static-First, Client-Side SPA (Vue 3)
-> **Hosting**: GitHub Pages
+> **Status**: Production (Stable)
+> **Version**: 2.5 (Quant Edition)
+> **Architecture**: Serverless / Static-First (GitHub Pages)
 
-### 6. Holdings & Smart Money Analysis
-*   **Ownership Structure**: Visual breakdown of Insiders vs Institutions.
-*   **Smart Money Trend**: Dual-axis chart tracking "Elite Funds" accumulation vs Stock Price.
-*   **Insider Sentiment**: Vertical analysis of recent 6-month insider trading activity.
-*   **Elite Funds**: Detailed tracking of top-tier investors (e.g., Warren Buffett, Bill Ackman) activity.
-*   **Top Institutions**: List of top institutional holders.
+**Kiro Investment Dashboard** is a high-performance, institutional-grade market analysis tool designed for the modern retail investor. It distinguishes itself by running entirely on **static infrastructure**, leveraging sophisticated pre-computation pipelines to deliver **3D Market Kinetic Analysis**, **Smart Money Tracking**, and **Real-time Technicals** without a traditional backend server.
 
-## 📖 Project Overview
-Investment Dashboard is a high-performance market visualization tool designed to run entirely on static hosting (GitHub Pages). It bypasses the need for a dynamic backend server by utilizing **Pre-computation** and **Client-Side Caching** strategies to deliver professional-grade charting and financial data.
+---
 
-## 🏗️ Architecture Design
+## 🌟 Key Features
 
-### core Philosophy: "Static-First"
-The application avoids direct runtime dependencies on external APIs where possible. Instead, it relies on a "Static Data Pipeline" where data is pre-fetched, processed, and frozen into JSON files during the CI/CD build process.
+### 1. 🧊 Quant Kinetic State (The "Comet" Chart)
+A proprietary 3D visualization engine that analyzes stock behavior across three dimensions:
+*   **X: Trend Velocity** (McGinley Dynamic deviation)
+*   **Y: Momentum Force** (Stochastic RSI energy)
+*   **Z: Market Structure** (Volatility Squeeze compression)
 
-## 🧠 Quant Strategy Documentation
-Detailed documentation on the algorithmic core and validation reports:
-*   [**Strategy Dossier**](docs/QUANT_STRATEGY_DOSSIER.md): The mathematical core of the 3D Kinetic Market State.
-*   [**Category Strategy Matrix**](docs/CATEGORY_STRATEGY_MATRIX.md): Tag-based parameter mapping (Growth vs Value logic).
-*   [**Tag Validation Report**](docs/TAG_VALIDATION_REPORT.md): Evidence-based validation of the strategy parameters (2018-2025).
+This allows instantly identifying whether a stock is in a **Launchpad** (Squeeze + Uptrend), **Climax** (Overheated), or **Dip Buy** (Trend Intact + Oversold) state.
 
-### Data Flow Diagram
-```mermaid
-graph TD
-    subgraph "CI/CD (GitHub Actions)"
-        A[Scheduled Cron] -->|Trigger| B(Python/Node Scripts)
-        B -->|Fetch| C{External APIs}
-        C -- Yahoo Finance --> B
-        C -- Fear & Greed --> B
-        B -->|Process & Verify| D[Generate JSON files]
-        D -->|Commit| E[Repository /public/data]
-    end
+### 2. 🐋 Smart Money & Insider Tracking
+Integrated transparency into "Who is buying?":
+*   **Institutional Flows**: Tracks "Super Investors" (e.g., Warren Buffett, Bill Ackman) via Dataroma integration.
+*   **Insider Sentiment**: Visualizes real-time C-Suite buying/selling activity.
+*   **MFI Volume Profile**: Proprietary indicator separating "Retail" from "Smart Money" volume accumulation.
 
-    subgraph "Client (Browser)"
-        F[Vue App] -->|Request| G{Data Strategy Layer}
-        G -->|Tier 1| H[Local Cache / Memory]
-        G -->|Tier 2| I[Static JSON (GitHub Pages)]
-        G -->|Tier 3 (Fallback)| J[Live API via CORS Proxy]
-    end
+### 3. 📊 Macro & Technical Analysis
+Comprehensive tools for top-down market analysis:
+*   **Real-time Market Overview**: Live tracking of major indices (S&P 500, NASDAQ, VIX) and Sector Performance Heatmaps.
+*   **Fear & Greed Index**: Daily sentiment tracking powered by browser automation (Puppeteer).
+*   **Professional Charting**: Integrated TradingView Advanced Charts with custom overlay support.
 
-    E -->|Deploy| I
-```
+### 4. 🏢 Fundamental Deep Dive
+Contextualize the price action with underlying value:
+*   **Financial Health**: Visual overview of Income Statements, Balance Sheets, and Cash Flow.
+*   **Market Regime**: Automated classification of the broader market environment (e.g., "Volatile Uptrend").
+*   **Company Profile**: Business summaries and sector classifications.
 
-## 🧩 Technical Stack (Deep Dive)
+### 5. ⚡ "Static-First" High Performance
+The dashboard feels instant because the math is done *before* you visit:
+*   **Pre-computed Engines**: Heavy quant analysis is run daily via GitHub Actions.
+*   **Tiered Rendering**: Critical data loads instantly from static JSONs; secondary data hydrates lazily.
+*   **Zero-Backend**: No database latency, no API rate limits for the end user.
 
-### Frontend Core
-- **Framework**: Vue 3 (Composition API)
-- **Build System**: Vite 5.x with advanced chunk splitting
-- **Routing**: `vue-router` (Hash Mode for GitHub Pages compatibility)
-- **State Management**: Reactive Composables (minimalist approach)
+---
 
-### Data Visualization
-- **TradingView Lightweight Charts**: For high-performance, custom-drawn canvas charts (Stock Detail).
-- **TradingView Widgets**: External embedded iframe/script widgets (Overview, Market Heatmap).
-- **Chart.js**: Supplemental visualizations (Polar Area charts).
+## 🏗️ Technical Architecture
 
-### Performance Optimization Modules
-- **`WidgetCache`**: LRU-like caching mechanism for TradingView widgets to prevent redundant script injections.
-- **`WidgetPreloader`**: Prefetches widget scripts (`intersection-observer` based) before they enter the viewport.
-- **`WidgetLoadManager`**: Background priority queue that throttles widget instantiation to keep the main thread responsive (60fps target).
-- **`YahooFinanceAPI`**: Smart fetcher with request deduplication, queueing, and automatic proxy rotation.
+This project proves that **you don't need a backend to build a Bloomberg Terminal competitor**.
 
-## 📂 Directory Structure (Vibe Coding Reference)
+### Data Pipeline (The "Static Lake")
+All data is fetched, processed, and validated by Python/Node.js scripts during the CI/CD build process and stored as static JSON files in `public/data/`.
 
-```
-investment-dashboard/
-├── .github/workflows/   # 🤖 CI/CD Automation
-│   ├── daily-update.yml       # OHLCV Data Sync (Daily)
-│   ├── precompute-indicators.yml # Technical Analysis Sync
-│   └── deploy.yml             # Build & Deploy pipeline
-├── public/data/         # 🧊 STATIC DATABASE (Do not edit manually)
-│   ├── ohlcv/                 # {symbol}.json (Daily Candles)
-│   ├── fundamentals/          # {symbol}.json (Profile/Stats)
-│   └── technical-indicators/  # JSONs for heavy indicators
-├── scripts/             # ⚙️ Backend Logic (Runs in CI)
-│   ├── fetch-fundamentals.js  # Yahoo Finance scraper
-│   ├── precompute-with-browser.js # Puppeteer (Fear&Greed)
-│   └── cleanup_executor.js    # Maintenance utility
-├── src/
-│   ├── api/             # 🔌 Data Layer (YahooFinanceAPI.js)
-│   ├── components/      # 🧱 Vue Components
-│   │   └── FastTradingViewWidget.vue # Optimized Widget Wrapper
-│   ├── utils/           # 🛠️ Core Logic
-│   │   ├── technicalIndicatorsCore.js # Math logic (RSI, MACD...)
-│   │   └── widgetCache.js     # Performance Utilities
-│   └── views/           # 📱 Page Layouts
-└── ...
-```
+| Data Domain | Source | Processing Script | Update Freq |
+| :--- | :--- | :--- | :--- |
+| **Market Data** | Yahoo Finance (API) | `generate-real-ohlcv-yfinance.py` | Daily (02:00 UTC) |
+| **Quant Analysis** | Internal Engine | `daily_update.py` | Daily |
+| **Institutional** | Dataroma (Scraper) | `batch_crawl_dataroma.py` | Daily |
+| **Sentiment** | Fear & Greed (Puppeteer) | `precompute-with-browser.js` | Daily |
+
+*For detailed technical specifications, please refer to [REQUIREMENTS.md](REQUIREMENTS.md).*
+
+---
 
 ## 🚀 Quick Start
 
 ### 1. Installation
 ```bash
+git clone https://github.com/romarin-hsieh/investment-dashboard.git
+cd investment-dashboard
 npm install
 ```
 
 ### 2. Local Development
 ```bash
-# Starts Dev Server at http://localhost:5173/investment-dashboard/
+# Starts development server at http://localhost:5173/investment-dashboard/
 npm run dev
 ```
 
-### 3. Data Generation (Crucial for Local Dev)
-Since the app relies on static JSONs, you must generate them if they don't exist:
-```bash
-# Fetch OHLCV data for test symbols
-python scripts/generate-real-ohlcv-yfinance.py --days=365
+### 3. Data Generation (Critical for Local Dev)
+Since there is no "live API" for the core data, you must generate the static database locally to see charts:
 
-# Fetch Metadata
-node scripts/fetch-fundamentals.js
+```bash
+# 1. Fetch Market Data & Compute Indicators
+npm run update-daily
+
+# 2. Run Dataroma Scraper (Optional - Heavy)
+python scripts/batch_crawl_dataroma.py
 ```
 
-- **Stock Details**: Deep dive into individual symbols using TradingView widgets and custom technical analysis charts.
+---
 
-> 🧠 **Deep Dive**: See [Fear & Greed Indicators Wiki](docs/INDICATORS.md) for detailed definitions of the market sentiment metrics.
+## 📂 Project Structure
 
-- **Performance**: Use `<FastTradingViewWidget>` instead of direct embeddings.
+```
+investment-dashboard/
+├── .github/workflows/       # 🤖 The "Backend" (CI/CD Pipelines)
+├── public/data/             # 🧊 The "Database" (Static JSONs)
+│   ├── ohlcv/               # Daily price history
+│   ├── dataroma/            # Institutional holdings data
+│   └── dashboard_status.json # Pre-computed Quant Signals
+├── scripts/                 # ⚙️ ETL & Analysis Engines
+│   ├── production/          # Core Quant Strategy Scripts
+│   └── core/                # Math & Signal Libraries
+├── src/
+│   ├── components/          # Vue Components (Charts, Widgets)
+│   ├── pages/               # Application Views
+│   └── services/            # Client-side Data Fetchers
+└── README.md
+```
 
-> 🧠 **Deep Dive**: See [Fear & Greed Indicators Wiki](docs/INDICATORS.md) for detailed definitions of the market sentiment metrics.
+## 📜 Documentation
 
-- **Adding Symbols**: Update `public/data/symbols_metadata.json` or the relevant `scripts/` config.
-- **Styling**: Maintain the "Glassmorphism" aesthetic. Use `var(--bg-card)` and `var(--text-primary)`.
-- **Performance**: Use `<FastTradingViewWidget>` instead of direct embeddings.
-
-## 🔄 Deployment & Operations
-
-### Automated Data Pipeline
-This dashboard relies on **Daily Automated Updates** powered by GitHub Actions. The data pipeline is defined in `.github/workflows/daily-data-update.yml` and performs the following tasks every day at 02:00 UTC (10:00 Taipei Time):
-
-1.  **Market Data Sync**: Fetches latest OHLCV data via `yfinance`.
-2.  **Indicator Pre-computation**: Calculates heavy technical indicators (RSI, Bollinger Bands, etc.) server-side using Node.js and Python.
-3.  **Quant Strategy Analysis**:
-    *   Executes `scripts/production/daily_update.py`.
-    *   Generates `public/data/dashboard_status.json` which drives the **Comet Chart (Trend Continuation)** and **Market Status** components.
-    *   Applies the 3D Kinetic Market State algorithm (Trend, Momentum, Structure) to classify stocks (e.g., "Trend Continuation", "Launchpad").
-4.  **Auto-Deployment**: Pushes the fresh data to the `main` branch, which automatically triggers a **GitHub Pages** deployment to update the live site.
-
-### Manual Data Update
-To force a data update immediately:
-1.  Go to the [Actions](https://github.com/romarin-hsieh/investment-dashboard/actions) tab in the GitHub repository.
-2.  Select **"Daily Data Update"** workflow.
-3.  Click **"Run workflow"**.
-4.  Wait for the process to complete (approx. 5-10 mins). The site will re-deploy automatically afterward.
-
+*   [**Technical Manual (REQUIREMENTS.md)**](REQUIREMENTS.md): Deep dive into data pipelines, caching strategies, and performance limits.
+*   [**Quant Strategy Dossier**](docs/QUANT_STRATEGY_DOSSIER.md): Mathematical definition of the Kinetic State indicators.

@@ -1,71 +1,97 @@
-# System Requirements & Specifications
+# Technical Manual & Architecture Specifications
 
-## 1. Functional Specifications
+## 1. System Architecture: The "Static-First" Paradigm
 
-### 1.1 Market Dashboard (Home)
-- **Objective**: Provide a macro view of the global market status.
-- **Components**:
-  - **Market Indices**: S&P 500, NASDAQ, DJI, VIX (Real-time via Widget).
-  - **Fear & Greed Index**:
-    - *Primary Source*: Pre-computed JSON (`public/data/technical-indicators/fear-greed.json`).
-    - *Update Freq*: Daily.
-  - **Sector Performance**: Heatmap visualization (Real-time).
+The Investment Dashboard operates on a **Serverless / Static-First** architecture. This means there is no runtime API server (like Node.js/Python) handling user requests. Instead, the application relies on a **Data Lake** of pre-computed static JSON files hosted on GitHub Pages (CDN).
 
-### 1.2 Stock Detail Page
-- **Route**: `#/stock/:symbol`
-- **Layout Logic**:
-  - **Header**: Static metadata (Sector, Industry, Market Cap) loaded from `src/api/` (Cached).
-  - **Main Chart**: TradingView Advanced Real-time Chart (Widget).
-  - **Analysis Panel**: Custom implementation using `lightweight-charts`.
-    - *Data Source*: `public/data/ohlcv/{symbol}.json`.
-    - *Indicators*: MFI, Volume Profile, RSI, MACD.
-    - *Rendering targets*: < 100ms render time.
+### 1.1 The 3-Tier Data Strategy
+To ensure speed and resilience, the frontend (`src/services/`) employs a strict fallback hierarchy:
 
-## 2. Data Strategy & Architecture
+| Tier | Source | Latency | TTL | Use Case |
+| :--- | :--- | :--- | :--- | :--- |
+| **1** | **Memory / IO Cache** | < 5ms | Session | Instant navigation between recently viewed stocks. |
+| **2** | **Static JSON (CDN)** | ~50ms | 24 Hours | **The Golden Source**. 99% of data (Prices, Quant Signals, Holdings) comes from here. |
+| **3** | **Live API Proxy** | ~500ms | 0 (Live) | **Fallback Only**. Used *only* if static data is missing (404) or specifically requested (Real-time). |
 
-### 2.1 The "3-Tier" Data Fetching Strategy
-To ensure 99.9% availability without a dynamic backend, the application uses a strict fallback hierarchy implemented in `YahooFinanceAPI.js`:
+---
 
-1.  **Tier 1: In-Memory / LocalStorage Cache**
-    -   *TTL*: 5 minutes (Intraday), 24 hours (Metadata).
-    -   *Mechanism*: Rapid retrieval to prevent network requests on page navigation.
+## 2. Data Pipeline (ETL & Quant Engine)
 
-2.  **Tier 2: Static JSON (The "Golden Source")**
-    -   *Path*: `https://[domain]/data/[type]/[symbol].json`
-    -   *Content*: OHLCV, Fundamentals, Pre-calc Indicators.
-    -   *Reliability*: Extremely High (Served typically via CDN/GitHub Pages).
+All data is generated daily at **02:00 UTC** via GitHub Actions. The pipeline consists of three distinct phases:
 
-3.  **Tier 3: Live API Fallback (CORS Proxy)**
-    -   *Triggers*: Only if Tier 2 returns 404/Empty or data is stale (>24h).
-    -   *Proxies*: Rotational list (`corsproxy.io`, `cors-anywhere`) to mitigate rate limits.
-    -   *Logic*: Request throttling (2 concurrent requests max) + Deduplication.
+### Phase 1: Market Data Acquisition
+Fetches raw price and fundamental data.
 
-### 2.2 Pre-computation Logic
-Certain complex indicators are too heavy to calculate client-side for hundreds of symbols or require scraping.
-- **Engine**: Puppeteer (Headless Chrome) running in GitHub Actions.
-- **Output**: JSON files stored in `public/data/`.
-- **Why**: Avoids CORS issues completely for difficult data sources (e.g., CNN Fear & Greed).
+| Data Type | Source | Script / Engine | Output |
+| :--- | :--- | :--- | :--- |
+| **OHLCV** | Yahoo Finance | `scripts/generate-real-ohlcv-yfinance.py` | `public/data/ohlcv/{symbol}.json` |
+| **Metadata** | YF / Internal | `scripts/fetch-fundamentals.js` | `public/data/symbols_metadata.json` |
+| **Sentiment** | Fear & Greed | `scripts/precompute-with-browser.js` (Puppeteer) | `public/data/technical-indicators/fear-greed.json` |
 
-## 3. Performance Requirements
+### Phase 2: Institutional Intelligence
+Scrapes and processes "Smart Money" movements.
 
-### 3.1 Widget Performance
-- **Lazy Loading**: `FastTradingViewWidget.vue` must use `IntersectionObserver`.
-- **Prioritization**:
-  - *Priority 1*: First screen charts (Load immediately).
-  - *Priority 2*: Secondary charts (300ms delay).
-  - *Priority 3*: Below-fold widgets (Load only when close to viewport).
-- **Goal**: Maintain 60fps scrolling and Time to Interactive (TTI) < 1.5s.
+| Data Type | Source | Script / Engine | Output |
+| :--- | :--- | :--- | :--- |
+| **Holdings** | Dataroma | `scripts/crawl_dataroma_stock.py` | `public/data/dataroma/{symbol}.json` |
+| **Super Investors** | Dataroma | `scripts/batch_crawl_dataroma.py` | (Merged into symbol JSONs) |
 
-### 3.2 Bundle Size
-- **Strategy**: Route-based code splitting.
-- **Target**: Initial chunk size < 500kb.
+### Phase 3: Quant Strategy Engine
+The core differentiation. Runs complex algorithms on the raw data.
 
-## 4. Technical Constraints
-1.  **NO Backend Server**: The app must remain deployable on any static file host (S3, Pages, Netlify).
-2.  **CORS Handling**: Production code must assume *NO* access to 3rd party APIs directly from the browser, unless proxied or JSONP-supported.
-3.  **Mobile Responsiveness**: Layouts must collapse to single-column on screens < 768px.
+| Component | Logic / Algorithm | Script | Output |
+| :--- | :--- | :--- | :--- |
+| **Kinetic State** | McGinley Dynamic + StochRSI + Squeeze | `scripts/production/daily_update.py` | `public/data/dashboard_status.json` |
+| **Tech Indicators** | RSI, MACD, Bollinger (Server-side calc) | `scripts/generate-daily-technical-indicators.js` | `public/data/technical-indicators/{symbol}.json` |
 
-## 5. Security & Maintenance
-- **API Keys**: No secret keys should be exposed in the frontend bundle. Public keys only.
-- **Data Integrity**: `validation.ts` schema checks must pass before rendering any external JSON data.
-- **Rate Limiting**: Client must respect `YahooFinanceAPI`'s internal rate limiter (800ms delay between proxy calls).
+---
+
+## 3. Quant Kinetic State Engine (Deep Dive)
+
+The **3D Kinetic Market State** visualization (`ThreeDKineticChart.vue`) is not just a chart; it is the visualization of a complex pre-computed vector state.
+
+### Coordinate System Definition
+*   **X-Axis (Trend)**: Normalized logical distance from the **McGinley Dynamic** line. ($>0$ = Uptrend, $<0$ = Downtrend).
+*   **Y-Axis (Momentum)**: Modified **Stochastic RSI** energy. ($>0.8$ = Overheated, $<0.2$ = Oversold).
+*   **Z-Axis (Structure)**: **Volatility Squeeze** intensity (Bollinger Bandwidth / Keltner Channels). ($>1.0$ = High Compression/Explosive Potential).
+
+### Signal Classification
+The `daily_update.py` script classifies stocks into states based on these coordinates:
+*   **LAUNCHPAD**: $Z > 0.8$ AND $X > 0$ (High Compression + Positive Trend).
+*   **CLIMAX**: $Y > 0.9$ (EXTREME Momentum).
+*   **DIP_BUY**: $X > 0$ AND $Y < 0.2$ (Uptrend + Oversold).
+
+---
+
+## 4. Frontend Performance & Rendering
+
+Given the detailed charts, performance optimization is critical.
+
+### 4.1 Priority Queue Loading
+Widgets are not loaded all at once. The `WidgetLoadManager` assigns priorities:
+
+*   **P1 (Critical)**: `ThreeDKineticChart`, `SignalCard` (Quant Dashboard). Loaded immediately.
+*   **P2 (Secondary)**: `FastTradingViewWidget` (Stock Detail Main Chart). Loaded via `requestAnimationFrame`.
+*   **P3 (Below Fold)**: `HoldingsAnalysis`, `FundamentalAnalysis`. Loaded via `IntersectionObserver` (Lazy).
+
+### 4.2 Charting Libraries
+*   **Plotly.js (WebGL)**: Used for `ThreeDKineticChart` to handle 3D rendering efficiently.
+*   **TradingView Lightweight Charts**: Used for custom technical analysis panels (lightweight canvas).
+*   **TradingView Widgets (iFrame)**: Used for complex standardized charts. Optimization: `FastTradingViewWidget.vue` performs "Warm Boot" caching to avoid re-downloading widget scripts.
+
+### 4.3 Smart Money Volume Profile
+*   **Logic**: Browser-side binning of 5Y transaction data.
+*   **Optimization**: Uses a custom binning algorithm ($O(N)$) to map thousands of transactions onto price levels dynamically without blocking the UI thread.
+
+---
+
+## 5. Deployment
+
+Total automation via GitHub Actions:
+1.  **Trigger**: Cron schedule (daily) or Push to `main`.
+2.  **Environment**: Ubuntu runner with Python 3.9 + Node 18.
+3.  **Process**:
+    *   Install dependencies.
+    *   Run ETL Pipeline (Phase 1 -> 2 -> 3).
+    *   Commit changes to `public/data/`.
+    *   Deploy to GitHub Pages.
