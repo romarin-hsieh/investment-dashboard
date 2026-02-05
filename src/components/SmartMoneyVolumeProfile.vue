@@ -1,7 +1,12 @@
 <template>
   <div class="smart-money-volume-profile">
     <div class="header">
-      <h3>Smart Money Volume Profile (6M)</h3>
+      <h3>Smart Money Volume Profile ({{ selectedRangeLabel }})</h3>
+      <select v-model="selectedRange" @change="onRangeChange" class="range-selector">
+        <option value="6mo">6 Months</option>
+        <option value="1y">1 Year</option>
+        <option value="5y">5 Years</option>
+      </select>
     </div>
     
     <div v-if="loading" class="loading-state">
@@ -25,7 +30,7 @@
 <script>
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import { ohlcvApi } from '@/services/ohlcvApi.js'
 import { useTheme } from '@/composables/useTheme.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -46,10 +51,15 @@ export default {
       loading: false,
       error: null,
       chartData: null,
-      ohlcv: null
+      ohlcv: null,
+      selectedRange: '6mo'
     }
   },
   computed: {
+    selectedRangeLabel() {
+        const map = { '6mo': '6M', '1y': '1Y', '5y': '5Y' };
+        return map[this.selectedRange] || '6M';
+    },
     isDark() { return this.theme === 'dark' },
     chartOptions() {
       return {
@@ -80,7 +90,10 @@ export default {
               label: (context) => {
                 const raw = context.raw;
                 const dataIndex = context.dataIndex;
-                const bin = this.bins[dataIndex];
+                // Chart displays reversed bins (Max -> Min), so we must reverse index to access original bins (Min -> Max)
+                // Or simply reverse the original bins array if accessing linearly.
+                // dataIndex 0 (Top of chart) = Max Price = Last Element of this.bins
+                const bin = this.bins[this.bins.length - 1 - dataIndex];
                 
                 const volStr = this.formatVolume(raw);
                 let label = `Total Vol: ${volStr}`;
@@ -111,8 +124,8 @@ export default {
       this.loading = true;
       this.error = null;
       try {
-        // Fetch 6 months of daily data
-        const data = await yahooFinanceAPI.getOhlcv(this.symbol, '1d', '6mo');
+        // Fetch daily data via ohlcvApi for selected range
+        const data = await ohlcvApi.getOhlcv(this.symbol, '1d', this.selectedRange);
         if (data && data.timestamps && data.timestamps.length > 0) {
             this.ohlcv = data;
             this.calculateProfile();
@@ -127,10 +140,21 @@ export default {
       }
     },
 
+    onRangeChange() {
+        this.loadProfileData();
+    },
+
     calculateProfile() {
       if (!this.ohlcv) return;
       
       const { high, low, close, volume } = this.ohlcv;
+      
+      // Calculate Cutoff Date for Filtering Smart Money Data
+      const now = new Date();
+      const cutoffDate = new Date();
+      if (this.selectedRange === '6mo') cutoffDate.setMonth(now.getMonth() - 6);
+      else if (this.selectedRange === '1y') cutoffDate.setFullYear(now.getFullYear() - 1);
+      else if (this.selectedRange === '5y') cutoffDate.setFullYear(now.getFullYear() - 5);
       
       // 1. Determine Price Range (Min/Max of last 6mo)
       let minPrice = Infinity;
@@ -185,10 +209,16 @@ export default {
           }
       }
       
-      // 4. Map Smart Money Activity to Bins
+      // 4. Map Smart Money Activity to Bins (Filtered by Date)
       // Source A: Insider Transactions (Exact Price)
       if (this.dataromaData && this.dataromaData.insiders && this.dataromaData.insiders.transactions) {
           this.dataromaData.insiders.transactions.forEach(tx => {
+              // Filter by Date
+              if (tx.transaction_date) {
+                  const txDate = new Date(tx.transaction_date);
+                  if (txDate < cutoffDate) return;
+              }
+
               if (tx.price && tx.shares) {
                   const p = parseFloat(String(tx.price).replace('$','').replace(',',''));
                   let shares = tx.shares;
@@ -218,32 +248,40 @@ export default {
       }
       
       // Source B: SuperInvestors (Avg Price for Quarter)
-      // Note: This is less precise (Avg Price), but valuable.
       if (this.dataromaData && this.dataromaData.activity) {
-          // data.activity is Grouped by Quarter usually in the processed prop, or raw list?
-          // Check prop structure: usually we pass the RAW dataromaData object.
-          // In `HoldingsAnalysis.vue`, we use `this.dataromaData.superinvestors` (holdings) and `activity`?
-          // Let's check typical structure. `dataromaData.activity` is usually a map "2024 Q3": [items].
-          if (this.dataromaData.activity) {
-              Object.values(this.dataromaData.activity).flat().forEach(item => {
-                  // item: { reported_price, shares_changed, type: "Buy"|"Sell" }
-                  if (item.reported_price && item.shares_changed) {
-                      const p = parseFloat(String(item.reported_price).replace('$','').replace(',',''));
-                      const shares = Math.abs(item.shares_changed);
-                      const isBuy = item.type === 'Buy' || item.type === 'Add';
-                      
-                      if (!isNaN(p)) {
-                         let bIdx = Math.floor((p - minPrice) / binSize);
-                         bIdx = Math.max(0, Math.min(binCount - 1, bIdx));
-                         
-                         if (isBuy) bins[bIdx].smartBuy += shares;
-                         else bins[bIdx].smartSell += shares;
-                         
-                         bins[bIdx].netSmartShares += (isBuy ? shares : -shares);
+          Object.entries(this.dataromaData.activity).forEach(([key, items]) => {
+              // Parse Quarter Key "Q3  2025" or similar
+              // Regex to extract Q and Y
+              const match = key.match(/Q(\d)\s+(\d{4})/);
+              if (match) {
+                  const q = parseInt(match[1]);
+                  const y = parseInt(match[2]);
+                  
+                  // Approximate Quarter End Date
+                  // Q1: Mar 31, Q2: Jun 30, Q3: Sep 30, Q4: Dec 31
+                  const qEndDate = new Date(y, q * 3, 0); // Day 0 of next month is last day of prev month
+                  
+                  if (qEndDate < cutoffDate) return; // Skip old quarters
+                  
+                  items.forEach(item => {
+                      if (item.reported_price && item.shares_changed) {
+                          const p = parseFloat(String(item.reported_price).replace('$','').replace(',',''));
+                          const shares = Math.abs(item.shares_changed);
+                          const isBuy = item.type === 'Buy' || item.type === 'Add';
+                          
+                          if (!isNaN(p)) {
+                              let bIdx = Math.floor((p - minPrice) / binSize);
+                              bIdx = Math.max(0, Math.min(binCount - 1, bIdx));
+                              
+                              if (isBuy) bins[bIdx].smartBuy += shares;
+                              else bins[bIdx].smartSell += shares;
+                              
+                              bins[bIdx].netSmartShares += (isBuy ? shares : -shares);
+                          }
                       }
-                  }
-              });
-          }
+                  });
+              }
+          });
       }
       
       this.generatedBins = bins;
@@ -327,6 +365,22 @@ export default {
     margin-bottom: 1rem;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.range-selector {
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.range-selector:focus {
+    outline: none;
+    border-color: var(--primary-color);
 }
 .header h3 {
     margin: 0;
