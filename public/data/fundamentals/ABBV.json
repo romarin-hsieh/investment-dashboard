@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.102299996,
         "position": 180779699,
-        "value": 39249080560,
+        "value": 39377435360,
         "pctChange": 0.0171
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.082600005,
         "position": 145977089,
-        "value": 31693085881,
+        "value": 31796730595,
         "pctChange": -0.01
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.064,
         "position": 113069632,
-        "value": 24548547872,
+        "value": 24628828070,
         "pctChange": 0.97620004
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0452,
         "position": 79821657,
-        "value": 17330079999,
+        "value": 17386753912,
         "pctChange": -0.0025
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.023599999,
         "position": 41654784,
-        "value": 9043670179,
+        "value": 9073245355,
         "pctChange": -0.0011
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0229,
         "position": 40439493,
-        "value": 8779818349,
+        "value": 8808530661,
         "pctChange": 0.0322
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.0147,
         "position": 25958106,
-        "value": 5635764409,
+        "value": 5654194839,
         "pctChange": -0.0308
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0143,
         "position": 25230830,
-        "value": 5477865516,
+        "value": 5495779575,
         "pctChange": -0.0014
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.014199999,
         "position": 25154905,
-        "value": 5461381439,
+        "value": 5479241591,
         "pctChange": 0.0018000001
       },
       {
@@ -126,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.013099999,
         "position": 23102037,
-        "value": 5015683267,
+        "value": 5032085868,
         "pctChange": -0.0794
       }
     ]
@@ -253,6 +253,36 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-05T15:26:40.000Z",
+        "firm": "UBS",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 230,
+        "priorPriceTarget": 240
+      },
+      {
+        "epochGradeDate": "2026-02-05T14:21:12.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 228,
+        "priorPriceTarget": 232
+      },
+      {
+        "epochGradeDate": "2026-02-05T13:23:29.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 270,
+        "priorPriceTarget": 269
+      },
       {
         "epochGradeDate": "2026-01-27T15:07:46.000Z",
         "firm": "Citigroup",
@@ -3928,29 +3958,24 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.00078336557,
-    "preMarketChange": 0.16999817,
-    "preMarketTime": "2026-02-05T12:52:30.000Z",
-    "preMarketPrice": 217.18,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0378889,
-    "regularMarketChange": -8.55,
-    "regularMarketTime": "2026-02-04T21:00:03.000Z",
+    "regularMarketChangePercent": 0.0032702624,
+    "regularMarketChange": 0.7100067,
+    "regularMarketTime": "2026-02-05T18:40:21.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 217.11,
-    "regularMarketDayHigh": 220.85,
-    "regularMarketDayLow": 204.27,
-    "regularMarketVolume": 13178038,
+    "regularMarketPrice": 217.82,
+    "regularMarketDayHigh": 219.87,
+    "regularMarketDayLow": 214.14,
+    "regularMarketVolume": 5920229,
     "averageDailyVolume10Day": 7232880,
     "averageDailyVolume3Month": 6339239,
-    "regularMarketPreviousClose": 225.66,
+    "regularMarketPreviousClose": 217.11,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 209.775,
+    "regularMarketOpen": 216.9,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "REGULAR",
     "quoteType": "EQUITY",
     "symbol": "ABBV",
     "underlyingSymbol": null,
@@ -3962,12 +3987,12 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 383716851712
+    "marketCap": 384971735040
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "forwardPE": 13.684582,
+    "forwardPE": 13.729334,
     "profitMargins": 0.0691,
     "sharesOutstanding": 1767384632,
     "sharesShort": 22042536,
@@ -3988,8 +4013,8 @@
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": 4225999872,
-    "trailingEps": 1.26,
-    "forwardEps": 15.86358,
+    "trailingEps": 2.37,
+    "forwardEps": 15.88893,
     "lastSplitFactor": null,
     "52WeekChange": 0.12509716,
     "SandP52WeekChange": 0.13136196,
@@ -5080,7 +5105,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 217.11,
+    "currentPrice": 217.82,
     "targetHighPrice": 289,
     "targetLowPrice": 184,
     "targetMeanPrice": 244.2963,
@@ -5100,6 +5125,6 @@
     "profitMargins": 0.0691,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T12:52:47.650Z",
+  "lastUpdated": "2026-02-05T18:42:23.013Z",
   "source": "Static Build (yahoo-finance2)"
 }
