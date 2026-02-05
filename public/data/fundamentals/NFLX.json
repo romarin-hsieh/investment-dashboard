@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00559,
-    "institutionsPercentHeld": 0.85888,
-    "institutionsFloatPercentHeld": 0.86370003,
-    "institutionsCount": 4470
+    "institutionsPercentHeld": 0.85883003,
+    "institutionsFloatPercentHeld": 0.86364996,
+    "institutionsCount": 4475
   },
   "earnings": {
     "maxAge": 86400,
@@ -9828,11 +9828,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.010229536,
+    "preMarketChange": 0.8199997,
+    "preMarketTime": "2026-02-05T12:54:50.000Z",
+    "preMarketPrice": 80.98,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.011726482,
-    "postMarketChange": 0.9399948,
-    "postMarketTime": "2026-02-05T00:59:59.000Z",
-    "postMarketPrice": 81.1,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0027520799,
     "regularMarketChange": 0.220001,
@@ -9841,7 +9841,7 @@
     "regularMarketPrice": 80.16,
     "regularMarketDayHigh": 81.435,
     "regularMarketDayLow": 79.225,
-    "regularMarketVolume": 45923134,
+    "regularMarketVolume": 45926881,
     "averageDailyVolume10Day": 47819870,
     "averageDailyVolume3Month": 45947883,
     "regularMarketPreviousClose": 79.94,
@@ -9850,7 +9850,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "NFLX",
     "underlyingSymbol": null,
@@ -9878,7 +9878,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0167,
     "heldPercentInsiders": 0.00559,
-    "heldPercentInstitutions": 0.85888,
+    "heldPercentInstitutions": 0.85883003,
     "shortRatio": 1.85,
     "shortPercentOfFloat": 0.0168,
     "beta": 1.712,
@@ -10132,6 +10132,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 567,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "PETERS GREGORY K.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2027,
         "value": 2213639,
         "filerUrl": "",
@@ -10162,18 +10174,6 @@
         "transactionText": "Sale at price 1088.22 - 1100.00 per share.",
         "filerName": "HYMAN DAVID A",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 567,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "PETERS GREGORY K.",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-11-04T00:00:00.000Z",
         "ownership": "D"
@@ -11175,24 +11175,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 6013,
-        "value": 6690364,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1112.65 per share.",
-        "filerName": "DOPFNER MATHIAS",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 169,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "PETERS GREGORY K.",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-04-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6013,
+        "value": 6690364,
+        "filerUrl": "",
+        "transactionText": "Sale at price 1112.65 per share.",
+        "filerName": "DOPFNER MATHIAS",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-30T00:00:00.000Z",
         "ownership": "D"
@@ -11745,6 +11745,6 @@
     "profitMargins": 0.24304001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:53:23.725Z",
+  "lastUpdated": "2026-02-05T12:55:13.151Z",
   "source": "Static Build (yahoo-finance2)"
 }

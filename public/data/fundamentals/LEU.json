@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 2,
+        "buy": 9,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 9,
         "hold": 5,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.04575,
-    "institutionsPercentHeld": 0.93716,
-    "institutionsFloatPercentHeld": 0.98208,
-    "institutionsCount": 547
+    "institutionsPercentHeld": 0.93626,
+    "institutionsFloatPercentHeld": 0.98113996,
+    "institutionsCount": 544
   },
   "earnings": {
     "maxAge": 86400,
@@ -650,11 +658,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.04083293,
+    "preMarketChange": -10.274994,
+    "preMarketTime": "2026-02-05T12:52:07.000Z",
+    "preMarketPrice": 241.36,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0072386246,
-    "postMarketChange": 1.8200073,
-    "postMarketTime": "2026-02-05T01:00:00.000Z",
-    "postMarketPrice": 253.25,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": -0.103541,
     "regularMarketChange": -29.04,
@@ -672,14 +680,14 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "LEU",
     "underlyingSymbol": null,
     "shortName": "Centrus Energy Corp.",
     "longName": "Centrus Energy Corp.",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -700,7 +708,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.24290001,
     "heldPercentInsiders": 0.04575,
-    "heldPercentInstitutions": 0.93716,
+    "heldPercentInstitutions": 0.93626,
     "shortRatio": 4.33,
     "shortPercentOfFloat": 0.2554,
     "beta": 1.212,
@@ -1070,7 +1078,7 @@
     "currentPrice": 251.43,
     "targetHighPrice": 390,
     "targetLowPrice": 125,
-    "targetMeanPrice": 294.112,
+    "targetMeanPrice": 293.912,
     "targetMedianPrice": 300,
     "recommendationKey": "none",
     "numberOfAnalystOpinions": 15,
@@ -1095,6 +1103,6 @@
     "profitMargins": 0.25039,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:53:25.571Z",
+  "lastUpdated": "2026-02-05T12:54:45.079Z",
   "source": "Static Build (yahoo-finance2)"
 }

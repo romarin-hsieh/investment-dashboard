@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00772,
-    "institutionsPercentHeld": 0.89976996,
-    "institutionsFloatPercentHeld": 0.90677,
-    "institutionsCount": 770
+    "institutionsPercentHeld": 0.89859,
+    "institutionsFloatPercentHeld": 0.90558,
+    "institutionsCount": 768
   },
   "earnings": {
     "maxAge": 86400,
@@ -1488,11 +1488,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.02899336,
+    "preMarketChange": -7.4599915,
+    "preMarketTime": "2026-02-05T12:51:39.000Z",
+    "preMarketPrice": 249.84,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0011659068,
-    "postMarketChange": -0.2999878,
-    "postMarketTime": "2026-02-05T00:58:47.000Z",
-    "postMarketPrice": 257,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.09849,
     "regularMarketChange": -28.11,
@@ -1501,7 +1501,7 @@
     "regularMarketPrice": 257.3,
     "regularMarketDayHigh": 287.45,
     "regularMarketDayLow": 246.02,
-    "regularMarketVolume": 1786949,
+    "regularMarketVolume": 1790045,
     "averageDailyVolume10Day": 1402850,
     "averageDailyVolume3Month": 1302375,
     "regularMarketPreviousClose": 285.41,
@@ -1510,7 +1510,7 @@
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AVAV",
     "underlyingSymbol": null,
@@ -1538,7 +1538,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0664,
     "heldPercentInsiders": 0.00772,
-    "heldPercentInstitutions": 0.89976996,
+    "heldPercentInstitutions": 0.89859,
     "shortRatio": 2.41,
     "shortPercentOfFloat": 0.0884,
     "beta": 1.239,
@@ -1552,7 +1552,7 @@
     "nextFiscalYearEnd": "2026-04-30T00:00:00.000Z",
     "mostRecentQuarter": "2025-11-01T00:00:00.000Z",
     "netIncomeToCommon": -69563000,
-    "trailingEps": -1.11,
+    "trailingEps": -1.21,
     "forwardEps": 4.608,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 9.509,
@@ -1703,18 +1703,6 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 609,
-        "value": 169345,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
-        "filerName": "PAGE STEPHEN F",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-27T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1887,6 +1875,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 609,
+        "value": 169345,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
+        "filerName": "PAGE STEPHEN F",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 39938,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NAWABI WAHID",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7911,
         "filerUrl": "",
         "transactionText": "",
@@ -1925,17 +1936,6 @@
         "transactionText": "",
         "filerName": "STEVENSON TRACE E",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 39938,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NAWABI WAHID",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-24T00:00:00.000Z",
         "ownership": "D"
@@ -2110,30 +2110,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 910,
-        "value": 159860,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "PAGE STEPHEN F",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 910,
-        "value": 159860,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "PAGE STEPHEN F",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 319,
         "value": 56039,
         "filerUrl": "",
@@ -2282,10 +2258,45 @@
         "value": 159860,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "PAGE STEPHEN F",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 910,
+        "value": 159860,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
         "filerName": "MULLER EDWARD R",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 910,
+        "value": 159860,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "PAGE STEPHEN F",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11788,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NAWABI WAHID",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2356,17 +2367,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11788,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NAWABI WAHID",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1913,
         "value": 350079,
         "filerUrl": "",
@@ -2423,6 +2423,6 @@
     "profitMargins": -0.050780002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:53:04.080Z",
+  "lastUpdated": "2026-02-05T12:53:02.575Z",
   "source": "Static Build (yahoo-finance2)"
 }

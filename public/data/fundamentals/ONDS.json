@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.016239999,
-    "institutionsPercentHeld": 0.33696,
-    "institutionsFloatPercentHeld": 0.34252,
-    "institutionsCount": 228
+    "institutionsPercentHeld": 0.31868,
+    "institutionsFloatPercentHeld": 0.32394,
+    "institutionsCount": 236
   },
   "earnings": {
     "maxAge": 86400,
@@ -194,7 +194,7 @@
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
       "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -476,11 +476,11 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0072313733,
-    "postMarketChange": 0.069999695,
-    "postMarketTime": "2026-02-05T00:59:58.000Z",
-    "postMarketPrice": 9.75,
+    "preMarketChangePercent": -0.058987614,
+    "preMarketChange": -0.5710001,
+    "preMarketTime": "2026-02-05T12:55:20.000Z",
+    "preMarketPrice": 9.109,
+    "preMarketSource": "DELAYED",
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.149385,
     "regularMarketChange": -1.7,
@@ -488,24 +488,24 @@
     "priceHint": 2,
     "regularMarketPrice": 9.68,
     "regularMarketDayHigh": 11.395,
-    "regularMarketDayLow": 9.14,
+    "regularMarketDayLow": 9.13,
     "regularMarketVolume": 124268542,
-    "averageDailyVolume10Day": 98062840,
-    "averageDailyVolume3Month": 103467698,
+    "averageDailyVolume10Day": 95704770,
+    "averageDailyVolume3Month": 103814526,
     "regularMarketPreviousClose": 11.38,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 11.395,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
     "shortName": "Ondas Inc",
     "longName": "Ondas Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -526,7 +526,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1991,
     "heldPercentInsiders": 0.016239999,
-    "heldPercentInstitutions": 0.33696,
+    "heldPercentInstitutions": 0.31868,
     "shortRatio": 0.89,
     "shortPercentOfFloat": 0.20040001,
     "beta": 2.465,
@@ -545,7 +545,7 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 126.641,
     "enterpriseToEbitda": -81.251,
-    "52WeekChange": 5.465909,
+    "52WeekChange": 4.5,
     "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
@@ -942,6 +942,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 100000,
+        "value": 67020,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 0.67 per share.",
+        "filerName": "POPOLO JOSEPH V",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-06-07T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 29512,
         "value": 18140,
         "filerUrl": "",
@@ -975,18 +987,6 @@
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 100000,
-        "value": 67020,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 0.67 per share.",
-        "filerName": "POPOLO JOSEPH V",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-06-07T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1046,6 +1046,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:53:00.501Z",
+  "lastUpdated": "2026-02-05T12:55:22.448Z",
   "source": "Static Build (yahoo-finance2)"
 }

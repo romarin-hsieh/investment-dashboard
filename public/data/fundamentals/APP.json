@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.18721001,
-    "institutionsPercentHeld": 0.82735,
-    "institutionsFloatPercentHeld": 1.01792,
-    "institutionsCount": 2036
+    "institutionsPercentHeld": 0.82752997,
+    "institutionsFloatPercentHeld": 1.0181401,
+    "institutionsCount": 2038
   },
   "earnings": {
     "maxAge": 86400,
@@ -2658,11 +2658,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.005189264,
+    "preMarketChange": -2.0100098,
+    "preMarketTime": "2026-02-05T12:52:39.000Z",
+    "preMarketPrice": 385.33,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0068673613,
-    "postMarketChange": 2.6600037,
-    "postMarketTime": "2026-02-05T00:59:58.000Z",
-    "postMarketPrice": 390,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.16122,
     "regularMarketChange": -74.45,
@@ -2672,15 +2672,15 @@
     "regularMarketDayHigh": 410.22,
     "regularMarketDayLow": 382.4001,
     "regularMarketVolume": 15370837,
-    "averageDailyVolume10Day": 6287670,
-    "averageDailyVolume3Month": 4639153,
+    "averageDailyVolume10Day": 7160440,
+    "averageDailyVolume3Month": 4815634,
     "regularMarketPreviousClose": 461.79,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 403.7,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "APP",
     "underlyingSymbol": null,
@@ -2708,7 +2708,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.043,
     "heldPercentInsiders": 0.18721001,
-    "heldPercentInstitutions": 0.82735,
+    "heldPercentInstitutions": 0.82752997,
     "shortRatio": 3.93,
     "shortPercentOfFloat": 0.0494,
     "beta": 2.49,
@@ -2723,12 +2723,12 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.923,
     "netIncomeToCommon": 2916342016,
-    "trailingEps": 7.13,
+    "trailingEps": 8.48,
     "forwardEps": 13.94298,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 21.046,
     "enterpriseToEbitda": 33.917,
-    "52WeekChange": 0.21322548,
+    "52WeekChange": 0.01762867,
     "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
@@ -2889,6 +2889,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 4884,
+        "value": 2518953,
+        "filerUrl": "",
+        "transactionText": "Sale at price 492.26 - 527.50 per share.",
+        "filerName": "STUMPF MATTHEW",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-11-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 25694,
         "value": 13374883,
         "filerUrl": "",
@@ -2922,18 +2934,6 @@
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4884,
-        "value": 2518953,
-        "filerUrl": "",
-        "transactionText": "Sale at price 492.26 - 527.50 per share.",
-        "filerName": "STUMPF MATTHEW",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-21T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3562,6 +3562,18 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GEORGIADIS MARY MARGARET HASTINGS",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 720,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MORGENFELD TODD R",
         "filerRelation": "Director",
         "moneyText": "",
@@ -3623,18 +3635,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "CHEN HERALD Y",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 720,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GEORGIADIS MARY MARGARET HASTINGS",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
@@ -4339,6 +4339,17 @@
         "shares": 5205489,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "KKR GROUP PARTNERSHIP, L.P.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5205489,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "KKR DENALI HOLDINGS, L.P.",
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
@@ -4356,17 +4367,6 @@
         "moneyText": "",
         "startDate": "2024-11-21T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5205489,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KKR GROUP PARTNERSHIP, L.P.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4583,6 +4583,6 @@
     "profitMargins": 0.44879,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:54:10.558Z",
+  "lastUpdated": "2026-02-05T12:52:58.859Z",
   "source": "Static Build (yahoo-finance2)"
 }

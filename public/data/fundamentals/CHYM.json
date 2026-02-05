@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.116969995,
-    "institutionsPercentHeld": 0.85853994,
-    "institutionsFloatPercentHeld": 0.97226995,
+    "institutionsPercentHeld": 0.85863,
+    "institutionsFloatPercentHeld": 0.97236,
     "institutionsCount": 192
   },
   "earnings": {
@@ -469,11 +469,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0,
+    "preMarketChange": 0,
+    "preMarketTime": "2026-02-05T12:33:28.000Z",
+    "preMarketPrice": 21.73,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.011504833,
-    "postMarketChange": -0.25,
-    "postMarketTime": "2026-02-05T00:07:41.000Z",
-    "postMarketPrice": 21.48,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0059469803,
     "regularMarketChange": -0.130001,
@@ -482,16 +482,16 @@
     "regularMarketPrice": 21.73,
     "regularMarketDayHigh": 22.14,
     "regularMarketDayLow": 20.905,
-    "regularMarketVolume": 3652670,
-    "averageDailyVolume10Day": 2920930,
-    "averageDailyVolume3Month": 3889948,
+    "regularMarketVolume": 3653781,
+    "averageDailyVolume10Day": 3072350,
+    "averageDailyVolume3Month": 3886827,
     "regularMarketPreviousClose": 21.86,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 21.6,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CHYM",
     "underlyingSymbol": null,
@@ -519,7 +519,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0239,
     "heldPercentInsiders": 0.116969995,
-    "heldPercentInstitutions": 0.85853994,
+    "heldPercentInstitutions": 0.85863,
     "shortRatio": 2.74,
     "shortPercentOfFloat": 0.0323,
     "impliedSharesOutstanding": 374577986,
@@ -537,7 +537,7 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.432,
     "enterpriseToEbitda": -11.765,
-    "52WeekChange": -0.41094047,
+    "52WeekChange": -0.41444355,
     "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
@@ -942,6 +942,6 @@
     "profitMargins": -0.47674,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:54:12.505Z",
+  "lastUpdated": "2026-02-05T12:53:23.964Z",
   "source": "Static Build (yahoo-finance2)"
 }

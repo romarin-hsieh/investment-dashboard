@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 4,
+        "buy": 19,
+        "hold": 11,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 4,
         "buy": 17,
         "hold": 12,
         "sell": 1,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 14,
         "hold": 12,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01134,
-    "institutionsPercentHeld": 0.6702,
-    "institutionsFloatPercentHeld": 0.67789,
-    "institutionsCount": 1793
+    "institutionsPercentHeld": 0.67042,
+    "institutionsFloatPercentHeld": 0.67810994,
+    "institutionsCount": 1795
   },
   "earnings": {
     "maxAge": 86400,
@@ -245,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-05T11:05:22.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 340,
+        "priorPriceTarget": 420
+      },
       {
         "epochGradeDate": "2026-01-14T13:23:04.000Z",
         "firm": "Piper Sandler",
@@ -3940,11 +3958,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.046672963,
+    "preMarketChange": -7.869995,
+    "preMarketTime": "2026-02-05T12:53:02.000Z",
+    "preMarketPrice": 160.75,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.009198166,
-    "postMarketChange": -1.5509949,
-    "postMarketTime": "2026-02-05T00:59:56.000Z",
-    "postMarketPrice": 167.069,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.061449498,
     "regularMarketChange": -11.04,
@@ -3952,17 +3970,17 @@
     "priceHint": 2,
     "regularMarketPrice": 168.62,
     "regularMarketDayHigh": 176.69,
-    "regularMarketDayLow": 164.49,
+    "regularMarketDayLow": 164.42,
     "regularMarketVolume": 16536220,
-    "averageDailyVolume10Day": 10126870,
-    "averageDailyVolume3Month": 9241380,
+    "averageDailyVolume10Day": 10936950,
+    "averageDailyVolume3Month": 9361640,
     "regularMarketPreviousClose": 179.66,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 176.34,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "COIN",
     "underlyingSymbol": null,
@@ -3990,7 +4008,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0625,
     "heldPercentInsiders": 0.01134,
-    "heldPercentInstitutions": 0.6702,
+    "heldPercentInstitutions": 0.67042,
     "shortRatio": 2.07,
     "shortPercentOfFloat": 0.083500005,
     "beta": 3.703,
@@ -4010,7 +4028,7 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 5.899,
     "enterpriseToEbitda": 18.121,
-    "52WeekChange": -0.33550322,
+    "52WeekChange": -0.37633616,
     "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
@@ -4450,15 +4468,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 5288,
-        "value": 64853,
+        "shares": 2750,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
-        "filerName": "JONES JENNIFER N",
-        "filerRelation": "Officer",
+        "transactionText": "",
+        "filerName": "EHRSAM FREDERICK ERNEST III",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4473,14 +4490,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 2750,
+        "shares": 5288,
+        "value": 64853,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "EHRSAM FREDERICK ERNEST III",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4871,6 +4889,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 748,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEHANE CHRIS",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10486,
         "filerUrl": "",
         "transactionText": "",
@@ -4886,17 +4915,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CLEMENT PAUL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 748,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LEHANE CHRIS",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-08-20T00:00:00.000Z",
@@ -4926,18 +4944,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 5289,
-        "value": 64853,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
-        "filerName": "JONES JENNIFER N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 748,
         "filerUrl": "",
         "transactionText": "",
@@ -4954,6 +4960,18 @@
         "transactionText": "",
         "filerName": "HAAS ALESIA J",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5289,
+        "value": 64853,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-20T00:00:00.000Z",
         "ownership": "D"
@@ -5158,10 +5176,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 1252,
+        "shares": 1180,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CLEMENT PAUL",
+        "filerName": "LEHANE CHRIS",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-18T00:00:00.000Z",
@@ -5169,10 +5187,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 1180,
+        "shares": 1252,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LEHANE CHRIS",
+        "filerName": "CLEMENT PAUL",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-18T00:00:00.000Z",
@@ -5316,6 +5334,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 25000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 10000,
         "value": 262600,
         "filerUrl": "",
@@ -5325,17 +5354,6 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5642,18 +5660,6 @@
       {
         "maxAge": 1,
         "shares": 20000,
-        "value": 3968723,
-        "filerUrl": "",
-        "transactionText": "Sale at price 198.41 - 199.07 per share.",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-04-23T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20000,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "ARMSTRONG BRIAN",
@@ -5688,6 +5694,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 20000,
+        "value": 3968723,
+        "filerUrl": "",
+        "transactionText": "Sale at price 198.41 - 199.07 per share.",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-04-23T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ARMSTRONG BRIAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-04-14T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 15000,
         "value": 2681841,
         "filerUrl": "",
@@ -5706,7 +5735,7 @@
         "filerName": "ARMSTRONG BRIAN",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-04-14T00:00:00.000Z",
+        "startDate": "2025-04-03T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -5715,17 +5744,6 @@
         "value": 2527965,
         "filerUrl": "",
         "transactionText": "Sale at price 168.22 - 169.64 per share.",
-        "filerName": "ARMSTRONG BRIAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-04-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "ARMSTRONG BRIAN",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -5787,7 +5805,7 @@
     "currentPrice": 168.62,
     "targetHighPrice": 505,
     "targetLowPrice": 188,
-    "targetMeanPrice": 337.4626,
+    "targetMeanPrice": 334.88193,
     "targetMedianPrice": 330,
     "recommendationMean": 1.85714,
     "recommendationKey": "buy",
@@ -5814,6 +5832,6 @@
     "profitMargins": 0.43664002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:54:16.286Z",
+  "lastUpdated": "2026-02-05T12:53:29.321Z",
   "source": "Static Build (yahoo-finance2)"
 }

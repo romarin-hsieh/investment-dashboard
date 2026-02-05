@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0069199996,
-    "institutionsPercentHeld": 0.76498,
-    "institutionsFloatPercentHeld": 0.77031,
-    "institutionsCount": 1752
+    "institutionsPercentHeld": 0.76511,
+    "institutionsFloatPercentHeld": 0.77044,
+    "institutionsCount": 1746
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1762376700
         }
       ],
-      "currentQuarterEstimate": 0.62813,
+      "currentQuarterEstimate": 0.63585,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -2958,11 +2958,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.04229724,
+    "preMarketChange": -3.4100037,
+    "preMarketTime": "2026-02-05T12:54:00.000Z",
+    "preMarketPrice": 77.21,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0054601934,
-    "postMarketChange": -0.4402008,
-    "postMarketTime": "2026-02-05T00:59:58.000Z",
-    "postMarketPrice": 80.1798,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0740783,
     "regularMarketChange": -6.45,
@@ -2972,15 +2972,15 @@
     "regularMarketDayHigh": 85.3,
     "regularMarketDayLow": 77.624,
     "regularMarketVolume": 62170181,
-    "averageDailyVolume10Day": 25432680,
-    "averageDailyVolume3Month": 25863673,
+    "averageDailyVolume10Day": 29668280,
+    "averageDailyVolume3Month": 26462749,
     "regularMarketPreviousClose": 87.07,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 85,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "HOOD",
     "underlyingSymbol": null,
@@ -3008,7 +3008,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0377,
     "heldPercentInsiders": 0.0069199996,
-    "heldPercentInstitutions": 0.76498,
+    "heldPercentInstitutions": 0.76511,
     "shortRatio": 1.63,
     "shortPercentOfFloat": 0.0437,
     "beta": 2.44,
@@ -3027,7 +3027,7 @@
     "forwardEps": 2.59586,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 16.475,
-    "52WeekChange": 0.63757753,
+    "52WeekChange": 0.5162686,
     "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
@@ -3054,6 +3054,17 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 43403,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "QUIRK STEVEN M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-30T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 5864,
@@ -3201,7 +3212,7 @@
         "shares": 801,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "TRESEDER OLUWADARA JOHNSON",
+        "filerName": "MALKA MEYER",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
@@ -3223,29 +3234,7 @@
         "shares": 801,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MALKA MEYER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 801,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "BHATT BAIJU PRAFULKUMAR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 801,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LOOP PAULA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
@@ -3258,6 +3247,28 @@
         "transactionText": "",
         "filerName": "WARNICK JASON",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 801,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "TRESEDER OLUWADARA JOHNSON",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 801,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LOOP PAULA",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
         "ownership": "D"
@@ -3629,17 +3640,6 @@
         "shares": 800,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "TRESEDER OLUWADARA JOHNSON",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 800,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "RUBINSTEIN JONATHAN J",
         "filerRelation": "Director",
         "moneyText": "",
@@ -3675,6 +3675,17 @@
         "transactionText": "",
         "filerName": "TENEV VLADIMIR",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 800,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "TRESEDER OLUWADARA JOHNSON",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
@@ -4351,17 +4362,6 @@
         "shares": 2522,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "TRESEDER OLUWADARA JOHNSON",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2522,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "RUBINSTEIN JONATHAN J",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4385,6 +4385,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BHATT BAIJU PRAFULKUMAR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2522,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "TRESEDER OLUWADARA JOHNSON",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-24T00:00:00.000Z",
@@ -4645,18 +4656,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 94156,
-        "value": 5210593,
-        "filerUrl": "",
-        "transactionText": "Sale at price 55.34 per share.",
-        "filerName": "BHATT BAIJU PRAFULKUMAR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-09T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 24311,
         "value": 1335403,
         "filerUrl": "",
@@ -4666,6 +4665,18 @@
         "moneyText": "",
         "startDate": "2025-05-09T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 94156,
+        "value": 5210593,
+        "filerUrl": "",
+        "transactionText": "Sale at price 55.34 per share.",
+        "filerName": "BHATT BAIJU PRAFULKUMAR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-09T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4782,17 +4793,6 @@
         "moneyText": "",
         "startDate": "2025-04-16T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 223,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BHATT BAIJU PRAFULKUMAR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-16T00:00:00.000Z",
-        "ownership": "I"
       }
     ],
     "maxAge": 1
@@ -4827,6 +4827,6 @@
     "profitMargins": 0.52188,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:54:08.581Z",
+  "lastUpdated": "2026-02-05T12:54:14.312Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00823,
-    "institutionsPercentHeld": 1.07097,
-    "institutionsFloatPercentHeld": 1.07986,
-    "institutionsCount": 713
+    "institutionsPercentHeld": 1.0711399,
+    "institutionsFloatPercentHeld": 1.08004,
+    "institutionsCount": 710
   },
   "earnings": {
     "maxAge": 86400,
@@ -1886,11 +1886,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.00427716,
+    "preMarketChange": -0.5,
+    "preMarketTime": "2026-02-05T12:53:39.000Z",
+    "preMarketPrice": 116.4,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00796407,
-    "postMarketChange": 0.93099976,
-    "postMarketTime": "2026-02-05T00:58:29.000Z",
-    "postMarketPrice": 117.831,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.028101102,
     "regularMarketChange": -3.38,
@@ -1900,15 +1900,15 @@
     "regularMarketDayHigh": 123.8,
     "regularMarketDayLow": 112.41,
     "regularMarketVolume": 5481846,
-    "averageDailyVolume10Day": 2319380,
-    "averageDailyVolume3Month": 2118588,
+    "averageDailyVolume10Day": 2602800,
+    "averageDailyVolume3Month": 2173763,
     "regularMarketPreviousClose": 120.28,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 119.42,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "DUOL",
     "underlyingSymbol": null,
@@ -1936,7 +1936,7 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1608,
     "heldPercentInsiders": 0.00823,
-    "heldPercentInstitutions": 1.07097,
+    "heldPercentInstitutions": 1.0711399,
     "shortRatio": 4.5,
     "shortPercentOfFloat": 0.2079,
     "beta": 0.852,
@@ -1951,12 +1951,12 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 11.508,
     "netIncomeToCommon": 386017984,
-    "trailingEps": 7.72,
+    "trailingEps": 7.94,
     "forwardEps": 7.91117,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 4.542,
     "enterpriseToEbitda": 34.795,
-    "52WeekChange": -0.69108284,
+    "52WeekChange": -0.6997637,
     "SandP52WeekChange": 0.13136196,
     "latestShareClass": null,
     "leadInvestor": null
@@ -2797,6 +2797,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3573,
+        "value": 1887802,
+        "filerUrl": "",
+        "transactionText": "Sale at price 526.16 - 531.42 per share.",
+        "filerName": "SKARUPPA MATTHEW",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3267,
         "value": 1726186,
         "filerUrl": "",
@@ -2821,14 +2833,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 3573,
-        "value": 1887802,
+        "shares": 3304,
+        "value": 1756770,
         "filerUrl": "",
-        "transactionText": "Sale at price 526.16 - 531.42 per share.",
+        "transactionText": "Sale at price 531.71 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-05-16T00:00:00.000Z",
+        "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2863,18 +2875,6 @@
         "transactionText": "Sale at price 531.71 per share.",
         "filerName": "CHEN STEPHEN C",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3304,
-        "value": 1756770,
-        "filerUrl": "",
-        "transactionText": "Sale at price 531.71 per share.",
-        "filerName": "SKARUPPA MATTHEW",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
@@ -3805,6 +3805,6 @@
     "profitMargins": 0.40032002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T06:54:40.775Z",
+  "lastUpdated": "2026-02-05T12:53:52.790Z",
   "source": "Static Build (yahoo-finance2)"
 }
