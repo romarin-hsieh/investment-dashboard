@@ -4,6 +4,13 @@
 > **Architecture**: Static-First, Client-Side SPA (Vue 3)
 > **Hosting**: GitHub Pages
 
+### 6. Holdings & Smart Money Analysis
+*   **Ownership Structure**: Visual breakdown of Insiders vs Institutions.
+*   **Smart Money Trend**: Dual-axis chart tracking "Elite Funds" accumulation vs Stock Price.
+*   **Insider Sentiment**: Vertical analysis of recent 6-month insider trading activity.
+*   **Elite Funds**: Detailed tracking of top-tier investors (e.g., Warren Buffett, Bill Ackman) activity.
+*   **Top Institutions**: List of top institutional holders.
+
 ## 📖 Project Overview
 Investment Dashboard is a high-performance market visualization tool designed to run entirely on static hosting (GitHub Pages). It bypasses the need for a dynamic backend server by utilizing **Pre-computation** and **Client-Side Caching** strategies to deliver professional-grade charting and financial data.
 

@@ -63,10 +63,10 @@
                     <span>Generated Files:</span> 
                     <strong>{{ pipelineStatus.totalFiles }}</strong>
                 </div>
-                <div class="stat-item">
-              <span class="stat-label">Symbol Total:</span>
-              <span class="stat-value">{{ universeInfo.total }}</span>
-            </div>
+                <div class="info-row">
+                    <span>Symbol Total:</span>
+                    <strong>{{ universeInfo.total }}</strong>
+                </div>
                 <hr>
                 <div class="actions">
                     <button class="btn" @click="refreshStatus" :disabled="loading">

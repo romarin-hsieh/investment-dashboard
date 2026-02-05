@@ -31,8 +31,10 @@ class PrecomputedOhlcvApi {
     }
 
     try {
-      // 使用統一的 paths helper
-      const url = paths.ohlcvPrecomputed(symbol, period, days);
+      // 使用統一的 paths helper 並加入 cache busting (每小時更新一次)
+      const timestamp = Math.floor(Date.now() / (60 * 60 * 1000)); // 1 hour cache window
+      const baseUrl = paths.ohlcvPrecomputed(symbol, period, days);
+      const url = `${baseUrl}?t=${timestamp}`;
 
       console.log(`📊 Fetching precomputed OHLCV data: ${url}`);
 

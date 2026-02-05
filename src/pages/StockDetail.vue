@@ -83,17 +83,17 @@
         </button>
         <button 
             class="tab-btn" 
-            :class="{ active: activeTab === 'analysis' }"
-            @click="activeTab = 'analysis'"
-        >
-            Fundamental Analysis
-        </button>
-        <button 
-            class="tab-btn" 
             :class="{ active: activeTab === 'holdings' }"
             @click="activeTab = 'holdings'"
         >
             Holdings & Sentiment
+        </button>
+        <button 
+            class="tab-btn" 
+            :class="{ active: activeTab === 'analysis' }"
+            @click="activeTab = 'analysis'"
+        >
+            Fundamental Analysis
         </button>
       </div>
 
@@ -269,12 +269,18 @@
           </div>
       </div>
 
-      <!-- Tab Content: Holdings -->
-      <div v-if="activeTab === 'holdings'" class="tab-content">
+      <!-- Tab Content: Holdings & Sentiment -->
+      <div v-show="activeTab === 'holdings'" class="tab-content">
           <div class="widget-container">
              <div class="widget-header"><h3>Institutional & Insider Holdings</h3></div>
-             <HoldingsAnalysis :symbol="symbol" />
+             <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData" />
           </div>
+
+          <!-- Dataroma Super Investor Stats -->
+          <SuperInvestorStats 
+            :dataroma-data="dataromaData" 
+            :loading="dataromaLoading" 
+          />
       </div>
     </div>
   </div>
@@ -298,6 +304,7 @@ import TechnicalSignals from '@/components/TechnicalSignals.vue'
 import TrendlinesSRWidget from '@/components/TrendlinesSRWidget.vue'
 import CisdWidget from '@/components/CisdWidget.vue'
 import ReviewCometChart from '@/components/ReviewCometChart.vue'
+import SuperInvestorStats from '@/components/SuperInvestorStats.vue'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { useTheme } from '@/composables/useTheme.js'
 
@@ -320,7 +327,8 @@ export default {
     TechnicalSignals,
     TrendlinesSRWidget,
     CisdWidget,
-    ReviewCometChart
+    ReviewCometChart,
+    SuperInvestorStats
   },
   setup() {
     const { theme } = useTheme()
@@ -331,7 +339,9 @@ export default {
       loading: true,
       error: null,
       metadata: null,
-      activeTab: 'overview'
+      activeTab: 'overview',
+      dataromaData: null,
+      dataromaLoading: false
     }
   },
   computed: {
@@ -485,8 +495,10 @@ export default {
     mounted() {
     // 頁面載入時滾動到頂部
     this.scrollToTop()
+    this.scrollToTop()
     
     this.loadMetadata()
+    this.fetchDataromaData() // Initial fetch
     this.initializePage()
   },
   methods: {
@@ -578,6 +590,41 @@ export default {
           window.scrollTo(0, 0)
         }, 100)
       })
+    },
+
+    async fetchDataromaData() {
+      this.dataromaLoading = true
+      try {
+        const basePath = import.meta.env.BASE_URL.endsWith('/') 
+            ? import.meta.env.BASE_URL.slice(0, -1) 
+            : import.meta.env.BASE_URL
+            
+        const response = await fetch(`${basePath}/data/dataroma/${this.symbol}.json?t=${Date.now()}`)
+        if (response.ok) {
+          this.dataromaData = await response.json()
+        } else {
+          console.warn(`Dataroma data not found for ${this.symbol}`)
+          this.dataromaData = null
+        }
+      } catch (e) {
+        console.error('Failed to fetch Dataroma data:', e)
+        this.dataromaData = null
+      } finally {
+        this.dataromaLoading = false
+      }
+    }
+  },
+  watch: {
+    symbol() {
+      this.scrollToTop()
+      this.loadMetadata()
+      this.fetchDataromaData() // Fetch on symbol change
+    },
+    // ... existing watch ...
+    activeTab(newTab) {
+        if (newTab === 'holdings' && !this.dataromaData && !this.dataromaLoading) {
+            this.fetchDataromaData()
+        }
     }
   }
 }

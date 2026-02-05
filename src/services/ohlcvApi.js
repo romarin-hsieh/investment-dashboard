@@ -94,12 +94,22 @@ class OhlcvApi {
         // 使用統一的 baseUrl helper
         // Sanitize symbol for Windows compatibility (replace : with _)
         const safeSymbol = symbol.replace(/:/g, '_');
-        // Use unified Cache Busting: Change every 60 seconds to allow basic CDN caching but prevent stale data
-        const timestamp = Math.floor(Date.now() / 60000);
-        const url = paths.ohlcv(safeSymbol) + '?t=' + timestamp;
-        console.warn(`🔍 Fetching local OHLCV from: ${url}`);
+        // Use unified Cache Busting: Change every 60 minutes to allow CDN caching
+        const timestamp = Math.floor(Date.now() / (60 * 60 * 1000));
 
-        const response = await fetch(url);
+        // 優先嘗試 precomputed 格式 (包含 1825 天完整資料)
+        // 這是 daily-data-update workflow 產生的檔案格式
+        const precomputedUrl = paths.ohlcvPrecomputed(safeSymbol, period, 1825) + '?t=' + timestamp;
+        console.log(`🔍 Fetching precomputed OHLCV from: ${precomputedUrl}`);
+
+        let response = await fetch(precomputedUrl);
+
+        // 如果 precomputed 格式不存在，嘗試舊的簡單格式
+        if (!response.ok && response.status === 404) {
+          const fallbackUrl = paths.ohlcv(safeSymbol) + '?t=' + timestamp;
+          console.warn(`🔍 Precomputed not found, trying fallback: ${fallbackUrl}`);
+          response = await fetch(fallbackUrl);
+        }
 
         if (!response.ok) {
           // 如果是 404，不視為錯誤，而是回傳 null

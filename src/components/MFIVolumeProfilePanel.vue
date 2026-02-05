@@ -355,7 +355,9 @@ export default {
     
     onRangeChange() {
       console.log(`📊 Range changed to ${this.selectedRange} for ${this.symbol}`);
-      this.loading = true; // Force visual loading state
+      // Don't set loading here - loadData() handles it internally
+      // Setting it here would cause loadData() to return immediately due to guard
+      this.loading = false; // Reset loading state to allow loadData to proceed
       this.loadData();
     },
     

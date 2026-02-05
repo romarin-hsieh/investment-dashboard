@@ -25,41 +25,41 @@ class StocksConfigService {
   async loadConfig() {
     try {
       // 檢查緩存
-      if (this.cache && this.lastUpdate && 
-          (Date.now() - this.lastUpdate) < this.cacheTimeout) {
+      if (this.cache && this.lastUpdate &&
+        (Date.now() - this.lastUpdate) < this.cacheTimeout) {
         return this.cache
       }
 
       const url = this.getConfigUrl()
       const response = await fetch(`${url}?t=${Date.now()}`)
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
-      
+
       const config = await response.json()
-      
+
       // 驗證配置格式
       if (!config.stocks || !Array.isArray(config.stocks)) {
         throw new Error('Invalid config format: missing stocks array')
       }
-      
+
       // 更新緩存
       this.cache = config
       this.lastUpdate = Date.now()
-      
+
       console.log(`✅ Loaded ${config.stocks.length} stocks from config/stocks.json`)
       return config
-      
+
     } catch (error) {
       console.error('❌ Failed to load stocks config:', error)
-      
+
       // 返回緩存數據（如果有）
       if (this.cache) {
         console.warn('⚠️ Using cached config due to load failure')
         return this.cache
       }
-      
+
       // 最終 fallback
       return this.getFallbackConfig()
     }
@@ -71,7 +71,7 @@ class StocksConfigService {
   async getEnabledSymbols() {
     const config = await this.loadConfig()
     return config.stocks
-      .filter(stock => stock.enabled)
+      .filter(stock => stock.enabled && stock.visible !== false)
       .map(stock => stock.symbol)
   }
 
@@ -142,7 +142,7 @@ class StocksConfigService {
   async getStocksByExchange() {
     const config = await this.loadConfig()
     const groups = {}
-    
+
     config.stocks
       .filter(stock => stock.enabled)
       .forEach(stock => {
@@ -151,7 +151,7 @@ class StocksConfigService {
         }
         groups[stock.exchange].push(stock.symbol)
       })
-    
+
     return groups
   }
 
@@ -161,7 +161,7 @@ class StocksConfigService {
   async getStocksBySector() {
     const config = await this.loadConfig()
     const groups = {}
-    
+
     config.stocks
       .filter(stock => stock.enabled)
       .forEach(stock => {
@@ -170,7 +170,7 @@ class StocksConfigService {
         }
         groups[stock.sector].push(stock.symbol)
       })
-    
+
     return groups
   }
 
@@ -180,7 +180,7 @@ class StocksConfigService {
   async getStats() {
     const config = await this.loadConfig()
     const enabledStocks = config.stocks.filter(s => s.enabled)
-    
+
     return {
       total: config.stocks.length,
       enabled: enabledStocks.length,
