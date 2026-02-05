@@ -1,1034 +1,459 @@
 {
-  "generated": "2026-02-05T04:11:29Z",
+  "generated": "2026-02-05T10:04:46Z",
   "symbols": [
-    "ASTS",
-    "RIVN",
-    "PL",
-    "ONDS",
-    "RDW",
-    "AVAV",
-    "MDB",
-    "ORCL",
-    "TSM",
-    "RKLB",
-    "CRM",
-    "NVDA",
-    "AVGO",
-    "AMZN",
-    "GOOG",
-    "META",
-    "NFLX",
-    "LEU",
-    "SMR",
-    "CRWV",
-    "IONQ",
-    "PLTR",
-    "HIMS",
-    "TSLA",
-    "VST",
-    "KTOS",
-    "MELI",
-    "SOFI",
-    "RBRK",
-    "EOSE",
-    "CEG",
-    "TMDX",
-    "GRAB",
-    "RBLX",
-    "IREN",
-    "OKLO",
-    "PATH",
-    "INTR",
-    "SE",
-    "KSPI",
-    "LUNR",
-    "HOOD",
-    "APP",
-    "CHYM",
-    "NU",
-    "COIN",
-    "CRCL",
-    "IBKR",
-    "CCJ",
-    "UUUU",
-    "VRT",
-    "ETN",
-    "MSFT",
+    "ABBV",
+    "ACHR",
     "ADBE",
-    "FIG",
-    "PANW",
-    "CRWD",
-    "DDOG",
-    "DUOL",
-    "ZETA",
-    "AXON",
     "ALAB",
-    "LRCX",
-    "BWXT",
-    "UMAC",
-    "MP",
-    "RR",
-    "SNDK",
-    "MU",
+    "AMD",
+    "AMZN",
+    "APP",
+    "ASTS",
+    "AVAV",
+    "AVGO",
+    "AXON",
+    "AXP",
+    "BA",
+    "BAC",
     "BE",
+    "BRK-B",
+    "BWXT",
+    "CAT",
+    "CCJ",
+    "CEG",
+    "CHYM",
+    "CIFR",
+    "CLSK",
+    "COIN",
+    "COST",
+    "CRCL",
+    "CRM",
+    "CRWD",
+    "CRWV",
+    "CSCO",
+    "CVX",
+    "D-WAVE",
+    "DDOG",
+    "DGRO",
+    "DIA",
+    "DIVO",
+    "DUOL",
+    "EOSE",
+    "ETN",
+    "FIG",
+    "GEV",
+    "GLD",
+    "GOOG",
+    "GRAB",
+    "GS",
+    "HD",
+    "HIMS",
+    "HON",
+    "HOOD",
+    "HUT",
+    "IBKR",
+    "IBM",
+    "INTR",
+    "INTU",
+    "IONQ",
+    "IREN",
+    "IWM",
+    "JEPI",
+    "JEPQ",
+    "JNJ",
+    "JOBY",
+    "JPM",
+    "KO",
+    "KSPI",
+    "KTOS",
+    "LEU",
+    "LRCX",
+    "LUNR",
+    "MA",
+    "MAIN",
+    "MCD",
+    "MDB",
+    "MELI",
+    "META",
+    "MMM",
+    "MP",
+    "MRK",
+    "MSFT",
+    "MU",
+    "NET",
+    "NFLX",
+    "NU",
+    "NVDA",
+    "O",
+    "OKLO",
+    "ONDS",
+    "ORCL",
+    "PANW",
+    "PATH",
+    "PG",
+    "PL",
+    "PLTR",
+    "PM",
+    "POWL",
+    "QBTS",
+    "QQQ",
+    "RBRK",
+    "RDW",
+    "RGTI",
+    "RIVN",
+    "RKLB",
+    "RR",
+    "RTX",
+    "SCHD",
+    "SE",
+    "SLV",
+    "SMCI",
+    "SMR",
+    "SNDK",
+    "SOFI",
+    "SPY",
+    "TMDX",
+    "TRV",
+    "TSLA",
+    "TSM",
+    "UMAC",
+    "UNG",
+    "UNH",
+    "USO",
+    "UUUU",
+    "V",
+    "VIG",
+    "VNQ",
+    "VRT",
+    "VST",
+    "VTV",
+    "VUG",
+    "VYM",
+    "WFC",
+    "WMT",
+    "WULF",
+    "XOM",
+    "ZETA",
+    "ZS",
     "^GSPC",
     "^VIX",
     "TLT",
     "JNK"
   ],
   "files": [
-    "ASTS.json",
-    "asts_1d_1825d.json",
-    "RIVN.json",
-    "rivn_1d_1825d.json",
-    "PL.json",
-    "pl_1d_1825d.json",
-    "ONDS.json",
-    "onds_1d_1825d.json",
-    "RDW.json",
-    "rdw_1d_1825d.json",
-    "AVAV.json",
-    "avav_1d_1825d.json",
-    "MDB.json",
-    "mdb_1d_1825d.json",
-    "ORCL.json",
-    "orcl_1d_1825d.json",
-    "TSM.json",
-    "tsm_1d_1825d.json",
-    "RKLB.json",
-    "rklb_1d_1825d.json",
-    "CRM.json",
-    "crm_1d_1825d.json",
-    "NVDA.json",
-    "nvda_1d_1825d.json",
-    "AVGO.json",
-    "avgo_1d_1825d.json",
-    "AMZN.json",
-    "amzn_1d_1825d.json",
-    "GOOG.json",
-    "goog_1d_1825d.json",
-    "META.json",
-    "meta_1d_1825d.json",
-    "NFLX.json",
-    "nflx_1d_1825d.json",
-    "LEU.json",
-    "leu_1d_1825d.json",
-    "SMR.json",
-    "smr_1d_1825d.json",
-    "CRWV.json",
-    "crwv_1d_1825d.json",
-    "IONQ.json",
-    "ionq_1d_1825d.json",
-    "PLTR.json",
-    "pltr_1d_1825d.json",
-    "HIMS.json",
-    "hims_1d_1825d.json",
-    "TSLA.json",
-    "tsla_1d_1825d.json",
-    "VST.json",
-    "vst_1d_1825d.json",
-    "KTOS.json",
-    "ktos_1d_1825d.json",
-    "MELI.json",
-    "meli_1d_1825d.json",
-    "SOFI.json",
-    "sofi_1d_1825d.json",
-    "RBRK.json",
-    "rbrk_1d_1825d.json",
-    "EOSE.json",
-    "eose_1d_1825d.json",
-    "CEG.json",
-    "ceg_1d_1825d.json",
-    "TMDX.json",
-    "tmdx_1d_1825d.json",
-    "GRAB.json",
-    "grab_1d_1825d.json",
-    "RBLX.json",
-    "rblx_1d_1825d.json",
-    "IREN.json",
-    "iren_1d_1825d.json",
-    "OKLO.json",
-    "oklo_1d_1825d.json",
-    "PATH.json",
-    "path_1d_1825d.json",
-    "INTR.json",
-    "intr_1d_1825d.json",
-    "SE.json",
-    "se_1d_1825d.json",
-    "KSPI.json",
-    "kspi_1d_1825d.json",
-    "LUNR.json",
-    "lunr_1d_1825d.json",
-    "HOOD.json",
-    "hood_1d_1825d.json",
-    "APP.json",
-    "app_1d_1825d.json",
-    "CHYM.json",
-    "chym_1d_1825d.json",
-    "NU.json",
-    "nu_1d_1825d.json",
-    "COIN.json",
-    "coin_1d_1825d.json",
-    "CRCL.json",
-    "crcl_1d_1825d.json",
-    "IBKR.json",
-    "ibkr_1d_1825d.json",
-    "CCJ.json",
-    "ccj_1d_1825d.json",
-    "UUUU.json",
-    "uuuu_1d_1825d.json",
-    "VRT.json",
-    "vrt_1d_1825d.json",
-    "ETN.json",
-    "etn_1d_1825d.json",
-    "MSFT.json",
-    "msft_1d_1825d.json",
+    "ABBV.json",
+    "abbv_1d_1095d.json",
+    "ACHR.json",
+    "achr_1d_1095d.json",
     "ADBE.json",
-    "adbe_1d_1825d.json",
-    "FIG.json",
-    "fig_1d_1825d.json",
-    "PANW.json",
-    "panw_1d_1825d.json",
-    "CRWD.json",
-    "crwd_1d_1825d.json",
-    "DDOG.json",
-    "ddog_1d_1825d.json",
-    "DUOL.json",
-    "duol_1d_1825d.json",
-    "ZETA.json",
-    "zeta_1d_1825d.json",
-    "AXON.json",
-    "axon_1d_1825d.json",
+    "adbe_1d_1095d.json",
     "ALAB.json",
-    "alab_1d_1825d.json",
-    "LRCX.json",
-    "lrcx_1d_1825d.json",
-    "BWXT.json",
-    "bwxt_1d_1825d.json",
-    "UMAC.json",
-    "umac_1d_1825d.json",
-    "MP.json",
-    "mp_1d_1825d.json",
-    "RR.json",
-    "rr_1d_1825d.json",
-    "SNDK.json",
-    "sndk_1d_1825d.json",
-    "MU.json",
-    "mu_1d_1825d.json",
+    "alab_1d_1095d.json",
+    "AMD.json",
+    "amd_1d_1095d.json",
+    "AMZN.json",
+    "amzn_1d_1095d.json",
+    "APP.json",
+    "app_1d_1095d.json",
+    "ASTS.json",
+    "asts_1d_1095d.json",
+    "AVAV.json",
+    "avav_1d_1095d.json",
+    "AVGO.json",
+    "avgo_1d_1095d.json",
+    "AXON.json",
+    "axon_1d_1095d.json",
+    "AXP.json",
+    "axp_1d_1095d.json",
+    "BA.json",
+    "ba_1d_1095d.json",
+    "BAC.json",
+    "bac_1d_1095d.json",
     "BE.json",
-    "be_1d_1825d.json",
+    "be_1d_1095d.json",
+    "BRK-B.json",
+    "brk-b_1d_1095d.json",
+    "BWXT.json",
+    "bwxt_1d_1095d.json",
+    "CAT.json",
+    "cat_1d_1095d.json",
+    "CCJ.json",
+    "ccj_1d_1095d.json",
+    "CEG.json",
+    "ceg_1d_1095d.json",
+    "CHYM.json",
+    "chym_1d_1095d.json",
+    "CIFR.json",
+    "cifr_1d_1095d.json",
+    "CLSK.json",
+    "clsk_1d_1095d.json",
+    "COIN.json",
+    "coin_1d_1095d.json",
+    "COST.json",
+    "cost_1d_1095d.json",
+    "CRCL.json",
+    "crcl_1d_1095d.json",
+    "CRM.json",
+    "crm_1d_1095d.json",
+    "CRWD.json",
+    "crwd_1d_1095d.json",
+    "CRWV.json",
+    "crwv_1d_1095d.json",
+    "CSCO.json",
+    "csco_1d_1095d.json",
+    "CVX.json",
+    "cvx_1d_1095d.json",
+    "DDOG.json",
+    "ddog_1d_1095d.json",
+    "DGRO.json",
+    "dgro_1d_1095d.json",
+    "DIA.json",
+    "dia_1d_1095d.json",
+    "DIVO.json",
+    "divo_1d_1095d.json",
+    "DUOL.json",
+    "duol_1d_1095d.json",
+    "EOSE.json",
+    "eose_1d_1095d.json",
+    "ETN.json",
+    "etn_1d_1095d.json",
+    "FIG.json",
+    "fig_1d_1095d.json",
+    "GEV.json",
+    "gev_1d_1095d.json",
+    "GLD.json",
+    "gld_1d_1095d.json",
+    "GOOG.json",
+    "goog_1d_1095d.json",
+    "GRAB.json",
+    "grab_1d_1095d.json",
+    "GS.json",
+    "gs_1d_1095d.json",
+    "HD.json",
+    "hd_1d_1095d.json",
+    "HIMS.json",
+    "hims_1d_1095d.json",
+    "HON.json",
+    "hon_1d_1095d.json",
+    "HOOD.json",
+    "hood_1d_1095d.json",
+    "HUT.json",
+    "hut_1d_1095d.json",
+    "IBKR.json",
+    "ibkr_1d_1095d.json",
+    "IBM.json",
+    "ibm_1d_1095d.json",
+    "INTR.json",
+    "intr_1d_1095d.json",
+    "INTU.json",
+    "intu_1d_1095d.json",
+    "IONQ.json",
+    "ionq_1d_1095d.json",
+    "IREN.json",
+    "iren_1d_1095d.json",
+    "IWM.json",
+    "iwm_1d_1095d.json",
+    "JEPI.json",
+    "jepi_1d_1095d.json",
+    "JEPQ.json",
+    "jepq_1d_1095d.json",
+    "JNJ.json",
+    "jnj_1d_1095d.json",
+    "JOBY.json",
+    "joby_1d_1095d.json",
+    "JPM.json",
+    "jpm_1d_1095d.json",
+    "KO.json",
+    "ko_1d_1095d.json",
+    "KSPI.json",
+    "kspi_1d_1095d.json",
+    "KTOS.json",
+    "ktos_1d_1095d.json",
+    "LEU.json",
+    "leu_1d_1095d.json",
+    "LRCX.json",
+    "lrcx_1d_1095d.json",
+    "LUNR.json",
+    "lunr_1d_1095d.json",
+    "MA.json",
+    "ma_1d_1095d.json",
+    "MAIN.json",
+    "main_1d_1095d.json",
+    "MCD.json",
+    "mcd_1d_1095d.json",
+    "MDB.json",
+    "mdb_1d_1095d.json",
+    "MELI.json",
+    "meli_1d_1095d.json",
+    "META.json",
+    "meta_1d_1095d.json",
+    "MMM.json",
+    "mmm_1d_1095d.json",
+    "MP.json",
+    "mp_1d_1095d.json",
+    "MRK.json",
+    "mrk_1d_1095d.json",
+    "MSFT.json",
+    "msft_1d_1095d.json",
+    "MU.json",
+    "mu_1d_1095d.json",
+    "NET.json",
+    "net_1d_1095d.json",
+    "NFLX.json",
+    "nflx_1d_1095d.json",
+    "NU.json",
+    "nu_1d_1095d.json",
+    "NVDA.json",
+    "nvda_1d_1095d.json",
+    "O.json",
+    "o_1d_1095d.json",
+    "OKLO.json",
+    "oklo_1d_1095d.json",
+    "ONDS.json",
+    "onds_1d_1095d.json",
+    "ORCL.json",
+    "orcl_1d_1095d.json",
+    "PANW.json",
+    "panw_1d_1095d.json",
+    "PATH.json",
+    "path_1d_1095d.json",
+    "PG.json",
+    "pg_1d_1095d.json",
+    "PL.json",
+    "pl_1d_1095d.json",
+    "PLTR.json",
+    "pltr_1d_1095d.json",
+    "PM.json",
+    "pm_1d_1095d.json",
+    "POWL.json",
+    "powl_1d_1095d.json",
+    "QBTS.json",
+    "qbts_1d_1095d.json",
+    "QQQ.json",
+    "qqq_1d_1095d.json",
+    "RBRK.json",
+    "rbrk_1d_1095d.json",
+    "RDW.json",
+    "rdw_1d_1095d.json",
+    "RGTI.json",
+    "rgti_1d_1095d.json",
+    "RIVN.json",
+    "rivn_1d_1095d.json",
+    "RKLB.json",
+    "rklb_1d_1095d.json",
+    "RR.json",
+    "rr_1d_1095d.json",
+    "RTX.json",
+    "rtx_1d_1095d.json",
+    "SCHD.json",
+    "schd_1d_1095d.json",
+    "SE.json",
+    "se_1d_1095d.json",
+    "SLV.json",
+    "slv_1d_1095d.json",
+    "SMCI.json",
+    "smci_1d_1095d.json",
+    "SMR.json",
+    "smr_1d_1095d.json",
+    "SNDK.json",
+    "sndk_1d_1095d.json",
+    "SOFI.json",
+    "sofi_1d_1095d.json",
+    "SPY.json",
+    "spy_1d_1095d.json",
+    "TMDX.json",
+    "tmdx_1d_1095d.json",
+    "TRV.json",
+    "trv_1d_1095d.json",
+    "TSLA.json",
+    "tsla_1d_1095d.json",
+    "TSM.json",
+    "tsm_1d_1095d.json",
+    "UMAC.json",
+    "umac_1d_1095d.json",
+    "UNG.json",
+    "ung_1d_1095d.json",
+    "UNH.json",
+    "unh_1d_1095d.json",
+    "USO.json",
+    "uso_1d_1095d.json",
+    "UUUU.json",
+    "uuuu_1d_1095d.json",
+    "V.json",
+    "v_1d_1095d.json",
+    "VIG.json",
+    "vig_1d_1095d.json",
+    "VNQ.json",
+    "vnq_1d_1095d.json",
+    "VRT.json",
+    "vrt_1d_1095d.json",
+    "VST.json",
+    "vst_1d_1095d.json",
+    "VTV.json",
+    "vtv_1d_1095d.json",
+    "VUG.json",
+    "vug_1d_1095d.json",
+    "VYM.json",
+    "vym_1d_1095d.json",
+    "WFC.json",
+    "wfc_1d_1095d.json",
+    "WMT.json",
+    "wmt_1d_1095d.json",
+    "WULF.json",
+    "wulf_1d_1095d.json",
+    "XOM.json",
+    "xom_1d_1095d.json",
+    "ZETA.json",
+    "zeta_1d_1095d.json",
+    "ZS.json",
+    "zs_1d_1095d.json",
     "FOREXCOM_SPXUSD.json",
-    "forexcom_spxusd_1d_1825d.json",
+    "forexcom_spxusd_1d_1095d.json",
     "TVC_VIX.json",
-    "tvc_vix_1d_1825d.json",
+    "tvc_vix_1d_1095d.json",
     "NASDAQ_TLT.json",
-    "nasdaq_tlt_1d_1825d.json",
+    "nasdaq_tlt_1d_1095d.json",
     "NASDAQ_JNK.json",
-    "nasdaq_jnk_1d_1825d.json"
+    "nasdaq_jnk_1d_1095d.json"
   ],
-  "totalFiles": 148,
-  "dataPoints": 1825,
+  "totalFiles": 274,
+  "dataPoints": 1095,
   "period": "1d",
   "source": "yfinance",
   "note": "Real OHLCV data for both ohlcvApi and precomputedOhlcvApi",
   "report": {
-    "totalSymbols": 74,
-    "ok": 74,
-    "failed": 0,
-    "successRate": "100.0%",
+    "totalSymbols": 138,
+    "ok": 137,
+    "failed": 1,
+    "successRate": "99.3%",
     "items": [
       {
-        "symbol": "ASTS",
+        "symbol": "ABBV",
         "files": [
-          "ASTS.json",
-          "asts_1d_1825d.json"
+          "ABBV.json",
+          "abbv_1d_1095d.json"
         ],
-        "rows": 1572,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 1.9700000286102295,
-          "max": 129.88999938964844,
-          "latest": 103.5
+          "min": 106.44000244140625,
+          "max": 244.80999755859375,
+          "latest": 217.11000061035156
         },
         "status": "ok"
       },
       {
-        "symbol": "RIVN",
+        "symbol": "ACHR",
         "files": [
-          "RIVN.json",
-          "rivn_1d_1825d.json"
+          "ACHR.json",
+          "achr_1d_1095d.json"
         ],
-        "rows": 1062,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 8.260000228881836,
-          "max": 179.47000122070312,
-          "latest": 14.369999885559082
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "PL",
-        "files": [
-          "PL.json",
-          "pl_1d_1825d.json"
-        ],
-        "rows": 1201,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 1.6699999570846558,
-          "max": 30.898000717163086,
-          "latest": 21.770000457763672
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "ONDS",
-        "files": [
-          "ONDS.json",
-          "onds_1d_1825d.json"
-        ],
-        "rows": 1297,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 0.3149999976158142,
-          "max": 16.0,
-          "latest": 9.680000305175781
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "RDW",
-        "files": [
-          "RDW.json",
-          "rdw_1d_1825d.json"
-        ],
-        "rows": 1270,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 1.6699999570846558,
-          "max": 26.65999984741211,
-          "latest": 10.029999732971191
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "AVAV",
-        "files": [
-          "AVAV.json",
-          "avav_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 45.0,
-          "max": 417.8599853515625,
-          "latest": 257.29998779296875
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "MDB",
-        "files": [
-          "MDB.json",
-          "mdb_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 65.62000274658203,
-          "max": 590.0,
-          "latest": 337.6000061035156
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "ORCL",
-        "files": [
-          "ORCL.json",
-          "orcl_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 39.709999084472656,
-          "max": 345.7200012207031,
-          "latest": 146.6699981689453
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "TSM",
-        "files": [
-          "TSM.json",
-          "tsm_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 34.209999084472656,
-          "max": 351.3299865722656,
-          "latest": 325.739990234375
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "RKLB",
-        "files": [
-          "RKLB.json",
-          "rklb_1d_1825d.json"
-        ],
-        "rows": 1304,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 3.4700000286102295,
-          "max": 99.58000183105469,
-          "latest": 73.11000061035156
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "CRM",
-        "files": [
-          "CRM.json",
-          "crm_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 113.5999984741211,
-          "max": 369.0,
-          "latest": 199.44000244140625
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "NVDA",
-        "files": [
-          "NVDA.json",
-          "nvda_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 3.1115000247955322,
-          "max": 212.19000244140625,
-          "latest": 174.19000244140625
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "AVGO",
-        "files": [
-          "AVGO.json",
-          "avgo_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 15.567000389099121,
-          "max": 414.6099853515625,
-          "latest": 308.04998779296875
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "AMZN",
-        "files": [
-          "AMZN.json",
-          "amzn_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 65.3499984741211,
-          "max": 258.6000061035156,
-          "latest": 232.99000549316406
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "GOOG",
-        "files": [
-          "GOOG.json",
-          "goog_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 48.50550079345703,
-          "max": 350.1499938964844,
-          "latest": 333.3399963378906
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "META",
-        "files": [
-          "META.json",
-          "meta_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 88.08999633789062,
-          "max": 796.25,
-          "latest": 668.989990234375
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "NFLX",
-        "files": [
-          "NFLX.json",
-          "nflx_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 16.270999908447266,
-          "max": 134.11500549316406,
-          "latest": 80.16000366210938
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "LEU",
-        "files": [
-          "LEU.json",
-          "leu_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 1.350000023841858,
-          "max": 464.25,
-          "latest": 251.42999267578125
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "SMR",
-        "files": [
-          "SMR.json",
-          "smr_1d_1825d.json"
-        ],
-        "rows": 987,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 1.809999942779541,
-          "max": 57.41999816894531,
-          "latest": 16.200000762939453
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "CRWV",
-        "files": [
-          "CRWV.json",
-          "crwv_1d_1825d.json"
-        ],
-        "rows": 215,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 33.51499938964844,
-          "max": 187.0,
-          "latest": 82.45999908447266
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "IONQ",
-        "files": [
-          "IONQ.json",
-          "ionq_1d_1825d.json"
-        ],
-        "rows": 1278,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 3.0399999618530273,
-          "max": 84.63999938964844,
-          "latest": 35.34000015258789
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "PLTR",
-        "files": [
-          "PLTR.json",
-          "pltr_1d_1825d.json"
-        ],
-        "rows": 1343,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 5.920000076293945,
-          "max": 207.52000427246094,
-          "latest": 139.5399932861328
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "HIMS",
-        "files": [
-          "HIMS.json",
-          "hims_1d_1825d.json"
-        ],
-        "rows": 1607,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 2.7200000286102295,
-          "max": 72.9800033569336,
-          "latest": 24.399999618530273
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "TSLA",
-        "files": [
-          "TSLA.json",
-          "tsla_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 11.799332618713379,
-          "max": 498.8299865722656,
-          "latest": 406.010009765625
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "VST",
-        "files": [
-          "VST.json",
-          "vst_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 11.300000190734863,
-          "max": 219.82000732421875,
-          "latest": 142.52000427246094
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "KTOS",
-        "files": [
-          "KTOS.json",
-          "ktos_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 5.0,
-          "max": 134.0,
-          "latest": 91.33000183105469
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "MELI",
-        "files": [
-          "MELI.json",
-          "meli_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 257.5199890136719,
-          "max": 2645.219970703125,
-          "latest": 2052.780029296875
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "SOFI",
-        "files": [
-          "SOFI.json",
-          "sofi_1d_1825d.json"
-        ],
-        "rows": 1278,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 4.239999771118164,
-          "max": 32.72999954223633,
-          "latest": 20.75
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "RBRK",
-        "files": [
-          "RBRK.json",
-          "rbrk_1d_1825d.json"
-        ],
-        "rows": 446,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 28.34000015258789,
-          "max": 103.0,
-          "latest": 51.869998931884766
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "EOSE",
-        "files": [
-          "EOSE.json",
-          "eose_1d_1825d.json"
-        ],
-        "rows": 1320,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 0.6100000143051147,
-          "max": 31.95199966430664,
-          "latest": 12.399999618530273
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "CEG",
-        "files": [
-          "CEG.json",
-          "ceg_1d_1825d.json"
-        ],
-        "rows": 1015,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 38.0,
-          "max": 412.70001220703125,
-          "latest": 250.4600067138672
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "TMDX",
-        "files": [
-          "TMDX.json",
-          "tmdx_1d_1825d.json"
-        ],
-        "rows": 1700,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 10.0,
-          "max": 177.3699951171875,
-          "latest": 130.3699951171875
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "GRAB",
-        "files": [
-          "GRAB.json",
-          "grab_1d_1825d.json"
-        ],
-        "rows": 1300,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 2.190000057220459,
-          "max": 18.108999252319336,
-          "latest": 4.190000057220459
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "RBLX",
-        "files": [
-          "RBLX.json",
-          "rblx_1d_1825d.json"
-        ],
-        "rows": 1233,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 21.649999618530273,
-          "max": 150.58999633789062,
-          "latest": 63.06999969482422
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "IREN",
-        "files": [
-          "IREN.json",
-          "iren_1d_1825d.json"
-        ],
-        "rows": 1057,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 1.0199999809265137,
-          "max": 76.87000274658203,
-          "latest": 44.939998626708984
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "OKLO",
-        "files": [
-          "OKLO.json",
-          "oklo_1d_1825d.json"
-        ],
-        "rows": 1150,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 5.349999904632568,
-          "max": 193.83999633789062,
-          "latest": 68.2300033569336
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "PATH",
-        "files": [
-          "PATH.json",
-          "path_1d_1825d.json"
-        ],
-        "rows": 1204,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 9.380000114440918,
-          "max": 90.0,
-          "latest": 12.329999923706055
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "INTR",
-        "files": [
-          "INTR.json",
-          "intr_1d_1825d.json"
-        ],
-        "rows": 908,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 1.3700000047683716,
-          "max": 10.359999656677246,
-          "latest": 9.229999542236328
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "SE",
-        "files": [
-          "SE.json",
-          "se_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 10.515000343322754,
-          "max": 372.70001220703125,
-          "latest": 106.26000213623047
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "KSPI",
-        "files": [
-          "KSPI.json",
-          "kspi_1d_1825d.json"
-        ],
-        "rows": 513,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 70.61000061035156,
-          "max": 143.72000122070312,
-          "latest": 76.20500183105469
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "LUNR",
-        "files": [
-          "LUNR.json",
-          "lunr_1d_1825d.json"
-        ],
-        "rows": 1057,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 2.0889999866485596,
-          "max": 136.0,
-          "latest": 16.610000610351562
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "HOOD",
-        "files": [
-          "HOOD.json",
-          "hood_1d_1825d.json"
-        ],
-        "rows": 1135,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 6.809999942779541,
-          "max": 153.86000061035156,
-          "latest": 80.62000274658203
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "APP",
-        "files": [
-          "APP.json",
-          "app_1d_1825d.json"
-        ],
-        "rows": 1208,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 9.140000343322754,
-          "max": 745.6099853515625,
-          "latest": 387.3399963378906
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "CHYM",
-        "files": [
-          "CHYM.json",
-          "chym_1d_1825d.json"
-        ],
-        "rows": 163,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 16.170000076293945,
-          "max": 44.939998626708984,
-          "latest": 21.729999542236328
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "NU",
-        "files": [
-          "NU.json",
-          "nu_1d_1825d.json"
-        ],
-        "rows": 1042,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 3.259999990463257,
-          "max": 18.979999542236328,
-          "latest": 17.020000457763672
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "COIN",
-        "files": [
-          "COIN.json",
-          "coin_1d_1825d.json"
-        ],
-        "rows": 1209,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 31.549999237060547,
-          "max": 444.6499938964844,
-          "latest": 168.6199951171875
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "CRCL",
-        "files": [
-          "CRCL.json",
-          "crcl_1d_1825d.json"
-        ],
-        "rows": 168,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 51.52000045776367,
-          "max": 298.989990234375,
-          "latest": 55.04999923706055
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "IBKR",
-        "files": [
-          "IBKR.json",
-          "ibkr_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 8.425000190734863,
-          "max": 78.80000305175781,
-          "latest": 73.44000244140625
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "CCJ",
-        "files": [
-          "CCJ.json",
-          "ccj_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 5.300000190734863,
-          "max": 135.24000549316406,
-          "latest": 114.81999969482422
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "UUUU",
-        "files": [
-          "UUUU.json",
-          "uuuu_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 0.7799999713897705,
-          "max": 27.899999618530273,
-          "latest": 21.420000076293945
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "VRT",
-        "files": [
-          "VRT.json",
-          "vrt_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 4.75,
-          "max": 202.4499969482422,
-          "latest": 182.55999755859375
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "ETN",
-        "files": [
-          "ETN.json",
-          "etn_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 56.41999816894531,
-          "max": 399.55999755859375,
-          "latest": 365.0
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "MSFT",
-        "files": [
-          "MSFT.json",
-          "msft_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 93.95999908447266,
-          "max": 555.4500122070312,
-          "latest": 414.19000244140625
+          "min": 1.6200000047683716,
+          "max": 14.619999885559082,
+          "latest": 6.949999809265137
         },
         "status": "ok"
       },
@@ -1036,119 +461,14 @@
         "symbol": "ADBE",
         "files": [
           "ADBE.json",
-          "adbe_1d_1825d.json"
+          "adbe_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 204.9499969482422,
+          "min": 264.0400085449219,
           "max": 699.5399780273438,
           "latest": 279.7099914550781
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "FIG",
-        "files": [
-          "FIG.json",
-          "fig_1d_1825d.json"
-        ],
-        "rows": 130,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 19.850000381469727,
-          "max": 142.9199981689453,
-          "latest": 22.510000228881836
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "PANW",
-        "files": [
-          "PANW.json",
-          "panw_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 20.911666870117188,
-          "max": 223.61000061035156,
-          "latest": 166.72000122070312
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "CRWD",
-        "files": [
-          "CRWD.json",
-          "crwd_1d_1825d.json"
-        ],
-        "rows": 1672,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 31.950000762939453,
-          "max": 566.9000244140625,
-          "latest": 415.3599853515625
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "DDOG",
-        "files": [
-          "DDOG.json",
-          "ddog_1d_1825d.json"
-        ],
-        "rows": 1603,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 27.549999237060547,
-          "max": 201.69000244140625,
-          "latest": 115.70999908447266
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "DUOL",
-        "files": [
-          "DUOL.json",
-          "duol_1d_1825d.json"
-        ],
-        "rows": 1136,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 60.5,
-          "max": 544.9299926757812,
-          "latest": 116.9000015258789
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "ZETA",
-        "files": [
-          "ZETA.json",
-          "zeta_1d_1825d.json"
-        ],
-        "rows": 1169,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 4.090000152587891,
-          "max": 38.20000076293945,
-          "latest": 17.3700008392334
-        },
-        "status": "ok"
-      },
-      {
-        "symbol": "AXON",
-        "files": [
-          "AXON.json",
-          "axon_1d_1825d.json"
-        ],
-        "rows": 1825,
-        "lastTimestamp": 1770181200000,
-        "priceRange": {
-          "min": 39.43000030517578,
-          "max": 885.9199829101562,
-          "latest": 430.6499938964844
         },
         "status": "ok"
       },
@@ -1156,7 +476,7 @@
         "symbol": "ALAB",
         "files": [
           "ALAB.json",
-          "alab_1d_1825d.json"
+          "alab_1d_1095d.json"
         ],
         "rows": 471,
         "lastTimestamp": 1770181200000,
@@ -1168,17 +488,182 @@
         "status": "ok"
       },
       {
-        "symbol": "LRCX",
+        "symbol": "AMD",
         "files": [
-          "LRCX.json",
-          "lrcx_1d_1825d.json"
+          "AMD.json",
+          "amd_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 12.263999938964844,
-          "max": 251.8699951171875,
-          "latest": 209.77999877929688
+          "min": 54.56999969482422,
+          "max": 267.0799865722656,
+          "latest": 200.19000244140625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "AMZN",
+        "files": [
+          "AMZN.json",
+          "amzn_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 81.43000030517578,
+          "max": 258.6000061035156,
+          "latest": 232.99000549316406
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "APP",
+        "files": [
+          "APP.json",
+          "app_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 9.140000343322754,
+          "max": 745.6099853515625,
+          "latest": 387.3399963378906
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "ASTS",
+        "files": [
+          "ASTS.json",
+          "asts_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 1.9700000286102295,
+          "max": 129.88999938964844,
+          "latest": 103.5
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "AVAV",
+        "files": [
+          "AVAV.json",
+          "avav_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 52.029998779296875,
+          "max": 417.8599853515625,
+          "latest": 257.29998779296875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "AVGO",
+        "files": [
+          "AVGO.json",
+          "avgo_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 41.50699996948242,
+          "max": 414.6099853515625,
+          "latest": 308.04998779296875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "AXON",
+        "files": [
+          "AXON.json",
+          "axon_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 82.48999786376953,
+          "max": 885.9199829101562,
+          "latest": 430.6499938964844
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "AXP",
+        "files": [
+          "AXP.json",
+          "axp_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 130.64999389648438,
+          "max": 387.489990234375,
+          "latest": 353.6700134277344
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "BA",
+        "files": [
+          "BA.json",
+          "ba_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 113.0199966430664,
+          "max": 267.5400085449219,
+          "latest": 235.9499969482422
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "BAC",
+        "files": [
+          "BAC.json",
+          "bac_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 24.959999084472656,
+          "max": 57.54999923706055,
+          "latest": 55.380001068115234
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "BE",
+        "files": [
+          "BE.json",
+          "be_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 8.411999702453613,
+          "max": 176.49000549316406,
+          "latest": 147.35000610351562
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "BRK-B",
+        "files": [
+          "BRK-B.json",
+          "brk-b_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 259.8500061035156,
+          "max": 542.0700073242188,
+          "latest": 503.8299865722656
         },
         "status": "ok"
       },
@@ -1186,29 +671,878 @@
         "symbol": "BWXT",
         "files": [
           "BWXT.json",
-          "bwxt_1d_1825d.json"
+          "bwxt_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 35.90999984741211,
+          "min": 42.58000183105469,
           "max": 220.57000732421875,
           "latest": 190.10000610351562
         },
         "status": "ok"
       },
       {
-        "symbol": "UMAC",
+        "symbol": "CAT",
         "files": [
-          "UMAC.json",
-          "umac_1d_1825d.json"
+          "CAT.json",
+          "cat_1d_1095d.json"
         ],
-        "rows": 495,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 0.9800000190734863,
-          "max": 23.6200008392334,
-          "latest": 12.729999542236328
+          "min": 160.60000610351562,
+          "max": 723.1599731445312,
+          "latest": 691.8200073242188
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CCJ",
+        "files": [
+          "CCJ.json",
+          "ccj_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 18.030000686645508,
+          "max": 135.24000549316406,
+          "latest": 114.81999969482422
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CEG",
+        "files": [
+          "CEG.json",
+          "ceg_1d_1095d.json"
+        ],
+        "rows": 1015,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 38.0,
+          "max": 412.70001220703125,
+          "latest": 250.4600067138672
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CHYM",
+        "files": [
+          "CHYM.json",
+          "chym_1d_1095d.json"
+        ],
+        "rows": 163,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 16.170000076293945,
+          "max": 44.939998626708984,
+          "latest": 21.729999542236328
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CIFR",
+        "files": [
+          "CIFR.json",
+          "cifr_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 0.38199999928474426,
+          "max": 25.520000457763672,
+          "latest": 14.25
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CLSK",
+        "files": [
+          "CLSK.json",
+          "clsk_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 1.7400000095367432,
+          "max": 24.719999313354492,
+          "latest": 10.220000267028809
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "COIN",
+        "files": [
+          "COIN.json",
+          "coin_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 31.549999237060547,
+          "max": 444.6499938964844,
+          "latest": 168.6199951171875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "COST",
+        "files": [
+          "COST.json",
+          "cost_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 406.510009765625,
+          "max": 1078.22998046875,
+          "latest": 978.3499755859375
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CRCL",
+        "files": [
+          "CRCL.json",
+          "crcl_1d_1095d.json"
+        ],
+        "rows": 168,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 51.52000045776367,
+          "max": 298.989990234375,
+          "latest": 55.04999923706055
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CRM",
+        "files": [
+          "CRM.json",
+          "crm_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 126.33999633789062,
+          "max": 369.0,
+          "latest": 199.44000244140625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CRWD",
+        "files": [
+          "CRWD.json",
+          "crwd_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 92.25,
+          "max": 566.9000244140625,
+          "latest": 415.3599853515625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CRWV",
+        "files": [
+          "CRWV.json",
+          "crwv_1d_1095d.json"
+        ],
+        "rows": 215,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 33.51499938964844,
+          "max": 187.0,
+          "latest": 82.45999908447266
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CSCO",
+        "files": [
+          "CSCO.json",
+          "csco_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 38.599998474121094,
+          "max": 84.23999786376953,
+          "latest": 81.16000366210938
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "CVX",
+        "files": [
+          "CVX.json",
+          "cvx_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 99.6500015258789,
+          "max": 189.67999267578125,
+          "latest": 181.22999572753906
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "D-WAVE",
+        "files": [
+          "D-WAVE.json",
+          "d-wave_1d_1095d.json"
+        ],
+        "status": "failed",
+        "error": "yfinance fetch failed for D-WAVE after 3 attempts: empty dataframe from both methods"
+      },
+      {
+        "symbol": "DDOG",
+        "files": [
+          "DDOG.json",
+          "ddog_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 61.34000015258789,
+          "max": 201.69000244140625,
+          "latest": 115.70999908447266
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "DGRO",
+        "files": [
+          "DGRO.json",
+          "dgro_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 43.66999816894531,
+          "max": 73.25499725341797,
+          "latest": 73.05999755859375
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "DIA",
+        "files": [
+          "DIA.json",
+          "dia_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 286.6199951171875,
+          "max": 496.5199890136719,
+          "latest": 494.75
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "DIVO",
+        "files": [
+          "DIVO.json",
+          "divo_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 31.979999542236328,
+          "max": 46.68000030517578,
+          "latest": 46.54999923706055
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "DUOL",
+        "files": [
+          "DUOL.json",
+          "duol_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 60.5,
+          "max": 544.9299926757812,
+          "latest": 116.9000015258789
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "EOSE",
+        "files": [
+          "EOSE.json",
+          "eose_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 0.6100000143051147,
+          "max": 19.860000610351562,
+          "latest": 12.399999618530273
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "ETN",
+        "files": [
+          "ETN.json",
+          "etn_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 122.5,
+          "max": 399.55999755859375,
+          "latest": 365.0
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "FIG",
+        "files": [
+          "FIG.json",
+          "fig_1d_1095d.json"
+        ],
+        "rows": 130,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 19.850000381469727,
+          "max": 142.9199981689453,
+          "latest": 22.510000228881836
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "GEV",
+        "files": [
+          "GEV.json",
+          "gev_1d_1095d.json"
+        ],
+        "rows": 466,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 115.0,
+          "max": 795.5,
+          "latest": 746.219970703125
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "GLD",
+        "files": [
+          "GLD.json",
+          "gld_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 150.57000732421875,
+          "max": 509.70001220703125,
+          "latest": 453.9700012207031
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "GOOG",
+        "files": [
+          "GOOG.json",
+          "goog_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 83.44999694824219,
+          "max": 350.1499938964844,
+          "latest": 333.3399963378906
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "GRAB",
+        "files": [
+          "GRAB.json",
+          "grab_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 2.190000057220459,
+          "max": 17.149999618530273,
+          "latest": 4.190000057220459
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "GS",
+        "files": [
+          "GS.json",
+          "gs_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 277.8399963378906,
+          "max": 984.7000122070312,
+          "latest": 913.2999877929688
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "HD",
+        "files": [
+          "HD.json",
+          "hd_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 264.510009765625,
+          "max": 439.3699951171875,
+          "latest": 387.20001220703125
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "HIMS",
+        "files": [
+          "HIMS.json",
+          "hims_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 2.7200000286102295,
+          "max": 72.9800033569336,
+          "latest": 24.399999618530273
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "HON",
+        "files": [
+          "HON.json",
+          "hon_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 157.04995727539062,
+          "max": 236.33999633789062,
+          "latest": 235.35000610351562
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "HOOD",
+        "files": [
+          "HOOD.json",
+          "hood_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 6.809999942779541,
+          "max": 153.86000061035156,
+          "latest": 80.62000274658203
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "HUT",
+        "files": [
+          "HUT.json",
+          "hut_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 3.9000000953674316,
+          "max": 82.8499984741211,
+          "latest": 54.16999816894531
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "IBKR",
+        "files": [
+          "IBKR.json",
+          "ibkr_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 13.045000076293945,
+          "max": 78.80000305175781,
+          "latest": 73.44000244140625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "IBM",
+        "files": [
+          "IBM.json",
+          "ibm_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 114.55999755859375,
+          "max": 324.8999938964844,
+          "latest": 289.04998779296875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "INTR",
+        "files": [
+          "INTR.json",
+          "intr_1d_1095d.json"
+        ],
+        "rows": 908,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 1.3700000047683716,
+          "max": 10.359999656677246,
+          "latest": 9.229999542236328
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "INTU",
+        "files": [
+          "INTU.json",
+          "intu_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 339.3599853515625,
+          "max": 813.7000122070312,
+          "latest": 445.6400146484375
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "IONQ",
+        "files": [
+          "IONQ.json",
+          "ionq_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 3.0399999618530273,
+          "max": 84.63999938964844,
+          "latest": 35.34000015258789
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "IREN",
+        "files": [
+          "IREN.json",
+          "iren_1d_1095d.json"
+        ],
+        "rows": 1057,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 1.0199999809265137,
+          "max": 76.87000274658203,
+          "latest": 44.939998626708984
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "IWM",
+        "files": [
+          "IWM.json",
+          "iwm_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 161.6699981689453,
+          "max": 271.6000061035156,
+          "latest": 260.5199890136719
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "JEPI",
+        "files": [
+          "JEPI.json",
+          "jepi_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 49.91999816894531,
+          "max": 63.67399978637695,
+          "latest": 58.58000183105469
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "JEPQ",
+        "files": [
+          "JEPQ.json",
+          "jepq_1d_1095d.json"
+        ],
+        "rows": 942,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 39.61000061035156,
+          "max": 60.13999938964844,
+          "latest": 57.68000030517578
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "JNJ",
+        "files": [
+          "JNJ.json",
+          "jnj_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 140.67999267578125,
+          "max": 235.8300018310547,
+          "latest": 234.47000122070312
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "JOBY",
+        "files": [
+          "JOBY.json",
+          "joby_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 3.1500000953674316,
+          "max": 20.950000762939453,
+          "latest": 10.380000114440918
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "JPM",
+        "files": [
+          "JPM.json",
+          "jpm_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 101.27999877929688,
+          "max": 337.25,
+          "latest": 317.2699890136719
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "KO",
+        "files": [
+          "KO.json",
+          "ko_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 51.54999923706055,
+          "max": 78.11000061035156,
+          "latest": 77.3499984741211
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "KSPI",
+        "files": [
+          "KSPI.json",
+          "kspi_1d_1095d.json"
+        ],
+        "rows": 513,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 70.61000061035156,
+          "max": 143.72000122070312,
+          "latest": 76.20500183105469
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "KTOS",
+        "files": [
+          "KTOS.json",
+          "ktos_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 8.899999618530273,
+          "max": 134.0,
+          "latest": 91.33000183105469
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "LEU",
+        "files": [
+          "LEU.json",
+          "leu_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 17.360000610351562,
+          "max": 464.25,
+          "latest": 251.42999267578125
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "LRCX",
+        "files": [
+          "LRCX.json",
+          "lrcx_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 29.958999633789062,
+          "max": 251.8699951171875,
+          "latest": 209.77999877929688
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "LUNR",
+        "files": [
+          "LUNR.json",
+          "lunr_1d_1095d.json"
+        ],
+        "rows": 1057,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 2.0889999866485596,
+          "max": 136.0,
+          "latest": 16.610000610351562
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MA",
+        "files": [
+          "MA.json",
+          "ma_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 276.8699951171875,
+          "max": 601.77001953125,
+          "latest": 553.52001953125
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MAIN",
+        "files": [
+          "MAIN.json",
+          "main_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 31.65999984741211,
+          "max": 67.7699966430664,
+          "latest": 61.380001068115234
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MCD",
+        "files": [
+          "MCD.json",
+          "mcd_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 217.67999267578125,
+          "max": 326.95001220703125,
+          "latest": 323.69000244140625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MDB",
+        "files": [
+          "MDB.json",
+          "mdb_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 135.14999389648438,
+          "max": 590.0,
+          "latest": 337.6000061035156
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MELI",
+        "files": [
+          "MELI.json",
+          "meli_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 600.6799926757812,
+          "max": 2645.219970703125,
+          "latest": 2052.780029296875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "META",
+        "files": [
+          "META.json",
+          "meta_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 88.08999633789062,
+          "max": 796.25,
+          "latest": 668.989990234375
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MMM",
+        "files": [
+          "MMM.json",
+          "mmm_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 71.36287689208984,
+          "max": 174.69000244140625,
+          "latest": 163.7899932861328
         },
         "status": "ok"
       },
@@ -1216,14 +1550,389 @@
         "symbol": "MP",
         "files": [
           "MP.json",
-          "mp_1d_1825d.json"
+          "mp_1d_1095d.json"
         ],
-        "rows": 1413,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 9.779999732971191,
+          "min": 10.020000457763672,
           "max": 100.2509994506836,
           "latest": 60.54999923706055
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MRK",
+        "files": [
+          "MRK.json",
+          "mrk_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 71.5,
+          "max": 134.6300048828125,
+          "latest": 118.33000183105469
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MSFT",
+        "files": [
+          "MSFT.json",
+          "msft_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 213.42999267578125,
+          "max": 555.4500122070312,
+          "latest": 414.19000244140625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "MU",
+        "files": [
+          "MU.json",
+          "mu_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 48.43000030517578,
+          "max": 455.5,
+          "latest": 379.3999938964844
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "NET",
+        "files": [
+          "NET.json",
+          "net_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 37.369998931884766,
+          "max": 260.0,
+          "latest": 166.8800048828125
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "NFLX",
+        "files": [
+          "NFLX.json",
+          "nflx_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 16.270999908447266,
+          "max": 134.11500549316406,
+          "latest": 80.16000366210938
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "NU",
+        "files": [
+          "NU.json",
+          "nu_1d_1095d.json"
+        ],
+        "rows": 1042,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 3.259999990463257,
+          "max": 18.979999542236328,
+          "latest": 17.020000457763672
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "NVDA",
+        "files": [
+          "NVDA.json",
+          "nvda_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 10.812999725341797,
+          "max": 212.19000244140625,
+          "latest": 174.19000244140625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "O",
+        "files": [
+          "O.json",
+          "o_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 45.040000915527344,
+          "max": 75.4000015258789,
+          "latest": 62.459999084472656
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "OKLO",
+        "files": [
+          "OKLO.json",
+          "oklo_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 5.349999904632568,
+          "max": 193.83999633789062,
+          "latest": 68.2300033569336
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "ONDS",
+        "files": [
+          "ONDS.json",
+          "onds_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 0.3149999976158142,
+          "max": 15.279999732971191,
+          "latest": 9.680000305175781
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "ORCL",
+        "files": [
+          "ORCL.json",
+          "orcl_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 60.779998779296875,
+          "max": 345.7200012207031,
+          "latest": 146.6699981689453
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "PANW",
+        "files": [
+          "PANW.json",
+          "panw_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 66.11000061035156,
+          "max": 223.61000061035156,
+          "latest": 166.72000122070312
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "PATH",
+        "files": [
+          "PATH.json",
+          "path_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 9.380000114440918,
+          "max": 59.56999969482422,
+          "latest": 12.329999923706055
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "PG",
+        "files": [
+          "PG.json",
+          "pg_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 122.18000030517578,
+          "max": 180.42999267578125,
+          "latest": 156.8699951171875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "PL",
+        "files": [
+          "PL.json",
+          "pl_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 1.6699999570846558,
+          "max": 30.898000717163086,
+          "latest": 21.770000457763672
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "PLTR",
+        "files": [
+          "PLTR.json",
+          "pltr_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 5.920000076293945,
+          "max": 207.52000427246094,
+          "latest": 139.5399932861328
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "PM",
+        "files": [
+          "PM.json",
+          "pm_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 82.8499984741211,
+          "max": 186.69000244140625,
+          "latest": 180.38999938964844
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "POWL",
+        "files": [
+          "POWL.json",
+          "powl_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 18.809999465942383,
+          "max": 569.7999877929688,
+          "latest": 527.2999877929688
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "QBTS",
+        "files": [
+          "QBTS.json",
+          "qbts_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 0.3959999978542328,
+          "max": 46.75,
+          "latest": 20.110000610351562
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "QQQ",
+        "files": [
+          "QQQ.json",
+          "qqq_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 254.25999450683594,
+          "max": 637.010009765625,
+          "latest": 605.75
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "RBRK",
+        "files": [
+          "RBRK.json",
+          "rbrk_1d_1095d.json"
+        ],
+        "rows": 446,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 28.34000015258789,
+          "max": 103.0,
+          "latest": 51.869998931884766
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "RDW",
+        "files": [
+          "RDW.json",
+          "rdw_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 1.6699999570846558,
+          "max": 26.65999984741211,
+          "latest": 10.029999732971191
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "RGTI",
+        "files": [
+          "RGTI.json",
+          "rgti_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 0.36000001430511475,
+          "max": 58.150001525878906,
+          "latest": 17.190000534057617
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "RIVN",
+        "files": [
+          "RIVN.json",
+          "rivn_1d_1095d.json"
+        ],
+        "rows": 1062,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 8.260000228881836,
+          "max": 179.47000122070312,
+          "latest": 14.369999885559082
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "RKLB",
+        "files": [
+          "RKLB.json",
+          "rklb_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 3.4700000286102295,
+          "max": 99.58000183105469,
+          "latest": 73.11000061035156
         },
         "status": "ok"
       },
@@ -1231,7 +1940,7 @@
         "symbol": "RR",
         "files": [
           "RR.json",
-          "rr_1d_1825d.json"
+          "rr_1d_1095d.json"
         ],
         "rows": 554,
         "lastTimestamp": 1770181200000,
@@ -1243,10 +1952,100 @@
         "status": "ok"
       },
       {
+        "symbol": "RTX",
+        "files": [
+          "RTX.json",
+          "rtx_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 68.55999755859375,
+          "max": 206.47999572753906,
+          "latest": 196.74000549316406
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "SCHD",
+        "files": [
+          "SCHD.json",
+          "schd_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 21.98666763305664,
+          "max": 31.079999923706055,
+          "latest": 31.010000228881836
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "SE",
+        "files": [
+          "SE.json",
+          "se_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 34.349998474121094,
+          "max": 372.70001220703125,
+          "latest": 106.26000213623047
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "SLV",
+        "files": [
+          "SLV.json",
+          "slv_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 16.190000534057617,
+          "max": 109.83000183105469,
+          "latest": 79.18000030517578
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "SMCI",
+        "files": [
+          "SMCI.json",
+          "smci_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 3.4110000133514404,
+          "max": 122.9000015258789,
+          "latest": 33.7599983215332
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "SMR",
+        "files": [
+          "SMR.json",
+          "smr_1d_1095d.json"
+        ],
+        "rows": 987,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 1.809999942779541,
+          "max": 57.41999816894531,
+          "latest": 16.200000762939453
+        },
+        "status": "ok"
+      },
+      {
         "symbol": "SNDK",
         "files": [
           "SNDK.json",
-          "sndk_1d_1825d.json"
+          "sndk_1d_1095d.json"
         ],
         "rows": 245,
         "lastTimestamp": 1770181200000,
@@ -1258,32 +2057,377 @@
         "status": "ok"
       },
       {
-        "symbol": "MU",
+        "symbol": "SOFI",
         "files": [
-          "MU.json",
-          "mu_1d_1825d.json"
+          "SOFI.json",
+          "sofi_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 28.389999389648438,
-          "max": 455.5,
-          "latest": 379.3999938964844
+          "min": 4.239999771118164,
+          "max": 32.72999954223633,
+          "latest": 20.75
         },
         "status": "ok"
       },
       {
-        "symbol": "BE",
+        "symbol": "SPY",
         "files": [
-          "BE.json",
-          "be_1d_1825d.json"
+          "SPY.json",
+          "spy_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 2.440000057220459,
-          "max": 176.49000549316406,
-          "latest": 147.35000610351562
+          "min": 348.1099853515625,
+          "max": 697.8400268554688,
+          "latest": 686.1900024414062
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "TMDX",
+        "files": [
+          "TMDX.json",
+          "tmdx_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 10.0,
+          "max": 177.3699951171875,
+          "latest": 130.3699951171875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "TRV",
+        "files": [
+          "TRV.json",
+          "trv_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 145.39999389648438,
+          "max": 296.8500061035156,
+          "latest": 295.2200012207031
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "TSLA",
+        "files": [
+          "TSLA.json",
+          "tsla_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 101.80999755859375,
+          "max": 498.8299865722656,
+          "latest": 406.010009765625
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "TSM",
+        "files": [
+          "TSM.json",
+          "tsm_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 59.43000030517578,
+          "max": 351.3299865722656,
+          "latest": 325.739990234375
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "UMAC",
+        "files": [
+          "UMAC.json",
+          "umac_1d_1095d.json"
+        ],
+        "rows": 495,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 0.9800000190734863,
+          "max": 23.6200008392334,
+          "latest": 12.729999542236328
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "UNG",
+        "files": [
+          "UNG.json",
+          "ung_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 9.949999809265137,
+          "max": 138.0,
+          "latest": 13.460000038146973
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "UNH",
+        "files": [
+          "UNH.json",
+          "unh_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 234.60000610351562,
+          "max": 630.72998046875,
+          "latest": 275.9200134277344
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "USO",
+        "files": [
+          "USO.json",
+          "uso_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 46.15999984741211,
+          "max": 92.19999694824219,
+          "latest": 77.87999725341797
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "UUUU",
+        "files": [
+          "UUUU.json",
+          "uuuu_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 3.200000047683716,
+          "max": 27.899999618530273,
+          "latest": 21.420000076293945
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "V",
+        "files": [
+          "V.json",
+          "v_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 174.60000610351562,
+          "max": 375.510009765625,
+          "latest": 329.95001220703125
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "VIG",
+        "files": [
+          "VIG.json",
+          "vig_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 132.63999938964844,
+          "max": 227.16000366210938,
+          "latest": 226.5399932861328
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "VNQ",
+        "files": [
+          "VNQ.json",
+          "vnq_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 70.61000061035156,
+          "max": 116.70999908447266,
+          "latest": 90.94999694824219
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "VRT",
+        "files": [
+          "VRT.json",
+          "vrt_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 7.760000228881836,
+          "max": 202.4499969482422,
+          "latest": 182.55999755859375
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "VST",
+        "files": [
+          "VST.json",
+          "vst_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 16.510000228881836,
+          "max": 219.82000732421875,
+          "latest": 142.52000427246094
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "VTV",
+        "files": [
+          "VTV.json",
+          "vtv_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 122.54000091552734,
+          "max": 204.22999572753906,
+          "latest": 203.60000610351562
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "VUG",
+        "files": [
+          "VUG.json",
+          "vug_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 203.63999938964844,
+          "max": 505.3800048828125,
+          "latest": 467.3699951171875
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "VYM",
+        "files": [
+          "VYM.json",
+          "vym_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 94.58999633789062,
+          "max": 153.17999267578125,
+          "latest": 152.7899932861328
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "WFC",
+        "files": [
+          "WFC.json",
+          "wfc_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 35.25,
+          "max": 97.76000213623047,
+          "latest": 93.13999938964844
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "WMT",
+        "files": [
+          "WMT.json",
+          "wmt_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 39.09000015258789,
+          "max": 129.41000366210938,
+          "latest": 128.0
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "WULF",
+        "files": [
+          "WULF.json",
+          "wulf_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 0.5400000214576721,
+          "max": 43.97999954223633,
+          "latest": 13.880000114440918
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "XOM",
+        "files": [
+          "XOM.json",
+          "xom_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 56.68000030517578,
+          "max": 147.83999633789062,
+          "latest": 147.58999633789062
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "ZETA",
+        "files": [
+          "ZETA.json",
+          "zeta_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 4.090000152587891,
+          "max": 38.20000076293945,
+          "latest": 17.3700008392334
+        },
+        "status": "ok"
+      },
+      {
+        "symbol": "ZS",
+        "files": [
+          "ZS.json",
+          "zs_1d_1095d.json"
+        ],
+        "rows": 1095,
+        "lastTimestamp": 1770181200000,
+        "priceRange": {
+          "min": 84.93000030517578,
+          "max": 376.1099853515625,
+          "latest": 185.7899932861328
         },
         "status": "ok"
       },
@@ -1291,12 +2435,12 @@
         "symbol": "^GSPC",
         "files": [
           "FOREXCOM_SPXUSD.json",
-          "forexcom_spxusd_1d_1825d.json"
+          "forexcom_spxusd_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 2191.860107421875,
+          "min": 3491.580078125,
           "max": 7002.27978515625,
           "latest": 6882.72021484375
         },
@@ -1306,14 +2450,14 @@
         "symbol": "^VIX",
         "files": [
           "TVC_VIX.json",
-          "tvc_vix_1d_1825d.json"
+          "tvc_vix_1d_1095d.json"
         ],
-        "rows": 1758,
-        "lastTimestamp": 1770184800000,
+        "rows": 1096,
+        "lastTimestamp": 1770267600000,
         "priceRange": {
           "min": 10.619999885559082,
-          "max": 85.47000122070312,
-          "latest": 18.639999389648438
+          "max": 65.7300033569336,
+          "latest": 19.649999618530273
         },
         "status": "ok"
       },
@@ -1321,13 +2465,13 @@
         "symbol": "TLT",
         "files": [
           "NASDAQ_TLT.json",
-          "nasdaq_tlt_1d_1825d.json"
+          "nasdaq_tlt_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
           "min": 82.41999816894531,
-          "max": 179.6999969482422,
+          "max": 155.1199951171875,
           "latest": 86.54000091552734
         },
         "status": "ok"
@@ -1336,13 +2480,13 @@
         "symbol": "JNK",
         "files": [
           "NASDAQ_JNK.json",
-          "nasdaq_jnk_1d_1825d.json"
+          "nasdaq_jnk_1d_1095d.json"
         ],
-        "rows": 1825,
+        "rows": 1095,
         "lastTimestamp": 1770181200000,
         "priceRange": {
-          "min": 83.18000030517578,
-          "max": 110.33000183105469,
+          "min": 86.27999877929688,
+          "max": 109.95999908447266,
           "latest": 97.11000061035156
         },
         "status": "ok"
