@@ -55,7 +55,8 @@ All data is fetched, processed, and validated by Python/Node.js scripts during t
 | :--- | :--- | :--- | :--- |
 | **Market Data** | Yahoo Finance (API) | `generate-real-ohlcv-yfinance.py` | Daily (02:00 UTC) |
 | **Quant Analysis** | Internal Engine | `daily_update.py` | Daily |
-| **Institutional** | Dataroma (Scraper) | `batch_crawl_dataroma.py` | Daily |
+| **Institutional** | Dataroma (Holdings) | `batch_crawl_dataroma.py` | Daily |
+| **Sector Rotation** | Dataroma (Managers) | `crawl_dataroma_managers.py` | Daily |
 | **Sentiment** | Fear & Greed (Puppeteer) | `precompute-with-browser.js` | Daily |
 
 *For detailed technical specifications, please refer to [REQUIREMENTS.md](REQUIREMENTS.md).*

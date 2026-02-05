@@ -115,6 +115,13 @@ Detailed specification can be found in `docs/SMART_MONEY_SCORE_SPEC.md`.
 - **Data**: New data is committed to `public/data/dataroma/*.json`.
 - **Frontend**: `StockDetail.vue` fetches the latest JSON on load.
 
+### Manager Sector Rotation (Smart Money)
+*   **Script**: `scripts/crawl_dataroma_managers.py`
+*   **Purpose**: Tracks sector allocation across 80+ Superinvestors.
+*   **Fallback**: Uses `scripts/backfill_sectors.py` logic (integrated) to query Yahoo Finance for missing sectors.
+*   **Output**: `public/data/smart_money_sector_rotation.json`
+*   **Update**: Runs daily in `dataroma_stock_update.yml`.
+
 ### Batch Processing (Complete Refresh)
 若需一次更新所有監控股票 (例如 130+ 支股票)，可使用批次腳本：
 ```bash
