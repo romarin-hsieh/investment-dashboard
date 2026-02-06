@@ -45,7 +45,7 @@
         "organization": "Ameriprise Financial, Inc.",
         "pctHeld": 0.1254,
         "position": 29647240,
-        "value": 4075606118,
+        "value": 4049813164,
         "pctChange": -0.3456
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.088199995,
         "position": 20853477,
-        "value": 2866727508,
+        "value": 2848585085,
         "pctChange": 0.0022
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0874,
         "position": 20671360,
-        "value": 2841691884,
+        "value": 2823707902,
         "pctChange": 0.0034
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.05,
         "position": 11817904,
-        "value": 1624607277,
+        "value": 1614325758,
         "pctChange": 0.9774
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0372,
         "position": 8797089,
-        "value": 1209335835,
+        "value": 1201682411,
         "pctChange": -0.2195
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0225,
         "position": 5320582,
-        "value": 731420414,
+        "value": 726791533,
         "pctChange": 0.0473
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0212,
         "position": 5007799,
-        "value": 688422134,
+        "value": 684065373,
         "pctChange": 0.052800003
       },
       {
@@ -108,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.020299999,
         "position": 4809978,
-        "value": 661227681,
+        "value": 657043024,
         "pctChange": 3.0152
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Graticule Asia Macro Advisors LLC",
         "pctHeld": 0.0201,
         "position": 4759305,
-        "value": 654261664,
+        "value": 650121092,
         "pctChange": 1
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Whale Rock Capital Management LLC",
         "pctHeld": 0.0198,
         "position": 4680973,
-        "value": 643493364,
+        "value": 639420940,
         "pctChange": 1.3053999
       }
     ]
@@ -142,17 +142,6 @@
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": 0.43,
-          "estimate": 0.30826,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "0.12",
-          "surprisePct": "39.49",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1740690300
-        },
         {
           "date": "1Q2025",
           "actual": 0.03,
@@ -185,26 +174,30 @@
           "surprisePct": "47.04",
           "periodEndDate": 1759190400,
           "reportedDate": 1761681900
+        },
+        {
+          "date": "4Q2025",
+          "actual": 0.45,
+          "estimate": 0.29925,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.15",
+          "surprisePct": "50.38",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1770326476
         }
       ],
-      "currentQuarterEstimate": 0.29925,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [
-        "2026-02-05T21:00:00.000Z"
-      ],
+      "currentQuarterEstimate": 0.07201,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
-        {
-          "date": 2021,
-          "revenue": 972176000,
-          "earnings": -96034000
-        },
         {
           "date": 2022,
           "revenue": 1199125000,
@@ -219,15 +212,14 @@
           "date": 2024,
           "revenue": 1473856000,
           "earnings": 64599000
+        },
+        {
+          "date": 2025,
+          "revenue": 2023994000,
+          "earnings": 198047000
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2024",
-          "revenue": 572393000,
-          "earnings": 118486000
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -245,6 +237,12 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 519048000,
           "earnings": 35453000
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2025",
+          "revenue": 777683000,
+          "earnings": 134052000
         }
       ]
     },
@@ -2389,14 +2387,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.06705127,
-    "regularMarketChange": -9.880005,
-    "regularMarketTime": "2026-02-05T18:41:29.000Z",
+    "postMarketChangePercent": 0.046925243,
+    "postMarketChange": 6.4099884,
+    "postMarketTime": "2026-02-06T00:59:56.000Z",
+    "postMarketPrice": 143.01,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.0729555,
+    "regularMarketChange": -10.75,
+    "regularMarketTime": "2026-02-05T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 137.47,
+    "regularMarketPrice": 136.6,
     "regularMarketDayHigh": 147.15,
     "regularMarketDayLow": 131.68,
-    "regularMarketVolume": 8242708,
+    "regularMarketVolume": 12078374,
     "averageDailyVolume10Day": 11478030,
     "averageDailyVolume3Month": 13288660,
     "regularMarketPreviousClose": 147.35,
@@ -2405,7 +2408,7 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "BE",
     "underlyingSymbol": null,
@@ -2417,13 +2420,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 32513132544
+    "marketCap": 32307369984
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 35795238912,
-    "forwardPE": 122.26076,
+    "enterpriseValue": 33252749312,
+    "forwardPE": 47.825787,
     "profitMargins": 0.0084,
     "floatShares": 220234085,
     "sharesOutstanding": 236510755,
@@ -2440,7 +2443,7 @@
     "impliedSharesOutstanding": 236510755,
     "category": null,
     "bookValue": 2.763,
-    "priceToBook": 49.75389,
+    "priceToBook": 49.43902,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -2448,12 +2451,12 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": 15269000,
     "trailingEps": 0.07,
-    "forwardEps": 1.1244,
+    "forwardEps": 2.8562,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 19.682,
-    "enterpriseToEbitda": 253.428,
+    "enterpriseToRevenue": 18.284,
+    "enterpriseToEbitda": 235.428,
     "52WeekChange": 4.9463277,
-    "SandP52WeekChange": 0.13136196,
+    "SandP52WeekChange": 0.14217246,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2529,24 +2532,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 3264,
-        "value": 282271,
-        "filerUrl": "",
-        "transactionText": "Sale at price 86.48 per share.",
-        "filerName": "KURZYMSKI MACIEJ",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 431,
         "value": 37980,
         "filerUrl": "",
         "transactionText": "Sale at price 88.12 per share.",
         "filerName": "CHITOORI SATISH PRABHU",
         "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3264,
+        "value": 282271,
+        "filerUrl": "",
+        "transactionText": "Sale at price 86.48 per share.",
+        "filerName": "KURZYMSKI MACIEJ",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -2601,12 +2604,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 36000,
-        "value": 5141520,
+        "shares": 36666,
+        "value": 1132613,
         "filerUrl": "",
-        "transactionText": "Sale at price 142.82 per share.",
-        "filerName": "BUSH MARY KATE",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 30.89 per share.",
+        "filerName": "SODERBERG SHAWN MARIE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-05T00:00:00.000Z",
         "ownership": "D"
@@ -2614,23 +2617,11 @@
       {
         "maxAge": 1,
         "shares": 20000,
-        "value": 2825600,
+        "value": 235800,
         "filerUrl": "",
-        "transactionText": "Sale at price 141.28 per share.",
-        "filerName": "ZERVIGON EDDY",
+        "transactionText": "Conversion of Exercise of derivative security at price 11.79 per share.",
+        "filerName": "SNABE JIM HAGEMANN",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 36666,
-        "value": 5169906,
-        "filerUrl": "",
-        "transactionText": "Sale at price 141.00 per share.",
-        "filerName": "SODERBERG SHAWN MARIE",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-05T00:00:00.000Z",
         "ownership": "D"
@@ -2661,12 +2652,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 36666,
-        "value": 1132613,
+        "shares": 36000,
+        "value": 5141520,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 30.89 per share.",
-        "filerName": "SODERBERG SHAWN MARIE",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 142.82 per share.",
+        "filerName": "BUSH MARY KATE",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-05T00:00:00.000Z",
         "ownership": "D"
@@ -2674,11 +2665,23 @@
       {
         "maxAge": 1,
         "shares": 20000,
-        "value": 235800,
+        "value": 2825600,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 11.79 per share.",
-        "filerName": "SNABE JIM HAGEMANN",
+        "transactionText": "Sale at price 141.28 per share.",
+        "filerName": "ZERVIGON EDDY",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-11-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 36666,
+        "value": 5169906,
+        "filerUrl": "",
+        "transactionText": "Sale at price 141.00 per share.",
+        "filerName": "SODERBERG SHAWN MARIE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-05T00:00:00.000Z",
         "ownership": "D"
@@ -2745,18 +2748,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 256955,
-        "value": 13043227,
-        "filerUrl": "",
-        "transactionText": "Sale at price 48.97 - 53.79 per share.",
-        "filerName": "SRIDHAR K. R.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 266667,
         "value": 8237344,
         "filerUrl": "",
@@ -2769,10 +2760,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 1300000,
+        "shares": 256955,
+        "value": 13043227,
         "filerUrl": "",
-        "transactionText": "Sale at price 52.00 per share.",
+        "transactionText": "Sale at price 48.97 - 53.79 per share.",
+        "filerName": "SRIDHAR K. R.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "value": 772250,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 30.89 per share.",
         "filerName": "SODERBERG SHAWN MARIE",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -2782,9 +2785,9 @@
       {
         "maxAge": 1,
         "shares": 25000,
-        "value": 772250,
+        "value": 1300000,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 30.89 per share.",
+        "transactionText": "Sale at price 52.00 per share.",
         "filerName": "SODERBERG SHAWN MARIE",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -2817,18 +2820,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 47901,
-        "value": 2074969,
-        "filerUrl": "",
-        "transactionText": "Sale at price 43.31 - 43.44 per share.",
-        "filerName": "SODERBERG SHAWN MARIE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4870,
         "value": 211163,
         "filerUrl": "",
@@ -2847,6 +2838,18 @@
         "transactionText": "Sale at price 43.44 - 45.00 per share.",
         "filerName": "CHITOORI SATISH PRABHU",
         "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-08-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 47901,
+        "value": 2074969,
+        "filerUrl": "",
+        "transactionText": "Sale at price 43.31 - 43.44 per share.",
+        "filerName": "SODERBERG SHAWN MARIE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-14T00:00:00.000Z",
         "ownership": "D"
@@ -2961,42 +2964,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2780,
-        "value": 54822,
-        "filerUrl": "",
-        "transactionText": "Sale at price 19.72 per share.",
-        "filerName": "SODERBERG SHAWN MARIE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4658,
-        "value": 91856,
-        "filerUrl": "",
-        "transactionText": "Sale at price 19.72 per share.",
-        "filerName": "JOSHI AMAN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2038,
-        "value": 40210,
-        "filerUrl": "",
-        "transactionText": "Sale at price 19.73 per share.",
-        "filerName": "CHITOORI SATISH PRABHU",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9877,
         "value": 0,
         "filerUrl": "",
@@ -3033,14 +3000,38 @@
       },
       {
         "maxAge": 1,
-        "shares": 42383,
-        "value": 811211,
+        "shares": 4658,
+        "value": 91856,
         "filerUrl": "",
-        "transactionText": "Sale at price 19.14 per share.",
-        "filerName": "SRIDHAR K. R.",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Sale at price 19.72 per share.",
+        "filerName": "JOSHI AMAN",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2038,
+        "value": 40210,
+        "filerUrl": "",
+        "transactionText": "Sale at price 19.73 per share.",
+        "filerName": "CHITOORI SATISH PRABHU",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2780,
+        "value": 54822,
+        "filerUrl": "",
+        "transactionText": "Sale at price 19.72 per share.",
+        "filerName": "SODERBERG SHAWN MARIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3075,6 +3066,18 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SODERBERG SHAWN MARIE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 42383,
+        "value": 811211,
+        "filerUrl": "",
+        "transactionText": "Sale at price 19.14 per share.",
+        "filerName": "SRIDHAR K. R.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-13T00:00:00.000Z",
         "ownership": "D"
@@ -3509,18 +3512,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 28150,
-        "value": 362009,
-        "filerUrl": "",
-        "transactionText": "Sale at price 12.86 per share.",
-        "filerName": "ZERVIGON EDDY",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 15552,
         "value": 0,
         "filerUrl": "",
@@ -3538,6 +3529,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BUSH MARY KATE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28150,
+        "value": 362009,
+        "filerUrl": "",
+        "transactionText": "Sale at price 12.86 per share.",
+        "filerName": "ZERVIGON EDDY",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-15T00:00:00.000Z",
@@ -3627,24 +3630,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2160,
-        "value": 20110,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.31 per share.",
-        "filerName": "SODERBERG SHAWN MARIE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-03-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50746,
         "value": 494266,
         "filerUrl": "",
         "transactionText": "Sale at price 9.74 per share.",
         "filerName": "SRIDHAR K. R.",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-03-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2160,
+        "value": 20110,
+        "filerUrl": "",
+        "transactionText": "Sale at price 9.31 per share.",
+        "filerName": "SODERBERG SHAWN MARIE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-03-18T00:00:00.000Z",
         "ownership": "D"
@@ -3736,7 +3739,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 137.47,
+    "currentPrice": 136.6,
     "targetHighPrice": 207,
     "targetLowPrice": 39,
     "targetMeanPrice": 125.16667,
@@ -3765,6 +3768,6 @@
     "profitMargins": 0.0084,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T18:42:49.406Z",
+  "lastUpdated": "2026-02-06T01:43:42.249Z",
   "source": "Static Build (yahoo-finance2)"
 }

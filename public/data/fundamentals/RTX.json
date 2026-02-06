@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0932,
         "position": 124986171,
-        "value": 24508537813,
+        "value": 24493540083,
         "pctChange": 0.018
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0754,
         "position": 101151945,
-        "value": 19834884524,
+        "value": 19822746785,
         "pctChange": 0.028499998
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0681,
         "position": 91254030,
-        "value": 17894002408,
+        "value": 17883052370,
         "pctChange": -0.1903
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.056799997,
         "position": 76197762,
-        "value": 14941618871,
+        "value": 14932475512,
         "pctChange": 0.0106
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.045,
         "position": 60299904,
-        "value": 11824207954,
+        "value": 11816972260,
         "pctChange": 1.0131
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.040900003,
         "position": 54899825,
-        "value": 10765306483,
+        "value": 10758718772,
         "pctChange": -0.018099999
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Dodge & Cox Inc.",
         "pctHeld": 0.0299,
         "position": 40099366,
-        "value": 7863084532,
+        "value": 7858272803,
         "pctChange": -0.0396
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0221,
         "position": 29642811,
-        "value": 5812658700,
+        "value": 5809101707,
         "pctChange": 0.0176
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0221,
         "position": 29678515,
-        "value": 5819659897,
+        "value": 5816098620,
         "pctChange": 0.025899999
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.021,
         "position": 28205871,
-        "value": 5530889141,
+        "value": 5527504574,
         "pctChange": -0.0047999998
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-05T20:09:19.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 238,
+        "priorPriceTarget": 227
+      },
       {
         "epochGradeDate": "2026-01-28T19:56:48.000Z",
         "firm": "JP Morgan",
@@ -1779,14 +1789,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0033038992,
-    "regularMarketChange": -0.65000916,
-    "regularMarketTime": "2026-02-05T18:43:03.000Z",
+    "postMarketChangePercent": 0.0026534891,
+    "postMarketChange": 0.5200043,
+    "postMarketTime": "2026-02-06T00:59:45.000Z",
+    "postMarketPrice": 196.49,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0039138203,
+    "regularMarketChange": -0.770004,
+    "regularMarketTime": "2026-02-05T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 196.09,
+    "regularMarketPrice": 195.97,
     "regularMarketDayHigh": 199.68,
     "regularMarketDayLow": 194.5301,
-    "regularMarketVolume": 2687425,
+    "regularMarketVolume": 5528459,
     "averageDailyVolume10Day": 7503580,
     "averageDailyVolume3Month": 5108967,
     "regularMarketPreviousClose": 196.74,
@@ -1795,25 +1810,25 @@
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "RTX",
     "underlyingSymbol": null,
     "shortName": "RTX Corporation",
     "longName": "RTX Corporation",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 262911967232
+    "marketCap": 262751076352
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 298559635456,
-    "forwardPE": 26.148819,
+    "forwardPE": 26.130901,
     "profitMargins": 0.07598,
     "floatShares": 1251052878,
     "sharesOutstanding": 1340771942,
@@ -1830,7 +1845,7 @@
     "impliedSharesOutstanding": 1340771942,
     "category": null,
     "bookValue": 48.513,
-    "priceToBook": 4.0420094,
+    "priceToBook": 4.039536,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1845,7 +1860,7 @@
     "enterpriseToRevenue": 3.37,
     "enterpriseToEbitda": 19.745,
     "52WeekChange": 0.52772164,
-    "SandP52WeekChange": 0.13136196,
+    "SandP52WeekChange": 0.14217246,
     "lastDividendValue": 0.68,
     "lastDividendDate": "2025-11-21T00:00:00.000Z",
     "latestShareClass": null,
@@ -3047,7 +3062,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 196.09,
+    "currentPrice": 195.97,
     "targetHighPrice": 238,
     "targetLowPrice": 150,
     "targetMeanPrice": 214.06714,
@@ -3077,6 +3092,6 @@
     "profitMargins": 0.07598,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-05T18:45:33.574Z",
+  "lastUpdated": "2026-02-06T01:46:26.317Z",
   "source": "Static Build (yahoo-finance2)"
 }
