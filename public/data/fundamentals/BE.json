@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-04-30T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-06T10:34:30.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 165,
+        "priorPriceTarget": 145
+      },
       {
         "epochGradeDate": "2026-02-03T16:06:00.000Z",
         "firm": "Roth Capital",
@@ -2386,11 +2398,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.12259672,
+    "preMarketChange": 16.770004,
+    "preMarketTime": "2026-02-06T12:47:52.000Z",
+    "preMarketPrice": 153.56,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.046925243,
-    "postMarketChange": 6.4099884,
-    "postMarketTime": "2026-02-06T00:59:56.000Z",
-    "postMarketPrice": 143.01,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0729555,
     "regularMarketChange": -10.75,
@@ -2400,15 +2412,15 @@
     "regularMarketDayHigh": 147.15,
     "regularMarketDayLow": 131.68,
     "regularMarketVolume": 12078374,
-    "averageDailyVolume10Day": 11484160,
-    "averageDailyVolume3Month": 13341905,
+    "averageDailyVolume10Day": 12028090,
+    "averageDailyVolume3Month": 13348537,
     "regularMarketPreviousClose": 147.35,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 141.98,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "BE",
     "underlyingSymbol": null,
@@ -2455,8 +2467,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 18.284,
     "enterpriseToEbitda": 235.428,
-    "52WeekChange": 4.9463277,
-    "SandP52WeekChange": 0.14217246,
+    "52WeekChange": 4.5125103,
+    "SandP52WeekChange": 0.12817979,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3768,6 +3780,6 @@
     "profitMargins": 0.0084,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-06T06:48:27.167Z",
+  "lastUpdated": "2026-02-06T12:50:36.672Z",
   "source": "Static Build (yahoo-finance2)"
 }
