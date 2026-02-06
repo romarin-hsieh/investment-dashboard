@@ -79,8 +79,7 @@ class HybridTechnicalIndicatorsAPI {
     // 2. Check OBV (New Requirement) - Relaxed
     const obvObj = data.obv || (data.indicators && data.indicators.obv);
     if (!obvObj || obvObj.value === null || obvObj.value === undefined || obvObj.value === 'N/A') {
-      console.warn('Validation warning: Missing valid OBV (continuing anyway)');
-      // return false; 
+      // console.warn('Validation warning: Missing valid OBV (continuing anyway)');
     }
 
     // 3. Check Beta (New Requirement) - Relaxed
@@ -90,23 +89,22 @@ class HybridTechnicalIndicatorsAPI {
       (yf.beta_3mo !== undefined && yf.beta_3mo !== null && yf.beta_3mo !== 'N/A')
     );
     if (!hasBeta) {
-      console.warn('Validation warning: Missing valid Beta (continuing anyway)');
-      // return false;
+      // console.warn('Validation warning: Missing valid Beta (continuing anyway)');
     }
 
-    // k. Check Full Series ADX (Existing Logic)
+    // k. Check Full Series ADX (Existing Logic) - Relaxed
+    // 不要因為 ADX 計算失敗就丟棄所有數據 (例如 MA, RSI 可能還是好的)
     if (data.fullSeries && data.fullSeries.ADX_14) {
       const adxSeries = data.fullSeries.ADX_14;
       const validADXCount = adxSeries.filter(v => v !== null && v !== undefined && !isNaN(v)).length;
 
-      // 如果有效 ADX 值少於 5 個，認為無效
       if (validADXCount < 5) {
-        console.log(`ADX validation failed: only ${validADXCount} valid values`);
-        return false;
+        console.warn(`ADX validation warning: only ${validADXCount} valid values. Continuing with partial data.`);
+        // return true; // 改為返回 true，允許部分數據展示
       }
     }
 
-    return true;
+    return true; // Always return true if we have basic data, effectively disabling strict "All or Nothing" validation
   }
 
   // 嘗試獲取預計算數據

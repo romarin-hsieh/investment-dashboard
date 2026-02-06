@@ -10,10 +10,16 @@ class YahooFinanceAPI {
     // 使用多個 CORS 代理服務來解決跨域問題 - 2024年12月修正版
     // 優先使用真正無限制的免費代理服務
     this.corsProxies = [
-      // 2. corsproxy.io (目前最穩定)
+      // 1. Custom Cloudflare Worker (Best Performance & Reliability)
+      'https://yfinance-proxy.romarinhsieh.workers.dev/?',
+
+      // 2. allorigins.win (Priority 2: Reliable Free Proxy)
+      'https://api.allorigins.win/raw?url=',
+
+      // 3. Fallback: corsproxy.io (Priority 3: Often rate-limited/paywalled)
       'https://corsproxy.io/?',
 
-      // 3. Fallback proxies (如果不穩定可考慮移除)
+      // 4. Fallback: cors-anywhere (Priority 4: Demo usage only)
       'https://cors-anywhere.herokuapp.com/',
     ];
 
