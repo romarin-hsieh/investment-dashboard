@@ -45,7 +45,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.91980004,
         "position": 4482527,
-        "value": 45094223,
+        "value": 45183871,
         "pctChange": 0.2206
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Tidal Investments LLC",
         "pctHeld": 0.89599997,
         "position": 4366437,
-        "value": 43926358,
+        "value": 44013684,
         "pctChange": 0.1351
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.8846,
         "position": 4311221,
-        "value": 43370885,
+        "value": 43457107,
         "pctChange": 0.5697
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Voloridge Investment Management, LLC",
         "pctHeld": 0.79330003,
         "position": 3865946,
-        "value": 38891418,
+        "value": 38968735,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.73440003,
         "position": 3579166,
-        "value": 36006411,
+        "value": 36077993,
         "pctChange": 0.811
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0,
         "position": 44437876,
-        "value": 447045051,
+        "value": 447933786,
         "pctChange": 0.0034
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0,
         "position": 7489141,
-        "value": 75340761,
+        "value": 75490540,
         "pctChange": -0.0063
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0,
         "position": 11017367,
-        "value": 110834716,
+        "value": 111055058,
         "pctChange": -0.0055
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0,
         "position": 6328927,
-        "value": 63669008,
+        "value": 63795583,
         "pctChange": -0.39790002
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0,
         "position": 25097687,
-        "value": 252482741,
+        "value": 252984683,
         "pctChange": -0.0366
       }
     ]
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-06T21:35:05.000Z",
+        "firm": "Macquarie",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 18,
+        "priorPriceTarget": 27
+      },
       {
         "epochGradeDate": "2026-02-06T15:33:28.000Z",
         "firm": "Cantor Fitzgerald",
@@ -1157,14 +1167,19 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.21718088,
-    "regularMarketChange": 1.7950001,
-    "regularMarketTime": "2026-02-06T18:43:34.000Z",
+    "postMarketChangePercent": 0,
+    "postMarketChange": 0,
+    "postMarketTime": "2026-02-07T00:59:54.000Z",
+    "postMarketPrice": 10.08,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.219601,
+    "regularMarketChange": 1.815,
+    "regularMarketTime": "2026-02-06T21:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 10.06,
+    "regularMarketPrice": 10.08,
     "regularMarketDayHigh": 10.1765,
     "regularMarketDayLow": 8.68,
-    "regularMarketVolume": 29040474,
+    "regularMarketVolume": 40672125,
     "averageDailyVolume10Day": 33894200,
     "averageDailyVolume3Month": 32189344,
     "regularMarketPreviousClose": 8.265,
@@ -1173,7 +1188,7 @@
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "REGULAR",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "CLSK",
     "underlyingSymbol": null,
@@ -1185,16 +1200,16 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2572848896
+    "marketCap": 2577989376
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 2895173120,
-    "forwardPE": 18.62963,
+    "forwardPE": 18.666666,
     "profitMargins": 0.47561002,
     "floatShares": 246811821,
-    "sharesOutstanding": 255750361,
+    "sharesOutstanding": 255752913,
     "sharesShort": 82421779,
     "sharesShortPriorMonth": "1972-07-29T00:37:50.000Z",
     "sharesShortPreviousMonthDate": "2025-12-15T00:00:00.000Z",
@@ -1205,17 +1220,17 @@
     "shortRatio": 3.19,
     "shortPercentOfFloat": 0.4516,
     "beta": 3.497,
-    "impliedSharesOutstanding": 255750361,
+    "impliedSharesOutstanding": 255752913,
     "category": null,
     "bookValue": 7.65,
-    "priceToBook": 1.3150327,
+    "priceToBook": 1.317647,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-09-30T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-09-30T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": 353324000,
-    "trailingEps": 1.12,
+    "trailingEps": 1.37,
     "forwardEps": 0.69,
     "lastSplitFactor": "1:10",
     "lastSplitDate": 1576022400,
@@ -2190,7 +2205,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 10.06,
+    "currentPrice": 10.08,
     "targetHighPrice": 30,
     "targetLowPrice": 14,
     "targetMeanPrice": 23.07692,
@@ -2219,6 +2234,6 @@
     "profitMargins": 0.47561002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-06T18:43:37.494Z",
+  "lastUpdated": "2026-02-07T01:31:28.037Z",
   "source": "Static Build (yahoo-finance2)"
 }
