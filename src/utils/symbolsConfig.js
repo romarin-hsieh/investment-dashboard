@@ -10,7 +10,7 @@ export class SymbolsConfigManager {
     // 從環境變數讀取快取時間，預設 60 分鐘 (1 小時)
     const cacheMinutes = import.meta.env.VITE_CACHE_SYMBOLS_MINUTES || 60
     this.updateInterval = cacheMinutes * 60 * 1000 // 轉換為毫秒
-    
+
     console.log(`Symbols cache interval set to ${cacheMinutes} minutes (1 hour default)`)
   }
 
@@ -65,30 +65,30 @@ export class SymbolsConfigManager {
   async fetchFromUniverse() {
     try {
       console.log('Fetching symbols from universe.json...')
-      
+
       // 獲取正確的路徑 (支援 GitHub Pages)
       const universeUrl = this.getUniverseJsonUrl()
       console.log('Universe.json URL:', universeUrl)
-      
+
       const response = await fetch(universeUrl)
-      
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
-      
+
       const data = await response.json()
-      
+
       if (data.symbols && Array.isArray(data.symbols)) {
         const symbols = data.symbols
           .filter(symbol => symbol && typeof symbol === 'string')
           .map(symbol => symbol.trim().toUpperCase())
-        
+
         console.log(`✅ Loaded ${symbols.length} symbols from universe.json:`, symbols)
         return symbols
       }
-      
+
       throw new Error('Invalid universe.json format')
-      
+
     } catch (error) {
       console.warn('Failed to fetch from universe.json:', error)
       return []
@@ -175,14 +175,14 @@ export class SymbolsConfigManager {
       // 格式2: { values: [["ASTS"], ["RIVN"], ["PL"], ...] } (無標題行)
       // 格式3: [{"Symbol": "ASTS"}, {"Symbol": "RIVN"}, ...] (JSON 格式)
       // 格式4: ["ASTS", "RIVN", "PL", ...] (簡單陣列)
-      
+
       // 格式4: 簡單陣列
       if (Array.isArray(data) && data.length > 0 && typeof data[0] === 'string') {
         return data
           .filter(symbol => symbol && typeof symbol === 'string')
           .map(symbol => symbol.trim().toUpperCase())
       }
-      
+
       // 格式3: JSON 物件陣列
       if (Array.isArray(data) && data.length > 0 && typeof data[0] === 'object') {
         return data
@@ -190,28 +190,28 @@ export class SymbolsConfigManager {
           .filter(symbol => symbol && typeof symbol === 'string')
           .map(symbol => symbol.trim().toUpperCase())
       }
-      
+
       // 格式1 & 格式2: Google Sheets API 標準格式
       if (data.values && Array.isArray(data.values)) {
         const values = data.values
-        
+
         // 檢查第一行是否為標題行
         const firstRow = values[0]
-        const isHeaderRow = firstRow && firstRow[0] && 
-          (firstRow[0].toLowerCase().includes('symbol') || 
-           firstRow[0].toLowerCase().includes('stock') ||
-           firstRow[0].toLowerCase().includes('ticker'))
-        
+        const isHeaderRow = firstRow && firstRow[0] &&
+          (firstRow[0].toLowerCase().includes('symbol') ||
+            firstRow[0].toLowerCase().includes('stock') ||
+            firstRow[0].toLowerCase().includes('ticker'))
+
         // 決定從哪一行開始處理
         const startIndex = isHeaderRow ? 1 : 0
-        
+
         return values
           .slice(startIndex) // 跳過標題行（如果有的話）
           .map(row => row[0]) // 取第一列
           .filter(symbol => symbol && typeof symbol === 'string')
           .map(symbol => symbol.trim().toUpperCase())
       }
-      
+
       console.warn('Unrecognized Google Sheets data format:', data)
       return []
     } catch (error) {
@@ -225,7 +225,7 @@ export class SymbolsConfigManager {
    */
   getStaticSymbols() {
     return [
-      'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 
+      'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW',
       'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
       'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
       'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
@@ -238,7 +238,8 @@ export class SymbolsConfigManager {
       'UUUU', 'VRT', 'ETN', 'MSFT', 'ADBE',
       'FIG', 'PANW', 'CRWD', 'DDOG', 'DUOL',
       'ZETA', 'AXON', 'ALAB', 'LRCX', 'BWXT',
-      'UMAC', 'MP', 'RR'
+      'UMAC', 'MP', 'RR',
+      'FTNT', 'GLW', 'WDC', 'CSCO'
     ]
   }
 
@@ -270,12 +271,12 @@ export class SymbolsConfigManager {
   getConfigSource() {
     const envSymbols = this.getEnvironmentSymbols()
     if (envSymbols.length > 0) return 'environment'
-    
+
     if (this.isCacheValid()) return 'cache'
-    
+
     const sheetsUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL
     if (sheetsUrl) return 'google_sheets'
-    
+
     return 'static'
   }
 
@@ -285,13 +286,13 @@ export class SymbolsConfigManager {
   getCacheInfo() {
     const cacheMinutes = import.meta.env.VITE_CACHE_SYMBOLS_MINUTES || 10
     const timeoutMs = import.meta.env.VITE_SHEETS_TIMEOUT_MS || 3000
-    
+
     return {
       cacheIntervalMinutes: cacheMinutes,
       sheetsTimeoutMs: timeoutMs,
       lastUpdate: this.lastUpdate,
       cacheValid: this.isCacheValid(),
-      nextUpdateIn: this.lastUpdate ? 
+      nextUpdateIn: this.lastUpdate ?
         Math.max(0, this.updateInterval - (Date.now() - this.lastUpdate)) : 0
     }
   }

@@ -22,15 +22,15 @@ class YahooFinanceNodeAPI {
 
   async getStockInfo(symbol) {
     console.log(`Fetching stock info for ${symbol}...`)
-    
+
     for (let i = 0; i < this.corsProxies.length; i++) {
       try {
         const proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length
         const proxy = this.corsProxies[proxyIndex]
-        
+
         const targetUrl = `${this.baseUrl}${symbol}?modules=summaryProfile,price,defaultKeyStatistics`
         const url = `${proxy}${encodeURIComponent(targetUrl)}`
-        
+
         // 使用 fetch (Node.js 18+ 內建，或使用 node-fetch)
         let fetch
         try {
@@ -44,7 +44,7 @@ class YahooFinanceNodeAPI {
           // 如果都沒有，提供錯誤信息
           throw new Error('Fetch not available. Please use Node.js 18+ or install node-fetch: npm install node-fetch')
         }
-        
+
         const response = await fetch(url, {
           method: 'GET',
           headers: {
@@ -52,21 +52,21 @@ class YahooFinanceNodeAPI {
             'Content-Type': 'application/json'
           }
         })
-        
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
-        
+
         const data = await response.json()
-        
+
         if (!data.quoteSummary || !data.quoteSummary.result || data.quoteSummary.result.length === 0) {
           throw new Error('No quoteSummary data available')
         }
-        
+
         const result = data.quoteSummary.result[0]
         const summaryProfile = result.summaryProfile || {}
         const price = result.price || {}
-        
+
         const stockInfo = {
           symbol: symbol,
           sector: summaryProfile.sector || 'Unknown',
@@ -84,14 +84,14 @@ class YahooFinanceNodeAPI {
           sources: ['yahoo_finance'],
           lastUpdated: new Date().toISOString()
         }
-        
+
         console.log(`✓ Successfully fetched ${symbol}: ${stockInfo.sector} - ${stockInfo.industry}`)
         this.currentProxyIndex = proxyIndex
         return stockInfo
-        
+
       } catch (error) {
         console.warn(`✗ Proxy ${i + 1} failed for ${symbol}: ${error.message}`)
-        
+
         if (i === this.corsProxies.length - 1) {
           console.error(`✗ All proxies failed for ${symbol}`)
           return this.getDefaultStockInfo(symbol)
@@ -123,13 +123,13 @@ class YahooFinanceNodeAPI {
   getDefaultExchange(symbol) {
     const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS']
     const nyseSymbols = ['TSM', 'ORCL', 'RDW']
-    
+
     if (nasdaqSymbols.includes(symbol)) {
       return 'NASDAQ'
     } else if (nyseSymbols.includes(symbol)) {
       return 'NYSE'
     }
-    
+
     return 'NASDAQ'
   }
 
@@ -137,7 +137,7 @@ class YahooFinanceNodeAPI {
     if (!marketCap || marketCap <= 0) {
       return 'unknown'
     }
-    
+
     if (marketCap >= 200000000000) {
       return 'mega_cap'
     } else if (marketCap >= 10000000000) {
@@ -189,10 +189,10 @@ class MetadataUpdater {
   async updateSymbolsMetadata(symbols, forceUpdate = false) {
     console.log(`\n🚀 Starting metadata update for ${symbols.length} symbols...`)
     console.log(`Force update: ${forceUpdate}`)
-    
+
     const startTime = Date.now()
     const existingMetadata = await this.loadExistingMetadata()
-    
+
     const updatedItems = []
     const errors = []
     let updated = 0
@@ -200,11 +200,11 @@ class MetadataUpdater {
 
     for (let i = 0; i < symbols.length; i++) {
       const symbol = symbols[i]
-      
+
       try {
         // 檢查是否需要更新
         const existingItem = existingMetadata.items?.find(item => item.symbol === symbol)
-        
+
         if (!forceUpdate && existingItem && existingItem.confidence >= 0.9) {
           console.log(`⏭️  Skipping ${symbol} (already high confidence: ${existingItem.confidence})`)
           updatedItems.push(existingItem)
@@ -213,10 +213,10 @@ class MetadataUpdater {
         }
 
         console.log(`\n📊 Processing ${symbol} (${i + 1}/${symbols.length})...`)
-        
+
         // 獲取新數據
         const stockInfo = await this.api.getStockInfo(symbol)
-        
+
         // 轉換為元數據格式
         const metadataItem = {
           symbol: stockInfo.symbol,
@@ -247,7 +247,7 @@ class MetadataUpdater {
       } catch (error) {
         console.error(`❌ Failed to update ${symbol}: ${error.message}`)
         errors.push({ symbol, error: error.message })
-        
+
         // 保留現有數據或使用默認值
         const existingItem = existingMetadata.items?.find(item => item.symbol === symbol)
         if (existingItem) {
@@ -293,7 +293,7 @@ class MetadataUpdater {
 
   generateSectorGrouping(items) {
     const grouping = {}
-    
+
     for (const item of items) {
       const sector = item.sector || 'Unknown'
       if (!grouping[sector]) {
@@ -301,7 +301,7 @@ class MetadataUpdater {
       }
       grouping[sector].push(item.symbol)
     }
-    
+
     return grouping
   }
 
@@ -311,7 +311,7 @@ class MetadataUpdater {
       medium_confidence_0_75: 0,
       low_confidence_0_50: 0
     }
-    
+
     for (const item of items) {
       const confidence = item.confidence || 0
       if (confidence >= 0.90) {
@@ -322,13 +322,13 @@ class MetadataUpdater {
         distribution.low_confidence_0_50++
       }
     }
-    
+
     return distribution
   }
 
   generateDataSources(items) {
     const sources = {}
-    
+
     for (const item of items) {
       if (item.sources) {
         for (const source of item.sources) {
@@ -336,20 +336,20 @@ class MetadataUpdater {
         }
       }
     }
-    
+
     return sources
   }
 
   countConfidenceImprovements(oldItems, newItems) {
     let improvements = 0
-    
+
     for (const newItem of newItems) {
       const oldItem = oldItems.find(item => item.symbol === newItem.symbol)
       if (oldItem && newItem.confidence > oldItem.confidence) {
         improvements++
       }
     }
-    
+
     return improvements
   }
 
@@ -378,14 +378,14 @@ class MetadataUpdater {
     console.log(`   High (≥90%): ${metadata.confidence_distribution.high_confidence_0_90}`)
     console.log(`   Medium (≥75%): ${metadata.confidence_distribution.medium_confidence_0_75}`)
     console.log(`   Low (≥50%): ${metadata.confidence_distribution.low_confidence_0_50}`)
-    
+
     if (errors.length > 0) {
       console.log(`\n❌ Errors:`)
       errors.forEach(error => {
         console.log(`   ${error.symbol}: ${error.error}`)
       })
     }
-    
+
     console.log('\n🎉 Update completed!')
   }
 }
@@ -395,25 +395,26 @@ async function main() {
   const args = process.argv.slice(2)
   const forceUpdate = args.includes('--force') || args.includes('-f')
   const symbolsArg = args.find(arg => arg.startsWith('--symbols='))
-  
+
   // 預設的股票列表
   const defaultSymbols = [
     'AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX',
     'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
-    'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS'
+    'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS',
+    'FTNT', 'GLW', 'WDC', 'CSCO'
   ]
-  
+
   let symbols = defaultSymbols
-  
+
   if (symbolsArg) {
     symbols = symbolsArg.split('=')[1].split(',').map(s => s.trim().toUpperCase())
   }
 
   console.log('🔄 Yahoo Finance Metadata Updater')
   console.log(`📋 Symbols to process: ${symbols.join(', ')}`)
-  
+
   const updater = new MetadataUpdater()
-  
+
   try {
     await updater.updateSymbolsMetadata(symbols, forceUpdate)
   } catch (error) {

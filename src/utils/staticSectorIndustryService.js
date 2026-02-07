@@ -26,10 +26,10 @@ class StaticSectorIndustryService {
       }
 
       console.log('🔄 Fetching sector industry data from static JSON...');
-      
+
       // 嘗試主要資料來源
       let data = await this.fetchFromUrl(paths.sectorIndustry());
-      
+
       // 如果主要來源失敗，嘗試回退來源
       if (!data) {
         console.log('⚠️ Primary data source failed, trying fallback...');
@@ -60,7 +60,7 @@ class StaticSectorIndustryService {
 
     } catch (error) {
       console.error('❌ Failed to fetch sector industry data:', error);
-      
+
       // 返回最小可用的回退資料
       return this.getMinimalFallbackData();
     }
@@ -102,11 +102,11 @@ class StaticSectorIndustryService {
    */
   validateDataFormat(data) {
     if (!data || typeof data !== 'object') return false;
-    
+
     // 檢查必要欄位
     if (!Array.isArray(data.items)) return false;
     if (!data.sector_grouping || typeof data.sector_grouping !== 'object') return false;
-    
+
     // 檢查 items 格式
     if (data.items.length > 0) {
       const firstItem = data.items[0];
@@ -126,10 +126,10 @@ class StaticSectorIndustryService {
   async getSymbolMetadata(symbol) {
     try {
       const data = await this.fetchSectorIndustryData();
-      
+
       if (!data.items) return null;
 
-      const metadata = data.items.find(item => 
+      const metadata = data.items.find(item =>
         item.symbol && item.symbol.toUpperCase() === symbol.toUpperCase()
       );
 
@@ -176,7 +176,7 @@ class StaticSectorIndustryService {
       symbols.forEach(symbol => {
         const upperSymbol = symbol.toUpperCase();
         const metadata = metadataMap.get(upperSymbol);
-        
+
         if (metadata) {
           results.set(symbol, metadata);
         }
@@ -212,7 +212,7 @@ class StaticSectorIndustryService {
   async getDataStats() {
     try {
       const data = await this.fetchSectorIndustryData();
-      
+
       return {
         totalSymbols: data.items?.length || 0,
         totalSectors: Object.keys(data.sector_grouping || {}).length,
@@ -268,7 +268,7 @@ class StaticSectorIndustryService {
    */
   getMinimalFallbackData() {
     const fallbackSymbols = [
-      'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 
+      'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW',
       'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
       'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
       'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
@@ -281,7 +281,8 @@ class StaticSectorIndustryService {
       'UUUU', 'VRT', 'ETN', 'MSFT', 'ADBE',
       'FIG', 'PANW', 'CRWD', 'DDOG', 'DUOL',
       'ZETA', 'AXON', 'ALAB', 'LRCX', 'BWXT',
-      'UMAC', 'MP', 'RR'
+      'UMAC', 'MP', 'RR',
+      'FTNT', 'GLW', 'WDC', 'CSCO'
     ];
 
     const fallbackData = {
@@ -351,7 +352,11 @@ class StaticSectorIndustryService {
       'BWXT': { sector: 'Energy', industry: 'Nuclear Energy' },
       'UMAC': { sector: 'Industrials', industry: 'Aerospace & Defense' },
       'MP': { sector: 'Basic Materials', industry: 'Other Industrial Metals & Mining' },
-      'RR': { sector: 'Technology', industry: 'Information Technology Services' }
+      'RR': { sector: 'Technology', industry: 'Information Technology Services' },
+      'FTNT': { sector: 'Technology', industry: 'Software - Infrastructure' },
+      'GLW': { sector: 'Technology', industry: 'Electronic Components' },
+      'WDC': { sector: 'Technology', industry: 'Computer Hardware' },
+      'CSCO': { sector: 'Technology', industry: 'Communication Equipment' }
     };
 
     const items = fallbackSymbols.map(symbol => {
@@ -405,12 +410,12 @@ class StaticSectorIndustryService {
   async needsUpdate() {
     try {
       const data = await this.fetchSectorIndustryData();
-      
+
       if (!data.next_refresh) return false;
-      
+
       const nextRefresh = new Date(data.next_refresh).getTime();
       const now = Date.now();
-      
+
       return now >= nextRefresh;
     } catch (error) {
       console.error('❌ Failed to check update status:', error);

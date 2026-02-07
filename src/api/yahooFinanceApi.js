@@ -1098,8 +1098,8 @@ class YahooFinanceAPI {
 
   // 獲取默認交易所
   getDefaultExchange(symbol) {
-    const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS'];
-    const nyseSymbols = ['TSM', 'ORCL', 'RDW'];
+    const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'FTNT', 'WDC', 'CSCO'];
+    const nyseSymbols = ['TSM', 'ORCL', 'RDW', 'GLW'];
 
     if (nasdaqSymbols.includes(symbol)) {
       return 'NASDAQ';

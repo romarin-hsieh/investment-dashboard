@@ -134,12 +134,30 @@ export default {
       const isDark = this.theme === 'dark';
       return {
         "symbols": [
-          {"proName": "FOREXCOM:SPXUSD","title": "S&P 500"},
-          {"proName": "NASDAQ:NDX","title": "NASDAQ 100"},
-          {"proName": "OPOFINANCE:DJIUSD","title": "Dow Jones"},
-          {"proName": "CAPITALCOM:RTY","title": "Russell 2000"},
-          {"proName": "INDEX:BTCUSD","title": "BTC"},
-          {"proName": "TVC:GOLD","title": "Gold"}
+          {
+            "proName": "FOREXCOM:SPXUSD",
+            "title": "S&P 500 Index"
+          },
+          {
+            "proName": "FOREXCOM:NSXUSD",
+            "title": "NASDAQ 100 Index"
+          },
+          {
+            "proName": "OPOFINANCE:DJIUSD",
+            "title": "Dow Jone Index"
+          },
+          {
+            "proName": "CAPITALCOM:RTY",
+            "title": "Russel 2000"
+          },
+          {
+            "proName": "INDEX:BTCUSD",
+            "title": "BTC"
+          },
+          {
+            "proName": "OANDA:XAUUSD",
+            "title": "GOLD"
+          }
         ],
         "colorTheme": isDark ? "dark" : "light",
         "locale": "en",
