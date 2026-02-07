@@ -7,16 +7,16 @@
  *
  * For modular components, see:
  * 模組化元件請參閱：
- * - corsProxyManager.js - CORS proxy rotation / CORS 代理輪替
- * - dataTransformers.js - Data format conversion / 資料格式轉換
+ * - corsProxyManager.ts - CORS proxy rotation / CORS 代理輪替
+ * - dataTransformers.ts - Data format conversion / 資料格式轉換
  *
  * @module api/yahooFinanceApi
  */
 
 import technicalIndicatorsCache from '../utils/technicalIndicatorsCache.js';
 import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
-import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager.js';
-import { getDefaultExchange, getMarketCapCategory, createFallbackStockInfo } from './dataTransformers.js';
+import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';
+import { getDefaultExchange, getMarketCapCategory, createFallbackStockInfo } from './dataTransformers';
 
 class YahooFinanceAPI {
   constructor() {
