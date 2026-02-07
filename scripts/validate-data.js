@@ -231,6 +231,90 @@ function validateTechnicalIndicatorsFile(symbol, filePath) {
 }
 
 /**
+ * Validate Smart Money Sector Rotation / 驗證 Smart Money 板塊輪動資料
+ */
+function validateSmartMoneyData(filePath) {
+    const result = readJsonFile(filePath);
+    if (!result.success) {
+        results.errors.push(`smart_money_sector_rotation.json: Failed to parse - ${result.error}`);
+        return false;
+    }
+
+    const data = result.data;
+    const errors = [];
+
+    // Check required fields / 檢查必要欄位
+    if (!data.updated_at) errors.push('Missing updated_at timestamp');
+    if (!data.managers_scraped || !Array.isArray(data.managers_scraped)) {
+        errors.push('Missing or invalid managers_scraped array');
+    }
+
+    // Check data freshness (warn if older than 7 days)
+    // 檢查資料新鮮度 (超過7天警告)
+    if (data.updated_at) {
+        const updateDate = new Date(data.updated_at);
+        const daysSinceUpdate = (Date.now() - updateDate.getTime()) / (1000 * 60 * 60 * 24);
+        if (daysSinceUpdate > 7) {
+            results.warnings++;
+            logVerbose(`  Warning: Smart Money data is ${Math.round(daysSinceUpdate)} days old`);
+        }
+    }
+
+    logVerbose(`  smart_money: ${data.managers_scraped?.length || 0} managers`);
+
+    if (errors.length > 0) {
+        results.errors.push(`smart_money_sector_rotation.json: ${errors.join('; ')}`);
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Validate Quant Engine Analysis Results (MFI/3D Coordinates)
+ * 驗證量化引擎分析結果 (MFI/3D座標)
+ */
+function validateQuantEngineData(filePath) {
+    const result = readJsonFile(filePath);
+    if (!result.success) {
+        results.errors.push(`analysis_results.json: Failed to parse - ${result.error}`);
+        return false;
+    }
+
+    const data = result.data;
+    const errors = [];
+
+    // Must be an array / 必須是陣列
+    if (!Array.isArray(data)) {
+        errors.push('Data is not an array');
+    } else {
+        logVerbose(`  analysis_results: ${data.length} stock entries`);
+
+        // Sample validation / 抽樣驗證
+        const sampleSize = Math.min(5, data.length);
+        for (let i = 0; i < sampleSize; i++) {
+            const item = data[i];
+            if (!item.ticker) errors.push(`item[${i}]: Missing ticker`);
+            if (!item.date) errors.push(`item[${i}]: Missing date`);
+            if (!item.coordinates) errors.push(`item[${i}]: Missing coordinates`);
+            if (!item.signal) errors.push(`item[${i}]: Missing signal`);
+            if (item.coordinates) {
+                if (typeof item.coordinates.x_trend !== 'number') errors.push(`item[${i}]: Invalid x_trend`);
+                if (typeof item.coordinates.y_momentum !== 'number') errors.push(`item[${i}]: Invalid y_momentum`);
+                if (typeof item.coordinates.z_structure !== 'number') errors.push(`item[${i}]: Invalid z_structure`);
+            }
+        }
+    }
+
+    if (errors.length > 0) {
+        results.errors.push(`analysis_results.json: ${errors.join('; ')}`);
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * Validate stocks.json config / 驗證 stocks.json 配置
  */
 function validateStocksConfig() {
@@ -378,6 +462,34 @@ async function main() {
             results.failed++;
         }
     });
+
+    // Step 6: Validate Smart Money & Quant Engine data
+    // 步驟 6: 驗證 Smart Money 與量化引擎資料
+    log('\nValidating Smart Money & Quant Engine data...', 'info');
+
+    // Smart Money Sector Rotation
+    const smartMoneyPath = path.join(DATA_DIR, 'smart_money_sector_rotation.json');
+    if (!fileExists(smartMoneyPath)) {
+        results.warnings++;
+        logVerbose('  smart_money_sector_rotation.json: Not found (warning)');
+    } else if (validateSmartMoneyData(smartMoneyPath)) {
+        results.passed++;
+        log('smart_money_sector_rotation.json: Valid', 'success');
+    } else {
+        results.failed++;
+    }
+
+    // Quant Engine Analysis Results (MFI Volume Profile / 3D Coordinates)
+    const analysisPath = path.join(DATA_DIR, 'analysis_results.json');
+    if (!fileExists(analysisPath)) {
+        results.warnings++;
+        logVerbose('  analysis_results.json: Not found (warning)');
+    } else if (validateQuantEngineData(analysisPath)) {
+        results.passed++;
+        log('analysis_results.json: Valid', 'success');
+    } else {
+        results.failed++;
+    }
 
     // Summary / 摘要
     console.log('\n════════════════════════════════════════════════════════');

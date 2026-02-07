@@ -92,6 +92,8 @@ Run `npm run validate:data` to verify all generated data files:
 *   **Fundamentals**: Validates Yahoo Finance API format (earnings, recommendationTrend).
 *   **Technical Indicators**: Checks for required indicators (rsi, macd, sma, ema).
 *   **Metadata**: Validates symbols_metadata.json and sector_industry.json.
+*   **Smart Money Sector Rotation**: Validates updated_at timestamp and managers_scraped array.
+*   **Quant Engine (MFI/Analysis Results)**: Validates ticker, date, coordinates (x_trend, y_momentum, z_structure), and signal fields.
 
 ```bash
 npm run validate:data           # Basic validation
