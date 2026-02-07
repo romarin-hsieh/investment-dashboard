@@ -162,12 +162,26 @@ class StockOverviewOptimizer {
 
     // Load data in parallel stages
     // 分階段並行載入
-    const [quotesResult, dailyResult] = await Promise.all([
+    const [quotesResult, dailyResult, indicatorsResult] = await Promise.all([
       performanceMonitor.measureAsync(PERFORMANCE_LABELS.QUOTES_FETCH,
         () => dataFetcher.fetchQuotesSnapshot()
       ),
       performanceMonitor.measureAsync(PERFORMANCE_LABELS.DAILY_DATA_FETCH,
         () => dataFetcher.fetchDailySnapshot()
+      ),
+      // New: Preload all technical indicators (bulk)
+      performanceMonitor.measureAsync('preload_indicators',
+        async () => {
+          try {
+            // Dynamically import to avoid circular dependency if any?
+            // Import at top is fine.
+            const { hybridTechnicalIndicatorsAPI } = await import('@/api/hybridTechnicalIndicatorsApi.js');
+            return await hybridTechnicalIndicatorsAPI.preloadAllPrecomputedData();
+          } catch (e) {
+            console.warn('Failed to preload indicators:', e);
+            return null;
+          }
+        }
       )
     ])
 

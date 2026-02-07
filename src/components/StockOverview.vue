@@ -99,6 +99,7 @@ import { navigationService } from '@/services/NavigationService.js'
 import { scrollSpyService } from '@/services/ScrollSpyService.js'
 import { dataFetcher } from '@/lib/fetcher'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
+import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
 import { useTheme } from '@/composables/useTheme.js'
 import { computed } from 'vue'
 
@@ -589,92 +590,40 @@ export default {
       this.error = null
       
       try {
-        console.log('🚀 Starting simple stock data load...')
+        console.log('🚀 Starting optimized stock data load...')
         
-        // Get base path from environment
-        // 從環境變數獲取 base path
-        const basePath = import.meta.env.BASE_URL.endsWith('/') 
-            ? import.meta.env.BASE_URL.slice(0, -1) 
-            : import.meta.env.BASE_URL;
+        // Use StockOverviewOptimizer to load data (including bulk technical indicators)
+        const optimizedData = await stockOverviewOptimizer.loadOptimizedStockData(this.configuredSymbols)
         
-        // 1. Load configuration
-        // 1. 載入配置
-        this.configuredSymbols = await stocksConfig.getEnabledSymbols()
-        console.log(`✅ Loaded ${this.configuredSymbols.length} symbols from config`)
-        
-        // 2. Fetch quotes data
-        // 2. 獲取 Quotes 數據
-        const quotesResponse = await fetch(`${basePath}/data/quotes/latest.json?t=` + Date.now())
-        if (!quotesResponse.ok) {
-          throw new Error(`Failed to load quotes: HTTP ${quotesResponse.status}`)
+        // Assign data from optimized result
+        if (optimizedData.quotes) {
+            this.quotes = optimizedData.quotes
         }
         
-        const quotesData = await quotesResponse.json()
-        if (quotesData.items) {
-          this.quotes = quotesData.items.filter(quote => 
-            this.configuredSymbols.includes(quote.symbol)
-          )
-          this.lastUpdate = quotesData.as_of
-          console.log(`✅ Loaded ${this.quotes.length} quotes`)
+        if (optimizedData.lastUpdate) {
+            this.lastUpdate = optimizedData.lastUpdate
         }
         
-        // 3. Extract date for daily fetch
-        // 3. 根據 quotes 數據中的日期提取 daily 數據日期
-        let dailyDateStr = ''
-        try {
-          // 優先使用 quotesData.as_of
-          if (quotesData.as_of) {
-             const asOfDate = new Date(quotesData.as_of)
-             // 轉換為 YYYY-MM-DD 格式 (本地時間)
-             // 注意：這裡假設 as_of 是 ISO 格式，我們需要它的日期部分
-             // 如果在台北時間運行，可能需要考慮時區，但這裡簡單取 ISO 的日期部分通常足夠
-             // 或者根據 generate-daily-snapshot.js 的邏輯，它生成的是 "Taipei" date filename
-             
-              // Try to parse Taipei date (Simplified: rely on backend convention)
-              // 嘗試解析出台北時間的日期 (簡單處理: 依賴後端生成時的約定)
-              // generate-daily-snapshot.js logic: return taipeiTime.toISOString().split('T')[0]
-              
-              // If as_of is ISO String (e.g. 2025-02-02T15:00:00.000Z)
-              // 如果 as_of 是 ISO 字串，直接取日期部分
-              dailyDateStr = quotesData.as_of.split('T')[0] 
-          }
-        } catch (e) {
-          console.warn('Failed to parse date from quotes data', e)
+        if (optimizedData.dailyData) {
+             this.dailyData = optimizedData.dailyData
         }
-
-        // 3. 獲取 Daily Data (Technical Indicators)
-        // 使用 fetcher 的智能回溯機制，不再手動處理 fallback
-        console.log('🔄 Fetching daily data via optimized fetcher...')
-        const dailyResult = await dataFetcher.fetchDailySnapshot()
         
-        if (dailyResult.data) {
-          this.dailyData = dailyResult.data
-          console.log(`✅ Loaded daily data (${dailyResult.source}, as_of: ${dailyResult.as_of})`)
+        if (optimizedData.metadata) {
+             this.metadata = optimizedData.metadata
         } else {
-           console.warn(`⚠️ Daily data not found (Error: ${dailyResult.error})`)
+             // Fallback if optimizer didn't return metadata (e.g. from cache without it)
+             // But optimizer usually loads it.
+             // If missing, load it here?
+             if (!this.metadata) {
+                  this.metadata = await directMetadataLoader.loadMetadata()
+             }
         }
         
-        // 4. Load Metadata via DirectMetadataLoader (Static Data / 靜態數據)
-        try {
-          // directMetadataLoader uses base URL from Vite env
-          // directMetadataLoader 使用 Vite 環境變數中的 base URL
-          this.metadata = await directMetadataLoader.loadMetadata()
-          
-          if (this.metadata && this.metadata.items) {
-             console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)
-          } else {
-             console.warn('⚠️ Metadata loaded but likely empty or invalid')
-          }
-        } catch (metaError) {
-          console.warn('⚠️ Failed to load metadata via loader:', metaError)
-          // Fallback?? No, loader already handles errors gracefully returning null
-        }
-        
-        console.log('✅ Simple stock data load completed successfully!')
+        console.log('✅ Stock data load completed successfully (Optimized)!')
         
       } catch (err) {
         this.error = String(err)
-        console.error('❌ Simple stock data load failed:', err)
+        console.error('❌ Stock data load failed:', err)
       } finally {
         this.loading = false
       }

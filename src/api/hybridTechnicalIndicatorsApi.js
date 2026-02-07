@@ -67,6 +67,14 @@ class HybridTechnicalIndicatorsAPI {
     }
   }
 
+  // 預加載所有技術指標
+  async preloadAllPrecomputedData() {
+    if (this.preferPrecomputed) {
+      return await precomputedIndicatorsAPI.getAllTechnicalIndicators();
+    }
+    return null;
+  }
+
   // 檢查數據完整性 (ADX, OBV, Beta)
   isADXValid(data) {
     if (!data) return false;

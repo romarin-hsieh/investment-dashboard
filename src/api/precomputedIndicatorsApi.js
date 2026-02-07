@@ -321,6 +321,53 @@ class PrecomputedIndicatorsAPI {
     console.log('🗑️ Cleared all precomputed caches');
   }
 
+  // 批量獲取所有技術指標 (Load Consolidated File)
+  async getAllTechnicalIndicators() {
+    console.log('📦 Loading consolidated technical indicators (latest_all.json)...');
+
+    // Check cache first
+    const cacheKey = 'ALL_INDICATORS';
+    if (this.cache.has(cacheKey)) {
+      const cached = this.cache.get(cacheKey);
+      if (Date.now() - cached.timestamp < this.cacheTimeout) {
+        console.log('📦 Using cached consolidated data');
+        return cached.data;
+      }
+    }
+
+    try {
+      const timestamp = Math.floor(Date.now() / 60000); // Minute-level cache busting
+      const url = `${this.baseUrl}latest_all.json?t=${timestamp}`;
+
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to load latest_all.json (${response.status})`);
+      }
+
+      const data = await response.json();
+
+      // Cache the bulk data
+      this.cache.set(cacheKey, {
+        data: data,
+        timestamp: Date.now()
+      });
+
+      // Also populate individual symbol cache to avoid re-fetching if requested individually later
+      Object.entries(data).forEach(([symbol, indicatorData]) => {
+        this.cache.set(`precomputed_${symbol}`, {
+          data: indicatorData,
+          timestamp: Date.now()
+        });
+      });
+
+      console.log(`✅ Loaded consolidated indicators for ${Object.keys(data).length} symbols`);
+      return data;
+    } catch (error) {
+      console.warn('⚠️ Failed to load consolidated indicators:', error);
+      return null;
+    }
+  }
+
   // 獲取緩存統計
   getCacheStats() {
     const stats = {

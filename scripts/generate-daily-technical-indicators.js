@@ -1135,6 +1135,139 @@ async function generateAllTechnicalIndicators() {
   const indexPath = path.join(CONFIG.outputDir, 'latest_index.json');
   fs.writeFileSync(indexPath, JSON.stringify(indexData, null, 2));
 
+  // --------------------------------------------------------------------------
+  // New: Generate latest_all.json (Bulk Compact File)
+  // --------------------------------------------------------------------------
+  console.log('📦 Generating latest_all.json (Compact Bulk Data)...');
+
+  const allIndicators = {};
+
+  for (const filename of generatedFiles) {
+    try {
+      const filepath = path.join(CONFIG.outputDir, filename);
+      const content = JSON.parse(fs.readFileSync(filepath, 'utf8'));
+      const symbol = content.symbol;
+      const raw = content.indicators;
+
+      // Helper to get latest and change %
+      const getCompact = (arr) => {
+        if (!arr || !Array.isArray(arr) || arr.length === 0) return { value: 'N/A', change: null };
+
+        // Get valid values for change calc
+        let latest = null;
+        let prev = null;
+        let latestIdx = -1;
+
+        for (let i = arr.length - 1; i >= 0; i--) {
+          if (arr[i] !== null && arr[i] !== undefined) {
+            if (latest === null) {
+              latest = arr[i];
+              latestIdx = i;
+            } else {
+              prev = arr[i];
+              break;
+            }
+          }
+        }
+
+        let change = null;
+        let changePct = null;
+        if (latest !== null && prev !== null && prev !== 0) {
+          change = latest - prev;
+          changePct = ((latest - prev) / Math.abs(prev)) * 100;
+        }
+
+        return {
+          value: latest,
+          change: changePct !== null ? changePct.toFixed(2) : null, // Store as string to save space? Or number? Number is better for JSON
+          // signal: 'N/A' // Signals not calculated here yet, UI does it or API does it? 
+          // API uses "signal: N/A" usually. TechnicalIndicators.vue calculates text based on value/signal.
+        };
+      };
+
+      const getValOnly = (arr) => {
+        if (!arr || !Array.isArray(arr)) return null;
+        for (let i = arr.length - 1; i >= 0; i--) {
+          if (arr[i] !== null && arr[i] !== undefined) return arr[i];
+        }
+        return null;
+      };
+
+      // Construct Compact Object (matching structure expected by UI after API processing)
+      // We map directly to the keys UI expects: ma5, rsi14, etc.
+      const compact = {
+        symbol: symbol,
+        date: content.date,
+
+        // Trend
+        ma5: getCompact(raw.ema?.ema5),
+        ma10: getCompact(raw.ema?.ema10),
+        ema20: getCompact(raw.ema?.ema20),
+        ma30: getCompact(raw.ema?.ema30),
+
+        sma5: getCompact(raw.sma?.sma5),
+        sma10: getCompact(raw.sma?.sma10),
+        sma30: getCompact(raw.sma?.sma30),
+
+        superTrend: getCompact(raw.supertrend?.supertrend),
+        parabolicSAR: getCompact(raw.psar?.sar),
+        vwma20: getCompact(raw.vwma?.vwma),
+
+        // Oscillators
+        rsi14: getCompact(raw.rsi?.rsi14),
+        willr14: getCompact(raw.williamsR?.r14),
+        stochK: getCompact(raw.stoch?.k),
+        stochD: getCompact(raw.stoch?.d),
+        cci20: getCompact(raw.cci?.cci20),
+        adx14: getCompact(raw.adx?.adx),
+
+        // MACD
+        macd: {
+          value: getValOnly(raw.macd?.macd),
+          signal: getValOnly(raw.macd?.signal),
+          histogram: getValOnly(raw.macd?.histogram),
+          // Change of MACD itself?
+          ...getCompact(raw.macd?.macd) // Overwrites value, adds change
+        },
+
+        // Ichimoku
+        ichimokuConversionLine: getCompact(raw.ichimoku?.conversion),
+        ichimokuBaseLine: getCompact(raw.ichimoku?.base),
+        ichimokuLaggingSpan: getCompact(raw.ichimoku?.lagging),
+
+        // Market
+        atr14: getCompact(raw.atr?.atr14),
+        mfi14: getCompact(raw.mfi?.mfi14),
+        cmf20: getCompact(raw.cmf?.cmf20),
+        obv: getCompact(raw.obv?.value),
+
+        // Beta
+        beta: { value: content.fundamentals?.defaultKeyStatistics?.beta || 'N/A' }, // Static
+        beta_10d: getCompact(raw.beta?.beta10d),
+        beta_3mo: getCompact(raw.beta?.beta3m),
+
+        // Volume/Market Cap (latest values)
+        market: {
+          volume: getCompact(raw.market?.volumeLastDay ? [raw.market.volumeLastDay] : []), // It's a single value in raw usually? No, raw.market produced by script is object with single values
+          avgVol10D: raw.market?.avgVolume10d,
+          avgVol3M: raw.market?.avgVolume3m,
+          marketCap: content.fundamentals?.price?.marketCap || content.fundamentals?.summaryDetail?.marketCap
+        },
+
+        lastUpdated: new Date().toISOString()
+      };
+
+      allIndicators[symbol] = compact;
+
+    } catch (e) {
+      console.warn(`⚠️ Failed to compact data for ${filename}:`, e.message);
+    }
+  }
+
+  const allPath = path.join(CONFIG.outputDir, 'latest_all.json');
+  fs.writeFileSync(allPath, JSON.stringify(allIndicators, null, 2)); // Pretty print for debug, minified for prod? 2 is fine for 50 items.
+  console.log(`✅ Generated latest_all.json (${(fs.statSync(allPath).size / 1024).toFixed(2)} KB)`);
+
   console.log(`📋 Generated latest_index.json with ${generatedFiles.length} files`);
   console.log('🎉 Daily technical indicators generation completed!');
 
@@ -1142,7 +1275,8 @@ async function generateAllTechnicalIndicators() {
     totalFiles: generatedFiles.length,
     symbols: symbols.length,
     date: today,
-    indexFile: 'latest_index.json'
+    indexFile: 'latest_index.json',
+    bulkFile: 'latest_all.json'
   };
 }
 

@@ -216,10 +216,17 @@ export default {
           if (typeof signal === 'number') {
               signal = this.formatNumber(signal, 2);
           }
+          
+          // Use pre-calculated change if available (Compact Mode)
+          if (data[key].change !== undefined && data[key].change !== null) {
+              const chgVal = parseFloat(data[key].change);
+              change = (chgVal >= 0 ? '+' : '') + chgVal.toFixed(1) + '%';
+              changeClass = chgVal >= 0 ? 'pos' : 'neg';
+          }
         }  
         
-        // Calculate Change
-        if (series[arrayKey] && Array.isArray(series[arrayKey])) {
+        // Calculate Change from Series (Fallback / Full Mode)
+        if (!change && series[arrayKey] && Array.isArray(series[arrayKey])) {
              const arr = series[arrayKey];
              const latest = this.getLatestValue(arr);
              const prev = this.getPreviousValue(arr);
