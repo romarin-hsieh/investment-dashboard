@@ -78,6 +78,14 @@ async function rebuildMetadata() {
                 const industry = profile.industry || 'Unknown';
                 const marketCap = price.marketCap || 0;
 
+                // Normalize exchange name for TradingView widget compatibility
+                let exchange = price.exchangeName || 'Unknown';
+                if (exchange.toLowerCase().includes('nasdaq')) {
+                    exchange = 'NASDAQ';
+                } else if (exchange.toLowerCase().includes('nyse')) {
+                    exchange = 'NYSE';
+                }
+
                 item = {
                     symbol: symbol,
                     sector: sector,
@@ -86,7 +94,7 @@ async function rebuildMetadata() {
                     sources: ['yfinance_local_build'],
                     last_verified_at: new Date().toISOString(),
                     market_cap_category: getMarketCapCategory(marketCap),
-                    exchange: price.exchangeName || 'Unknown',
+                    exchange: exchange,
                     country: profile.country || 'Unknown',
                     website: profile.website || '',
                     employee_count: profile.fullTimeEmployees || null,
