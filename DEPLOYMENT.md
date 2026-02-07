@@ -3,13 +3,18 @@
 ## ⚙️ Automated CI/CD Pipelines
 The project relies heavily on GitHub Actions to maintain its "Static-First" architecture.
 
-### 1. Daily Data Refresh (`daily-update.yml`)
-- **Schedule**: `0 0 * * *` (Daily at Midnight UTC)
-- **Core Script**: `scripts/generate-real-ohlcv-yfinance.py`
-- **Output**: Updates `public/data/ohlcv/*.json`
+### 1. Daily Data Refresh (`daily-data-update.yml`)
+- **Schedule**: `0 2 * * *` (Daily at 02:00 UTC / 10:00 Taipei)
+- **Core Scripts**:
+  - OHLCV: `scripts/generate-real-ohlcv-yfinance.py`
+  - Technical Indicators: `scripts/generate-daily-technical-indicators.js`
+  - Fundamentals: `scripts/fetch-fundamentals.js`
+  - Quant Engine: `scripts/production/daily_update.py`
+  - Sentiment: `scripts/update_sentiment.py`
+- **Output**: Updates all files in `public/data/`
 - **Logic**:
-  1. Fetches list of symbols from `scripts/symbols_config.py`.
-  2. For each symbol, downloads 1Y historic data from Yahoo Finance.
+  1. Fetches list of symbols from `public/config/stocks.json`.
+  2. For each symbol, downloads 5Y historic data from Yahoo Finance.
   3. Validates data integrity (Checks for nulls/gaps).
   4. Commits changes to the repo.
 - **Failure Handling**: If a symbol fails, the script logs an error but continues. The previous day's JSON remains (Stale is better than broken).

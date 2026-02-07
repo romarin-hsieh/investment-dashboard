@@ -23,5 +23,5 @@ Detailed quarterly activity of top-tier funds.
 
 ## Data Flow & Maintenance
 This metric is computed on the frontend (`HoldingsAnalysis.vue`) using pre-fetched JSON data. The underlying data is updated daily/weekly via Github Actions:
-1.  **Yahoo Finance Data**: Updated via `daily_update.yml`.
-2.  **Dataroma Data**: Updated via `dataroma_stock_update.yml`.
+1.  **Yahoo Finance Data**: Updated via `daily-data-update.yml`.
+2.  **Dataroma Data**: Updated via `dataroma-stock-update.yml`.

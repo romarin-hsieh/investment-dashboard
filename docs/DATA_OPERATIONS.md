@@ -33,7 +33,7 @@ To change the list of tracked stocks, edit ONLY `public/config/stocks.json`.
 1.  Add the new object to the `stocks` array.
 2.  Ensure `enabled` is `true`.
 3.  Commit the change.
-4.  **Action**: This will trigger the GitHub Action (`daily-update.yml`).
+4.  **Action**: This will trigger the GitHub Action (`daily-data-update.yml`).
 
 ## 3. Data Update Pipelines
 
@@ -45,7 +45,7 @@ To change the list of tracked stocks, edit ONLY `public/config/stocks.json`.
 
 ### B. Market Data (OHLCV)
 *   **Script**: `scripts/generate-real-ohlcv-yfinance.py`
-*   **Trigger**: Runs daily via GitHub Actions (`daily-update.yml`).
+*   **Trigger**: Runs daily via GitHub Actions (`daily-data-update.yml`).
 *   **Command**: `npm run update:market` (if alias exists) or `python scripts/generate-real-ohlcv-yfinance.py`
 *   **Dependency**: Reads directly from `public/config/stocks.json`.
 
