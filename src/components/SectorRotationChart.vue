@@ -272,7 +272,13 @@ export default {
                 return 
             }
 
-            const unifiedName = NORMALIZE_MAP[rawName] || rawName // Fallback to raw if not in map
+            const unifiedName = NORMALIZE_MAP[rawName] || rawName 
+            
+            // STRICT FILTER: Only allow sectors that are in our standard set
+            if (!SECTOR_COLORS[unifiedName]) {
+                return
+            }
+
             allSectors.add(unifiedName)
             
             if (!normalizedMap[p][unifiedName]) {

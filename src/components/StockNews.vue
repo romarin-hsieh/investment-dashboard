@@ -113,6 +113,7 @@ export default {
     async fetchYahooNews(symbol) {
       // 使用 CORS 代理服務
       const corsProxies = [
+        'https://yfinance-proxy.romarinhsieh.workers.dev/?',
         'https://api.allorigins.win/raw?url=',
         'https://corsproxy.io/?'
       ];
@@ -120,7 +121,14 @@ export default {
       for (const proxy of corsProxies) {
         try {
           const targetUrl = `https://query1.finance.yahoo.com/v1/finance/search?q=${symbol}&lang=en-US&region=US&quotesCount=1&newsCount=${this.newsCount}&enableFuzzyQuery=false&quotesQueryId=tss_match_phrase_query&multiQuoteQueryId=multi_quote_single_token_query&newsQueryId=news_cie_vespa&enableCb=true&enableNavLinks=true&enableEnhancedTrivialQuery=true`;
-          const url = `${proxy}${encodeURIComponent(targetUrl)}`;
+          
+          let url = '';
+          // Special handling for custom Cloudflare Worker: DO NOT ENCODE
+          if (proxy.includes('workers.dev')) {
+             url = `${proxy}${targetUrl}`;
+          } else {
+             url = `${proxy}${encodeURIComponent(targetUrl)}`;
+          }
           
           console.log(`Fetching news from: ${url}`);
           

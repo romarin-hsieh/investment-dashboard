@@ -170,7 +170,13 @@ class YahooFinanceAPI {
           proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
           const proxy = this.corsProxies[proxyIndex];
           console.log(`Fetching data for ${symbol} using proxy ${proxyIndex + 1}...`);
-          url = `${proxy}${encodeURIComponent(targetUrl)}`;
+
+          // Special handling for custom Cloudflare Worker: DO NOT ENCODE
+          if (proxy.includes('workers.dev')) {
+            url = `${proxy}${targetUrl}`;
+          } else {
+            url = `${proxy}${encodeURIComponent(targetUrl)}`;
+          }
         }
 
         console.log(`Request URL: ${url}`);
