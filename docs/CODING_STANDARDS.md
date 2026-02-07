@@ -144,7 +144,47 @@ Every non-trivial function should document:
 
 ---
 
-## 6. AI Agent Guidance
+## 6. TypeScript Requirements
+
+> [!IMPORTANT]
+> All **NEW** frontend code in `src/` **MUST** be written in TypeScript.  
+> 所有 `src/` 目錄下的**新**前端程式碼**必須**使用 TypeScript。
+
+### 6.1 Mandatory for New Files
+- New files in `src/api/`, `src/utils/`, `src/services/`, `src/lib/` → `.ts`
+- New Vue components → `<script setup lang="ts">`
+- New composables → `.ts`
+
+### 6.2 Type Definition Standards
+```typescript
+// Use explicit types for function parameters and returns
+// 函式參數與回傳值必須明確定義型別
+function calculateRSI(prices: number[], period: number = 14): number {
+  // ...
+}
+
+// Use interfaces for complex objects
+// 複雜物件使用 interface 定義
+interface StockMetadata {
+  symbol: string;
+  exchange: 'NASDAQ' | 'NYSE';
+  sector: string;
+  industry: string;
+}
+```
+
+### 6.3 Migration Roadmap (Existing JS Files)
+Legacy JavaScript files will be migrated gradually:
+
+| Priority | Files | Status |
+|----------|-------|--------|
+| 🔴 High | `yahooFinanceApi.js` (pending refactor) | Planned |
+| 🟡 Medium | `metadataService.js`, `*Service.js` | Backlog |
+| 🟢 Low | Utility files in `src/utils/` | Backlog |
+
+---
+
+## 7. AI Agent Guidance
 
 For AI agents (Antigravity, Copilot, etc.), refer to:
 - `.agent/workflows/code-review.md` - Code review checklist
@@ -153,5 +193,6 @@ For AI agents (Antigravity, Copilot, etc.), refer to:
 When generating code, agents **MUST**:
 1. Follow bilingual comment convention
 2. Match existing file naming patterns
-3. Use TypeScript for new frontend code
+3. **Use TypeScript for ALL new frontend code** (no exceptions)
 4. Use Python for data pipeline scripts
+
