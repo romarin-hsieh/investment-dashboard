@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "validate:data": "node scripts/validate-data.js",
     "update:sentiment": "python scripts/update_sentiment.py",
     "fetch:fundamentals": "node scripts/fetch-fundamentals.js"
   },

@@ -86,7 +86,19 @@ The project follows a **Static-First** approach with two unified workflows.
     *   **Metadata**: `scripts/update-metadata-python.py`
     *   Updates `symbols_metadata.json` and `sector_industry.json`.
 
-## 5. Troubleshooting Discrepancies
+## 5. Data Validation
+Run `npm run validate:data` to verify all generated data files:
+*   **OHLCV**: Checks for valid symbol, ohlcv array, and data point structure.
+*   **Fundamentals**: Validates Yahoo Finance API format (earnings, recommendationTrend).
+*   **Technical Indicators**: Checks for required indicators (rsi, macd, sma, ema).
+*   **Metadata**: Validates symbols_metadata.json and sector_industry.json.
+
+```bash
+npm run validate:data           # Basic validation
+npm run validate:data --verbose # Detailed output
+```
+
+## 6. Troubleshooting Discrepancies
 If the number of stocks in the dashboard != number of stocks in config:
 
 1.  **Check Config**: Verify `public/config/stocks.json` count.
