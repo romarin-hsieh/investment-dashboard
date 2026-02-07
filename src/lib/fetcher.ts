@@ -45,7 +45,8 @@ export class DataFetcher {
    */
   async fetchSystemStatus(): Promise<FetchResult<SystemStatus>> {
     try {
-      const response = await fetch(`${this.baseUrl}/data/status.json`)
+      const timestamp = new Date().getTime()
+      const response = await fetch(`${this.baseUrl}/data/status.json?t=${timestamp}`)
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
       }
