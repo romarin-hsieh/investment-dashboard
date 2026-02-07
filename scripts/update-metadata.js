@@ -6,8 +6,12 @@
  * 更新 public/data/symbols_metadata.json 文件
  */
 
-const fs = require('fs').promises
-const path = require('path')
+import fs from 'fs/promises'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // 模擬 Yahoo Finance API 調用 (在 Node.js 環境中)
 class YahooFinanceNodeAPI {
@@ -31,20 +35,7 @@ class YahooFinanceNodeAPI {
         const targetUrl = `${this.baseUrl}${symbol}?modules=summaryProfile,price,defaultKeyStatistics`
         const url = `${proxy}${encodeURIComponent(targetUrl)}`
 
-        // 使用 fetch (Node.js 18+ 內建，或使用 node-fetch)
-        let fetch
-        try {
-          // 嘗試使用 Node.js 18+ 的內建 fetch
-          fetch = globalThis.fetch
-          if (!fetch) {
-            // 回退到 node-fetch
-            fetch = (await import('node-fetch')).default
-          }
-        } catch (error) {
-          // 如果都沒有，提供錯誤信息
-          throw new Error('Fetch not available. Please use Node.js 18+ or install node-fetch: npm install node-fetch')
-        }
-
+        // 使用 fetch (Node.js 18+ 內建)
         const response = await fetch(url, {
           method: 'GET',
           headers: {
@@ -121,8 +112,8 @@ class YahooFinanceNodeAPI {
   }
 
   getDefaultExchange(symbol) {
-    const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS']
-    const nyseSymbols = ['TSM', 'ORCL', 'RDW']
+    const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'FTNT', 'WDC', 'CSCO']
+    const nyseSymbols = ['TSM', 'ORCL', 'RDW', 'GLW']
 
     if (nasdaqSymbols.includes(symbol)) {
       return 'NASDAQ'
@@ -198,12 +189,15 @@ class MetadataUpdater {
     let updated = 0
     let skipped = 0
 
+    // create map of existing items for O(1) lookup
+    const existingItemsMap = new Map(existingMetadata.items?.map(item => [item.symbol, item]) || [])
+
     for (let i = 0; i < symbols.length; i++) {
       const symbol = symbols[i]
 
       try {
-        // 檢查是否需要更新
-        const existingItem = existingMetadata.items?.find(item => item.symbol === symbol)
+        // Check if existing item needs update
+        const existingItem = existingItemsMap.get(symbol)
 
         if (!forceUpdate && existingItem && existingItem.confidence >= 0.9) {
           console.log(`⏭️  Skipping ${symbol} (already high confidence: ${existingItem.confidence})`)
@@ -214,10 +208,10 @@ class MetadataUpdater {
 
         console.log(`\n📊 Processing ${symbol} (${i + 1}/${symbols.length})...`)
 
-        // 獲取新數據
+        // Fetch new data
         const stockInfo = await this.api.getStockInfo(symbol)
 
-        // 轉換為元數據格式
+        // Convert to metadata format
         const metadataItem = {
           symbol: stockInfo.symbol,
           sector: stockInfo.sector,
@@ -227,7 +221,6 @@ class MetadataUpdater {
           last_verified_at: stockInfo.lastUpdated,
           market_cap_category: stockInfo.marketCapCategory,
           exchange: stockInfo.exchange,
-          // 額外信息
           country: stockInfo.country,
           website: stockInfo.website,
           employees: stockInfo.employees,
@@ -238,7 +231,7 @@ class MetadataUpdater {
         updatedItems.push(metadataItem)
         updated++
 
-        // 添加延遲避免 API 限制
+        // Add delay
         if (i < symbols.length - 1) {
           console.log(`⏳ Waiting ${this.requestDelay}ms before next request...`)
           await this.api.delay(this.requestDelay)
@@ -248,8 +241,8 @@ class MetadataUpdater {
         console.error(`❌ Failed to update ${symbol}: ${error.message}`)
         errors.push({ symbol, error: error.message })
 
-        // 保留現有數據或使用默認值
-        const existingItem = existingMetadata.items?.find(item => item.symbol === symbol)
+        // Keep existing data or use default
+        const existingItem = existingItemsMap.get(symbol)
         if (existingItem) {
           updatedItems.push(existingItem)
         } else {
@@ -258,12 +251,11 @@ class MetadataUpdater {
       }
     }
 
-    // 生成統計信息
+    // Generate stats
     const sectorGrouping = this.generateSectorGrouping(updatedItems)
     const confidenceDistribution = this.generateConfidenceDistribution(updatedItems)
     const dataSources = this.generateDataSources(updatedItems)
 
-    // 構建新的元數據對象
     const newMetadata = {
       ttl_days: 7,
       as_of: new Date().toISOString(),
@@ -282,10 +274,7 @@ class MetadataUpdater {
       }
     }
 
-    // 保存到文件
     await this.saveMetadata(newMetadata)
-
-    // 輸出摘要
     this.printSummary(newMetadata, errors)
 
     return newMetadata
@@ -424,11 +413,12 @@ async function main() {
 }
 
 // 執行腳本
-if (require.main === module) {
+import { pathToFileURL } from 'url'
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch(error => {
     console.error('❌ Script failed:', error)
     process.exit(1)
   })
 }
 
-module.exports = { MetadataUpdater, YahooFinanceNodeAPI }
+export { MetadataUpdater, YahooFinanceNodeAPI }
