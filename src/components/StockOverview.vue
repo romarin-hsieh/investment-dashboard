@@ -590,16 +590,26 @@ export default {
       this.error = null
       
       try {
-        console.log('🚀 Starting optimized stock data load...')
+        console.error('🚀 Starting optimized stock data load...') // Using error to ensure visibility
         
         // 1. Ensure configured symbols are loaded
         if (this.configuredSymbols.length === 0) {
+           console.error('⚠️ Configured symbols empty, fetching...');
            this.configuredSymbols = await stocksConfig.getEnabledSymbols()
+           console.error(`✅ Fetched ${this.configuredSymbols.length} configured symbols`);
+        } else {
+           console.error(`ℹ️ Using existing ${this.configuredSymbols.length} configured symbols`);
         }
 
         // Use StockOverviewOptimizer to load data (including bulk technical indicators)
         const optimizedData = await stockOverviewOptimizer.loadOptimizedStockData(this.configuredSymbols)
         
+        console.error('📦 Optimized data received:', { 
+            quotesCount: optimizedData?.quotes?.length,
+            hasMetadata: !!optimizedData?.metadata,
+            hasDaily: !!optimizedData?.dailyData
+        });
+
         // Assign data from optimized result
         if (optimizedData.quotes) {
             this.quotes = optimizedData.quotes
@@ -620,11 +630,16 @@ export default {
              // But optimizer usually loads it.
              // If missing, load it here?
              if (!this.metadata) {
+                  console.error('⚠️ Metadata missing in optimized data, loading directly...');
                   this.metadata = await directMetadataLoader.loadMetadata()
+                  console.error('✅ Direct metadata load completed');
              }
         }
         
-        console.log('✅ Stock data load completed successfully (Optimized)!')
+        console.error('✅ Stock data load completed successfully (Optimized)!', {
+            finalQuotes: this.quotes.length,
+            finalMetadata: this.metadata?.items?.length
+        })
         
       } catch (err) {
         this.error = String(err)
