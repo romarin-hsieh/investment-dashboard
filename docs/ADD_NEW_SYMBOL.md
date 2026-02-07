@@ -27,19 +27,19 @@
 請依序執行以下指令 (需在專案根目錄)：
 
 ### 2.1 更新 Metadata (Sector/Industry)
-此步驟會抓取 Yahoo Finance 的 Sector, Industry, Market Cap 等資訊，並更新到 `public/data/symbols_metadata.json`。
+此步驟會從本地 fundamentals 資料重建 `public/data/symbols_metadata.json`。
 
 ```powershell
-node scripts/update-metadata.js
+node scripts/rebuild-metadata.js
 ```
-> **注意**: 如果遇到 403/401 錯誤，請檢查腳本中的 User-Agent 設定是否過期，或暫時手動在 `symbols_metadata.json` 中補上資料。
+> **注意**: 此腳本使用本地 `public/data/fundamentals/` 資料，無需 API 呼叫。
 
 ### 2.2 生成 OHLCV 歷史數據
 此步驟會下載並生成該股票的歷史價格數據 (`public/data/ohlcv/SYMBOL.json`)。
 
 ```powershell
-node scripts/generate-daily-ohlcv.js
-# 或針對特定股票 (視腳本支援度而定，通常跑全量即可)
+python scripts/generate-real-ohlcv-yfinance.py
+# 會自動讀取 public/config/stocks.json 中所有 enabled 的股票
 ```
 
 ### 2.3 生成技術指標 (Technical Indicators)
