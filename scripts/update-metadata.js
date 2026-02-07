@@ -40,7 +40,8 @@ class YahooFinanceNodeAPI {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
           }
         })
 
@@ -209,9 +210,46 @@ class MetadataUpdater {
         console.log(`\n📊 Processing ${symbol} (${i + 1}/${symbols.length})...`)
 
         // Fetch new data
-        const stockInfo = await this.api.getStockInfo(symbol)
+        let stockInfo = await this.api.getStockInfo(symbol)
+        let usedFallback = false
 
-        // Convert to metadata format
+        // Check if fetch failed (returned default Unknown)
+        if (stockInfo.sector === 'Unknown') {
+          const existingItem = existingItemsMap.get(symbol)
+
+          // 1. Try to keep existing valid data
+          if (existingItem && existingItem.sector !== 'Unknown') {
+            console.log(`⚠️ Fetch returned Unknown, keeping existing valid metadata for ${symbol} (Sector: ${existingItem.sector})`)
+            updatedItems.push(existingItem)
+            usedFallback = true
+            continue // Skip to next symbol
+          }
+
+          // 2. Try Manual Fallback
+          const manualFallbacks = {
+            'FTNT': { sector: 'Technology', industry: 'Software - Infrastructure', marketCapCategory: 'large_cap' },
+            'GLW': { sector: 'Technology', industry: 'Electronic Components', marketCapCategory: 'large_cap' },
+            'WDC': { sector: 'Technology', industry: 'Computer Hardware', marketCapCategory: 'mid_cap' },
+            'CSCO': { sector: 'Technology', industry: 'Communication Equipment', marketCapCategory: 'mega_cap' }
+          }
+
+          if (manualFallbacks[symbol]) {
+            console.log(`⚠️ Using manual fallback for ${symbol}`)
+            // Construct a valid stockInfo from fallback
+            stockInfo = {
+              ...this.api.getDefaultStockInfo(symbol),
+              sector: manualFallbacks[symbol].sector,
+              industry: manualFallbacks[symbol].industry,
+              marketCapCategory: manualFallbacks[symbol].marketCapCategory,
+              confidence: 1.0,
+              sources: ['manual_patch'],
+              lastUpdated: new Date().toISOString()
+            }
+            // Proceed to use this stockInfo
+          }
+        }
+
+        // Convert to metadata format (using either fetched data or manual fallback)
         const metadataItem = {
           symbol: stockInfo.symbol,
           sector: stockInfo.sector,
@@ -242,11 +280,30 @@ class MetadataUpdater {
         errors.push({ symbol, error: error.message })
 
         // Keep existing data or use default
-        const existingItem = existingItemsMap.get(symbol)
         if (existingItem) {
           updatedItems.push(existingItem)
         } else {
-          updatedItems.push(this.api.getDefaultStockInfo(symbol))
+          // Manual Fallback for Known Symbols
+          const manualFallbacks = {
+            'FTNT': { sector: 'Technology', industry: 'Software - Infrastructure', marketCapCategory: 'large_cap' },
+            'GLW': { sector: 'Technology', industry: 'Electronic Components', marketCapCategory: 'large_cap' },
+            'WDC': { sector: 'Technology', industry: 'Computer Hardware', marketCapCategory: 'mid_cap' },
+            'CSCO': { sector: 'Technology', industry: 'Communication Equipment', marketCapCategory: 'mega_cap' }
+          }
+
+          if (manualFallbacks[symbol]) {
+            console.log(`⚠️ Using manual fallback for ${symbol}`)
+            const fallback = this.api.getDefaultStockInfo(symbol)
+            fallback.sector = manualFallbacks[symbol].sector
+            fallback.industry = manualFallbacks[symbol].industry
+            fallback.marketCapCategory = manualFallbacks[symbol].marketCapCategory
+            fallback.confidence = 1.0
+            fallback.sources = ['manual_patch']
+            updatedItems.push(fallback)
+          } else {
+            console.warn(`⚠️ No existing data for ${symbol}, using default (Unknown)`)
+            updatedItems.push(this.api.getDefaultStockInfo(symbol))
+          }
         }
       }
     }
@@ -385,13 +442,23 @@ async function main() {
   const forceUpdate = args.includes('--force') || args.includes('-f')
   const symbolsArg = args.find(arg => arg.startsWith('--symbols='))
 
-  // 預設的股票列表
-  const defaultSymbols = [
-    'AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX',
-    'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
-    'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS',
-    'FTNT', 'GLW', 'WDC', 'CSCO'
-  ]
+  // Load symbols from stocks.json
+  const stocksConfigPath = path.join(__dirname, '../public/config/stocks.json')
+  let defaultSymbols = []
+  try {
+    const stocksData = JSON.parse(await fs.readFile(stocksConfigPath, 'utf8'))
+    defaultSymbols = stocksData.stocks.map(s => s.symbol)
+    console.log(`✅ Loaded ${defaultSymbols.length} symbols from stocks.json`)
+  } catch (error) {
+    console.error('❌ Failed to load stocks.json:', error.message)
+    // Fallback if file load fails
+    defaultSymbols = [
+      'AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX',
+      'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
+      'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS',
+      'FTNT', 'GLW', 'WDC', 'CSCO'
+    ]
+  }
 
   let symbols = defaultSymbols
 

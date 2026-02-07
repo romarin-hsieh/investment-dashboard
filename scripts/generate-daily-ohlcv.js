@@ -19,7 +19,7 @@ const __dirname = path.dirname(__filename);
 // 配置
 const CONFIG = {
   outputDir: path.join(__dirname, '../public/data/ohlcv'),
-  universeFile: path.join(__dirname, '../config/universe.json'),
+  universeFile: path.join(__dirname, '../public/config/stocks.json'),
   periods: ['1d'],
   ranges: {
     '3mo': 90,
@@ -36,10 +36,14 @@ function loadUniverse() {
   try {
     const data = fs.readFileSync(CONFIG.universeFile, 'utf8');
     const universe = JSON.parse(data);
+    if (universe.stocks && Array.isArray(universe.stocks)) {
+      return universe.stocks.filter(s => s.enabled).map(s => s.symbol);
+    }
+    // Fallback if universe.json format (legacy)
     return universe.symbols || [];
   } catch (error) {
     console.error('❌ Failed to load universe:', error);
-    // 回退到基本清單
+    // Fallback to basic list if file read fails
     return [
       'AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'META', 'NVDA', 'NFLX',
       'ASTS', 'RIVN', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'AVGO', 'CRWV',
@@ -76,28 +80,28 @@ function generateOhlcvData(symbol, days, basePrice = 100) {
 
   for (let i = days - 1; i >= 0; i--) {
     const timestamp = now - (i * dayMs);
-    
+
     // 生成價格變動 (-3% 到 +3%)
     const priceChange = (Math.random() - 0.5) * 0.06;
     const open = currentPrice;
     const close = open * (1 + priceChange);
-    
+
     // 生成高低價
     const volatility = Math.random() * 0.02 + 0.005; // 0.5-2.5% 波動
     const high = Math.max(open, close) * (1 + volatility);
     const low = Math.min(open, close) * (1 - volatility);
-    
+
     // 生成成交量 (500K - 5M)
     const baseVolume = 500000 + Math.random() * 4500000;
     const volume = Math.floor(baseVolume);
-    
+
     data.timestamps.push(timestamp);
     data.open.push(parseFloat(open.toFixed(2)));
     data.high.push(parseFloat(high.toFixed(2)));
     data.low.push(parseFloat(low.toFixed(2)));
     data.close.push(parseFloat(close.toFixed(2)));
     data.volume.push(volume);
-    
+
     currentPrice = close;
   }
 
@@ -124,7 +128,7 @@ function getBasePrice(symbol) {
     'DUOL': 180, 'ZETA': 25, 'AXON': 350, 'ALAB': 85, 'LRCX': 850,
     'BWXT': 120, 'MP': 25, 'RR': 8
   };
-  
+
   return priceMap[symbol] || 100;
 }
 
@@ -133,7 +137,7 @@ function getBasePrice(symbol) {
  */
 async function generateAllOhlcvData() {
   console.log('🚀 Starting daily OHLCV data generation...');
-  
+
   // 確保輸出目錄存在
   if (!fs.existsSync(CONFIG.outputDir)) {
     fs.mkdirSync(CONFIG.outputDir, { recursive: true });
@@ -142,25 +146,25 @@ async function generateAllOhlcvData() {
   const symbols = loadUniverse();
   const generatedFiles = [];
   const days = CONFIG.ranges[CONFIG.defaultRange];
-  
+
   console.log(`📊 Generating OHLCV data for ${symbols.length} symbols (${days} days each)...`);
-  
+
   for (const symbol of symbols) {
     const basePrice = getBasePrice(symbol);
     const ohlcvData = generateOhlcvData(symbol, days, basePrice);
-    
+
     // 格式 1: SYMBOL.json (給 ohlcvApi)
     const filename1 = `${symbol.toUpperCase()}.json`;
     const filepath1 = path.join(CONFIG.outputDir, filename1);
     fs.writeFileSync(filepath1, JSON.stringify(ohlcvData, null, 2));
     generatedFiles.push(filename1);
-    
+
     // 格式 2: symbol_period_days.json (給 precomputedOhlcvApi)
     const filename2 = `${symbol.toLowerCase()}_1d_${days}d.json`;
     const filepath2 = path.join(CONFIG.outputDir, filename2);
     fs.writeFileSync(filepath2, JSON.stringify(ohlcvData, null, 2));
     generatedFiles.push(filename2);
-    
+
     console.log(`✅ Generated ${symbol}: ${filename1} + ${filename2}`);
   }
 
@@ -175,13 +179,13 @@ async function generateAllOhlcvData() {
     source: 'GitHub Actions Daily Update',
     note: 'OHLCV data for both ohlcvApi and precomputedOhlcvApi'
   };
-  
+
   const indexPath = path.join(CONFIG.outputDir, 'index.json');
   fs.writeFileSync(indexPath, JSON.stringify(indexData, null, 2));
-  
+
   console.log(`📋 Generated index.json with ${generatedFiles.length} files`);
   console.log('🎉 Daily OHLCV data generation completed!');
-  
+
   return {
     totalFiles: generatedFiles.length,
     symbols: symbols.length,
@@ -195,36 +199,36 @@ async function generateAllOhlcvData() {
  */
 function validateGeneratedData() {
   console.log('🔍 Validating generated OHLCV data...');
-  
+
   const symbols = loadUniverse();
   let validFiles = 0;
   let invalidFiles = 0;
-  
+
   for (const symbol of symbols) {
     // 驗證格式 1
     const filename1 = `${symbol.toUpperCase()}.json`;
     const filepath1 = path.join(CONFIG.outputDir, filename1);
-    
+
     // 驗證格式 2
     const days = CONFIG.ranges[CONFIG.defaultRange];
     const filename2 = `${symbol.toLowerCase()}_1d_${days}d.json`;
     const filepath2 = path.join(CONFIG.outputDir, filename2);
-    
+
     for (const [filename, filepath] of [[filename1, filepath1], [filename2, filepath2]]) {
       try {
         const data = JSON.parse(fs.readFileSync(filepath, 'utf8'));
-        
+
         // 驗證數據結構
         const requiredFields = ['timestamps', 'open', 'high', 'low', 'close', 'volume'];
         let isValid = true;
-        
+
         for (const field of requiredFields) {
           if (!Array.isArray(data[field])) {
             console.error(`❌ ${filename}: Missing ${field}`);
             isValid = false;
           }
         }
-        
+
         if (isValid) {
           const length = data.timestamps.length;
           for (const field of requiredFields) {
@@ -234,21 +238,21 @@ function validateGeneratedData() {
             }
           }
         }
-        
+
         if (isValid && data.timestamps.length >= 30) {
           validFiles++;
         } else {
           invalidFiles++;
           console.error(`❌ ${filename}: Invalid or insufficient data`);
         }
-        
+
       } catch (error) {
         invalidFiles++;
         console.error(`❌ ${filename}: Parse error - ${error.message}`);
       }
     }
   }
-  
+
   console.log(`📊 Validation complete: ${validFiles} valid, ${invalidFiles} invalid`);
   return { validFiles, invalidFiles };
 }
@@ -257,18 +261,18 @@ function validateGeneratedData() {
 async function main() {
   try {
     console.log('🚀 Daily OHLCV Data Generator');
-    console.log('=' .repeat(50));
-    
+    console.log('='.repeat(50));
+
     const result = await generateAllOhlcvData();
     console.log('\n📊 Generation Summary:');
     console.log(`- Total files: ${result.totalFiles}`);
     console.log(`- Symbols: ${result.symbols}`);
     console.log(`- Output directory: ${result.outputDir}`);
     console.log(`- Index file: ${result.indexFile}`);
-    
+
     console.log('\n🔍 Validating data...');
     const validation = validateGeneratedData();
-    
+
     if (validation.invalidFiles === 0) {
       console.log('\n🎉 All OHLCV data files generated and validated successfully!');
       console.log('📊 Both ohlcvApi and precomputedOhlcvApi formats ready.');
@@ -276,7 +280,7 @@ async function main() {
       console.log(`\n⚠️  ${validation.invalidFiles} files have issues. Please check the logs above.`);
       process.exit(1);
     }
-    
+
   } catch (error) {
     console.error('❌ Error generating daily OHLCV data:', error);
     process.exit(1);
