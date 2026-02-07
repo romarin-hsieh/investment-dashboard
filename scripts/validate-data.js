@@ -277,7 +277,7 @@ function validateSmartMoneyData(filePath) {
 function validateQuantEngineData(filePath) {
     const result = readJsonFile(filePath);
     if (!result.success) {
-        results.errors.push(`analysis_results.json: Failed to parse - ${result.error}`);
+        results.errors.push(`quant_kinetic_signals.json: Failed to parse - ${result.error}`);
         return false;
     }
 
@@ -307,7 +307,7 @@ function validateQuantEngineData(filePath) {
     }
 
     if (errors.length > 0) {
-        results.errors.push(`analysis_results.json: ${errors.join('; ')}`);
+        results.errors.push(`quant_kinetic_signals.json: ${errors.join('; ')}`);
         return false;
     }
 
@@ -480,13 +480,13 @@ async function main() {
     }
 
     // Quant Engine Analysis Results (MFI Volume Profile / 3D Coordinates)
-    const analysisPath = path.join(DATA_DIR, 'analysis_results.json');
+    const analysisPath = path.join(DATA_DIR, 'quant_kinetic_signals.json');
     if (!fileExists(analysisPath)) {
         results.warnings++;
-        logVerbose('  analysis_results.json: Not found (warning)');
+        logVerbose('  quant_kinetic_signals.json: Not found (warning)');
     } else if (validateQuantEngineData(analysisPath)) {
         results.passed++;
-        log('analysis_results.json: Valid', 'success');
+        log('quant_kinetic_signals.json: Valid', 'success');
     } else {
         results.failed++;
     }

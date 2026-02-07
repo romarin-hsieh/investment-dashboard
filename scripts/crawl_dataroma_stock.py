@@ -88,7 +88,8 @@ def parse_stock_overview(ticker):
     }
 
     # 1. Parse Stats Table (#t1)
-    # <tr><td class="sect">Sector:</td><td><b>Industrials</b></td></tr>
+    # 1. 解析統計表格 (#t1)
+    # Structure: <tr><td class="sect">Sector:</td><td><b>Industrials</b></td></tr>
     t1 = soup.find('table', id='t1')
     if t1:
         rows = t1.find_all('tr')
@@ -98,6 +99,8 @@ def parse_stock_overview(ticker):
                 key = clean_text(cols[0].text).lower().rstrip(':')
                 val = clean_text(cols[1].text)
                 
+                # Map fields to keys
+                # 將欄位映射到 JSON 鍵值
                 if "sector" in key:
                     data["stats"]["sector"] = val
                 elif "ownership count" in key:
@@ -296,11 +299,16 @@ def main():
     print(f"Starting crawl for {ticker}...")
 
     # Crawl Data
+    # 爬取數據說明:
+    # 1. parse_stock_overview: 獲取基本持倉概況與超級投資人持股
+    # 2. parse_activity: 獲取近期的買賣活動 (Activity)
+    # 3. parse_insider: 獲取內部人交易數據 (Insider Trades)
     overview = parse_stock_overview(ticker)
     activity = parse_activity(ticker)
     insider = parse_insider(ticker)
 
     # Combine Data
+    # 整合數據
     final_data = {
         "ticker": ticker,
         "updated_at": datetime.now().isoformat(),
@@ -311,10 +319,12 @@ def main():
     }
 
     # Ensure output directory exists
+    # 確保輸出目錄存在
     output_dir = os.path.join("public", "data", "dataroma")
     os.makedirs(output_dir, exist_ok=True)
     
     # Write JSON
+    # 寫入 JSON 檔案
     output_file = os.path.join(output_dir, f"{ticker}.json")
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(final_data, f, indent=2, ensure_ascii=False)

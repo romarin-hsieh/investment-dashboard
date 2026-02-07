@@ -5,8 +5,8 @@ from datetime import datetime
 from research.quant_engine import KineticMarketState
 
 # Configuration
-DATA_DIR = "public/data"
-OUTPUT_FILE = "public/data/analysis_results.json"
+DATA_DIR = "public/data/ohlcv"
+OUTPUT_FILE = "public/data/quant_kinetic_signals.json"
 
 def load_market_data(ticker):
     """Loads JSON data for a ticker into a DataFrame."""

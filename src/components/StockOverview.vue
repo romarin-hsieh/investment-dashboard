@@ -97,6 +97,7 @@ import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
 import StockCardSkeleton from './StockCardSkeleton.vue'
 import { navigationService } from '@/services/NavigationService.js'
 import { scrollSpyService } from '@/services/ScrollSpyService.js'
+import { dataFetcher } from '@/lib/fetcher'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { useTheme } from '@/composables/useTheme.js'
 import { computed } from 'vue'
@@ -194,7 +195,8 @@ export default {
         })
       })
       
-      // ?芾? Sector ????
+      // Define Sector priority order
+      // 定義 Sector 優先順序
       const sectorPriority = [
         'Technology',
         'Financial Services',
@@ -209,7 +211,8 @@ export default {
         'Utilities'
       ]
       
-      // ?芾? Industry ???? (??sector ??)
+      // Define Industry priority order (grouped by sector)
+      // 定義 Industry 優先順序 (依 Sector 分組)
       const industryPriority = {
         'Technology': [
           'Semiconductors',
@@ -381,16 +384,20 @@ export default {
         ]
       }
       
-      // ?閮?摨?摨??芷＊蝷箸??∠巨??sector
+      // Sort groups by priority, but keep Object structure for iteration
+      // 依優先級排序群組，但保持 Object 結構以便迭代
       const sortedGroups = {}
       
-      // 1. ???芸???瘛餃??蟡函? sector
+      // 1. Process sectors in predefined priority order
+      // 1. 依預定義優先級處理 Sector
       sectorPriority.forEach(sector => {
         if (groups[sector] && groups[sector].length > 0) {
-          // ?冽???sector ?扳? industry ??
+          // Get industry priority list for this sector
+          // 獲取該 Sector 的 Industry 優先級列表
           const sectorIndustryPriority = industryPriority[sector] || []
           
-          // ??industry ??
+          // Group by industry
+          // 依 Industry 分組
           const industryGroups = {}
           groups[sector].forEach(stock => {
             const industry = stock.metadata?.industry || 'Unknown Industry'
@@ -400,42 +407,50 @@ export default {
             industryGroups[industry].push(stock)
           })
           
-          // ??industry ?芸?????
+          // Array to store sorted stocks for this sector
+          // 儲存該 Sector 已排序股票的陣列
           const sortedStocks = []
           
-          // ?溶???芸?????industry
+          // Sort industries by priority
+          // 依優先級排序 Industry
           sectorIndustryPriority.forEach(industry => {
             if (industryGroups[industry]) {
-              // ?冽???industry ?扳? market cap 敺之?啣???
+              // Sort stocks within industry by Market Cap (descending)
+              // 在該 Industry 內依 Market Cap 降序排序
               const sortedIndustryStocks = industryGroups[industry].sort((a, b) => {
                 const marketCapA = a.metadata?.market_cap || 0
                 const marketCapB = b.metadata?.market_cap || 0
                 
-                // 憒? market cap ?詨????0嚗???symbol 摮?????
+                // If Market Caps are equal, sort by Symbol (alphabetical)
+                // 如果 Market Cap 相等，依 Symbol 字首排序
                 if (marketCapA === marketCapB) {
                   return a.quote.symbol.localeCompare(b.quote.symbol)
                 }
                 
-                // Market cap 敺之?啣???
+                // Sort by Market Cap descending
+                // Market Cap 降序排序
                 return marketCapB - marketCapA
               })
               sortedStocks.push(...sortedIndustryStocks)
             }
           })
           
-          // ?溶???典??銵其葉?隞?industry
+          // Process remaining industries not in priority list
+          // 處理不在優先級列表中的其他 Industry
           Object.keys(industryGroups).forEach(industry => {
             if (!sectorIndustryPriority.includes(industry)) {
               const sortedIndustryStocks = industryGroups[industry].sort((a, b) => {
                 const marketCapA = a.metadata?.market_cap || 0
                 const marketCapB = b.metadata?.market_cap || 0
                 
-                // 憒? market cap ?詨????0嚗???symbol 摮?????
+                // If Market Caps are equal, sort by Symbol (alphabetical)
+                // 如果 Market Cap 相等，依 Symbol 字首排序
                 if (marketCapA === marketCapB) {
                   return a.quote.symbol.localeCompare(b.quote.symbol)
                 }
                 
-                // Market cap 敺之?啣???
+                // Sort by Market Cap descending
+                // Market Cap 降序排序
                 return marketCapB - marketCapA
               })
               sortedStocks.push(...sortedIndustryStocks)
@@ -446,7 +461,8 @@ export default {
         }
       })
       
-      // 2. 瘛餃?銝?芸??”銝凋??蟡函??嗡? sector (憒?Unknown)
+      // 2. Sort sectors not in priority list (e.g. Unknown)
+      // 2. 排序不在優先級列表中的其他 Sector (例如 Unknown)
       Object.keys(groups).forEach(sector => {
         if (!sectorPriority.includes(sector) && groups[sector].length > 0) {
           sortedGroups[sector] = groups[sector].sort((a, b) => {
@@ -465,7 +481,8 @@ export default {
 
       const tree = []
       
-      // 雿輻??groupedStocks ?詨???頛臭?蝣箔?銝?湔?
+      // Use groupedStocks calculation to generate tree structure
+      // 使用 groupedStocks 計算結果生成樹狀結構
       Object.entries(this.groupedStocks).forEach(([sectorName, stocks]) => {
         const sectorNode = {
           id: `sector-${this.sanitizeId(sectorName)}`,
@@ -474,7 +491,8 @@ export default {
           children: []
         }
 
-        // ??industry ??
+        // Group by Industry
+        // 依 Industry 分組
         const industryGroups = {}
         stocks.forEach(stock => {
           const industry = stock.metadata?.industry || 'Unknown Industry'
@@ -484,7 +502,8 @@ export default {
           industryGroups[industry].push(stock)
         })
 
-        // ?箸???industry ?萄遣蝭暺?
+        // Build nodes for each Industry
+        // 每個 Industry 建立節點
         Object.entries(industryGroups).forEach(([industryName, industryStocks]) => {
           const industryNode = {
             id: `industry-${this.sanitizeId(sectorName)}-${this.sanitizeId(industryName)}`,
@@ -493,7 +512,8 @@ export default {
             children: []
           }
 
-          // ?箸???symbol ?萄遣蝭暺?
+          // Build nodes for each Symbol
+          // 每個 Symbol 建立節點
           industryStocks.forEach(stock => {
             const symbolNode = {
               id: `symbol-${this.sanitizeId(stock.quote.symbol)}`,
@@ -519,7 +539,8 @@ export default {
       return tree
     },
 
-    // ??芸?????撠?
+    // Map for quick metadata lookup
+    // 快速查找 Metadata 的 Map
     metadataMap() {
       if (!this.metadata?.items) return new Map()
       
@@ -546,13 +567,15 @@ export default {
   },
 
   beforeRouteLeave(to, from, next) {
-    // 皜? focus query ??園??stock-overview ?
+    // Clear focus query param when leaving stock-overview route
+    // 離開 stock-overview 路由時清除 focus 參數
     if (this.$route.query.focus) {
       console.log('Navigation: Clearing focus parameter on route leave')
-      // 銝?敺??踹??餃?撠
+      // Replace history to avoid back button issues
+      // 替換歷史記錄以避免上一頁問題
       this.$router.replace({
         query: { ...this.$route.query, focus: undefined }
-      }).catch(() => {}) // 敹賜?航炊嚗??箇?嗅?賢歇蝬??芸?嗡??
+      }).catch(() => {}) // Ignore errors, user might have already navigated away / 忽略錯誤，用戶可能已經導航離開
     }
     next()
   },
@@ -566,18 +589,21 @@ export default {
       this.error = null
       
       try {
-        console.log('?? Starting simple stock data load...')
+        console.log('🚀 Starting simple stock data load...')
         
-        // ???脣? base path
+        // Get base path from environment
+        // 從環境變數獲取 base path
         const basePath = import.meta.env.BASE_URL.endsWith('/') 
             ? import.meta.env.BASE_URL.slice(0, -1) 
             : import.meta.env.BASE_URL;
         
-        // 1. 頛?蔭
+        // 1. Load configuration
+        // 1. 載入配置
         this.configuredSymbols = await stocksConfig.getEnabledSymbols()
-        console.log(`??Loaded ${this.configuredSymbols.length} symbols from config`)
+        console.log(`✅ Loaded ${this.configuredSymbols.length} symbols from config`)
         
-        // 2. ?湔頛 quotes ?豢?
+        // 2. Fetch quotes data
+        // 2. 獲取 Quotes 數據
         const quotesResponse = await fetch(`${basePath}/data/quotes/latest.json?t=` + Date.now())
         if (!quotesResponse.ok) {
           throw new Error(`Failed to load quotes: HTTP ${quotesResponse.status}`)
@@ -589,11 +615,11 @@ export default {
             this.configuredSymbols.includes(quote.symbol)
           )
           this.lastUpdate = quotesData.as_of
-          console.log(`??Loaded ${this.quotes.length} quotes`)
+          console.log(`✅ Loaded ${this.quotes.length} quotes`)
         }
         
-        // 3. ?湔頛 daily ?豢?
-        // 3. 根據 quotes 數據中的日期提取 daily 數據
+        // 3. Extract date for daily fetch
+        // 3. 根據 quotes 數據中的日期提取 daily 數據日期
         let dailyDateStr = ''
         try {
           // 優先使用 quotesData.as_of
@@ -604,71 +630,51 @@ export default {
              // 如果在台北時間運行，可能需要考慮時區，但這裡簡單取 ISO 的日期部分通常足夠
              // 或者根據 generate-daily-snapshot.js 的邏輯，它生成的是 "Taipei" date filename
              
-             // 嘗試解析出台北時間的日期 (簡單處理: 依賴後端生成時的約定)
-             // generate-daily-snapshot.js 使用: return taipeiTime.toISOString().split('T')[0]
-             
-             // 如果 as_of 是 ISO String (e.g. 2025-02-02T15:00:00.000Z)
-             // 我們直接嘗試用 split('T')[0] 
-             dailyDateStr = quotesData.as_of.split('T')[0] 
+              // Try to parse Taipei date (Simplified: rely on backend convention)
+              // 嘗試解析出台北時間的日期 (簡單處理: 依賴後端生成時的約定)
+              // generate-daily-snapshot.js logic: return taipeiTime.toISOString().split('T')[0]
+              
+              // If as_of is ISO String (e.g. 2025-02-02T15:00:00.000Z)
+              // 如果 as_of 是 ISO 字串，直接取日期部分
+              dailyDateStr = quotesData.as_of.split('T')[0] 
           }
         } catch (e) {
           console.warn('Failed to parse date from quotes data', e)
         }
 
-        // 如果無法從 quotes 獲取，回退到今天
-        if (!dailyDateStr) {
-           const now = new Date()
-           const taipeiTime = new Date(now.getTime() + (8 * 60 * 60 * 1000))
-           dailyDateStr = taipeiTime.toISOString().split('T')[0]
+        // 3. 獲取 Daily Data (Technical Indicators)
+        // 使用 fetcher 的智能回溯機制，不再手動處理 fallback
+        console.log('🔄 Fetching daily data via optimized fetcher...')
+        const dailyResult = await dataFetcher.fetchDailySnapshot()
+        
+        if (dailyResult.data) {
+          this.dailyData = dailyResult.data
+          console.log(`✅ Loaded daily data (${dailyResult.source}, as_of: ${dailyResult.as_of})`)
+        } else {
+           console.warn(`⚠️ Daily data not found (Error: ${dailyResult.error})`)
         }
         
-        console.log(`??Fetching daily data for date: ${dailyDateStr}`)
-
+        // 4. Load Metadata via DirectMetadataLoader (Static Data / 靜態數據)
         try {
-           const dailyResponse = await fetch(`${basePath}/data/daily/${dailyDateStr}.json?t=` + Date.now())
-           if (dailyResponse.ok) {
-             this.dailyData = await dailyResponse.json()
-             console.log(`??Loaded daily data for ${dailyDateStr}`)
-           } else {
-             // 嘗試回退到昨天 (以防今天數據尚未生成)
-             console.warn(`??Daily data for ${dailyDateStr} not found, trying yesterday...`)
-             // 簡單減去一天
-             const dateObj = new Date(dailyDateStr)
-             dateObj.setDate(dateObj.getDate() - 1)
-             const prevDateStr = dateObj.toISOString().split('T')[0]
-             
-             const prevDailyResponse = await fetch(`${basePath}/data/daily/${prevDateStr}.json?t=` + Date.now())
-             if (prevDailyResponse.ok) {
-                this.dailyData = await prevDailyResponse.json()
-                console.log(`??Loaded daily data for ${prevDateStr} (fallback)`)
-             } else {
-                console.warn(`??Daily data for ${prevDateStr} also not found.`)
-             }
-           }
-        } catch (dailyErr) {
-            console.warn('??Failed to fetch daily data:', dailyErr)
-        }
-        
-        // 4. 雿輻 DirectMetadataLoader 頛???(撌脣???蝺拙?)
-        try {
-          // directMetadataLoader ?折????base URL
+          // directMetadataLoader uses base URL from Vite env
+          // directMetadataLoader 使用 Vite 環境變數中的 base URL
           this.metadata = await directMetadataLoader.loadMetadata()
           
           if (this.metadata && this.metadata.items) {
-             console.log(`??Loaded metadata for ${this.metadata.items.length} symbols`)
+             console.log(`✅ Loaded metadata for ${this.metadata.items.length} symbols`)
           } else {
-             console.warn('?? Metadata loaded but likely empty or invalid')
+             console.warn('⚠️ Metadata loaded but likely empty or invalid')
           }
         } catch (metaError) {
-          console.warn('??Failed to load metadata via loader:', metaError)
+          console.warn('⚠️ Failed to load metadata via loader:', metaError)
           // Fallback?? No, loader already handles errors gracefully returning null
         }
         
-        console.log('??Simple stock data load completed successfully!')
+        console.log('✅ Simple stock data load completed successfully!')
         
       } catch (err) {
         this.error = String(err)
-        console.error('??Simple stock data load failed:', err)
+        console.error('❌ Simple stock data load failed:', err)
       } finally {
         this.loading = false
       }
@@ -703,38 +709,45 @@ export default {
         'NMS': 'NASDAQ',  // NASDAQ Global Select Market
         'NCM': 'NASDAQ',  // NASDAQ Capital Market
         'NGM': 'NASDAQ',  // NASDAQ Global Market
-        'ASE': 'AMEX'     // NYSE American (??American Stock Exchange)
+        'ASE': 'AMEX'     // NYSE American (American Stock Exchange)
       }
       
       return exchangeMap[exchangeCode] || exchangeCode
     },
 
     sanitizeId(str) {
-      // 撠?銝脰??????DOM ID
+      // Sanitize string for valid DOM ID
+      // 清理字串以符合 DOM ID 規範
       return str.replace(/[^a-zA-Z0-9]/g, '_')
     },
     async onSymbolClick(symbol) {
       console.log('Navigation: Symbol clicked:', symbol)
       
-      // ?怠? ScrollSpy ?踹?銵?
+      // Pause ScrollSpy to avoid conflict
+      // 暫停 ScrollSpy 以避免衝突
       scrollSpyService.pause()
       
       try {
-        // 雿輻 Vue Router query ?? NavigationService (Hash Router ?澆捆)
+        // Use Vue Router query and NavigationService (Hash Router compatible)
+        // 使用 Vue Router query 與 NavigationService (Hash Router 相容)
         await this.$router.replace({
           query: { ...this.$route.query, focus: symbol }
         })
         
-        // 皛曉??啁璅?
+        // Scroll to symbol
+        // 滾動到指定 Symbol
         await navigationService.scrollToSymbol(symbol)
         
-        // ?湔 active symbol
+        // Update active symbol
+        // 更新當前 Symbol
         this.activeSymbol = symbol
         
-        // ?芸?撅?撠???sections
+        // Auto-expand relevant sections
+        // 自動展開相關區塊
         this.autoExpandForSymbol(symbol)
       } finally {
-        // ?Ｗ儔 ScrollSpy
+        // Resume ScrollSpy
+        // 恢復 ScrollSpy
         setTimeout(() => {
           scrollSpyService.resume()
         }, 500)
@@ -752,12 +765,14 @@ export default {
         this.expandedSections.delete(sectionId)
       }
       
-      // ?脣???localStorage
+      // Save to localStorage
+      // 儲存至 localStorage
       this.saveExpandedSections()
     },
 
     autoExpandForSymbol(symbol) {
-      // ?曉 symbol 撠???sector ??industry
+      // Find sector and industry for symbol
+      // 查找 Symbol 所屬的 Sector 與 Industry
       for (const sectorNode of this.tocTree) {
         for (const industryNode of sectorNode.children) {
           const symbolNode = industryNode.children.find(s => s.symbol === symbol)
@@ -794,20 +809,24 @@ export default {
     },
 
     initializeNavigation() {
-      // 頛?脣???????憒?瘝??脣??????身?券撅?
+      // Load saved expanded sections, default to collapsed if none
+      // 載入儲存的展開區塊，若無則預設收起
       this.loadExpandedSections()
       
-      // 憒?瘝??脣????????身撅????sections
+      // If no saved sections, expand all by default
+      // 若無儲存記錄，預設展開所有區塊
       if (this.expandedSections.size === 0) {
         this.expandAllSections()
       }
       
-      // 瑼Ｘ Vue Router query ? (Hash Router ?澆捆)
+      // Check Vue Router query params (Hash Router compatible)
+      // 檢查 Vue Router query 參數 (Hash Router 相容)
       const focusSymbol = this.$route.query.focus
       if (focusSymbol && this.isSymbolValid(focusSymbol)) {
         console.log('Navigation: Found focus symbol in URL:', focusSymbol)
         
-        // 撱園?瑁?隞亦Ⅱ靽?DOM 撌脫葡??
+        // Wait for DOM updates
+        // 等待 DOM 更新
         this.$nextTick(() => {
           setTimeout(() => {
             this.onSymbolClick(focusSymbol)
@@ -815,7 +834,8 @@ export default {
         })
       }
       
-      // ????ScrollSpy
+      // Initialize ScrollSpy
+      // 初始化 ScrollSpy
       this.$nextTick(() => {
         this.setupScrollSpy()
       })
@@ -823,7 +843,8 @@ export default {
 
     setupScrollSpy() {
       try {
-        // ?脣????StockCard ??
+        // Select all StockCard elements
+        // 選取所有 StockCard 元素
         const stockCardElements = document.querySelectorAll('[data-symbol]')
         
         if (stockCardElements.length === 0) {
@@ -831,7 +852,8 @@ export default {
           return
         }
         
-        // 閮剔蔭 ScrollSpy
+        // Setup ScrollSpy
+        // 設定 ScrollSpy
         scrollSpyService.setup(
           Array.from(stockCardElements),
           (activeSymbol) => {
@@ -856,7 +878,8 @@ export default {
     },
 
     expandAllSections() {
-      // 撅????sector ??industry sections
+      // Expand all sector and industry sections
+      // 展開所有 Sector 與 Industry 區塊
       this.tocTree.forEach(sectorNode => {
         this.expandedSections.add(sectorNode.id)
         sectorNode.children.forEach(industryNode => {

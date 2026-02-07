@@ -95,14 +95,20 @@ class DailyUpdate:
             res = self.qs.analyze_ticker(sym, df, self.spy_data, sector_df)
             
             # Calculate Metrics Function (Reusable for history)
+            # 計算指標函數 (可重用於歷史數據)
             def calc_metrics(series_close):
                 if len(series_close) < 50: return 0, 0.5, 0.5
-                # X
+                
+                # X: Trend Velocity (Z-Score of Price vs 20MA)
+                # X: 趨勢速度 (價格相對於 20日移動平均線的 Z-Score)
+                # Formula: (Price - MA20) / StdDev50
                 _ma20 = series_close.ewm(span=20).mean()
                 _std50 = series_close.rolling(50).std()
                 _x = (series_close - _ma20) / (_std50.replace(0, 1))
                 
-                # Y
+                # Y: Momentum Force (Stochastic RSI)
+                # Y: 動能強度 (隨機指標 RSI)
+                # Formula: Stoch(RSI(14)), smoothed by SMA(3)
                 _delta = series_close.diff()
                 _up = _delta.clip(lower=0)
                 _down = -1 * _delta.clip(upper=0)
@@ -113,7 +119,10 @@ class DailyUpdate:
                 _stoch = (_rsi - _rsi_min) / (_rsi_max - _rsi_min).replace(0, 1)
                 _y = _stoch.rolling(3).mean()
                 
-                # Z
+                # Z: Market Structure (Volatility Compression / Squeeze)
+                # Z: 市場結構 (波動率壓縮 / 擠壓)
+                # Formula: 1 - Normalized Bollinger Band Width (120-day lookback)
+                # High Z = High Compression (Potential Breakout)
                 _std20 = series_close.rolling(20).std()
                 _bbw = (4 * _std20) / _ma20
                 _w_min = _bbw.rolling(120).min()
@@ -178,6 +187,11 @@ class DailyUpdate:
             
         # Export
         output = {
+            "meta": {
+                "description": "Quant Kinetic State & Dashboard Status",
+                "version": "2.5",
+                "generated_by": "daily_update.py"
+            },
             "updated_at": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             "global_regime": regime,
             "data": results

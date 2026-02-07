@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "update-daily": "python scripts/generate-real-ohlcv-yfinance.py && node scripts/generate-daily-technical-indicators.js && node scripts/generate-daily-snapshot.js && node scripts/generate-quotes-snapshot.js",
     "validate:data": "node scripts/validate-data.js",
     "update:sentiment": "python scripts/update_sentiment.py",
     "fetch:fundamentals": "node scripts/fetch-fundamentals.js"

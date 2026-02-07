@@ -151,13 +151,30 @@ export class DataFetcher {
   }
 
   /**
-   * 獲取每日快照
+   * 獲取每日快照 (Smart Backtracking)
+   * 自動嘗試今天 -> 昨天 -> 前天，直到找到可用數據
    */
   async fetchDailySnapshot(date?: string): Promise<FetchResult<DailySnapshot>> {
-    try {
-      // 使用今天的日期 (Taipei timezone) 如果沒有指定
-      const targetDate = date || this.getTaipeiDateString()
+    const maxBacktrackDays = 2 // 最多回溯2天
+    const targetDate = date || this.getTaipeiDateString()
+    let attemptDate = targetDate
 
+    // 如果有緩存且有效，直接返回 (避免重複請求)
+    const userState = StateManager.loadState()
+    if (userState.cache.last_daily_snapshot) {
+      const cachedDateStr = userState.cache.last_daily_snapshot.generated_at_utc.split('T')[0]
+      // 如果緩存的日期是我們想要的，或是我們正在尋找的日期範圍內
+      if (cachedDateStr === targetDate) {
+        return {
+          data: userState.cache.last_daily_snapshot,
+          source: 'cache',
+          stale_level: this.calculateStaleness(userState.cache.last_daily_snapshot.generated_at_utc),
+          as_of: userState.cache.last_daily_snapshot.generated_at_utc
+        }
+      }
+    }
+
+    try {
       const statusResult = await this.fetchSystemStatus()
       let cacheBuster = ''
 
@@ -166,35 +183,60 @@ export class DataFetcher {
         cacheBuster = `?t=${timestamp}`
       }
 
-      const response = await fetch(`${this.baseUrl}/data/daily/${targetDate}.json${cacheBuster}`)
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`)
+      // 智能回溯迴圈
+      for (let i = 0; i <= maxBacktrackDays; i++) {
+        try {
+          // 計算嘗試日期
+          if (i > 0) {
+            const dateObj = new Date(targetDate)
+            dateObj.setDate(dateObj.getDate() - i)
+            const fallbackDate = dateObj.toISOString().split('T')[0]
+            attemptDate = fallbackDate
+            console.log(`⚠️ Daily data for ${targetDate} not found, backtracking to ${attemptDate}...`)
+          }
+
+          const response = await fetch(`${this.baseUrl}/data/daily/${attemptDate}.json${cacheBuster}`)
+
+          // 如果 404 且還有重試機會，繼續下一次迴圈
+          if (!response.ok) {
+            if (response.status === 404 && i < maxBacktrackDays) {
+              continue
+            }
+            throw new Error(`HTTP ${response.status} for ${attemptDate}`)
+          }
+
+          // 成功獲取
+          const data = await response.json()
+          const validation = validateDailySnapshot(data)
+
+          if (!validation.success) {
+            throw new Error(`Invalid daily snapshot (${attemptDate}): ${validation.error?.message}`)
+          }
+
+          // 更新 cache
+          StateManager.updateCache({
+            last_daily_snapshot: validation.data!
+          })
+
+          return {
+            data: validation.data!,
+            source: 'network',
+            stale_level: this.calculateStaleness(validation.data!.generated_at_utc),
+            as_of: validation.data!.generated_at_utc
+          }
+
+        } catch (iterError) {
+          // 如果是最後一次嘗試，或非 404 錯誤，則拋出
+          if (i === maxBacktrackDays) throw iterError
+        }
       }
 
-      const data = await response.json()
-      const validation = validateDailySnapshot(data)
-
-      if (!validation.success) {
-        throw new Error(`Invalid daily snapshot: ${validation.error?.message}`)
-      }
-
-      // 更新 cache
-      StateManager.updateCache({
-        last_daily_snapshot: validation.data!
-      })
-
-      return {
-        data: validation.data!,
-        source: 'network',
-        stale_level: this.calculateStaleness(validation.data!.generated_at_utc),
-        as_of: validation.data!.generated_at_utc
-      }
+      throw new Error(`Daily data not found after ${maxBacktrackDays + 1} attempts`)
 
     } catch (error) {
       console.warn('Failed to fetch daily snapshot:', error)
 
-      // Fallback to cache
-      const userState = StateManager.loadState()
+      // Fallback to cache (last resort)
       if (userState.cache.last_daily_snapshot) {
         return {
           data: userState.cache.last_daily_snapshot,

@@ -200,52 +200,93 @@ export class OptimizedDataFetcher {
   /**
    * 獲取每日快照 - 優化版本
    */
+  /**
+   * 獲取每日快照 - 優化版本 (Smart Backtracking)
+   */
   async fetchDailySnapshot(date?: string): Promise<FetchResult<DailySnapshot>> {
     const startTime = performance.now()
+    const maxBacktrackDays = 2
 
     try {
       const targetDate = date || this.getTaipeiDateString()
+      let attemptDate = targetDate
+
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), this.dataTimeout)
-
-      // 直接載入，不等待 status.json
       const cacheBuster = this.cacheBustingEnabled ? `?t=${Date.now()}` : ''
 
-      const response = await fetch(`${this.baseUrl}/data/daily/${targetDate}.json${cacheBuster}`, {
-        signal: controller.signal
-      })
-
-      clearTimeout(timeoutId)
-
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`)
+      // 檢查快取 (避免重複回溯)
+      const userState = StateManager.loadState()
+      if (userState.cache.last_daily_snapshot) {
+        const cachedDateStr = userState.cache.last_daily_snapshot.generated_at_utc.split('T')[0]
+        if (cachedDateStr === targetDate) {
+          clearTimeout(timeoutId)
+          return {
+            data: userState.cache.last_daily_snapshot,
+            source: 'cache',
+            stale_level: this.calculateStaleness(userState.cache.last_daily_snapshot.generated_at_utc),
+            as_of: userState.cache.last_daily_snapshot.generated_at_utc,
+            loadTime: 0
+          }
+        }
       }
 
-      const data = await response.json()
-      const validation = validateDailySnapshot(data)
+      // 智能回溯迴圈
+      for (let i = 0; i <= maxBacktrackDays; i++) {
+        try {
+          if (i > 0) {
+            const dateObj = new Date(targetDate)
+            dateObj.setDate(dateObj.getDate() - i)
+            const fallbackDate = dateObj.toISOString().split('T')[0]
+            attemptDate = fallbackDate
+            console.log(`⚠️ Daily data for ${targetDate} not found, backtracking to ${attemptDate}...`)
+          }
 
-      if (!validation.success) {
-        throw new Error(`Invalid daily snapshot: ${validation.error?.message}`)
+          const response = await fetch(`${this.baseUrl}/data/daily/${attemptDate}.json${cacheBuster}`, {
+            signal: controller.signal
+          })
+
+          // 如果 404 且還有重試機會
+          if (!response.ok) {
+            if (response.status === 404 && i < maxBacktrackDays) {
+              continue
+            }
+            throw new Error(`HTTP ${response.status} for ${attemptDate}`)
+          }
+
+          clearTimeout(timeoutId)
+          const data = await response.json()
+          const validation = validateDailySnapshot(data)
+
+          if (!validation.success) {
+            throw new Error(`Invalid daily snapshot (${attemptDate}): ${validation.error?.message}`)
+          }
+
+          // 更新 cache
+          StateManager.updateCache({
+            last_daily_snapshot: validation.data!
+          })
+
+          return {
+            data: validation.data!,
+            source: 'network',
+            stale_level: this.calculateStaleness(validation.data!.generated_at_utc),
+            as_of: validation.data!.generated_at_utc,
+            loadTime: performance.now() - startTime
+          }
+
+        } catch (iterError) {
+          if (i === maxBacktrackDays) throw iterError
+        }
       }
 
-      // 更新 cache
-      StateManager.updateCache({
-        last_daily_snapshot: validation.data!
-      })
-
-      return {
-        data: validation.data!,
-        source: 'network',
-        stale_level: this.calculateStaleness(validation.data!.generated_at_utc),
-        as_of: validation.data!.generated_at_utc,
-        loadTime: performance.now() - startTime
-      }
+      throw new Error(`Daily data not found after ${maxBacktrackDays + 1} attempts`)
 
     } catch (error) {
       const loadTime = performance.now() - startTime
       console.warn('Failed to fetch daily snapshot:', error)
 
-      // Fallback to cache
+      // Fallback to cache (last resort)
       const userState = StateManager.loadState()
       if (userState.cache.last_daily_snapshot) {
         return {

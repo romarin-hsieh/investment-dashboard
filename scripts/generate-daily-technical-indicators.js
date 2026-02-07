@@ -20,7 +20,7 @@ const __dirname = path.dirname(__filename);
 // 配置
 const CONFIG = {
   outputDir: path.join(__dirname, '../public/data/technical-indicators'),
-  universeFile: path.join(__dirname, '../config/universe.json'),
+  universeFile: path.join(__dirname, '../public/config/stocks.json'),
   ohlcvDir: path.join(__dirname, '../public/data/ohlcv'),
   fundamentalsDir: path.join(__dirname, '../public/data/fundamentals')
 };
@@ -30,7 +30,7 @@ const CONFIG = {
  */
 function loadUniverse() {
   try {
-    const stocksPath = path.join(__dirname, '../public/config/stocks.json');
+    const stocksPath = CONFIG.universeFile;
     const data = fs.readFileSync(stocksPath, 'utf8');
     const config = JSON.parse(data);
     return config.stocks.map(s => s.symbol) || [];
