@@ -1,47 +1,55 @@
-// Yahoo Finance API 整合
-// 使用 Yahoo Finance 的公開 API 端點
+/**
+ * Yahoo Finance API Integration (Facade)
+ * Yahoo Finance API 整合（門面模式）
+ *
+ * This is the main entry point for Yahoo Finance API operations.
+ * 這是 Yahoo Finance API 操作的主要入口。
+ *
+ * For modular components, see:
+ * 模組化元件請參閱：
+ * - corsProxyManager.js - CORS proxy rotation / CORS 代理輪替
+ * - dataTransformers.js - Data format conversion / 資料格式轉換
+ *
+ * @module api/yahooFinanceApi
+ */
 
 import technicalIndicatorsCache from '../utils/technicalIndicatorsCache.js';
 import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
+import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager.js';
+import { getDefaultExchange, getMarketCapCategory, createFallbackStockInfo } from './dataTransformers.js';
 
 class YahooFinanceAPI {
   constructor() {
-    console.warn("YahooFinanceAPI: Loaded version with Nested JSON Fix - DEBUG_REV2");
-    // 使用多個 CORS 代理服務來解決跨域問題 - 2024年12月修正版
-    // 優先使用真正無限制的免費代理服務
-    this.corsProxies = [
-      // 1. Custom Cloudflare Worker (Best Performance & Reliability)
-      'https://yfinance-proxy.romarinhsieh.workers.dev/?',
+    console.warn("YahooFinanceAPI: Loaded version with Modular Refactor - v3.0");
+    // Use CORS proxy manager for proxy rotation
+    // 使用 CORS 代理管理器進行代理輪替
+    this.corsProxies = CORS_PROXIES;
+    this.proxyManager = corsProxyManager;
 
-      // 2. allorigins.win (Priority 2: Reliable Free Proxy)
-      'https://api.allorigins.win/raw?url=',
+    // API Configuration from centralized config
+    // 從集中配置取得 API 設定
+    this.baseUrl = API_CONFIG.baseUrl;
+    this.staticTechBaseUrl = API_CONFIG.staticTechBaseUrl;
 
-      // 3. Fallback: corsproxy.io (Priority 3: Often rate-limited/paywalled)
-      'https://corsproxy.io/?',
-
-      // 4. Fallback: cors-anywhere (Priority 4: Demo usage only)
-      'https://cors-anywhere.herokuapp.com/',
-    ];
-
-    // API 配置
-    this.baseUrl = 'https://query1.finance.yahoo.com/v8/finance/chart/';
-    this.staticTechBaseUrl = 'data/technical-indicators/';
-
-    // 緩存配置
+    // Cache configuration
+    // 快取配置
     this.cache = new Map();
-    this.cacheTimeout = 5 * 60 * 1000; // 5 分鐘緩存 (用於 API 請求緩存)
-    this.currentProxyIndex = 0; // 從最可靠的免費代理開始
+    this.cacheTimeout = API_CONFIG.cacheTimeout;
+    this.currentProxyIndex = 0;
 
-    // 全局請求隊列，限制並發數
+    // Global request queue to limit concurrency
+    // 全域請求佇列，限制並發數
     this.requestQueue = [];
     this.activeRequests = 0;
-    this.MAX_CONCURRENT_REQUESTS = 2; // 降低並發數以避免 429
-    this.REQUEST_DELAY = 800; // 請求間隔 (ms) - 增加延遲以提高穩定性
+    this.MAX_CONCURRENT_REQUESTS = API_CONFIG.maxConcurrentRequests;
+    this.REQUEST_DELAY = API_CONFIG.requestDelay;
 
-    // 請求去重 (Request Deduplication)
+    // Request deduplication
+    // 請求去重
     this.pendingRequests = new Map();
 
-    // 靜態索引緩存
+    // Static index cache
+    // 靜態索引快取
     this.latestIndex = null;
     this.latestIndexTimestamp = 0;
   }

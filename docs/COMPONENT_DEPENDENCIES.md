@@ -47,6 +47,8 @@ StockDetail.vue
 MFIVolumeProfileWidget.vue  ❌ 未被任何頁面 import
     └── precomputedOhlcvApi (api/)
     └── yahooFinanceAPI (api/)
+        ├── corsProxyManager.js  (CORS 代理管理)
+        └── dataTransformers.js  (資料格式轉換)
 ```
 
 > ⚠️ **注意**: `MFIVolumeProfileWidget.vue` 與 `MFIVolumeProfilePanel.vue` 功能相似，但只有 Panel 被實際使用。
