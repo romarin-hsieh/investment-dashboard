@@ -49,7 +49,15 @@ node scripts/generate-daily-ohlcv.js
 node scripts/generate-daily-technical-indicators.js
 ```
 
-### 2.4 更新儀表板狀態 (Quant Kinetic State)
+### 6. Generate Fundamentals Data
+Generate static fundamental data (Market Cap, PE Ratio, etc.) to reduce runtime API calls.
+
+```bash
+# Run the fundamentals fetcher for new symbols
+node scripts/fetch-fundamentals.js FTNT GLW WDC CSCO
+```
+
+### 7. Run Daily Update (Quant Kinetic State)
 **關鍵步驟**：此步驟會執行 Python 策略矩陣運算，生成 "Quant Kinetic State" (Comet Chart) 所需的 `dashboard_status.json`。
 
 ```powershell
