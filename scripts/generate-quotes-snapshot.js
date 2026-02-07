@@ -26,7 +26,15 @@ class QuotesSnapshotGenerator {
   // 從統一配置文件讀取股票列表
   async getStocksFromConfig() {
     try {
-      const configPath = path.join(this.projectRoot, 'public', 'config', 'stocks.json')
+      // 優先讀取根目錄的 config/stocks.json (做為 Single Source of Truth)
+      let configPath = path.join(this.projectRoot, 'config', 'stocks.json')
+
+      // 如果根目錄沒有，嘗試 public/config/stocks.json
+      if (!fs.existsSync(configPath)) {
+        console.warn('⚠️ Root config/stocks.json not found, trying public/config/stocks.json')
+        configPath = path.join(this.projectRoot, 'public', 'config', 'stocks.json')
+      }
+
       const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'))
 
       // 只返回啟用的股票符號

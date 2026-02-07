@@ -45,6 +45,14 @@ jobs:
         mkdir -p public/data/technical-indicators
         mkdir -p public/data/quotes
         mkdir -p public/data/daily
+        mkdir -p public/config
+
+    - name: Sync Config Files (Root -> Public)
+      run: |
+        echo "🔄 Syncing config files..."
+        cp config/stocks.json public/config/stocks.json
+        cp config/universe.json public/config/universe.json || true
+        echo "✅ Config files synced to public/config/"
 
     # ✅ T2：用真實行情重產 precomputed OHLCV（不經 CORS）
     - name: Generate REAL OHLCV data (yfinance, 2 formats + index.json)
