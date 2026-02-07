@@ -71,15 +71,20 @@ To change the list of tracked stocks, edit ONLY `public/config/stocks.json`.
     *   Frontend `precomputedIndicatorsApi.js` caches this data for instant loading.
 
 ## 4. GitHub Actions Architecture
-The project follows a **Static-First** approach with a single unified workflow.
+The project follows a **Static-First** approach with two unified workflows.
 
-*   **`daily-data-update.yml`** (UTC 02:00):
+*   **`daily-data-update.yml`** (UTC 02:00 Daily):
     *   **OHLCV**: `scripts/generate-real-ohlcv-yfinance.py`
     *   **Technical Indicators**: `scripts/generate-daily-technical-indicators.js`
     *   **Fundamentals**: `scripts/fetch-fundamentals.js`
     *   **Quant Engine**: `scripts/production/daily_update.py`
     *   **Sentiment**: `scripts/update_sentiment.py`
     *   Auto-commits all changes to `public/data/`.
+
+*   **`update-metadata.yml`** (UTC 02:00 Weekly - Sunday):
+    *   **Sector/Industry**: `scripts/update-sector-industry.py`
+    *   **Metadata**: `scripts/update-metadata-python.py`
+    *   Updates `symbols_metadata.json` and `sector_industry.json`.
 
 ## 5. Troubleshooting Discrepancies
 If the number of stocks in the dashboard != number of stocks in config:
