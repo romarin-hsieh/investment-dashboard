@@ -5,8 +5,10 @@ dist-deploy
 .kiro
 .env
 *.log
-public/data/quotes
-public/data/daily
+public/data/quotes/*
+!public/data/quotes/latest.json
+public/data/daily/*
+!public/data/daily/*.json
 
 
 public/data/metrics

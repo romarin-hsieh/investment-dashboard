@@ -128,7 +128,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
-        git add -A public/data
+        git add -A public/data public/config
         
         if git diff --staged --quiet; then
           echo "ℹ️ No changes to commit"
