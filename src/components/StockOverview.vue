@@ -592,6 +592,11 @@ export default {
       try {
         console.log('🚀 Starting optimized stock data load...')
         
+        // 1. Ensure configured symbols are loaded
+        if (this.configuredSymbols.length === 0) {
+           this.configuredSymbols = await stocksConfig.getEnabledSymbols()
+        }
+
         // Use StockOverviewOptimizer to load data (including bulk technical indicators)
         const optimizedData = await stockOverviewOptimizer.loadOptimizedStockData(this.configuredSymbols)
         
