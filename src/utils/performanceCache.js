@@ -4,7 +4,7 @@
 class PerformanceCache {
   constructor() {
     this.memoryCache = new Map()
-    this.localStoragePrefix = 'investment_dashboard_cache_v3_'
+    this.localStoragePrefix = 'investment_dashboard_cache_v2_'
     this.defaultTTL = 24 * 60 * 60 * 1000 // 24 hours
   }
 
