@@ -9,8 +9,10 @@ class MetadataService {
     this.cache = new Map()
     this.cacheExpiry = 24 * 60 * 60 * 1000 // 24 hours
     this.lastFetch = null
+    this.lastAttempt = null // Track last attempt time for cooldown
     this.metadata = null
-    this.useDynamicAPI = true // 預設使用動態 API
+    this.useDynamicAPI = false // 預設使用靜態文件 (更穩定)
+    this.fetchCooldown = 2000 // 2 seconds cooldown
   }
 
   // 設定是否使用動態 API
@@ -77,26 +79,122 @@ class MetadataService {
     return defaultMetadata
   }
 
+  // 設置批量元數據 (供優化器使用)
+  setBulkMetadata(items) {
+    if (!items || !Array.isArray(items)) {
+      console.warn('❌ Invalid items passed to setBulkMetadata')
+      return
+    }
+
+    // 初始化 metadata 結構如果不存在
+    if (!this.metadata) {
+      this.metadata = { items: [], source: 'Injected via setBulkMetadata' }
+    }
+
+    this.metadata.items = items
+    this.lastFetch = Date.now()
+    console.log(`📦 Bulk metadata set: ${items.length} items injected`)
+
+    // Update map cache immediately
+    items.forEach(item => {
+      if (item && item.symbol) {
+        this.cache.set(item.symbol, {
+          data: item,
+          timestamp: Date.now()
+        })
+      }
+    })
+  }
+
   // 批量獲取元數據
   async getBatchMetadata(symbols) {
     if (this.useDynamicAPI) {
       return await dynamicMetadataService.getBatchMetadata(symbols)
     } else {
-      // 靜態文件模式的批量處理
-      console.log(`🔄 getBatchMetadata (static mode) for ${symbols.length} symbols:`, symbols)
-      const results = new Map()
+      // 靜態文件模式的批量處理 (Optimized)
+      console.log(`🔄 getBatchMetadata (static mode) for ${symbols.length} symbols`)
 
-      // 先確保 metadata 已載入
+      // 1. Ensure metadata is loaded (ONCE)
       await this.refreshMetadata()
 
-      for (const symbol of symbols) {
-        const metadata = await this.getStaticSymbolMetadata(symbol)
-        results.set(symbol, metadata)
+      const results = new Map()
 
-        // 特別除錯 CRM 和 IONQ
-        if (['CRM', 'IONQ'].includes(symbol)) {
-          console.log(`🎯 getBatchMetadata result for ${symbol}:`, metadata)
+      // 2. Create a quick lookup map if metadata exists
+      const metadataMap = new Map()
+      const metadataMapLower = new Map() // Case-insensitive lookup
+
+      if (this.metadata && Array.isArray(this.metadata.items)) {
+        console.log(`🔍 SAMA-DEBUG: metadata.items is Array of length ${this.metadata.items.length}`)
+
+        // Debug specific symbols
+        const debugSymbols = ['TSM', 'CRM', 'NVDA']
+        debugSymbols.forEach(sym => {
+          const found = this.metadata.items.find(i => i.symbol === sym)
+          console.log(`🔍 SAMA-DEBUG: Content Check [${sym}]:`, found ? 'FOUND' : 'MISSING', found ? `(Conf: ${found.confidence})` : '')
+        })
+
+        this.metadata.items.forEach(item => {
+          if (item && item.symbol) {
+            metadataMap.set(item.symbol, item)
+            metadataMapLower.set(item.symbol.toLowerCase(), item)
+          }
+        })
+      } else {
+        console.error('❌ SAMA-DEBUG: CRITICAL - this.metadata structure is wrong:', this.metadata)
+        if (this.metadata && !this.metadata.items) console.error('❌ SAMA-DEBUG: items property is missing')
+        if (this.metadata && this.metadata.items && !Array.isArray(this.metadata.items)) console.error('❌ SAMA-DEBUG: items is NOT an array')
+      }
+
+      // 3. Populate results
+      for (const symbol of symbols) {
+        // Try cache first
+        if (this.cache.has(symbol)) {
+          const cached = this.cache.get(symbol)
+          if (Date.now() - cached.timestamp < this.cacheExpiry) {
+            // Ensure we don't return cached "Unknown" if we have better data now
+            if (cached.data.confidence > 0 || !metadataMap.has(symbol)) {
+              results.set(symbol, cached.data)
+              continue
+            }
+          }
         }
+
+        // Try loaded metadata (Exact match)
+        let metadata = metadataMap.get(symbol)
+
+        // Try case-insensitive match
+        if (!metadata) {
+          metadata = metadataMapLower.get(symbol.toLowerCase())
+          if (metadata) {
+            console.log(`⚠️ Found metadata for ${symbol} via case-insensitive match`)
+          }
+        }
+
+        if (metadata) {
+          // Cache valid metadata
+          this.cache.set(symbol, {
+            data: metadata,
+            timestamp: Date.now()
+          })
+        } else {
+          // Use default/fallback if missing
+          // console.warn(`❌ Missing metadata for ${symbol}`) // Optional: reduce noise
+          metadata = {
+            symbol,
+            sector: 'Unknown',
+            industry: 'Unknown Industry',
+            exchange: this.getDefaultExchange(symbol),
+            confidence: 0.0,
+            source: 'Static File (Default)',
+            isLive: false
+          }
+          // Cache default (but with short TTL ideally? For now standard TTL)
+          this.cache.set(symbol, {
+            data: metadata,
+            timestamp: Date.now()
+          })
+        }
+        results.set(symbol, metadata)
       }
 
       console.log(`✅ getBatchMetadata completed, ${results.size} results`)
@@ -111,47 +209,66 @@ class MetadataService {
 
   // Refresh metadata from API
   async refreshMetadata() {
-    try {
-      console.log('🔄 Refreshing metadata from dataFetcher...')
+    // Return existing promise if loading
+    if (this._loadingPromise) {
+      // console.log('🔄 Metadata refresh already in progress, waiting...')
+      return this._loadingPromise
+    }
 
-      // 嘗試直接載入 JSON 檔案作為備用方案
-      let result;
+    // Check cooldown (prevent request storm even if previous fetch failed)
+    if (this.lastAttempt && Date.now() - this.lastAttempt < this.fetchCooldown) {
+      console.log('⏳ Metadata refresh cooling down...')
+      return
+    }
+
+    this._loadingPromise = (async () => {
+      this.lastAttempt = Date.now() // Mark attempt start
       try {
-        result = await dataFetcher.fetchMetadataSnapshot()
-      } catch (fetcherError) {
-        console.warn('❌ dataFetcher failed, trying direct loader:', fetcherError)
+        console.log('🔄 SAMA-DEBUG: Refreshing metadata from dataFetcher...')
 
-        // 使用 DirectMetadataLoader (已優化)
+        // 嘗試直接載入 JSON 檔案作為備用方案
+        let result;
         try {
-          const data = await directMetadataLoader.loadMetadata()
-          result = { data }
-        } catch (loaderError) {
-          console.error('❌ Direct loader also failed:', loaderError)
-          throw loaderError
-        }
-      }
+          result = await dataFetcher.fetchMetadataSnapshot()
+        } catch (fetcherError) {
+          console.warn('❌ dataFetcher failed, trying direct loader:', fetcherError)
 
-      if (result && result.data) { // Check for result AND result.data
-        this.metadata = result.data
-        this.lastFetch = Date.now()
-        console.log(`✅ Metadata refreshed successfully, ${this.metadata.items?.length || 0} items loaded`)
-
-        // Debug: Check if CRM is in the loaded data
-        if (this.metadata.items) {
-          const crmData = this.metadata.items.find(item => item.symbol === 'CRM')
-          if (crmData) {
-            console.log('✅ CRM found in refreshed metadata:', crmData)
-          } else {
-            console.warn('❌ CRM not found in refreshed metadata')
-            console.log('Available symbols:', this.metadata.items.map(item => item.symbol).slice(0, 10))
+          // 使用 DirectMetadataLoader (已優化)
+          try {
+            const data = await directMetadataLoader.loadMetadata()
+            result = { data }
+          } catch (loaderError) {
+            console.error('❌ Direct loader also failed:', loaderError)
+            throw loaderError
           }
         }
-      } else {
-        console.warn('❌ No data returned from fetchMetadataSnapshot')
+
+        if (result && result.data) {
+          this.metadata = result.data
+          this.lastFetch = Date.now()
+          console.log(`✅ Metadata refreshed successfully, ${this.metadata.items?.length || 0} items loaded`)
+
+          // Debug: Check if CRM is in the loaded data
+          if (this.metadata.items) {
+            const crmData = this.metadata.items.find(item => item.symbol === 'CRM')
+            if (crmData) {
+              console.log('✅ CRM found in refreshed metadata:', crmData)
+            } else {
+              console.warn('❌ CRM not found in refreshed metadata')
+              console.log('Available symbols:', this.metadata.items.map(item => item.symbol).slice(0, 10))
+            }
+          }
+        } else {
+          console.warn('❌ No data returned from fetchMetadataSnapshot')
+        }
+      } catch (error) {
+        console.warn('❌ Failed to refresh metadata:', error)
+      } finally {
+        this._loadingPromise = null
       }
-    } catch (error) {
-      console.warn('❌ Failed to refresh metadata:', error)
-    }
+    })()
+
+    return this._loadingPromise
   }
 
   // Get default exchange for a symbol

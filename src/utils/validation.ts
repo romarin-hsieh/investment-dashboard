@@ -11,10 +11,7 @@ import type {
   MetadataSnapshot,
   SystemStatus,
   UniverseConfig,
-  MacroIndicatorConfig,
-  NewsSourcesConfig,
-  WishConfig,
-  VersionConfig,
+  MarketsIndicatorConfig,
   ValidationResult
 } from '@/types'
 
@@ -38,9 +35,7 @@ const MarketState = z.enum(['open', 'closed', 'pre', 'post']).nullable()
 const PriceType = z.enum(['latest', 'close', 'last_known'])
 const BriefSource = z.enum(['llm', 'fallback'])
 const QualityFlag = z.enum(['good', 'stale', 'degraded', 'disabled_scrape'])
-const ConfidenceLevel = z.union([z.literal(0.50), z.literal(0.75), z.literal(0.90)])
-const SystemStatusType = z.enum(['operational', 'degraded', 'maintenance', 'outage'])
-const JobStatusType = z.enum(['success', 'failed', 'running', 'pending'])
+const ConfidenceLevel = z.union([z.literal(0), z.literal(0.50), z.literal(0.75), z.literal(0.90), z.literal(1)])
 
 // ============================================================================
 // User State Validation Schemas
@@ -153,7 +148,7 @@ const MarketsIndicatorSchema = z.object({
 })
 
 const MacroDataSchema = z.object({
-  items: z.array(MarketsIndicatorSchema).length(10, 'Must have exactly 10 markets indicators')
+  items: z.array(MarketsIndicatorSchema).min(1, 'Must have at least 1 markets indicator')
 })
 
 const GenerationMetadataSchema = z.object({
@@ -170,8 +165,8 @@ const GenerationMetadataSchema = z.object({
 const DailySnapshotSchemaImpl = z.object({
   as_of_date_taipei: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   generated_at_utc: DateTimeString,
-  universe: z.array(z.string()).length(10, 'Universe must have exactly 10 symbols'),
-  per_symbol: z.array(SymbolDataSchema).length(10, 'Must have data for exactly 10 symbols'),
+  universe: z.array(z.string()).min(1, 'Universe must have at least 1 symbol'),
+  per_symbol: z.array(SymbolDataSchema).min(1, 'Must have data for at least 1 symbol'),
   macro: MacroDataSchema,
   generation_metadata: GenerationMetadataSchema.optional()
 })
@@ -187,29 +182,29 @@ const SymbolMetadataSchema = z.object({
   confidence: ConfidenceLevel,
   sources: z.array(z.string()).min(1),
   last_verified_at: DateTimeString,
-  market_cap_category: z.string().optional(),
-  exchange: z.string().optional()
+  market_cap_category: z.string().nullable().optional(),
+  exchange: z.string().nullable().optional()
 })
 
 const ConfidenceDistributionSchema = z.object({
-  high_confidence_0_90: z.number().nonnegative(),
-  medium_confidence_0_75: z.number().nonnegative(),
-  low_confidence_0_50: z.number().nonnegative()
+  high_confidence_0_90: z.number().nonnegative().optional(),
+  medium_confidence_0_75: z.number().nonnegative().optional(),
+  low_confidence_0_50: z.number().nonnegative().optional()
 })
 
 const RefreshMetadataSchema = z.object({
-  last_refresh_duration_ms: z.number().nonnegative(),
-  symbols_updated: z.number().nonnegative(),
-  symbols_failed: z.number().nonnegative(),
-  confidence_improvements: z.number().nonnegative(),
-  new_sources_added: z.number().nonnegative()
+  last_refresh_duration_ms: z.number().nonnegative().optional(),
+  symbols_updated: z.number().nonnegative().optional(),
+  symbols_failed: z.number().nonnegative().optional(),
+  confidence_improvements: z.number().nonnegative().optional(),
+  new_sources_added: z.number().nonnegative().optional()
 })
 
 const MetadataSnapshotSchemaImpl = z.object({
   ttl_days: z.number().positive(),
   as_of: DateTimeString,
   next_refresh: DateTimeString.optional(),
-  items: z.array(SymbolMetadataSchema).length(10, 'Must have metadata for exactly 10 symbols'),
+  items: z.array(SymbolMetadataSchema).min(1, 'Must have metadata for at least 1 symbol'),
   industry_grouping: z.record(z.string(), z.array(z.string())).optional(),
   confidence_distribution: ConfidenceDistributionSchema.optional(),
   data_sources: z.record(z.string(), z.number().nonnegative()).optional(),
@@ -220,61 +215,37 @@ const MetadataSnapshotSchemaImpl = z.object({
 // System Status Validation Schemas
 // ============================================================================
 
-const JobStatusSchema = z.object({
-  last_run: DateTimeString,
-  next_run: DateTimeString,
-  status: JobStatusType,
-  duration_ms: z.number().nonnegative(),
-  symbols_updated: z.number().nonnegative().optional(),
-  symbols_processed: z.number().nonnegative().optional(),
-  errors: z.array(z.string()),
-  provider: z.string().optional()
+const DataSourceStatusSchema = z.object({
+  exists: z.boolean(),
+  size: z.number().nonnegative(),
+  modified: DateTimeString.nullable(),
+  fileCount: z.number().optional(),
+  file: z.string().optional(),
+  directory: z.string().optional(),
+  error: z.string().optional()
 })
 
-const FreshnessInfoSchema = z.object({
-  age_minutes: z.number().nonnegative().optional(),
-  age_hours: z.number().nonnegative().optional(),
-  age_days: z.number().nonnegative().optional(),
-  staleness: StaleLevel
+const UpdateInfoSchema = z.object({
+  source: z.string(),
+  workflow: z.string(),
+  next_update: DateTimeString,
+  update_frequency: z.string()
 })
 
-const QuotaInfoSchema = z.object({
-  used_minutes: z.number().nonnegative(),
-  total_minutes: z.number().nonnegative(),
-  reset_date: z.string() // Just a date string, not datetime
-})
-
-const StorageInfoSchema = z.object({
-  data_files_mb: z.number().nonnegative(),
-  total_repo_mb: z.number().nonnegative()
-})
-
-const ApiLimitInfoSchema = z.object({
-  calls_today: z.number().nonnegative(),
-  daily_limit: z.number().nonnegative(),
-  reset_time: DateTimeString
-})
-
-const SystemHealthSchema = z.object({
-  github_actions_quota: QuotaInfoSchema.optional(),
-  storage_usage: StorageInfoSchema.optional(),
-  api_limits: z.record(z.string(), ApiLimitInfoSchema).optional()
-})
-
-const DegradationStatusSchema = z.object({
-  enabled: z.boolean(),
-  active_fallbacks: z.array(z.string()),
-  cache_hits_last_hour: z.number().nonnegative()
+const HealthCheckSchema = z.object({
+  all_systems: z.string(),
+  last_check: DateTimeString,
+  issues: z.array(z.string())
 })
 
 export const SystemStatusSchema = z.object({
-  description: z.string(),
-  last_updated: DateTimeString,
-  system_status: SystemStatusType,
-  jobs: z.record(z.string(), JobStatusSchema),
-  data_freshness: z.record(z.string(), FreshnessInfoSchema),
-  system_health: SystemHealthSchema,
-  degradation_status: DegradationStatusSchema
+  generated: DateTimeString,
+  date: z.string(),
+  status: z.string(),
+  data_sources: z.record(z.string(), DataSourceStatusSchema),
+  update_info: UpdateInfoSchema,
+  health_check: HealthCheckSchema,
+  last_updated: DateTimeString
 })
 
 // ============================================================================
@@ -441,7 +412,7 @@ export function validateImportFileSize(file: File): ValidationResult<File> {
 export function validateImportData(data: unknown): ValidationResult<UserState> {
   // First check if it's a valid object with known top-level keys
   const allowedKeys = ['schema_version', 'watchlist', 'holdings', 'settings', 'cache', 'diagnostics']
-  
+
   if (typeof data !== 'object' || data === null) {
     return {
       success: false,
@@ -451,10 +422,10 @@ export function validateImportData(data: unknown): ValidationResult<UserState> {
       }
     }
   }
-  
+
   const dataKeys = Object.keys(data as object)
   const unknownKeys = dataKeys.filter(key => !allowedKeys.includes(key))
-  
+
   if (unknownKeys.length > 0) {
     return {
       success: false,
@@ -465,7 +436,7 @@ export function validateImportData(data: unknown): ValidationResult<UserState> {
       }
     }
   }
-  
+
   // Then validate the full schema
   return validateUserState(data)
 }

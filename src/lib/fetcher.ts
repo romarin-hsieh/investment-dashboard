@@ -270,12 +270,29 @@ export class DataFetcher {
         cacheBuster = `?t=${timestamp}`
       }
 
-      const response = await fetch(`${this.baseUrl}/data/symbols_metadata.json${cacheBuster}`)
+      const url = `${this.baseUrl}/data/symbols_metadata.json${cacheBuster}`
+      console.log(`🔍 SAMA-DEBUG: Fetching metadata snapshot from: ${url}`)
+
+      const response = await fetch(url)
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`)
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
 
-      const data = await response.json()
+      const text = await response.text()
+      console.log(`📄 Metadata response size: ${text.length} chars`)
+
+      if (!text || text.trim().length === 0) {
+        throw new Error('Empty response body received from server')
+      }
+
+      let data
+      try {
+        data = JSON.parse(text)
+      } catch (e) {
+        console.error('❌ Failed to parse metadata JSON. Preview:', text.substring(0, 100))
+        throw new Error(`JSON Parse Error: ${(e as Error).message}`)
+      }
+
       const validation = validateMetadataSnapshot(data)
 
       if (!validation.success) {

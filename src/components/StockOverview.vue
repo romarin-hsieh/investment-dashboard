@@ -185,6 +185,15 @@ export default {
           sector = symbolMetadata.sector || 'Unknown'
         }
         
+        // SAMA-DEBUG: Log logic for specific symbols
+        if (['TSM', 'CRM', 'NVDA'].includes(quote.symbol)) {
+             console.log(`🔍 SAMA-DEBUG: StockOverview processing ${quote.symbol}`, {
+                 metadata: symbolMetadata,
+                 confidence: symbolMetadata?.confidence,
+                 parsedSector: sector
+             })
+        }
+        
         if (!groups[sector]) {
           groups[sector] = []
         }

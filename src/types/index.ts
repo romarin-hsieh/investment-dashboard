@@ -156,25 +156,25 @@ export interface SymbolMetadata {
   symbol: string
   sector: string | null
   industry: string | null
-  confidence: 0.50 | 0.75 | 0.90 // Specific confidence levels
+  confidence: 0 | 0.50 | 0.75 | 0.90 | 1 // Updated to include 0 and 1
   sources: string[]
   last_verified_at: string
-  market_cap_category?: string
-  exchange?: string
+  market_cap_category?: string | null
+  exchange?: string | null
 }
 
 export interface ConfidenceDistribution {
-  high_confidence_0_90: number
-  medium_confidence_0_75: number
-  low_confidence_0_50: number
+  high_confidence_0_90?: number
+  medium_confidence_0_75?: number
+  low_confidence_0_50?: number
 }
 
 export interface RefreshMetadata {
-  last_refresh_duration_ms: number
-  symbols_updated: number
-  symbols_failed: number
-  confidence_improvements: number
-  new_sources_added: number
+  last_refresh_duration_ms?: number
+  symbols_updated?: number
+  symbols_failed?: number
+  confidence_improvements?: number
+  new_sources_added?: number
 }
 
 // ============================================================================
@@ -182,14 +182,42 @@ export interface RefreshMetadata {
 // ============================================================================
 
 export interface SystemStatus {
-  description: string
-  last_updated: string
-  system_status: 'operational' | 'degraded' | 'maintenance' | 'outage'
-  jobs: Record<string, JobStatus>
-  data_freshness: Record<string, FreshnessInfo>
-  system_health: SystemHealth
-  degradation_status: DegradationStatus
+  generated: string
+  last_updated: string // Required for cache busting
+  date: string
+  status: string
+  data_sources: Record<string, DataSourceStatus>
+  update_info: UpdateInfo
+  health_check: HealthCheck
 }
+
+export interface DataSourceStatus {
+  exists: boolean
+  size: number
+  modified: string | null
+  fileCount?: number
+  file?: string
+  directory?: string
+  error?: string
+}
+
+export interface UpdateInfo {
+  source: string
+  workflow: string
+  next_update: string
+  update_frequency: string
+}
+
+export interface HealthCheck {
+  all_systems: string
+  last_check: string
+  issues: string[]
+}
+
+// Deprecated or unused status interfaces can be removed if not used elsewhere, 
+// but keeping basic ones if needed for other parts of the app.
+// JobStatus, FreshnessInfo etc were removed from SystemStatus but might be used in other API responses?
+// Checking codebase usage would be ideal, but for now I'm redefining SystemStatus to what it actually is.
 
 export interface JobStatus {
   last_run: string
@@ -391,6 +419,6 @@ export type MarketState = 'open' | 'closed' | 'pre' | 'post'
 export type PriceType = 'latest' | 'close' | 'last_known'
 export type BriefSource = 'llm' | 'fallback'
 export type QualityFlag = 'good' | 'stale' | 'degraded' | 'disabled_scrape'
-export type ConfidenceLevel = 0.50 | 0.75 | 0.90
+export type ConfidenceLevel = 0 | 0.50 | 0.75 | 0.90 | 1 // Updated
 export type SystemStatusType = 'operational' | 'degraded' | 'maintenance' | 'outage'
 export type JobStatusType = 'success' | 'failed' | 'running' | 'pending'
