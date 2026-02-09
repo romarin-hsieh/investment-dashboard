@@ -953,10 +953,12 @@ function generateTechnicalIndicators(symbol, ohlcvData, benchmarkData = null) {
   // Beta Calculation (10D, 3M/63D)
   let beta10d = null;
   let beta3m = null;
+  let beta1y = null;
 
   if (benchmarkData && benchmarkData.close && benchmarkData.timestamps) {
     beta10d = calculateBeta(close, benchmarkData.close, timestamps, benchmarkData.timestamps, 10);
     beta3m = calculateBeta(close, benchmarkData.close, timestamps, benchmarkData.timestamps, 63);
+    beta1y = calculateBeta(close, benchmarkData.close, timestamps, benchmarkData.timestamps, 252);
   }
 
   // EMA Calculations
@@ -1046,7 +1048,8 @@ function generateTechnicalIndicators(symbol, ohlcvData, benchmarkData = null) {
       // Custom Beta
       beta: {
         beta10d: beta10d,
-        beta3m: beta3m
+        beta3m: beta3m,
+        beta1y: beta1y
       },
       // Market volume stats
       market: {
@@ -1066,7 +1069,7 @@ function generateTechnicalIndicators(symbol, ohlcvData, benchmarkData = null) {
         'SMA (5,10,20,30,50,60)', 'RSI14', 'MACD',
         'ADX14', 'Ichimoku', 'VWMA20', 'Stoch',
         'CCI20', 'PSAR', 'SuperTrend', 'OBV', 'WilliamsR14', 'CMF20',
-        'Beta (10D, 3M vs SPX)'
+        'Beta (10D, 3M, 1Y vs SPX)'
       ]
     }
   };
@@ -1245,6 +1248,7 @@ async function generateAllTechnicalIndicators() {
         beta: { value: content.fundamentals?.defaultKeyStatistics?.beta || 'N/A' }, // Static
         beta_10d: getCompact(raw.beta?.beta10d),
         beta_3mo: getCompact(raw.beta?.beta3m),
+        beta_1y: getCompact(raw.beta?.beta1y),
 
         // Volume/Market Cap (latest values)
         market: {

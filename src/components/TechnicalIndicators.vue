@@ -278,18 +278,24 @@ export default {
       groups['Oscillators'].push(getIndicator('ichimokuBaseLine', 'Ichi Base (26)', 'ICHIMOKU_BASELINE_26', 'Oscillators'));
       groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', 'Ichi Lag (26)', 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));
 
-      // Group 3: Market & Volume (YFinance)
+      // Group 3: Market & Volume (YFinance + Precomputed)
       const yf = data.yf || data.indicators?.yf || {};
+      
+      // Use precomputed market data if available (Fastest)
+      // data.market comes from generate-daily-technical-indicators.js (latest_all.json)
+      // data.beta comes from same source.
+      const preMarket = data.market || {};
+      const preBeta = data.beta || {};
 
       groups['Market'].push(getIndicator('atr14', 'ATR (14)', 'ATR_14', 'Market'));
       groups['Market'].push(getIndicator('mfi14', 'MFI (14)', 'MFI_14', 'Market'));
-      // New: CMF (20)
-      groups['Market'].push(getIndicator('cmf20', 'CMF (20)', 'CMF_20', 'Market', this.formatNumber(this.getLatestValue(series.CMF_20), 3))); // CMF is small decimal
+      
+      // CMF (20)
+      groups['Market'].push(getIndicator('cmf20', 'CMF (20)', 'CMF_20', 'Market', this.formatNumber(this.getLatestValue(series.CMF_20), 3))); 
 
       groups['Market'].push(getIndicator('obv', 'OBV', 'OBV', 'Market', this.formatVolume(data.obv?.value)));
       
-      // Volume - Prefer real Volume from StockInfo, fallback to YF
-      // Volume - Prefer real Volume from StockInfo, fallback to YF
+      // Volume - Prefer real Volume from StockInfo, fallback to Precomputed, then Series
       let volChange = yf.volume_last_day_pct;
       if (volChange === undefined && series.volume) {
            const latest = this.getLatestValue(series.volume);
@@ -299,64 +305,67 @@ export default {
            }
       }
 
+      // Priority: Realtime > Precomputed (Market Object) > Precomputed (YF Object) > Series
+      const displayVolume = yf.extVolume || preMarket.volume || yf.volume_last_day || this.getLatestValue(series.volume);
+      const displayAvgVol10D = yf.extAvgVol10D || preMarket.avgVol10D || yf.avg_volume_10d || yf.extAvgVol;
+      const displayAvgVol3M = yf.extAvgVol3M || preMarket.avgVol3M || yf.avg_volume_3m || displayAvgVol10D;
+      
+      const displayMarketCap = yf.extMarketCap || preMarket.marketCap || yf.market_cap;
+
       groups['Market'].push({
           label: 'Volume',
-          value: this.formatVolume(yf.extVolume || yf.volume_last_day || this.getLatestValue(series.volume)),
+          value: this.formatVolume(displayVolume),
           change: volChange !== undefined && volChange !== null ? (volChange >= 0 ? '+' : '') + Number(volChange).toFixed(1) + '%' : null,
           changeClass: this.getChangeClass(volChange),
-          signal: this.getVolumeCategory(yf.extVolume || yf.volume_last_day, yf.extAvgVol || yf.avg_volume_5d),
+          signal: this.getVolumeCategory(displayVolume, displayAvgVol10D || displayAvgVol3M),
           class: 'text-white'
       });
 
-      // Average Volume - Compare 10D vs 3M for signal and change %
-      const avgVol10D = yf.extAvgVol10D || yf.avg_volume_10d || yf.extAvgVol; // Fallback
-      const avgVol3M = yf.extAvgVol3M || yf.avg_volume_3m || avgVol10D; // Fallback to 10D to avoid NaN if 3M missing
-      
+      // Average Volume
       let avgVolDiffPct = null;
-      if (avgVol10D && avgVol3M) {
-          avgVolDiffPct = ((avgVol10D - avgVol3M) / avgVol3M) * 100;
+      if (displayAvgVol10D && displayAvgVol3M) {
+          avgVolDiffPct = ((displayAvgVol10D - displayAvgVol3M) / displayAvgVol3M) * 100;
       }
       
       groups['Market'].push({
           label: 'Avg Vol (10D)',
-          value: this.formatVolume(avgVol10D),
+          value: this.formatVolume(displayAvgVol10D),
           change: avgVolDiffPct !== null ? (avgVolDiffPct >= 0 ? '+' : '') + avgVolDiffPct.toFixed(1) + '%' : null,
           changeClass: this.getChangeClass(avgVolDiffPct),
-          signal: this.getVolumeCategory(avgVol10D, avgVol3M), // Compare short-term avg with medium-term avg
+          signal: this.getVolumeCategory(displayAvgVol10D, displayAvgVol3M), 
           class: 'text-white'
       });
       
       groups['Market'].push({
           label: 'Market Cap',
-          value: this.formatMarketCap(yf.extMarketCap || yf.market_cap),
-          signal: this.getMarketCapCategory(yf.extMarketCap || yf.market_cap),
+          value: this.formatMarketCap(displayMarketCap),
+          signal: this.getMarketCapCategory(displayMarketCap),
           change: yf.regularMarketChangePercent !== undefined ? (yf.regularMarketChangePercent * 100 >= 0 ? '+' : '') + (yf.regularMarketChangePercent * 100).toFixed(1) + '%' : null,
           changeClass: this.getChangeClass(yf.regularMarketChangePercent),
           class: 'text-white'
       });
 
       // Beta - Custom Periods
-      // Note: Standard API usually provides 5Y Beta.
       
       // Beta (10D)
       groups['Market'].push({ 
           label: 'Beta (10D)', 
-          value: this.formatBeta(yf.beta_10d), 
-          signal: this.getBetaCategory(yf.beta_10d)
+          value: this.formatBeta(yf.beta_10d || preBeta.beta_10d || data.beta_10d?.value), 
+          signal: this.getBetaCategory(yf.beta_10d || preBeta.beta_10d || data.beta_10d?.value)
       });
 
       // Beta (3M)
       groups['Market'].push({ 
           label: 'Beta (3M)', 
-          value: this.formatBeta(yf.beta_3mo), 
-          signal: this.getBetaCategory(yf.beta_3mo)
+          value: this.formatBeta(yf.beta_3mo || preBeta.beta_3mo || data.beta_3mo?.value), 
+          signal: this.getBetaCategory(yf.beta_3mo || preBeta.beta_3mo || data.beta_3mo?.value)
       });
 
-      // Beta (1Y) - Map default Beta here as per request
+      // Beta (1Y)
       groups['Market'].push({ 
          label: 'Beta (1Y)', 
-         value: this.formatBeta(yf.extBeta || yf.beta || yf.beta_1y), 
-         signal: this.getBetaCategory(yf.extBeta || yf.beta || yf.beta_1y)
+         value: this.formatBeta(yf.extBeta || preBeta.beta_1y || data.beta_1y?.value || yf.beta || yf.beta_1y), 
+         signal: this.getBetaCategory(yf.extBeta || preBeta.beta_1y || data.beta_1y?.value || yf.beta || yf.beta_1y)
       });
       
       // Beta (5Y) - Keep if available
