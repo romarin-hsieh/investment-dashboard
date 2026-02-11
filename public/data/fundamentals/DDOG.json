@@ -5,7 +5,7 @@
         "period": "0m",
         "strongBuy": 10,
         "buy": 32,
-        "hold": 3,
+        "hold": 4,
         "sell": 1,
         "strongSell": 0
       },
@@ -13,7 +13,7 @@
         "period": "-1m",
         "strongBuy": 10,
         "buy": 32,
-        "hold": 3,
+        "hold": 4,
         "sell": 1,
         "strongSell": 0
       },
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1288,
         "position": 41912928,
-        "value": 4778493010,
+        "value": 5434849297,
         "pctChange": 0.00029999999
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0837,
         "position": 27230765,
-        "value": 3104579575,
+        "value": 3531013247,
         "pctChange": 0.31370002
       },
       {
@@ -63,7 +63,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0502,
         "position": 16342587,
-        "value": 1863218378,
+        "value": 2119143226,
         "pctChange": 0.5118
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0422,
         "position": 13732777,
-        "value": 1565673935,
+        "value": 1780729168,
         "pctChange": 1.0676999
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0414,
         "position": 13466821,
-        "value": 1535352290,
+        "value": 1746242654,
         "pctChange": 1.2325
       },
       {
@@ -90,17 +90,17 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0325,
         "position": 10561176,
-        "value": 1204079698,
+        "value": 1369467672,
         "pctChange": 1.0464
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Geode Capital Management, LLC",
-        "pctHeld": 0.0272,
-        "position": 8858270,
-        "value": 1009931381,
-        "pctChange": 0.52
+        "pctHeld": 0.0278,
+        "position": 9056086,
+        "value": 1174302655,
+        "pctChange": 0.0223
       },
       {
         "maxAge": 1,
@@ -108,7 +108,7 @@
         "organization": "Janus Henderson Group PLC",
         "pctHeld": 0.0248,
         "position": 8078980,
-        "value": 921084527,
+        "value": 1047601321,
         "pctChange": -0.0336
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Jennison Associates LLC",
         "pctHeld": 0.0234,
         "position": 7623993,
-        "value": 869211458,
+        "value": 988603158,
         "pctChange": 0.4366
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0188,
         "position": 6113794,
-        "value": 697033667,
+        "value": 792775656,
         "pctChange": -0.0324
       }
     ]
@@ -134,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0076200003,
-    "institutionsPercentHeld": 0.91509,
-    "institutionsFloatPercentHeld": 0.92212,
+    "institutionsPercentHeld": 0.91583997,
+    "institutionsFloatPercentHeld": 0.92287004,
     "institutionsCount": 1469
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": 0.49,
-          "estimate": 0.43303,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "0.06",
-          "surprisePct": "13.16",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1739448595
-        },
         {
           "date": "1Q2025",
           "actual": 0.46,
@@ -185,26 +174,30 @@
           "surprisePct": "20.33",
           "periodEndDate": 1759190400,
           "reportedDate": 1762430400
+        },
+        {
+          "date": "4Q2025",
+          "actual": 0.59,
+          "estimate": 0.55486,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.04",
+          "surprisePct": "6.33",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1770724800
         }
       ],
-      "currentQuarterEstimate": 0.55486,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [
-        "2026-02-10T13:30:00.000Z"
-      ],
+      "currentQuarterEstimate": 0.50348,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
-        {
-          "date": 2021,
-          "revenue": 1028784000,
-          "earnings": 166818000
-        },
         {
           "date": 2022,
           "revenue": 1675100000,
@@ -219,15 +212,14 @@
           "date": 2024,
           "revenue": 2684275000,
           "earnings": 653828000
+        },
+        {
+          "date": 2025,
+          "revenue": 3427158000,
+          "earnings": 746582000
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2024",
-          "revenue": 737727000,
-          "earnings": 177506000
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -245,6 +237,12 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 885651000,
           "earnings": 197410000
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2025",
+          "revenue": 953194000,
+          "earnings": 217430000
         }
       ]
     },
@@ -253,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-10T18:00:42.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 155,
+        "priorPriceTarget": 220
+      },
       {
         "epochGradeDate": "2026-02-09T14:53:04.000Z",
         "firm": "RBC Capital",
@@ -4319,24 +4327,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.023068128,
-    "postMarketChange": 2.6299973,
-    "postMarketTime": "2026-02-10T00:59:59.000Z",
-    "postMarketPrice": 116.64,
+    "postMarketChangePercent": 0.002544936,
+    "postMarketChange": 0.33000183,
+    "postMarketTime": "2026-02-11T00:58:09.000Z",
+    "postMarketPrice": 130,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0207718,
-    "regularMarketChange": 2.32,
-    "regularMarketTime": "2026-02-09T21:00:01.000Z",
+    "regularMarketChangePercent": 0.137356,
+    "regularMarketChange": 15.66,
+    "regularMarketTime": "2026-02-10T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 114.01,
-    "regularMarketDayHigh": 115.69,
-    "regularMarketDayLow": 111.48,
-    "regularMarketVolume": 10145211,
-    "averageDailyVolume10Day": 6554290,
-    "averageDailyVolume3Month": 4785948,
-    "regularMarketPreviousClose": 111.69,
+    "regularMarketPrice": 129.67,
+    "regularMarketDayHigh": 133.44,
+    "regularMarketDayLow": 123.33,
+    "regularMarketVolume": 18716614,
+    "averageDailyVolume10Day": 7043730,
+    "averageDailyVolume3Month": 4869918,
+    "regularMarketPreviousClose": 114.01,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 115.05,
+    "regularMarketOpen": 124.175,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -4352,13 +4360,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 39979974656
+    "marketCap": 45471477760
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 37118951424,
-    "forwardPE": 48.671265,
+    "forwardPE": 46.6936,
     "profitMargins": 0.033239998,
     "floatShares": 323321937,
     "sharesOutstanding": 325443373,
@@ -4368,14 +4376,14 @@
     "dateShortInterest": "2026-01-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0247,
     "heldPercentInsiders": 0.0076200003,
-    "heldPercentInstitutions": 0.91509,
+    "heldPercentInstitutions": 0.91583997,
     "shortRatio": 2.15,
     "shortPercentOfFloat": 0.027,
     "beta": 1.286,
     "impliedSharesOutstanding": 350670749,
     "category": null,
     "bookValue": 9.811,
-    "priceToBook": 11.62063,
+    "priceToBook": 13.216798,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -4383,13 +4391,13 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.345,
     "netIncomeToCommon": 106768000,
-    "trailingEps": 0.32,
-    "forwardEps": 2.34245,
+    "trailingEps": 0.35,
+    "forwardEps": 2.73171,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.557,
     "enterpriseToEbitda": 5962.884,
-    "52WeekChange": -0.23194885,
-    "SandP52WeekChange": 0.14234161,
+    "52WeekChange": -0.23013031,
+    "SandP52WeekChange": 0.15083516,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4416,6 +4424,42 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 130644,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BLITZER ADAM",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 38814,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GALLOREESE DAVID",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 255610,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 32418,
@@ -4534,6 +4578,52 @@
       },
       {
         "maxAge": 1,
+        "shares": 15000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "CALLAHAN MICHAEL JAMES",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CALLAHAN MICHAEL JAMES",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 348000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 348000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "POMEL OLIVIER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7916,
         "value": 1163207,
         "filerUrl": "",
@@ -4543,52 +4633,6 @@
         "moneyText": "",
         "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "CALLAHAN MICHAEL JAMES",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CALLAHAN MICHAEL JAMES",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 348000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 348000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4828,18 +4872,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 436116,
-        "value": 87067466,
-        "filerUrl": "",
-        "transactionText": "Sale at price 198.43 - 201.07 per share.",
-        "filerName": "JACOBSON MATTHEW",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-11T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 53912,
         "value": 10673913,
         "filerUrl": "",
@@ -4860,6 +4892,18 @@
         "moneyText": "",
         "startDate": "2025-11-11T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 436116,
+        "value": 87067466,
+        "filerUrl": "",
+        "transactionText": "Sale at price 198.43 - 201.07 per share.",
+        "filerName": "JACOBSON MATTHEW",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-11-11T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5318,18 +5362,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 683511,
-        "value": 87106996,
-        "filerUrl": "",
-        "transactionText": "Sale at price 126.61 - 131.17 per share.",
-        "filerName": "JACOBSON MATTHEW",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-27T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 11195,
         "value": 1455350,
         "filerUrl": "",
@@ -5350,6 +5382,18 @@
         "moneyText": "",
         "startDate": "2025-08-27T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 683511,
+        "value": 87106996,
+        "filerUrl": "",
+        "transactionText": "Sale at price 126.61 - 131.17 per share.",
+        "filerName": "JACOBSON MATTHEW",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-27T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5778,18 +5822,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 23748,
-        "value": 2849760,
-        "filerUrl": "",
-        "transactionText": "Sale at price 120.00 per share.",
-        "filerName": "SHAH SHARDUL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 127105,
         "value": 15247342,
         "filerUrl": "",
@@ -5838,11 +5870,23 @@
       },
       {
         "maxAge": 1,
+        "shares": 23748,
+        "value": 2849760,
+        "filerUrl": "",
+        "transactionText": "Sale at price 120.00 per share.",
+        "filerName": "SHAH SHARDUL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 2106,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHAH SHARDUL",
+        "filerName": "ITTYCHERIA DEV C",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-03T00:00:00.000Z",
@@ -5878,18 +5922,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ITTYCHERIA DEV C",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2106,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "RICHARDSON JULIE G",
         "filerRelation": "Director",
         "moneyText": "",
@@ -5903,6 +5935,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "CALLAHAN MICHAEL JAMES",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2106,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHAH SHARDUL",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-03T00:00:00.000Z",
@@ -6143,56 +6187,20 @@
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 107365,
-        "value": 9375789,
-        "filerUrl": "",
-        "transactionText": "Sale at price 82.48 - 90.86 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-04-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 107365,
-        "value": 46020,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.31 - 0.91 per share.",
-        "filerName": "POMEL OLIVIER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-04-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 65322,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BLITZER ADAM",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 114.01,
+    "currentPrice": 129.67,
     "targetHighPrice": 260,
     "targetLowPrice": 113,
-    "targetMeanPrice": 190.6907,
-    "targetMedianPrice": 190,
-    "recommendationMean": 1.43478,
+    "targetMeanPrice": 188.34818,
+    "targetMedianPrice": 185.5,
+    "recommendationMean": 1.46809,
     "recommendationKey": "strong_buy",
-    "numberOfAnalystOpinions": 43,
+    "numberOfAnalystOpinions": 44,
     "totalCash": 4140338944,
     "totalCashPerShare": 11.807,
     "ebitda": 6225000,
@@ -6215,6 +6223,6 @@
     "profitMargins": 0.033239998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-10T04:34:19.773Z",
+  "lastUpdated": "2026-02-11T04:32:41.862Z",
   "source": "Static Build (yahoo-finance2)"
 }
