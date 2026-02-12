@@ -176,7 +176,6 @@ class PrecomputedIndicatorsAPI {
           // Market
           obv: { value: getLast(raw.obv?.value), signal: 'N/A' }, // Mapped from obv.value
           atr14: { value: getLast(raw.atr?.atr14), signal: 'N/A' },
-          atr14: { value: getLast(raw.atr?.atr14), signal: 'N/A' },
           mfi14: { value: getLast(raw.mfi?.mfi14), signal: 'N/A' },
           cmf20: { value: getLast(raw.cmf?.cmf20), signal: 'N/A' },
           willr14: { value: getLast(raw.williamsR?.r14), signal: 'N/A' },
@@ -186,6 +185,7 @@ class PrecomputedIndicatorsAPI {
             beta: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A',
             beta_10d: getLast(raw.beta?.beta10d),
             beta_3mo: getLast(raw.beta?.beta3m),
+            beta_1y: getLast(raw.beta?.beta1y),
 
             // Market Cap with multiple fallbacks
             market_cap: data.fundamentals?.price?.marketCap
@@ -196,6 +196,7 @@ class PrecomputedIndicatorsAPI {
 
             // Volume Stats (Calculated from OHLCV in generation script)
             avg_volume_10d: raw.market?.avgVolume10d || data.fundamentals?.price?.averageDailyVolume10Day || 'N/A',
+            avg_volume_3m: raw.market?.avgVolume3m || 'N/A',
             volume_last_day: raw.market?.volumeLastDay || data.fundamentals?.price?.regularMarketVolume || 'N/A',
 
             // Legacy fallbacks if needed (for older files without 'market' object)
@@ -227,8 +228,6 @@ class PrecomputedIndicatorsAPI {
             MFI_14: raw.mfi?.mfi14 || [],
             CCI_20: raw.cci?.cci20 || [],
             SAR: raw.psar?.sar || [],
-            SUPERTREND: raw.supertrend?.supertrend || [],
-            CMF_20: raw.cmf?.cmf20 || [],
             SUPERTREND: raw.supertrend?.supertrend || [],
             CMF_20: raw.cmf?.cmf20 || [],
             WILLR_14: raw.williamsR?.r14 || [],

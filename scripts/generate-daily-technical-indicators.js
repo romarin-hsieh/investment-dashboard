@@ -1202,15 +1202,20 @@ async function generateAllTechnicalIndicators() {
         symbol: symbol,
         date: content.date,
 
-        // Trend
+        // Trend (EMA)
         ma5: getCompact(raw.ema?.ema5),
         ma10: getCompact(raw.ema?.ema10),
         ema20: getCompact(raw.ema?.ema20),
         ma30: getCompact(raw.ema?.ema30),
+        ma50: getCompact(raw.ema?.ema50),
+        ma60: getCompact(raw.ema?.ema60),
 
         sma5: getCompact(raw.sma?.sma5),
         sma10: getCompact(raw.sma?.sma10),
+        sma20: getCompact(raw.sma?.sma20),
         sma30: getCompact(raw.sma?.sma30),
+        sma50: getCompact(raw.sma?.sma50),
+        sma60: getCompact(raw.sma?.sma60),
 
         superTrend: getCompact(raw.supertrend?.supertrend),
         parabolicSAR: getCompact(raw.psar?.sar),
@@ -1237,6 +1242,8 @@ async function generateAllTechnicalIndicators() {
         ichimokuConversionLine: getCompact(raw.ichimoku?.conversion),
         ichimokuBaseLine: getCompact(raw.ichimoku?.base),
         ichimokuLaggingSpan: getCompact(raw.ichimoku?.lagging),
+        ichimokuLeadingSpanA: getCompact(raw.ichimoku?.spanA),
+        ichimokuLeadingSpanB: getCompact(raw.ichimoku?.spanB),
 
         // Market
         atr14: getCompact(raw.atr?.atr14),
@@ -1252,7 +1259,7 @@ async function generateAllTechnicalIndicators() {
 
         // Volume/Market Cap (latest values)
         market: {
-          volume: getCompact(raw.market?.volumeLastDay ? [raw.market.volumeLastDay] : []), // It's a single value in raw usually? No, raw.market produced by script is object with single values
+          volume: getCompact(raw.market?.volumeLastDay ? [raw.market.volumeLastDay] : []),
           avgVol10D: raw.market?.avgVolume10d,
           avgVol3M: raw.market?.avgVolume3m,
           marketCap: content.fundamentals?.price?.marketCap || content.fundamentals?.summaryDetail?.marketCap
