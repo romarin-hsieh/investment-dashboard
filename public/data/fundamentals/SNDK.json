@@ -96,15 +96,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0224,
-        "position": 3310712,
-        "value": 1984242218,
-        "pctChange": 1.1214
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Morgan Stanley",
         "pctHeld": 0.0188,
         "position": 2770816,
@@ -128,15 +119,24 @@
         "position": 2649670,
         "value": 1588053288,
         "pctChange": 0.9227
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "NORGES BANK",
+        "pctHeld": 0.0148,
+        "position": 2185899,
+        "value": 1310096765,
+        "pctChange": 0.2486
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.053189997,
-    "institutionsPercentHeld": 0.87154,
-    "institutionsFloatPercentHeld": 0.92050004,
-    "institutionsCount": 853
+    "institutionsPercentHeld": 0.87774,
+    "institutionsFloatPercentHeld": 0.92705,
+    "institutionsCount": 868
   },
   "earnings": {
     "maxAge": 86400,
@@ -866,11 +866,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.06844189,
+    "preMarketChange": 41.01996,
+    "preMarketTime": "2026-02-12T14:27:11.000Z",
+    "preMarketPrice": 640.36,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.020339044,
-    "postMarketChange": 12.190002,
-    "postMarketTime": "2026-02-12T00:59:56.000Z",
-    "postMarketPrice": 611.53,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.10652834,
     "regularMarketChange": 57.700012,
@@ -880,15 +880,15 @@
     "regularMarketDayHigh": 612.7,
     "regularMarketDayLow": 575,
     "regularMarketVolume": 20398104,
-    "averageDailyVolume10Day": 24966280,
-    "averageDailyVolume3Month": 15302940,
+    "averageDailyVolume10Day": 25349870,
+    "averageDailyVolume3Month": 15385222,
     "regularMarketPreviousClose": 541.64,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 578.25,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SNDK",
     "underlyingSymbol": null,
@@ -916,7 +916,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.050300002,
     "heldPercentInsiders": 0.053189997,
-    "heldPercentInstitutions": 0.87154,
+    "heldPercentInstitutions": 0.87774,
     "shortRatio": 0.45,
     "shortPercentOfFloat": 0.0787,
     "impliedSharesOutstanding": 147567249,
@@ -930,13 +930,13 @@
     "mostRecentQuarter": "2026-01-02T00:00:00.000Z",
     "earningsQuarterlyGrowth": 6.721,
     "netIncomeToCommon": -1041000000,
-    "trailingEps": -8.27,
+    "trailingEps": -7.49,
     "forwardEps": 76.3405,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 9.824,
     "enterpriseToEbitda": 61.556,
-    "52WeekChange": 14.045555,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 15.648333,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1308,6 +1308,6 @@
     "profitMargins": -0.11659,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:28:24.647Z",
+  "lastUpdated": "2026-02-12T14:27:14.629Z",
   "source": "Static Build (yahoo-finance2)"
 }

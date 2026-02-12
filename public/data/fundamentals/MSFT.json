@@ -60,15 +60,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0428,
-        "position": 317615796,
-        "value": 128434297877,
-        "pctChange": 1.0223
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "State Street Corporation",
         "pctHeld": 0.0404,
         "position": 299761678,
@@ -92,6 +83,15 @@
         "position": 182618400,
         "value": 73845401516,
         "pctChange": 0.0106
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0199,
+        "position": 147759850,
+        "value": 59749649823,
+        "pctChange": -0.5348
       },
       {
         "maxAge": 1,
@@ -122,21 +122,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Northern Trust Corporation",
-        "pctHeld": 0.0109,
-        "position": 81165798,
-        "value": 32821013340,
-        "pctChange": -0.0045
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Capital International Investors",
+        "pctHeld": 0.011,
+        "position": 81585381,
+        "value": 32990680116,
+        "pctChange": 0.0276
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00066,
-    "institutionsPercentHeld": 0.76238996,
-    "institutionsFloatPercentHeld": 0.7629,
-    "institutionsCount": 7780
+    "institutionsPercentHeld": 0.75991,
+    "institutionsFloatPercentHeld": 0.76041,
+    "institutionsCount": 7798
   },
   "earnings": {
     "maxAge": 86400,
@@ -8938,11 +8938,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0048965327,
+    "preMarketChange": 1.980011,
+    "preMarketTime": "2026-02-12T14:25:01.000Z",
+    "preMarketPrice": 406.35,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0006190004,
-    "postMarketChange": 0.25030518,
-    "postMarketTime": "2026-02-12T00:59:59.000Z",
-    "postMarketPrice": 404.6203,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.021535544,
     "regularMarketChange": -8.899994,
@@ -8952,15 +8952,15 @@
     "regularMarketDayHigh": 416.46,
     "regularMarketDayLow": 401.01,
     "regularMarketVolume": 42473205,
-    "averageDailyVolume10Day": 58309680,
-    "averageDailyVolume3Month": 30507678,
+    "averageDailyVolume10Day": 58866160,
+    "averageDailyVolume3Month": 30703293,
     "regularMarketPreviousClose": 413.27,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 416.094,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MSFT",
     "underlyingSymbol": null,
@@ -8977,7 +8977,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3035225653248,
+    "enterpriseValue": 3036517498880,
     "forwardPE": 21.452456,
     "profitMargins": 0.39044,
     "floatShares": 7414713401,
@@ -8988,7 +8988,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.007900001,
     "heldPercentInsiders": 0.00066,
-    "heldPercentInstitutions": 0.76238996,
+    "heldPercentInstitutions": 0.75991,
     "shortRatio": 1.8,
     "shortPercentOfFloat": 0.007900001,
     "beta": 1.084,
@@ -9003,14 +9003,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.595,
     "netIncomeToCommon": 119262003200,
-    "trailingEps": 15.65,
+    "trailingEps": 15.97,
     "forwardEps": 18.84959,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1045526400,
-    "enterpriseToRevenue": 9.937,
-    "enterpriseToEbitda": 17.319,
-    "52WeekChange": 0.0066497326,
-    "SandP52WeekChange": 0.13519716,
+    "enterpriseToRevenue": 9.941,
+    "enterpriseToEbitda": 17.326,
+    "52WeekChange": -0.015029013,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.91,
     "lastDividendDate": "2025-11-20T00:00:00.000Z",
     "latestShareClass": null,
@@ -10274,6 +10274,6 @@
     "profitMargins": 0.39044,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:23.777Z",
+  "lastUpdated": "2026-02-12T14:25:09.043Z",
   "source": "Static Build (yahoo-finance2)"
 }

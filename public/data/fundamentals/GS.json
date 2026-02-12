@@ -68,12 +68,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0467,
-        "position": 13996826,
-        "value": 13221262247,
-        "pctChange": 0.9917
+        "pctHeld": 0.026300002,
+        "position": 7874962,
+        "value": 7438610567,
+        "pctChange": -0.4374
       },
       {
         "maxAge": 1,
@@ -113,12 +113,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
-        "pctHeld": 0.0139,
-        "position": 4159567,
-        "value": 3929085504,
-        "pctChange": -0.032
+        "pctHeld": 0.0125,
+        "position": 3737815,
+        "value": 3530702771,
+        "pctChange": -0.1014
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0053,
-    "institutionsPercentHeld": 0.752,
-    "institutionsFloatPercentHeld": 0.75601,
-    "institutionsCount": 3583
+    "institutionsPercentHeld": 0.75355005,
+    "institutionsFloatPercentHeld": 0.75755996,
+    "institutionsCount": 3594
   },
   "earnings": {
     "maxAge": 86400,
@@ -4308,11 +4308,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.005864769,
+    "preMarketChange": 5.539978,
+    "preMarketTime": "2026-02-12T14:24:10.000Z",
+    "preMarketPrice": 950.16,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0025513428,
-    "postMarketChange": 2.4099731,
-    "postMarketTime": "2026-02-12T00:56:33.000Z",
-    "postMarketPrice": 947,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": -0.00463647,
     "regularMarketChange": -4.39996,
@@ -4322,22 +4322,22 @@
     "regularMarketDayHigh": 968.13,
     "regularMarketDayLow": 931.28,
     "regularMarketVolume": 2212904,
-    "averageDailyVolume10Day": 2492400,
-    "averageDailyVolume3Month": 2273900,
+    "averageDailyVolume10Day": 2590360,
+    "averageDailyVolume3Month": 2280126,
     "regularMarketPreviousClose": 948.99,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 950.64,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "GS",
     "underlyingSymbol": null,
     "shortName": "Goldman Sachs Group, Inc. (The)",
     "longName": "The Goldman Sachs Group, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -4358,7 +4358,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.020299999,
     "heldPercentInsiders": 0.0053,
-    "heldPercentInstitutions": 0.752,
+    "heldPercentInstitutions": 0.75355005,
     "shortRatio": 2.54,
     "shortPercentOfFloat": 0.020399999,
     "beta": 1.311,
@@ -4373,12 +4373,12 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.123,
     "netIncomeToCommon": 16300000256,
-    "trailingEps": 51.1,
+    "trailingEps": 51.29,
     "forwardEps": 65.00667,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 2.448,
-    "52WeekChange": 0.4623469,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.45556664,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 4,
     "lastDividendDate": "2025-12-02T00:00:00.000Z",
     "latestShareClass": null,
@@ -4406,6 +4406,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 11623,
+        "value": 10943892,
+        "filerUrl": "",
+        "transactionText": "Sale at price 933.38 - 945.40 per share.",
+        "filerName": "COLEMAN DENIS P.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-02-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2292,
+        "value": 2143045,
+        "filerUrl": "",
+        "transactionText": "Sale at price 932.98 - 938.01 per share.",
+        "filerName": "GOLTEN ALEXANDER SIMON",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-09T00:00:00.000Z",
+        "ownership": "D/I"
+      },
       {
         "maxAge": 1,
         "shares": 272,
@@ -5223,6 +5247,6 @@
     "profitMargins": 0.28917998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:27.697Z",
+  "lastUpdated": "2026-02-12T14:26:16.330Z",
   "source": "Static Build (yahoo-finance2)"
 }

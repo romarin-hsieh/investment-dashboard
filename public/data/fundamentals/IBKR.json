@@ -68,21 +68,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.040599998,
-        "position": 18100912,
-        "value": 1382004603,
-        "pctChange": 0.78360003
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Cantillon Capital Management LLC",
-        "pctHeld": 0.028399998,
-        "position": 12664026,
-        "value": 966898365,
-        "pctChange": -0.0109
+        "pctHeld": 0.0287,
+        "position": 12759904,
+        "value": 974218650,
+        "pctChange": 0.0076
       },
       {
         "maxAge": 1,
@@ -128,15 +119,24 @@
         "position": 9185108,
         "value": 701282981,
         "pctChange": -0.11399999
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Bank of America Corporation",
+        "pctHeld": 0.0171,
+        "position": 7628167,
+        "value": 582410538,
+        "pctChange": 0.0044
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02871,
-    "institutionsPercentHeld": 0.89255,
-    "institutionsFloatPercentHeld": 0.91893,
-    "institutionsCount": 1260
+    "institutionsPercentHeld": 0.88848,
+    "institutionsFloatPercentHeld": 0.91473997,
+    "institutionsCount": 1262
   },
   "earnings": {
     "maxAge": 86400,
@@ -1428,11 +1428,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0060248733,
+    "preMarketChange": 0.45999908,
+    "preMarketTime": "2026-02-12T14:21:46.000Z",
+    "preMarketPrice": 76.81,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0034053982,
-    "postMarketChange": -0.26000214,
-    "postMarketTime": "2026-02-12T00:47:33.000Z",
-    "postMarketPrice": 76.09,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.011010343,
     "regularMarketChange": -0.8499985,
@@ -1442,15 +1442,15 @@
     "regularMarketDayHigh": 77.85,
     "regularMarketDayLow": 74.8,
     "regularMarketVolume": 3569126,
-    "averageDailyVolume10Day": 5573990,
-    "averageDailyVolume3Month": 4597840,
+    "averageDailyVolume10Day": 5461150,
+    "averageDailyVolume3Month": 4580945,
     "regularMarketPreviousClose": 77.2,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 77.63,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "IBKR",
     "underlyingSymbol": null,
@@ -1478,7 +1478,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0228,
     "heldPercentInsiders": 0.02871,
-    "heldPercentInstitutions": 0.89255,
+    "heldPercentInstitutions": 0.88848,
     "shortRatio": 2.01,
     "shortPercentOfFloat": 0.0234,
     "beta": 1.224,
@@ -1493,13 +1493,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.309,
     "netIncomeToCommon": 984000000,
-    "trailingEps": 2.2,
+    "trailingEps": 2.22,
     "forwardEps": 2.75349,
     "lastSplitFactor": "4:1",
     "lastSplitDate": 1750204800,
     "enterpriseToRevenue": -5.096,
-    "52WeekChange": 0.3148818,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.30040455,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.08,
     "lastDividendDate": "2025-12-01T00:00:00.000Z",
     "latestShareClass": null,
@@ -1600,18 +1600,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11156,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MENDONCA DENIS",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 23629,
         "value": 25017,
         "filerUrl": "",
@@ -1654,6 +1642,18 @@
         "transactionText": "Stock Award(Grant) at price 64.31 per share.",
         "filerName": "GALIK MILAN",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11156,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MENDONCA DENIS",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
         "ownership": "D"
@@ -2326,6 +2326,6 @@
     "profitMargins": 0.15858,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:14.745Z",
+  "lastUpdated": "2026-02-12T14:25:00.030Z",
   "source": "Static Build (yahoo-finance2)"
 }

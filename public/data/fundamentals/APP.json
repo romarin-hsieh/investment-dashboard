@@ -69,15 +69,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.05,
-        "position": 15365952,
-        "value": 7019320495,
-        "pctChange": 2.2356
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "FMR, LLC",
         "pctHeld": 0.0446,
         "position": 13706444,
@@ -101,6 +92,15 @@
         "position": 7167003,
         "value": 3273958622,
         "pctChange": 0.066700004
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0229,
+        "position": 7053011,
+        "value": 3221885937,
+        "pctChange": -0.541
       },
       {
         "maxAge": 1,
@@ -187,14 +187,16 @@
           "reportedDate": 1770843900
         }
       ],
-      "currentQuarterEstimate": 3.12717,
+      "currentQuarterEstimate": 3.38317,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-06T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-12T13:02:48.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 700,
+        "priorPriceTarget": 700
+      },
+      {
+        "epochGradeDate": "2026-02-12T11:13:47.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 640,
+        "priorPriceTarget": 771
+      },
       {
         "epochGradeDate": "2026-02-10T19:08:30.000Z",
         "firm": "UBS",
@@ -2666,11 +2688,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.08981852,
+    "preMarketChange": -41.03,
+    "preMarketTime": "2026-02-12T14:24:48.000Z",
+    "preMarketPrice": 415.78,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.060221996,
-    "postMarketChange": -27.51001,
-    "postMarketTime": "2026-02-12T00:59:59.000Z",
-    "postMarketPrice": 429.3,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.03406493,
     "regularMarketChange": -16.109985,
@@ -2680,15 +2702,15 @@
     "regularMarketDayHigh": 471.97,
     "regularMarketDayLow": 438.18,
     "regularMarketVolume": 10605499,
-    "averageDailyVolume10Day": 8248950,
-    "averageDailyVolume3Month": 4896778,
+    "averageDailyVolume10Day": 8817120,
+    "averageDailyVolume3Month": 4987804,
     "regularMarketPreviousClose": 472.91998,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 457.5,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "APP",
     "underlyingSymbol": null,
@@ -2706,7 +2728,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 156226289664,
-    "forwardPE": 31.017422,
+    "forwardPE": 29.7773,
     "profitMargins": 0.44879,
     "floatShares": 242898397,
     "sharesOutstanding": 307597000,
@@ -2731,13 +2753,13 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.923,
     "netIncomeToCommon": 2916342016,
-    "trailingEps": 8.18,
-    "forwardEps": 14.72753,
+    "trailingEps": 8.5,
+    "forwardEps": 15.34088,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 24.769,
     "enterpriseToEbitda": 39.916,
-    "52WeekChange": 0.0026501417,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.03150505,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2801,11 +2823,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 50,
+        "shares": 25000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerName": "CHEN HERALD Y",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-09T00:00:00.000Z",
@@ -2813,11 +2835,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
+        "shares": 50,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "CHEN HERALD Y",
+        "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-09T00:00:00.000Z",
@@ -3021,6 +3043,30 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VALENZUELA VICTORIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20236,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHIKIN VASILY",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-10-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20236,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "FOROUGHI ARASH ADAM",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -3053,30 +3099,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 20236,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VALENZUELA VICTORIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20236,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHIKIN VASILY",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 29,
         "value": 0,
         "filerUrl": "",
@@ -3093,7 +3115,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerName": "MESSING BARBARA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
@@ -3105,7 +3127,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MESSING BARBARA",
+        "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
@@ -3145,30 +3167,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7401,
-        "value": 3108170,
-        "filerUrl": "",
-        "transactionText": "Sale at price 412.91 - 430.91 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 26200,
-        "value": 11534004,
-        "filerUrl": "",
-        "transactionText": "Sale at price 428.93 - 445.93 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-22T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3221,6 +3219,42 @@
       },
       {
         "maxAge": 1,
+        "shares": 7401,
+        "value": 3108170,
+        "filerUrl": "",
+        "transactionText": "Sale at price 412.91 - 430.91 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 26200,
+        "value": 11534004,
+        "filerUrl": "",
+        "transactionText": "Sale at price 428.93 - 445.93 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16599,
+        "value": 6917026,
+        "filerUrl": "",
+        "transactionText": "Sale at price 411.82 - 430.60 per share.",
+        "filerName": "VALENZUELA VICTORIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 90927,
         "value": 38276071,
         "filerUrl": "",
@@ -3250,18 +3284,6 @@
         "transactionText": "Sale at price 411.65 - 431.20 per share.",
         "filerName": "STUMPF MATTHEW",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16599,
-        "value": 6917026,
-        "filerUrl": "",
-        "transactionText": "Sale at price 411.82 - 430.60 per share.",
-        "filerName": "VALENZUELA VICTORIA",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D"
@@ -3450,7 +3472,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerName": "MESSING BARBARA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-07-15T00:00:00.000Z",
@@ -3462,7 +3484,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MESSING BARBARA",
+        "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-07-15T00:00:00.000Z",
@@ -3478,30 +3500,6 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3500,
-        "value": 1452163,
-        "filerUrl": "",
-        "transactionText": "Sale at price 408.30 - 423.95 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9714,
-        "value": 4108994,
-        "filerUrl": "",
-        "transactionText": "Sale at price 421.00 - 425.00 per share.",
-        "filerName": "STUMPF MATTHEW",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3542,6 +3540,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 3500,
+        "value": 1452163,
+        "filerUrl": "",
+        "transactionText": "Sale at price 408.30 - 423.95 per share.",
+        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9714,
+        "value": 4108994,
+        "filerUrl": "",
+        "transactionText": "Sale at price 421.00 - 425.00 per share.",
+        "filerName": "STUMPF MATTHEW",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 56,
         "value": 0,
         "filerUrl": "",
@@ -3559,18 +3581,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "WEBB MAYNARD GEORGE JR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 720,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
@@ -3650,6 +3660,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 720,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 31181,
         "value": 11016443,
         "filerUrl": "",
@@ -3674,18 +3696,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 133700,
-        "value": 49070352,
-        "filerUrl": "",
-        "transactionText": "Sale at price 360.21 - 370.24 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-21T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 13184,
         "value": 4875336,
         "filerUrl": "",
@@ -3695,6 +3705,18 @@
         "moneyText": "",
         "startDate": "2025-05-21T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 133700,
+        "value": 49070352,
+        "filerUrl": "",
+        "transactionText": "Sale at price 360.21 - 370.24 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-05-21T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -3745,18 +3767,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 570,
-        "value": 211540,
-        "filerUrl": "",
-        "transactionText": "Sale at price 349.33 - 378.92 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 200000,
         "value": 0,
         "filerUrl": "",
@@ -3793,6 +3803,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 570,
+        "value": 211540,
+        "filerUrl": "",
+        "transactionText": "Sale at price 349.33 - 378.92 per share.",
+        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 12000,
         "value": 4237397,
         "filerUrl": "",
@@ -3821,7 +3843,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerName": "MESSING BARBARA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
@@ -3833,7 +3855,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MESSING BARBARA",
+        "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
@@ -3953,18 +3975,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 48,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MESSING BARBARA",
         "filerRelation": "Director",
         "moneyText": "",
@@ -3978,6 +3988,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "VIVAS EDUARDO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 48,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-01-15T00:00:00.000Z",
@@ -4033,18 +4055,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 51676,
-        "value": 17194696,
-        "filerUrl": "",
-        "transactionText": "Sale at price 316.19 - 359.32 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 17500,
         "value": 0,
         "filerUrl": "",
@@ -4057,26 +4067,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 54802,
-        "value": 18817925,
+        "shares": 51676,
+        "value": 17194696,
         "filerUrl": "",
-        "transactionText": "Sale at price 320.13 - 367.19 per share.",
+        "transactionText": "Sale at price 316.19 - 359.32 per share.",
         "filerName": "FOROUGHI ARASH ADAM",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-12-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 43522,
-        "value": 14471737,
-        "filerUrl": "",
-        "transactionText": "Sale at price 321.15 - 353.14 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-10T00:00:00.000Z",
+        "startDate": "2024-12-11T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4129,6 +4127,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 54802,
+        "value": 18817925,
+        "filerUrl": "",
+        "transactionText": "Sale at price 320.13 - 367.19 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-12-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 43522,
+        "value": 14471737,
+        "filerUrl": "",
+        "transactionText": "Sale at price 321.15 - 353.14 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-12-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 171951,
         "value": 59411676,
         "filerUrl": "",
@@ -4153,18 +4175,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 500,
-        "value": 203134,
-        "filerUrl": "",
-        "transactionText": "Sale at price 399.64 - 413.47 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1030000,
         "filerUrl": "",
         "transactionText": "",
@@ -4176,14 +4186,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 175,
-        "value": 0,
+        "shares": 500,
+        "value": 203134,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "Sale at price 399.64 - 413.47 per share.",
         "filerName": "HARVEY DAWSON ALYSSA",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-12-03T00:00:00.000Z",
+        "startDate": "2024-12-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4206,6 +4216,18 @@
         "transactionText": "Sale at price 350.45 - 357.57 per share.",
         "filerName": "VALENZUELA VICTORIA",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 175,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-03T00:00:00.000Z",
         "ownership": "D"
@@ -4272,18 +4294,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 21101,
-        "value": 7019627,
-        "filerUrl": "",
-        "transactionText": "Sale at price 332.19 - 333.86 per share.",
-        "filerName": "STUMPF MATTHEW",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-11-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 165986,
         "value": 51735181,
         "filerUrl": "",
@@ -4296,14 +4306,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 5205489,
+        "shares": 21101,
+        "value": 7019627,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KKR DENALI HOLDINGS, L.P.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "transactionText": "Sale at price 332.19 - 333.86 per share.",
+        "filerName": "STUMPF MATTHEW",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2024-11-21T00:00:00.000Z",
-        "ownership": "I"
+        "startDate": "2024-11-22T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -4390,6 +4401,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 5205489,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KKR DENALI HOLDINGS, L.P.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-11-21T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 119752,
         "value": 34264845,
         "filerUrl": "",
@@ -4398,6 +4420,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-11-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 33902,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHIKIN VASILY",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-11-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4414,14 +4448,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 33902,
+        "shares": 32207,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHIKIN VASILY",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "VALENZUELA VICTORIA",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-11-04T00:00:00.000Z",
+        "startDate": "2024-10-30T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4450,30 +4484,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 32207,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VALENZUELA VICTORIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 112,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HARVEY DAWSON ALYSSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 112,
         "value": 0,
         "filerUrl": "",
@@ -4498,14 +4508,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 200000,
-        "value": 21559657,
+        "shares": 112,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 98.08 - 112.33 per share.",
-        "filerName": "FOROUGHI ARASH ADAM",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HARVEY DAWSON ALYSSA",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-09-13T00:00:00.000Z",
+        "startDate": "2024-10-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4522,14 +4532,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 11765,
-        "value": 0,
+        "shares": 200000,
+        "value": 21559657,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "Sale at price 98.08 - 112.33 per share.",
         "filerName": "FOROUGHI ARASH ADAM",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-09-12T00:00:00.000Z",
+        "startDate": "2024-09-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4540,6 +4550,18 @@
         "transactionText": "Conversion of Exercise of derivative security at price 7.45 per share.",
         "filerName": "VALENZUELA VICTORIA",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11765,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "FOROUGHI ARASH ADAM",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-09-12T00:00:00.000Z",
         "ownership": "D"
@@ -4564,8 +4586,8 @@
     "currentPrice": 456.81,
     "targetHighPrice": 860,
     "targetLowPrice": 458,
-    "targetMeanPrice": 714,
-    "targetMedianPrice": 737.5,
+    "targetMeanPrice": 681.7692,
+    "targetMedianPrice": 715,
     "recommendationMean": 1.60714,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 26,
@@ -4591,6 +4613,6 @@
     "profitMargins": 0.44879,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:05.663Z",
+  "lastUpdated": "2026-02-12T14:24:50.531Z",
   "source": "Static Build (yahoo-finance2)"
 }

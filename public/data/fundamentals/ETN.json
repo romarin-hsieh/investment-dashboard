@@ -41,15 +41,6 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.099,
-        "position": 38442856,
-        "value": 15226830692,
-        "pctChange": 0.609
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.09770001,
@@ -65,6 +56,15 @@
         "position": 28559488,
         "value": 11312127497,
         "pctChange": 0.0058999998
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0468,
+        "position": 18179197,
+        "value": 7200598073,
+        "pctChange": -0.52709997
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00182,
-    "institutionsPercentHeld": 0.84011,
-    "institutionsFloatPercentHeld": 0.84164,
-    "institutionsCount": 3063
+    "institutionsPercentHeld": 0.83752,
+    "institutionsFloatPercentHeld": 0.83905,
+    "institutionsCount": 3075
   },
   "earnings": {
     "maxAge": 86400,
@@ -4098,11 +4098,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.002082444,
+    "preMarketChange": 0.8250122,
+    "preMarketTime": "2026-02-12T14:23:54.000Z",
+    "preMarketPrice": 397,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.003206314,
-    "postMarketChange": 1.269989,
-    "postMarketTime": "2026-02-12T00:55:26.000Z",
-    "postMarketPrice": 397.36,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": 0.049328398,
     "regularMarketChange": 18.62,
@@ -4112,22 +4112,22 @@
     "regularMarketDayHigh": 400.99,
     "regularMarketDayLow": 390.5982,
     "regularMarketVolume": 3761231,
-    "averageDailyVolume10Day": 3726480,
-    "averageDailyVolume3Month": 3079960,
+    "averageDailyVolume10Day": 3801800,
+    "averageDailyVolume3Month": 3092185,
     "regularMarketPreviousClose": 377.47,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 394,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ETN",
     "underlyingSymbol": null,
     "shortName": "Eaton Corporation, PLC",
     "longName": "Eaton Corporation plc",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -4148,7 +4148,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.019299999,
     "heldPercentInsiders": 0.00182,
-    "heldPercentInstitutions": 0.84011,
+    "heldPercentInstitutions": 0.83752,
     "shortRatio": 2.59,
     "shortPercentOfFloat": 0.019299999,
     "beta": 1.18,
@@ -4163,14 +4163,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.166,
     "netIncomeToCommon": 4087000064,
-    "trailingEps": 10.97,
+    "trailingEps": 10.46,
     "forwardEps": 15.40695,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1298937600,
     "enterpriseToRevenue": 5.958,
     "enterpriseToEbitda": 26.052,
-    "52WeekChange": 0.22630847,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.28680027,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 1.04,
     "lastDividendDate": "2025-08-07T00:00:00.000Z",
     "latestShareClass": null,
@@ -4766,6 +4766,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1270,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MARSHALL ERNEST W JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1420,
         "filerUrl": "",
         "transactionText": "",
@@ -4814,17 +4825,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GALVAO ANTONIO",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1270,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MARSHALL ERNEST W JR",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-24T00:00:00.000Z",
@@ -5406,6 +5406,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 8387,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MARSHALL ERNEST W JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 8004,
         "value": 0,
         "filerUrl": "",
@@ -5466,18 +5478,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 8387,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MARSHALL ERNEST W JR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 76175,
         "value": 0,
         "filerUrl": "",
@@ -5510,6 +5510,17 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2014,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MARSHALL ERNEST W JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-02-23T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -5562,17 +5573,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "CHERUVATATH NANDAKUMAR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2014,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MARSHALL ERNEST W JR",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-02-23T00:00:00.000Z",
@@ -5656,6 +5656,6 @@
     "profitMargins": 0.1489,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:22.113Z",
+  "lastUpdated": "2026-02-12T14:25:07.219Z",
   "source": "Static Build (yahoo-finance2)"
 }

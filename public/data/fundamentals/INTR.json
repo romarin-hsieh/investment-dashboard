@@ -122,21 +122,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "ClearBridge Investments, LLC",
-        "pctHeld": 0.0107,
-        "position": 3464132,
-        "value": 31107903,
-        "pctChange": 1
+        "pctHeld": 0.0093,
+        "position": 2997023,
+        "value": 26913265,
+        "pctChange": -0.1348
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.20036,
-    "institutionsPercentHeld": 0.34366,
-    "institutionsFloatPercentHeld": 0.42977002,
-    "institutionsCount": 162
+    "institutionsPercentHeld": 0.34385,
+    "institutionsFloatPercentHeld": 0.43,
+    "institutionsCount": 168
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,14 +187,16 @@
           "reportedDate": 1770807765
         }
       ],
-      "currentQuarterEstimate": 0.17167,
+      "currentQuarterEstimate": 0.17,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-11T13:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -416,11 +418,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.033407595,
+    "preMarketChange": 0.3000002,
+    "preMarketTime": "2026-02-12T14:20:34.000Z",
+    "preMarketPrice": 9.28,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.007238367,
-    "postMarketChange": 0.065000534,
-    "postMarketTime": "2026-02-11T23:20:50.000Z",
-    "postMarketPrice": 9.045,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.033369258,
     "regularMarketChange": -0.31000042,
@@ -430,15 +432,15 @@
     "regularMarketDayHigh": 10.11,
     "regularMarketDayLow": 8.87,
     "regularMarketVolume": 10045915,
-    "averageDailyVolume10Day": 3648770,
-    "averageDailyVolume3Month": 2692338,
+    "averageDailyVolume10Day": 4272800,
+    "averageDailyVolume3Month": 2812888,
     "regularMarketPreviousClose": 9.29,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 9.66,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "INTR",
     "underlyingSymbol": null,
@@ -456,7 +458,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 23702947840,
-    "forwardPE": 8.555069,
+    "forwardPE": 8.474336,
     "profitMargins": 0.21556,
     "floatShares": 204165597,
     "sharesOutstanding": 323145718,
@@ -466,7 +468,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.018,
     "heldPercentInsiders": 0.20036,
-    "heldPercentInstitutions": 0.34366,
+    "heldPercentInstitutions": 0.34385,
     "shortRatio": 2.76,
     "shortPercentOfFloat": 0.129,
     "beta": 1.169,
@@ -481,12 +483,12 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.386,
     "netIncomeToCommon": 1213186944,
-    "trailingEps": 0.51,
-    "forwardEps": 1.05417,
+    "trailingEps": 0.53,
+    "forwardEps": 1.05967,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 4.212,
-    "52WeekChange": 0.7299814,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.67225325,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.08,
     "lastDividendDate": "2025-02-14T00:00:00.000Z",
     "latestShareClass": null,
@@ -515,11 +517,12 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 8.98,
-    "targetHighPrice": 11.5,
+    "targetHighPrice": 12.5,
     "targetLowPrice": 4.6,
-    "targetMeanPrice": 9.7826,
-    "targetMedianPrice": 10,
-    "recommendationKey": "none",
+    "targetMeanPrice": 10.2021,
+    "targetMedianPrice": 10.2,
+    "recommendationMean": 2,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 10,
     "totalCash": 7640032256,
     "totalCashPerShare": 17.356,
@@ -538,6 +541,6 @@
     "profitMargins": 0.21556,
     "financialCurrency": "BRL"
   },
-  "lastUpdated": "2026-02-12T04:25:56.622Z",
+  "lastUpdated": "2026-02-12T14:24:41.194Z",
   "source": "Static Build (yahoo-finance2)"
 }

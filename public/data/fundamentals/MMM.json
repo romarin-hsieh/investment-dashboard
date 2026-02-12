@@ -41,21 +41,21 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.1727,
-        "position": 90961796,
-        "value": 15722746993,
-        "pctChange": 1.202
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.093100004,
         "position": 49055462,
         "value": 8479236906,
         "pctChange": 0.0117999995
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0865,
+        "position": 45554373,
+        "value": 7874073651,
+        "pctChange": -0.4992
       },
       {
         "maxAge": 1,
@@ -86,12 +86,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
-        "pctHeld": 0.0201,
-        "position": 10562754,
-        "value": 1825772093,
-        "pctChange": -0.0726
+        "pctHeld": 0.020599999,
+        "position": 10835505,
+        "value": 1872917105,
+        "pctChange": 0.025799999
       },
       {
         "maxAge": 1,
@@ -122,21 +122,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "State Farm Mutual Automobile Insurance Co",
         "pctHeld": 0.0150999995,
         "position": 7934035,
         "value": 1371397998,
-        "pctChange": -0.008
+        "pctChange": 0
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.0010800001,
-    "institutionsPercentHeld": 0.75517,
-    "institutionsFloatPercentHeld": 0.75598,
-    "institutionsCount": 2756
+    "insidersPercentHeld": 0.0011,
+    "institutionsPercentHeld": 0.75424004,
+    "institutionsFloatPercentHeld": 0.75507003,
+    "institutionsCount": 2760
   },
   "earnings": {
     "maxAge": 86400,
@@ -4388,11 +4388,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0036735674,
+    "preMarketChange": -0.6349945,
+    "preMarketTime": "2026-02-12T14:26:20.000Z",
+    "preMarketPrice": 172.22,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0037604505,
-    "postMarketChange": 0.6499939,
-    "postMarketTime": "2026-02-12T00:59:30.000Z",
-    "postMarketPrice": 173.5,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00334421,
     "regularMarketChange": -0.579987,
@@ -4402,15 +4402,15 @@
     "regularMarketDayHigh": 174.93,
     "regularMarketDayLow": 172.46,
     "regularMarketVolume": 2392983,
-    "averageDailyVolume10Day": 4896750,
-    "averageDailyVolume3Month": 3453163,
+    "averageDailyVolume10Day": 4764140,
+    "averageDailyVolume3Month": 3445683,
     "regularMarketPreviousClose": 173.43,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 174,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MMM",
     "underlyingSymbol": null,
@@ -4430,15 +4430,15 @@
     "enterpriseValue": 96284098560,
     "forwardPE": 18.460766,
     "profitMargins": 0.13027,
-    "floatShares": 525846746,
+    "floatShares": 525815144,
     "sharesOutstanding": 526700000,
     "sharesShort": 8143860,
     "sharesShortPriorMonth": "1970-04-02T21:45:29.000Z",
     "sharesShortPreviousMonthDate": "2025-12-31T00:00:00.000Z",
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0154,
-    "heldPercentInsiders": 0.0010800001,
-    "heldPercentInstitutions": 0.75517,
+    "heldPercentInsiders": 0.0011,
+    "heldPercentInstitutions": 0.75424004,
     "shortRatio": 2.04,
     "shortPercentOfFloat": 0.0154,
     "beta": 1.166,
@@ -4453,14 +4453,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.207,
     "netIncomeToCommon": 3249999872,
-    "trailingEps": 5.98,
+    "trailingEps": 6,
     "forwardEps": 9.3631,
     "lastSplitFactor": "1196:1000",
     "lastSplitDate": 1711929600,
     "enterpriseToRevenue": 3.859,
     "enterpriseToEbitda": 16.005,
-    "52WeekChange": 0.16615117,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.16225123,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.73,
     "lastDividendDate": "2025-11-14T00:00:00.000Z",
     "latestShareClass": null,
@@ -5903,6 +5903,6 @@
     "profitMargins": 0.13027,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:57.411Z",
+  "lastUpdated": "2026-02-12T14:26:46.426Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -96,15 +96,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.028499998,
-        "position": 111580096,
-        "value": 471983808,
-        "pctChange": 0.8457
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Tiger Global Management, LLC",
         "pctHeld": 0.0238,
         "position": 92923788,
@@ -128,6 +119,15 @@
         "position": 61139140,
         "value": 258618563,
         "pctChange": 0.32479998
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0145000005,
+        "position": 56669014,
+        "value": 239709930,
+        "pctChange": -0.4921
       }
     ]
   },
@@ -192,8 +192,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-04-30T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -855,11 +857,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0,
+    "preMarketChange": 0,
+    "preMarketTime": "2026-02-12T14:24:10.000Z",
+    "preMarketPrice": 4.23,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.028368765,
-    "postMarketChange": -0.119999886,
-    "postMarketTime": "2026-02-12T00:59:58.000Z",
-    "postMarketPrice": 4.11,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.018561468,
     "regularMarketChange": -0.07999992,
@@ -869,15 +871,15 @@
     "regularMarketDayHigh": 4.39,
     "regularMarketDayLow": 4.1901,
     "regularMarketVolume": 47813629,
-    "averageDailyVolume10Day": 54792960,
-    "averageDailyVolume3Month": 48446783,
+    "averageDailyVolume10Day": 54308130,
+    "averageDailyVolume3Month": 48424401,
     "regularMarketPreviousClose": 4.31,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 4.38,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "GRAB",
     "underlyingSymbol": null,
@@ -895,7 +897,7 @@
     "maxAge": 1,
     "priceHint": 4,
     "enterpriseValue": 12357010432,
-    "forwardPE": 28.62944,
+    "forwardPE": 29.122204,
     "profitMargins": 0.03779,
     "floatShares": 2681358090,
     "sharesOutstanding": 3965000000,
@@ -921,12 +923,12 @@
     "earningsQuarterlyGrowth": 0.423,
     "netIncomeToCommon": 122000000,
     "trailingEps": 0.02,
-    "forwardEps": 0.14775,
+    "forwardEps": 0.14525,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.828,
     "enterpriseToEbitda": 64.696,
-    "52WeekChange": -0.13104838,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.1471774,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -954,7 +956,7 @@
     "currentPrice": 4.23,
     "targetHighPrice": 8,
     "targetLowPrice": 5.6,
-    "targetMeanPrice": 6.80222,
+    "targetMeanPrice": 6.78926,
     "targetMedianPrice": 6.95,
     "recommendationMean": 1.32143,
     "recommendationKey": "strong_buy",
@@ -981,6 +983,6 @@
     "profitMargins": 0.03779,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:47.324Z",
+  "lastUpdated": "2026-02-12T14:24:32.068Z",
   "source": "Static Build (yahoo-finance2)"
 }

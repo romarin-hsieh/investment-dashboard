@@ -41,15 +41,6 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0874,
-        "position": 49417608,
-        "value": 5659304302,
-        "pctChange": 1.6366
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0685,
@@ -65,6 +56,15 @@
         "position": 25862514,
         "value": 2961775016,
         "pctChange": -0.0073
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0379,
+        "position": 21452130,
+        "value": 2456697855,
+        "pctChange": -0.5659
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.25862,
-    "institutionsPercentHeld": 0.70545,
-    "institutionsFloatPercentHeld": 0.95154,
-    "institutionsCount": 1329
+    "institutionsPercentHeld": 0.6961,
+    "institutionsFloatPercentHeld": 0.93893,
+    "institutionsCount": 1325
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1762860600
         }
       ],
-      "currentQuarterEstimate": 0.76072,
+      "currentQuarterEstimate": 0.84719,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -2326,11 +2326,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.012923536,
+    "preMarketChange": 1.4800034,
+    "preMarketTime": "2026-02-12T14:24:11.000Z",
+    "preMarketPrice": 116,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0041040974,
-    "postMarketChange": 0.47000122,
-    "postMarketTime": "2026-02-12T01:00:00.000Z",
-    "postMarketPrice": 114.99,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": 0.0105003,
     "regularMarketChange": 1.18999,
@@ -2340,22 +2340,22 @@
     "regularMarketDayHigh": 118.09,
     "regularMarketDayLow": 113.35,
     "regularMarketVolume": 5159334,
-    "averageDailyVolume10Day": 7325000,
-    "averageDailyVolume3Month": 5195463,
+    "averageDailyVolume10Day": 7318250,
+    "averageDailyVolume3Month": 5201736,
     "regularMarketPreviousClose": 113.33,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 116.5,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SE",
     "underlyingSymbol": null,
     "shortName": "Sea Limited",
     "longName": "Sea Limited",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -2366,7 +2366,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 62614335488,
-    "forwardPE": 23.274767,
+    "forwardPE": 23.275145,
     "profitMargins": 0.06742,
     "floatShares": 301639156,
     "sharesOutstanding": 546492141,
@@ -2376,7 +2376,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0299,
     "heldPercentInsiders": 0.25862,
-    "heldPercentInstitutions": 0.70545,
+    "heldPercentInstitutions": 0.6961,
     "shortRatio": 3.63,
     "shortPercentOfFloat": 0.06,
     "beta": 1.587,
@@ -2391,13 +2391,13 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 1.446,
     "netIncomeToCommon": 1418358016,
-    "trailingEps": 2.31,
-    "forwardEps": 4.92035,
+    "trailingEps": 2.29,
+    "forwardEps": 4.92027,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 2.976,
     "enterpriseToEbitda": 34.939,
-    "52WeekChange": -0.14872682,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.13978815,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4060,7 +4060,7 @@
     "currentPrice": 114.52,
     "targetHighPrice": 226,
     "targetLowPrice": 137,
-    "targetMeanPrice": 182.94128,
+    "targetMeanPrice": 181.48969,
     "targetMedianPrice": 184,
     "recommendationMean": 1.27273,
     "recommendationKey": "strong_buy",
@@ -4087,6 +4087,6 @@
     "profitMargins": 0.06742,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:58.387Z",
+  "lastUpdated": "2026-02-12T14:24:43.097Z",
   "source": "Static Build (yahoo-finance2)"
 }

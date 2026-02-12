@@ -87,15 +87,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0183,
-        "position": 25167122,
-        "value": 12584064065,
-        "pctChange": 0.8289
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Gates Foundation Trust",
         "pctHeld": 0.0159,
         "position": 21765224,
@@ -110,6 +101,15 @@
         "position": 15842634,
         "value": 7921633678,
         "pctChange": -0.0074
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0094,
+        "position": 12883585,
+        "value": 6442050030,
+        "pctChange": -0.48810002
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00387,
-    "institutionsPercentHeld": 0.66205,
-    "institutionsFloatPercentHeld": 0.66462,
-    "institutionsCount": 5649
+    "institutionsPercentHeld": 0.66206,
+    "institutionsFloatPercentHeld": 0.66463,
+    "institutionsCount": 5658
   },
   "earnings": {
     "maxAge": 86400,
@@ -448,11 +448,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0016996792,
+    "preMarketChange": -0.8499756,
+    "preMarketTime": "2026-02-12T14:25:48.000Z",
+    "preMarketPrice": 499.23,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0024198862,
-    "postMarketChange": -1.2099915,
-    "postMarketTime": "2026-02-12T00:59:55.000Z",
-    "postMarketPrice": 498.81,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.000559662,
     "regularMarketChange": -0.279999,
@@ -462,15 +462,15 @@
     "regularMarketDayHigh": 503.3099,
     "regularMarketDayLow": 497.2801,
     "regularMarketVolume": 3608967,
-    "averageDailyVolume10Day": 5514170,
-    "averageDailyVolume3Month": 4947643,
+    "averageDailyVolume10Day": 5418890,
+    "averageDailyVolume3Month": 4925732,
     "regularMarketPreviousClose": 500.3,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 499.35,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "BRK-B",
     "underlyingSymbol": null,
@@ -498,7 +498,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0053,
     "heldPercentInsiders": 0.00387,
-    "heldPercentInstitutions": 0.66205,
+    "heldPercentInstitutions": 0.66206,
     "shortRatio": 2.43,
     "shortPercentOfFloat": 0.0094,
     "beta": 0.702,
@@ -519,8 +519,8 @@
     "lastSplitDate": 1264032000,
     "enterpriseToRevenue": -0.676,
     "enterpriseToEbitda": -2.421,
-    "52WeekChange": 0.04122877,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.040645957,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -969,6 +969,6 @@
     "profitMargins": 0.18129,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:02.689Z",
+  "lastUpdated": "2026-02-12T14:25:49.887Z",
   "source": "Static Build (yahoo-finance2)"
 }

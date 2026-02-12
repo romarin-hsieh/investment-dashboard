@@ -114,29 +114,29 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.023,
-        "position": 784712,
-        "value": 104602111,
-        "pctChange": 0.6903
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.0216,
         "position": 738158,
         "value": 98396463,
         "pctChange": -0.1357
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Hood River Capital Management LLC",
+        "pctHeld": 0.0199,
+        "position": 678437,
+        "value": 90435654,
+        "pctChange": -0.0021
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02949,
-    "institutionsPercentHeld": 1.11944,
-    "institutionsFloatPercentHeld": 1.15346,
-    "institutionsCount": 535
+    "institutionsPercentHeld": 1.11871,
+    "institutionsFloatPercentHeld": 1.1527101,
+    "institutionsCount": 536
   },
   "earnings": {
     "maxAge": 86400,
@@ -1288,11 +1288,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0033008435,
+    "preMarketChange": 0.44000244,
+    "preMarketTime": "2026-02-12T14:19:33.000Z",
+    "preMarketPrice": 133.74,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0045010564,
-    "postMarketChange": 0.59999084,
-    "postMarketTime": "2026-02-12T00:42:37.000Z",
-    "postMarketPrice": 133.9,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.043003842,
     "regularMarketChange": -5.9900055,
@@ -1302,15 +1302,15 @@
     "regularMarketDayHigh": 140.715,
     "regularMarketDayLow": 131.275,
     "regularMarketVolume": 653121,
-    "averageDailyVolume10Day": 760730,
-    "averageDailyVolume3Month": 763748,
+    "averageDailyVolume10Day": 705120,
+    "averageDailyVolume3Month": 761934,
     "regularMarketPreviousClose": 139.29001,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 140.715,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "TMDX",
     "underlyingSymbol": null,
@@ -1338,7 +1338,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2309,
     "heldPercentInsiders": 0.02949,
-    "heldPercentInstitutions": 1.11944,
+    "heldPercentInstitutions": 1.11871,
     "shortRatio": 10.45,
     "shortPercentOfFloat": 0.396,
     "beta": 1.979,
@@ -1353,13 +1353,13 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 4.768,
     "netIncomeToCommon": 91765000,
-    "trailingEps": 2.43,
+    "trailingEps": 2.55,
     "forwardEps": 2.95305,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.137,
     "enterpriseToEbitda": 38.23,
-    "52WeekChange": 0.95577085,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.87166524,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2969,6 +2969,6 @@
     "profitMargins": 0.16203,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:45.476Z",
+  "lastUpdated": "2026-02-12T14:24:30.004Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -60,20 +60,20 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0345,
-        "position": 99146740,
-        "value": 15581902021,
-        "pctChange": 1.1719
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "State Street Corporation",
         "pctHeld": 0.0255,
         "position": 73310844,
         "value": 11521532511,
         "pctChange": -0.002
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0143,
+        "position": 41223455,
+        "value": 6478678338,
+        "pctChange": -0.58419997
       },
       {
         "maxAge": 1,
@@ -95,21 +95,21 @@
       },
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Capital Research Global Investors",
+        "pctHeld": 0.0105,
+        "position": 30137126,
+        "value": 4736350832,
+        "pctChange": 0.2928
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Morgan Stanley",
         "pctHeld": 0.0093,
         "position": 26629953,
         "value": 4185163511,
         "pctChange": -0.13350001
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Capital Research Global Investors",
-        "pctHeld": 0.0081,
-        "position": 23310827,
-        "value": 3663529656,
-        "pctChange": 0.0116
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.40587002,
-    "institutionsPercentHeld": 0.45174,
-    "institutionsFloatPercentHeld": 0.76032996,
-    "institutionsCount": 4713
+    "institutionsPercentHeld": 0.44776002,
+    "institutionsFloatPercentHeld": 0.75363,
+    "institutionsCount": 4718
   },
   "earnings": {
     "maxAge": 86400,
@@ -6208,11 +6208,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0025391167,
+    "preMarketChange": 0.39889526,
+    "preMarketTime": "2026-02-12T14:23:41.000Z",
+    "preMarketPrice": 157.4989,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0024815435,
-    "postMarketChange": -0.3899994,
-    "postMarketTime": "2026-02-12T01:00:00.000Z",
-    "postMarketPrice": 156.77,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": -0.0170742,
     "regularMarketChange": -2.73,
@@ -6220,24 +6220,24 @@
     "priceHint": 2,
     "regularMarketPrice": 157.16,
     "regularMarketDayHigh": 163.63,
-    "regularMarketDayLow": 154,
+    "regularMarketDayLow": 154.01,
     "regularMarketVolume": 24318455,
-    "averageDailyVolume10Day": 39628420,
-    "averageDailyVolume3Month": 29252600,
+    "averageDailyVolume10Day": 38491550,
+    "averageDailyVolume3Month": 29174918,
     "regularMarketPreviousClose": 159.89,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 163.66,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ORCL",
     "underlyingSymbol": null,
     "shortName": "Oracle Corporation",
     "longName": "Oracle Corporation",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -6258,7 +6258,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0121,
     "heldPercentInsiders": 0.40587002,
-    "heldPercentInstitutions": 0.45174,
+    "heldPercentInstitutions": 0.44776002,
     "shortRatio": 1.55,
     "shortPercentOfFloat": 0.020299999,
     "beta": 1.633,
@@ -6273,14 +6273,14 @@
     "mostRecentQuarter": "2025-11-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.947,
     "netIncomeToCommon": 15425000448,
-    "trailingEps": 5.23,
+    "trailingEps": 5.33,
     "forwardEps": 7.90395,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 971395200,
     "enterpriseToRevenue": 9.244,
     "enterpriseToEbitda": 21.473,
-    "52WeekChange": -0.08035201,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.096054316,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.5,
     "lastDividendDate": "2026-01-09T00:00:00.000Z",
     "latestShareClass": null,
@@ -6309,6 +6309,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 1552318,
+        "filerUrl": "",
+        "transactionText": "Sale at price 155.23 per share.",
+        "filerName": "MAGOUYRK CLAYTON M",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-02-09T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 35000,
@@ -7723,6 +7735,6 @@
     "profitMargins": 0.25280002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:01.905Z",
+  "lastUpdated": "2026-02-12T14:23:46.291Z",
   "source": "Static Build (yahoo-finance2)"
 }

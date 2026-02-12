@@ -105,15 +105,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.013200001,
-        "position": 2063448,
-        "value": 136662167,
-        "pctChange": 4.0352
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.0068,
         "position": 1070065,
@@ -128,15 +119,24 @@
         "position": 1028227,
         "value": 68099477,
         "pctChange": 1
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "UBS Group AG",
+        "pctHeld": 0.0064,
+        "position": 1003080,
+        "value": 66433991,
+        "pctChange": -0.6025
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.19388,
-    "institutionsPercentHeld": 0.45525002,
-    "institutionsFloatPercentHeld": 0.56474,
-    "institutionsCount": 809
+    "institutionsPercentHeld": 0.45419,
+    "institutionsFloatPercentHeld": 0.56343,
+    "institutionsCount": 819
   },
   "earnings": {
     "maxAge": 86400,
@@ -636,11 +636,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.022061031,
+    "preMarketChange": 1.4599991,
+    "preMarketTime": "2026-02-12T14:24:13.000Z",
+    "preMarketPrice": 67.64,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0025667849,
-    "postMarketChange": 0.16999817,
-    "postMarketTime": "2026-02-12T00:59:59.000Z",
-    "postMarketPrice": 66.4,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.046638798,
     "regularMarketChange": -3.24,
@@ -650,15 +650,15 @@
     "regularMarketDayHigh": 71.5,
     "regularMarketDayLow": 64.89,
     "regularMarketVolume": 8052021,
-    "averageDailyVolume10Day": 12342040,
-    "averageDailyVolume3Month": 12341611,
+    "averageDailyVolume10Day": 11598350,
+    "averageDailyVolume3Month": 12285767,
     "regularMarketPreviousClose": 69.47,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 71.44,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "OKLO",
     "underlyingSymbol": null,
@@ -686,7 +686,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1093,
     "heldPercentInsiders": 0.19388,
-    "heldPercentInstitutions": 0.45525002,
+    "heldPercentInstitutions": 0.45419,
     "shortRatio": 1.25,
     "shortPercentOfFloat": 0.1097,
     "beta": 0.774,
@@ -700,12 +700,12 @@
     "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": -76561000,
-    "trailingEps": -0.54,
+    "trailingEps": -0.56,
     "forwardEps": -0.66731,
     "lastSplitFactor": null,
     "enterpriseToEbitda": -97.084,
-    "52WeekChange": 0.2624023,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.2035253,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -995,18 +995,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 50000,
-        "value": 6687912,
-        "filerUrl": "",
-        "transactionText": "Sale at price 133.40 - 135.20 per share.",
-        "filerName": "KLEIN MICHAEL STUART",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-09-22T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 25000,
         "value": 3046112,
         "filerUrl": "",
@@ -1025,6 +1013,18 @@
         "transactionText": "Stock Gift at price 121.84 per share.",
         "filerName": "COCHRAN CAROLINE",
         "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-09-22T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 50000,
+        "value": 6687912,
+        "filerUrl": "",
+        "transactionText": "Sale at price 133.40 - 135.20 per share.",
+        "filerName": "KLEIN MICHAEL STUART",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-09-22T00:00:00.000Z",
         "ownership": "I"
@@ -1339,17 +1339,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 581100,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ALTMAN SAMUEL H",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-11-19T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 3775528,
         "filerUrl": "",
         "transactionText": "",
@@ -1368,6 +1357,41 @@
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2024-11-19T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 581100,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALTMAN SAMUEL H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-11-19T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22102052,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DEWITTE JACOB",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-05-09T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22102052,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "COCHRAN CAROLINE",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2024-05-09T00:00:00.000Z",
         "ownership": "D/I"
       },
       {
@@ -1403,30 +1427,6 @@
         "moneyText": "",
         "startDate": "2024-05-09T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 22102052,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DEWITTE JACOB",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-05-09T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 22102052,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "COCHRAN CAROLINE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-05-09T00:00:00.000Z",
-        "ownership": "D/I"
       }
     ],
     "maxAge": 1
@@ -1458,6 +1458,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:52.650Z",
+  "lastUpdated": "2026-02-12T14:24:37.445Z",
   "source": "Static Build (yahoo-finance2)"
 }

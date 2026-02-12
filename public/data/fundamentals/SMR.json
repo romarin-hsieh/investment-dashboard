@@ -96,15 +96,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0148,
-        "position": 4185320,
-        "value": 65165431,
-        "pctChange": 0.692
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Tidal Investments LLC",
         "pctHeld": 0.014400001,
         "position": 4064976,
@@ -128,15 +119,24 @@
         "position": 2916373,
         "value": 45407926,
         "pctChange": -0.0795
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "UBS Group AG",
+        "pctHeld": 0.010199999,
+        "position": 2893836,
+        "value": 45057025,
+        "pctChange": 0.4557
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.44414002,
-    "institutionsPercentHeld": 0.39863,
-    "institutionsFloatPercentHeld": 0.71713996,
-    "institutionsCount": 580
+    "institutionsPercentHeld": 0.39031,
+    "institutionsFloatPercentHeld": 0.70218,
+    "institutionsCount": 570
   },
   "earnings": {
     "maxAge": 86400,
@@ -628,11 +628,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0616571,
+    "preMarketChange": 0.960001,
+    "preMarketTime": "2026-02-12T14:24:04.000Z",
+    "preMarketPrice": 16.53,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0006422142,
-    "postMarketChange": -0.009999275,
-    "postMarketTime": "2026-02-12T00:59:45.000Z",
-    "postMarketPrice": 15.56,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0698925,
     "regularMarketChange": -1.17,
@@ -641,16 +641,16 @@
     "regularMarketPrice": 15.57,
     "regularMarketDayHigh": 16.9,
     "regularMarketDayLow": 14.86,
-    "regularMarketVolume": 24545367,
-    "averageDailyVolume10Day": 25161410,
-    "averageDailyVolume3Month": 26420081,
+    "regularMarketVolume": 24545167,
+    "averageDailyVolume10Day": 24873930,
+    "averageDailyVolume3Month": 26428360,
     "regularMarketPreviousClose": 16.74,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 16.83,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SMR",
     "underlyingSymbol": null,
@@ -678,7 +678,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1303,
     "heldPercentInsiders": 0.44414002,
-    "heldPercentInstitutions": 0.39863,
+    "heldPercentInstitutions": 0.39031,
     "shortRatio": 1.18,
     "shortPercentOfFloat": 0.21620001,
     "beta": 2.159,
@@ -692,13 +692,13 @@
     "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": -379940000,
-    "trailingEps": -1.99,
+    "trailingEps": -2.14,
     "forwardEps": -0.59597,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 23.864,
     "enterpriseToEbitda": -11.524,
-    "52WeekChange": -0.32254148,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.36989075,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1038,6 +1038,30 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CHUNG BUM-JIN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3109,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "FUJINO SHINJI",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3109,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BOECKMANN ALAN L",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1075,30 +1099,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "WARNICA KIMBERLY O",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3109,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CHUNG BUM-JIN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3109,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FUJINO SHINJI",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-28T00:00:00.000Z",
@@ -1153,18 +1153,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 16134,
-        "value": 264243,
-        "filerUrl": "",
-        "transactionText": "Sale at price 16.38 per share.",
-        "filerName": "REYES JOSE N. JR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 34675,
         "value": 589475,
         "filerUrl": "",
@@ -1189,13 +1177,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 32679,
+        "shares": 16134,
+        "value": 264243,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 16.38 per share.",
         "filerName": "REYES JOSE N. JR",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2025-05-02T00:00:00.000Z",
+        "startDate": "2025-05-05T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -1230,6 +1219,17 @@
         "moneyText": "",
         "startDate": "2025-05-02T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32679,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "REYES JOSE N. JR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-05-02T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1328,18 +1328,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 19990,
-        "value": 328756,
-        "filerUrl": "",
-        "transactionText": "Sale at price 16.45 per share.",
-        "filerName": "REYES JOSE N. JR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 66502,
         "value": 1093692,
         "filerUrl": "",
@@ -1400,24 +1388,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 1033,
+        "shares": 19990,
+        "value": 328756,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WALTERS DIANA J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 57891,
-        "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 16.45 per share.",
         "filerName": "REYES JOSE N. JR",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
+        "startDate": "2025-03-03T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -1474,6 +1452,28 @@
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1033,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WALTERS DIANA J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 57891,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "REYES JOSE N. JR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1803,6 +1803,30 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CHUNG BUM-JIN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11603,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "FUJINO SHINJI",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11603,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BOECKMANN ALAN L",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1847,30 +1871,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11603,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CHUNG BUM-JIN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11603,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FUJINO SHINJI",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 14345,
         "value": 86644,
         "filerUrl": "",
@@ -1892,18 +1892,6 @@
         "moneyText": "",
         "startDate": "2024-05-06T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15776,
-        "value": 95287,
-        "filerUrl": "",
-        "transactionText": "Sale at price 6.04 per share.",
-        "filerName": "REYES JOSE N. JR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1931,24 +1919,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 32680,
+        "shares": 15776,
+        "value": 95287,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "TEMPLE ROBERT K",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-05-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 32680,
-        "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 6.04 per share.",
         "filerName": "REYES JOSE N. JR",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2024-05-02T00:00:00.000Z",
+        "startDate": "2024-05-03T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -1986,6 +1964,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 32680,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "TEMPLE ROBERT K",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-05-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32680,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "REYES JOSE N. JR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-05-02T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 5178,
         "value": 0,
         "filerUrl": "",
@@ -2007,30 +2007,6 @@
         "moneyText": "",
         "startDate": "2024-03-22T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9589,
-        "value": 29889,
-        "filerUrl": "",
-        "transactionText": "Sale at price 3.12 per share.",
-        "filerName": "TEMPLE ROBERT K",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-02-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10328,
-        "value": 32192,
-        "filerUrl": "",
-        "transactionText": "Sale at price 3.12 per share.",
-        "filerName": "REYES JOSE N. JR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-02-29T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2070,24 +2046,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 26641,
+        "shares": 9589,
+        "value": 29889,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 3.12 per share.",
         "filerName": "TEMPLE ROBERT K",
         "filerRelation": "General Counsel",
         "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
+        "startDate": "2024-02-29T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 26641,
+        "shares": 10328,
+        "value": 32192,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 3.12 per share.",
         "filerName": "REYES JOSE N. JR",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
+        "startDate": "2024-02-29T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -2122,6 +2100,28 @@
         "moneyText": "",
         "startDate": "2024-02-28T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 26641,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "TEMPLE ROBERT K",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 26641,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "REYES JOSE N. JR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-02-28T00:00:00.000Z",
+        "ownership": "I"
       }
     ],
     "maxAge": 1
@@ -2133,8 +2133,8 @@
     "targetLowPrice": 15,
     "targetMeanPrice": 33.96154,
     "targetMedianPrice": 28,
-    "recommendationMean": 2.5,
-    "recommendationKey": "buy",
+    "recommendationMean": 2.625,
+    "recommendationKey": "hold",
     "numberOfAnalystOpinions": 13,
     "totalCash": 691785024,
     "totalCashPerShare": 4.126,
@@ -2156,6 +2156,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:21.572Z",
+  "lastUpdated": "2026-02-12T14:24:06.540Z",
   "source": "Static Build (yahoo-finance2)"
 }

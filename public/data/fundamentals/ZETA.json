@@ -96,12 +96,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
-        "pctHeld": 0.023,
-        "position": 4979853,
-        "value": 79727447,
-        "pctChange": 0.0091
+        "pctHeld": 0.0231,
+        "position": 5013776,
+        "value": 80270554,
+        "pctChange": 0.0068
       },
       {
         "maxAge": 1,
@@ -126,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02795,
-    "institutionsPercentHeld": 0.85087997,
-    "institutionsFloatPercentHeld": 0.87534,
-    "institutionsCount": 480
+    "institutionsPercentHeld": 0.85751,
+    "institutionsFloatPercentHeld": 0.88217,
+    "institutionsCount": 482
   },
   "earnings": {
     "maxAge": 86400,
@@ -1710,11 +1710,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.011558974,
+    "preMarketChange": 0.18500137,
+    "preMarketTime": "2026-02-12T14:24:58.000Z",
+    "preMarketPrice": 16.19,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0,
-    "postMarketChange": 0,
-    "postMarketTime": "2026-02-12T00:58:18.000Z",
-    "postMarketPrice": 16.01,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0675597,
     "regularMarketChange": -1.16,
@@ -1724,15 +1724,15 @@
     "regularMarketDayHigh": 17.48,
     "regularMarketDayLow": 15.86,
     "regularMarketVolume": 9308944,
-    "averageDailyVolume10Day": 9451830,
-    "averageDailyVolume3Month": 7605956,
+    "averageDailyVolume10Day": 9755140,
+    "averageDailyVolume3Month": 7634381,
     "regularMarketPreviousClose": 17.17,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 17.4,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "ZETA",
     "underlyingSymbol": null,
@@ -1760,7 +1760,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0954,
     "heldPercentInsiders": 0.02795,
-    "heldPercentInstitutions": 0.85087997,
+    "heldPercentInstitutions": 0.85751,
     "shortRatio": 2.43,
     "shortPercentOfFloat": 0.1087,
     "beta": 1.264,
@@ -1779,8 +1779,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.001,
     "enterpriseToEbitda": 67.384,
-    "52WeekChange": -0.2659256,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.31551945,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1833,18 +1833,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 12990,
-        "value": 251185,
-        "filerUrl": "",
-        "transactionText": "Sale at price 19.34 per share.",
-        "filerName": "SILBERBLATT JEANINE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 698883,
         "value": 0,
         "filerUrl": "",
@@ -1857,14 +1845,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 74256,
-        "value": 0,
+        "shares": 12990,
+        "value": 251185,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "RAVELLA SATISH",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 19.34 per share.",
+        "filerName": "SILBERBLATT JEANINE",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-12-05T00:00:00.000Z",
+        "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1875,6 +1863,18 @@
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "GREINER CHRISTOPHER E",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 74256,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "RAVELLA SATISH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-05T00:00:00.000Z",
         "ownership": "D"
@@ -1926,6 +1926,18 @@
         "moneyText": "",
         "startDate": "2025-08-22T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9907,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KHAN IMRAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-07-01T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1989,30 +2001,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9907,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KHAN IMRAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAVELLA SATISH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1932331,
         "value": 0,
         "filerUrl": "",
@@ -2037,6 +2025,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 25000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAVELLA SATISH",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1266613,
         "value": 0,
         "filerUrl": "",
@@ -2053,7 +2053,7 @@
         "value": 24991,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 13.56 per share.",
-        "filerName": "LANDMAN WILLIAM A",
+        "filerName": "SCULLEY JOHN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
@@ -2065,7 +2065,7 @@
         "value": 24991,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 13.56 per share.",
-        "filerName": "SCULLEY JOHN",
+        "filerName": "LANDMAN WILLIAM A",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
@@ -2097,17 +2097,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1169151,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GERBER STEVEN H",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-02-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 2554739,
         "filerUrl": "",
         "transactionText": "",
@@ -2130,11 +2119,22 @@
       },
       {
         "maxAge": 1,
+        "shares": 1169151,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GERBER STEVEN H",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-02-12T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 1389,
         "value": 24988,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 17.99 per share.",
-        "filerName": "LANDMAN WILLIAM A",
+        "filerName": "SCULLEY JOHN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-31T00:00:00.000Z",
@@ -2146,7 +2146,7 @@
         "value": 24988,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 17.99 per share.",
-        "filerName": "SCULLEY JOHN",
+        "filerName": "LANDMAN WILLIAM A",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-31T00:00:00.000Z",
@@ -2163,6 +2163,18 @@
         "moneyText": "",
         "startDate": "2024-12-12T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 999057,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "GREINER CHRISTOPHER E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-12-11T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2190,15 +2202,39 @@
       },
       {
         "maxAge": 1,
-        "shares": 999057,
-        "value": 0,
+        "shares": 53676,
+        "value": 1032726,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "Purchase at price 19.24 per share.",
+        "filerName": "STEINBERG DAVID A.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-11-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7975,
+        "value": 149910,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 18.80 per share.",
         "filerName": "GREINER CHRISTOPHER E",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2024-12-11T00:00:00.000Z",
+        "startDate": "2024-11-18T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 55000,
+        "value": 1042547,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 18.96 per share.",
+        "filerName": "KHAN IMRAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-11-18T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2250,42 +2286,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 53676,
-        "value": 1032726,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 19.24 per share.",
-        "filerName": "STEINBERG DAVID A.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-11-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7975,
-        "value": 149910,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 18.80 per share.",
-        "filerName": "GREINER CHRISTOPHER E",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-11-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 55000,
-        "value": 1042547,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 18.96 per share.",
-        "filerName": "KHAN IMRAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-11-18T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 30000,
         "value": 0,
         "filerUrl": "",
@@ -2294,6 +2294,28 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1531076,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "STEINBERG DAVID A.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-10-09T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 870873,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GREINER CHRISTOPHER E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-10-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2331,40 +2353,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1531076,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "STEINBERG DAVID A.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-10-09T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 870873,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GREINER CHRISTOPHER E",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-10-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 838,
-        "value": 24998,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 29.83 per share.",
-        "filerName": "LANDMAN WILLIAM A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 838,
         "value": 24998,
         "filerUrl": "",
@@ -2377,26 +2365,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 80451,
-        "value": 0,
+        "shares": 838,
+        "value": 24998,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "GERBER STEVEN H",
-        "filerRelation": "President",
+        "transactionText": "Stock Award(Grant) at price 29.83 per share.",
+        "filerName": "LANDMAN WILLIAM A",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-08-09T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 70300,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "RAVELLA SATISH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-08-09T00:00:00.000Z",
+        "startDate": "2024-10-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2425,24 +2401,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 449795,
+        "shares": 80451,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "GERBER STEVEN H",
         "filerRelation": "President",
         "moneyText": "",
-        "startDate": "2024-07-03T00:00:00.000Z",
+        "startDate": "2024-08-09T00:00:00.000Z",
         "ownership": "I"
       },
       {
         "maxAge": 1,
-        "shares": 14321,
+        "shares": 70300,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "RAVELLA SATISH",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-07-03T00:00:00.000Z",
+        "startDate": "2024-08-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2465,6 +2443,52 @@
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-07-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 449795,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GERBER STEVEN H",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2024-07-03T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14321,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RAVELLA SATISH",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-07-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8241,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KHAN IMRAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9657,
+        "value": 24992,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 - 17.65 per share.",
+        "filerName": "SCULLEY JOHN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2529,30 +2553,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 8241,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KHAN IMRAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9657,
-        "value": 24992,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 - 17.65 per share.",
-        "filerName": "SCULLEY JOHN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 601050,
         "value": 0,
         "filerUrl": "",
@@ -2561,18 +2561,6 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-05-23T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 566920,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "GERBER STEVEN H",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2024-05-22T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -2589,13 +2577,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 5200,
+        "shares": 566920,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "GERBER STEVEN H",
         "filerRelation": "President",
         "moneyText": "",
-        "startDate": "2024-04-05T00:00:00.000Z",
+        "startDate": "2024-05-22T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -2622,6 +2611,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 5200,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GERBER STEVEN H",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2024-04-05T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 60000,
         "value": 0,
         "filerUrl": "",
@@ -2638,7 +2638,7 @@
         "value": 24993,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 10.81 per share.",
-        "filerName": "LANDMAN WILLIAM A",
+        "filerName": "SCULLEY JOHN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-04-01T00:00:00.000Z",
@@ -2650,7 +2650,7 @@
         "value": 24993,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 10.81 per share.",
-        "filerName": "SCULLEY JOHN",
+        "filerName": "LANDMAN WILLIAM A",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-04-01T00:00:00.000Z",
@@ -2690,6 +2690,6 @@
     "profitMargins": -0.01863,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:36.232Z",
+  "lastUpdated": "2026-02-12T14:25:22.522Z",
   "source": "Static Build (yahoo-finance2)"
 }

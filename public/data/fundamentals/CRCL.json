@@ -104,21 +104,21 @@
       },
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "ARK Investment Management, LLC",
+        "pctHeld": 0.0191,
+        "position": 4141628,
+        "value": 239634598,
+        "pctChange": 0.3959
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0145000005,
         "position": 3148082,
         "value": 182148026,
         "pctChange": 3.5622
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "ARK Investment Management, LLC",
-        "pctHeld": 0.0137,
-        "position": 2966940,
-        "value": 171667150,
-        "pctChange": 0.0145000005
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.04162,
-    "institutionsPercentHeld": 0.66885,
-    "institutionsFloatPercentHeld": 0.69789004,
-    "institutionsCount": 514
+    "institutionsPercentHeld": 0.68031,
+    "institutionsFloatPercentHeld": 0.70985,
+    "institutionsCount": 528
   },
   "earnings": {
     "maxAge": 86400,
@@ -609,11 +609,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.00950569,
+    "preMarketChange": 0.54999924,
+    "preMarketTime": "2026-02-12T14:24:49.000Z",
+    "preMarketPrice": 58.41,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.002246821,
-    "postMarketChange": 0.13000107,
-    "postMarketTime": "2026-02-12T00:59:33.000Z",
-    "postMarketPrice": 57.99,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0316318,
     "regularMarketChange": -1.89,
@@ -623,15 +623,15 @@
     "regularMarketDayHigh": 59.17,
     "regularMarketDayLow": 55.89,
     "regularMarketVolume": 8327182,
-    "averageDailyVolume10Day": 14605870,
-    "averageDailyVolume3Month": 13729923,
+    "averageDailyVolume10Day": 13830220,
+    "averageDailyVolume3Month": 13644909,
     "regularMarketPreviousClose": 59.75,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 59.11,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CRCL",
     "underlyingSymbol": null,
@@ -659,7 +659,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.096599996,
     "heldPercentInsiders": 0.04162,
-    "heldPercentInstitutions": 0.66885,
+    "heldPercentInstitutions": 0.68031,
     "shortRatio": 2.31,
     "shortPercentOfFloat": 0.1171,
     "impliedSharesOutstanding": 254437614,
@@ -673,13 +673,13 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 2.02,
     "netIncomeToCommon": -200704992,
-    "trailingEps": -0.83,
+    "trailingEps": -0.86,
     "forwardEps": 1.14911,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 5.158,
     "enterpriseToEbitda": -87.036,
-    "52WeekChange": -0.2821098,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.30481797,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1580,6 +1580,6 @@
     "profitMargins": -0.08285,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:12.777Z",
+  "lastUpdated": "2026-02-12T14:24:58.368Z",
   "source": "Static Build (yahoo-finance2)"
 }

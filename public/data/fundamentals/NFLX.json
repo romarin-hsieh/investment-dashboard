@@ -69,15 +69,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0423,
-        "position": 178500180,
-        "value": 14213968843,
-        "pctChange": 0.8007
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "State Street Corporation",
         "pctHeld": 0.040700004,
         "position": 172029420,
@@ -104,12 +95,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
-        "pctHeld": 0.0221,
-        "position": 93155540,
-        "value": 7417975394,
-        "pctChange": -0.1094
+        "pctHeld": 0.0212,
+        "position": 89341444,
+        "value": 7114258940,
+        "pctChange": -0.040900003
       },
       {
         "maxAge": 1,
@@ -119,6 +110,15 @@
         "position": 85096550,
         "value": 6776238042,
         "pctChange": 0.0176
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.015,
+        "position": 63535182,
+        "value": 5059306368,
+        "pctChange": -0.6441
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00564,
-    "institutionsPercentHeld": 0.8582,
-    "institutionsFloatPercentHeld": 0.86307,
-    "institutionsCount": 4487
+    "institutionsPercentHeld": 0.84639,
+    "institutionsFloatPercentHeld": 0.85119003,
+    "institutionsCount": 4489
   },
   "earnings": {
     "maxAge": 86400,
@@ -9828,11 +9828,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.004144094,
+    "preMarketChange": -0.3299942,
+    "preMarketTime": "2026-02-12T14:23:59.000Z",
+    "preMarketPrice": 79.3,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0033580642,
-    "postMarketChange": 0.26740265,
-    "postMarketTime": "2026-02-12T00:59:49.000Z",
-    "postMarketPrice": 79.8974,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.031265292,
     "regularMarketChange": -2.5700073,
@@ -9842,15 +9842,15 @@
     "regularMarketDayHigh": 82.48,
     "regularMarketDayLow": 79.45,
     "regularMarketVolume": 40800189,
-    "averageDailyVolume10Day": 45274900,
-    "averageDailyVolume3Month": 46749410,
+    "averageDailyVolume10Day": 45574650,
+    "averageDailyVolume3Month": 46651224,
     "regularMarketPreviousClose": 82.200005,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 81.94,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "NFLX",
     "underlyingSymbol": null,
@@ -9867,7 +9867,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 344124260352,
+    "enterpriseValue": 344082022400,
     "forwardPE": 20.84948,
     "profitMargins": 0.24304001,
     "floatShares": 4192944788,
@@ -9878,7 +9878,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.018,
     "heldPercentInsiders": 0.00564,
-    "heldPercentInstitutions": 0.8582,
+    "heldPercentInstitutions": 0.84639,
     "shortRatio": 1.53,
     "shortPercentOfFloat": 0.018099999,
     "beta": 1.712,
@@ -9893,14 +9893,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.294,
     "netIncomeToCommon": 10981200896,
-    "trailingEps": 2.45,
+    "trailingEps": 2.53,
     "forwardEps": 3.81928,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1763337600,
-    "enterpriseToRevenue": 7.616,
-    "enterpriseToEbitda": 25.192,
-    "52WeekChange": -0.21231401,
-    "SandP52WeekChange": 0.13519716,
+    "enterpriseToRevenue": 7.615,
+    "enterpriseToEbitda": 25.189,
+    "52WeekChange": -0.23712981,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -9928,6 +9928,42 @@
     "transactions": [
       {
         "maxAge": 1,
+        "shares": 27312,
+        "value": 2273454,
+        "filerUrl": "",
+        "transactionText": "Sale at price 82.74 - 84.40 per share.",
+        "filerName": "PETERS GREGORY K.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3136,
+        "value": 259253,
+        "filerUrl": "",
+        "transactionText": "Sale at price 82.67 per share.",
+        "filerName": "WILLEMS CLETUS R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5727,
+        "value": 464231,
+        "filerUrl": "",
+        "transactionText": "Sale at price 81.06 per share.",
+        "filerName": "HYMAN DAVID A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 9248,
         "value": 751598,
         "filerUrl": "",
@@ -9937,6 +9973,18 @@
         "moneyText": "",
         "startDate": "2026-02-06T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 241944,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "HASTINGS REED",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -9962,22 +10010,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 54388,
+        "shares": 18418,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SARANDOS THEODORE ANTHONY JR.",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "NEUMANN SPENCER ADAM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-02-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 18418,
+        "shares": 54388,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NEUMANN SPENCER ADAM",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "SARANDOS THEODORE ANTHONY JR.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-02-03T00:00:00.000Z",
         "ownership": "D"
@@ -10079,24 +10127,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 207420,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SARANDOS THEODORE ANTHONY JR.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-01-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 70260,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NEUMANN SPENCER ADAM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-01-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 207420,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SARANDOS THEODORE ANTHONY JR.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-01-07T00:00:00.000Z",
         "ownership": "D"
@@ -10269,17 +10317,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 4037,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SARANDOS THEODORE ANTHONY JR.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2360,
         "value": 2590251,
         "filerUrl": "",
@@ -10310,6 +10347,17 @@
         "transactionText": "Sale at price 1118.15 - 1126.35 per share.",
         "filerName": "NEUMANN SPENCER ADAM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-11-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4037,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SARANDOS THEODORE ANTHONY JR.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-11-03T00:00:00.000Z",
         "ownership": "D"
@@ -10518,22 +10566,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 4036,
+        "shares": 1367,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SARANDOS THEODORE ANTHONY JR.",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "NEUMANN SPENCER ADAM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-08-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 1367,
+        "shares": 4036,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NEUMANN SPENCER ADAM",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "SARANDOS THEODORE ANTHONY JR.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-08-04T00:00:00.000Z",
         "ownership": "D"
@@ -10755,6 +10803,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 652,
+        "value": 816070,
+        "filerUrl": "",
+        "transactionText": "Sale at price 1245.00 - 1260.00 per share.",
+        "filerName": "KILGORE LESLIE JEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 652,
+        "value": 187523,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 286.75 - 289.29 per share.",
+        "filerName": "KILGORE LESLIE JEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 31750,
         "value": 39761996,
         "filerUrl": "",
@@ -10784,30 +10856,6 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 290.30 - 398.18 per share.",
         "filerName": "MATHER ANN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 652,
-        "value": 816070,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1245.00 - 1260.00 per share.",
-        "filerName": "KILGORE LESLIE JEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 652,
-        "value": 187523,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 286.75 - 289.29 per share.",
-        "filerName": "KILGORE LESLIE JEAN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-05T00:00:00.000Z",
@@ -11055,24 +11103,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2027,
-        "value": 2311283,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1140.25 per share.",
-        "filerName": "SARANDOS THEODORE ANTHONY JR.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 686,
         "value": 782915,
         "filerUrl": "",
         "transactionText": "Sale at price 1141.28 per share.",
         "filerName": "NEUMANN SPENCER ADAM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2027,
+        "value": 2311283,
+        "filerUrl": "",
+        "transactionText": "Sale at price 1140.25 per share.",
+        "filerName": "SARANDOS THEODORE ANTHONY JR.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-06T00:00:00.000Z",
         "ownership": "D"
@@ -11113,22 +11161,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 4037,
+        "shares": 1368,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SARANDOS THEODORE ANTHONY JR.",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "NEUMANN SPENCER ADAM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 1368,
+        "shares": 4037,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NEUMANN SPENCER ADAM",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "SARANDOS THEODORE ANTHONY JR.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
         "ownership": "D"
@@ -11659,54 +11707,6 @@
         "moneyText": "",
         "startDate": "2025-02-05T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9975,
-        "value": 9984982,
-        "filerUrl": "",
-        "transactionText": "Sale at price 994.54 - 1005.00 per share.",
-        "filerName": "PETERS GREGORY K.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11985,
-        "value": 2833246,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 336.63 - 378.81 per share.",
-        "filerName": "PETERS GREGORY K.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 160,
-        "value": 160000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1000.00 per share.",
-        "filerName": "KARBOWSKI JEFFREY WILLIAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 160,
-        "value": 51859,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 324.12 per share.",
-        "filerName": "KARBOWSKI JEFFREY WILLIAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-04T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -11743,6 +11743,6 @@
     "profitMargins": 0.24304001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:18.210Z",
+  "lastUpdated": "2026-02-12T14:24:03.014Z",
   "source": "Static Build (yahoo-finance2)"
 }

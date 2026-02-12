@@ -60,15 +60,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0709,
-        "position": 24040220,
-        "value": 6580769588,
-        "pctChange": 1.1258999
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "FMR, LLC",
         "pctHeld": 0.0701,
         "position": 23756722,
@@ -92,6 +83,15 @@
         "position": 15461857,
         "value": 4232528584,
         "pctChange": 0.0183
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0422,
+        "position": 14295965,
+        "value": 3913377319,
+        "pctChange": -0.4053
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0054400004,
-    "institutionsPercentHeld": 1.08605,
-    "institutionsFloatPercentHeld": 1.09199,
-    "institutionsCount": 1546
+    "institutionsPercentHeld": 1.06305,
+    "institutionsFloatPercentHeld": 1.06886,
+    "institutionsCount": 1559
   },
   "earnings": {
     "maxAge": 86400,
@@ -5686,11 +5686,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.04284178,
+    "preMarketChange": 11.727509,
+    "preMarketTime": "2026-02-12T14:27:34.000Z",
+    "preMarketPrice": 285.4675,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0042376113,
-    "postMarketChange": 1.1600037,
-    "postMarketTime": "2026-02-12T00:59:49.000Z",
-    "postMarketPrice": 274.9,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.042580713,
     "regularMarketChange": 11.179993,
@@ -5700,15 +5700,15 @@
     "regularMarketDayHigh": 279.79,
     "regularMarketDayLow": 266.34,
     "regularMarketVolume": 9356864,
-    "averageDailyVolume10Day": 13793240,
-    "averageDailyVolume3Month": 9085606,
+    "averageDailyVolume10Day": 13119410,
+    "averageDailyVolume3Month": 9089977,
     "regularMarketPreviousClose": 262.56,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 275.075,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "WDC",
     "underlyingSymbol": null,
@@ -5735,7 +5735,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.093,
     "heldPercentInsiders": 0.0054400004,
-    "heldPercentInstitutions": 1.08605,
+    "heldPercentInstitutions": 1.06305,
     "shortRatio": 3.22,
     "shortPercentOfFloat": 0.10520001,
     "beta": 1.839,
@@ -5749,12 +5749,12 @@
     "nextFiscalYearEnd": "2026-06-27T00:00:00.000Z",
     "mostRecentQuarter": "2021-10-01T00:00:00.000Z",
     "netIncomeToCommon": 3945999872,
-    "trailingEps": 11.03,
+    "trailingEps": 10.57,
     "forwardEps": 13.29555,
     "lastSplitFactor": "1323:1000",
     "lastSplitDate": 1740355200,
-    "52WeekChange": 4.141606,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 4.360539,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.125,
     "lastDividendDate": "2025-12-04T00:00:00.000Z",
     "latestShareClass": null,
@@ -7267,6 +7267,6 @@
     "profitMargins": 0.35644,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:28:46.979Z",
+  "lastUpdated": "2026-02-12T14:27:36.698Z",
   "source": "Static Build (yahoo-finance2)"
 }

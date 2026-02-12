@@ -3,9 +3,9 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 5,
+        "strongBuy": 6,
         "buy": 18,
-        "hold": 3,
+        "hold": 2,
         "sell": 0,
         "strongSell": 0
       },
@@ -41,21 +41,21 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0701,
-        "position": 3555940,
-        "value": 7176527180,
-        "pctChange": 0.78290004
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0687,
         "position": 3481563,
         "value": 7026421002,
         "pctChange": 0.0495
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Capital Research Global Investors",
+        "pctHeld": 0.043899998,
+        "position": 2225031,
+        "value": 4490513183,
+        "pctChange": 0.2252
       },
       {
         "maxAge": 1,
@@ -68,30 +68,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Capital Research Global Investors",
-        "pctHeld": 0.0358,
-        "position": 1816092,
-        "value": 3665200650,
-        "pctChange": 0.0341
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Capital World Investors",
-        "pctHeld": 0.0343,
-        "position": 1740129,
-        "value": 3511893638,
-        "pctChange": 0.013200001
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital International Investors",
-        "pctHeld": 0.0317,
-        "position": 1607107,
-        "value": 3243431291,
-        "pctChange": -0.0154
+        "pctHeld": 0.034,
+        "position": 1725125,
+        "value": 3481612865,
+        "pctChange": 0.0734
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Capital World Investors",
+        "pctHeld": 0.0337,
+        "position": 1706673,
+        "value": 3444373406,
+        "pctChange": -0.019199999
       },
       {
         "maxAge": 1,
@@ -122,6 +113,15 @@
       },
       {
         "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0253,
+        "position": 1283886,
+        "value": 2591113116,
+        "pctChange": -0.6389
+      },
+      {
+        "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Schroder Investment Management Group",
         "pctHeld": 0.0113,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.07304,
-    "institutionsPercentHeld": 0.84928,
-    "institutionsFloatPercentHeld": 0.91620004,
-    "institutionsCount": 2257
+    "institutionsPercentHeld": 0.84567,
+    "institutionsFloatPercentHeld": 0.91230005,
+    "institutionsCount": 2245
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1761696000
         }
       ],
-      "currentQuarterEstimate": 11.40319,
+      "currentQuarterEstimate": 11.44936,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-12T10:52:39.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 2800,
+        "priorPriceTarget": 2650
+      },
       {
         "epochGradeDate": "2026-02-04T11:47:45.000Z",
         "firm": "BTIG",
@@ -3038,11 +3048,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.031622525,
+    "preMarketChange": 63.819946,
+    "preMarketTime": "2026-02-12T14:23:42.000Z",
+    "preMarketPrice": 2082,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0013972719,
-    "postMarketChange": 2.8199463,
-    "postMarketTime": "2026-02-12T00:59:47.000Z",
-    "postMarketPrice": 2021,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0035253756,
     "regularMarketChange": -7.1400146,
@@ -3052,15 +3062,15 @@
     "regularMarketDayHigh": 2060,
     "regularMarketDayLow": 1972,
     "regularMarketVolume": 470962,
-    "averageDailyVolume10Day": 562240,
-    "averageDailyVolume3Month": 543261,
+    "averageDailyVolume10Day": 560670,
+    "averageDailyVolume3Month": 542065,
     "regularMarketPreviousClose": 2025.3201,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 2053.23,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MELI",
     "underlyingSymbol": null,
@@ -3078,7 +3088,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 108127035392,
-    "forwardPE": 33.854317,
+    "forwardPE": 33.735786,
     "profitMargins": 0.0793,
     "floatShares": 47037352,
     "sharesOutstanding": 50697182,
@@ -3088,7 +3098,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0149,
     "heldPercentInsiders": 0.07304,
-    "heldPercentInstitutions": 0.84928,
+    "heldPercentInstitutions": 0.84567,
     "shortRatio": 1.41,
     "shortPercentOfFloat": 0.0149,
     "beta": 1.453,
@@ -3103,13 +3113,13 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.06,
     "netIncomeToCommon": 2076999936,
-    "trailingEps": 40.77,
-    "forwardEps": 59.61367,
+    "trailingEps": 40.97,
+    "forwardEps": 59.82312,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 4.128,
     "enterpriseToEbitda": 27.983,
-    "52WeekChange": -0.019761384,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.023217082,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.15,
     "lastDividendDate": "2017-12-28T00:00:00.000Z",
     "latestShareClass": null,
@@ -3338,7 +3348,7 @@
     "currentPrice": 2018.18,
     "targetHighPrice": 3500,
     "targetLowPrice": 2190,
-    "targetMeanPrice": 2805.4614,
+    "targetMeanPrice": 2811.2307,
     "targetMedianPrice": 2817.5,
     "recommendationMean": 1.42308,
     "recommendationKey": "strong_buy",
@@ -3365,6 +3375,6 @@
     "profitMargins": 0.0793,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:36.244Z",
+  "lastUpdated": "2026-02-12T14:24:20.916Z",
   "source": "Static Build (yahoo-finance2)"
 }

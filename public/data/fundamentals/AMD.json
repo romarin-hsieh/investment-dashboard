@@ -86,21 +86,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0166,
-        "position": 27130344,
-        "value": 5794498921,
-        "pctChange": 1.1280999
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "NORGES BANK",
         "pctHeld": 0.014099999,
         "position": 23016960,
         "value": 4915962358,
         "pctChange": 0.0554
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0128,
+        "position": 20911889,
+        "value": 4466361290,
+        "pctChange": -0.2292
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00441,
-    "institutionsPercentHeld": 0.70855004,
-    "institutionsFloatPercentHeld": 0.71169,
-    "institutionsCount": 3869
+    "institutionsPercentHeld": 0.71440005,
+    "institutionsFloatPercentHeld": 0.71756,
+    "institutionsCount": 3894
   },
   "earnings": {
     "maxAge": 86400,
@@ -6978,11 +6978,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.009457834,
+    "preMarketChange": 2.0200043,
+    "preMarketTime": "2026-02-12T14:25:38.000Z",
+    "preMarketPrice": 215.6,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0034179029,
-    "postMarketChange": -0.7299957,
-    "postMarketTime": "2026-02-12T00:59:59.000Z",
-    "postMarketPrice": 212.85,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.000046797333,
     "regularMarketChange": 0.009994507,
@@ -6992,15 +6992,15 @@
     "regularMarketDayHigh": 219.65,
     "regularMarketDayLow": 209.21,
     "regularMarketVolume": 33349316,
-    "averageDailyVolume10Day": 47619900,
-    "averageDailyVolume3Month": 38262843,
+    "averageDailyVolume10Day": 48243760,
+    "averageDailyVolume3Month": 38181481,
     "regularMarketPreviousClose": 213.57,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 217.65,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AMD",
     "underlyingSymbol": null,
@@ -7028,7 +7028,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0207,
     "heldPercentInsiders": 0.00441,
-    "heldPercentInstitutions": 0.70855004,
+    "heldPercentInstitutions": 0.71440005,
     "shortRatio": 0.94,
     "shortPercentOfFloat": 0.0208,
     "beta": 1.949,
@@ -7049,8 +7049,8 @@
     "lastSplitDate": 966902400,
     "enterpriseToRevenue": 9.864,
     "enterpriseToEbitda": 50.656,
-    "52WeekChange": 0.91011536,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.91020477,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -8741,6 +8741,6 @@
     "profitMargins": 0.12515001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:54.224Z",
+  "lastUpdated": "2026-02-12T14:25:40.667Z",
   "source": "Static Build (yahoo-finance2)"
 }

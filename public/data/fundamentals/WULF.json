@@ -78,15 +78,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0214,
-        "position": 8956176,
-        "value": 143567507,
-        "pctChange": 8.5951
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Morgan Stanley",
         "pctHeld": 0.021300001,
         "position": 8916923,
@@ -128,15 +119,24 @@
         "position": 7907600,
         "value": 126758833,
         "pctChange": 11.5002
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "State Street Corporation",
+        "pctHeld": 0.0168,
+        "position": 7050863,
+        "value": 113025338,
+        "pctChange": -0.040599998
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.27041999,
-    "institutionsPercentHeld": 0.82106,
-    "institutionsFloatPercentHeld": 1.12539,
-    "institutionsCount": 476
+    "institutionsPercentHeld": 0.81535006,
+    "institutionsFloatPercentHeld": 1.1175599,
+    "institutionsCount": 478
   },
   "earnings": {
     "maxAge": 86400,
@@ -968,11 +968,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.016768485,
+    "preMarketChange": 0.26879883,
+    "preMarketTime": "2026-02-12T14:27:38.000Z",
+    "preMarketPrice": 16.2988,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0,
-    "postMarketChange": 0,
-    "postMarketTime": "2026-02-12T00:58:39.000Z",
-    "postMarketPrice": 16.03,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.036079396,
     "regularMarketChange": -0.6000004,
@@ -982,15 +982,15 @@
     "regularMarketDayHigh": 17.0599,
     "regularMarketDayLow": 15.3601,
     "regularMarketVolume": 39534612,
-    "averageDailyVolume10Day": 44780060,
-    "averageDailyVolume3Month": 32945200,
+    "averageDailyVolume10Day": 45837570,
+    "averageDailyVolume3Month": 33052890,
     "regularMarketPreviousClose": 16.630001,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 16.94,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "WULF",
     "underlyingSymbol": null,
@@ -1018,7 +1018,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2228,
     "heldPercentInsiders": 0.27041999,
-    "heldPercentInstitutions": 0.82106,
+    "heldPercentInstitutions": 0.81535006,
     "shortRatio": 3.86,
     "shortPercentOfFloat": 0.2731,
     "beta": 4.342,
@@ -1032,14 +1032,14 @@
     "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": -564033984,
-    "trailingEps": -1.4,
+    "trailingEps": -1.45,
     "forwardEps": -0.544,
     "lastSplitFactor": "3:2",
     "lastSplitDate": 1084492800,
     "enterpriseToRevenue": 42.33,
     "enterpriseToEbitda": -201.273,
-    "52WeekChange": 2.400818,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 2.2781186,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 5,
     "lastDividendDate": "2021-12-14T00:00:00.000Z",
     "latestShareClass": null,
@@ -2420,6 +2420,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:28:52.437Z",
+  "lastUpdated": "2026-02-12T14:27:42.726Z",
   "source": "Static Build (yahoo-finance2)"
 }

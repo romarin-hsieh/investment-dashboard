@@ -123,20 +123,20 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0143,
-        "position": 2173824,
-        "value": 119821176,
-        "pctChange": 0.65559995
+        "organization": "State Street Corporation",
+        "pctHeld": 0.0137,
+        "position": 2082786,
+        "value": 114803162,
+        "pctChange": 0.1757
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.025799999,
-    "institutionsPercentHeld": 0.74478996,
-    "institutionsFloatPercentHeld": 0.76452005,
-    "institutionsCount": 612
+    "institutionsPercentHeld": 0.75276,
+    "institutionsFloatPercentHeld": 0.77269995,
+    "institutionsCount": 617
   },
   "earnings": {
     "maxAge": 86400,
@@ -1383,11 +1383,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.007262122,
+    "preMarketChange": 0.3999977,
+    "preMarketTime": "2026-02-12T14:23:37.000Z",
+    "preMarketPrice": 55.48,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.020319285,
-    "postMarketChange": -1.1199989,
-    "postMarketTime": "2026-02-12T00:59:34.000Z",
-    "postMarketPrice": 54,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0127172,
     "regularMarketChange": -0.710003,
@@ -1397,15 +1397,15 @@
     "regularMarketDayHigh": 56.37,
     "regularMarketDayLow": 53.08,
     "regularMarketVolume": 2746776,
-    "averageDailyVolume10Day": 5793090,
-    "averageDailyVolume3Month": 3936953,
+    "averageDailyVolume10Day": 5647730,
+    "averageDailyVolume3Month": 3924696,
     "regularMarketPreviousClose": 55.83,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 55.93,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "RBRK",
     "underlyingSymbol": null,
@@ -1423,7 +1423,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 10595266560,
-    "forwardPE": 718.17584,
+    "forwardPE": 671.4582,
     "profitMargins": -0.31485,
     "floatShares": 148481009,
     "sharesOutstanding": 151894462,
@@ -1433,7 +1433,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.064899996,
     "heldPercentInsiders": 0.025799999,
-    "heldPercentInstitutions": 0.74478996,
+    "heldPercentInstitutions": 0.75276,
     "shortRatio": 3.62,
     "shortPercentOfFloat": 0.0872,
     "impliedSharesOutstanding": 200141545,
@@ -1445,13 +1445,13 @@
     "nextFiscalYearEnd": "2026-01-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-10-31T00:00:00.000Z",
     "netIncomeToCommon": -376751008,
-    "trailingEps": -1.53,
-    "forwardEps": 0.07675,
+    "trailingEps": -1.55,
+    "forwardEps": 0.08209,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.854,
     "enterpriseToEbitda": -29.745,
-    "52WeekChange": -0.29077744,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.29979676,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1537,6 +1537,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 220,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 513,
         "value": 0,
         "filerUrl": "",
@@ -1591,18 +1603,6 @@
         "transactionText": "Sale at price 70.05 - 70.40 per share.",
         "filerName": "NITHRAKASHYAP ARVIND",
         "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2026-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 220,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-01-15T00:00:00.000Z",
         "ownership": "D"
@@ -2434,6 +2434,18 @@
         "value": 1519558,
         "filerUrl": "",
         "transactionText": "Sale at price 89.47 per share.",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-06-30T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16984,
+        "value": 1519558,
+        "filerUrl": "",
+        "transactionText": "Sale at price 89.47 per share.",
         "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
@@ -2454,14 +2466,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 16984,
-        "value": 1519558,
+        "shares": 9641000,
         "filerUrl": "",
-        "transactionText": "Sale at price 89.47 per share.",
+        "transactionText": "",
         "filerName": "MHATRE RAVI",
         "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
-        "startDate": "2025-06-30T00:00:00.000Z",
+        "startDate": "2025-06-26T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -2500,14 +2511,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 9641000,
+        "shares": 2702,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MHATRE RAVI",
         "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "I"
+        "startDate": "2025-06-25T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2588,18 +2600,6 @@
         "transactionText": "",
         "filerName": "CHOUDARY KIRAN KUMAR",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2702,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
@@ -3075,8 +3075,8 @@
         "value": 832155,
         "filerUrl": "",
         "transactionText": "Sale at price 62.98 per share.",
-        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "I"
@@ -3087,8 +3087,8 @@
         "value": 832155,
         "filerUrl": "",
         "transactionText": "Sale at price 62.98 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "I"
@@ -3253,6 +3253,6 @@
     "profitMargins": -0.31485,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:39.979Z",
+  "lastUpdated": "2026-02-12T14:24:24.681Z",
   "source": "Static Build (yahoo-finance2)"
 }

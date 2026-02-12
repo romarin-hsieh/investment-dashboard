@@ -60,15 +60,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0646,
-        "position": 44374498,
-        "value": 15709016470,
-        "pctChange": 1.3303
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0627,
         "position": 43055124,
@@ -83,6 +74,15 @@
         "position": 29094901,
         "value": 10299886187,
         "pctChange": -0.0117999995
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0306,
+        "position": 21032958,
+        "value": 7445877666,
+        "pctChange": -0.52599996
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.22225,
-    "institutionsPercentHeld": 0.65221,
-    "institutionsFloatPercentHeld": 0.83859,
-    "institutionsCount": 3613
+    "institutionsPercentHeld": 0.65399003,
+    "institutionsFloatPercentHeld": 0.84086996,
+    "institutionsCount": 3630
   },
   "earnings": {
     "maxAge": 86400,
@@ -5388,11 +5388,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0040095393,
+    "preMarketChange": 1.4196777,
+    "preMarketTime": "2026-02-12T14:25:34.000Z",
+    "preMarketPrice": 355.4947,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00002818917,
-    "postMarketChange": 0.009979248,
-    "postMarketTime": "2026-02-12T00:58:31.000Z",
-    "postMarketPrice": 354.02,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.025302898,
     "regularMarketChange": -9.19,
@@ -5402,15 +5402,15 @@
     "regularMarketDayHigh": 369.48,
     "regularMarketDayLow": 353.95,
     "regularMarketVolume": 3434319,
-    "averageDailyVolume10Day": 3378810,
-    "averageDailyVolume3Month": 2796560,
+    "averageDailyVolume10Day": 3483820,
+    "averageDailyVolume3Month": 2807052,
     "regularMarketPreviousClose": 363.2,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 367.56,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AXP",
     "underlyingSymbol": null,
@@ -5438,7 +5438,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0104,
     "heldPercentInsiders": 0.22225,
-    "heldPercentInstitutions": 0.65221,
+    "heldPercentInstitutions": 0.65399003,
     "shortRatio": 2.4,
     "shortPercentOfFloat": 0.0134000005,
     "beta": 1.128,
@@ -5453,13 +5453,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.135,
     "netIncomeToCommon": 10700999680,
-    "trailingEps": 14.97,
+    "trailingEps": 15.36,
     "forwardEps": 20.06292,
     "lastSplitFactor": "10000:8753",
     "lastSplitDate": 1128297600,
     "enterpriseToRevenue": 3.872,
-    "52WeekChange": 0.18113816,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.15125203,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.82,
     "lastDividendDate": "2026-01-02T00:00:00.000Z",
     "latestShareClass": null,
@@ -6793,6 +6793,6 @@
     "profitMargins": 0.16174999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:55.853Z",
+  "lastUpdated": "2026-02-12T14:25:42.683Z",
   "source": "Static Build (yahoo-finance2)"
 }

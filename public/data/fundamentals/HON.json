@@ -69,15 +69,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0297,
-        "position": 20624732,
-        "value": 5005622393,
-        "pctChange": 1.1249
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Morgan Stanley",
         "pctHeld": 0.026700001,
         "position": 18546112,
@@ -113,12 +104,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Franklin Resources, Inc.",
         "pctHeld": 0.0147,
-        "position": 10196543,
-        "value": 2474700954,
-        "pctChange": 0.2876
+        "position": 10227201,
+        "value": 2482141651,
+        "pctChange": 0.003
       },
       {
         "maxAge": 1,
@@ -128,15 +119,24 @@
         "position": 9819898,
         "value": 2383289214,
         "pctChange": -0.19870001
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Barclays Plc",
+        "pctHeld": 0.013200001,
+        "position": 9159743,
+        "value": 2223069598,
+        "pctChange": 0.1027
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00107,
-    "institutionsPercentHeld": 0.81808,
-    "institutionsFloatPercentHeld": 0.81896,
-    "institutionsCount": 3240
+    "institutionsPercentHeld": 0.80902,
+    "institutionsFloatPercentHeld": 0.80989,
+    "institutionsCount": 3233
   },
   "earnings": {
     "maxAge": 86400,
@@ -3398,11 +3398,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.007787389,
+    "preMarketChange": 1.8899994,
+    "preMarketTime": "2026-02-12T14:26:14.000Z",
+    "preMarketPrice": 244.59,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0036670761,
-    "postMarketChange": 0.8899994,
-    "postMarketTime": "2026-02-12T00:58:51.000Z",
-    "postMarketPrice": 243.59,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0026300624,
     "regularMarketChange": -0.6399994,
@@ -3412,15 +3412,15 @@
     "regularMarketDayHigh": 245.0299,
     "regularMarketDayLow": 239.12,
     "regularMarketVolume": 4191834,
-    "averageDailyVolume10Day": 4965040,
-    "averageDailyVolume3Month": 4291228,
+    "averageDailyVolume10Day": 4873410,
+    "averageDailyVolume3Month": 4289588,
     "regularMarketPreviousClose": 243.34,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 243.99,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "HON",
     "underlyingSymbol": null,
@@ -3437,7 +3437,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 175860678656,
+    "enterpriseValue": 175813033984,
     "forwardPE": 21.13769,
     "profitMargins": 0.13725,
     "floatShares": 603332016,
@@ -3448,7 +3448,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0199,
     "heldPercentInsiders": 0.00107,
-    "heldPercentInstitutions": 0.81808,
+    "heldPercentInstitutions": 0.80902,
     "shortRatio": 2.59,
     "shortPercentOfFloat": 0.0199,
     "beta": 0.93,
@@ -3463,14 +3463,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.77,
     "netIncomeToCommon": 4834999808,
-    "trailingEps": 7.55,
+    "trailingEps": 7.57,
     "forwardEps": 11.48186,
     "lastSplitFactor": "1061:1000",
     "lastSplitDate": 1761782400,
-    "enterpriseToRevenue": 4.697,
-    "enterpriseToEbitda": 21.985,
-    "52WeekChange": 0.25777626,
-    "SandP52WeekChange": 0.13519716,
+    "enterpriseToRevenue": 4.696,
+    "enterpriseToEbitda": 21.979,
+    "52WeekChange": 0.2544682,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 1.19,
     "lastDividendDate": "2025-11-14T00:00:00.000Z",
     "latestShareClass": null,
@@ -3604,28 +3604,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 745,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "STEPNIAK MICHAL",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-08-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 710,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LU SU PING",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-08-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1375,
         "filerUrl": "",
         "transactionText": "",
@@ -3661,13 +3639,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 616,
+        "shares": 745,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "STEPNIAK MICHAL",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-07-29T00:00:00.000Z",
+        "startDate": "2025-08-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 710,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LU SU PING",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-08-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3677,6 +3666,17 @@
         "transactionText": "",
         "filerName": "WEST KENNETH J",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-07-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 616,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "STEPNIAK MICHAL",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-07-29T00:00:00.000Z",
         "ownership": "D"
@@ -3694,10 +3694,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 662,
+        "shares": 552,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CURRIER JAMES E",
+        "filerName": "WEST KENNETH J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-25T00:00:00.000Z",
@@ -3705,10 +3705,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 552,
+        "shares": 662,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WEST KENNETH J",
+        "filerName": "CURRIER JAMES E",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-25T00:00:00.000Z",
@@ -3999,6 +3999,17 @@
         "shares": 1682,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "CURRIER JAMES E",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-02-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1682,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "WEST KENNETH J",
         "filerRelation": "President",
         "moneyText": "",
@@ -4023,17 +4034,6 @@
         "transactionText": "",
         "filerName": "HAMMOUD BILLAL",
         "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-02-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1682,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CURRIER JAMES E",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-02-11T00:00:00.000Z",
         "ownership": "D"
@@ -4216,7 +4216,7 @@
         "shares": 710,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CURRIER JAMES E",
+        "filerName": "WEST KENNETH J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-07-30T00:00:00.000Z",
@@ -4227,7 +4227,7 @@
         "shares": 710,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WEST KENNETH J",
+        "filerName": "CURRIER JAMES E",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-07-30T00:00:00.000Z",
@@ -4674,6 +4674,6 @@
     "profitMargins": 0.13725,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:31.451Z",
+  "lastUpdated": "2026-02-12T14:26:20.423Z",
   "source": "Static Build (yahoo-finance2)"
 }

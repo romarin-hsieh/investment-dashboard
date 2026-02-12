@@ -68,15 +68,6 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0349,
-        "position": 29901638,
-        "value": 3973927507,
-        "pctChange": 1.4269
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0238,
@@ -92,6 +83,15 @@
         "position": 20356606,
         "value": 2705392813,
         "pctChange": -0.0215
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Capital Research Global Investors",
+        "pctHeld": 0.0197,
+        "position": 16890802,
+        "value": 2244787482,
+        "pctChange": 0.5273
       },
       {
         "maxAge": 1,
@@ -113,7 +113,7 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "State Farm Mutual Automobile Insurance Co",
         "pctHeld": 0.0162,
         "position": 13919847,
@@ -122,21 +122,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Capital Research Global Investors",
-        "pctHeld": 0.0128999995,
-        "position": 11058929,
-        "value": 1469731596,
-        "pctChange": 1
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0137,
+        "position": 11769445,
+        "value": 1564159168,
+        "pctChange": -0.6064
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.08708,
-    "institutionsPercentHeld": 0.81154996,
-    "institutionsFloatPercentHeld": 0.88896006,
-    "institutionsCount": 2265
+    "institutionsPercentHeld": 0.81422997,
+    "institutionsFloatPercentHeld": 0.89189005,
+    "institutionsCount": 2272
   },
   "earnings": {
     "maxAge": 86400,
@@ -2668,11 +2668,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0055070315,
+    "preMarketChange": 0.7319946,
+    "preMarketTime": "2026-02-12T14:25:52.000Z",
+    "preMarketPrice": 133.652,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0027088083,
-    "postMarketChange": 0.3600006,
-    "postMarketTime": "2026-02-12T00:59:25.000Z",
-    "postMarketPrice": 133.26,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0374706,
     "regularMarketChange": 4.79999,
@@ -2682,15 +2682,15 @@
     "regularMarketDayHigh": 134.39,
     "regularMarketDayLow": 126.83,
     "regularMarketVolume": 9193276,
-    "averageDailyVolume10Day": 13007610,
-    "averageDailyVolume3Month": 7474708,
+    "averageDailyVolume10Day": 12156340,
+    "averageDailyVolume3Month": 7516462,
     "regularMarketPreviousClose": 128.1,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 131.35,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "GLW",
     "underlyingSymbol": null,
@@ -2710,7 +2710,7 @@
     "enterpriseValue": 120240103424,
     "forwardPE": 35.027237,
     "profitMargins": 0.10212,
-    "floatShares": 778329240,
+    "floatShares": 778380180,
     "sharesOutstanding": 857360396,
     "sharesShort": 13436003,
     "sharesShortPriorMonth": "1970-05-31T12:14:55.000Z",
@@ -2718,7 +2718,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.015700001,
     "heldPercentInsiders": 0.08708,
-    "heldPercentInstitutions": 0.81154996,
+    "heldPercentInstitutions": 0.81422997,
     "shortRatio": 1.83,
     "shortPercentOfFloat": 0.0177,
     "beta": 1.124,
@@ -2733,14 +2733,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.742,
     "netIncomeToCommon": 1596000000,
-    "trailingEps": 1.9,
+    "trailingEps": 1.83,
     "forwardEps": 3.79419,
     "lastSplitFactor": "3:1",
     "lastSplitDate": 970617600,
     "enterpriseToRevenue": 7.693,
     "enterpriseToEbitda": 33.006,
-    "52WeekChange": 1.4582613,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 1.5503743,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.28,
     "lastDividendDate": "2025-11-14T00:00:00.000Z",
     "latestShareClass": null,
@@ -2770,12 +2770,58 @@
     "transactions": [
       {
         "maxAge": 1,
+        "shares": 15366,
+        "value": 2000956,
+        "filerUrl": "",
+        "transactionText": "Sale at price 130.22 per share.",
+        "filerName": "STEVERSON LEWIS A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 15000,
         "value": 1953711,
         "filerUrl": "",
         "transactionText": "Sale at price 130.25 per share.",
         "filerName": "MUSSER ERIC S.",
         "filerRelation": "Retired",
+        "moneyText": "",
+        "startDate": "2026-02-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1958,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "STEVERSON LEWIS A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6262,
+        "value": 812722,
+        "filerUrl": "",
+        "transactionText": "Sale at price 129.79 per share.",
+        "filerName": "NELSON AVERY H III",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2026-02-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2476,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NELSON AVERY H III",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2026-02-09T00:00:00.000Z",
         "ownership": "D"
@@ -2790,17 +2836,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1980,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHLESINGER EDWARD A",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-02-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2882,6 +2917,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1980,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHLESINGER EDWARD A",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-02-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 593,
         "filerUrl": "",
         "transactionText": "",
@@ -2952,6 +2998,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 44,
+        "value": 4505,
+        "filerUrl": "",
+        "transactionText": "Sale at price 102.40 per share.",
+        "filerName": "GULLO MICHELLE L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-29T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 21104,
         "value": 2206326,
         "filerUrl": "",
@@ -2976,18 +3034,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 44,
-        "value": 4505,
-        "filerUrl": "",
-        "transactionText": "Sale at price 102.40 per share.",
-        "filerName": "GULLO MICHELLE L",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-29T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 1990,
         "filerUrl": "",
         "transactionText": "",
@@ -2995,17 +3041,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1035,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHLESINGER EDWARD A",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3070,6 +3105,17 @@
         "transactionText": "",
         "filerName": "GULLO MICHELLE L",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1035,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHLESINGER EDWARD A",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -3518,18 +3564,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 14879,
-        "value": 927912,
-        "filerUrl": "",
-        "transactionText": "Sale at price 62.36 per share.",
-        "filerName": "O'DAY MICHAEL PAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-07-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 36240,
         "value": 2256357,
         "filerUrl": "",
@@ -3548,6 +3582,18 @@
         "transactionText": "Conversion of Exercise of derivative security at price 27.00 - 27.03 per share.",
         "filerName": "NELSON AVERY H III",
         "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-07-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14879,
+        "value": 927912,
+        "filerUrl": "",
+        "transactionText": "Sale at price 62.36 per share.",
+        "filerName": "O'DAY MICHAEL PAUL",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-30T00:00:00.000Z",
         "ownership": "D"
@@ -3662,17 +3708,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 39356,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHLESINGER EDWARD A",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-04-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 93908,
         "filerUrl": "",
         "transactionText": "",
@@ -3733,6 +3768,17 @@
         "transactionText": "",
         "filerName": "O'DAY MICHAEL PAUL",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-04-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 39356,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHLESINGER EDWARD A",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "D"
@@ -3831,17 +3877,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1415,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHLESINGER EDWARD A",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3147,
         "filerUrl": "",
         "transactionText": "",
@@ -3919,6 +3954,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1415,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHLESINGER EDWARD A",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2475,
         "filerUrl": "",
         "transactionText": "",
@@ -3970,17 +4016,6 @@
         "filerRelation": "Retired",
         "moneyText": "",
         "startDate": "2025-02-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1974,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHLESINGER EDWARD A",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4062,6 +4097,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1974,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHLESINGER EDWARD A",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1364,
         "filerUrl": "",
         "transactionText": "",
@@ -4114,17 +4160,6 @@
         "transactionText": "",
         "filerName": "CURRAN MARTIN J",
         "filerRelation": "Retired",
-        "moneyText": "",
-        "startDate": "2025-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1069,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHLESINGER EDWARD A",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -4191,6 +4226,17 @@
         "transactionText": "",
         "filerName": "O'DAY MICHAEL PAUL",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1069,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHLESINGER EDWARD A",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -4442,54 +4488,6 @@
         "moneyText": "",
         "startDate": "2024-10-30T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 13069,
-        "value": 383010,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 19.65 - 33.92 per share.",
-        "filerName": "BECKER STEFAN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9166,
-        "value": 444097,
-        "filerUrl": "",
-        "transactionText": "Sale at price 48.45 per share.",
-        "filerName": "FANG LI",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9166,
-        "value": 196878,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 20.92 - 22.68 per share.",
-        "filerName": "FANG LI",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5000,
-        "value": 212500,
-        "filerUrl": "",
-        "transactionText": "Sale at price 42.50 per share.",
-        "filerName": "BAYNE JOHN P JR",
-        "filerRelation": "Retired",
-        "moneyText": "",
-        "startDate": "2024-09-13T00:00:00.000Z",
-        "ownership": "I"
       }
     ],
     "maxAge": 1
@@ -4526,6 +4524,6 @@
     "profitMargins": 0.10212,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:25.937Z",
+  "lastUpdated": "2026-02-12T14:26:14.581Z",
   "source": "Static Build (yahoo-finance2)"
 }

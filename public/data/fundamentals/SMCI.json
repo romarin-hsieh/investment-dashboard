@@ -70,15 +70,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0197,
-        "position": 11811038,
-        "value": 378425668,
-        "pctChange": 4.0060997
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Morgan Stanley",
         "pctHeld": 0.0184,
         "position": 11029121,
@@ -120,15 +111,24 @@
         "position": 4887557,
         "value": 156597330,
         "pctChange": -0.3125
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Northern Trust Corporation",
+        "pctHeld": 0.008,
+        "position": 4804997,
+        "value": 153952108,
+        "pctChange": -0.0058
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.16433,
-    "institutionsPercentHeld": 0.56186,
-    "institutionsFloatPercentHeld": 0.67235,
-    "institutionsCount": 1110
+    "institutionsPercentHeld": 0.55337,
+    "institutionsFloatPercentHeld": 0.66219,
+    "institutionsCount": 1113
   },
   "earnings": {
     "maxAge": 86400,
@@ -1198,11 +1198,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.004057342,
+    "preMarketChange": 0.12999725,
+    "preMarketTime": "2026-02-12T14:26:35.000Z",
+    "preMarketPrice": 32.17,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0015605255,
-    "postMarketChange": 0.049999237,
-    "postMarketTime": "2026-02-12T00:59:55.000Z",
-    "postMarketPrice": 32.09,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.038703896,
     "regularMarketChange": -1.2900009,
@@ -1212,15 +1212,15 @@
     "regularMarketDayHigh": 33.91,
     "regularMarketDayLow": 31.635,
     "regularMarketVolume": 24531444,
-    "averageDailyVolume10Day": 42797730,
-    "averageDailyVolume3Month": 29323966,
+    "averageDailyVolume10Day": 42823020,
+    "averageDailyVolume3Month": 29244767,
     "regularMarketPreviousClose": 33.33,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 33.9,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "SMCI",
     "underlyingSymbol": null,
@@ -1248,7 +1248,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1533,
     "heldPercentInsiders": 0.16433,
-    "heldPercentInstitutions": 0.56186,
+    "heldPercentInstitutions": 0.55337,
     "shortRatio": 2.93,
     "shortPercentOfFloat": 0.2021,
     "beta": 1.523,
@@ -1263,14 +1263,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.249,
     "netIncomeToCommon": 872780032,
-    "trailingEps": 1.32,
+    "trailingEps": 1.37,
     "forwardEps": 2.96094,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1727740800,
     "enterpriseToRevenue": 0.725,
     "enterpriseToEbitda": 18.552,
-    "52WeekChange": -0.21168399,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.24219489,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1482,6 +1482,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 13000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEIGAND DAVID E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-10-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 6000,
         "filerUrl": "",
         "transactionText": "",
@@ -1509,17 +1520,6 @@
         "transactionText": "",
         "filerName": "KAO GEORGE W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 13000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WEIGAND DAVID E",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-10-30T00:00:00.000Z",
         "ownership": "D"
@@ -1620,6 +1620,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 4150,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEIGAND DAVID E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-08-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2110,
         "filerUrl": "",
         "transactionText": "",
@@ -1658,17 +1669,6 @@
         "transactionText": "",
         "filerName": "KAO GEORGE W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4150,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WEIGAND DAVID E",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-08-08T00:00:00.000Z",
         "ownership": "D"
@@ -1721,6 +1721,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 18571,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEIGAND DAVID E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1330,
         "filerUrl": "",
         "transactionText": "",
@@ -1748,17 +1759,6 @@
         "transactionText": "",
         "filerName": "KAO GEORGE W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 18571,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WEIGAND DAVID E",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-07-01T00:00:00.000Z",
         "ownership": "D"
@@ -2174,6 +2174,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 2680,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEIGAND DAVID E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-11-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 4470,
         "filerUrl": "",
         "transactionText": "",
@@ -2201,17 +2212,6 @@
         "transactionText": "",
         "filerName": "KAO GEORGE W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-11-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2680,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WEIGAND DAVID E",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-11-08T00:00:00.000Z",
         "ownership": "D"
@@ -2465,6 +2465,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1592,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEIGAND DAVID E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-05-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1082,
         "filerUrl": "",
         "transactionText": "",
@@ -2492,17 +2503,6 @@
         "transactionText": "",
         "filerName": "KAO GEORGE W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1592,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WEIGAND DAVID E",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-05-10T00:00:00.000Z",
         "ownership": "D"
@@ -2627,6 +2627,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WEIGAND DAVID E",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-02-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 900,
         "filerUrl": "",
         "transactionText": "",
@@ -2667,17 +2678,6 @@
         "transactionText": "",
         "filerName": "KAO GEORGE W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-02-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WEIGAND DAVID E",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-02-15T00:00:00.000Z",
         "ownership": "D"
@@ -2729,6 +2729,6 @@
     "profitMargins": 0.03111,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:28:22.946Z",
+  "lastUpdated": "2026-02-12T14:27:12.975Z",
   "source": "Static Build (yahoo-finance2)"
 }

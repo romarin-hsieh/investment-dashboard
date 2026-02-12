@@ -87,15 +87,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.021,
-        "position": 42298656,
-        "value": 7859936567,
-        "pctChange": 1.0079
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Morgan Stanley",
         "pctHeld": 0.0182,
         "position": 36607107,
@@ -128,15 +119,24 @@
         "position": 24457623,
         "value": 4544715684,
         "pctChange": 0.2868
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Northern Trust Corporation",
+        "pctHeld": 0.0113,
+        "position": 22724515,
+        "value": 4222669543,
+        "pctChange": 0.1525
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.06235,
-    "institutionsPercentHeld": 0.69234,
-    "institutionsFloatPercentHeld": 0.73837996,
-    "institutionsCount": 4578
+    "institutionsPercentHeld": 0.68593,
+    "institutionsFloatPercentHeld": 0.73153996,
+    "institutionsCount": 4589
   },
   "earnings": {
     "maxAge": 86400,
@@ -4398,11 +4398,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0019920876,
+    "preMarketChange": -0.37001038,
+    "preMarketTime": "2026-02-12T14:25:46.000Z",
+    "preMarketPrice": 185.37,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.00064584205,
-    "postMarketChange": -0.120010376,
-    "postMarketTime": "2026-02-12T00:59:30.000Z",
-    "postMarketPrice": 185.7,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.019532599,
     "regularMarketChange": 3.56001,
@@ -4411,16 +4411,16 @@
     "regularMarketPrice": 185.82,
     "regularMarketDayHigh": 186.52,
     "regularMarketDayLow": 183.55,
-    "regularMarketVolume": 8628971,
-    "averageDailyVolume10Day": 13762000,
-    "averageDailyVolume3Month": 10523053,
+    "regularMarketVolume": 8627327,
+    "averageDailyVolume10Day": 13891660,
+    "averageDailyVolume3Month": 10522622,
     "regularMarketPreviousClose": 182.26,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 183.94,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "CVX",
     "underlyingSymbol": null,
@@ -4448,7 +4448,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0107,
     "heldPercentInsiders": 0.06235,
-    "heldPercentInstitutions": 0.69234,
+    "heldPercentInstitutions": 0.68593,
     "shortRatio": 1.7,
     "shortPercentOfFloat": 0.0107,
     "beta": 0.672,
@@ -4463,14 +4463,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.145,
     "netIncomeToCommon": 12298999808,
-    "trailingEps": 6.76,
+    "trailingEps": 6.63,
     "forwardEps": 9.16553,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1095033600,
     "enterpriseToRevenue": 2.19,
     "enterpriseToEbitda": 10.707,
-    "52WeekChange": 0.16923273,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.19207084,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 1.71,
     "lastDividendDate": "2025-11-18T00:00:00.000Z",
     "latestShareClass": null,
@@ -4572,41 +4572,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3426,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KNOWLES ALANA K.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 32100,
-        "value": 5617731,
-        "filerUrl": "",
-        "transactionText": "Sale at price 175.01 per share.",
-        "filerName": "BONNER EIMEAR P",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-01-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 40780,
-        "value": 4259349,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 132.69 per share.",
-        "filerName": "BONNER EIMEAR P",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-01-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3782,
         "filerUrl": "",
         "transactionText": "",
@@ -4645,6 +4610,41 @@
         "transactionText": "",
         "filerName": "NEFF ROBERT CLAY JR",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3426,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KNOWLES ALANA K.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32100,
+        "value": 5617731,
+        "filerUrl": "",
+        "transactionText": "Sale at price 175.01 per share.",
+        "filerName": "BONNER EIMEAR P",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-01-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 40780,
+        "value": 4259349,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 132.69 per share.",
+        "filerName": "BONNER EIMEAR P",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-01-30T00:00:00.000Z",
         "ownership": "D"
@@ -4842,39 +4842,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 269,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NELSON MARK A.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 86,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KNOWLES ALANA K.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 102,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BONNER EIMEAR P",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 46,
         "filerUrl": "",
         "transactionText": "",
@@ -4913,6 +4880,39 @@
         "transactionText": "",
         "filerName": "NEFF ROBERT CLAY JR",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 269,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NELSON MARK A.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 86,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KNOWLES ALANA K.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 102,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BONNER EIMEAR P",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-12-17T00:00:00.000Z",
         "ownership": "D"
@@ -5049,24 +5049,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 316,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "REED-KLAGES DEBRA L.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-18T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 5,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BOOTH THOMAS RYDER",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-07-18T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 316,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "REED-KLAGES DEBRA L.",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-07-18T00:00:00.000Z",
         "ownership": "I"
@@ -5265,6 +5265,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 924,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUSTAVSON JEFF B.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 737,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KRISHNAMURTHY BALAJI",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3194,
         "filerUrl": "",
         "transactionText": "",
@@ -5302,28 +5324,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "HEARNE ANDREW NIGEL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 924,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUSTAVSON JEFF B.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 737,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KRISHNAMURTHY BALAJI",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-10T00:00:00.000Z",
@@ -5377,6 +5377,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 3184,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUSTAVSON JEFF B.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3770,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KRISHNAMURTHY BALAJI",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 13470,
         "filerUrl": "",
         "transactionText": "",
@@ -5421,28 +5443,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3184,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUSTAVSON JEFF B.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3770,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KRISHNAMURTHY BALAJI",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 49717,
         "filerUrl": "",
         "transactionText": "",
@@ -5461,6 +5461,17 @@
         "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-01-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 62,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUSTAVSON JEFF B.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -5513,17 +5524,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "HEARNE ANDREW NIGEL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 62,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUSTAVSON JEFF B.",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-17T00:00:00.000Z",
@@ -5870,6 +5870,6 @@
     "profitMargins": 0.06611,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:13.859Z",
+  "lastUpdated": "2026-02-12T14:26:01.606Z",
   "source": "Static Build (yahoo-finance2)"
 }

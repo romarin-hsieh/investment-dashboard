@@ -78,15 +78,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.027,
-        "position": 24807582,
-        "value": 1600089039,
-        "pctChange": 0.93
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Parnassus Investments, LLC",
         "pctHeld": 0.0196,
         "position": 18066603,
@@ -101,6 +92,15 @@
         "position": 16880383,
         "value": 1088784703,
         "pctChange": -0.050300002
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.017,
+        "position": 15611913,
+        "value": 1006968388,
+        "pctChange": -0.3707
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00099,
-    "institutionsPercentHeld": 0.79969,
-    "institutionsFloatPercentHeld": 0.80047995,
-    "institutionsCount": 1740
+    "institutionsPercentHeld": 0.80364,
+    "institutionsFloatPercentHeld": 0.80443,
+    "institutionsCount": 1737
   },
   "earnings": {
     "maxAge": 86400,
@@ -2118,11 +2118,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0017880801,
+    "preMarketChange": 0.11529541,
+    "preMarketTime": "2026-02-12T14:25:52.000Z",
+    "preMarketPrice": 64.5953,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0009301947,
-    "postMarketChange": -0.05999756,
-    "postMarketTime": "2026-02-12T00:58:36.000Z",
-    "postMarketPrice": 64.44,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.00938965,
     "regularMarketChange": 0.599998,
@@ -2132,15 +2132,15 @@
     "regularMarketDayHigh": 64.62,
     "regularMarketDayLow": 63.63,
     "regularMarketVolume": 6614601,
-    "averageDailyVolume10Day": 6241280,
-    "averageDailyVolume3Month": 6358808,
+    "averageDailyVolume10Day": 6395420,
+    "averageDailyVolume3Month": 6363077,
     "regularMarketPreviousClose": 63.9,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 63.94,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "O",
     "underlyingSymbol": null,
@@ -2168,7 +2168,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0363,
     "heldPercentInsiders": 0.00099,
-    "heldPercentInstitutions": 0.79969,
+    "heldPercentInstitutions": 0.80364,
     "shortRatio": 5.2,
     "shortPercentOfFloat": 0.048499998,
     "beta": 0.801,
@@ -2183,14 +2183,14 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.172,
     "netIncomeToCommon": 962116992,
-    "trailingEps": 1.08,
+    "trailingEps": 1.07,
     "forwardEps": 1.60333,
     "lastSplitFactor": "1032:1000",
     "lastSplitDate": 1636934400,
     "enterpriseToRevenue": 15.702,
     "enterpriseToEbitda": 17.45,
-    "52WeekChange": 0.16351056,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.1744355,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.27,
     "lastDividendDate": "2026-01-30T00:00:00.000Z",
     "latestShareClass": null,
@@ -2243,6 +2243,18 @@
         "moneyText": "",
         "startDate": "2025-09-30T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3632,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCKEE MICHAEL DALE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2334,22 +2346,34 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCKEE MICHAEL DALE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3632,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "JACOBSON JEFFREY A",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2671,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KEHLE SHANNON",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5432,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "PONG JONATHAN CFA",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2414,30 +2438,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2671,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KEHLE SHANNON",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5432,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "PONG JONATHAN CFA",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 7242,
         "value": 0,
         "filerUrl": "",
@@ -2495,6 +2495,18 @@
         "moneyText": "",
         "startDate": "2024-06-27T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCKEE MICHAEL DALE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-30T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2598,18 +2610,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCKEE MICHAEL DALE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-30T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "JACOBSON JEFFREY A",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2675,6 +2675,6 @@
     "profitMargins": 0.17135,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:28:04.905Z",
+  "lastUpdated": "2026-02-12T14:26:54.240Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -60,20 +60,20 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.076,
-        "position": 21140214,
-        "value": 8448475432,
-        "pctChange": 1.3964
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "State Street Corporation",
         "pctHeld": 0.0463,
         "position": 12882779,
         "value": 5148473988,
         "pctChange": 0.0125
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0421,
+        "position": 11709784,
+        "value": 4679698249,
+        "pctChange": -0.4461
       },
       {
         "maxAge": 1,
@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.023340002,
-    "institutionsPercentHeld": 0.91503996,
-    "institutionsFloatPercentHeld": 0.93691003,
+    "institutionsPercentHeld": 0.91901,
+    "institutionsFloatPercentHeld": 0.94097,
     "institutionsCount": 3028
   },
   "earnings": {
@@ -5028,11 +5028,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": -0.0013339795,
+    "preMarketChange": -0.5331116,
+    "preMarketTime": "2026-02-12T14:25:25.000Z",
+    "preMarketPrice": 399.1069,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.006355741,
-    "postMarketChange": -2.5400085,
-    "postMarketTime": "2026-02-12T00:58:55.000Z",
-    "postMarketPrice": 397.1,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.05172738,
     "regularMarketChange": -21.799988,
@@ -5042,15 +5042,15 @@
     "regularMarketDayHigh": 422,
     "regularMarketDayLow": 392.38,
     "regularMarketVolume": 6087614,
-    "averageDailyVolume10Day": 4724440,
-    "averageDailyVolume3Month": 2571848,
+    "averageDailyVolume10Day": 5106780,
+    "averageDailyVolume3Month": 2629437,
     "regularMarketPreviousClose": 421.44,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 418.68,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "INTU",
     "underlyingSymbol": null,
@@ -5077,7 +5077,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.021300001,
     "heldPercentInsiders": 0.023340002,
-    "heldPercentInstitutions": 0.91503996,
+    "heldPercentInstitutions": 0.91901,
     "shortRatio": 2.15,
     "shortPercentOfFloat": 0.024400001,
     "beta": 1.234,
@@ -5092,12 +5092,12 @@
     "mostRecentQuarter": "2021-07-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.146,
     "netIncomeToCommon": 4118000128,
-    "trailingEps": 13.83,
+    "trailingEps": 14.55,
     "forwardEps": 26.44731,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1152230400,
-    "52WeekChange": -0.27831823,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.31548208,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 1.2,
     "lastDividendDate": "2026-01-09T00:00:00.000Z",
     "latestShareClass": null,
@@ -5161,6 +5161,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 761,
+        "value": 25115,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 374.85 per share.",
+        "filerName": "SZKUTAK THOMAS J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 776,
         "value": 30738,
         "filerUrl": "",
@@ -5181,18 +5193,6 @@
         "moneyText": "",
         "startDate": "2026-01-22T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 761,
-        "value": 25115,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 374.85 per share.",
-        "filerName": "SZKUTAK THOMAS J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-01-22T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5244,28 +5244,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 331,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HOTZ LAUREN DALE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3361,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AUJLA SANDEEP S",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 825,
         "filerUrl": "",
         "transactionText": "",
@@ -5288,17 +5266,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 4094,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GOODARZI SASAN K",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 1021,
         "filerUrl": "",
         "transactionText": "",
@@ -5307,6 +5274,39 @@
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 331,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HOTZ LAUREN DALE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3361,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AUJLA SANDEEP S",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4094,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GOODARZI SASAN K",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5369,17 +5369,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 907,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GOODARZI SASAN K",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-11T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 244,
         "filerUrl": "",
         "transactionText": "",
@@ -5388,6 +5377,17 @@
         "moneyText": "",
         "startDate": "2025-12-11T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 907,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GOODARZI SASAN K",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-11T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5507,28 +5507,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 329,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HOTZ LAUREN DALE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3360,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AUJLA SANDEEP S",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 824,
         "filerUrl": "",
         "transactionText": "",
@@ -5551,17 +5529,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2382,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GOODARZI SASAN K",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 679,
         "filerUrl": "",
         "transactionText": "",
@@ -5573,6 +5540,39 @@
       },
       {
         "maxAge": 1,
+        "shares": 329,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HOTZ LAUREN DALE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3360,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AUJLA SANDEEP S",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2382,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GOODARZI SASAN K",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 999,
         "value": 665951,
         "filerUrl": "",
@@ -5581,17 +5581,6 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1374,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HOTZ LAUREN DALE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-29T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -5618,17 +5607,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 19460,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GOODARZI SASAN K",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-29T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 7267,
         "filerUrl": "",
         "transactionText": "",
@@ -5637,6 +5615,28 @@
         "moneyText": "",
         "startDate": "2025-08-29T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1374,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HOTZ LAUREN DALE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 19460,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GOODARZI SASAN K",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-29T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5661,28 +5661,6 @@
         "moneyText": "",
         "startDate": "2025-08-25T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 70,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HOTZ LAUREN DALE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 210,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AUJLA SANDEEP S",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-08-12T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5713,6 +5691,28 @@
         "transactionText": "",
         "filerName": "MCLEAN KERRY JEAN",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-08-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 70,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HOTZ LAUREN DALE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 210,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AUJLA SANDEEP S",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-08-12T00:00:00.000Z",
         "ownership": "D"
@@ -5825,6 +5825,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 1818,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BALAZS ALEX G",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 859,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCLEAN KERRY JEAN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 664,
         "filerUrl": "",
         "transactionText": "",
@@ -5858,17 +5880,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1818,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BALAZS ALEX G",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3346,
         "filerUrl": "",
         "transactionText": "",
@@ -5877,17 +5888,6 @@
         "moneyText": "",
         "startDate": "2025-07-01T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 859,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCLEAN KERRY JEAN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-07-01T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5973,22 +5973,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 97,
+        "shares": 464,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HOTZ LAUREN DALE",
-        "filerRelation": "Officer",
+        "filerName": "BALAZS ALEX G",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-05-30T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 464,
+        "shares": 97,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BALAZS ALEX G",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "HOTZ LAUREN DALE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-30T00:00:00.000Z",
         "ownership": "D"
@@ -6043,6 +6043,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 16700,
+        "value": 12177029,
+        "filerUrl": "",
+        "transactionText": "Sale at price 725.00 - 734.33 per share.",
+        "filerName": "MCLEAN KERRY JEAN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-05-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16700,
+        "value": 5075798,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 303.94 per share.",
+        "filerName": "MCLEAN KERRY JEAN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-05-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 16061,
         "value": 11662708,
         "filerUrl": "",
@@ -6073,30 +6097,6 @@
         "transactionText": "Sale at price 725.00 - 726.18 per share.",
         "filerName": "NOTARAINNI MARK PHILLIP",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16700,
-        "value": 12177029,
-        "filerUrl": "",
-        "transactionText": "Sale at price 725.00 - 734.33 per share.",
-        "filerName": "MCLEAN KERRY JEAN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-05-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16700,
-        "value": 5075798,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 303.94 per share.",
-        "filerName": "MCLEAN KERRY JEAN",
-        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-05-27T00:00:00.000Z",
         "ownership": "D"
@@ -6138,6 +6138,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 518,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BALAZS ALEX G",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 857,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCLEAN KERRY JEAN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 312,
         "filerUrl": "",
         "transactionText": "",
@@ -6171,17 +6193,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 518,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BALAZS ALEX G",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3343,
         "filerUrl": "",
         "transactionText": "",
@@ -6190,17 +6201,6 @@
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 857,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCLEAN KERRY JEAN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6298,22 +6298,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 96,
+        "shares": 465,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HOTZ LAUREN DALE",
-        "filerRelation": "Officer",
+        "filerName": "BALAZS ALEX G",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 465,
+        "shares": 96,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BALAZS ALEX G",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "HOTZ LAUREN DALE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
@@ -6355,6 +6355,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 990,
+        "value": 25063,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 288.08 per share.",
+        "filerName": "SZKUTAK THOMAS J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-01-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 903,
         "filerUrl": "",
         "transactionText": "",
@@ -6374,18 +6386,6 @@
         "moneyText": "",
         "startDate": "2025-01-24T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 990,
-        "value": 25063,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 288.08 per share.",
-        "filerName": "SZKUTAK THOMAS J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-01-24T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6485,6 +6485,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 518,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BALAZS ALEX G",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1058,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCLEAN KERRY JEAN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 313,
         "filerUrl": "",
         "transactionText": "",
@@ -6518,17 +6540,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 518,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BALAZS ALEX G",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 75300,
         "value": 47447390,
         "filerUrl": "",
@@ -6550,17 +6561,6 @@
         "moneyText": "",
         "startDate": "2024-12-31T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1058,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCLEAN KERRY JEAN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-12-31T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6622,6 +6622,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 263,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCLEAN KERRY JEAN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 23810,
         "value": 15856967,
         "filerUrl": "",
@@ -6654,17 +6665,6 @@
         "moneyText": "",
         "startDate": "2024-12-12T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 263,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCLEAN KERRY JEAN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-12-12T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6785,10 +6785,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 119,
+        "shares": 98,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DALZELL RICHARD L",
+        "filerName": "SZKUTAK THOMAS J",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-10-31T00:00:00.000Z",
@@ -6796,10 +6796,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 98,
+        "shares": 119,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SZKUTAK THOMAS J",
+        "filerName": "DALZELL RICHARD L",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-10-31T00:00:00.000Z",
@@ -6831,22 +6831,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 311,
+        "shares": 658,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HOTZ LAUREN DALE",
-        "filerRelation": "Officer",
+        "filerName": "MCLEAN KERRY JEAN",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2024-10-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 3100,
+        "shares": 311,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "AUJLA SANDEEP S",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "HOTZ LAUREN DALE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-01T00:00:00.000Z",
         "ownership": "D"
@@ -6882,6 +6882,6 @@
     "profitMargins": 0.21191,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:37.220Z",
+  "lastUpdated": "2026-02-12T14:26:26.152Z",
   "source": "Static Build (yahoo-finance2)"
 }

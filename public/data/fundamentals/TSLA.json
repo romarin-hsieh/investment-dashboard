@@ -68,15 +68,6 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0238,
-        "position": 89279010,
-        "value": 38265431061,
-        "pctChange": 0.9402
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0175,
@@ -86,12 +77,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0119,
+        "position": 44591616,
+        "value": 19112190065,
+        "pctChange": -0.50049996
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
-        "pctHeld": 0.0117,
-        "position": 44035949,
-        "value": 18874028404,
-        "pctChange": 0.0577
+        "pctHeld": 0.0113,
+        "position": 42484452,
+        "value": 18209049016,
+        "pctChange": -0.0352
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.11134,
-    "institutionsPercentHeld": 0.44594002,
-    "institutionsFloatPercentHeld": 0.50181,
-    "institutionsCount": 5073
+    "institutionsPercentHeld": 0.44471002,
+    "institutionsFloatPercentHeld": 0.50042,
+    "institutionsCount": 5089
   },
   "earnings": {
     "maxAge": 86400,
@@ -10128,11 +10128,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.007512748,
+    "preMarketChange": 3.2200012,
+    "preMarketTime": "2026-02-12T14:24:14.000Z",
+    "preMarketPrice": 431.825,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0024204443,
-    "postMarketChange": -1.0374146,
-    "postMarketTime": "2026-02-12T00:59:59.000Z",
-    "postMarketPrice": 427.5676,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.008779079,
     "regularMarketChange": 3.730011,
@@ -10142,15 +10142,15 @@
     "regularMarketDayHigh": 436.35,
     "regularMarketDayLow": 420.03,
     "regularMarketVolume": 57325398,
-    "averageDailyVolume10Day": 66383390,
-    "averageDailyVolume3Month": 71957940,
+    "averageDailyVolume10Day": 66620400,
+    "averageDailyVolume3Month": 71716457,
     "regularMarketPreviousClose": 424.875,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 427.955,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "TSLA",
     "underlyingSymbol": null,
@@ -10167,7 +10167,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 1579699142656,
+    "enterpriseValue": 1578442031104,
     "forwardPE": 152.8374,
     "profitMargins": 0.040009998,
     "floatShares": 2812635394,
@@ -10178,7 +10178,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0172,
     "heldPercentInsiders": 0.11134,
-    "heldPercentInstitutions": 0.44594002,
+    "heldPercentInstitutions": 0.44471002,
     "shortRatio": 1.02,
     "shortPercentOfFloat": 0.019299999,
     "beta": 1.887,
@@ -10197,10 +10197,10 @@
     "forwardEps": 2.80432,
     "lastSplitFactor": "3:1",
     "lastSplitDate": 1661385600,
-    "enterpriseToRevenue": 16.659,
-    "enterpriseToEbitda": 150.405,
-    "52WeekChange": 0.19461143,
-    "SandP52WeekChange": 0.13519716,
+    "enterpriseToRevenue": 16.645,
+    "enterpriseToEbitda": 150.285,
+    "52WeekChange": 0.20320845,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -11361,9 +11361,9 @@
       {
         "maxAge": 1,
         "shares": 10500,
-        "value": 2143785,
+        "value": 180810,
         "filerUrl": "",
-        "transactionText": "Sale at price 204.17 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 17.22 per share.",
         "filerName": "BAGLINO ANDREW D",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -11373,9 +11373,9 @@
       {
         "maxAge": 1,
         "shares": 10500,
-        "value": 180810,
+        "value": 2143785,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 17.22 per share.",
+        "transactionText": "Sale at price 204.17 per share.",
         "filerName": "BAGLINO ANDREW D",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -11441,6 +11441,6 @@
     "profitMargins": 0.040009998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:30.629Z",
+  "lastUpdated": "2026-02-12T14:24:15.599Z",
   "source": "Static Build (yahoo-finance2)"
 }

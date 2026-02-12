@@ -68,15 +68,6 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0358,
-        "position": 33503954,
-        "value": 9140213608,
-        "pctChange": 0.4977
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0242,
@@ -86,12 +77,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
-        "pctHeld": 0.0182,
-        "position": 17045156,
-        "value": 4650088966,
-        "pctChange": 0.1388
+        "pctHeld": 0.023599999,
+        "position": 22021912,
+        "value": 6007797758,
+        "pctChange": 0.292
       },
       {
         "maxAge": 1,
@@ -110,6 +101,15 @@
         "position": 15367707,
         "value": 4192464109,
         "pctChange": -0.0025
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0163,
+        "position": 15203455,
+        "value": 4147654521,
+        "pctChange": -0.5462
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00119,
-    "institutionsPercentHeld": 0.64996004,
-    "institutionsFloatPercentHeld": 0.65073997,
-    "institutionsCount": 4346
+    "institutionsPercentHeld": 0.65440005,
+    "institutionsFloatPercentHeld": 0.65519,
+    "institutionsCount": 4356
   },
   "earnings": {
     "maxAge": 86400,
@@ -3308,11 +3308,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0042536603,
+    "preMarketChange": 1.1599731,
+    "preMarketTime": "2026-02-12T14:26:09.000Z",
+    "preMarketPrice": 273.86,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0038767538,
-    "postMarketChange": 1.0576172,
-    "postMarketTime": "2026-02-12T00:59:50.000Z",
-    "postMarketPrice": 273.8676,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.0649507,
     "regularMarketChange": -18.95,
@@ -3322,15 +3322,15 @@
     "regularMarketDayHigh": 293.5,
     "regularMarketDayLow": 272.3601,
     "regularMarketVolume": 7610618,
-    "averageDailyVolume10Day": 6435380,
-    "averageDailyVolume3Month": 4323901,
+    "averageDailyVolume10Day": 6618250,
+    "averageDailyVolume3Month": 4377919,
     "regularMarketPreviousClose": 291.76,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 292.34,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "IBM",
     "underlyingSymbol": null,
@@ -3358,7 +3358,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.02,
     "heldPercentInsiders": 0.00119,
-    "heldPercentInstitutions": 0.64996004,
+    "heldPercentInstitutions": 0.65440005,
     "shortRatio": 4.17,
     "shortPercentOfFloat": 0.0222,
     "beta": 0.691,
@@ -3373,14 +3373,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.922,
     "netIncomeToCommon": 10570999808,
-    "trailingEps": 10.42,
+    "trailingEps": 11.13,
     "forwardEps": 13.41699,
     "lastSplitFactor": "1046:1000",
     "lastSplitDate": 1635984000,
     "enterpriseToRevenue": 4.528,
     "enterpriseToEbitda": 18.224,
-    "52WeekChange": 0.12566066,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.05254829,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 1.68,
     "lastDividendDate": "2026-02-10T00:00:00.000Z",
     "latestShareClass": null,
@@ -4109,6 +4109,6 @@
     "profitMargins": 0.15685001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:35.166Z",
+  "lastUpdated": "2026-02-12T14:26:24.151Z",
   "source": "Static Build (yahoo-finance2)"
 }

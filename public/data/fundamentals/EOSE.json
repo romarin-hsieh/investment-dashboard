@@ -126,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01745,
-    "institutionsPercentHeld": 0.50632,
-    "institutionsFloatPercentHeld": 0.51531,
-    "institutionsCount": 399
+    "institutionsPercentHeld": 0.50781,
+    "institutionsFloatPercentHeld": 0.51682997,
+    "institutionsCount": 397
   },
   "earnings": {
     "maxAge": 86400,
@@ -680,11 +680,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.01248704,
+    "preMarketChange": 0.14459991,
+    "preMarketTime": "2026-02-12T14:24:12.000Z",
+    "preMarketPrice": 11.7246,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.001718508,
-    "postMarketChange": 0.019900322,
-    "postMarketTime": "2026-02-12T00:59:56.000Z",
-    "postMarketPrice": 11.5999,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.052373186,
     "regularMarketChange": -0.64000034,
@@ -694,15 +694,15 @@
     "regularMarketDayHigh": 13.035,
     "regularMarketDayLow": 11.14,
     "regularMarketVolume": 21508067,
-    "averageDailyVolume10Day": 21467190,
-    "averageDailyVolume3Month": 20282066,
+    "averageDailyVolume10Day": 21048050,
+    "averageDailyVolume3Month": 20301821,
     "regularMarketPreviousClose": 12.22,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 13.035,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "EOSE",
     "underlyingSymbol": null,
@@ -719,7 +719,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 4960155136,
+    "enterpriseValue": 4953525760,
     "forwardPE": -75.40536,
     "profitMargins": 0,
     "floatShares": 283829539,
@@ -730,7 +730,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.25010002,
     "heldPercentInsiders": 0.01745,
-    "heldPercentInstitutions": 0.50632,
+    "heldPercentInstitutions": 0.50781,
     "shortRatio": 3.8,
     "shortPercentOfFloat": 0.2564,
     "beta": 2.154,
@@ -743,13 +743,13 @@
     "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": -1967649024,
-    "trailingEps": -7.88,
+    "trailingEps": -8.31,
     "forwardEps": -0.15357,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 78.164,
-    "enterpriseToEbitda": -23.929,
-    "52WeekChange": 1.3365202,
-    "SandP52WeekChange": 0.13519716,
+    "enterpriseToRevenue": 78.06,
+    "enterpriseToEbitda": -23.897,
+    "52WeekChange": 1.2141492,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -847,6 +847,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 40328,
+        "value": 612536,
+        "filerUrl": "",
+        "transactionText": "Sale at price 15.05 - 15.75 per share.",
+        "filerName": "BORNSTEIN JEFFREY S",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-05T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
         "shares": 18473,
         "value": 266565,
         "filerUrl": "",
@@ -868,18 +880,6 @@
         "moneyText": "",
         "startDate": "2025-12-05T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 40328,
-        "value": 612536,
-        "filerUrl": "",
-        "transactionText": "Sale at price 15.05 - 15.75 per share.",
-        "filerName": "BORNSTEIN JEFFREY S",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-05T00:00:00.000Z",
-        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -1152,6 +1152,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 105263,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BORNSTEIN JEFFREY S",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 92105,
         "filerUrl": "",
         "transactionText": "",
@@ -1222,17 +1233,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "DEMBY CLAUDE Z",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 105263,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BORNSTEIN JEFFREY S",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-14T00:00:00.000Z",
@@ -1365,22 +1365,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 254304,
+        "shares": 105008,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MASTRANGELO JOE",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-07-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 105008,
+        "shares": 254304,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KROEKER NATHAN",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "MASTRANGELO JOE",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-07-05T00:00:00.000Z",
         "ownership": "D"
@@ -1394,6 +1394,17 @@
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-07-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32328,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BORNSTEIN JEFFREY S",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-04-30T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1464,17 +1475,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 32328,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BORNSTEIN JEFFREY S",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5000,
         "value": 5638,
         "filerUrl": "",
@@ -1495,8 +1495,7 @@
     "targetLowPrice": 12,
     "targetMeanPrice": 16.125,
     "targetMedianPrice": 15,
-    "recommendationMean": 2.25,
-    "recommendationKey": "buy",
+    "recommendationKey": "none",
     "numberOfAnalystOpinions": 8,
     "totalCash": 58733000,
     "totalCashPerShare": 0.204,
@@ -1517,6 +1516,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:41.830Z",
+  "lastUpdated": "2026-02-12T14:24:26.582Z",
   "source": "Static Build (yahoo-finance2)"
 }

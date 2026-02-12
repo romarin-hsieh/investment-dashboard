@@ -43,15 +43,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0094,
-        "position": 48984724,
-        "value": 18324695221,
-        "pctChange": 0.726
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Sanders Capital, LLC",
         "pctHeld": 0.0062,
         "position": 32280404,
@@ -60,21 +51,30 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
         "pctHeld": 0.0053,
-        "position": 27740880,
-        "value": 10377585697,
-        "pctChange": -0.13
+        "position": 27404289,
+        "value": 10251670371,
+        "pctChange": -0.0121
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital International Investors",
         "pctHeld": 0.0049,
-        "position": 25643671,
-        "value": 9593040790,
-        "pctChange": 0.0007
+        "position": 25658661,
+        "value": 9598648399,
+        "pctChange": 0.00059999997
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0049,
+        "position": 25182540,
+        "value": 9420536296,
+        "pctChange": -0.4859
       },
       {
         "maxAge": 1,
@@ -126,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0004,
-    "institutionsPercentHeld": 0.16072,
-    "institutionsFloatPercentHeld": 0.16078,
-    "institutionsCount": 3884
+    "institutionsPercentHeld": 0.16065,
+    "institutionsFloatPercentHeld": 0.16072,
+    "institutionsCount": 3899
   },
   "earnings": {
     "maxAge": 86400,
@@ -1130,11 +1130,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.014751128,
+    "preMarketChange": 5.5200195,
+    "preMarketTime": "2026-02-12T14:23:44.000Z",
+    "preMarketPrice": 379.73,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0056403964,
-    "postMarketChange": 2.1100159,
-    "postMarketTime": "2026-02-12T00:59:57.000Z",
-    "postMarketPrice": 376.2,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.033654798,
     "regularMarketChange": 12.18,
@@ -1144,15 +1144,15 @@
     "regularMarketDayHigh": 379.58,
     "regularMarketDayLow": 368.39,
     "regularMarketVolume": 18590728,
-    "averageDailyVolume10Day": 14224260,
-    "averageDailyVolume3Month": 12925836,
+    "averageDailyVolume10Day": 14871780,
+    "averageDailyVolume3Month": 13019106,
     "regularMarketPreviousClose": 361.91,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 370.075,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "TSM",
     "underlyingSymbol": null,
@@ -1180,7 +1180,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0038,
     "heldPercentInsiders": 0.0004,
-    "heldPercentInstitutions": 0.16072,
+    "heldPercentInstitutions": 0.16065,
     "shortRatio": 1.34,
     "shortPercentOfFloat": 0.0038,
     "beta": 1.272,
@@ -1195,14 +1195,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.406,
     "netIncomeToCommon": 1717882978304,
-    "trailingEps": 10.85,
+    "trailingEps": 10.51,
     "forwardEps": 17.99829,
     "lastSplitFactor": "1005:1000",
     "lastSplitDate": 1247616000,
     "enterpriseToRevenue": 2.014,
     "enterpriseToEbitda": 2.923,
-    "52WeekChange": 0.7931428,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.8534906,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.835,
     "lastDividendDate": "2025-12-11T00:00:00.000Z",
     "latestShareClass": null,
@@ -1260,6 +1260,6 @@
     "profitMargins": 0.45099998,
     "financialCurrency": "TWD"
   },
-  "lastUpdated": "2026-02-12T04:25:03.849Z",
+  "lastUpdated": "2026-02-12T14:23:48.373Z",
   "source": "Static Build (yahoo-finance2)"
 }

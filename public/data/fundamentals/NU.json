@@ -59,21 +59,12 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0493,
-        "position": 186773086,
-        "value": 3251719398,
-        "pctChange": 0.95699996
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital Research Global Investors",
-        "pctHeld": 0.048699997,
-        "position": 184607140,
-        "value": 3214010279,
-        "pctChange": -0.052699998
+        "pctHeld": 0.0433,
+        "position": 164099198,
+        "value": 2856967012,
+        "pctChange": -0.111099996
       },
       {
         "maxAge": 1,
@@ -92,6 +83,15 @@
         "position": 91478395,
         "value": 1592638842,
         "pctChange": 0.0026
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.021300001,
+        "position": 80761115,
+        "value": 1406050999,
+        "pctChange": -0.5676
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.04686,
-    "institutionsPercentHeld": 0.83755994,
-    "institutionsFloatPercentHeld": 0.87873,
-    "institutionsCount": 1259
+    "institutionsPercentHeld": 0.82997,
+    "institutionsFloatPercentHeld": 0.87077004,
+    "institutionsCount": 1267
   },
   "earnings": {
     "maxAge": 86400,
@@ -948,11 +948,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0011481319,
+    "preMarketChange": 0.020000458,
+    "preMarketTime": "2026-02-12T14:22:32.000Z",
+    "preMarketPrice": 17.44,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0034462647,
-    "postMarketChange": 0.059999466,
-    "postMarketTime": "2026-02-12T00:46:24.000Z",
-    "postMarketPrice": 17.47,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.00910642,
     "regularMarketChange": -0.16,
@@ -962,15 +962,15 @@
     "regularMarketDayHigh": 17.99,
     "regularMarketDayLow": 17.35,
     "regularMarketVolume": 32764522,
-    "averageDailyVolume10Day": 51890030,
-    "averageDailyVolume3Month": 43206266,
+    "averageDailyVolume10Day": 50208590,
+    "averageDailyVolume3Month": 43035167,
     "regularMarketPreviousClose": 17.57,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 17.945,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "NU",
     "underlyingSymbol": null,
@@ -998,7 +998,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0225,
     "heldPercentInsiders": 0.04686,
-    "heldPercentInstitutions": 0.83755994,
+    "heldPercentInstitutions": 0.82997,
     "shortRatio": 2.32,
     "shortPercentOfFloat": 0.0286,
     "beta": 1.084,
@@ -1013,12 +1013,12 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.414,
     "netIncomeToCommon": 2529154048,
-    "trailingEps": 0.51,
+    "trailingEps": 0.52,
     "forwardEps": 0.91162,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 11.706,
-    "52WeekChange": 0.27411163,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.2625091,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1068,6 +1068,6 @@
     "profitMargins": 0.39762002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:26:09.250Z",
+  "lastUpdated": "2026-02-12T14:24:54.278Z",
   "source": "Static Build (yahoo-finance2)"
 }

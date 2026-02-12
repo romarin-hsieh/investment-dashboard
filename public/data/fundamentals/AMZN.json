@@ -69,15 +69,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.034,
-        "position": 365321874,
-        "value": 74596902737,
-        "pctChange": 0.8948
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "FMR, LLC",
         "pctHeld": 0.0306,
         "position": 328881582,
@@ -101,6 +92,15 @@
         "position": 162864808,
         "value": 33256180662,
         "pctChange": 0.0147
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0149,
+        "position": 160046290,
+        "value": 32680653358,
+        "pctChange": -0.56189996
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.091400005,
-    "institutionsPercentHeld": 0.66876,
-    "institutionsFloatPercentHeld": 0.73603,
-    "institutionsCount": 7342
+    "institutionsPercentHeld": 0.66523004,
+    "institutionsFloatPercentHeld": 0.73214996,
+    "institutionsCount": 7365
   },
   "earnings": {
     "maxAge": 86400,
@@ -10348,11 +10348,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0002693145,
+    "preMarketChange": 0.054992676,
+    "preMarketTime": "2026-02-12T14:23:53.000Z",
+    "preMarketPrice": 204.25,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00075854926,
-    "postMarketChange": 0.15489197,
-    "postMarketTime": "2026-02-12T00:59:59.000Z",
-    "postMarketPrice": 204.3499,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.012525069,
     "regularMarketChange": -2.5899963,
@@ -10362,15 +10362,15 @@
     "regularMarketDayHigh": 208.57,
     "regularMarketDayLow": 202.49,
     "regularMarketVolume": 65493575,
-    "averageDailyVolume10Day": 71844810,
-    "averageDailyVolume3Month": 45738006,
+    "averageDailyVolume10Day": 74298770,
+    "averageDailyVolume3Month": 46060700,
     "regularMarketPreviousClose": 206.785,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 208.07,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "AMZN",
     "underlyingSymbol": null,
@@ -10387,8 +10387,8 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 2247535099904,
-    "forwardPE": 21.918013,
+    "enterpriseValue": 2246300663808,
+    "forwardPE": 21.924625,
     "profitMargins": 0.108339995,
     "floatShares": 9746556705,
     "sharesOutstanding": 10734920870,
@@ -10398,7 +10398,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0067000003,
     "heldPercentInsiders": 0.091400005,
-    "heldPercentInstitutions": 0.66876,
+    "heldPercentInstitutions": 0.66523004,
     "shortRatio": 1.78,
     "shortPercentOfFloat": 0.0074,
     "beta": 1.385,
@@ -10413,14 +10413,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.059,
     "netIncomeToCommon": 77669998592,
-    "trailingEps": 7.06,
-    "forwardEps": 9.31631,
+    "trailingEps": 7.16,
+    "forwardEps": 9.3135,
     "lastSplitFactor": "20:1",
     "lastSplitDate": 1654473600,
-    "enterpriseToRevenue": 3.135,
-    "enterpriseToEbitda": 15.422,
-    "52WeekChange": -0.101619124,
-    "SandP52WeekChange": 0.13519716,
+    "enterpriseToRevenue": 3.133,
+    "enterpriseToEbitda": 15.414,
+    "52WeekChange": -0.11412078,
+    "SandP52WeekChange": 0.13514149,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -12200,7 +12200,7 @@
     "currentPrice": 204.195,
     "targetHighPrice": 360,
     "targetLowPrice": 175,
-    "targetMeanPrice": 283.1746,
+    "targetMeanPrice": 283.20636,
     "targetMedianPrice": 285,
     "recommendationMean": 1.33824,
     "recommendationKey": "strong_buy",
@@ -12227,6 +12227,6 @@
     "profitMargins": 0.108339995,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:12.890Z",
+  "lastUpdated": "2026-02-12T14:23:57.714Z",
   "source": "Static Build (yahoo-finance2)"
 }

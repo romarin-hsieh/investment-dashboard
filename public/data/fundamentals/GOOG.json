@@ -60,15 +60,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.0366,
-        "position": 199059484,
-        "value": 61955271856,
-        "pctChange": 1.1725
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "State Street Corporation",
         "pctHeld": 0.0342,
         "position": 186149073,
@@ -95,12 +86,21 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0185,
+        "position": 100602893,
+        "value": 31311643434,
+        "pctChange": -0.4946
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital International Investors",
-        "pctHeld": 0.0159,
-        "position": 86250183,
-        "value": 26844506114,
-        "pctChange": -0.0639
+        "pctHeld": 0.0155,
+        "position": 84244686,
+        "value": 26220315247,
+        "pctChange": -0.0233
       },
       {
         "maxAge": 1,
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0664,
-    "institutionsPercentHeld": 0.61084,
-    "institutionsFloatPercentHeld": 0.65429,
-    "institutionsCount": 5907
+    "institutionsPercentHeld": 0.60972,
+    "institutionsFloatPercentHeld": 0.65309,
+    "institutionsCount": 5939
   },
   "earnings": {
     "maxAge": 86400,
@@ -7178,11 +7178,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.003791361,
+    "preMarketChange": 1.1800232,
+    "preMarketTime": "2026-02-12T14:23:50.000Z",
+    "preMarketPrice": 312.42,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0017028621,
-    "postMarketChange": 0.5299988,
-    "postMarketTime": "2026-02-12T00:59:49.000Z",
-    "postMarketPrice": 311.77,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": -0.02346891,
     "regularMarketChange": -7.480011,
@@ -7192,15 +7192,15 @@
     "regularMarketDayHigh": 321.04,
     "regularMarketDayLow": 310.13,
     "regularMarketVolume": 23993562,
-    "averageDailyVolume10Day": 28648400,
-    "averageDailyVolume3Month": 24328513,
+    "averageDailyVolume10Day": 29290740,
+    "averageDailyVolume3Month": 24322503,
     "regularMarketPreviousClose": 318.72,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 318.955,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "GOOG",
     "underlyingSymbol": null,
@@ -7217,7 +7217,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3705223249920,
+    "enterpriseValue": 3706311933952,
     "forwardPE": 23.314608,
     "profitMargins": 0.32810003,
     "floatShares": 10832742530,
@@ -7228,7 +7228,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.004,
     "heldPercentInsiders": 0.0664,
-    "heldPercentInstitutions": 0.61084,
+    "heldPercentInstitutions": 0.60972,
     "shortRatio": 2.63,
     "beta": 1.086,
     "impliedSharesOutstanding": 12097000000,
@@ -7242,14 +7242,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.298,
     "netIncomeToCommon": 132169998336,
-    "trailingEps": 10.55,
+    "trailingEps": 10.8,
     "forwardEps": 13.34957,
     "lastSplitFactor": "20:1",
     "lastSplitDate": 1658102400,
-    "enterpriseToRevenue": 9.198,
-    "enterpriseToEbitda": 24.673,
-    "52WeekChange": 0.695923,
-    "SandP52WeekChange": 0.13519716,
+    "enterpriseToRevenue": 9.201,
+    "enterpriseToEbitda": 24.68,
+    "52WeekChange": 0.6570684,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.21,
     "lastDividendDate": "2025-12-08T00:00:00.000Z",
     "latestShareClass": null,
@@ -7500,18 +7500,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 600,
-        "value": 184915,
-        "filerUrl": "",
-        "transactionText": "Sale at price 306.58 - 309.32 per share.",
-        "filerName": "HENNESSY JOHN L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 2778,
         "value": 867569,
         "filerUrl": "",
@@ -7521,6 +7509,18 @@
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 600,
+        "value": 184915,
+        "filerUrl": "",
+        "transactionText": "Sale at price 306.58 - 309.32 per share.",
+        "filerName": "HENNESSY JOHN L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -7864,18 +7864,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 600,
-        "value": 149663,
-        "filerUrl": "",
-        "transactionText": "Sale at price 245.40 - 252.16 per share.",
-        "filerName": "HENNESSY JOHN L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 2778,
         "value": 680610,
         "filerUrl": "",
@@ -7885,6 +7873,18 @@
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 600,
+        "value": 149663,
+        "filerUrl": "",
+        "transactionText": "Sale at price 245.40 - 252.16 per share.",
+        "filerName": "HENNESSY JOHN L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -8556,23 +8556,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 1920,
-        "value": 0,
+        "shares": 1374,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "HENNESSY JOHN L",
-        "filerRelation": "Director",
+        "transactionText": "",
+        "filerName": "O TOOLE AMIE THUENER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-25T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 1374,
+        "shares": 1920,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "O TOOLE AMIE THUENER",
-        "filerRelation": "Officer",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "HENNESSY JOHN L",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-02-25T00:00:00.000Z",
         "ownership": "D"
@@ -9044,7 +9044,7 @@
     "currentPrice": 311.24,
     "targetHighPrice": 405,
     "targetLowPrice": 185,
-    "targetMeanPrice": 359.0588,
+    "targetMeanPrice": 359.2353,
     "targetMedianPrice": 375,
     "recommendationMean": 1.41176,
     "recommendationKey": "strong_buy",
@@ -9071,6 +9071,6 @@
     "profitMargins": 0.32810003,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:25:14.544Z",
+  "lastUpdated": "2026-02-12T14:23:59.391Z",
   "source": "Static Build (yahoo-finance2)"
 }

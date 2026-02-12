@@ -77,15 +77,6 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.028399998,
-        "position": 70403294,
-        "value": 8399816835,
-        "pctChange": 1.2124
-      },
-      {
-        "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0242,
@@ -128,15 +119,24 @@
         "position": 33426750,
         "value": 3988145460,
         "pctChange": 0.0589
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0117999995,
+        "position": 29199978,
+        "value": 3483849303,
+        "pctChange": -0.5852
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00058,
-    "institutionsPercentHeld": 0.80442,
-    "institutionsFloatPercentHeld": 0.80489,
-    "institutionsCount": 4411
+    "institutionsPercentHeld": 0.79764,
+    "institutionsFloatPercentHeld": 0.79810995,
+    "institutionsCount": 4424
   },
   "earnings": {
     "maxAge": 86400,
@@ -3608,11 +3608,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0019285236,
+    "preMarketChange": 0.22999573,
+    "preMarketTime": "2026-02-12T14:26:32.000Z",
+    "preMarketPrice": 119.49,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0006705375,
-    "postMarketChange": 0.08000183,
-    "postMarketTime": "2026-02-12T00:59:32.000Z",
-    "postMarketPrice": 119.39,
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.0184379,
     "regularMarketChange": 2.16,
@@ -3622,15 +3622,15 @@
     "regularMarketDayHigh": 119.36,
     "regularMarketDayLow": 116.32,
     "regularMarketVolume": 10333954,
-    "averageDailyVolume10Day": 17097550,
-    "averageDailyVolume3Month": 14836298,
+    "averageDailyVolume10Day": 17436770,
+    "averageDailyVolume3Month": 14771504,
     "regularMarketPreviousClose": 117.15,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 117.04,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MRK",
     "underlyingSymbol": null,
@@ -3658,7 +3658,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0116,
     "heldPercentInsiders": 0.00058,
-    "heldPercentInstitutions": 0.80442,
+    "heldPercentInstitutions": 0.79764,
     "shortRatio": 2.37,
     "shortPercentOfFloat": 0.0128999995,
     "beta": 0.296,
@@ -3673,14 +3673,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.208,
     "netIncomeToCommon": 18254000128,
-    "trailingEps": 7.41,
+    "trailingEps": 7.28,
     "forwardEps": 9.74003,
     "lastSplitFactor": "1048:1000",
     "lastSplitDate": 1622678400,
     "enterpriseToRevenue": 4.912,
     "enterpriseToEbitda": 11.089,
-    "52WeekChange": 0.38770437,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.41329074,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 0.85,
     "lastDividendDate": "2025-12-15T00:00:00.000Z",
     "latestShareClass": null,
@@ -3818,18 +3818,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 47434,
-        "value": 5599327,
-        "filerUrl": "",
-        "transactionText": "Sale at price 117.38 - 118.35 per share.",
-        "filerName": "DAVIS ROBERT M",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-02-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 15087,
         "value": 1791824,
         "filerUrl": "",
@@ -3848,6 +3836,18 @@
         "transactionText": "Conversion of Exercise of derivative security at price 56.04 per share.",
         "filerName": "LI DEAN Y",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 47434,
+        "value": 5599327,
+        "filerUrl": "",
+        "transactionText": "Sale at price 117.38 - 118.35 per share.",
+        "filerName": "DAVIS ROBERT M",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-02-04T00:00:00.000Z",
         "ownership": "D"
@@ -3898,18 +3898,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 47434,
-        "value": 5094412,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 107.40 per share.",
-        "filerName": "DAVIS ROBERT M",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-01-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3980,6 +3968,18 @@
         "transactionText": "Stock Award(Grant) at price 107.40 per share.",
         "filerName": "LI DEAN Y",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 47434,
+        "value": 5094412,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 107.40 per share.",
+        "filerName": "DAVIS ROBERT M",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-01-26T00:00:00.000Z",
         "ownership": "D"
@@ -4223,18 +4223,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 95275,
-        "value": 9331234,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 97.94 per share.",
-        "filerName": "DAVIS ROBERT M",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-01-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 25438,
         "value": 2491398,
         "filerUrl": "",
@@ -4301,6 +4289,18 @@
         "transactionText": "Stock Award(Grant) at price 97.94 per share.",
         "filerName": "LI DEAN Y",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 95275,
+        "value": 9331234,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 97.94 per share.",
+        "filerName": "DAVIS ROBERT M",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-01-27T00:00:00.000Z",
         "ownership": "D"
@@ -4523,6 +4523,6 @@
     "profitMargins": 0.28078,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:59.061Z",
+  "lastUpdated": "2026-02-12T14:26:48.530Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -51,15 +51,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.096099995,
-        "position": 68428562,
-        "value": 22116794939,
-        "pctChange": 1.0058
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0731,
         "position": 52064527,
@@ -74,6 +65,15 @@
         "position": 35024857,
         "value": 11320383731,
         "pctChange": 0.0056
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "JPMORGAN CHASE & CO",
+        "pctHeld": 0.0446,
+        "position": 31782233,
+        "value": 10272335256,
+        "pctChange": -0.5355
       },
       {
         "maxAge": 1,
@@ -187,14 +187,16 @@
           "reportedDate": 1770843756
         }
       ],
-      "currentQuarterEstimate": 2.86594,
+      "currentQuarterEstimate": 2.7687,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-04-30T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,36 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-12T14:09:39.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 355,
+        "priorPriceTarget": 345
+      },
+      {
+        "epochGradeDate": "2026-02-12T11:43:24.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 370,
+        "priorPriceTarget": 360
+      },
+      {
+        "epochGradeDate": "2026-02-12T09:51:27.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 320,
+        "priorPriceTarget": 320
+      },
       {
         "epochGradeDate": "2026-02-06T14:02:43.000Z",
         "firm": "Mizuho",
@@ -6526,11 +6558,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.005289997,
+    "preMarketChange": 1.7099915,
+    "preMarketTime": "2026-02-12T14:25:12.000Z",
+    "preMarketPrice": 324.96,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0012681589,
-    "postMarketChange": -0.4098816,
-    "postMarketTime": "2026-02-12T00:59:07.000Z",
-    "postMarketPrice": 322.8001,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": -0.00846707,
     "regularMarketChange": -2.76001,
@@ -6540,22 +6572,22 @@
     "regularMarketDayHigh": 325.2,
     "regularMarketDayLow": 320.81,
     "regularMarketVolume": 3570357,
-    "averageDailyVolume10Day": 3348360,
-    "averageDailyVolume3Month": 3222878,
+    "averageDailyVolume10Day": 3584880,
+    "averageDailyVolume3Month": 3244629,
     "regularMarketPreviousClose": 325.97,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 323.58,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "MCD",
     "underlyingSymbol": null,
     "shortName": "McDonald's Corporation",
     "longName": "McDonald's Corporation",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -6566,7 +6598,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 283600420864,
-    "forwardPE": 22.38929,
+    "forwardPE": 22.483688,
     "profitMargins": 0.3204,
     "floatShares": 711057632,
     "sharesOutstanding": 712154350,
@@ -6590,14 +6622,14 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.01,
     "netIncomeToCommon": 8415000064,
-    "trailingEps": 11.64,
-    "forwardEps": 14.43592,
+    "trailingEps": 11.73,
+    "forwardEps": 14.37477,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 920851200,
     "enterpriseToRevenue": 10.798,
     "enterpriseToEbitda": 19.843,
-    "52WeekChange": 0.051448345,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": 0.042545676,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 1.86,
     "lastDividendDate": "2025-12-01T00:00:00.000Z",
     "latestShareClass": null,
@@ -6626,6 +6658,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 2626,
+        "value": 854106,
+        "filerUrl": "",
+        "transactionText": "Sale at price 325.25 per share.",
+        "filerName": "ERLINGER JOSEPH M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2626,
+        "value": 414357,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 157.79 per share.",
+        "filerName": "ERLINGER JOSEPH M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 2626,
@@ -7081,17 +7137,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 8057,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RALLS-MORRISON DESIREE ANN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5874,
         "filerUrl": "",
         "transactionText": "",
@@ -7173,6 +7218,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "ERLINGER JOSEPH M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8057,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RALLS-MORRISON DESIREE ANN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
@@ -7851,9 +7907,9 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 323.21,
-    "targetHighPrice": 372,
-    "targetLowPrice": 260,
-    "targetMeanPrice": 335.625,
+    "targetHighPrice": 380,
+    "targetLowPrice": 250,
+    "targetMeanPrice": 338.28125,
     "targetMedianPrice": 340,
     "recommendationMean": 2.16216,
     "recommendationKey": "buy",
@@ -7878,6 +7934,6 @@
     "profitMargins": 0.3204,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:55.485Z",
+  "lastUpdated": "2026-02-12T14:26:44.625Z",
   "source": "Static Build (yahoo-finance2)"
 }

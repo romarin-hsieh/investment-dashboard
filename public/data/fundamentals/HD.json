@@ -87,15 +87,6 @@
       {
         "maxAge": 1,
         "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "JPMORGAN CHASE & CO",
-        "pctHeld": 0.019299999,
-        "position": 19187270,
-        "value": 7496082503,
-        "pctChange": 0.85160005
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0150999995,
         "position": 15005103,
@@ -122,21 +113,30 @@
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Capital World Investors",
-        "pctHeld": 0.012999999,
-        "position": 12945423,
-        "value": 5057517762,
-        "pctChange": 0.0016
+        "pctHeld": 0.013200001,
+        "position": 13147117,
+        "value": 5136315573,
+        "pctChange": 0.0156
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-09-30T00:00:00.000Z",
+        "organization": "Northern Trust Corporation",
+        "pctHeld": 0.0117,
+        "position": 11662015,
+        "value": 4556115934,
+        "pctChange": -0.0053
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00071999995,
-    "institutionsPercentHeld": 0.74240994,
-    "institutionsFloatPercentHeld": 0.74294996,
-    "institutionsCount": 4962
+    "institutionsPercentHeld": 0.73872,
+    "institutionsFloatPercentHeld": 0.73926,
+    "institutionsCount": 4968
   },
   "earnings": {
     "maxAge": 86400,
@@ -5378,11 +5378,11 @@
   },
   "price": {
     "maxAge": 1,
+    "preMarketChangePercent": 0.0022788167,
+    "preMarketChange": 0.89001465,
+    "preMarketTime": "2026-02-12T14:26:01.000Z",
+    "preMarketPrice": 391.45,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.000025621392,
-    "postMarketChange": 0.010009766,
-    "postMarketTime": "2026-02-12T00:56:25.000Z",
-    "postMarketPrice": 390.69,
     "postMarketSource": "DELAYED",
     "regularMarketChangePercent": 0.00256621,
     "regularMarketChange": 1,
@@ -5392,22 +5392,22 @@
     "regularMarketDayHigh": 391.42,
     "regularMarketDayLow": 382.08,
     "regularMarketVolume": 2543491,
-    "averageDailyVolume10Day": 4313310,
-    "averageDailyVolume3Month": 4699320,
+    "averageDailyVolume10Day": 4299100,
+    "averageDailyVolume3Month": 4675222,
     "regularMarketPreviousClose": 389.68,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 385,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "PRE",
     "quoteType": "EQUITY",
     "symbol": "HD",
     "underlyingSymbol": null,
     "shortName": "Home Depot, Inc. (The)",
     "longName": "The Home Depot, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -5428,7 +5428,7 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.012,
     "heldPercentInsiders": 0.00071999995,
-    "heldPercentInstitutions": 0.74240994,
+    "heldPercentInstitutions": 0.73872,
     "shortRatio": 2.78,
     "shortPercentOfFloat": 0.012,
     "beta": 1.089,
@@ -5443,14 +5443,14 @@
     "mostRecentQuarter": "2025-11-02T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.013,
     "netIncomeToCommon": 14581999616,
-    "trailingEps": 14.69,
+    "trailingEps": 14.65,
     "forwardEps": 15.04044,
     "lastSplitFactor": "3:2",
     "lastSplitDate": 946598400,
     "enterpriseToRevenue": 2.727,
     "enterpriseToEbitda": 17.713,
-    "52WeekChange": -0.05516088,
-    "SandP52WeekChange": 0.13519716,
+    "52WeekChange": -0.052736223,
+    "SandP52WeekChange": 0.13514149,
     "lastDividendValue": 2.3,
     "lastDividendDate": "2025-12-04T00:00:00.000Z",
     "latestShareClass": null,
@@ -5601,30 +5601,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 628,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BROWN ANGIE",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 628,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SMITH STEPHANIE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 32897,
         "value": 13067210,
         "filerUrl": "",
@@ -5643,6 +5619,30 @@
         "transactionText": "Conversion of Exercise of derivative security at price 130.22 per share.",
         "filerName": "DECKER EDWARD P.",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 628,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BROWN ANGIE",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 628,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SMITH STEPHANIE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D"
@@ -5765,6 +5765,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9816,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DECKER EDWARD P.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-03-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -5901,18 +5913,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9816,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DECKER EDWARD P.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2884,
         "value": 999767,
         "filerUrl": "",
@@ -5922,6 +5922,30 @@
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2434,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DECKER EDWARD P.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4414,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DECKER EDWARD P.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-02-27T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6159,30 +6183,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "ROSEBOROUGH TERESA WYNN",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2434,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DECKER EDWARD P.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4414,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DECKER EDWARD P.",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-02-27T00:00:00.000Z",
         "ownership": "D"
@@ -6906,6 +6906,6 @@
     "profitMargins": 0.087740004,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T04:27:29.625Z",
+  "lastUpdated": "2026-02-12T14:26:18.326Z",
   "source": "Static Build (yahoo-finance2)"
 }
