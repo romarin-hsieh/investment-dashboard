@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 5,
+        "buy": 9,
+        "hold": 10,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 4,
         "buy": 11,
         "hold": 9,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 10,
         "hold": 10,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1022,
         "position": 237459756,
-        "value": 37775098419,
+        "value": 37993560960,
         "pctChange": 0.0121
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0769,
         "position": 178658338,
-        "value": 28420968736,
+        "value": 28585334080,
         "pctChange": 0.0382
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0433,
         "position": 100634824,
-        "value": 16008987986,
+        "value": 16101571840,
         "pctChange": 0.0037
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.027,
         "position": 62647882,
-        "value": 9966025183,
+        "value": 10023661120,
         "pctChange": 0.0325
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0221,
         "position": 51332718,
-        "value": 8166008873,
+        "value": 8213234880,
         "pctChange": -0.0128999995
       },
       {
@@ -82,17 +90,17 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0212,
         "position": 49314720,
-        "value": 7844985747,
+        "value": 7890355200,
         "pctChange": 1.0142
       },
       {
         "maxAge": 1,
-        "reportDate": "2025-06-30T00:00:00.000Z",
+        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "NORGES BANK",
-        "pctHeld": 0.0138,
-        "position": 32008815,
-        "value": 5091962348,
-        "pctChange": 0.0232
+        "pctHeld": 0.0139999995,
+        "position": 32550300,
+        "value": 5208048000,
+        "pctChange": 0.016900001
       },
       {
         "maxAge": 1,
@@ -100,7 +108,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0127,
         "position": 29541501,
-        "value": 4699462033,
+        "value": 4726640160,
         "pctChange": -0.0571
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0123000005,
         "position": 28609292,
-        "value": 4551166223,
+        "value": 4577486720,
         "pctChange": -0.0117
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0123000005,
         "position": 28521735,
-        "value": 4537237656,
+        "value": 4563477600,
         "pctChange": 0.055999998
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0007,
-    "institutionsPercentHeld": 0.7071,
-    "institutionsFloatPercentHeld": 0.7076,
-    "institutionsCount": 4884
+    "institutionsPercentHeld": 0.70798,
+    "institutionsFloatPercentHeld": 0.70848,
+    "institutionsCount": 4891
   },
   "earnings": {
     "maxAge": 86400,
@@ -3481,24 +3489,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.003417113,
-    "postMarketChange": 0.54359436,
-    "postMarketTime": "2026-02-11T01:00:00.000Z",
-    "postMarketPrice": 159.6236,
+    "postMarketChangePercent": 0,
+    "postMarketChange": 0,
+    "postMarketTime": "2026-02-12T01:00:00.000Z",
+    "postMarketPrice": 160,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.0111231,
-    "regularMarketChange": 1.75,
-    "regularMarketTime": "2026-02-10T21:00:20.000Z",
+    "regularMarketChangePercent": 0.0057832403,
+    "regularMarketChange": 0.919998,
+    "regularMarketTime": "2026-02-11T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 159.08,
-    "regularMarketDayHigh": 160.15,
-    "regularMarketDayLow": 156.72,
-    "regularMarketVolume": 9908368,
-    "averageDailyVolume10Day": 11081620,
-    "averageDailyVolume3Month": 10955723,
-    "regularMarketPreviousClose": 157.33,
+    "regularMarketPrice": 160,
+    "regularMarketDayHigh": 161.13,
+    "regularMarketDayLow": 158.21,
+    "regularMarketVolume": 10215071,
+    "averageDailyVolume10Day": 11118030,
+    "averageDailyVolume3Month": 10990040,
+    "regularMarketPreviousClose": 159.08,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 157.53,
+    "regularMarketOpen": 158.64,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -3514,30 +3522,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 372324433920
+    "marketCap": 373877342208
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 396559024128,
-    "forwardPE": 21.73714,
+    "enterpriseValue": 398697103360,
+    "forwardPE": 21.820274,
     "profitMargins": 0.19299999,
     "floatShares": 2319817484,
-    "sharesOutstanding": 2336733549,
-    "sharesShort": 18958988,
-    "sharesShortPriorMonth": "1970-07-26T12:37:59.000Z",
-    "sharesShortPreviousMonthDate": "2025-12-15T00:00:00.000Z",
-    "dateShortInterest": "2026-01-15T00:00:00.000Z",
-    "sharesPercentSharesOut": 0.0082,
+    "sharesOutstanding": 2324000685,
+    "sharesShort": 23373932,
+    "sharesShortPriorMonth": "1970-08-05T20:07:47.000Z",
+    "sharesShortPreviousMonthDate": "2025-12-31T00:00:00.000Z",
+    "dateShortInterest": "2026-01-30T00:00:00.000Z",
+    "sharesPercentSharesOut": 0.0101,
     "heldPercentInsiders": 0.0007,
-    "heldPercentInstitutions": 0.7071,
-    "shortRatio": 1.81,
-    "shortPercentOfFloat": 0.0082,
+    "heldPercentInstitutions": 0.70798,
+    "shortRatio": 2.03,
+    "shortPercentOfFloat": 0.0101,
     "beta": 0.38,
-    "impliedSharesOutstanding": 2340485262,
+    "impliedSharesOutstanding": 2336733549,
     "category": null,
     "bookValue": 22.493,
-    "priceToBook": 7.0724225,
+    "priceToBook": 7.113324,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-06-30T00:00:00.000Z",
@@ -3545,14 +3553,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.067,
     "netIncomeToCommon": 16161999872,
-    "trailingEps": 6.82,
+    "trailingEps": 6.78,
     "forwardEps": 7.33263,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1087776000,
-    "enterpriseToRevenue": 4.651,
-    "enterpriseToEbitda": 16.013,
-    "52WeekChange": -0.07223731,
-    "SandP52WeekChange": 0.15083516,
+    "enterpriseToRevenue": 4.676,
+    "enterpriseToEbitda": 16.099,
+    "52WeekChange": -0.06981641,
+    "SandP52WeekChange": 0.13519716,
     "lastDividendValue": 1.057,
     "lastDividendDate": "2026-01-23T00:00:00.000Z",
     "latestShareClass": null,
@@ -3667,6 +3675,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 215,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ARNOLD CRAIG",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 341,
         "value": 0,
         "filerUrl": "",
@@ -3679,14 +3699,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 215,
-        "value": 0,
+        "shares": 55,
+        "value": 7997,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ARNOLD CRAIG",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
+        "filerName": "AGUILAR MOSES VICTOR JAVIER",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-12-09T00:00:00.000Z",
+        "startDate": "2025-12-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3792,18 +3812,6 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
         "filerName": "FRANCISCO MA. FATIMA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 55,
-        "value": 7997,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
-        "filerName": "AGUILAR MOSES VICTOR JAVIER",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-03T00:00:00.000Z",
@@ -4087,18 +4095,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2254,
-        "value": 343130,
-        "filerUrl": "",
-        "transactionText": "Sale at price 152.23 per share.",
-        "filerName": "KEITH R ALEXANDRA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 11684,
         "value": 1778675,
         "filerUrl": "",
@@ -4111,6 +4107,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2254,
+        "value": 343130,
+        "filerUrl": "",
+        "transactionText": "Sale at price 152.23 per share.",
+        "filerName": "KEITH R ALEXANDRA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-02T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
         "shares": 3986,
         "value": 606796,
         "filerUrl": "",
@@ -4119,6 +4127,18 @@
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-10-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4921,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "AGUILAR MOSES VICTOR JAVIER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4177,18 +4197,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "JEJURIKAR SHAILESH",
         "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4921,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "AGUILAR MOSES VICTOR JAVIER",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
@@ -4339,6 +4347,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 15314,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "AGUILAR MOSES VICTOR JAVIER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 11638,
         "value": 1830352,
         "filerUrl": "",
@@ -4428,18 +4448,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 157.27 per share.",
         "filerName": "FRANCISCO MA. FATIMA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15314,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "AGUILAR MOSES VICTOR JAVIER",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-19T00:00:00.000Z",
@@ -4543,18 +4551,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25816,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KEITH R ALEXANDRA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 89970,
         "value": 0,
         "filerUrl": "",
@@ -4564,6 +4560,18 @@
         "moneyText": "",
         "startDate": "2025-08-18T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25816,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KEITH R ALEXANDRA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -5376,7 +5384,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 159.08,
+    "currentPrice": 160,
     "targetHighPrice": 186,
     "targetLowPrice": 148,
     "targetMeanPrice": 167.45454,
@@ -5406,6 +5414,6 @@
     "profitMargins": 0.19299999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-11T04:34:15.862Z",
+  "lastUpdated": "2026-02-12T04:28:06.657Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -45,7 +45,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.91980004,
         "position": 4482527,
-        "value": 44959744,
+        "value": 43121909,
         "pctChange": 0.2206
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Tidal Investments LLC",
         "pctHeld": 0.89599997,
         "position": 4366437,
-        "value": 43795361,
+        "value": 42005123,
         "pctChange": 0.1351
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.8846,
         "position": 4311221,
-        "value": 43241545,
+        "value": 41473945,
         "pctChange": 0.5697
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Voloridge Investment Management, LLC",
         "pctHeld": 0.79330003,
         "position": 3865946,
-        "value": 38775437,
+        "value": 37190400,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.73440003,
         "position": 3579166,
-        "value": 35899034,
+        "value": 34431576,
         "pctChange": 0.811
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0,
         "position": 44437876,
-        "value": 445711884,
+        "value": 427492362,
         "pctChange": 0.0034
       },
       {
@@ -99,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0,
         "position": 11017367,
-        "value": 110504188,
+        "value": 105987069,
         "pctChange": -0.0055
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0,
         "position": 6328927,
-        "value": 63479136,
+        "value": 60884277,
         "pctChange": -0.39790002
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0,
         "position": 25097687,
-        "value": 251729793,
+        "value": 241439746,
         "pctChange": -0.0366
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0,
         "position": 7410980,
-        "value": 74332127,
+        "value": 71293626,
         "pctChange": -0.0104
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03403,
-    "institutionsPercentHeld": 0.80458,
-    "institutionsFloatPercentHeld": 0.83292997,
-    "institutionsCount": 485
+    "institutionsPercentHeld": 0.8063,
+    "institutionsFloatPercentHeld": 0.83471,
+    "institutionsCount": 489
   },
   "earnings": {
     "maxAge": 86400,
@@ -251,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-11T13:33:35.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 19,
+        "priorPriceTarget": 22
+      },
       {
         "epochGradeDate": "2026-02-09T14:28:20.000Z",
         "firm": "Keefe, Bruyette & Woods",
@@ -1177,24 +1187,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0019940636,
-    "postMarketChange": 0.020000458,
-    "postMarketTime": "2026-02-11T00:58:25.000Z",
-    "postMarketPrice": 10.05,
+    "postMarketChangePercent": -0.0031184754,
+    "postMarketChange": -0.029999733,
+    "postMarketTime": "2026-02-12T00:58:58.000Z",
+    "postMarketPrice": 9.59,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0157017,
-    "regularMarketChange": -0.16,
-    "regularMarketTime": "2026-02-10T21:00:02.000Z",
+    "regularMarketChangePercent": -0.040877353,
+    "regularMarketChange": -0.40999985,
+    "regularMarketTime": "2026-02-11T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 10.03,
-    "regularMarketDayHigh": 10.42,
-    "regularMarketDayLow": 9.75,
-    "regularMarketVolume": 27878699,
-    "averageDailyVolume10Day": 33704650,
-    "averageDailyVolume3Month": 31917260,
-    "regularMarketPreviousClose": 10.19,
+    "regularMarketPrice": 9.62,
+    "regularMarketDayHigh": 10.06,
+    "regularMarketDayLow": 9.42,
+    "regularMarketVolume": 29800113,
+    "averageDailyVolume10Day": 32949820,
+    "averageDailyVolume3Month": 31726505,
+    "regularMarketPreviousClose": 10.03,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 10,
+    "regularMarketOpen": 10.06,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -1205,18 +1215,17 @@
     "shortName": "CleanSpark, Inc.",
     "longName": "CleanSpark, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2565201664
+    "marketCap": 2460343040
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3896534784,
-    "forwardPE": 31.34375,
+    "enterpriseValue": 3791675904,
+    "forwardPE": 30.0625,
     "profitMargins": -0.33245,
     "floatShares": 246983146,
     "sharesOutstanding": 255752913,
@@ -1226,28 +1235,28 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.3168,
     "heldPercentInsiders": 0.03403,
-    "heldPercentInstitutions": 0.80458,
+    "heldPercentInstitutions": 0.8063,
     "shortRatio": 2.68,
     "shortPercentOfFloat": 0.4439,
     "beta": 3.497,
     "impliedSharesOutstanding": 255752913,
     "category": null,
     "bookValue": 5.405,
-    "priceToBook": 1.855689,
+    "priceToBook": 1.7798334,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-09-30T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-09-30T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": -267036992,
-    "trailingEps": -1.04,
+    "trailingEps": -1.01,
     "forwardEps": 0.32,
     "lastSplitFactor": "1:10",
     "lastSplitDate": 1576022400,
-    "enterpriseToRevenue": 4.963,
-    "enterpriseToEbitda": -17.023,
-    "52WeekChange": -0.031368792,
-    "SandP52WeekChange": 0.15083516,
+    "enterpriseToRevenue": 4.829,
+    "enterpriseToEbitda": -16.565,
+    "52WeekChange": -0.059981227,
+    "SandP52WeekChange": 0.13519716,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1274,17 +1283,6 @@
   },
   "insiderTransactions": {
     "transactions": [
-      {
-        "maxAge": 1,
-        "shares": 7353,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCNEILL LARRY R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
       {
         "maxAge": 1,
         "shares": 7353,
@@ -1320,6 +1318,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 7353,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCNEILL LARRY R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 85315,
         "value": 997111,
         "filerUrl": "",
@@ -1340,39 +1349,6 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20524,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHULTZ MATTHEW",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1606,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VECCHIARELLI GARY ANTHONY",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-12-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8533,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCNEILL LARRY R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1432,6 +1408,39 @@
       },
       {
         "maxAge": 1,
+        "shares": 20524,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHULTZ MATTHEW",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1606,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VECCHIARELLI GARY ANTHONY",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-12-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8533,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCNEILL LARRY R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 33350,
         "filerUrl": "",
         "transactionText": "",
@@ -1472,28 +1481,6 @@
         "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-09-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 432250,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHULTZ MATTHEW",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 139250,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VECCHIARELLI GARY ANTHONY",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-09-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1543,35 +1530,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 20525,
+        "shares": 432250,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SCHULTZ MATTHEW",
-        "filerRelation": "Officer and Director",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-08-13T00:00:00.000Z",
+        "startDate": "2025-09-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 1606,
+        "shares": 139250,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "VECCHIARELLI GARY ANTHONY",
-        "filerRelation": "Chief Financial Officer",
+        "filerRelation": "President",
         "moneyText": "",
-        "startDate": "2025-08-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8532,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCNEILL LARRY R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-13T00:00:00.000Z",
+        "startDate": "2025-09-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1631,6 +1607,39 @@
       },
       {
         "maxAge": 1,
+        "shares": 20525,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHULTZ MATTHEW",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-08-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1606,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VECCHIARELLI GARY ANTHONY",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-08-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8532,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCNEILL LARRY R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1728688,
         "value": 0,
         "filerUrl": "",
@@ -1679,6 +1688,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 1337,
+        "value": 14225,
+        "filerUrl": "",
+        "transactionText": "Sale at price 10.64 per share.",
+        "filerName": "GARRISON SCOTT EUGENE",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 239,
+        "value": 2543,
+        "filerUrl": "",
+        "transactionText": "Sale at price 10.64 per share.",
+        "filerName": "MONNIG TAYLOR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 9010,
         "value": 95861,
         "filerUrl": "",
@@ -1715,26 +1748,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 1337,
-        "value": 14225,
+        "shares": 2676,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 10.64 per share.",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GARRISON SCOTT EUGENE",
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
+        "startDate": "2025-02-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 239,
-        "value": 2543,
+        "shares": 536,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 10.64 per share.",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MONNIG TAYLOR",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
+        "startDate": "2025-02-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1769,30 +1802,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BRADFORD ZACHARY",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2676,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GARRISON SCOTT EUGENE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 536,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MONNIG TAYLOR",
-        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-02-13T00:00:00.000Z",
         "ownership": "D"
@@ -1875,18 +1884,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCNEILL LARRY R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-10-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 34130,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BEYNON ROGER PAUL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1915,6 +1912,42 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-10-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 34130,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCNEILL LARRY R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-10-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 53533,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GARRISON SCOTT EUGENE",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2024-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10707,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MONNIG TAYLOR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-09-30T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1955,30 +1988,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 53533,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GARRISON SCOTT EUGENE",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10707,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MONNIG TAYLOR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1350,
         "value": 14094,
         "filerUrl": "",
@@ -1987,6 +1996,18 @@
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-09-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22222,
+        "value": 205331,
+        "filerUrl": "",
+        "transactionText": "Sale at price 9.24 per share.",
+        "filerName": "WOOD THOMAS LEIGH",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-09-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2041,18 +2062,6 @@
         "transactionText": "",
         "filerName": "BRADFORD ZACHARY",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-09-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 22222,
-        "value": 205331,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.24 per share.",
-        "filerName": "WOOD THOMAS LEIGH",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-09-12T00:00:00.000Z",
         "ownership": "D"
@@ -2215,7 +2224,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 10.03,
+    "currentPrice": 9.62,
     "targetHighPrice": 26,
     "targetLowPrice": 14,
     "targetMeanPrice": 19.42769,
@@ -2244,6 +2253,6 @@
     "profitMargins": -0.33245,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-11T04:33:18.431Z",
+  "lastUpdated": "2026-02-12T04:27:08.545Z",
   "source": "Static Build (yahoo-finance2)"
 }
