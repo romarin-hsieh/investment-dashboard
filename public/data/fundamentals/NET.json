@@ -45,7 +45,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.11359999,
         "position": 35825517,
-        "value": 6785711306,
+        "value": 6633810917,
         "pctChange": -0.1158
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1028,
         "position": 32407646,
-        "value": 6138332347,
+        "value": 6000923750,
         "pctChange": 0.0028
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0718,
         "position": 22632359,
-        "value": 4286795201,
+        "value": 4190833874,
         "pctChange": 0.0555
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.060300004,
         "position": 19011192,
-        "value": 3600909946,
+        "value": 3520302387,
         "pctChange": -0.051
       },
       {
@@ -81,7 +81,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.053400002,
         "position": 16823947,
-        "value": 3186623862,
+        "value": 3115290235,
         "pctChange": -0.23
       },
       {
@@ -90,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0432,
         "position": 13607106,
-        "value": 2577321997,
+        "value": 2519627793,
         "pctChange": -0.35580003
       },
       {
@@ -99,7 +99,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.042,
         "position": 13248725,
-        "value": 2509441050,
+        "value": 2453266383,
         "pctChange": -0.0743
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0216,
         "position": 6810392,
-        "value": 1289956373,
+        "value": 1261080274,
         "pctChange": 0.0307
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0191,
         "position": 6018175,
-        "value": 1139902548,
+        "value": 1114385453,
         "pctChange": 0.0419
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0126,
         "position": 3964733,
-        "value": 750960092,
+        "value": 734149602,
         "pctChange": 0.0126
       }
     ]
@@ -187,7 +187,7 @@
           "reportedDate": 1770758100
         }
       ],
-      "currentQuarterEstimate": 0.23392,
+      "currentQuarterEstimate": 0.23378,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-12T18:33:40.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 265,
+        "priorPriceTarget": 260
+      },
       {
         "epochGradeDate": "2026-02-11T19:45:57.000Z",
         "firm": "Jefferies",
@@ -3378,47 +3388,47 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": -0.0003430842,
-    "preMarketChange": -0.06500244,
-    "preMarketTime": "2026-02-12T14:26:50.000Z",
-    "preMarketPrice": 189.4,
     "preMarketSource": "FREE_REALTIME",
+    "postMarketChangePercent": -0.0015660923,
+    "postMarketChange": -0.2899933,
+    "postMarketTime": "2026-02-13T00:59:15.000Z",
+    "postMarketPrice": 184.88,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.0523948,
-    "regularMarketChange": 9.43001,
-    "regularMarketTime": "2026-02-11T21:03:55.000Z",
+    "regularMarketChangePercent": -0.0223853,
+    "regularMarketChange": -4.24001,
+    "regularMarketTime": "2026-02-12T21:00:57.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 189.41,
-    "regularMarketDayHigh": 203.62,
-    "regularMarketDayLow": 185.73,
-    "regularMarketVolume": 15566205,
-    "averageDailyVolume10Day": 7205580,
-    "averageDailyVolume3Month": 3745757,
-    "regularMarketPreviousClose": 179.98,
+    "regularMarketPrice": 185.17,
+    "regularMarketDayHigh": 200.5,
+    "regularMarketDayLow": 181.47,
+    "regularMarketVolume": 7535367,
+    "averageDailyVolume10Day": 7206190,
+    "averageDailyVolume3Month": 3763850,
+    "regularMarketPreviousClose": 189.41,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 203.05,
+    "regularMarketOpen": 191,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "NET",
     "underlyingSymbol": null,
     "shortName": "Cloudflare, Inc.",
     "longName": "Cloudflare, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 66650918912
+    "marketCap": 65158918144
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 66067992576,
-    "forwardPE": 130.77008,
+    "enterpriseValue": 64575991808,
+    "forwardPE": 128.0824,
     "profitMargins": -0.04717,
     "floatShares": 314562346,
     "sharesOutstanding": 317319000,
@@ -3435,7 +3445,7 @@
     "impliedSharesOutstanding": 351887000,
     "category": null,
     "bookValue": 4.147,
-    "priceToBook": 45.673985,
+    "priceToBook": 44.651558,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -3445,10 +3455,10 @@
     "trailingEps": -0.28,
     "forwardEps": 1.44571,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 30.475,
-    "enterpriseToEbitda": -5824.561,
-    "52WeekChange": 0.073144436,
-    "SandP52WeekChange": 0.13514149,
+    "enterpriseToRevenue": 29.787,
+    "enterpriseToEbitda": -5693.026,
+    "52WeekChange": 0.10662544,
+    "SandP52WeekChange": 0.13522327,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -5233,7 +5243,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 189.41,
+    "currentPrice": 185.17,
     "targetHighPrice": 300,
     "targetLowPrice": 135,
     "targetMeanPrice": 234.53,
@@ -5262,6 +5272,6 @@
     "profitMargins": -0.04717,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T14:26:52.346Z",
+  "lastUpdated": "2026-02-13T04:24:37.916Z",
   "source": "Static Build (yahoo-finance2)"
 }

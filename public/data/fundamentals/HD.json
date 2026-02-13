@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1001,
         "position": 99635779,
-        "value": 38925705409,
+        "value": 38879873803,
         "pctChange": 0.0135
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0757,
         "position": 75352278,
-        "value": 29438627417,
+        "value": 29403966013,
         "pctChange": -0.0173
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0463,
         "position": 46100178,
-        "value": 18010417203,
+        "value": 17989211515,
         "pctChange": 0.0018000001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0239,
         "position": 23756142,
-        "value": 9281049382,
+        "value": 9270121760,
         "pctChange": 0.0147
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0226,
         "position": 22489918,
-        "value": 8786360999,
+        "value": 8776015829,
         "pctChange": -0.0037
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0150999995,
         "position": 15005103,
-        "value": 5862193530,
+        "value": 5855291310,
         "pctChange": -0.0004
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.014400001,
         "position": 14358018,
-        "value": 5609390367,
+        "value": 5602785801,
         "pctChange": -0.0145000005
       },
       {
@@ -108,7 +108,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.014199999,
         "position": 14095697,
-        "value": 5506906800,
+        "value": 5500422900,
         "pctChange": 0.057800002
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.013200001,
         "position": 13147117,
-        "value": 5136315573,
+        "value": 5130268011,
         "pctChange": 0.0156
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0117,
         "position": 11662015,
-        "value": 4556115934,
+        "value": 4550751507,
         "pctChange": -0.0053
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-12T19:26:12.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 450,
+        "priorPriceTarget": 407
+      },
       {
         "epochGradeDate": "2026-01-20T18:01:54.000Z",
         "firm": "TD Cowen",
@@ -5378,47 +5388,47 @@
   },
   "price": {
     "maxAge": 1,
-    "preMarketChangePercent": 0.0022788167,
-    "preMarketChange": 0.89001465,
-    "preMarketTime": "2026-02-12T14:26:01.000Z",
-    "preMarketPrice": 391.45,
     "preMarketSource": "FREE_REALTIME",
+    "postMarketChangePercent": 0.0050266176,
+    "postMarketChange": 1.9614868,
+    "postMarketTime": "2026-02-13T00:58:49.000Z",
+    "postMarketPrice": 392.1815,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.00256621,
-    "regularMarketChange": 1,
-    "regularMarketTime": "2026-02-11T21:00:02.000Z",
+    "regularMarketChangePercent": -0.00117741,
+    "regularMarketChange": -0.459991,
+    "regularMarketTime": "2026-02-12T21:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 390.68,
-    "regularMarketDayHigh": 391.42,
-    "regularMarketDayLow": 382.08,
-    "regularMarketVolume": 2543491,
-    "averageDailyVolume10Day": 4299100,
-    "averageDailyVolume3Month": 4675222,
-    "regularMarketPreviousClose": 389.68,
+    "regularMarketPrice": 390.22,
+    "regularMarketDayHigh": 397.63,
+    "regularMarketDayLow": 389.06,
+    "regularMarketVolume": 3691440,
+    "averageDailyVolume10Day": 4299150,
+    "averageDailyVolume3Month": 4702571,
+    "regularMarketPreviousClose": 390.68,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 385,
+    "regularMarketOpen": 393.55,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PRE",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "HD",
     "underlyingSymbol": null,
     "shortName": "Home Depot, Inc. (The)",
     "longName": "The Home Depot, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 388926406656
+    "marketCap": 388468506624
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 453224431616,
-    "forwardPE": 25.975304,
+    "enterpriseValue": 452766498816,
+    "forwardPE": 25.944721,
     "profitMargins": 0.087740004,
     "floatShares": 993908712,
     "sharesOutstanding": 995511485,
@@ -5435,7 +5445,7 @@
     "impliedSharesOutstanding": 995511485,
     "category": null,
     "bookValue": 12.177,
-    "priceToBook": 32.083435,
+    "priceToBook": 32.04566,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-02-02T00:00:00.000Z",
@@ -5443,14 +5453,14 @@
     "mostRecentQuarter": "2025-11-02T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.013,
     "netIncomeToCommon": 14581999616,
-    "trailingEps": 14.65,
+    "trailingEps": 14.63,
     "forwardEps": 15.04044,
     "lastSplitFactor": "3:2",
     "lastSplitDate": 946598400,
-    "enterpriseToRevenue": 2.727,
-    "enterpriseToEbitda": 17.713,
-    "52WeekChange": -0.052736223,
-    "SandP52WeekChange": 0.13514149,
+    "enterpriseToRevenue": 2.724,
+    "enterpriseToEbitda": 17.695,
+    "52WeekChange": -0.04595846,
+    "SandP52WeekChange": 0.13522327,
     "lastDividendValue": 2.3,
     "lastDividendDate": "2025-12-04T00:00:00.000Z",
     "latestShareClass": null,
@@ -6876,7 +6886,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 390.68,
+    "currentPrice": 390.22,
     "targetHighPrice": 450,
     "targetLowPrice": 320,
     "targetMeanPrice": 395.39395,
@@ -6906,6 +6916,6 @@
     "profitMargins": 0.087740004,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-12T14:26:18.326Z",
+  "lastUpdated": "2026-02-13T04:24:05.251Z",
   "source": "Static Build (yahoo-finance2)"
 }
