@@ -80,7 +80,19 @@ async function rebuildMetadata() {
 
                 // Normalize exchange name for TradingView widget compatibility
                 let exchange = price.exchangeName || 'Unknown';
-                if (exchange.toLowerCase().includes('nasdaq')) {
+                const exchangeCode = price.exchange || '';
+
+                // Code-based mapping (most reliable)
+                const codeMapping = {
+                    'ASE': 'AMEX', 'PCX': 'AMEX',
+                    'NMS': 'NASDAQ', 'NGM': 'NASDAQ', 'NCM': 'NASDAQ',
+                    'NYQ': 'NYSE',
+                };
+                if (codeMapping[exchangeCode]) {
+                    exchange = codeMapping[exchangeCode];
+                } else if (exchange.toLowerCase().includes('amex') || exchange.toLowerCase().includes('american')) {
+                    exchange = 'AMEX';
+                } else if (exchange.toLowerCase().includes('nasdaq')) {
                     exchange = 'NASDAQ';
                 } else if (exchange.toLowerCase().includes('nyse')) {
                     exchange = 'NYSE';

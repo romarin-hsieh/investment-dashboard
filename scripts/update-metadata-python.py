@@ -228,7 +228,10 @@ class YFinanceMetadataUpdater:
             'NCM': 'NASDAQ',
             'NYQ': 'NYSE',
             'NYSE': 'NYSE',
-            'NASDAQ': 'NASDAQ'
+            'NASDAQ': 'NASDAQ',
+            'ASE': 'AMEX',
+            'PCX': 'AMEX',
+            'AMEX': 'AMEX',
         }
         return exchange_mapping.get(exchange, exchange)
 

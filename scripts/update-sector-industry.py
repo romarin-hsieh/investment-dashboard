@@ -101,8 +101,14 @@ def normalize_exchange(exchange):
         'NasdaqGM': 'NASDAQ',
         'NasdaqCM': 'NASDAQ',
         'NASDAQ': 'NASDAQ',
+        'NMS': 'NASDAQ',
+        'NGM': 'NASDAQ',
+        'NCM': 'NASDAQ',
         'NYQ': 'NYSE',
         'NYSE': 'NYSE',
+        'ASE': 'AMEX',
+        'PCX': 'AMEX',
+        'AMEX': 'AMEX',
     }
     return exchange_mapping.get(exchange, exchange or 'NASDAQ')
 
