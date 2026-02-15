@@ -50,8 +50,7 @@
             <div class="widget-header">
               <h4>Symbol Overview</h4>
             </div>
-            <FastTradingViewWidget 
-              widget-type="overview"
+            <AdvancedChartWidget 
               :symbol="symbol" 
               :exchange="exchange"
             />
@@ -288,6 +287,7 @@
 
 <script>
 import FastTradingViewWidget from '@/components/FastTradingViewWidget.vue'
+import AdvancedChartWidget from '@/components/AdvancedChartWidget.vue'
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import MarketRegimeWidget from '@/components/MarketRegimeWidget.vue'
 import TradingStrategyWidget from '@/components/TradingStrategyWidget.vue'
@@ -312,6 +312,7 @@ export default {
   name: 'StockDetail',
   components: {
     FastTradingViewWidget,
+    AdvancedChartWidget,
     LazyTradingViewWidget,
     MarketRegimeWidget,
     TradingStrategyWidget,
@@ -368,8 +369,12 @@ export default {
       const symbol = this.symbol
       
       // NYSE 股票 (根據 symbols_metadata.json 的實際資料)
-      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS', 'UUUU'].includes(symbol)) {
+      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS'].includes(symbol)) {
         return 'NYSE'
+      }
+      // AMEX 股票
+      else if (['UUUU'].includes(symbol)) {
+        return 'AMEX'
       }
       // NASDAQ 股票
       else if (['ASTS', 'RIVN', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'CRWV', 'PLTR', 'TSLA'].includes(symbol)) {
