@@ -21,6 +21,14 @@
         "period": "-2m",
         "strongBuy": 0,
         "buy": 7,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 0,
+        "buy": 7,
         "hold": 1,
         "sell": 0,
         "strongSell": 1
@@ -714,8 +722,8 @@
     "regularMarketDayHigh": 8.85,
     "regularMarketDayLow": 7.97,
     "regularMarketVolume": 13381611,
-    "averageDailyVolume10Day": 21431870,
-    "averageDailyVolume3Month": 21438859,
+    "averageDailyVolume10Day": 18269180,
+    "averageDailyVolume3Month": 21826995,
     "regularMarketPreviousClose": 8.6,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 8.49,
@@ -740,7 +748,6 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 1600987776,
-    "forwardPE": -21.026316,
     "profitMargins": -0.70319,
     "floatShares": 117653418,
     "sharesOutstanding": 165150783,
@@ -769,8 +776,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 5.406,
     "enterpriseToEbitda": -13.206,
-    "52WeekChange": -0.6132597,
-    "SandP52WeekChange": 0.11997759,
+    "52WeekChange": -0.5133983,
+    "SandP52WeekChange": 0.15480888,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1501,7 +1508,8 @@
     "targetLowPrice": 6,
     "targetMeanPrice": 13.11111,
     "targetMedianPrice": 13,
-    "recommendationKey": "none",
+    "recommendationMean": 1.7,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
     "totalCash": 52282000,
     "totalCashPerShare": 0.317,
@@ -1524,6 +1532,6 @@
     "profitMargins": -0.70319,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-22T04:17:28.809Z",
+  "lastUpdated": "2026-02-23T04:25:49.188Z",
   "source": "Static Build (yahoo-finance2)"
 }
