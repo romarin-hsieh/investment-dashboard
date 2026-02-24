@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0716,
         "position": 11423424,
-        "value": 1824891984,
+        "value": 1636748176,
         "pctChange": 0.0049
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.049099997,
         "position": 7830756,
-        "value": 1250963271,
+        "value": 1121990710,
         "pctChange": 0.005
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Groupama Asset Managment",
         "pctHeld": 0.0298,
         "position": 4750000,
-        "value": 758812500,
+        "value": 680579994,
         "pctChange": 2145.4077
       },
       {
@@ -72,7 +72,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.028399998,
         "position": 4529502,
-        "value": 723587944,
+        "value": 648987041,
         "pctChange": 0.1228
       },
       {
@@ -81,7 +81,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0162,
         "position": 2582897,
-        "value": 412617795,
+        "value": 370077479,
         "pctChange": 0.1592
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0161,
         "position": 2572358,
-        "value": 410934190,
+        "value": 368567451,
         "pctChange": 0.43310001
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0150999995,
         "position": 2412344,
-        "value": 385371954,
+        "value": 345640645,
         "pctChange": 0.3181
       },
       {
@@ -108,7 +108,7 @@
         "organization": "American Century Companies Inc",
         "pctHeld": 0.0150999995,
         "position": 2401772,
-        "value": 383683077,
+        "value": 344125889,
         "pctChange": -0.0070999996
       },
       {
@@ -117,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0147,
         "position": 2337604,
-        "value": 373432239,
+        "value": 334931898,
         "pctChange": 0.0344
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.012999999,
         "position": 2069630,
-        "value": 330623392,
+        "value": 296536583,
         "pctChange": 0.0498
       }
     ]
@@ -253,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-23T17:12:25.000Z",
+        "firm": "Baird",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 300,
+        "priorPriceTarget": 360
+      },
+      {
+        "epochGradeDate": "2026-02-23T17:10:55.000Z",
+        "firm": "Stephens & Co.",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 225,
+        "priorPriceTarget": 340
+      },
       {
         "epochGradeDate": "2026-02-20T20:04:51.000Z",
         "firm": "JP Morgan",
@@ -6119,28 +6139,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0008763655,
-    "postMarketChange": 0.13999939,
-    "postMarketTime": "2026-02-21T00:59:52.000Z",
-    "postMarketPrice": 159.89,
+    "postMarketChangePercent": 0.0061424933,
+    "postMarketChange": 0.88009644,
+    "postMarketTime": "2026-02-24T00:59:56.000Z",
+    "postMarketPrice": 144.1601,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.05467782,
-    "regularMarketChange": -9.2400055,
-    "regularMarketTime": "2026-02-20T21:00:00.000Z",
+    "regularMarketChangePercent": -0.103099,
+    "regularMarketChange": -16.47,
+    "regularMarketTime": "2026-02-23T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 159.75,
-    "regularMarketDayHigh": 172.6,
-    "regularMarketDayLow": 159.66,
-    "regularMarketVolume": 3268445,
+    "regularMarketPrice": 143.28,
+    "regularMarketDayHigh": 157.61,
+    "regularMarketDayLow": 141.56,
+    "regularMarketVolume": 5684899,
     "averageDailyVolume10Day": 2836630,
     "averageDailyVolume3Month": 2188198,
-    "regularMarketPreviousClose": 168.99,
+    "regularMarketPreviousClose": 159.75,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 167,
+    "regularMarketOpen": 156.12,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "ZS",
     "underlyingSymbol": null,
@@ -6152,13 +6172,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 25475524608
+    "marketCap": 22849034240
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 23990878208,
-    "forwardPE": 35.590244,
+    "enterpriseValue": 21364385792,
+    "forwardPE": 31.920938,
     "profitMargins": -0.01449,
     "floatShares": 102913149,
     "sharesOutstanding": 159471208,
@@ -6175,7 +6195,7 @@
     "impliedSharesOutstanding": 159471208,
     "category": null,
     "bookValue": 12.431,
-    "priceToBook": 12.850938,
+    "priceToBook": 11.526024,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-07-31T00:00:00.000Z",
@@ -6185,8 +6205,8 @@
     "trailingEps": -0.26,
     "forwardEps": 4.48859,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 8.468,
-    "enterpriseToEbitda": -354.344,
+    "enterpriseToRevenue": 7.541,
+    "enterpriseToEbitda": -315.551,
     "52WeekChange": -0.18929207,
     "SandP52WeekChange": 0.15480888,
     "latestShareClass": null,
@@ -7032,6 +7052,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 10952,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHLOSSMAN ROBERT S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 16428,
         "value": 0,
         "filerUrl": "",
@@ -7061,18 +7093,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GELLER ADAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10952,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-05T00:00:00.000Z",
@@ -7140,6 +7160,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 6220,
+        "value": 1065362,
+        "filerUrl": "",
+        "transactionText": "Sale at price 171.28 per share.",
+        "filerName": "SCHLOSSMAN ROBERT S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3654,
         "value": 625857,
         "filerUrl": "",
@@ -7170,18 +7202,6 @@
         "transactionText": "Sale at price 171.28 per share.",
         "filerName": "CHAUDHRY JAGTAR SINGH",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-09-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 6220,
-        "value": 1065362,
-        "filerUrl": "",
-        "transactionText": "Sale at price 171.28 per share.",
-        "filerName": "SCHLOSSMAN ROBERT S",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-17T00:00:00.000Z",
         "ownership": "D"
@@ -7347,11 +7367,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 159.75,
+    "currentPrice": 143.28,
     "targetHighPrice": 390,
     "targetLowPrice": 215,
-    "targetMeanPrice": 300.96112,
-    "targetMedianPrice": 310,
+    "targetMeanPrice": 296.7389,
+    "targetMedianPrice": 305,
     "recommendationMean": 1.53061,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 45,
@@ -7376,6 +7396,6 @@
     "profitMargins": -0.01449,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-23T04:29:55.495Z",
+  "lastUpdated": "2026-02-24T04:22:43.535Z",
   "source": "Static Build (yahoo-finance2)"
 }
