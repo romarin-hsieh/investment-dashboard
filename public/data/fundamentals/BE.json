@@ -45,7 +45,7 @@
         "organization": "Ameriprise Financial, Inc.",
         "pctHeld": 0.1021,
         "position": 28646003,
-        "value": 4591381325,
+        "value": 4760965611,
         "pctChange": -0.033800002
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0861,
         "position": 24157256,
-        "value": 3871924962,
+        "value": 4014935873,
         "pctChange": 0.16860001
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0743,
         "position": 20853477,
-        "value": 3342395268,
+        "value": 3465847813,
         "pctChange": 0.0022
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.0359,
         "position": 10076022,
-        "value": 1614984793,
+        "value": 1674634825,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.033299997,
         "position": 9352198,
-        "value": 1498970284,
+        "value": 1554335279,
         "pctChange": 0.0631
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.031400003,
         "position": 8798303,
-        "value": 1410191994,
+        "value": 1462277931,
         "pctChange": -0.2555
       },
       {
@@ -99,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0215,
         "position": 6034838,
-        "value": 967263827,
+        "value": 1002990057,
         "pctChange": 0.1342
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0188,
         "position": 5277461,
-        "value": 845871442,
+        "value": 877114002,
         "pctChange": 0.0538
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0172,
         "position": 4828230,
-        "value": 773868698,
+        "value": 802451811,
         "pctChange": 0.71910006
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Graticule Asia Macro Advisors LLC",
         "pctHeld": 0.017,
         "position": 4759305,
-        "value": 762821399,
+        "value": 790996476,
         "pctChange": 0
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.06448,
-    "institutionsPercentHeld": 0.86617,
-    "institutionsFloatPercentHeld": 0.92587996,
-    "institutionsCount": 1036
+    "institutionsPercentHeld": 0.8634,
+    "institutionsFloatPercentHeld": 0.92291,
+    "institutionsCount": 1039
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-24T14:16:46.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Neutral",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 162,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-02-09T12:27:20.000Z",
         "firm": "Mizuho",
@@ -2449,24 +2459,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0043049813,
-    "postMarketChange": -0.69000244,
-    "postMarketTime": "2026-02-24T00:59:29.000Z",
-    "postMarketPrice": 159.59,
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.08627579,
-    "regularMarketChange": 12.73,
-    "regularMarketTime": "2026-02-23T21:00:02.000Z",
+    "postMarketChangePercent": 0.011973559,
+    "postMarketChange": 1.9900055,
+    "postMarketTime": "2026-02-25T00:59:58.000Z",
+    "postMarketPrice": 168.19,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0369354,
+    "regularMarketChange": 5.92,
+    "regularMarketTime": "2026-02-24T21:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 160.28,
-    "regularMarketDayHigh": 161.14,
-    "regularMarketDayLow": 145.84,
-    "regularMarketVolume": 9996753,
+    "regularMarketPrice": 166.2,
+    "regularMarketDayHigh": 173.07,
+    "regularMarketDayLow": 154.6901,
+    "regularMarketVolume": 10366371,
     "averageDailyVolume10Day": 11389790,
     "averageDailyVolume3Month": 12186526,
-    "regularMarketPreviousClose": 147.55,
+    "regularMarketPreviousClose": 160.28,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 147.7,
+    "regularMarketOpen": 157.4,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -2477,18 +2487,18 @@
     "shortName": "Bloom Energy Corporation",
     "longName": "Bloom Energy Corporation",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 44966268928
+    "marketCap": 46627115008
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 45532282880,
-    "forwardPE": 55.25696,
+    "enterpriseValue": 47193128960,
+    "forwardPE": 57.297897,
     "profitMargins": -0.04369,
     "floatShares": 264270808,
     "sharesOutstanding": 280548215,
@@ -2498,14 +2508,14 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.081099994,
     "heldPercentInsiders": 0.06448,
-    "heldPercentInstitutions": 0.86617,
+    "heldPercentInstitutions": 0.8634,
     "shortRatio": 1.88,
     "shortPercentOfFloat": 0.1078,
     "beta": 3.119,
     "impliedSharesOutstanding": 280548215,
     "category": null,
     "bookValue": 2.745,
-    "priceToBook": 58.3898,
+    "priceToBook": 60.546448,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -2514,10 +2524,10 @@
     "earningsQuarterlyGrowth": -0.99,
     "netIncomeToCommon": -88434000,
     "trailingEps": -0.37,
-    "forwardEps": 2.90063,
+    "forwardEps": 2.9083,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 22.496,
-    "enterpriseToEbitda": 327.483,
+    "enterpriseToRevenue": 23.317,
+    "enterpriseToEbitda": 339.429,
     "52WeekChange": 5.5,
     "SandP52WeekChange": 0.15480888,
     "latestShareClass": null,
@@ -3135,18 +3145,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 42383,
-        "value": 811211,
-        "filerUrl": "",
-        "transactionText": "Sale at price 19.14 per share.",
-        "filerName": "SRIDHAR K. R.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 97860,
         "value": 0,
         "filerUrl": "",
@@ -3177,6 +3175,18 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SODERBERG SHAWN MARIE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 42383,
+        "value": 811211,
+        "filerUrl": "",
+        "transactionText": "Sale at price 19.14 per share.",
+        "filerName": "SRIDHAR K. R.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-13T00:00:00.000Z",
         "ownership": "D"
@@ -3729,18 +3739,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 50746,
-        "value": 494266,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.74 per share.",
-        "filerName": "SRIDHAR K. R.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-03-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2160,
         "value": 20110,
         "filerUrl": "",
@@ -3753,14 +3751,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 101445,
-        "value": 0,
+        "shares": 50746,
+        "value": 494266,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "transactionText": "Sale at price 9.74 per share.",
         "filerName": "SRIDHAR K. R.",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-03-15T00:00:00.000Z",
+        "startDate": "2024-03-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3770,6 +3768,18 @@
         "transactionText": "",
         "filerName": "SODERBERG SHAWN MARIE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-03-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 101445,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SRIDHAR K. R.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-03-15T00:00:00.000Z",
         "ownership": "D"
@@ -3803,7 +3813,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 160.28,
+    "currentPrice": 166.2,
     "targetHighPrice": 207,
     "targetLowPrice": 40,
     "targetMeanPrice": 142.70833,
@@ -3833,6 +3843,6 @@
     "profitMargins": -0.04369,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-24T04:20:47.882Z",
+  "lastUpdated": "2026-02-25T04:23:18.381Z",
   "source": "Static Build (yahoo-finance2)"
 }

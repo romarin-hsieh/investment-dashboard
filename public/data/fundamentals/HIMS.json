@@ -5,7 +5,7 @@
         "period": "0m",
         "strongBuy": 2,
         "buy": 1,
-        "hold": 9,
+        "hold": 10,
         "sell": 1,
         "strongSell": 1
       },
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.121199995,
         "position": 26573504,
-        "value": 412155053,
+        "value": 410826372,
         "pctChange": 0.056799997
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0954,
         "position": 20925666,
-        "value": 324557084,
+        "value": 323510797,
         "pctChange": 0.0721
       },
       {
@@ -63,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0859,
         "position": 18838270,
-        "value": 292181572,
+        "value": 291239654,
         "pctChange": -0.4704
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0653,
         "position": 14322912,
-        "value": 222148368,
+        "value": 221432220,
         "pctChange": -0.2375
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.047199998,
         "position": 10347343,
-        "value": 160487292,
+        "value": 159969923,
         "pctChange": 0.121800005
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.033299997,
         "position": 7305525,
-        "value": 113308694,
+        "value": 112943416,
         "pctChange": 0.0184
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0251,
         "position": 5509764,
-        "value": 85456440,
+        "value": 85180951,
         "pctChange": 0.1243
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Renaissance Technologies, LLC",
         "pctHeld": 0.022,
         "position": 4818009,
-        "value": 74727320,
+        "value": 74486419,
         "pctChange": -0.4704
       },
       {
@@ -117,7 +117,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0207,
         "position": 4549084,
-        "value": 70556293,
+        "value": 70328838,
         "pctChange": 0.5884
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0179,
         "position": 3929232,
-        "value": 60942389,
+        "value": 60745926,
         "pctChange": -0.46
       }
     ]
@@ -187,14 +187,16 @@
           "reportedDate": 1771880700
         }
       ],
-      "currentQuarterEstimate": 0.14965,
+      "currentQuarterEstimate": 0.02105,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-04T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,66 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-24T20:21:29.000Z",
+        "firm": "Leerink Partners",
+        "toGrade": "Market Perform",
+        "fromGrade": "Market Perform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 17.5,
+        "priorPriceTarget": 20
+      },
+      {
+        "epochGradeDate": "2026-02-24T18:02:29.000Z",
+        "firm": "BTIG",
+        "toGrade": "Neutral",
+        "fromGrade": "Buy",
+        "action": "down",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
+      {
+        "epochGradeDate": "2026-02-24T17:40:55.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Sell",
+        "fromGrade": "Sell",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 13.25,
+        "priorPriceTarget": 16.5
+      },
+      {
+        "epochGradeDate": "2026-02-24T17:00:00.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 17,
+        "priorPriceTarget": 20
+      },
+      {
+        "epochGradeDate": "2026-02-24T15:55:22.000Z",
+        "firm": "Truist Securities",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "reit",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 18,
+        "priorPriceTarget": 37
+      },
+      {
+        "epochGradeDate": "2026-02-24T15:27:41.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "In-Line",
+        "fromGrade": "In-Line",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 24,
+        "priorPriceTarget": 33
+      },
       {
         "epochGradeDate": "2026-02-09T16:27:11.000Z",
         "firm": "TD Cowen",
@@ -1337,24 +1399,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.08461636,
-    "postMarketChange": -1.3123999,
-    "postMarketTime": "2026-02-24T00:59:59.000Z",
-    "postMarketPrice": 14.1976,
+    "postMarketChangePercent": -0.0045277937,
+    "postMarketChange": -0.069999695,
+    "postMarketTime": "2026-02-25T00:59:53.000Z",
+    "postMarketPrice": 15.39,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": -0.00767754,
-    "regularMarketChange": -0.12,
-    "regularMarketTime": "2026-02-23T21:00:02.000Z",
+    "regularMarketChangePercent": -0.0032237398,
+    "regularMarketChange": -0.0500002,
+    "regularMarketTime": "2026-02-24T21:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 15.51,
-    "regularMarketDayHigh": 15.78,
-    "regularMarketDayLow": 15.155,
-    "regularMarketVolume": 35533581,
+    "regularMarketPrice": 15.46,
+    "regularMarketDayHigh": 16.06,
+    "regularMarketDayLow": 13.745,
+    "regularMarketVolume": 61617782,
     "averageDailyVolume10Day": 43152610,
     "averageDailyVolume3Month": 20678690,
-    "regularMarketPreviousClose": 15.63,
+    "regularMarketPreviousClose": 15.51,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 15.795,
+    "regularMarketOpen": 14.83,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -1365,18 +1427,17 @@
     "shortName": "Hims & Hers Health, Inc.",
     "longName": "Hims & Hers Health, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 3530828544
+    "marketCap": 3519446016
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4019107328,
-    "forwardPE": 11.974614,
+    "forwardPE": 12.462616,
     "profitMargins": 0.060510002,
     "floatShares": 208002447,
     "sharesOutstanding": 219270891,
@@ -1393,7 +1454,7 @@
     "impliedSharesOutstanding": 227648514,
     "category": null,
     "bookValue": 2.554,
-    "priceToBook": 6.0728273,
+    "priceToBook": 6.05325,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1401,8 +1462,8 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.791,
     "netIncomeToCommon": 133789000,
-    "trailingEps": 0.53,
-    "forwardEps": 1.29524,
+    "trailingEps": 0.51,
+    "forwardEps": 1.42561,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 1.818,
     "enterpriseToEbitda": 23.911,
@@ -1520,30 +1581,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10021,
-        "value": 367871,
-        "filerUrl": "",
-        "transactionText": "Sale at price 36.71 per share.",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 13750,
-        "value": 504762,
-        "filerUrl": "",
-        "transactionText": "Sale at price 36.71 per share.",
-        "filerName": "CHI MICHAEL Y",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 8411,
         "value": 308768,
         "filerUrl": "",
@@ -1568,46 +1605,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 164369,
+        "shares": 13750,
+        "value": 504762,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DUDUM ANDREW",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16521,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 105201,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "OKUPE OLUYEMI",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 72106,
-        "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 36.71 per share.",
         "filerName": "CHI MICHAEL Y",
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
+        "startDate": "2025-12-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10021,
+        "value": 367871,
+        "filerUrl": "",
+        "transactionText": "Sale at price 36.71 per share.",
+        "filerName": "CARROLL PATRICK HARRISON",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-12-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1638,6 +1655,50 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "AUTOR DEBORAH M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 105201,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "OKUPE OLUYEMI",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 72106,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHI MICHAEL Y",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 164369,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DUDUM ANDREW",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16521,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CARROLL PATRICK HARRISON",
         "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
@@ -1885,6 +1946,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2637,
+        "value": 155029,
+        "filerUrl": "",
+        "transactionText": "Sale at price 58.79 per share.",
+        "filerName": "BOUGHTON SOLEIL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 85000,
         "value": 5116924,
         "filerUrl": "",
@@ -1903,18 +1976,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 5.01 per share.",
         "filerName": "OKUPE OLUYEMI",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-09-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2637,
-        "value": 155029,
-        "filerUrl": "",
-        "transactionText": "Sale at price 58.79 per share.",
-        "filerName": "BOUGHTON SOLEIL",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-29T00:00:00.000Z",
         "ownership": "D"
@@ -1957,42 +2018,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 65110,
-        "value": 3292906,
-        "filerUrl": "",
-        "transactionText": "Sale at price 50.57 per share.",
-        "filerName": "DUDUM ANDREW",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10021,
-        "value": 506060,
-        "filerUrl": "",
-        "transactionText": "Sale at price 50.50 per share.",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-09-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 13749,
-        "value": 694324,
-        "filerUrl": "",
-        "transactionText": "Sale at price 50.50 per share.",
-        "filerName": "CHI MICHAEL Y",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2637,
         "value": 133168,
         "filerUrl": "",
@@ -2011,6 +2036,42 @@
         "transactionText": "Sale at price 50.50 per share.",
         "filerName": "BECKLUND IRENE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 13749,
+        "value": 694324,
+        "filerUrl": "",
+        "transactionText": "Sale at price 50.50 per share.",
+        "filerName": "CHI MICHAEL Y",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 65110,
+        "value": 3292906,
+        "filerUrl": "",
+        "transactionText": "Sale at price 50.57 per share.",
+        "filerName": "DUDUM ANDREW",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10021,
+        "value": 506060,
+        "filerUrl": "",
+        "transactionText": "Sale at price 50.50 per share.",
+        "filerName": "CARROLL PATRICK HARRISON",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-09-17T00:00:00.000Z",
         "ownership": "D"
@@ -2041,22 +2102,33 @@
       },
       {
         "maxAge": 1,
-        "shares": 16521,
+        "shares": 6623,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
+        "filerName": "SCHULTZ KARE",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 6623,
+        "shares": 41420,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCHULTZ KARE",
-        "filerRelation": "Director",
+        "filerName": "BOUGHTON SOLEIL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17983,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BECKLUND IRENE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
@@ -2111,22 +2183,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 41420,
+        "shares": 16521,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BOUGHTON SOLEIL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 17983,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BECKLUND IRENE",
-        "filerRelation": "Officer",
+        "filerName": "CARROLL PATRICK HARRISON",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
@@ -2433,30 +2494,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 240771,
-        "value": 13813792,
-        "filerUrl": "",
-        "transactionText": "Sale at price 56.35 - 59.45 per share.",
-        "filerName": "DUDUM ANDREW",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 17102,
-        "value": 1021844,
-        "filerUrl": "",
-        "transactionText": "Sale at price 59.75 per share.",
-        "filerName": "CHI MICHAEL Y",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 8023,
         "value": 463294,
         "filerUrl": "",
@@ -2481,6 +2518,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 17102,
+        "value": 1021844,
+        "filerUrl": "",
+        "transactionText": "Sale at price 59.75 per share.",
+        "filerName": "CHI MICHAEL Y",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 240771,
+        "value": 13813792,
+        "filerUrl": "",
+        "transactionText": "Sale at price 56.35 - 59.45 per share.",
+        "filerName": "DUDUM ANDREW",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
         "shares": 289703,
         "value": 304564,
         "filerUrl": "",
@@ -2489,17 +2550,6 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 26456,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-06-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2520,17 +2570,6 @@
         "transactionText": "",
         "filerName": "MANUEL ANJA L.",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 87106,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHI MICHAEL Y",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-13T00:00:00.000Z",
         "ownership": "D"
@@ -2564,6 +2603,28 @@
         "transactionText": "",
         "filerName": "OKUPE OLUYEMI",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 87106,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHI MICHAEL Y",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 26456,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CARROLL PATRICK HARRISON",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-06-13T00:00:00.000Z",
         "ownership": "D"
@@ -2606,17 +2667,6 @@
         "shares": 9935,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PENDARVIS CHRISTIANE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9935,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "PEREZ GARCIA ANDREA G",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2629,6 +2679,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "AUTOR DEBORAH M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9935,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PENDARVIS CHRISTIANE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-12T00:00:00.000Z",
@@ -2804,6 +2865,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3235,
+        "value": 181160,
+        "filerUrl": "",
+        "transactionText": "Sale at price 56.00 per share.",
+        "filerName": "BOUGHTON SOLEIL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 33333,
         "value": 1867376,
         "filerUrl": "",
@@ -2822,18 +2895,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 2.43 per share.",
         "filerName": "BAIRD MELISSA",
         "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-05-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3235,
-        "value": 181160,
-        "filerUrl": "",
-        "transactionText": "Sale at price 56.00 per share.",
-        "filerName": "BOUGHTON SOLEIL",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-12T00:00:00.000Z",
         "ownership": "D"
@@ -3044,24 +3105,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 13460,
-        "value": 67435,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 5.01 per share.",
-        "filerName": "BAIRD MELISSA",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3236,
         "value": 89864,
         "filerUrl": "",
         "transactionText": "Sale at price 27.77 per share.",
         "filerName": "BOUGHTON SOLEIL",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 13460,
+        "value": 67435,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 5.01 per share.",
+        "filerName": "BAIRD MELISSA",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-03-31T00:00:00.000Z",
         "ownership": "D"
@@ -3104,30 +3165,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 254421,
-        "value": 8618493,
-        "filerUrl": "",
-        "transactionText": "Sale at price 32.91 - 35.28 per share.",
-        "filerName": "DUDUM ANDREW",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-18T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 23287,
-        "value": 798977,
-        "filerUrl": "",
-        "transactionText": "Sale at price 34.31 per share.",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-03-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3236,
         "value": 111027,
         "filerUrl": "",
@@ -3152,6 +3189,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 254421,
+        "value": 8618493,
+        "filerUrl": "",
+        "transactionText": "Sale at price 32.91 - 35.28 per share.",
+        "filerName": "DUDUM ANDREW",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-03-18T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 23287,
+        "value": 798977,
+        "filerUrl": "",
+        "transactionText": "Sale at price 34.31 per share.",
+        "filerName": "CARROLL PATRICK HARRISON",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-03-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 301646,
         "value": 304564,
         "filerUrl": "",
@@ -3164,22 +3225,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 73150,
+        "shares": 43210,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BAIRD MELISSA",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "BOUGHTON SOLEIL",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 36275,
+        "shares": 24097,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CARROLL PATRICK HARRISON",
-        "filerRelation": "Officer and Director",
+        "filerName": "BECKLUND IRENE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
@@ -3211,11 +3272,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 15.51,
+    "currentPrice": 15.46,
     "targetHighPrice": 48,
-    "targetLowPrice": 13,
-    "targetMeanPrice": 27.29167,
-    "targetMedianPrice": 26.5,
+    "targetLowPrice": 12.5,
+    "targetMeanPrice": 23.6875,
+    "targetMedianPrice": 20.5,
     "recommendationMean": 2.92857,
     "recommendationKey": "hold",
     "numberOfAnalystOpinions": 12,
@@ -3241,6 +3302,6 @@
     "profitMargins": 0.060510002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-24T04:19:14.365Z",
+  "lastUpdated": "2026-02-25T04:21:45.904Z",
   "source": "Static Build (yahoo-finance2)"
 }
