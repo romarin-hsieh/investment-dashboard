@@ -134,8 +134,15 @@ class HybridTechnicalIndicatorsAPI {
           loadTime: '<50ms'
         };
       } else {
-        console.log(`⏰ Precomputed data too old for ${symbol} (${data.dataAge})`);
-        return null;
+        // 即使資料過期，仍回傳並標記 isStale
+        // 避免丟棄 Beta (10D/3M/1Y) 等自訂指標（Yahoo Finance 無法提供）
+        console.log(`⏰ Precomputed data stale for ${symbol} (${data.dataAge}), using as fallback`);
+        return {
+          ...data,
+          source: `Precomputed-Stale (${data.dataAge})`,
+          loadTime: '<50ms',
+          isStale: true
+        };
       }
 
     } catch (error) {
