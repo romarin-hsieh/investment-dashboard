@@ -3,7 +3,7 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 1,
+        "strongBuy": 2,
         "buy": 7,
         "hold": 3,
         "sell": 0,
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1579,
         "position": 5395232,
-        "value": 743355058,
+        "value": 711361372,
         "pctChange": 0.0119
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.1486,
         "position": 5077036,
-        "value": 699514013,
+        "value": 669407227,
         "pctChange": 0.0025
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.105500005,
         "position": 3605279,
-        "value": 496735336,
+        "value": 475356058,
         "pctChange": -0.0001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0373,
         "position": 1275133,
-        "value": 175687823,
+        "value": 168126293,
         "pctChange": -0.0034
       },
       {
@@ -81,7 +81,7 @@
         "organization": "UBS AM, a distinct business unit of UBS ASSET MANAGEMENT AMERICAS LLC",
         "pctHeld": 0.0292,
         "position": 996878,
-        "value": 137349849,
+        "value": 131438370,
         "pctChange": -0.0679
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.028299998,
         "position": 965931,
-        "value": 133085972,
+        "value": 127358008,
         "pctChange": 0.3729
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Nomura Asset Management International Inc",
         "pctHeld": 0.024400001,
         "position": 832241,
-        "value": 114666163,
+        "value": 109730980,
         "pctChange": 1
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0239,
         "position": 816474,
-        "value": 112493786,
+        "value": 107652101,
         "pctChange": 0.0036000002
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.0208,
         "position": 712041,
-        "value": 98105008,
+        "value": 93882610,
         "pctChange": -0.0354
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.0202,
         "position": 690357,
-        "value": 95117386,
+        "value": 91023574,
         "pctChange": 0.0176
       }
     ]
@@ -187,14 +187,16 @@
           "reportedDate": 1771967129
         }
       ],
-      "currentQuarterEstimate": 0.715,
+      "currentQuarterEstimate": 0.66,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-07T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,56 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-25T17:52:10.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 149,
+        "priorPriceTarget": 114
+      },
+      {
+        "epochGradeDate": "2026-02-25T17:46:01.000Z",
+        "firm": "Oppenheimer",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 175,
+        "priorPriceTarget": 150
+      },
+      {
+        "epochGradeDate": "2026-02-25T14:41:20.000Z",
+        "firm": "Piper Sandler",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 160,
+        "priorPriceTarget": 140
+      },
+      {
+        "epochGradeDate": "2026-02-25T14:25:44.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 170,
+        "priorPriceTarget": 155
+      },
+      {
+        "epochGradeDate": "2026-02-25T10:20:36.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 174,
+        "priorPriceTarget": 166
+      },
       {
         "epochGradeDate": "2025-12-17T20:09:15.000Z",
         "firm": "Canaccord Genuity",
@@ -1287,24 +1339,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.06699082,
-    "postMarketChange": 9.229996,
-    "postMarketTime": "2026-02-25T00:59:35.000Z",
-    "postMarketPrice": 147.01,
+    "postMarketChangePercent": 0.01994683,
+    "postMarketChange": 2.6299896,
+    "postMarketTime": "2026-02-26T00:47:43.000Z",
+    "postMarketPrice": 134.48,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.023245499,
-    "regularMarketChange": 3.13,
-    "regularMarketTime": "2026-02-24T21:00:01.000Z",
+    "regularMarketChangePercent": -0.043039598,
+    "regularMarketChange": -5.92999,
+    "regularMarketTime": "2026-02-25T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 137.78,
-    "regularMarketDayHigh": 138.72,
-    "regularMarketDayLow": 130.1,
-    "regularMarketVolume": 1152495,
-    "averageDailyVolume10Day": 588650,
-    "averageDailyVolume3Month": 724280,
-    "regularMarketPreviousClose": 134.65,
+    "regularMarketPrice": 131.85,
+    "regularMarketDayHigh": 144.49,
+    "regularMarketDayLow": 129.5101,
+    "regularMarketVolume": 2559273,
+    "averageDailyVolume10Day": 663670,
+    "averageDailyVolume3Month": 715652,
+    "regularMarketPreviousClose": 137.78,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 133.35,
+    "regularMarketOpen": 140,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
@@ -1320,13 +1372,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4708538368
+    "marketCap": 4505884672
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4761713664,
-    "forwardPE": 37.301857,
+    "forwardPE": 36.358173,
     "profitMargins": 0.16203,
     "floatShares": 33028802,
     "sharesOutstanding": 34174325,
@@ -1343,7 +1395,7 @@
     "impliedSharesOutstanding": 34174325,
     "category": null,
     "bookValue": 10.403,
-    "priceToBook": 13.244257,
+    "priceToBook": 12.67423,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -1352,12 +1404,12 @@
     "earningsQuarterlyGrowth": 4.768,
     "netIncomeToCommon": 91765000,
     "trailingEps": 2.54,
-    "forwardEps": 3.69365,
+    "forwardEps": 3.62642,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 8.408,
     "enterpriseToEbitda": 39.5,
-    "52WeekChange": 0.7407936,
-    "SandP52WeekChange": 0.15480888,
+    "52WeekChange": 0.9104271,
+    "SandP52WeekChange": 0.18502891,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1411,18 +1463,6 @@
       {
         "maxAge": 1,
         "shares": 5000,
-        "value": 693200,
-        "filerUrl": "",
-        "transactionText": "Sale at price 138.64 per share.",
-        "filerName": "WEILL DAVID",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5000,
         "value": 71000,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 14.20 per share.",
@@ -1434,10 +1474,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 3000,
-        "value": 435660,
+        "shares": 5000,
+        "value": 693200,
         "filerUrl": "",
-        "transactionText": "Sale at price 145.22 per share.",
+        "transactionText": "Sale at price 138.64 per share.",
+        "filerName": "WEILL DAVID",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3000,
+        "value": 281640,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 93.88 per share.",
         "filerName": "RANGANATH ANIL P",
         "filerRelation": "General Counsel",
         "moneyText": "",
@@ -1447,9 +1499,9 @@
       {
         "maxAge": 1,
         "shares": 3000,
-        "value": 281640,
+        "value": 435660,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 93.88 per share.",
+        "transactionText": "Sale at price 145.22 per share.",
         "filerName": "RANGANATH ANIL P",
         "filerRelation": "General Counsel",
         "moneyText": "",
@@ -1471,9 +1523,9 @@
       {
         "maxAge": 1,
         "shares": 4142,
-        "value": 540324,
+        "value": 2899,
         "filerUrl": "",
-        "transactionText": "Sale at price 130.45 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1483,9 +1535,9 @@
       {
         "maxAge": 1,
         "shares": 4142,
-        "value": 2899,
+        "value": 540324,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
+        "transactionText": "Sale at price 130.45 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1507,9 +1559,9 @@
       {
         "maxAge": 1,
         "shares": 4143,
-        "value": 519988,
+        "value": 2900,
         "filerUrl": "",
-        "transactionText": "Sale at price 125.51 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1519,9 +1571,9 @@
       {
         "maxAge": 1,
         "shares": 4143,
-        "value": 2900,
+        "value": 519988,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
+        "transactionText": "Sale at price 125.51 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1543,9 +1595,9 @@
       {
         "maxAge": 1,
         "shares": 5000,
-        "value": 632250,
+        "value": 3500,
         "filerUrl": "",
-        "transactionText": "Sale at price 126.45 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1555,9 +1607,9 @@
       {
         "maxAge": 1,
         "shares": 5000,
-        "value": 3500,
+        "value": 632250,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
+        "transactionText": "Sale at price 126.45 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1663,9 +1715,9 @@
       {
         "maxAge": 1,
         "shares": 6000,
-        "value": 693780,
+        "value": 4200,
         "filerUrl": "",
-        "transactionText": "Sale at price 115.63 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1675,9 +1727,9 @@
       {
         "maxAge": 1,
         "shares": 6000,
-        "value": 4200,
+        "value": 693780,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.70 per share.",
+        "transactionText": "Sale at price 115.63 per share.",
         "filerName": "BASILE EDWARD M.",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1759,9 +1811,9 @@
       {
         "maxAge": 1,
         "shares": 1083,
-        "value": 86694,
+        "value": 14382,
         "filerUrl": "",
-        "transactionText": "Sale at price 80.05 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
         "filerName": "KHAYAL TAMER I.",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -1771,9 +1823,9 @@
       {
         "maxAge": 1,
         "shares": 1083,
-        "value": 14382,
+        "value": 86694,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
+        "transactionText": "Sale at price 80.05 per share.",
         "filerName": "KHAYAL TAMER I.",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -1795,18 +1847,6 @@
       {
         "maxAge": 1,
         "shares": 1084,
-        "value": 93658,
-        "filerUrl": "",
-        "transactionText": "Sale at price 86.40 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1084,
         "value": 14396,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
@@ -1818,14 +1858,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 1458,
-        "value": 131278,
+        "shares": 1084,
+        "value": 93658,
         "filerUrl": "",
-        "transactionText": "Sale at price 90.04 per share.",
+        "transactionText": "Sale at price 86.40 per share.",
         "filerName": "KHAYAL TAMER I.",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-11-11T00:00:00.000Z",
+        "startDate": "2024-12-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1842,14 +1882,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 6750,
-        "value": 563994,
+        "shares": 1458,
+        "value": 131278,
         "filerUrl": "",
-        "transactionText": "Sale at price 83.35 - 84.30 per share.",
-        "filerName": "BASILE EDWARD M.",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 90.04 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-11-05T00:00:00.000Z",
+        "startDate": "2024-11-11T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1866,14 +1906,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 1083,
-        "value": 89499,
+        "shares": 6750,
+        "value": 563994,
         "filerUrl": "",
-        "transactionText": "Sale at price 82.64 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 83.35 - 84.30 per share.",
+        "filerName": "BASILE EDWARD M.",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-11-01T00:00:00.000Z",
+        "startDate": "2024-11-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1890,14 +1930,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 8625,
-        "value": 1144648,
+        "shares": 1083,
+        "value": 89499,
         "filerUrl": "",
-        "transactionText": "Sale at price 131.91 - 135.04 per share.",
-        "filerName": "HASSANEIN WALEED H",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Sale at price 82.64 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-10-15T00:00:00.000Z",
+        "startDate": "2024-11-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1914,14 +1954,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 2958,
-        "value": 438491,
+        "shares": 8625,
+        "value": 1144648,
         "filerUrl": "",
-        "transactionText": "Sale at price 146.15 - 154.86 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 131.91 - 135.04 per share.",
+        "filerName": "HASSANEIN WALEED H",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-10-01T00:00:00.000Z",
+        "startDate": "2024-10-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1938,10 +1978,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 8625,
-        "value": 1323210,
+        "shares": 2958,
+        "value": 438491,
         "filerUrl": "",
-        "transactionText": "Sale at price 151.10 - 156.48 per share.",
+        "transactionText": "Sale at price 146.15 - 154.86 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8625,
+        "value": 114540,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -1951,9 +2003,9 @@
       {
         "maxAge": 1,
         "shares": 8625,
-        "value": 114540,
+        "value": 1323210,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
+        "transactionText": "Sale at price 151.10 - 156.48 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -1975,18 +2027,6 @@
       {
         "maxAge": 1,
         "shares": 2960,
-        "value": 472404,
-        "filerUrl": "",
-        "transactionText": "Sale at price 157.27 - 165.87 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2960,
         "value": 98072,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 13.28 - 66.10 per share.",
@@ -1998,14 +2038,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 1760200,
+        "shares": 2960,
+        "value": 472404,
         "filerUrl": "",
-        "transactionText": "Sale at price 176.02 per share.",
-        "filerName": "CORCORAN NICHOLAS",
+        "transactionText": "Sale at price 157.27 - 165.87 per share.",
+        "filerName": "KHAYAL TAMER I.",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-08-27T00:00:00.000Z",
+        "startDate": "2024-09-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2022,14 +2062,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 45000,
-        "value": 7795600,
+        "shares": 10000,
+        "value": 1760200,
         "filerUrl": "",
-        "transactionText": "Sale at price 171.03 - 175.00 per share.",
-        "filerName": "HASSANEIN WALEED H",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Sale at price 176.02 per share.",
+        "filerName": "CORCORAN NICHOLAS",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-08-22T00:00:00.000Z",
+        "startDate": "2024-08-27T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2046,10 +2086,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 8625,
-        "value": 1463919,
+        "shares": 45000,
+        "value": 7795600,
         "filerUrl": "",
-        "transactionText": "Sale at price 165.26 - 171.86 per share.",
+        "transactionText": "Sale at price 171.03 - 175.00 per share.",
+        "filerName": "HASSANEIN WALEED H",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-08-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8625,
+        "value": 114540,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2059,9 +2111,9 @@
       {
         "maxAge": 1,
         "shares": 8625,
-        "value": 114540,
+        "value": 1463919,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
+        "transactionText": "Sale at price 165.26 - 171.86 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2082,18 +2134,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 4992,
-        "value": 747838,
-        "filerUrl": "",
-        "transactionText": "Sale at price 135.21 - 152.20 per share.",
-        "filerName": "RANGANATH ANIL P",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-08-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4289,
         "value": 402651,
         "filerUrl": "",
@@ -2106,14 +2146,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 6750,
-        "value": 1012230,
+        "shares": 4992,
+        "value": 747838,
         "filerUrl": "",
-        "transactionText": "Sale at price 148.26 - 151.89 per share.",
-        "filerName": "BASILE EDWARD M.",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 135.21 - 152.20 per share.",
+        "filerName": "RANGANATH ANIL P",
+        "filerRelation": "General Counsel",
         "moneyText": "",
-        "startDate": "2024-08-06T00:00:00.000Z",
+        "startDate": "2024-08-07T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2130,14 +2170,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 2958,
-        "value": 463727,
+        "shares": 6750,
+        "value": 1012230,
         "filerUrl": "",
-        "transactionText": "Sale at price 151.80 - 166.00 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 148.26 - 151.89 per share.",
+        "filerName": "BASILE EDWARD M.",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-08-01T00:00:00.000Z",
+        "startDate": "2024-08-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2150,6 +2190,30 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-08-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2958,
+        "value": 463727,
+        "filerUrl": "",
+        "transactionText": "Sale at price 151.80 - 166.00 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-08-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8625,
+        "value": 114540,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
+        "filerName": "HASSANEIN WALEED H",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-07-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2166,14 +2230,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 8625,
-        "value": 114540,
+        "shares": 2958,
+        "value": 98021,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
-        "filerName": "HASSANEIN WALEED H",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 - 66.10 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-07-15T00:00:00.000Z",
+        "startDate": "2024-07-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2190,22 +2254,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 2958,
-        "value": 98021,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 - 66.10 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 8625,
-        "value": 1223473,
+        "value": 114540,
         "filerUrl": "",
-        "transactionText": "Sale at price 140.42 - 144.52 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2215,9 +2267,9 @@
       {
         "maxAge": 1,
         "shares": 8625,
-        "value": 114540,
+        "value": 1223473,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
+        "transactionText": "Sale at price 140.42 - 144.52 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2238,12 +2290,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 2060,
-        "value": 280016,
+        "shares": 2960,
+        "value": 98072,
         "filerUrl": "",
-        "transactionText": "Sale at price 135.93 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 - 66.10 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-06-03T00:00:00.000Z",
         "ownership": "D"
@@ -2274,14 +2326,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 2960,
-        "value": 98072,
+        "shares": 2060,
+        "value": 280016,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 - 66.10 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 135.93 per share.",
+        "filerName": "GORDON STEPHEN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-06-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 18000,
+        "value": 704620,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 - 83.14 per share.",
+        "filerName": "GORDON STEPHEN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-05-29T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2302,18 +2366,6 @@
         "value": 2828025,
         "filerUrl": "",
         "transactionText": "Sale at price 141.06 - 141.80 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-05-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 18000,
-        "value": 704620,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 - 83.14 per share.",
         "filerName": "GORDON STEPHEN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -2407,9 +2459,9 @@
       {
         "maxAge": 1,
         "shares": 8625,
-        "value": 1167147,
+        "value": 114540,
         "filerUrl": "",
-        "transactionText": "Sale at price 133.42 - 136.26 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2419,9 +2471,9 @@
       {
         "maxAge": 1,
         "shares": 8625,
-        "value": 114540,
+        "value": 1167147,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
+        "transactionText": "Sale at price 133.42 - 136.26 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2455,47 +2507,11 @@
       {
         "maxAge": 1,
         "shares": 5839,
-        "value": 759479,
-        "filerUrl": "",
-        "transactionText": "Sale at price 130.07 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5839,
         "value": 385958,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 66.10 per share.",
         "filerName": "KHAYAL TAMER I.",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3222,
-        "value": 418570,
-        "filerUrl": "",
-        "transactionText": "Sale at price 129.91 per share.",
-        "filerName": "CORCORAN NICHOLAS",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30000,
-        "value": 3902100,
-        "filerUrl": "",
-        "transactionText": "Sale at price 130.07 per share.",
-        "filerName": "HASSANEIN WALEED H",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-05-06T00:00:00.000Z",
         "ownership": "D"
@@ -2515,6 +2531,30 @@
       {
         "maxAge": 1,
         "shares": 15000,
+        "value": 576900,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 38.46 per share.",
+        "filerName": "GORDON STEPHEN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3222,
+        "value": 418570,
+        "filerUrl": "",
+        "transactionText": "Sale at price 129.91 per share.",
+        "filerName": "CORCORAN NICHOLAS",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
         "value": 1920000,
         "filerUrl": "",
         "transactionText": "Sale at price 128.00 per share.",
@@ -2526,12 +2566,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 576900,
+        "shares": 5839,
+        "value": 759479,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 38.46 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 130.07 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30000,
+        "value": 3902100,
+        "filerUrl": "",
+        "transactionText": "Sale at price 130.07 per share.",
+        "filerName": "HASSANEIN WALEED H",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-05-06T00:00:00.000Z",
         "ownership": "D"
@@ -2562,30 +2614,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 15040,
-        "value": 1600633,
-        "filerUrl": "",
-        "transactionText": "Sale at price 105.70 - 110.00 per share.",
-        "filerName": "TOBIN JAMES R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 78036,
-        "value": 8566837,
-        "filerUrl": "",
-        "transactionText": "Sale at price 105.96 - 123.66 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-01T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 47867,
         "value": 1813695,
         "filerUrl": "",
@@ -2595,18 +2623,6 @@
         "moneyText": "",
         "startDate": "2024-05-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 78036,
-        "value": 8566581,
-        "filerUrl": "",
-        "transactionText": "Sale at price 105.71 - 123.66 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-01T00:00:00.000Z",
-        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -2634,15 +2650,39 @@
       },
       {
         "maxAge": 1,
-        "shares": 4000,
-        "value": 380480,
+        "shares": 15040,
+        "value": 1600633,
         "filerUrl": "",
-        "transactionText": "Sale at price 95.12 per share.",
-        "filerName": "HASSANEIN WALEED H",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Sale at price 105.70 - 110.00 per share.",
+        "filerName": "TOBIN JAMES R",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-04-17T00:00:00.000Z",
-        "ownership": "D"
+        "startDate": "2024-05-01T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78036,
+        "value": 8566837,
+        "filerUrl": "",
+        "transactionText": "Sale at price 105.96 - 123.66 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-05-01T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78036,
+        "value": 8566581,
+        "filerUrl": "",
+        "transactionText": "Sale at price 105.71 - 123.66 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-05-01T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -2658,14 +2698,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 12000,
-        "value": 1141080,
+        "shares": 4000,
+        "value": 380480,
         "filerUrl": "",
-        "transactionText": "Sale at price 95.09 per share.",
+        "transactionText": "Sale at price 95.12 per share.",
         "filerName": "HASSANEIN WALEED H",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-04-10T00:00:00.000Z",
+        "startDate": "2024-04-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2682,14 +2722,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 19900,
-        "value": 1798002,
+        "shares": 12000,
+        "value": 1141080,
         "filerUrl": "",
-        "transactionText": "Sale at price 90.00 - 91.11 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 95.09 per share.",
+        "filerName": "HASSANEIN WALEED H",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-04-09T00:00:00.000Z",
+        "startDate": "2024-04-10T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2706,14 +2746,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 802084,
+        "shares": 19900,
+        "value": 1798002,
         "filerUrl": "",
-        "transactionText": "Sale at price 80.06 - 80.36 per share.",
+        "transactionText": "Sale at price 90.00 - 91.11 per share.",
         "filerName": "KHAYAL TAMER I.",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-04-04T00:00:00.000Z",
+        "startDate": "2024-04-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2730,14 +2770,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 1110150,
+        "shares": 10000,
+        "value": 802084,
         "filerUrl": "",
-        "transactionText": "Sale at price 74.01 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 80.06 - 80.36 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-04-01T00:00:00.000Z",
+        "startDate": "2024-04-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2754,14 +2794,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 1417,
-        "value": 124413,
+        "shares": 15000,
+        "value": 1110150,
         "filerUrl": "",
-        "transactionText": "Sale at price 87.63 - 90.04 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 74.01 per share.",
+        "filerName": "GORDON STEPHEN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2024-03-08T00:00:00.000Z",
+        "startDate": "2024-04-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2790,14 +2830,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 1242000,
+        "shares": 1417,
+        "value": 124413,
         "filerUrl": "",
-        "transactionText": "Sale at price 82.80 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 87.63 - 90.04 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-03-04T00:00:00.000Z",
+        "startDate": "2024-03-08T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2810,6 +2850,30 @@
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "value": 1242000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 82.80 per share.",
+        "filerName": "GORDON STEPHEN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 132800,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
+        "filerName": "KHAYAL TAMER I.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-03-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2835,32 +2899,20 @@
         "moneyText": "",
         "startDate": "2024-03-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10000,
-        "value": 132800,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-03-01T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 137.78,
-    "targetHighPrice": 170,
-    "targetLowPrice": 114,
-    "targetMeanPrice": 146.2,
-    "targetMedianPrice": 151,
-    "recommendationMean": 1.63636,
+    "currentPrice": 131.85,
+    "targetHighPrice": 190,
+    "targetLowPrice": 115,
+    "targetMeanPrice": 157.54546,
+    "targetMedianPrice": 160,
+    "recommendationMean": 1.66667,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 10,
+    "numberOfAnalystOpinions": 11,
     "totalCash": 466174016,
     "totalCashPerShare": 13.641,
     "ebitda": 120551000,
@@ -2883,6 +2935,6 @@
     "profitMargins": 0.16203,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-25T04:22:01.936Z",
+  "lastUpdated": "2026-02-26T04:18:16.271Z",
   "source": "Static Build (yahoo-finance2)"
 }

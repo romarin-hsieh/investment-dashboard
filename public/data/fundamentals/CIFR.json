@@ -4,7 +4,7 @@
       {
         "period": "0m",
         "strongBuy": 5,
-        "buy": 9,
+        "buy": 8,
         "hold": 0,
         "sell": 0,
         "strongSell": 0
@@ -45,7 +45,7 @@
         "organization": "V3 Holding Ltd                          ",
         "pctHeld": 0.1552,
         "position": 61316694,
-        "value": 1049741852,
+        "value": 1018470324,
         "pctChange": -0.0689
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.08270001,
         "position": 32680186,
-        "value": 559484811,
+        "value": 542817909,
         "pctChange": 0.43240002
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0713,
         "position": 28155069,
-        "value": 482014804,
+        "value": 467655713,
         "pctChange": 0.1707
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0416,
         "position": 16421315,
-        "value": 281132926,
+        "value": 272758052,
         "pctChange": 0.48720002
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.038900003,
         "position": 15388017,
-        "value": 263442863,
+        "value": 255594971,
         "pctChange": 2.8759
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.026500002,
         "position": 10469093,
-        "value": 179230880,
+        "value": 173891641,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0207,
         "position": 8164226,
-        "value": 139771555,
+        "value": 135607798,
         "pctChange": 0.0734
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.020399999,
         "position": 8078423,
-        "value": 138302608,
+        "value": 134182610,
         "pctChange": 0.1016
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Value Aligned Research Advisors, LLC                          ",
         "pctHeld": 0.0189,
         "position": 7447495,
-        "value": 127501120,
+        "value": 123702896,
         "pctChange": 0.45900002
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0143,
         "position": 5644046,
-        "value": 96626072,
+        "value": 93747607,
         "pctChange": 2.8091002
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03576,
-    "institutionsPercentHeld": 0.83601,
-    "institutionsFloatPercentHeld": 0.86700994,
-    "institutionsCount": 477
+    "institutionsPercentHeld": 0.83598,
+    "institutionsFloatPercentHeld": 0.86697,
+    "institutionsCount": 475
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,14 +187,16 @@
           "reportedDate": 1771936435
         }
       ],
-      "currentQuarterEstimate": -0.03,
+      "currentQuarterEstimate": 0.04,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-05T13:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-25T11:25:44.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 25,
+        "priorPriceTarget": 30
+      },
+      {
+        "epochGradeDate": "2026-02-25T10:49:01.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 22,
+        "priorPriceTarget": 26
+      },
       {
         "epochGradeDate": "2026-01-27T13:33:31.000Z",
         "firm": "Keefe, Bruyette & Woods",
@@ -1197,24 +1219,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0017522651,
-    "postMarketChange": 0.02999878,
-    "postMarketTime": "2026-02-25T00:59:30.000Z",
-    "postMarketPrice": 17.15,
+    "postMarketChangePercent": -0.0006020607,
+    "postMarketChange": -0.010000229,
+    "postMarketTime": "2026-02-26T00:59:49.000Z",
+    "postMarketPrice": 16.6,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.124836,
-    "regularMarketChange": 1.9,
-    "regularMarketTime": "2026-02-24T21:00:02.000Z",
+    "regularMarketChangePercent": -0.029789701,
+    "regularMarketChange": -0.51,
+    "regularMarketTime": "2026-02-25T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 17.12,
-    "regularMarketDayHigh": 17.555,
-    "regularMarketDayLow": 14.63,
-    "regularMarketVolume": 51182135,
-    "averageDailyVolume10Day": 31144490,
-    "averageDailyVolume3Month": 31589006,
-    "regularMarketPreviousClose": 15.22,
+    "regularMarketPrice": 16.61,
+    "regularMarketDayHigh": 17.82,
+    "regularMarketDayLow": 16.4,
+    "regularMarketVolume": 30342346,
+    "averageDailyVolume10Day": 31824170,
+    "averageDailyVolume3Month": 31030759,
+    "regularMarketPreviousClose": 17.12,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 15.56,
+    "regularMarketOpen": 17.39,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -1223,22 +1245,22 @@
     "symbol": "CIFR",
     "underlyingSymbol": null,
     "shortName": "Cipher Mining Inc.",
-    "longName": "Cipher Mining Inc.",
+    "longName": "Cipher Digital Inc.",
     "currency": "USD",
     "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 6763976704
+    "marketCap": 6562479616
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 5849837056,
-    "forwardPE": 27.174604,
-    "profitMargins": -0.34162,
-    "floatShares": 320032466,
+    "enterpriseValue": 8898137088,
+    "forwardPE": 26.36508,
+    "profitMargins": 0,
+    "floatShares": 328154822,
     "sharesOutstanding": 395092054,
     "sharesShort": 60863249,
     "sharesShortPriorMonth": "1971-08-01T08:52:30.000Z",
@@ -1246,27 +1268,26 @@
     "dateShortInterest": "2026-01-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.154,
     "heldPercentInsiders": 0.03576,
-    "heldPercentInstitutions": 0.83601,
+    "heldPercentInstitutions": 0.83598,
     "shortRatio": 2.09,
     "shortPercentOfFloat": 0.2038,
-    "beta": 2.972,
     "impliedSharesOutstanding": 395092054,
     "category": null,
-    "bookValue": 1.99,
-    "priceToBook": 8.603016,
+    "bookValue": 1.989,
+    "priceToBook": 8.35093,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "netIncomeToCommon": -70529000,
-    "trailingEps": -0.17,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "netIncomeToCommon": -822243968,
+    "trailingEps": -0.16,
     "forwardEps": 0.63,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 28.335,
-    "enterpriseToEbitda": 68.899,
-    "52WeekChange": 1.9506545,
-    "SandP52WeekChange": 0.15480888,
+    "enterpriseToRevenue": 39.734,
+    "enterpriseToEbitda": -49.221,
+    "52WeekChange": 3.3123426,
+    "SandP52WeekChange": 0.18502891,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1279,14 +1300,13 @@
     "country": "United States",
     "phone": "332 262 2300",
     "website": "https://www.ciphermining.com",
-    "industry": "Capital Markets",
-    "industryKey": "capital-markets",
-    "industryDisp": "Capital Markets",
-    "sector": "Financial Services",
-    "sectorKey": "financial-services",
-    "sectorDisp": "Financial Services",
+    "industry": "Information Technology Services",
+    "industryKey": "information-technology-services",
+    "industryDisp": "Information Technology Services",
+    "sector": "Technology",
+    "sectorKey": "technology",
+    "sectorDisp": "Technology",
     "longBusinessSummary": "Cipher Mining Inc., together with its subsidiaries, develops and operates industrial-scale data centers in the United States. The company was founded in 2021 and is headquartered in New York, New York.",
-    "fullTimeEmployees": 43,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -1315,18 +1335,6 @@
         "filerRelation": "President",
         "moneyText": "",
         "startDate": "2026-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 21821,
-        "value": 349791,
-        "filerUrl": "",
-        "transactionText": "Sale at price 16.03 per share.",
-        "filerName": "NEWSOME JAMES E",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-19T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1376,6 +1384,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 21821,
+        "value": 349791,
+        "filerUrl": "",
+        "transactionText": "Sale at price 16.03 per share.",
+        "filerName": "NEWSOME JAMES E",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 49867,
         "value": 801861,
         "filerUrl": "",
@@ -1399,18 +1419,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 35569,
-        "value": 536381,
-        "filerUrl": "",
-        "transactionText": "Sale at price 15.08 per share.",
-        "filerName": "KELLY PATRICK ARTHUR",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 504187,
         "filerUrl": "",
         "transactionText": "",
@@ -1427,6 +1435,18 @@
         "transactionText": "",
         "filerName": "PAGE TYLER",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35569,
+        "value": 536381,
+        "filerUrl": "",
+        "transactionText": "Sale at price 15.08 per share.",
+        "filerName": "KELLY PATRICK ARTHUR",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
@@ -2423,18 +2443,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 964630,
-        "value": 4142361,
-        "filerUrl": "",
-        "transactionText": "Sale at price 4.07 - 4.58 per share.",
-        "filerName": "BITFURY TOP HOLDCO B.V.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-06-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 23000,
         "value": 0,
         "filerUrl": "",
@@ -2444,6 +2452,18 @@
         "moneyText": "",
         "startDate": "2024-06-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 964630,
+        "value": 4142361,
+        "filerUrl": "",
+        "transactionText": "Sale at price 4.07 - 4.58 per share.",
+        "filerName": "BITFURY TOP HOLDCO B.V.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-06-12T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2570,35 +2590,35 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 17.12,
+    "currentPrice": 16.61,
     "targetHighPrice": 53,
     "targetLowPrice": 18,
-    "targetMeanPrice": 28.1,
-    "targetMedianPrice": 27,
-    "recommendationMean": 1.35714,
+    "targetMeanPrice": 27.43333,
+    "targetMedianPrice": 25,
+    "recommendationMean": 1.38462,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 15,
-    "totalCash": 1207440000,
-    "totalCashPerShare": 3.056,
-    "ebitda": 84905000,
-    "totalDebt": 1043976000,
-    "quickRatio": 2.119,
-    "currentRatio": 2.489,
-    "totalRevenue": 206454000,
-    "debtToEquity": 133.297,
-    "revenuePerShare": 0.559,
-    "returnOnAssets": -0.03405,
-    "returnOnEquity": -0.09693,
-    "grossProfits": 70152000,
-    "freeCashflow": 260860000,
-    "operatingCashflow": -182484000,
-    "revenueGrowth": 1.975,
-    "grossMargins": 0.33979,
-    "ebitdaMargins": 0.41125,
-    "operatingMargins": -0.37928,
-    "profitMargins": -0.34162,
+    "totalCash": 628262976,
+    "totalCashPerShare": 1.551,
+    "ebitda": -180778000,
+    "totalDebt": 2767047936,
+    "quickRatio": 0.9,
+    "currentRatio": 3.795,
+    "totalRevenue": 223942000,
+    "debtToEquity": 331.044,
+    "revenuePerShare": 0.587,
+    "returnOnAssets": -0.09222,
+    "returnOnEquity": -1.08346,
+    "grossProfits": 63597000,
+    "freeCashflow": -1837498752,
+    "operatingCashflow": -207938000,
+    "revenueGrowth": 0.414,
+    "grossMargins": 0.28399,
+    "ebitdaMargins": -0.80724996,
+    "operatingMargins": -4.61731,
+    "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-25T04:23:23.452Z",
+  "lastUpdated": "2026-02-26T04:19:40.141Z",
   "source": "Static Build (yahoo-finance2)"
 }
