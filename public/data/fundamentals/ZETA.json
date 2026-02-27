@@ -37,7 +37,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.106300004,
         "position": 23051314,
-        "value": 411465963,
+        "value": 416306718,
         "pctChange": 0.061
       },
       {
@@ -46,7 +46,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0774,
         "position": 16780433,
-        "value": 299530735,
+        "value": 303054611,
         "pctChange": -0.0014
       },
       {
@@ -55,7 +55,7 @@
         "organization": "Contour Asset Management LLC",
         "pctHeld": 0.0515,
         "position": 11162626,
-        "value": 199252878,
+        "value": 201597019,
         "pctChange": 0.2635
       },
       {
@@ -64,7 +64,7 @@
         "organization": "Greenvale Capital, LLP",
         "pctHeld": 0.0324,
         "position": 7022666,
-        "value": 125354590,
+        "value": 126829344,
         "pctChange": -0.031400003
       },
       {
@@ -73,7 +73,7 @@
         "organization": "Neuberger Berman Group, LLC",
         "pctHeld": 0.026600001,
         "position": 5759726,
-        "value": 102811111,
+        "value": 104020648,
         "pctChange": 0.0369
       },
       {
@@ -82,7 +82,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0257,
         "position": 5582446,
-        "value": 99646663,
+        "value": 100818971,
         "pctChange": 0.1371
       },
       {
@@ -91,7 +91,7 @@
         "organization": "Disciplined Growth Investors, Inc.",
         "pctHeld": 0.0254,
         "position": 5500408,
-        "value": 98182284,
+        "value": 99337365,
         "pctChange": -0.1005
       },
       {
@@ -100,7 +100,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0231,
         "position": 5013776,
-        "value": 89495903,
+        "value": 90548791,
         "pctChange": 0.0068
       },
       {
@@ -109,7 +109,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0209,
         "position": 4532098,
-        "value": 80897951,
+        "value": 81849687,
         "pctChange": 0.0033000002
       },
       {
@@ -118,7 +118,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.020599999,
         "position": 4470942,
-        "value": 79806316,
+        "value": 80745210,
         "pctChange": 0.008
       }
     ]
@@ -126,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03078,
-    "institutionsPercentHeld": 0.83682996,
-    "institutionsFloatPercentHeld": 0.8634,
-    "institutionsCount": 489
+    "institutionsPercentHeld": 0.83688,
+    "institutionsFloatPercentHeld": 0.86346,
+    "institutionsCount": 490
   },
   "earnings": {
     "maxAge": 86400,
@@ -245,6 +245,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-26T20:48:56.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 30,
+        "priorPriceTarget": 29
+      },
       {
         "epochGradeDate": "2026-01-28T17:45:59.000Z",
         "firm": "Goldman Sachs",
@@ -1711,24 +1721,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.023529416,
-    "postMarketChange": -0.42000008,
-    "postMarketTime": "2026-02-26T00:59:18.000Z",
-    "postMarketPrice": 17.43,
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0512368,
-    "regularMarketChange": 0.870001,
-    "regularMarketTime": "2026-02-25T21:00:02.000Z",
+    "postMarketChangePercent": -0.008859349,
+    "postMarketChange": -0.15999985,
+    "postMarketTime": "2026-02-27T01:00:00.000Z",
+    "postMarketPrice": 17.9,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0117647005,
+    "regularMarketChange": 0.209999,
+    "regularMarketTime": "2026-02-26T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 17.85,
-    "regularMarketDayHigh": 17.915,
-    "regularMarketDayLow": 16.4,
-    "regularMarketVolume": 15291713,
-    "averageDailyVolume10Day": 9052720,
-    "averageDailyVolume3Month": 7964944,
-    "regularMarketPreviousClose": 16.98,
+    "regularMarketPrice": 18.06,
+    "regularMarketDayHigh": 18.65,
+    "regularMarketDayLow": 17.81,
+    "regularMarketVolume": 11346034,
+    "averageDailyVolume10Day": 10108030,
+    "averageDailyVolume3Month": 8104733,
+    "regularMarketPreviousClose": 17.85,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 16.9,
+    "regularMarketOpen": 17.94,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -1739,48 +1749,49 @@
     "shortName": "Zeta Global Holdings Corp.",
     "longName": "Zeta Global Holdings Corp.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4389606912
+    "marketCap": 4441249280
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3908100864,
-    "forwardPE": 15.026392,
-    "profitMargins": -0.01863,
+    "enterpriseValue": 4222325248,
+    "forwardPE": 15.203172,
+    "profitMargins": -0.024149999,
     "floatShares": 209934052,
     "sharesOutstanding": 222245699,
-    "sharesShort": 23467663,
-    "sharesShortPriorMonth": "1970-09-16T12:27:57.000Z",
-    "sharesShortPreviousMonthDate": "2025-12-31T00:00:00.000Z",
-    "dateShortInterest": "2026-01-30T00:00:00.000Z",
-    "sharesPercentSharesOut": 0.0954,
+    "sharesShort": 25437641,
+    "sharesShortPriorMonth": "1970-08-27T02:01:38.000Z",
+    "sharesShortPreviousMonthDate": "2026-01-15T00:00:00.000Z",
+    "dateShortInterest": "2026-02-13T00:00:00.000Z",
+    "sharesPercentSharesOut": 0.1034,
     "heldPercentInsiders": 0.03078,
-    "heldPercentInstitutions": 0.83682996,
-    "shortRatio": 2.43,
-    "shortPercentOfFloat": 0.1087,
+    "heldPercentInstitutions": 0.83688,
+    "shortRatio": 2.68,
+    "shortPercentOfFloat": 0.1178,
     "beta": 1.264,
     "impliedSharesOutstanding": 245916347,
     "category": null,
-    "bookValue": 2.898,
-    "priceToBook": 6.1594205,
+    "bookValue": 3.383,
+    "priceToBook": 5.338457,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "netIncomeToCommon": -22812000,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "earningsQuarterlyGrowth": -0.571,
+    "netIncomeToCommon": -31509000,
     "trailingEps": -0.08,
     "forwardEps": 1.18791,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 3.191,
-    "enterpriseToEbitda": 71.664,
-    "52WeekChange": 0.019819856,
-    "SandP52WeekChange": 0.18502891,
+    "enterpriseToRevenue": 3.236,
+    "enterpriseToEbitda": 41.87,
+    "52WeekChange": 0.037187696,
+    "SandP52WeekChange": 0.16653454,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1800,7 +1811,6 @@
     "sectorKey": "technology",
     "sectorDisp": "Technology",
     "longBusinessSummary": "Zeta Global Holdings Corp. operates an omnichannel data-driven cloud platform that provides enterprises with consumer intelligence and marketing automation software in the United States and internationally. The company's Zeta Marketing platform analyzes billions of structured and unstructured data signals to predict consumer intent by leveraging sophisticated machine learning algorithms and the industry's opted-in data set for omnichannel marketing; and Consumer Data platform (CDP+) delivers real-time identifiers and signals which helps in consolidating multiple databases and internal and external data feeds and organize data based on needs and performance metrics. It also offers various types of product suites, such as agile intelligence suite, which synthesizes Zeta's data and data generated by its customers to uncover consumer insights that are translated into marketing programs. The company was incorporated in 2007 and is headquartered in New York, New York.",
-    "fullTimeEmployees": 2191,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -1833,18 +1843,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 698883,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "STEINBERG DAVID A.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 12990,
         "value": 251185,
         "filerUrl": "",
@@ -1854,6 +1852,18 @@
         "moneyText": "",
         "startDate": "2025-12-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 698883,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "STEINBERG DAVID A.",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2001,6 +2011,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 25000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAVELLA SATISH",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1932331,
         "value": 0,
         "filerUrl": "",
@@ -2019,18 +2041,6 @@
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "GREINER CHRISTOPHER E",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAVELLA SATISH",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-09T00:00:00.000Z",
         "ownership": "D"
@@ -2298,28 +2308,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 40841,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RAVELLA SATISH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 40841,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RAVELLA SATISH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1531076,
         "filerUrl": "",
         "transactionText": "",
@@ -2350,6 +2338,28 @@
         "moneyText": "",
         "startDate": "2024-10-09T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 40841,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RAVELLA SATISH",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 40841,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RAVELLA SATISH",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-09T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2661,7 +2671,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 17.85,
+    "currentPrice": 18.06,
     "targetHighPrice": 44,
     "targetLowPrice": 23,
     "targetMeanPrice": 29.08333,
@@ -2669,27 +2679,28 @@
     "recommendationMean": 1.57143,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 12,
-    "totalCash": 385184000,
-    "totalCashPerShare": 1.601,
-    "ebitda": 54534000,
-    "totalDebt": 208112992,
-    "quickRatio": 2.873,
-    "currentRatio": 3.011,
-    "totalRevenue": 1224702976,
-    "debtToEquity": 30.196,
-    "revenuePerShare": 5.702,
-    "returnOnAssets": 0.00479,
-    "returnOnEquity": -0.039189998,
-    "grossProfits": 745057984,
-    "freeCashflow": 160941248,
-    "operatingCashflow": 178450000,
-    "revenueGrowth": 0.257,
-    "grossMargins": 0.60836,
-    "ebitdaMargins": 0.04453,
-    "operatingMargins": 0.04518,
-    "profitMargins": -0.01863,
+    "totalCash": 319764000,
+    "totalCashPerShare": 1.329,
+    "ebitda": 100844000,
+    "totalDebt": 197083008,
+    "quickRatio": 1.495,
+    "currentRatio": 1.597,
+    "totalRevenue": 1304668032,
+    "debtToEquity": 24.495,
+    "revenuePerShare": 5.486,
+    "returnOnAssets": 0.01377,
+    "returnOnEquity": -0.042540003,
+    "grossProfits": 791081024,
+    "freeCashflow": 351862240,
+    "operatingCashflow": 198902000,
+    "earningsGrowth": -0.489,
+    "revenueGrowth": 0.254,
+    "grossMargins": 0.60635,
+    "ebitdaMargins": 0.07729,
+    "operatingMargins": 0.080170006,
+    "profitMargins": -0.024149999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-26T04:19:09.092Z",
+  "lastUpdated": "2026-02-27T04:15:32.880Z",
   "source": "Static Build (yahoo-finance2)"
 }
