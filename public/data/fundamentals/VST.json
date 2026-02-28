@@ -6,8 +6,8 @@
         "strongBuy": 4,
         "buy": 16,
         "hold": 0,
-        "sell": 0,
-        "strongSell": 1
+        "sell": 1,
+        "strongSell": 0
       },
       {
         "period": "-1m",
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.122700006,
         "position": 41588784,
-        "value": 7353729091,
+        "value": 7231873624,
         "pctChange": 0.0095
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.089499995,
         "position": 30325429,
-        "value": 5362142577,
+        "value": 5273288830,
         "pctChange": 0.03
       },
       {
@@ -63,7 +63,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0502,
         "position": 16995465,
-        "value": 3005138245,
+        "value": 2955341398,
         "pctChange": -0.1457
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.048600003,
         "position": 16474869,
-        "value": 2913086457,
+        "value": 2864814960,
         "pctChange": 0.0269
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0317,
         "position": 10745366,
-        "value": 1899995694,
+        "value": 1868511687,
         "pctChange": -0.5087
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.026500002,
         "position": 8965648,
-        "value": 1585305945,
+        "value": 1559036525,
         "pctChange": 0.011
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0234,
         "position": 7914694,
-        "value": 1399476251,
+        "value": 1376286134,
         "pctChange": -0.0173
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Massachusetts Financial Services Co.",
         "pctHeld": 0.019299999,
         "position": 6530095,
-        "value": 1154651445,
+        "value": 1135518215,
         "pctChange": -0.081099994
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Lone Pine Capital Llc",
         "pctHeld": 0.0154,
         "position": 5211885,
-        "value": 921565543,
+        "value": 906294679,
         "pctChange": 0.1091
       },
       {
@@ -126,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0137,
         "position": 4628580,
-        "value": 818425549,
+        "value": 804863773,
         "pctChange": -0.0355
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01219,
-    "institutionsPercentHeld": 0.92382,
-    "institutionsFloatPercentHeld": 0.93522,
-    "institutionsCount": 1746
+    "institutionsPercentHeld": 0.92445,
+    "institutionsFloatPercentHeld": 0.93586,
+    "institutionsCount": 1745
   },
   "earnings": {
     "maxAge": 86400,
@@ -177,10 +177,14 @@
         },
         {
           "date": "4Q2025",
+          "actual": 0.54,
           "estimate": 2.29974,
           "fiscalQuarter": "4Q2025",
           "calendarQuarter": "4Q2025",
-          "periodEndDate": 1767139200
+          "difference": "-1.76",
+          "surprisePct": "-76.52",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1772192751
         }
       ],
       "currentQuarterEstimate": 1.326,
@@ -189,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-06T13:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -247,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-27T18:12:30.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 234,
+        "priorPriceTarget": 236
+      },
       {
         "epochGradeDate": "2026-02-10T18:05:08.000Z",
         "firm": "Jefferies",
@@ -1523,24 +1539,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.007974232,
-    "postMarketChange": -1.4100037,
-    "postMarketTime": "2026-02-27T00:59:53.000Z",
-    "postMarketPrice": 175.41,
-    "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.00832577,
-    "regularMarketChange": 1.46001,
-    "regularMarketTime": "2026-02-26T21:00:03.000Z",
+    "postMarketChangePercent": -0.002817905,
+    "postMarketChange": -0.4900055,
+    "postMarketTime": "2026-02-28T00:59:57.000Z",
+    "postMarketPrice": 173.4,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.0165706,
+    "regularMarketChange": -2.93001,
+    "regularMarketTime": "2026-02-27T21:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 176.82,
-    "regularMarketDayHigh": 177.23,
-    "regularMarketDayLow": 164.11,
-    "regularMarketVolume": 7230268,
-    "averageDailyVolume10Day": 4637240,
-    "averageDailyVolume3Month": 5292256,
-    "regularMarketPreviousClose": 175.36,
+    "regularMarketPrice": 173.89,
+    "regularMarketDayHigh": 178.31,
+    "regularMarketDayLow": 170.89,
+    "regularMarketVolume": 3343241,
+    "averageDailyVolume10Day": 4983930,
+    "averageDailyVolume3Month": 5389553,
+    "regularMarketPreviousClose": 176.82,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 171.36,
+    "regularMarketOpen": 175,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -1551,20 +1567,20 @@
     "shortName": "Vistra Corp.",
     "longName": "Vistra Corp.",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 59911127040
+    "marketCap": 58918367232
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 79318122496,
-    "forwardPE": 15.776598,
-    "profitMargins": 0.06701,
-    "floatShares": 316574820,
+    "enterpriseValue": 78007926784,
+    "forwardPE": 15.40824,
+    "profitMargins": 0.05322,
+    "floatShares": 314869210,
     "sharesOutstanding": 338825490,
     "sharesShort": 10122195,
     "sharesShortPriorMonth": "1970-04-15T07:36:02.000Z",
@@ -1572,28 +1588,28 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0299,
     "heldPercentInsiders": 0.01219,
-    "heldPercentInstitutions": 0.92382,
+    "heldPercentInstitutions": 0.92445,
     "shortRatio": 1.63,
     "shortPercentOfFloat": 0.0346,
     "beta": 1.443,
     "impliedSharesOutstanding": 338825490,
     "category": null,
     "bookValue": 8.073,
-    "priceToBook": 21.90264,
+    "priceToBook": 21.5397,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "earningsQuarterlyGrowth": -0.655,
-    "netIncomeToCommon": 960000000,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "earningsQuarterlyGrowth": -0.472,
+    "netIncomeToCommon": 752000000,
     "trailingEps": 2.78,
-    "forwardEps": 11.20774,
+    "forwardEps": 11.28552,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 4.614,
-    "enterpriseToEbitda": 15.236,
-    "52WeekChange": 0.3119856,
-    "SandP52WeekChange": 0.16653454,
+    "enterpriseToRevenue": 4.398,
+    "enterpriseToEbitda": 14.95,
+    "52WeekChange": 0.426543,
+    "SandP52WeekChange": 0.17593324,
     "lastDividendValue": 0.227,
     "lastDividendDate": "2025-12-22T00:00:00.000Z",
     "latestShareClass": null,
@@ -1614,13 +1630,48 @@
     "sectorKey": "utilities",
     "sectorDisp": "Utilities",
     "longBusinessSummary": "Vistra Corp., together with its subsidiaries, operates as an integrated retail electricity and power generation company in the United States. It operates through five segments: Retail, Texas, East, West, and Asset Closure. The company retails electricity and natural gas to residential, commercial, and industrial customers across states in the United States and the District of Columbia. It also involved in the electricity generation, wholesale energy purchases and sales, commodity risk management, fuel production, and fuel logistics management activities. It serves approximately 5 million customers with a generation capacity of approximately 41,000 megawatts with a portfolio of natural gas, nuclear, coal, solar, and battery energy storage facilities. The company was formerly known as Vistra Energy Corp. and changed its name to Vistra Corp. in July 2020. Vistra Corp. was founded in 1882 and is based in Irving, Texas.",
-    "fullTimeEmployees": 6850,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 117332,
+        "value": 20136518,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 171.62 per share.",
+        "filerName": "HUDSON SCOTT A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 136888,
+        "value": 23492719,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 171.62 per share.",
+        "filerName": "MOLDOVAN KRISTOPHER E.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-02-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 79444,
+        "value": 13634179,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 171.62 per share.",
+        "filerName": "MOORE STEPHANIE ZAPATA",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-02-24T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 50000,
@@ -1719,11 +1770,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 56000,
-        "value": 1102080,
+        "shares": 58275,
+        "value": 1339160,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 19.68 per share.",
-        "filerName": "HUDSON SCOTT A",
+        "transactionText": "Conversion of Exercise of derivative security at price 22.98 per share.",
+        "filerName": "KIRBY CARRIE LEE",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-14T00:00:00.000Z",
@@ -1731,11 +1782,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 58275,
-        "value": 1339160,
+        "shares": 56000,
+        "value": 1102080,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 22.98 per share.",
-        "filerName": "KIRBY CARRIE LEE",
+        "transactionText": "Conversion of Exercise of derivative security at price 19.68 per share.",
+        "filerName": "HUDSON SCOTT A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-14T00:00:00.000Z",
@@ -2835,18 +2886,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 38141,
-        "value": 6176554,
-        "filerUrl": "",
-        "transactionText": "Sale at price 161.94 per share.",
-        "filerName": "MOORE STEPHANIE ZAPATA",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-11-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 207100,
         "value": 33413260,
         "filerUrl": "",
@@ -2865,6 +2904,18 @@
         "transactionText": "Sale at price 162.28 - 162.42 per share.",
         "filerName": "KIRBY CARRIE LEE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-11-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 38141,
+        "value": 6176554,
+        "filerUrl": "",
+        "transactionText": "Sale at price 161.94 per share.",
+        "filerName": "MOORE STEPHANIE ZAPATA",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2024-11-22T00:00:00.000Z",
         "ownership": "D"
@@ -3186,36 +3237,32 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 176.82,
+    "currentPrice": 173.89,
     "targetHighPrice": 293,
     "targetLowPrice": 97,
-    "targetMeanPrice": 230.05,
-    "targetMedianPrice": 234.5,
-    "recommendationMean": 1.33333,
+    "targetMeanPrice": 230,
+    "targetMedianPrice": 233.5,
+    "recommendationMean": 1.38095,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 20,
     "totalCash": 620000000,
-    "totalCashPerShare": 1.83,
-    "ebitda": 5206000128,
+    "totalCashPerShare": 1.84,
+    "ebitda": 5217999872,
     "totalDebt": 17538000896,
-    "quickRatio": 0.35,
-    "currentRatio": 0.995,
-    "totalRevenue": 17191000064,
+    "totalRevenue": 17738000384,
     "debtToEquity": 335.784,
-    "revenuePerShare": 50.631,
-    "returnOnAssets": 0.03592,
-    "returnOnEquity": 0.1731,
-    "grossProfits": 5984000000,
-    "freeCashflow": 1847000064,
-    "operatingCashflow": 3991000064,
-    "earningsGrowth": -0.667,
-    "revenueGrowth": -0.209,
-    "grossMargins": 0.34809,
-    "ebitdaMargins": 0.30283,
-    "operatingMargins": 0.21042,
-    "profitMargins": 0.06701,
+    "revenuePerShare": 52.635,
+    "returnOnEquity": 0.17472,
+    "grossProfits": 5833999872,
+    "operatingCashflow": 4070000128,
+    "earningsGrowth": -0.517,
+    "revenueGrowth": 0.136,
+    "grossMargins": 0.32889998,
+    "ebitdaMargins": 0.29417,
+    "operatingMargins": 0.11497,
+    "profitMargins": 0.05322,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-27T04:14:28.373Z",
+  "lastUpdated": "2026-02-28T03:55:57.269Z",
   "source": "Static Build (yahoo-finance2)"
 }

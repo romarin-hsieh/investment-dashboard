@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0631,
         "position": 14978848,
-        "value": 342116890,
+        "value": 319349034,
         "pctChange": 0.26049998
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.059299998,
         "position": 14082305,
-        "value": 321639848,
+        "value": 300234738,
         "pctChange": 0.1043
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.058000002,
         "position": 13768894,
-        "value": 314481541,
+        "value": 293552815,
         "pctChange": 0.1243
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.051,
         "position": 12108694,
-        "value": 276562572,
+        "value": 258157352,
         "pctChange": 0.1877
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Alps Advisors Inc.",
         "pctHeld": 0.0353,
         "position": 8381026,
-        "value": 191422635,
+        "value": 178683471,
         "pctChange": -0.37759998
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0278,
         "position": 6604349,
-        "value": 150843332,
+        "value": 140804718,
         "pctChange": -0.2641
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Ameriprise Financial, Inc.",
         "pctHeld": 0.018099999,
         "position": 4297432,
-        "value": 98153347,
+        "value": 91621248,
         "pctChange": 0.7526
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0176,
         "position": 4177624,
-        "value": 95416932,
+        "value": 89066942,
         "pctChange": 0.3563
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0167,
         "position": 3952694,
-        "value": 90279531,
+        "value": 84271434,
         "pctChange": 1.0872
       },
       {
@@ -126,7 +126,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0155,
         "position": 3688397,
-        "value": 84242988,
+        "value": 78636622,
         "pctChange": 0.0554
       }
     ]
@@ -142,17 +142,6 @@
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": -0.19,
-          "estimate": 0,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "-0.19",
-          "surprisePct": "0.0",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1740607688
-        },
         {
           "date": "1Q2025",
           "actual": -0.13,
@@ -185,23 +174,32 @@
           "surprisePct": "-31.26",
           "periodEndDate": 1759190400,
           "reportedDate": 1762215449
+        },
+        {
+          "date": "4Q2025",
+          "actual": -0.09,
+          "estimate": -0.07,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "-0.02",
+          "surprisePct": "-28.57",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1772144242
         }
       ],
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentQuarterEstimate": -0.04,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [
+        "2026-05-07T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
-        {
-          "date": 2021,
-          "revenue": 4073260,
-          "earnings": -43741480
-        },
         {
           "date": 2022,
           "revenue": 17253300,
@@ -216,15 +214,14 @@
           "date": 2024,
           "revenue": 112074840,
           "earnings": -53797760
+        },
+        {
+          "date": 2025,
+          "revenue": 90187230,
+          "earnings": 0
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2024",
-          "revenue": 57278490,
-          "earnings": 0
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -242,6 +239,12 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 24899550,
           "earnings": 0
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2025",
+          "revenue": 37077980,
+          "earnings": 0
         }
       ]
     },
@@ -250,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-02-27T16:30:22.000Z",
+        "firm": "HC Wainwright & Co.",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 27.25,
+        "priorPriceTarget": 26.75
+      },
       {
         "epochGradeDate": "2026-02-11T17:32:11.000Z",
         "firm": "Goldman Sachs",
@@ -716,24 +729,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.01707528,
-    "postMarketChange": -0.3899994,
-    "postMarketTime": "2026-02-27T00:59:26.000Z",
-    "postMarketPrice": 22.45,
+    "postMarketChangePercent": 0.0051782904,
+    "postMarketChange": 0.11040115,
+    "postMarketTime": "2026-02-28T00:59:37.000Z",
+    "postMarketPrice": 21.4304,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0106195,
-    "regularMarketChange": 0.24,
-    "regularMarketTime": "2026-02-26T21:00:00.000Z",
+    "regularMarketChangePercent": -0.066549905,
+    "regularMarketChange": -1.52,
+    "regularMarketTime": "2026-02-27T21:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 22.84,
-    "regularMarketDayHigh": 22.89,
-    "regularMarketDayLow": 21.44,
-    "regularMarketVolume": 7874411,
-    "averageDailyVolume10Day": 10450230,
-    "averageDailyVolume3Month": 12804593,
-    "regularMarketPreviousClose": 22.6,
+    "regularMarketPrice": 21.32,
+    "regularMarketDayHigh": 22.87,
+    "regularMarketDayLow": 21.18,
+    "regularMarketVolume": 10075114,
+    "averageDailyVolume10Day": 9394510,
+    "averageDailyVolume3Month": 12819888,
+    "regularMarketPreviousClose": 22.84,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 22.45,
+    "regularMarketOpen": 21.5,
     "exchange": "ASE",
     "exchangeName": "NYSE American",
     "exchangeDataDelayedBy": 0,
@@ -749,15 +762,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5500499456
+    "marketCap": 5134441472
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 5188683776,
-    "forwardPE": 456.8,
-    "profitMargins": -1.24166,
-    "floatShares": 234197294,
+    "enterpriseValue": 4969051136,
+    "forwardPE": 137.54839,
+    "profitMargins": -1.2990199,
+    "floatShares": 238460290,
     "sharesOutstanding": 240827469,
     "sharesShort": 36256154,
     "sharesShortPriorMonth": "1971-03-08T18:51:41.000Z",
@@ -768,25 +781,24 @@
     "heldPercentInstitutions": 0.70162004,
     "shortRatio": 2.03,
     "shortPercentOfFloat": 0.153,
-    "beta": 1.68,
     "impliedSharesOutstanding": 240827469,
     "category": null,
-    "bookValue": 2.969,
-    "priceToBook": 7.692826,
+    "bookValue": 2.808,
+    "priceToBook": 7.5925922,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "netIncomeToCommon": -97771000,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "netIncomeToCommon": -85634000,
     "trailingEps": -0.48,
-    "forwardEps": 0.05,
+    "forwardEps": 0.155,
     "lastSplitFactor": "1:50",
     "lastSplitDate": 1383609600,
-    "enterpriseToRevenue": 65.895,
-    "enterpriseToEbitda": -55.724,
-    "52WeekChange": 4.485437,
-    "SandP52WeekChange": 0.16653454,
+    "enterpriseToRevenue": 75.378,
+    "enterpriseToEbitda": -53.718,
+    "52WeekChange": 4.610526,
+    "SandP52WeekChange": 0.17593324,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -807,7 +819,6 @@
     "sectorKey": "energy",
     "sectorDisp": "Energy",
     "longBusinessSummary": "Energy Fuels Inc., together with its subsidiaries, engages in the exploration, recovery, recycling, exploration, operation, development, permitting, evaluation, and sale of uranium mineral properties in the United States. It produces and sells vanadium pentoxide, rare earth elements, carbonate, and heavy mineral sands, such as ilmenite, rutile, zircon, and monazite. The company was formerly known as Volcanic Metals Exploration Inc. and changed its name to Energy Fuels Inc. in May 2006. Energy Fuels Inc. was incorporated in 1987 and is headquartered in Lakewood, Colorado.",
-    "fullTimeEmployees": 1370,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -1176,18 +1187,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 38739,
-        "value": 588736,
-        "filerUrl": "",
-        "transactionText": "Sale at price 15.20 per share.",
-        "filerName": "MORRISON ALEXANDER G.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 25000,
         "value": 389500,
         "filerUrl": "",
@@ -1200,14 +1199,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 146580,
+        "shares": 38739,
+        "value": 588736,
         "filerUrl": "",
-        "transactionText": "Sale at price 14.33 - 15.24 per share.",
-        "filerName": "HIGGS DENNIS LYLE",
+        "transactionText": "Sale at price 15.20 per share.",
+        "filerName": "MORRISON ALEXANDER G.",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-09-19T00:00:00.000Z",
+        "startDate": "2025-11-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1217,6 +1216,18 @@
         "filerUrl": "",
         "transactionText": "Sale at price 14.85 per share.",
         "filerName": "BOVAIRD J BIRKS",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 146580,
+        "filerUrl": "",
+        "transactionText": "Sale at price 14.33 - 15.24 per share.",
+        "filerName": "HIGGS DENNIS LYLE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-19T00:00:00.000Z",
@@ -1596,6 +1607,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 19036,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DRERA SALEEM",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 18859,
         "value": 0,
         "filerUrl": "",
@@ -1800,18 +1823,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 19036,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DRERA SALEEM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 27587,
         "value": 0,
         "filerUrl": "",
@@ -1856,6 +1867,18 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1620,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DRERA SALEEM",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1950,18 +1973,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "LONGENECKER NATHAN M.",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1620,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DRERA SALEEM",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-12T00:00:00.000Z",
         "ownership": "D"
@@ -2085,6 +2096,30 @@
         "moneyText": "",
         "startDate": "2024-05-08T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16838,
+        "value": 98671,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 5.86 per share.",
+        "filerName": "CHALMERS MARK STEPHEN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-05-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25750,
+        "value": 150337,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 5.84 per share.",
+        "filerName": "KIRKWOOD ROBERT WILLIAM",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-07T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -2232,30 +2267,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 16838,
-        "value": 98671,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 5.86 per share.",
-        "filerName": "CHALMERS MARK STEPHEN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-05-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25750,
-        "value": 150337,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 5.84 per share.",
-        "filerName": "KIRKWOOD ROBERT WILLIAM",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-07T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 1000,
         "value": 5635,
         "filerUrl": "",
@@ -2283,33 +2294,35 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 22.84,
+    "currentPrice": 21.32,
     "targetHighPrice": 34,
     "targetLowPrice": 15.5,
-    "targetMeanPrice": 26.65,
-    "targetMedianPrice": 27,
-    "recommendationKey": "none",
+    "targetMeanPrice": 26.75,
+    "targetMedianPrice": 27.25,
+    "recommendationMean": 1.375,
+    "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 5,
-    "totalCash": 235264000,
-    "totalCashPerShare": 0.991,
-    "ebitda": -93114000,
-    "totalDebt": 0,
-    "quickRatio": 8.698,
-    "currentRatio": 11.496,
-    "totalRevenue": 78742000,
-    "revenuePerShare": 0.367,
-    "returnOnAssets": -0.11005,
-    "returnOnEquity": -0.18105,
-    "grossProfits": 4841000,
-    "freeCashflow": -107538624,
-    "operatingCashflow": -109254000,
-    "revenueGrowth": 3.376,
-    "grossMargins": 0.061479997,
-    "ebitdaMargins": -1.18252,
-    "operatingMargins": -1.5057001,
-    "profitMargins": -1.24166,
+    "totalCash": 861841984,
+    "totalCashPerShare": 3.567,
+    "ebitda": -92502000,
+    "totalDebt": 675688000,
+    "quickRatio": 28.171,
+    "currentRatio": 30.694,
+    "totalRevenue": 65922000,
+    "debtToEquity": 98.992,
+    "revenuePerShare": 0.293,
+    "returnOnAssets": -0.062480003,
+    "returnOnEquity": -0.14183,
+    "grossProfits": 13753000,
+    "freeCashflow": -119593872,
+    "operatingCashflow": -89480000,
+    "revenueGrowth": -0.321,
+    "grossMargins": 0.20863001,
+    "ebitdaMargins": -1.4032,
+    "operatingMargins": -0.81621003,
+    "profitMargins": -1.2990199,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-27T04:15:14.701Z",
+  "lastUpdated": "2026-02-28T03:56:43.731Z",
   "source": "Static Build (yahoo-finance2)"
 }
