@@ -24,14 +24,6 @@
         "hold": 2,
         "sell": 1,
         "strongSell": 0
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 1,
-        "buy": 5,
-        "hold": 1,
-        "sell": 0,
-        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -134,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01654,
-    "institutionsPercentHeld": 0.49073002,
-    "institutionsFloatPercentHeld": 0.49898,
-    "institutionsCount": 594
+    "institutionsPercentHeld": 0.49111,
+    "institutionsFloatPercentHeld": 0.49937,
+    "institutionsCount": 597
   },
   "earnings": {
     "maxAge": 86400,
@@ -781,16 +773,16 @@
     "regularMarketPrice": 17.42,
     "regularMarketDayHigh": 18.17,
     "regularMarketDayLow": 16.625,
-    "regularMarketVolume": 26007134,
-    "averageDailyVolume10Day": 30924690,
-    "averageDailyVolume3Month": 33451610,
+    "regularMarketVolume": 25999501,
+    "averageDailyVolume10Day": 30030970,
+    "averageDailyVolume3Month": 33390965,
     "regularMarketPreviousClose": 18.63,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 18.115,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "RGTI",
     "underlyingSymbol": null,
@@ -818,7 +810,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1567,
     "heldPercentInsiders": 0.01654,
-    "heldPercentInstitutions": 0.49073002,
+    "heldPercentInstitutions": 0.49111,
     "shortRatio": 1.6,
     "shortPercentOfFloat": 0.1574,
     "beta": 1.704,
@@ -837,7 +829,7 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 708.523,
     "enterpriseToEbitda": -72.726,
-    "52WeekChange": 1.4207792,
+    "52WeekChange": 1.2623377,
     "SandP52WeekChange": 0.17593324,
     "latestShareClass": null,
     "leadInvestor": null
@@ -1703,30 +1695,6 @@
         "moneyText": "",
         "startDate": "2024-03-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30000,
-        "value": 60300,
-        "filerUrl": "",
-        "transactionText": "Sale at price 2.01 per share.",
-        "filerName": "FITZGERALD ALISSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30000,
-        "value": 8160,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.27 per share.",
-        "filerName": "FITZGERALD ALISSA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-02-28T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -1761,6 +1729,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-28T03:58:44.143Z",
+  "lastUpdated": "2026-03-01T04:27:58.841Z",
   "source": "Static Build (yahoo-finance2)"
 }

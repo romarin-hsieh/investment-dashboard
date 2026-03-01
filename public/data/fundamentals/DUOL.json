@@ -3,9 +3,9 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 4,
-        "buy": 5,
-        "hold": 13,
+        "strongBuy": 3,
+        "buy": 3,
+        "hold": 16,
         "sell": 1,
         "strongSell": 0
       },
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00852,
-    "institutionsPercentHeld": 0.95945,
-    "institutionsFloatPercentHeld": 0.96769994,
-    "institutionsCount": 667
+    "institutionsPercentHeld": 0.95956004,
+    "institutionsFloatPercentHeld": 0.96781,
+    "institutionsCount": 668
   },
   "earnings": {
     "maxAge": 86400,
@@ -183,7 +183,7 @@
           "periodEndDate": 1767139200
         }
       ],
-      "currentQuarterEstimate": 1.63,
+      "currentQuarterEstimate": 1.65,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -1960,23 +1960,23 @@
     "postMarketTime": "2026-02-28T00:59:53.000Z",
     "postMarketPrice": 100.7999,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.14006,
-    "regularMarketChange": -16.45,
+    "regularMarketChangePercent": -0.14005958,
+    "regularMarketChange": -16.449997,
     "regularMarketTime": "2026-02-27T21:00:03.000Z",
     "priceHint": 2,
     "regularMarketPrice": 101,
     "regularMarketDayHigh": 101.45,
     "regularMarketDayLow": 91.99,
-    "regularMarketVolume": 20090328,
-    "averageDailyVolume10Day": 2710060,
-    "averageDailyVolume3Month": 2125573,
+    "regularMarketVolume": 13594611,
+    "averageDailyVolume10Day": 4416330,
+    "averageDailyVolume3Month": 2434470,
     "regularMarketPreviousClose": 117.45,
-    "regularMarketSource": "FREE_REALTIME",
+    "regularMarketSource": "DELAYED",
     "regularMarketOpen": 92.06,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "DUOL",
     "underlyingSymbol": null,
@@ -2002,7 +2002,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.18879999,
     "heldPercentInsiders": 0.00852,
-    "heldPercentInstitutions": 0.95945,
+    "heldPercentInstitutions": 0.95956004,
     "shortRatio": 3.32,
     "shortPercentOfFloat": 0.2442,
     "impliedSharesOutstanding": 46227357,
@@ -2019,7 +2019,7 @@
     "trailingEps": 7.94,
     "forwardEps": 7.8603,
     "lastSplitFactor": null,
-    "52WeekChange": -0.6021746,
+    "52WeekChange": -0.65789384,
     "SandP52WeekChange": 0.17593324,
     "latestShareClass": null,
     "leadInvestor": null
@@ -2214,6 +2214,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 5005,
+        "value": 885291,
+        "filerUrl": "",
+        "transactionText": "Sale at price 173.80 - 177.95 per share.",
+        "filerName": "GLANCE NATALIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2796,
         "value": 494397,
         "filerUrl": "",
@@ -2232,18 +2244,6 @@
         "transactionText": "Sale at price 174.04 - 177.95 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5005,
-        "value": 885291,
-        "filerUrl": "",
-        "transactionText": "Sale at price 173.80 - 177.95 per share.",
-        "filerName": "GLANCE NATALIE",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-18T00:00:00.000Z",
         "ownership": "D"
@@ -2537,6 +2537,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2533,
+        "value": 833433,
+        "filerUrl": "",
+        "transactionText": "Sale at price 329.03 per share.",
+        "filerName": "GLANCE NATALIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1444,
         "value": 475119,
         "filerUrl": "",
@@ -2567,18 +2579,6 @@
         "transactionText": "Sale at price 329.03 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2533,
-        "value": 833433,
-        "filerUrl": "",
-        "transactionText": "Sale at price 329.03 per share.",
-        "filerName": "GLANCE NATALIE",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-15T00:00:00.000Z",
         "ownership": "D"
@@ -3386,6 +3386,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2667,
+        "value": 1160892,
+        "filerUrl": "",
+        "transactionText": "Sale at price 435.28 per share.",
+        "filerName": "GLANCE NATALIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1272,
         "value": 553676,
         "filerUrl": "",
@@ -3428,18 +3440,6 @@
         "transactionText": "Sale at price 435.28 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2667,
-        "value": 1160892,
-        "filerUrl": "",
-        "transactionText": "Sale at price 435.28 per share.",
-        "filerName": "GLANCE NATALIE",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
@@ -3838,12 +3838,12 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 101,
-    "targetHighPrice": 347,
-    "targetLowPrice": 85,
-    "targetMeanPrice": 174.90646,
-    "targetMedianPrice": 125,
-    "recommendationMean": 2.21739,
-    "recommendationKey": "buy",
+    "targetHighPrice": 180,
+    "targetLowPrice": 81,
+    "targetMeanPrice": 110.73,
+    "targetMedianPrice": 101,
+    "recommendationMean": 2.69565,
+    "recommendationKey": "hold",
     "numberOfAnalystOpinions": 17,
     "totalCash": 1140466944,
     "ebitda": 149960992,
@@ -3866,6 +3866,6 @@
     "profitMargins": 0.39905998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-28T03:57:00.638Z",
+  "lastUpdated": "2026-03-01T04:26:15.018Z",
   "source": "Static Build (yahoo-finance2)"
 }

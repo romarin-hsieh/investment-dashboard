@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00676,
-    "institutionsPercentHeld": 0.67074996,
-    "institutionsFloatPercentHeld": 0.67530996,
-    "institutionsCount": 5808
+    "institutionsPercentHeld": 0.67086,
+    "institutionsFloatPercentHeld": 0.67543,
+    "institutionsCount": 5819
   },
   "earnings": {
     "maxAge": 86400,
@@ -176,35 +176,28 @@
           "reportedDate": 1754136000
         },
         {
-          "date": "3Q2025",
-          "actual": 6.2508,
-          "estimate": 5.73466,
-          "fiscalQuarter": "3Q2025",
-          "calendarQuarter": "3Q2025",
-          "difference": "0.52",
-          "surprisePct": "9.0",
-          "periodEndDate": 1759190400,
-          "reportedDate": 1761998400
+          "date": "4Q2025",
+          "actual": 4.7281,
+          "estimate": 5.16646,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "-0.44",
+          "surprisePct": "-8.48",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1772283600
         }
       ],
-      "currentQuarterEstimate": 5.16646,
+      "currentQuarterEstimate": 5.21408,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
       "currentFiscalQuarter": "4Q2025",
       "currentPeriodEndDate": 1767139200,
-      "earningsDate": [
-        "2026-02-28T21:00:00.000Z"
-      ],
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
-        {
-          "date": 2021,
-          "revenue": 276094000000,
-          "earnings": 27455000000
-        },
         {
           "date": 2022,
           "revenue": 302089000000,
@@ -219,15 +212,14 @@
           "date": 2024,
           "revenue": 371433000000,
           "earnings": 47437000000
+        },
+        {
+          "date": 2025,
+          "revenue": 371444000000,
+          "earnings": 44486000000
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2024",
-          "revenue": 94916000000,
-          "earnings": 14527000000
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -245,6 +237,12 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 94972000000,
           "earnings": 13485000000
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2025",
+          "revenue": 94232000000,
+          "earnings": 0
         }
       ]
     },
@@ -463,14 +461,14 @@
     "regularMarketDayLow": 501.195,
     "regularMarketVolume": 6290902,
     "averageDailyVolume10Day": 4080500,
-    "averageDailyVolume3Month": 4633245,
+    "averageDailyVolume3Month": 4643880,
     "regularMarketPreviousClose": 502.67,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 502.94,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "BRK-B",
     "underlyingSymbol": null,
@@ -487,8 +485,8 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": -251418247168,
-    "forwardPE": 20.960693,
+    "enterpriseValue": -251417772032,
+    "forwardPE": 23.140139,
     "profitMargins": 0.18129,
     "floatShares": 1235323,
     "sharesOutstanding": 1372820139,
@@ -498,7 +496,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0049,
     "heldPercentInsiders": 0.00676,
-    "heldPercentInstitutions": 0.67074996,
+    "heldPercentInstitutions": 0.67086,
     "shortRatio": 2.07,
     "shortPercentOfFloat": 0.0088,
     "beta": 0.702,
@@ -969,6 +967,6 @@
     "profitMargins": 0.18129,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-28T03:57:29.987Z",
+  "lastUpdated": "2026-03-01T04:26:45.660Z",
   "source": "Static Build (yahoo-finance2)"
 }

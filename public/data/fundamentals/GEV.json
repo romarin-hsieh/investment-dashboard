@@ -24,14 +24,6 @@
         "hold": 6,
         "sell": 1,
         "strongSell": 1
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 6,
-        "buy": 16,
-        "hold": 8,
-        "sell": 1,
-        "strongSell": 1
       }
     ],
     "maxAge": 86400
@@ -134,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00316,
-    "institutionsPercentHeld": 0.78533,
-    "institutionsFloatPercentHeld": 0.78780997,
-    "institutionsCount": 3435
+    "institutionsPercentHeld": 0.78542,
+    "institutionsFloatPercentHeld": 0.78791,
+    "institutionsCount": 3440
   },
   "earnings": {
     "maxAge": 86400,
@@ -2057,15 +2049,15 @@
     "regularMarketDayHigh": 876.355,
     "regularMarketDayLow": 853.34,
     "regularMarketVolume": 2452055,
-    "averageDailyVolume10Day": 2092710,
-    "averageDailyVolume3Month": 3171546,
+    "averageDailyVolume10Day": 2070330,
+    "averageDailyVolume3Month": 3174070,
     "regularMarketPreviousClose": 876.46,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 867.7,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "GEV",
     "underlyingSymbol": null,
@@ -2093,7 +2085,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0225,
     "heldPercentInsiders": 0.00316,
-    "heldPercentInstitutions": 0.78533,
+    "heldPercentInstitutions": 0.78542,
     "shortRatio": 1.78,
     "shortPercentOfFloat": 0.0225,
     "impliedSharesOutstanding": 271320460,
@@ -2112,7 +2104,7 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 6.011,
     "enterpriseToEbitda": 76.407,
-    "52WeekChange": 1.7737832,
+    "52WeekChange": 1.7647319,
     "SandP52WeekChange": 0.17593324,
     "lastDividendValue": 0.5,
     "lastDividendDate": "2026-01-05T00:00:00.000Z",
@@ -2166,12 +2158,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 3678,
-        "value": 534109,
+        "shares": 1329,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 126.21 - 149.78 per share.",
-        "filerName": "POTVIN MATTHEW JOSEPH",
-        "filerRelation": "Officer",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MATTHEW HARRIS C",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "D"
@@ -2267,12 +2259,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 1329,
-        "value": 0,
+        "shares": 3678,
+        "value": 534109,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MATTHEW HARRIS C",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 126.21 - 149.78 per share.",
+        "filerName": "POTVIN MATTHEW JOSEPH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "D"
@@ -2575,6 +2567,6 @@
     "profitMargins": 0.1283,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-28T03:57:50.498Z",
+  "lastUpdated": "2026-03-01T04:27:05.148Z",
   "source": "Static Build (yahoo-finance2)"
 }

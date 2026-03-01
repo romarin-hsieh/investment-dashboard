@@ -24,14 +24,6 @@
         "hold": 3,
         "sell": 0,
         "strongSell": 0
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 2,
-        "buy": 4,
-        "hold": 2,
-        "sell": 0,
-        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -134,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.17379,
-    "institutionsPercentHeld": 0.5689,
-    "institutionsFloatPercentHeld": 0.68856,
-    "institutionsCount": 644
+    "institutionsPercentHeld": 0.56886,
+    "institutionsFloatPercentHeld": 0.68851995,
+    "institutionsCount": 645
   },
   "earnings": {
     "maxAge": 86400,
@@ -892,15 +884,15 @@
     "regularMarketDayHigh": 7.16,
     "regularMarketDayLow": 6.91,
     "regularMarketVolume": 27411121,
-    "averageDailyVolume10Day": 31509730,
-    "averageDailyVolume3Month": 37925790,
+    "averageDailyVolume10Day": 31568880,
+    "averageDailyVolume3Month": 37799855,
     "regularMarketPreviousClose": 7.38,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 7.16,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "ACHR",
     "underlyingSymbol": null,
@@ -917,7 +909,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3081595136,
+    "enterpriseValue": 3084851712,
     "forwardPE": -9.644821,
     "profitMargins": 0,
     "floatShares": 544326127,
@@ -928,7 +920,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.121300004,
     "heldPercentInsiders": 0.17379,
-    "heldPercentInstitutions": 0.5689,
+    "heldPercentInstitutions": 0.56886,
     "shortRatio": 2.26,
     "shortPercentOfFloat": 0.1407,
     "beta": 3.105,
@@ -945,8 +937,8 @@
     "trailingEps": -1.17,
     "forwardEps": -0.73822,
     "lastSplitFactor": null,
-    "enterpriseToEbitda": -5.122,
-    "52WeekChange": -0.06345177,
+    "enterpriseToEbitda": -5.128,
+    "52WeekChange": -0.09644669,
     "SandP52WeekChange": 0.17593324,
     "latestShareClass": null,
     "leadInvestor": null
@@ -987,30 +979,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 41490,
-        "value": 310959,
-        "filerUrl": "",
-        "transactionText": "Sale at price 7.49 per share.",
-        "filerName": "LENTELL ERIC",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5479,
-        "value": 41064,
-        "filerUrl": "",
-        "transactionText": "Sale at price 7.49 per share.",
-        "filerName": "GUPTA PRIYA",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 45018,
         "value": 337401,
         "filerUrl": "",
@@ -1035,24 +1003,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 84313,
+        "shares": 41490,
+        "value": 310959,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PERKINS TOSHA",
+        "transactionText": "Sale at price 7.49 per share.",
+        "filerName": "LENTELL ERIC",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-11-14T00:00:00.000Z",
+        "startDate": "2025-11-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 160308,
+        "shares": 5479,
+        "value": 41064,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
+        "transactionText": "Sale at price 7.49 per share.",
+        "filerName": "GUPTA PRIYA",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-11-14T00:00:00.000Z",
+        "startDate": "2025-11-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1079,36 +1049,34 @@
       },
       {
         "maxAge": 1,
+        "shares": 84313,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 160308,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-11-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "PERKINS TOSHA",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 48936,
-        "value": 481016,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.83 per share.",
-        "filerName": "LENTELL ERIC",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10224,
-        "value": 100497,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.83 per share.",
-        "filerName": "GUPTA PRIYA",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-08-18T00:00:00.000Z",
         "ownership": "D"
@@ -1139,24 +1107,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 84313,
+        "shares": 48936,
+        "value": 481016,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PERKINS TOSHA",
+        "transactionText": "Sale at price 9.83 per share.",
+        "filerName": "LENTELL ERIC",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
+        "startDate": "2025-08-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 160308,
+        "shares": 10224,
+        "value": 100497,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
+        "transactionText": "Sale at price 9.83 per share.",
+        "filerName": "GUPTA PRIYA",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
+        "startDate": "2025-08-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1183,6 +1153,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 84313,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 160308,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 95896,
         "value": 1016498,
         "filerUrl": "",
@@ -1191,6 +1183,28 @@
         "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 54644,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNOZ OSCAR X",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 54644,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DIAZ FRED M.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-20T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1228,24 +1242,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 54644,
+        "shares": 40186,
+        "value": 521932,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNOZ OSCAR X",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 12.99 per share.",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-06-20T00:00:00.000Z",
+        "startDate": "2025-05-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 54644,
+        "shares": 80919,
+        "value": 1050968,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DIAZ FRED M.",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 12.99 per share.",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
-        "startDate": "2025-06-20T00:00:00.000Z",
+        "startDate": "2025-05-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1286,52 +1302,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 40186,
-        "value": 521932,
-        "filerUrl": "",
-        "transactionText": "Sale at price 12.99 per share.",
-        "filerName": "PERKINS TOSHA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 80919,
-        "value": 1050968,
-        "filerUrl": "",
-        "transactionText": "Sale at price 12.99 per share.",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-05-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 84312,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PERKINS TOSHA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 160308,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 102943,
         "filerUrl": "",
         "transactionText": "",
@@ -1365,6 +1335,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 84312,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 160308,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 50000,
         "value": 423500,
         "filerUrl": "",
@@ -1373,30 +1365,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 34498,
-        "value": 242704,
-        "filerUrl": "",
-        "transactionText": "Sale at price 7.04 per share.",
-        "filerName": "MESLER MARK",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50004,
-        "value": 351793,
-        "filerUrl": "",
-        "transactionText": "Sale at price 7.04 per share.",
-        "filerName": "LENTELL ERIC",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1425,24 +1393,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 63612,
+        "shares": 34498,
+        "value": 242704,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PERKINS TOSHA",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 7.04 per share.",
+        "filerName": "MESLER MARK",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-03-28T00:00:00.000Z",
+        "startDate": "2025-03-31T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 95420,
+        "shares": 50004,
+        "value": 351793,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
+        "transactionText": "Sale at price 7.04 per share.",
+        "filerName": "LENTELL ERIC",
+        "filerRelation": "General Counsel",
         "moneyText": "",
-        "startDate": "2025-03-28T00:00:00.000Z",
+        "startDate": "2025-03-31T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1469,6 +1439,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 63612,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 95420,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-03-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 53225,
         "value": 435907,
         "filerUrl": "",
@@ -1477,6 +1469,30 @@
         "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 49273,
+        "value": 379486,
+        "filerUrl": "",
+        "transactionText": "Sale at price 7.70 per share.",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 99224,
+        "value": 764193,
+        "filerUrl": "",
+        "transactionText": "Sale at price 7.70 per share.",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-03-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1517,52 +1533,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 49273,
-        "value": 379486,
-        "filerUrl": "",
-        "transactionText": "Sale at price 7.70 per share.",
-        "filerName": "PERKINS TOSHA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 99224,
-        "value": 764193,
-        "filerUrl": "",
-        "transactionText": "Sale at price 7.70 per share.",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 84314,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PERKINS TOSHA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 160307,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 102943,
         "filerUrl": "",
         "transactionText": "",
@@ -1590,6 +1560,28 @@
         "transactionText": "",
         "filerName": "GUPTA PRIYA",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 84314,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 160307,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
@@ -1750,6 +1742,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 70358,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LENTELL ERIC",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-11-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 23067,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUPTA PRIYA",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-11-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 58217,
         "filerUrl": "",
         "transactionText": "",
@@ -1783,28 +1797,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 70358,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LENTELL ERIC",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-11-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 23067,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUPTA PRIYA",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-11-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 27824,
         "filerUrl": "",
         "transactionText": "",
@@ -1812,6 +1804,17 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 70359,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LENTELL ERIC",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-08-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1849,17 +1852,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 70359,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LENTELL ERIC",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2982089,
         "value": 9989998,
         "filerUrl": "",
@@ -1880,6 +1872,17 @@
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 29674,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNOZ OSCAR X",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-21T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1917,13 +1920,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 29674,
+        "shares": 102943,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MUNOZ OSCAR X",
-        "filerRelation": "Director",
+        "filerName": "MESLER MARK",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2024-06-21T00:00:00.000Z",
+        "startDate": "2024-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 70358,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LENTELL ERIC",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-05-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1944,28 +1958,6 @@
         "transactionText": "",
         "filerName": "MUNIZ THOMAS PAUL",
         "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 102943,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MESLER MARK",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 70358,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LENTELL ERIC",
-        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2024-05-15T00:00:00.000Z",
         "ownership": "D"
@@ -2042,28 +2034,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 77252,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PERKINS TOSHA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-03-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 17993,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-03-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 96980,
         "filerUrl": "",
         "transactionText": "",
@@ -2080,6 +2050,28 @@
         "transactionText": "",
         "filerName": "MISSAN ANDREW P",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-03-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 77252,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PERKINS TOSHA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-03-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17993,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2024-03-01T00:00:00.000Z",
         "ownership": "D"
@@ -2114,6 +2106,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-28T03:57:19.132Z",
+  "lastUpdated": "2026-03-01T04:26:34.361Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -24,14 +24,6 @@
         "hold": 5,
         "sell": 0,
         "strongSell": 2
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 2,
-        "buy": 9,
-        "hold": 4,
-        "sell": 0,
-        "strongSell": 2
       }
     ],
     "maxAge": 86400
@@ -134,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0026800002,
-    "institutionsPercentHeld": 0.76302004,
-    "institutionsFloatPercentHeld": 0.76508003,
-    "institutionsCount": 2823
+    "institutionsPercentHeld": 0.76292,
+    "institutionsFloatPercentHeld": 0.76497,
+    "institutionsCount": 2824
   },
   "earnings": {
     "maxAge": 86400,
@@ -4403,20 +4395,21 @@
     "regularMarketDayLow": 162.87,
     "regularMarketVolume": 2545807,
     "averageDailyVolume10Day": 3502390,
-    "averageDailyVolume3Month": 3537647,
+    "averageDailyVolume3Month": 3559198,
     "regularMarketPreviousClose": 166.17,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 165.25,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "MMM",
     "underlyingSymbol": null,
     "shortName": "3M Company",
     "longName": "3M Company",
     "currency": "USD",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -4427,7 +4420,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 92318040064,
-    "forwardPE": 17.584728,
+    "forwardPE": 17.589144,
     "profitMargins": 0.13027,
     "floatShares": 525836212,
     "sharesOutstanding": 526700000,
@@ -4437,7 +4430,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0155,
     "heldPercentInsiders": 0.0026800002,
-    "heldPercentInstitutions": 0.76302004,
+    "heldPercentInstitutions": 0.76292,
     "shortRatio": 1.66,
     "shortPercentOfFloat": 0.0156,
     "beta": 1.166,
@@ -4453,7 +4446,7 @@
     "earningsQuarterlyGrowth": -0.207,
     "netIncomeToCommon": 3249999872,
     "trailingEps": 6,
-    "forwardEps": 9.40134,
+    "forwardEps": 9.39898,
     "lastSplitFactor": "1196:1000",
     "lastSplitDate": 1711929600,
     "enterpriseToRevenue": 3.7,
@@ -5935,7 +5928,7 @@
     "currentPrice": 165.32,
     "targetHighPrice": 228,
     "targetLowPrice": 120,
-    "targetMeanPrice": 178.20354,
+    "targetMeanPrice": 178.73294,
     "targetMedianPrice": 180.46,
     "recommendationMean": 2.16667,
     "recommendationKey": "buy",
@@ -5962,6 +5955,6 @@
     "profitMargins": 0.13027,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-28T03:58:25.350Z",
+  "lastUpdated": "2026-03-01T04:27:39.801Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -24,14 +24,6 @@
         "hold": 5,
         "sell": 0,
         "strongSell": 1
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 0,
-        "buy": 4,
-        "hold": 5,
-        "sell": 0,
-        "strongSell": 1
       }
     ],
     "maxAge": 86400
@@ -134,9 +126,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.16620001,
-    "institutionsPercentHeld": 0.45071998,
-    "institutionsFloatPercentHeld": 0.54056,
-    "institutionsCount": 667
+    "institutionsPercentHeld": 0.45069999,
+    "institutionsFloatPercentHeld": 0.54054,
+    "institutionsCount": 666
   },
   "earnings": {
     "maxAge": 86400,
@@ -712,15 +704,15 @@
     "regularMarketDayHigh": 83.5,
     "regularMarketDayLow": 77.17,
     "regularMarketVolume": 21602065,
-    "averageDailyVolume10Day": 11906240,
-    "averageDailyVolume3Month": 15498121,
+    "averageDailyVolume10Day": 11283190,
+    "averageDailyVolume3Month": 15785166,
     "regularMarketPreviousClose": 85.76,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 82.51,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "ASTS",
     "underlyingSymbol": null,
@@ -748,7 +740,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1513,
     "heldPercentInsiders": 0.16620001,
-    "heldPercentInstitutions": 0.45071998,
+    "heldPercentInstitutions": 0.45069999,
     "shortRatio": 2.58,
     "shortPercentOfFloat": 0.1958,
     "beta": 2.708,
@@ -767,7 +759,7 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 1181.22,
     "enterpriseToEbitda": -95.044,
-    "52WeekChange": 2.347385,
+    "52WeekChange": 2.0909445,
     "SandP52WeekChange": 0.17593324,
     "latestShareClass": null,
     "leadInvestor": null
@@ -821,18 +813,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 675,
-        "value": 49079,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 72.71 per share.",
-        "filerName": "LARSON KEITH R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-10T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 10000,
         "value": 773400,
         "filerUrl": "",
@@ -842,6 +822,18 @@
         "moneyText": "",
         "startDate": "2025-12-10T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 675,
+        "value": 49079,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 72.71 per share.",
+        "filerName": "LARSON KEITH R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-10T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1681,8 +1673,7 @@
     "targetLowPrice": 43,
     "targetMeanPrice": 80.3875,
     "targetMedianPrice": 81.25,
-    "recommendationMean": 2.6,
-    "recommendationKey": "hold",
+    "recommendationKey": "none",
     "numberOfAnalystOpinions": 8,
     "totalCash": 1204281984,
     "totalCashPerShare": 4.338,
@@ -1705,6 +1696,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-02-28T03:55:13.167Z",
+  "lastUpdated": "2026-03-01T04:24:28.549Z",
   "source": "Static Build (yahoo-finance2)"
 }
