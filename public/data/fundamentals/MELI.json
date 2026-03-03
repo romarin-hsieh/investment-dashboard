@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 7,
+        "buy": 18,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 5,
         "buy": 18,
         "hold": 3,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 5,
         "buy": 18,
         "hold": 3,
@@ -37,7 +45,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0687,
         "position": 3481563,
-        "value": 6119125344,
+        "value": 6186737451,
         "pctChange": 0.0495
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.043899998,
         "position": 2225031,
-        "value": 3910669887,
+        "value": 3953880087,
         "pctChange": 0.2252
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0341,
         "position": 1729499,
-        "value": 3039732776,
+        "value": 3073319723,
         "pctChange": -0.1296
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.034,
         "position": 1725125,
-        "value": 3032045121,
+        "value": 3065547125,
         "pctChange": 0.0734
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0337,
         "position": 1706673,
-        "value": 2999614256,
+        "value": 3032757921,
         "pctChange": -0.019199999
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0312,
         "position": 1583071,
-        "value": 2782373858,
+        "value": 2813117167,
         "pctChange": 0.094799995
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0279,
         "position": 1416854,
-        "value": 2490234191,
+        "value": 2517749558,
         "pctChange": -0.0429
       },
       {
@@ -100,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0253,
         "position": 1283886,
-        "value": 2256532299,
+        "value": 2281465422,
         "pctChange": -0.6389
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Janus Henderson Group PLC",
         "pctHeld": 0.0119,
         "position": 604096,
-        "value": 1061747021,
+        "value": 1073478592,
         "pctChange": 0.2643
       },
       {
@@ -118,7 +126,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.010199999,
         "position": 515875,
-        "value": 906691559,
+        "value": 916709875,
         "pctChange": -0.6309
       }
     ]
@@ -179,7 +187,7 @@
           "reportedDate": 1771966844
         }
       ],
-      "currentQuarterEstimate": 10.54057,
+      "currentQuarterEstimate": 10.5003,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -245,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-02T20:12:03.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 2650,
+        "priorPriceTarget": 2800
+      },
       {
         "epochGradeDate": "2026-02-25T15:58:00.000Z",
         "firm": "Barclays",
@@ -3091,28 +3109,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0014735977,
-    "postMarketChange": -2.5899658,
-    "postMarketTime": "2026-02-28T00:59:39.000Z",
-    "postMarketPrice": 1754.99,
+    "postMarketChangePercent": -0.0022509848,
+    "postMarketChange": -4,
+    "postMarketTime": "2026-03-03T00:57:17.000Z",
+    "postMarketPrice": 1773,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.009592822,
-    "regularMarketChange": 16.699951,
-    "regularMarketTime": "2026-02-27T21:00:03.000Z",
+    "regularMarketChangePercent": 0.0110493,
+    "regularMarketChange": 19.42,
+    "regularMarketTime": "2026-03-02T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 1757.58,
-    "regularMarketDayHigh": 1775.98,
-    "regularMarketDayLow": 1721.41,
-    "regularMarketVolume": 579900,
+    "regularMarketPrice": 1777,
+    "regularMarketDayHigh": 1780,
+    "regularMarketDayLow": 1682.12,
+    "regularMarketVolume": 817804,
     "averageDailyVolume10Day": 774660,
-    "averageDailyVolume3Month": 571608,
-    "regularMarketPreviousClose": 1740.88,
-    "regularMarketSource": "DELAYED",
-    "regularMarketOpen": 1740.595,
+    "averageDailyVolume3Month": 574846,
+    "regularMarketPreviousClose": 1757.58,
+    "regularMarketSource": "FREE_REALTIME",
+    "regularMarketOpen": 1700.03,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "MELI",
     "underlyingSymbol": null,
@@ -3124,13 +3142,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 89104351232
+    "marketCap": 90088898560
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 94211350528,
-    "forwardPE": 22.049318,
+    "enterpriseValue": 95195889664,
+    "forwardPE": 22.517683,
     "profitMargins": 0.069120005,
     "floatShares": 47037352,
     "sharesOutstanding": 50697182,
@@ -3147,7 +3165,7 @@
     "impliedSharesOutstanding": 50697182,
     "category": null,
     "bookValue": 133.104,
-    "priceToBook": 13.204561,
+    "priceToBook": 13.350462,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -3155,13 +3173,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.125,
     "netIncomeToCommon": 1996999936,
-    "trailingEps": 39.37,
-    "forwardEps": 79.7113,
+    "trailingEps": 39.45,
+    "forwardEps": 78.91576,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 3.261,
-    "enterpriseToEbitda": 23.441,
-    "52WeekChange": -0.15109569,
-    "SandP52WeekChange": 0.17593324,
+    "enterpriseToRevenue": 3.295,
+    "enterpriseToEbitda": 23.686,
+    "52WeekChange": -0.146752,
+    "SandP52WeekChange": 0.19049871,
     "lastDividendValue": 0.15,
     "lastDividendDate": "2017-12-28T00:00:00.000Z",
     "latestShareClass": null,
@@ -3228,6 +3246,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 64,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SANDERS RICHARD A",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 64,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LAWSON MARTIN R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 8,
         "value": 0,
         "filerUrl": "",
@@ -3264,30 +3306,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 64,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SANDERS RICHARD A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 64,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "LAWSON MARTIN R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50,
         "value": 99249,
         "filerUrl": "",
@@ -3296,54 +3314,6 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-11-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 75,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VAZQUEZ MARIO EDUARDO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 75,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SEGAL SUSAN L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 75,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CALEMZUK EMILIANO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 75,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "AGUZIN ALEJANDRO NICOLAS",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3381,17 +3351,65 @@
         "moneyText": "",
         "startDate": "2024-06-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SEGAL SUSAN L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CALEMZUK EMILIANO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VAZQUEZ MARIO EDUARDO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "AGUZIN ALEJANDRO NICOLAS",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-12T00:00:00.000Z",
+        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 1757.58,
+    "currentPrice": 1777,
     "targetHighPrice": 3500,
     "targetLowPrice": 2190,
-    "targetMeanPrice": 2718.5386,
-    "targetMedianPrice": 2740,
+    "targetMeanPrice": 2707,
+    "targetMedianPrice": 2700,
     "recommendationMean": 1.34615,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 26,
@@ -3417,6 +3435,6 @@
     "profitMargins": 0.069120005,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-02T04:15:20.680Z",
+  "lastUpdated": "2026-03-03T04:15:59.188Z",
   "source": "Static Build (yahoo-finance2)"
 }

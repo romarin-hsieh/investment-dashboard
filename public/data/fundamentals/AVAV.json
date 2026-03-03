@@ -4,13 +4,21 @@
       {
         "period": "0m",
         "strongBuy": 6,
+        "buy": 10,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 6,
         "buy": 11,
         "hold": 2,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-1m",
+        "period": "-2m",
         "strongBuy": 5,
         "buy": 11,
         "hold": 1,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 5,
         "buy": 11,
         "hold": 1,
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.11350001,
         "position": 5668184,
-        "value": 1429799414,
+        "value": 1180796132,
         "pctChange": 0.17809999
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0709,
         "position": 3537264,
-        "value": 892274844,
+        "value": 736882862,
         "pctChange": 0.002
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0397,
         "position": 1981645,
-        "value": 499869951,
+        "value": 412816300,
         "pctChange": 0.1241
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0304,
         "position": 1518731,
-        "value": 383099894,
+        "value": 316382053,
         "pctChange": 0.188
       },
       {
@@ -73,17 +81,8 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.023599999,
         "position": 1179811,
-        "value": 297607324,
+        "value": 245778236,
         "pctChange": -0.3386
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-09-30T00:00:00.000Z",
-        "organization": "Groupama Asset Management",
-        "pctHeld": 0.02,
-        "position": 1000000,
-        "value": 252250000,
-        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -91,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0177,
         "position": 884395,
-        "value": 223088638,
+        "value": 184237172,
         "pctChange": 0.0885
       },
       {
@@ -100,7 +99,7 @@
         "organization": "Heard Capital LLC",
         "pctHeld": 0.0145000005,
         "position": 722150,
-        "value": 182162337,
+        "value": 150438293,
         "pctChange": -0.2578
       },
       {
@@ -109,7 +108,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.014400001,
         "position": 719808,
-        "value": 181571568,
+        "value": 149950407,
         "pctChange": 0.1715
       },
       {
@@ -118,8 +117,17 @@
         "organization": "American Capital Management, Inc.",
         "pctHeld": 0.012999999,
         "position": 647710,
-        "value": 163384847,
+        "value": 134930951,
         "pctChange": -0.1018
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Van Eck Associates Corporation",
+        "pctHeld": 0.0128,
+        "position": 638881,
+        "value": 133091694,
+        "pctChange": -0.0691
       }
     ]
   },
@@ -179,7 +187,7 @@
           "reportedDate": 1765314369
         }
       ],
-      "currentQuarterEstimate": 0.73747,
+      "currentQuarterEstimate": 0.73675,
       "currentQuarterEstimateDate": "4Q",
       "currentCalendarQuarter": "4Q2025",
       "currentQuarterEstimateYear": 2025,
@@ -245,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-02T21:41:18.000Z",
+        "firm": "Jefferies",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 390,
+        "priorPriceTarget": 390
+      },
+      {
+        "epochGradeDate": "2026-03-02T15:49:11.000Z",
+        "firm": "Raymond James",
+        "toGrade": "Underperform",
+        "fromGrade": "Strong Buy",
+        "action": "down",
+        "priceTargetAction": "",
+        "currentPriceTarget": 0,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-02-18T14:42:37.000Z",
         "firm": "UBS",
@@ -1511,28 +1539,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0038208372,
-    "postMarketChange": -0.96380615,
-    "postMarketTime": "2026-02-28T00:59:55.000Z",
-    "postMarketPrice": 251.2862,
+    "postMarketChangePercent": 0.024769528,
+    "postMarketChange": 5.1599884,
+    "postMarketTime": "2026-03-03T00:59:38.000Z",
+    "postMarketPrice": 213.48,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.028387625,
-    "regularMarketChange": -7.369995,
-    "regularMarketTime": "2026-02-27T21:00:04.000Z",
+    "regularMarketChangePercent": -0.174153,
+    "regularMarketChange": -43.93,
+    "regularMarketTime": "2026-03-02T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 252.25,
-    "regularMarketDayHigh": 254.05,
-    "regularMarketDayLow": 243,
-    "regularMarketVolume": 678448,
+    "regularMarketPrice": 208.32,
+    "regularMarketDayHigh": 303,
+    "regularMarketDayLow": 196.22,
+    "regularMarketVolume": 13341264,
     "averageDailyVolume10Day": 935150,
-    "averageDailyVolume3Month": 1408805,
-    "regularMarketPreviousClose": 259.62,
-    "regularMarketSource": "DELAYED",
-    "regularMarketOpen": 251.7,
+    "averageDailyVolume3Month": 1415548,
+    "regularMarketPreviousClose": 252.25,
+    "regularMarketSource": "FREE_REALTIME",
+    "regularMarketOpen": 284.2999,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "AVAV",
     "underlyingSymbol": null,
@@ -1544,13 +1572,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 12595399680
+    "marketCap": 10401878016
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 12775398400,
-    "forwardPE": 55.04589,
+    "enterpriseValue": 10591882240,
+    "forwardPE": 45.541298,
     "profitMargins": -0.050780002,
     "floatShares": 37237568,
     "sharesOutstanding": 49925878,
@@ -1567,20 +1595,20 @@
     "impliedSharesOutstanding": 49932207,
     "category": null,
     "bookValue": 88.885,
-    "priceToBook": 2.8379366,
+    "priceToBook": 2.3437026,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-04-30T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-04-30T00:00:00.000Z",
     "mostRecentQuarter": "2025-11-01T00:00:00.000Z",
     "netIncomeToCommon": -69563000,
-    "trailingEps": -1.21,
-    "forwardEps": 4.58254,
+    "trailingEps": -1.23,
+    "forwardEps": 4.57431,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 9.326,
-    "enterpriseToEbitda": 121.332,
-    "52WeekChange": 0.76856196,
-    "SandP52WeekChange": 0.17593324,
+    "enterpriseToRevenue": 7.732,
+    "enterpriseToEbitda": 100.594,
+    "52WeekChange": 0.77766037,
+    "SandP52WeekChange": 0.19049871,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1781,30 +1809,6 @@
         "value": 169345,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 278.07 per share.",
-        "filerName": "MULLER EDWARD R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 609,
-        "value": 169345,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
-        "filerName": "PAGE STEPHEN F",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 609,
-        "value": 169345,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
         "filerName": "BURBAGE CHARLES THOMAS",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1843,6 +1847,30 @@
         "transactionText": "Stock Award(Grant) at price 278.07 per share.",
         "filerName": "MCDONNELL KEVIN PATRICK",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 609,
+        "value": 169345,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
+        "filerName": "PAGE STEPHEN F",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 609,
+        "value": 169345,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
+        "filerName": "MULLER EDWARD R",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-27T00:00:00.000Z",
         "ownership": "D"
@@ -2036,10 +2064,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 50000,
-        "value": 1335000,
+        "shares": 29366,
+        "value": 3764721,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 26.70 per share.",
+        "transactionText": "Sale at price 128.20 per share.",
         "filerName": "NAWABI WAHID",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2048,10 +2076,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 29366,
-        "value": 3764721,
+        "shares": 50000,
+        "value": 1335000,
         "filerUrl": "",
-        "transactionText": "Sale at price 128.20 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 26.70 per share.",
         "filerName": "NAWABI WAHID",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2132,18 +2160,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 16164,
-        "value": 505448,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 31.27 per share.",
-        "filerName": "NAWABI WAHID",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-07-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9867,
         "value": 1669792,
         "filerUrl": "",
@@ -2156,14 +2172,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 511,
-        "value": 91188,
+        "shares": 16164,
+        "value": 505448,
         "filerUrl": "",
-        "transactionText": "Sale at price 178.45 per share.",
-        "filerName": "MCDONNELL KEVIN PATRICK",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 31.27 per share.",
+        "filerName": "NAWABI WAHID",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
+        "startDate": "2024-07-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2174,42 +2190,6 @@
         "transactionText": "Stock Award(Grant) at price 175.67 per share.",
         "filerName": "NAWABI WAHID",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 910,
-        "value": 159860,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "MULLER EDWARD R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 910,
-        "value": 159860,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "PAGE STEPHEN F",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 910,
-        "value": 159860,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "PAGE STEPHEN F",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
         "ownership": "D"
@@ -2258,6 +2238,54 @@
         "transactionText": "Stock Award(Grant) at price 175.67 per share.",
         "filerName": "MCDONNELL KEVIN PATRICK",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 511,
+        "value": 91188,
+        "filerUrl": "",
+        "transactionText": "Sale at price 178.45 per share.",
+        "filerName": "MCDONNELL KEVIN PATRICK",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 910,
+        "value": 159860,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "PAGE STEPHEN F",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 910,
+        "value": 159860,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "PAGE STEPHEN F",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 910,
+        "value": 159860,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "MULLER EDWARD R",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
         "ownership": "D"
@@ -2452,14 +2480,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 252.25,
+    "currentPrice": 208.32,
     "targetHighPrice": 450,
     "targetLowPrice": 259,
-    "targetMeanPrice": 372.05057,
-    "targetMedianPrice": 389.5,
-    "recommendationMean": 1.52632,
+    "targetMeanPrice": 370.5241,
+    "targetMedianPrice": 390,
+    "recommendationMean": 1.68421,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 18,
+    "numberOfAnalystOpinions": 17,
     "totalCash": 588480000,
     "totalCashPerShare": 11.84,
     "ebitda": 105293000,
@@ -2481,6 +2509,6 @@
     "profitMargins": -0.050780002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-02T04:14:43.592Z",
+  "lastUpdated": "2026-03-03T04:15:19.932Z",
   "source": "Static Build (yahoo-finance2)"
 }

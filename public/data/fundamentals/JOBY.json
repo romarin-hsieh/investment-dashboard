@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 1,
+        "buy": 2,
+        "hold": 5,
+        "sell": 2,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 1,
         "buy": 1,
         "hold": 6,
         "sell": 2,
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 0,
         "hold": 6,
@@ -37,7 +45,7 @@
         "organization": "TOYOTA MOTOR CORP/",
         "pctHeld": 0.1409,
         "position": 128454401,
-        "value": 1292251327,
+        "value": 1319226757,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.057600003,
         "position": 52488707,
-        "value": 528036414,
+        "value": 539059044,
         "pctChange": 0.0509
       },
       {
@@ -55,7 +63,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0544,
         "position": 49570755,
-        "value": 498681816,
+        "value": 509091676,
         "pctChange": -0.016900001
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0436,
         "position": 39742492,
-        "value": 399809486,
+        "value": 408155411,
         "pctChange": 0.0962
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.0312,
         "position": 28470647,
-        "value": 286414720,
+        "value": 292393557,
         "pctChange": -0.059499998
       },
       {
@@ -82,7 +90,7 @@
         "organization": "INTEL CORP",
         "pctHeld": 0.0168,
         "position": 15316315,
-        "value": 154082135,
+        "value": 157298562,
         "pctChange": -0.031600002
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.013300001,
         "position": 12106939,
-        "value": 121795811,
+        "value": 124338269,
         "pctChange": 2.4106
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0128999995,
         "position": 11790532,
-        "value": 118612756,
+        "value": 121088769,
         "pctChange": 0.0343
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Delta Air Lines Inc",
         "pctHeld": 0.0121,
         "position": 11044232,
-        "value": 111104978,
+        "value": 113424267,
         "pctChange": 0
       },
       {
@@ -118,7 +126,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0119,
         "position": 10812929,
-        "value": 108778070,
+        "value": 111048785,
         "pctChange": 0.0497
       }
     ]
@@ -891,28 +899,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0049901055,
-    "postMarketChange": -0.050200462,
-    "postMarketTime": "2026-02-28T00:59:54.000Z",
-    "postMarketPrice": 10.0098,
+    "postMarketChangePercent": -0.006786781,
+    "postMarketChange": -0.06970024,
+    "postMarketTime": "2026-03-03T00:59:47.000Z",
+    "postMarketPrice": 10.2003,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0166177,
-    "regularMarketChange": -0.169999,
-    "regularMarketTime": "2026-02-27T21:00:03.000Z",
+    "regularMarketChangePercent": 0.0208748,
+    "regularMarketChange": 0.21,
+    "regularMarketTime": "2026-03-02T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 10.06,
-    "regularMarketDayHigh": 10.135,
-    "regularMarketDayLow": 9.81,
-    "regularMarketVolume": 27525430,
+    "regularMarketPrice": 10.27,
+    "regularMarketDayHigh": 10.45,
+    "regularMarketDayLow": 9.37,
+    "regularMarketVolume": 28216817,
     "averageDailyVolume10Day": 23707490,
-    "averageDailyVolume3Month": 25101593,
-    "regularMarketPreviousClose": 10.23,
+    "averageDailyVolume3Month": 25276608,
+    "regularMarketPreviousClose": 10.06,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 9.905,
+    "regularMarketOpen": 9.55,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "POSTPOST",
     "quoteType": "EQUITY",
     "symbol": "JOBY",
     "underlyingSymbol": null,
@@ -924,13 +932,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 9704345600
+    "marketCap": 9906920448
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 7626805760,
-    "forwardPE": -15.049518,
+    "enterpriseValue": 7814682112,
+    "forwardPE": -15.363672,
     "profitMargins": 0,
     "floatShares": 600648246,
     "sharesOutstanding": 964646610,
@@ -943,23 +951,24 @@
     "heldPercentInstitutions": 0.35921,
     "shortRatio": 2.47,
     "shortPercentOfFloat": 0.106300004,
+    "beta": 2.585,
     "impliedSharesOutstanding": 964646611,
     "category": null,
     "bookValue": 1.576,
-    "priceToBook": 6.3832493,
+    "priceToBook": 6.516498,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": -929841984,
-    "trailingEps": -1.35,
+    "trailingEps": -1.13,
     "forwardEps": -0.66846,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 142.757,
-    "enterpriseToEbitda": -11.225,
-    "52WeekChange": 0.55727553,
-    "SandP52WeekChange": 0.17593324,
+    "enterpriseToRevenue": 146.274,
+    "enterpriseToEbitda": -11.502,
+    "52WeekChange": 0.5242424,
+    "SandP52WeekChange": 0.19049871,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1057,18 +1066,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 4464,
-        "value": 44104,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.88 per share.",
-        "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 8652,
         "value": 85482,
         "filerUrl": "",
@@ -1081,10 +1078,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 14285,
+        "shares": 4464,
+        "value": 44104,
+        "filerUrl": "",
+        "transactionText": "Sale at price 9.88 per share.",
+        "filerName": "BOWLES GREGORY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28571,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BOWLES GREGORY",
+        "filerName": "PAPADOPOULOS DIDIER",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-12T00:00:00.000Z",
@@ -1114,10 +1123,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 28571,
+        "shares": 23809,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PAPADOPOULOS DIDIER",
+        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-12T00:00:00.000Z",
@@ -1136,10 +1145,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 23809,
+        "shares": 14285,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SIMI BONNY W",
+        "filerName": "BOWLES GREGORY",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-12T00:00:00.000Z",
@@ -1195,18 +1204,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 816,
-        "value": 8609,
-        "filerUrl": "",
-        "transactionText": "Sale at price 10.55 per share.",
-        "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1202,
         "value": 12681,
         "filerUrl": "",
@@ -1231,22 +1228,34 @@
       },
       {
         "maxAge": 1,
-        "shares": 1219,
+        "shares": 816,
+        "value": 8609,
+        "filerUrl": "",
+        "transactionText": "Sale at price 10.55 per share.",
+        "filerName": "BOWLES GREGORY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3663,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BRUMANA RODRIGO MOREIRA",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "PAPADOPOULOS DIDIER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 2606,
+        "shares": 1219,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
+        "filerName": "BRUMANA RODRIGO MOREIRA",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-02-09T00:00:00.000Z",
         "ownership": "D"
@@ -1275,10 +1284,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3663,
+        "shares": 3303,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PAPADOPOULOS DIDIER",
+        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-09T00:00:00.000Z",
@@ -1297,10 +1306,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3303,
+        "shares": 2606,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SIMI BONNY W",
+        "filerName": "BOWLES GREGORY",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-09T00:00:00.000Z",
@@ -1415,6 +1424,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 3664,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAPADOPOULOS DIDIER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1221,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BRUMANA RODRIGO MOREIRA",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-01-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 19025,
         "filerUrl": "",
         "transactionText": "",
@@ -1437,22 +1468,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 3664,
+        "shares": 3303,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PAPADOPOULOS DIDIER",
+        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1221,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BRUMANA RODRIGO MOREIRA",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-01-12T00:00:00.000Z",
         "ownership": "D"
@@ -1481,13 +1501,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 3303,
+        "shares": 18079,
+        "value": 259256,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SIMI BONNY W",
+        "transactionText": "Sale at price 13.51 - 16.01 per share.",
+        "filerName": "PAPADOPOULOS DIDIER",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2026-01-12T00:00:00.000Z",
+        "startDate": "2026-01-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1540,18 +1561,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 18079,
-        "value": 259256,
-        "filerUrl": "",
-        "transactionText": "Sale at price 13.51 - 16.01 per share.",
-        "filerName": "PAPADOPOULOS DIDIER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10484,
         "value": 141639,
         "filerUrl": "",
@@ -1588,18 +1597,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 4194,
-        "value": 56661,
-        "filerUrl": "",
-        "transactionText": "Sale at price 13.51 per share.",
-        "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 23552,
         "value": 318188,
         "filerUrl": "",
@@ -1612,15 +1609,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 1100,
-        "value": 14564,
+        "shares": 4194,
+        "value": 56661,
         "filerUrl": "",
-        "transactionText": "Purchase at price 13.24 per share.",
-        "filerName": "THOMPSON MICHAEL N JR",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 13.51 per share.",
+        "filerName": "BOWLES GREGORY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30018,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAPADOPOULOS DIDIER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1646,14 +1654,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 30018,
+        "shares": 16081,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PAPADOPOULOS DIDIER",
+        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1100,
+        "value": 14564,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 13.24 per share.",
+        "filerName": "THOMPSON MICHAEL N JR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1672,17 +1692,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16081,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
@@ -1818,6 +1827,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 20541,
+        "value": 351311,
+        "filerUrl": "",
+        "transactionText": "Sale at price 16.78 - 18.08 per share.",
+        "filerName": "PAPADOPOULOS DIDIER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 818,
         "value": 0,
         "filerUrl": "",
@@ -1860,18 +1881,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SALUJA DIPENDER",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-10-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20541,
-        "value": 351311,
-        "filerUrl": "",
-        "transactionText": "Sale at price 16.78 - 18.08 per share.",
-        "filerName": "PAPADOPOULOS DIDIER",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-03T00:00:00.000Z",
         "ownership": "D"
@@ -1938,6 +1947,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 30017,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAPADOPOULOS DIDIER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 26810,
         "filerUrl": "",
         "transactionText": "",
@@ -1960,10 +1980,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 30017,
+        "shares": 16081,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PAPADOPOULOS DIDIER",
+        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
@@ -1986,17 +2006,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16081,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
@@ -2075,18 +2084,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 11156,
-        "value": 164292,
-        "filerUrl": "",
-        "transactionText": "Sale at price 14.56 - 14.80 per share.",
-        "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 500001,
         "value": 7175014,
         "filerUrl": "",
@@ -2096,6 +2093,18 @@
         "moneyText": "",
         "startDate": "2025-08-25T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11156,
+        "value": 164292,
+        "filerUrl": "",
+        "transactionText": "Sale at price 14.56 - 14.80 per share.",
+        "filerName": "BOWLES GREGORY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-25T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2204,6 +2213,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 5102,
+        "value": 52449,
+        "filerUrl": "",
+        "transactionText": "Sale at price 10.28 per share.",
+        "filerName": "PAPADOPOULOS DIDIER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-07-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1341,
         "value": 0,
         "filerUrl": "",
@@ -2246,18 +2267,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SALUJA DIPENDER",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5102,
-        "value": 52449,
-        "filerUrl": "",
-        "transactionText": "Sale at price 10.28 per share.",
-        "filerName": "PAPADOPOULOS DIDIER",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-03T00:00:00.000Z",
         "ownership": "D"
@@ -2324,6 +2333,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 504285,
+        "value": 4952079,
+        "filerUrl": "",
+        "transactionText": "Sale at price 9.82 per share.",
+        "filerName": "BEVIRT JOEBEN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-07-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3494,
         "value": 34311,
         "filerUrl": "",
@@ -2336,14 +2357,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 504285,
-        "value": 4952079,
+        "shares": 30017,
         "filerUrl": "",
-        "transactionText": "Sale at price 9.82 per share.",
-        "filerName": "BEVIRT JOEBEN",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "",
+        "filerName": "PAPADOPOULOS DIDIER",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-07-02T00:00:00.000Z",
+        "startDate": "2025-07-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2370,10 +2390,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 30017,
+        "shares": 316081,
+        "value": 531000,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PAPADOPOULOS DIDIER",
+        "transactionText": "Conversion of Exercise of derivative security at price 1.77 per share.",
+        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-01T00:00:00.000Z",
@@ -2396,18 +2417,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BOWLES GREGORY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 316081,
-        "value": 531000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 1.77 per share.",
-        "filerName": "SIMI BONNY W",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-07-01T00:00:00.000Z",
@@ -2487,17 +2496,6 @@
         "shares": 30181,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SALUJA DIPENDER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30181,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "WRIGHT LAURA H",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2543,6 +2541,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "THOMPSON MICHAEL N JR",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30181,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SALUJA DIPENDER",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-06T00:00:00.000Z",
@@ -2730,7 +2739,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 10.06,
+    "currentPrice": 10.27,
     "targetHighPrice": 18,
     "targetLowPrice": 6,
     "targetMeanPrice": 12.56333,
@@ -2750,7 +2759,7 @@
     "returnOnAssets": -0.29997998,
     "returnOnEquity": -0.80087,
     "grossProfits": 24097000,
-    "freeCashflow": -453490368,
+    "freeCashflow": -325603360,
     "operatingCashflow": -509892992,
     "revenueGrowth": 559.655,
     "grossMargins": 0.45104,
@@ -2759,6 +2768,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-02T04:17:30.513Z",
+  "lastUpdated": "2026-03-03T04:18:09.633Z",
   "source": "Static Build (yahoo-finance2)"
 }
