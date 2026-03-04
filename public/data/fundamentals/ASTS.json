@@ -5,7 +5,7 @@
         "period": "0m",
         "strongBuy": 0,
         "buy": 3,
-        "hold": 5,
+        "hold": 4,
         "sell": 0,
         "strongSell": 2
       },
@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 0,
+        "buy": 3,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-3m",
         "strongBuy": 0,
         "buy": 4,
         "hold": 5,
@@ -37,7 +45,7 @@
         "organization": "Rakuten Group, Inc.",
         "pctHeld": 0.1117,
         "position": 31020155,
-        "value": 2696271815,
+        "value": 2874947974,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0774,
         "position": 21488180,
-        "value": 1867752566,
+        "value": 1991524528,
         "pctChange": 0.0787
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.043,
         "position": 11945549,
-        "value": 1038307097,
+        "value": 1107113484,
         "pctChange": 0.1189
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.0322,
         "position": 8943486,
-        "value": 777367786,
+        "value": 828882285,
         "pctChange": 0
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Vodafone Ventures Ltd",
         "pctHeld": 0.0197,
         "position": 5471743,
-        "value": 475603891,
+        "value": 507121142,
         "pctChange": 1
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0168,
         "position": 4661551,
-        "value": 405182004,
+        "value": 432032548,
         "pctChange": 0.4404
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0163,
         "position": 4522549,
-        "value": 393099950,
+        "value": 419149842,
         "pctChange": 0.09770001
       },
       {
@@ -100,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.014199999,
         "position": 3951685,
-        "value": 343480452,
+        "value": 366242167,
         "pctChange": 0.097399995
       },
       {
@@ -109,7 +117,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0124,
         "position": 3449711,
-        "value": 299848873,
+        "value": 319719216,
         "pctChange": -0.1258
       },
       {
@@ -118,33 +126,22 @@
         "organization": "Clear Street Group Inc.",
         "pctHeld": 0.0124,
         "position": 3444594,
-        "value": 299404104,
+        "value": 319244972,
         "pctChange": 0.8758
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.16620001,
-    "institutionsPercentHeld": 0.45069999,
-    "institutionsFloatPercentHeld": 0.54054,
-    "institutionsCount": 666
+    "insidersPercentHeld": 0.15875,
+    "institutionsPercentHeld": 0.43078998,
+    "institutionsFloatPercentHeld": 0.51208,
+    "institutionsCount": 670
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": -0.18,
-          "estimate": -0.17666,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "-0.0",
-          "surprisePct": "-1.89",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1741036500
-        },
         {
           "date": "1Q2025",
           "actual": -0.2,
@@ -177,17 +174,29 @@
           "surprisePct": "-74.39",
           "periodEndDate": 1759190400,
           "reportedDate": 1762809300
+        },
+        {
+          "date": "4Q2025",
+          "actual": -0.26,
+          "estimate": -0.2,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "-0.06",
+          "surprisePct": "-30.0",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1772487120
         }
       ],
-      "currentQuarterEstimate": -0.2,
-      "currentQuarterActual": -0.26,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentQuarterEstimate": -0.21,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [
+        "2026-05-11T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -690,24 +699,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.03428444,
-    "postMarketChange": 2.9800034,
-    "postMarketTime": "2026-03-03T00:59:55.000Z",
-    "postMarketPrice": 89.9,
+    "postMarketChangePercent": 0.0050712256,
+    "postMarketChange": 0.47000122,
+    "postMarketTime": "2026-03-04T00:59:59.000Z",
+    "postMarketPrice": 93.15,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0976133,
-    "regularMarketChange": 7.73,
-    "regularMarketTime": "2026-03-02T21:00:02.000Z",
+    "regularMarketChangePercent": 0.0662679,
+    "regularMarketChange": 5.76,
+    "regularMarketTime": "2026-03-03T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 86.92,
-    "regularMarketDayHigh": 86.95,
-    "regularMarketDayLow": 78.14,
-    "regularMarketVolume": 12512117,
-    "averageDailyVolume10Day": 11283190,
-    "averageDailyVolume3Month": 15968779,
-    "regularMarketPreviousClose": 79.19,
+    "regularMarketPrice": 92.68,
+    "regularMarketDayHigh": 97.5401,
+    "regularMarketDayLow": 84.01,
+    "regularMarketVolume": 21639174,
+    "averageDailyVolume10Day": 11345440,
+    "averageDailyVolume3Month": 15776898,
+    "regularMarketPreviousClose": 86.92,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 78.845,
+    "regularMarketOpen": 87.73,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -723,43 +732,42 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 33037817856
+    "marketCap": 35227164672
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 24035260416,
-    "forwardPE": -85.55118,
+    "enterpriseValue": 26910175232,
+    "forwardPE": 53.111748,
     "profitMargins": 0,
-    "floatShares": 230776297,
+    "floatShares": 237277384,
     "sharesOutstanding": 290704185,
     "sharesShort": 43017737,
     "sharesShortPriorMonth": "1971-04-03T04:03:27.000Z",
     "sharesShortPreviousMonthDate": "2026-01-15T00:00:00.000Z",
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1513,
-    "heldPercentInsiders": 0.16620001,
-    "heldPercentInstitutions": 0.45069999,
+    "heldPercentInsiders": 0.15875,
+    "heldPercentInstitutions": 0.43078998,
     "shortRatio": 2.58,
     "shortPercentOfFloat": 0.1958,
-    "beta": 2.708,
     "impliedSharesOutstanding": 380094556,
     "category": null,
-    "bookValue": 4.561,
-    "priceToBook": 19.057224,
+    "bookValue": 6.451,
+    "priceToBook": 14.366764,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "netIncomeToCommon": -303831008,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "netIncomeToCommon": -341940000,
     "trailingEps": -1.14,
-    "forwardEps": 3.54,
+    "forwardEps": 1.745,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 1297.03,
-    "enterpriseToEbitda": -104.362,
-    "52WeekChange": 1.7679133,
-    "SandP52WeekChange": 0.19049871,
+    "enterpriseToRevenue": 379.455,
+    "enterpriseToEbitda": -113.736,
+    "52WeekChange": 1.5715976,
+    "SandP52WeekChange": 0.17782915,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -779,7 +787,6 @@
     "sectorKey": "technology",
     "sectorDisp": "Technology",
     "longBusinessSummary": "AST SpaceMobile, Inc., together with its subsidiaries, designs and develops the constellation of BlueBird satellites in the United States. The company provides a cellular broadband network in space to be accessible directly by smartphones for commercial use and other applications, as well as for government use. Its SpaceMobile service provides cellular broadband services to end-users who are out of terrestrial cellular coverage. The company was founded in 2017 and is headquartered in Midland, Texas.",
-    "fullTimeEmployees": 578,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -812,18 +819,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 675,
-        "value": 49079,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 72.71 per share.",
-        "filerName": "LARSON KEITH R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-10T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 10000,
         "value": 773400,
         "filerUrl": "",
@@ -833,6 +828,18 @@
         "moneyText": "",
         "startDate": "2025-12-10T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 675,
+        "value": 49079,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 72.71 per share.",
+        "filerName": "LARSON KEITH R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-10T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1257,18 +1264,6 @@
       {
         "maxAge": 1,
         "shares": 25000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YAO HUIWEN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
         "value": 603750,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 24.15 per share.",
@@ -1277,6 +1272,18 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YAO HUIWEN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1389,18 +1396,6 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YAO HUIWEN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-10-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 100000,
         "value": 2322000,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 23.22 per share.",
@@ -1409,6 +1404,18 @@
         "moneyText": "",
         "startDate": "2024-10-03T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YAO HUIWEN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-10-03T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1667,34 +1674,34 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 86.92,
+    "currentPrice": 92.68,
     "targetHighPrice": 137,
     "targetLowPrice": 43,
-    "targetMeanPrice": 80.3875,
-    "targetMedianPrice": 81.25,
+    "targetMeanPrice": 83.575,
+    "targetMedianPrice": 87.5,
     "recommendationKey": "none",
     "numberOfAnalystOpinions": 8,
-    "totalCash": 1204281984,
-    "totalCashPerShare": 4.338,
-    "ebitda": -230306000,
-    "totalDebt": 722483008,
-    "quickRatio": 9.102,
-    "currentRatio": 9.56,
-    "totalRevenue": 18531000,
-    "debtToEquity": 44.433,
-    "revenuePerShare": 0.079,
-    "returnOnAssets": -0.101610005,
-    "returnOnEquity": -0.39031,
-    "grossProfits": 12728000,
-    "freeCashflow": -836152384,
-    "operatingCashflow": -164926000,
-    "revenueGrowth": 12.399,
-    "grossMargins": 0.68684995,
+    "totalCash": 2335683072,
+    "totalCashPerShare": 8.182,
+    "ebitda": -236602000,
+    "totalDebt": 2239510016,
+    "quickRatio": 15.787,
+    "currentRatio": 16.353,
+    "totalRevenue": 70918000,
+    "debtToEquity": 93.612,
+    "revenuePerShare": 0.277,
+    "returnOnAssets": -0.06025,
+    "returnOnEquity": -0.30117,
+    "grossProfits": 35702000,
+    "freeCashflow": -1288472960,
+    "operatingCashflow": -71517000,
+    "revenueGrowth": 27.313,
+    "grossMargins": 0.50343,
     "ebitdaMargins": 0,
-    "operatingMargins": -5.40579,
+    "operatingMargins": -1.33095,
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-03T04:15:11.200Z",
+  "lastUpdated": "2026-03-04T04:10:29.742Z",
   "source": "Static Build (yahoo-finance2)"
 }

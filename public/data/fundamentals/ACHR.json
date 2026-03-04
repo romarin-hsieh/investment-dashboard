@@ -24,6 +24,14 @@
         "hold": 3,
         "sell": 0,
         "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 4,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0881,
         "position": 57361722,
-        "value": 431360148,
+        "value": 385470759,
         "pctChange": 0.1246
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.083900005,
         "position": 54676158,
-        "value": 411164707,
+        "value": 367423770,
         "pctChange": 0.0442
       },
       {
@@ -55,7 +63,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.054,
         "position": 35170701,
-        "value": 264483670,
+        "value": 236347103,
         "pctChange": 0.1236
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.050300002,
         "position": 32773136,
-        "value": 246453982,
+        "value": 220235467,
         "pctChange": 0.1117
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0241,
         "position": 15717522,
-        "value": 118195765,
+        "value": 105621744,
         "pctChange": 0.2166
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0221,
         "position": 14385647,
-        "value": 108180065,
+        "value": 96671544,
         "pctChange": 0.1492
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Sumitomo Mitsui Trust Group, Inc.",
         "pctHeld": 0.012200001,
         "position": 7914191,
-        "value": 59514716,
+        "value": 53183361,
         "pctChange": 0.2164
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Amova Asset Management Americas Inc",
         "pctHeld": 0.012200001,
         "position": 7914191,
-        "value": 59514716,
+        "value": 53183361,
         "pctChange": 0.2175
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Blackstone Inc",
         "pctHeld": 0.012,
         "position": 7812500,
-        "value": 58749999,
+        "value": 52499998,
         "pctChange": 1
       },
       {
@@ -118,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0119,
         "position": 7778447,
-        "value": 58493921,
+        "value": 52271162,
         "pctChange": 1
       }
     ]
@@ -126,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.17379,
-    "institutionsPercentHeld": 0.56886,
-    "institutionsFloatPercentHeld": 0.68851995,
-    "institutionsCount": 645
+    "institutionsPercentHeld": 0.56881,
+    "institutionsFloatPercentHeld": 0.68846,
+    "institutionsCount": 646
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": -0.3912,
-          "estimate": -0.25649,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "-0.13",
-          "surprisePct": "-52.52",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1740690314
-        },
         {
           "date": "1Q2025",
           "actual": -0.1156,
@@ -177,16 +174,29 @@
           "surprisePct": "42.3",
           "periodEndDate": 1759190400,
           "reportedDate": 1762465423
+        },
+        {
+          "date": "4Q2025",
+          "actual": -0.1377,
+          "estimate": -0.1681,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.03",
+          "surprisePct": "18.08",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1772485500
         }
       ],
-      "currentQuarterEstimate": -0.1681,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentQuarterEstimate": -0.21874,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [
+        "2026-05-11T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -243,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-03T11:52:42.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 9,
+        "priorPriceTarget": 10
+      },
       {
         "epochGradeDate": "2026-01-14T09:55:40.000Z",
         "firm": "Needham",
@@ -869,24 +889,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.041223396,
-    "postMarketChange": -0.30999994,
-    "postMarketTime": "2026-03-03T00:59:53.000Z",
-    "postMarketPrice": 7.21,
+    "postMarketChangePercent": 0.0025446927,
+    "postMarketChange": 0.017100334,
+    "postMarketTime": "2026-03-04T00:59:46.000Z",
+    "postMarketPrice": 6.7371,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0561798,
-    "regularMarketChange": 0.4,
-    "regularMarketTime": "2026-03-02T21:00:02.000Z",
+    "regularMarketChangePercent": -0.106382996,
+    "regularMarketChange": -0.8,
+    "regularMarketTime": "2026-03-03T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 7.52,
-    "regularMarketDayHigh": 7.55,
-    "regularMarketDayLow": 6.8,
-    "regularMarketVolume": 37752544,
-    "averageDailyVolume10Day": 31568880,
-    "averageDailyVolume3Month": 37496256,
-    "regularMarketPreviousClose": 7.12,
+    "regularMarketPrice": 6.72,
+    "regularMarketDayHigh": 7.355,
+    "regularMarketDayLow": 6.51,
+    "regularMarketVolume": 43174354,
+    "averageDailyVolume10Day": 32861260,
+    "averageDailyVolume3Month": 36999791,
+    "regularMarketPreviousClose": 7.52,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 6.85,
+    "regularMarketOpen": 7.34,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -902,15 +922,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5520501248
+    "marketCap": 4933213696
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3345388288,
-    "forwardPE": -10.186666,
+    "enterpriseValue": 2958213376,
+    "forwardPE": -8.9710045,
     "profitMargins": 0,
-    "floatShares": 544326127,
+    "floatShares": 597054581,
     "sharesOutstanding": 734109161,
     "sharesShort": 89060010,
     "sharesShortPriorMonth": "1972-08-31T20:00:20.000Z",
@@ -918,26 +938,26 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.121300004,
     "heldPercentInsiders": 0.17379,
-    "heldPercentInstitutions": 0.56886,
+    "heldPercentInstitutions": 0.56881,
     "shortRatio": 2.26,
     "shortPercentOfFloat": 0.1407,
-    "beta": 3.105,
     "impliedSharesOutstanding": 734109162,
     "category": null,
-    "bookValue": 2.54,
-    "priceToBook": 2.96063,
+    "bookValue": 3.083,
+    "priceToBook": 2.1796951,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "netIncomeToCommon": -627400000,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "netIncomeToCommon": -618200000,
     "trailingEps": -1.17,
-    "forwardEps": -0.67493,
+    "forwardEps": -0.74908,
     "lastSplitFactor": null,
-    "enterpriseToEbitda": -5.561,
-    "52WeekChange": -0.10776943,
-    "SandP52WeekChange": 0.19049871,
+    "enterpriseToRevenue": 9860.711,
+    "enterpriseToEbitda": -4.171,
+    "52WeekChange": -0.075030744,
+    "SandP52WeekChange": 0.17782915,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -956,7 +976,6 @@
     "sectorKey": "industrials",
     "sectorDisp": "Industrials",
     "longBusinessSummary": "Archer Aviation Inc., together with its subsidiaries, designs and develops aircraft and related technologies and services in the United States and internationally. It operates through the commercial and defense sectors. The company offers electric vertical takeoff and landing (eVTOL) aircraft for use in urban air mobility (UAM) and Archer Direct, a commercial aircraft. It also provides direct-to-consumer aerial ride share services and maintenance and repair services. The company was incorporated in 2018 and is headquartered in San Jose, California.",
-    "fullTimeEmployees": 774,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -1025,6 +1044,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 10107,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUPTA PRIYA",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-11-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 84313,
         "filerUrl": "",
         "transactionText": "",
@@ -1052,17 +1082,6 @@
         "transactionText": "",
         "filerName": "LENTELL ERIC",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10107,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUPTA PRIYA",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-11-14T00:00:00.000Z",
         "ownership": "D"
@@ -1300,6 +1319,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 29593,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUPTA PRIYA",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 84312,
         "filerUrl": "",
         "transactionText": "",
@@ -1338,17 +1368,6 @@
         "transactionText": "",
         "filerName": "LENTELL ERIC",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 29593,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUPTA PRIYA",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
@@ -1531,6 +1550,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 29592,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUPTA PRIYA",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 84314,
         "filerUrl": "",
         "transactionText": "",
@@ -1569,17 +1599,6 @@
         "transactionText": "",
         "filerName": "LENTELL ERIC",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 29592,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUPTA PRIYA",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
@@ -1645,18 +1664,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 438428,
-        "value": 3327669,
-        "filerUrl": "",
-        "transactionText": "Sale at price 7.59 per share.",
-        "filerName": "MUNIZ THOMAS PAUL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-12-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 751879,
         "value": 4999995,
         "filerUrl": "",
@@ -1666,6 +1673,18 @@
         "moneyText": "",
         "startDate": "2024-12-11T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 438428,
+        "value": 3327669,
+        "filerUrl": "",
+        "transactionText": "Sale at price 7.59 per share.",
+        "filerName": "MUNIZ THOMAS PAUL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-12-11T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1973,23 +1992,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 27824,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNOZ OSCAR X",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-03-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1500000,
         "value": 7637302,
         "filerUrl": "",
         "transactionText": "Purchase at price 4.92 - 5.20 per share.",
         "filerName": "STELLANTIS N.V.",
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-03-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 27824,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MUNOZ OSCAR X",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-03-15T00:00:00.000Z",
         "ownership": "D"
@@ -2035,31 +2054,34 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 7.52,
+    "currentPrice": 6.72,
     "targetHighPrice": 18,
     "targetLowPrice": 4.5,
-    "targetMeanPrice": 11.61111,
-    "targetMedianPrice": 13,
+    "targetMeanPrice": 11.27778,
+    "targetMedianPrice": 12,
     "recommendationMean": 1.88889,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
-    "totalCash": 1641299968,
-    "totalCashPerShare": 2.52,
-    "ebitda": -601600000,
-    "totalDebt": 88600000,
-    "quickRatio": 17.648,
-    "currentRatio": 18.195,
-    "debtToEquity": 5.356,
-    "returnOnAssets": -0.30335,
-    "returnOnEquity": -0.59133,
-    "freeCashflow": -316537504,
-    "operatingCashflow": -408000000,
+    "totalCash": 1964700032,
+    "totalCashPerShare": 2.75,
+    "ebitda": -709299968,
+    "totalDebt": 121900000,
+    "quickRatio": 18.819,
+    "currentRatio": 19.886,
+    "totalRevenue": 300000,
+    "debtToEquity": 5.534,
+    "revenuePerShare": 0,
+    "returnOnAssets": -0.26294002,
+    "returnOnEquity": -0.41834998,
+    "grossProfits": 0,
+    "freeCashflow": -597312512,
+    "operatingCashflow": -432900000,
     "grossMargins": 0,
     "ebitdaMargins": 0,
-    "operatingMargins": 0,
+    "operatingMargins": -781.3334,
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-03T04:17:15.692Z",
+  "lastUpdated": "2026-03-04T04:12:38.423Z",
   "source": "Static Build (yahoo-finance2)"
 }
