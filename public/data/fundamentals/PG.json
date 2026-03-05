@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 5,
         "buy": 9,
+        "hold": 9,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 5,
+        "buy": 9,
         "hold": 10,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 11,
         "hold": 9,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1022,
         "position": 237459756,
-        "value": 37927072518,
+        "value": 37589880099,
         "pctChange": 0.0121
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0792,
         "position": 184006680,
-        "value": 29389547154,
+        "value": 29128258005,
         "pctChange": 0.0299
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0437,
         "position": 101618926,
-        "value": 16230574984,
+        "value": 16086276295,
         "pctChange": 0.0098
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.027,
         "position": 62647882,
-        "value": 10006119789,
+        "value": 9917159911,
         "pctChange": 0.0325
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.021,
         "position": 48823274,
-        "value": 7798053382,
+        "value": 7728724423,
         "pctChange": -0.048899997
       },
       {
@@ -82,7 +90,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0139999995,
         "position": 32550300,
-        "value": 5198933955,
+        "value": 5152712589,
         "pctChange": 0.016900001
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0127,
         "position": 29612826,
-        "value": 4729760604,
+        "value": 4687710446,
         "pctChange": 0.0383
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0124,
         "position": 28784316,
-        "value": 4597430986,
+        "value": 4556557310,
         "pctChange": -0.0256
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0119,
         "position": 27657745,
-        "value": 4417495065,
+        "value": 4378221117,
         "pctChange": -0.033299997
       },
       {
@@ -118,17 +126,17 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0117999995,
         "position": 27332066,
-        "value": 4365477614,
+        "value": 4326666131,
         "pctChange": 0.1121
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.0033399998,
-    "institutionsPercentHeld": 0.70405,
-    "institutionsFloatPercentHeld": 0.70641,
-    "institutionsCount": 4993
+    "insidersPercentHeld": 0.00074,
+    "institutionsPercentHeld": 0.70407,
+    "institutionsFloatPercentHeld": 0.7046,
+    "institutionsCount": 4994
   },
   "earnings": {
     "maxAge": 86400,
@@ -3481,24 +3489,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0041322545,
-    "postMarketChange": 0.66000366,
-    "postMarketTime": "2026-03-04T00:59:30.000Z",
-    "postMarketPrice": 160.38,
+    "postMarketChangePercent": -0.0009476257,
+    "postMarketChange": -0.15000916,
+    "postMarketTime": "2026-03-05T00:59:37.000Z",
+    "postMarketPrice": 158.15,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.023179,
-    "regularMarketChange": -3.78999,
-    "regularMarketTime": "2026-03-03T21:00:02.000Z",
+    "regularMarketChangePercent": -0.008890551,
+    "regularMarketChange": -1.42,
+    "regularMarketTime": "2026-03-04T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 159.72,
-    "regularMarketDayHigh": 162.16,
-    "regularMarketDayLow": 158.62,
-    "regularMarketVolume": 10128157,
-    "averageDailyVolume10Day": 11334910,
-    "averageDailyVolume3Month": 11434944,
-    "regularMarketPreviousClose": 163.51,
+    "regularMarketPrice": 158.3,
+    "regularMarketDayHigh": 159.44,
+    "regularMarketDayLow": 157.31,
+    "regularMarketVolume": 8660914,
+    "averageDailyVolume10Day": 11019100,
+    "averageDailyVolume3Month": 11389587,
+    "regularMarketPreviousClose": 159.72,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 162.19,
+    "regularMarketOpen": 159.44,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -3514,30 +3522,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 373822324736
+    "marketCap": 369904910336
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 398046396416,
-    "forwardPE": 21.787884,
+    "enterpriseValue": 394746298368,
+    "forwardPE": 21.594177,
     "profitMargins": 0.19299999,
     "floatShares": 2319840724,
-    "sharesOutstanding": 2336733549,
+    "sharesOutstanding": 2324000685,
     "sharesShort": 25908742,
     "sharesShortPriorMonth": "1970-08-08T10:23:08.000Z",
     "sharesShortPreviousMonthDate": "2026-01-15T00:00:00.000Z",
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0111,
-    "heldPercentInsiders": 0.0033399998,
-    "heldPercentInstitutions": 0.70405,
+    "heldPercentInsiders": 0.00074,
+    "heldPercentInstitutions": 0.70407,
     "shortRatio": 2.11,
     "shortPercentOfFloat": 0.0112,
     "beta": 0.34,
-    "impliedSharesOutstanding": 2340485262,
+    "impliedSharesOutstanding": 2336733549,
     "category": null,
     "bookValue": 22.493,
-    "priceToBook": 7.100876,
+    "priceToBook": 7.037745,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-06-30T00:00:00.000Z",
@@ -3545,14 +3553,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.067,
     "netIncomeToCommon": 16161999872,
-    "trailingEps": 6.76,
-    "forwardEps": 7.33068,
+    "trailingEps": 6.74,
+    "forwardEps": 7.32971,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1087776000,
-    "enterpriseToRevenue": 4.669,
-    "enterpriseToEbitda": 16.073,
-    "52WeekChange": -0.06357026,
-    "SandP52WeekChange": 0.17782915,
+    "enterpriseToRevenue": 4.63,
+    "enterpriseToEbitda": 15.94,
+    "52WeekChange": -0.08553761,
+    "SandP52WeekChange": 0.18787253,
     "lastDividendValue": 1.057,
     "lastDividendDate": "2026-01-23T00:00:00.000Z",
     "latestShareClass": null,
@@ -3811,18 +3819,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 54,
-        "value": 7851,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
-        "filerName": "WHALEY SUSAN STREET",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 38,
         "value": 5524,
         "filerUrl": "",
@@ -3847,23 +3843,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 51,
-        "value": 7415,
+        "shares": 60,
+        "value": 8723,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
-        "filerName": "JEJURIKAR SHAILESH",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "DAVIS JENNIFER L",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 55,
-        "value": 7997,
+        "shares": 54,
+        "value": 7851,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
-        "filerName": "AGUILAR MOSES VICTOR JAVIER",
+        "filerName": "WHALEY SUSAN STREET",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-03T00:00:00.000Z",
@@ -3895,12 +3891,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 60,
-        "value": 8723,
+        "shares": 55,
+        "value": 7997,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
-        "filerName": "DAVIS JENNIFER L",
+        "filerName": "AGUILAR MOSES VICTOR JAVIER",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 51,
+        "value": 7415,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 144.35 per share.",
+        "filerName": "JEJURIKAR SHAILESH",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-12-03T00:00:00.000Z",
         "ownership": "D"
@@ -4195,6 +4203,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2408,
+        "value": 366574,
+        "filerUrl": "",
+        "transactionText": "Sale at price 152.23 per share.",
+        "filerName": "WHALEY SUSAN STREET",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 490,
         "value": 74594,
         "filerUrl": "",
@@ -4212,18 +4232,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 152.23 per share.",
         "filerName": "DAVIS JENNIFER L",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2408,
-        "value": 366574,
-        "filerUrl": "",
-        "transactionText": "Sale at price 152.23 per share.",
-        "filerName": "WHALEY SUSAN STREET",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-02T00:00:00.000Z",
@@ -4483,30 +4491,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 319,
-        "value": 50170,
-        "filerUrl": "",
-        "transactionText": "Sale at price 157.27 per share.",
-        "filerName": "JANZARUK MATTHEW W.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8596,
-        "value": 1351926,
-        "filerUrl": "",
-        "transactionText": "Sale at price 157.27 per share.",
-        "filerName": "DAVIS JENNIFER L",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 11638,
         "value": 1830352,
         "filerUrl": "",
@@ -4531,11 +4515,35 @@
       },
       {
         "maxAge": 1,
+        "shares": 319,
+        "value": 50170,
+        "filerUrl": "",
+        "transactionText": "Sale at price 157.27 per share.",
+        "filerName": "JANZARUK MATTHEW W.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 9100,
         "value": 1431192,
         "filerUrl": "",
         "transactionText": "Sale at price 157.27 per share.",
         "filerName": "FRANCISCO MA. FATIMA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8596,
+        "value": 1351926,
+        "filerUrl": "",
+        "transactionText": "Sale at price 157.27 per share.",
+        "filerName": "DAVIS JENNIFER L",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-19T00:00:00.000Z",
@@ -5023,6 +5031,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 46,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DAVIS JENNIFER L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 35,
         "filerUrl": "",
         "transactionText": "",
@@ -5045,11 +5064,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 46,
+        "shares": 78,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "JEJURIKAR SHAILESH",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "RAMAN SUNDAR G.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 39,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AGUILAR MOSES VICTOR JAVIER",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-19T00:00:00.000Z",
         "ownership": "D"
@@ -5067,22 +5097,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 78,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RAMAN SUNDAR G.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 46,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DAVIS JENNIFER L",
-        "filerRelation": "Officer",
+        "filerName": "JEJURIKAR SHAILESH",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2024-12-19T00:00:00.000Z",
         "ownership": "D"
@@ -5093,17 +5112,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "FRANCISCO MA. FATIMA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 39,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGUILAR MOSES VICTOR JAVIER",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-19T00:00:00.000Z",
@@ -5376,7 +5384,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 159.72,
+    "currentPrice": 158.3,
     "targetHighPrice": 186,
     "targetLowPrice": 148,
     "targetMeanPrice": 168,
@@ -5406,6 +5414,6 @@
     "profitMargins": 0.19299999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-04T04:13:55.291Z",
+  "lastUpdated": "2026-03-05T04:16:28.965Z",
   "source": "Static Build (yahoo-finance2)"
 }
