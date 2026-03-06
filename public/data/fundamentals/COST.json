@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0983,
         "position": 43620717,
-        "value": 43914720206,
+        "value": 42860408222,
         "pctChange": 0.0038
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0791,
         "position": 35099521,
-        "value": 35336091428,
+        "value": 34487736606,
         "pctChange": 0.0091
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.040900003,
         "position": 18147159,
-        "value": 18269470674,
+        "value": 17830854151,
         "pctChange": -0.001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0234,
         "position": 10388519,
-        "value": 10458537516,
+        "value": 10207447189,
         "pctChange": 0.0026
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0215,
         "position": 9523423,
-        "value": 9587610778,
+        "value": 9357429806,
         "pctChange": 0.0114
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0152,
         "position": 6741380,
-        "value": 6786816835,
+        "value": 6623877795,
         "pctChange": -0.0189
       },
       {
@@ -99,7 +99,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0150999995,
         "position": 6693144,
-        "value": 6738255725,
+        "value": 6576482549,
         "pctChange": -0.1585
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Corient Private Wealth LLC",
         "pctHeld": 0.0138,
         "position": 6125405,
-        "value": 6166690169,
+        "value": 6018639235,
         "pctChange": 8.3885
       },
       {
@@ -117,7 +117,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0136,
         "position": 6024787,
-        "value": 6065394005,
+        "value": 5919775006,
         "pctChange": 0.0478
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0111,
         "position": 4913721,
-        "value": 4946839431,
+        "value": 4828074878,
         "pctChange": -0.028900001
       }
     ]
@@ -134,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0016699999,
-    "institutionsPercentHeld": 0.72576,
-    "institutionsFloatPercentHeld": 0.72698,
-    "institutionsCount": 4978
+    "institutionsPercentHeld": 0.72579,
+    "institutionsFloatPercentHeld": 0.727,
+    "institutionsCount": 4988
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 4.02,
-          "estimate": 4.0987,
-          "fiscalQuarter": "2Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "-0.08",
-          "surprisePct": "-1.92",
-          "periodEndDate": 1740700800,
-          "reportedDate": 1741295700
-        },
         {
           "date": "2Q2025",
           "actual": 4.28,
@@ -185,17 +174,26 @@
           "surprisePct": "5.19",
           "periodEndDate": 1764460800,
           "reportedDate": 1765487700
+        },
+        {
+          "date": "1Q2026",
+          "actual": 4.58,
+          "estimate": 4.54467,
+          "fiscalQuarter": "2Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "0.04",
+          "surprisePct": "0.78",
+          "periodEndDate": 1772236800,
+          "reportedDate": 1772745300
         }
       ],
-      "currentQuarterEstimate": 4.54467,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": 4.88941,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "2Q2026",
-      "currentPeriodEndDate": 1772236800,
-      "earningsDate": [
-        "2026-03-05T21:00:00.000Z"
-      ],
+      "currentFiscalQuarter": "3Q2026",
+      "currentPeriodEndDate": 1780185600,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
@@ -223,12 +221,6 @@
       ],
       "quarterly": [
         {
-          "date": "1Q2025",
-          "fiscalQuarter": "2Q2025",
-          "revenue": 63723000000,
-          "earnings": 1788000000
-        },
-        {
           "date": "2Q2025",
           "fiscalQuarter": "3Q2025",
           "revenue": 63205000000,
@@ -245,6 +237,12 @@
           "fiscalQuarter": "1Q2026",
           "revenue": 67307000000,
           "earnings": 2001000000
+        },
+        {
+          "date": "1Q2026",
+          "fiscalQuarter": "2Q2026",
+          "revenue": 69597000000,
+          "earnings": 2035000000
         }
       ]
     },
@@ -253,6 +251,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-05T10:12:51.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 1115,
+        "priorPriceTarget": 1115
+      },
       {
         "epochGradeDate": "2026-02-10T14:12:07.000Z",
         "firm": "Evercore ISI Group",
@@ -6329,24 +6337,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0013608232,
-    "postMarketChange": 1.3699951,
-    "postMarketTime": "2026-03-05T00:58:29.000Z",
-    "postMarketPrice": 1008.11,
+    "postMarketChangePercent": -0.0021067276,
+    "postMarketChange": -2.0700073,
+    "postMarketTime": "2026-03-06T00:59:51.000Z",
+    "postMarketPrice": 980.5,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.00102209,
-    "regularMarketChange": -1.03003,
-    "regularMarketTime": "2026-03-04T21:00:02.000Z",
+    "regularMarketChangePercent": -0.0240082,
+    "regularMarketChange": -24.17,
+    "regularMarketTime": "2026-03-05T21:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 1006.74,
-    "regularMarketDayHigh": 1014,
-    "regularMarketDayLow": 997,
-    "regularMarketVolume": 1774962,
-    "averageDailyVolume10Day": 1972740,
-    "averageDailyVolume3Month": 2632560,
-    "regularMarketPreviousClose": 1007.77,
+    "regularMarketPrice": 982.57,
+    "regularMarketDayHigh": 999.25,
+    "regularMarketDayLow": 978.81,
+    "regularMarketVolume": 2752865,
+    "averageDailyVolume10Day": 2062320,
+    "averageDailyVolume3Month": 2621018,
+    "regularMarketPreviousClose": 1006.74,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 1005,
+    "regularMarketOpen": 996.5,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -6362,13 +6370,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 446949982208
+    "marketCap": 436219510784
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 437850079232,
-    "forwardPE": 45.140213,
+    "enterpriseValue": 427121770496,
+    "forwardPE": 44.056477,
     "profitMargins": 0.02961,
     "floatShares": 442648770,
     "sharesOutstanding": 443869411,
@@ -6378,14 +6386,14 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.015800001,
     "heldPercentInsiders": 0.0016699999,
-    "heldPercentInstitutions": 0.72576,
+    "heldPercentInstitutions": 0.72579,
     "shortRatio": 2.78,
     "shortPercentOfFloat": 0.015800001,
     "beta": 0.993,
     "impliedSharesOutstanding": 443957683,
     "category": null,
     "bookValue": 68.262,
-    "priceToBook": 14.748176,
+    "priceToBook": 14.394099,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-08-31T00:00:00.000Z",
@@ -6393,14 +6401,14 @@
     "mostRecentQuarter": "2025-11-23T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.113,
     "netIncomeToCommon": 8302000128,
-    "trailingEps": 18.62,
-    "forwardEps": 22.30251,
+    "trailingEps": 18.18,
+    "forwardEps": 22.31869,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 947808000,
-    "enterpriseToRevenue": 1.562,
-    "enterpriseToEbitda": 33.36,
-    "52WeekChange": -0.01836121,
-    "SandP52WeekChange": 0.18787253,
+    "enterpriseToRevenue": 1.523,
+    "enterpriseToEbitda": 32.543,
+    "52WeekChange": 0.0189358,
+    "SandP52WeekChange": 0.1837908,
     "lastDividendValue": 1.3,
     "lastDividendDate": "2025-10-31T00:00:00.000Z",
     "latestShareClass": null,
@@ -6575,24 +6583,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 1239,
-        "value": 1158353,
-        "filerUrl": "",
-        "transactionText": "Sale at price 934.62 per share.",
-        "filerName": "BARBRE TIFFANY MARIE",
-        "filerRelation": "Divisional Officer",
-        "moneyText": "",
-        "startDate": "2025-10-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2700,
         "value": 2526336,
         "filerUrl": "",
         "transactionText": "Sale at price 935.68 per share.",
         "filerName": "ADAMO CLAUDINE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1239,
+        "value": 1158353,
+        "filerUrl": "",
+        "transactionText": "Sale at price 934.62 per share.",
+        "filerName": "BARBRE TIFFANY MARIE",
+        "filerRelation": "Divisional Officer",
         "moneyText": "",
         "startDate": "2025-10-24T00:00:00.000Z",
         "ownership": "D"
@@ -6647,6 +6655,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 6268,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MILLERCHIP GARY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 4219,
         "value": 0,
         "filerUrl": "",
@@ -6664,18 +6684,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SULLIVAN JOHN CHRISTOPHER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 6268,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MILLERCHIP GARY",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-22T00:00:00.000Z",
@@ -6791,6 +6799,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 4654,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RIEL PIERRE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 4219,
         "value": 0,
         "filerUrl": "",
@@ -6832,18 +6852,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "ADAMO CLAUDINE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4654,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RIEL PIERRE",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-10T00:00:00.000Z",
@@ -7127,6 +7135,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3922,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MILLERCHIP GARY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 6737,
         "value": 0,
         "filerUrl": "",
@@ -7144,18 +7164,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SULLIVAN JOHN CHRISTOPHER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3922,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MILLERCHIP GARY",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-22T00:00:00.000Z",
@@ -7295,6 +7303,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3200,
+        "value": 2844778,
+        "filerUrl": "",
+        "transactionText": "Sale at price 888.99 per share.",
+        "filerName": "ADAMO CLAUDINE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1700,
         "value": 1501695,
         "filerUrl": "",
@@ -7312,18 +7332,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 893.94 per share.",
         "filerName": "CALLANS PATRICK J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3200,
-        "value": 2844778,
-        "filerUrl": "",
-        "transactionText": "Sale at price 888.99 per share.",
-        "filerName": "ADAMO CLAUDINE",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-30T00:00:00.000Z",
@@ -7559,11 +7567,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 2500,
-        "value": 1787150,
+        "shares": 1500,
+        "value": 1072238,
         "filerUrl": "",
-        "transactionText": "Sale at price 714.86 per share.",
-        "filerName": "CALLANS PATRICK J",
+        "transactionText": "Sale at price 714.82 per share.",
+        "filerName": "ADAMO CLAUDINE",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-03-11T00:00:00.000Z",
@@ -7571,11 +7579,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 1500,
-        "value": 1072238,
+        "shares": 2500,
+        "value": 1787150,
         "filerUrl": "",
-        "transactionText": "Sale at price 714.82 per share.",
-        "filerName": "ADAMO CLAUDINE",
+        "transactionText": "Sale at price 714.86 per share.",
+        "filerName": "CALLANS PATRICK J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-03-11T00:00:00.000Z",
@@ -7586,7 +7594,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 1006.74,
+    "currentPrice": 982.57,
     "targetHighPrice": 1205,
     "targetLowPrice": 650,
     "targetMeanPrice": 1052.9375,
@@ -7616,6 +7624,6 @@
     "profitMargins": 0.02961,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-05T04:15:32.878Z",
+  "lastUpdated": "2026-03-06T04:13:18.696Z",
   "source": "Static Build (yahoo-finance2)"
 }

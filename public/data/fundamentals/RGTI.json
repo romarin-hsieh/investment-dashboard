@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.109,
         "position": 35970648,
-        "value": 638838716,
+        "value": 610421871,
         "pctChange": 0.1225
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0792,
         "position": 26144457,
-        "value": 464325562,
+        "value": 443671417,
         "pctChange": 0.0208
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0274,
         "position": 9054841,
-        "value": 160813978,
+        "value": 153660645,
         "pctChange": -0.0688
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0239,
         "position": 7879325,
-        "value": 139936813,
+        "value": 133712139,
         "pctChange": 0.0256
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Unicom Systems, Inc.                          ",
         "pctHeld": 0.0107,
         "position": 3521935,
-        "value": 62549566,
+        "value": 59767234,
         "pctChange": 0
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0107,
         "position": 3519416,
-        "value": 62504828,
+        "value": 59724487,
         "pctChange": -0.7243
       },
       {
@@ -99,7 +99,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0086,
         "position": 2836259,
-        "value": 50371960,
+        "value": 48131313,
         "pctChange": -0.0795
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.0085,
         "position": 2795388,
-        "value": 49646091,
+        "value": 47437732,
         "pctChange": 0.031400003
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Clear Street Group Inc.",
         "pctHeld": 0.0083,
         "position": 2743150,
-        "value": 48718344,
+        "value": 46551253,
         "pctChange": 0.71129996
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0083,
         "position": 2724654,
-        "value": 48389855,
+        "value": 46237376,
         "pctChange": -0.0427
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01606,
-    "institutionsPercentHeld": 0.49123,
-    "institutionsFloatPercentHeld": 0.49924,
-    "institutionsCount": 598
+    "institutionsPercentHeld": 0.49133,
+    "institutionsFloatPercentHeld": 0.49935,
+    "institutionsCount": 600
   },
   "earnings": {
     "maxAge": 86400,
@@ -178,23 +178,25 @@
         {
           "date": "4Q2025",
           "actual": -0.03,
-          "estimate": -0.03167,
+          "estimate": -0.03286,
           "fiscalQuarter": "4Q2025",
           "calendarQuarter": "4Q2025",
           "difference": "0.0",
-          "surprisePct": "5.27",
+          "surprisePct": "8.7",
           "periodEndDate": 1767139200,
           "reportedDate": 1772658346
         }
       ],
-      "currentQuarterEstimate": -0.03667,
+      "currentQuarterEstimate": -0.04167,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-12T21:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +253,46 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-05T16:47:54.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 35,
+        "priorPriceTarget": 40
+      },
+      {
+        "epochGradeDate": "2026-03-05T13:31:46.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 43,
+        "priorPriceTarget": 50
+      },
+      {
+        "epochGradeDate": "2026-03-05T13:31:40.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 40,
+        "priorPriceTarget": 40
+      },
+      {
+        "epochGradeDate": "2026-03-05T13:02:26.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 31,
+        "priorPriceTarget": 51
+      },
       {
         "epochGradeDate": "2026-01-22T10:35:20.000Z",
         "firm": "B. Riley Securities",
@@ -767,24 +809,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.04335588,
-    "postMarketChange": -0.77000046,
-    "postMarketTime": "2026-03-05T00:59:56.000Z",
-    "postMarketPrice": 16.99,
+    "postMarketChangePercent": -0.0076605286,
+    "postMarketChange": -0.12999916,
+    "postMarketTime": "2026-03-06T00:59:47.000Z",
+    "postMarketPrice": 16.84,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0471699,
-    "regularMarketChange": 0.800001,
-    "regularMarketTime": "2026-03-04T21:00:00.000Z",
+    "regularMarketChangePercent": -0.044482004,
+    "regularMarketChange": -0.790001,
+    "regularMarketTime": "2026-03-05T21:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 17.76,
-    "regularMarketDayHigh": 17.9574,
-    "regularMarketDayLow": 16.88,
-    "regularMarketVolume": 26546327,
-    "averageDailyVolume10Day": 29107910,
-    "averageDailyVolume3Month": 32073055,
-    "regularMarketPreviousClose": 16.96,
+    "regularMarketPrice": 16.97,
+    "regularMarketDayHigh": 17.03,
+    "regularMarketDayLow": 15.9401,
+    "regularMarketVolume": 41705502,
+    "averageDailyVolume10Day": 28942620,
+    "averageDailyVolume3Month": 31990525,
+    "regularMarketPreviousClose": 17.76,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 17.04,
+    "regularMarketOpen": 16.99,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -800,15 +842,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5861263360
+    "marketCap": 5600542208
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 5421877248,
-    "forwardPE": -113.84615,
+    "enterpriseValue": 5200250880,
+    "forwardPE": -96.97143,
     "profitMargins": 0,
-    "floatShares": 324900773,
+    "floatShares": 326992259,
     "sharesOutstanding": 330026078,
     "sharesShort": 51726784,
     "sharesShortPriorMonth": "1971-05-16T12:18:10.000Z",
@@ -816,27 +858,26 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1567,
     "heldPercentInsiders": 0.01606,
-    "heldPercentInstitutions": 0.49123,
+    "heldPercentInstitutions": 0.49133,
     "shortRatio": 1.6,
     "shortPercentOfFloat": 0.1574,
-    "beta": 1.723,
     "impliedSharesOutstanding": 330026078,
     "category": null,
-    "bookValue": 1.143,
-    "priceToBook": 15.538058,
+    "bookValue": 1.649,
+    "priceToBook": 10.291085,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "netIncomeToCommon": -350964000,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "netIncomeToCommon": -216210000,
     "trailingEps": -1.46,
-    "forwardEps": -0.152,
+    "forwardEps": -0.175,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 723.496,
-    "enterpriseToEbitda": -74.263,
-    "52WeekChange": 0.9929495,
-    "SandP52WeekChange": 0.18787253,
+    "enterpriseToRevenue": 733.67,
+    "enterpriseToEbitda": -67.985,
+    "52WeekChange": 0.8994652,
+    "SandP52WeekChange": 0.1837908,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -855,7 +896,6 @@
     "sectorKey": "technology",
     "sectorDisp": "Technology",
     "longBusinessSummary": "Rigetti Computing, Inc., through its subsidiaries, builds quantum computers and the superconducting quantum processors the United States, the United Kingdom, rest of Europe, Asia, and internationally. The company offers quantum processing units (QPUs) and quantum computing systems through the cloud in the form of quantum computing as a service (QCaaS) products. It also provides 9- ubit quantum processing unit under the Novera QPU trade name; 84-qubit Ankaa-3 system under the name Novera QPU; and sells access to its quantum computers through QCaaS. In addition, the company offers quantum cloud services that provides support for various range of programming capabilities, public or private clouds integration, and connectivity, as well as quantum operating system software that supports public and private cloud architectures. Further, it offers professional services, such as algorithm development, benchmarking, quantum application programming, and software development. The company serves commercial enterprises, government organizations, and international government entities. Rigetti Computing, Inc. was founded in 2013 and is headquartered in Berkeley, California.",
-    "fullTimeEmployees": 137,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -1683,35 +1723,35 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 17.76,
-    "targetHighPrice": 51,
-    "targetLowPrice": 24.36,
-    "targetMeanPrice": 38.85091,
-    "targetMedianPrice": 40,
+    "currentPrice": 16.97,
+    "targetHighPrice": 43,
+    "targetLowPrice": 20,
+    "targetMeanPrice": 34.12364,
+    "targetMedianPrice": 35,
     "recommendationMean": 1.75,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 11,
-    "totalCash": 446983008,
-    "totalCashPerShare": 1.354,
-    "ebitda": -73009000,
-    "totalDebt": 7597000,
-    "quickRatio": 38.616,
-    "currentRatio": 39.221,
-    "totalRevenue": 7494000,
-    "debtToEquity": 2.043,
-    "revenuePerShare": 0.026,
-    "returnOnAssets": -0.12786001,
-    "returnOnEquity": -1.4189999,
-    "grossProfits": 2415000,
-    "freeCashflow": -39649876,
-    "operatingCashflow": -52186000,
-    "revenueGrowth": -0.181,
-    "grossMargins": 0.32226002,
+    "totalCash": 443511008,
+    "totalCashPerShare": 1.335,
+    "ebitda": -76491000,
+    "totalDebt": 7167000,
+    "quickRatio": 36.707,
+    "currentRatio": 37.423,
+    "totalRevenue": 7088000,
+    "debtToEquity": 1.312,
+    "revenuePerShare": 0.023,
+    "returnOnAssets": -0.11124,
+    "returnOnEquity": -0.64273,
+    "grossProfits": 2064000,
+    "freeCashflow": -59795500,
+    "operatingCashflow": -58543000,
+    "revenueGrowth": -0.179,
+    "grossMargins": 0.2912,
     "ebitdaMargins": 0,
-    "operatingMargins": -10.55419,
+    "operatingMargins": -12.096899,
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-05T04:16:37.797Z",
+  "lastUpdated": "2026-03-06T04:14:25.807Z",
   "source": "Static Build (yahoo-finance2)"
 }
