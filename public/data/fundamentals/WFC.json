@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 5,
         "buy": 11,
+        "hold": 11,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 5,
+        "buy": 11,
         "hold": 10,
         "sell": 1,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 5,
         "buy": 10,
         "hold": 10,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.096099995,
         "position": 296419877,
-        "value": 24339036281,
+        "value": 23838085965,
         "pctChange": -0.0070999996
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.085,
         "position": 262383174,
-        "value": 21544282577,
+        "value": 21100854372,
         "pctChange": 0.0286
       },
       {
@@ -55,7 +63,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0602,
         "position": 185705183,
-        "value": 15248252689,
+        "value": 14934410476,
         "pctChange": -0.0392
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0444,
         "position": 137088237,
-        "value": 11256315223,
+        "value": 11024635768,
         "pctChange": -0.0107
       },
       {
@@ -73,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0424,
         "position": 130851080,
-        "value": 10744182258,
+        "value": 10523043614,
         "pctChange": -0.5494
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0235,
         "position": 72382568,
-        "value": 5943332702,
+        "value": 5821005986,
         "pctChange": -0.0166
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Wellington Management Group, LLP",
         "pctHeld": 0.0235,
         "position": 72409976,
-        "value": 5945583173,
+        "value": 5823210137,
         "pctChange": -0.121400006
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0174,
         "position": 53574153,
-        "value": 4398973735,
+        "value": 4308433286,
         "pctChange": -0.029000001
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0166,
         "position": 51281147,
-        "value": 4210695011,
+        "value": 4124029747,
         "pctChange": 0.0069
       },
       {
@@ -118,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.015700001,
         "position": 48418055,
-        "value": 3975606525,
+        "value": 3893779894,
         "pctChange": -0.0279
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00099,
-    "institutionsPercentHeld": 0.79315,
-    "institutionsFloatPercentHeld": 0.79393,
-    "institutionsCount": 3529
+    "institutionsPercentHeld": 0.79314005,
+    "institutionsFloatPercentHeld": 0.79392,
+    "institutionsCount": 3530
   },
   "earnings": {
     "maxAge": 86400,
@@ -5431,24 +5439,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0017050224,
-    "postMarketChange": 0.13999939,
-    "postMarketTime": "2026-03-06T01:00:00.000Z",
-    "postMarketPrice": 82.25,
+    "postMarketChangePercent": 0,
+    "postMarketChange": 0,
+    "postMarketTime": "2026-03-07T01:00:00.000Z",
+    "postMarketPrice": 80.42,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": -0.021684699,
-    "regularMarketChange": -1.82,
-    "regularMarketTime": "2026-03-05T21:01:11.000Z",
+    "regularMarketChangePercent": -0.0205822,
+    "regularMarketChange": -1.69,
+    "regularMarketTime": "2026-03-06T21:00:19.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 82.11,
-    "regularMarketDayHigh": 83.7976,
-    "regularMarketDayLow": 81.19,
-    "regularMarketVolume": 20882076,
-    "averageDailyVolume10Day": 19805170,
-    "averageDailyVolume3Month": 15980618,
-    "regularMarketPreviousClose": 83.93,
+    "regularMarketPrice": 80.42,
+    "regularMarketDayHigh": 80.56,
+    "regularMarketDayLow": 77.94,
+    "regularMarketVolume": 16738420,
+    "averageDailyVolume10Day": 19806710,
+    "averageDailyVolume3Month": 15980875,
+    "regularMarketPreviousClose": 82.11,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 83.65,
+    "regularMarketOpen": 80.26,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -5464,13 +5472,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 257750237184
+    "marketCap": 252445179904
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 266187538432,
-    "forwardPE": 10.362622,
+    "enterpriseValue": 260972822528,
+    "forwardPE": 10.149338,
     "profitMargins": 0.26659,
     "floatShares": 3077798126,
     "sharesOutstanding": 3085635641,
@@ -5480,14 +5488,14 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0086,
     "heldPercentInsiders": 0.00099,
-    "heldPercentInstitutions": 0.79315,
+    "heldPercentInstitutions": 0.79314005,
     "shortRatio": 1.47,
     "shortPercentOfFloat": 0.0087,
     "beta": 1.071,
     "impliedSharesOutstanding": 3139084542,
     "category": null,
     "bookValue": 53.194,
-    "priceToBook": 1.5435952,
+    "priceToBook": 1.5118246,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -5495,13 +5503,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.056,
     "netIncomeToCommon": 20284999680,
-    "trailingEps": 6.26,
+    "trailingEps": 6.13,
     "forwardEps": 7.92367,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1155513600,
-    "enterpriseToRevenue": 3.326,
-    "52WeekChange": 0.15566504,
-    "SandP52WeekChange": 0.1837908,
+    "enterpriseToRevenue": 3.26,
+    "52WeekChange": 0.22955978,
+    "SandP52WeekChange": 0.2166065,
     "lastDividendValue": 0.45,
     "lastDividendDate": "2026-02-06T00:00:00.000Z",
     "latestShareClass": null,
@@ -5590,72 +5598,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 61441,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "POWELL SCOTT E",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2026-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 49047,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SANTOS KLEBER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 115045,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ENGLE BRIDGET E.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 19231,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FERCHO KRISTY",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 52757,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VAN BEURDEN SAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 49716,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FLOWERS DEREK A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 33207,
         "filerUrl": "",
         "transactionText": "",
@@ -5689,6 +5631,39 @@
       },
       {
         "maxAge": 1,
+        "shares": 61441,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "POWELL SCOTT E",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 49047,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SANTOS KLEBER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 115045,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ENGLE BRIDGET E.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 76492,
         "filerUrl": "",
         "transactionText": "",
@@ -5700,10 +5675,32 @@
       },
       {
         "maxAge": 1,
-        "shares": 34829,
+        "shares": 52757,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HRANICKY KYLE G",
+        "filerName": "VAN BEURDEN SAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 19231,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FERCHO KRISTY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 49716,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FLOWERS DEREK A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-05T00:00:00.000Z",
@@ -5726,6 +5723,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SOMMERS BARRY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 34829,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HRANICKY KYLE G",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-05T00:00:00.000Z",
@@ -5766,10 +5774,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 1294,
+        "shares": 1412,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "FERCHO KRISTY",
+        "filerName": "VAN BEURDEN SAUL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-05T00:00:00.000Z",
@@ -5777,10 +5785,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 1412,
+        "shares": 1294,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "VAN BEURDEN SAUL",
+        "filerName": "FERCHO KRISTY",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-05T00:00:00.000Z",
@@ -5799,10 +5807,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 952,
+        "shares": 3786,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HRANICKY KYLE G",
+        "filerName": "SOMMERS BARRY",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-05T00:00:00.000Z",
@@ -5810,10 +5818,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3786,
+        "shares": 952,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SOMMERS BARRY",
+        "filerName": "HRANICKY KYLE G",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-05T00:00:00.000Z",
@@ -5879,6 +5887,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 28386,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LING BEI",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 87815,
         "filerUrl": "",
         "transactionText": "",
@@ -5901,22 +5920,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 111766,
+        "shares": 65286,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SANTOMASSIMO MICHAEL P",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "VAN BEURDEN SAUL",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 65286,
+        "shares": 111766,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "VAN BEURDEN SAUL",
-        "filerRelation": "Officer",
+        "filerName": "SANTOMASSIMO MICHAEL P",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
         "ownership": "D"
@@ -5934,11 +5953,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 28386,
+        "shares": 62447,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LING BEI",
-        "filerRelation": "Officer",
+        "filerName": "PATTERSON ELLEN REILLY",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
         "ownership": "D"
@@ -5961,17 +5980,6 @@
         "transactionText": "",
         "filerName": "HRANICKY KYLE G",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 62447,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PATTERSON ELLEN REILLY",
-        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
         "ownership": "D"
@@ -6012,6 +6020,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 30324,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LING BEI",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 86486,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RIVAS FERNANDO",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 62216,
         "filerUrl": "",
         "transactionText": "",
@@ -6045,6 +6075,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 57369,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VAN BEURDEN SAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 21553,
         "filerUrl": "",
         "transactionText": "",
@@ -6067,65 +6108,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 57369,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VAN BEURDEN SAUL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 49144,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "FLOWERS DEREK A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30324,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LING BEI",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 86486,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RIVAS FERNANDO",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 45935,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WILLIAMS ATHER III",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 33518,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HRANICKY KYLE G",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-05T00:00:00.000Z",
@@ -6155,6 +6141,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 45935,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "WILLIAMS ATHER III",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 33518,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HRANICKY KYLE G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 9530,
         "filerUrl": "",
         "transactionText": "",
@@ -6177,10 +6185,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3341,
+        "shares": 3744,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WEISS JONATHAN G.",
+        "filerName": "VAN BEURDEN SAUL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-09T00:00:00.000Z",
@@ -6188,10 +6196,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3744,
+        "shares": 3341,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "VAN BEURDEN SAUL",
+        "filerName": "WEISS JONATHAN G.",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-09T00:00:00.000Z",
@@ -6283,11 +6291,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 82.11,
+    "currentPrice": 80.42,
     "targetHighPrice": 113,
     "targetLowPrice": 85,
-    "targetMeanPrice": 101.64583,
-    "targetMedianPrice": 100.5,
+    "targetMeanPrice": 101.35417,
+    "targetMedianPrice": 100,
     "recommendationMean": 2,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 24,
@@ -6308,6 +6316,6 @@
     "profitMargins": 0.26659,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-06T04:14:58.908Z",
+  "lastUpdated": "2026-03-07T04:05:32.340Z",
   "source": "Static Build (yahoo-finance2)"
 }
