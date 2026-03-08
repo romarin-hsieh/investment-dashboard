@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00375,
-    "institutionsPercentHeld": 0.80069,
-    "institutionsFloatPercentHeld": 0.80371004,
-    "institutionsCount": 2121
+    "institutionsPercentHeld": 0.80121005,
+    "institutionsFloatPercentHeld": 0.80423,
+    "institutionsCount": 2120
   },
   "earnings": {
     "maxAge": 86400,
@@ -194,9 +194,9 @@
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
       "earningsDate": [
-        "2026-04-29T13:30:00.000Z"
+        "2026-04-29T12:30:00.000Z"
       ],
-      "isEarningsDateEstimate": false
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -1742,21 +1742,22 @@
     "regularMarketDayHigh": 251.47,
     "regularMarketDayLow": 238.6501,
     "regularMarketVolume": 8078814,
-    "averageDailyVolume10Day": 5731700,
-    "averageDailyVolume3Month": 6126498,
+    "averageDailyVolume10Day": 6209700,
+    "averageDailyVolume3Month": 6168018,
     "regularMarketPreviousClose": 249.75,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 241,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "VRT",
     "underlyingSymbol": null,
     "shortName": "Vertiv Holdings, LLC",
     "longName": "Vertiv Holdings Co",
     "currency": "USD",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -1777,7 +1778,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.024400001,
     "heldPercentInsiders": 0.00375,
-    "heldPercentInstitutions": 0.80069,
+    "heldPercentInstitutions": 0.80121005,
     "shortRatio": 1.52,
     "shortPercentOfFloat": 0.0248,
     "beta": 2.076,
@@ -1792,13 +1793,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 2.031,
     "netIncomeToCommon": 1332800000,
-    "trailingEps": 3.31,
+    "trailingEps": 3.41,
     "forwardEps": 7.89002,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 9.177,
     "enterpriseToEbitda": 42.524,
-    "52WeekChange": 2.2011023,
-    "SandP52WeekChange": 0.2166065,
+    "52WeekChange": 2.098949,
+    "SandP52WeekChange": 0.20045388,
     "lastDividendValue": 0.063,
     "lastDividendDate": "2025-11-25T00:00:00.000Z",
     "latestShareClass": null,
@@ -2153,24 +2154,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 27500,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "MONSER EDWARD L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-11-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5501,
         "value": 937810,
         "filerUrl": "",
         "transactionText": "Sale at price 170.48 per share.",
         "filerName": "LIANG STEPHEN H",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-11-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 27500,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "MONSER EDWARD L",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-24T00:00:00.000Z",
         "ownership": "D"
@@ -3005,11 +3006,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 10638,
-        "value": 799978,
+        "shares": 44924,
+        "value": 3593664,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 75.20 per share.",
-        "filerName": "PONCHERI FRANK",
+        "transactionText": "Sale at price 78.08 - 82.25 per share.",
+        "filerName": "WINTHER KARSTEN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-03T00:00:00.000Z",
@@ -3017,11 +3018,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 44924,
-        "value": 3593664,
+        "shares": 10638,
+        "value": 799978,
         "filerUrl": "",
-        "transactionText": "Sale at price 78.08 - 82.25 per share.",
-        "filerName": "WINTHER KARSTEN",
+        "transactionText": "Stock Award(Grant) at price 75.20 per share.",
+        "filerName": "PONCHERI FRANK",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-03T00:00:00.000Z",
@@ -3161,18 +3162,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "FRADIN ROGER B",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-15T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 5194802,
         "filerUrl": "",
@@ -3182,6 +3171,18 @@
         "moneyText": "",
         "startDate": "2024-05-15T00:00:00.000Z",
         "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "FRADIN ROGER B",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-15T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -3221,18 +3222,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1318,
-        "value": 124946,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 94.80 per share.",
-        "filerName": "JOHNSON ERIC M.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-04-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3000000,
         "value": 280929588,
         "filerUrl": "",
@@ -3242,6 +3231,18 @@
         "moneyText": "",
         "startDate": "2024-04-29T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1318,
+        "value": 124946,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 94.80 per share.",
+        "filerName": "JOHNSON ERIC M.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-04-29T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3374,18 +3375,6 @@
         "moneyText": "",
         "startDate": "2024-03-28T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 38590,
-        "value": 2676988,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 69.37 per share.",
-        "filerName": "CRIPPS SCOTT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-03-08T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -3422,6 +3411,6 @@
     "profitMargins": 0.13028,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-07T04:02:57.719Z",
+  "lastUpdated": "2026-03-08T04:14:15.100Z",
   "source": "Static Build (yahoo-finance2)"
 }

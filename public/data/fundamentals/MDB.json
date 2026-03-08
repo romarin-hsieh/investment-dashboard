@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03012,
-    "institutionsPercentHeld": 0.93468004,
-    "institutionsFloatPercentHeld": 0.96370006,
-    "institutionsCount": 1275
+    "institutionsPercentHeld": 0.93464,
+    "institutionsFloatPercentHeld": 0.96366,
+    "institutionsCount": 1276
   },
   "earnings": {
     "maxAge": 86400,
@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2027",
       "currentPeriodEndDate": 1777507200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-06-04T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -5724,21 +5726,21 @@
     "postMarketSource": "FREE_REALTIME",
     "regularMarketChangePercent": 0.024779301,
     "regularMarketChange": 6.54001,
-    "regularMarketTime": "2026-03-06T21:00:01.000Z",
+    "regularMarketTime": "2026-03-06T21:00:02.000Z",
     "priceHint": 2,
     "regularMarketPrice": 270.47,
     "regularMarketDayHigh": 275.37,
     "regularMarketDayLow": 258.02,
     "regularMarketVolume": 2900304,
-    "averageDailyVolume10Day": 3758310,
-    "averageDailyVolume3Month": 1861893,
+    "averageDailyVolume10Day": 3919500,
+    "averageDailyVolume3Month": 1880475,
     "regularMarketPreviousClose": 263.93,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 258.31,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "MDB",
     "underlyingSymbol": null,
@@ -5766,7 +5768,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.045900002,
     "heldPercentInsiders": 0.03012,
-    "heldPercentInstitutions": 0.93468004,
+    "heldPercentInstitutions": 0.93464,
     "shortRatio": 2.34,
     "shortPercentOfFloat": 0.0473,
     "beta": 1.51,
@@ -5786,8 +5788,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 7.893,
     "enterpriseToEbitda": -187.065,
-    "52WeekChange": 0.46367574,
-    "SandP52WeekChange": 0.2166065,
+    "52WeekChange": 0.49994457,
+    "SandP52WeekChange": 0.20045388,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -7621,8 +7623,8 @@
     "currentPrice": 270.47,
     "targetHighPrice": 495,
     "targetLowPrice": 250,
-    "targetMeanPrice": 362.55743,
-    "targetMedianPrice": 375,
+    "targetMeanPrice": 359.41458,
+    "targetMedianPrice": 370,
     "recommendationMean": 1.74359,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 35,
@@ -7648,6 +7650,6 @@
     "profitMargins": -0.02888,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-07T04:01:33.717Z",
+  "lastUpdated": "2026-03-08T04:12:52.119Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 8,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 2
+      },
+      {
+        "period": "-3m",
         "strongBuy": 2,
         "buy": 8,
         "hold": 5,
@@ -126,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00116,
-    "institutionsPercentHeld": 0.76289004,
-    "institutionsFloatPercentHeld": 0.76378,
+    "institutionsPercentHeld": 0.76316,
+    "institutionsFloatPercentHeld": 0.76404,
     "institutionsCount": 2824
   },
   "earnings": {
@@ -186,7 +194,7 @@
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
       "earningsDate": [
-        "2026-04-21T13:30:00.000Z"
+        "2026-04-21T12:30:00.000Z"
       ],
       "isEarningsDateEstimate": true
     },
@@ -4394,15 +4402,15 @@
     "regularMarketDayHigh": 154.1,
     "regularMarketDayLow": 151.76,
     "regularMarketVolume": 3845896,
-    "averageDailyVolume10Day": 3595060,
-    "averageDailyVolume3Month": 3654950,
+    "averageDailyVolume10Day": 3859630,
+    "averageDailyVolume3Month": 3675985,
     "regularMarketPreviousClose": 156.21,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 154.11,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "POSTPOST",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "MMM",
     "underlyingSymbol": null,
@@ -4430,7 +4438,7 @@
     "dateShortInterest": "2026-02-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0155,
     "heldPercentInsiders": 0.00116,
-    "heldPercentInstitutions": 0.76289004,
+    "heldPercentInstitutions": 0.76316,
     "shortRatio": 1.66,
     "shortPercentOfFloat": 0.0156,
     "beta": 1.131,
@@ -4445,14 +4453,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.207,
     "netIncomeToCommon": 3249999872,
-    "trailingEps": 5.89,
+    "trailingEps": 6,
     "forwardEps": 9.39898,
     "lastSplitFactor": "1196:1000",
     "lastSplitDate": 1711929600,
     "enterpriseToRevenue": 3.449,
     "enterpriseToEbitda": 14.303,
-    "52WeekChange": 0.058189988,
-    "SandP52WeekChange": 0.2166065,
+    "52WeekChange": 0.03922236,
+    "SandP52WeekChange": 0.20045388,
     "lastDividendValue": 0.78,
     "lastDividendDate": "2026-02-13T00:00:00.000Z",
     "latestShareClass": null,
@@ -5955,6 +5963,6 @@
     "profitMargins": 0.13027,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-07T04:04:39.370Z",
+  "lastUpdated": "2026-03-08T04:15:59.417Z",
   "source": "Static Build (yahoo-finance2)"
 }
