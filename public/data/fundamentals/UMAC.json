@@ -24,6 +24,14 @@
         "hold": 0,
         "sell": 0,
         "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 3,
+        "hold": 0,
+        "sell": 0,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0434,
         "position": 1601209,
-        "value": 26339889,
+        "value": 27668892,
         "pctChange": 0.377
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Granahan Investment Management LLC",
         "pctHeld": 0.0313,
         "position": 1154505,
-        "value": 18991608,
+        "value": 19949847,
         "pctChange": 1
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Tudor Investment Corp Et Al",
         "pctHeld": 0.0272,
         "position": 1002000,
-        "value": 16482900,
+        "value": 17314560,
         "pctChange": -0.1702
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.026199998,
         "position": 966184,
-        "value": 15893727,
+        "value": 16695660,
         "pctChange": 6.9843
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0257,
         "position": 948676,
-        "value": 15605720,
+        "value": 16393121,
         "pctChange": -0.16389999
       },
       {
@@ -82,7 +90,7 @@
         "organization": "MYDA Advisors LLC",
         "pctHeld": 0.0226,
         "position": 835200,
-        "value": 13739040,
+        "value": 14432256,
         "pctChange": 1
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.0226,
         "position": 834250,
-        "value": 13723413,
+        "value": 14415840,
         "pctChange": -0.0072000003
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.0179,
         "position": 660709,
-        "value": 10868663,
+        "value": 11417051,
         "pctChange": 1
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0152,
         "position": 560707,
-        "value": 9223630,
+        "value": 9689017,
         "pctChange": 0.0752
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0098,
         "position": 359883,
-        "value": 5920075,
+        "value": 6218778,
         "pctChange": 0.2945
       }
     ]
@@ -134,17 +142,6 @@
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": -0.181,
-          "estimate": -0.125,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "-0.06",
-          "surprisePct": "-44.8",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1743105729
-        },
         {
           "date": "1Q2025",
           "actual": -0.21,
@@ -177,17 +174,26 @@
           "surprisePct": "-1515.0",
           "periodEndDate": 1759190400,
           "reportedDate": 1762462898
+        },
+        {
+          "date": "4Q2025",
+          "actual": -0.0152,
+          "estimate": -0.09,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.07",
+          "surprisePct": "83.11",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1773057628
         }
       ],
-      "currentQuarterEstimate": -0.09,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [
-        "2026-03-09T12:30:00.000Z"
-      ],
+      "currentQuarterEstimate": -0.095,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
@@ -201,15 +207,14 @@
           "date": 2024,
           "revenue": 5565320,
           "earnings": -7031340
+        },
+        {
+          "date": 2025,
+          "revenue": 11199220,
+          "earnings": -3987240
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2024",
-          "revenue": 2000000,
-          "earnings": -1529120
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -227,6 +232,12 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 2134590,
           "earnings": -4246250
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2025",
+          "revenue": 4900000,
+          "earnings": -900000
         }
       ]
     },
@@ -331,24 +342,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0054711336,
-    "postMarketChange": 0.09000015,
-    "postMarketTime": "2026-03-07T00:59:57.000Z",
-    "postMarketPrice": 16.54,
+    "postMarketChangePercent": -0.004629625,
+    "postMarketChange": -0.07999992,
+    "postMarketTime": "2026-03-09T23:59:49.000Z",
+    "postMarketPrice": 17.2,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0779817,
-    "regularMarketChange": 1.19,
-    "regularMarketTime": "2026-03-06T21:00:00.000Z",
+    "regularMarketChangePercent": 0.050455898,
+    "regularMarketChange": 0.83,
+    "regularMarketTime": "2026-03-09T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 16.45,
-    "regularMarketDayHigh": 17.16,
-    "regularMarketDayLow": 15.025,
-    "regularMarketVolume": 7253952,
-    "averageDailyVolume10Day": 3167460,
-    "averageDailyVolume3Month": 3304591,
-    "regularMarketPreviousClose": 15.26,
+    "regularMarketPrice": 17.28,
+    "regularMarketDayHigh": 18.6,
+    "regularMarketDayLow": 16.0613,
+    "regularMarketVolume": 7358733,
+    "averageDailyVolume10Day": 3757930,
+    "averageDailyVolume3Month": 3399859,
+    "regularMarketPreviousClose": 16.45,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 15.03,
+    "regularMarketOpen": 18.5,
     "exchange": "ASE",
     "exchangeName": "NYSE American",
     "exchangeDataDelayedBy": 0,
@@ -364,13 +375,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 626908096
+    "marketCap": 658539328
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 526750464,
-    "forwardPE": -58.750004,
+    "enterpriseValue": 557357184,
+    "forwardPE": 96,
     "profitMargins": 0,
     "floatShares": 33522455,
     "sharesOutstanding": 38109911,
@@ -387,7 +398,7 @@
     "impliedSharesOutstanding": 38109911,
     "category": null,
     "bookValue": 3.358,
-    "priceToBook": 4.8987494,
+    "priceToBook": 5.1459203,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
@@ -395,12 +406,12 @@
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": -35745532,
     "trailingEps": -3.59,
-    "forwardEps": -0.28,
+    "forwardEps": 0.19,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 63.427,
-    "enterpriseToEbitda": -29.128,
-    "52WeekChange": 2.0018249,
-    "SandP52WeekChange": 0.20045388,
+    "enterpriseToRevenue": 67.112,
+    "enterpriseToEbitda": -30.82,
+    "52WeekChange": 2.036907,
+    "SandP52WeekChange": 0.21965265,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -525,24 +536,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 65789,
-        "value": 130920,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 1.99 per share.",
-        "filerName": "RICH SANFORD",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 11087,
         "value": 128831,
         "filerUrl": "",
         "transactionText": "Sale at price 11.62 per share.",
         "filerName": "EVANS ALLAN THOMAS",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 65789,
+        "value": 130920,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 1.99 per share.",
+        "filerName": "RICH SANFORD",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-29T00:00:00.000Z",
         "ownership": "D"
@@ -597,30 +608,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 250000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "EVANS ALLAN THOMAS",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 125000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HOFF BRIAN JOSEPH",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 8750,
         "value": 79625,
         "filerUrl": "",
@@ -645,10 +632,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 125000,
-        "value": 0,
+        "shares": 8750,
+        "value": 79625,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "transactionText": "Sale at price 9.10 per share.",
         "filerName": "CAMDEN ANDREW ROSS",
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
@@ -657,10 +644,34 @@
       },
       {
         "maxAge": 1,
-        "shares": 8750,
-        "value": 79625,
+        "shares": 250000,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 9.10 per share.",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "EVANS ALLAN THOMAS",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 125000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HOFF BRIAN JOSEPH",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 125000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "CAMDEN ANDREW ROSS",
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
@@ -1452,7 +1463,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 16.45,
+    "currentPrice": 17.28,
     "targetHighPrice": 25,
     "targetLowPrice": 15,
     "targetMeanPrice": 19.2,
@@ -1481,6 +1492,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-09T04:19:31.702Z",
+  "lastUpdated": "2026-03-10T04:12:04.701Z",
   "source": "Static Build (yahoo-finance2)"
 }

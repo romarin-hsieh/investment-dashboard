@@ -4,8 +4,8 @@
       {
         "period": "0m",
         "strongBuy": 0,
-        "buy": 7,
-        "hold": 2,
+        "buy": 8,
+        "hold": 1,
         "sell": 0,
         "strongSell": 1
       },
@@ -45,7 +45,7 @@
         "organization": "Ae Industrial Partners, LP                          ",
         "pctHeld": 0.47709998,
         "position": 91598704,
-        "value": 783168936,
+        "value": 883927458,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.031,
         "position": 5958075,
-        "value": 50941542,
+        "value": 57495421,
         "pctChange": 0.48240003
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.024500001,
         "position": 4708600,
-        "value": 40258530,
+        "value": 45437988,
         "pctChange": 0.6111
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0234,
         "position": 4490385,
-        "value": 38392792,
+        "value": 43332213,
         "pctChange": 0.3847
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.0168,
         "position": 3225062,
-        "value": 27574280,
+        "value": 31121847,
         "pctChange": 0.4232
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.0115,
         "position": 2208164,
-        "value": 18879802,
+        "value": 21308781,
         "pctChange": 0.35919997
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0108,
         "position": 2065892,
-        "value": 17663376,
+        "value": 19935857,
         "pctChange": 0.60080004
       },
       {
@@ -108,7 +108,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0106,
         "position": 2039902,
-        "value": 17441162,
+        "value": 19685053,
         "pctChange": 1.4083
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0099,
         "position": 1904911,
-        "value": 16286989,
+        "value": 18382390,
         "pctChange": -0.049200002
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0092,
         "position": 1764643,
-        "value": 15087697,
+        "value": 17028804,
         "pctChange": 0.4688
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-09T11:29:57.000Z",
+        "firm": "Truist Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Hold",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 15,
+        "priorPriceTarget": 13
+      },
       {
         "epochGradeDate": "2026-03-06T20:26:38.000Z",
         "firm": "Jefferies",
@@ -729,24 +739,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0046549346,
-    "postMarketChange": 0.03979969,
-    "postMarketTime": "2026-03-07T01:00:00.000Z",
-    "postMarketPrice": 8.5898,
-    "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": -0.0573318,
-    "regularMarketChange": -0.52,
-    "regularMarketTime": "2026-03-06T21:00:02.000Z",
+    "postMarketChangePercent": -0.024870444,
+    "postMarketChange": -0.23999977,
+    "postMarketTime": "2026-03-09T23:59:16.000Z",
+    "postMarketPrice": 9.41,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": 0.128655,
+    "regularMarketChange": 1.1,
+    "regularMarketTime": "2026-03-09T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 8.55,
-    "regularMarketDayHigh": 9.45,
-    "regularMarketDayLow": 8.48,
-    "regularMarketVolume": 16957171,
-    "averageDailyVolume10Day": 16752590,
-    "averageDailyVolume3Month": 23936279,
-    "regularMarketPreviousClose": 9.07,
+    "regularMarketPrice": 9.65,
+    "regularMarketDayHigh": 9.68,
+    "regularMarketDayLow": 8.64,
+    "regularMarketVolume": 19845223,
+    "averageDailyVolume10Day": 17808890,
+    "averageDailyVolume3Month": 23957715,
+    "regularMarketPreviousClose": 8.55,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 8.79,
+    "regularMarketOpen": 8.71,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -757,18 +767,18 @@
     "shortName": "Redwire Corporation",
     "longName": "Redwire Corporation",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 1641393152
+    "marketCap": 1852566528
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 1738898816,
-    "forwardPE": -18.586956,
+    "enterpriseValue": 1948932224,
+    "forwardPE": -20.97826,
     "profitMargins": -0.67551005,
     "floatShares": 143685800,
     "sharesOutstanding": 191975804,
@@ -785,7 +795,7 @@
     "impliedSharesOutstanding": 191975804,
     "category": null,
     "bookValue": 5.553,
-    "priceToBook": 1.5397083,
+    "priceToBook": 1.7377993,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -795,10 +805,10 @@
     "trailingEps": -2.28,
     "forwardEps": -0.46,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 5.185,
-    "enterpriseToEbitda": -13.641,
-    "52WeekChange": -0.24067497,
-    "SandP52WeekChange": 0.20045388,
+    "enterpriseToRevenue": 5.811,
+    "enterpriseToEbitda": -15.289,
+    "52WeekChange": -0.06401551,
+    "SandP52WeekChange": 0.21965265,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1524,13 +1534,13 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 8.55,
+    "currentPrice": 9.65,
     "targetHighPrice": 22,
     "targetLowPrice": 6,
-    "targetMeanPrice": 13.27778,
+    "targetMeanPrice": 13.5,
     "targetMedianPrice": 12,
-    "recommendationMean": 1.7,
-    "recommendationKey": "buy",
+    "recommendationMean": 1.5,
+    "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 9,
     "totalCash": 94467000,
     "totalCashPerShare": 0.495,
@@ -1553,6 +1563,6 @@
     "profitMargins": -0.67551005,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-09T04:17:41.589Z",
+  "lastUpdated": "2026-03-10T04:10:13.980Z",
   "source": "Static Build (yahoo-finance2)"
 }
