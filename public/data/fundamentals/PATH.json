@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 0,
+        "buy": 2,
+        "hold": 17,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 0,
         "buy": 1,
         "hold": 18,
         "sell": 0,
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 0,
         "buy": 1,
         "hold": 18,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1067,
         "position": 49114941,
-        "value": 608042975,
+        "value": 558436873,
         "pctChange": 0.0255
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0874,
         "position": 40236866,
-        "value": 498132405,
+        "value": 457493161,
         "pctChange": 0.6028
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Tetragon Partners GP Ltd.",
         "pctHeld": 0.0379,
         "position": 17450000,
-        "value": 216031001,
+        "value": 198406498,
         "pctChange": 0.0295
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.028199999,
         "position": 13004786,
-        "value": 160999252,
+        "value": 147864415,
         "pctChange": 0.66400003
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0202,
         "position": 9310304,
-        "value": 115261564,
+        "value": 105858155,
         "pctChange": 0.5396
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.019299999,
         "position": 8876414,
-        "value": 109890006,
+        "value": 100924826,
         "pctChange": -0.1388
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Senvest Management LLC",
         "pctHeld": 0.0188,
         "position": 8666831,
-        "value": 107295368,
+        "value": 98541867,
         "pctChange": -0.2021
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0163,
         "position": 7499989,
-        "value": 92849864,
+        "value": 85274874,
         "pctChange": 0.256
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Point72 Asset Management, L.P.",
         "pctHeld": 0.0161,
         "position": 7399184,
-        "value": 91601898,
+        "value": 84128721,
         "pctChange": 2.0013
       },
       {
@@ -118,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0159,
         "position": 7332288,
-        "value": 90773726,
+        "value": 83368113,
         "pctChange": 0.3711
       }
     ]
@@ -127,24 +135,13 @@
     "maxAge": 1,
     "insidersPercentHeld": 0.09395,
     "institutionsPercentHeld": 0.75034,
-    "institutionsFloatPercentHeld": 0.82815003,
-    "institutionsCount": 705
+    "institutionsFloatPercentHeld": 0.82814,
+    "institutionsCount": 704
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": 0.26,
-          "estimate": 0.19405,
-          "fiscalQuarter": "4Q2025",
-          "calendarQuarter": "4Q2024",
-          "difference": "0.07",
-          "surprisePct": "33.99",
-          "periodEndDate": 1738281600,
-          "reportedDate": 1741810200
-        },
         {
           "date": "1Q2025",
           "actual": 0.11,
@@ -177,16 +174,29 @@
           "surprisePct": "9.63",
           "periodEndDate": 1761868800,
           "reportedDate": 1764796415
+        },
+        {
+          "date": "4Q2025",
+          "actual": 0.3,
+          "estimate": 0.25475,
+          "fiscalQuarter": "4Q2026",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.05",
+          "surprisePct": "17.76",
+          "periodEndDate": 1769817600,
+          "reportedDate": 1773259800
         }
       ],
-      "currentQuarterEstimate": 0.25475,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2026",
-      "currentPeriodEndDate": 1769817600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentQuarterEstimate": 0.17,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2027",
+      "currentPeriodEndDate": 1777507200,
+      "earningsDate": [
+        "2026-05-28T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -243,6 +253,106 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-12T19:48:07.000Z",
+        "firm": "UBS",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 13,
+        "priorPriceTarget": 17
+      },
+      {
+        "epochGradeDate": "2026-03-12T17:16:36.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 15,
+        "priorPriceTarget": 19
+      },
+      {
+        "epochGradeDate": "2026-03-12T17:09:42.000Z",
+        "firm": "Truist Securities",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 12,
+        "priorPriceTarget": 17
+      },
+      {
+        "epochGradeDate": "2026-03-12T16:44:11.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 13,
+        "priorPriceTarget": 16
+      },
+      {
+        "epochGradeDate": "2026-03-12T15:14:17.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Underperform",
+        "fromGrade": "Underperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 12,
+        "priorPriceTarget": 14
+      },
+      {
+        "epochGradeDate": "2026-03-12T13:35:23.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 13,
+        "priorPriceTarget": 15
+      },
+      {
+        "epochGradeDate": "2026-03-12T13:15:57.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 13,
+        "priorPriceTarget": 14
+      },
+      {
+        "epochGradeDate": "2026-03-12T12:31:57.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 12,
+        "priorPriceTarget": 15
+      },
+      {
+        "epochGradeDate": "2026-03-12T11:30:12.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 17,
+        "priorPriceTarget": 19
+      },
+      {
+        "epochGradeDate": "2026-03-12T11:15:52.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Hold",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 15,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-01-12T20:17:55.000Z",
         "firm": "Barclays",
@@ -2619,24 +2729,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.07673666,
-    "postMarketChange": -0.9499998,
-    "postMarketTime": "2026-03-11T23:59:58.000Z",
-    "postMarketPrice": 11.43,
+    "postMarketChangePercent": -0.014951634,
+    "postMarketChange": -0.17000008,
+    "postMarketTime": "2026-03-12T23:59:55.000Z",
+    "postMarketPrice": 11.2,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.068162195,
-    "regularMarketChange": 0.79,
-    "regularMarketTime": "2026-03-11T20:00:02.000Z",
+    "regularMarketChangePercent": -0.0815832,
+    "regularMarketChange": -1.01,
+    "regularMarketTime": "2026-03-12T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 12.38,
-    "regularMarketDayHigh": 12.41,
-    "regularMarketDayLow": 11.65,
-    "regularMarketVolume": 95036644,
-    "averageDailyVolume10Day": 49748360,
-    "averageDailyVolume3Month": 32240255,
-    "regularMarketPreviousClose": 11.59,
+    "regularMarketPrice": 11.37,
+    "regularMarketDayHigh": 11.975,
+    "regularMarketDayLow": 10.7,
+    "regularMarketVolume": 91441608,
+    "averageDailyVolume10Day": 50031980,
+    "averageDailyVolume3Month": 32288327,
+    "regularMarketPreviousClose": 12.38,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 12,
+    "regularMarketOpen": 10.95,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -2652,15 +2762,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 6620201472
+    "marketCap": 6080103936
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 5304024064,
-    "forwardPE": 16.230318,
-    "profitMargins": 0.14787,
-    "floatShares": 417751801,
+    "enterpriseValue": 4692341760,
+    "forwardPE": 13.294203,
+    "profitMargins": 0.1753,
+    "floatShares": 418698874,
     "sharesOutstanding": 460443681,
     "sharesShort": 100693641,
     "sharesShortPriorMonth": "1972-05-27T02:51:33.000Z",
@@ -2671,24 +2781,24 @@
     "heldPercentInstitutions": 0.75034,
     "shortRatio": 3.06,
     "shortPercentOfFloat": 0.2746,
-    "beta": 1.09,
     "impliedSharesOutstanding": 534749684,
     "category": null,
-    "bookValue": 3.6,
-    "priceToBook": 3.438889,
+    "bookValue": 3.886,
+    "priceToBook": 2.9258878,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2026-01-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-10-31T00:00:00.000Z",
-    "netIncomeToCommon": 229662000,
+    "lastFiscalYearEnd": "2026-01-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2027-01-31T00:00:00.000Z",
+    "mostRecentQuarter": "2026-01-31T00:00:00.000Z",
+    "earningsQuarterlyGrowth": 1.017,
+    "netIncomeToCommon": 282329984,
     "trailingEps": 0.42,
-    "forwardEps": 0.84726,
+    "forwardEps": 0.89639,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 3.415,
-    "enterpriseToEbitda": 145.815,
-    "52WeekChange": 0.2417252,
-    "SandP52WeekChange": 0.22716212,
+    "enterpriseToRevenue": 2.913,
+    "enterpriseToEbitda": 63.643,
+    "52WeekChange": 0.13786769,
+    "SandP52WeekChange": 0.1833111,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2708,25 +2818,12 @@
     "sectorKey": "technology",
     "sectorDisp": "Technology",
     "longBusinessSummary": "UiPath, Inc. provides an end-to-end automation platform that offers a range of robotic process automation (RPA) solutions primarily in the United States, Romania, the United Kingdom, the Netherlands, and internationally. The company delivers software robots that emulate human actions with precision and speed for organizations to automate repetitive tasks. Its platform's embedded AI, ML, and NLP capabilities improve decisioning and information processing; allows users to design and combine UI automations, API integrations, and AI-based document understanding in a single workflow; multi-tenant platform enterprise deployment with security and governance and Automation Cloud, which allows rapid automation without infrastructure overhead; and intuitive interface and low-code, drag-and-drop functionality. The company provides mining capabilities analyze the digital footprint of users' processes across all systems; tracks, measures, and forecasts automation performance, providing actionable metrics and predictive insights to continuously optimize business processes and maximize return on investment; and designed to enable people and automations to work together with each focusing on the processes to enhance productivity and improve business outcomes. It serves financial services, healthcare, manufacturing, retail, and public sector. The company was founded in 2005 and is headquartered in New York, New York.",
-    "fullTimeEmployees": 3868,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
   },
   "insiderTransactions": {
     "transactions": [
-      {
-        "maxAge": 1,
-        "shares": 31021,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAMANI HITESH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-25T00:00:00.000Z",
-        "ownership": "D"
-      },
       {
         "maxAge": 1,
         "shares": 145985,
@@ -2747,6 +2844,18 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GUPTA ASHIM A",
         "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2026-02-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 31021,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAMANI HITESH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-25T00:00:00.000Z",
         "ownership": "D"
@@ -2861,24 +2970,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 67468,
-        "value": 1086498,
-        "filerUrl": "",
-        "transactionText": "Sale at price 16.10 per share.",
-        "filerName": "GUPTA ASHIM A",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2026-01-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 45000,
         "value": 707931,
         "filerUrl": "",
         "transactionText": "Sale at price 15.73 per share.",
         "filerName": "DINES DANIEL",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-01-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 67468,
+        "value": 1086498,
+        "filerUrl": "",
+        "transactionText": "Sale at price 16.10 per share.",
+        "filerName": "GUPTA ASHIM A",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2026-01-05T00:00:00.000Z",
         "ownership": "D"
@@ -3991,30 +4100,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YANG JUNE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16064,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SOMASEGAR SIVARAMAKICHENANE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16064,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SPRINGER DANIEL D",
         "filerRelation": "Director",
         "moneyText": "",
@@ -4064,6 +4149,30 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BOTTERI PHILIPPE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16064,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YANG JUNE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16064,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SOMASEGAR SIVARAMAKICHENANE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-26T00:00:00.000Z",
@@ -4395,18 +4504,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 93065,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAMANI HITESH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 145985,
         "value": 0,
         "filerUrl": "",
@@ -4425,6 +4522,18 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GUPTA ASHIM A",
         "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-03-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 93065,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAMANI HITESH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
@@ -4454,24 +4563,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 47227,
-        "value": 616889,
-        "filerUrl": "",
-        "transactionText": "Sale at price 13.06 per share.",
-        "filerName": "GUPTA ASHIM A",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-01-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 25000,
         "value": 326162,
         "filerUrl": "",
         "transactionText": "Sale at price 13.05 per share.",
         "filerName": "RAMANI HITESH",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 47227,
+        "value": 616889,
+        "filerUrl": "",
+        "transactionText": "Sale at price 13.06 per share.",
+        "filerName": "GUPTA ASHIM A",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-01-03T00:00:00.000Z",
         "ownership": "D"
@@ -4490,18 +4599,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 47227,
-        "value": 572816,
-        "filerUrl": "",
-        "transactionText": "Sale at price 12.13 per share.",
-        "filerName": "GUPTA ASHIM A",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-10-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 25000,
         "value": 299942,
         "filerUrl": "",
@@ -4511,40 +4608,53 @@
         "moneyText": "",
         "startDate": "2024-10-03T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 47227,
+        "value": 572816,
+        "filerUrl": "",
+        "transactionText": "Sale at price 12.13 per share.",
+        "filerName": "GUPTA ASHIM A",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2024-10-03T00:00:00.000Z",
+        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 12.38,
+    "currentPrice": 11.37,
     "targetHighPrice": 19,
-    "targetLowPrice": 13.88,
-    "targetMeanPrice": 15.92533,
-    "targetMedianPrice": 16,
+    "targetLowPrice": 12,
+    "targetMeanPrice": 14.992,
+    "targetMedianPrice": 14,
     "recommendationKey": "none",
     "numberOfAnalystOpinions": 15,
-    "totalCash": 1398185984,
-    "totalCashPerShare": 2.615,
-    "ebitda": 36375000,
-    "totalDebt": 82009000,
-    "quickRatio": 2.402,
-    "currentRatio": 2.654,
-    "totalRevenue": 1553111040,
-    "debtToEquity": 4.261,
-    "revenuePerShare": 2.866,
-    "returnOnAssets": 0.0053,
-    "returnOnEquity": 0.12562001,
-    "grossProfits": 1295043968,
-    "freeCashflow": 420573504,
-    "operatingCashflow": 334942016,
-    "revenueGrowth": 0.159,
-    "grossMargins": 0.83384,
-    "ebitdaMargins": 0.02342,
-    "operatingMargins": 0.03179,
-    "profitMargins": 0.14787,
+    "totalCash": 1472486016,
+    "totalCashPerShare": 2.747,
+    "ebitda": 73729000,
+    "totalDebt": 70940000,
+    "quickRatio": 2.268,
+    "currentRatio": 2.478,
+    "totalRevenue": 1610572032,
+    "debtToEquity": 3.406,
+    "revenuePerShare": 2.993,
+    "returnOnAssets": 0.01174,
+    "returnOnEquity": 0.14374,
+    "grossProfits": 1339587968,
+    "freeCashflow": 190430000,
+    "operatingCashflow": 371208000,
+    "earningsGrowth": 1.037,
+    "revenueGrowth": 0.136,
+    "grossMargins": 0.83175004,
+    "ebitdaMargins": 0.04578,
+    "operatingMargins": 0.16688,
+    "profitMargins": 0.1753,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-12T04:17:02.399Z",
+  "lastUpdated": "2026-03-13T04:14:01.375Z",
   "source": "Static Build (yahoo-finance2)"
 }

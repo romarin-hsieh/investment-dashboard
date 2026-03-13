@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0967,
         "position": 14694503,
-        "value": 845227819,
+        "value": 793797058,
         "pctChange": 0.1289
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0771,
         "position": 11716681,
-        "value": 673943496,
+        "value": 632935112,
         "pctChange": 0.157
       },
       {
@@ -63,7 +63,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0465,
         "position": 7064057,
-        "value": 406324561,
+        "value": 381600362,
         "pctChange": 0.4277
       },
       {
@@ -72,7 +72,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0347,
         "position": 5271860,
-        "value": 303237389,
+        "value": 284785879,
         "pctChange": 1.0126001
       },
       {
@@ -81,7 +81,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0298,
         "position": 4522846,
-        "value": 260154103,
+        "value": 244324142,
         "pctChange": 0.84910005
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.0252,
         "position": 3829644,
-        "value": 220281124,
+        "value": 206877370,
         "pctChange": 0.073
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0166,
         "position": 2528649,
-        "value": 145447891,
+        "value": 136597620,
         "pctChange": 0.0761
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Federated Hermes, Inc.",
         "pctHeld": 0.0161,
         "position": 2449646,
-        "value": 140903639,
+        "value": 132329878,
         "pctChange": 0.0049
       },
       {
@@ -117,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0155,
         "position": 2356918,
-        "value": 135569924,
+        "value": 127320711,
         "pctChange": 0.13159999
       },
       {
@@ -126,7 +126,7 @@
         "organization": "PointState Capital LP",
         "pctHeld": 0.0138,
         "position": 2100000,
-        "value": 120792000,
+        "value": 113442000,
         "pctChange": 0.2336
       }
     ]
@@ -135,24 +135,13 @@
     "maxAge": 1,
     "insidersPercentHeld": 0.025799999,
     "institutionsPercentHeld": 0.78522,
-    "institutionsFloatPercentHeld": 0.80601996,
+    "institutionsFloatPercentHeld": 0.80601,
     "institutionsCount": 627
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": -0.18,
-          "estimate": -0.38895,
-          "fiscalQuarter": "4Q2025",
-          "calendarQuarter": "4Q2024",
-          "difference": "0.21",
-          "surprisePct": "53.72",
-          "periodEndDate": 1738281600,
-          "reportedDate": 1741896510
-        },
         {
           "date": "1Q2025",
           "actual": -0.15,
@@ -185,17 +174,26 @@
           "surprisePct": "157.99",
           "periodEndDate": 1761868800,
           "reportedDate": 1764882300
+        },
+        {
+          "date": "4Q2025",
+          "actual": 0.04,
+          "estimate": -0.10854,
+          "fiscalQuarter": "4Q2026",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.15",
+          "surprisePct": "136.85",
+          "periodEndDate": 1769817600,
+          "reportedDate": 1773345900
         }
       ],
-      "currentQuarterEstimate": -0.10854,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2026",
-      "currentPeriodEndDate": 1769817600,
-      "earningsDate": [
-        "2026-03-12T20:00:00.000Z"
-      ],
+      "currentQuarterEstimate": -0.06882,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2027",
+      "currentPeriodEndDate": 1777507200,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
@@ -214,15 +212,14 @@
           "date": 2025,
           "revenue": 886544000,
           "earnings": -242914000
+        },
+        {
+          "date": 2026,
+          "revenue": 1316191000,
+          "earnings": -1659000
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2025",
-          "revenue": 258100000,
-          "earnings": -33092000
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2026",
@@ -240,6 +237,12 @@
           "fiscalQuarter": "3Q2026",
           "revenue": 350166000,
           "earnings": 22853000
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2026",
+          "revenue": 377684000,
+          "earnings": 10062000
         }
       ]
     },
@@ -1464,24 +1467,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0027816384,
-    "postMarketChange": -0.15999985,
-    "postMarketTime": "2026-03-11T23:59:56.000Z",
-    "postMarketPrice": 57.36,
+    "postMarketChangePercent": -0.0064327996,
+    "postMarketChange": -0.34749985,
+    "postMarketTime": "2026-03-12T23:59:58.000Z",
+    "postMarketPrice": 53.6725,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.028060801,
-    "regularMarketChange": 1.57,
-    "regularMarketTime": "2026-03-11T20:00:02.000Z",
+    "regularMarketChangePercent": -0.0608484,
+    "regularMarketChange": -3.5,
+    "regularMarketTime": "2026-03-12T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 57.52,
-    "regularMarketDayHigh": 57.76,
-    "regularMarketDayLow": 55.9,
-    "regularMarketVolume": 2673411,
-    "averageDailyVolume10Day": 2983220,
-    "averageDailyVolume3Month": 3689477,
-    "regularMarketPreviousClose": 55.95,
+    "regularMarketPrice": 54.02,
+    "regularMarketDayHigh": 57.94,
+    "regularMarketDayLow": 53.9,
+    "regularMarketVolume": 7351559,
+    "averageDailyVolume10Day": 2984840,
+    "averageDailyVolume3Month": 3689752,
+    "regularMarketPreviousClose": 57.52,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 57.2,
+    "regularMarketOpen": 57.54,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -1497,13 +1500,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 11512141824
+    "marketCap": 10811646976
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 11075606528,
-    "forwardPE": 800,
+    "enterpriseValue": 10375111680,
+    "forwardPE": 85.81823,
     "profitMargins": -0.31485,
     "floatShares": 148464998,
     "sharesOutstanding": 151894462,
@@ -1526,12 +1529,12 @@
     "mostRecentQuarter": "2025-10-31T00:00:00.000Z",
     "netIncomeToCommon": -376751008,
     "trailingEps": -1.55,
-    "forwardEps": 0.0719,
+    "forwardEps": 0.62947,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 9.256,
-    "enterpriseToEbitda": -31.094,
-    "52WeekChange": 0.040521026,
-    "SandP52WeekChange": 0.22716212,
+    "enterpriseToRevenue": 8.67,
+    "enterpriseToEbitda": -29.127,
+    "52WeekChange": -0.18573046,
+    "SandP52WeekChange": 0.1833111,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1805,9 +1808,8 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 0,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "NITHRAKASHYAP ARVIND",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -1817,8 +1819,9 @@
       {
         "maxAge": 1,
         "shares": 100000,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "NITHRAKASHYAP ARVIND",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -2140,18 +2143,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3500,
-        "value": 289370,
-        "filerUrl": "",
-        "transactionText": "Sale at price 82.12 - 83.77 per share.",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9009,
         "value": 745607,
         "filerUrl": "",
@@ -2161,6 +2152,18 @@
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3500,
+        "value": 289370,
+        "filerUrl": "",
+        "transactionText": "Sale at price 82.12 - 83.77 per share.",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2279,10 +2282,9 @@
       },
       {
         "maxAge": 1,
-        "shares": 150000,
-        "value": 0,
+        "shares": 765807,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "SINHA BIPUL",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2291,9 +2293,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 765807,
+        "shares": 150000,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "SINHA BIPUL",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2560,8 +2563,8 @@
         "value": 1519558,
         "filerUrl": "",
         "transactionText": "Sale at price 89.47 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
         "ownership": "I"
@@ -2572,8 +2575,8 @@
         "value": 1519558,
         "filerUrl": "",
         "transactionText": "Sale at price 89.47 per share.",
-        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
         "ownership": "I"
@@ -2768,6 +2771,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 7187,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 6250,
         "filerUrl": "",
         "transactionText": "",
@@ -2784,17 +2798,6 @@
         "transactionText": "",
         "filerName": "NITHRAKASHYAP ARVIND",
         "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7187,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-06-17T00:00:00.000Z",
         "ownership": "D"
@@ -3081,24 +3084,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 5000,
-        "value": 375000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 75.00 per share.",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2000,
         "value": 144480,
         "filerUrl": "",
         "transactionText": "Sale at price 72.24 per share.",
         "filerName": "WASSENAAR YVONNE",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5000,
+        "value": 375000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 75.00 per share.",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
         "ownership": "D"
@@ -3201,8 +3204,8 @@
         "value": 832155,
         "filerUrl": "",
         "transactionText": "Sale at price 62.98 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "I"
@@ -3213,8 +3216,8 @@
         "value": 832155,
         "filerUrl": "",
         "transactionText": "Sale at price 62.98 per share.",
-        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-04-15T00:00:00.000Z",
         "ownership": "I"
@@ -3306,7 +3309,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 57.52,
+    "currentPrice": 54.02,
     "targetHighPrice": 130,
     "targetLowPrice": 65,
     "targetMeanPrice": 100.52174,
@@ -3333,6 +3336,6 @@
     "profitMargins": -0.31485,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-12T04:16:47.385Z",
+  "lastUpdated": "2026-03-13T04:13:46.945Z",
   "source": "Static Build (yahoo-finance2)"
 }
