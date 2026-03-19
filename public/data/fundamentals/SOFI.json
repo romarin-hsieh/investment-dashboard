@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 3,
+        "buy": 5,
+        "hold": 10,
+        "sell": 2,
+        "strongSell": 2
+      },
+      {
+        "period": "-2m",
         "strongBuy": 1,
         "buy": 5,
         "hold": 11,
@@ -18,7 +26,7 @@
         "strongSell": 3
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 5,
         "hold": 11,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.087,
         "position": 111003107,
-        "value": 1928124061,
+        "value": 1907033412,
         "pctChange": 0.0364
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0542,
         "position": 69136001,
-        "value": 1200892395,
+        "value": 1187756518,
         "pctChange": 0.1083
       },
       {
@@ -55,7 +63,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.050300002,
         "position": 64131503,
-        "value": 1113964260,
+        "value": 1101779241,
         "pctChange": -0.3147
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0304,
         "position": 38737636,
-        "value": 672872769,
+        "value": 665512598,
         "pctChange": 0.10569999
       },
       {
@@ -73,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.020299999,
         "position": 25937928,
-        "value": 450541831,
+        "value": 445613610,
         "pctChange": 0.0674
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0185,
         "position": 23642936,
-        "value": 410677818,
+        "value": 406185647,
         "pctChange": 0.09
       },
       {
@@ -91,7 +99,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0121,
         "position": 15371200,
-        "value": 266997756,
+        "value": 264077220,
         "pctChange": -0.0074
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0105,
         "position": 13405363,
-        "value": 232851166,
+        "value": 230304140,
         "pctChange": 0.0446
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0104,
         "position": 13323366,
-        "value": 231426878,
+        "value": 228895431,
         "pctChange": 0.3359
       },
       {
@@ -118,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0095999995,
         "position": 12280945,
-        "value": 213320024,
+        "value": 210986638,
         "pctChange": 0.36310002
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.029860001,
-    "institutionsPercentHeld": 0.55814,
-    "institutionsFloatPercentHeld": 0.57531,
-    "institutionsCount": 1247
+    "institutionsPercentHeld": 0.55818003,
+    "institutionsFloatPercentHeld": 0.57536,
+    "institutionsCount": 1248
   },
   "earnings": {
     "maxAge": 86400,
@@ -1901,24 +1909,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0069084014,
-    "postMarketChange": 0.11999893,
-    "postMarketTime": "2026-03-17T23:59:59.000Z",
-    "postMarketPrice": 17.49,
+    "postMarketChangePercent": -0.00325959,
+    "postMarketChange": -0.055999756,
+    "postMarketTime": "2026-03-18T23:59:44.000Z",
+    "postMarketPrice": 17.124,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0147475,
-    "regularMarketChange": -0.259998,
-    "regularMarketTime": "2026-03-17T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0109384,
+    "regularMarketChange": -0.190001,
+    "regularMarketTime": "2026-03-18T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 17.37,
-    "regularMarketDayHigh": 18.2551,
-    "regularMarketDayLow": 16.49,
-    "regularMarketVolume": 157528614,
-    "averageDailyVolume10Day": 75122770,
-    "averageDailyVolume3Month": 59819367,
-    "regularMarketPreviousClose": 17.63,
+    "regularMarketPrice": 17.18,
+    "regularMarketDayHigh": 18.03,
+    "regularMarketDayLow": 17.16,
+    "regularMarketVolume": 79958412,
+    "averageDailyVolume10Day": 76910280,
+    "averageDailyVolume3Month": 60440900,
+    "regularMarketPreviousClose": 17.37,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 17.74,
+    "regularMarketOpen": 17.44,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -1934,13 +1942,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 22151333888
+    "marketCap": 21909032960
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 19089092608,
-    "forwardPE": 21.998201,
+    "enterpriseValue": 18846791680,
+    "forwardPE": 21.209877,
     "profitMargins": 0.13432999,
     "floatShares": 1254528060,
     "sharesOutstanding": 1275263850,
@@ -1950,14 +1958,14 @@
     "dateShortInterest": "2026-02-27T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1007,
     "heldPercentInsiders": 0.029860001,
-    "heldPercentInstitutions": 0.55814,
+    "heldPercentInstitutions": 0.55818003,
     "shortRatio": 1.86,
     "shortPercentOfFloat": 0.1019,
     "beta": 2.259,
     "impliedSharesOutstanding": 1275263850,
     "category": null,
     "bookValue": 8.256,
-    "priceToBook": 2.1039245,
+    "priceToBook": 2.080911,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1966,11 +1974,11 @@
     "earningsQuarterlyGrowth": -0.478,
     "netIncomeToCommon": 481320000,
     "trailingEps": 0.39,
-    "forwardEps": 0.80667,
+    "forwardEps": 0.81,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 5.328,
-    "52WeekChange": 0.36449337,
-    "SandP52WeekChange": 0.18339145,
+    "enterpriseToRevenue": 5.26,
+    "52WeekChange": 0.35917723,
+    "SandP52WeekChange": 0.16984439,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2022,6 +2030,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 55731,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHUPPENHAUER ERIC",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 45389,
         "filerUrl": "",
         "transactionText": "",
@@ -2033,13 +2052,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 55731,
+        "shares": 250000,
+        "value": 1832500,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHUPPENHAUER ERIC",
-        "filerRelation": "Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 7.33 per share.",
+        "filerName": "FREIBERG STEVEN J",
+        "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2026-02-17T00:00:00.000Z",
+        "startDate": "2026-02-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2053,18 +2073,6 @@
         "moneyText": "",
         "startDate": "2026-02-06T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 250000,
-        "value": 1832500,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 7.33 per share.",
-        "filerName": "FREIBERG STEVEN J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-02-06T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2128,6 +2136,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 122186,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KEOUGH KELLI ALLEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 276543,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RISHEL JEREMY DYLAN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 11434,
         "filerUrl": "",
         "transactionText": "",
@@ -2150,11 +2180,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 122186,
+        "shares": 576850,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KEOUGH KELLI ALLEN",
-        "filerRelation": "Officer",
+        "filerName": "NOTO ANTHONY J.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
@@ -2166,28 +2196,6 @@
         "transactionText": "",
         "filerName": "LAPOINTE CHRISTOPHER",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 276543,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RISHEL JEREMY DYLAN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 576850,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NOTO ANTHONY J.",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
@@ -2230,17 +2238,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 45388,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PINTO ARUN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 55731,
         "filerUrl": "",
         "transactionText": "",
@@ -2252,13 +2249,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 276963,
+        "shares": 45388,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LAPOINTE CHRISTOPHER",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "PINTO ARUN",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-11-05T00:00:00.000Z",
+        "startDate": "2025-11-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2268,6 +2265,17 @@
         "transactionText": "",
         "filerName": "NOTO ANTHONY J.",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 276963,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAPOINTE CHRISTOPHER",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-11-05T00:00:00.000Z",
         "ownership": "D"
@@ -2322,6 +2330,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 122188,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KEOUGH KELLI ALLEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 276543,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RISHEL JEREMY DYLAN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 11434,
         "filerUrl": "",
         "transactionText": "",
@@ -2344,39 +2374,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 122188,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KEOUGH KELLI ALLEN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 141347,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LAPOINTE CHRISTOPHER",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 276543,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RISHEL JEREMY DYLAN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 576847,
         "filerUrl": "",
         "transactionText": "",
@@ -2393,6 +2390,17 @@
         "transactionText": "",
         "filerName": "WHITE DEREK JENSEN",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 141347,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAPOINTE CHRISTOPHER",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
@@ -2423,10 +2431,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 45389,
+        "shares": 55731,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PINTO ARUN",
+        "filerName": "SCHUPPENHAUER ERIC",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-14T00:00:00.000Z",
@@ -2434,10 +2442,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 55731,
+        "shares": 45389,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCHUPPENHAUER ERIC",
+        "filerName": "PINTO ARUN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-14T00:00:00.000Z",
@@ -2493,34 +2501,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 77886,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SIMCOCK STEPHEN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 82643,
         "value": 1231381,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 14.90 per share.",
         "filerName": "KEOUGH KELLI ALLEN",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 141345,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LAPOINTE CHRISTOPHER",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D"
@@ -2549,6 +2535,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 77886,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SIMCOCK STEPHEN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 576851,
         "filerUrl": "",
         "transactionText": "",
@@ -2565,6 +2562,17 @@
         "transactionText": "",
         "filerName": "WHITE DEREK JENSEN",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 141345,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAPOINTE CHRISTOPHER",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-06-16T00:00:00.000Z",
         "ownership": "D"
@@ -2684,10 +2692,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 45388,
+        "shares": 55730,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PINTO ARUN",
+        "filerName": "SCHUPPENHAUER ERIC",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-14T00:00:00.000Z",
@@ -2695,10 +2703,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 55730,
+        "shares": 45388,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCHUPPENHAUER ERIC",
+        "filerName": "PINTO ARUN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-14T00:00:00.000Z",
@@ -2742,17 +2750,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 71353,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SIMCOCK STEPHEN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-03-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 109118,
         "filerUrl": "",
         "transactionText": "",
@@ -2764,22 +2761,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 135249,
+        "shares": 271751,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LAPOINTE CHRISTOPHER",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "RISHEL JEREMY DYLAN",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 271751,
+        "shares": 71353,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "RISHEL JEREMY DYLAN",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "SIMCOCK STEPHEN",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
@@ -2808,6 +2805,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 135249,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAPOINTE CHRISTOPHER",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-03-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 9185,
         "value": 141702,
         "filerUrl": "",
@@ -2820,10 +2828,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 45389,
+        "shares": 111461,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "PINTO ARUN",
+        "filerName": "SCHUPPENHAUER ERIC",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
@@ -2831,10 +2839,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 111461,
+        "shares": 45389,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCHUPPENHAUER ERIC",
+        "filerName": "PINTO ARUN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
@@ -2878,29 +2886,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 30599,
-        "value": 500001,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 16.34 per share.",
-        "filerName": "SCHUPPENHAUER ERIC",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 142706,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SIMCOCK STEPHEN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 109120,
         "filerUrl": "",
         "transactionText": "",
@@ -2912,22 +2897,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 222821,
+        "shares": 271751,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LAPOINTE CHRISTOPHER",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "RISHEL JEREMY DYLAN",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 271751,
+        "shares": 142706,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "RISHEL JEREMY DYLAN",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "SIMCOCK STEPHEN",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -2949,6 +2934,29 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "WHITE DEREK JENSEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 222821,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAPOINTE CHRISTOPHER",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30599,
+        "value": 500001,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 16.34 per share.",
+        "filerName": "SCHUPPENHAUER ERIC",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
@@ -3039,33 +3047,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 109120,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KEOUGH KELLI ALLEN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 222825,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LAPOINTE CHRISTOPHER",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 271751,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "RISHEL JEREMY DYLAN",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 109120,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KEOUGH KELLI ALLEN",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-16T00:00:00.000Z",
         "ownership": "D"
@@ -3088,6 +3085,17 @@
         "transactionText": "",
         "filerName": "WHITE DEREK JENSEN",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 222825,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAPOINTE CHRISTOPHER",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-09-16T00:00:00.000Z",
         "ownership": "D"
@@ -3141,29 +3149,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 30715,
-        "value": 199110,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 6.48 per share.",
-        "filerName": "NOTO ANTHONY J.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-06-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 222825,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LAPOINTE CHRISTOPHER",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-06-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 271571,
         "filerUrl": "",
         "transactionText": "",
@@ -3202,6 +3187,29 @@
         "transactionText": "",
         "filerName": "WHITE DEREK JENSEN",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-06-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 222825,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAPOINTE CHRISTOPHER",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-06-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30715,
+        "value": 199110,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 6.48 per share.",
+        "filerName": "NOTO ANTHONY J.",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-06-14T00:00:00.000Z",
         "ownership": "D"
@@ -3320,30 +3328,19 @@
         "moneyText": "",
         "startDate": "2024-05-03T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 56273,
-        "value": 389972,
-        "filerUrl": "",
-        "transactionText": "Sale at price 6.93 per share.",
-        "filerName": "RISHEL JEREMY DYLAN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-03-19T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 17.37,
+    "currentPrice": 17.18,
     "targetHighPrice": 38,
     "targetLowPrice": 12,
-    "targetMeanPrice": 26.5,
-    "targetMedianPrice": 26,
-    "recommendationKey": "none",
+    "targetMeanPrice": 26.07895,
+    "targetMedianPrice": 25,
+    "recommendationMean": 2.68182,
+    "recommendationKey": "hold",
     "numberOfAnalystOpinions": 19,
     "totalCash": 5001413120,
     "totalCashPerShare": 3.922,
@@ -3365,6 +3362,6 @@
     "profitMargins": 0.13432999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-18T04:28:06.249Z",
+  "lastUpdated": "2026-03-19T04:26:34.633Z",
   "source": "Static Build (yahoo-finance2)"
 }
