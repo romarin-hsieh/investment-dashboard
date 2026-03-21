@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0844,
         "position": 10068017,
-        "value": 190386199,
+        "value": 179512742,
         "pctChange": 0.2217
       },
       {
@@ -54,7 +54,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0514,
         "position": 6137176,
-        "value": 116053997,
+        "value": 109425847,
         "pctChange": -0.066300005
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0508,
         "position": 6061574,
-        "value": 114624363,
+        "value": 108077863,
         "pctChange": -0.0047
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0301,
         "position": 3593524,
-        "value": 67953538,
+        "value": 64072532,
         "pctChange": 32.5796
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Trustees of the University of Pennsylvania",
         "pctHeld": 0.0272,
         "position": 3246424,
-        "value": 61389877,
+        "value": 57883739,
         "pctChange": 1
       },
       {
@@ -90,7 +90,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.025899999,
         "position": 3095383,
-        "value": 58533692,
+        "value": 55190678,
         "pctChange": 0.2197
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.023599999,
         "position": 2814064,
-        "value": 53213949,
+        "value": 50174760,
         "pctChange": 0.0592
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Point72 Asset Management, L.P.",
         "pctHeld": 0.0233,
         "position": 2783376,
-        "value": 52633639,
+        "value": 49627593,
         "pctChange": 8.5049
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0229,
         "position": 2735161,
-        "value": 51721894,
+        "value": 48767920,
         "pctChange": 0.0228
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Frontier Capital Management Company LLC",
         "pctHeld": 0.0224,
         "position": 2669079,
-        "value": 50472283,
+        "value": 47589678,
         "pctChange": 1.1105
       }
     ]
@@ -177,20 +177,26 @@
         },
         {
           "date": "4Q2025",
+          "actual": -0.0338,
           "estimate": -0.0452,
           "fiscalQuarter": "4Q2025",
           "calendarQuarter": "4Q2025",
-          "periodEndDate": 1767139200
+          "difference": "0.01",
+          "surprisePct": "25.22",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1773953774
         }
       ],
-      "currentQuarterEstimate": -0.005,
+      "currentQuarterEstimate": -0.05,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-05-12T12:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -247,6 +253,36 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-20T17:26:01.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 22,
+        "priorPriceTarget": 18
+      },
+      {
+        "epochGradeDate": "2026-03-20T14:57:14.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 24,
+        "priorPriceTarget": 22.5
+      },
+      {
+        "epochGradeDate": "2026-03-20T13:37:49.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 26,
+        "priorPriceTarget": 16
+      },
       {
         "epochGradeDate": "2026-01-28T14:35:24.000Z",
         "firm": "Keybanc",
@@ -943,28 +979,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.011105187,
-    "postMarketChange": -0.20999908,
-    "postMarketTime": "2026-03-19T23:59:48.000Z",
-    "postMarketPrice": 18.7,
+    "postMarketChangePercent": 0.012899581,
+    "postMarketChange": 0.22999954,
+    "postMarketTime": "2026-03-20T23:59:56.000Z",
+    "postMarketPrice": 18.06,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0441744,
-    "regularMarketChange": 0.799999,
-    "regularMarketTime": "2026-03-19T20:00:02.000Z",
+    "regularMarketChangePercent": -0.057112597,
+    "regularMarketChange": -1.08,
+    "regularMarketTime": "2026-03-20T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 18.91,
-    "regularMarketDayHigh": 19.242,
-    "regularMarketDayLow": 16.35,
-    "regularMarketVolume": 12873655,
-    "averageDailyVolume10Day": 9222730,
-    "averageDailyVolume3Month": 11234767,
-    "regularMarketPreviousClose": 18.11,
+    "regularMarketPrice": 17.83,
+    "regularMarketDayHigh": 20.8,
+    "regularMarketDayLow": 17.61,
+    "regularMarketVolume": 17239259,
+    "averageDailyVolume10Day": 10380190,
+    "averageDailyVolume3Month": 11377790,
+    "regularMarketPreviousClose": 18.91,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 17.61,
+    "regularMarketOpen": 18.97,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "LUNR",
     "underlyingSymbol": null,
@@ -976,15 +1012,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2691097600
+    "marketCap": 2537401856
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 2558149376,
-    "forwardPE": 56.926968,
-    "profitMargins": -0.94378996,
-    "floatShares": 89205857,
+    "forwardPE": 55.71875,
+    "profitMargins": -0.39653,
     "sharesOutstanding": 142310812,
     "sharesShort": 30285577,
     "sharesShortPriorMonth": "1970-11-28T09:03:16.000Z",
@@ -995,23 +1029,20 @@
     "heldPercentInstitutions": 0.79657,
     "shortRatio": 2.98,
     "shortPercentOfFloat": 0.22209999,
-    "beta": 1.403,
     "impliedSharesOutstanding": 142310813,
     "category": null,
-    "bookValue": -3.429,
+    "bookValue": -6.404,
     "fundFamily": null,
     "legalType": null,
-    "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
-    "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
-    "netIncomeToCommon": -193218000,
+    "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
+    "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
+    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
+    "netIncomeToCommon": -83910000,
     "trailingEps": -2.46,
-    "forwardEps": 0.33218,
+    "forwardEps": 0.32,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 11.631,
-    "enterpriseToEbitda": -39.476,
-    "52WeekChange": 1.5543017,
-    "SandP52WeekChange": 0.16888046,
+    "52WeekChange": 0.93383944,
+    "SandP52WeekChange": 0.12811458,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1030,7 +1061,6 @@
     "sectorKey": "industrials",
     "sectorDisp": "Industrials",
     "longBusinessSummary": "Intuitive Machines, Inc. designs, manufactures, and operates space products and services in the United States. The company provides delivery services for the transportation and delivery of payloads, such as satellites, scientific instruments, and cargo to various destinations in space, rideshare delivery, and lunar surface access; data transmission services, which include the collection, processing, and interpretation of space-based data, utilizing AI applications, such as command, control, communications, reconnaissance and prospecting; and infrastructure as a service delivers space assets performing tasks and making decisions without human intervention that are designed to perform essential functions, such as navigation, maintenance, scientific data collection, and system health monitoring. It offers Nova-C lunar lander combines flight-proven with a scalable design to meet the demands of the emerging lunar economy; Micro-Nova develops propulsive drone that is designed to land, deploy, and hop on the company's IM-2 mission; and Nova-D developed to transport critical payloads, including infrastructure services, such as fission surface power systems, lunar terrain vehicles, and rovers enabling sustainable lunar exploration and development. In addition, the company provides lunar data network for tracking and communications network and a constellation of lunar data network satellites. It serves its products to the U.S. government, which include NASA, national security space, U.S. department of Defense, and state governments; commercial; and international customers. The company was founded in 2013 and is headquartered in Houston, Texas.",
-    "fullTimeEmployees": 435,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
@@ -1047,18 +1077,6 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25541,
-        "value": 445333,
-        "filerUrl": "",
-        "transactionText": "Sale at price 17.44 per share.",
-        "filerName": "MCGRATH PETER",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-02-11T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1093,6 +1111,18 @@
         "transactionText": "Sale at price 17.44 per share.",
         "filerName": "JONES ANNA CHIARA",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25541,
+        "value": 445333,
+        "filerUrl": "",
+        "transactionText": "Sale at price 17.44 per share.",
+        "filerName": "MCGRATH PETER",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-02-11T00:00:00.000Z",
         "ownership": "D"
@@ -1530,18 +1560,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 72168,
-        "value": 866016,
-        "filerUrl": "",
-        "transactionText": "Sale at price 12.00 per share.",
-        "filerName": "MCGRATH PETER",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 161016,
         "value": 1948374,
         "filerUrl": "",
@@ -1551,6 +1569,18 @@
         "moneyText": "",
         "startDate": "2025-05-13T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 72168,
+        "value": 866016,
+        "filerUrl": "",
+        "transactionText": "Sale at price 12.00 per share.",
+        "filerName": "MCGRATH PETER",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2509,35 +2539,34 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 18.91,
+    "currentPrice": 17.83,
     "targetHighPrice": 26,
     "targetLowPrice": 9.5,
-    "targetMeanPrice": 18.88889,
-    "targetMedianPrice": 18,
+    "targetMeanPrice": 22.27778,
+    "targetMedianPrice": 24,
     "recommendationMean": 1.55556,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
-    "totalCash": 621974976,
-    "totalCashPerShare": 5.213,
-    "ebitda": -64803000,
-    "totalDebt": 371240000,
-    "quickRatio": 6.183,
-    "currentRatio": 6.282,
-    "totalRevenue": 219936000,
-    "debtToEquity": 152.254,
-    "revenuePerShare": 2.05,
-    "returnOnAssets": -0.086289994,
-    "returnOnEquity": -1.77462,
-    "grossProfits": 1181000,
-    "freeCashflow": -20138000,
-    "operatingCashflow": -8988000,
-    "revenueGrowth": -0.103,
-    "grossMargins": 0.00537,
-    "ebitdaMargins": -0.29464,
-    "operatingMargins": -0.29405,
-    "profitMargins": -0.94378996,
+    "totalCash": 582606016,
+    "ebitda": -83634000,
+    "totalDebt": 372159008,
+    "quickRatio": 4.863,
+    "currentRatio": 4.957,
+    "totalRevenue": 210059008,
+    "debtToEquity": 182.698,
+    "revenuePerShare": 1.782,
+    "returnOnAssets": -0.098009996,
+    "returnOnEquity": -1.02923,
+    "grossProfits": 8990000,
+    "freeCashflow": -27357000,
+    "operatingCashflow": -14318000,
+    "revenueGrowth": -0.181,
+    "grossMargins": 0.0428,
+    "ebitdaMargins": -0.39815,
+    "operatingMargins": -0.73898005,
+    "profitMargins": -0.39653,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-20T04:17:12.609Z",
+  "lastUpdated": "2026-03-21T04:07:38.067Z",
   "source": "Static Build (yahoo-finance2)"
 }

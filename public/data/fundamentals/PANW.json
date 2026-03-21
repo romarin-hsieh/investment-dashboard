@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.6974,
         "position": 67929063,
-        "value": 11530279526,
+        "value": 11069040608,
         "pctChange": 0.040700004
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.6115,
         "position": 59562981,
-        "value": 10110220722,
+        "value": 9705787572,
         "pctChange": 0.0744
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.3127,
         "position": 30462984,
-        "value": 5170787071,
+        "value": 4963943149,
         "pctChange": -0.0095999995
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.3114,
         "position": 30331705,
-        "value": 5148503773,
+        "value": 4942551237,
         "pctChange": 0.02
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.1989,
         "position": 19375486,
-        "value": 3288795100,
+        "value": 3157235384,
         "pctChange": 0.109799996
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.16420001,
         "position": 15989257,
-        "value": 2714016571,
+        "value": 2605449379,
         "pctChange": 0.035
       },
       {
@@ -99,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.1181,
         "position": 11503089,
-        "value": 1952534390,
+        "value": 1874428317,
         "pctChange": -0.6348
       },
       {
@@ -108,7 +108,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0907,
         "position": 8836576,
-        "value": 1499920458,
+        "value": 1439920032,
         "pctChange": 0.093
       },
       {
@@ -117,7 +117,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0836,
         "position": 8138673,
-        "value": 1381458399,
+        "value": 1326196740,
         "pctChange": 0.071
       },
       {
@@ -126,7 +126,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0789,
         "position": 7683841,
-        "value": 1304255213,
+        "value": 1252081867,
         "pctChange": 1.3264999
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00782,
-    "institutionsPercentHeld": 0.74393,
-    "institutionsFloatPercentHeld": 0.74978995,
-    "institutionsCount": 3389
+    "institutionsPercentHeld": 0.74391997,
+    "institutionsFloatPercentHeld": 0.74977994,
+    "institutionsCount": 3388
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-11T10:10:18.000Z",
+        "firm": "Freedom Broker",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 210,
+        "priorPriceTarget": 230
+      },
       {
         "epochGradeDate": "2026-03-03T14:10:03.000Z",
         "firm": "Wells Fargo",
@@ -8719,28 +8729,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0038882312,
-    "postMarketChange": 0.6599884,
-    "postMarketTime": "2026-03-19T23:59:31.000Z",
-    "postMarketPrice": 170.4,
+    "postMarketChangePercent": 0.003436622,
+    "postMarketChange": 0.55999756,
+    "postMarketTime": "2026-03-20T23:57:55.000Z",
+    "postMarketPrice": 163.51,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0049138702,
-    "regularMarketChange": 0.830002,
-    "regularMarketTime": "2026-03-19T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0400024,
+    "regularMarketChange": -6.79001,
+    "regularMarketTime": "2026-03-20T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 169.74,
-    "regularMarketDayHigh": 171.7,
-    "regularMarketDayLow": 168,
-    "regularMarketVolume": 6380549,
-    "averageDailyVolume10Day": 6946040,
-    "averageDailyVolume3Month": 9896438,
-    "regularMarketPreviousClose": 168.91,
+    "regularMarketPrice": 162.95,
+    "regularMarketDayHigh": 169.19,
+    "regularMarketDayLow": 161.89,
+    "regularMarketVolume": 14749674,
+    "averageDailyVolume10Day": 7603960,
+    "averageDailyVolume3Month": 9949050,
+    "regularMarketPreviousClose": 169.74,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 168.86,
+    "regularMarketOpen": 169.19,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "PANW",
     "underlyingSymbol": null,
@@ -8752,13 +8762,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 138507845632
+    "marketCap": 132967194624
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 134430842880,
-    "forwardPE": 42.734245,
+    "enterpriseValue": 128882040832,
+    "forwardPE": 41.024773,
     "profitMargins": 0.12956999,
     "floatShares": 809235360,
     "sharesOutstanding": 811000000,
@@ -8768,14 +8778,14 @@
     "dateShortInterest": "2026-02-27T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0293,
     "heldPercentInsiders": 0.00782,
-    "heldPercentInstitutions": 0.74393,
+    "heldPercentInstitutions": 0.74391997,
     "shortRatio": 1.51,
     "shortPercentOfFloat": 0.0295,
     "beta": 0.822,
     "impliedSharesOutstanding": 816000000,
     "category": null,
     "bookValue": 13.361,
-    "priceToBook": 12.70414,
+    "priceToBook": 12.195943,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-07-31T00:00:00.000Z",
@@ -8783,14 +8793,14 @@
     "mostRecentQuarter": "2026-01-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.618,
     "netIncomeToCommon": 1281900032,
-    "trailingEps": 1.8,
+    "trailingEps": 1.73,
     "forwardEps": 3.97199,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1734307200,
-    "enterpriseToRevenue": 13.588,
-    "enterpriseToEbitda": 92.743,
-    "52WeekChange": -0.07355201,
-    "SandP52WeekChange": 0.16888046,
+    "enterpriseToRevenue": 13.027,
+    "enterpriseToEbitda": 88.915,
+    "52WeekChange": -0.1181882,
+    "SandP52WeekChange": 0.12811458,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -9262,24 +9272,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 846408,
-        "value": 172721695,
-        "filerUrl": "",
-        "transactionText": "Sale at price 203.10 - 208.35 per share.",
-        "filerName": "ARORA NIKESH",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5000,
         "value": 1020942,
         "filerUrl": "",
         "transactionText": "Sale at price 203.01 - 206.81 per share.",
         "filerName": "GOLECHHA DIPAK",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-09-23T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 846408,
+        "value": 172721695,
+        "filerUrl": "",
+        "transactionText": "Sale at price 203.10 - 208.35 per share.",
+        "filerName": "ARORA NIKESH",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-09-23T00:00:00.000Z",
         "ownership": "D"
@@ -9418,24 +9428,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 19866061,
-        "filerUrl": "",
-        "transactionText": "Sale at price 195.66 - 203.85 per share.",
-        "filerName": "ZUK NIR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 600,
         "value": 122400,
         "filerUrl": "",
         "transactionText": "Sale at price 204.00 per share.",
         "filerName": "PAUL JOSHUA D.",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 19866061,
+        "filerUrl": "",
+        "transactionText": "Sale at price 195.66 - 203.85 per share.",
+        "filerName": "ZUK NIR",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-07-01T00:00:00.000Z",
         "ownership": "D"
@@ -9550,24 +9560,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 18780392,
-        "filerUrl": "",
-        "transactionText": "Sale at price 187.24 - 188.86 per share.",
-        "filerName": "ZUK NIR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-05-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 400,
         "value": 75564,
         "filerUrl": "",
         "transactionText": "Sale at price 188.91 per share.",
         "filerName": "PAUL JOSHUA D.",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 18780392,
+        "filerUrl": "",
+        "transactionText": "Sale at price 187.24 - 188.86 per share.",
+        "filerName": "ZUK NIR",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
         "ownership": "D"
@@ -9598,24 +9608,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120774,
-        "value": 18253119,
-        "filerUrl": "",
-        "transactionText": "Sale at price 144.84 - 158.81 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-04-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5000,
         "value": 750000,
         "filerUrl": "",
         "transactionText": "Sale at price 150.00 per share.",
         "filerName": "GOLECHHA DIPAK",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-04-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 120774,
+        "value": 18253119,
+        "filerUrl": "",
+        "transactionText": "Sale at price 144.84 - 158.81 per share.",
+        "filerName": "KLARICH LEE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-04-07T00:00:00.000Z",
         "ownership": "D"
@@ -9874,24 +9884,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 788404,
-        "value": 143093378,
-        "filerUrl": "",
-        "transactionText": "Sale at price 177.32 - 184.48 per share.",
-        "filerName": "ARORA NIKESH",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-01-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 120000,
         "value": 21564444,
         "filerUrl": "",
         "transactionText": "Sale at price 177.71 - 182.25 per share.",
         "filerName": "KLARICH LEE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 788404,
+        "value": 143093378,
+        "filerUrl": "",
+        "transactionText": "Sale at price 177.32 - 184.48 per share.",
+        "filerName": "ARORA NIKESH",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-01-06T00:00:00.000Z",
         "ownership": "D"
@@ -10006,11 +10016,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 9000,
-        "value": 3648465,
+        "shares": 250,
+        "value": 100004,
         "filerUrl": "",
-        "transactionText": "Sale at price 405.38 per share.",
-        "filerName": "ESCHENBACH CARL M",
+        "transactionText": "Sale at price 400.02 per share.",
+        "filerName": "BAWA APARNA",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-04T00:00:00.000Z",
@@ -10018,11 +10028,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 250,
-        "value": 100004,
+        "shares": 9000,
+        "value": 3648465,
         "filerUrl": "",
-        "transactionText": "Sale at price 400.02 per share.",
-        "filerName": "BAWA APARNA",
+        "transactionText": "Sale at price 405.38 per share.",
+        "filerName": "ESCHENBACH CARL M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-04T00:00:00.000Z",
@@ -10054,18 +10064,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 60000,
-        "value": 23364704,
-        "filerUrl": "",
-        "transactionText": "Sale at price 387.39 - 391.73 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2500,
         "value": 975600,
         "filerUrl": "",
@@ -10078,14 +10076,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 168000,
-        "value": 65081831,
+        "shares": 60000,
+        "value": 23364704,
         "filerUrl": "",
-        "transactionText": "Sale at price 383.95 - 395.79 per share.",
-        "filerName": "ZUK NIR",
-        "filerRelation": "Chief Technology Officer",
+        "transactionText": "Sale at price 387.39 - 391.73 per share.",
+        "filerName": "KLARICH LEE",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-11-25T00:00:00.000Z",
+        "startDate": "2024-12-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -10096,6 +10094,18 @@
         "transactionText": "Sale at price 387.96 per share.",
         "filerName": "JENKINS WILLIAM D JR",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2024-11-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 168000,
+        "value": 65081831,
+        "filerUrl": "",
+        "transactionText": "Sale at price 383.95 - 395.79 per share.",
+        "filerName": "ZUK NIR",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-11-25T00:00:00.000Z",
         "ownership": "D"
@@ -10270,18 +10280,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 60000,
-        "value": 3870198,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 64.50 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 66666,
         "value": 4411069,
         "filerUrl": "",
@@ -10294,12 +10292,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 66666,
-        "value": 22865309,
+        "shares": 60000,
+        "value": 3870198,
         "filerUrl": "",
-        "transactionText": "Sale at price 338.85 - 346.49 per share.",
-        "filerName": "ARORA NIKESH",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 64.50 per share.",
+        "filerName": "KLARICH LEE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-04T00:00:00.000Z",
         "ownership": "D"
@@ -10318,6 +10316,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 66666,
+        "value": 22865309,
+        "filerUrl": "",
+        "transactionText": "Sale at price 338.85 - 346.49 per share.",
+        "filerName": "ARORA NIKESH",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-09-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 30000,
         "value": 0,
         "filerUrl": "",
@@ -10330,12 +10340,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 36000,
-        "value": 12929956,
+        "shares": 2500,
+        "value": 897675,
         "filerUrl": "",
-        "transactionText": "Sale at price 355.28 - 365.16 per share.",
-        "filerName": "ZUK NIR",
-        "filerRelation": "Chief Technology Officer",
+        "transactionText": "Sale at price 359.07 per share.",
+        "filerName": "GOLECHHA DIPAK",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-09-03T00:00:00.000Z",
         "ownership": "D"
@@ -10354,12 +10364,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 2500,
-        "value": 897675,
+        "shares": 36000,
+        "value": 12929956,
         "filerUrl": "",
-        "transactionText": "Sale at price 359.07 per share.",
-        "filerName": "GOLECHHA DIPAK",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 355.28 - 365.16 per share.",
+        "filerName": "ZUK NIR",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-09-03T00:00:00.000Z",
         "ownership": "D"
@@ -10510,24 +10520,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 36000,
-        "value": 11439762,
-        "filerUrl": "",
-        "transactionText": "Sale at price 312.85 - 325.32 per share.",
-        "filerName": "ZUK NIR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-08-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 200,
         "value": 64682,
         "filerUrl": "",
         "transactionText": "Sale at price 323.41 per share.",
         "filerName": "PAUL JOSHUA D.",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-08-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 36000,
+        "value": 11439762,
+        "filerUrl": "",
+        "transactionText": "Sale at price 312.85 - 325.32 per share.",
+        "filerName": "ZUK NIR",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-08-01T00:00:00.000Z",
         "ownership": "D"
@@ -10570,30 +10580,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 66668,
-        "value": 22436132,
-        "filerUrl": "",
-        "transactionText": "Sale at price 333.69 - 340.54 per share.",
-        "filerName": "ARORA NIKESH",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 36000,
-        "value": 12209676,
-        "filerUrl": "",
-        "transactionText": "Sale at price 332.40 - 342.10 per share.",
-        "filerName": "ZUK NIR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1475,
         "value": 500202,
         "filerUrl": "",
@@ -10615,13 +10601,37 @@
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 66668,
+        "value": 22436132,
+        "filerUrl": "",
+        "transactionText": "Sale at price 333.69 - 340.54 per share.",
+        "filerName": "ARORA NIKESH",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 36000,
+        "value": 12209676,
+        "filerUrl": "",
+        "transactionText": "Sale at price 332.40 - 342.10 per share.",
+        "filerName": "ZUK NIR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 169.74,
+    "currentPrice": 162.95,
     "targetHighPrice": 265,
     "targetLowPrice": 114,
     "targetMeanPrice": 207.74898,
@@ -10651,6 +10661,6 @@
     "profitMargins": 0.12956999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-20T04:17:39.970Z",
+  "lastUpdated": "2026-03-21T04:08:06.158Z",
   "source": "Static Build (yahoo-finance2)"
 }

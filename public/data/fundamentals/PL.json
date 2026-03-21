@@ -24,6 +24,14 @@
         "hold": 3,
         "sell": 0,
         "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 1,
+        "buy": 6,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -37,7 +45,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.1092,
         "position": 31942641,
-        "value": 861173572,
+        "value": 1080619603,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0692,
         "position": 20231246,
-        "value": 545434373,
+        "value": 684423089,
         "pctChange": 0.0701
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.066199996,
         "position": 19358515,
-        "value": 521905546,
+        "value": 654898597,
         "pctChange": 0.0435
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.033800002,
         "position": 9886199,
-        "value": 266531915,
+        "value": 334450130,
         "pctChange": 0.54080003
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.0291,
         "position": 8511620,
-        "value": 229473267,
+        "value": 287948120,
         "pctChange": -0.4078
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Canada Pension Plan Investment Board",
         "pctHeld": 0.027,
         "position": 7905400,
-        "value": 213129576,
+        "value": 267439696,
         "pctChange": 0.0097
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.026300002,
         "position": 7678938,
-        "value": 207024161,
+        "value": 259778486,
         "pctChange": 3.2026
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.024400001,
         "position": 7141130,
-        "value": 192524858,
+        "value": 241584440,
         "pctChange": 0
       },
       {
@@ -109,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.020499999,
         "position": 5990996,
-        "value": 161517246,
+        "value": 202675405,
         "pctChange": -0.048
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0195,
         "position": 5702642,
-        "value": 153743223,
+        "value": 192920389,
         "pctChange": 0.0127
       }
     ]
@@ -134,17 +142,6 @@
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": -0.08,
-          "estimate": -0.02326,
-          "fiscalQuarter": "4Q2025",
-          "calendarQuarter": "4Q2024",
-          "difference": "-0.06",
-          "surprisePct": "-243.94",
-          "periodEndDate": 1738281600,
-          "reportedDate": 1742501158
-        },
         {
           "date": "1Q2025",
           "actual": 0,
@@ -177,16 +174,29 @@
           "surprisePct": "100.0",
           "periodEndDate": 1761868800,
           "reportedDate": 1765400727
+        },
+        {
+          "date": "4Q2025",
+          "actual": 0,
+          "estimate": -0.04921,
+          "fiscalQuarter": "4Q2026",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.05",
+          "surprisePct": "100.0",
+          "periodEndDate": 1769817600,
+          "reportedDate": 1773950700
         }
       ],
-      "currentQuarterEstimate": -0.04921,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2026",
-      "currentPeriodEndDate": 1769817600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentQuarterEstimate": -0.0425,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2027",
+      "currentPeriodEndDate": 1777507200,
+      "earningsDate": [
+        "2026-06-03T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -234,7 +244,7 @@
           "date": "4Q2025",
           "fiscalQuarter": "4Q2026",
           "revenue": 86822000,
-          "earnings": 0
+          "earnings": -1182000
         }
       ]
     },
@@ -243,6 +253,46 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-20T17:20:49.000Z",
+        "firm": "Clear Street",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 34,
+        "priorPriceTarget": 29
+      },
+      {
+        "epochGradeDate": "2026-03-20T13:33:50.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 40,
+        "priorPriceTarget": 20
+      },
+      {
+        "epochGradeDate": "2026-03-20T12:29:58.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 40,
+        "priorPriceTarget": 30
+      },
+      {
+        "epochGradeDate": "2026-03-20T10:46:09.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 40,
+        "priorPriceTarget": 35
+      },
       {
         "epochGradeDate": "2026-01-14T16:12:30.000Z",
         "firm": "Morgan Stanley",
@@ -1189,46 +1239,46 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.14614247,
-    "postMarketChange": 3.9400005,
-    "postMarketTime": "2026-03-19T23:59:58.000Z",
-    "postMarketPrice": 30.9,
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.086658604,
-    "regularMarketChange": 2.15,
-    "regularMarketTime": "2026-03-19T20:00:02.000Z",
+    "postMarketChangePercent": 0.011232552,
+    "postMarketChange": 0.37999725,
+    "postMarketTime": "2026-03-20T23:59:52.000Z",
+    "postMarketPrice": 34.21,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.25482202,
+    "regularMarketChange": 6.87,
+    "regularMarketTime": "2026-03-20T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 26.96,
-    "regularMarketDayHigh": 27.26,
-    "regularMarketDayLow": 23.94,
-    "regularMarketVolume": 20570308,
-    "averageDailyVolume10Day": 10440950,
-    "averageDailyVolume3Month": 11508383,
-    "regularMarketPreviousClose": 24.81,
+    "regularMarketPrice": 33.83,
+    "regularMarketDayHigh": 36.28,
+    "regularMarketDayLow": 32.2606,
+    "regularMarketVolume": 62961486,
+    "averageDailyVolume10Day": 17313400,
+    "averageDailyVolume3Month": 12643339,
+    "regularMarketPreviousClose": 26.96,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 24.25,
+    "regularMarketOpen": 33.55,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "PL",
     "underlyingSymbol": null,
     "shortName": "Planet Labs PBC",
     "longName": "Planet Labs PBC",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 9195786240
+    "marketCap": 11539076096
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 8240430080,
-    "forwardPE": -404.74402,
+    "forwardPE": -14645.023,
     "profitMargins": -0.45868,
     "floatShares": 258748302,
     "sharesOutstanding": 317596228,
@@ -1245,7 +1295,7 @@
     "impliedSharesOutstanding": 341090024,
     "category": null,
     "bookValue": 1.115,
-    "priceToBook": 24.17937,
+    "priceToBook": 30.340809,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-01-31T00:00:00.000Z",
@@ -1253,12 +1303,12 @@
     "mostRecentQuarter": "2025-10-31T00:00:00.000Z",
     "netIncomeToCommon": -129559000,
     "trailingEps": -0.43,
-    "forwardEps": -0.01031,
+    "forwardEps": -0.00231,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 29.174,
     "enterpriseToEbitda": -221.612,
-    "52WeekChange": 5.546174,
-    "SandP52WeekChange": 0.16888046,
+    "52WeekChange": 7.4575005,
+    "SandP52WeekChange": 0.12811458,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1287,6 +1337,18 @@
     "transactions": [
       {
         "maxAge": 1,
+        "shares": 115895,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHINGLER ROBERT H",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-03-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 173842,
         "value": 0,
         "filerUrl": "",
@@ -1305,18 +1367,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MARSHALL WILLIAM SPENCER",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-03-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 115895,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHINGLER ROBERT H",
-        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2026-03-12T00:00:00.000Z",
         "ownership": "D"
@@ -1696,6 +1746,30 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAYMOND JOHN W.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-07-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32468,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SMITH GARY BRIAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-07-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32468,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BASS CARL",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1740,30 +1814,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 32468,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAYMOND JOHN W.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 32468,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SMITH GARY BRIAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 94500,
         "value": 0,
         "filerUrl": "",
@@ -1800,6 +1850,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 11140,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAYMOND JOHN W.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 511153,
         "value": 0,
         "filerUrl": "",
@@ -1818,18 +1880,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SCHINGLER ROBERT H",
         "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-03-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11140,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAYMOND JOHN W.",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-10T00:00:00.000Z",
         "ownership": "D"
@@ -1995,11 +2045,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 26.96,
-    "targetHighPrice": 33,
+    "currentPrice": 33.83,
+    "targetHighPrice": 40,
     "targetLowPrice": 16.4,
-    "targetMeanPrice": 24.71111,
-    "targetMedianPrice": 26,
+    "targetMeanPrice": 30.93333,
+    "targetMedianPrice": 33,
     "recommendationKey": "none",
     "numberOfAnalystOpinions": 9,
     "totalCash": 677324032,
@@ -2023,6 +2073,6 @@
     "profitMargins": -0.45868,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-20T04:16:03.274Z",
+  "lastUpdated": "2026-03-21T04:06:28.610Z",
   "source": "Static Build (yahoo-finance2)"
 }
