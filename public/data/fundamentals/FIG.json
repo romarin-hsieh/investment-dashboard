@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 1,
+        "buy": 2,
+        "hold": 7,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 1,
         "buy": 1,
         "hold": 7,
         "sell": 0,
@@ -498,14 +506,14 @@
     "regularMarketDayLow": 23.05,
     "regularMarketVolume": 18088478,
     "averageDailyVolume10Day": 12019800,
-    "averageDailyVolume3Month": 13319556,
+    "averageDailyVolume3Month": 13479869,
     "regularMarketPreviousClose": 24.22,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 23.85,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "FIG",
     "underlyingSymbol": null,
@@ -1700,7 +1708,8 @@
     "targetLowPrice": 30,
     "targetMeanPrice": 40.25,
     "targetMedianPrice": 38.5,
-    "recommendationKey": "none",
+    "recommendationMean": 2.5,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 8,
     "totalCash": 1655943040,
     "totalCashPerShare": 3.174,
@@ -1723,6 +1732,6 @@
     "profitMargins": -1.1843901,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-22T04:22:33.906Z",
+  "lastUpdated": "2026-03-23T04:32:45.237Z",
   "source": "Static Build (yahoo-finance2)"
 }
