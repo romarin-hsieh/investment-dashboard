@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0907,
         "position": 651076825,
-        "value": 30704782967,
+        "value": 30939171022,
         "pctChange": 0.0372
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0756,
         "position": 542476024,
-        "value": 25583169209,
+        "value": 25778460908,
         "pctChange": 0.0134000005
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Berkshire Hathaway, Inc",
         "pctHeld": 0.0721,
         "position": 517295934,
-        "value": 24395676168,
+        "value": 24581903020,
         "pctChange": -0.08939999
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0416,
         "position": 298499829,
-        "value": 14077251890,
+        "value": 14184712010,
         "pctChange": -0.0093
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0299,
         "position": 214781463,
-        "value": 10129093762,
+        "value": 10206415220,
         "pctChange": 0.0253
       },
       {
@@ -90,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0225,
         "position": 161572280,
-        "value": 7619748700,
+        "value": 7677914819,
         "pctChange": -0.5553
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0215,
         "position": 154483485,
-        "value": 7285441129,
+        "value": 7341055277,
         "pctChange": -0.0016
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0197,
         "position": 141301411,
-        "value": 6663774521,
+        "value": 6714643115,
         "pctChange": -0.021300001
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.015700001,
         "position": 112791313,
-        "value": 5319238303,
+        "value": 5359843245,
         "pctChange": 0.0994
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0148,
         "position": 106566355,
-        "value": 5025669285,
+        "value": 5064033238,
         "pctChange": -0.109
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-03-23T17:57:56.000Z",
+        "firm": "Goldman Sachs",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 57,
+        "priorPriceTarget": 67
+      },
       {
         "epochGradeDate": "2026-01-15T16:48:12.000Z",
         "firm": "TD Cowen",
@@ -452,6 +462,16 @@
         "priceTargetAction": "Raises",
         "currentPriceTarget": 62,
         "priorPriceTarget": 60
+      },
+      {
+        "epochGradeDate": "2025-10-24T19:41:36.000Z",
+        "firm": "Freedom Broker",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 59.5,
+        "priorPriceTarget": 56.5
       },
       {
         "epochGradeDate": "2025-10-16T17:32:38.000Z",
@@ -4159,24 +4179,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0059372094,
-    "postMarketChange": 0.27999878,
-    "postMarketTime": "2026-03-20T23:59:48.000Z",
-    "postMarketPrice": 47.44,
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.00319084,
-    "regularMarketChange": 0.150002,
-    "regularMarketTime": "2026-03-20T20:00:03.000Z",
+    "postMarketChangePercent": 0.0014730575,
+    "postMarketChange": 0.069999695,
+    "postMarketTime": "2026-03-23T23:59:31.000Z",
+    "postMarketPrice": 47.59,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": 0.0076336004,
+    "regularMarketChange": 0.360001,
+    "regularMarketTime": "2026-03-23T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 47.16,
-    "regularMarketDayHigh": 47.46,
-    "regularMarketDayLow": 46.685,
-    "regularMarketVolume": 77905551,
+    "regularMarketPrice": 47.52,
+    "regularMarketDayHigh": 48.37,
+    "regularMarketDayLow": 47.48,
+    "regularMarketVolume": 42120034,
     "averageDailyVolume10Day": 48740650,
     "averageDailyVolume3Month": 41017757,
-    "regularMarketPreviousClose": 47.01,
+    "regularMarketPreviousClose": 47.16,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 47.13,
+    "regularMarketOpen": 48.34,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -4187,18 +4207,18 @@
     "shortName": "Bank of America Corporation",
     "longName": "Bank of America Corporation",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 344385683456
+    "marketCap": 347014594560
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 361353347072,
-    "forwardPE": 9.51858,
+    "enterpriseValue": 363936940032,
+    "forwardPE": 9.591242,
     "profitMargins": 0.28401,
     "floatShares": 7149267244,
     "sharesOutstanding": 7176682170,
@@ -4215,7 +4235,7 @@
     "impliedSharesOutstanding": 7302495551,
     "category": null,
     "bookValue": 38.441,
-    "priceToBook": 1.2268151,
+    "priceToBook": 1.2361801,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -4227,7 +4247,7 @@
     "forwardEps": 4.95452,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1093824000,
-    "enterpriseToRevenue": 3.364,
+    "enterpriseToRevenue": 3.388,
     "52WeekChange": 0.09496164,
     "SandP52WeekChange": 0.12811458,
     "lastDividendValue": 0.28,
@@ -4332,10 +4352,76 @@
       },
       {
         "maxAge": 1,
+        "shares": 87428,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "THOMPSON BRUCE R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 107411,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GREENER GEOFFREY S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 37469,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCRIVENER THOMAS M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 149876,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DEMARE JAMES P.",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 39551,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BRONSTEIN SHERI B",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 79101,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BORTHWICK ALASTAIR M.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1432,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MENSAH BERNARD AMPONSAH",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-27T00:00:00.000Z",
@@ -4348,6 +4434,28 @@
         "transactionText": "",
         "filerName": "MOGENSEN LAUREN A",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 99917,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NGUYEN THONG M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 107411,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ATHANASIA DEAN C",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2026-02-27T00:00:00.000Z",
         "ownership": "D"
@@ -4378,94 +4486,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 79101,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BORTHWICK ALASTAIR M.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1432,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MENSAH BERNARD AMPONSAH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 37469,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCRIVENER THOMAS M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 149876,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DEMARE JAMES P.",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 87428,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "THOMPSON BRUCE R",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 107411,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GREENER GEOFFREY S",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 107411,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ATHANASIA DEAN C",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 99917,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NGUYEN THONG M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 395504,
         "filerUrl": "",
         "transactionText": "",
@@ -4477,6 +4497,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 239926,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "THOMPSON BRUCE R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 179743,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GREENER GEOFFREY S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 128483,
         "filerUrl": "",
         "transactionText": "",
@@ -4485,6 +4527,28 @@
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 101523,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCRIVENER THOMAS M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 274911,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DEMARE JAMES P.",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4503,17 +4567,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "OKPARA JOHNBULL",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 112062,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MOGENSEN LAUREN A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
@@ -4543,10 +4596,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 101523,
+        "shares": 112062,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCRIVENER THOMAS M",
+        "filerName": "MOGENSEN LAUREN A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
@@ -4554,32 +4607,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 274911,
+        "shares": 160764,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DEMARE JAMES P.",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 239926,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "THOMPSON BRUCE R",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 179743,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GREENER GEOFFREY S",
+        "filerName": "NGUYEN THONG M",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
@@ -4595,17 +4626,6 @@
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 160764,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NGUYEN THONG M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -4701,17 +4721,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1234,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHIMPF ERIC A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 975,
         "filerUrl": "",
         "transactionText": "",
@@ -4728,6 +4737,17 @@
         "transactionText": "",
         "filerName": "GOPALKRISHNAN HARI",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-11-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1234,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHIMPF ERIC A",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-14T00:00:00.000Z",
         "ownership": "D"
@@ -4791,17 +4811,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1235,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHIMPF ERIC A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 974,
         "filerUrl": "",
         "transactionText": "",
@@ -4818,6 +4827,17 @@
         "transactionText": "",
         "filerName": "GOPALKRISHNAN HARI",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1235,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHIMPF ERIC A",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-15T00:00:00.000Z",
         "ownership": "D"
@@ -4929,22 +4949,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 1234,
+        "shares": 975,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCHIMPF ERIC A",
-        "filerRelation": "Officer",
+        "filerName": "HANS LINDSAY D",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 975,
+        "shares": 1234,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HANS LINDSAY D",
-        "filerRelation": "President",
+        "filerName": "SCHIMPF ERIC A",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
@@ -4958,6 +4978,42 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7306,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MARTINEZ MARIA N.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7306,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ALMEIDA JOSE E.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7306,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DONALD ARNOLD WAYNE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-22T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4990,43 +5046,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MARTINEZ MARIA N.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7306,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "DE WECK PIERRE J P",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7306,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DONALD ARNOLD WAYNE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7306,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ALMEIDA JOSE E.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-22T00:00:00.000Z",
@@ -5056,14 +5076,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 45219,
+        "shares": 87319,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KNOX KATHLEEN A.",
+        "filerName": "GREENER GEOFFREY S",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5072,18 +5092,6 @@
         "transactionText": "",
         "filerName": "BRONSTEIN SHERI B",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BORTHWICK ALASTAIR M.",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
@@ -5112,14 +5120,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 87319,
+        "shares": 45219,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "GREENER GEOFFREY S",
+        "filerName": "KNOX KATHLEEN A.",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5145,6 +5153,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 30000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BORTHWICK ALASTAIR M.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 317048,
         "filerUrl": "",
         "transactionText": "",
@@ -5156,14 +5176,25 @@
       },
       {
         "maxAge": 1,
-        "shares": 54884,
+        "shares": 276525,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCHIMPF ERIC A",
+        "filerName": "THOMPSON BRUCE R",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 178205,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GREENER GEOFFREY S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5178,10 +5209,43 @@
       },
       {
         "maxAge": 1,
-        "shares": 134076,
+        "shares": 230844,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KNOX KATHLEEN A.",
+        "filerName": "DEMARE JAMES P.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 54884,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHIMPF ERIC A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 234368,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KODER MATTHEW M.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 125684,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCRIVENER THOMAS M",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
@@ -5193,28 +5257,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BRONSTEIN SHERI B",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 76186,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BOLAND DARRIN STEVE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 133992,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MOGENSEN LAUREN A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
@@ -5255,32 +5297,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 234368,
+        "shares": 76186,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KODER MATTHEW M.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 125684,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCRIVENER THOMAS M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 230844,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DEMARE JAMES P.",
+        "filerName": "BOLAND DARRIN STEVE",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
@@ -5288,10 +5308,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 276525,
+        "shares": 133992,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "THOMPSON BRUCE R",
+        "filerName": "MOGENSEN LAUREN A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
@@ -5299,14 +5319,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 178205,
+        "shares": 134076,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "GREENER GEOFFREY S",
+        "filerName": "KNOX KATHLEEN A.",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5412,17 +5432,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 20683,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MOYNIHAN BRIAN T",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-11-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1234,
         "filerUrl": "",
         "transactionText": "",
@@ -5467,6 +5476,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 20683,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MOYNIHAN BRIAN T",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-11-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 5000,
         "value": 0,
         "filerUrl": "",
@@ -5491,17 +5511,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 20683,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MOYNIHAN BRIAN T",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 8694538,
         "value": 369928036,
         "filerUrl": "",
@@ -5511,6 +5520,17 @@
         "moneyText": "",
         "startDate": "2024-10-15T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20683,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MOYNIHAN BRIAN T",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-10-15T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5621,6 +5641,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 1800,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MENSAH BERNARD AMPONSAH",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-08-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 21076473,
         "value": 848159045,
         "filerUrl": "",
@@ -5630,17 +5661,6 @@
         "moneyText": "",
         "startDate": "2024-08-30T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1800,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MENSAH BERNARD AMPONSAH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-08-30T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5680,18 +5700,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 13968943,
-        "value": 550658795,
-        "filerUrl": "",
-        "transactionText": "Sale at price 39.27 - 39.65 per share.",
-        "filerName": "BERKSHIRE HATHAWAY INC",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-08-19T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 3000,
         "value": 0,
         "filerUrl": "",
@@ -5704,14 +5712,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 20683,
+        "shares": 13968943,
+        "value": 550658795,
+        "filerUrl": "",
+        "transactionText": "Sale at price 39.27 - 39.65 per share.",
+        "filerName": "BERKSHIRE HATHAWAY INC",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-08-19T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17470,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MOYNIHAN BRIAN T",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "DEMARE JAMES P.",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-08-15T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5737,17 +5757,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 33788,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MENSAH BERNARD AMPONSAH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 22433,
         "filerUrl": "",
         "transactionText": "",
@@ -5759,14 +5768,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 17470,
+        "shares": 33788,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DEMARE JAMES P.",
+        "filerName": "MENSAH BERNARD AMPONSAH",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-08-15T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5778,6 +5787,17 @@
         "moneyText": "",
         "startDate": "2024-08-15T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20683,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MOYNIHAN BRIAN T",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-08-15T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5817,26 +5837,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 18899518,
-        "value": 802486391,
-        "filerUrl": "",
-        "transactionText": "Sale at price 42.39 - 42.56 per share.",
-        "filerName": "BERKSHIRE HATHAWAY INC",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-07-24T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BORTHWICK ALASTAIR M.",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "DEMARE JAMES P.",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-07-24T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -5854,8 +5862,20 @@
         "shares": 50000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DEMARE JAMES P.",
-        "filerRelation": "Officer",
+        "filerName": "BORTHWICK ALASTAIR M.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-07-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 18899518,
+        "value": 802486391,
+        "filerUrl": "",
+        "transactionText": "Sale at price 42.39 - 42.56 per share.",
+        "filerName": "BERKSHIRE HATHAWAY INC",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2024-07-24T00:00:00.000Z",
         "ownership": "I"
@@ -5918,10 +5938,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 1234,
+        "shares": 975,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SCHIMPF ERIC A",
+        "filerName": "HANS LINDSAY D",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-05-15T00:00:00.000Z",
@@ -5929,10 +5949,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 975,
+        "shares": 1234,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HANS LINDSAY D",
+        "filerName": "SCHIMPF ERIC A",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-05-15T00:00:00.000Z",
@@ -5966,7 +5986,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 47.16,
+    "currentPrice": 47.52,
     "targetHighPrice": 71,
     "targetLowPrice": 53,
     "targetMeanPrice": 61.77083,
@@ -5991,6 +6011,6 @@
     "profitMargins": 0.28401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-23T04:33:18.142Z",
+  "lastUpdated": "2026-03-24T04:21:39.461Z",
   "source": "Static Build (yahoo-finance2)"
 }

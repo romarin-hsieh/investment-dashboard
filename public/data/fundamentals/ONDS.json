@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.948,
         "position": 18767157,
-        "value": 189079103,
+        "value": 204562004,
         "pctChange": 0.3989
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.8768,
         "position": 17357213,
-        "value": 174873917,
+        "value": 189193615,
         "pctChange": 0.078
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.507,
         "position": 10037182,
-        "value": 101124606,
+        "value": 109405279,
         "pctChange": 0.0731
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.4374,
         "position": 8658920,
-        "value": 87238617,
+        "value": 94382224,
         "pctChange": 0.4083
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.3692,
         "position": 7308936,
-        "value": 73637528,
+        "value": 79667399,
         "pctChange": 0.4516
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.3685,
         "position": 7295273,
-        "value": 73499874,
+        "value": 79518472,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "HRT Financial LP",
         "pctHeld": 0.31370002,
         "position": 6210148,
-        "value": 62567239,
+        "value": 67690610,
         "pctChange": 1.1256
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.2608,
         "position": 5162151,
-        "value": 52008670,
+        "value": 56267443,
         "pctChange": 1.3024001
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.2505,
         "position": 4958128,
-        "value": 49953138,
+        "value": 54043593,
         "pctChange": 0.0853
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Renaissance Technologies, LLC",
         "pctHeld": 0.2383,
         "position": 4718300,
-        "value": 47536871,
+        "value": 51429468,
         "pctChange": -0.4341
       }
     ]
@@ -142,17 +142,6 @@
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "actual": -0.1392,
-          "estimate": -0.09,
-          "fiscalQuarter": "4Q2024",
-          "calendarQuarter": "4Q2024",
-          "difference": "-0.05",
-          "surprisePct": "-54.67",
-          "periodEndDate": 1735603200,
-          "reportedDate": 1741781235
-        },
         {
           "date": "1Q2025",
           "actual": -0.1196,
@@ -185,26 +174,30 @@
           "surprisePct": "61.6",
           "periodEndDate": 1759190400,
           "reportedDate": 1763039865
+        },
+        {
+          "date": "4Q2025",
+          "actual": 0.3678,
+          "estimate": -0.035,
+          "fiscalQuarter": "4Q2025",
+          "calendarQuarter": "4Q2025",
+          "difference": "0.4",
+          "surprisePct": "1150.86",
+          "periodEndDate": 1767139200,
+          "reportedDate": 1774271829
         }
       ],
-      "currentQuarterEstimate": -0.03,
-      "currentQuarterEstimateDate": "4Q",
-      "currentCalendarQuarter": "4Q2025",
-      "currentQuarterEstimateYear": 2025,
-      "currentFiscalQuarter": "4Q2025",
-      "currentPeriodEndDate": 1767139200,
-      "earningsDate": [
-        "2026-03-25T12:30:00.000Z"
-      ],
+      "currentQuarterEstimate": -0.04,
+      "currentQuarterEstimateDate": "1Q",
+      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateYear": 2026,
+      "currentFiscalQuarter": "1Q2026",
+      "currentPeriodEndDate": 1774915200,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
-        {
-          "date": 2021,
-          "revenue": 2906770,
-          "earnings": -11770250
-        },
         {
           "date": 2022,
           "revenue": 2125820,
@@ -219,15 +212,14 @@
           "date": 2024,
           "revenue": 7192690,
           "earnings": -41154280
+        },
+        {
+          "date": 2025,
+          "revenue": 50731000,
+          "earnings": -116845000
         }
       ],
       "quarterly": [
-        {
-          "date": "4Q2024",
-          "fiscalQuarter": "4Q2024",
-          "revenue": 4129040,
-          "earnings": -11243950
-        },
         {
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
@@ -245,6 +237,12 @@
           "fiscalQuarter": "3Q2025",
           "revenue": 10098310,
           "earnings": -3322840
+        },
+        {
+          "date": "4Q2025",
+          "fiscalQuarter": "4Q2025",
+          "revenue": 30111120,
+          "earnings": -90618470
         }
       ]
     },
@@ -489,24 +487,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0079522785,
-    "postMarketChange": 0.07999992,
-    "postMarketTime": "2026-03-20T23:59:57.000Z",
-    "postMarketPrice": 10.14,
+    "postMarketChangePercent": -0.0018348169,
+    "postMarketChange": -0.019999504,
+    "postMarketTime": "2026-03-23T23:59:58.000Z",
+    "postMarketPrice": 10.88,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.061481208,
-    "regularMarketChange": -0.6600008,
-    "regularMarketTime": "2026-03-20T20:00:08.000Z",
+    "regularMarketChangePercent": 0.08188579,
+    "regularMarketChange": 0.825,
+    "regularMarketTime": "2026-03-23T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 10.075,
-    "regularMarketDayHigh": 10.83,
-    "regularMarketDayLow": 9.7314,
-    "regularMarketVolume": 86922682,
+    "regularMarketPrice": 10.9,
+    "regularMarketDayHigh": 10.97,
+    "regularMarketDayLow": 9.965,
+    "regularMarketVolume": 91355370,
     "averageDailyVolume10Day": 91334420,
     "averageDailyVolume3Month": 96163101,
-    "regularMarketPreviousClose": 10.735001,
+    "regularMarketPreviousClose": 10.075,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 10.79,
+    "regularMarketOpen": 10.28,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -522,13 +520,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4668008960
+    "marketCap": 5050252800
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3274254080,
-    "forwardPE": -111.944435,
+    "enterpriseValue": 3583760128,
+    "forwardPE": -217.99998,
     "profitMargins": -1.7249401,
     "floatShares": 365806754,
     "sharesOutstanding": 463325947,
@@ -545,18 +543,18 @@
     "impliedSharesOutstanding": 463325947,
     "category": null,
     "bookValue": 1.475,
-    "priceToBook": 6.830508,
+    "priceToBook": 7.38983,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2024-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-09-30T00:00:00.000Z",
     "netIncomeToCommon": -47664976,
-    "trailingEps": -0.36,
-    "forwardEps": -0.09,
+    "trailingEps": -0.62,
+    "forwardEps": -0.11,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 132.299,
-    "enterpriseToEbitda": -84.88,
+    "enterpriseToRevenue": 144.805,
+    "enterpriseToEbitda": -92.904,
     "52WeekChange": 11.389163,
     "SandP52WeekChange": 0.12811458,
     "latestShareClass": null,
@@ -622,32 +620,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 85663,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4526,
         "value": 42906,
         "filerUrl": "",
         "transactionText": "Sale at price 9.48 per share.",
-        "filerName": "LAIRD NEIL J",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12500,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "LAIRD NEIL J",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -668,17 +644,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 85663,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "COHEN RICHARD M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 21520,
         "value": 204010,
         "filerUrl": "",
@@ -691,10 +656,43 @@
       },
       {
         "maxAge": 1,
+        "shares": 12500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LAIRD NEIL J",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 85663,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 85663,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SEIDL RANDALL P",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 85663,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SOOD JASPREET K",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-22T00:00:00.000Z",
@@ -738,17 +736,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 21035,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 7567,
         "value": 12788,
         "filerUrl": "",
@@ -783,6 +770,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 21035,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SOOD JASPREET K",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 8842,
         "value": 6013,
         "filerUrl": "",
@@ -810,28 +808,6 @@
         "shares": 21035,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 21035,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SEIDL RANDY",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 21035,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
@@ -851,21 +827,32 @@
       },
       {
         "maxAge": 1,
-        "shares": 28971,
-        "value": 37373,
+        "shares": 21035,
         "filerUrl": "",
-        "transactionText": "Sale at price 1.29 per share.",
+        "transactionText": "",
         "filerName": "SOOD JASPREET K",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2024-12-19T00:00:00.000Z",
+        "startDate": "2025-03-20T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 78946,
+        "shares": 21035,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "SEIDL RANDY",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28971,
+        "value": 37373,
+        "filerUrl": "",
+        "transactionText": "Sale at price 1.29 per share.",
         "filerName": "SOOD JASPREET K",
         "filerRelation": "Director",
         "moneyText": "",
@@ -886,17 +873,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 52946,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "COHEN RICHARD M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 21359,
         "value": 27553,
         "filerUrl": "",
@@ -909,10 +885,32 @@
       },
       {
         "maxAge": 1,
+        "shares": 52946,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 78946,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SEIDL RANDALL P",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78946,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SOOD JASPREET K",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-19T00:00:00.000Z",
@@ -932,29 +930,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 33824,
-        "value": 20790,
-        "filerUrl": "",
-        "transactionText": "Sale at price 0.59 - 0.64 per share.",
-        "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 78948,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SOOD JASPREET K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-07T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 100000,
         "value": 67020,
         "filerUrl": "",
@@ -967,11 +942,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 29512,
-        "value": 18140,
+        "shares": 33824,
+        "value": 20790,
         "filerUrl": "",
         "transactionText": "Sale at price 0.59 - 0.64 per share.",
-        "filerName": "COHEN RICHARD M",
+        "filerName": "SOOD JASPREET K",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
@@ -979,9 +954,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 78948,
+        "shares": 29512,
+        "value": 18140,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Sale at price 0.59 - 0.64 per share.",
         "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1005,7 +981,29 @@
         "shares": 78948,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "COHEN RICHARD M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78948,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "SEIDL RANDALL P",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-07T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78948,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SOOD JASPREET K",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
@@ -1028,7 +1026,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 10.075,
+    "currentPrice": 10.9,
     "targetHighPrice": 25,
     "targetLowPrice": 16,
     "targetMeanPrice": 18.375,
@@ -1057,6 +1055,6 @@
     "profitMargins": -1.7249401,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-03-23T04:31:12.464Z",
+  "lastUpdated": "2026-03-24T04:19:33.273Z",
   "source": "Static Build (yahoo-finance2)"
 }
