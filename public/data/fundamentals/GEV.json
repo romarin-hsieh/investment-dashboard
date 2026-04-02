@@ -12,24 +12,24 @@
       {
         "period": "-1m",
         "strongBuy": 6,
+        "buy": 23,
+        "hold": 4,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 6,
         "buy": 21,
         "hold": 4,
         "sell": 1,
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 6,
         "buy": 20,
         "hold": 5,
-        "sell": 1,
-        "strongSell": 1
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 6,
-        "buy": 19,
-        "hold": 6,
         "sell": 1,
         "strongSell": 1
       }
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0928,
         "position": 25023625,
-        "value": 21843122873,
+        "value": 22390639910,
         "pctChange": 0.0084
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0797,
         "position": 21491916,
-        "value": 18760294001,
+        "value": 19230537228,
         "pctChange": -0.051799998
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0775,
         "position": 20884484,
-        "value": 18230066593,
+        "value": 18687019205,
         "pctChange": 0.0403
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.042600002,
         "position": 11469670,
-        "value": 10011875223,
+        "value": 10262831658,
         "pctChange": 0.020599999
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0235,
         "position": 6344431,
-        "value": 5538053974,
+        "value": 5676870156,
         "pctChange": -0.4481
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0232,
         "position": 6249193,
-        "value": 5454920722,
+        "value": 5591653095,
         "pctChange": 0.0111
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0225,
         "position": 6054474,
-        "value": 5284950502,
+        "value": 5417422423,
         "pctChange": 0.1277
       },
       {
@@ -108,7 +108,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.012999999,
         "position": 3493297,
-        "value": 3049299036,
+        "value": 3125732392,
         "pctChange": 0.0217
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Coatue Management LLC",
         "pctHeld": 0.0125,
         "position": 3370174,
-        "value": 2941824966,
+        "value": 3015564390,
         "pctChange": -0.0726
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0105,
         "position": 2819449,
-        "value": 2461097100,
+        "value": 2522786658,
         "pctChange": -0.0202
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00102,
-    "institutionsPercentHeld": 0.78771,
-    "institutionsFloatPercentHeld": 0.78852,
-    "institutionsCount": 3475
+    "institutionsPercentHeld": 0.78756,
+    "institutionsFloatPercentHeld": 0.78836995,
+    "institutionsCount": 3455
   },
   "earnings": {
     "maxAge": 86400,
@@ -248,6 +248,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-01T18:13:12.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 993,
+        "priorPriceTarget": 849
+      },
       {
         "epochGradeDate": "2026-03-31T13:13:26.000Z",
         "firm": "Wells Fargo",
@@ -2074,24 +2084,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.004937561,
-    "postMarketChange": 4.3099976,
-    "postMarketTime": "2026-03-31T23:59:52.000Z",
-    "postMarketPrice": 877.21,
+    "postMarketChangePercent": 0.003280133,
+    "postMarketChange": 2.9349976,
+    "postMarketTime": "2026-04-01T23:59:41.000Z",
+    "postMarketPrice": 897.715,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0679636,
-    "regularMarketChange": 55.55,
-    "regularMarketTime": "2026-03-31T20:00:02.000Z",
+    "regularMarketChangePercent": 0.025065899,
+    "regularMarketChange": 21.88,
+    "regularMarketTime": "2026-04-01T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 872.9,
-    "regularMarketDayHigh": 873.32,
-    "regularMarketDayLow": 824.01,
-    "regularMarketVolume": 3460516,
-    "averageDailyVolume10Day": 2872270,
-    "averageDailyVolume3Month": 2891686,
-    "regularMarketPreviousClose": 817.35,
+    "regularMarketPrice": 894.78,
+    "regularMarketDayHigh": 912.62,
+    "regularMarketDayLow": 888.17,
+    "regularMarketVolume": 2183899,
+    "averageDailyVolume10Day": 3020390,
+    "averageDailyVolume3Month": 2896606,
+    "regularMarketPreviousClose": 872.9,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 827.13,
+    "regularMarketOpen": 888.49,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -2107,13 +2117,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 236835618816
+    "marketCap": 242772115456
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 228651270144,
-    "forwardPE": 37.981487,
+    "enterpriseValue": 234548576256,
+    "forwardPE": 38.832584,
     "profitMargins": 0.1283,
     "floatShares": 269014663,
     "sharesOutstanding": 269529464,
@@ -2123,14 +2133,14 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.022,
     "heldPercentInsiders": 0.00102,
-    "heldPercentInstitutions": 0.78771,
+    "heldPercentInstitutions": 0.78756,
     "shortRatio": 2.6,
     "shortPercentOfFloat": 0.022,
     "beta": 1.151,
     "impliedSharesOutstanding": 271320460,
     "category": null,
     "bookValue": 41.472,
-    "priceToBook": 21.047937,
+    "priceToBook": 21.575521,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -2138,13 +2148,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 6.57,
     "netIncomeToCommon": 4883999744,
-    "trailingEps": 18.85,
-    "forwardEps": 22.99068,
+    "trailingEps": 17.72,
+    "forwardEps": 23.04199,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 6.006,
-    "enterpriseToEbitda": 76.344,
-    "52WeekChange": 1.4708283,
-    "SandP52WeekChange": 0.11863053,
+    "enterpriseToRevenue": 6.161,
+    "enterpriseToEbitda": 78.313,
+    "52WeekChange": 2.0060472,
+    "SandP52WeekChange": 0.21843708,
     "lastDividendValue": 0.5,
     "lastDividendDate": "2026-03-17T00:00:00.000Z",
     "latestShareClass": null,
@@ -2182,6 +2192,28 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4783,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "POTVIN MATTHEW JOSEPH",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 19790,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PIRON PHILIPPE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-27T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2234,28 +2266,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "ABATE VICTOR",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4783,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "POTVIN MATTHEW JOSEPH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 19790,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PIRON PHILIPPE",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-27T00:00:00.000Z",
@@ -2445,6 +2455,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 8524,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ZINGONI MARIA VICTORIA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2489,
         "filerUrl": "",
         "transactionText": "",
@@ -2522,17 +2543,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 8524,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ZINGONI MARIA VICTORIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 26955,
         "filerUrl": "",
         "transactionText": "",
@@ -2587,89 +2597,17 @@
         "moneyText": "",
         "startDate": "2024-08-22T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1524,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "REYNOLDS PAULA ROSPUT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2764,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ANGEL STEPHEN F",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 18,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "AKINS NICHOLAS K",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 31693,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "STRAZIK SCOTT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 695,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MATTHEW HARRIS C",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 462,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "POTVIN MATTHEW JOSEPH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-04-02T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 872.9,
+    "currentPrice": 894.78,
     "targetHighPrice": 1100,
     "targetLowPrice": 600,
-    "targetMeanPrice": 881.14453,
-    "targetMedianPrice": 910,
+    "targetMeanPrice": 887.8865,
+    "targetMedianPrice": 916,
     "recommendationMean": 1.5,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 31,
@@ -2695,6 +2633,6 @@
     "profitMargins": 0.1283,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-01T04:52:39.051Z",
+  "lastUpdated": "2026-04-02T04:35:18.380Z",
   "source": "Static Build (yahoo-finance2)"
 }
