@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 6,
+        "buy": 10,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 6,
         "buy": 11,
         "hold": 2,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 5,
         "buy": 11,
         "hold": 1,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00758,
-    "institutionsPercentHeld": 0.91295,
-    "institutionsFloatPercentHeld": 0.91991997,
-    "institutionsCount": 786
+    "institutionsPercentHeld": 0.91349,
+    "institutionsFloatPercentHeld": 0.92046,
+    "institutionsCount": 791
   },
   "earnings": {
     "maxAge": 86400,
@@ -1694,8 +1702,8 @@
     "regularMarketDayHigh": 186.24,
     "regularMarketDayLow": 176.29,
     "regularMarketVolume": 717272,
-    "averageDailyVolume10Day": 1328710,
-    "averageDailyVolume3Month": 1883619,
+    "averageDailyVolume10Day": 1212330,
+    "averageDailyVolume3Month": 1864856,
     "regularMarketPreviousClose": 183.5,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 176.62,
@@ -1730,10 +1738,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0769,
     "heldPercentInsiders": 0.00758,
-    "heldPercentInstitutions": 0.91295,
+    "heldPercentInstitutions": 0.91349,
     "shortRatio": 1.61,
     "shortPercentOfFloat": 0.102299996,
-    "beta": 1.259,
+    "beta": 1.376,
     "impliedSharesOutstanding": 50605071,
     "category": null,
     "bookValue": 85.937,
@@ -1749,8 +1757,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 5.84,
     "enterpriseToEbitda": 62.209,
-    "52WeekChange": 0.64352894,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.6260363,
+    "SandP52WeekChange": 0.30034864,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1779,15 +1787,15 @@
     "transactions": [
       {
         "maxAge": 1,
-        "shares": 250,
-        "value": 53130,
+        "shares": 707,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 212.52 per share.",
-        "filerName": "PAGE STEPHEN F",
-        "filerRelation": "Director",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SHACKLEY BRIAN CHARLES",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-16T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1803,15 +1811,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 707,
-        "value": 0,
+        "shares": 250,
+        "value": 53130,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SHACKLEY BRIAN CHARLES",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 212.52 per share.",
+        "filerName": "PAGE STEPHEN F",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-03-16T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2043,6 +2051,42 @@
       },
       {
         "maxAge": 1,
+        "shares": 609,
+        "value": 169345,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
+        "filerName": "VOTEL JOSEPH L.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 688,
+        "value": 191312,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
+        "filerName": "TRUESDELL BRADLEY DEAN",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 872,
+        "value": 242477,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
+        "filerName": "FERGUSON JAMES WILLIAM III",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1131,
         "value": 314497,
         "filerUrl": "",
@@ -2139,38 +2183,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 609,
-        "value": 169345,
+        "shares": 17115,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
-        "filerName": "VOTEL JOSEPH L.",
-        "filerRelation": "Director",
+        "transactionText": "",
+        "filerName": "MCDONNELL KEVIN PATRICK",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-06-27T00:00:00.000Z",
+        "startDate": "2025-06-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 688,
-        "value": 191312,
+        "shares": 3422,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
-        "filerName": "TRUESDELL BRADLEY DEAN",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-06-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 872,
-        "value": 242477,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 278.07 per share.",
-        "filerName": "FERGUSON JAMES WILLIAM III",
+        "transactionText": "",
+        "filerName": "STEVENSON TRACE E",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-06-27T00:00:00.000Z",
+        "startDate": "2025-06-24T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2208,24 +2238,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 17115,
+        "shares": 130,
+        "value": 24816,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCDONNELL KEVIN PATRICK",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Stock Award(Grant) at price 190.89 per share.",
+        "filerName": "TRUESDELL BRADLEY DEAN",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3422,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "STEVENSON TRACE E",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
+        "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2254,22 +2274,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 130,
-        "value": 24816,
+        "shares": 29366,
+        "value": 3764721,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 190.89 per share.",
-        "filerName": "TRUESDELL BRADLEY DEAN",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "value": 1335000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 26.70 per share.",
+        "transactionText": "Sale at price 128.20 per share.",
         "filerName": "NAWABI WAHID",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2278,10 +2286,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 29366,
-        "value": 3764721,
+        "shares": 50000,
+        "value": 1335000,
         "filerUrl": "",
-        "transactionText": "Sale at price 128.20 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 26.70 per share.",
         "filerName": "NAWABI WAHID",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2362,18 +2370,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 16164,
-        "value": 505448,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 31.27 per share.",
-        "filerName": "NAWABI WAHID",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-07-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 9867,
         "value": 1669792,
         "filerUrl": "",
@@ -2386,14 +2382,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 511,
-        "value": 91188,
+        "shares": 16164,
+        "value": 505448,
         "filerUrl": "",
-        "transactionText": "Sale at price 178.45 per share.",
-        "filerName": "MCDONNELL KEVIN PATRICK",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 31.27 per share.",
+        "filerName": "NAWABI WAHID",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
+        "startDate": "2024-07-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2451,6 +2447,42 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 175.67 per share.",
         "filerName": "MULLER EDWARD R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 953,
+        "value": 167414,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "RODRIAN JEFF E",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1011,
+        "value": 177602,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "HUSH BRETT P",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 910,
+        "value": 159860,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
+        "filerName": "VOTEL JOSEPH L.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
@@ -2542,71 +2574,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 953,
-        "value": 167414,
+        "shares": 511,
+        "value": 91188,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "RODRIAN JEFF E",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 178.45 per share.",
+        "filerName": "MCDONNELL KEVIN PATRICK",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1011,
-        "value": 177602,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "HUSH BRETT P",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 910,
-        "value": 159860,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 175.67 per share.",
-        "filerName": "VOTEL JOSEPH L.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-07-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11788,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NAWABI WAHID",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2334,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROWN MELISSA ANN",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 448,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SHACKLEY BRIAN CHARLES",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-06-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2652,6 +2627,39 @@
         "moneyText": "",
         "startDate": "2024-06-26T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11788,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NAWABI WAHID",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2334,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BROWN MELISSA ANN",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 448,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SHACKLEY BRIAN CHARLES",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-06-26T00:00:00.000Z",
+        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -2687,6 +2695,6 @@
     "profitMargins": -0.13933,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:33:00.013Z",
+  "lastUpdated": "2026-04-04T04:19:04.661Z",
   "source": "Static Build (yahoo-finance2)"
 }

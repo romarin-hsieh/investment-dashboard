@@ -3,6 +3,14 @@
     "trend": [
       {
         "period": "0m",
+        "strongBuy": 2,
+        "buy": 18,
+        "hold": 11,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-1m",
         "strongBuy": 3,
         "buy": 18,
         "hold": 10,
@@ -10,7 +18,7 @@
         "strongSell": 1
       },
       {
-        "period": "-1m",
+        "period": "-2m",
         "strongBuy": 2,
         "buy": 16,
         "hold": 11,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 2,
         "buy": 16,
         "hold": 11,
@@ -119,16 +127,16 @@
         "pctHeld": 0.0138,
         "position": 5792058,
         "value": 476338837,
-        "pctChange": -0.3334
+        "pctChange": 1.8125999
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.22919,
-    "institutionsPercentHeld": 0.56417,
-    "institutionsFloatPercentHeld": 0.73192,
-    "institutionsCount": 910
+    "institutionsPercentHeld": 0.56425,
+    "institutionsFloatPercentHeld": 0.73202,
+    "institutionsCount": 911
   },
   "earnings": {
     "maxAge": 86400,
@@ -1229,8 +1237,8 @@
     "regularMarketDayHigh": 82.5,
     "regularMarketDayLow": 73.81,
     "regularMarketVolume": 20799358,
-    "averageDailyVolume10Day": 23388570,
-    "averageDailyVolume3Month": 25958367,
+    "averageDailyVolume10Day": 23532150,
+    "averageDailyVolume3Month": 25877719,
     "regularMarketPreviousClose": 78.44,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 75.75,
@@ -1265,7 +1273,7 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1155,
     "heldPercentInsiders": 0.22919,
-    "heldPercentInstitutions": 0.56417,
+    "heldPercentInstitutions": 0.56425,
     "shortRatio": 2.45,
     "shortPercentOfFloat": 0.218,
     "impliedSharesOutstanding": 525688133,
@@ -1283,8 +1291,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 13.622,
     "enterpriseToEbitda": 28.681,
-    "52WeekChange": 0.6403179,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.6497493,
+    "SandP52WeekChange": 0.30034864,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1311,6 +1319,179 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 77939,
+        "value": 5771383,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 140338,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 56031,
+        "value": 4149096,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 121099,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16,
+        "value": 1185,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "BAKER JEFFREY R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BAKER JEFFREY R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16,
+        "value": 1185,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "GOLDBERG CHEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GOLDBERG CHEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11,
+        "value": 815,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "MCVEETY KRISTEN J",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCVEETY KRISTEN J",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 65005,
+        "value": 4813620,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 126752,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16,
+        "value": 1185,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 136109,
+        "value": 9411810,
+        "filerUrl": "",
+        "transactionText": "Sale at price 67.67 - 75.19 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-30T00:00:00.000Z",
+        "ownership": "D/I"
+      },
       {
         "maxAge": 1,
         "shares": 127085,
@@ -1344,18 +1525,6 @@
         "moneyText": "",
         "startDate": "2026-03-30T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 136109,
-        "value": 9411810,
-        "filerUrl": "",
-        "transactionText": "Sale at price 67.67 - 75.19 per share.",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-30T00:00:00.000Z",
-        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -1706,6 +1875,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 2374,
+        "value": 215642,
+        "filerUrl": "",
+        "transactionText": "Sale at price 88.96 - 90.94 per share.",
+        "filerName": "BAKER JEFFREY R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4345,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BAKER JEFFREY R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 18950,
         "value": 1721333,
         "filerUrl": "",
@@ -1723,29 +1915,6 @@
         "transactionText": "",
         "filerName": "GOLDBERG CHEN",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5383,
-        "value": 488980,
-        "filerUrl": "",
-        "transactionText": "Sale at price 89.01 - 90.94 per share.",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-02-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11413,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-02-20T00:00:00.000Z",
         "ownership": "D"
@@ -1775,23 +1944,23 @@
       },
       {
         "maxAge": 1,
-        "shares": 2374,
-        "value": 215642,
+        "shares": 5383,
+        "value": 488980,
         "filerUrl": "",
-        "transactionText": "Sale at price 88.96 - 90.94 per share.",
-        "filerName": "BAKER JEFFREY R",
-        "filerRelation": "Officer",
+        "transactionText": "Sale at price 89.01 - 90.94 per share.",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-02-20T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 4345,
+        "shares": 11413,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BAKER JEFFREY R",
-        "filerRelation": "Officer",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-02-20T00:00:00.000Z",
         "ownership": "D"
@@ -2281,6 +2450,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 8835,
+        "value": 784274,
+        "filerUrl": "",
+        "transactionText": "Sale at price 78.53 - 91.87 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-12T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8335,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-12T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 105835,
         "value": 9395437,
         "filerUrl": "",
@@ -2329,29 +2521,6 @@
       {
         "maxAge": 1,
         "shares": 26000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8835,
-        "value": 784274,
-        "filerUrl": "",
-        "transactionText": "Sale at price 78.53 - 91.87 per share.",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-12T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8335,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "MCBEE BRANNIN",
@@ -2477,29 +2646,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 65940,
-        "value": 4785363,
-        "filerUrl": "",
-        "transactionText": "Sale at price 72.57 - 72.84 per share.",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 126771,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 161427,
         "value": 11662514,
         "filerUrl": "",
@@ -2540,6 +2686,29 @@
         "transactionText": "",
         "filerName": "MCBEE BRANNIN",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 65940,
+        "value": 4785363,
+        "filerUrl": "",
+        "transactionText": "Sale at price 72.57 - 72.84 per share.",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 126771,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
         "ownership": "D"
@@ -2661,24 +2830,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 36317,
-        "value": 2512275,
-        "filerUrl": "",
-        "transactionText": "Sale at price 68.40 - 71.13 per share.",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 120000,
         "value": 108000,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 0.55 - 0.97 per share.",
         "filerName": "MCVEETY KRISTEN J",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 36317,
+        "value": 2512275,
+        "filerUrl": "",
+        "transactionText": "Sale at price 68.40 - 71.13 per share.",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -2879,169 +3048,6 @@
         "moneyText": "",
         "startDate": "2025-12-02T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 65606,
-        "value": 4917047,
-        "filerUrl": "",
-        "transactionText": "Sale at price 70.08 - 77.26 per share.",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 600000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2116,
-        "value": 157701,
-        "filerUrl": "",
-        "transactionText": "Sale at price 73.60 - 75.96 per share.",
-        "filerName": "MCVEETY KRISTEN J",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-11-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 281250,
-        "value": 20936884,
-        "filerUrl": "",
-        "transactionText": "Sale at price 73.59 - 76.14 per share.",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-11-26T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 281250,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-11-26T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3640,
-        "value": 255768,
-        "filerUrl": "",
-        "transactionText": "Sale at price 66.62 - 72.04 per share.",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2231,
-        "value": 184169,
-        "filerUrl": "",
-        "transactionText": "Sale at price 82.55 per share.",
-        "filerName": "MCVEETY KRISTEN J",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4347,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCVEETY KRISTEN J",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5841,
-        "value": 482175,
-        "filerUrl": "",
-        "transactionText": "Sale at price 82.55 per share.",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11412,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 82455,
-        "value": 6160065,
-        "filerUrl": "",
-        "transactionText": "Sale at price 73.58 - 77.05 per share.",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-19T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-19T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 600000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1000000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-13T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -3053,7 +3059,7 @@
     "targetLowPrice": 38,
     "targetMeanPrice": 119.4,
     "targetMedianPrice": 115,
-    "recommendationMean": 1.90909,
+    "recommendationMean": 1.93939,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 30,
     "totalCash": 3160999936,
@@ -3077,6 +3083,6 @@
     "profitMargins": -0.22744,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:33:26.398Z",
+  "lastUpdated": "2026-04-04T04:19:30.903Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 3,
+        "buy": 4,
+        "hold": 16,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
         "buy": 5,
         "hold": 15,
         "sell": 0,
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 2,
         "buy": 6,
         "hold": 15,
@@ -126,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00124,
-    "institutionsPercentHeld": 0.79976,
-    "institutionsFloatPercentHeld": 0.80076,
+    "institutionsPercentHeld": 0.79980004,
+    "institutionsFloatPercentHeld": 0.80079,
     "institutionsCount": 1768
   },
   "earnings": {
@@ -2224,8 +2232,8 @@
     "regularMarketDayHigh": 62.68,
     "regularMarketDayLow": 61.805,
     "regularMarketVolume": 4204087,
-    "averageDailyVolume10Day": 6123120,
-    "averageDailyVolume3Month": 6627727,
+    "averageDailyVolume10Day": 6270350,
+    "averageDailyVolume3Month": 6620316,
     "regularMarketPreviousClose": 61.88,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 62.22,
@@ -2260,10 +2268,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026500002,
     "heldPercentInsiders": 0.00124,
-    "heldPercentInstitutions": 0.79976,
+    "heldPercentInstitutions": 0.79980004,
     "shortRatio": 3.71,
-    "shortPercentOfFloat": 0.0352,
-    "beta": 0.774,
+    "shortPercentOfFloat": 0.030199999,
+    "beta": 0.796,
     "impliedSharesOutstanding": 932450634,
     "category": null,
     "bookValue": 42.227,
@@ -2281,8 +2289,8 @@
     "lastSplitDate": 1636934400,
     "enterpriseToRevenue": 15.226,
     "enterpriseToEbitda": 17.16,
-    "52WeekChange": 0.122030854,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.17532587,
+    "SandP52WeekChange": 0.30034864,
     "lastDividendValue": 0.271,
     "lastDividendDate": "2026-03-31T00:00:00.000Z",
     "latestShareClass": null,
@@ -2312,6 +2320,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 7400,
+        "value": 461908,
+        "filerUrl": "",
+        "transactionText": "Sale at price 62.42 per share.",
+        "filerName": "BUSHORE MICHELLE",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-04-02T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 7698,
@@ -2836,7 +2856,7 @@
     "currentPrice": 62.21,
     "targetHighPrice": 75,
     "targetLowPrice": 60,
-    "targetMeanPrice": 67.85,
+    "targetMeanPrice": 67.9,
     "targetMedianPrice": 68.5,
     "recommendationMean": 2.58333,
     "recommendationKey": "hold",
@@ -2863,6 +2883,6 @@
     "profitMargins": 0.18370001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:36:09.128Z",
+  "lastUpdated": "2026-04-04T04:22:13.817Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 7,
+        "buy": 28,
+        "hold": 8,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 6,
         "buy": 27,
         "hold": 10,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 6,
         "buy": 26,
         "hold": 10,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.40549,
-    "institutionsPercentHeld": 0.44257,
-    "institutionsFloatPercentHeld": 0.74443,
-    "institutionsCount": 4732
+    "institutionsPercentHeld": 0.44259998,
+    "institutionsFloatPercentHeld": 0.74447995,
+    "institutionsCount": 4730
   },
   "earnings": {
     "maxAge": 86400,
@@ -6434,8 +6442,8 @@
     "regularMarketDayHigh": 146.44,
     "regularMarketDayLow": 140.3,
     "regularMarketVolume": 14331117,
-    "averageDailyVolume10Day": 22633640,
-    "averageDailyVolume3Month": 27471306,
+    "averageDailyVolume10Day": 21867220,
+    "averageDailyVolume3Month": 27260187,
     "regularMarketPreviousClose": 145.23,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 142.78,
@@ -6470,10 +6478,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0106,
     "heldPercentInsiders": 0.40549,
-    "heldPercentInstitutions": 0.44257,
+    "heldPercentInstitutions": 0.44259998,
     "shortRatio": 1.06,
     "shortPercentOfFloat": 0.0178,
-    "beta": 1.648,
+    "beta": 1.597,
     "impliedSharesOutstanding": 2876046000,
     "category": null,
     "bookValue": 11.666,
@@ -6491,8 +6499,8 @@
     "lastSplitDate": 971395200,
     "enterpriseToRevenue": 8.576,
     "enterpriseToEbitda": 20.026,
-    "52WeekChange": 0.1322211,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.1511482,
+    "SandP52WeekChange": 0.30034864,
     "lastDividendValue": 0.5,
     "lastDividendDate": "2026-01-09T00:00:00.000Z",
     "latestShareClass": null,
@@ -6521,6 +6529,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 16810,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "HENLEY JEFFREY O",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-03-30T00:00:00.000Z",
+        "ownership": "I"
+      },
       {
         "maxAge": 1,
         "shares": 10000,
@@ -6690,17 +6710,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 20884,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LEVEY STUART A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 17440,
         "filerUrl": "",
         "transactionText": "",
@@ -6734,6 +6743,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 20884,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEVEY STUART A",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 46460,
         "filerUrl": "",
         "transactionText": "",
@@ -6753,17 +6773,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 26337,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LEVEY STUART A",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -6795,6 +6804,17 @@
         "transactionText": "",
         "filerName": "MAGOUYRK CLAYTON M",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 26337,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEVEY STUART A",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
@@ -6860,17 +6880,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3375,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SMITH MARIA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "filerUrl": "",
         "transactionText": "",
@@ -6886,6 +6895,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "MAGOUYRK CLAYTON M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3375,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SMITH MARIA",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-04T00:00:00.000Z",
@@ -7099,28 +7119,6 @@
         "shares": 2986,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BERG JEFFREY S",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-30T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2986,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FAIRHEAD RONA ALISON",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2986,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "PARRETT WILLIAM GREGORY",
         "filerRelation": "Director",
         "moneyText": "",
@@ -7143,7 +7141,18 @@
         "shares": 2986,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CHIZEN BRUCE R",
+        "filerName": "BERG JEFFREY S",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-30T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2986,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FAIRHEAD RONA ALISON",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-30T00:00:00.000Z",
@@ -7155,6 +7164,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BOSKIN MICHAEL J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2986,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHIZEN BRUCE R",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-30T00:00:00.000Z",
@@ -7590,18 +7610,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 235918,
-        "value": 34042077,
-        "filerUrl": "",
-        "transactionText": "Sale at price 144.16 - 145.10 per share.",
-        "filerName": "SCREVEN EDWARD LLOYD",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-06-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 22500,
         "value": 3220116,
         "filerUrl": "",
@@ -7611,6 +7619,18 @@
         "moneyText": "",
         "startDate": "2024-06-20T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 235918,
+        "value": 34042077,
+        "filerUrl": "",
+        "transactionText": "Sale at price 144.16 - 145.10 per share.",
+        "filerName": "SCREVEN EDWARD LLOYD",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-06-20T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -7635,39 +7655,6 @@
         "moneyText": "",
         "startDate": "2024-06-20T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3303,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BERG JEFFREY S",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-31T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3303,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FAIRHEAD RONA ALISON",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3303,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "JAMES RENEE JO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-31T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -7707,7 +7694,40 @@
         "shares": 3303,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CHIZEN BRUCE R",
+        "filerName": "BERG JEFFREY S",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-31T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3303,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FAIRHEAD RONA ALISON",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3303,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "JAMES RENEE JO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3303,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CONRADES GEORGE HENRY",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-31T00:00:00.000Z",
@@ -7729,7 +7749,7 @@
         "shares": 3303,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MOORMAN CHARLES W IV",
+        "filerName": "CHIZEN BRUCE R",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-31T00:00:00.000Z",
@@ -7740,7 +7760,7 @@
         "shares": 3303,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CONRADES GEORGE HENRY",
+        "filerName": "MOORMAN CHARLES W IV",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-31T00:00:00.000Z",
@@ -7875,6 +7895,6 @@
     "profitMargins": 0.25298,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:33:03.856Z",
+  "lastUpdated": "2026-04-04T04:19:08.562Z",
   "source": "Static Build (yahoo-finance2)"
 }

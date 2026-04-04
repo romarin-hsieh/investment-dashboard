@@ -24,6 +24,14 @@
         "hold": 0,
         "sell": 0,
         "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 6,
+        "hold": 0,
+        "sell": 0,
+        "strongSell": 1
       }
     ],
     "maxAge": 86400
@@ -126,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02803,
-    "institutionsPercentHeld": 0.88948995,
-    "institutionsFloatPercentHeld": 0.91514,
+    "institutionsPercentHeld": 0.88947,
+    "institutionsFloatPercentHeld": 0.91512,
     "institutionsCount": 1301
   },
   "earnings": {
@@ -179,7 +187,7 @@
           "reportedDate": 1768942860
         }
       ],
-      "currentQuarterEstimate": 0.59342,
+      "currentQuarterEstimate": 0.594,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -1434,8 +1442,8 @@
     "regularMarketDayHigh": 68.88,
     "regularMarketDayLow": 65.4,
     "regularMarketVolume": 3051190,
-    "averageDailyVolume10Day": 5693450,
-    "averageDailyVolume3Month": 5103019,
+    "averageDailyVolume10Day": 5479920,
+    "averageDailyVolume3Month": 5069972,
     "regularMarketPreviousClose": 67.91,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 66.125,
@@ -1460,9 +1468,9 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": -34767904768,
-    "forwardPE": 24.729847,
+    "forwardPE": 24.58124,
     "profitMargins": 0.15847999,
-    "floatShares": 433056630,
+    "floatShares": 433052176,
     "sharesOutstanding": 445616477,
     "sharesShort": 12075322,
     "sharesShortPriorMonth": "1970-05-12T20:07:54.000Z",
@@ -1470,10 +1478,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0271,
     "heldPercentInsiders": 0.02803,
-    "heldPercentInstitutions": 0.88948995,
+    "heldPercentInstitutions": 0.88947,
     "shortRatio": 2.8,
     "shortPercentOfFloat": 0.0315,
-    "beta": 1.251,
+    "beta": 1.256,
     "impliedSharesOutstanding": 1700190293,
     "category": null,
     "bookValue": 12.04,
@@ -1490,8 +1498,8 @@
     "lastSplitFactor": "4:1",
     "lastSplitDate": 1750204800,
     "enterpriseToRevenue": -5.6,
-    "52WeekChange": 0.859529,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.87788486,
+    "SandP52WeekChange": 0.30034864,
     "lastDividendValue": 0.08,
     "lastDividendDate": "2026-02-27T00:00:00.000Z",
     "latestShareClass": null,
@@ -1519,6 +1527,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 25,
+        "value": 1710,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 68.38 per share.",
+        "filerName": "CONKLING LORI A",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 75,
@@ -2013,6 +2033,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 39786,
+        "value": 2640976,
+        "filerUrl": "",
+        "transactionText": "Sale at price 66.32 - 66.64 per share.",
+        "filerName": "NEMSER EARL H",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-07-30T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 1000000,
         "value": 66220000,
         "filerUrl": "",
@@ -2029,18 +2061,6 @@
         "value": 26488000,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 66.22 per share.",
-        "filerName": "NEMSER EARL H",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-07-30T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 39786,
-        "value": 2640976,
-        "filerUrl": "",
-        "transactionText": "Sale at price 66.32 - 66.64 per share.",
         "filerName": "NEMSER EARL H",
         "filerRelation": "Officer and Director",
         "moneyText": "",
@@ -2105,6 +2125,18 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-01-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 223922,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "GALIK MILAN",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-12-31T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2229,18 +2261,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 223922,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "GALIK MILAN",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 79975,
         "value": 0,
         "filerUrl": "",
@@ -2271,9 +2291,10 @@
     "currentPrice": 67.74,
     "targetHighPrice": 91,
     "targetLowPrice": 56,
-    "targetMeanPrice": 80.55556,
+    "targetMeanPrice": 80.44444,
     "targetMedianPrice": 83,
-    "recommendationKey": "none",
+    "recommendationMean": 1.55556,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
     "totalCash": 105503997952,
     "totalCashPerShare": 236.854,
@@ -2295,6 +2316,6 @@
     "profitMargins": 0.15847999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:34:17.420Z",
+  "lastUpdated": "2026-04-04T04:20:23.042Z",
   "source": "Static Build (yahoo-finance2)"
 }

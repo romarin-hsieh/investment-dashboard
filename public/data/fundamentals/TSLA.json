@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 5,
+        "buy": 18,
+        "hold": 17,
+        "sell": 6,
+        "strongSell": 2
+      },
+      {
+        "period": "-2m",
         "strongBuy": 4,
         "buy": 16,
         "hold": 17,
@@ -18,7 +26,7 @@
         "strongSell": 2
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 17,
         "hold": 18,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.111499995,
-    "institutionsPercentHeld": 0.44669,
-    "institutionsFloatPercentHeld": 0.50273997,
-    "institutionsCount": 5264
+    "institutionsPercentHeld": 0.44673002,
+    "institutionsFloatPercentHeld": 0.50279,
+    "institutionsCount": 5267
   },
   "earnings": {
     "maxAge": 86400,
@@ -179,7 +187,7 @@
           "reportedDate": 1769634664
         }
       ],
-      "currentQuarterEstimate": 0.40162,
+      "currentQuarterEstimate": 0.39682,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -10124,8 +10132,8 @@
     "regularMarketDayHigh": 370.26,
     "regularMarketDayLow": 359.03,
     "regularMarketVolume": 82532959,
-    "averageDailyVolume10Day": 65523680,
-    "averageDailyVolume3Month": 61218418,
+    "averageDailyVolume10Day": 67118970,
+    "averageDailyVolume3Month": 61570237,
     "regularMarketPreviousClose": 381.26,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 364.0273,
@@ -10150,7 +10158,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 1324477448192,
-    "forwardPE": 128.3042,
+    "forwardPE": 128.90598,
     "profitMargins": 0.040009998,
     "floatShares": 2812710442,
     "sharesOutstanding": 3752431984,
@@ -10160,10 +10168,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0162,
     "heldPercentInsiders": 0.111499995,
-    "heldPercentInstitutions": 0.44669,
+    "heldPercentInstitutions": 0.44673002,
     "shortRatio": 1.05,
     "shortPercentOfFloat": 0.0182,
-    "beta": 1.926,
+    "beta": 1.915,
     "impliedSharesOutstanding": 3752431984,
     "category": null,
     "bookValue": 21.897,
@@ -10181,8 +10189,8 @@
     "lastSplitDate": 1661385600,
     "enterpriseToRevenue": 13.967,
     "enterpriseToEbitda": 126.105,
-    "52WeekChange": 0.59236515,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.5456728,
+    "SandP52WeekChange": 0.30034864,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -10208,6 +10216,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 20000,
+        "value": 411400,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 20.57 per share.",
+        "filerName": "ZHU XIAOTONG",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 25809,
@@ -11347,8 +11367,8 @@
     "maxAge": 86400,
     "currentPrice": 360.59,
     "targetHighPrice": 600,
-    "targetLowPrice": 119,
-    "targetMeanPrice": 418.83316,
+    "targetLowPrice": 125,
+    "targetMeanPrice": 417.07706,
     "targetMedianPrice": 441,
     "recommendationMean": 2.4375,
     "recommendationKey": "buy",
@@ -11375,6 +11395,6 @@
     "profitMargins": 0.040009998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:33:33.366Z",
+  "lastUpdated": "2026-04-04T04:19:38.280Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00095,
-    "institutionsPercentHeld": 0.67432,
-    "institutionsFloatPercentHeld": 0.67496,
-    "institutionsCount": 5350
+    "institutionsPercentHeld": 0.67434996,
+    "institutionsFloatPercentHeld": 0.675,
+    "institutionsCount": 5354
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1769772600
         }
       ],
-      "currentQuarterEstimate": 1.85245,
+      "currentQuarterEstimate": 1.87056,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -4142,8 +4142,8 @@
     "regularMarketDayHigh": 166.9,
     "regularMarketDayLow": 159.59,
     "regularMarketVolume": 25214624,
-    "averageDailyVolume10Day": 29808150,
-    "averageDailyVolume3Month": 22894759,
+    "averageDailyVolume10Day": 29637650,
+    "averageDailyVolume3Month": 22934806,
     "regularMarketPreviousClose": 160.78,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 164.49,
@@ -4168,9 +4168,9 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 716603195392,
-    "forwardPE": 17.312822,
+    "forwardPE": 17.073013,
     "profitMargins": 0.089049995,
-    "floatShares": 4158179920,
+    "floatShares": 4158138253,
     "sharesOutstanding": 4166763453,
     "sharesShort": 48537195,
     "sharesShortPriorMonth": "1971-11-21T08:46:15.000Z",
@@ -4178,10 +4178,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0116,
     "heldPercentInsiders": 0.00095,
-    "heldPercentInstitutions": 0.67432,
+    "heldPercentInstitutions": 0.67434996,
     "shortRatio": 2.3,
     "shortPercentOfFloat": 0.012999999,
-    "beta": 0.348,
+    "beta": 0.288,
     "impliedSharesOutstanding": 4166763453,
     "category": null,
     "bookValue": 62.069,
@@ -4199,8 +4199,8 @@
     "lastSplitDate": 995500800,
     "enterpriseToRevenue": 2.212,
     "enterpriseToEbitda": 12.067,
-    "52WeekChange": 0.54092395,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.5610064,
+    "SandP52WeekChange": 0.30034864,
     "lastDividendValue": 1.03,
     "lastDividendDate": "2026-02-12T00:00:00.000Z",
     "latestShareClass": null,
@@ -4519,6 +4519,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 117800,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WILLIAMS JACK P JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 225000,
         "value": 0,
         "filerUrl": "",
@@ -4585,18 +4597,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "TAYLOR JEFFREY ALLEN",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-11-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 117800,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WILLIAMS JACK P JR",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-25T00:00:00.000Z",
         "ownership": "D"
@@ -4891,6 +4891,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 124000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WILLIAMS JACK P JR",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-11-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 225000,
         "value": 0,
         "filerUrl": "",
@@ -4957,18 +4969,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "TAYLOR JEFFREY ALLEN",
         "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2024-11-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 124000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WILLIAMS JACK P JR",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-11-26T00:00:00.000Z",
         "ownership": "D"
@@ -5063,8 +5063,13 @@
   "financialData": {
     "maxAge": 86400,
     "currentPrice": 160.69,
+    "targetHighPrice": 195,
+    "targetLowPrice": 123,
+    "targetMeanPrice": 160.16667,
+    "targetMedianPrice": 161,
     "recommendationMean": 2.34615,
     "recommendationKey": "buy",
+    "numberOfAnalystOpinions": 24,
     "totalCash": 10680999936,
     "totalCashPerShare": 2.563,
     "ebitda": 59385999360,
@@ -5087,6 +5092,6 @@
     "profitMargins": 0.089049995,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:36:57.309Z",
+  "lastUpdated": "2026-04-04T04:23:02.577Z",
   "source": "Static Build (yahoo-finance2)"
 }

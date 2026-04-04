@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 15,
-        "buy": 48,
+        "buy": 49,
         "hold": 4,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-2m",
+        "strongBuy": 15,
+        "buy": 48,
+        "hold": 4,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 15,
         "buy": 51,
         "hold": 4,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.09085,
-    "institutionsPercentHeld": 0.67248,
-    "institutionsFloatPercentHeld": 0.73968005,
-    "institutionsCount": 7634
+    "institutionsPercentHeld": 0.67252,
+    "institutionsFloatPercentHeld": 0.73972,
+    "institutionsCount": 7637
   },
   "earnings": {
     "maxAge": 86400,
@@ -10154,8 +10162,8 @@
     "regularMarketDayHigh": 212.2125,
     "regularMarketDayLow": 204.9,
     "regularMarketVolume": 30069843,
-    "averageDailyVolume10Day": 46970790,
-    "averageDailyVolume3Month": 50969759,
+    "averageDailyVolume10Day": 46472030,
+    "averageDailyVolume3Month": 50654972,
     "regularMarketPreviousClose": 210.57,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 206.55,
@@ -10180,7 +10188,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 2307382312960,
-    "forwardPE": 22.334967,
+    "forwardPE": 22.332802,
     "profitMargins": 0.108339995,
     "floatShares": 9754500547,
     "sharesOutstanding": 10734920870,
@@ -10190,10 +10198,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.007900001,
     "heldPercentInsiders": 0.09085,
-    "heldPercentInstitutions": 0.67248,
+    "heldPercentInstitutions": 0.67252,
     "shortRatio": 1.82,
     "shortPercentOfFloat": 0.0087,
-    "beta": 1.42,
+    "beta": 1.383,
     "impliedSharesOutstanding": 10734920870,
     "category": null,
     "bookValue": 38.306,
@@ -10206,13 +10214,13 @@
     "earningsQuarterlyGrowth": 0.059,
     "netIncomeToCommon": 77669998592,
     "trailingEps": 7.17,
-    "forwardEps": 9.392,
+    "forwardEps": 9.39291,
     "lastSplitFactor": "20:1",
     "lastSplitDate": 1654473600,
     "enterpriseToRevenue": 3.218,
     "enterpriseToEbitda": 15.833,
-    "52WeekChange": 0.23140347,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.1969074,
+    "SandP52WeekChange": 0.30034864,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -10553,6 +10561,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 17750,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ZAPOLSKY DAVID A.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 20903,
         "filerUrl": "",
         "transactionText": "",
@@ -10568,17 +10587,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "REYNOLDS SHELLEY L",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 17750,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ZAPOLSKY DAVID A.",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-21T00:00:00.000Z",
@@ -11989,7 +11997,7 @@
     "currentPrice": 209.77,
     "targetHighPrice": 360,
     "targetLowPrice": 175,
-    "targetMeanPrice": 281.2578,
+    "targetMeanPrice": 281.27344,
     "targetMedianPrice": 285,
     "recommendationMean": 1.33824,
     "recommendationKey": "strong_buy",
@@ -12016,6 +12024,6 @@
     "profitMargins": 0.108339995,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:33:15.017Z",
+  "lastUpdated": "2026-04-04T04:19:19.812Z",
   "source": "Static Build (yahoo-finance2)"
 }

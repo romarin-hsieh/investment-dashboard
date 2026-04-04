@@ -24,6 +24,14 @@
         "hold": 5,
         "sell": 0,
         "strongSell": 2
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 0,
+        "buy": 3,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 2
       }
     ],
     "maxAge": 86400
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.13352999,
-    "institutionsPercentHeld": 0.41749,
-    "institutionsFloatPercentHeld": 0.48183,
-    "institutionsCount": 688
+    "institutionsPercentHeld": 0.41751,
+    "institutionsFloatPercentHeld": 0.48186,
+    "institutionsCount": 691
   },
   "earnings": {
     "maxAge": 86400,
@@ -714,8 +722,8 @@
     "regularMarketDayHigh": 92.94,
     "regularMarketDayLow": 78.912,
     "regularMarketVolume": 16840234,
-    "averageDailyVolume10Day": 13641160,
-    "averageDailyVolume3Month": 14802262,
+    "averageDailyVolume10Day": 14311100,
+    "averageDailyVolume3Month": 14836748,
     "regularMarketPreviousClose": 83.99,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 79.2,
@@ -750,10 +758,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1565,
     "heldPercentInsiders": 0.13352999,
-    "heldPercentInstitutions": 0.41749,
+    "heldPercentInstitutions": 0.41751,
     "shortRatio": 3.89,
     "shortPercentOfFloat": 0.2009,
-    "beta": 2.867,
+    "beta": 2.8,
     "impliedSharesOutstanding": 382027409,
     "category": null,
     "bookValue": 6.451,
@@ -769,8 +777,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 388.6,
     "enterpriseToEbitda": -116.477,
-    "52WeekChange": 3.184853,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 3.3422408,
+    "SandP52WeekChange": 0.30034864,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -797,6 +805,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 123437,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WISNIEWSKI SCOTT",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-03-24T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 100000,
@@ -829,18 +849,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GUPTA SHANTI B.",
         "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2026-03-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 123437,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WISNIEWSKI SCOTT",
-        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2026-03-24T00:00:00.000Z",
         "ownership": "D"
@@ -1340,18 +1348,6 @@
       {
         "maxAge": 1,
         "shares": 25000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YAO HUIWEN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25000,
         "value": 603750,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 24.15 per share.",
@@ -1360,6 +1356,18 @@
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YAO HUIWEN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1496,18 +1504,6 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YAO HUIWEN",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-10-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 100000,
         "value": 2322000,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 23.22 per share.",
@@ -1516,6 +1512,18 @@
         "moneyText": "",
         "startDate": "2024-10-03T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YAO HUIWEN",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-10-03T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1743,7 +1751,8 @@
     "targetLowPrice": 41.2,
     "targetMeanPrice": 88.525,
     "targetMedianPrice": 90,
-    "recommendationKey": "none",
+    "recommendationMean": 2.6,
+    "recommendationKey": "hold",
     "numberOfAnalystOpinions": 8,
     "totalCash": 2335683072,
     "totalCashPerShare": 7.982,
@@ -1766,6 +1775,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:32:50.967Z",
+  "lastUpdated": "2026-04-04T04:18:55.687Z",
   "source": "Static Build (yahoo-finance2)"
 }

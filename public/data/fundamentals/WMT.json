@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 9,
+        "buy": 30,
+        "hold": 3,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 9,
         "buy": 31,
         "hold": 2,
         "sell": 1,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.44935,
-    "institutionsPercentHeld": 0.38781,
-    "institutionsFloatPercentHeld": 0.70427,
-    "institutionsCount": 5223
+    "institutionsPercentHeld": 0.38778,
+    "institutionsFloatPercentHeld": 0.70422,
+    "institutionsCount": 5225
   },
   "earnings": {
     "maxAge": 86400,
@@ -7434,8 +7442,8 @@
     "regularMarketDayHigh": 125.9,
     "regularMarketDayLow": 124.15,
     "regularMarketVolume": 11301119,
-    "averageDailyVolume10Day": 22330650,
-    "averageDailyVolume3Month": 31340131,
+    "averageDailyVolume10Day": 21727720,
+    "averageDailyVolume3Month": 31026554,
     "regularMarketPreviousClose": 124.74,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 125.45,
@@ -7460,7 +7468,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 1067110498304,
-    "forwardPE": 38.30145,
+    "forwardPE": 38.295387,
     "profitMargins": 0.0307,
     "floatShares": 4375095044,
     "sharesOutstanding": 7972402501,
@@ -7470,10 +7478,10 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0095,
     "heldPercentInsiders": 0.44935,
-    "heldPercentInstitutions": 0.38781,
+    "heldPercentInstitutions": 0.38778,
     "shortRatio": 3.23,
     "shortPercentOfFloat": 0.0095,
-    "beta": 0.657,
+    "beta": 0.661,
     "impliedSharesOutstanding": 7972402501,
     "category": null,
     "bookValue": 12.501,
@@ -7491,8 +7499,8 @@
     "lastSplitDate": 1708905600,
     "enterpriseToRevenue": 1.496,
     "enterpriseToEbitda": 24.237,
-    "52WeekChange": 0.49945903,
-    "SandP52WeekChange": 0.29586446,
+    "52WeekChange": 0.5005368,
+    "SandP52WeekChange": 0.30034864,
     "lastDividendValue": 0.248,
     "lastDividendDate": "2026-03-20T00:00:00.000Z",
     "latestShareClass": null,
@@ -7520,6 +7528,42 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 458,
+        "value": 56920,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 124.28 per share.",
+        "filerName": "PENNER GREGORY BOYD",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 282,
+        "value": 35047,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 124.28 per share.",
+        "filerName": "FRIAR SARAH J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 231,
+        "value": 28709,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 124.28 per share.",
+        "filerName": "MORITZ ROBERT EDWARD JR.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 19416,
@@ -7642,24 +7686,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 90164,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAINEY JOHN D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 110971,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "KUMAR SURESH",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-03-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 90164,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAINEY JOHN D",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-09T00:00:00.000Z",
         "ownership": "D"
@@ -9086,7 +9130,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FRIAR SARAH J",
+        "filerName": "FLYNN TIMOTHY PATRICK",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-05T00:00:00.000Z",
@@ -9098,7 +9142,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FLYNN TIMOTHY PATRICK",
+        "filerName": "FRIAR SARAH J",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-05T00:00:00.000Z",
@@ -9118,24 +9162,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 1016000,
-        "value": 100432391,
-        "filerUrl": "",
-        "transactionText": "Sale at price 98.52 - 99.20 per share.",
-        "filerName": "WALTON FAMILY HOLDINGS TRUST",
-        "filerRelation": "Trustee",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2200,
         "value": 217800,
         "filerUrl": "",
         "transactionText": "Sale at price 98.58 - 99.46 per share.",
         "filerName": "RAINEY JOHN D",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1016000,
+        "value": 100432391,
+        "filerUrl": "",
+        "transactionText": "Sale at price 98.52 - 99.20 per share.",
+        "filerName": "WALTON FAMILY HOLDINGS TRUST",
+        "filerRelation": "Trustee",
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
@@ -9283,42 +9327,6 @@
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 342,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "STEPHENSON RANDALL L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 285,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MAYER MARISSA A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 342,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WALTON STEUART L.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -9355,6 +9363,6 @@
     "profitMargins": 0.0307,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-03T04:36:53.973Z",
+  "lastUpdated": "2026-04-04T04:22:58.619Z",
   "source": "Static Build (yahoo-finance2)"
 }
