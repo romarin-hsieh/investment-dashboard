@@ -11,7 +11,7 @@
       },
       {
         "period": "-1m",
-        "strongBuy": 8,
+        "strongBuy": 7,
         "buy": 40,
         "hold": 2,
         "sell": 0,
@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 8,
+        "buy": 40,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 9,
         "buy": 40,
         "hold": 1,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.102,
         "position": 482707302,
-        "value": 151777653432,
+        "value": 161209758238,
         "pctChange": 0.0082
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0802,
         "position": 379894948,
-        "value": 119450365717,
+        "value": 126873516247,
         "pctChange": 0.0052
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0401,
         "position": 190084351,
-        "value": 59768221092,
+        "value": 63482470935,
         "pctChange": 0.0272
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.03,
         "position": 141864077,
-        "value": 44606320692,
+        "value": 47378345968,
         "pctChange": -0.0315
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.025999999,
         "position": 123257172,
-        "value": 38755751689,
+        "value": 41164197883,
         "pctChange": -0.090900004
       },
       {
@@ -82,7 +90,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.025999999,
         "position": 123186236,
-        "value": 38733447283,
+        "value": 41140507387,
         "pctChange": 0.0196
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0235,
         "position": 111277280,
-        "value": 34988914335,
+        "value": 37163273337,
         "pctChange": 0.014099999
       },
       {
@@ -100,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0198,
         "position": 93758850,
-        "value": 29480594518,
+        "value": 31312643248,
         "pctChange": -0.501
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0182,
         "position": 86361719,
-        "value": 27154714672,
+        "value": 28842223399,
         "pctChange": -0.0154
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.018099999,
         "position": 85546083,
-        "value": 26898254251,
+        "value": 28569825443,
         "pctChange": 0.03
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01968,
-    "institutionsPercentHeld": 0.79480004,
-    "institutionsFloatPercentHeld": 0.81074995,
-    "institutionsCount": 5973
+    "institutionsPercentHeld": 0.79484004,
+    "institutionsFloatPercentHeld": 0.8108,
+    "institutionsCount": 5981
   },
   "earnings": {
     "maxAge": 86400,
@@ -245,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-07T12:45:08.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 500,
+        "priorPriceTarget": 500
+      },
       {
         "epochGradeDate": "2026-03-06T15:18:40.000Z",
         "firm": "Morgan Stanley",
@@ -6071,24 +6089,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.024252756,
-    "postMarketChange": 7.6257935,
-    "postMarketTime": "2026-04-06T23:59:53.000Z",
-    "postMarketPrice": 322.0558,
+    "postMarketChangePercent": 0.037518337,
+    "postMarketChange": 12.529999,
+    "postMarketTime": "2026-04-07T23:59:59.000Z",
+    "postMarketPrice": 346.5,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.00038148198,
-    "regularMarketChange": -0.119995,
-    "regularMarketTime": "2026-04-06T20:00:01.000Z",
+    "regularMarketChangePercent": 0.062144198,
+    "regularMarketChange": 19.54,
+    "regularMarketTime": "2026-04-07T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 314.43,
-    "regularMarketDayHigh": 316.35,
-    "regularMarketDayLow": 310.28,
-    "regularMarketVolume": 12051403,
+    "regularMarketPrice": 333.97,
+    "regularMarketDayHigh": 334.15,
+    "regularMarketDayLow": 321.8,
+    "regularMarketVolume": 28781018,
     "averageDailyVolume10Day": 21347610,
     "averageDailyVolume3Month": 26283911,
-    "regularMarketPreviousClose": 314.55,
+    "regularMarketPreviousClose": 314.43,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 315.04,
+    "regularMarketOpen": 326.71,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -6104,15 +6122,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 1490798641152
+    "marketCap": 1583443214336
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 1541172887552,
-    "forwardPE": 17.625425,
+    "enterpriseValue": 1633120157696,
+    "forwardPE": 18.720743,
     "profitMargins": 0.36571997,
-    "floatShares": 4675674218,
+    "floatShares": 4675721565,
     "sharesOutstanding": 4734668184,
     "sharesShort": 52541817,
     "sharesShortPriorMonth": "1971-08-01T15:30:31.000Z",
@@ -6120,14 +6138,14 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0111,
     "heldPercentInsiders": 0.01968,
-    "heldPercentInstitutions": 0.79480004,
+    "heldPercentInstitutions": 0.79484004,
     "shortRatio": 2.03,
     "shortPercentOfFloat": 0.0113,
     "beta": 1.253,
     "impliedSharesOutstanding": 4741273799,
     "category": null,
     "bookValue": 16.865,
-    "priceToBook": 18.643936,
+    "priceToBook": 19.80255,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-11-02T00:00:00.000Z",
@@ -6135,12 +6153,12 @@
     "mostRecentQuarter": "2026-02-01T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.335,
     "netIncomeToCommon": 24971999232,
-    "trailingEps": 5.13,
+    "trailingEps": 5.44,
     "forwardEps": 17.83957,
     "lastSplitFactor": "10:1",
     "lastSplitDate": 1721001600,
-    "enterpriseToRevenue": 22.571,
-    "enterpriseToEbitda": 41.409,
+    "enterpriseToRevenue": 23.917,
+    "enterpriseToEbitda": 43.88,
     "52WeekChange": 1.0151894,
     "SandP52WeekChange": 0.32693863,
     "lastDividendValue": 0.65,
@@ -6172,30 +6190,6 @@
     "transactions": [
       {
         "maxAge": 1,
-        "shares": 64379,
-        "value": 20819103,
-        "filerUrl": "",
-        "transactionText": "Sale at price 317.95 - 328.77 per share.",
-        "filerName": "VELAGA S. RAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 64834,
-        "value": 20966675,
-        "filerUrl": "",
-        "transactionText": "Sale at price 317.97 - 328.70 per share.",
-        "filerName": "KAWWAS CHARLIE B",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 83682,
         "value": 27061694,
         "filerUrl": "",
@@ -6214,6 +6208,30 @@
         "transactionText": "Sale at price 318.05 - 328.52 per share.",
         "filerName": "SPEARS KIRSTEN MARGRETA",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 64379,
+        "value": 20819103,
+        "filerUrl": "",
+        "transactionText": "Sale at price 317.95 - 328.77 per share.",
+        "filerName": "VELAGA S. RAM",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 64834,
+        "value": 20966675,
+        "filerUrl": "",
+        "transactionText": "Sale at price 317.97 - 328.70 per share.",
+        "filerName": "KAWWAS CHARLIE B",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-17T00:00:00.000Z",
         "ownership": "D"
@@ -6352,18 +6370,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3163,
-        "value": 1053112,
-        "filerUrl": "",
-        "transactionText": "Sale at price 322.33 - 345.99 per share.",
-        "filerName": "KAWWAS CHARLIE B",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 38281,
         "value": 12542615,
         "filerUrl": "",
@@ -6388,14 +6394,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 400,
-        "value": 0,
+        "shares": 3163,
+        "value": 1053112,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "PAGE JUSTINE F.",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 322.33 - 345.99 per share.",
+        "filerName": "KAWWAS CHARLIE B",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-12-16T00:00:00.000Z",
+        "startDate": "2025-12-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -6406,6 +6412,18 @@
         "transactionText": "Sale at price 337.21 - 347.14 per share.",
         "filerName": "BRAZEAL MARK DAVID",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 400,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "PAGE JUSTINE F.",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -6508,11 +6526,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 6397,
-        "value": 2256460,
+        "shares": 27204,
+        "value": 9592387,
         "filerUrl": "",
-        "transactionText": "Sale at price 343.93 - 365.32 per share.",
-        "filerName": "KAWWAS CHARLIE B",
+        "transactionText": "Sale at price 343.13 - 365.15 per share.",
+        "filerName": "BRAZEAL MARK DAVID",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-17T00:00:00.000Z",
@@ -6520,11 +6538,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 27204,
-        "value": 9592387,
+        "shares": 6397,
+        "value": 2256460,
         "filerUrl": "",
-        "transactionText": "Sale at price 343.13 - 365.15 per share.",
-        "filerName": "BRAZEAL MARK DAVID",
+        "transactionText": "Sale at price 343.93 - 365.32 per share.",
+        "filerName": "KAWWAS CHARLIE B",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-17T00:00:00.000Z",
@@ -6616,6 +6634,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 40000,
+        "value": 10731720,
+        "filerUrl": "",
+        "transactionText": "Sale at price 268.29 per share.",
+        "filerName": "TAN HOCK E",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3000,
         "value": 795390,
         "filerUrl": "",
@@ -6628,14 +6658,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 40000,
-        "value": 10731720,
+        "shares": 9450,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 268.29 per share.",
-        "filerName": "TAN HOCK E",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "BRAZEAL MARK DAVID",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-06-26T00:00:00.000Z",
+        "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -6649,18 +6679,6 @@
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9450,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "BRAZEAL MARK DAVID",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6712,24 +6730,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 190000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "TAN HOCK E",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 12664250,
         "filerUrl": "",
         "transactionText": "Sale at price 253.28 per share.",
         "filerName": "BRAZEAL MARK DAVID",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-23T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 190000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "TAN HOCK E",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-23T00:00:00.000Z",
         "ownership": "D"
@@ -6836,6 +6854,18 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YOU HARRY L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1602,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SAMUELI HENRY",
         "filerRelation": "Director",
         "moneyText": "",
@@ -6873,18 +6903,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "HAO KENNETH Y",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1602,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YOU HARRY L",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-21T00:00:00.000Z",
@@ -6944,8 +6962,8 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SPEARS KIRSTEN MARGRETA",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "BRAZEAL MARK DAVID",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
@@ -6956,22 +6974,10 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BRAZEAL MARK DAVID",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 118760,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "SPEARS KIRSTEN MARGRETA",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2025-03-04T00:00:00.000Z",
+        "startDate": "2025-03-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -6982,6 +6988,18 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BRAZEAL MARK DAVID",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 118760,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SPEARS KIRSTEN MARGRETA",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-03-04T00:00:00.000Z",
         "ownership": "D"
@@ -7036,24 +7054,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 130000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "TAN HOCK E",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 20168,
         "value": 4815937,
         "filerUrl": "",
         "transactionText": "Sale at price 238.79 per share.",
         "filerName": "BRAZEAL MARK DAVID",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 130000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "TAN HOCK E",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-12-24T00:00:00.000Z",
         "ownership": "D"
@@ -7348,18 +7366,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2520,
-        "value": 4613997,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1830.95 per share.",
-        "filerName": "KAWWAS CHARLIE B",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-06-17T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 312,
         "value": 561600,
         "filerUrl": "",
@@ -7369,6 +7375,18 @@
         "moneyText": "",
         "startDate": "2024-06-17T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2520,
+        "value": 4613997,
+        "filerUrl": "",
+        "transactionText": "Sale at price 1830.95 per share.",
+        "filerName": "KAWWAS CHARLIE B",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-06-17T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -7401,6 +7419,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "PAGE JUSTINE F.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-04-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 189,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YOU HARRY L",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-04-22T00:00:00.000Z",
@@ -7456,18 +7486,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 189,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YOU HARRY L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 18601,
         "value": 0,
         "filerUrl": "",
@@ -7477,18 +7495,6 @@
         "moneyText": "",
         "startDate": "2024-04-15T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2500,
-        "value": 3291150,
-        "filerUrl": "",
-        "transactionText": "Sale at price 1316.46 per share.",
-        "filerName": "BRAZEAL MARK DAVID",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-04-10T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -7504,14 +7510,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 3000,
-        "value": 4029435,
+        "shares": 2500,
+        "value": 3291150,
         "filerUrl": "",
-        "transactionText": "Sale at price 1343.14 per share.",
-        "filerName": "SPEARS KIRSTEN MARGRETA",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Sale at price 1316.46 per share.",
+        "filerName": "BRAZEAL MARK DAVID",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2024-04-05T00:00:00.000Z",
+        "startDate": "2024-04-10T00:00:00.000Z",
         "ownership": "D"
       }
     ],
@@ -7519,7 +7525,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 314.43,
+    "currentPrice": 333.97,
     "targetHighPrice": 630,
     "targetLowPrice": 360,
     "targetMeanPrice": 471.5531,
@@ -7549,6 +7555,6 @@
     "profitMargins": 0.36571997,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-07T04:36:58.841Z",
+  "lastUpdated": "2026-04-08T04:40:26.554Z",
   "source": "Static Build (yahoo-finance2)"
 }
