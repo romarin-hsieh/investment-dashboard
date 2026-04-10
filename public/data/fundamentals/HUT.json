@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 5,
-        "buy": 10,
+        "buy": 11,
         "hold": 0,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-2m",
+        "strongBuy": 5,
+        "buy": 10,
+        "hold": 0,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 5,
         "buy": 10,
         "hold": 0,
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.076,
         "position": 8423285,
-        "value": 517442400,
+        "value": 534204719,
         "pctChange": 0.0546
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.072,
         "position": 7978357,
-        "value": 490110472,
+        "value": 505987386,
         "pctChange": 0.0324
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Srs Investment Management, Llc",
         "pctHeld": 0.025899999,
         "position": 2869797,
-        "value": 176291630,
+        "value": 182002520,
         "pctChange": 1
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Sachem Head Capital Management, LP",
         "pctHeld": 0.0255,
         "position": 2825000,
-        "value": 173539750,
+        "value": 179161494,
         "pctChange": 1
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Value Aligned Research Advisors, LLC                          ",
         "pctHeld": 0.0251,
         "position": 2788516,
-        "value": 171298538,
+        "value": 176847679,
         "pctChange": 0.4307
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0234,
         "position": 2593916,
-        "value": 159344260,
+        "value": 164506147,
         "pctChange": 0.0317
       },
       {
@@ -91,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0223,
         "position": 2476020,
-        "value": 152101909,
+        "value": 157029183,
         "pctChange": 0.0073
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0215,
         "position": 2385318,
-        "value": 146530085,
+        "value": 151276863,
         "pctChange": 0.2142
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Oasis Management Co Ltd.",
         "pctHeld": 0.0208,
         "position": 2307683,
-        "value": 141760967,
+        "value": 146353251,
         "pctChange": 6.6229
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Ameriprise Financial, Inc.",
         "pctHeld": 0.0189,
         "position": 2098747,
-        "value": 128926028,
+        "value": 133102530,
         "pctChange": -0.2984
       }
     ]
@@ -128,7 +136,7 @@
     "insidersPercentHeld": 0.09656999,
     "institutionsPercentHeld": 0.77978,
     "institutionsFloatPercentHeld": 0.86313003,
-    "institutionsCount": 440
+    "institutionsCount": 441
   },
   "earnings": {
     "maxAge": 86400,
@@ -240,6 +248,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-09T15:07:19.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 80,
+        "priorPriceTarget": 68
+      },
       {
         "epochGradeDate": "2026-02-27T18:52:02.000Z",
         "firm": "Canaccord Genuity",
@@ -1216,24 +1234,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0076737944,
-    "postMarketChange": -0.4714012,
-    "postMarketTime": "2026-04-08T23:59:36.000Z",
-    "postMarketPrice": 60.9586,
+    "postMarketChangePercent": 0.0077262963,
+    "postMarketChange": 0.49000168,
+    "postMarketTime": "2026-04-09T23:59:33.000Z",
+    "postMarketPrice": 63.91,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.16654,
-    "regularMarketChange": 8.77,
-    "regularMarketTime": "2026-04-08T20:00:02.000Z",
+    "regularMarketChangePercent": 0.0323946,
+    "regularMarketChange": 1.99,
+    "regularMarketTime": "2026-04-09T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 61.43,
-    "regularMarketDayHigh": 63.66,
-    "regularMarketDayLow": 56.99,
-    "regularMarketVolume": 11095720,
+    "regularMarketPrice": 63.42,
+    "regularMarketDayHigh": 67.06,
+    "regularMarketDayLow": 60.5488,
+    "regularMarketVolume": 8355707,
     "averageDailyVolume10Day": 4395740,
     "averageDailyVolume3Month": 4752056,
-    "regularMarketPreviousClose": 52.66,
+    "regularMarketPreviousClose": 61.43,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 57.27,
+    "regularMarketOpen": 60.93,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -1249,13 +1267,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 6811805696
+    "marketCap": 7032471040
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 7463768064,
-    "forwardPE": -19.358213,
+    "enterpriseValue": 7684433408,
+    "forwardPE": -19.985313,
     "profitMargins": -0.96185,
     "floatShares": 84683510,
     "sharesOutstanding": 110887284,
@@ -1272,7 +1290,7 @@
     "impliedSharesOutstanding": 110887284,
     "category": null,
     "bookValue": 12.916,
-    "priceToBook": 4.7561164,
+    "priceToBook": 4.9101887,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1283,8 +1301,8 @@
     "forwardEps": -3.17333,
     "lastSplitFactor": "1:5",
     "lastSplitDate": 1701648000,
-    "enterpriseToRevenue": 31.745,
-    "enterpriseToEbitda": -34.877,
+    "enterpriseToRevenue": 32.683,
+    "enterpriseToEbitda": -35.909,
     "52WeekChange": 3.474729,
     "SandP52WeekChange": 0.32693863,
     "latestShareClass": null,
@@ -1658,11 +1676,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 61.43,
+    "currentPrice": 63.42,
     "targetHighPrice": 136,
     "targetLowPrice": 55,
-    "targetMeanPrice": 75.9375,
-    "targetMedianPrice": 72,
+    "targetMeanPrice": 76.6875,
+    "targetMedianPrice": 74.5,
     "recommendationMean": 1.3125,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 16,
@@ -1687,6 +1705,6 @@
     "profitMargins": -0.96185,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-09T04:39:11.589Z",
+  "lastUpdated": "2026-04-10T04:52:53.930Z",
   "source": "Static Build (yahoo-finance2)"
 }
