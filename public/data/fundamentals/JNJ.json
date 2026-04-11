@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0998,
         "position": 240349660,
-        "value": 57998775867,
+        "value": 57313781537,
         "pctChange": 0.015800001
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0867,
         "position": 208781159,
-        "value": 50380980968,
+        "value": 49785956576,
         "pctChange": 0.0073
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0556,
         "position": 133869843,
-        "value": 32304131487,
+        "value": 31922603660,
         "pctChange": 0.0126
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.024300002,
         "position": 58558238,
-        "value": 14130688268,
+        "value": 13963797826,
         "pctChange": -0.5007
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0241,
         "position": 57953747,
-        "value": 13984818547,
+        "value": 13819650898,
         "pctChange": 0.0309
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.019199999,
         "position": 46325589,
-        "value": 11178827768,
+        "value": 11046800263,
         "pctChange": -0.0395
       },
       {
@@ -99,7 +99,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0139,
         "position": 33459884,
-        "value": 8074204526,
+        "value": 7978844163,
         "pctChange": 0.0479
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Farm Mutual Automobile Insurance Co",
         "pctHeld": 0.013099999,
         "position": 31590952,
-        "value": 7623212549,
+        "value": 7533178626,
         "pctChange": 0
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.012200001,
         "position": 29281433,
-        "value": 7065902525,
+        "value": 6982450709,
         "pctChange": -0.0231
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0117999995,
         "position": 28333601,
-        "value": 6837181188,
+        "value": 6756430684,
         "pctChange": -0.003
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00061,
-    "institutionsPercentHeld": 0.75671,
-    "institutionsFloatPercentHeld": 0.75717,
-    "institutionsCount": 5513
+    "institutionsPercentHeld": 0.7568,
+    "institutionsFloatPercentHeld": 0.75725996,
+    "institutionsCount": 5517
   },
   "earnings": {
     "maxAge": 86400,
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-10T15:27:06.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 267,
+        "priorPriceTarget": 262
+      },
       {
         "epochGradeDate": "2026-03-30T16:54:43.000Z",
         "firm": "RBC Capital",
@@ -3869,28 +3879,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00078737905,
-    "postMarketChange": 0.19000244,
-    "postMarketTime": "2026-04-10T00:00:00.000Z",
-    "postMarketPrice": 241.5,
+    "postMarketChangePercent": 0.0022645025,
+    "postMarketChange": 0.5399933,
+    "postMarketTime": "2026-04-11T00:00:00.000Z",
+    "postMarketPrice": 239,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.000041419396,
-    "regularMarketChange": 0.00999451,
-    "regularMarketTime": "2026-04-09T20:00:02.000Z",
+    "regularMarketChangePercent": -0.011810499,
+    "regularMarketChange": -2.84999,
+    "regularMarketTime": "2026-04-10T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 241.31,
-    "regularMarketDayHigh": 244.2,
-    "regularMarketDayLow": 240.54,
-    "regularMarketVolume": 4337851,
-    "averageDailyVolume10Day": 6803460,
-    "averageDailyVolume3Month": 8820200,
-    "regularMarketPreviousClose": 241.3,
+    "regularMarketPrice": 238.46,
+    "regularMarketDayHigh": 242.26,
+    "regularMarketDayLow": 237.91,
+    "regularMarketVolume": 4959168,
+    "averageDailyVolume10Day": 6862830,
+    "averageDailyVolume3Month": 8791633,
+    "regularMarketPreviousClose": 241.31,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 241.3,
+    "regularMarketOpen": 242,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "JNJ",
     "underlyingSymbol": null,
@@ -3902,13 +3912,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 581532712960
+    "marketCap": 574664540160
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 610763735040,
-    "forwardPE": 19.185009,
+    "enterpriseValue": 603895496704,
+    "forwardPE": 18.958426,
     "profitMargins": 0.28456,
     "floatShares": 2406091296,
     "sharesOutstanding": 2408613219,
@@ -3918,14 +3928,14 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0097,
     "heldPercentInsiders": 0.00061,
-    "heldPercentInstitutions": 0.75671,
+    "heldPercentInstitutions": 0.7568,
     "shortRatio": 2.67,
     "shortPercentOfFloat": 0.0108,
     "beta": 0.329,
     "impliedSharesOutstanding": 2409898936,
     "category": null,
     "bookValue": 33.865,
-    "priceToBook": 7.1256456,
+    "priceToBook": 7.041488,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-28T00:00:00.000Z",
@@ -3937,10 +3947,10 @@
     "forwardEps": 12.57888,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 992390400,
-    "enterpriseToRevenue": 6.484,
-    "enterpriseToEbitda": 18.051,
-    "52WeekChange": 0.60646665,
-    "SandP52WeekChange": 0.32693863,
+    "enterpriseToRevenue": 6.411,
+    "enterpriseToEbitda": 17.848,
+    "52WeekChange": 0.5448303,
+    "SandP52WeekChange": 0.26099288,
     "lastDividendValue": 1.3,
     "lastDividendDate": "2026-02-24T00:00:00.000Z",
     "latestShareClass": null,
@@ -3972,9 +3982,9 @@
       {
         "maxAge": 1,
         "shares": 4075,
-        "value": 1010070,
+        "value": 471355,
         "filerUrl": "",
-        "transactionText": "Sale at price 247.87 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 115.67 per share.",
         "filerName": "DECKER ROBERT J",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -3984,9 +3994,9 @@
       {
         "maxAge": 1,
         "shares": 4075,
-        "value": 471355,
+        "value": 1010070,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 115.67 per share.",
+        "transactionText": "Sale at price 247.87 per share.",
         "filerName": "DECKER ROBERT J",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -4027,6 +4037,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 62080,
+        "value": 15109759,
+        "filerUrl": "",
+        "transactionText": "Sale at price 242.70 - 243.76 per share.",
+        "filerName": "SWANSON JAMES D",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-02-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4073,18 +4095,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 115.67 - 131.94 per share.",
         "filerName": "WOLK JOSEPH J",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-02-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 62080,
-        "value": 15109759,
-        "filerUrl": "",
-        "transactionText": "Sale at price 242.70 - 243.76 per share.",
-        "filerName": "SWANSON JAMES D",
-        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2026-02-17T00:00:00.000Z",
         "ownership": "D"
@@ -4443,6 +4453,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 6018,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SWANSON JAMES D",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 5640,
         "filerUrl": "",
         "transactionText": "",
@@ -4547,17 +4568,6 @@
         "transactionText": "",
         "filerName": "DECKER ROBERT J",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 6018,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SWANSON JAMES D",
-        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
         "ownership": "D"
@@ -4731,7 +4741,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 241.31,
+    "currentPrice": 238.46,
     "targetHighPrice": 285,
     "targetLowPrice": 155,
     "targetMeanPrice": 241.70833,
@@ -4761,6 +4771,6 @@
     "profitMargins": 0.28456,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-10T04:53:05.544Z",
+  "lastUpdated": "2026-04-11T04:27:22.439Z",
   "source": "Static Build (yahoo-finance2)"
 }
