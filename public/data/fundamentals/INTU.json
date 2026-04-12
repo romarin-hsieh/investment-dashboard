@@ -3,6 +3,14 @@
     "trend": [
       {
         "period": "0m",
+        "strongBuy": 6,
+        "buy": 23,
+        "hold": 6,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
         "strongBuy": 5,
         "buy": 23,
         "hold": 7,
@@ -10,7 +18,7 @@
         "strongSell": 0
       },
       {
-        "period": "-1m",
+        "period": "-2m",
         "strongBuy": 6,
         "buy": 21,
         "hold": 7,
@@ -18,7 +26,7 @@
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 6,
         "buy": 21,
         "hold": 7,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.023540001,
-    "institutionsPercentHeld": 0.90483004,
-    "institutionsFloatPercentHeld": 0.92664003,
-    "institutionsCount": 3028
+    "institutionsPercentHeld": 0.90454,
+    "institutionsFloatPercentHeld": 0.92635,
+    "institutionsCount": 3018
   },
   "earnings": {
     "maxAge": 86400,
@@ -5106,18 +5114,18 @@
     "postMarketTime": "2026-04-10T23:59:50.000Z",
     "postMarketPrice": 351.8,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.029721601,
+    "regularMarketChangePercent": -0.029721584,
     "regularMarketChange": -10.75,
     "regularMarketTime": "2026-04-10T20:00:02.000Z",
     "priceHint": 2,
     "regularMarketPrice": 350.94,
     "regularMarketDayHigh": 360.4,
     "regularMarketDayLow": 342.105,
-    "regularMarketVolume": 7587830,
+    "regularMarketVolume": 7577857,
     "averageDailyVolume10Day": 3785180,
-    "averageDailyVolume3Month": 4186864,
+    "averageDailyVolume3Month": 4229252,
     "regularMarketPreviousClose": 361.69,
-    "regularMarketSource": "FREE_REALTIME",
+    "regularMarketSource": "DELAYED",
     "regularMarketOpen": 360.1,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
@@ -5150,7 +5158,7 @@
     "dateShortInterest": "2026-03-13T00:00:00.000Z",
     "sharesPercentSharesOut": 0.026199998,
     "heldPercentInsiders": 0.023540001,
-    "heldPercentInstitutions": 0.90483004,
+    "heldPercentInstitutions": 0.90454,
     "shortRatio": 1.47,
     "shortPercentOfFloat": 0.03,
     "beta": 1.213,
@@ -6934,7 +6942,7 @@
     "targetLowPrice": 425,
     "targetMeanPrice": 603.49,
     "targetMedianPrice": 600,
-    "recommendationMean": 1.54286,
+    "recommendationMean": 1.51429,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 33,
     "totalCash": 2975000064,
@@ -6959,6 +6967,6 @@
     "profitMargins": 0.2157,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-11T04:27:15.038Z",
+  "lastUpdated": "2026-04-12T04:52:40.883Z",
   "source": "Static Build (yahoo-finance2)"
 }
