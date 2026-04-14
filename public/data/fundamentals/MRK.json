@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.103,
         "position": 254322763,
-        "value": 30879869417,
+        "value": 30556880362,
         "pctChange": 0.0087
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0887,
         "position": 219095465,
-        "value": 26602570959,
+        "value": 26324320454,
         "pctChange": 0.0196
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.048600003,
         "position": 120040168,
-        "value": 14575276978,
+        "value": 14422826368,
         "pctChange": 0.015700001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Wellington Management Group, LLP",
         "pctHeld": 0.035,
         "position": 86435458,
-        "value": 10494993152,
+        "value": 10385220410,
         "pctChange": 0.14819999
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024300002,
         "position": 60047984,
-        "value": 7291026107,
+        "value": 7214765369,
         "pctChange": 0.0042
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.0197,
         "position": 48563804,
-        "value": 5896616992,
+        "value": 5834941124,
         "pctChange": -0.0956
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0182,
         "position": 44946021,
-        "value": 5457345787,
+        "value": 5400264491,
         "pctChange": 0.0081
       },
       {
@@ -108,7 +108,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0165,
         "position": 40836566,
-        "value": 4958375768,
+        "value": 4906513467,
         "pctChange": 0.2217
       },
       {
@@ -117,7 +117,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0154,
         "position": 37981502,
-        "value": 4611713903,
+        "value": 4563477523,
         "pctChange": 0.051799998
       },
       {
@@ -126,7 +126,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0117999995,
         "position": 29199978,
-        "value": 3545461275,
+        "value": 3508377401,
         "pctChange": -0.5852
       }
     ]
@@ -253,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-13T20:34:44.000Z",
+        "firm": "UBS",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 145,
+        "priorPriceTarget": 130
+      },
       {
         "epochGradeDate": "2026-04-06T18:20:50.000Z",
         "firm": "JP Morgan",
@@ -3679,24 +3689,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0056654317,
-    "postMarketChange": -0.6878967,
-    "postMarketTime": "2026-04-10T23:52:55.000Z",
-    "postMarketPrice": 120.7321,
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0102706,
-    "regularMarketChange": -1.26,
-    "regularMarketTime": "2026-04-10T20:00:18.000Z",
+    "postMarketChangePercent": -0.0009987744,
+    "postMarketChange": -0.12000275,
+    "postMarketTime": "2026-04-13T23:59:36.000Z",
+    "postMarketPrice": 120.03,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.0104595,
+    "regularMarketChange": -1.27,
+    "regularMarketTime": "2026-04-13T20:00:29.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 121.42,
-    "regularMarketDayHigh": 123.01,
-    "regularMarketDayLow": 120.95,
-    "regularMarketVolume": 6591599,
-    "averageDailyVolume10Day": 8677880,
-    "averageDailyVolume3Month": 11440460,
-    "regularMarketPreviousClose": 122.68,
+    "regularMarketPrice": 120.15,
+    "regularMarketDayHigh": 121.29,
+    "regularMarketDayLow": 119.06,
+    "regularMarketVolume": 4727706,
+    "averageDailyVolume10Day": 8478690,
+    "averageDailyVolume3Month": 11346948,
+    "regularMarketPreviousClose": 121.42,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 122.96,
+    "regularMarketOpen": 121.03,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -3707,18 +3717,18 @@
     "shortName": "Merck & Company, Inc.",
     "longName": "Merck & Co., Inc.",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 300197838848
+    "marketCap": 297057910784
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 336222846976,
-    "forwardPE": 12.428094,
+    "enterpriseValue": 333082886144,
+    "forwardPE": 12.298102,
     "profitMargins": 0.28078,
     "floatShares": 2468411452,
     "sharesOutstanding": 2469879206,
@@ -3735,7 +3745,7 @@
     "impliedSharesOutstanding": 2472392004,
     "category": null,
     "bookValue": 21.258,
-    "priceToBook": 5.711732,
+    "priceToBook": 5.65199,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -3743,14 +3753,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.208,
     "netIncomeToCommon": 18254000128,
-    "trailingEps": 7.29,
+    "trailingEps": 7.28,
     "forwardEps": 9.7698,
     "lastSplitFactor": "1048:1000",
     "lastSplitDate": 1622678400,
-    "enterpriseToRevenue": 5.172,
-    "enterpriseToEbitda": 11.552,
-    "52WeekChange": 0.5336617,
-    "SandP52WeekChange": 0.26099288,
+    "enterpriseToRevenue": 5.123,
+    "enterpriseToEbitda": 11.444,
+    "52WeekChange": 0.53272104,
+    "SandP52WeekChange": 0.276026,
     "lastDividendValue": 0.85,
     "lastDividendDate": "2026-03-16T00:00:00.000Z",
     "latestShareClass": null,
@@ -3841,18 +3851,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 37685,
-        "value": 4557025,
-        "filerUrl": "",
-        "transactionText": "Sale at price 120.92 per share.",
-        "filerName": "DELUCA RICHARD ROBERT JR.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5000,
         "value": 609525,
         "filerUrl": "",
@@ -3889,6 +3887,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 37685,
+        "value": 4557025,
+        "filerUrl": "",
+        "transactionText": "Sale at price 120.92 per share.",
+        "filerName": "DELUCA RICHARD ROBERT JR.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 20000,
         "value": 2437676,
         "filerUrl": "",
@@ -3897,18 +3907,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 47434,
-        "value": 5599327,
-        "filerUrl": "",
-        "transactionText": "Sale at price 117.38 - 118.35 per share.",
-        "filerName": "DAVIS ROBERT M",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-02-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3986,25 +3984,13 @@
       {
         "maxAge": 1,
         "shares": 47434,
-        "value": 5094412,
+        "value": 5599327,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 107.40 per share.",
+        "transactionText": "Sale at price 117.38 - 118.35 per share.",
         "filerName": "DAVIS ROBERT M",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2026-01-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 12264,
-        "value": 1317154,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 107.40 per share.",
-        "filerName": "DELUCA RICHARD ROBERT JR.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-26T00:00:00.000Z",
+        "startDate": "2026-02-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4110,6 +4096,30 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 107.40 per share.",
         "filerName": "SMART DALTON E. III",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 47434,
+        "value": 5094412,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 107.40 per share.",
+        "filerName": "DAVIS ROBERT M",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-01-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 12264,
+        "value": 1317154,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 107.40 per share.",
+        "filerName": "DELUCA RICHARD ROBERT JR.",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-26T00:00:00.000Z",
@@ -4270,24 +4280,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2832,
-        "value": 250000,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 88.25 per share.",
-        "filerName": "THULIN INGE G",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-02-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2361,
         "value": 209551,
         "filerUrl": "",
         "transactionText": "Sale at price 88.76 per share.",
         "filerName": "DOWNING CRISTAL N.",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2832,
+        "value": 250000,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 88.25 per share.",
+        "filerName": "THULIN INGE G",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-02-06T00:00:00.000Z",
         "ownership": "D"
@@ -4302,30 +4312,6 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-02-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 95275,
-        "value": 9331234,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 97.94 per share.",
-        "filerName": "DAVIS ROBERT M",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-01-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25438,
-        "value": 2491398,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 97.94 per share.",
-        "filerName": "DELUCA RICHARD ROBERT JR.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-27T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4438,6 +4424,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 95275,
+        "value": 9331234,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 97.94 per share.",
+        "filerName": "DAVIS ROBERT M",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25438,
+        "value": 2491398,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 97.94 per share.",
+        "filerName": "DELUCA RICHARD ROBERT JR.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-01-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 36901,
         "value": 4250995,
         "filerUrl": "",
@@ -4446,17 +4456,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-08-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 27126,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DELUCA RICHARD ROBERT JR.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -4495,6 +4494,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 27126,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DELUCA RICHARD ROBERT JR.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-05-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2262,
         "filerUrl": "",
         "transactionText": "",
@@ -4521,7 +4531,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 121.42,
+    "currentPrice": 120.15,
     "targetHighPrice": 150,
     "targetLowPrice": 100,
     "targetMeanPrice": 129.25926,
@@ -4551,6 +4561,6 @@
     "profitMargins": 0.28078,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-13T05:04:42.192Z",
+  "lastUpdated": "2026-04-14T04:52:23.676Z",
   "source": "Static Build (yahoo-finance2)"
 }
