@@ -6,8 +6,8 @@
         "strongBuy": 5,
         "buy": 9,
         "hold": 10,
-        "sell": 0,
-        "strongSell": 1
+        "sell": 1,
+        "strongSell": 0
       },
       {
         "period": "-1m",
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0998,
         "position": 240349660,
-        "value": 57707954832,
+        "value": 57364252912,
         "pctChange": 0.015800001
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0867,
         "position": 208781159,
-        "value": 50128357550,
+        "value": 49829798836,
         "pctChange": 0.0073
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0556,
         "position": 133869843,
-        "value": 32142150121,
+        "value": 31950715183,
         "pctChange": 0.0126
       },
       {
@@ -72,7 +72,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.024300002,
         "position": 58558238,
-        "value": 14059833301,
+        "value": 13976094556,
         "pctChange": -0.5007
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0241,
         "position": 57953747,
-        "value": 13914695008,
+        "value": 13831820690,
         "pctChange": 0.0309
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.019199999,
         "position": 46325589,
-        "value": 11122774201,
+        "value": 11056528241,
         "pctChange": -0.0395
       },
       {
@@ -99,7 +99,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0139,
         "position": 33459884,
-        "value": 8033718352,
+        "value": 7985870453,
         "pctChange": 0.0479
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Farm Mutual Automobile Insurance Co",
         "pctHeld": 0.013099999,
         "position": 31590952,
-        "value": 7584987768,
+        "value": 7539812455,
         "pctChange": 0
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.012200001,
         "position": 29281433,
-        "value": 7030472242,
+        "value": 6988599560,
         "pctChange": -0.0231
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0117999995,
         "position": 28333601,
-        "value": 6802897773,
+        "value": 6762380498,
         "pctChange": -0.003
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00061,
-    "institutionsPercentHeld": 0.75694,
-    "institutionsFloatPercentHeld": 0.7574,
-    "institutionsCount": 5530
+    "institutionsPercentHeld": 0.75698996,
+    "institutionsFloatPercentHeld": 0.75745004,
+    "institutionsCount": 5531
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,13 +187,15 @@
           "reportedDate": 1776162000
         }
       ],
-      "currentQuarterEstimate": 2.88376,
+      "currentQuarterEstimate": 2.84309,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
+      "earningsDate": [
+        "2026-07-15T12:30:00.000Z"
+      ],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
@@ -251,6 +253,36 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-15T19:00:16.000Z",
+        "firm": "Barclays",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 255,
+        "priorPriceTarget": 234
+      },
+      {
+        "epochGradeDate": "2026-04-15T16:26:57.000Z",
+        "firm": "Stifel",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 250,
+        "priorPriceTarget": 220
+      },
+      {
+        "epochGradeDate": "2026-04-15T15:46:30.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 263,
+        "priorPriceTarget": 240
+      },
       {
         "epochGradeDate": "2026-04-10T15:27:06.000Z",
         "firm": "Morgan Stanley",
@@ -3877,24 +3909,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.00041651854,
-    "postMarketChange": -0.1000061,
-    "postMarketTime": "2026-04-14T23:59:43.000Z",
-    "postMarketPrice": 240,
+    "postMarketChangePercent": -0.003896563,
+    "postMarketChange": -0.9299927,
+    "postMarketTime": "2026-04-15T23:59:33.000Z",
+    "postMarketPrice": 237.74,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.00899311,
-    "regularMarketChange": 2.14,
-    "regularMarketTime": "2026-04-14T20:00:02.000Z",
+    "regularMarketChangePercent": -0.0059558805,
+    "regularMarketChange": -1.43001,
+    "regularMarketTime": "2026-04-15T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 240.1,
-    "regularMarketDayHigh": 242.19,
-    "regularMarketDayLow": 233.25,
-    "regularMarketVolume": 10125357,
-    "averageDailyVolume10Day": 7175410,
-    "averageDailyVolume3Month": 8659020,
-    "regularMarketPreviousClose": 237.96,
+    "regularMarketPrice": 238.67,
+    "regularMarketDayHigh": 240.42,
+    "regularMarketDayLow": 236.75,
+    "regularMarketVolume": 6420271,
+    "averageDailyVolume10Day": 7066120,
+    "averageDailyVolume3Month": 8599683,
+    "regularMarketPreviousClose": 240.1,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 235.01,
+    "regularMarketOpen": 239.935,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -3905,20 +3937,19 @@
     "shortName": "Johnson & Johnson",
     "longName": "Johnson & Johnson",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 578616754176
+    "marketCap": 575170609152
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 602690551808,
-    "forwardPE": 19.07301,
-    "profitMargins": 0.28456,
-    "floatShares": 2406091296,
+    "enterpriseValue": 604401565696,
+    "forwardPE": 18.827188,
+    "profitMargins": 0.21834,
+    "floatShares": 2406067197,
     "sharesOutstanding": 2408613219,
     "sharesShort": 22265636,
     "sharesShortPriorMonth": "1970-10-18T08:31:19.000Z",
@@ -3926,29 +3957,29 @@
     "dateShortInterest": "2026-03-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0092,
     "heldPercentInsiders": 0.00061,
-    "heldPercentInstitutions": 0.75694,
+    "heldPercentInstitutions": 0.75698996,
     "shortRatio": 2.9,
     "shortPercentOfFloat": 0.010299999,
     "beta": 0.329,
     "impliedSharesOutstanding": 2409898936,
     "category": null,
     "bookValue": 33.865,
-    "priceToBook": 7.0899158,
+    "priceToBook": 7.047689,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-28T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-28T00:00:00.000Z",
-    "mostRecentQuarter": "2025-12-28T00:00:00.000Z",
-    "earningsQuarterlyGrowth": 0.491,
-    "netIncomeToCommon": 26804000768,
-    "trailingEps": 11.02,
-    "forwardEps": 12.62844,
+    "mostRecentQuarter": "2026-03-29T00:00:00.000Z",
+    "earningsQuarterlyGrowth": -0.524,
+    "netIncomeToCommon": 21040001024,
+    "trailingEps": 11.03,
+    "forwardEps": 12.69528,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 992390400,
-    "enterpriseToRevenue": 6.398,
-    "enterpriseToEbitda": 17.812,
-    "52WeekChange": 0.56000257,
-    "SandP52WeekChange": 0.3206551,
+    "enterpriseToRevenue": 6.272,
+    "enterpriseToEbitda": 17.722,
+    "52WeekChange": 0.5156537,
+    "SandP52WeekChange": 0.32942438,
     "lastDividendValue": 1.3,
     "lastDividendDate": "2026-02-24T00:00:00.000Z",
     "latestShareClass": null,
@@ -3980,9 +4011,9 @@
       {
         "maxAge": 1,
         "shares": 4075,
-        "value": 471355,
+        "value": 1010070,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 115.67 per share.",
+        "transactionText": "Sale at price 247.87 per share.",
         "filerName": "DECKER ROBERT J",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -3992,9 +4023,9 @@
       {
         "maxAge": 1,
         "shares": 4075,
-        "value": 1010070,
+        "value": 471355,
         "filerUrl": "",
-        "transactionText": "Sale at price 247.87 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 115.67 per share.",
         "filerName": "DECKER ROBERT J",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -4123,6 +4154,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 3736,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DECKER ROBERT J",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10020,
         "filerUrl": "",
         "transactionText": "",
@@ -4182,17 +4224,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "TAUBERT JENNIFER L",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3736,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DECKER ROBERT J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
@@ -4451,6 +4482,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 2852,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DECKER ROBERT J",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 6018,
         "filerUrl": "",
         "transactionText": "",
@@ -4555,17 +4597,6 @@
         "transactionText": "",
         "filerName": "WOLK JOSEPH J",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2852,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DECKER ROBERT J",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
         "ownership": "D"
@@ -4739,36 +4770,30 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 240.1,
+    "currentPrice": 238.67,
     "targetHighPrice": 285,
     "targetLowPrice": 155,
-    "targetMeanPrice": 241.91667,
-    "targetMedianPrice": 247,
-    "recommendationMean": 2.12,
+    "targetMeanPrice": 249.75,
+    "targetMedianPrice": 254.5,
+    "recommendationMean": 2.16,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 24,
     "totalCash": 20102000640,
     "totalCashPerShare": 8.341,
-    "ebitda": 33835999232,
+    "ebitda": 34104750080,
     "totalDebt": 49332998144,
-    "quickRatio": 0.689,
-    "currentRatio": 1.028,
-    "totalRevenue": 94193000448,
+    "totalRevenue": 96361996288,
     "debtToEquity": 60.499,
-    "revenuePerShare": 39.126,
-    "returnOnAssets": 0.086780004,
-    "returnOnEquity": 0.35029998,
-    "grossProfits": 64128000000,
-    "freeCashflow": 16633249792,
-    "operatingCashflow": 24529999872,
-    "earningsGrowth": 0.486,
-    "revenueGrowth": 0.091,
-    "grossMargins": 0.68081003,
-    "ebitdaMargins": 0.35922,
-    "operatingMargins": 0.23966,
-    "profitMargins": 0.28456,
+    "revenuePerShare": 39.939,
+    "grossProfits": 65522999296,
+    "earningsGrowth": -0.529,
+    "revenueGrowth": 0.099,
+    "grossMargins": 0.67997,
+    "ebitdaMargins": 0.35391998,
+    "operatingMargins": 0.26723,
+    "profitMargins": 0.21834,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-15T04:51:50.684Z",
+  "lastUpdated": "2026-04-16T04:57:22.869Z",
   "source": "Static Build (yahoo-finance2)"
 }
