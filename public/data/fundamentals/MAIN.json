@@ -21,6 +21,14 @@
         "period": "-2m",
         "strongBuy": 2,
         "buy": 0,
+        "hold": 5,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 0,
         "hold": 6,
         "sell": 0,
         "strongSell": 0
@@ -37,7 +45,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.030299999,
         "position": 2734461,
-        "value": 158133884,
+        "value": 146184282,
         "pctChange": 0.063200004
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.0126,
         "position": 1132346,
-        "value": 65483571,
+        "value": 60535216,
         "pctChange": -0.5375
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Corient Private Wealth LLC",
         "pctHeld": 0.0099,
         "position": 890461,
-        "value": 51495361,
+        "value": 47604044,
         "pctChange": 38.8078
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0095999995,
         "position": 867861,
-        "value": 50188403,
+        "value": 46395848,
         "pctChange": -0.12020001
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Legal & General Group PLC",
         "pctHeld": 0.008,
         "position": 719967,
-        "value": 41635692,
+        "value": 38489435,
         "pctChange": 0.1523
       },
       {
@@ -82,7 +90,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0068,
         "position": 611876,
-        "value": 35384790,
+        "value": 32710890,
         "pctChange": -0.2942
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Adell, Harriman & Carpenter Inc.",
         "pctHeld": 0.0053,
         "position": 478435,
-        "value": 27667896,
+        "value": 25577134,
         "pctChange": 0.052699998
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Muzinich & Co., Inc.",
         "pctHeld": 0.0049,
         "position": 440012,
-        "value": 25445894,
+        "value": 23523041,
         "pctChange": 0.1985
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0047,
         "position": 419755,
-        "value": 24274432,
+        "value": 22440101,
         "pctChange": -0.055999998
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.004,
         "position": 356799,
-        "value": 20633686,
+        "value": 19074474,
         "pctChange": 6.3726
       }
     ]
@@ -126,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.04024,
-    "institutionsPercentHeld": 0.24576001,
-    "institutionsFloatPercentHeld": 0.25606,
+    "institutionsPercentHeld": 0.24582,
+    "institutionsFloatPercentHeld": 0.25612,
     "institutionsCount": 487
   },
   "earnings": {
@@ -188,7 +196,7 @@
       "earningsDate": [
         "2026-05-07T20:00:00.000Z"
       ],
-      "isEarningsDateEstimate": true
+      "isEarningsDateEstimate": false
     },
     "financialsChart": {
       "yearly": [
@@ -891,24 +899,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0003457832,
-    "postMarketChange": 0.019996643,
-    "postMarketTime": "2026-04-15T23:53:16.000Z",
-    "postMarketPrice": 57.85,
+    "postMarketChangePercent": 0.007482258,
+    "postMarketChange": 0.40000153,
+    "postMarketTime": "2026-04-16T23:57:33.000Z",
+    "postMarketPrice": 53.86,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0255365,
-    "regularMarketChange": 1.44,
-    "regularMarketTime": "2026-04-15T20:00:02.000Z",
+    "regularMarketChangePercent": -0.0755664,
+    "regularMarketChange": -4.37,
+    "regularMarketTime": "2026-04-16T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 57.83,
-    "regularMarketDayHigh": 58.33,
-    "regularMarketDayLow": 56.63,
-    "regularMarketVolume": 783750,
-    "averageDailyVolume10Day": 695780,
-    "averageDailyVolume3Month": 751260,
-    "regularMarketPreviousClose": 56.39,
+    "regularMarketPrice": 53.46,
+    "regularMarketDayHigh": 57.71,
+    "regularMarketDayLow": 53.01,
+    "regularMarketVolume": 1734348,
+    "averageDailyVolume10Day": 792400,
+    "averageDailyVolume3Month": 769398,
+    "regularMarketPreviousClose": 57.83,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 56.7,
+    "regularMarketOpen": 57.69,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -924,13 +932,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5210762752
+    "marketCap": 4817004032
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 7637280256,
-    "forwardPE": 14.160137,
+    "enterpriseValue": 7243522048,
+    "forwardPE": 13.090107,
     "profitMargins": 0.87113,
     "floatShares": 86402423,
     "sharesOutstanding": 90104831,
@@ -940,14 +948,14 @@
     "dateShortInterest": "2026-03-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0916,
     "heldPercentInsiders": 0.04024,
-    "heldPercentInstitutions": 0.24576001,
+    "heldPercentInstitutions": 0.24582,
     "shortRatio": 8.27,
     "shortPercentOfFloat": 0.0949,
     "beta": 0.807,
     "impliedSharesOutstanding": 90104831,
     "category": null,
     "bookValue": 33.327,
-    "priceToBook": 1.7352297,
+    "priceToBook": 1.6041048,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -957,10 +965,11 @@
     "netIncomeToCommon": 493398016,
     "trailingEps": 5.52,
     "forwardEps": 4.084,
+    "pegRatio": 1.7605,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 13.484,
-    "52WeekChange": 0.08499062,
-    "SandP52WeekChange": 0.32942438,
+    "enterpriseToRevenue": 12.789,
+    "52WeekChange": 0.028076887,
+    "SandP52WeekChange": 0.36506534,
     "lastDividendValue": 0.26,
     "lastDividendDate": "2026-04-08T00:00:00.000Z",
     "latestShareClass": null,
@@ -991,6 +1000,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 81609,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HYZAK DWAYNE L",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 58940,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MAGDOL DAVID L",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 33550,
@@ -1047,30 +1080,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NELSON RYAN ROBERT",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 81609,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HYZAK DWAYNE L",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 58940,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MAGDOL DAVID L",
-        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2026-04-01T00:00:00.000Z",
         "ownership": "D"
@@ -1185,6 +1194,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2165,
+        "value": 85000,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 - 53.10 per share.",
+        "filerName": "LANE BRIAN E",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2071,
         "value": 80000,
         "filerUrl": "",
@@ -1221,11 +1242,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 2165,
-        "value": 85000,
+        "shares": 565,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 - 53.10 per share.",
-        "filerName": "LANE BRIAN E",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "FOSTER VINCENT D",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
@@ -1245,14 +1266,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 565,
+        "shares": 74216,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FOSTER VINCENT D",
-        "filerRelation": "Director",
+        "filerName": "HYZAK DWAYNE L",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 53697,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MAGDOL DAVID L",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1317,30 +1350,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 74216,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HYZAK DWAYNE L",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 53697,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MAGDOL DAVID L",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 120000,
         "value": 6966000,
         "filerUrl": "",
@@ -1365,11 +1374,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 1658,
-        "value": 0,
+        "shares": 85000,
+        "value": 4860330,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "GRIFFIN JON KEVIN",
+        "transactionText": "Sale at price 57.18 - 58.05 per share.",
+        "filerName": "FOSTER VINCENT D",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
@@ -1377,11 +1386,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 85000,
-        "value": 4860330,
+        "shares": 1658,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 57.18 - 58.05 per share.",
-        "filerName": "FOSTER VINCENT D",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "GRIFFIN JON KEVIN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
@@ -1461,6 +1470,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2162,
+        "value": 80000,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 - 50.88 per share.",
+        "filerName": "LANE BRIAN E",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2358,
         "value": 90000,
         "filerUrl": "",
@@ -1497,11 +1518,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 2162,
-        "value": 80000,
+        "shares": 590,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 - 50.88 per share.",
-        "filerName": "LANE BRIAN E",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "FOSTER VINCENT D",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-05-06T00:00:00.000Z",
@@ -1518,30 +1539,19 @@
         "moneyText": "",
         "startDate": "2024-05-06T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 590,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FOSTER VINCENT D",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 57.83,
+    "currentPrice": 53.46,
     "targetHighPrice": 74,
     "targetLowPrice": 58,
     "targetMeanPrice": 63.83333,
     "targetMedianPrice": 62.5,
-    "recommendationKey": "none",
+    "recommendationMean": 2.71429,
+    "recommendationKey": "hold",
     "numberOfAnalystOpinions": 6,
     "totalCash": 41959000,
     "totalCashPerShare": 0.466,
@@ -1564,6 +1574,6 @@
     "profitMargins": 0.87113,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-16T04:57:31.821Z",
+  "lastUpdated": "2026-04-17T04:55:22.015Z",
   "source": "Static Build (yahoo-finance2)"
 }
