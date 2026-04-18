@@ -5,9 +5,9 @@
         "period": "0m",
         "strongBuy": 5,
         "buy": 8,
-        "hold": 11,
+        "hold": 12,
         "sell": 1,
-        "strongSell": 1
+        "strongSell": 0
       },
       {
         "period": "-1m",
@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1034,
         "position": 429761518,
-        "value": 65315153669,
+        "value": 62934277745,
         "pctChange": 0.0007
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0749,
         "position": 311222419,
-        "value": 47299581909,
+        "value": 45575411798,
         "pctChange": 0.0045
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0493,
         "position": 205114242,
-        "value": 31173261622,
+        "value": 30036930099,
         "pctChange": -0.0077
       },
       {
@@ -72,7 +72,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0317,
         "position": 131721707,
-        "value": 20019064467,
+        "value": 19289327094,
         "pctChange": 0.0343
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0231,
         "position": 95923254,
-        "value": 14578415733,
+        "value": 14047001549,
         "pctChange": -0.0023999999
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.018099999,
         "position": 75152366,
-        "value": 11421656263,
+        "value": 11005312660,
         "pctChange": 0.0113
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0179,
         "position": 74457855,
-        "value": 11316104484,
+        "value": 10903608467,
         "pctChange": -0.0061000003
       },
       {
@@ -108,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.016900001,
         "position": 70376165,
-        "value": 10695769256,
+        "value": 10305885774,
         "pctChange": -0.53110003
       },
       {
@@ -117,7 +117,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0152,
         "position": 63362667,
-        "value": 9629857859,
+        "value": 9278829110,
         "pctChange": 0.1082
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Bank Of New York Mellon Corporation",
         "pctHeld": 0.0112,
         "position": 46605353,
-        "value": 7083081349,
+        "value": 6824888007,
         "pctChange": 0.0115
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00086000003,
-    "institutionsPercentHeld": 0.67617995,
-    "institutionsFloatPercentHeld": 0.67676,
-    "institutionsCount": 5407
+    "institutionsPercentHeld": 0.67658997,
+    "institutionsFloatPercentHeld": 0.67717004,
+    "institutionsCount": 5415
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1769772600
         }
       ],
-      "currentQuarterEstimate": 1.27319,
+      "currentQuarterEstimate": 1.12161,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -253,6 +253,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-17T17:59:37.000Z",
+        "firm": "BNP Paribas",
+        "toGrade": "Neutral",
+        "fromGrade": "Underperform",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 165,
+        "priorPriceTarget": 125
+      },
+      {
+        "epochGradeDate": "2026-04-17T14:15:17.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 171,
+        "priorPriceTarget": 172
+      },
       {
         "epochGradeDate": "2026-04-10T15:25:30.000Z",
         "firm": "TD Cowen",
@@ -4189,28 +4209,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.00011114278,
-    "postMarketChange": -0.01689148,
-    "postMarketTime": "2026-04-17T00:00:00.000Z",
-    "postMarketPrice": 151.9631,
+    "postMarketChangePercent": -0.0007511651,
+    "postMarketChange": -0.11000061,
+    "postMarketTime": "2026-04-18T00:00:00.000Z",
+    "postMarketPrice": 146.33,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.0199316,
-    "regularMarketChange": 2.97,
-    "regularMarketTime": "2026-04-16T20:02:16.000Z",
+    "regularMarketChangePercent": -0.0364521,
+    "regularMarketChange": -5.53999,
+    "regularMarketTime": "2026-04-17T20:00:12.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 151.98,
-    "regularMarketDayHigh": 152.78,
-    "regularMarketDayLow": 149.345,
-    "regularMarketVolume": 15161023,
-    "averageDailyVolume10Day": 21321930,
-    "averageDailyVolume3Month": 22969090,
-    "regularMarketPreviousClose": 149.01,
+    "regularMarketPrice": 146.44,
+    "regularMarketDayHigh": 146.8,
+    "regularMarketDayLow": 141.97,
+    "regularMarketVolume": 28519142,
+    "averageDailyVolume10Day": 21322540,
+    "averageDailyVolume3Month": 22969190,
+    "regularMarketPreviousClose": 151.98,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 149.53,
+    "regularMarketOpen": 144.86,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "XOM",
     "underlyingSymbol": null,
@@ -4222,13 +4242,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 631713890304
+    "marketCap": 608686571520
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 680310734848,
-    "forwardPE": 15.271686,
+    "enterpriseValue": 657226858496,
+    "forwardPE": 14.638511,
     "profitMargins": 0.089049995,
     "floatShares": 4158096585,
     "sharesOutstanding": 4156559415,
@@ -4238,14 +4258,14 @@
     "dateShortInterest": "2026-03-31T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0128,
     "heldPercentInsiders": 0.00086000003,
-    "heldPercentInstitutions": 0.67617995,
+    "heldPercentInstitutions": 0.67658997,
     "shortRatio": 2.13,
     "shortPercentOfFloat": 0.0143,
     "beta": 0.288,
     "impliedSharesOutstanding": 4156559415,
     "category": null,
     "bookValue": 62.069,
-    "priceToBook": 2.4485652,
+    "priceToBook": 2.35931,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -4254,12 +4274,12 @@
     "earningsQuarterlyGrowth": -0.146,
     "netIncomeToCommon": 28843999232,
     "trailingEps": 6.71,
-    "forwardEps": 9.95175,
-    "pegRatio": 1.3939,
+    "forwardEps": 10.00375,
+    "pegRatio": 1.39,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 995500800,
-    "enterpriseToRevenue": 2.1,
-    "enterpriseToEbitda": 11.456,
+    "enterpriseToRevenue": 2.029,
+    "enterpriseToEbitda": 11.067,
     "52WeekChange": 0.4426198,
     "SandP52WeekChange": 0.36506534,
     "lastDividendValue": 1.03,
@@ -5123,10 +5143,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 151.98,
+    "currentPrice": 146.44,
     "targetHighPrice": 195,
     "targetLowPrice": 123,
-    "targetMeanPrice": 164.125,
+    "targetMeanPrice": 165.375,
     "targetMedianPrice": 167,
     "recommendationMean": 2.30769,
     "recommendationKey": "buy",
@@ -5153,6 +5173,6 @@
     "profitMargins": 0.089049995,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-17T04:56:21.575Z",
+  "lastUpdated": "2026-04-18T04:39:09.826Z",
   "source": "Static Build (yahoo-finance2)"
 }
