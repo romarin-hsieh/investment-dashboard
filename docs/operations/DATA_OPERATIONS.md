@@ -818,6 +818,6 @@ npm ci
 ## 🔗 Related Documents
 
 - [ADD_NEW_SYMBOL.md](./ADD_NEW_SYMBOL.md) - 新增股票 SOP
-- [TECHNICAL_INDICATORS.md](./TECHNICAL_INDICATORS.md) - 技術指標說明
-- [COMPONENT_DEPENDENCIES.md](./COMPONENT_DEPENDENCIES.md) - 組件依賴關係
+- [TECHNICAL_INDICATORS.md](../specs/TECHNICAL_INDICATORS.md) - 技術指標說明
+- [COMPONENT_DEPENDENCIES.md](../architecture/COMPONENT_DEPENDENCIES.md) - 組件依賴關係
 - `.agent/workflows/etl-docs-maintenance.md` - Agent 自動維護規則
