@@ -108,7 +108,7 @@ graph LR
 ### Smart Money Trend (Chip MFI)
 We combine Dataroma data (Elite Funds Activity) with avg stock price to generate a dual-axis trend chart, helping identifying accumulation/distribution phases.
 
-Detailed specification can be found in `docs/SMART_MONEY_SCORE_SPEC.md`.
+Detailed specification can be found in [SMART_MONEY_SCORE_SPEC.md](SMART_MONEY_SCORE_SPEC.md).
 
 ## Update Frequency
 - **Crawler**: Runs daily via Github Actions (`dataroma_stock_update.yml`).
