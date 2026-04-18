@@ -23,7 +23,7 @@
 | English | 繁體中文 | Definition |
 |---|---|---|
 | **Launchpad** | 發射台狀態 | Classification: Z > 0.8 ∧ X > 0 (high volatility compression + positive trend). Potential breakout candidate. |
-| **Climax** | 高潮狀態 | Classification: Y > 0.9 (extreme momentum). Potential exhaustion zone. |
+| **Climax** | 動能狀態 | Classification: Y > 0.9 (extreme momentum). Potential exhaustion zone. |
 | **Dip Buy** | 回檔承接 | Classification: X > 0 ∧ Y < 0.2 (intact uptrend + oversold momentum). |
 | **McGinley Dynamic** | 麥金利動態均線 | Adaptive moving average used as the X-axis trend reference. |
 | **Stochastic RSI (StochRSI)** | 隨機 RSI | Momentum oscillator used as the Y-axis energy reference. |
