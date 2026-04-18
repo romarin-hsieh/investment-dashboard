@@ -24,7 +24,7 @@ Before any code change, verify:
 ### 2. Naming Conventions
 - [ ] JavaScript: `camelCase` variables, `PascalCase` classes
 - [ ] Python: `snake_case` variables/functions, `PascalCase` classes
-- [ ] Files follow project patterns (see `docs/CODING_STANDARDS.md`)
+- [ ] Files follow project patterns (see `docs/contributing/CODING_STANDARDS.md`)
 
 ### 3. TypeScript Coverage
 - [ ] New frontend code uses TypeScript (`.ts`, `.tsx`)
@@ -42,6 +42,6 @@ Before any code change, verify:
 - [ ] Validate generated data files have expected schema
 
 ## Reference Documents
-- [Coding Standards](file:///docs/CODING_STANDARDS.md)
-- [Data Operations](file:///docs/DATA_OPERATIONS.md)
-- [Component Dependencies](file:///docs/COMPONENT_DEPENDENCIES.md)
+- [Coding Standards](file:///docs/contributing/CODING_STANDARDS.md)
+- [Data Operations](file:///docs/operations/DATA_OPERATIONS.md)
+- [Component Dependencies](file:///docs/architecture/COMPONENT_DEPENDENCIES.md)

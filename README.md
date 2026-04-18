@@ -113,4 +113,4 @@ investment-dashboard/
 ## 📜 Documentation
 
 *   [**Technical Manual (REQUIREMENTS.md)**](REQUIREMENTS.md): Deep dive into data pipelines, caching strategies, and performance limits.
-*   [**Quant Strategy Dossier**](docs/QUANT_STRATEGY_DOSSIER.md): Mathematical definition of the Kinetic State indicators.
+*   [**Quant Strategy Dossier**](docs/specs/QUANT_STRATEGY_DOSSIER.md): Mathematical definition of the Kinetic State indicators.
