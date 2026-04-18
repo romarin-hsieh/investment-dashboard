@@ -100,3 +100,22 @@
   --info-bg:      #1e3336;
   --info-fg:      #a8c4c7;
 }
+
+/* === Focus indicator baseline =========================================
+ * Applies to any keyboard-focused interactive element (Tab navigation).
+ * Mouse clicks do NOT trigger :focus-visible, so sighted mouse users see
+ * no ring. Keyboard users get a high-contrast 2px ring in brand colour.
+ *
+ * Components can override per-element if a different style is needed
+ * (e.g., offset: 0 for tight controls), but this baseline guarantees
+ * every interactive element is discoverable via keyboard.
+ *
+ * Do not remove without adding per-element :focus-visible fallback
+ * elsewhere — removing this reintroduces the WCAG 2.4.7 failure that
+ * WS-A PR-A2 was created to fix.
+ * ===================================================================== */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+

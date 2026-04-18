@@ -182,10 +182,17 @@ export default {
 }
 
 .search-input:focus {
+  /* Mouse/click focus: suppress default ring, show only border change */
   outline: none;
   border-color: var(--primary-color);
   background: var(--bg-card);
-  box-shadow: 0 0 0 3px var(--shadow-color); /* Soft ring if shadow-color defined, or fallback */
+}
+
+.search-input:focus-visible {
+  /* Keyboard focus: restore a high-contrast ring using the brand colour.
+   * Matches the global :focus-visible baseline in styles/tokens.css. */
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 

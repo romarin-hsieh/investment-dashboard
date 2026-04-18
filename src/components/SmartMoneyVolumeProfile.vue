@@ -379,8 +379,15 @@ export default {
     cursor: pointer;
 }
 .range-selector:focus {
+    /* Mouse focus: border-only, no ring */
     outline: none;
     border-color: var(--primary-color);
+}
+
+.range-selector:focus-visible {
+    /* Keyboard focus: restore ring for accessibility */
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 .header h3 {
     margin: 0;
