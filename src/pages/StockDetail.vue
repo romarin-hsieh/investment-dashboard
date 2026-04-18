@@ -997,7 +997,7 @@ export default {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, #6c757d, #5a6268);
+  background: linear-gradient(135deg, var(--grey-550), var(--grey-650));
   color: white;
   border: none;
   border-radius: 6px;
@@ -1011,7 +1011,7 @@ export default {
 }
 
 .detail-btn:hover {
-  background: linear-gradient(135deg, #5a6268, #495057);
+  background: linear-gradient(135deg, var(--grey-650), var(--grey-700));
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
 }
@@ -1305,7 +1305,7 @@ export default {
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 0px;
 }
 
@@ -1317,18 +1317,18 @@ export default {
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    color: #6c757d;
+    color: var(--grey-550);
     transition: all 0.2s;
 }
 
 .tab-btn:hover {
-    color: #007bff;
+    color: var(--blue-500);
     background: rgba(0, 123, 255, 0.05);
 }
 
 .tab-btn.active {
-    color: #007bff;
-    border-bottom-color: #007bff;
+    color: var(--blue-500);
+    border-bottom-color: var(--blue-500);
 }
 
 /* Tactical Grid for Overview Tab */

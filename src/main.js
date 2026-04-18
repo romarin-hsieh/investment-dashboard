@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
-import './style.css'
+import './styles/tokens.css'  // Neutral palette + semantic-state tokens (load first)
+import './style.css'          // Brand theme (overrides apply)
 
 // Import performance utilities
 import '@/utils/widgetPreloader'

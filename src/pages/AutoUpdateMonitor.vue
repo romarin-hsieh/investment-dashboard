@@ -569,12 +569,12 @@ export default {
   align-items: center;
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .monitor-header h2 {
   margin: 0;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .header-actions {
@@ -591,7 +591,7 @@ export default {
 
 .status-card {
   background: white;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -601,14 +601,14 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e0e0e0;
+  background: var(--grey-50);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .card-header h3 {
   margin: 0;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .status-indicator {
@@ -619,23 +619,23 @@ export default {
 }
 
 .status-success {
-  background: #d4edda;
-  color: #155724;
+  background: var(--success-bg);
+  color: var(--success-fg);
 }
 
 .status-warning {
-  background: #fff3cd;
-  color: #856404;
+  background: var(--warning-bg);
+  color: var(--warning-fg);
 }
 
 .status-error {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--danger-bg);
+  color: var(--danger-fg);
 }
 
 .status-info {
-  background: #d1ecf1;
-  color: #0c5460;
+  background: var(--info-bg);
+  color: var(--info-fg);
 }
 
 .card-content {
@@ -654,25 +654,25 @@ export default {
 }
 
 .status-item .label {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .status-item .value {
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .text-success {
-  color: #28a745;
+  color: var(--success-solid);
 }
 
 .text-warning {
-  color: #ffc107;
+  color: var(--warning-solid);
 }
 
 .text-danger {
-  color: #dc3545;
+  color: var(--danger-solid);
 }
 
 .card-actions {
@@ -681,7 +681,7 @@ export default {
 
 .update-note {
   margin-top: 0.5rem;
-  color: #6c757d;
+  color: var(--grey-550);
   font-style: italic;
 }
 
@@ -700,48 +700,48 @@ export default {
 }
 
 .btn-primary {
-  background: #007bff;
+  background: var(--blue-500);
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background: #0056b3;
+  background: var(--blue-700);
 }
 
 .btn-secondary {
-  background: #6c757d;
+  background: var(--grey-550);
   color: white;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: #545b62;
+  background: var(--grey-650);
 }
 
 .btn-success {
-  background: #28a745;
+  background: var(--success-solid);
   color: white;
 }
 
 .btn-success:hover:not(:disabled) {
-  background: #1e7e34;
+  background: var(--success-solid-hover);
 }
 
 .btn-danger {
-  background: #dc3545;
+  background: var(--danger-solid);
   color: white;
 }
 
 .btn-danger:hover:not(:disabled) {
-  background: #c82333;
+  background: var(--danger-solid-hover);
 }
 
 .btn-warning {
-  background: #ffc107;
-  color: #212529;
+  background: var(--warning-solid);
+  color: var(--grey-850);
 }
 
 .btn-warning:hover:not(:disabled) {
-  background: #e0a800;
+  background: var(--warning-solid-hover);
 }
 
 .btn-sm {
@@ -751,18 +751,18 @@ export default {
 
 .btn-outline {
   background: transparent;
-  border: 1px solid #6c757d;
-  color: #6c757d;
+  border: 1px solid var(--grey-550);
+  color: var(--grey-550);
 }
 
 .btn-outline:hover:not(:disabled) {
-  background: #6c757d;
+  background: var(--grey-550);
   color: white;
 }
 
 .update-logs, .config-panel {
   background: white;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 2rem;
 }
@@ -772,14 +772,14 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: #f8f9fa;
-  border-bottom: 1px solid #e0e0e0;
+  background: var(--grey-50);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .logs-header h3, .config-header h3 {
   margin: 0;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .logs-content {
@@ -790,7 +790,7 @@ export default {
 .no-logs {
   padding: 2rem;
   text-align: center;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .log-entries {
@@ -801,7 +801,7 @@ export default {
   display: flex;
   gap: 1rem;
   padding: 0.5rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
   font-size: 0.9rem;
 }
 
@@ -810,7 +810,7 @@ export default {
 }
 
 .log-time {
-  color: #666;
+  color: var(--text-secondary);
   white-space: nowrap;
   min-width: 150px;
 }
@@ -825,19 +825,19 @@ export default {
 }
 
 .log-info .log-level {
-  color: #17a2b8;
+  color: var(--info-solid);
 }
 
 .log-success .log-level {
-  color: #28a745;
+  color: var(--success-solid);
 }
 
 .log-warning .log-level {
-  color: #ffc107;
+  color: var(--warning-solid);
 }
 
 .log-error .log-level {
-  color: #dc3545;
+  color: var(--danger-solid);
 }
 
 .config-content {
@@ -854,7 +854,7 @@ export default {
 
 .config-section h4 {
   margin: 0 0 1rem 0;
-  color: #333;
+  color: var(--text-primary);
   font-size: 1rem;
 }
 
@@ -869,13 +869,13 @@ export default {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #333;
+  color: var(--text-primary);
   font-size: 0.9rem;
 }
 
 .config-item input[type="number"] {
   padding: 0.375rem 0.75rem;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--grey-300);
   border-radius: 4px;
   width: 80px;
 }

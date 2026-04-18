@@ -109,8 +109,8 @@ export default {
 
 <style scoped>
 .vix-indicator-container {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -122,19 +122,19 @@ export default {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .widget-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .vix-subtitle {
   font-size: 0.85rem;
-  color: #6c757d;
+  color: var(--text-secondary);
   font-style: italic;
 }
 
@@ -161,16 +161,16 @@ export default {
 .gauge-arc {
   width: 160px;
   height: 80px;
-  border: 8px solid #e9ecef;
+  border: 8px solid var(--grey-100);
   border-bottom: none;
   border-radius: 80px 80px 0 0;
   position: relative;
-  background: linear-gradient(to right, 
-    #22ab94 0%, 
-    #ffc107 25%, 
-    #fd7e14 50%, 
-    #dc3545 75%, 
-    #6f42c1 100%);
+  background: linear-gradient(to right,
+    var(--chart-up)      0%,
+    var(--warning-solid) 25%,
+    var(--orange-500)    50%,
+    var(--danger-solid)  75%,
+    var(--purple-500)    100%);
   background-clip: padding-box;
 }
 
@@ -180,7 +180,7 @@ export default {
   left: 50%;
   width: 2px;
   height: 70px;
-  background: #333;
+  background: var(--text-primary);
   transform-origin: bottom center;
   transition: transform 0.5s ease;
   z-index: 2;
@@ -193,7 +193,7 @@ export default {
   left: -4px;
   width: 10px;
   height: 10px;
-  background: #333;
+  background: var(--text-primary);
   border-radius: 50%;
 }
 
@@ -203,7 +203,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  background: white;
+  background: var(--bg-card);
   padding: 0.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -212,13 +212,13 @@ export default {
 .vix-value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-primary);
   line-height: 1;
 }
 
 .vix-label {
   font-size: 0.8rem;
-  color: #6c757d;
+  color: var(--text-secondary);
   margin-top: 0.25rem;
 }
 
@@ -249,42 +249,42 @@ export default {
 
 .vix-description {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--text-secondary);
   line-height: 1.4;
   margin-bottom: 1.5rem;
 }
 
 /* 情緒狀態顏色 */
 .extreme-fear .status-dot {
-  background: #6f42c1;
+  background: var(--purple-500);
 }
 
 .extreme-fear .status-text {
-  color: #6f42c1;
+  color: var(--purple-500);
 }
 
 .fear .status-dot {
-  background: #dc3545;
+  background: var(--danger-solid);
 }
 
 .fear .status-text {
-  color: #dc3545;
+  color: var(--danger-solid);
 }
 
 .neutral .status-dot {
-  background: #ffc107;
+  background: var(--warning-solid);
 }
 
 .neutral .status-text {
-  color: #e67e22;
+  color: var(--orange-600);
 }
 
 .greed .status-dot {
-  background: #22ab94;
+  background: var(--chart-up);
 }
 
 .greed .status-text {
-  color: #22ab94;
+  color: var(--chart-up);
 }
 
 /* VIX 等級說明 */
@@ -295,7 +295,7 @@ export default {
   gap: 0.5rem;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-color);
 }
 
 .level-item {
@@ -303,18 +303,18 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  background: #f8f9fa;
+  background: var(--grey-50);
   border-radius: 4px;
   font-size: 0.85rem;
 }
 
 .level-label {
   font-weight: 500;
-  color: #495057;
+  color: var(--grey-700);
 }
 
 .level-range {
-  color: #6c757d;
+  color: var(--text-secondary);
   font-family: monospace;
 }
 
