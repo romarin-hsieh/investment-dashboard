@@ -376,3 +376,53 @@
 #### 3. ⚖️ 優缺點與實戰 (Analysis)
 *   **👍 優勢 (Pros)**: 資產配置與風險控管的核心指標。
 *   **🎯 實戰**: 牛市買高 Beta 股，熊市買低 Beta 股。
+
+---
+
+## Appendix A — Fear & Greed Index Sub-Indicators
+
+The CNN Fear & Greed Index (scraped daily via `scripts/precompute-with-browser.js`) is an equal-weighted average of the seven normalised sub-indicators below (each on a 0–100 scale). Useful when interpreting the headline F&G value on the Market page.
+
+### A.1 Stock Price Momentum (Market Momentum)
+- **Definition**: S&P 500 vs. its 125-day Moving Average
+- **Greed**: S&P 500 > 125-day MA (positive momentum)
+- **Fear**: S&P 500 < 125-day MA (slowing momentum)
+- **Read**: Persistent trading above the MA signals bullish sentiment
+
+### A.2 Stock Price Strength (Net New Highs vs. Lows)
+- **Definition**: NYSE 52-week highs minus 52-week lows
+- **Greed**: More highs than lows (positive breadth)
+- **Fear**: More lows than highs (negative breadth)
+- **Read**: A healthy rally is supported by broad new highs
+
+### A.3 Stock Price Breadth (McClellan Volume Summation)
+- **Definition**: Cumulative advancing minus declining NYSE volume
+- **Greed**: Rising summation (buying volume dominates)
+- **Fear**: Falling summation (selling volume dominates)
+- **Read**: Measures liquidity flowing into/out of the market
+
+### A.4 Put / Call Options (CBOE P/C Ratio)
+- **Definition**: 5-day MA of the CBOE put/call ratio
+- **Fear**: Ratio > 1 (more put "insurance" buying)
+- **Greed**: Ratio < 1 (more call "speculation")
+- **Read**: High puts = nervousness; high calls = speculation
+
+### A.5 Market Volatility (VIX)
+- **Definition**: Current VIX vs. its 50-day MA
+- **Fear**: VIX rising or above 50-day MA
+- **Greed**: VIX low or below 50-day MA
+- **Read**: Lower implied-volatility typically correlates with bull markets
+
+### A.6 Safe-Haven Demand (Stock vs. Bond Returns)
+- **Definition**: S&P 500 return minus Treasury return over 20 days
+- **Fear**: Bonds outperform (flight to safety)
+- **Greed**: Stocks outperform (risk-on)
+- **Read**: Preference for risk vs. risk-free assets
+
+### A.7 Junk Bond Demand (HY vs. IG Spread)
+- **Definition**: Yield spread between junk and investment-grade bonds
+- **Fear**: Spread widening (higher premium demanded for risk)
+- **Greed**: Spread narrowing (investors accept lower yields for risk)
+- **Read**: A tight spread indicates comfort with credit risk (greed)
+
+**Implementation**: `scripts/calc_fear_greed.py` (if present) or the Puppeteer scrape in `scripts/precompute-with-browser.js` — equal-weighted average of the seven normalised values (0–100 scale).
