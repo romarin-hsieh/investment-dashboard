@@ -87,12 +87,13 @@ const isPositive = computed(() => props.changePercent >= 0);
 </template>
 
 <style scoped>
+/* Always-dark card (does not invert in light mode — uses chart palette tokens) */
 .signal-card {
-  background: #1E222D; /* Lighter dark */
+  background: var(--chart-bg-deep);
   border-radius: 8px;
   padding: 1.5rem;
-  color: #D1D4DC;
-  border: 1px solid #2A2E39;
+  color: var(--grey-350);
+  border: 1px solid var(--chart-bg);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
@@ -106,7 +107,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 .ticker-info h2 {
   margin: 0;
   font-size: 2rem;
-  color: #ffffff;
+  color: white;
 }
 
 .price-info {
@@ -119,8 +120,8 @@ const isPositive = computed(() => props.changePercent >= 0);
   margin-right: 0.5rem;
 }
 
-.change.up { color: #089981; }
-.change.down { color: #F23645; }
+.change.up { color: var(--chart-up-alt); }
+.change.down { color: var(--chart-down-alt); }
 
 .signal-badge {
   padding: 0.5rem 1rem;
@@ -133,7 +134,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 
 .divider {
   height: 1px;
-  background: #2A2E39;
+  background: var(--chart-bg);
   margin: 1rem 0;
 }
 
@@ -141,7 +142,7 @@ const isPositive = computed(() => props.changePercent >= 0);
   margin: 0 0 0.5rem 0;
   font-size: 0.85rem;
   text-transform: uppercase;
-  color: #787B86;
+  color: var(--grey-500);
   letter-spacing: 0.5px;
 }
 
@@ -149,14 +150,14 @@ const isPositive = computed(() => props.changePercent >= 0);
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #E0E3EB;
+  color: var(--grey-250);
 }
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 1.5rem;
-  border-top: 1px solid #2A2E39;
+  border-top: 1px solid var(--chart-bg);
   padding-top: 1rem;
 }
 
@@ -164,20 +165,20 @@ const isPositive = computed(() => props.changePercent >= 0);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #2A2E39;
+  background: var(--chart-bg);
   padding: 0.5rem;
   border-radius: 4px;
 }
 
 .metric-label {
   font-size: 0.75rem;
-  color: #787B86;
+  color: var(--grey-500);
   margin-bottom: 0.25rem;
 }
 
 .metric-value {
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
-  color: #E0E3EB;
+  color: var(--grey-250);
 }
 </style>

@@ -1,0 +1,102 @@
+/*
+ * Extended Design Tokens — Neutral Palette + Semantic States
+ *
+ * Loaded BEFORE src/style.css (brand theme).
+ * This file adds the scale tokens components commonly need but that were
+ * not in the Renaissance brand system: greyscale, Bootstrap-style alert
+ * semantics, extended chart colours.
+ *
+ * Brand tokens (--primary-color, --bg-primary, --text-primary, etc.) stay
+ * in src/style.css. Add brand variants there.
+ *
+ * Migration note: these values are chosen to match the hex codes already
+ * present in components (audit Apr 2026: 694 literal hex codes, 123 in
+ * the first 5 files migrated). Any deliberate visual adjustments should
+ * happen in follow-up PRs so this one is lossless.
+ */
+
+:root {
+  /* === Neutral greyscale === */
+  /* Covers Bootstrap-style leakage (#6c757d, #e9ecef, …) + classic CSS shortcuts (#333, #666). */
+  --grey-50:  #f8f9fa;
+  --grey-100: #e9ecef;
+  --grey-150: #f1f3f4;
+  --grey-200: #dee2e6;
+  --grey-250: #e0e3eb;
+  --grey-300: #ced4da;
+  --grey-350: #d1d4dc;
+  --grey-400: #adb5bd;
+  --grey-450: #999999;
+  --grey-500: #787b86;
+  --grey-550: #6c757d;
+  --grey-600: #666666;
+  --grey-650: #5a6268;
+  --grey-700: #495057;
+  --grey-750: #343a40;
+  --grey-800: #333333;
+  --grey-850: #212529;
+
+  /* === Semantic state — success (green) === */
+  --success-bg:           #d4edda;
+  --success-fg:           #155724;
+  --success-solid:        #28a745;
+  --success-solid-hover:  #1e7e34;
+
+  /* === Semantic state — danger (red) === */
+  --danger-bg:            #f8d7da;
+  --danger-fg:            #721c24;
+  --danger-border:        #f5c6cb;
+  --danger-solid:         #dc3545;
+  --danger-solid-hover:   #c82333;
+
+  /* === Semantic state — warning (amber) === */
+  --warning-bg:           #fff3cd;
+  --warning-fg:           #856404;
+  --warning-solid:        #ffc107;
+  --warning-solid-hover:  #e0a800;
+
+  /* === Semantic state — info (cyan) === */
+  --info-bg:              #d1ecf1;
+  --info-fg:              #0c5460;
+  --info-solid:           #17a2b8;
+
+  /* === Extended brand palette (for component-local uses) === */
+  --blue-500:   #007bff;
+  --blue-700:   #0056b3;
+  --purple-500: #6f42c1;
+  --orange-500: #fd7e14;
+  --orange-600: #e67e22;
+
+  /* === Chart colours ===
+   * Up/down map to success/error in the brand theme (TradingView greens/reds).
+   * `-alt` variants are for secondary series to avoid red-on-red / green-on-green clashes.
+   * `--chart-bg*` are the TradingView iframe dark backgrounds used to match widget chrome. */
+  --chart-up:       #22ab94;
+  --chart-down:     #f7525f;
+  --chart-up-alt:   #089981;
+  --chart-down-alt: #f23645;
+  --chart-bg:       #2a2e39;
+  --chart-bg-deep:  #1e222d;
+}
+
+/* --- DARK MODE --- */
+/*
+ * Rule: utility tokens (greyscale, brand blue/purple/orange, chart bg) stay
+ * identical in dark mode — they represent FIXED palette positions.
+ * Semantic-state tokens get darker/lower-contrast variants so alert boxes
+ * don't glare against a dark background.
+ */
+.dark-mode {
+  --success-bg:   #1e3a24;
+  --success-fg:   #a3c9a8;
+
+  --danger-bg:    #3a1f22;
+  --danger-fg:    #e6a8a8;
+  --danger-border: #553033;
+
+  --warning-bg:   #3a2e15;
+  --warning-fg:   #e6d8a8;
+
+  --info-bg:      #1e3336;
+  --info-fg:      #a8c4c7;
+}

@@ -224,18 +224,18 @@ export default {
 }
 
 .stale-fresh {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: var(--success-bg);
+  color: var(--success-fg);
 }
 
 .stale-stale {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: var(--warning-bg);
+  color: var(--warning-fg);
 }
 
 .stale-very_stale {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: var(--danger-bg);
+  color: var(--danger-fg);
 }
 
 .markets-grid {
@@ -245,8 +245,8 @@ export default {
 }
 
 .markets-tile {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   transition: all 0.2s;
@@ -258,32 +258,32 @@ export default {
 }
 
 .markets-tile.no-data {
-  background-color: #f8f9fa;
-  border-color: #dee2e6;
+  background-color: var(--grey-50);
+  border-color: var(--grey-200);
 }
 
 .markets-tile.disabled {
-  background-color: #f1f3f4;
+  background-color: var(--grey-150);
   opacity: 0.7;
 }
 
 .markets-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
 
 .markets-value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   min-height: 2rem;
 }
 
 .markets-tile.no-data .markets-value {
-  color: #999;
+  color: var(--text-muted);
   font-style: italic;
 }
 
@@ -296,7 +296,7 @@ export default {
 }
 
 .source {
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .quality-flag {
@@ -308,41 +308,41 @@ export default {
 }
 
 .quality-good {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: var(--success-bg);
+  color: var(--success-fg);
 }
 
 .quality-stale {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: var(--warning-bg);
+  color: var(--warning-fg);
 }
 
 .quality-degraded {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: var(--danger-bg);
+  color: var(--danger-fg);
 }
 
 .quality-disabled {
-  background-color: #e2e3e5;
-  color: #6c757d;
+  background-color: var(--grey-200);
+  color: var(--grey-550);
 }
 
 .markets-time {
   font-size: 0.75rem;
-  color: #999;
+  color: var(--text-muted);
 }
 
 .loading {
   text-align: center;
   padding: 2rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .error {
   text-align: center;
   padding: 1rem;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background-color: var(--danger-bg);
+  border: 1px solid var(--danger-border);
   border-radius: 4px;
   margin-top: 1rem;
 }
