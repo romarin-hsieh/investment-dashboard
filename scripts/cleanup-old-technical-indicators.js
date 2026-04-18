@@ -40,7 +40,12 @@ function cleanup() {
     const cutoffTime = now.getTime() - (retentionDays * 24 * 60 * 60 * 1000);
     let deletedCount = 0;
     let keptCount = 0;
+    let skippedCount = 0;
     let errorCount = 0;
+
+    // File pattern: YYYY-MM-DD_SYMBOL.json
+    // Meta files (latest_index.json, latest_all.json, market-sentiment.json, fear-greed.json) are skipped.
+    const DATED_FILENAME = /^(\d{4})-(\d{2})-(\d{2})_[A-Z0-9.-]+\.json$/;
 
     try {
         const files = fs.readdirSync(TARGET_DIR);
@@ -49,15 +54,26 @@ function cleanup() {
             const filePath = path.join(TARGET_DIR, file);
             try {
                 const stats = fs.statSync(filePath);
+                if (!stats.isFile()) return;
 
-                if (stats.isFile()) {
-                    if (stats.mtimeMs < cutoffTime) {
-                        if (verbose) console.log(`Deleting old file: ${file} (Last modified: ${stats.mtime.toISOString()})`);
-                        fs.unlinkSync(filePath);
-                        deletedCount++;
-                    } else {
-                        keptCount++;
-                    }
+                const match = file.match(DATED_FILENAME);
+                if (!match) {
+                    // Non-dated meta file (latest_index.json, latest_all.json, etc.) — never delete.
+                    skippedCount++;
+                    return;
+                }
+
+                // Parse date from filename. GitHub Actions `actions/checkout` resets
+                // file mtimes to the checkout moment, so mtime-based cleanup never fired
+                // (silent regression). Use the filename date instead — that's the actual
+                // source date the snapshot represents.
+                const fileDate = new Date(`${match[1]}-${match[2]}-${match[3]}T00:00:00Z`);
+                if (fileDate.getTime() < cutoffTime) {
+                    if (verbose) console.log(`Deleting old file: ${file} (date: ${match[0].slice(0, 10)})`);
+                    fs.unlinkSync(filePath);
+                    deletedCount++;
+                } else {
+                    keptCount++;
                 }
             } catch (err) {
                 console.error(`Error processing file ${file}:`, err);
@@ -68,6 +84,7 @@ function cleanup() {
         console.log(`Cleanup completed.`);
         console.log(`- Deleted: ${deletedCount}`);
         console.log(`- Kept: ${keptCount}`);
+        console.log(`- Skipped (meta files): ${skippedCount}`);
         console.log(`- Errors: ${errorCount}`);
 
     } catch (err) {

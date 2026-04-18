@@ -81,10 +81,15 @@ jobs:
 
 
 
-    - name: Cleanup old technical indicators (keep last 30 days)
+    - name: Cleanup old technical indicators (keep last 2 days)
+      # Frontend only consumes the latest date via latest_index.json /
+      # latest_all.json. Historical snapshots are orphaned cache that
+      # previously ballooned public/ to ~20 GB and broke Pages deploys
+      # (1 GB artifact limit). Keep 2 days as a safety margin for a
+      # failed daily run where "latest" is still yesterday.
       run: |
         echo "🧹 Cleaning old technical indicator day-files..."
-        node scripts/cleanup-old-technical-indicators.js --retention-days=30 --verbose
+        node scripts/cleanup-old-technical-indicators.js --retention-days=2 --verbose
 
     - name: Update Metadata (weekly on Monday)
       if: github.event.schedule == '0 2 * * 1' || github.event_name == 'workflow_dispatch'
