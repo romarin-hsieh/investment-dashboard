@@ -1,5 +1,5 @@
 ---
-description: ETL 資料排程與腳本異動時自動維護 docs/DATA_OPERATIONS.md
+description: ETL 資料排程與腳本異動時自動維護 docs/operations/DATA_OPERATIONS.md
 ---
 
 # ETL Documentation Maintenance Workflow
@@ -22,7 +22,7 @@ description: ETL 資料排程與腳本異動時自動維護 docs/DATA_OPERATIONS
 ### 1. 讀取現有文件
 // turbo
 ```
-先閱讀 docs/DATA_OPERATIONS.md 了解當前文件結構。
+先閱讀 docs/operations/DATA_OPERATIONS.md 了解當前文件結構。
 ```
 
 ### 2. 判斷影響範圍
@@ -42,11 +42,11 @@ description: ETL 資料排程與腳本異動時自動維護 docs/DATA_OPERATIONS
 
 ### 3. 更新文件
 
-根據上述判斷，同步修改 `docs/DATA_OPERATIONS.md` 的對應章節。
+根據上述判斷，同步修改 `docs/operations/DATA_OPERATIONS.md` 的對應章節。
 
 ### 4. 更新 Changelog
 
-在 `docs/DATA_OPERATIONS.md` 底部的 `📝 Changelog` 表格中新增一行，記錄本次變更：
+在 `docs/operations/DATA_OPERATIONS.md` 底部的 `📝 Changelog` 表格中新增一行，記錄本次變更：
 
 ```markdown
 | YYYY-MM-DD | 描述具體變更內容 |
