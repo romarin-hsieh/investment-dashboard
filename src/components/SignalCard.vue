@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { getToken } from '@/utils/designTokens';
 
 const props = defineProps({
   ticker: {
@@ -28,13 +29,17 @@ const props = defineProps({
   }
 });
 
+// Reads the --signal-* tokens defined in styles/tokens.css.
+// Recomputes on theme change because Vue's `computed` re-runs when its
+// reactive deps change — but signal tokens are theme-fixed (same hex in
+// light & dark), so this returns a stable hex per signal value.
 const signalColor = computed(() => {
   switch (props.signal) {
-    case 'LAUNCHPAD': return '#FFD700'; // Gold
-    case 'DIP_BUY': return '#089981';   // Green
-    case 'CLIMAX': return '#F23645';    // Red
-    case 'AVOID': return '#aaaaaa';     // Gray
-    default: return '#5D606B';
+    case 'LAUNCHPAD': return getToken('--signal-launchpad');
+    case 'DIP_BUY':   return getToken('--signal-dip-buy');
+    case 'CLIMAX':    return getToken('--signal-climax');
+    case 'AVOID':     return getToken('--signal-avoid');
+    default:          return getToken('--signal-neutral');
   }
 });
 

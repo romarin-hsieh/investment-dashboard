@@ -77,6 +77,15 @@
   --chart-down-alt: #f23645;
   --chart-bg:       #2a2e39;
   --chart-bg-deep:  #1e222d;
+
+  /* === Quant signal palette ===
+   * Used by SignalCard / SignalBadge to colour the kinetic-state classification.
+   * Read from JS via getToken() in src/utils/designTokens.js — do not inline. */
+  --signal-launchpad: #ffd700;  /* Gold — high-compression breakout candidate */
+  --signal-dip-buy:   #089981;  /* Green — uptrend + oversold momentum */
+  --signal-climax:    #f23645;  /* Red — extreme momentum, exhaustion zone */
+  --signal-avoid:     #aaaaaa;  /* Grey — explicit avoid */
+  --signal-neutral:   #5d606b;  /* Slate — default / no clear classification */
 }
 
 /* --- DARK MODE --- */
