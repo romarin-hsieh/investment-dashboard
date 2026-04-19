@@ -1339,7 +1339,11 @@ export default {
     align-items: start;
 }
 
-@media (max-width: 1024px) {
+/* Tablet & narrower: collapse the 1:3 tactical grid to single column.
+   Threshold dropped from 1024 to 900 so tablet-landscape (1024) keeps
+   the side-by-side reading pattern (audit Apr 2026: layouts collapsed
+   too aggressively at 1024). */
+@media (max-width: 900px) {
     .tactical-grid {
         grid-template-columns: 1fr;
     }

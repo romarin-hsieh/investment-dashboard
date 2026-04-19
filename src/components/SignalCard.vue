@@ -196,4 +196,12 @@ const isPositive = computed(() => props.changePercent >= 0);
   font-size: 1rem;
   color: var(--grey-250);
 }
+
+/* Narrow viewports: 3-column metrics grid is too cramped at <600px.
+   Tablet portrait (≥601px) keeps 3 columns; phones drop to 1 column. */
+@media (max-width: 600px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
