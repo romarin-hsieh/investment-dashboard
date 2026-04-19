@@ -1,8 +1,14 @@
 <template>
   <div class="super-investor-stats">
-    <div class="section-header" @click="toggleSection('ownership')">
+    <button
+      type="button"
+      class="section-header"
+      @click="toggleSection('ownership')"
+      :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
+      aria-controls="ownership-section"
+    >
       <h3>Elite Funds</h3>
-    </div>
+    </button>
 
     <!-- Loading State -->
     <div v-if="loading" class="loading-state">
@@ -20,11 +26,17 @@
       
       <!-- Sub-section 1: Ownership -->
       <div class="stats-subsection ownership-section">
-        <div class="subsection-header" @click="toggleSection('ownership')">
-             <h4>Ownership</h4>
-        </div>
-        
-        <div v-show="expandedSections.ownership" class="subsection-content">
+        <button
+          type="button"
+          class="subsection-header"
+          @click="toggleSection('ownership')"
+          :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
+          aria-controls="ownership-content"
+        >
+          <h4>Ownership</h4>
+        </button>
+
+        <div id="ownership-content" v-show="expandedSections.ownership" class="subsection-content">
            <div class="table-responsive">
              <table class="data-table">
                <thead>
@@ -95,11 +107,17 @@
 
       <!-- Sub-section 2: Activity -->
       <div class="stats-subsection activity-section">
-        <div class="subsection-header" @click="toggleSection('activity')">
-             <h4>Activity</h4>
-        </div>
+        <button
+          type="button"
+          class="subsection-header"
+          @click="toggleSection('activity')"
+          :aria-expanded="expandedSections.activity ? 'true' : 'false'"
+          aria-controls="activity-content"
+        >
+          <h4>Activity</h4>
+        </button>
 
-        <div v-show="expandedSections.activity" class="subsection-content">
+        <div id="activity-content" v-show="expandedSections.activity" class="subsection-content">
           <div class="controls-area">
              <!-- Filter Controls -->
              <div class="filter-controls">
@@ -266,6 +284,17 @@ export default {
 }
 
 .section-header {
+  /* Reset button defaults (we use <button> for keyboard accessibility via aria-expanded) */
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  /* Original visual styling */
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border-color);
@@ -289,6 +318,14 @@ export default {
 }
 
 .subsection-header {
+  /* Reset button defaults */
+  display: block;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  /* Original visual styling */
   background: var(--bg-secondary);
   padding: 10px 15px;
   cursor: pointer;
