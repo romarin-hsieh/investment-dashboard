@@ -52,7 +52,15 @@ const isPositive = computed(() => props.changePercent >= 0);
         <h2>{{ ticker }}</h2>
         <div class="price-info">
           <span class="price">${{ price }}</span>
-          <span class="change" :class="{ 'up': isPositive, 'down': !isPositive }">
+          <span
+            class="change"
+            :class="{ 'up': isPositive, 'down': !isPositive }"
+            :aria-label="isPositive ? `Up ${changePercent}%` : `Down ${changePercent}%`"
+          >
+            <!-- Glyph carries direction for colour-blind / greyscale users.
+                 Hidden from screen readers (which use the aria-label above)
+                 to avoid 'up arrow up two percent' double-reading. -->
+            <span class="change-glyph" aria-hidden="true">{{ isPositive ? '▲' : '▼' }}</span>
             {{ isPositive ? '+' : '' }}{{ changePercent }}%
           </span>
         </div>
@@ -122,6 +130,13 @@ const isPositive = computed(() => props.changePercent >= 0);
 
 .change.up { color: var(--chart-up-alt); }
 .change.down { color: var(--chart-down-alt); }
+
+/* Glyph spacing — keeps arrow tight to the number, not floating away */
+.change-glyph {
+  display: inline-block;
+  margin-right: 0.15em;
+  font-size: 0.85em;
+}
 
 .signal-badge {
   padding: 0.5rem 1rem;
