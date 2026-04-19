@@ -82,7 +82,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5>Signal Specifications</h5>
-                        <button class="close-btn" @click="showInfo = false">&times;</button>
+                        <button class="close-btn" @click="showInfo = false" aria-label="Close Signal Specifications">&times;</button>
                     </div>
                     <div class="modal-body">
                         <h6>Pivot Points (Standard)</h6>

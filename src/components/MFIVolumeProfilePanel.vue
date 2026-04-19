@@ -23,7 +23,7 @@
       <div class="mfi-header-row">
           <div class="title-section">
               <h4>MFI Volume Profile</h4>
-              <button class="header-info-btn inline-info-btn" @click="openInfo('analysis')" title="Analysis Logic">
+              <button class="header-info-btn inline-info-btn" @click="openInfo('analysis')" title="Analysis Logic" aria-label="View MFI analysis logic">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
@@ -130,7 +130,7 @@
         <div class="signals-header">
           <div style="display: flex; align-items: center;">
              <h4>Trading Analysis</h4>
-             <button class="inline-info-btn" @click="openInfo('analysis')" title="Analysis Logic">
+             <button class="inline-info-btn" @click="openInfo('analysis')" title="Analysis Logic" aria-label="View MFI analysis logic">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
@@ -172,7 +172,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5>MFI & Volume Profile Guide</h5>
-                <button class="close-btn" @click="showInfo = false">&times;</button>
+                <button class="close-btn" @click="showInfo = false" aria-label="Close MFI & Volume Profile Guide">&times;</button>
             </div>
             <div class="modal-body">
                 <h6>MFI (Money Flow Index)</h6>
