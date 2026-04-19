@@ -1,10 +1,22 @@
 <template>
-  <div 
+  <div
     class="stock-card-pair"
     :id="domId"
     :data-symbol="quote.symbol"
     tabindex="-1"
   >
+    <!-- Stale Data Banner (above the fold; replaces corner badge) -->
+    <div
+      v-if="isStale"
+      class="stale-banner"
+      :class="`stale-banner-${quote.stale_level}`"
+      role="status"
+      aria-live="polite"
+    >
+      <span class="stale-banner-icon" aria-hidden="true">⚠</span>
+      <span class="stale-banner-text">{{ getStaleText() }}</span>
+    </div>
+
     <!-- Stock Info Header -->
     <div class="stock-info-header">
       <div class="symbol-info">
@@ -79,12 +91,6 @@
 
 
 
-    <!-- Stale Indicator -->
-    <div v-if="isStale" class="stale-indicator">
-      <span class="stale-badge" :class="`stale-${quote.stale_level}`">
-        {{ getStaleText() }}
-      </span>
-    </div>
   </div>
 </template>
 
@@ -215,10 +221,15 @@ export default {
     },
 
     getStaleText() {
+      // Words convey state, not just colour/emoji. Screen readers announce
+      // the full string; sighted users see the matching banner colour.
       switch (this.quote.stale_level) {
-        case 'stale': return '🟡 Stale Data'
-        case 'very_stale': return '🔴 Very Stale'
-        default: return ''
+        case 'stale':
+          return 'Data may be stale — daily refresh delayed'
+        case 'very_stale':
+          return 'Data is significantly stale — last successful refresh was over 48 hours ago'
+        default:
+          return ''
       }
     },
 
@@ -518,23 +529,37 @@ export default {
   /* margin-bottom: 1rem; Removed logic */ 
 }
 
-/* Stale Indicator */
-.stale-indicator {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-.stale-badge {
-  font-size: 0.7rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+/* Stale Data Banner — top of card, full width, prominent */
+.stale-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
   font-weight: 500;
+  /* Default: less-severe ('stale') uses the warning palette */
+  background-color: var(--warning-bg);
+  color: var(--warning-fg);
+  border: 1px solid var(--warning-solid);
 }
 
-.stale-badge.stale-very_stale {
-  background-color: var(--tag-bg-red);
-  color: var(--tag-text-red);
+/* Severe staleness uses the danger palette so the banner reads urgently */
+.stale-banner.stale-banner-very_stale {
+  background-color: var(--danger-bg);
+  color: var(--danger-fg);
+  border-color: var(--danger-border);
+}
+
+.stale-banner-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.stale-banner-text {
+  flex: 1;
+  line-height: 1.4;
 }
 
 /* Technical Analysis 仿照 Symbol Overview 樣式 */
