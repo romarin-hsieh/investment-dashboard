@@ -120,6 +120,7 @@ import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
 import { useTheme } from '@/composables/useTheme.js'
+import { getToken } from '@/utils/designTokens.js'
 import { defineAsyncComponent } from 'vue'
 
 export default {
@@ -248,9 +249,14 @@ export default {
 
     dailyConfig() {
       const isDark = this.theme === 'dark';
+      // Same pattern as StockDetail's chart configs (see PR-A1.2). Tokens
+      // recomputed on theme change because `computed` re-runs when
+      // `this.theme` changes.
+      const upColor   = getToken('--chart-up');
+      const downColor = getToken('--chart-down');
       const commonColors = {
-          bg: isDark ? '#2C2C2C' : '#ffffff',
-          text: isDark ? '#E6E1DC' : '#0F0F0F',
+          bg:   getToken('--bg-card'),
+          text: getToken('--text-primary'),
           grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
       }
       return {
@@ -264,12 +270,12 @@ export default {
         "volumeDownColor": "rgba(247, 82, 95, 0.5)",
         "backgroundColor": commonColors.bg,
         "widgetFontColor": commonColors.text,
-        "upColor": "#22ab94",
-        "downColor": "#f7525f",
-        "borderUpColor": "#22ab94",
-        "borderDownColor": "#f7525f",
-        "wickUpColor": "#22ab94",
-        "wickDownColor": "#f7525f",
+        "upColor":         upColor,
+        "downColor":       downColor,
+        "borderUpColor":   upColor,
+        "borderDownColor": downColor,
+        "wickUpColor":     upColor,
+        "wickDownColor":   downColor,
         "colorTheme": isDark ? "dark" : "light",
         "isTransparent": true,
         "locale": "en",
@@ -290,7 +296,7 @@ export default {
         "hideDateRanges": false,
         "showMA": true,
         "maLength": "5",
-        "maLineColor": "#2962FF",
+        "maLineColor": getToken('--blue-500'),
         "maLineWidth": 1,
         "hideMarketStatus": false,
         "hideSymbolLogo": false
@@ -299,9 +305,11 @@ export default {
 
     weeklyConfig() {
       const isDark = this.theme === 'dark';
+      const upColor   = getToken('--chart-up');
+      const downColor = getToken('--chart-down');
       const commonColors = {
-          bg: isDark ? '#2C2C2C' : '#ffffff',
-          text: isDark ? '#E6E1DC' : '#0F0F0F',
+          bg:   getToken('--bg-card'),
+          text: getToken('--text-primary'),
           grid: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(46, 46, 46, 0.06)',
       }
       return {
@@ -315,12 +323,12 @@ export default {
         "volumeDownColor": "rgba(247, 82, 95, 0.5)",
         "backgroundColor": commonColors.bg,
         "widgetFontColor": commonColors.text,
-        "upColor": "#22ab94",
-        "downColor": "#f7525f",
-        "borderUpColor": "#22ab94",
-        "borderDownColor": "#f7525f",
-        "wickUpColor": "#22ab94",
-        "wickDownColor": "#f7525f",
+        "upColor":         upColor,
+        "downColor":       downColor,
+        "borderUpColor":   upColor,
+        "borderDownColor": downColor,
+        "wickUpColor":     upColor,
+        "wickDownColor":   downColor,
         "colorTheme": isDark ? "dark" : "light",
         "isTransparent": true,
         "locale": "en",
@@ -341,7 +349,7 @@ export default {
         "hideDateRanges": false,
         "showMA": true,
         "maLength": "4",
-        "maLineColor": "#2962FF",
+        "maLineColor": getToken('--blue-500'),
         "maLineWidth": 1,
         "hideMarketStatus": false,
         "hideSymbolLogo": false
