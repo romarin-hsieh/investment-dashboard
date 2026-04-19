@@ -17,6 +17,7 @@ import technicalIndicatorsCache from '../utils/technicalIndicatorsCache.js';
 import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
 import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';
 import { getDefaultExchange, getMarketCapCategory, createFallbackStockInfo } from './dataTransformers';
+import { formatNumber } from '../utils/numberFormat';
 
 class YahooFinanceAPI {
   constructor() {
@@ -317,9 +318,9 @@ class YahooFinanceAPI {
           }
 
           return {
-            value: lastValue !== null ? lastValue.toFixed(2) : null,
+            value: formatNumber(lastValue, 2, null),
             signal: signal,
-            currentPrice: currentPrice !== null ? currentPrice.toFixed(2) : null
+            currentPrice: formatNumber(currentPrice, 2, null)
           };
         };
 
@@ -363,10 +364,10 @@ class YahooFinanceAPI {
             }
 
             const result = {
-              value: adxValue !== null && !isNaN(adxValue) ? adxValue.toFixed(2) : null,
+              value: formatNumber(adxValue, 2, null),
               signal: signal,
-              plusDI: plusDI !== null && !isNaN(plusDI) ? plusDI.toFixed(2) : null,
-              minusDI: minusDI !== null && !isNaN(minusDI) ? minusDI.toFixed(2) : null
+              plusDI: formatNumber(plusDI, 2, null),
+              minusDI: formatNumber(minusDI, 2, null)
             };
 
             console.log('ADX final result:', result);
@@ -387,10 +388,10 @@ class YahooFinanceAPI {
             }
 
             return {
-              value: macdValue !== null ? macdValue.toFixed(2) : null,
+              value: formatNumber(macdValue, 2, null),
               signal: signal,
-              signalLine: signalValue !== null ? signalValue.toFixed(2) : null,
-              histogram: histValue !== null ? histValue.toFixed(2) : null
+              signalLine: formatNumber(signalValue, 2, null),
+              histogram: formatNumber(histValue, 2, null)
             };
           })(),
 
@@ -421,8 +422,12 @@ class YahooFinanceAPI {
               if (obvVal > prevObv) signal = 'BULLISH';
               else if (obvVal < prevObv) signal = 'BEARISH';
             }
+            // Format as Millions. formatNumber guards against Infinity / NaN
+            // in the division (obvVal === 0 is fine; obvVal === null already
+            // short-circuited above).
+            const obvMillions = obvVal !== null ? obvVal / 1_000_000 : null;
             return {
-              value: obvVal !== null ? (obvVal / 1000000).toFixed(2) + 'M' : 'N/A', // Format as Millions
+              value: obvVal !== null ? formatNumber(obvMillions, 2, 'N/A') + 'M' : 'N/A',
               signal: signal
             };
           })(),
@@ -443,12 +448,18 @@ class YahooFinanceAPI {
           fullSeries: coreResults,
 
           // 調試信息
-          priceRange: {
-            min: Math.min(...ohlcv.close.filter(p => !isNaN(p))).toFixed(2),
-            max: Math.max(...ohlcv.close.filter(p => !isNaN(p))).toFixed(2),
-            latest: getLastValue(ohlcv.close)?.toFixed(2) || 'N/A',
-            first: ohlcv.close.find(p => !isNaN(p))?.toFixed(2) || 'N/A'
-          }
+          priceRange: (() => {
+            // Filter first, then compute. If every close is NaN, Math.min/max
+            // on an empty spread returns Infinity / -Infinity — formatNumber
+            // converts those to 'N/A' instead of rendering "Infinity".
+            const valid = ohlcv.close.filter(p => !isNaN(p));
+            return {
+              min:    formatNumber(valid.length ? Math.min(...valid) : null, 2, 'N/A'),
+              max:    formatNumber(valid.length ? Math.max(...valid) : null, 2, 'N/A'),
+              latest: formatNumber(getLastValue(ohlcv.close), 2, 'N/A'),
+              first:  formatNumber(valid[0], 2, 'N/A')
+            };
+          })()
         };
 
         console.log(`Price data for ${symbol}:`, {
@@ -480,8 +491,8 @@ class YahooFinanceAPI {
         // Add Volume Change and Beta to indicators (compatible with TechnicalIndicators.vue expectation)
         indicators.yf = {
           volume_last_day_pct: volumeChangePct,
-          beta_10d: getLastValue(coreResults.BETA_10D)?.toFixed(2) || 'N/A',
-          beta_3mo: getLastValue(coreResults.BETA_3M)?.toFixed(2) || 'N/A',
+          beta_10d: formatNumber(getLastValue(coreResults.BETA_10D), 2, 'N/A'),
+          beta_3mo: formatNumber(getLastValue(coreResults.BETA_3M), 2, 'N/A'),
           extAvgVol10D: avgVol10d, // Pre-calculated
           extAvgVol3M: avgVol3m
         };
@@ -686,9 +697,9 @@ class YahooFinanceAPI {
       }
 
       return {
-        value: lastValue !== null ? lastValue.toFixed(2) : null,
+        value: formatNumber(lastValue, 2, null),
         signal: signal,
-        currentPrice: currentPrice !== null ? currentPrice.toFixed(2) : null
+        currentPrice: formatNumber(currentPrice, 2, null)
       };
     };
 
@@ -719,10 +730,10 @@ class YahooFinanceAPI {
           else if (adxValue < 20) signal = 'WEAK_TREND';
         }
         return {
-          value: adxValue !== null ? adxValue.toFixed(2) : null,
+          value: formatNumber(adxValue, 2, null),
           signal: signal,
-          plusDI: plusDI !== null ? plusDI.toFixed(2) : null,
-          minusDI: minusDI !== null ? minusDI.toFixed(2) : null
+          plusDI: formatNumber(plusDI, 2, null),
+          minusDI: formatNumber(minusDI, 2, null)
         };
       })(),
 
@@ -736,10 +747,10 @@ class YahooFinanceAPI {
           else if (macdValue < signalValue && histValue < 0) signal = 'SELL';
         }
         return {
-          value: macdValue !== null ? macdValue.toFixed(2) : null,
+          value: formatNumber(macdValue, 2, null),
           signal: signal,
-          signalLine: signalValue !== null ? signalValue.toFixed(2) : null,
-          histogram: histValue !== null ? histValue.toFixed(2) : null
+          signalLine: formatNumber(signalValue, 2, null),
+          histogram: formatNumber(histValue, 2, null)
         };
       })(),
 
@@ -759,7 +770,7 @@ class YahooFinanceAPI {
           else if (obvVal < prevObv) signal = 'BEARISH';
         }
         return {
-          value: obvVal !== null ? (obvVal / 1000000).toFixed(2) + 'M' : 'N/A',
+          value: obvVal !== null ? formatNumber(obvVal / 1_000_000, 2, 'N/A') + 'M' : 'N/A',
           signal: signal
         };
       })(),
@@ -967,7 +978,11 @@ class YahooFinanceAPI {
     // Let's rely on simple string conversion for start, or specific formatting if needed.
     const getPercentFmt = (val) => {
       if (val && typeof val === 'object' && val.fmt) return val.fmt;
-      if (typeof val === 'number') return (val * 100).toFixed(2) + '%';
+      if (typeof val === 'number') {
+        // Guard NaN / Infinity — those previously produced "NaN%" / "Infinity%"
+        const formatted = formatNumber(val * 100, 2, null);
+        return formatted !== null ? formatted + '%' : 'N/A';
+      }
       return val || '0%';
     };
 
@@ -1026,13 +1041,21 @@ class YahooFinanceAPI {
       earnings: {
         history: (earnings.earningsChart && earnings.earningsChart.quarterly) ? earnings.earningsChart.quarterly.map(item => ({
           date: item.date,
-          actual: createFmt(item.actual, v => v.toFixed(2)),
-          estimate: createFmt(item.estimate, v => v.toFixed(2))
+          actual: createFmt(item.actual, v => formatNumber(v, 2)),
+          estimate: createFmt(item.estimate, v => formatNumber(v, 2))
         })) : [],
         financialsChart: (earnings.financialsChart && earnings.financialsChart.yearly) ? earnings.financialsChart.yearly.map(item => ({
           date: item.date, // Year (number)
-          revenue: createFmt(item.revenue, v => Number(v) >= 1e9 ? (Number(v) / 1e9).toFixed(1) + 'B' : Number(v).toLocaleString()),
-          earnings: createFmt(item.earnings, v => Number(v) >= 1e9 ? (Number(v) / 1e9).toFixed(1) + 'B' : Number(v).toLocaleString())
+          revenue: createFmt(item.revenue, v => {
+            const n = Number(v);
+            if (!Number.isFinite(n)) return 'N/A';
+            return n >= 1e9 ? formatNumber(n / 1e9, 1) + 'B' : n.toLocaleString();
+          }),
+          earnings: createFmt(item.earnings, v => {
+            const n = Number(v);
+            if (!Number.isFinite(n)) return 'N/A';
+            return n >= 1e9 ? formatNumber(n / 1e9, 1) + 'B' : n.toLocaleString();
+          })
         })) : []
       },
 
@@ -1045,7 +1068,10 @@ class YahooFinanceAPI {
             organization: holder.organization,
             position: createFmt(holder.position, v => Number(v).toLocaleString()),
             reportDate: createFmt(holder.reportDate, v => new Date(v).toLocaleDateString()),
-            pctHeld: createFmt(holder.pctHeld, v => (Number(v) * 100).toFixed(2) + '%'),
+            pctHeld: createFmt(holder.pctHeld, v => {
+              const pct = formatNumber(Number(v) * 100, 2, null);
+              return pct !== null ? pct + '%' : 'N/A';
+            }),
             value: createFmt(holder.value, v => Number(v).toLocaleString())
           };
         })
@@ -1062,7 +1088,7 @@ class YahooFinanceAPI {
         value: createFmt(tx.value, v => Number(v).toLocaleString()),
         filerRelation: tx.filerRelation,
         filerUrl: tx.filerUrl,
-        transactionPrice: createFmt(tx.value && tx.shares ? tx.value / tx.shares : 0, v => v.toFixed(2))
+        transactionPrice: createFmt(tx.value && tx.shares ? tx.value / tx.shares : 0, v => formatNumber(v, 2))
       })),
       recommendationTrend: trend.trend || [],
       upgradesDowngrades: (result.upgradeDowngradeHistory && result.upgradeDowngradeHistory.history) ? result.upgradeDowngradeHistory.history.slice(0, 50) : [],
