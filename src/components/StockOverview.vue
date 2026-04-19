@@ -996,15 +996,25 @@ export default {
   100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 1024px) {
+/* Tablet landscape (901-1199): keep side-by-side, narrower sidebar */
+@media (max-width: 1199px) and (min-width: 901px) {
+  .navigation-sidebar {
+    width: 220px;
+  }
+}
+
+/* Tablet portrait & smaller (≤900px): stack with bounded sidebar height
+   so the main content stays within reach on a single tap-scroll. */
+@media (max-width: 900px) {
   .main-layout {
     flex-direction: column;
   }
-  
+
   .navigation-sidebar {
     width: 100%;
     position: static;
-    max-height: none;
+    max-height: 40vh;
+    overflow-y: auto;
     margin-bottom: 1.5rem;
   }
 }
