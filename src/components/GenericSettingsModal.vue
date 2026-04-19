@@ -3,7 +3,7 @@
     <div class="settings-modal">
       <div class="modal-header">
         <h3>{{ title }}</h3>
-        <button class="close-btn" @click="close">&times;</button>
+        <button class="close-btn" @click="close" aria-label="Close settings">&times;</button>
       </div>
       
       <div class="modal-body">

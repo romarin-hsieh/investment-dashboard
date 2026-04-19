@@ -19,9 +19,15 @@
                 <router-link to="/system-manager" class="nav-link">Control Panel</router-link>
               </li>
             </ul>
-            <button @click="toggleTheme" class="theme-toggle" :title="theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'">
-               <span v-if="theme === 'dark'">☀️</span>
-               <span v-else>🌙</span>
+            <button
+              @click="toggleTheme"
+              class="theme-toggle"
+              :title="theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'"
+              :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+              :aria-pressed="theme === 'dark' ? 'true' : 'false'"
+            >
+               <span aria-hidden="true" v-if="theme === 'dark'">☀️</span>
+               <span aria-hidden="true" v-else>🌙</span>
             </button>
           </div>
         </div>

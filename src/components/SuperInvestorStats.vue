@@ -53,7 +53,13 @@
                  <template v-for="(item, index) in ownershipData" :key="index">
                    <tr>
                      <td class="text-center">
-                        <button class="expand-btn" @click.stop="toggleHistory(index)" :title="isHistoryExpanded(index) ? 'Hide History' : 'Show History'">
+                        <button
+                          class="expand-btn"
+                          @click.stop="toggleHistory(index)"
+                          :title="isHistoryExpanded(index) ? 'Hide History' : 'Show History'"
+                          :aria-label="isHistoryExpanded(index) ? `Hide holdings history for ${item.manager}` : `Show holdings history for ${item.manager}`"
+                          :aria-expanded="isHistoryExpanded(index) ? 'true' : 'false'"
+                        >
                           {{ isHistoryExpanded(index) ? '−' : '+' }}
                         </button>
                      </td>

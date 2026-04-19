@@ -26,7 +26,7 @@
           <div class="symbol-info">
             <div class="symbol-wrapper">
               <h3 class="symbol">{{ symbol }}</h3>
-              <a :href="`https://finance.yahoo.com/chart/${symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" title="View Realtime Chart on Yahoo Finance">
+              <a :href="`https://finance.yahoo.com/chart/${symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" title="View Realtime Chart on Yahoo Finance" :aria-label="`Open realtime chart for ${symbol} on Yahoo Finance (opens in new tab)`">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
@@ -104,7 +104,7 @@
             <div class="widget-header flex-header">
                 <div style="display: flex; align-items: center;">
                     <h3>Technical Indicators</h3>
-                    <button class="header-info-btn" @click="$refs.technicalSignals.openModal()" title="Signal Specifications" style="margin-left: 8px;">
+                    <button class="header-info-btn" @click="$refs.technicalSignals.openModal()" title="Signal Specifications" aria-label="Open Signal Specifications" style="margin-left: 8px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
