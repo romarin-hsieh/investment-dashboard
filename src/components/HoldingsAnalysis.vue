@@ -147,6 +147,7 @@ import { Doughnut, Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
 import { useTheme } from '@/composables/useTheme.js'
+import { getToken } from '@/utils/designTokens.js'
 
 ChartJS.register(ArcElement, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend)
 
@@ -191,13 +192,14 @@ export default {
           return this.theme === 'dark';
       },
       ownershipChartOptions() {
+        // Chart.js reads raw values at render time; tokens recomputed on theme change.
         return {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-              legend: { 
+              legend: {
                   position: 'right',
-                  labels: { color: this.isDark ? '#E6E1DC' : '#666' }
+                  labels: { color: getToken('--text-secondary') }
               }
           }
         }
@@ -226,27 +228,32 @@ export default {
           return 'Neutral';
       },
       sentimentColor() {
-          if (this.sentimentScore < 40) return '#dc3545';
-          return '#ffc107';
+          if (this.sentimentScore < 40) return getToken('--danger-solid');
+          return getToken('--warning-solid');
       },
       smartMoneyScoreDetails() {
          const score = this.calculatedSmartMoneyScore;
          let text = 'Neutral';
-         let color = '#ffc107'; // Yellow
-         
+         let color = getToken('--warning-solid');  // amber default
+
          if (score >= 75) {
              text = 'Strong Accumulation (Safe Buy)';
-             color = '#28a745'; // Green
+             color = getToken('--success-solid');
          } else if (score < 50) {
              text = 'Weak / Distribution (Caution)';
-             color = '#dc3545'; // Red
+             color = getToken('--danger-solid');
          } else {
              text = 'Stable / Neutral';
          }
-         
+
          return { score, text, color };
       },
       smartMoneyChartOptions() {
+          // Theme-adaptive chart styling. Tokens resolve to different hex in
+          // light vs dark via .dark-mode overrides in style.css.
+          const axisTextColor = getToken('--text-secondary');
+          const gridColor     = getToken('--border-color');
+          const legendColor   = getToken('--text-secondary');
           return {
               responsive: true,
               maintainAspectRatio: false,
@@ -259,23 +266,23 @@ export default {
                       type: 'linear',
                       display: true,
                       position: 'left',
-                      title: { display: true, text: 'Shares Held', color: this.isDark?'#aaa':'#666' },
-                      grid: { color: this.isDark?'#333':'#eee' },
-                      ticks: { color: this.isDark?'#aaa':'#666' }
+                      title: { display: true, text: 'Shares Held', color: axisTextColor },
+                      grid: { color: gridColor },
+                      ticks: { color: axisTextColor }
                   },
                   y1: {
                       type: 'linear',
                       display: true,
                       position: 'right',
-                      title: { display: true, text: 'Stock Price', color: this.isDark?'#aaa':'#666' },
+                      title: { display: true, text: 'Stock Price', color: axisTextColor },
                       grid: { drawOnChartArea: false }, // only want the grid lines for one axis
-                      ticks: { color: this.isDark?'#aaa':'#666', callback: (val) => '$' + val }
+                      ticks: { color: axisTextColor, callback: (val) => '$' + val }
                   }
               },
               plugins: {
-                  legend: { 
+                  legend: {
                       position: 'bottom',
-                      labels: { padding: 20, color: this.isDark ? '#E6E1DC' : '#666' } 
+                      labels: { padding: 20, color: legendColor }
                   },
                   tooltip: { mode: 'index', intersect: false }
               }
@@ -416,7 +423,7 @@ export default {
                     type: 'bar',
                     data: sharesData,
                     backgroundColor: 'rgba(40, 167, 69, 0.6)',
-                    borderColor: '#28a745',
+                    borderColor: getToken('--success-solid'),
                     borderWidth: 1,
                     yAxisID: 'y'
                 },
@@ -424,8 +431,8 @@ export default {
                     label: 'Avg Reported Price',
                     type: 'line',
                     data: priceData,
-                    borderColor: '#007bff',
-                    backgroundColor: '#007bff',
+                    borderColor: getToken('--blue-500'),
+                    backgroundColor: getToken('--blue-500'),
                     tension: 0.1,
                     yAxisID: 'y1'
                 }
@@ -503,21 +510,30 @@ export default {
         const institutions = parseFloat(this.holders.institutionsPercent) || 0;
         const publicFloat = Math.max(0, 100 - insiders - institutions); 
         
+        // Renaissance-theme ownership palette:
+        //   Insiders      -> --secondary-color (Warm Taupe)
+        //   Institutions  -> --primary-color   (Florentine Blue)
+        //   Public/Other  -> theme-neutral grey (no matching brand token;
+        //                    kept inline so the brand namespace stays focused)
+        // Hover variants are manual shade tweaks of the same hues; not worth
+        // tokenising for one pie chart. Border uses --bg-card so the slices
+        // visually 'cut out' of the card surface in both themes.
+        const publicSlice      = this.isDark ? '#4D4D4D' : '#D6D2CE';
+        const hoverInsiders    = this.isDark ? '#C9BFB1' : '#8A7A6A';
+        const hoverInstitutions = this.isDark ? '#9DAEB0' : '#5A6B6E';
+        const hoverPublic      = this.isDark ? '#5D5D5D' : '#C4BEB8';
+
         this.ownershipChartData = {
             labels: ['Insiders', 'Institutions', 'Public/Other'],
             datasets: [{
                 data: [insiders, institutions, publicFloat],
-                // Renaissance Theme Palette (coordinated with site design):
-                // Insiders -> Warm Taupe (Secondary Color)
-                // Institutions -> Florentine Blue (Primary Color) 
-                // Public -> Soft Stone Grey (Background Secondary)
-                backgroundColor: this.isDark 
-                    ? ['#B5A89A', '#8A9A9C', '#4D4D4D']  // Dark mode
-                    : ['#A09080', '#6B7F82', '#D6D2CE'], // Light mode
-                hoverBackgroundColor: this.isDark
-                    ? ['#C9BFB1', '#9DAEB0', '#5D5D5D']
-                    : ['#8A7A6A', '#5A6B6E', '#C4BEB8'],
-                borderColor: this.isDark ? '#2C2C2C' : '#FFFFFF',
+                backgroundColor: [
+                    getToken('--secondary-color'),
+                    getToken('--primary-color'),
+                    publicSlice
+                ],
+                hoverBackgroundColor: [hoverInsiders, hoverInstitutions, hoverPublic],
+                borderColor: getToken('--bg-card'),
                 borderWidth: 2,
                 hoverOffset: 8,
                 borderRadius: 4
