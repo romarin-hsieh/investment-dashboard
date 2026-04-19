@@ -92,6 +92,7 @@
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import WidgetSkeleton from './WidgetSkeleton.vue'
+import { formatNumber } from '@/utils/numberFormat'
 
 export default {
   name: 'TechnicalIndicators',
@@ -220,8 +221,11 @@ export default {
           // Use pre-calculated change if available (Compact Mode)
           if (data[key].change !== undefined && data[key].change !== null) {
               const chgVal = parseFloat(data[key].change);
-              change = (chgVal >= 0 ? '+' : '') + chgVal.toFixed(1) + '%';
-              changeClass = chgVal >= 0 ? 'pos' : 'neg';
+              const fmt = this.fmtChangePct(chgVal);
+              if (fmt !== null) {
+                  change = fmt;
+                  changeClass = chgVal >= 0 ? 'pos' : 'neg';
+              }
           }
         }  
         
@@ -234,9 +238,11 @@ export default {
              if (latest !== null && prev !== null && prev !== 0) {
                  const diff = latest - prev;
                  const pct = (diff / Math.abs(prev)) * 100; // Use Math.abs(prev) for correct sign on oscillators
-                 const sign = diff >= 0 ? '+' : '';
-                 change = `${sign}${pct.toFixed(1)}%`;
-                 changeClass = diff >= 0 ? 'pos' : 'neg';
+                 const fmt = this.fmtChangePct(pct);
+                 if (fmt !== null) {
+                     change = fmt;
+                     changeClass = diff >= 0 ? 'pos' : 'neg';
+                 }
              }
 
              // Fallback: If value is 'N/A' but we have series data, use latest value
@@ -315,7 +321,7 @@ export default {
       groups['Market'].push({
           label: 'Volume',
           value: this.formatVolume(displayVolume),
-          change: volChange !== undefined && volChange !== null ? (volChange >= 0 ? '+' : '') + Number(volChange).toFixed(1) + '%' : null,
+          change: this.fmtChangePct(Number(volChange)),
           changeClass: this.getChangeClass(volChange),
           signal: this.getVolumeCategory(displayVolume, displayAvgVol10D || displayAvgVol3M),
           class: 'text-white'
@@ -330,7 +336,7 @@ export default {
       groups['Market'].push({
           label: 'Avg Vol (10D)',
           value: this.formatVolume(displayAvgVol10D),
-          change: avgVolDiffPct !== null ? (avgVolDiffPct >= 0 ? '+' : '') + avgVolDiffPct.toFixed(1) + '%' : null,
+          change: this.fmtChangePct(avgVolDiffPct),
           changeClass: this.getChangeClass(avgVolDiffPct),
           signal: this.getVolumeCategory(displayAvgVol10D, displayAvgVol3M), 
           class: 'text-white'
@@ -340,7 +346,7 @@ export default {
           label: 'Market Cap',
           value: this.formatMarketCap(displayMarketCap),
           signal: this.getMarketCapCategory(displayMarketCap),
-          change: yf.regularMarketChangePercent !== undefined ? (yf.regularMarketChangePercent * 100 >= 0 ? '+' : '') + (yf.regularMarketChangePercent * 100).toFixed(1) + '%' : null,
+          change: this.fmtChangePct(yf.regularMarketChangePercent !== undefined ? yf.regularMarketChangePercent * 100 : null),
           changeClass: this.getChangeClass(yf.regularMarketChangePercent),
           class: 'text-white'
       });
@@ -406,26 +412,42 @@ export default {
       if (value === null || value === undefined || value === 'N/A' || isNaN(value)) return 'N/A'
       return Number(value).toFixed(decimals)
     },
+
+    /**
+     * Format a signed percent change ("+3.5%" / "-1.2%") or return null if
+     * the input is not a finite number. Used by the compact-table change column
+     * so upstream NaN/Infinity never renders as "NaN%" / "Infinity%".
+     */
+    fmtChangePct(value, decimals = 1) {
+      const pct = formatNumber(value, decimals, null)
+      if (pct === null) return null
+      // formatNumber returns the number without a sign; re-add explicit '+' for positives
+      return (Number(value) >= 0 ? '+' : '') + pct + '%'
+    },
     
     formatVolume(value) {
-      if (!value && value !== 0) return 'N/A'
-      if (value >= 1e9) return (value / 1e9).toFixed(1) + 'B'
-      if (value >= 1e6) return (value / 1e6).toFixed(1) + 'M'
-      if (value >= 1e3) return (value / 1e3).toFixed(1) + 'K'
-      return value.toLocaleString()
+      // `!value && value !== 0` catches NaN, null, undefined, and "" — all fall to N/A.
+      if (!Number.isFinite(Number(value))) return 'N/A'
+      const n = Number(value)
+      if (n >= 1e9) return formatNumber(n / 1e9, 1) + 'B'
+      if (n >= 1e6) return formatNumber(n / 1e6, 1) + 'M'
+      if (n >= 1e3) return formatNumber(n / 1e3, 1) + 'K'
+      return n.toLocaleString()
     },
-    
+
     formatMarketCap(value) {
-      if (!value && value !== 0) return 'N/A'
-      if (value >= 1e12) return '$' + (value / 1e12).toFixed(2) + 'T'
-      if (value >= 1e9) return '$' + (value / 1e9).toFixed(1) + 'B'
-      if (value >= 1e6) return '$' + (value / 1e6).toFixed(1) + 'M'
-      return '$' + value.toLocaleString()
+      if (!Number.isFinite(Number(value))) return 'N/A'
+      const n = Number(value)
+      if (n >= 1e12) return '$' + formatNumber(n / 1e12, 2) + 'T'
+      if (n >= 1e9)  return '$' + formatNumber(n / 1e9, 1) + 'B'
+      if (n >= 1e6)  return '$' + formatNumber(n / 1e6, 1) + 'M'
+      return '$' + n.toLocaleString()
     },
-    
+
     formatBeta(value) {
-      if (value === null || value === undefined) return 'N/A'
-      return Number(value).toFixed(2)
+      // Explicit isFinite guard — previous version passed NaN through to
+      // Number(NaN).toFixed(2) = "NaN" (rendered directly to UI).
+      return formatNumber(value, 2)
     },
     
     // Style Methods
