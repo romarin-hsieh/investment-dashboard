@@ -50,6 +50,7 @@
 | [0003](0003-three-tier-cache-model.md) | 3-Tier Cache (Memory → CDN → Live) | Accepted | `performance`, `data` |
 | [0004](0004-github-actions-etl.md) | GitHub Actions as the ETL Runtime | Accepted | `ci-cd`, `cost`, `operations` |
 | [0005](0005-technical-indicator-library-choice.md) | Four Charting Libraries (Plotly + TV Lightweight + TV iframe + Chart.js) | Accepted | `frontend`, `charting`, `performance` |
+| [0006](0006-static-data-caching-on-github-pages.md) | Static-Data Caching on GitHub Pages (layered client-side strategy) | Accepted | `deployment`, `performance`, `hosting` |
 
 ## Lifecycle
 
