@@ -24,6 +24,14 @@
         "hold": 3,
         "sell": 0,
         "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 4,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -892,17 +900,17 @@
     "priceHint": 2,
     "regularMarketPrice": 6.11,
     "regularMarketDayHigh": 6.485,
-    "regularMarketDayLow": 6.1001,
-    "regularMarketVolume": 26995414,
+    "regularMarketDayLow": 6.1,
+    "regularMarketVolume": 26996459,
     "averageDailyVolume10Day": 24341070,
-    "averageDailyVolume3Month": 31098783,
+    "averageDailyVolume3Month": 30871372,
     "regularMarketPreviousClose": 6.08,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 6.25,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "ACHR",
     "underlyingSymbol": null,
@@ -2181,9 +2189,10 @@
     "currentPrice": 6.11,
     "targetHighPrice": 18,
     "targetLowPrice": 4.5,
-    "targetMeanPrice": 11.05556,
+    "targetMeanPrice": 10.94444,
     "targetMedianPrice": 12,
-    "recommendationKey": "none",
+    "recommendationMean": 1.88889,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 9,
     "totalCash": 1964700032,
     "totalCashPerShare": 2.639,
@@ -2205,6 +2214,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-19T04:52:40.683Z",
+  "lastUpdated": "2026-04-20T04:59:27.553Z",
   "source": "Static Build (yahoo-finance2)"
 }
