@@ -269,7 +269,10 @@
       </div>
 
       <!-- Tab Content: Holdings & Sentiment -->
-      <div v-show="activeTab === 'holdings'" class="tab-content">
+      <!-- WS-C PR-C3: v-if (not v-show) so HoldingsAnalysis + SuperInvestorStats
+           aren't mounted on initial paint — they're lazy-loaded async components
+           and their chunks only fetch when the user activates this tab. -->
+      <div v-if="activeTab === 'holdings'" class="tab-content">
           <div class="widget-container">
              <div class="widget-header"><h3>Institutional & Insider Holdings</h3></div>
              <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData" />
@@ -286,25 +289,38 @@
 </template>
 
 <script>
+import { defineAsyncComponent } from 'vue'
 import FastTradingViewWidget from '@/components/FastTradingViewWidget.vue'
 import AdvancedChartWidget from '@/components/AdvancedChartWidget.vue'
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import MarketRegimeWidget from '@/components/MarketRegimeWidget.vue'
 import TradingStrategyWidget from '@/components/TradingStrategyWidget.vue'
 import MFIVolumeProfilePanel from '@/components/MFIVolumeProfilePanel.vue'
-import TradingViewCompanyProfile from '@/components/TradingViewCompanyProfile.vue'
-import TradingViewFundamentalData from '@/components/TradingViewFundamentalData.vue'
 import TechnicalIndicators from '@/components/TechnicalIndicators.vue'
 import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 import StockNews from '@/components/StockNews.vue'
 import StockDetailSkeleton from '@/components/StockDetailSkeleton.vue'
-import FundamentalAnalysis from '@/components/FundamentalAnalysis.vue'
-import HoldingsAnalysis from '@/components/HoldingsAnalysis.vue'
 import TechnicalSignals from '@/components/TechnicalSignals.vue'
 import TrendlinesSRWidget from '@/components/TrendlinesSRWidget.vue'
+
+// WS-C PR-C3: tab-exclusive components are lazy-loaded so the default
+// Overview tab renders without their JS. Each becomes its own chunk;
+// the browser fetches it only when the user clicks that tab.
+//
+//   Analysis tab  -> FundamentalAnalysis, TradingViewFundamentalData, TradingViewCompanyProfile
+//   Holdings tab  -> HoldingsAnalysis, SuperInvestorStats
+//
+// v-if guards on lines ~237 and ~272 ensure the components aren't
+// resolved until their tab is active.
+const FundamentalAnalysis       = defineAsyncComponent(() => import('@/components/FundamentalAnalysis.vue'))
+const TradingViewFundamentalData = defineAsyncComponent(() => import('@/components/TradingViewFundamentalData.vue'))
+const TradingViewCompanyProfile  = defineAsyncComponent(() => import('@/components/TradingViewCompanyProfile.vue'))
+const HoldingsAnalysis          = defineAsyncComponent(() => import('@/components/HoldingsAnalysis.vue'))
+const SuperInvestorStats        = defineAsyncComponent(() => import('@/components/SuperInvestorStats.vue'))
 import CisdWidget from '@/components/CisdWidget.vue'
 import ReviewCometChart from '@/components/ReviewCometChart.vue'
-import SuperInvestorStats from '@/components/SuperInvestorStats.vue'
+// NOTE: SuperInvestorStats is lazy-loaded via defineAsyncComponent above
+//       (Holdings tab only). Static import removed in WS-C PR-C3.
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { useTheme } from '@/composables/useTheme.js'
 import { getToken } from '@/utils/designTokens.js'
