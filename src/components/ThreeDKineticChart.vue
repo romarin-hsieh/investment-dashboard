@@ -1,6 +1,17 @@
 <script setup>
 import { onMounted, ref, watch, nextTick, computed } from 'vue';
-import Plotly from 'plotly.js-dist-min';
+
+// WS-C PR-C1: Plotly (~1.2 MB uncompressed) is dynamically imported on
+// first render so it loads from its own Vite chunk only when the user
+// visits a page that mounts a Kinetic Chart. Keeping the top-level
+// import would force every visitor to download Plotly up front.
+// Module-scoped cache — import once per tab session.
+let Plotly = null;
+async function loadPlotly () {
+  if (Plotly) return Plotly;
+  Plotly = (await import('plotly.js-dist-min')).default;
+  return Plotly;
+}
 
 const props = defineProps({
   dataPoint: { type: Object, required: true },
@@ -53,8 +64,12 @@ const commonLayout = {
     showlegend: false
 };
 
-const renderCharts = () => {
+const renderCharts = async () => {
     if (isDataEmpty.value) return;
+    // Lazy-load Plotly on first render. Subsequent calls hit the module
+    // cache (no network). Render fns below reference the module-scoped
+    // Plotly binding directly.
+    await loadPlotly();
     render3D();
     renderStock2D();
     renderSector2D();

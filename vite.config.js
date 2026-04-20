@@ -18,7 +18,12 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['vue', 'vue-router'],
-          utils: ['zod']
+          utils: ['zod'],
+          // WS-C PR-C1: split Plotly (~1.2 MB uncompressed) into its own chunk.
+          // Combined with dynamic `await import('plotly.js-dist-min')` inside
+          // ReviewCometChart.vue and ThreeDKineticChart.vue, Plotly only loads
+          // when a user actually navigates to a page that renders a 3D chart.
+          plotly: ['plotly.js-dist-min']
         }
       }
     },

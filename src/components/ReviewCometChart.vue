@@ -1,7 +1,18 @@
 <script setup>
 import { ref, shallowRef, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
-import Plotly from 'plotly.js-dist-min';
 import { quantDataService } from '@/services/QuantDataService.js';
+
+// WS-C PR-C1: Plotly (~1.2 MB uncompressed) is dynamically imported in
+// renderChartsSequentially() below, so it loads from its own Vite chunk
+// only when a user actually renders the Comet Chart. Keeping the top-level
+// import would pull Plotly into the initial JS bundle for every page visit.
+// Cached at module scope so we pay the import cost once per tab.
+let Plotly = null;
+async function loadPlotly () {
+  if (Plotly) return Plotly;
+  Plotly = (await import('plotly.js-dist-min')).default;
+  return Plotly;
+}
 
 const props = defineProps({
   symbol: { type: String, required: true },
@@ -117,12 +128,17 @@ const commonLayout = (title, xaxis, yaxis) => {
 // Staggered Rendering to prevent UI Freeze
 const renderChartsSequentially = async () => {
     if (!cometData.value) return;
+
+    // Lazy-load Plotly on first render (WS-C PR-C1). First call pays the
+    // ~1.2 MB fetch; subsequent calls reuse the cached module.
+    await loadPlotly();
+
     const d = cometData.value;
     const history = d.trace || [];
     const sector = d.sector_trace || [];
     const validSector = sector.length > 0 ? sector : [];
     const c = getThemeColors();
-    
+
     // Helper to wait for UI frame
     const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
 
