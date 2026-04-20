@@ -13,30 +13,26 @@ import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler.js'
 // Import cache warmup service
 import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
 
-// Import pages
-import MarketDashboard from './pages/MarketDashboard.vue'
-import StockDashboard from './pages/StockDashboard.vue'
-import Settings from './pages/Settings.vue'
-import StockDetail from './pages/StockDetail.vue'
-import TechnicalIndicatorsManager from './pages/TechnicalIndicatorsManager.vue'
-import AutoUpdateMonitor from './pages/AutoUpdateMonitor.vue'
-import SystemManager from './pages/SystemManager.vue'
-
 // Router configuration
+// WS-C PR-C2: All pages are lazy-imported via `() => import(...)` so Vite
+// emits each route as its own chunk. This drops the initial JS bundle
+// to just what's needed for the landing route (market-overview) + shell.
+// Eager pre-imports at top of file were removed; each route loads on first
+// navigation and is cached by the browser thereafter.
 const routes = [
   { path: '/', redirect: '/market-overview' },
-  { path: '/market-overview', component: MarketDashboard, name: 'market-overview' },
-  { path: '/stock-overview', component: StockDashboard, name: 'stock-overview' },
-  { path: '/stock-overview/symbols/:symbol', component: StockDetail, name: 'stock-detail' },
+  { path: '/market-overview', component: () => import('./pages/MarketDashboard.vue'), name: 'market-overview' },
+  { path: '/stock-overview', component: () => import('./pages/StockDashboard.vue'), name: 'stock-overview' },
+  { path: '/stock-overview/symbols/:symbol', component: () => import('./pages/StockDetail.vue'), name: 'stock-detail' },
   // Legacy redirects for backward compatibility
   { path: '/market-dashboard', redirect: '/market-overview' },
   { path: '/stock-dashboard', redirect: '/stock-overview' },
   { path: '/stock-dashboard/symbols/:symbol', redirect: to => `/stock-overview/symbols/${to.params.symbol}` },
-  { path: '/settings', component: Settings, name: 'settings' },
+  { path: '/settings', component: () => import('./pages/Settings.vue'), name: 'settings' },
   // Tools
-  { path: '/technical-manager', component: TechnicalIndicatorsManager, name: 'technical-manager' },
-  { path: '/auto-update-monitor', component: AutoUpdateMonitor, name: 'auto-update-monitor' },
-  { path: '/system-manager', component: SystemManager, name: 'system-manager' },
+  { path: '/technical-manager', component: () => import('./pages/TechnicalIndicatorsManager.vue'), name: 'technical-manager' },
+  { path: '/auto-update-monitor', component: () => import('./pages/AutoUpdateMonitor.vue'), name: 'auto-update-monitor' },
+  { path: '/system-manager', component: () => import('./pages/SystemManager.vue'), name: 'system-manager' },
   // Quant Strategy (Dev Only)
   ...(process.env.NODE_ENV === 'development' ? [
     { path: '/quant-strategy', component: () => import('./pages/QuantDashboard.vue'), name: 'quant-strategy' }
