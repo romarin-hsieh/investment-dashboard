@@ -8,6 +8,8 @@
  * @module api/dataTransformers
  */
 
+import { formatNumber } from '@/utils/numberFormat';
+
 // Type Definitions / 型別定義
 export type Exchange = 'NASDAQ' | 'NYSE';
 export type MarketCapCategory = 'mega_cap' | 'large_cap' | 'mid_cap' | 'small_cap' | 'micro_cap' | 'unknown';
@@ -138,7 +140,8 @@ export function formatPercentValue(val: YahooFinanceValue | number | null | unde
     // Yahoo Finance returns percentages as decimals (e.g., 0.12 for 12%)
     // Yahoo Finance 以小數回傳百分比（例如 0.12 代表 12%）
     const percent = raw * 100;
-    return `${percent.toFixed(2)}%`;
+    const pct = formatNumber(percent, 2, null);
+    return pct === null ? 'N/A' : `${pct}%`;
 }
 
 /**

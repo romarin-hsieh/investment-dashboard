@@ -45,19 +45,19 @@
         <div class="status-item">
           <span class="status-label">MFI Signal:</span>
           <span class="status-value" :class="`signal-${profileData.mfi.signal.toLowerCase()}`">{{ profileData.mfi.signal }}</span>
-          <span class="status-detail">({{ profileData.mfi.latest?.toFixed(2) || 'N/A' }})</span>
+          <span class="status-detail">({{ formatNumber(profileData.mfi.latest, 2) }})</span>
         </div>
         <div class="status-divider">|</div>
         <div class="status-item">
           <span class="status-label">Sentiment:</span>
           <span class="status-value" :class="`sentiment-${profileData.marketSentiment.toLowerCase()}`">{{ profileData.marketSentiment }}</span>
-          <span class="status-detail">(Buy: {{ (profileData.statistics.buyingRatio * 100).toFixed(0) }}%)</span>
+          <span class="status-detail">(Buy: {{ formatNumber(profileData.statistics.buyingRatio * 100, 0) }}%)</span>
         </div>
         <div class="status-divider">|</div>
         <div class="status-item">
           <span class="status-label">POC:</span>
-          <span class="status-value">${{ profileData.pointOfControl.priceLevel.toFixed(2) }}</span>
-          <span class="status-detail">({{ profileData.pointOfControl.percentage.toFixed(1) }}% vol)</span>
+          <span class="status-value">${{ formatNumber(profileData.pointOfControl.priceLevel, 2) }}</span>
+          <span class="status-detail">({{ formatNumber(profileData.pointOfControl.percentage, 1) }}% vol)</span>
         </div>
       </div>
 
@@ -74,7 +74,7 @@
               class="price-label"
               :style="{ height: binHeight + 'px' }"
             >
-              ${{ bin.priceLevel.toFixed(2) }}
+              ${{ formatNumber(bin.priceLevel, 2) }}
             </div>
           </div>
           
@@ -202,9 +202,9 @@
     <!-- Tooltip -->
     <div v-if="tooltip.visible" class="tooltip" :style="tooltip.style">
       <div class="tooltip-content">
-        <div><strong>Price Range:</strong> ${{ tooltip.data.minPrice.toFixed(2) }} - ${{ tooltip.data.maxPrice.toFixed(2) }}</div>
+        <div><strong>Price Range:</strong> ${{ formatNumber(tooltip.data.minPrice, 2) }} - ${{ formatNumber(tooltip.data.maxPrice, 2) }}</div>
         <div><strong>Volume:</strong> {{ formatVolume(tooltip.data.volume) }}</div>
-        <div><strong>Avg MFI:</strong> {{ tooltip.data.mfiAverage.toFixed(1) }}</div>
+        <div><strong>Avg MFI:</strong> {{ formatNumber(tooltip.data.mfiAverage, 1) }}</div>
         <div><strong>Buying:</strong> {{ formatVolume(tooltip.data.positiveVolume) }}</div>
         <div><strong>Selling:</strong> {{ formatVolume(tooltip.data.negativeVolume) }}</div>
       </div>
@@ -215,6 +215,7 @@
 <script>
 import { ohlcvApi } from '@/services/ohlcvApi.js';
 import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile.js';
+import { formatNumber } from '@/utils/numberFormat';
 
 export default {
   name: 'MFIVolumeProfilePanel',
@@ -436,15 +437,18 @@ export default {
       };
     },
     
+    formatNumber,
+
     formatVolume(volume) {
+      if (!Number.isFinite(volume)) return 'N/A';
       if (volume >= 1000000000) {
-        return (volume / 1000000000).toFixed(1) + 'B';
+        return formatNumber(volume / 1000000000, 1) + 'B';
       } else if (volume >= 1000000) {
-        return (volume / 1000000).toFixed(1) + 'M';
+        return formatNumber(volume / 1000000, 1) + 'M';
       } else if (volume >= 1000) {
-        return (volume / 1000).toFixed(1) + 'K';
+        return formatNumber(volume / 1000, 1) + 'K';
       } else {
-        return volume.toFixed(0);
+        return formatNumber(volume, 0);
       }
     },
     

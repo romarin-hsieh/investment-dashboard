@@ -406,7 +406,9 @@ export default {
           const data = await response.json()
           this.technicalIndicatorsLastUpdate = new Date(data.generatedAt)
           this.technicalIndicatorsAge = (Date.now() - this.technicalIndicatorsLastUpdate) / (1000 * 60 * 60)
-          this.technicalIndicatorsSuccessRate = Math.round((data.successfulSymbols / data.totalSymbols) * 100)
+          const total = data.totalSymbols || 0
+          const successful = data.successfulSymbols || 0
+          this.technicalIndicatorsSuccessRate = total > 0 ? Math.round((successful / total) * 100) : 0
         }
       } catch (error) {
         this.addLog(`載入技術指標狀態失敗: ${error.message}`, 'ERROR')

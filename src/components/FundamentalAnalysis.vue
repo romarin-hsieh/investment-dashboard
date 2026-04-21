@@ -120,7 +120,7 @@
                      <div>
                         <div class="metric-label">Forward P/E</div>
                         <div class="metric-value">
-                             {{ metrics.forwardPE ? parseFloat(metrics.forwardPE).toFixed(2) : 'N/A' }}
+                             {{ metrics.forwardPE ? formatNumber(parseFloat(metrics.forwardPE), 2) : 'N/A' }}
                         </div>
                      </div>
                      <div>
@@ -159,6 +159,7 @@ import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Li
 import { Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
+import { formatNumber } from '@/utils/numberFormat'
 import { useTheme } from '@/composables/useTheme.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController)
@@ -261,10 +262,10 @@ export default {
                     color: this.commonChartColors.text,
                     callback: function(value) {
                         if (value >= 1000000000) {
-                            return (value / 1000000000).toFixed(1) + 'B';
+                            return formatNumber(value / 1000000000, 1) + 'B';
                         }
                         if (value >= 1000000) {
-                            return (value / 1000000).toFixed(1) + 'M';
+                            return formatNumber(value / 1000000, 1) + 'M';
                         }
                         return value;
                     }
@@ -542,7 +543,8 @@ export default {
         if (val === undefined || val === null) return 'N/A';
         // Handle both raw number (0.36) and object ({fmt: '36%'})
         const num = typeof val === 'object' ? val.raw : val;
-        return (num * 100).toFixed(2) + '%';
+        const pct = formatNumber(num * 100, 2, null);
+        return pct === null ? 'N/A' : pct + '%';
     },
 
     prepareTargetPriceChart(validItems) {

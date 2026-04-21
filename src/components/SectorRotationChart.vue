@@ -38,6 +38,7 @@ import {
   LinearScale
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
+import { formatNumber } from '@/utils/numberFormat'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -179,7 +180,7 @@ export default {
              if (diff !== 0) {
                 const sign = diff > 0 ? '+' : ''
                 const colorStyle = diff > 0 ? 'color:#48c774' : 'color:#ff3860'
-                changeHtml = `<span style="${colorStyle}; font-weight:600">(${sign}${diff.toFixed(1)}%)</span>`
+                changeHtml = `<span style="${colorStyle}; font-weight:600">(${sign}${formatNumber(diff, 1)}%)</span>`
              }
           }
 
@@ -187,7 +188,7 @@ export default {
             <tr>
               <td>
                 <span class="color-box" style="background:${color}"></span>
-                ${label}: ${currentVal.toFixed(1)}% ${changeHtml}
+                ${label}: ${formatNumber(currentVal, 1)}% ${changeHtml}
               </td>
             </tr>
           `

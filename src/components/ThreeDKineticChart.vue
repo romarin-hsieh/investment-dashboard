@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref, watch, nextTick, computed } from 'vue';
+import { formatNumber } from '@/utils/numberFormat';
 
 // WS-C PR-C1: Plotly (~1.2 MB uncompressed) is dynamically imported on
 // first render so it loads from its own Vite chunk only when the user
@@ -284,21 +285,21 @@ onUnmounted(() => {
                 </div>
                 <div class="table-row dashed">
                     <span class="col-lbl">X (Trend)</span>
-                    <span class="col-val highlight">{{ historicalMetrics.now.x_trend?.toFixed(2) }}</span>
-                    <span class="col-val muted">{{ historicalMetrics.d5.x_trend?.toFixed(2) }}</span>
-                    <span class="col-val muted">{{ historicalMetrics.d20.x_trend?.toFixed(2) }}</span>
+                    <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.x_trend, 2) }}</span>
+                    <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.x_trend, 2) }}</span>
+                    <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.x_trend, 2) }}</span>
                 </div>
                 <div class="table-row dashed">
                     <span class="col-lbl">Y (Momtm)</span>
-                    <span class="col-val highlight">{{ historicalMetrics.now.y_momentum?.toFixed(2) }}</span>
-                    <span class="col-val muted">{{ historicalMetrics.d5.y_momentum?.toFixed(2) }}</span>
-                    <span class="col-val muted">{{ historicalMetrics.d20.y_momentum?.toFixed(2) }}</span>
+                    <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.y_momentum, 2) }}</span>
+                    <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.y_momentum, 2) }}</span>
+                    <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.y_momentum, 2) }}</span>
                 </div>
                 <div class="table-row dashed">
                     <span class="col-lbl">Z (Struct)</span>
-                    <span class="col-val highlight">{{ historicalMetrics.now.z_structure?.toFixed(2) }}</span>
-                    <span class="col-val muted">{{ historicalMetrics.d5.z_structure?.toFixed(2) }}</span>
-                    <span class="col-val muted">{{ historicalMetrics.d20.z_structure?.toFixed(2) }}</span>
+                    <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.z_structure, 2) }}</span>
+                    <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.z_structure, 2) }}</span>
+                    <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.z_structure, 2) }}</span>
                 </div>
             </div>
         </div>
