@@ -75,6 +75,7 @@
                 :quote="stock.quote"
                 :daily-data="stock.dailyData"
                 :metadata="stock.metadata"
+                :selected="stock.quote.symbol === selectedSymbol"
               />
             </div>
           </div>
@@ -85,6 +86,12 @@
     <div v-if="!loading && Object.keys(groupedStocks).length === 0" class="no-data">
       <p>No stock data available</p>
     </div>
+
+    <KeyboardShortcutsOverlay
+      :visible="showShortcutsHelp"
+      :bindings="shortcutBindings"
+      @close="showShortcutsHelp = false"
+    />
   </div>
 </template>
 
@@ -95,12 +102,14 @@ import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
 import NavigationPanel from './NavigationPanel.vue'
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
 import StockCardSkeleton from './StockCardSkeleton.vue'
+import KeyboardShortcutsOverlay from './KeyboardShortcutsOverlay.vue'
 import { navigationService } from '@/services/NavigationService.js'
 import { scrollSpyService } from '@/services/ScrollSpyService.js'
 import { dataFetcher } from '@/lib/fetcher'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
 import { useTheme } from '@/composables/useTheme.js'
+import { createKeyHandler } from '@/composables/useKeyboardShortcuts'
 import { computed } from 'vue'
 
 export default {
@@ -110,7 +119,8 @@ export default {
     LazyTradingViewWidget,
     NavigationPanel,
     WidgetSkeleton,
-    StockCardSkeleton
+    StockCardSkeleton,
+    KeyboardShortcutsOverlay
   },
   setup() {
     const { theme } = useTheme()
@@ -128,7 +138,10 @@ export default {
       // Navigation state
       activeSymbol: '',
       searchQuery: '',
-      expandedSections: new Set()
+      expandedSections: new Set(),
+      // Keyboard navigation state
+      selectedIndex: -1,
+      showShortcutsHelp: false
     }
   },
   computed: {
@@ -563,17 +576,48 @@ export default {
 
     dailyDataMap() {
       if (!this.dailyData?.per_symbol) return new Map()
-      
+
       const map = new Map()
       this.dailyData.per_symbol.forEach(item => {
         map.set(item.symbol, item)
       })
       return map
+    },
+
+    // Flat list of symbols in visual display order. j/k navigation walks
+    // this list; Enter pushes the current entry to the detail route.
+    flatSymbols() {
+      const out = []
+      for (const stocks of Object.values(this.groupedStocks)) {
+        for (const stock of stocks) {
+          out.push(stock.quote.symbol)
+        }
+      }
+      return out
+    },
+
+    selectedSymbol() {
+      if (this.selectedIndex < 0 || this.selectedIndex >= this.flatSymbols.length) {
+        return ''
+      }
+      return this.flatSymbols[this.selectedIndex]
+    },
+
+    shortcutBindings() {
+      return [
+        { key: 'j', description: 'Next stock', handler: () => this.moveSelection(1) },
+        { key: 'k', description: 'Previous stock', handler: () => this.moveSelection(-1) },
+        { key: 'Enter', description: 'Open selected stock detail', handler: () => this.openSelectedDetail() },
+        { key: 'Escape', description: 'Clear selection / close help', handler: () => this.clearSelection() },
+        { key: '?', description: 'Show this help', handler: () => { this.showShortcutsHelp = !this.showShortcutsHelp } }
+      ]
     }
   },
   async mounted() {
     await this.loadStockData()
     this.initializeNavigation()
+    this._keyboardHandler = createKeyHandler(this.shortcutBindings)
+    window.addEventListener('keydown', this._keyboardHandler)
   },
 
   beforeRouteLeave(to, from, next) {
@@ -592,6 +636,10 @@ export default {
 
   beforeUnmount() {
     this.cleanupNavigation()
+    if (this._keyboardHandler) {
+      window.removeEventListener('keydown', this._keyboardHandler)
+      this._keyboardHandler = null
+    }
   },
   methods: {
     async loadStockData() {
@@ -866,6 +914,51 @@ export default {
       })
       this.saveExpandedSections()
       console.log('Navigation: Expanded all sections by default')
+    },
+
+    moveSelection(delta) {
+      const total = this.flatSymbols.length
+      if (total === 0) return
+      if (this.selectedIndex < 0) {
+        // First keypress selects the first or last depending on direction.
+        this.selectedIndex = delta > 0 ? 0 : total - 1
+      } else {
+        const next = this.selectedIndex + delta
+        // Clamp at both ends rather than wrapping; the list can be long and
+        // wrapping across ~150 symbols is disorienting.
+        this.selectedIndex = Math.max(0, Math.min(total - 1, next))
+      }
+      this.$nextTick(() => this.scrollSelectedIntoView())
+    },
+
+    openSelectedDetail() {
+      if (this.showShortcutsHelp) {
+        this.showShortcutsHelp = false
+        return
+      }
+      if (!this.selectedSymbol) return
+      this.$router.push({
+        name: 'stock-detail',
+        params: { symbol: this.selectedSymbol }
+      }).catch(err => {
+        console.error('Keyboard navigation error:', err)
+      })
+    },
+
+    clearSelection() {
+      if (this.showShortcutsHelp) {
+        this.showShortcutsHelp = false
+        return
+      }
+      this.selectedIndex = -1
+    },
+
+    scrollSelectedIntoView() {
+      if (!this.selectedSymbol) return
+      const el = document.querySelector(`[data-symbol="${this.selectedSymbol}"]`)
+      if (el && typeof el.scrollIntoView === 'function') {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
     }
   }
 }

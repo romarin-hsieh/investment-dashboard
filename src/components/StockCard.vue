@@ -1,8 +1,10 @@
 <template>
   <div
     class="stock-card-pair"
+    :class="{ 'is-selected': selected }"
     :id="domId"
     :data-symbol="quote.symbol"
+    :aria-current="selected ? 'true' : null"
     tabindex="-1"
   >
     <!-- Stale Data Banner (above the fold; replaces corner badge) -->
@@ -116,6 +118,10 @@ export default {
     metadata: {
       type: Object,
       default: null
+    },
+    selected: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -318,8 +324,16 @@ export default {
   transition: all 0.2s;
   position: relative;
   width: 100%;
-  scroll-margin-top: 80px; 
+  scroll-margin-top: 80px;
   box-shadow: var(--shadow-md);
+}
+
+/* Keyboard-selected state (j/k navigation). 2px ring using the accent
+   colour so it reads well in both light and dark themes. */
+.stock-card-pair.is-selected {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--primary-color);
 }
 
 /* Stock Info Header */
