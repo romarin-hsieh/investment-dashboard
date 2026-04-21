@@ -41,6 +41,7 @@
 
 <script>
 import { dataFetcher } from '@/lib/fetcher'
+import { formatNumber } from '@/utils/numberFormat'
 
 export default {
   name: 'MarketsOverview',
@@ -128,13 +129,13 @@ export default {
         case 'us_10y_treasury':
         case 'unemployment_rate':
         case 'fed_funds_rate':
-          return `${value.toFixed(2)}%`
-        
+          return `${formatNumber(value, 2)}%`
+
         case 'gold_spot_price':
           return `$${value.toLocaleString('en-US', { maximumFractionDigits: 2 })}/oz`
-        
+
         case 'crude_oil_wti':
-          return `$${value.toFixed(2)}/bbl`
+          return `$${formatNumber(value, 2)}/bbl`
         
         case 'bitcoin_price':
           return `$${value.toLocaleString('en-US', { maximumFractionDigits: 0 })}`

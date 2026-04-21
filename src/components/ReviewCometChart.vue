@@ -1,6 +1,7 @@
 <script setup>
 import { ref, shallowRef, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
 import { quantDataService } from '@/services/QuantDataService.js';
+import { formatNumber } from '@/utils/numberFormat';
 
 // WS-C PR-C1: Plotly (~1.2 MB uncompressed) is dynamically imported in
 // renderChartsSequentially() below, so it loads from its own Vite chunk
@@ -60,10 +61,10 @@ const getCommentary = (d) => {
     const y = d.coordinates.y_momentum;
     const z = d.coordinates.z_structure;
     
-    if (sig === 'LAUNCHPAD') return `Setup Detected: Structure is tight (Z=${z.toFixed(2)}) while Trend is positive. Potential breakout imminent.`;
-    if (sig === 'DIP_BUY') return `Retracement Opportunity: Momentum cooled off but main Trend remains intact (X=${x.toFixed(2)}).`;
-    if (sig === 'CLIMAX') return `Caution: Momentum is overheated (Y=${y.toFixed(2)}). Risk of reversal high.`;
-    return `Neutral State: Waiting for clearer signal. Current Trend Strength: ${x.toFixed(2)}.`;
+    if (sig === 'LAUNCHPAD') return `Setup Detected: Structure is tight (Z=${formatNumber(z, 2)}) while Trend is positive. Potential breakout imminent.`;
+    if (sig === 'DIP_BUY') return `Retracement Opportunity: Momentum cooled off but main Trend remains intact (X=${formatNumber(x, 2)}).`;
+    if (sig === 'CLIMAX') return `Caution: Momentum is overheated (Y=${formatNumber(y, 2)}). Risk of reversal high.`;
+    return `Neutral State: Waiting for clearer signal. Current Trend Strength: ${formatNumber(x, 2)}.`;
 };
 
 const fetchData = async () => {
@@ -253,21 +254,21 @@ onUnmounted(() => {
                     </div>
                     <div class="table-row dashed">
                         <span class="col-lbl">X (Trend)</span>
-                        <span class="col-val highlight">{{ historicalMetrics.now.x_trend.toFixed(2) }}</span>
-                        <span class="col-val muted">{{ historicalMetrics.d5.x_trend.toFixed(2) }}</span>
-                        <span class="col-val muted">{{ historicalMetrics.d20.x_trend.toFixed(2) }}</span>
+                        <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.x_trend, 2) }}</span>
+                        <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.x_trend, 2) }}</span>
+                        <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.x_trend, 2) }}</span>
                     </div>
                     <div class="table-row dashed">
                         <span class="col-lbl">Y (Momtm)</span>
-                        <span class="col-val highlight">{{ historicalMetrics.now.y_momentum.toFixed(2) }}</span>
-                        <span class="col-val muted">{{ historicalMetrics.d5.y_momentum.toFixed(2) }}</span>
-                        <span class="col-val muted">{{ historicalMetrics.d20.y_momentum.toFixed(2) }}</span>
+                        <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.y_momentum, 2) }}</span>
+                        <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.y_momentum, 2) }}</span>
+                        <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.y_momentum, 2) }}</span>
                     </div>
                     <div class="table-row dashed">
                         <span class="col-lbl">Z (Struct)</span>
-                        <span class="col-val highlight">{{ historicalMetrics.now.z_structure.toFixed(2) }}</span>
-                        <span class="col-val muted">{{ historicalMetrics.d5.z_structure.toFixed(2) }}</span>
-                        <span class="col-val muted">{{ historicalMetrics.d20.z_structure.toFixed(2) }}</span>
+                        <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.z_structure, 2) }}</span>
+                        <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.z_structure, 2) }}</span>
+                        <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.z_structure, 2) }}</span>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 // Combines Money Flow Index with Volume Profile analysis for advanced trading insights
 
 import { calculateMFIWithMetadata } from './mfi.js';
+import { formatNumber } from './numberFormat';
 
 /**
  * Calculate Volume Profile with MFI integration
@@ -368,7 +369,7 @@ export function getMFIVolumeProfileSignals(mfiVolumeProfile, currentPrice) {
   // Fallback for empty recommendations (Neutral state)
   if (recommendations.length === 0) {
     if (inValueArea) {
-      recommendations.push(`Price is consolidating within the Value Area ($${valueArea.low.toFixed(2)} - $${valueArea.high.toFixed(2)}). Market is in equilibrium.`);
+      recommendations.push(`Price is consolidating within the Value Area ($${formatNumber(valueArea.low, 2)} - $${formatNumber(valueArea.high, 2)}). Market is in equilibrium.`);
     } else {
       const relation = currentPrice > pointOfControl.priceLevel ? 'above' : 'below';
       recommendations.push(`Price is ranging ${relation} the Point of Control. No clear direction detected yet.`);

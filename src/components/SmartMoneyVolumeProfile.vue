@@ -32,6 +32,7 @@ import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import { ohlcvApi } from '@/services/ohlcvApi.js'
 import { useTheme } from '@/composables/useTheme.js'
+import { formatNumber as fmtNumber } from '@/utils/numberFormat'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -293,7 +294,7 @@ export default {
         // bins is Min -> Max. We want Max -> Min for display if Chart.js renders Index 0 at Top.
         const reversedBins = [...bins].reverse();
         
-        const labels = reversedBins.map(b => `$${b.min.toFixed(2)} - $${b.max.toFixed(2)}`);
+        const labels = reversedBins.map(b => `$${fmtNumber(b.min, 2)} - $${fmtNumber(b.max, 2)}`);
         const data = reversedBins.map(b => b.totalVolume);
         
         // Coloring Logic
@@ -343,9 +344,10 @@ export default {
     },
     
     formatVolume(num) {
-        if (num > 1000000) return (num / 1000000).toFixed(1) + 'M';
-        if (num > 1000) return (num / 1000).toFixed(1) + 'K';
-        return num.toFixed(0);
+        if (!Number.isFinite(num)) return 'N/A';
+        if (num > 1000000) return fmtNumber(num / 1000000, 1) + 'M';
+        if (num > 1000) return fmtNumber(num / 1000, 1) + 'K';
+        return fmtNumber(num, 0);
     },
     formatNumber(num) {
         return new Intl.NumberFormat('en-US').format(Math.round(num));

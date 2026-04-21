@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import { formatNumber } from '@/utils/numberFormat'
+
 export default {
   name: 'PerformanceMonitor',
   data() {
@@ -72,9 +74,9 @@ export default {
         }, 0)
         
         if (totalBytes > 1024 * 1024) {
-          return `${(totalBytes / (1024 * 1024)).toFixed(1)}MB`
+          return `${formatNumber(totalBytes / (1024 * 1024), 1)}MB`
         } else if (totalBytes > 1024) {
-          return `${(totalBytes / 1024).toFixed(1)}KB`
+          return `${formatNumber(totalBytes / 1024, 1)}KB`
         }
         return `${totalBytes}B`
       }
@@ -85,9 +87,9 @@ export default {
       if (typeof performance !== 'undefined' && performance.memory) {
         const used = performance.memory.usedJSHeapSize
         if (used > 1024 * 1024) {
-          return `${(used / (1024 * 1024)).toFixed(1)}MB`
+          return `${formatNumber(used / (1024 * 1024), 1)}MB`
         }
-        return `${(used / 1024).toFixed(1)}KB`
+        return `${formatNumber(used / 1024, 1)}KB`
       }
       return 'N/A'
     }
