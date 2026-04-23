@@ -1,9 +1,31 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { visualizer } from 'rollup-plugin-visualizer'
 import { resolve } from 'path'
 
+const ANALYZE = process.env.ANALYZE === '1'
+
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    ...(ANALYZE
+      ? [
+          visualizer({
+            filename: 'stats.html',
+            template: 'treemap',
+            gzipSize: true,
+            brotliSize: true,
+            open: process.env.CI !== 'true'
+          }),
+          visualizer({
+            filename: 'stats.json',
+            template: 'raw-data',
+            gzipSize: true,
+            brotliSize: true
+          })
+        ]
+      : [])
+  ],
   base: process.env.NODE_ENV === 'production' ? '/investment-dashboard/' : '/',
   resolve: {
     alias: {
