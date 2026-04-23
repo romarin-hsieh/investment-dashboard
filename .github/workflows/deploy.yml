@@ -39,10 +39,21 @@ jobs:
       run: npm run build
       env:
         NODE_ENV: production
-        
+        ANALYZE: '1'
+
+    - name: Upload bundle analyzer stats
+      uses: actions/upload-artifact@v4
+      with:
+        name: bundle-stats
+        path: |
+          stats.html
+          stats.json
+        if-no-files-found: warn
+        retention-days: 30
+
     - name: Setup Pages
       uses: actions/configure-pages@v4
-      
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:

@@ -36,7 +36,13 @@ In priority order: `yahooFinanceApi.js` (1380 LOC), `technicalIndicatorsCore.js`
 Activate when public proxy failure rate exceeds 5% over 30 days, per [ADR-0002](../architecture/adr/0002-cors-proxy-strategy.md) follow-up. Cloudflare Workers free tier covers our scale.
 
 ### 📊 Bundle analyzer integration
-Add `vite-bundle-visualizer` to the build, output a `stats.html` artifact, surface size deltas in PR descriptions. Foundation for ongoing performance budget enforcement.
+Add `rollup-plugin-visualizer` to the build, output a `stats.html` artifact, surface size deltas in PR descriptions. Foundation for ongoing performance budget enforcement. Implementation split into three stacked PRs:
+
+- **PR-D1 — Local + CI artifact**: Vite plugin gated by `ANALYZE=1` env flag; `npm run build:analyze` for local inspection; `deploy.yml` uploads `stats.html` + `stats.json` as workflow artifact on every main build.
+- **PR-D2 — PR size-delta comment**: new workflow that builds PR branch + main baseline, diffs `stats.json`, posts delta table via `gh pr comment`.
+- **PR-D3 — Performance budget CI gate**: per-chunk size thresholds fail the build when exceeded; ADR-0007 documents budget rationale.
+
+Chose `rollup-plugin-visualizer` over the originally-listed `vite-bundle-visualizer` — the former is a Vite plugin (hooks existing `vite build`, no extra compile pass) while the latter is a standalone CLI wrapper around the same package. Decision recorded 2026-04-23.
 
 ---
 
