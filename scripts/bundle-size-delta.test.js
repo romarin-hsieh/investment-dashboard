@@ -14,8 +14,11 @@ import {
   fmtBytes,
   fmtDelta,
   sumGzip,
-  buildReport
+  buildReport,
+  evaluateBudgets,
+  formatBudgetSection
 } from './bundle-size-delta.js';
+import { BUDGETS } from './bundle-size-budgets.js';
 
 // Minimal fixture shaped like rollup-plugin-visualizer's raw-data template.
 function fixture({ vendor = 100000, plotly = 1500000 } = {}) {
@@ -170,5 +173,151 @@ describe('buildReport', () => {
     const report = buildReport(base, head);
     expect(report).not.toContain('no chunks changed');
     expect(report).toContain('assets/plotly.js');
+  });
+
+  it('appends a budget-status section by default', () => {
+    const stats = fixture();
+    const report = buildReport(stats, stats);
+    expect(report).toContain('Performance budgets');
+  });
+
+  it('skips the budget section when options.skipBudgets is true', () => {
+    const stats = fixture();
+    const report = buildReport(stats, stats, { skipBudgets: true });
+    expect(report).not.toContain('Performance budgets');
+  });
+});
+
+// ---------- PR-D3 budget enforcement ----------
+
+describe('evaluateBudgets', () => {
+  const tinyBudgets = {
+    'assets/vendor.js':  { gzip: 50_000 },
+    'assets/plotly.js':  { gzip: 1_000_000 },
+    '__total__':         { gzip: 500_000 }
+  };
+
+  it('returns ok=true when every budgeted chunk is under its limit', () => {
+    const totals = {
+      'assets/vendor.js':  { raw: 50_000, gzip: 20_000, brotli: 18_000 },
+      'assets/plotly.js':  { raw: 800_000, gzip: 200_000, brotli: 180_000 }
+    };
+    const result = evaluateBudgets(totals, tinyBudgets);
+    expect(result.ok).toBe(true);
+    expect(result.violations).toEqual([]);
+  });
+
+  it('flags a chunk that exceeds its individual budget', () => {
+    const totals = {
+      'assets/vendor.js':  { raw: 200_000, gzip: 60_000, brotli: 50_000 },
+      'assets/plotly.js':  { raw: 800_000, gzip: 200_000, brotli: 180_000 }
+    };
+    const result = evaluateBudgets(totals, tinyBudgets);
+    expect(result.ok).toBe(false);
+    expect(result.violations).toHaveLength(1);
+    expect(result.violations[0].chunk).toBe('assets/vendor.js');
+    expect(result.violations[0].budget).toBe(50_000);
+    expect(result.violations[0].actual).toBe(60_000);
+    expect(result.violations[0].overBy).toBe(10_000);
+    expect(result.violations[0].overPct).toBeCloseTo(20, 1);
+  });
+
+  it('checks __total__ against the sum of all chunk gzip sizes', () => {
+    // Each individual chunk is under, but the sum (300+250 = 550K) exceeds
+    // the 500K __total__ budget.
+    const totals = {
+      'assets/vendor.js':  { raw: 1, gzip: 30_000,  brotli: 1 },
+      'assets/plotly.js':  { raw: 1, gzip: 520_000, brotli: 1 }
+    };
+    const result = evaluateBudgets(totals, tinyBudgets);
+    expect(result.ok).toBe(false);
+    const totalViolation = result.violations.find(v => v.chunk === '__total__');
+    expect(totalViolation).toBeDefined();
+    expect(totalViolation.actual).toBe(550_000);
+  });
+
+  it('skips chunks with no budget entry', () => {
+    const totals = {
+      'assets/something-unbudgeted.js': { raw: 10_000_000, gzip: 9_999_999, brotli: 1 }
+    };
+    const result = evaluateBudgets(totals, tinyBudgets);
+    // __total__ would still trigger here (9.99 MB > 500K), but the
+    // unbudgeted chunk itself is not a violation.
+    expect(result.violations.find(v => v.chunk.includes('something-unbudgeted'))).toBeUndefined();
+  });
+
+  it('treats a missing chunk as zero gzip (no false-positive)', () => {
+    // No vendor.js or plotly.js in totals — they should not show as
+    // violations even though they have budget entries.
+    const result = evaluateBudgets({}, tinyBudgets);
+    expect(result.ok).toBe(true);
+  });
+
+  it('uses the imported BUDGETS by default', () => {
+    // Sanity: passing only one argument resolves to the production budget
+    // table from bundle-size-budgets.js. We can't assert specific numbers
+    // without coupling tests to budget tweaks, but we can assert the
+    // fallback is reachable.
+    expect(() => evaluateBudgets({})).not.toThrow();
+    const result = evaluateBudgets({});
+    expect(result).toHaveProperty('ok');
+    expect(result).toHaveProperty('violations');
+  });
+});
+
+describe('formatBudgetSection', () => {
+  it('renders a green checkmark when ok=true', () => {
+    const md = formatBudgetSection({ ok: true, violations: [] });
+    expect(md).toContain('Performance budgets');
+    expect(md).toContain('✅');
+    expect(md).not.toContain('|');  // no table rendered
+  });
+
+  it('renders a violation table when ok=false', () => {
+    const md = formatBudgetSection({
+      ok: false,
+      violations: [{
+        chunk: 'assets/vendor.js',
+        budget: 50_000,
+        actual: 60_000,
+        overBy: 10_000,
+        overPct: 20
+      }]
+    });
+    expect(md).toContain('❌');
+    expect(md).toContain('assets/vendor.js');
+    expect(md).toContain('48.8 KB');  // 50_000 / 1024
+    expect(md).toContain('58.6 KB');  // 60_000 / 1024
+    expect(md).toContain('+9.8 KB');  // 10_000 / 1024
+  });
+
+  it('labels __total__ as "Total" rather than the literal sentinel', () => {
+    const md = formatBudgetSection({
+      ok: false,
+      violations: [{
+        chunk: '__total__', budget: 1_000_000, actual: 1_100_000, overBy: 100_000, overPct: 10
+      }]
+    });
+    expect(md).not.toContain('__total__');
+    expect(md).toContain('Total');
+  });
+});
+
+describe('BUDGETS sanity (not coupled to specific numbers)', () => {
+  it('has a __total__ catch-all', () => {
+    expect(BUDGETS).toHaveProperty('__total__');
+    expect(BUDGETS.__total__.gzip).toBeGreaterThan(0);
+  });
+
+  it('has at least one per-chunk entry', () => {
+    const perChunkKeys = Object.keys(BUDGETS).filter(k => k !== '__total__');
+    expect(perChunkKeys.length).toBeGreaterThan(0);
+  });
+
+  it('every entry has a positive numeric gzip limit', () => {
+    for (const [chunk, limits] of Object.entries(BUDGETS)) {
+      expect(typeof limits.gzip, `${chunk}.gzip type`).toBe('number');
+      expect(limits.gzip, `${chunk}.gzip > 0`).toBeGreaterThan(0);
+    }
   });
 });

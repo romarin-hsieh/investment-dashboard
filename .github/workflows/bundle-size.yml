@@ -1,20 +1,24 @@
 name: Bundle Size Delta
 
-# Post (or update) a PR comment reporting per-chunk bundle-size deltas between
-# the PR HEAD and the main baseline. Foundation for performance budget
-# enforcement (PR-D3). Part of WS-D Bundle Analyzer Integration.
+# Post (or update) a PR comment reporting per-chunk bundle-size deltas
+# between the PR HEAD and the main baseline, AND enforce per-chunk
+# performance budgets defined in `scripts/bundle-size-budgets.js`. Part of
+# WS-D Bundle Analyzer Integration (PR-D2 added the delta path; PR-D3
+# added budget enforcement + ADR-0007).
 #
 # How it works:
 #   1. Dual-checkout: PR HEAD → ./head, main → ./base
 #   2. Install deps + `npm run build:analyze` in each (writes stats.json)
 #   3. Run scripts/bundle-size-delta.js head/stats.json → markdown report
+#      (delta + budget-status section)
 #   4. Upsert the PR comment (keyed by HTML marker so force-pushes don't spam)
+#   5. Run scripts/bundle-size-delta.js --check-budgets head/stats.json,
+#      which exits 2 if any chunk exceeds its gzip budget. THIS step's
+#      failure fails the workflow — the comment from step 4 has already
+#      posted, so the reviewer sees both the delta and the violation list.
 #
-# Failure of this workflow MUST NOT block a PR — the Tests workflow is the
-# hard gate, this one is informational. That's why no required-status check.
-#
-# Skipped automatically when the PR only touches docs / workflows other than
-# its own files (see `paths` filter).
+# Skipped automatically when the PR only touches docs / workflows other
+# than its own files (see `paths` filter).
 
 on:
   pull_request:
@@ -126,3 +130,9 @@ jobs:
               });
               core.info('Created new bundle-size comment');
             }
+
+      # PR-D3 — runs AFTER the comment posts, so a failing budget still
+      # surfaces the delta + violation list to reviewers. Exit code 2 from
+      # the script fails this step (and the workflow); exit 0 means clean.
+      - name: Enforce bundle budgets
+        run: node head/scripts/bundle-size-delta.js --check-budgets head/stats.json

@@ -10,14 +10,7 @@
 
 ## Now (Active — being executed)
 
-### 📊 Bundle Analyzer Integration (in flight — D1 + D2 shipped, D3 next)
-Surface bundle-size impact on every change, then turn that visibility into a CI gate. Three-PR arc:
-
-- **PR-D1 — Local + CI artifact** ✅ shipped [#24](https://github.com/romarin-hsieh/investment-dashboard/pull/24): `rollup-plugin-visualizer` gated by `ANALYZE=1`; `npm run build:analyze` for local treemap; `deploy.yml` uploads `stats.html` + `stats.json` as workflow artifact on every main build.
-- **PR-D2 — PR size-delta comment** ✅ shipped [#25](https://github.com/romarin-hsieh/investment-dashboard/pull/25): dual-checkout workflow builds PR HEAD + main baseline, diffs `stats.json`, upserts a marker-keyed PR comment so force-pushes update the same comment instead of spamming.
-- **PR-D3 — Performance budget CI gate + ADR-0007** (up next): per-chunk thresholds fail the build when exceeded. Proposed budgets from current baseline (headroom in parens): `plotly` ≤ 1.6 MB gzipped (10 %), `vendor` ≤ 45 KB (23 %), `index` ≤ 80 KB (28 %), total ≤ 2.2 MB (10 %). Budgets and calibration method recorded in new ADR-0007.
-
-Chose `rollup-plugin-visualizer` over the originally-listed `vite-bundle-visualizer` — the former is a Vite plugin (hooks the existing `vite build`, no extra compile pass) while the latter is a standalone CLI wrapper around the same package. Decision recorded 2026-04-23.
+*No active workstream this cycle.* WS-D Bundle Analyzer Integration shipped 2026-04-25 (see *Recently shipped*). Next pickable items are in *Next*.
 
 ---
 
@@ -72,7 +65,7 @@ The following are listed in [PRD §4 Non-Goals](PRD.md#4-non-goals-explicit) and
 - **Next**: no hard cap; if list grows beyond 8, prune to highest-confidence items (others fall to *Later*).
 - **Later**: capped at 10 distinct items. Anything beyond is signal of indecision — kill or commit.
 
-Currently: 1 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. *Later* bucket is 2 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
+Currently: 0 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. Between cycles — pick the next workstream from *Next* or run a fresh audit. *Later* bucket is 2 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
 
 ---
 
@@ -84,4 +77,4 @@ Currently: 1 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. *Later* bucket is 2 
 - **WS-C — Performance + Bundle** — Plotly code-split, lazy routes, StockDetail tab lazy-mount, prefetch hints + [ADR-0006](../architecture/adr/0006-static-data-caching-on-github-pages.md). PRs [#17](https://github.com/romarin-hsieh/investment-dashboard/pull/17) – [#20](https://github.com/romarin-hsieh/investment-dashboard/pull/20).
 - **Trader keyboard shortcuts** — `j`/`k`/`Enter`/`?` navigation on Stock Overview list. PR [#22](https://github.com/romarin-hsieh/investment-dashboard/pull/22). *(Promoted from Later after Operator request re-prioritised it.)*
 - **CI Node 18 → 20 bump** — pre-emptive upgrade before June 2026 deprecation. PR [#23](https://github.com/romarin-hsieh/investment-dashboard/pull/23).
-- **Bundle Analyzer** — PRs [#24](https://github.com/romarin-hsieh/investment-dashboard/pull/24) – [#25](https://github.com/romarin-hsieh/investment-dashboard/pull/25). See *Now* for remaining PR-D3.
+- **WS-D Bundle Analyzer Integration** — `rollup-plugin-visualizer` plugin + per-deploy `bundle-stats` artifact, per-PR delta comment workflow with marker-keyed comment upsert + 35-test `bundle-size-delta.js`, performance budget CI gate enforcing 5 budgets (per-chunk + total) calibrated against measured 2026-04-25 baseline + [ADR-0007](../architecture/adr/0007-bundle-size-budgets.md). PRs [#24](https://github.com/romarin-hsieh/investment-dashboard/pull/24) – [#27](https://github.com/romarin-hsieh/investment-dashboard/pull/27).
