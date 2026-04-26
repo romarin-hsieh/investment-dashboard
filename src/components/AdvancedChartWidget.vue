@@ -36,7 +36,10 @@ export default {
   data() {
     return {
       loaded: false,
-      error: false
+      error: false,
+      // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
+      // timeout if the user navigates away before the script settles.
+      loadTimeoutId: null
     }
   },
   computed: {
@@ -95,6 +98,9 @@ export default {
   mounted() {
     this.createWidget()
   },
+  beforeUnmount() {
+    if (this.loadTimeoutId) clearTimeout(this.loadTimeoutId)
+  },
   methods: {
     async createWidget() {
       this.loaded = false
@@ -116,17 +122,17 @@ export default {
       script.async = true
       script.innerHTML = JSON.stringify(this.widgetConfig)
 
-      const timeout = setTimeout(() => {
+      this.loadTimeoutId = setTimeout(() => {
         this.error = true
       }, 8000)
 
       script.onload = () => {
-        clearTimeout(timeout)
+        clearTimeout(this.loadTimeoutId)
         this.loaded = true
       }
 
       script.onerror = () => {
-        clearTimeout(timeout)
+        clearTimeout(this.loadTimeoutId)
         this.error = true
       }
 

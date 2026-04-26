@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { createKeyHandler } from './useKeyboardShortcuts'
 
 function fakeEvent (key, target = document.createElement('div')) {
-  return { key, target }
+  return { key, target, preventDefault: vi.fn() }
 }
 
 describe('createKeyHandler', () => {
@@ -100,7 +100,60 @@ describe('createKeyHandler', () => {
       { key: 'j', description: 'next', handler }
     ])
 
-    expect(() => keyHandler({ key: 'j', target: null })).not.toThrow()
+    expect(() => keyHandler({ key: 'j', target: null, preventDefault: vi.fn() })).not.toThrow()
     expect(handler).toHaveBeenCalledTimes(1)
+  })
+
+  it('does not call event.preventDefault by default (backward compat)', () => {
+    const handler = vi.fn()
+    const keyHandler = createKeyHandler([
+      { key: 'j', description: 'next', handler }
+    ])
+    const event = fakeEvent('j')
+
+    keyHandler(event)
+
+    expect(handler).toHaveBeenCalledTimes(1)
+    expect(event.preventDefault).not.toHaveBeenCalled()
+  })
+
+  it('calls event.preventDefault when binding opts in', () => {
+    const handler = vi.fn()
+    const keyHandler = createKeyHandler([
+      { key: 'j', description: 'next', handler, preventDefault: true }
+    ])
+    const event = fakeEvent('j')
+
+    keyHandler(event)
+
+    expect(handler).toHaveBeenCalledTimes(1)
+    expect(event.preventDefault).toHaveBeenCalledTimes(1)
+  })
+
+  it('does not call preventDefault when no binding matches', () => {
+    const handler = vi.fn()
+    const keyHandler = createKeyHandler([
+      { key: 'j', description: 'next', handler, preventDefault: true }
+    ])
+    const event = fakeEvent('z')
+
+    keyHandler(event)
+
+    expect(handler).not.toHaveBeenCalled()
+    expect(event.preventDefault).not.toHaveBeenCalled()
+  })
+
+  it('does not call preventDefault when keystroke is filtered (text input)', () => {
+    const handler = vi.fn()
+    const keyHandler = createKeyHandler([
+      { key: 'j', description: 'next', handler, preventDefault: true }
+    ])
+    const input = document.createElement('input')
+    const event = fakeEvent('j', input)
+
+    keyHandler(event)
+
+    expect(handler).not.toHaveBeenCalled()
+    expect(event.preventDefault).not.toHaveBeenCalled()
   })
 })

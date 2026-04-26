@@ -26,11 +26,17 @@ export default {
     return {
       loading: true,
       error: false,
-      widgetId: `vix-widget-${Date.now()}`
+      widgetId: `vix-widget-${Date.now()}`,
+      // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
+      // timeout if the user navigates away before the script settles.
+      loadTimeoutId: null
     }
   },
   mounted() {
     this.loadVixWidget()
+  },
+  beforeUnmount() {
+    if (this.loadTimeoutId) clearTimeout(this.loadTimeoutId)
   },
   methods: {
     async loadVixWidget() {
@@ -143,23 +149,23 @@ export default {
             console.log('📝 Config JSON:', configJson)
             
             // 設置超時檢查
-            const timeout = setTimeout(() => {
+            this.loadTimeoutId = setTimeout(() => {
               console.warn('⏰ VIX widget load timeout')
               this.error = true
               this.loading = false
               reject(new Error('Widget load timeout'))
             }, 8000)
-            
+
             // 設置載入處理
             script.onload = () => {
-              clearTimeout(timeout)
+              clearTimeout(this.loadTimeoutId)
               console.log('✅ FRED:VIXCLS widget script loaded')
               this.loading = false
               resolve()
             }
-            
+
             script.onerror = (error) => {
-              clearTimeout(timeout)
+              clearTimeout(this.loadTimeoutId)
               console.error('❌ VIX widget script failed:', error)
               this.error = true
               this.loading = false
