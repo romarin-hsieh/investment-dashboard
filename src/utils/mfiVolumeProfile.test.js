@@ -34,6 +34,19 @@ describe('calculateMFIVolumeProfile', () => {
     expect(() => calculateMFIVolumeProfile(makeOhlcv(20))).toThrow(/Insufficient data/)
   })
 
+  it('throws on flat-market input where all valid prices are identical (PR-F5)', () => {
+    // 30 candles where every high/low/close is exactly 100 — priceRange = 0
+    // would silently produce binSize = 0 and downstream NaN bins without
+    // the PR-F5 guard.
+    const flat = {
+      high:   Array(30).fill(100),
+      low:    Array(30).fill(100),
+      close:  Array(30).fill(100),
+      volume: Array(30).fill(1_000_000)
+    }
+    expect(() => calculateMFIVolumeProfile(flat)).toThrow(/No price variation/)
+  })
+
   it('returns a structured profile with bins, totals, and POC on happy path', () => {
     const profile = calculateMFIVolumeProfile(makeOhlcv(30), 10, 14)
 

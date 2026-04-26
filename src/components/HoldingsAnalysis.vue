@@ -618,6 +618,17 @@ export default {
 .smart-money-card { flex: 2; min-width: 500px; } /* 2/3 width */
 .sentiment-card { width: 100%; flex-basis: 100%; display: flex; flex-direction: column; }
 
+/* PR-F5: collapse forced widths at tablet (≤900) so the 500px
+ * smart-money-card and 300px ownership-card flow without overflow on
+ * smaller viewports. Aligned with PR-A4 ≤900 stack standard. */
+@media (max-width: 900px) {
+  .ownership-card,
+  .smart-money-card {
+    min-width: 100%;
+    flex-basis: 100%;
+  }
+}
+
 h3 {
     margin: 0 0 1rem 0;
     font-size: 1.1rem;

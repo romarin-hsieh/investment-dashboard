@@ -204,8 +204,10 @@ export default {
   background: var(--bg-card);
 }
 
-/* 響應式設計 */
-@media (max-width: 1023px) {
+/* 響應式設計 — PR-F5: align with PR-A4 standard (≤900 stack).
+ * The original 1023px hid the panel at 901-1023, breaking the
+ * 901-1199 narrow-sidebar tier that PR-A4 introduced. */
+@media (max-width: 900px) {
   .navigation-panel {
     display: none;
   }
