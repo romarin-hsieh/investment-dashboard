@@ -1,8 +1,12 @@
-#!/usr/bin/env node
 /**
  * Compute per-chunk size deltas between two `rollup-plugin-visualizer`
  * `stats.json` snapshots and emit a markdown report. Also enforces
  * per-chunk performance budgets defined in `bundle-size-budgets.js`.
+ *
+ * (No `#!/usr/bin/env node` shebang on line 1: rolldown — used by
+ * vitest 4 — rejects shebangs in ESM, and the file is always invoked
+ * via the explicit `node scripts/bundle-size-delta.js …` form anyway,
+ * so the shebang served no purpose. See chore PR alongside this note.)
  *
  * Used by `.github/workflows/bundle-size.yml` to surface bundle-size impact
  * AND fail the workflow when a chunk exceeds budget. Part of WS-D Bundle
