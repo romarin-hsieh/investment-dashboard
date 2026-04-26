@@ -154,9 +154,20 @@ export default {
       this.addLog('info', 'Checking system status...');
       
       try {
+        // PR-F1 (audit finding #3): kick off both independent fetches in
+        // parallel — they hit different files with no inter-dependency,
+        // so awaiting in series was pure latency overhead (~200-400 ms
+        // on first paint of /system-manager). Per-fetch error isolation
+        // preserved by keeping the two try/catch wrappers below — each
+        // `await` on an already-rejected promise re-throws into its own
+        // catch block.
+        const cacheBust = '?t=' + new Date().getTime();
+        const indexPromise = fetch(withBase('data/technical-indicators/latest_index.json') + cacheBust);
+        const metaPromise = fetch(withBase('data/symbols_metadata.json') + cacheBust);
+
         // 1. Fetch Technical Indicators Index (The heartbeat of the daily update)
         try {
-            const indexRes = await fetch(withBase('data/technical-indicators/latest_index.json') + '?t=' + new Date().getTime());
+            const indexRes = await indexPromise;
             if (!indexRes.ok) throw new Error(`HTTP error! status: ${indexRes.status}`);
             const idx = await indexRes.json();
             this.pipelineStatus = {
@@ -176,7 +187,7 @@ export default {
 
         // 2. Fetch Symbols Metadata (Universe)
         try {
-            const metaRes = await fetch(withBase('data/symbols_metadata.json') + '?t=' + new Date().getTime());
+            const metaRes = await metaPromise;
             if (!metaRes.ok) throw new Error(`HTTP error! status: ${metaRes.status}`);
             const meta = await metaRes.json();
             const items = meta.items || meta.symbols || [];
