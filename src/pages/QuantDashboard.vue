@@ -133,14 +133,14 @@ onMounted(() => {
 h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #E0E3EB 0%, #787B86 100%);
+  background: linear-gradient(90deg, var(--grey-250) 0%, var(--grey-500) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
-  color: #787B86;
+  color: var(--grey-500);
   font-size: 1rem;
 }
 
@@ -164,16 +164,16 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  background: #1E222D;
+  background: var(--chart-bg-deep);
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid #2A2E39;
+  border: 1px solid var(--chart-bg);
 }
 
 .ticker-btn {
-  background: #2A2E39;
+  background: var(--chart-bg);
   border: 1px solid transparent;
-  color: #D1D4DC;
+  color: var(--grey-350);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
@@ -183,10 +183,17 @@ h1 {
   transition: all 0.2s;
 }
 
+/* `--chart-bg` is #2a2e39; this hover uses a slightly lighter shade. No
+ * matching token in tokens.css today — TradingView-style chrome doesn't
+ * fit the brand greyscale exactly. Kept inline rather than introducing a
+ * one-off `--chart-bg-hover` until another component needs the same shade. */
 .ticker-btn:hover {
   background: #363A45;
 }
 
+/* TradingView-themed accent blue — distinct from --blue-500 (#007bff) and
+ * --blue-700 (#0056b3) brand blues. Kept inline; promote to a token if
+ * another TV-themed surface needs the same hue. */
 .ticker-btn.active {
   background: #2962FF;
   color: white;
@@ -199,13 +206,18 @@ h1 {
   border-radius: 50%;
 }
 
-.signal-dot.launchpad { background-color: #FFD700;box-shadow: 0 0 5px #FFD700; }
-.signal-dot.dip_buy { background-color: #089981; box-shadow: 0 0 5px #089981;}
-.signal-dot.climax { background-color: #F23645; box-shadow: 0 0 5px #F23645;}
-.signal-dot.avoid { background-color: #5D606B; }
-.signal-dot.wait { background-color: #5D606B; }
+.signal-dot.launchpad { background-color: var(--signal-launchpad); box-shadow: 0 0 5px var(--signal-launchpad); }
+.signal-dot.dip_buy   { background-color: var(--signal-dip-buy);   box-shadow: 0 0 5px var(--signal-dip-buy); }
+.signal-dot.climax    { background-color: var(--signal-climax);    box-shadow: 0 0 5px var(--signal-climax); }
+.signal-dot.avoid     { background-color: var(--signal-neutral); }
+.signal-dot.wait      { background-color: var(--signal-neutral); }
 
-@media (max-width: 1024px) {
+/* Tablet collapse aligned with PR-A4 standard (≤900). The previous
+ * 1024px breakpoint over-collapsed the 2fr 1fr grid in the 901-1024
+ * range where side-by-side still fits comfortably (verified via
+ * preview_eval at 901/950/1100 — at ≥901, side panel renders ~280px
+ * which is readable). */
+@media (max-width: 900px) {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
