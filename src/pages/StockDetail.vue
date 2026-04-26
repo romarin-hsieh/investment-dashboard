@@ -182,11 +182,7 @@
               <div class="widget-header">
                 <h4>MFI Volume Profile</h4>
               </div>
-              <MFIVolumeProfilePanel
-                :symbol="symbol"
-                :exchange="exchange"
-                :priority="4"
-              />
+              <MFIVolumeProfilePanel :symbol="symbol" />
             </div>
             
             <!-- Daily and Weekly Insight (Two Columns) -->
