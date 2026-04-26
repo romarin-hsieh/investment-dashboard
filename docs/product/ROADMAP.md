@@ -10,7 +10,15 @@
 
 ## Now (Active — being executed)
 
-*No active workstream this cycle.* WS-D Bundle Analyzer Integration shipped 2026-04-25 (see *Recently shipped*). Next pickable items are in *Next*.
+### 🩹 WS-E Audit Sweep 2026-04-25 (in flight — E1 + E2 shipped, E3 + E4 pending)
+Follow-up PRs to durable findings from the 2026-04-25 three-lens audit (post-WS-D). Multiple agent claims didn't survive verification — `preview_eval` showed `max-width: 1600px` is an upper bound (no-op at viewport <1600), and `auto-fit` grids on two of three flagged dashboards were already responsive without breakpoints. Surviving findings split into 4 PRs:
+
+- **PR-E1 — Tablet breakpoint completion + token migration** ✅ shipped [#28](https://github.com/romarin-hsieh/investment-dashboard/pull/28): QuantDashboard `.dashboard-grid` `≤1024` → `≤900` (aligned with PR-A4 standard); 9 of 11 hex literals migrated to existing tokens. AutoUpdateMonitor + TechnicalIndicatorsManager confirmed as **CSS hallucinations** via preview_eval and intentionally not touched.
+- **PR-E2 — Widget unmount cleanup + keyboard `preventDefault` opt-in** ✅ shipped [#30](https://github.com/romarin-hsieh/investment-dashboard/pull/30): 6 TradingView/widget components add `loadTimeoutId` field + `beforeUnmount` clearTimeout (closes the 8 s GC leak window on rapid SPA nav); `useKeyboardShortcuts` adds per-binding `preventDefault: true` opt-in (applied to `j`/`k`/`?` in StockOverview; `Enter`/`Escape` deliberately left off to preserve legitimate browser defaults).
+- **PR-E3 — Service test baseline** (up next, ~150 LOC pure tests, no source changes): Vitest happy + 1-failure case for the 5 services without `.test.js` siblings (`NavigationService`, `QuantDataService`, `dataVersionService`, `cacheWarmupService`, `autoUpdateScheduler`). Aligns with *Next* horizon's "Component test coverage expansion" but services-first since they're the regression net for any future TS migration.
+- **PR-E4 — Empty / error / focus-trap polish** (~80 LOC): `KeyboardShortcutsOverlay` modal focus trap; `QuantDashboard` empty state when `latestData = []`; optional Settings page stub → minimal real page.
+
+ETL parallelisation (audit finding #8 — `generate-real-ohlcv-yfinance.py` serial fetch with 0.4s sleep ≈ 70s/run) and TS migration (audit finding #9) belong to bigger PR cycles, not the audit sweep.
 
 ---
 
@@ -65,7 +73,7 @@ The following are listed in [PRD §4 Non-Goals](PRD.md#4-non-goals-explicit) and
 - **Next**: no hard cap; if list grows beyond 8, prune to highest-confidence items (others fall to *Later*).
 - **Later**: capped at 10 distinct items. Anything beyond is signal of indecision — kill or commit.
 
-Currently: 0 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. Between cycles — pick the next workstream from *Next* or run a fresh audit. *Later* bucket is 2 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
+Currently: 1 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. WS-E is the active workstream (2 of 4 PRs shipped). *Later* bucket is 2 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
 
 ---
 
@@ -78,3 +86,4 @@ Currently: 0 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. Between cycles — p
 - **Trader keyboard shortcuts** — `j`/`k`/`Enter`/`?` navigation on Stock Overview list. PR [#22](https://github.com/romarin-hsieh/investment-dashboard/pull/22). *(Promoted from Later after Operator request re-prioritised it.)*
 - **CI Node 18 → 20 bump** — pre-emptive upgrade before June 2026 deprecation. PR [#23](https://github.com/romarin-hsieh/investment-dashboard/pull/23).
 - **WS-D Bundle Analyzer Integration** — `rollup-plugin-visualizer` plugin + per-deploy `bundle-stats` artifact, per-PR delta comment workflow with marker-keyed comment upsert + 35-test `bundle-size-delta.js`, performance budget CI gate enforcing 5 budgets (per-chunk + total) calibrated against measured 2026-04-25 baseline + [ADR-0007](../architecture/adr/0007-bundle-size-budgets.md). PRs [#24](https://github.com/romarin-hsieh/investment-dashboard/pull/24) – [#27](https://github.com/romarin-hsieh/investment-dashboard/pull/27).
+- **Local-dev parity sidecar** — bumped `vitest` and `@vitest/coverage-v8` `^2.1.9` → `^4` and removed the dead `#!/usr/bin/env node` shebang from `scripts/bundle-size-delta.js` that rolldown's stricter ESM parser was rejecting. Restored `npm test` 87/87 pass on `vitest 4.1.5 + Node 22 + Windows`, matching CI's existing pass on Linux Node 20. PR [#29](https://github.com/romarin-hsieh/investment-dashboard/pull/29).
