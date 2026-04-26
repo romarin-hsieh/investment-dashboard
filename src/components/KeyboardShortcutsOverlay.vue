@@ -1,16 +1,19 @@
 <template>
   <div
     v-if="visible"
+    ref="overlay"
     class="shortcuts-overlay"
     role="dialog"
     aria-modal="true"
     aria-labelledby="shortcuts-title"
     @click.self="$emit('close')"
+    @keydown.tab="handleTab"
   >
     <div class="shortcuts-panel">
       <div class="shortcuts-header">
         <h3 id="shortcuts-title">Keyboard shortcuts</h3>
         <button
+          ref="closeBtn"
           class="shortcuts-close"
           aria-label="Close keyboard shortcuts"
           @click="$emit('close')"
@@ -27,6 +30,13 @@
 </template>
 
 <script>
+// PR-E4: focus-trap + focus-restore for the help dialog. Standard
+// modal-a11y pattern — Tab/Shift-Tab cycle focus inside the overlay,
+// opening saves the previously-focused element and closing restores
+// to it. Today the panel only renders one focusable element (the
+// close button), so the trap collapses to "Tab keeps focus here";
+// if more focusables are added later (e.g. action buttons inside
+// list items), the cycle handler already covers them.
 export default {
   name: 'KeyboardShortcutsOverlay',
   props: {
@@ -34,6 +44,29 @@ export default {
     bindings: { type: Array, required: true }
   },
   emits: ['close'],
+  data () {
+    return { previouslyFocused: null }
+  },
+  watch: {
+    visible (now, before) {
+      if (now && !before) {
+        // Remember what had focus before the overlay opened so we can
+        // restore it on close. document.activeElement is null in some
+        // edge cases (e.g. dialog opened from non-DOM event); fall back
+        // to body which is the spec-default.
+        this.previouslyFocused = document.activeElement || document.body
+        this.$nextTick(() => {
+          this.$refs.closeBtn?.focus()
+        })
+      } else if (!now && before) {
+        const target = this.previouslyFocused
+        this.previouslyFocused = null
+        if (target && typeof target.focus === 'function') {
+          target.focus()
+        }
+      }
+    }
+  },
   methods: {
     displayKey (key) {
       if (key === 'Enter') return '↵'
@@ -41,6 +74,28 @@ export default {
       if (key === 'ArrowUp') return '↑'
       if (key === 'ArrowDown') return '↓'
       return key
+    },
+    handleTab (event) {
+      const overlay = this.$refs.overlay
+      if (!overlay) return
+      const focusables = overlay.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
+      )
+      if (focusables.length === 0) return
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      const active = document.activeElement
+
+      // Wrap focus at boundaries — Shift+Tab on first → last, Tab on
+      // last → first. Single-focusable case (first === last) collapses
+      // to "Tab keeps focus on the only element".
+      if (event.shiftKey && active === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault()
+        first.focus()
+      }
     }
   }
 }

@@ -74,6 +74,17 @@ onMounted(() => {
       {{ error }}
     </div>
 
+    <!-- PR-E4: explicit empty state when the daily ETL produced no
+         signals (rare but real — happens between pipeline failures and
+         the next successful run). Without this branch we'd render an
+         empty .ticker-list with no visual feedback. -->
+    <div v-else-if="latestData.length === 0" class="empty-state" role="status" aria-live="polite">
+      <p class="empty-state__title">No quant signals available yet</p>
+      <p class="empty-state__hint">
+        The daily ETL run at 02:00 UTC produces these signals. If you're seeing this after a pipeline run, the upstream <code>dashboard_status.json</code> may have been served empty &mdash; check <a href="/system-manager">System Manager</a> for ETL freshness.
+      </p>
+    </div>
+
     <div v-else class="dashboard-grid">
       <!-- Left Panel: Comet Chart -->
       <div class="chart-panel">
@@ -148,6 +159,41 @@ h1 {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 2rem;
+}
+
+/* PR-E4: empty-state styling — quiet, centered, with token-aligned colours
+ * so it sits comfortably alongside the existing loading-state / error-state
+ * branches. */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-state__title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.empty-state__hint {
+  font-size: 0.9rem;
+  margin: 0 auto;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.empty-state code {
+  background: var(--bg-secondary);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+}
+
+.empty-state a {
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
 .chart-panel {
