@@ -55,11 +55,17 @@ export default {
     return {
       loaded: false,
       error: false,
-      widgetId: `top-stories-${Date.now()}`
+      widgetId: `top-stories-${Date.now()}`,
+      // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
+      // timeout if the user navigates away before the script settles.
+      loadTimeoutId: null
     }
   },
   mounted() {
     this.loadTopStories()
+  },
+  beforeUnmount() {
+    if (this.loadTimeoutId) clearTimeout(this.loadTimeoutId)
   },
   methods: {
     async loadTopStories() {
@@ -128,7 +134,7 @@ export default {
       widgetContent.appendChild(script)
 
       // 設定超時保護
-      setTimeout(() => {
+      this.loadTimeoutId = setTimeout(() => {
         if (!this.loaded && !this.error) {
           this.loaded = true
         }

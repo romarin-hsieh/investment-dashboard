@@ -17,11 +17,17 @@ export default {
   data() {
     return {
       loading: true,
-      error: false
+      error: false,
+      // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
+      // timeout if the user navigates away before the script settles.
+      loadTimeoutId: null
     }
   },
   mounted() {
     this.loadVixWidget()
+  },
+  beforeUnmount() {
+    if (this.loadTimeoutId) clearTimeout(this.loadTimeoutId)
   },
   methods: {
     async loadVixWidget() {
@@ -106,7 +112,7 @@ export default {
         container.appendChild(widgetContainer)
         
         // 設置超時檢查
-        setTimeout(() => {
+        this.loadTimeoutId = setTimeout(() => {
           if (this.loading) {
             console.warn('⏰ VIX Mini widget load timeout')
             this.loading = false

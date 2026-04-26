@@ -45,11 +45,17 @@ export default {
     return {
       loaded: false,
       error: false,
-      widgetId: `vix-widget-${Date.now()}`
+      widgetId: `vix-widget-${Date.now()}`,
+      // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
+      // timeout if the user navigates away before the script settles.
+      loadTimeoutId: null
     }
   },
   mounted() {
     this.loadVIX()
+  },
+  beforeUnmount() {
+    if (this.loadTimeoutId) clearTimeout(this.loadTimeoutId)
   },
   methods: {
     async loadVIX() {
@@ -148,7 +154,7 @@ export default {
       widgetContent.appendChild(script)
 
       // 設定超時保護
-      setTimeout(() => {
+      this.loadTimeoutId = setTimeout(() => {
         if (!this.loaded && !this.error) {
           this.loaded = true
         }

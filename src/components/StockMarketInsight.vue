@@ -72,11 +72,19 @@ export default {
       weeklyLoaded: false,
       weeklyError: false,
       dailyWidgetId: `daily-market-${Date.now()}`,
-      weeklyWidgetId: `weekly-market-${Date.now()}`
+      weeklyWidgetId: `weekly-market-${Date.now()}`,
+      // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
+      // timeouts if the user navigates away before the scripts settle.
+      dailyTimeoutId: null,
+      weeklyTimeoutId: null
     }
   },
   mounted() {
     this.loadWidgets()
+  },
+  beforeUnmount() {
+    if (this.dailyTimeoutId) clearTimeout(this.dailyTimeoutId)
+    if (this.weeklyTimeoutId) clearTimeout(this.weeklyTimeoutId)
   },
   methods: {
     async loadWidgets() {
@@ -170,7 +178,7 @@ export default {
       widgetContent.appendChild(script)
 
       // 設定超時保護
-      setTimeout(() => {
+      this.dailyTimeoutId = setTimeout(() => {
         if (!this.dailyLoaded && !this.dailyError) {
           this.dailyLoaded = true
         }
@@ -262,7 +270,7 @@ export default {
       widgetContent.appendChild(script)
 
       // 設定超時保護
-      setTimeout(() => {
+      this.weeklyTimeoutId = setTimeout(() => {
         if (!this.weeklyLoaded && !this.weeklyError) {
           this.weeklyLoaded = true
         }

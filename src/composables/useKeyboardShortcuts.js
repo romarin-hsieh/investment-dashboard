@@ -16,12 +16,22 @@ import { onMounted, onBeforeUnmount } from 'vue'
  * Keystrokes originating from text inputs (INPUT/TEXTAREA/SELECT or
  * contenteditable) are ignored so shortcuts never hijack typing in a
  * search box or filter field.
+ *
+ * Per-binding `preventDefault: true` opts that key into `event.preventDefault()`
+ * AFTER the text-input filter and BEFORE the handler runs. Default is false
+ * for backward compatibility — opt in only for keys that should never reach
+ * the browser's default action (vim-style nav keys, custom-overlay triggers).
+ * Avoid for `Enter` / `Escape` since those have legitimate defaults
+ * (button-click activation, fullscreen exit, etc.) the user may rely on.
  */
 export function createKeyHandler (bindings) {
   return (event) => {
     if (isTextInput(event.target)) return
     const binding = bindings.find(b => b.key === event.key)
     if (!binding) return
+    if (binding.preventDefault && typeof event.preventDefault === 'function') {
+      event.preventDefault()
+    }
     binding.handler(event)
   }
 }

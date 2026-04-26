@@ -604,12 +604,19 @@ export default {
     },
 
     shortcutBindings() {
+      // PR-E2: `preventDefault: true` opts the binding into
+      // event.preventDefault() so the keystroke never reaches a browser
+      // default action. Applied to vim-style nav (j/k) and the help-overlay
+      // trigger (?), which we own unambiguously. Enter and Escape are left
+      // un-prevented — Enter could be a focused button's activate; Escape
+      // could be the user's exit-fullscreen / cancel-IME signal — both are
+      // legitimate browser behaviours we shouldn't suppress globally.
       return [
-        { key: 'j', description: 'Next stock', handler: () => this.moveSelection(1) },
-        { key: 'k', description: 'Previous stock', handler: () => this.moveSelection(-1) },
+        { key: 'j', description: 'Next stock', preventDefault: true, handler: () => this.moveSelection(1) },
+        { key: 'k', description: 'Previous stock', preventDefault: true, handler: () => this.moveSelection(-1) },
         { key: 'Enter', description: 'Open selected stock detail', handler: () => this.openSelectedDetail() },
         { key: 'Escape', description: 'Clear selection / close help', handler: () => this.clearSelection() },
-        { key: '?', description: 'Show this help', handler: () => { this.showShortcutsHelp = !this.showShortcutsHelp } }
+        { key: '?', description: 'Show this help', preventDefault: true, handler: () => { this.showShortcutsHelp = !this.showShortcutsHelp } }
       ]
     }
   },
