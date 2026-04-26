@@ -1,9 +1,19 @@
 <template>
-  <div v-if="isOpen" class="settings-modal-overlay" @click.self="close">
+  <div
+    v-if="isOpen"
+    ref="overlay"
+    class="settings-modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    :aria-labelledby="titleId"
+    @click.self="close"
+    @keydown.tab="handleTab"
+    @keydown.escape="close"
+  >
     <div class="settings-modal">
       <div class="modal-header">
-        <h3>{{ title }}</h3>
-        <button class="close-btn" @click="close" aria-label="Close settings">&times;</button>
+        <h3 :id="titleId">{{ title }}</h3>
+        <button ref="closeBtn" class="close-btn" @click="close" aria-label="Close settings">&times;</button>
       </div>
       
       <div class="modal-body">
@@ -135,7 +145,13 @@ export default {
   data() {
     return {
       activeTab: 'Inputs',
-      localModel: {}
+      localModel: {},
+      // PR-F2: a11y bookkeeping. `previouslyFocused` saves the element that
+      // had focus before the modal opened so we can restore it on close.
+      // `titleId` is generated once per instance so `aria-labelledby` points
+      // at the header `<h3>` regardless of how many modals coexist.
+      previouslyFocused: null,
+      titleId: `settings-modal-title-${Math.random().toString(36).slice(2, 9)}`
     }
   },
   computed: {
@@ -151,6 +167,21 @@ export default {
       if (val) {
         // Clone modelValue to localModel to avoid mutating parent state directly
         this.localModel = JSON.parse(JSON.stringify(this.modelValue));
+        // PR-F2: save the previously-focused element so we can restore on
+        // close, then move focus into the modal (close button is the
+        // semantically correct first stop — every modal has it; tab-btns
+        // come right after).
+        this.previouslyFocused = document.activeElement || document.body;
+        this.$nextTick(() => {
+          this.$refs.closeBtn?.focus();
+        });
+      } else {
+        // Restore focus to whatever had it before the modal opened.
+        const target = this.previouslyFocused;
+        this.previouslyFocused = null;
+        if (target && typeof target.focus === 'function') {
+          target.focus();
+        }
       }
     }
   },
@@ -164,6 +195,28 @@ export default {
     },
     updateValue(key, value) {
       this.localModel[key] = value;
+    },
+    // PR-F2: standard focus-trap cycle. Query all focusables inside the
+    // overlay (close, tabs, form inputs, Cancel/Save), wrap focus at
+    // boundaries. Unlike the simpler `KeyboardShortcutsOverlay` (1
+    // focusable), this modal has many focusables so the cycle is real.
+    handleTab(event) {
+      const overlay = this.$refs.overlay;
+      if (!overlay) return;
+      const focusables = overlay.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   }
 }
