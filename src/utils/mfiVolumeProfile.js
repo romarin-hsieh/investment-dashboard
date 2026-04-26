@@ -47,6 +47,13 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
     const minPrice = Math.min(...validPrices);
     const maxPrice = Math.max(...validPrices);
     const priceRange = maxPrice - minPrice;
+    // PR-F5 (audit finding): flat-market guard. With identical max and
+    // min, `binSize === 0` and every downstream `(low - minPrice) / binSize`
+    // becomes Infinity/NaN, silently corrupting the profile. Refuse early
+    // — the same throw-pattern as the empty-validPrices branch above.
+    if (priceRange === 0) {
+      throw new Error('No price variation found — cannot compute volume profile (all prices identical)');
+    }
     const binSize = priceRange / bins;
 
     console.log(`📊 Price range: ${minPrice.toFixed(2)} - ${maxPrice.toFixed(2)}, bin size: ${binSize.toFixed(4)}`);
