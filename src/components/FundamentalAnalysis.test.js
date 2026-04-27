@@ -65,13 +65,13 @@ function makeStockInfoStub () {
       // which would throw on a raw number.
       revenueGrowth:   '18.00%',
       profitMargins:   '24.00%',
-      // Left undefined so the template's `metrics.forwardPE ? formatNumber(...) : 'N/A'`
-      // ternary takes the 'N/A' branch. The component imports `formatNumber` at
-      // module top-level but `setup()` only exposes `{ theme }`, so the template's
-      // unprefixed `formatNumber(...)` call would throw `_ctx.formatNumber is not
-      // a function`. Latent bug exercised only when forwardPE is truthy — flagged
-      // as a candidate for PR-G2.5 cleanup, NOT fixed in this test PR.
-      forwardPE:       undefined,
+      // PR-G2.5: now safe to use a truthy value because setup() exposes
+      // `formatNumber` to the template. PR-G2 left this `undefined` to dodge
+      // the latent `_ctx.formatNumber is not a function` bug; the source fix
+      // is in this same PR, so the truthy value here doubles as the
+      // regression-net assertion (vitest would emit an unhandled rejection
+      // if the template render still couldn't resolve `formatNumber`).
+      forwardPE:       28.5,
       beta:            1.12
     },
     recommendationTrend: [
@@ -112,9 +112,7 @@ function makePrecomputedStub () {
       },
       defaultKeyStatistics: {
         beta:           1.05,
-        // Left undefined for the same reason as the primary stub — avoids the
-        // template's unprefixed `formatNumber()` call (latent bug, PR-G2.5).
-        forwardPE:      undefined,
+        forwardPE:      27.0, // PR-G2.5: now truthy; template resolves formatNumber via setup return
         profitMargins:  0.22
       },
       recommendationTrend: [
@@ -180,6 +178,7 @@ describe('FundamentalAnalysis — mount + loadData cascade', () => {
     // beta + forwardPE come straight from defaultKeyStatistics; profitMargins
     // and revenueGrowth get run through formatPercent
     expect(wrapper.vm.metrics.beta).toBe(1.05)
+    expect(wrapper.vm.metrics.forwardPE).toBe(27.0)
     expect(wrapper.vm.metrics.profitMargins).toMatch(/22\.\d+%/)
     expect(wrapper.vm.metrics.revenueGrowth).toMatch(/15\.\d+%/)
     // recommendationTrend processed (sliced to ≤4)

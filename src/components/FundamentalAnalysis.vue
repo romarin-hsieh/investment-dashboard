@@ -177,7 +177,13 @@ export default {
   },
   setup() {
     const { theme } = useTheme()
-    return { theme }
+    // PR-G2.5: expose `formatNumber` so the template at line 123 can call it.
+    // The function is imported at module top level (line 162) but Vue 3
+    // templates only resolve identifiers from setup return / data() /
+    // methods / computed / props — not module-scope imports. PR-G2's tests
+    // surfaced this as `_ctx.formatNumber is not a function` whenever
+    // `metrics.forwardPE` was truthy.
+    return { theme, formatNumber }
   },
   data() {
     return {
