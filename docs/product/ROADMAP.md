@@ -10,17 +10,14 @@
 
 ## Now (Active — being executed)
 
-*No active workstream this cycle.* WS-E Audit Sweep 2026-04-25 shipped fully on 2026-04-26 (4 PRs — see *Recently shipped*). Next pickable items are in *Next*.
+*No active workstream this cycle.* WS-G Component Test Coverage shipped 2026-04-27 (5 PRs — see *Recently shipped*), closing the test-coverage plank against all three monoliths. Next pickable items are in *Next*.
 
 ---
 
 ## Next (Committed but not yet started)
 
-### 🧪 Component test coverage expansion
-Once the Vitest baseline (WS-B PR-B1) is in place, expand to Vue Test Utils tests for the three largest components: `MFIVolumeProfilePanel.vue` (1024 LOC), `StockOverview.vue` (1011 LOC), `FundamentalAnalysis.vue` (932 LOC). Goal: catch UI regressions when refactoring those monoliths. Decision will live in an ADR.
-
 ### 🔄 TypeScript migration of top 5 critical `.js` files
-In priority order: `yahooFinanceApi.js` (1380 LOC), `technicalIndicatorsCore.js` (1256), `mfiVolumeProfile.js` (402), `autoUpdateScheduler.js` (435), `technicalIndicatorsCache.js` (418). These are the largest sources of silent type-safety risk. Run after WS-B unit tests are in place so we have a regression net.
+In priority order: `yahooFinanceApi.js` (1380 LOC), `technicalIndicatorsCore.js` (1256), `mfiVolumeProfile.js` (402), `autoUpdateScheduler.js` (435), `technicalIndicatorsCache.js` (418). These are the largest sources of silent type-safety risk. Regression net is now in place (WS-B unit baseline + WS-G component-test baseline on the three monoliths) — safe to start.
 
 ### 🖥️ Self-hosted CORS proxy (Cloudflare Worker)
 Activate when public proxy failure rate exceeds 5% over 30 days, per [ADR-0002](../architecture/adr/0002-cors-proxy-strategy.md) follow-up. Cloudflare Workers free tier covers our scale.
@@ -65,7 +62,7 @@ The following are listed in [PRD §4 Non-Goals](PRD.md#4-non-goals-explicit) and
 - **Next**: no hard cap; if list grows beyond 8, prune to highest-confidence items (others fall to *Later*).
 - **Later**: capped at 10 distinct items. Anything beyond is signal of indecision — kill or commit.
 
-Currently: 0 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. Between cycles — pick the next workstream from *Next* or run a fresh audit. *Later* bucket is 2 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
+Currently: 0 *Now*, 2 *Next*, 12 *Later* items + 6 *Won't*. Between cycles — pick the next workstream from *Next* or run a fresh audit. *Later* bucket is 2 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
 
 ---
 
@@ -80,3 +77,4 @@ Currently: 0 *Now*, 3 *Next*, 12 *Later* items + 6 *Won't*. Between cycles — p
 - **WS-D Bundle Analyzer Integration** — `rollup-plugin-visualizer` plugin + per-deploy `bundle-stats` artifact, per-PR delta comment workflow with marker-keyed comment upsert + 35-test `bundle-size-delta.js`, performance budget CI gate enforcing 5 budgets (per-chunk + total) calibrated against measured 2026-04-25 baseline + [ADR-0007](../architecture/adr/0007-bundle-size-budgets.md). PRs [#24](https://github.com/romarin-hsieh/investment-dashboard/pull/24) – [#27](https://github.com/romarin-hsieh/investment-dashboard/pull/27).
 - **Local-dev parity sidecar** — bumped `vitest` and `@vitest/coverage-v8` `^2.1.9` → `^4` and removed the dead `#!/usr/bin/env node` shebang from `scripts/bundle-size-delta.js` that rolldown's stricter ESM parser was rejecting. Restored `npm test` 87/87 pass on `vitest 4.1.5 + Node 22 + Windows`, matching CI's existing pass on Linux Node 20. PR [#29](https://github.com/romarin-hsieh/investment-dashboard/pull/29).
 - **WS-E Audit Sweep 2026-04-25** — four-PR follow-up sweep on durable findings from the post-WS-D three-lens audit. PR-E1 [#28](https://github.com/romarin-hsieh/investment-dashboard/pull/28) tablet-breakpoint completion + 9-of-11 hex-to-token migration on QuantDashboard (2 of 3 audit-flagged pages confirmed as **CSS hallucinations** via preview_eval and intentionally not touched). PR-E2 [#30](https://github.com/romarin-hsieh/investment-dashboard/pull/30) 6-widget setTimeout unmount cleanup + per-binding `preventDefault` opt-in on `useKeyboardShortcuts`. PR-E3 [#32](https://github.com/romarin-hsieh/investment-dashboard/pull/32) regression-net Vitest baseline for 5 untested services (+47 cases, total 87→134). PR-E4 [#33](https://github.com/romarin-hsieh/investment-dashboard/pull/33) `KeyboardShortcutsOverlay` focus trap + `QuantDashboard` empty-state branch.
+- **WS-G Component Test Coverage 2026-04-27** — five-PR plank delivering Vue Test Utils baselines for the three component monoliths (the test-coverage prerequisite the queued TS migration was waiting on). PR-G1 [#38](https://github.com/romarin-hsieh/investment-dashboard/pull/38) `MFIVolumeProfilePanel` baseline + project-first VTU mount/mock pattern (sets the template subsequent PRs mirror). PR-G1.5 [#39](https://github.com/romarin-hsieh/investment-dashboard/pull/39) drops dead props + unused param surfaced while writing G1. PR-G2 [#40](https://github.com/romarin-hsieh/investment-dashboard/pull/40) `FundamentalAnalysis` baseline including the primary→fallback→failure cascade in `loadData`. PR-G2.5 [#41](https://github.com/romarin-hsieh/investment-dashboard/pull/41) source fix exposing `formatNumber` to the template (latent bug surfaced by G2's render path). PR-G3 [#42](https://github.com/romarin-hsieh/investment-dashboard/pull/42) `StockOverview` baseline (22 cases — sector/industry/market-cap priority sort + keyboard nav state machine). Total suite 134 → 172 cases (+38 across G1+G2+G3).
