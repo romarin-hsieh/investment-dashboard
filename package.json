@@ -13,6 +13,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "typecheck": "vue-tsc --noEmit",
     "update-daily": "python scripts/generate-real-ohlcv-yfinance.py && node scripts/generate-daily-technical-indicators.js && node scripts/generate-daily-snapshot.js && node scripts/generate-quotes-snapshot.js",
     "validate:data": "node scripts/validate-data.js",
     "update:sentiment": "python scripts/update_sentiment.py",
@@ -36,8 +37,10 @@
     "jsdom": "^24.1.3",
     "rollup-plugin-visualizer": "^7.0.1",
     "sass-embedded": "^1.97.2",
+    "typescript": "^5.9.3",
     "vite": "^5.0.0",
     "vitest": "^4.1.5",
+    "vue-tsc": "^2.2.12",
     "yahoo-finance2": "^3.11.2"
   },
   "build": {

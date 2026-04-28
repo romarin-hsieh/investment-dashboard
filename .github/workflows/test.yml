@@ -1,11 +1,12 @@
 name: Tests
 
-# Regression gate installed by WS-B PR-B1. Runs the Vitest suite on every
-# push to main and every pull request. Keep fast; no matrix; no coverage
-# upload unless explicitly added later.
+# Regression gates for the project. Two parallel jobs, both gate PR merge:
+#   - `test`      Vitest suite (installed by WS-B PR-B1)
+#   - `typecheck` vue-tsc --noEmit on .ts + .vue files (PR-H1, per ADR-0008)
 #
-# Test files live alongside source: src/**/*.test.{js,ts}
-# To run locally: `npm test`
+# Keep fast; no matrix; no coverage upload unless explicitly added later.
+# Test files live alongside source: src/**/*.test.{js,ts}.
+# To run locally: `npm test` and `npm run typecheck`.
 
 on:
   push:
@@ -37,3 +38,28 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  typecheck:
+    # Parallel to `test`. vue-tsc validates the existing 8 .ts files plus
+    # all .vue SFCs (script blocks default to JS-style inference unless
+    # the SFC opts in with `lang="ts"`). Per ADR-0008, this gate must
+    # land before any of the queued top-5 .js → .ts migrations (PR-H2+)
+    # so the TS files those PRs introduce are actually contractually
+    # validated at merge time.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run typecheck
+        run: npm run typecheck
