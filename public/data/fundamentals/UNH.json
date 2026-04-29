@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1009,
         "position": 91600260,
-        "value": 32489696443,
+        "value": 33596226353,
         "pctChange": 0.011
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.08229999,
         "position": 74743552,
-        "value": 26510790641,
+        "value": 27413691745,
         "pctChange": 0.0061000003
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0498,
         "position": 45232170,
-        "value": 16043398487,
+        "value": 16589802493,
         "pctChange": 0.0254
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0249,
         "position": 22591042,
-        "value": 8012816742,
+        "value": 8285716226,
         "pctChange": 0.0379
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024,
         "position": 21791590,
-        "value": 7729259110,
+        "value": 7992501224,
         "pctChange": 0.00029999999
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0207,
         "position": 18829054,
-        "value": 6678477209,
+        "value": 6905931928,
         "pctChange": 0.0375
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.020499999,
         "position": 18655111,
-        "value": 6616781366,
+        "value": 6842134856,
         "pctChange": 0.066
       },
       {
@@ -108,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0189,
         "position": 17199093,
-        "value": 6100346338,
+        "value": 6308111150,
         "pctChange": -0.53650004
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0174,
         "position": 15790095,
-        "value": 5600588834,
+        "value": 5791332969,
         "pctChange": 0.0363
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Wellington Management Group, LLP",
         "pctHeld": 0.0173,
         "position": 15688774,
-        "value": 5564651288,
+        "value": 5754171467,
         "pctChange": -0.050100002
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00808,
-    "institutionsPercentHeld": 0.83959,
-    "institutionsFloatPercentHeld": 0.84643,
-    "institutionsCount": 4111
+    "institutionsPercentHeld": 0.84597,
+    "institutionsFloatPercentHeld": 0.85286003,
+    "institutionsCount": 4101
   },
   "earnings": {
     "maxAge": 86400,
@@ -193,7 +193,9 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
+      "earningsDate": [
+        "2026-07-28T12:30:00.000Z"
+      ],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
@@ -201,22 +203,26 @@
         {
           "date": 2022,
           "revenue": 324162000000,
-          "earnings": 21081000000
+          "earnings": 21081000000,
+          "profitMargin": 0.065032296
         },
         {
           "date": 2023,
           "revenue": 371622000000,
-          "earnings": 23567000000
+          "earnings": 23567000000,
+          "profitMargin": 0.06341659
         },
         {
           "date": 2024,
           "revenue": 400278000000,
-          "earnings": 25699000000
+          "earnings": 25699000000,
+          "profitMargin": 0.06420288
         },
         {
           "date": 2025,
           "revenue": 447567000000,
-          "earnings": 14897000000
+          "earnings": 14897000000,
+          "profitMargin": 0.033284403
         }
       ],
       "quarterly": [
@@ -224,25 +230,29 @@
           "date": "2Q2025",
           "fiscalQuarter": "2Q2025",
           "revenue": 111616000000,
-          "earnings": 3716000000
+          "earnings": 3716000000,
+          "profitMargin": 0.03329272
         },
         {
           "date": "3Q2025",
           "fiscalQuarter": "3Q2025",
           "revenue": 113161000000,
-          "earnings": 2650000000
+          "earnings": 2650000000,
+          "profitMargin": 0.02341796
         },
         {
           "date": "4Q2025",
           "fiscalQuarter": "4Q2025",
           "revenue": 113215000000,
-          "earnings": 1924000000
+          "earnings": 1924000000,
+          "profitMargin": 0.016994216
         },
         {
           "date": "1Q2026",
           "fiscalQuarter": "1Q2026",
           "revenue": 111721000000,
-          "earnings": 6578000000
+          "earnings": 6578000000,
+          "profitMargin": 0.058878813
         }
       ]
     },
@@ -251,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-28T18:16:27.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 420,
+        "priorPriceTarget": 389
+      },
       {
         "epochGradeDate": "2026-04-23T16:57:57.000Z",
         "firm": "TD Cowen",
@@ -5417,24 +5437,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0028475844,
-    "postMarketChange": -1.0100098,
-    "postMarketTime": "2026-04-27T23:59:44.000Z",
-    "postMarketPrice": 353.68,
+    "postMarketChangePercent": -0.000081791804,
+    "postMarketChange": -0.02999878,
+    "postMarketTime": "2026-04-28T23:59:54.000Z",
+    "postMarketPrice": 366.74,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.000648064,
-    "regularMarketChange": -0.230011,
-    "regularMarketTime": "2026-04-27T20:00:03.000Z",
+    "regularMarketChangePercent": 0.0340579,
+    "regularMarketChange": 12.08,
+    "regularMarketTime": "2026-04-28T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 354.69,
-    "regularMarketDayHigh": 356.49,
-    "regularMarketDayLow": 348.95,
-    "regularMarketVolume": 6525263,
-    "averageDailyVolume10Day": 9554060,
-    "averageDailyVolume3Month": 9129114,
-    "regularMarketPreviousClose": 354.92,
+    "regularMarketPrice": 366.77,
+    "regularMarketDayHigh": 369.63,
+    "regularMarketDayLow": 355.755,
+    "regularMarketVolume": 10317985,
+    "averageDailyVolume10Day": 10027800,
+    "averageDailyVolume3Month": 9082319,
+    "regularMarketPreviousClose": 354.69,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 353.91,
+    "regularMarketOpen": 356.84,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -5450,13 +5470,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 322134147072
+    "marketCap": 333105332224
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 370879889408,
-    "forwardPE": 17.12206,
+    "enterpriseValue": 381872701440,
+    "forwardPE": 17.705202,
     "profitMargins": 0.02678,
     "floatShares": 902310500,
     "sharesOutstanding": 908213180,
@@ -5466,14 +5486,14 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0167,
     "heldPercentInsiders": 0.00808,
-    "heldPercentInstitutions": 0.83959,
+    "heldPercentInstitutions": 0.84597,
     "shortRatio": 1.68,
     "shortPercentOfFloat": 0.0186,
     "beta": 0.408,
     "impliedSharesOutstanding": 908213180,
     "category": null,
     "bookValue": 103.874,
-    "priceToBook": 3.4146178,
+    "priceToBook": 3.5309124,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -5481,15 +5501,15 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.002,
     "netIncomeToCommon": 12044000256,
-    "trailingEps": 13.23,
-    "forwardEps": 20.71538,
+    "trailingEps": 13.24,
+    "forwardEps": 20.75367,
     "pegRatio": 1.24,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1117497600,
-    "enterpriseToRevenue": 0.825,
-    "enterpriseToEbitda": 17.279,
-    "52WeekChange": -0.13327467,
-    "SandP52WeekChange": 0.290079,
+    "enterpriseToRevenue": 0.849,
+    "enterpriseToEbitda": 17.791,
+    "52WeekChange": -0.10856992,
+    "SandP52WeekChange": 0.28186798,
     "lastDividendValue": 2.21,
     "lastDividendDate": "2026-03-09T00:00:00.000Z",
     "latestShareClass": null,
@@ -5517,6 +5537,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 800,
+        "value": 284000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 355.00 per share.",
+        "filerName": "CONWAY PATRICK HUGH M.D.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-04-23T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 206,
@@ -7055,6 +7087,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 24,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "NOSEWORTHY JOHN H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 114,
         "value": 0,
         "filerUrl": "",
@@ -7145,18 +7189,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "REX JOHN F",
         "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-03-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 24,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "NOSEWORTHY JOHN H",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-18T00:00:00.000Z",
         "ownership": "D"
@@ -7304,25 +7336,13 @@
         "moneyText": "",
         "startDate": "2025-01-02T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 174,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GARCIA PAUL REU",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-01-02T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 354.69,
+    "currentPrice": 366.77,
     "targetHighPrice": 444,
     "targetLowPrice": 287,
     "targetMeanPrice": 386.07693,
@@ -7352,6 +7372,6 @@
     "profitMargins": 0.02678,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-28T05:33:05.116Z",
+  "lastUpdated": "2026-04-29T05:29:03.043Z",
   "source": "Static Build (yahoo-finance2)"
 }

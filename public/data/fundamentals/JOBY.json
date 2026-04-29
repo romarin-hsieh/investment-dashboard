@@ -45,7 +45,7 @@
         "organization": "TOYOTA MOTOR CORP/",
         "pctHeld": 0.13069999,
         "position": 128454401,
-        "value": 1161227780,
+        "value": 1147097840,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.053400002,
         "position": 52488707,
-        "value": 474497909,
+        "value": 468724169,
         "pctChange": 0.0509
       },
       {
@@ -63,7 +63,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0504,
         "position": 49570755,
-        "value": 448119623,
+        "value": 442666857,
         "pctChange": -0.016900001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0404,
         "position": 39742492,
-        "value": 359272126,
+        "value": 354900465,
         "pctChange": 0.0962
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.029000001,
         "position": 28470647,
-        "value": 257374647,
+        "value": 254242886,
         "pctChange": -0.059499998
       },
       {
@@ -90,7 +90,7 @@
         "organization": "INTEL CORP",
         "pctHeld": 0.0156,
         "position": 15316315,
-        "value": 138459487,
+        "value": 136774697,
         "pctChange": -0.031600002
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0123000005,
         "position": 12106939,
-        "value": 109446728,
+        "value": 108114968,
         "pctChange": 2.4106
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.012,
         "position": 11790532,
-        "value": 106586408,
+        "value": 105289454,
         "pctChange": 0.0343
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Delta Air Lines Inc",
         "pctHeld": 0.0112,
         "position": 11044232,
-        "value": 99839856,
+        "value": 98624995,
         "pctChange": 0
       },
       {
@@ -126,7 +126,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.011,
         "position": 10812929,
-        "value": 97748877,
+        "value": 96559459,
         "pctChange": 0.0497
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.32578,
-    "institutionsPercentHeld": 0.35621,
-    "institutionsFloatPercentHeld": 0.52833,
-    "institutionsCount": 624
+    "institutionsPercentHeld": 0.35633,
+    "institutionsFloatPercentHeld": 0.52849996,
+    "institutionsCount": 626
   },
   "earnings": {
     "maxAge": 86400,
@@ -202,22 +202,26 @@
         {
           "date": 2022,
           "revenue": 0,
-          "earnings": -258043000
+          "earnings": -258043000,
+          "profitMargin": 0
         },
         {
           "date": 2023,
           "revenue": 1032000,
-          "earnings": -426672000
+          "earnings": -426672000,
+          "profitMargin": -413.44186
         },
         {
           "date": 2024,
           "revenue": 136000,
-          "earnings": -554061000
+          "earnings": -554061000,
+          "profitMargin": -4073.9778
         },
         {
           "date": 2025,
           "revenue": 53425000,
-          "earnings": -677734000
+          "earnings": -677734000,
+          "profitMargin": -12.685709
         }
       ],
       "quarterly": [
@@ -225,25 +229,29 @@
           "date": "1Q2025",
           "fiscalQuarter": "1Q2025",
           "revenue": 0,
-          "earnings": -153426000
+          "earnings": -153426000,
+          "profitMargin": 0
         },
         {
           "date": "2Q2025",
           "fiscalQuarter": "2Q2025",
           "revenue": 15000,
-          "earnings": -158121000
+          "earnings": -158121000,
+          "profitMargin": -10541.399
         },
         {
           "date": "3Q2025",
           "fiscalQuarter": "3Q2025",
           "revenue": 22574000,
-          "earnings": -172077000
+          "earnings": -172077000,
+          "profitMargin": -7.6227956
         },
         {
           "date": "4Q2025",
           "fiscalQuarter": "4Q2025",
           "revenue": 30836000,
-          "earnings": 0
+          "earnings": 0,
+          "profitMargin": 0
         }
       ]
     },
@@ -252,6 +260,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-28T11:40:12.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 18,
+        "priorPriceTarget": 18
+      },
       {
         "epochGradeDate": "2026-02-26T21:42:29.000Z",
         "firm": "JP Morgan",
@@ -898,24 +916,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.050829682,
-    "postMarketChange": 0.4595003,
-    "postMarketTime": "2026-04-27T23:59:56.000Z",
-    "postMarketPrice": 9.4995,
+    "postMarketChangePercent": 0.008588943,
+    "postMarketChange": 0.07669926,
+    "postMarketTime": "2026-04-28T23:59:57.000Z",
+    "postMarketPrice": 9.0067,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0635294,
-    "regularMarketChange": 0.54,
-    "regularMarketTime": "2026-04-27T20:00:02.000Z",
+    "regularMarketChangePercent": -0.0121681,
+    "regularMarketChange": -0.11,
+    "regularMarketTime": "2026-04-28T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 9.04,
-    "regularMarketDayHigh": 9.1299,
-    "regularMarketDayLow": 8.57,
-    "regularMarketVolume": 44248517,
-    "averageDailyVolume10Day": 24577500,
-    "averageDailyVolume3Month": 27007962,
-    "regularMarketPreviousClose": 8.5,
+    "regularMarketPrice": 8.93,
+    "regularMarketDayHigh": 9.47,
+    "regularMarketDayLow": 8.7201,
+    "regularMarketVolume": 48586741,
+    "averageDailyVolume10Day": 27826200,
+    "averageDailyVolume3Month": 25353404,
+    "regularMarketPreviousClose": 9.04,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 8.69,
+    "regularMarketOpen": 9.2031,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -931,13 +949,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 8887849984
+    "marketCap": 8779702272
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 7489537536,
-    "forwardPE": -19.44086,
+    "enterpriseValue": 7381810688,
+    "forwardPE": -19.204302,
     "profitMargins": 0,
     "floatShares": 660884123,
     "sharesOutstanding": 983169282,
@@ -947,14 +965,14 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0836,
     "heldPercentInsiders": 0.32578,
-    "heldPercentInstitutions": 0.35621,
+    "heldPercentInstitutions": 0.35633,
     "shortRatio": 3.77,
     "shortPercentOfFloat": 0.1254,
     "beta": 2.678,
     "impliedSharesOutstanding": 983169282,
     "category": null,
     "bookValue": 1.541,
-    "priceToBook": 5.8663206,
+    "priceToBook": 5.7949386,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -964,10 +982,10 @@
     "trailingEps": -1.13,
     "forwardEps": -0.465,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 140.188,
-    "enterpriseToEbitda": -11.023,
-    "52WeekChange": 0.37804878,
-    "SandP52WeekChange": 0.290079,
+    "enterpriseToRevenue": 138.171,
+    "enterpriseToEbitda": -10.865,
+    "52WeekChange": 0.41746032,
+    "SandP52WeekChange": 0.28186798,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2736,7 +2754,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 9.04,
+    "currentPrice": 8.93,
     "targetHighPrice": 18,
     "targetLowPrice": 6,
     "targetMeanPrice": 11.78667,
@@ -2765,6 +2783,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-28T05:32:17.256Z",
+  "lastUpdated": "2026-04-29T05:28:15.532Z",
   "source": "Static Build (yahoo-finance2)"
 }

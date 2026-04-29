@@ -45,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0945,
         "position": 106608094,
-        "value": 55922341528,
+        "value": 53761396634,
         "pctChange": 0.0187
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.08930001,
         "position": 100701543,
-        "value": 52824001150,
+        "value": 50782781979,
         "pctChange": 0.0733
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0517,
         "position": 58249125,
-        "value": 30555160867,
+        "value": 29374451743,
         "pctChange": -0.0925
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0468,
         "position": 52749817,
-        "value": 27670443876,
+        "value": 26601205665,
         "pctChange": 0.0211
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.035099998,
         "position": 39596338,
-        "value": 20770654964,
+        "value": 19968037628,
         "pctChange": -0.0117
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0231,
         "position": 25997769,
-        "value": 13637389643,
+        "value": 13110415151,
         "pctChange": -0.0016
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Primecap Management Company",
         "pctHeld": 0.022,
         "position": 24794936,
-        "value": 13006431567,
+        "value": 12503838487,
         "pctChange": -0.16389999
       },
       {
@@ -108,7 +108,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.02,
         "position": 22541101,
-        "value": 11824159885,
+        "value": 11367252015,
         "pctChange": 0.4026
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.0196,
         "position": 22056387,
-        "value": 11569898310,
+        "value": 11122815588,
         "pctChange": -0.0563
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0145000005,
         "position": 16396655,
-        "value": 8601029306,
+        "value": 8268669290,
         "pctChange": 0.0509
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0025600002,
-    "institutionsPercentHeld": 0.82201,
-    "institutionsFloatPercentHeld": 0.82412004,
-    "institutionsCount": 3621
+    "institutionsPercentHeld": 0.82273,
+    "institutionsFloatPercentHeld": 0.82485,
+    "institutionsCount": 3648
   },
   "earnings": {
     "maxAge": 86400,
@@ -203,22 +203,26 @@
         {
           "date": 2022,
           "revenue": 30758000000,
-          "earnings": 9475000000
+          "earnings": 9475000000,
+          "profitMargin": 0.30804995
         },
         {
           "date": 2023,
           "revenue": 15540000000,
-          "earnings": -4862000000
+          "earnings": -4862000000,
+          "profitMargin": -0.31287003
         },
         {
           "date": 2024,
           "revenue": 25111000000,
-          "earnings": 1472000000
+          "earnings": 1472000000,
+          "profitMargin": 0.05861973
         },
         {
           "date": 2025,
           "revenue": 37378000000,
-          "earnings": 9470000000
+          "earnings": 9470000000,
+          "profitMargin": 0.2533576
         }
       ],
       "quarterly": [
@@ -226,25 +230,29 @@
           "date": "2Q2025",
           "fiscalQuarter": "3Q2025",
           "revenue": 9301000000,
-          "earnings": 2181000000
+          "earnings": 2181000000,
+          "profitMargin": 0.2344909
         },
         {
           "date": "3Q2025",
           "fiscalQuarter": "4Q2025",
           "revenue": 11315000000,
-          "earnings": 3469000000
+          "earnings": 3469000000,
+          "profitMargin": 0.30658418
         },
         {
           "date": "4Q2025",
           "fiscalQuarter": "1Q2026",
           "revenue": 13643000000,
-          "earnings": 5482000000
+          "earnings": 5482000000,
+          "profitMargin": 0.40181777
         },
         {
           "date": "1Q2026",
           "fiscalQuarter": "2Q2026",
           "revenue": 23860000000,
-          "earnings": 14021000000
+          "earnings": 14021000000,
+          "profitMargin": 0.5876362
         }
       ]
     },
@@ -253,6 +261,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-04-28T15:59:41.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 660,
+        "priorPriceTarget": 550
+      },
+      {
+        "epochGradeDate": "2026-04-28T12:14:47.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 1000,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-04-27T16:17:47.000Z",
         "firm": "Melius Research",
@@ -8539,24 +8567,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0031455401,
-    "postMarketChange": 1.6500244,
-    "postMarketTime": "2026-04-27T23:59:58.000Z",
-    "postMarketPrice": 526.21,
+    "postMarketChangePercent": 0.029130008,
+    "postMarketChange": 14.689972,
+    "postMarketTime": "2026-04-28T23:59:55.000Z",
+    "postMarketPrice": 518.98,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0560477,
-    "regularMarketChange": 27.84,
-    "regularMarketTime": "2026-04-27T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0386419,
+    "regularMarketChange": -20.27,
+    "regularMarketTime": "2026-04-28T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 524.56,
-    "regularMarketDayHigh": 531.36,
-    "regularMarketDayLow": 510.0185,
-    "regularMarketVolume": 38228158,
-    "averageDailyVolume10Day": 38032830,
-    "averageDailyVolume3Month": 41676421,
-    "regularMarketPreviousClose": 496.72,
+    "regularMarketPrice": 504.29,
+    "regularMarketDayHigh": 518.8333,
+    "regularMarketDayLow": 488.2384,
+    "regularMarketVolume": 43805215,
+    "averageDailyVolume10Day": 37255780,
+    "averageDailyVolume3Month": 41710662,
+    "regularMarketPreviousClose": 524.56,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 510.56,
+    "regularMarketOpen": 503.99,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -8572,13 +8600,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 591564177408
+    "marketCap": 568705024000
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 587773181952,
-    "forwardPE": 5.1880555,
+    "enterpriseValue": 564914028544,
+    "forwardPE": 4.9875793,
     "profitMargins": 0.41486,
     "floatShares": 1123561435,
     "sharesOutstanding": 1127734051,
@@ -8588,14 +8616,14 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0322,
     "heldPercentInsiders": 0.0025600002,
-    "heldPercentInstitutions": 0.82201,
+    "heldPercentInstitutions": 0.82273,
     "shortRatio": 0.69,
     "shortPercentOfFloat": 0.0323,
     "beta": 1.606,
     "impliedSharesOutstanding": 1127734051,
     "category": null,
     "bookValue": 64.237,
-    "priceToBook": 8.16601,
+    "priceToBook": 7.85046,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-08-28T00:00:00.000Z",
@@ -8604,14 +8632,14 @@
     "earningsQuarterlyGrowth": 7.708,
     "netIncomeToCommon": 24110999552,
     "trailingEps": 21.19,
-    "forwardEps": 101.10917,
+    "forwardEps": 101.4692,
     "pegRatio": 0.29,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 957225600,
-    "enterpriseToRevenue": 10.113,
-    "enterpriseToEbitda": 15.971,
-    "52WeekChange": 5.823101,
-    "SandP52WeekChange": 0.290079,
+    "enterpriseToRevenue": 9.72,
+    "enterpriseToEbitda": 15.35,
+    "52WeekChange": 5.5534763,
+    "SandP52WeekChange": 0.28186798,
     "lastDividendValue": 0.15,
     "lastDividendDate": "2026-03-30T00:00:00.000Z",
     "latestShareClass": null,
@@ -9046,6 +9074,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1377,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCCARTHY MARY PAT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-10-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 25468,
         "value": 0,
         "filerUrl": "",
@@ -9133,18 +9173,6 @@
         "transactionText": "",
         "filerName": "MURPHY MARK J",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-10-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1377,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCCARTHY MARY PAT",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-13T00:00:00.000Z",
         "ownership": "D"
@@ -9742,6 +9770,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 2338,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCCARTHY MARY PAT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-10-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 38580,
         "value": 0,
         "filerUrl": "",
@@ -9817,18 +9857,6 @@
         "transactionText": "",
         "filerName": "MURPHY MARK J",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-10-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2338,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCCARTHY MARY PAT",
-        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-10-11T00:00:00.000Z",
         "ownership": "D"
@@ -10268,7 +10296,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 524.56,
+    "currentPrice": 504.29,
     "targetHighPrice": 852,
     "targetLowPrice": 249,
     "targetMeanPrice": 537.7805,
@@ -10298,6 +10326,6 @@
     "profitMargins": 0.41486,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-04-28T05:32:32.711Z",
+  "lastUpdated": "2026-04-29T05:28:31.034Z",
   "source": "Static Build (yahoo-finance2)"
 }
