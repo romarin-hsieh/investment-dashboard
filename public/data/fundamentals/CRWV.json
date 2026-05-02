@@ -11,19 +11,19 @@
       },
       {
         "period": "-1m",
-        "strongBuy": 3,
-        "buy": 18,
+        "strongBuy": 2,
+        "buy": 20,
         "hold": 10,
         "sell": 1,
         "strongSell": 1
       },
       {
         "period": "-2m",
-        "strongBuy": 2,
-        "buy": 16,
-        "hold": 11,
+        "strongBuy": 3,
+        "buy": 18,
+        "hold": 10,
         "sell": 1,
-        "strongSell": 0
+        "strongSell": 1
       },
       {
         "period": "-3m",
@@ -45,7 +45,7 @@
         "organization": "Magnetar Financial LLC",
         "pctHeld": 0.1539,
         "position": 68191394,
-        "value": 7610159466,
+        "value": 8115457945,
         "pctChange": -0.1682
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.063,
         "position": 27920979,
-        "value": 3115981213,
+        "value": 3322875770,
         "pctChange": 2.7561
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Nvidia Corp                          ",
         "pctHeld": 0.0548,
         "position": 24277573,
-        "value": 2709377109,
+        "value": 2889274014,
         "pctChange": 0
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.020499999,
         "position": 9081956,
-        "value": 1013546275,
+        "value": 1080843602,
         "pctChange": 2.3788002
       },
       {
@@ -81,7 +81,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0179,
         "position": 7922651,
-        "value": 884167839,
+        "value": 942874712,
         "pctChange": -0.7043
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0163,
         "position": 7233480,
-        "value": 807256356,
+        "value": 860856470,
         "pctChange": 0.9964
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0139,
         "position": 6171288,
-        "value": 688715731,
+        "value": 734444998,
         "pctChange": -0.4982
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.0138,
         "position": 6098812,
-        "value": 680627409,
+        "value": 725819629,
         "pctChange": 0.48189998
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Value Aligned Research Advisors, LLC                          ",
         "pctHeld": 0.0136,
         "position": 6028220,
-        "value": 672749342,
+        "value": 717418475,
         "pctChange": 0.9578
       },
       {
@@ -126,17 +126,17 @@
         "organization": "Peak6 LLC",
         "pctHeld": 0.013099999,
         "position": 5792058,
-        "value": 646393663,
+        "value": 689312834,
         "pctChange": 1.8125999
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.21558,
-    "institutionsPercentHeld": 0.52207,
-    "institutionsFloatPercentHeld": 0.66556,
-    "institutionsCount": 966
+    "insidersPercentHeld": 0.21556999,
+    "institutionsPercentHeld": 0.52251,
+    "institutionsFloatPercentHeld": 0.6661,
+    "institutionsCount": 970
   },
   "earnings": {
     "maxAge": 86400,
@@ -243,6 +243,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-01T18:41:56.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 155,
+        "priorPriceTarget": 126
+      },
       {
         "epochGradeDate": "2026-04-29T16:09:00.000Z",
         "firm": "Oppenheimer",
@@ -1319,28 +1329,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0,
-    "postMarketChange": 0,
-    "postMarketTime": "2026-04-30T23:59:27.000Z",
-    "postMarketPrice": 111.6,
+    "postMarketChangePercent": 0.0021006637,
+    "postMarketChange": 0.25,
+    "postMarketTime": "2026-05-01T23:59:29.000Z",
+    "postMarketPrice": 119.26,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0226815,
-    "regularMarketChange": -2.59,
-    "regularMarketTime": "2026-04-30T20:00:01.000Z",
+    "regularMarketChangePercent": 0.0663979,
+    "regularMarketChange": 7.41,
+    "regularMarketTime": "2026-05-01T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 111.6,
-    "regularMarketDayHigh": 118.25,
-    "regularMarketDayLow": 111.35,
-    "regularMarketVolume": 25112307,
-    "averageDailyVolume10Day": 26598060,
-    "averageDailyVolume3Month": 27051345,
-    "regularMarketPreviousClose": 114.19,
+    "regularMarketPrice": 119.01,
+    "regularMarketDayHigh": 121.855,
+    "regularMarketDayLow": 113.19,
+    "regularMarketVolume": 27242852,
+    "averageDailyVolume10Day": 26873520,
+    "averageDailyVolume3Month": 27179593,
+    "regularMarketPreviousClose": 111.6,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 117.29,
+    "regularMarketOpen": 114.11,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "CRWV",
     "underlyingSymbol": null,
@@ -1352,13 +1362,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 58947129344
+    "marketCap": 62861094912
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 85328797696,
-    "forwardPE": -223.40105,
+    "enterpriseValue": 89224142848,
+    "forwardPE": -274.01456,
     "profitMargins": -0.22744,
     "floatShares": 284187005,
     "sharesOutstanding": 442969348,
@@ -1367,14 +1377,14 @@
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1224,
-    "heldPercentInsiders": 0.21558,
-    "heldPercentInstitutions": 0.52207,
+    "heldPercentInsiders": 0.21556999,
+    "heldPercentInstitutions": 0.52251,
     "shortRatio": 2.15,
     "shortPercentOfFloat": 0.2187,
     "impliedSharesOutstanding": 528200096,
     "category": null,
     "bookValue": 6.643,
-    "priceToBook": 16.799639,
+    "priceToBook": 17.915098,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1384,10 +1394,10 @@
     "trailingEps": -2.81,
     "forwardEps": -0.49955,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 16.63,
-    "enterpriseToEbitda": 35.014,
-    "52WeekChange": 1.1640489,
-    "SandP52WeekChange": 0.2677033,
+    "enterpriseToRevenue": 17.389,
+    "enterpriseToEbitda": 36.612,
+    "52WeekChange": 1.333072,
+    "SandP52WeekChange": 0.2795812,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1416,6 +1426,87 @@
     "transactions": [
       {
         "maxAge": 1,
+        "shares": 307693,
+        "value": 32796005,
+        "filerUrl": "",
+        "transactionText": "Sale at price 103.87 - 109.83 per share.",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-04-28T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 107693,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-04-28T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 45850,
+        "value": 4998934,
+        "filerUrl": "",
+        "transactionText": "Sale at price 105.61 - 112.13 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-04-27T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 45850,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-04-27T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 375000,
+        "value": 40887640,
+        "filerUrl": "",
+        "transactionText": "Sale at price 105.62 - 112.14 per share.",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-04-27T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 375000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-04-27T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4879,
+        "value": 531823,
+        "filerUrl": "",
+        "transactionText": "Sale at price 105.64 - 112.17 per share.",
+        "filerName": "GOLDBERG CHEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-04-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2770,
         "value": 331181,
         "filerUrl": "",
@@ -1436,29 +1527,6 @@
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2026-04-23T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 76924,
-        "value": 9408495,
-        "filerUrl": "",
-        "transactionText": "Sale at price 118.39 - 124.93 per share.",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2026-04-22T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 76924,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2026-04-22T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -1499,6 +1567,41 @@
       },
       {
         "maxAge": 1,
+        "shares": 76924,
+        "value": 9408495,
+        "filerUrl": "",
+        "transactionText": "Sale at price 118.39 - 124.93 per share.",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-04-22T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 76924,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-04-22T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 323452,
+        "value": 38251434,
+        "filerUrl": "",
+        "transactionText": "Sale at price 118.26 per share.",
+        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2026-04-21T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 307693,
         "value": 35822995,
         "filerUrl": "",
@@ -1522,15 +1625,39 @@
       },
       {
         "maxAge": 1,
-        "shares": 323452,
-        "value": 38251434,
+        "shares": 67,
+        "value": 7829,
         "filerUrl": "",
-        "transactionText": "Sale at price 118.26 per share.",
+        "transactionText": "Stock Award(Grant) at price 116.85 per share.",
+        "filerName": "HUTCHINS GLENN H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-04-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 319835,
+        "value": 37526241,
+        "filerUrl": "",
+        "transactionText": "Sale at price 117.33 per share.",
         "filerName": "MAGNETAR FINANCIAL, L.L.C.",
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
-        "startDate": "2026-04-21T00:00:00.000Z",
+        "startDate": "2026-04-20T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 67,
+        "value": 7829,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 116.85 per share.",
+        "filerName": "WHITMAN MARGARET C.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-04-20T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1603,42 +1730,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 67,
-        "value": 7829,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 116.85 per share.",
-        "filerName": "HUTCHINS GLENN H",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-04-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 319835,
-        "value": 37526241,
-        "filerUrl": "",
-        "transactionText": "Sale at price 117.33 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2026-04-20T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 67,
-        "value": 7829,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 116.85 per share.",
-        "filerName": "WHITMAN MARGARET C.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-04-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 203356,
         "value": 24169560,
         "filerUrl": "",
@@ -1671,6 +1762,30 @@
         "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2026-04-16T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2604094,
+        "value": 309022617,
+        "filerUrl": "",
+        "transactionText": "Sale at price 117.79 - 119.34 per share.",
+        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2026-04-15T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 422762,
+        "value": 50168306,
+        "filerUrl": "",
+        "transactionText": "Sale at price 117.79 - 119.34 per share.",
+        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2026-04-15T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -1710,30 +1825,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2604094,
-        "value": 309022617,
-        "filerUrl": "",
-        "transactionText": "Sale at price 117.79 - 119.34 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2026-04-15T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 422762,
-        "value": 50168306,
-        "filerUrl": "",
-        "transactionText": "Sale at price 117.79 - 119.34 per share.",
-        "filerName": "MAGNETAR FINANCIAL, L.L.C.",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2026-04-15T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 307693,
         "value": 35981911,
         "filerUrl": "",
@@ -1753,6 +1844,29 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-04-14T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1125000,
+        "value": 124671073,
+        "filerUrl": "",
+        "transactionText": "Sale at price 104.80 - 113.88 per share.",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-04-13T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1125000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VENTURO BRIAN M",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2026-04-13T00:00:00.000Z",
         "ownership": "I"
       },
       {
@@ -1826,29 +1940,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1125000,
-        "value": 124671073,
-        "filerUrl": "",
-        "transactionText": "Sale at price 104.80 - 113.88 per share.",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2026-04-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1125000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2026-04-13T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 7335,
         "value": 770183,
         "filerUrl": "",
@@ -1857,6 +1948,18 @@
         "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2026-04-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14,
+        "value": 1288,
+        "filerUrl": "",
+        "transactionText": "Sale at price 92.00 per share.",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-04-08T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1885,18 +1988,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9757,
-        "value": 897644,
-        "filerUrl": "",
-        "transactionText": "Sale at price 92.00 per share.",
-        "filerName": "GOLDBERG CHEN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-04-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 61747,
         "value": 5508948,
         "filerUrl": "",
@@ -1909,38 +2000,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 14,
-        "value": 1288,
+        "shares": 9757,
+        "value": 897644,
         "filerUrl": "",
         "transactionText": "Sale at price 92.00 per share.",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "GOLDBERG CHEN",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-04-08T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 166665,
-        "value": 13541374,
-        "filerUrl": "",
-        "transactionText": "Sale at price 80.38 - 81.88 per share.",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-04-06T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 166665,
+        "shares": 1460,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
+        "filerName": "BOONE KAREN",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-04-06T00:00:00.000Z",
-        "ownership": "D/I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1967,14 +2046,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 1460,
+        "shares": 166665,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BOONE KAREN",
-        "filerRelation": "Director",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-04-06T00:00:00.000Z",
-        "ownership": "D"
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 166665,
+        "value": 13541374,
+        "filerUrl": "",
+        "transactionText": "Sale at price 80.38 - 81.88 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-04-06T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -2024,11 +2115,34 @@
       },
       {
         "maxAge": 1,
-        "shares": 56031,
-        "value": 4149096,
+        "shares": 16,
+        "value": 1185,
         "filerUrl": "",
         "transactionText": "Sale at price 74.05 per share.",
-        "filerName": "MCBEE BRANNIN",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AGRAWAL NITIN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 16,
+        "value": 1185,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "BAKER JEFFREY R",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
@@ -2036,10 +2150,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 121099,
+        "shares": 30,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MCBEE BRANNIN",
+        "filerName": "BAKER JEFFREY R",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
@@ -2070,12 +2184,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 16,
-        "value": 1185,
+        "shares": 11,
+        "value": 815,
         "filerUrl": "",
         "transactionText": "Sale at price 74.05 per share.",
-        "filerName": "GOLDBERG CHEN",
-        "filerRelation": "Officer",
+        "filerName": "MCVEETY KRISTEN J",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
         "ownership": "D"
@@ -2085,8 +2199,8 @@
         "shares": 30,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "GOLDBERG CHEN",
-        "filerRelation": "Officer",
+        "filerName": "MCVEETY KRISTEN J",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
         "ownership": "D"
@@ -2120,53 +2234,7 @@
         "value": 1185,
         "filerUrl": "",
         "transactionText": "Sale at price 74.05 per share.",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "AGRAWAL NITIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11,
-        "value": 815,
-        "filerUrl": "",
-        "transactionText": "Sale at price 74.05 per share.",
-        "filerName": "MCVEETY KRISTEN J",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCVEETY KRISTEN J",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16,
-        "value": 1185,
-        "filerUrl": "",
-        "transactionText": "Sale at price 74.05 per share.",
-        "filerName": "BAKER JEFFREY R",
+        "filerName": "GOLDBERG CHEN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
@@ -2177,7 +2245,30 @@
         "shares": 30,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BAKER JEFFREY R",
+        "filerName": "GOLDBERG CHEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 56031,
+        "value": 4149096,
+        "filerUrl": "",
+        "transactionText": "Sale at price 74.05 per share.",
+        "filerName": "MCBEE BRANNIN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 121099,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "MCBEE BRANNIN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
@@ -2231,6 +2322,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 50000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-03-25T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 82456,
         "value": 7202031,
         "filerUrl": "",
@@ -2240,17 +2342,6 @@
         "moneyText": "",
         "startDate": "2026-03-25T00:00:00.000Z",
         "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-03-25T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2404,29 +2495,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 82455,
-        "value": 6712600,
-        "filerUrl": "",
-        "transactionText": "Sale at price 78.57 - 82.51 per share.",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-03-11T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-03-11T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 63157,
         "value": 5032350,
         "filerUrl": "",
@@ -2447,6 +2515,29 @@
         "moneyText": "",
         "startDate": "2026-03-11T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 82455,
+        "value": 6712600,
+        "filerUrl": "",
+        "transactionText": "Sale at price 78.57 - 82.51 per share.",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-03-11T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 50000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "INTRATOR MICHAEL N",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-03-11T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2578,29 +2669,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 34780,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GOLDBERG CHEN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 18950,
-        "value": 1721333,
-        "filerUrl": "",
-        "transactionText": "Sale at price 88.97 - 90.94 per share.",
-        "filerName": "GOLDBERG CHEN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5383,
         "value": 488980,
         "filerUrl": "",
@@ -2663,6 +2731,29 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BAKER JEFFREY R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 18950,
+        "value": 1721333,
+        "filerUrl": "",
+        "transactionText": "Sale at price 88.97 - 90.94 per share.",
+        "filerName": "GOLDBERG CHEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 34780,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GOLDBERG CHEN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-20T00:00:00.000Z",
@@ -3070,96 +3161,16 @@
         "moneyText": "",
         "startDate": "2026-01-21T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 281250,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VENTURO BRIAN M",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2026-01-21T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10335,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-20T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 131335,
-        "value": 12515479,
-        "filerUrl": "",
-        "transactionText": "Sale at price 93.79 - 97.26 per share.",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-20T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 130835,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-20T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 35335,
-        "value": 3367224,
-        "filerUrl": "",
-        "transactionText": "Sale at price 93.79 - 97.26 per share.",
-        "filerName": "MCBEE BRANNIN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-20T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 82455,
-        "value": 7370885,
-        "filerUrl": "",
-        "transactionText": "Sale at price 87.43 - 93.15 per share.",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-01-14T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 50000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "INTRATOR MICHAEL N",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-01-14T00:00:00.000Z",
-        "ownership": "I"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 111.6,
+    "currentPrice": 119.01,
     "targetHighPrice": 295,
     "targetLowPrice": 38,
-    "targetMeanPrice": 127.87097,
+    "targetMeanPrice": 128.80646,
     "targetMedianPrice": 125,
     "recommendationMean": 1.85294,
     "recommendationKey": "buy",
@@ -3185,6 +3196,6 @@
     "profitMargins": -0.22744,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-01T05:41:43.919Z",
+  "lastUpdated": "2026-05-02T04:59:25.764Z",
   "source": "Static Build (yahoo-finance2)"
 }

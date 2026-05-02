@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 3,
+        "buy": 8,
+        "hold": 10,
+        "sell": 3,
+        "strongSell": 2
+      },
+      {
+        "period": "-2m",
         "strongBuy": 4,
         "buy": 8,
         "hold": 8,
@@ -18,20 +26,12 @@
         "strongSell": 3
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 3,
         "buy": 7,
         "hold": 10,
         "sell": 3,
         "strongSell": 2
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 3,
-        "buy": 6,
-        "hold": 11,
-        "sell": 4,
-        "strongSell": 1
       }
     ],
     "maxAge": 86400
@@ -45,7 +45,7 @@
         "organization": "Amazon.com, Inc.",
         "pctHeld": 0.126,
         "position": 158363834,
-        "value": 2597166817,
+        "value": 2378624859,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0648,
         "position": 81409278,
-        "value": 1335112128,
+        "value": 1222767392,
         "pctChange": -0.0032
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0401,
         "position": 50433847,
-        "value": 827115071,
+        "value": 757516405,
         "pctChange": -0.0156
       },
       {
@@ -72,7 +72,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0348,
         "position": 43781355,
-        "value": 718014205,
+        "value": 657595972,
         "pctChange": -0.0257
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0176,
         "position": 22066737,
-        "value": 361894478,
+        "value": 331442399,
         "pctChange": 0.9381
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Capital International Investors",
         "pctHeld": 0.0165,
         "position": 20769844,
-        "value": 340625433,
+        "value": 311963066,
         "pctChange": 0.1318
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Two Sigma Advisers, LP",
         "pctHeld": 0.0164,
         "position": 20659520,
-        "value": 338816120,
+        "value": 310305999,
         "pctChange": 0.44669998
       },
       {
@@ -108,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.016,
         "position": 20156254,
-        "value": 330562557,
+        "value": 302746944,
         "pctChange": 0.0201
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Renaissance Technologies, LLC",
         "pctHeld": 0.013099999,
         "position": 16397496,
-        "value": 268918928,
+        "value": 246290397,
         "pctChange": 0.324
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0117999995,
         "position": 14782865,
-        "value": 242438980,
+        "value": 222038639,
         "pctChange": 0.004
       }
     ]
@@ -134,8 +134,8 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.33172,
-    "institutionsPercentHeld": 0.45351002,
-    "institutionsFloatPercentHeld": 0.67862,
+    "institutionsPercentHeld": 0.45422,
+    "institutionsFloatPercentHeld": 0.67968005,
     "institutionsCount": 1084
   },
   "earnings": {
@@ -187,7 +187,7 @@
           "reportedDate": 1777579500
         }
       ],
-      "currentQuarterEstimate": -0.72488,
+      "currentQuarterEstimate": -0.77062,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -259,6 +259,46 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-01T18:06:45.000Z",
+        "firm": "BNP Paribas",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "reit",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 22,
+        "priorPriceTarget": 23
+      },
+      {
+        "epochGradeDate": "2026-05-01T14:33:08.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 19,
+        "priorPriceTarget": 18
+      },
+      {
+        "epochGradeDate": "2026-05-01T12:37:33.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 25,
+        "priorPriceTarget": 25
+      },
+      {
+        "epochGradeDate": "2026-05-01T11:44:54.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 23,
+        "priorPriceTarget": 23
+      },
       {
         "epochGradeDate": "2026-04-10T20:17:20.000Z",
         "firm": "Tigress Financial",
@@ -3065,28 +3105,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.050054878,
-    "postMarketChange": -0.82089996,
-    "postMarketTime": "2026-04-30T23:59:59.000Z",
-    "postMarketPrice": 15.5791,
+    "postMarketChangePercent": 0.0053262264,
+    "postMarketChange": 0.07999992,
+    "postMarketTime": "2026-05-01T23:59:51.000Z",
+    "postMarketPrice": 15.1,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0211706,
-    "regularMarketChange": 0.34,
-    "regularMarketTime": "2026-04-30T20:00:00.000Z",
+    "regularMarketChangePercent": -0.0841463,
+    "regularMarketChange": -1.38,
+    "regularMarketTime": "2026-05-01T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 16.4,
-    "regularMarketDayHigh": 16.685,
-    "regularMarketDayLow": 15.88,
-    "regularMarketVolume": 29475617,
-    "averageDailyVolume10Day": 23159180,
-    "averageDailyVolume3Month": 28792303,
-    "regularMarketPreviousClose": 16.06,
+    "regularMarketPrice": 15.02,
+    "regularMarketDayHigh": 16.02,
+    "regularMarketDayLow": 15.01,
+    "regularMarketVolume": 53120980,
+    "averageDailyVolume10Day": 25337570,
+    "averageDailyVolume3Month": 29352775,
+    "regularMarketPreviousClose": 16.4,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 16.22,
+    "regularMarketOpen": 15.56,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "RIVN",
     "underlyingSymbol": null,
@@ -3098,43 +3138,42 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 20670935040
+    "marketCap": 19876155392
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 19493232640,
-    "forwardPE": -8.448687,
-    "profitMargins": -0.67681,
-    "floatShares": 821125714,
-    "sharesOutstanding": 1256510474,
+    "enterpriseValue": 19149475840,
+    "forwardPE": -7.7716727,
+    "profitMargins": -0.63622004,
+    "floatShares": 833980642,
+    "sharesOutstanding": 1319399996,
     "sharesShort": 143466528,
     "sharesShortPriorMonth": "1974-08-20T09:27:10.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.115600005,
     "heldPercentInsiders": 0.33172,
-    "heldPercentInstitutions": 0.45351002,
+    "heldPercentInstitutions": 0.45422,
     "shortRatio": 5.32,
     "shortPercentOfFloat": 0.13340001,
-    "beta": 1.691,
-    "impliedSharesOutstanding": 1260422974,
+    "impliedSharesOutstanding": 1323312496,
     "category": null,
     "bookValue": 3.682,
-    "priceToBook": 4.454101,
+    "priceToBook": 4.079305,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
-    "netIncomeToCommon": -3646000128,
-    "trailingEps": -3.07,
-    "forwardEps": -1.94113,
+    "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
+    "netIncomeToCommon": -3516999936,
+    "trailingEps": -2.92,
+    "forwardEps": -1.97653,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 3.619,
-    "enterpriseToEbitda": -6.959,
-    "52WeekChange": 0.18582785,
-    "SandP52WeekChange": 0.2677033,
+    "enterpriseToRevenue": 3.464,
+    "enterpriseToEbitda": -6.314,
+    "52WeekChange": 0.10848713,
+    "SandP52WeekChange": 0.2795812,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -3234,18 +3273,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 115588,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VENKATARATNAM SREELA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 264201,
         "value": 0,
         "filerUrl": "",
@@ -3270,6 +3297,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 115588,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VENKATARATNAM SREELA",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 17450,
         "value": 272230,
         "filerUrl": "",
@@ -3278,6 +3317,30 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 24475,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CALLAHAN MICHAEL JOHN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 24475,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCDONOUGH CLAIRE",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3306,30 +3369,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 24475,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CALLAHAN MICHAEL JOHN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 24475,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCDONOUGH CLAIRE",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 17450,
         "value": 261750,
         "filerUrl": "",
@@ -3338,18 +3377,6 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-03-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 34900,
-        "value": 586236,
-        "filerUrl": "",
-        "transactionText": "Sale at price 16.80 per share.",
-        "filerName": "SCARINGE ROBERT J",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-02-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3366,26 +3393,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 17450,
-        "value": 279762,
+        "shares": 34900,
+        "value": 586236,
         "filerUrl": "",
-        "transactionText": "Sale at price 16.03 per share.",
+        "transactionText": "Sale at price 16.80 per share.",
         "filerName": "SCARINGE ROBERT J",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2026-01-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 658,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GOMEZ AIDAN N.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-01-20T00:00:00.000Z",
+        "startDate": "2026-02-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3407,6 +3422,30 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "KRAWIEC PETER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17450,
+        "value": 279762,
+        "filerUrl": "",
+        "transactionText": "Sale at price 16.03 per share.",
+        "filerName": "SCARINGE ROBERT J",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-01-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 658,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GOMEZ AIDAN N.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-01-20T00:00:00.000Z",
@@ -3498,18 +3537,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 862,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GOMEZ AIDAN N.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-10-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1336,
         "value": 0,
         "filerUrl": "",
@@ -3527,6 +3554,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "KRAWIEC PETER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-10-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 862,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GOMEZ AIDAN N.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-20T00:00:00.000Z",
@@ -3582,18 +3621,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 702,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GOMEZ AIDAN N.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-07-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1395,
         "value": 0,
         "filerUrl": "",
@@ -3618,6 +3645,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 702,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GOMEZ AIDAN N.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-07-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3912500,
         "filerUrl": "",
         "transactionText": "",
@@ -3626,18 +3665,6 @@
         "moneyText": "",
         "startDate": "2025-07-09T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 16812,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GOMEZ AIDAN N.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-18T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3713,6 +3740,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 16812,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GOMEZ AIDAN N.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 22625,
         "value": 0,
         "filerUrl": "",
@@ -3773,6 +3812,42 @@
       },
       {
         "maxAge": 1,
+        "shares": 522649,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCDONOUGH CLAIRE",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-04-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1687,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHWARTZ SANFORD HAROLD",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1088,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KRAWIEC PETER",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 653311,
         "value": 0,
         "filerUrl": "",
@@ -3821,42 +3896,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 522649,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCDONOUGH CLAIRE",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-04-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1687,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHWARTZ SANFORD HAROLD",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1088,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KRAWIEC PETER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 71429,
         "value": 803576,
         "filerUrl": "",
@@ -3882,9 +3921,9 @@
       {
         "maxAge": 1,
         "shares": 71429,
-        "value": 187730,
+        "value": 844291,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 2.63 per share.",
+        "transactionText": "Sale at price 11.82 per share.",
         "filerName": "SCARINGE ROBERT J",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -3894,9 +3933,9 @@
       {
         "maxAge": 1,
         "shares": 71429,
-        "value": 844291,
+        "value": 187730,
         "filerUrl": "",
-        "transactionText": "Sale at price 11.82 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 2.63 per share.",
         "filerName": "SCARINGE ROBERT J",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -4520,35 +4559,35 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 16.4,
+    "currentPrice": 15.02,
     "targetHighPrice": 25,
     "targetLowPrice": 9,
-    "targetMeanPrice": 18.16,
+    "targetMeanPrice": 18.2,
     "targetMedianPrice": 18,
     "recommendationMean": 2.57692,
     "recommendationKey": "hold",
     "numberOfAnalystOpinions": 25,
-    "totalCash": 6081999872,
-    "totalCashPerShare": 4.901,
-    "ebitda": -2800999936,
-    "totalDebt": 5194999808,
-    "quickRatio": 1.797,
-    "currentRatio": 2.327,
-    "totalRevenue": 5386999808,
-    "debtToEquity": 113.082,
-    "revenuePerShare": 4.542,
-    "returnOnAssets": -0.14802,
-    "returnOnEquity": -0.65005,
-    "grossProfits": 144000000,
-    "freeCashflow": -794875008,
-    "operatingCashflow": -779000000,
-    "revenueGrowth": -0.258,
-    "grossMargins": 0.026730001,
-    "ebitdaMargins": -0.51996,
-    "operatingMargins": -0.64774,
-    "profitMargins": -0.67681,
+    "totalCash": 4830000128,
+    "totalCashPerShare": 3.832,
+    "ebitda": -3032999936,
+    "totalDebt": 5022000128,
+    "quickRatio": 1.542,
+    "currentRatio": 2.101,
+    "totalRevenue": 5528000000,
+    "debtToEquity": 113.389,
+    "revenuePerShare": 4.554,
+    "returnOnAssets": -0.16018999,
+    "returnOnEquity": -0.65691,
+    "grossProfits": 57000000,
+    "freeCashflow": -1207750016,
+    "operatingCashflow": -1294000000,
+    "revenueGrowth": 0.114,
+    "grossMargins": 0.01031,
+    "ebitdaMargins": -0.54866004,
+    "operatingMargins": -0.63794,
+    "profitMargins": -0.63622004,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-01T05:41:09.771Z",
+  "lastUpdated": "2026-05-02T04:58:51.889Z",
   "source": "Static Build (yahoo-finance2)"
 }
