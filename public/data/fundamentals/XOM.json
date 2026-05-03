@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00085,
-    "institutionsPercentHeld": 0.67747,
-    "institutionsFloatPercentHeld": 0.67805,
-    "institutionsCount": 5517
+    "institutionsPercentHeld": 0.67611,
+    "institutionsFloatPercentHeld": 0.67669,
+    "institutionsCount": 5526
   },
   "earnings": {
     "maxAge": 86400,
@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-07-31T12:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -4249,7 +4251,7 @@
     "regularMarketDayLow": 151.13,
     "regularMarketVolume": 13256049,
     "averageDailyVolume10Day": 15643800,
-    "averageDailyVolume3Month": 22216551,
+    "averageDailyVolume3Month": 21964727,
     "regularMarketPreviousClose": 154.33,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 152.61,
@@ -4273,7 +4275,7 @@
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 690102599680,
+    "enterpriseValue": 683519115264,
     "forwardPE": 15.022768,
     "profitMargins": 0.089049995,
     "floatShares": 4157929914,
@@ -4284,7 +4286,7 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.010299999,
     "heldPercentInsiders": 0.00085,
-    "heldPercentInstitutions": 0.67747,
+    "heldPercentInstitutions": 0.67611,
     "shortRatio": 1.69,
     "shortPercentOfFloat": 0.0116,
     "beta": 0.288,
@@ -4304,8 +4306,8 @@
     "pegRatio": 1.42,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 995500800,
-    "enterpriseToRevenue": 2.131,
-    "enterpriseToEbitda": 11.621,
+    "enterpriseToRevenue": 2.11,
+    "enterpriseToEbitda": 11.51,
     "52WeekChange": 0.4791324,
     "SandP52WeekChange": 0.2795812,
     "lastDividendValue": 1.03,
@@ -5115,42 +5117,6 @@
         "moneyText": "",
         "startDate": "2024-05-24T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DREYFUS MARIA S",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 958,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GOFF GREGORY JAMES",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 218,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HOOLEY JOSEPH L.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-03T00:00:00.000Z",
-        "ownership": "I"
       }
     ],
     "maxAge": 1
@@ -5187,6 +5153,6 @@
     "profitMargins": 0.089049995,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-02T05:03:02.637Z",
+  "lastUpdated": "2026-05-03T05:33:26.015Z",
   "source": "Static Build (yahoo-finance2)"
 }
