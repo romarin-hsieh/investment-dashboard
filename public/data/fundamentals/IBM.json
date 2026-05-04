@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 1,
+        "buy": 10,
+        "hold": 9,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
         "strongBuy": 2,
         "buy": 9,
         "hold": 8,
@@ -18,7 +26,7 @@
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 2,
         "buy": 9,
         "hold": 8,
@@ -3473,14 +3481,14 @@
     "regularMarketDayLow": 231.78,
     "regularMarketVolume": 3465597,
     "averageDailyVolume10Day": 8457810,
-    "averageDailyVolume3Month": 6354403,
+    "averageDailyVolume3Month": 6315176,
     "regularMarketPreviousClose": 230.98,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 234.55,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "IBM",
     "underlyingSymbol": null,
@@ -3525,7 +3533,7 @@
     "netIncomeToCommon": 10732999680,
     "trailingEps": 11.31,
     "forwardEps": 13.43612,
-    "pegRatio": 2.16,
+    "pegRatio": 2.17,
     "lastSplitFactor": "1046:1000",
     "lastSplitDate": 1635984000,
     "enterpriseToRevenue": 4.01,
@@ -4351,6 +4359,6 @@
     "profitMargins": 0.15606,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-03T05:32:07.128Z",
+  "lastUpdated": "2026-05-04T05:36:24.721Z",
   "source": "Static Build (yahoo-finance2)"
 }

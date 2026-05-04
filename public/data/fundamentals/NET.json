@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 7,
+        "buy": 17,
+        "hold": 9,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
         "strongBuy": 5,
         "buy": 17,
         "hold": 11,
@@ -18,7 +26,7 @@
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 5,
         "buy": 17,
         "hold": 10,
@@ -3423,14 +3431,14 @@
     "regularMarketDayLow": 209,
     "regularMarketVolume": 2990892,
     "averageDailyVolume10Day": 2698500,
-    "averageDailyVolume3Month": 4616365,
+    "averageDailyVolume3Month": 4568456,
     "regularMarketPreviousClose": 204.97,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 210.85,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "NET",
     "underlyingSymbol": null,
@@ -3456,11 +3464,11 @@
     "sharesShortPriorMonth": "1970-04-06T02:58:39.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
-    "sharesPercentSharesOut": 0.0242,
+    "sharesPercentSharesOut": 0.0241,
     "heldPercentInsiders": 0.0073100002,
     "heldPercentInstitutions": 0.90193003,
     "shortRatio": 1.83,
-    "shortPercentOfFloat": 0.030199999,
+    "shortPercentOfFloat": 0.030299999,
     "beta": 1.875,
     "impliedSharesOutstanding": 353374090,
     "category": null,
@@ -3473,7 +3481,7 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": -102267000,
     "trailingEps": -0.28,
-    "forwardEps": 1.44174,
+    "forwardEps": 1.44169,
     "pegRatio": 2.38,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 35.044,
@@ -5296,6 +5304,6 @@
     "profitMargins": -0.04717,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-03T05:32:34.600Z",
+  "lastUpdated": "2026-05-04T05:36:51.868Z",
   "source": "Static Build (yahoo-finance2)"
 }

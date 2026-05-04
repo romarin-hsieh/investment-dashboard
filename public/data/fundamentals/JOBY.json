@@ -11,7 +11,7 @@
       },
       {
         "period": "-1m",
-        "strongBuy": 1,
+        "strongBuy": 0,
         "buy": 2,
         "hold": 5,
         "sell": 2,
@@ -19,6 +19,14 @@
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 2,
+        "hold": 5,
+        "sell": 2,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 2,
         "hold": 5,
@@ -922,14 +930,14 @@
     "regularMarketDayLow": 8.895,
     "regularMarketVolume": 25346198,
     "averageDailyVolume10Day": 29240890,
-    "averageDailyVolume3Month": 24464380,
+    "averageDailyVolume3Month": 24295091,
     "regularMarketPreviousClose": 9.19,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 9.11,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "JOBY",
     "underlyingSymbol": null,
@@ -947,7 +955,7 @@
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 7695197696,
-    "forwardPE": -19.892473,
+    "forwardPE": -15.811966,
     "profitMargins": 0,
     "floatShares": 662127878,
     "sharesOutstanding": 983169282,
@@ -2775,6 +2783,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-03T05:32:18.100Z",
+  "lastUpdated": "2026-05-04T05:36:35.483Z",
   "source": "Static Build (yahoo-finance2)"
 }

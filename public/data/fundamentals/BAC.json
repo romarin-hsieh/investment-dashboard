@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 6,
+        "buy": 16,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 7,
         "buy": 17,
         "hold": 3,
@@ -18,7 +26,7 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 7,
         "buy": 15,
         "hold": 4,
@@ -4303,20 +4311,21 @@
     "regularMarketDayLow": 53.09,
     "regularMarketVolume": 19919819,
     "averageDailyVolume10Day": 29195590,
-    "averageDailyVolume3Month": 40257039,
+    "averageDailyVolume3Month": 40019281,
     "regularMarketPreviousClose": 53.46,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 53.69,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "BAC",
     "underlyingSymbol": null,
     "shortName": "Bank of America Corporation",
     "longName": "Bank of America Corporation",
     "currency": "USD",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -4354,7 +4363,7 @@
     "netIncomeToCommon": 30256001024,
     "trailingEps": 4.02,
     "forwardEps": 5.04195,
-    "pegRatio": 0.96,
+    "pegRatio": 0.95,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1093824000,
     "enterpriseToRevenue": 1.273,
@@ -6119,6 +6128,6 @@
     "profitMargins": 0.28956,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-03T05:31:31.305Z",
+  "lastUpdated": "2026-05-04T05:35:48.518Z",
   "source": "Static Build (yahoo-finance2)"
 }
