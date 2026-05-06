@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 2,
+        "buy": 6,
+        "hold": 5,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
         "buy": 5,
         "hold": 5,
         "sell": 0,
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1336,
         "position": 12240086,
-        "value": 2652181744,
+        "value": 2523293654,
         "pctChange": -0.0069
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.098400004,
         "position": 9013925,
-        "value": 1953137202,
+        "value": 1858220583,
         "pctChange": -0.0182
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.039300002,
         "position": 3598185,
-        "value": 779654699,
+        "value": 741765815,
         "pctChange": 0.0018000001
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.027999999,
         "position": 2568117,
-        "value": 556459572,
+        "value": 529417303,
         "pctChange": 0.0074
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Franklin Resources, Inc.",
         "pctHeld": 0.0247,
         "position": 2258282,
-        "value": 489324527,
+        "value": 465544820,
         "pctChange": 0.024300002
       },
       {
@@ -82,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0222,
         "position": 2031932,
-        "value": 440279010,
+        "value": 418882769,
         "pctChange": 1.9886999
       },
       {
@@ -91,7 +99,7 @@
         "organization": "T. Rowe Price Investment Management, Inc.",
         "pctHeld": 0.0209,
         "position": 1914049,
-        "value": 414736123,
+        "value": 394581189,
         "pctChange": -0.36119998
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.020299999,
         "position": 1857716,
-        "value": 402529889,
+        "value": 382968142,
         "pctChange": 0.039100002
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Alkeon Capital Management LLC",
         "pctHeld": 0.0173,
         "position": 1580848,
-        "value": 342538133,
+        "value": 325891805,
         "pctChange": 0.0018000001
       },
       {
@@ -118,7 +126,7 @@
         "organization": "BLAIR WILLIAM & CO/IL",
         "pctHeld": 0.015700001,
         "position": 1439666,
-        "value": 311946818,
+        "value": 296787137,
         "pctChange": 0.2087
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0037099998,
-    "institutionsPercentHeld": 0.93674004,
-    "institutionsFloatPercentHeld": 0.94022006,
-    "institutionsCount": 977
+    "institutionsPercentHeld": 0.94152,
+    "institutionsFloatPercentHeld": 0.94503,
+    "institutionsCount": 981
   },
   "earnings": {
     "maxAge": 86400,
@@ -179,14 +187,16 @@
           "reportedDate": 1777925220
         }
       ],
-      "currentQuarterEstimate": 1.10093,
+      "currentQuarterEstimate": 1.05124,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-08-03T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -1097,24 +1107,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0023075503,
-    "postMarketChange": -0.5,
-    "postMarketTime": "2026-05-04T23:59:15.000Z",
-    "postMarketPrice": 216.18,
+    "postMarketChangePercent": 0.0031530885,
+    "postMarketChange": 0.65000916,
+    "postMarketTime": "2026-05-05T23:54:27.000Z",
+    "postMarketPrice": 206.8,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.00171049,
-    "regularMarketChange": 0.369995,
-    "regularMarketTime": "2026-05-04T20:00:02.000Z",
+    "regularMarketChangePercent": -0.048597,
+    "regularMarketChange": -10.53,
+    "regularMarketTime": "2026-05-05T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 216.68,
-    "regularMarketDayHigh": 221.02,
-    "regularMarketDayLow": 215.715,
-    "regularMarketVolume": 1055821,
-    "averageDailyVolume10Day": 979830,
-    "averageDailyVolume3Month": 979741,
-    "regularMarketPreviousClose": 216.31,
+    "regularMarketPrice": 206.15,
+    "regularMarketDayHigh": 226.4,
+    "regularMarketDayLow": 203.053,
+    "regularMarketVolume": 1706295,
+    "averageDailyVolume10Day": 979940,
+    "averageDailyVolume3Month": 974881,
+    "regularMarketPreviousClose": 216.68,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 217.26,
+    "regularMarketOpen": 217.77,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -1130,30 +1140,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 19850469376
+    "marketCap": 18886359040
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 21375270912,
-    "forwardPE": 41.922215,
+    "forwardPE": 39.76099,
     "profitMargins": 0.10285,
     "floatShares": 91031756,
-    "sharesOutstanding": 91611920,
+    "sharesOutstanding": 91614649,
     "sharesShort": 3198727,
     "sharesShortPriorMonth": "1970-02-02T18:47:55.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0349,
     "heldPercentInsiders": 0.0037099998,
-    "heldPercentInstitutions": 0.93674004,
+    "heldPercentInstitutions": 0.94152,
     "shortRatio": 3.13,
     "shortPercentOfFloat": 0.044,
     "beta": 0.778,
-    "impliedSharesOutstanding": 91611920,
+    "impliedSharesOutstanding": 91614649,
     "category": null,
     "bookValue": 13.48,
-    "priceToBook": 16.074184,
+    "priceToBook": 15.293027,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1161,14 +1171,15 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.309,
     "netIncomeToCommon": 328944992,
-    "trailingEps": 3.6,
+    "trailingEps": 3.75,
     "forwardEps": 5.16862,
+    "pegRatio": 1.67,
     "lastSplitFactor": "1398:1000",
     "lastSplitDate": 1435708800,
     "enterpriseToRevenue": 6.683,
     "enterpriseToEbitda": 47.767,
-    "52WeekChange": 1.0038843,
-    "SandP52WeekChange": 0.2842635,
+    "52WeekChange": 1.0107646,
+    "SandP52WeekChange": 0.27870572,
     "lastDividendValue": 0.27,
     "lastDividendDate": "2026-03-11T00:00:00.000Z",
     "latestShareClass": null,
@@ -1220,17 +1231,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 59294,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GEVEDEN REX D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-02-27T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1291,13 +1291,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 3718,
+        "shares": 59294,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GEVEDEN REX D",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2026-02-26T00:00:00.000Z",
+        "startDate": "2026-02-27T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1340,6 +1340,17 @@
         "transactionText": "",
         "filerName": "MACQUARRIE JOHN R.",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3718,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GEVEDEN REX D",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-02-26T00:00:00.000Z",
         "ownership": "D"
@@ -1440,18 +1451,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 4475098,
-        "filerUrl": "",
-        "transactionText": "Sale at price 178.99 - 179.69 per share.",
-        "filerName": "GEVEDEN REX D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2261,
         "value": 406618,
         "filerUrl": "",
@@ -1464,10 +1463,22 @@
       },
       {
         "maxAge": 1,
+        "shares": 25000,
+        "value": 4475098,
+        "filerUrl": "",
+        "transactionText": "Sale at price 178.99 - 179.69 per share.",
+        "filerName": "GEVEDEN REX D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1465,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NILAND BARBARA A",
+        "filerName": "RICHARDSON JOHN M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-02T00:00:00.000Z",
@@ -1489,7 +1500,7 @@
         "shares": 1465,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "RICHARDSON JOHN M",
+        "filerName": "NILAND BARBARA A",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-02T00:00:00.000Z",
@@ -1505,39 +1516,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DUFFY ROBERT L",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 760,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LEMASTERS ROBB A.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3432,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GEVEDEN REX D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1586,35 +1564,35 @@
       },
       {
         "maxAge": 1,
-        "shares": 91,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DUFFY ROBERT L",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1162,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LEMASTERS ROBB A.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4538,
+        "shares": 3432,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GEVEDEN REX D",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-02-27T00:00:00.000Z",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DUFFY ROBERT L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 760,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEMASTERS ROBB A.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1675,6 +1653,39 @@
       },
       {
         "maxAge": 1,
+        "shares": 4538,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GEVEDEN REX D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 91,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DUFFY ROBERT L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1162,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEMASTERS ROBB A.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 45625,
         "value": 4900233,
         "filerUrl": "",
@@ -1683,28 +1694,6 @@
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-02-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 14457,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LEMASTERS ROBB A.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 72283,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GEVEDEN REX D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-21T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1731,24 +1720,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2129,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LEMASTERS ROBB A.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9772,
+        "shares": 72283,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GEVEDEN REX D",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
+        "startDate": "2025-02-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14457,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEMASTERS ROBB A.",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-21T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1769,6 +1758,28 @@
         "transactionText": "",
         "filerName": "WHITFORD RONALD OWEN JR.",
         "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9772,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GEVEDEN REX D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2129,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LEMASTERS ROBB A.",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
@@ -1833,11 +1844,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 216.68,
+    "currentPrice": 206.15,
     "targetHighPrice": 290,
     "targetLowPrice": 200,
-    "targetMeanPrice": 234.54546,
-    "targetMedianPrice": 235,
+    "targetMeanPrice": 233.81818,
+    "targetMedianPrice": 230,
     "recommendationMean": 2.14286,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 11,
@@ -1863,6 +1874,6 @@
     "profitMargins": 0.10285,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-05T05:01:22.355Z",
+  "lastUpdated": "2026-05-06T05:29:45.091Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -24,6 +24,14 @@
         "hold": 0,
         "sell": 0,
         "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 5,
+        "buy": 9,
+        "hold": 0,
+        "sell": 0,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -37,7 +45,7 @@
         "organization": "V3 Holding Ltd                          ",
         "pctHeld": 0.1511,
         "position": 61316694,
-        "value": 1096955618,
+        "value": 1355098960,
         "pctChange": -0.0689
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0805,
         "position": 32680186,
-        "value": 584648507,
+        "value": 722232123,
         "pctChange": 0.43240002
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0694,
         "position": 28155069,
-        "value": 503694167,
+        "value": 622227035,
         "pctChange": 0.1707
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Jane Street Group, LLC",
         "pctHeld": 0.0405,
         "position": 16421315,
-        "value": 293777315,
+        "value": 362911067,
         "pctChange": 0.48720002
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0379,
         "position": 15388017,
-        "value": 275291614,
+        "value": 340075181,
         "pctChange": 2.8759
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.025799999,
         "position": 10469093,
-        "value": 187292067,
+        "value": 231366959,
         "pctChange": 1
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0201,
         "position": 8164226,
-        "value": 146057998,
+        "value": 180429397,
         "pctChange": 0.0734
       },
       {
@@ -100,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0199,
         "position": 8078423,
-        "value": 144522982,
+        "value": 178533151,
         "pctChange": 0.1016
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Value Aligned Research Advisors, LLC                          ",
         "pctHeld": 0.0183,
         "position": 7447495,
-        "value": 133235681,
+        "value": 164589642,
         "pctChange": 0.45900002
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0139,
         "position": 5644046,
-        "value": 100971979,
+        "value": 124733418,
         "pctChange": 2.8091002
       }
     ]
@@ -126,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03452,
-    "institutionsPercentHeld": 0.80803,
-    "institutionsFloatPercentHeld": 0.83692,
-    "institutionsCount": 485
+    "institutionsPercentHeld": 0.80938005,
+    "institutionsFloatPercentHeld": 0.83832,
+    "institutionsCount": 486
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 0.02,
-          "estimate": 0.0375,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "-0.02",
-          "surprisePct": "-46.67",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1746529200
-        },
         {
           "date": "2Q2025",
           "actual": 0.08,
@@ -177,17 +174,26 @@
           "surprisePct": "-290.92",
           "periodEndDate": 1767139200,
           "reportedDate": 1771936435
+        },
+        {
+          "date": "1Q2026",
+          "actual": -0.1881,
+          "estimate": -0.035,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "-0.15",
+          "surprisePct": "-437.43",
+          "periodEndDate": 1774915200,
+          "reportedDate": 1777939200
         }
       ],
-      "currentQuarterEstimate": -0.035,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": -0.01,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
-      "earningsDate": [
-        "2026-05-05T12:30:00.000Z"
-      ],
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
@@ -219,13 +225,6 @@
       ],
       "quarterly": [
         {
-          "date": "1Q2025",
-          "fiscalQuarter": "1Q2025",
-          "revenue": 48959000,
-          "earnings": 6138000,
-          "profitMargin": 0.1253702
-        },
-        {
           "date": "2Q2025",
           "fiscalQuarter": "2Q2025",
           "revenue": 43565000,
@@ -245,6 +244,13 @@
           "revenue": 59711000,
           "earnings": -54534000,
           "profitMargin": -0.9132991
+        },
+        {
+          "date": "1Q2026",
+          "fiscalQuarter": "1Q2026",
+          "revenue": 34838000,
+          "earnings": 0,
+          "profitMargin": 0
         }
       ]
     },
@@ -1269,24 +1275,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0150922565,
-    "postMarketChange": 0.27000046,
-    "postMarketTime": "2026-05-04T23:59:58.000Z",
-    "postMarketPrice": 18.16,
+    "postMarketChangePercent": -0.0113122165,
+    "postMarketChange": -0.25,
+    "postMarketTime": "2026-05-05T23:59:52.000Z",
+    "postMarketPrice": 21.85,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.049882498,
-    "regularMarketChange": 0.849998,
-    "regularMarketTime": "2026-05-04T20:00:01.000Z",
+    "regularMarketChangePercent": 0.23532699,
+    "regularMarketChange": 4.21,
+    "regularMarketTime": "2026-05-05T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 17.89,
-    "regularMarketDayHigh": 18.21,
-    "regularMarketDayLow": 17.08,
-    "regularMarketVolume": 23036751,
-    "averageDailyVolume10Day": 22120960,
-    "averageDailyVolume3Month": 25998410,
-    "regularMarketPreviousClose": 17.04,
+    "regularMarketPrice": 22.1,
+    "regularMarketDayHigh": 22.165,
+    "regularMarketDayLow": 17.65,
+    "regularMarketVolume": 63443747,
+    "averageDailyVolume10Day": 22139470,
+    "averageDailyVolume3Month": 25913633,
+    "regularMarketPreviousClose": 17.89,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 17.12,
+    "regularMarketOpen": 18.31,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -1302,13 +1308,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 7261782528
+    "marketCap": 8970676224
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 9416690688,
-    "forwardPE": 33.129627,
+    "forwardPE": 40.925926,
     "profitMargins": 0,
     "floatShares": 329937347,
     "sharesOutstanding": 405912959,
@@ -1318,27 +1324,27 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1372,
     "heldPercentInsiders": 0.03452,
-    "heldPercentInstitutions": 0.80803,
+    "heldPercentInstitutions": 0.80938005,
     "shortRatio": 2.3,
     "shortPercentOfFloat": 0.16780001,
     "beta": 3.148,
     "impliedSharesOutstanding": 405912959,
     "category": null,
     "bookValue": 1.989,
-    "priceToBook": 8.99447,
+    "priceToBook": 11.111112,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": -822243968,
-    "trailingEps": -2.26,
+    "trailingEps": -2.32,
     "forwardEps": 0.54,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 42.05,
     "enterpriseToEbitda": 39.815,
-    "52WeekChange": 4.8848686,
-    "SandP52WeekChange": 0.2842635,
+    "52WeekChange": 4.923841,
+    "SandP52WeekChange": 0.27870572,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1367,28 +1373,6 @@
     "transactions": [
       {
         "maxAge": 1,
-        "shares": 140006,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "IWASCHUK WILLIAM",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 140006,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KELLY PATRICK ARTHUR",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 473266,
         "filerUrl": "",
         "transactionText": "",
@@ -1405,6 +1389,28 @@
         "transactionText": "",
         "filerName": "MUMFORD GREGORY J.D.",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 140006,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "IWASCHUK WILLIAM",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 140006,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KELLY PATRICK ARTHUR",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
         "ownership": "D"
@@ -1507,6 +1513,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 1019022,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAGE TYLER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 49867,
+        "value": 801861,
+        "filerUrl": "",
+        "transactionText": "Sale at price 16.08 per share.",
+        "filerName": "WILLIAMS WESLEY HASTIE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 21821,
         "value": 349791,
         "filerUrl": "",
@@ -1553,25 +1582,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 1019022,
+        "shares": 1680623,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "PAGE TYLER",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-12-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 49867,
-        "value": 801861,
-        "filerUrl": "",
-        "transactionText": "Sale at price 16.08 per share.",
-        "filerName": "WILLIAMS WESLEY HASTIE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-19T00:00:00.000Z",
+        "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1604,17 +1621,6 @@
         "transactionText": "",
         "filerName": "KELLY PATRICK ARTHUR",
         "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1680623,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PAGE TYLER",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
@@ -1657,11 +1663,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 16269,
-        "value": 282918,
+        "shares": 18769,
+        "value": 328645,
         "filerUrl": "",
-        "transactionText": "Sale at price 17.39 per share.",
-        "filerName": "EVANS HOLLY MORROW",
+        "transactionText": "Sale at price 17.51 per share.",
+        "filerName": "WILLIAMS WESLEY HASTIE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-12T00:00:00.000Z",
@@ -1669,11 +1675,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 18769,
-        "value": 328645,
+        "shares": 16269,
+        "value": 282918,
         "filerUrl": "",
-        "transactionText": "Sale at price 17.51 per share.",
-        "filerName": "WILLIAMS WESLEY HASTIE",
+        "transactionText": "Sale at price 17.39 per share.",
+        "filerName": "EVANS HOLLY MORROW",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-11-12T00:00:00.000Z",
@@ -1751,6 +1757,29 @@
       },
       {
         "maxAge": 1,
+        "shares": 279892,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAGE TYLER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5585182,
+        "value": 67334037,
+        "filerUrl": "",
+        "transactionText": "Sale at price 11.53 - 12.52 per share.",
+        "filerName": "V3 HOLDING LTD",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-09-30T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 393086,
         "filerUrl": "",
         "transactionText": "",
@@ -1781,29 +1810,6 @@
         "moneyText": "",
         "startDate": "2025-09-30T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 279892,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PAGE TYLER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5585182,
-        "value": 67334037,
-        "filerUrl": "",
-        "transactionText": "Sale at price 11.53 - 12.52 per share.",
-        "filerName": "V3 HOLDING LTD",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-09-30T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2047,6 +2053,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 113225,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAGE TYLER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 26419,
         "filerUrl": "",
         "transactionText": "",
@@ -2080,13 +2097,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 113225,
+        "shares": 333333,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "PAGE TYLER",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-06-30T00:00:00.000Z",
+        "startDate": "2025-06-13T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2120,53 +2137,6 @@
         "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-06-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 333333,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PAGE TYLER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 59701,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GROSSMAN CARY M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 59701,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "NEWSOME JAMES E",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 59701,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "EVANS HOLLY MORROW",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2207,6 +2177,53 @@
       },
       {
         "maxAge": 1,
+        "shares": 59701,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GROSSMAN CARY M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 59701,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "NEWSOME JAMES E",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 59701,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "EVANS HOLLY MORROW",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 113225,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAGE TYLER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 26420,
         "filerUrl": "",
         "transactionText": "",
@@ -2240,13 +2257,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 113225,
+        "shares": 2277017,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "PAGE TYLER",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
+        "startDate": "2024-12-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2278,17 +2295,6 @@
         "transactionText": "",
         "filerName": "KELLY PATRICK ARTHUR",
         "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2024-12-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2277017,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PAGE TYLER",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-12-18T00:00:00.000Z",
         "ownership": "D"
@@ -2427,6 +2433,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 166667,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAGE TYLER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-09-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 366667,
         "filerUrl": "",
         "transactionText": "",
@@ -2454,17 +2471,6 @@
         "transactionText": "",
         "filerName": "KELLY PATRICK ARTHUR",
         "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2024-09-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 166667,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PAGE TYLER",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-09-13T00:00:00.000Z",
         "ownership": "D"
@@ -2555,6 +2561,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 333333,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PAGE TYLER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-06-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 166666,
         "filerUrl": "",
         "transactionText": "",
@@ -2588,17 +2605,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 333333,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PAGE TYLER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-06-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 65000,
         "value": 315438,
         "filerUrl": "",
@@ -2607,6 +2613,18 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-06-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 23000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "PAGE TYLER",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-06-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2620,18 +2638,6 @@
         "moneyText": "",
         "startDate": "2024-06-12T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 23000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "PAGE TYLER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-06-12T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2674,10 +2680,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 17.89,
+    "currentPrice": 22.1,
     "targetHighPrice": 53,
     "targetLowPrice": 18,
-    "targetMeanPrice": 28,
+    "targetMeanPrice": 28.07143,
     "targetMedianPrice": 26,
     "recommendationMean": 1.35714,
     "recommendationKey": "strong_buy",
@@ -2703,6 +2709,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-05T05:01:45.420Z",
+  "lastUpdated": "2026-05-06T05:30:09.176Z",
   "source": "Static Build (yahoo-finance2)"
 }

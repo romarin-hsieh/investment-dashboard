@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 7,
+        "buy": 19,
+        "hold": 1,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 7,
         "buy": 20,
         "hold": 1,
         "sell": 0,
@@ -37,7 +45,7 @@
         "organization": "Uber Technologies, Inc",
         "pctHeld": 0.135,
         "position": 535902982,
-        "value": 1939968733,
+        "value": 1972123009,
         "pctChange": 0
       },
       {
@@ -46,7 +54,7 @@
         "organization": "SB Investment Advisers (UK) LTD",
         "pctHeld": 0.1012,
         "position": 401796672,
-        "value": 1454503906,
+        "value": 1478611779,
         "pctChange": 0
       },
       {
@@ -55,7 +63,7 @@
         "organization": "TOYOTA MOTOR CORP/",
         "pctHeld": 0.056199998,
         "position": 222906079,
-        "value": 806919980,
+        "value": 820294385,
         "pctChange": 0
       },
       {
@@ -64,7 +72,7 @@
         "organization": "MUFG Bank Ltd",
         "pctHeld": 0.036,
         "position": 142913428,
-        "value": 517346593,
+        "value": 525921424,
         "pctChange": 0
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0326,
         "position": 129407123,
-        "value": 468453770,
+        "value": 476218221,
         "pctChange": -0.0121
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.028299998,
         "position": 112488631,
-        "value": 407208831,
+        "value": 413958169,
         "pctChange": -0.2235
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Tiger Global Management, LLC",
         "pctHeld": 0.0234,
         "position": 92923788,
-        "value": 336384101,
+        "value": 341959546,
         "pctChange": 0
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0197,
         "position": 78160528,
-        "value": 282941102,
+        "value": 287630748,
         "pctChange": -0.020499999
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0183,
         "position": 72453397,
-        "value": 262281288,
+        "value": 266628505,
         "pctChange": 0.492
       },
       {
@@ -118,7 +126,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0143,
         "position": 56669014,
-        "value": 205141824,
+        "value": 208541975,
         "pctChange": -0.4921
       }
     ]
@@ -126,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.22208999,
-    "institutionsPercentHeld": 0.671,
-    "institutionsFloatPercentHeld": 0.86257005,
-    "institutionsCount": 836
+    "institutionsPercentHeld": 0.67139,
+    "institutionsFloatPercentHeld": 0.86307,
+    "institutionsCount": 834
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 0.0064,
-          "estimate": 0.01,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "-0.0",
-          "surprisePct": "-36.0",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1746013677
-        },
         {
           "date": "2Q2025",
           "actual": 0.00929,
@@ -177,16 +174,28 @@
           "surprisePct": "294.5",
           "periodEndDate": 1767139200,
           "reportedDate": 1770847525
+        },
+        {
+          "date": "1Q2026",
+          "actual": 0.0306,
+          "estimate": 0.01,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "0.02",
+          "surprisePct": "206.0",
+          "periodEndDate": 1774915200,
+          "reportedDate": 1777975366
         }
       ],
-      "currentQuarterEstimate": 0.01,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
+      "earningsDate": [
+        "2026-07-29T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -217,13 +226,6 @@
       ],
       "quarterly": [
         {
-          "date": "1Q2025",
-          "fiscalQuarter": "1Q2025",
-          "revenue": 773000000,
-          "earnings": 27333300,
-          "profitMargin": 0.035360027
-        },
-        {
           "date": "2Q2025",
           "fiscalQuarter": "2Q2025",
           "revenue": 819000000,
@@ -243,6 +245,13 @@
           "revenue": 906000000,
           "earnings": 174709090,
           "profitMargin": 0.19283564
+        },
+        {
+          "date": "1Q2026",
+          "fiscalQuarter": "1Q2026",
+          "revenue": 955000000,
+          "earnings": 136000000,
+          "profitMargin": 0.14240837
         }
       ]
     },
@@ -251,6 +260,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-05T20:19:08.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 5.8,
+        "priorPriceTarget": 5.9
+      },
+      {
+        "epochGradeDate": "2026-05-05T12:43:50.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 6,
+        "priorPriceTarget": 7
+      },
       {
         "epochGradeDate": "2026-04-20T18:51:39.000Z",
         "firm": "JP Morgan",
@@ -867,24 +896,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.02207183,
-    "postMarketChange": 0.07990003,
-    "postMarketTime": "2026-05-04T23:59:48.000Z",
-    "postMarketPrice": 3.6999,
+    "postMarketChangePercent": 0.0040760506,
+    "postMarketChange": 0.0149998665,
+    "postMarketTime": "2026-05-05T23:59:38.000Z",
+    "postMarketPrice": 3.695,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.013624,
-    "regularMarketChange": -0.0500002,
-    "regularMarketTime": "2026-05-04T20:00:01.000Z",
+    "regularMarketChangePercent": 0.016574599,
+    "regularMarketChange": 0.0600002,
+    "regularMarketTime": "2026-05-05T20:00:01.000Z",
     "priceHint": 4,
-    "regularMarketPrice": 3.62,
-    "regularMarketDayHigh": 3.65,
-    "regularMarketDayLow": 3.54,
-    "regularMarketVolume": 68595518,
-    "averageDailyVolume10Day": 53613290,
-    "averageDailyVolume3Month": 48557610,
-    "regularMarketPreviousClose": 3.67,
+    "regularMarketPrice": 3.68,
+    "regularMarketDayHigh": 3.805,
+    "regularMarketDayLow": 3.59,
+    "regularMarketVolume": 67565495,
+    "averageDailyVolume10Day": 53725980,
+    "averageDailyVolume3Month": 48598077,
+    "regularMarketPreviousClose": 3.62,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 3.635,
+    "regularMarketOpen": 3.795,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -900,30 +929,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 14843743232
+    "marketCap": 15051199488
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 4,
     "enterpriseValue": 9604744192,
-    "forwardPE": 24.45946,
+    "forwardPE": 27.299704,
     "profitMargins": 0.07953,
     "floatShares": 2679746855,
-    "sharesOutstanding": 3972725983,
+    "sharesOutstanding": 3964000000,
     "sharesShort": 227595679,
     "sharesShortPriorMonth": "1977-08-21T08:03:30.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0555,
     "heldPercentInsiders": 0.22208999,
-    "heldPercentInstitutions": 0.671,
+    "heldPercentInstitutions": 0.67139,
     "shortRatio": 4.45,
     "shortPercentOfFloat": 0.066199996,
     "beta": 0.928,
-    "impliedSharesOutstanding": 4100481783,
+    "impliedSharesOutstanding": 4090000000,
     "category": null,
     "bookValue": 1.642,
-    "priceToBook": 2.2046285,
+    "priceToBook": 2.2411695,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -931,14 +960,14 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 5.615,
     "netIncomeToCommon": 268000000,
-    "trailingEps": 0.06,
-    "forwardEps": 0.148,
-    "pegRatio": 1.03,
+    "trailingEps": 0.04,
+    "forwardEps": 0.1348,
+    "pegRatio": 1.01,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 2.85,
     "enterpriseToEbitda": 37.373,
     "52WeekChange": -0.25206614,
-    "SandP52WeekChange": 0.2842635,
+    "SandP52WeekChange": 0.27870572,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1154,11 +1183,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 3.62,
+    "currentPrice": 3.68,
     "targetHighPrice": 8,
-    "targetLowPrice": 4.5,
-    "targetMeanPrice": 6.29115,
-    "targetMedianPrice": 6.275,
+    "targetLowPrice": 4.1,
+    "targetMeanPrice": 6.07,
+    "targetMedianPrice": 6,
     "recommendationMean": 1.33333,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 26,
@@ -1183,6 +1212,6 @@
     "profitMargins": 0.07953,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-05T05:00:25.708Z",
+  "lastUpdated": "2026-05-06T05:28:48.870Z",
   "source": "Static Build (yahoo-finance2)"
 }

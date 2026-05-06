@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 3,
+        "buy": 17,
+        "hold": 10,
+        "sell": 2,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
         "buy": 18,
         "hold": 11,
         "sell": 2,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 3,
         "buy": 18,
         "hold": 11,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.1187,
         "position": 26400836,
-        "value": 5359105844,
+        "value": 5220765319,
         "pctChange": 0.0069999998
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.076799996,
         "position": 17078477,
-        "value": 3466760140,
+        "value": 3377268826,
         "pctChange": 0.059899997
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.042600002,
         "position": 9481849,
-        "value": 1924720580,
+        "value": 1875035639,
         "pctChange": 0.0164
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0274,
         "position": 6098062,
-        "value": 1237845638,
+        "value": 1205891760,
         "pctChange": 0.032
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0196,
         "position": 4351772,
-        "value": 883366222,
+        "value": 860562913,
         "pctChange": 0.16520001
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Paradigm Operations LP",
         "pctHeld": 0.019199999,
         "position": 4262458,
-        "value": 865236372,
+        "value": 842901069,
         "pctChange": 0.0326
       },
       {
@@ -91,7 +99,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.013099999,
         "position": 2904149,
-        "value": 589513221,
+        "value": 574295464,
         "pctChange": -0.0254
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Clear Street Group Inc.",
         "pctHeld": 0.0115,
         "position": 2552542,
-        "value": 518140514,
+        "value": 504765180,
         "pctChange": -0.0013
       },
       {
@@ -109,7 +117,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.0114,
         "position": 2541928,
-        "value": 515985978,
+        "value": 502666262,
         "pctChange": 0.061100002
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0114,
         "position": 2535282,
-        "value": 514636907,
+        "value": 501352015,
         "pctChange": 0.74300003
       }
     ]
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01323,
-    "institutionsPercentHeld": 0.6911,
-    "institutionsFloatPercentHeld": 0.70036006,
-    "institutionsCount": 1722
+    "institutionsPercentHeld": 0.69141996,
+    "institutionsFloatPercentHeld": 0.70068,
+    "institutionsCount": 1725
   },
   "earnings": {
     "maxAge": 86400,
@@ -179,7 +187,7 @@
           "reportedDate": 1770930404
         }
       ],
-      "currentQuarterEstimate": 0.2314,
+      "currentQuarterEstimate": 0.04436,
       "currentQuarterEstimateDate": "1Q",
       "currentCalendarQuarter": "1Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -253,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-05T20:10:12.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 290,
+        "priorPriceTarget": 252
+      },
       {
         "epochGradeDate": "2026-04-21T12:12:32.000Z",
         "firm": "Cantor Fitzgerald",
@@ -4159,24 +4177,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.00033548436,
-    "postMarketChange": 0.068099976,
-    "postMarketTime": "2026-05-04T23:59:49.000Z",
-    "postMarketPrice": 203.0581,
+    "postMarketChangePercent": -0.004892535,
+    "postMarketChange": -0.9674988,
+    "postMarketTime": "2026-05-05T23:59:57.000Z",
+    "postMarketPrice": 196.7825,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0613857,
-    "regularMarketChange": 11.74,
-    "regularMarketTime": "2026-05-04T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0258141,
+    "regularMarketChange": -5.24001,
+    "regularMarketTime": "2026-05-05T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 202.99,
-    "regularMarketDayHigh": 206.71,
-    "regularMarketDayLow": 197.8529,
-    "regularMarketVolume": 11017848,
-    "averageDailyVolume10Day": 9434950,
-    "averageDailyVolume3Month": 12212280,
-    "regularMarketPreviousClose": 191.25,
+    "regularMarketPrice": 197.75,
+    "regularMarketDayHigh": 208,
+    "regularMarketDayLow": 194.4,
+    "regularMarketVolume": 9977640,
+    "averageDailyVolume10Day": 9437800,
+    "averageDailyVolume3Month": 12084562,
+    "regularMarketPreviousClose": 202.99,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 199.21,
+    "regularMarketOpen": 207.87,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -4192,13 +4210,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 53604618240
+    "marketCap": 52220862464
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 49867390976,
-    "forwardPE": 40.78037,
+    "enterpriseValue": 48483635200,
+    "forwardPE": 41.62317,
     "profitMargins": 0.1831,
     "floatShares": 219868986,
     "sharesOutstanding": 223041278,
@@ -4208,28 +4226,28 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0954,
     "heldPercentInsiders": 0.01323,
-    "heldPercentInstitutions": 0.6911,
+    "heldPercentInstitutions": 0.69141996,
     "shortRatio": 2.3,
     "shortPercentOfFloat": 0.1282,
     "beta": 3.381,
     "impliedSharesOutstanding": 264075169,
     "category": null,
     "bookValue": 55.232,
-    "priceToBook": 3.6752248,
+    "priceToBook": 3.580352,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": 1260327040,
-    "trailingEps": 4.73,
-    "forwardEps": 4.97764,
-    "pegRatio": 0.73,
+    "trailingEps": 4.45,
+    "forwardEps": 4.75096,
+    "pegRatio": 0.78,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 7.245,
-    "enterpriseToEbitda": 29.84,
-    "52WeekChange": 0.03098178,
-    "SandP52WeekChange": 0.2842635,
+    "enterpriseToRevenue": 7.044,
+    "enterpriseToEbitda": 29.012,
+    "52WeekChange": 0.032712698,
+    "SandP52WeekChange": 0.27870572,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4330,17 +4348,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 7136,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROCK LAWRENCE J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 339399,
         "filerUrl": "",
         "transactionText": "",
@@ -4363,10 +4370,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 2536,
+        "shares": 7136,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "JONES JENNIFER N",
+        "filerName": "BROCK LAWRENCE J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-20T00:00:00.000Z",
@@ -4379,6 +4386,17 @@
         "transactionText": "",
         "filerName": "HAAS ALESIA J",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-02-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2536,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-20T00:00:00.000Z",
         "ownership": "D"
@@ -4762,17 +4780,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10485,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROCK LAWRENCE J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 28980,
         "filerUrl": "",
         "transactionText": "",
@@ -4795,23 +4802,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 869,
-        "value": 225879,
+        "shares": 10485,
         "filerUrl": "",
-        "transactionText": "Sale at price 259.93 per share.",
-        "filerName": "JONES JENNIFER N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-11-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5288,
-        "value": 64853,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
-        "filerName": "JONES JENNIFER N",
+        "transactionText": "",
+        "filerName": "BROCK LAWRENCE J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
@@ -4850,6 +4844,30 @@
         "moneyText": "",
         "startDate": "2025-11-20T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 869,
+        "value": 225879,
+        "filerUrl": "",
+        "transactionText": "Sale at price 259.93 per share.",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5288,
+        "value": 64853,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-20T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5228,6 +5246,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 10790,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GREWAL PAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10486,
         "filerUrl": "",
         "transactionText": "",
@@ -5272,22 +5301,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 10790,
+        "shares": 748,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
+        "filerName": "DAVIES CHRISTINA MARGARET",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-08-20T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 748,
+        "shares": 9970,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DAVIES CHRISTINA MARGARET",
-        "filerRelation": "Director",
+        "filerName": "HAAS ALESIA J",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-08-20T00:00:00.000Z",
         "ownership": "D"
@@ -5312,17 +5341,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
         "filerName": "JONES JENNIFER N",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9970,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HAAS ALESIA J",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-08-20T00:00:00.000Z",
         "ownership": "D"
@@ -5527,6 +5545,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1952,
+        "value": 546608,
+        "filerUrl": "",
+        "transactionText": "Sale at price 280.02 per share.",
+        "filerName": "GREWAL PAUL",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1252,
         "filerUrl": "",
         "transactionText": "",
@@ -5543,18 +5573,6 @@
         "transactionText": "",
         "filerName": "LEHANE CHRIS",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1952,
-        "value": 546608,
-        "filerUrl": "",
-        "transactionText": "Sale at price 280.02 per share.",
-        "filerName": "GREWAL PAUL",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-18T00:00:00.000Z",
         "ownership": "D"
@@ -5756,18 +5774,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1715,
-        "value": 457840,
-        "filerUrl": "",
-        "transactionText": "Sale at price 264.57 - 274.26 per share.",
-        "filerName": "JONES JENNIFER N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 8367,
         "value": 2263567,
         "filerUrl": "",
@@ -5788,6 +5794,18 @@
         "moneyText": "",
         "startDate": "2025-05-22T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1715,
+        "value": 457840,
+        "filerUrl": "",
+        "transactionText": "Sale at price 264.57 - 274.26 per share.",
+        "filerName": "JONES JENNIFER N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-22T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5814,17 +5832,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10485,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BROCK LAWRENCE J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 28980,
         "filerUrl": "",
         "transactionText": "",
@@ -5841,6 +5848,28 @@
         "transactionText": "",
         "filerName": "GREWAL PAUL",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10485,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BROCK LAWRENCE J",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9969,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HAAS ALESIA J",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-20T00:00:00.000Z",
         "ownership": "D"
@@ -5865,17 +5894,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 74.63 per share.",
         "filerName": "JONES JENNIFER N",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9969,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HAAS ALESIA J",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-20T00:00:00.000Z",
         "ownership": "D"
@@ -6001,11 +6019,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 202.99,
+    "currentPrice": 197.75,
     "targetHighPrice": 400,
-    "targetLowPrice": 120,
-    "targetMeanPrice": 235.43108,
-    "targetMedianPrice": 232,
+    "targetLowPrice": 115,
+    "targetMeanPrice": 236.57393,
+    "targetMedianPrice": 232.5,
     "recommendationMean": 2.0303,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 28,
@@ -6030,6 +6048,6 @@
     "profitMargins": 0.1831,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-05T05:00:50.051Z",
+  "lastUpdated": "2026-05-06T05:29:12.919Z",
   "source": "Static Build (yahoo-finance2)"
 }

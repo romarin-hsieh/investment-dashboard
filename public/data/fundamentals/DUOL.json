@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 2,
+        "buy": 2,
+        "hold": 18,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
         "buy": 3,
         "hold": 17,
         "sell": 1,
@@ -37,7 +45,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.120299995,
         "position": 4861445,
-        "value": 535877098,
+        "value": 505736117,
         "pctChange": 0.71910006
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0964,
         "position": 3898862,
-        "value": 429771571,
+        "value": 405598609,
         "pctChange": -0.0685
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.0896,
         "position": 3621788,
-        "value": 399229703,
+        "value": 376774601,
         "pctChange": -0.0064999997
       },
       {
@@ -64,7 +72,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0653,
         "position": 2640486,
-        "value": 291060780,
+        "value": 274689755,
         "pctChange": -0.1692
       },
       {
@@ -73,8 +81,17 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0554,
         "position": 2241378,
-        "value": 247067104,
+        "value": 233170550,
         "pctChange": 0.005
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "STATE OF MICHIGAN RETIREMENT SYSTEM",
+        "pctHeld": 0.0295,
+        "position": 1193307,
+        "value": 124139725,
+        "pctChange": 1.1290001
       },
       {
         "maxAge": 1,
@@ -82,7 +99,7 @@
         "organization": "Dragoneer Investment Group, LLC",
         "pctHeld": 0.0287,
         "position": 1159887,
-        "value": 127854347,
+        "value": 120663043,
         "pctChange": -0.2663
       },
       {
@@ -91,7 +108,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0286,
         "position": 1157219,
-        "value": 127560254,
+        "value": 120385491,
         "pctChange": 0.0029
       },
       {
@@ -100,7 +117,7 @@
         "organization": "Whale Rock Capital Management LLC",
         "pctHeld": 0.0217,
         "position": 876646,
-        "value": 96632691,
+        "value": 91197482,
         "pctChange": 0.0098
       },
       {
@@ -109,42 +126,22 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0201,
         "position": 811809,
-        "value": 89485708,
+        "value": 84452489,
         "pctChange": 0.0249
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "T. Rowe Price Investment Management, Inc.",
-        "pctHeld": 0.019299999,
-        "position": 778819,
-        "value": 85849220,
-        "pctChange": -0.3934
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01313,
-    "institutionsPercentHeld": 0.94503,
-    "institutionsFloatPercentHeld": 0.95761,
-    "institutionsCount": 630
+    "institutionsPercentHeld": 0.96045995,
+    "institutionsFloatPercentHeld": 0.97323996,
+    "institutionsCount": 628
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 1.2618,
-          "estimate": 1.195,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "0.07",
-          "surprisePct": "5.59",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1746129743
-        },
         {
           "date": "2Q2025",
           "actual": 1.6979,
@@ -177,14 +174,25 @@
           "surprisePct": "-5.22",
           "periodEndDate": 1767139200,
           "reportedDate": 1772192724
+        },
+        {
+          "date": "1Q2026",
+          "actual": 1.4541,
+          "estimate": 1.63,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "-0.18",
+          "surprisePct": "-10.79",
+          "periodEndDate": 1774915200,
+          "reportedDate": 1777975364
         }
       ],
-      "currentQuarterEstimate": 1.72,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": 1.58,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
       "earningsDate": [],
       "isEarningsDateEstimate": false
     },
@@ -217,13 +225,6 @@
       ],
       "quarterly": [
         {
-          "date": "1Q2025",
-          "fiscalQuarter": "1Q2025",
-          "revenue": 230743000,
-          "earnings": 61575000,
-          "profitMargin": 0.26685533
-        },
-        {
           "date": "2Q2025",
           "fiscalQuarter": "2Q2025",
           "revenue": 252265000,
@@ -243,6 +244,13 @@
           "revenue": 282868000,
           "earnings": 70924820,
           "profitMargin": 0.2507347
+        },
+        {
+          "date": "1Q2026",
+          "fiscalQuarter": "1Q2026",
+          "revenue": 291967000,
+          "earnings": 71233000,
+          "profitMargin": 0.24397619
         }
       ]
     },
@@ -251,6 +259,56 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-05T20:05:43.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 94,
+        "priorPriceTarget": 92
+      },
+      {
+        "epochGradeDate": "2026-05-05T15:41:43.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 95,
+        "priorPriceTarget": 100
+      },
+      {
+        "epochGradeDate": "2026-05-05T13:42:03.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "In-Line",
+        "fromGrade": "In-Line",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 97,
+        "priorPriceTarget": 114
+      },
+      {
+        "epochGradeDate": "2026-05-05T12:38:55.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 90,
+        "priorPriceTarget": 85
+      },
+      {
+        "epochGradeDate": "2026-05-05T11:14:11.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 145,
+        "priorPriceTarget": 145
+      },
       {
         "epochGradeDate": "2026-04-20T18:49:48.000Z",
         "firm": "JP Morgan",
@@ -1997,24 +2055,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.13534524,
-    "postMarketChange": -14.919106,
-    "postMarketTime": "2026-05-04T23:59:59.000Z",
-    "postMarketPrice": 95.3109,
+    "postMarketChangePercent": -0.01951359,
+    "postMarketChange": -2.0299988,
+    "postMarketTime": "2026-05-05T23:59:52.000Z",
+    "postMarketPrice": 102,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.009168509,
-    "regularMarketChange": -1.02,
-    "regularMarketTime": "2026-05-04T20:00:01.000Z",
+    "regularMarketChangePercent": -0.056246098,
+    "regularMarketChange": -6.2,
+    "regularMarketTime": "2026-05-05T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 110.23,
-    "regularMarketDayHigh": 115.93,
-    "regularMarketDayLow": 110.23,
-    "regularMarketVolume": 4174155,
-    "averageDailyVolume10Day": 1874470,
-    "averageDailyVolume3Month": 2509303,
-    "regularMarketPreviousClose": 111.25,
+    "regularMarketPrice": 104.03,
+    "regularMarketDayHigh": 108.79,
+    "regularMarketDayLow": 98.5,
+    "regularMarketVolume": 5964953,
+    "averageDailyVolume10Day": 1885430,
+    "averageDailyVolume3Month": 2514832,
+    "regularMarketPreviousClose": 110.23,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 111,
+    "regularMarketOpen": 108.1,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -2030,30 +2088,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5156783104
+    "marketCap": 4847081984
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4135846656,
-    "forwardPE": 13.615434,
+    "forwardPE": 12.977745,
     "profitMargins": 0.39905998,
     "floatShares": 40153297,
-    "sharesOutstanding": 40425975,
+    "sharesOutstanding": 40237065,
     "sharesShort": 7833591,
     "sharesShortPriorMonth": "1970-03-30T08:34:15.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1674,
     "heldPercentInsiders": 0.01313,
-    "heldPercentInstitutions": 0.94503,
+    "heldPercentInstitutions": 0.96045995,
     "shortRatio": 4.57,
     "shortPercentOfFloat": 0.2228,
     "beta": 0.9,
-    "impliedSharesOutstanding": 46782027,
+    "impliedSharesOutstanding": 46593117,
     "category": null,
     "bookValue": 28.888,
-    "priceToBook": 3.8157713,
+    "priceToBook": 3.601149,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -2061,13 +2119,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 2.017,
     "netIncomeToCommon": 414064992,
-    "trailingEps": 8.49,
+    "trailingEps": 8.74,
     "forwardEps": 8.09596,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.986,
     "enterpriseToEbitda": 26.576,
-    "52WeekChange": -0.77529305,
-    "SandP52WeekChange": 0.2842635,
+    "52WeekChange": -0.77756476,
+    "SandP52WeekChange": 0.27870572,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2143,18 +2201,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2797,
-        "value": 313927,
-        "filerUrl": "",
-        "transactionText": "Sale at price 110.06 - 115.47 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2026-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5856,
         "value": 658304,
         "filerUrl": "",
@@ -2179,12 +2225,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
-        "value": 13449600,
+        "shares": 2797,
+        "value": 313927,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 112.08 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Sale at price 110.06 - 115.47 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2026-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1000,
+        "value": 110060,
+        "filerUrl": "",
+        "transactionText": "Sale at price 110.06 per share.",
+        "filerName": "MEESE ROBERT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-17T00:00:00.000Z",
         "ownership": "D"
@@ -2203,12 +2261,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 1000,
-        "value": 110060,
+        "shares": 120000,
+        "value": 13449600,
         "filerUrl": "",
-        "transactionText": "Sale at price 110.06 per share.",
-        "filerName": "MEESE ROBERT",
-        "filerRelation": "Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 112.08 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-02-17T00:00:00.000Z",
         "ownership": "D"
@@ -2262,24 +2320,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
-        "value": 22254000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 185.45 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 60000,
         "value": 11127000,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 185.45 per share.",
         "filerName": "HACKER SEVERIN",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 120000,
+        "value": 22254000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 185.45 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-01T00:00:00.000Z",
         "ownership": "D"
@@ -2310,18 +2368,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2796,
-        "value": 494397,
-        "filerUrl": "",
-        "transactionText": "Sale at price 173.97 - 177.95 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-11-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5858,
         "value": 1035725,
         "filerUrl": "",
@@ -2340,6 +2386,18 @@
         "transactionText": "Sale at price 173.80 - 177.95 per share.",
         "filerName": "GLANCE NATALIE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-11-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2796,
+        "value": 494397,
+        "filerUrl": "",
+        "transactionText": "Sale at price 173.97 - 177.95 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-11-18T00:00:00.000Z",
         "ownership": "D"
@@ -2514,18 +2572,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1515,
-        "value": 486860,
-        "filerUrl": "",
-        "transactionText": "Sale at price 321.36 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-08-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10937,
         "value": 3471322,
         "filerUrl": "",
@@ -2544,6 +2590,18 @@
         "transactionText": "Conversion of Exercise of derivative security at price 14.42 per share.",
         "filerName": "SKARUPPA MATTHEW",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-08-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1515,
+        "value": 486860,
+        "filerUrl": "",
+        "transactionText": "Sale at price 321.36 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-08-26T00:00:00.000Z",
         "ownership": "D"
@@ -2621,30 +2679,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 750,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1282,
-        "value": 421816,
-        "filerUrl": "",
-        "transactionText": "Sale at price 329.03 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-08-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2797,
         "value": 920297,
         "filerUrl": "",
@@ -2675,6 +2709,30 @@
         "transactionText": "Sale at price 329.03 per share.",
         "filerName": "MEESE ROBERT",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 750,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-08-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1282,
+        "value": 421816,
+        "filerUrl": "",
+        "transactionText": "Sale at price 329.03 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-08-15T00:00:00.000Z",
         "ownership": "D"
@@ -2829,6 +2887,30 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LILLY JOHN OSBORNE III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 379,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ROSS BONNIE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 379,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GORDON WILLIAM BINGHAM",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2909,30 +2991,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 379,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "LILLY JOHN OSBORNE III",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 379,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ROSS BONNIE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-11T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 60000,
         "value": 0,
         "filerUrl": "",
@@ -2953,29 +3011,6 @@
         "moneyText": "",
         "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-05T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2997,6 +3032,29 @@
         "transactionText": "Conversion of Exercise of derivative security at price 38.08 per share.",
         "filerName": "HACKER SEVERIN",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-06-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-06-05T00:00:00.000Z",
         "ownership": "D"
@@ -3027,18 +3085,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2635,
-        "value": 1388480,
-        "filerUrl": "",
-        "transactionText": "Sale at price 525.07 - 531.44 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-05-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3573,
         "value": 1887802,
         "filerUrl": "",
@@ -3063,26 +3109,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 5443,
-        "value": 0,
+        "shares": 2635,
+        "value": 1388480,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "transactionText": "Sale at price 525.07 - 531.44 per share.",
         "filerName": "CHEN STEPHEN C",
         "filerRelation": "General Counsel",
         "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1257,
-        "value": 668359,
-        "filerUrl": "",
-        "transactionText": "Sale at price 531.71 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-05-15T00:00:00.000Z",
+        "startDate": "2025-05-16T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3153,6 +3187,30 @@
         "transactionText": "Sale at price 531.71 per share.",
         "filerName": "MEESE ROBERT",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5443,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-05-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1257,
+        "value": 668359,
+        "filerUrl": "",
+        "transactionText": "Sale at price 531.71 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
         "moneyText": "",
         "startDate": "2025-05-15T00:00:00.000Z",
         "ownership": "D"
@@ -3398,6 +3456,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 9020,
+        "value": 2621157,
+        "filerUrl": "",
+        "transactionText": "Sale at price 286.19 - 294.36 per share.",
+        "filerName": "GLANCE NATALIE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10000,
         "value": 2905357,
         "filerUrl": "",
@@ -3422,18 +3492,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9020,
-        "value": 2621157,
-        "filerUrl": "",
-        "transactionText": "Sale at price 286.19 - 294.36 per share.",
-        "filerName": "GLANCE NATALIE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10181,
         "value": 22704,
         "filerUrl": "",
@@ -3442,6 +3500,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3591,
+        "value": 1554954,
+        "filerUrl": "",
+        "transactionText": "Sale at price 430.30 - 435.42 per share.",
+        "filerName": "SKARUPPA MATTHEW",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-19T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3466,54 +3536,6 @@
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-02-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3591,
-        "value": 1554954,
-        "filerUrl": "",
-        "transactionText": "Sale at price 430.30 - 435.42 per share.",
-        "filerName": "SKARUPPA MATTHEW",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8000,
-        "value": 3478281,
-        "filerUrl": "",
-        "transactionText": "Sale at price 428.85 - 441.29 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8000,
-        "value": 59840,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 7.48 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2064,
-        "value": 898091,
-        "filerUrl": "",
-        "transactionText": "Sale at price 435.00 - 435.28 per share.",
-        "filerName": "CHEN STEPHEN C",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3548,6 +3570,42 @@
         "transactionText": "Sale at price 435.28 per share.",
         "filerName": "MEESE ROBERT",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2064,
+        "value": 898091,
+        "filerUrl": "",
+        "transactionText": "Sale at price 435.00 - 435.28 per share.",
+        "filerName": "CHEN STEPHEN C",
+        "filerRelation": "General Counsel",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8000,
+        "value": 3478281,
+        "filerUrl": "",
+        "transactionText": "Sale at price 428.85 - 441.29 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8000,
+        "value": 59840,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 7.48 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
@@ -3696,24 +3754,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
-        "value": 41025588,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 341.88 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 60000,
         "value": 20512794,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 341.88 per share.",
         "filerName": "HACKER SEVERIN",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-12-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 120000,
+        "value": 41025588,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 341.88 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-12-26T00:00:00.000Z",
         "ownership": "D"
@@ -3755,6 +3813,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 14250,
+        "value": 4951050,
+        "filerUrl": "",
+        "transactionText": "Sale at price 339.05 - 350.30 per share.",
+        "filerName": "SKARUPPA MATTHEW",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 145241,
         "value": 50066950,
         "filerUrl": "",
@@ -3772,18 +3842,6 @@
         "transactionText": "",
         "filerName": "VON AHN LUIS ARELLANO",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 14250,
-        "value": 4951050,
-        "filerUrl": "",
-        "transactionText": "Sale at price 339.05 - 350.30 per share.",
-        "filerName": "SKARUPPA MATTHEW",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -3813,29 +3871,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 41759,
-        "value": 14210221,
-        "filerUrl": "",
-        "transactionText": "Sale at price 336.83 - 344.72 per share.",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 41759,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "VON AHN LUIS ARELLANO",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 41521,
         "value": 14129045,
         "filerUrl": "",
@@ -3853,6 +3888,29 @@
         "transactionText": "",
         "filerName": "HACKER SEVERIN",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2024-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 41759,
+        "value": 14210221,
+        "filerUrl": "",
+        "transactionText": "Sale at price 336.83 - 344.72 per share.",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 41759,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "VON AHN LUIS ARELLANO",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-12-12T00:00:00.000Z",
         "ownership": "D"
@@ -3885,10 +3943,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 110.23,
+    "currentPrice": 104.03,
     "targetHighPrice": 145,
     "targetLowPrice": 81,
-    "targetMeanPrice": 104.96529,
+    "targetMeanPrice": 104.49471,
     "targetMedianPrice": 100,
     "recommendationMean": 2.82609,
     "recommendationKey": "hold",
@@ -3915,6 +3973,6 @@
     "profitMargins": 0.39905998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-05T05:01:13.309Z",
+  "lastUpdated": "2026-05-06T05:29:36.041Z",
   "source": "Static Build (yahoo-finance2)"
 }

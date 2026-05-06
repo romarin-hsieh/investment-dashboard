@@ -21,6 +21,14 @@
         "period": "-2m",
         "strongBuy": 2,
         "buy": 7,
+        "hold": 2,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 2,
+        "buy": 7,
         "hold": 3,
         "sell": 0,
         "strongSell": 0
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.15619999,
         "position": 5395232,
-        "value": 523769132,
+        "value": 512169375,
         "pctChange": 0.0119
       },
       {
@@ -46,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.147,
         "position": 5077036,
-        "value": 492878664,
+        "value": 481963029,
         "pctChange": 0.0025
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.104399994,
         "position": 3605279,
-        "value": 350000491,
+        "value": 342249136,
         "pctChange": -0.0001
       },
       {
@@ -64,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0369,
         "position": 1275133,
-        "value": 123789913,
+        "value": 121048376,
         "pctChange": -0.0034
       },
       {
@@ -73,7 +81,7 @@
         "organization": "UBS AM, a distinct business unit of UBS ASSET MANAGEMENT AMERICAS LLC",
         "pctHeld": 0.028900001,
         "position": 996878,
-        "value": 96776918,
+        "value": 94633628,
         "pctChange": -0.0679
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.027999999,
         "position": 965931,
-        "value": 93772583,
+        "value": 91695830,
         "pctChange": 0.3729
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Nomura Asset Management International Inc",
         "pctHeld": 0.0241,
         "position": 832241,
-        "value": 80793957,
+        "value": 79004638,
         "pctChange": 1
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.023599999,
         "position": 816474,
-        "value": 79263297,
+        "value": 77507877,
         "pctChange": 0.0036000002
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.020599999,
         "position": 712041,
-        "value": 69124941,
+        "value": 67594052,
         "pctChange": -0.0354
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.02,
         "position": 690357,
-        "value": 67019858,
+        "value": 65535590,
         "pctChange": 0.0176
       }
     ]
@@ -126,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.03296,
-    "institutionsPercentHeld": 1.11964,
-    "institutionsFloatPercentHeld": 1.1578,
-    "institutionsCount": 567
+    "institutionsPercentHeld": 1.11958,
+    "institutionsFloatPercentHeld": 1.15774,
+    "institutionsCount": 565
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 0.7,
-          "estimate": 0.2413,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "0.46",
-          "surprisePct": "190.1",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1746735356
-        },
         {
           "date": "2Q2025",
           "actual": 0.92,
@@ -177,17 +174,26 @@
           "surprisePct": "40.95",
           "periodEndDate": 1767139200,
           "reportedDate": 1771967129
+        },
+        {
+          "date": "1Q2026",
+          "actual": 0.3,
+          "estimate": 0.61125,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "-0.31",
+          "surprisePct": "-50.92",
+          "periodEndDate": 1774915200,
+          "reportedDate": 1778011520
         }
       ],
-      "currentQuarterEstimate": 0.61125,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": 0.74571,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
-      "earningsDate": [
-        "2026-05-05T20:00:00.000Z"
-      ],
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
+      "earningsDate": [],
       "isEarningsDateEstimate": false
     },
     "financialsChart": {
@@ -219,13 +225,6 @@
       ],
       "quarterly": [
         {
-          "date": "1Q2025",
-          "fiscalQuarter": "1Q2025",
-          "revenue": 143537000,
-          "earnings": 25682000,
-          "profitMargin": 0.17892252
-        },
-        {
           "date": "2Q2025",
           "fiscalQuarter": "2Q2025",
           "revenue": 157370000,
@@ -245,6 +244,13 @@
           "revenue": 160764000,
           "earnings": 21583000,
           "profitMargin": 0.1342527
+        },
+        {
+          "date": "1Q2026",
+          "fiscalQuarter": "1Q2026",
+          "revenue": 173933000,
+          "earnings": 10911000,
+          "profitMargin": 0.06273106
         }
       ]
     },
@@ -1359,24 +1365,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.005356373,
-    "postMarketChange": 0.51999664,
-    "postMarketTime": "2026-05-04T23:59:51.000Z",
-    "postMarketPrice": 97.6,
+    "postMarketChangePercent": -0.19717585,
+    "postMarketChange": -18.717903,
+    "postMarketTime": "2026-05-05T23:59:51.000Z",
+    "postMarketPrice": 76.2121,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.029297099,
-    "regularMarketChange": -2.93,
-    "regularMarketTime": "2026-05-04T20:00:00.000Z",
+    "regularMarketChangePercent": -0.0221467,
+    "regularMarketChange": -2.15,
+    "regularMarketTime": "2026-05-05T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 97.08,
-    "regularMarketDayHigh": 101.6199,
-    "regularMarketDayLow": 96.63,
-    "regularMarketVolume": 1123197,
-    "averageDailyVolume10Day": 1003930,
-    "averageDailyVolume3Month": 928741,
-    "regularMarketPreviousClose": 100.01,
+    "regularMarketPrice": 94.93,
+    "regularMarketDayHigh": 98.35,
+    "regularMarketDayLow": 94.61,
+    "regularMarketVolume": 1600383,
+    "averageDailyVolume10Day": 1004040,
+    "averageDailyVolume3Month": 935508,
+    "regularMarketPreviousClose": 97.08,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 100.01,
+    "regularMarketOpen": 97.08,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
@@ -1392,13 +1398,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 3353547008
+    "marketCap": 3279277056
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3360994048,
-    "forwardPE": 26.356585,
+    "enterpriseValue": 3287243776,
+    "forwardPE": 25.772873,
     "profitMargins": 0.31427,
     "floatShares": 33192081,
     "sharesOutstanding": 34544158,
@@ -1408,14 +1414,14 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2202,
     "heldPercentInsiders": 0.03296,
-    "heldPercentInstitutions": 1.11964,
+    "heldPercentInstitutions": 1.11958,
     "shortRatio": 7.77,
     "shortPercentOfFloat": 0.3435,
     "beta": 2.061,
     "impliedSharesOutstanding": 34544158,
     "category": null,
     "bookValue": 13.806,
-    "priceToBook": 7.0317254,
+    "priceToBook": 6.875996,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1423,13 +1429,13 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 14.369,
     "netIncomeToCommon": 190291008,
-    "trailingEps": 4.73,
+    "trailingEps": 4.87,
     "forwardEps": 3.68333,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 5.551,
-    "enterpriseToEbitda": 24.995,
-    "52WeekChange": 0.039623022,
-    "SandP52WeekChange": 0.2842635,
+    "enterpriseToRevenue": 5.429,
+    "enterpriseToEbitda": 24.446,
+    "52WeekChange": 0.013255358,
+    "SandP52WeekChange": 0.27870572,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1458,30 +1464,6 @@
     "transactions": [
       {
         "maxAge": 1,
-        "shares": 3571,
-        "value": 524294,
-        "filerUrl": "",
-        "transactionText": "Sale at price 146.82 per share.",
-        "filerName": "WEILL DAVID",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3571,
-        "value": 50708,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 14.20 per share.",
-        "filerName": "WEILL DAVID",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 7611,
         "value": 1117382,
         "filerUrl": "",
@@ -1500,6 +1482,30 @@
         "transactionText": "Conversion of Exercise of derivative security at price 69.84 - 77.12 per share.",
         "filerName": "HERNANDEZ GERARDO",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3571,
+        "value": 524294,
+        "filerUrl": "",
+        "transactionText": "Sale at price 146.82 per share.",
+        "filerName": "WEILL DAVID",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3571,
+        "value": 50708,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 14.20 per share.",
+        "filerName": "WEILL DAVID",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-03-04T00:00:00.000Z",
         "ownership": "D"
@@ -2607,97 +2613,13 @@
         "moneyText": "",
         "startDate": "2024-05-07T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "value": 1920000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 128.00 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "value": 576900,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 38.46 per share.",
-        "filerName": "GORDON STEPHEN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5839,
-        "value": 759479,
-        "filerUrl": "",
-        "transactionText": "Sale at price 130.07 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5839,
-        "value": 385958,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 66.10 per share.",
-        "filerName": "KHAYAL TAMER I.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3222,
-        "value": 418570,
-        "filerUrl": "",
-        "transactionText": "Sale at price 129.91 per share.",
-        "filerName": "CORCORAN NICHOLAS",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30000,
-        "value": 3902100,
-        "filerUrl": "",
-        "transactionText": "Sale at price 130.07 per share.",
-        "filerName": "HASSANEIN WALEED H",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 30000,
-        "value": 398400,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 13.28 per share.",
-        "filerName": "HASSANEIN WALEED H",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-05-06T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 97.08,
+    "currentPrice": 94.93,
     "targetHighPrice": 190,
     "targetLowPrice": 118,
     "targetMeanPrice": 156,
@@ -2727,6 +2649,6 @@
     "profitMargins": 0.31427,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-05T05:00:23.840Z",
+  "lastUpdated": "2026-05-06T05:28:47.041Z",
   "source": "Static Build (yahoo-finance2)"
 }
