@@ -45,7 +45,7 @@
         "organization": "TOYOTA MOTOR CORP/",
         "pctHeld": 0.13069999,
         "position": 128454401,
-        "value": 1114984239,
+        "value": 1351340357,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.053400002,
         "position": 52488707,
-        "value": 455601992,
+        "value": 552181221,
         "pctChange": 0.0509
       },
       {
@@ -63,7 +63,7 @@
         "organization": "BAILLIE GIFFORD & CO",
         "pctHeld": 0.0504,
         "position": 49570755,
-        "value": 430274168,
+        "value": 521484365,
         "pctChange": -0.016900001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0404,
         "position": 39742492,
-        "value": 344964842,
+        "value": 418091034,
         "pctChange": 0.0962
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Capricorn Investment Group LLC",
         "pctHeld": 0.029000001,
         "position": 28470647,
-        "value": 247125224,
+        "value": 299511219,
         "pctChange": -0.059499998
       },
       {
@@ -90,7 +90,7 @@
         "organization": "INTEL CORP",
         "pctHeld": 0.0156,
         "position": 15316315,
-        "value": 132945618,
+        "value": 161127640,
         "pctChange": -0.031600002
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0123000005,
         "position": 12106939,
-        "value": 105088234,
+        "value": 127365003,
         "pctChange": 2.4106
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.012,
         "position": 11790532,
-        "value": 102341821,
+        "value": 124036402,
         "pctChange": 0.0343
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Delta Air Lines Inc",
         "pctHeld": 0.0112,
         "position": 11044232,
-        "value": 95863937,
+        "value": 116185325,
         "pctChange": 0
       },
       {
@@ -126,7 +126,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.011,
         "position": 10812929,
-        "value": 93856227,
+        "value": 113752018,
         "pctChange": 0.0497
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.32578,
-    "institutionsPercentHeld": 0.35754,
-    "institutionsFloatPercentHeld": 0.53029996,
-    "institutionsCount": 625
+    "institutionsPercentHeld": 0.35748002,
+    "institutionsFloatPercentHeld": 0.53022,
+    "institutionsCount": 627
   },
   "earnings": {
     "maxAge": 86400,
@@ -192,8 +192,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "1Q2026",
       "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-08-05T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -258,6 +260,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-06T18:00:46.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 13,
+        "priorPriceTarget": 15
+      },
+      {
+        "epochGradeDate": "2026-05-06T11:13:19.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 18,
+        "priorPriceTarget": 18
+      },
       {
         "epochGradeDate": "2026-04-28T11:40:12.000Z",
         "firm": "Needham",
@@ -914,24 +936,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0057602804,
-    "postMarketChange": 0.049999237,
-    "postMarketTime": "2026-05-05T23:59:38.000Z",
-    "postMarketPrice": 8.73,
+    "postMarketChangePercent": -0.0038023684,
+    "postMarketChange": -0.040000916,
+    "postMarketTime": "2026-05-06T23:59:48.000Z",
+    "postMarketPrice": 10.48,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.020316,
-    "regularMarketChange": -0.179999,
-    "regularMarketTime": "2026-05-05T20:00:02.000Z",
+    "regularMarketChangePercent": 0.211982,
+    "regularMarketChange": 1.84,
+    "regularMarketTime": "2026-05-06T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 8.68,
-    "regularMarketDayHigh": 8.93,
-    "regularMarketDayLow": 8.6301,
-    "regularMarketVolume": 27927661,
-    "averageDailyVolume10Day": 30653080,
-    "averageDailyVolume3Month": 24029030,
-    "regularMarketPreviousClose": 8.86,
+    "regularMarketPrice": 10.52,
+    "regularMarketDayHigh": 10.62,
+    "regularMarketDayLow": 8.87,
+    "regularMarketVolume": 68181709,
+    "averageDailyVolume10Day": 36100880,
+    "averageDailyVolume3Month": 24860940,
+    "regularMarketPreviousClose": 8.68,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 8.85,
+    "regularMarketOpen": 8.87,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -947,13 +969,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 8533909504
+    "marketCap": 10342941696
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 7136977408,
-    "forwardPE": -14.837608,
+    "forwardPE": -17.982908,
     "profitMargins": 0,
     "floatShares": 662127878,
     "sharesOutstanding": 983169282,
@@ -963,14 +985,14 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0836,
     "heldPercentInsiders": 0.32578,
-    "heldPercentInstitutions": 0.35754,
+    "heldPercentInstitutions": 0.35748002,
     "shortRatio": 3.77,
     "shortPercentOfFloat": 0.1254,
     "beta": 2.61,
     "impliedSharesOutstanding": 983169282,
     "category": null,
     "bookValue": 1.541,
-    "priceToBook": 5.632706,
+    "priceToBook": 6.826736,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -982,8 +1004,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 133.589,
     "enterpriseToEbitda": -10.504,
-    "52WeekChange": 0.38006234,
-    "SandP52WeekChange": 0.27870572,
+    "52WeekChange": 0.58195484,
+    "SandP52WeekChange": 0.3003528,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2752,7 +2774,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 8.68,
+    "currentPrice": 10.52,
     "targetHighPrice": 18,
     "targetLowPrice": 6,
     "targetMeanPrice": 11.78667,
@@ -2781,6 +2803,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-06T05:30:50.366Z",
+  "lastUpdated": "2026-05-07T05:33:23.471Z",
   "source": "Static Build (yahoo-finance2)"
 }
