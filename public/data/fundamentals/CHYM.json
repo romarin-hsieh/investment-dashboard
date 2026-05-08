@@ -41,11 +41,11 @@
     "ownershipList": [
       {
         "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
+        "reportDate": "2026-03-31T00:00:00.000Z",
         "organization": "Galileo (ptc) Ltd",
         "pctHeld": 0.1494,
         "position": 52268715,
-        "value": 1135799153,
+        "value": 993628284,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Crosslink Capital Inc",
         "pctHeld": 0.077800006,
         "position": 27215341,
-        "value": 591389347,
+        "value": 517363638,
         "pctChange": -0.0695
       },
       {
@@ -63,7 +63,7 @@
         "organization": "General Atlantic, L.P.",
         "pctHeld": 0.0608,
         "position": 21259683,
-        "value": 461972901,
+        "value": 404146578,
         "pctChange": 0.106800005
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Msop Gp, L.L.C.",
         "pctHeld": 0.0499,
         "position": 17442713,
-        "value": 379030145,
+        "value": 331585978,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Tiger Global Management, LLC",
         "pctHeld": 0.040599998,
         "position": 14192499,
-        "value": 308402996,
+        "value": 269799409,
         "pctChange": 0.1381
       },
       {
@@ -90,7 +90,7 @@
         "organization": "ICONIQ Capital, LLC",
         "pctHeld": 0.0344,
         "position": 12042280,
-        "value": 261678738,
+        "value": 228923745,
         "pctChange": -0.199
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Aspect Management, LLC",
         "pctHeld": 0.0341,
         "position": 11933275,
-        "value": 259310060,
+        "value": 226851560,
         "pctChange": 1
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Coatue Management LLC",
         "pctHeld": 0.028800001,
         "position": 10071992,
-        "value": 218864381,
+        "value": 191468570,
         "pctChange": -0.060100004
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Forerunner Ventures Management, LLC",
         "pctHeld": 0.025799999,
         "position": 9031107,
-        "value": 196245950,
+        "value": 171681346,
         "pctChange": 1
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Dragoneer Investment Group, LLC",
         "pctHeld": 0.024400001,
         "position": 8548884,
-        "value": 185767245,
+        "value": 162514286,
         "pctChange": 0
       }
     ]
@@ -192,8 +192,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-08-06T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -246,6 +248,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-07T15:28:59.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 28,
+        "priorPriceTarget": 25
+      },
       {
         "epochGradeDate": "2026-04-22T09:28:01.000Z",
         "firm": "BMO Capital",
@@ -572,24 +584,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.033594087,
-    "postMarketChange": -0.72999954,
-    "postMarketTime": "2026-05-06T23:43:49.000Z",
-    "postMarketPrice": 21,
+    "postMarketChangePercent": 0.006312411,
+    "postMarketChange": 0.11999893,
+    "postMarketTime": "2026-05-07T23:52:48.000Z",
+    "postMarketPrice": 19.13,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0452141,
-    "regularMarketChange": 0.940001,
-    "regularMarketTime": "2026-05-06T20:00:00.000Z",
+    "regularMarketChangePercent": -0.125173,
+    "regularMarketChange": -2.72,
+    "regularMarketTime": "2026-05-07T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 21.73,
-    "regularMarketDayHigh": 22.015,
-    "regularMarketDayLow": 20.795,
-    "regularMarketVolume": 8933770,
-    "averageDailyVolume10Day": 4551900,
-    "averageDailyVolume3Month": 4490721,
-    "regularMarketPreviousClose": 20.789999,
+    "regularMarketPrice": 19.01,
+    "regularMarketDayHigh": 21.45,
+    "regularMarketDayLow": 18.92,
+    "regularMarketVolume": 15268553,
+    "averageDailyVolume10Day": 5849640,
+    "averageDailyVolume3Month": 4665272,
+    "regularMarketPreviousClose": 21.73,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 21.03,
+    "regularMarketOpen": 21.45,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -605,7 +617,7 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 8346488832
+    "marketCap": 7301737472
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
@@ -626,20 +638,20 @@
     "impliedSharesOutstanding": 384099820,
     "category": null,
     "bookValue": 3.689,
-    "priceToBook": 5.8904853,
+    "priceToBook": 5.153158,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": -1009936000,
-    "trailingEps": -4.27,
+    "trailingEps": -4.04,
     "forwardEps": 1.15,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 3.364,
     "enterpriseToEbitda": -12.457,
-    "52WeekChange": -0.41444355,
-    "SandP52WeekChange": 0.3003528,
+    "52WeekChange": -0.48773915,
+    "SandP52WeekChange": 0.29632986,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1114,10 +1126,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 21.73,
+    "currentPrice": 19.01,
     "targetHighPrice": 40,
     "targetLowPrice": 24,
-    "targetMeanPrice": 30.66667,
+    "targetMeanPrice": 30.88889,
     "targetMedianPrice": 30,
     "recommendationMean": 1.52632,
     "recommendationKey": "buy",
@@ -1143,6 +1155,6 @@
     "profitMargins": -0.46183997,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-07T05:31:44.691Z",
+  "lastUpdated": "2026-05-08T04:55:20.207Z",
   "source": "Static Build (yahoo-finance2)"
 }

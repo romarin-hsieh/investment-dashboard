@@ -20,6 +20,14 @@
       {
         "period": "-2m",
         "strongBuy": 3,
+        "buy": 4,
+        "hold": 16,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 3,
         "buy": 5,
         "hold": 15,
         "sell": 0,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.16129999,
         "position": 150415287,
-        "value": 9628082842,
+        "value": 9294160721,
         "pctChange": 0.0046
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.113400005,
         "position": 105779272,
-        "value": 6770931426,
+        "value": 6536101313,
         "pctChange": 0.0538
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0682,
         "position": 63559987,
-        "value": 4068474903,
+        "value": 3927371654,
         "pctChange": 0.0084
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0313,
         "position": 29206196,
-        "value": 1869488668,
+        "value": 1804650877,
         "pctChange": 0.0279
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0196,
         "position": 18291294,
-        "value": 1170825768,
+        "value": 1130219073,
         "pctChange": 0.21620001
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0189,
         "position": 17640782,
-        "value": 1129186493,
+        "value": 1090023935,
         "pctChange": 0.045
       },
       {
@@ -91,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0167,
         "position": 15611913,
-        "value": 999318584,
+        "value": 964660118,
         "pctChange": -0.3707
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Parnassus Investments, LLC",
         "pctHeld": 0.0162,
         "position": 15106270,
-        "value": 966952374,
+        "value": 933416437,
         "pctChange": -0.16389999
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0138,
         "position": 12863638,
-        "value": 823401495,
+        "value": 794844203,
         "pctChange": 0.0152
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Raymond James Financial, Inc.",
         "pctHeld": 0.0128,
         "position": 11974571,
-        "value": 766492315,
+        "value": 739908753,
         "pctChange": -0.0174
       }
     ]
@@ -126,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00124,
-    "institutionsPercentHeld": 0.79806,
-    "institutionsFloatPercentHeld": 0.79905,
-    "institutionsCount": 1793
+    "institutionsPercentHeld": 0.80061996,
+    "institutionsFloatPercentHeld": 0.80162,
+    "institutionsCount": 1800
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 0.2794,
-          "estimate": 0.32866,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "-0.05",
-          "surprisePct": "-14.99",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1746475623
-        },
         {
           "date": "2Q2025",
           "actual": 0.2176,
@@ -177,16 +174,29 @@
           "surprisePct": "-18.46",
           "periodEndDate": 1767139200,
           "reportedDate": 1771967100
+        },
+        {
+          "date": "1Q2026",
+          "actual": 0.3433,
+          "estimate": 0.41723,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "-0.07",
+          "surprisePct": "-17.72",
+          "periodEndDate": 1774915200,
+          "reportedDate": 1778097900
         }
       ],
-      "currentQuarterEstimate": 0.41723,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": 0.42862,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
+      "earningsDate": [
+        "2026-08-03T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -251,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-07T17:51:15.000Z",
+        "firm": "RBC Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 71,
+        "priorPriceTarget": 70
+      },
       {
         "epochGradeDate": "2026-04-21T14:30:24.000Z",
         "firm": "Barclays",
@@ -2227,24 +2247,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0027667729,
-    "postMarketChange": 0.17710114,
-    "postMarketTime": "2026-05-06T23:59:01.000Z",
-    "postMarketPrice": 64.1871,
+    "postMarketChangePercent": 0.005005656,
+    "postMarketChange": 0.30929947,
+    "postMarketTime": "2026-05-07T23:59:58.000Z",
+    "postMarketPrice": 62.0993,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.00692154,
-    "regularMarketChange": 0.440002,
-    "regularMarketTime": "2026-05-06T20:00:03.000Z",
+    "regularMarketChangePercent": -0.0346821,
+    "regularMarketChange": -2.22,
+    "regularMarketTime": "2026-05-07T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 64.01,
-    "regularMarketDayHigh": 64.075,
-    "regularMarketDayLow": 63.5742,
-    "regularMarketVolume": 5080633,
-    "averageDailyVolume10Day": 4814250,
-    "averageDailyVolume3Month": 6001739,
-    "regularMarketPreviousClose": 63.57,
+    "regularMarketPrice": 61.79,
+    "regularMarketDayHigh": 63.6655,
+    "regularMarketDayLow": 61.52,
+    "regularMarketVolume": 8510401,
+    "averageDailyVolume10Day": 5800780,
+    "averageDailyVolume3Month": 6123096,
+    "regularMarketPreviousClose": 64.01,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 63.55,
+    "regularMarketOpen": 63.6,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -2260,30 +2280,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 59686166528
+    "marketCap": 57617567744
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 89423773696,
-    "forwardPE": 35.19992,
+    "forwardPE": 33.979115,
     "profitMargins": 0.18370001,
     "floatShares": 930314254,
-    "sharesOutstanding": 932450634,
+    "sharesOutstanding": 932474000,
     "sharesShort": 30761831,
     "sharesShortPriorMonth": "1970-10-13T15:22:15.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.033,
     "heldPercentInsiders": 0.00124,
-    "heldPercentInstitutions": 0.79806,
+    "heldPercentInstitutions": 0.80061996,
     "shortRatio": 5.26,
     "shortPercentOfFloat": 0.0376,
     "beta": 0.757,
-    "impliedSharesOutstanding": 932450634,
+    "impliedSharesOutstanding": 932474000,
     "category": null,
     "bookValue": 42.227,
-    "priceToBook": 1.5158548,
+    "priceToBook": 1.4632818,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -2291,14 +2311,15 @@
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.483,
     "netIncomeToCommon": 1058590016,
-    "trailingEps": 1.17,
+    "trailingEps": 1.22,
     "forwardEps": 1.81847,
+    "pegRatio": 5.68,
     "lastSplitFactor": "1032:1000",
     "lastSplitDate": 1636934400,
     "enterpriseToRevenue": 15.518,
     "enterpriseToEbitda": 17.488,
-    "52WeekChange": 0.13795555,
-    "SandP52WeekChange": 0.3003528,
+    "52WeekChange": 0.08996296,
+    "SandP52WeekChange": 0.29632986,
     "lastDividendValue": 0.271,
     "lastDividendDate": "2026-04-30T00:00:00.000Z",
     "latestShareClass": null,
@@ -2354,54 +2375,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 29630,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WHYTE GREGORY J",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2026-02-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 137639,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ROY SUMIT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-02-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 41360,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ABRAHAM NEIL M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10753,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "REDINGTON NEALE W",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 40727,
         "value": 0,
         "filerUrl": "",
@@ -2450,6 +2423,54 @@
       },
       {
         "maxAge": 1,
+        "shares": 29630,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WHYTE GREGORY J",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2026-02-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 137639,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ROY SUMIT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-02-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 41360,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ABRAHAM NEIL M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10753,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "REDINGTON NEALE W",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3399,
         "value": 0,
         "filerUrl": "",
@@ -2483,6 +2504,30 @@
         "moneyText": "",
         "startDate": "2025-05-13T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3632,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LOPEZ GERARDO I",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3632,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ALMODOVAR PRISCILLA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-13T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2558,26 +2603,50 @@
       },
       {
         "maxAge": 1,
-        "shares": 3632,
+        "shares": 40500,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "LOPEZ GERARDO I",
-        "filerRelation": "Director",
+        "filerName": "HAGAN MARK E.",
+        "filerRelation": "Chief Investment Officer",
         "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
+        "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 3632,
+        "shares": 31574,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ALMODOVAR PRISCILLA",
-        "filerRelation": "Director",
+        "filerName": "BUSHORE MICHELLE",
+        "filerRelation": "General Counsel",
         "moneyText": "",
-        "startDate": "2025-05-13T00:00:00.000Z",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2671,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KEHLE SHANNON",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5432,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "PONG JONATHAN CFA",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2624,54 +2693,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "REDINGTON NEALE W",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 40500,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HAGAN MARK E.",
-        "filerRelation": "Chief Investment Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 31574,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BUSHORE MICHELLE",
-        "filerRelation": "General Counsel",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2671,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KEHLE SHANNON",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5432,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "PONG JONATHAN CFA",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-02-18T00:00:00.000Z",
         "ownership": "D"
@@ -2742,6 +2763,42 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LOPEZ GERARDO I",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ALMODOVAR PRISCILLA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BRADY JACQUELINE VALERIE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "JACOBSON JEFFREY A",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2807,53 +2864,17 @@
         "moneyText": "",
         "startDate": "2024-05-30T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "LOPEZ GERARDO I",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ALMODOVAR PRISCILLA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BRADY JACQUELINE VALERIE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-30T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 64.01,
+    "currentPrice": 61.79,
     "targetHighPrice": 75,
     "targetLowPrice": 61.5,
-    "targetMeanPrice": 68.4,
-    "targetMedianPrice": 68,
+    "targetMeanPrice": 68.5,
+    "targetMedianPrice": 68.5,
     "recommendationMean": 2.58333,
     "recommendationKey": "hold",
     "numberOfAnalystOpinions": 20,
@@ -2879,6 +2900,6 @@
     "profitMargins": 0.18370001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-07T05:33:41.524Z",
+  "lastUpdated": "2026-05-08T04:57:24.385Z",
   "source": "Static Build (yahoo-finance2)"
 }

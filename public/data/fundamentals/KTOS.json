@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1512,
         "position": 28337937,
-        "value": 1743349897,
+        "value": 1615262409,
         "pctChange": 0.1723
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.088,
         "position": 16487162,
-        "value": 1014290213,
+        "value": 939768234,
         "pctChange": -0.0057
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0437,
         "position": 8190767,
-        "value": 503895989,
+        "value": 466873719,
         "pctChange": -0.0403
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.023699999,
         "position": 4446230,
-        "value": 273532071,
+        "value": 253435110,
         "pctChange": 0.0346
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Franklin Resources, Inc.",
         "pctHeld": 0.021300001,
         "position": 3997619,
-        "value": 245933522,
+        "value": 227864283,
         "pctChange": -0.067600004
       },
       {
@@ -90,7 +90,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.0184,
         "position": 3454123,
-        "value": 212497648,
+        "value": 196885011,
         "pctChange": -0.0417
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0177,
         "position": 3311095,
-        "value": 203698565,
+        "value": 188732415,
         "pctChange": 0.039100002
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Alliancebernstein L.P.",
         "pctHeld": 0.0153,
         "position": 2867500,
-        "value": 176408601,
+        "value": 163447500,
         "pctChange": 0.059
       },
       {
@@ -117,7 +117,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0152,
         "position": 2852009,
-        "value": 175455594,
+        "value": 162564513,
         "pctChange": -0.070700005
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.0150999995,
         "position": 2826465,
-        "value": 173884128,
+        "value": 161108505,
         "pctChange": -0.0216
       }
     ]
@@ -142,17 +142,6 @@
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 0.12,
-          "estimate": 0.09033,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "0.03",
-          "surprisePct": "32.85",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1746648000
-        },
         {
           "date": "2Q2025",
           "actual": 0.11,
@@ -185,16 +174,29 @@
           "surprisePct": "22.05",
           "periodEndDate": 1767139200,
           "reportedDate": 1771880400
+        },
+        {
+          "date": "1Q2026",
+          "actual": 0.16,
+          "estimate": 0.13416,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "0.03",
+          "surprisePct": "19.26",
+          "periodEndDate": 1774915200,
+          "reportedDate": 1778098141
         }
       ],
-      "currentQuarterEstimate": 0.13416,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": 0.17027,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
+      "earningsDate": [
+        "2026-08-06T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -259,6 +261,56 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-07T22:13:25.000Z",
+        "firm": "Canaccord Genuity",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 130,
+        "priorPriceTarget": 125
+      },
+      {
+        "epochGradeDate": "2026-05-07T18:05:31.000Z",
+        "firm": "BNP Paribas",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 85,
+        "priorPriceTarget": 80
+      },
+      {
+        "epochGradeDate": "2026-05-07T17:42:57.000Z",
+        "firm": "RBC Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 80,
+        "priorPriceTarget": 100
+      },
+      {
+        "epochGradeDate": "2026-05-07T11:05:15.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 100,
+        "priorPriceTarget": 115
+      },
+      {
+        "epochGradeDate": "2026-05-07T09:16:01.000Z",
+        "firm": "Piper Sandler",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 75,
+        "priorPriceTarget": 99
+      },
       {
         "epochGradeDate": "2026-04-06T13:07:11.000Z",
         "firm": "Jefferies",
@@ -1495,24 +1547,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.01576725,
-    "postMarketChange": -0.9700012,
-    "postMarketTime": "2026-05-06T23:59:53.000Z",
-    "postMarketPrice": 60.55,
+    "postMarketChangePercent": -0.001403541,
+    "postMarketChange": -0.08000183,
+    "postMarketTime": "2026-05-07T23:59:45.000Z",
+    "postMarketPrice": 56.92,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0372618,
-    "regularMarketChange": 2.21,
-    "regularMarketTime": "2026-05-06T20:00:00.000Z",
+    "regularMarketChangePercent": -0.073472,
+    "regularMarketChange": -4.52,
+    "regularMarketTime": "2026-05-07T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 61.52,
-    "regularMarketDayHigh": 61.74,
-    "regularMarketDayLow": 58.43,
-    "regularMarketVolume": 4387263,
-    "averageDailyVolume10Day": 3684210,
-    "averageDailyVolume3Month": 4153142,
-    "regularMarketPreviousClose": 59.31,
+    "regularMarketPrice": 57,
+    "regularMarketDayHigh": 61.36,
+    "regularMarketDayLow": 56.31,
+    "regularMarketVolume": 5798214,
+    "averageDailyVolume10Day": 3887310,
+    "averageDailyVolume3Month": 4181891,
+    "regularMarketPreviousClose": 61.52,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 59,
+    "regularMarketOpen": 61.175,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -1528,16 +1580,16 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 11531215872
+    "marketCap": 10688638976
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 10063849472,
-    "forwardPE": 57.457737,
+    "forwardPE": 53.2362,
     "profitMargins": 0.016339999,
     "floatShares": 167707792,
-    "sharesOutstanding": 187438489,
+    "sharesOutstanding": 187519984,
     "sharesShort": 9438164,
     "sharesShortPriorMonth": "1970-04-16T15:32:20.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
@@ -1548,10 +1600,10 @@
     "shortRatio": 2.53,
     "shortPercentOfFloat": 0.0579,
     "beta": 1.062,
-    "impliedSharesOutstanding": 187438489,
+    "impliedSharesOutstanding": 187519984,
     "category": null,
     "bookValue": 11.821,
-    "priceToBook": 5.2042975,
+    "priceToBook": 4.821927,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-28T00:00:00.000Z",
@@ -1560,13 +1612,14 @@
     "earningsQuarterlyGrowth": 0.513,
     "netIncomeToCommon": 22000000,
     "trailingEps": 0.17,
-    "forwardEps": 1.08125,
+    "forwardEps": 1.07147,
+    "pegRatio": 36.41,
     "lastSplitFactor": "1:10",
     "lastSplitDate": 1252627200,
     "enterpriseToRevenue": 7.472,
     "enterpriseToEbitda": 134.543,
-    "52WeekChange": 0.7977791,
-    "SandP52WeekChange": 0.3003528,
+    "52WeekChange": 0.6959238,
+    "SandP52WeekChange": 0.29632986,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1681,18 +1734,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 30500,
-        "value": 2171297,
-        "filerUrl": "",
-        "transactionText": "Sale at price 70.14 - 72.26 per share.",
-        "filerName": "HOGLUND WILLIAM A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-04-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 5000,
         "value": 348130,
         "filerUrl": "",
@@ -1702,6 +1743,18 @@
         "moneyText": "",
         "startDate": "2026-04-01T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 30500,
+        "value": 2171297,
+        "filerUrl": "",
+        "transactionText": "Sale at price 70.14 - 72.26 per share.",
+        "filerName": "HOGLUND WILLIAM A",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-04-01T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1861,30 +1914,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ADELMAN JONAH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 0,
         "filerUrl": "",
@@ -1909,11 +1938,35 @@
       },
       {
         "maxAge": 1,
+        "shares": 75000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 15000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MILLS THOMAS E IV",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ADELMAN JONAH",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-04T00:00:00.000Z",
@@ -1933,26 +1986,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 75000,
+        "shares": 15000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5758,
-        "value": 525454,
-        "filerUrl": "",
-        "transactionText": "Sale at price 86.01 - 96.11 per share.",
         "filerName": "MILLS THOMAS E IV",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
+        "startDate": "2026-03-04T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1963,6 +2004,18 @@
         "transactionText": "Sale at price 87.26 - 96.65 per share.",
         "filerName": "LUND DEANNA HOM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5758,
+        "value": 525454,
+        "filerUrl": "",
+        "transactionText": "Sale at price 86.01 - 96.11 per share.",
+        "filerName": "MILLS THOMAS E IV",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-02T00:00:00.000Z",
         "ownership": "D"
@@ -2228,28 +2281,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 27500,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ADELMAN JONAH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "filerUrl": "",
         "transactionText": "",
@@ -2272,10 +2303,44 @@
       },
       {
         "maxAge": 1,
+        "shares": 5000,
+        "value": 389561,
+        "filerUrl": "",
+        "transactionText": "Sale at price 75.32 - 79.61 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 27500,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MILLS THOMAS E IV",
+        "filerName": "ADELMAN JONAH",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
@@ -2294,23 +2359,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 5000,
-        "value": 389561,
-        "filerUrl": "",
-        "transactionText": "Sale at price 75.32 - 79.61 per share.",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 75000,
+        "shares": 15000,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "MILLS THOMAS E IV",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
         "ownership": "D"
@@ -2412,18 +2465,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 400000,
-        "value": 29221212,
-        "filerUrl": "",
-        "transactionText": "Sale at price 71.45 - 76.40 per share.",
-        "filerName": "DEMARCO ERIC M",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-12-02T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 55000,
         "value": 4022971,
         "filerUrl": "",
@@ -2433,6 +2474,18 @@
         "moneyText": "",
         "startDate": "2025-12-02T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 400000,
+        "value": 29221212,
+        "filerUrl": "",
+        "transactionText": "Sale at price 71.45 - 76.40 per share.",
+        "filerName": "DEMARCO ERIC M",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-02T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2604,24 +2657,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 3846,
-        "value": 353917,
-        "filerUrl": "",
-        "transactionText": "Sale at price 89.66 - 92.97 per share.",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5000,
         "value": 460135,
         "filerUrl": "",
         "transactionText": "Sale at price 89.35 - 93.38 per share.",
         "filerName": "LUND DEANNA HOM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3846,
+        "value": 353917,
+        "filerUrl": "",
+        "transactionText": "Sale at price 89.66 - 92.97 per share.",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
@@ -2700,18 +2753,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 5758,
-        "value": 377385,
-        "filerUrl": "",
-        "transactionText": "Sale at price 63.78 - 67.11 per share.",
-        "filerName": "MILLS THOMAS E IV",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 0,
         "filerUrl": "",
@@ -2721,6 +2762,18 @@
         "moneyText": "",
         "startDate": "2025-09-02T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5758,
+        "value": 377385,
+        "filerUrl": "",
+        "transactionText": "Sale at price 63.78 - 67.11 per share.",
+        "filerName": "MILLS THOMAS E IV",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-02T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2880,18 +2933,6 @@
       {
         "maxAge": 1,
         "shares": 4000,
-        "value": 150976,
-        "filerUrl": "",
-        "transactionText": "Sale at price 37.74 per share.",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
         "value": 150986,
         "filerUrl": "",
         "transactionText": "Sale at price 37.75 per share.",
@@ -2909,6 +2950,18 @@
         "transactionText": "Sale at price 37.75 per share.",
         "filerName": "LUND DEANNA HOM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 150976,
+        "filerUrl": "",
+        "transactionText": "Sale at price 37.74 per share.",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-02T00:00:00.000Z",
         "ownership": "D"
@@ -3046,18 +3099,6 @@
       {
         "maxAge": 1,
         "shares": 4000,
-        "value": 135631,
-        "filerUrl": "",
-        "transactionText": "Sale at price 33.91 per share.",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
         "value": 135650,
         "filerUrl": "",
         "transactionText": "Sale at price 33.91 per share.",
@@ -3075,6 +3116,18 @@
         "transactionText": "Sale at price 33.91 per share.",
         "filerName": "LUND DEANNA HOM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 135631,
+        "filerUrl": "",
+        "transactionText": "Sale at price 33.91 per share.",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
         "ownership": "D"
@@ -3117,18 +3170,6 @@
       {
         "maxAge": 1,
         "shares": 4000,
-        "value": 117093,
-        "filerUrl": "",
-        "transactionText": "Sale at price 29.27 per share.",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2025-04-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
         "value": 117114,
         "filerUrl": "",
         "transactionText": "Sale at price 29.28 per share.",
@@ -3146,6 +3187,18 @@
         "transactionText": "Sale at price 29.28 per share.",
         "filerName": "LUND DEANNA HOM",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-04-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 117093,
+        "filerUrl": "",
+        "transactionText": "Sale at price 29.27 per share.",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
         "ownership": "D"
@@ -3224,6 +3277,42 @@
       },
       {
         "maxAge": 1,
+        "shares": 66668,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CARRAI PHILLIP D",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CARTER DAVID M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-03-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 16668,
         "value": 0,
         "filerUrl": "",
@@ -3260,42 +3349,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 66668,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CARRAI PHILLIP D",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CARTER DAVID M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MILLS THOMAS E IV",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 200000,
         "value": 0,
         "filerUrl": "",
@@ -3308,12 +3361,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 100000,
+        "shares": 20000,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "LUND DEANNA HOM",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "MILLS THOMAS E IV",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-03-13T00:00:00.000Z",
         "ownership": "D"
@@ -3345,18 +3398,6 @@
       {
         "maxAge": 1,
         "shares": 4000,
-        "value": 106012,
-        "filerUrl": "",
-        "transactionText": "Sale at price 26.49 - 26.58 per share.",
-        "filerName": "ROCK STACEY G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
         "value": 106025,
         "filerUrl": "",
         "transactionText": "Sale at price 26.51 per share.",
@@ -3368,22 +3409,34 @@
       },
       {
         "maxAge": 1,
-        "shares": 9500,
-        "value": 250322,
+        "shares": 6000,
+        "value": 158986,
         "filerUrl": "",
-        "transactionText": "Purchase at price 26.35 per share.",
-        "filerName": "DEMARCO ERIC M",
-        "filerRelation": "Chief Executive Officer",
+        "transactionText": "Sale at price 26.50 per share.",
+        "filerName": "LUND DEANNA HOM",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "I"
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4000,
+        "value": 106012,
+        "filerUrl": "",
+        "transactionText": "Sale at price 26.49 - 26.58 per share.",
+        "filerName": "ROCK STACEY G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-03-03T00:00:00.000Z",
+        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 61.52,
+    "currentPrice": 57,
     "targetHighPrice": 150,
     "targetLowPrice": 75,
     "targetMeanPrice": 114.8,
@@ -3413,6 +3466,6 @@
     "profitMargins": 0.016339999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-07T05:31:13.175Z",
+  "lastUpdated": "2026-05-08T04:54:47.096Z",
   "source": "Static Build (yahoo-finance2)"
 }
