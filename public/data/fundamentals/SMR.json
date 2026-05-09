@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 1,
         "buy": 5,
-        "hold": 8,
+        "hold": 9,
         "sell": 1,
         "strongSell": 1
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 5,
+        "hold": 8,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 5,
         "hold": 8,
@@ -37,7 +45,7 @@
         "organization": "Vanguard Group Inc",
         "pctHeld": 0.048,
         "position": 15545018,
-        "value": 195556325,
+        "value": 195089978,
         "pctChange": 0.4052
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.0356,
         "position": 11515561,
-        "value": 144865756,
+        "value": 144520292,
         "pctChange": 1.1777999
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.033299997,
         "position": 10792606,
-        "value": 135770982,
+        "value": 135447207,
         "pctChange": 0.0799
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Clear Street Group Inc.",
         "pctHeld": 0.0273,
         "position": 8840838,
-        "value": 111217741,
+        "value": 110952518,
         "pctChange": 1.0452
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Mirae Asset Global ETFs Holdings Ltd.",
         "pctHeld": 0.0253,
         "position": 8202662,
-        "value": 103189487,
+        "value": 102943409,
         "pctChange": 0.122
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0163,
         "position": 5277905,
-        "value": 66396044,
+        "value": 66237708,
         "pctChange": 0.8097
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0134000005,
         "position": 4344023,
-        "value": 54647809,
+        "value": 54517489,
         "pctChange": 2.5505
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Voloridge Investment Management, LLC",
         "pctHeld": 0.0107,
         "position": 3457486,
-        "value": 43495173,
+        "value": 43391449,
         "pctChange": 1
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.01,
         "position": 3221828,
-        "value": 40530595,
+        "value": 40433942,
         "pctChange": 0.0795
       },
       {
@@ -118,7 +126,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0092,
         "position": 2962292,
-        "value": 37265633,
+        "value": 37176765,
         "pctChange": 0.0398
       }
     ]
@@ -126,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.02098,
-    "institutionsPercentHeld": 0.44651002,
-    "institutionsFloatPercentHeld": 0.45606998,
-    "institutionsCount": 593
+    "institutionsPercentHeld": 0.44667998,
+    "institutionsFloatPercentHeld": 0.45625,
+    "institutionsCount": 596
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": -0.11,
-          "estimate": -0.115,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "0.01",
-          "surprisePct": "4.35",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1747082309
-        },
         {
           "date": "2Q2025",
           "actual": -0.13,
@@ -177,17 +174,29 @@
           "surprisePct": "-427.46",
           "periodEndDate": 1767139200,
           "reportedDate": 1772140500
+        },
+        {
+          "date": "1Q2026",
+          "actual": -0.14,
+          "estimate": -0.138,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "-0.0",
+          "surprisePct": "-1.45",
+          "periodEndDate": 1774915200,
+          "reportedDate": 1778184900
         }
       ],
-      "currentQuarterEstimate": -0.138,
-      "currentQuarterActual": -0.14,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": -0.13667,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
+      "earningsDate": [
+        "2026-08-06T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -218,13 +227,6 @@
       ],
       "quarterly": [
         {
-          "date": "1Q2025",
-          "fiscalQuarter": "1Q2025",
-          "revenue": 13375000,
-          "earnings": -14005000,
-          "profitMargin": -1.0471028
-        },
-        {
           "date": "2Q2025",
           "fiscalQuarter": "2Q2025",
           "revenue": 8054000,
@@ -244,6 +246,13 @@
           "revenue": 1808000,
           "earnings": -50829000,
           "profitMargin": -28.113384
+        },
+        {
+          "date": "1Q2026",
+          "fiscalQuarter": "1Q2026",
+          "revenue": 565000,
+          "earnings": -44015000,
+          "profitMargin": -77.90266
         }
       ]
     },
@@ -728,76 +737,76 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.060469016,
-    "postMarketChange": -0.7607002,
-    "postMarketTime": "2026-05-07T23:59:59.000Z",
-    "postMarketPrice": 11.8193,
-    "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0695267,
-    "regularMarketChange": -0.940001,
-    "regularMarketTime": "2026-05-07T20:04:04.000Z",
+    "postMarketChangePercent": -0.010358575,
+    "postMarketChange": -0.13000011,
+    "postMarketTime": "2026-05-08T23:59:58.000Z",
+    "postMarketPrice": 12.42,
+    "postMarketSource": "DELAYED",
+    "regularMarketChangePercent": -0.00238472,
+    "regularMarketChange": -0.0299997,
+    "regularMarketTime": "2026-05-08T20:01:19.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 12.58,
-    "regularMarketDayHigh": 13.23,
-    "regularMarketDayLow": 12.23,
-    "regularMarketVolume": 32476497,
-    "averageDailyVolume10Day": 29389870,
-    "averageDailyVolume3Month": 27575108,
-    "regularMarketPreviousClose": 13.52,
+    "regularMarketPrice": 12.55,
+    "regularMarketDayHigh": 12.56,
+    "regularMarketDayLow": 11.62,
+    "regularMarketVolume": 34377913,
+    "averageDailyVolume10Day": 29758250,
+    "averageDailyVolume3Month": 27896087,
+    "regularMarketPreviousClose": 12.58,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 13.015,
+    "regularMarketOpen": 12.34,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "SMR",
     "underlyingSymbol": null,
     "shortName": "NuScale Power Corporation",
     "longName": "NuScale Power Corporation",
     "currency": "USD",
-    "quoteSourceName": "Nasdaq Real Time Price",
+    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4072575232
+    "marketCap": 4343627776
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 2698520576,
-    "forwardPE": -29.312393,
+    "forwardPE": -29.356726,
     "profitMargins": 0,
     "floatShares": 311928407,
-    "sharesOutstanding": 323734120,
+    "sharesOutstanding": 346105785,
     "sharesShort": 66321822,
     "sharesShortPriorMonth": "1971-09-15T09:45:10.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2049,
     "heldPercentInsiders": 0.02098,
-    "heldPercentInstitutions": 0.44651002,
+    "heldPercentInstitutions": 0.44667998,
     "shortRatio": 2.73,
     "shortPercentOfFloat": 0.2352,
     "beta": 2.252,
-    "impliedSharesOutstanding": 323734120,
+    "impliedSharesOutstanding": 346105785,
     "category": null,
     "bookValue": 3.67,
-    "priceToBook": 3.4277928,
+    "priceToBook": 3.4196186,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": -355793984,
-    "trailingEps": -2.17,
-    "forwardEps": -0.42917,
+    "trailingEps": -2.2,
+    "forwardEps": -0.4275,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 85.724,
     "enterpriseToEbitda": -14.909,
-    "52WeekChange": -0.27908307,
-    "SandP52WeekChange": 0.29632986,
+    "52WeekChange": -0.2945475,
+    "SandP52WeekChange": 0.26603174,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1130,18 +1139,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 2138619,
-        "value": 79973689,
-        "filerUrl": "",
-        "transactionText": "Sale at price 35.86 - 40.05 per share.",
-        "filerName": "FLUOR CORP",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 66000,
         "value": 2412970,
         "filerUrl": "",
@@ -1160,6 +1157,18 @@
         "transactionText": "Conversion of Exercise of derivative security at price 3.41 per share.",
         "filerName": "REYES JOSE N. JR",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2138619,
+        "value": 79973689,
+        "filerUrl": "",
+        "transactionText": "Sale at price 35.86 - 40.05 per share.",
+        "filerName": "FLUOR CORP",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "I"
@@ -1347,30 +1356,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BOECKMANN ALAN L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3109,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KRESA KENT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-28T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3109,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "WALTERS DIANA J",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1412,6 +1397,30 @@
         "moneyText": "",
         "startDate": "2025-05-28T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3109,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BOECKMANN ALAN L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3109,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KRESA KENT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-28T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -2112,42 +2121,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BOECKMANN ALAN L",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11603,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HACKETT JAMES T",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11603,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "KRESA KENT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-28T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 11603,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "WARNICA KIMBERLY O",
         "filerRelation": "Director",
         "moneyText": "",
@@ -2177,13 +2150,49 @@
         "moneyText": "",
         "startDate": "2024-05-28T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11603,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BOECKMANN ALAN L",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11603,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HACKETT JAMES T",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 11603,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "KRESA KENT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-28T00:00:00.000Z",
+        "ownership": "I"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 12.58,
+    "currentPrice": 12.55,
     "targetHighPrice": 28,
     "targetLowPrice": 8,
     "targetMeanPrice": 17,
@@ -2211,6 +2220,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-08T04:54:34.132Z",
+  "lastUpdated": "2026-05-09T05:21:29.382Z",
   "source": "Static Build (yahoo-finance2)"
 }
