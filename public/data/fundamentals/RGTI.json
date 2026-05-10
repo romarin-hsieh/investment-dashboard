@@ -13,12 +13,20 @@
         "period": "-1m",
         "strongBuy": 1,
         "buy": 8,
-        "hold": 2,
+        "hold": 3,
         "sell": 1,
         "strongSell": 0
       },
       {
         "period": "-2m",
+        "strongBuy": 1,
+        "buy": 8,
+        "hold": 2,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
         "strongBuy": 1,
         "buy": 8,
         "hold": 2,
@@ -126,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.01789,
-    "institutionsPercentHeld": 0.49558,
-    "institutionsFloatPercentHeld": 0.50461,
-    "institutionsCount": 595
+    "institutionsPercentHeld": 0.5553,
+    "institutionsFloatPercentHeld": 0.56542,
+    "institutionsCount": 601
   },
   "earnings": {
     "maxAge": 86400,
@@ -833,7 +841,7 @@
     "regularMarketDayLow": 17.75,
     "regularMarketVolume": 18092412,
     "averageDailyVolume10Day": 23072670,
-    "averageDailyVolume3Month": 28237991,
+    "averageDailyVolume3Month": 28311926,
     "regularMarketPreviousClose": 18.34,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 18.835,
@@ -847,6 +855,7 @@
     "shortName": "Rigetti Computing, Inc.",
     "longName": "Rigetti Computing, Inc.",
     "currency": "USD",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -867,7 +876,7 @@
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1451,
     "heldPercentInsiders": 0.01789,
-    "heldPercentInstitutions": 0.49558,
+    "heldPercentInstitutions": 0.5553,
     "shortRatio": 1.77,
     "shortPercentOfFloat": 0.1458,
     "beta": 1.801,
@@ -1763,6 +1772,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-09T05:24:24.824Z",
+  "lastUpdated": "2026-05-10T05:39:32.984Z",
   "source": "Static Build (yahoo-finance2)"
 }

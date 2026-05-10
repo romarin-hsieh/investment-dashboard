@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 5,
+        "buy": 10,
+        "hold": 7,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 4,
         "buy": 9,
         "hold": 7,
@@ -18,7 +26,7 @@
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 9,
         "hold": 7,
@@ -125,10 +133,10 @@
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.00072999997,
-    "institutionsPercentHeld": 0.81258005,
-    "institutionsFloatPercentHeld": 0.81317,
-    "institutionsCount": 3954
+    "insidersPercentHeld": 0.00079,
+    "institutionsPercentHeld": 0.81254,
+    "institutionsFloatPercentHeld": 0.81318,
+    "institutionsCount": 3958
   },
   "earnings": {
     "maxAge": 86400,
@@ -1853,7 +1861,7 @@
     "regularMarketDayLow": 174.6,
     "regularMarketVolume": 6261381,
     "averageDailyVolume10Day": 5622000,
-    "averageDailyVolume3Month": 5787801,
+    "averageDailyVolume3Month": 5792495,
     "regularMarketPreviousClose": 176.78,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 176.22,
@@ -1880,15 +1888,15 @@
     "enterpriseValue": 271008481280,
     "forwardPE": 23.324722,
     "profitMargins": 0.080290005,
-    "floatShares": 1252496389,
+    "floatShares": 1252509856,
     "sharesOutstanding": 1346683428,
     "sharesShort": 13286137,
     "sharesShortPriorMonth": "1970-06-02T08:03:56.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0099,
-    "heldPercentInsiders": 0.00072999997,
-    "heldPercentInstitutions": 0.81258005,
+    "heldPercentInsiders": 0.00079,
+    "heldPercentInstitutions": 0.81254,
     "shortRatio": 3.09,
     "shortPercentOfFloat": 0.0099,
     "beta": 0.301,
@@ -1905,7 +1913,7 @@
     "netIncomeToCommon": 7256000000,
     "trailingEps": 5.34,
     "forwardEps": 7.5495,
-    "pegRatio": 2.43,
+    "pegRatio": 2.42,
     "lastSplitFactor": "15890:10000",
     "lastSplitDate": 1585872000,
     "enterpriseToRevenue": 2.999,
@@ -2935,30 +2943,6 @@
         "moneyText": "",
         "startDate": "2024-07-26T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 19880,
-        "value": 2101624,
-        "filerUrl": "",
-        "transactionText": "Sale at price 105.72 per share.",
-        "filerName": "TIMM STEPHEN J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 112992,
-        "value": 9844780,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 71.62 - 90.73 per share.",
-        "filerName": "TIMM STEPHEN J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-10T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
@@ -2995,6 +2979,6 @@
     "profitMargins": 0.080290005,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-09T05:24:26.681Z",
+  "lastUpdated": "2026-05-10T05:39:34.720Z",
   "source": "Static Build (yahoo-finance2)"
 }
