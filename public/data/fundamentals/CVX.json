@@ -42,19 +42,10 @@
       {
         "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Vanguard Group Inc",
-        "pctHeld": 0.091800004,
-        "position": 182961533,
-        "value": 33229472730,
-        "pctChange": -0.0045
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "State Street Corporation",
-        "pctHeld": 0.0764,
+        "pctHeld": 0.0765,
         "position": 152281267,
-        "value": 27657322968,
+        "value": 28132442102,
         "pctChange": -0.0021
       },
       {
@@ -63,17 +54,26 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0709,
         "position": 141290397,
-        "value": 25661161213,
+        "value": 26101988717,
         "pctChange": 0.015800001
       },
       {
         "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Berkshire Hathaway, Inc",
-        "pctHeld": 0.0653,
+        "pctHeld": 0.0654,
         "position": 130156362,
-        "value": 23638997830,
+        "value": 24045087030,
         "pctChange": 0.066300005
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Capital Management LLC",
+        "pctHeld": 0.0615,
+        "position": 122484427,
+        "value": 22627773716,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -81,8 +81,17 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0219,
         "position": 43613011,
-        "value": 7920994844,
+        "value": 8057067891,
         "pctChange": 0.0031
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Portfolio Management LLC",
+        "pctHeld": 0.0212,
+        "position": 42313738,
+        "value": 7817040190,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -90,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0182,
         "position": 36305638,
-        "value": 6593829796,
+        "value": 6707103763,
         "pctChange": -0.0082
       },
       {
@@ -99,7 +108,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.018099999,
         "position": 36036844,
-        "value": 6545011431,
+        "value": 6657446758,
         "pctChange": 0.0274
       },
       {
@@ -108,7 +117,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.013200001,
         "position": 26295251,
-        "value": 4775743358,
+        "value": 4857784814,
         "pctChange": -0.0624
       },
       {
@@ -117,17 +126,8 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.0123000005,
         "position": 24457623,
-        "value": 4441993369,
+        "value": 4518301407,
         "pctChange": 0.2868
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2026-03-31T00:00:00.000Z",
-        "organization": "Fisher Asset Management, LLC",
-        "pctHeld": 0.011,
-        "position": 21887438,
-        "value": 3975196382,
-        "pctChange": 0.0194
       }
     ]
   },
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-11T19:33:26.000Z",
+        "firm": "Bernstein",
+        "toGrade": "Market Perform",
+        "fromGrade": "Market Perform",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 204,
+        "priorPriceTarget": 216
+      },
       {
         "epochGradeDate": "2026-05-05T14:50:26.000Z",
         "firm": "RBC Capital",
@@ -4557,24 +4567,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.00093601015,
-    "postMarketChange": -0.16999817,
-    "postMarketTime": "2026-05-08T23:59:49.000Z",
-    "postMarketPrice": 181.45,
+    "postMarketChangePercent": -0.000054182987,
+    "postMarketChange": -0.010009766,
+    "postMarketTime": "2026-05-11T23:59:56.000Z",
+    "postMarketPrice": 184.73,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.00482194,
-    "regularMarketChange": -0.880005,
-    "regularMarketTime": "2026-05-08T20:00:51.000Z",
+    "regularMarketChangePercent": 0.0171788,
+    "regularMarketChange": 3.12001,
+    "regularMarketTime": "2026-05-11T20:00:44.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 181.62,
-    "regularMarketDayHigh": 182.725,
-    "regularMarketDayLow": 180.74,
-    "regularMarketVolume": 11910750,
-    "averageDailyVolume10Day": 10261760,
-    "averageDailyVolume3Month": 12238596,
-    "regularMarketPreviousClose": 182.5,
+    "regularMarketPrice": 184.74,
+    "regularMarketDayHigh": 185.19,
+    "regularMarketDayLow": 183,
+    "regularMarketVolume": 11788633,
+    "averageDailyVolume10Day": 10358330,
+    "averageDailyVolume3Month": 12274073,
+    "regularMarketPreviousClose": 181.62,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 182.04,
+    "regularMarketOpen": 183,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -4590,13 +4600,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 361713958912
+    "marketCap": 367927754752
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 404897792000,
-    "forwardPE": 15.122007,
+    "enterpriseValue": 411067383808,
+    "forwardPE": 15.381784,
     "profitMargins": 0.059270002,
     "floatShares": 1836063280,
     "sharesOutstanding": 1991597732,
@@ -4613,7 +4623,7 @@
     "impliedSharesOutstanding": 1991597732,
     "category": null,
     "bookValue": 92.906,
-    "priceToBook": 1.9548792,
+    "priceToBook": 1.9884615,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -4621,15 +4631,15 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.369,
     "netIncomeToCommon": 11009000448,
-    "trailingEps": 5.74,
-    "forwardEps": 12.01031,
+    "trailingEps": 5.75,
+    "forwardEps": 12.09156,
     "pegRatio": 0.84,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1095033600,
-    "enterpriseToRevenue": 2.18,
-    "enterpriseToEbitda": 10.682,
-    "52WeekChange": 0.28244603,
-    "SandP52WeekChange": 0.26603174,
+    "enterpriseToRevenue": 2.213,
+    "enterpriseToEbitda": 10.844,
+    "52WeekChange": 0.2977872,
+    "SandP52WeekChange": 0.25928426,
     "lastDividendValue": 1.78,
     "lastDividendDate": "2026-02-17T00:00:00.000Z",
     "latestShareClass": null,
@@ -4658,6 +4668,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 780,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "MOYO DAMBISA F",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 195000,
+        "value": 36031524,
+        "filerUrl": "",
+        "transactionText": "Sale at price 183.90 - 185.21 per share.",
+        "filerName": "HESS JOHN B JR.",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-06T00:00:00.000Z",
+        "ownership": "I"
+      },
       {
         "maxAge": 1,
         "shares": 40200,
@@ -5572,6 +5606,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 9,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "UMPLEBY DONALD JAMES III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-07-18T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 59,
         "value": 0,
         "filerUrl": "",
@@ -5632,15 +5678,15 @@
       },
       {
         "maxAge": 1,
-        "shares": 9,
+        "shares": 1704,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "UMPLEBY DONALD JAMES III",
+        "filerName": "HERNANDEZ ENRIQUEJR",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2025-07-18T00:00:00.000Z",
-        "ownership": "I"
+        "startDate": "2025-05-28T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -5648,7 +5694,31 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HERNANDEZ ENRIQUEJR",
+        "filerName": "GAST ALICE P",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1704,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "UMPLEBY DONALD JAMES III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1704,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WARNER CYNTHIA J",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-28T00:00:00.000Z",
@@ -5733,42 +5803,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "HUNTSMAN JON M JR",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1704,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GAST ALICE P",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1704,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "UMPLEBY DONALD JAMES III",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1704,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WARNER CYNTHIA J",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-28T00:00:00.000Z",
@@ -6152,6 +6186,42 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "GAST ALICE P",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1477,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "UMPLEBY DONALD JAMES III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1477,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "WARNER CYNTHIA J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-05-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1477,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MOYO DAMBISA F",
         "filerRelation": "Director",
         "moneyText": "",
@@ -6232,42 +6302,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1477,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GAST ALICE P",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1477,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "UMPLEBY DONALD JAMES III",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1477,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "WARNER CYNTHIA J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-05-29T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3750,
         "value": 600878,
         "filerUrl": "",
@@ -6295,7 +6329,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 181.62,
+    "currentPrice": 184.74,
     "targetHighPrice": 236,
     "targetLowPrice": 165,
     "targetMeanPrice": 215,
@@ -6325,6 +6359,6 @@
     "profitMargins": 0.059270002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-11T05:59:39.253Z",
+  "lastUpdated": "2026-05-12T05:40:05.768Z",
   "source": "Static Build (yahoo-finance2)"
 }

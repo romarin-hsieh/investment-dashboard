@@ -42,20 +42,20 @@
       {
         "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Vanguard Group Inc",
-        "pctHeld": 0.6974,
-        "position": 67929063,
-        "value": 14121093948,
-        "pctChange": 0.040700004
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Blackrock Inc.",
         "pctHeld": 0.6115,
         "position": 59562981,
-        "value": 12381952781,
+        "value": 12726226738,
         "pctChange": 0.0744
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Capital Management LLC",
+        "pctHeld": 0.5417,
+        "position": 52765656,
+        "value": 11273910254,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -63,7 +63,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.3127,
         "position": 30462984,
-        "value": 6332645262,
+        "value": 6508721272,
         "pctChange": -0.0095999995
       },
       {
@@ -72,8 +72,17 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.3114,
         "position": 30331705,
-        "value": 6305354983,
+        "value": 6480672201,
         "pctChange": 0.02
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Portfolio Management LLC",
+        "pctHeld": 0.20120001,
+        "position": 19601462,
+        "value": 4188048442,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -81,7 +90,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.1989,
         "position": 19375486,
-        "value": 4027776124,
+        "value": 4139766409,
         "pctChange": 0.109799996
       },
       {
@@ -90,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.16420001,
         "position": 15989257,
-        "value": 3323846823,
+        "value": 3416264709,
         "pctChange": 0.035
       },
       {
@@ -99,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.1181,
         "position": 11503089,
-        "value": 2391262197,
+        "value": 2457750037,
         "pctChange": -0.6348
       },
       {
@@ -108,7 +117,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0848,
         "position": 8255352,
-        "value": 1716122614,
+        "value": 1763838538,
         "pctChange": -0.065799996
       },
       {
@@ -117,17 +126,8 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0836,
         "position": 8138673,
-        "value": 1691867382,
+        "value": 1738908902,
         "pctChange": 0.071
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2026-03-31T00:00:00.000Z",
-        "organization": "Nuveen, LLC",
-        "pctHeld": 0.082100004,
-        "position": 7994923,
-        "value": 1661984632,
-        "pctChange": 0.1075
       }
     ]
   },
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-11T13:46:54.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 220,
+        "priorPriceTarget": 200
+      },
       {
         "epochGradeDate": "2026-05-06T14:33:47.000Z",
         "firm": "Truist Securities",
@@ -8767,24 +8777,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0038003104,
-    "postMarketChange": -0.79000854,
-    "postMarketTime": "2026-05-08T23:59:53.000Z",
-    "postMarketPrice": 207.09,
+    "postMarketChangePercent": -0.0007020928,
+    "postMarketChange": -0.15000916,
+    "postMarketTime": "2026-05-11T23:59:18.000Z",
+    "postMarketPrice": 213.51,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.057752028,
-    "regularMarketChange": 11.350006,
-    "regularMarketTime": "2026-05-08T20:00:00.000Z",
+    "regularMarketChangePercent": 0.027804501,
+    "regularMarketChange": 5.78,
+    "regularMarketTime": "2026-05-11T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 207.88,
-    "regularMarketDayHigh": 208.09,
-    "regularMarketDayLow": 193.425,
-    "regularMarketVolume": 11641798,
-    "averageDailyVolume10Day": 6707860,
-    "averageDailyVolume3Month": 9485583,
-    "regularMarketPreviousClose": 196.53,
+    "regularMarketPrice": 213.66,
+    "regularMarketDayHigh": 214.27,
+    "regularMarketDayLow": 205.65,
+    "regularMarketVolume": 9385496,
+    "averageDailyVolume10Day": 6858020,
+    "averageDailyVolume3Month": 9314731,
+    "regularMarketPreviousClose": 207.88,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 194.85,
+    "regularMarketOpen": 207.82,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -8800,30 +8810,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 168590688256
+    "marketCap": 173278265344
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 165553078272,
-    "forwardPE": 52.366547,
+    "enterpriseValue": 170269556736,
+    "forwardPE": 53.817287,
     "profitMargins": 0.12956999,
     "floatShares": 809153760,
     "sharesOutstanding": 811000000,
-    "sharesShort": 25811496,
-    "sharesShortPriorMonth": "1970-10-18T03:02:56.000Z",
-    "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
-    "dateShortInterest": "2026-04-15T00:00:00.000Z",
-    "sharesPercentSharesOut": 0.0318,
+    "sharesShort": 25198205,
+    "sharesShortPriorMonth": "1970-11-06T09:56:35.000Z",
+    "sharesShortPreviousMonthDate": "2026-03-31T00:00:00.000Z",
+    "dateShortInterest": "2026-04-30T00:00:00.000Z",
+    "sharesPercentSharesOut": 0.0311,
     "heldPercentInsiders": 0.00784,
     "heldPercentInstitutions": 0.78329,
-    "shortRatio": 3.06,
-    "shortPercentOfFloat": 0.0321,
+    "shortRatio": 3.31,
+    "shortPercentOfFloat": 0.0313,
     "beta": 0.77,
     "impliedSharesOutstanding": 811000000,
     "category": null,
     "bookValue": 13.361,
-    "priceToBook": 15.558716,
+    "priceToBook": 15.991318,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-07-31T00:00:00.000Z",
@@ -8831,15 +8841,15 @@
     "mostRecentQuarter": "2026-01-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.618,
     "netIncomeToCommon": 1281900032,
-    "trailingEps": 1.81,
+    "trailingEps": 1.79,
     "forwardEps": 3.9701,
     "pegRatio": 3.49,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1734307200,
-    "enterpriseToRevenue": 16.734,
-    "enterpriseToEbitda": 107.747,
-    "52WeekChange": 0.07431519,
-    "SandP52WeekChange": 0.26603174,
+    "enterpriseToRevenue": 17.21,
+    "enterpriseToEbitda": 110.817,
+    "52WeekChange": 0.11281252,
+    "SandP52WeekChange": 0.25928426,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -8939,6 +8949,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 22684,
+        "value": 3729511,
+        "filerUrl": "",
+        "transactionText": "Sale at price 163.83 - 164.76 per share.",
+        "filerName": "GOETZ JAMES JOSEPH",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-06T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 1700,
         "value": 251430,
         "filerUrl": "",
@@ -8947,6 +8969,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 24,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "BAWA APARNA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -8960,18 +8994,6 @@
         "moneyText": "",
         "startDate": "2026-02-12T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 24,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "BAWA APARNA",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-02-12T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -9083,18 +9105,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1983,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "THORNING SCHMIDT HELLE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2160,
         "value": 0,
         "filerUrl": "",
@@ -9119,11 +9129,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 2135,
+        "shares": 1983,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "TWOHILL LORRAINE",
+        "filerName": "THORNING SCHMIDT HELLE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-09T00:00:00.000Z",
@@ -9136,6 +9146,30 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MCCARTHY MARY PAT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1881,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ESCHENBACH CARL M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2135,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "TWOHILL LORRAINE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-09T00:00:00.000Z",
@@ -9164,18 +9198,6 @@
         "moneyText": "",
         "startDate": "2025-12-09T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1881,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ESCHENBACH CARL M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-09T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -10055,6 +10077,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 978,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCCARTHY MARY PAT",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-12-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 889,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ESCHENBACH CARL M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-12-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 915,
         "value": 0,
         "filerUrl": "",
@@ -10079,35 +10125,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 978,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCCARTHY MARY PAT",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1092,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "DONOVAN JOHN M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 889,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ESCHENBACH CARL M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-10T00:00:00.000Z",
@@ -10652,29 +10674,17 @@
         "moneyText": "",
         "startDate": "2024-07-08T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 125866,
-        "value": 8118772,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 64.50 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-07-08T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 207.88,
+    "currentPrice": 213.66,
     "targetHighPrice": 265,
     "targetLowPrice": 114,
-    "targetMeanPrice": 206.4608,
-    "targetMedianPrice": 206,
+    "targetMeanPrice": 207.5608,
+    "targetMedianPrice": 210,
     "recommendationMean": 1.64286,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 50,
@@ -10700,6 +10710,6 @@
     "profitMargins": 0.12956999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-11T05:58:53.046Z",
+  "lastUpdated": "2026-05-12T05:39:19.380Z",
   "source": "Static Build (yahoo-finance2)"
 }

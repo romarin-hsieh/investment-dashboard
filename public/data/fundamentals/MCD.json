@@ -3,9 +3,9 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 4,
+        "strongBuy": 5,
         "buy": 15,
-        "hold": 16,
+        "hold": 15,
         "sell": 1,
         "strongSell": 0
       },
@@ -42,20 +42,20 @@
       {
         "maxAge": 1,
         "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Vanguard Group Inc",
-        "pctHeld": 0.1018,
-        "position": 72351127,
-        "value": 19950823270,
-        "pctChange": 0.0098
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0753,
         "position": 53511996,
-        "value": 14755932897,
+        "value": 14694394428,
         "pctChange": 0.0278
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Capital Management LLC",
+        "pctHeld": 0.065,
+        "position": 46216017,
+        "value": 12690918550,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0506,
         "position": 35983997,
-        "value": 9922587172,
+        "value": 9881205795,
         "pctChange": 0.0274
       },
       {
@@ -72,8 +72,17 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.044699997,
         "position": 31782233,
-        "value": 8763950749,
+        "value": 8727401375,
         "pctChange": -0.5355
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Portfolio Management LLC",
+        "pctHeld": 0.0269,
+        "position": 19104792,
+        "value": 5246175999,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -81,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024,
         "position": 17038519,
-        "value": 4698371614,
+        "value": 4678777421,
         "pctChange": 0.0045
       },
       {
@@ -90,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0215,
         "position": 15270740,
-        "value": 4210906555,
+        "value": 4193345297,
         "pctChange": -0.0194
       },
       {
@@ -99,7 +108,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.0175,
         "position": 12419778,
-        "value": 3424753783,
+        "value": 3410471114,
         "pctChange": -0.026800001
       },
       {
@@ -108,7 +117,7 @@
         "organization": "NORGES BANK",
         "pctHeld": 0.013300001,
         "position": 9457311,
-        "value": 2607853508,
+        "value": 2596977658,
         "pctChange": -0.0063
       },
       {
@@ -117,17 +126,8 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.013300001,
         "position": 9474749,
-        "value": 2612662036,
+        "value": 2601766133,
         "pctChange": 0.030199999
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Northern Trust Corporation",
-        "pctHeld": 0.0116,
-        "position": 8256338,
-        "value": 2276685203,
-        "pctChange": -0.0185
       }
     ]
   },
@@ -187,7 +187,7 @@
           "reportedDate": 1778151600
         }
       ],
-      "currentQuarterEstimate": 3.34953,
+      "currentQuarterEstimate": 3.34421,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-11T15:18:35.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 305,
+        "priorPriceTarget": 325
+      },
       {
         "epochGradeDate": "2026-05-08T17:11:08.000Z",
         "firm": "RBC Capital",
@@ -6797,24 +6807,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0016319572,
-    "postMarketChange": 0.4500122,
-    "postMarketTime": "2026-05-08T23:59:52.000Z",
-    "postMarketPrice": 276.2,
+    "postMarketChangePercent": 0.0006762544,
+    "postMarketChange": 0.18569946,
+    "postMarketTime": "2026-05-11T23:59:38.000Z",
+    "postMarketPrice": 274.7857,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.028022598,
-    "regularMarketChange": -7.95001,
-    "regularMarketTime": "2026-05-08T20:00:02.000Z",
+    "regularMarketChangePercent": -0.0041704196,
+    "regularMarketChange": -1.14999,
+    "regularMarketTime": "2026-05-11T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 275.75,
-    "regularMarketDayHigh": 286.48,
-    "regularMarketDayLow": 274.83,
-    "regularMarketVolume": 4570203,
-    "averageDailyVolume10Day": 4567800,
-    "averageDailyVolume3Month": 3447723,
-    "regularMarketPreviousClose": 283.7,
+    "regularMarketPrice": 274.6,
+    "regularMarketDayHigh": 276.73,
+    "regularMarketDayLow": 271.975,
+    "regularMarketVolume": 5012811,
+    "averageDailyVolume10Day": 4654660,
+    "averageDailyVolume3Month": 3436955,
+    "regularMarketPreviousClose": 275.75,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 285,
+    "regularMarketOpen": 275.83,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -6830,13 +6840,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 195921985536
+    "marketCap": 195104915456
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 249646989312,
-    "forwardPE": 19.37546,
+    "enterpriseValue": 248829902848,
+    "forwardPE": 19.307354,
     "profitMargins": 0.31618,
     "floatShares": 709504046,
     "sharesOutstanding": 710505859,
@@ -6860,15 +6870,15 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.062,
     "netIncomeToCommon": 8677999616,
-    "trailingEps": 12.13,
-    "forwardEps": 14.22741,
+    "trailingEps": 12.14,
+    "forwardEps": 14.19978,
     "pegRatio": 2.47,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 920851200,
-    "enterpriseToRevenue": 9.096,
-    "enterpriseToEbitda": 16.79,
-    "52WeekChange": -0.11595923,
-    "SandP52WeekChange": 0.26603174,
+    "enterpriseToRevenue": 9.066,
+    "enterpriseToEbitda": 16.735,
+    "52WeekChange": -0.11043441,
+    "SandP52WeekChange": 0.25928426,
     "lastDividendValue": 1.86,
     "lastDividendDate": "2026-03-03T00:00:00.000Z",
     "latestShareClass": null,
@@ -7019,6 +7029,39 @@
       },
       {
         "maxAge": 1,
+        "shares": 4146,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RALLS-MORRISON DESIREE ANN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2790,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RICE BRIAN S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3509,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "STEIJAERT MANUEL JM",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7495,
         "filerUrl": "",
         "transactionText": "",
@@ -7075,61 +7118,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 6379,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BORDEN IAN FREDERICK",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5980,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ERLINGER JOSEPH M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4146,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RALLS-MORRISON DESIREE ANN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2790,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RICE BRIAN S",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3509,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "STEIJAERT MANUEL JM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 52553,
         "value": 17470981,
         "filerUrl": "",
@@ -7148,6 +7136,28 @@
         "transactionText": "Conversion of Exercise of derivative security at price 128.09 per share.",
         "filerName": "KEMPCZINSKI CHRISTOPHER J",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6379,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "BORDEN IAN FREDERICK",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5980,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ERLINGER JOSEPH M",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-02-13T00:00:00.000Z",
         "ownership": "D"
@@ -7571,18 +7581,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 939,
-        "value": 286395,
-        "filerUrl": "",
-        "transactionText": "Sale at price 305.00 per share.",
-        "filerName": "ERLINGER JOSEPH M",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10459,
         "value": 3228798,
         "filerUrl": "",
@@ -7600,6 +7598,18 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 128.09 - 174.15 per share.",
         "filerName": "STEIJAERT MANUEL JM",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 939,
+        "value": 286395,
+        "filerUrl": "",
+        "transactionText": "Sale at price 305.00 per share.",
+        "filerName": "ERLINGER JOSEPH M",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-24T00:00:00.000Z",
@@ -7639,6 +7649,28 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8057,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RALLS-MORRISON DESIREE ANN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5874,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "STEIJAERT MANUEL JM",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -7687,6 +7719,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 38600,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KEMPCZINSKI CHRISTOPHER J",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10909,
         "filerUrl": "",
         "transactionText": "",
@@ -7703,39 +7746,6 @@
         "transactionText": "",
         "filerName": "ERLINGER JOSEPH M",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8057,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RALLS-MORRISON DESIREE ANN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 5874,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "STEIJAERT MANUEL JM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 38600,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KEMPCZINSKI CHRISTOPHER J",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-02-14T00:00:00.000Z",
         "ownership": "D"
@@ -7993,6 +8003,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3934,
+        "value": 1180200,
+        "filerUrl": "",
+        "transactionText": "Sale at price 300.00 per share.",
+        "filerName": "KEMPCZINSKI CHRISTOPHER J",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1325,
         "value": 397500,
         "filerUrl": "",
@@ -8011,18 +8033,6 @@
         "transactionText": "Conversion of Exercise of derivative security at price 97.15 per share.",
         "filerName": "BORDEN IAN FREDERICK",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3934,
-        "value": 1180200,
-        "filerUrl": "",
-        "transactionText": "Sale at price 300.00 per share.",
-        "filerName": "KEMPCZINSKI CHRISTOPHER J",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-09-16T00:00:00.000Z",
         "ownership": "D"
@@ -8172,12 +8182,12 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 275.75,
+    "currentPrice": 274.6,
     "targetHighPrice": 407,
     "targetLowPrice": 250,
     "targetMeanPrice": 333.9697,
     "targetMedianPrice": 331,
-    "recommendationMean": 2.11111,
+    "recommendationMean": 2.08333,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 33,
     "totalCash": 1170000000,
@@ -8200,6 +8210,6 @@
     "profitMargins": 0.31618,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-11T06:00:21.350Z",
+  "lastUpdated": "2026-05-12T05:40:46.728Z",
   "source": "Static Build (yahoo-finance2)"
 }

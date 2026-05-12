@@ -45,17 +45,8 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.115600005,
         "position": 4212615,
-        "value": 1303341016,
+        "value": 1356672609,
         "pctChange": 0.0212
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Vanguard Group Inc",
-        "pctHeld": 0.0582,
-        "position": 2119926,
-        "value": 655883936,
-        "pctChange": 0.0092
       },
       {
         "maxAge": 1,
@@ -63,8 +54,26 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0433,
         "position": 1578156,
-        "value": 488265707,
+        "value": 508245120,
         "pctChange": -0.1447
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Capital Management LLC",
+        "pctHeld": 0.035,
+        "position": 1273827,
+        "value": 410235969,
+        "pctChange": 1
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Vanguard Portfolio Management LLC",
+        "pctHeld": 0.031600002,
+        "position": 1150797,
+        "value": 370614159,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -72,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.029000001,
         "position": 1057455,
-        "value": 327166017,
+        "value": 340553369,
         "pctChange": -0.0008
       },
       {
@@ -81,7 +90,7 @@
         "organization": "Voss Capital, LP",
         "pctHeld": 0.028800001,
         "position": 1050000,
-        "value": 324859515,
+        "value": 338152487,
         "pctChange": 0.1864
       },
       {
@@ -90,7 +99,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0.026600001,
         "position": 970785,
-        "value": 300351185,
+        "value": 312641297,
         "pctChange": -0.1079
       },
       {
@@ -99,7 +108,7 @@
         "organization": "Fisher Asset Management, LLC",
         "pctHeld": 0.0212,
         "position": 770745,
-        "value": 238460806,
+        "value": 248218417,
         "pctChange": -0.1902
       },
       {
@@ -108,7 +117,7 @@
         "organization": "GW&K Investment Management, LLC",
         "pctHeld": 0.021,
         "position": 763560,
-        "value": 236237839,
+        "value": 245904488,
         "pctChange": 0.1337
       },
       {
@@ -117,17 +126,8 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0197,
         "position": 717282,
-        "value": 221919888,
+        "value": 231000659,
         "pctChange": 0.0022
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Invesco Ltd.",
-        "pctHeld": 0.0177,
-        "position": 644943,
-        "value": 199538924,
-        "pctChange": -0.3824
       }
     ]
   },
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-11T13:51:15.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 320,
+        "priorPriceTarget": 160
+      },
       {
         "epochGradeDate": "2026-05-06T20:43:35.000Z",
         "firm": "JP Morgan",
@@ -527,24 +537,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.021364572,
-    "postMarketChange": 6.6099854,
-    "postMarketTime": "2026-05-08T23:49:35.000Z",
-    "postMarketPrice": 316,
+    "postMarketChangePercent": 0.011954684,
+    "postMarketChange": 3.850006,
+    "postMarketTime": "2026-05-11T23:54:45.000Z",
+    "postMarketPrice": 325.9,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.011309748,
-    "regularMarketChange": 3.4599915,
-    "regularMarketTime": "2026-05-08T20:00:00.000Z",
+    "regularMarketChangePercent": 0.0409191,
+    "regularMarketChange": 12.66,
+    "regularMarketTime": "2026-05-11T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 309.39,
-    "regularMarketDayHigh": 313.2,
-    "regularMarketDayLow": 300.16,
-    "regularMarketVolume": 495223,
-    "averageDailyVolume10Day": 870790,
-    "averageDailyVolume3Month": 682425,
-    "regularMarketPreviousClose": 305.93002,
+    "regularMarketPrice": 322.05,
+    "regularMarketDayHigh": 328,
+    "regularMarketDayLow": 311.71,
+    "regularMarketVolume": 455182,
+    "averageDailyVolume10Day": 847310,
+    "averageDailyVolume3Month": 677635,
+    "regularMarketPreviousClose": 309.39,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 312,
+    "regularMarketOpen": 312.05,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -560,30 +570,30 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 11271587840
+    "marketCap": 11732811776
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 10728653824,
-    "forwardPE": 45.00546,
+    "enterpriseValue": 11189878784,
+    "forwardPE": 46.847042,
     "profitMargins": 0.16513,
     "floatShares": 29056790,
     "sharesOutstanding": 36431649,
-    "sharesShort": 3288968,
-    "sharesShortPriorMonth": "1970-02-08T16:25:15.000Z",
-    "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
-    "dateShortInterest": "2026-04-15T00:00:00.000Z",
-    "sharesPercentSharesOut": 0.090299994,
+    "sharesShort": 3464966,
+    "sharesShortPriorMonth": "1970-02-08T05:18:18.000Z",
+    "sharesShortPreviousMonthDate": "2026-03-31T00:00:00.000Z",
+    "dateShortInterest": "2026-04-30T00:00:00.000Z",
+    "sharesPercentSharesOut": 0.0951,
     "heldPercentInsiders": 0.20882,
     "heldPercentInstitutions": 0.99764997,
-    "shortRatio": 4.98,
-    "shortPercentOfFloat": 0.1337,
+    "shortRatio": 5.71,
+    "shortPercentOfFloat": 0.1409,
     "beta": 1.144,
     "impliedSharesOutstanding": 36431649,
     "category": null,
     "bookValue": 18.365,
-    "priceToBook": 16.84672,
+    "priceToBook": 17.536074,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-09-30T00:00:00.000Z",
@@ -591,15 +601,15 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.01,
     "netIncomeToCommon": 186931008,
-    "trailingEps": 5.14,
+    "trailingEps": 5.12,
     "forwardEps": 6.8745,
     "pegRatio": 4.14,
     "lastSplitFactor": "3:1",
     "lastSplitDate": 1775433600,
-    "enterpriseToRevenue": 9.477,
-    "enterpriseToEbitda": 46.275,
-    "52WeekChange": 3.939702,
-    "SandP52WeekChange": 0.26603174,
+    "enterpriseToRevenue": 9.885,
+    "enterpriseToEbitda": 48.265,
+    "52WeekChange": 3.9576664,
+    "SandP52WeekChange": 0.25928426,
     "lastDividendValue": 0.09,
     "lastDividendDate": "2026-02-18T00:00:00.000Z",
     "latestShareClass": null,
@@ -848,6 +858,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1900,
+        "value": 642618,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 338.22 per share.",
+        "filerName": "MUDGE FREDERICK N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1300,
         "value": 373334,
         "filerUrl": "",
@@ -865,18 +887,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 287.18 per share.",
         "filerName": "METCALF MICHAEL WILLIAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1900,
-        "value": 642618,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 338.22 per share.",
-        "filerName": "MUDGE FREDERICK N",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
@@ -904,6 +914,18 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4400,
+        "value": 1386132,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 315.03 per share.",
+        "filerName": "MUDGE FREDERICK N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-12-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -968,14 +990,38 @@
       },
       {
         "maxAge": 1,
-        "shares": 4400,
-        "value": 1386132,
+        "shares": 400,
+        "value": 114872,
         "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 315.03 per share.",
+        "transactionText": "Stock Award(Grant) at price 287.18 per share.",
         "filerName": "MUDGE FREDERICK N",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-12-01T00:00:00.000Z",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 300,
+        "value": 86154,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 287.18 per share.",
+        "filerName": "HOGLUND PETER G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 400,
+        "value": 114872,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 287.18 per share.",
+        "filerName": "TUNINETTI DAVIDE",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1058,42 +1104,6 @@
         "transactionText": "Stock Award(Grant) at price 287.18 per share.",
         "filerName": "ECKENRODE DAVID L",
         "filerRelation": "Officer and Treasurer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 400,
-        "value": 114872,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 287.18 per share.",
-        "filerName": "MUDGE FREDERICK N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 300,
-        "value": 86154,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 287.18 per share.",
-        "filerName": "HOGLUND PETER G",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 400,
-        "value": 114872,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 287.18 per share.",
-        "filerName": "TUNINETTI DAVIDE",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-01T00:00:00.000Z",
         "ownership": "D"
@@ -1400,6 +1410,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3700,
+        "value": 1004402,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 271.46 per share.",
+        "filerName": "MUDGE FREDERICK N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 4000,
         "value": 1085840,
         "filerUrl": "",
@@ -1460,18 +1482,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3700,
-        "value": 1004402,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 271.46 per share.",
-        "filerName": "MUDGE FREDERICK N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 10000,
         "value": 3462081,
         "filerUrl": "",
@@ -1517,6 +1527,30 @@
         "moneyText": "",
         "startDate": "2024-10-08T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 500,
+        "value": 114255,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 228.51 per share.",
+        "filerName": "MUDGE FREDERICK N",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 400,
+        "value": 91404,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 228.51 per share.",
+        "filerName": "HOGLUND PETER G",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-10-01T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1610,30 +1644,6 @@
         "transactionText": "Stock Award(Grant) at price 228.51 per share.",
         "filerName": "ECKENRODE DAVID L",
         "filerRelation": "Officer and Treasurer",
-        "moneyText": "",
-        "startDate": "2024-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 500,
-        "value": 114255,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 228.51 per share.",
-        "filerName": "MUDGE FREDERICK N",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-10-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 400,
-        "value": 91404,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 228.51 per share.",
-        "filerName": "HOGLUND PETER G",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-10-01T00:00:00.000Z",
         "ownership": "D"
@@ -1796,18 +1806,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1100,
-        "value": 220715,
-        "filerUrl": "",
-        "transactionText": "Sale at price 200.65 per share.",
-        "filerName": "BIRCHALL JOHN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-05-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 20300,
         "value": 4177563,
         "filerUrl": "",
@@ -1817,13 +1815,25 @@
         "moneyText": "",
         "startDate": "2024-05-31T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1100,
+        "value": 220715,
+        "filerUrl": "",
+        "transactionText": "Sale at price 200.65 per share.",
+        "filerName": "BIRCHALL JOHN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-05-31T00:00:00.000Z",
+        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 309.39,
+    "currentPrice": 322.05,
     "targetHighPrice": 360,
     "targetLowPrice": 252,
     "targetMeanPrice": 316.25,
@@ -1853,6 +1863,6 @@
     "profitMargins": 0.16513,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-11T06:00:36.317Z",
+  "lastUpdated": "2026-05-12T05:41:01.652Z",
   "source": "Static Build (yahoo-finance2)"
 }
