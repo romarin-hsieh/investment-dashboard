@@ -45,7 +45,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.90449995,
         "position": 4407833,
-        "value": 63032012,
+        "value": 59373511,
         "pctChange": -0.0167
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Tidal Investments LLC",
         "pctHeld": 0.7743,
         "position": 3773533,
-        "value": 53961522,
+        "value": 50829490,
         "pctChange": -0.1358
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0,
         "position": 7410980,
-        "value": 105977015,
+        "value": 99825902,
         "pctChange": -0.0104
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0,
         "position": 44615211,
-        "value": 637997525,
+        "value": 600966904,
         "pctChange": 0.004
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Marex Group Plc",
         "pctHeld": 0,
         "position": 5400561,
-        "value": 77228023,
+        "value": 72745558,
         "pctChange": 238.1216
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0,
         "position": 11455442,
-        "value": 163812822,
+        "value": 154304806,
         "pctChange": 0.0398
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0,
         "position": 6187031,
-        "value": 88474544,
+        "value": 83339309,
         "pctChange": -0.0224
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Dimensional Fund Advisors LP",
         "pctHeld": 0,
         "position": 14102777,
-        "value": 201669713,
+        "value": 189964409,
         "pctChange": 0.8129
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0,
         "position": 11092140,
-        "value": 158617604,
+        "value": 149411128,
         "pctChange": 1
       },
       {
@@ -126,17 +126,17 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0,
         "position": 11071533,
-        "value": 158322924,
+        "value": 149133552,
         "pctChange": 1
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.03505,
-    "institutionsPercentHeld": 0.8948,
-    "institutionsFloatPercentHeld": 0.92730004,
-    "institutionsCount": 494
+    "insidersPercentHeld": 0.03494,
+    "institutionsPercentHeld": 0.84153,
+    "institutionsFloatPercentHeld": 0.872,
+    "institutionsCount": 490
   },
   "earnings": {
     "maxAge": 86400,
@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "3Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-08-06T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -259,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-12T22:21:04.000Z",
+        "firm": "Maxim Group",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 22,
+        "priorPriceTarget": 18
+      },
       {
         "epochGradeDate": "2026-05-04T10:45:37.000Z",
         "firm": "Needham",
@@ -1225,24 +1237,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0909091,
-    "postMarketChange": -1.3000002,
-    "postMarketTime": "2026-05-11T23:59:49.000Z",
-    "postMarketPrice": 13,
+    "postMarketChangePercent": -0.004877545,
+    "postMarketChange": -0.06570053,
+    "postMarketTime": "2026-05-12T23:59:47.000Z",
+    "postMarketPrice": 13.4043,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.00704228,
-    "regularMarketChange": 0.1,
-    "regularMarketTime": "2026-05-11T20:00:01.000Z",
+    "regularMarketChangePercent": -0.058042,
+    "regularMarketChange": -0.83,
+    "regularMarketTime": "2026-05-12T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 14.3,
-    "regularMarketDayHigh": 15.0377,
-    "regularMarketDayLow": 13.74,
-    "regularMarketVolume": 27061478,
-    "averageDailyVolume10Day": 20322450,
-    "averageDailyVolume3Month": 20107375,
-    "regularMarketPreviousClose": 14.2,
+    "regularMarketPrice": 13.47,
+    "regularMarketDayHigh": 14.34,
+    "regularMarketDayLow": 12.4002,
+    "regularMarketVolume": 31821640,
+    "averageDailyVolume10Day": 22216440,
+    "averageDailyVolume3Month": 20178718,
+    "regularMarketPreviousClose": 14.3,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 14.09,
+    "regularMarketOpen": 13.145,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -1258,44 +1270,43 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 3657266688
+    "marketCap": 3456391168
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 4992758784,
-    "forwardPE": -23.252033,
-    "profitMargins": -0.33245,
-    "floatShares": 246911535,
-    "sharesOutstanding": 255752913,
+    "enterpriseValue": 4986913792,
+    "forwardPE": -21.90244,
+    "profitMargins": -0.67657995,
+    "floatShares": 247737646,
+    "sharesOutstanding": 256599199,
     "sharesShort": 90239487,
     "sharesShortPriorMonth": "1972-09-23T22:38:06.000Z",
     "sharesShortPreviousMonthDate": "2026-03-31T00:00:00.000Z",
     "dateShortInterest": "2026-04-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.35279998,
-    "heldPercentInsiders": 0.03505,
-    "heldPercentInstitutions": 0.8948,
+    "heldPercentInsiders": 0.03494,
+    "heldPercentInstitutions": 0.84153,
     "shortRatio": 4.48,
     "shortPercentOfFloat": 0.4945,
-    "beta": 3.72,
-    "impliedSharesOutstanding": 255752913,
+    "impliedSharesOutstanding": 256599199,
     "category": null,
-    "bookValue": 5.405,
-    "priceToBook": 2.6456983,
+    "bookValue": 3.843,
+    "priceToBook": 3.5050743,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-09-30T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-09-30T00:00:00.000Z",
-    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
-    "netIncomeToCommon": -267036992,
+    "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
+    "netIncomeToCommon": -536588000,
     "trailingEps": -1.06,
     "forwardEps": -0.615,
     "lastSplitFactor": "1:10",
     "lastSplitDate": 1576022400,
-    "enterpriseToRevenue": 6.359,
-    "enterpriseToEbitda": -21.812,
-    "52WeekChange": 0.42999995,
-    "SandP52WeekChange": 0.25928426,
+    "enterpriseToRevenue": 6.74,
+    "enterpriseToEbitda": -12.866,
+    "52WeekChange": 0.40166497,
+    "SandP52WeekChange": 0.25597954,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1623,6 +1634,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 63713,
+        "value": 581063,
+        "filerUrl": "",
+        "transactionText": "Sale at price 9.12 per share.",
+        "filerName": "MONNIG TAYLOR",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-09-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 432250,
         "filerUrl": "",
         "transactionText": "",
@@ -1650,18 +1673,6 @@
         "transactionText": "",
         "filerName": "GARRISON SCOTT EUGENE",
         "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 63713,
-        "value": 581063,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.12 per share.",
-        "filerName": "MONNIG TAYLOR",
-        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-09-09T00:00:00.000Z",
         "ownership": "D"
@@ -1826,6 +1837,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 239,
+        "value": 2543,
+        "filerUrl": "",
+        "transactionText": "Sale at price 10.64 per share.",
+        "filerName": "MONNIG TAYLOR",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-02-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 9010,
         "value": 95861,
         "filerUrl": "",
@@ -1874,42 +1897,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 239,
-        "value": 2543,
-        "filerUrl": "",
-        "transactionText": "Sale at price 10.64 per share.",
-        "filerName": "MONNIG TAYLOR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-02-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20524,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHULTZ MATTHEW",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1606,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VECCHIARELLI GARY ANTHONY",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-02-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 26767,
         "value": 0,
         "filerUrl": "",
@@ -1940,6 +1927,30 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MONNIG TAYLOR",
         "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20524,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHULTZ MATTHEW",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-02-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1606,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VECCHIARELLI GARY ANTHONY",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-02-13T00:00:00.000Z",
         "ownership": "D"
@@ -2066,30 +2077,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 410493,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHULTZ MATTHEW",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 32120,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "VECCHIARELLI GARY ANTHONY",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 535332,
         "value": 0,
         "filerUrl": "",
@@ -2126,6 +2113,30 @@
       },
       {
         "maxAge": 1,
+        "shares": 410493,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHULTZ MATTHEW",
+        "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2024-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 32120,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "VECCHIARELLI GARY ANTHONY",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1350,
         "value": 14094,
         "filerUrl": "",
@@ -2134,6 +2145,18 @@
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-09-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 22222,
+        "value": 205331,
+        "filerUrl": "",
+        "transactionText": "Sale at price 9.24 per share.",
+        "filerName": "WOOD THOMAS LEIGH",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-09-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2194,18 +2217,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 22222,
-        "value": 205331,
-        "filerUrl": "",
-        "transactionText": "Sale at price 9.24 per share.",
-        "filerName": "WOOD THOMAS LEIGH",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-09-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1350,
         "value": 14540,
         "filerUrl": "",
@@ -2257,7 +2268,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 14.3,
+    "currentPrice": 13.47,
     "targetHighPrice": 26,
     "targetLowPrice": 14,
     "targetMeanPrice": 19.29167,
@@ -2265,27 +2276,27 @@
     "recommendationMean": 1.25,
     "recommendationKey": "strong_buy",
     "numberOfAnalystOpinions": 12,
-    "totalCash": 458096992,
-    "totalCashPerShare": 1.791,
-    "ebitda": -228896000,
-    "totalDebt": 1793586944,
-    "quickRatio": 3.284,
-    "currentRatio": 10.542,
-    "totalRevenue": 785187968,
-    "debtToEquity": 129.758,
-    "revenuePerShare": 2.79,
-    "returnOnAssets": -0.12639,
-    "returnOnEquity": -0.15338,
-    "grossProfits": 416756000,
-    "freeCashflow": -307704640,
-    "operatingCashflow": -502715008,
-    "revenueGrowth": 0.116,
-    "grossMargins": 0.53077,
-    "ebitdaMargins": -0.29152,
-    "operatingMargins": -1.72324,
-    "profitMargins": -0.33245,
+    "totalCash": 260287008,
+    "totalCashPerShare": 1.014,
+    "ebitda": -387612000,
+    "totalDebt": 1790680960,
+    "quickRatio": 1.956,
+    "currentRatio": 8.259,
+    "totalRevenue": 739884032,
+    "debtToEquity": 181.581,
+    "revenuePerShare": 2.66,
+    "returnOnAssets": -0.18244,
+    "returnOnEquity": -0.34804,
+    "grossProfits": 375184992,
+    "freeCashflow": -324851488,
+    "operatingCashflow": -526259008,
+    "revenueGrowth": -0.249,
+    "grossMargins": 0.50709,
+    "ebitdaMargins": -0.52388,
+    "operatingMargins": -2.46283,
+    "profitMargins": -0.67657995,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-12T05:40:00.408Z",
+  "lastUpdated": "2026-05-13T05:49:29.132Z",
   "source": "Static Build (yahoo-finance2)"
 }

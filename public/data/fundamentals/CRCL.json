@@ -45,7 +45,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0437,
         "position": 9978729,
-        "value": 1314797278,
+        "value": 1233869856,
         "pctChange": 0.23809999
       },
       {
@@ -54,7 +54,7 @@
         "organization": "IDG China Capital Fund III Associates L.P.",
         "pctHeld": 0.0394,
         "position": 9003674,
-        "value": 1186324036,
+        "value": 1113304303,
         "pctChange": -0.096499994
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Idg-accel China Capital II Associates L.P.",
         "pctHeld": 0.0306,
         "position": 6996111,
-        "value": 921807546,
+        "value": 865069135,
         "pctChange": 0
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0248,
         "position": 5674208,
-        "value": 747633614,
+        "value": 701615827,
         "pctChange": 0.2556
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.024,
         "position": 5489236,
-        "value": 723261705,
+        "value": 678744039,
         "pctChange": 1
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0202,
         "position": 4607007,
-        "value": 607019217,
+        "value": 569656422,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.018099999,
         "position": 4141628,
-        "value": 545700882,
+        "value": 512112308,
         "pctChange": 0.3959
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Sumitomo Mitsui Trust Group, Inc.",
         "pctHeld": 0.0128,
         "position": 2917764,
-        "value": 384444568,
+        "value": 360781523,
         "pctChange": 0.1328
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Amova Asset Management Americas Inc",
         "pctHeld": 0.0128,
         "position": 2914947,
-        "value": 384073400,
+        "value": 360433200,
         "pctChange": 0.134
       },
       {
@@ -126,7 +126,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.01,
         "position": 2279407,
-        "value": 300334653,
+        "value": 281848679,
         "pctChange": 0.45490003
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.024820002,
-    "institutionsPercentHeld": 0.60288,
-    "institutionsFloatPercentHeld": 0.61823004,
-    "institutionsCount": 663
+    "institutionsPercentHeld": 0.59352,
+    "institutionsFloatPercentHeld": 0.60863,
+    "institutionsCount": 666
   },
   "earnings": {
     "maxAge": 86400,
@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-08-11T12:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -247,6 +249,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-12T12:42:53.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 135,
+        "priorPriceTarget": 120
+      },
+      {
+        "epochGradeDate": "2026-05-12T10:36:46.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 150,
+        "priorPriceTarget": 130
+      },
       {
         "epochGradeDate": "2026-05-05T13:41:24.000Z",
         "firm": "Wells Fargo",
@@ -763,24 +785,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0034592843,
-    "postMarketChange": -0.4557953,
-    "postMarketTime": "2026-05-11T23:59:56.000Z",
-    "postMarketPrice": 131.3042,
+    "postMarketChangePercent": -0.001132223,
+    "postMarketChange": -0.13999939,
+    "postMarketTime": "2026-05-12T23:59:59.000Z",
+    "postMarketPrice": 123.51,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.159145,
-    "regularMarketChange": 18.09,
-    "regularMarketTime": "2026-05-11T20:00:02.000Z",
+    "regularMarketChangePercent": -0.0615513,
+    "regularMarketChange": -8.10999,
+    "regularMarketTime": "2026-05-12T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 131.76,
-    "regularMarketDayHigh": 134.77,
-    "regularMarketDayLow": 105.36,
-    "regularMarketVolume": 44862919,
-    "averageDailyVolume10Day": 19661450,
-    "averageDailyVolume3Month": 17688620,
-    "regularMarketPreviousClose": 113.67,
+    "regularMarketPrice": 123.65,
+    "regularMarketDayHigh": 140,
+    "regularMarketDayLow": 120.5,
+    "regularMarketVolume": 25945084,
+    "averageDailyVolume10Day": 21981620,
+    "averageDailyVolume3Month": 17980005,
+    "regularMarketPreviousClose": 131.76,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 118.85,
+    "regularMarketOpen": 129.99,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -796,29 +818,29 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 35091546112
+    "marketCap": 33050494976
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 30501842944,
-    "forwardPE": 56.34116,
+    "enterpriseValue": 28531113984,
+    "forwardPE": 52.87329,
     "profitMargins": -0.02762,
     "floatShares": 201478590,
-    "sharesOutstanding": 228900000,
+    "sharesOutstanding": 229857799,
     "sharesShort": 25302188,
     "sharesShortPriorMonth": "1970-08-28T06:10:43.000Z",
     "sharesShortPreviousMonthDate": "2026-03-13T00:00:00.000Z",
     "dateShortInterest": "2026-04-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1024,
     "heldPercentInsiders": 0.024820002,
-    "heldPercentInstitutions": 0.60288,
+    "heldPercentInstitutions": 0.59352,
     "shortRatio": 1.49,
     "shortPercentOfFloat": 0.113000005,
-    "impliedSharesOutstanding": 266329302,
+    "impliedSharesOutstanding": 267290681,
     "category": null,
-    "bookValue": 13.743,
-    "priceToBook": 9.587426,
+    "bookValue": 14.104,
+    "priceToBook": 8.767016,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -826,14 +848,14 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.147,
     "netIncomeToCommon": -79046000,
-    "trailingEps": -0.22,
-    "forwardEps": 2.28719,
+    "trailingEps": -0.23,
+    "forwardEps": 2.16642,
     "pegRatio": 4.34,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 10.657,
-    "enterpriseToEbitda": -227.464,
-    "52WeekChange": 0.58308303,
-    "SandP52WeekChange": 0.25928426,
+    "enterpriseToRevenue": 9.968,
+    "enterpriseToEbitda": -212.767,
+    "52WeekChange": 0.4856422,
+    "SandP52WeekChange": 0.25597954,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1363,6 +1385,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 237793,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2435,
         "value": 234101,
         "filerUrl": "",
@@ -1381,18 +1415,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "FOX-GEEN JEREMY",
         "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 237793,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ALLAIRE JEREMY D",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-03-02T00:00:00.000Z",
         "ownership": "D"
@@ -2448,7 +2470,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 131.76,
+    "currentPrice": 123.65,
     "targetHighPrice": 280,
     "targetLowPrice": 55,
     "targetMeanPrice": 132.16591,
@@ -2475,6 +2497,6 @@
     "profitMargins": -0.02762,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-12T05:39:03.061Z",
+  "lastUpdated": "2026-05-13T05:48:32.088Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -45,7 +45,7 @@
         "organization": "Rakuten Group, Inc.",
         "pctHeld": 0.1039,
         "position": 31020155,
-        "value": 2560713889,
+        "value": 2263230480,
         "pctChange": 0
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.04,
         "position": 11945549,
-        "value": 986105106,
+        "value": 871547244,
         "pctChange": 0.1189
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0385,
         "position": 11489121,
-        "value": 948426973,
+        "value": 838246257,
         "pctChange": 1
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.037,
         "position": 11043563,
-        "value": 911646159,
+        "value": 805738346,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Alphabet Inc.",
         "pctHeld": 0.0299,
         "position": 8943486,
-        "value": 738284796,
+        "value": 652516730,
         "pctChange": 0
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Vodafone Ventures Ltd",
         "pctHeld": 0.0183,
         "position": 5471743,
-        "value": 451692401,
+        "value": 399218364,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0156,
         "position": 4661551,
-        "value": 384811049,
+        "value": 340106756,
         "pctChange": 0.4404
       },
       {
@@ -108,7 +108,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0152,
         "position": 4543334,
-        "value": 375052235,
+        "value": 331481644,
         "pctChange": 0.317
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0150999995,
         "position": 4522549,
-        "value": 373336433,
+        "value": 329965170,
         "pctChange": 0.09770001
       },
       {
@@ -126,7 +126,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.013200001,
         "position": 3951685,
-        "value": 326211608,
+        "value": 288314933,
         "pctChange": 0.097399995
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.07827,
-    "institutionsPercentHeld": 0.46372002,
-    "institutionsFloatPercentHeld": 0.50310004,
-    "institutionsCount": 792
+    "institutionsPercentHeld": 0.43929002,
+    "institutionsFloatPercentHeld": 0.47659,
+    "institutionsCount": 804
   },
   "earnings": {
     "maxAge": 86400,
@@ -193,8 +193,10 @@
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-08-10T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -259,6 +261,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-12T22:03:33.000Z",
+        "firm": "UBS",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 80,
+        "priorPriceTarget": 85
+      },
+      {
+        "epochGradeDate": "2026-05-12T15:40:24.000Z",
+        "firm": "B. Riley Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 85,
+        "priorPriceTarget": 75
+      },
       {
         "epochGradeDate": "2026-04-09T12:37:47.000Z",
         "firm": "Barclays",
@@ -725,24 +747,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.103153296,
-    "postMarketChange": -8.515305,
-    "postMarketTime": "2026-05-11T23:59:58.000Z",
-    "postMarketPrice": 74.0347,
+    "postMarketChangePercent": -0.0074013285,
+    "postMarketChange": -0.5400009,
+    "postMarketTime": "2026-05-12T23:59:57.000Z",
+    "postMarketPrice": 72.42,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.09993339,
-    "regularMarketChange": 7.5,
-    "regularMarketTime": "2026-05-11T20:00:01.000Z",
+    "regularMarketChangePercent": -0.116172,
+    "regularMarketChange": -9.59,
+    "regularMarketTime": "2026-05-12T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 82.55,
-    "regularMarketDayHigh": 84.94,
-    "regularMarketDayLow": 75.9,
-    "regularMarketVolume": 32622584,
-    "averageDailyVolume10Day": 18891560,
-    "averageDailyVolume3Month": 15070436,
-    "regularMarketPreviousClose": 75.05,
+    "regularMarketPrice": 72.96,
+    "regularMarketDayHigh": 79.8669,
+    "regularMarketDayLow": 69.92,
+    "regularMarketVolume": 32551379,
+    "averageDailyVolume10Day": 20756330,
+    "averageDailyVolume3Month": 15419613,
+    "regularMarketPreviousClose": 82.55,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 78.03,
+    "regularMarketOpen": 73.45,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -758,15 +780,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 32034101248
+    "marketCap": 28312633344
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 24611864576,
-    "forwardPE": -546.3993,
+    "enterpriseValue": 22339805184,
+    "forwardPE": -482.92294,
     "profitMargins": 0,
-    "floatShares": 259917292,
+    "floatShares": 265343550,
     "sharesOutstanding": 298678735,
     "sharesShort": 53994117,
     "sharesShortPriorMonth": "1971-06-20T01:28:16.000Z",
@@ -774,27 +796,26 @@
     "dateShortInterest": "2026-04-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.1808,
     "heldPercentInsiders": 0.07827,
-    "heldPercentInstitutions": 0.46372002,
+    "heldPercentInstitutions": 0.43929002,
     "shortRatio": 3.24,
     "shortPercentOfFloat": 0.1814,
-    "beta": 2.598,
     "impliedSharesOutstanding": 388056924,
     "category": null,
     "bookValue": 6.451,
-    "priceToBook": 12.796466,
+    "priceToBook": 11.309874,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
-    "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
-    "netIncomeToCommon": -341940000,
-    "trailingEps": -1.34,
-    "forwardEps": -0.15108,
+    "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
+    "netIncomeToCommon": -487246016,
+    "trailingEps": -1.8,
+    "forwardEps": -0.27046,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 347.047,
-    "enterpriseToEbitda": -104.022,
-    "52WeekChange": 2.109228,
-    "SandP52WeekChange": 0.25928426,
+    "enterpriseToRevenue": 263.022,
+    "enterpriseToEbitda": -70.608,
+    "52WeekChange": 1.7794285,
+    "SandP52WeekChange": 0.25597954,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -931,18 +952,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 675,
-        "value": 49079,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 72.71 per share.",
-        "filerName": "LARSON KEITH R",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-10T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 10000,
         "value": 773400,
         "filerUrl": "",
@@ -952,6 +961,18 @@
         "moneyText": "",
         "startDate": "2025-12-10T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 675,
+        "value": 49079,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 72.71 per share.",
+        "filerName": "LARSON KEITH R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-10T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1231,24 +1252,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 15000,
-        "value": 541200,
-        "filerUrl": "",
-        "transactionText": "Sale at price 36.08 per share.",
-        "filerName": "GUPTA SHANTI B.",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-06-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 1782500,
         "filerUrl": "",
         "transactionText": "Sale at price 35.65 per share.",
         "filerName": "WISNIEWSKI SCOTT",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-06-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "value": 541200,
+        "filerUrl": "",
+        "transactionText": "Sale at price 36.08 per share.",
+        "filerName": "GUPTA SHANTI B.",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-06-09T00:00:00.000Z",
         "ownership": "D"
@@ -1423,18 +1444,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 24425,
-        "value": 683900,
-        "filerUrl": "",
-        "transactionText": "Sale at price 28.00 per share.",
-        "filerName": "GUPTA SHANTI B.",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2025-03-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 35871,
         "value": 1016943,
         "filerUrl": "",
@@ -1447,10 +1456,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3000,
-        "value": 0,
+        "shares": 47000,
+        "value": 1316940,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "Sale at price 28.02 per share.",
         "filerName": "WISNIEWSKI SCOTT",
         "filerRelation": "President",
         "moneyText": "",
@@ -1459,10 +1468,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 47000,
-        "value": 1316940,
+        "shares": 24425,
+        "value": 683900,
         "filerUrl": "",
-        "transactionText": "Sale at price 28.02 per share.",
+        "transactionText": "Sale at price 28.00 per share.",
+        "filerName": "GUPTA SHANTI B.",
+        "filerRelation": "Chief Operating Officer",
+        "moneyText": "",
+        "startDate": "2025-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "WISNIEWSKI SCOTT",
         "filerRelation": "President",
         "moneyText": "",
@@ -1555,18 +1576,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 80000,
-        "value": 2066400,
-        "filerUrl": "",
-        "transactionText": "Sale at price 25.83 per share.",
-        "filerName": "GUPTA SHANTI B.",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2700,
         "value": 62427,
         "filerUrl": "",
@@ -1585,6 +1594,18 @@
         "transactionText": "Sale at price 26.12 - 26.13 per share.",
         "filerName": "WISNIEWSKI SCOTT",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2024-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 80000,
+        "value": 2066400,
+        "filerUrl": "",
+        "transactionText": "Sale at price 25.83 per share.",
+        "filerName": "GUPTA SHANTI B.",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2024-09-30T00:00:00.000Z",
         "ownership": "D"
@@ -1762,7 +1783,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 82.55,
+    "currentPrice": 72.96,
     "targetHighPrice": 117,
     "targetLowPrice": 41.2,
     "targetMeanPrice": 83.9,
@@ -1770,27 +1791,27 @@
     "recommendationMean": 2.6,
     "recommendationKey": "hold",
     "numberOfAnalystOpinions": 8,
-    "totalCash": 2335683072,
-    "totalCashPerShare": 7.982,
-    "ebitda": -236602000,
-    "totalDebt": 2239510016,
-    "quickRatio": 15.787,
-    "currentRatio": 16.353,
-    "totalRevenue": 70918000,
-    "debtToEquity": 93.612,
-    "revenuePerShare": 0.277,
-    "returnOnAssets": -0.06025,
-    "returnOnEquity": -0.30117,
-    "grossProfits": 35702000,
-    "freeCashflow": -1240983040,
-    "operatingCashflow": -71517000,
-    "revenueGrowth": 27.313,
-    "grossMargins": 0.50343,
+    "totalCash": 3029591040,
+    "totalCashPerShare": 10.141,
+    "ebitda": -316393984,
+    "totalDebt": 2991408128,
+    "quickRatio": 17.909,
+    "currentRatio": 18.469,
+    "totalRevenue": 84935000,
+    "debtToEquity": 112.424,
+    "revenuePerShare": 0.312,
+    "returnOnAssets": -0.06303,
+    "returnOnEquity": -0.37750998,
+    "grossProfits": 38070000,
+    "freeCashflow": -1454042368,
+    "operatingCashflow": -91029000,
+    "revenueGrowth": 19.522,
+    "grossMargins": 0.44823003,
     "ebitdaMargins": 0,
-    "operatingMargins": -1.33095,
+    "operatingMargins": -10.13994,
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-12T05:37:39.725Z",
+  "lastUpdated": "2026-05-13T05:47:09.362Z",
   "source": "Static Build (yahoo-finance2)"
 }
