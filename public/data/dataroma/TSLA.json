@@ -1,10 +1,10 @@
 {
   "ticker": "TSLA",
-  "updated_at": "2026-05-14T03:42:22.807444",
+  "updated_at": "2026-05-15T03:45:28.399768",
   "stats": {
     "sector": "Consumer Goods",
-    "ownership_count": 4,
-    "ownership_rank": 200,
+    "ownership_count": 5,
+    "ownership_rank": 151,
     "percent_of_portfolios": "0.101%"
   },
   "superinvestors": [
@@ -214,10 +214,18 @@
     {
       "manager": "Polen Capital Management",
       "percent_portfolio": 0.02,
-      "recent_activity": "Reduce 4.88%",
-      "shares": 8171,
-      "value": 3675000,
+      "recent_activity": "Reduce 9.83%",
+      "shares": 7368,
+      "value": 2739000,
       "history": [
+        {
+          "period": "2026   Q1",
+          "shares": 7368,
+          "percent_portfolio": "0.02",
+          "activity": "Reduce 9.83%",
+          "percent_change_portfolio": "0.00",
+          "reported_price": "$371.74"
+        },
         {
           "period": "2025   Q4",
           "shares": 8171,
@@ -243,10 +251,41 @@
           "reported_price": "$317.61"
         }
       ]
+    },
+    {
+      "manager": "First Pacific Advisors",
+      "percent_portfolio": 0.02,
+      "recent_activity": "Buy",
+      "shares": 3000,
+      "value": 1115000,
+      "history": [
+        {
+          "period": "2026   Q1",
+          "shares": 3000,
+          "percent_portfolio": "0.02",
+          "activity": "Buy",
+          "percent_change_portfolio": "0.02",
+          "reported_price": "$371.67"
+        }
+      ]
     }
   ],
   "activity": {
     "Q1  2026": [
+      {
+        "manager": "First Pacific Advisors",
+        "action": "Buy",
+        "type": "Buy",
+        "shares_changed": 3000,
+        "portfolio_change": "0.02"
+      },
+      {
+        "manager": "Polen Capital Management",
+        "action": "Reduce 9.83%",
+        "type": "Sell",
+        "shares_changed": -803,
+        "portfolio_change": "0.00"
+      },
       {
         "manager": "Josh Tarasoff - Greenlea Lane Capital",
         "action": "Reduce 11.86%",
