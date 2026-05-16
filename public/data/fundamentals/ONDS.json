@@ -45,7 +45,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.9251,
         "position": 18314187,
-        "value": 205302036,
+        "value": 194496663,
         "pctChange": 1
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.8768,
         "position": 17357213,
-        "value": 194574358,
+        "value": 184333600,
         "pctChange": 0.078
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.4704,
         "position": 9311954,
-        "value": 104387004,
+        "value": 98892950,
         "pctChange": 0.2741
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.4374,
         "position": 8658920,
-        "value": 97066493,
+        "value": 91957729,
         "pctChange": 0.4083
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.3685,
         "position": 7295273,
-        "value": 81780010,
+        "value": 77475798,
         "pctChange": 1
       },
       {
@@ -90,17 +90,8 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.3507,
         "position": 6943244,
-        "value": 77833765,
+        "value": 73737250,
         "pctChange": 36.7547
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "HRT Financial LP",
-        "pctHeld": 0.31370002,
-        "position": 6210148,
-        "value": 69615759,
-        "pctChange": 1.1256
       },
       {
         "maxAge": 1,
@@ -108,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.2608,
         "position": 5162151,
-        "value": 57867712,
+        "value": 54822043,
         "pctChange": 1.3024001
       },
       {
@@ -117,7 +108,7 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.2505,
         "position": 4958128,
-        "value": 55580615,
+        "value": 52655318,
         "pctChange": 0.0853
       },
       {
@@ -126,8 +117,17 @@
         "organization": "Marex Group Plc",
         "pctHeld": 0.24870001,
         "position": 4922711,
-        "value": 55183590,
+        "value": 52279190,
         "pctChange": 15.1603
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2025-12-31T00:00:00.000Z",
+        "organization": "Geode Capital Management, LLC",
+        "pctHeld": 0.215,
+        "position": 4255992,
+        "value": 45198634,
+        "pctChange": 0.2226
       }
     ]
   },
@@ -183,14 +183,16 @@
           "periodEndDate": 1774915200
         }
       ],
-      "currentQuarterEstimate": -0.04,
+      "currentQuarterEstimate": -0.06,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
       "currentFiscalQuarter": "2Q2026",
       "currentPeriodEndDate": 1782777600,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "earningsDate": [
+        "2026-08-12T12:30:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -521,28 +523,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0071364786,
-    "postMarketChange": 0.07999992,
-    "postMarketTime": "2026-05-14T23:59:58.000Z",
-    "postMarketPrice": 11.29,
+    "postMarketChangePercent": -0.01133705,
+    "postMarketChange": -0.120399475,
+    "postMarketTime": "2026-05-15T23:59:48.000Z",
+    "postMarketPrice": 10.4996,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.265237,
-    "regularMarketChange": 2.35,
-    "regularMarketTime": "2026-05-14T20:00:00.000Z",
+    "regularMarketChangePercent": -0.0526316,
+    "regularMarketChange": -0.59,
+    "regularMarketTime": "2026-05-15T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 11.21,
-    "regularMarketDayHigh": 11.73,
-    "regularMarketDayLow": 9.6,
-    "regularMarketVolume": 243177512,
-    "averageDailyVolume10Day": 65955490,
-    "averageDailyVolume3Month": 74989000,
-    "regularMarketPreviousClose": 8.86,
+    "regularMarketPrice": 10.62,
+    "regularMarketDayHigh": 12.12,
+    "regularMarketDayLow": 10.5,
+    "regularMarketVolume": 139381786,
+    "averageDailyVolume10Day": 75495340,
+    "averageDailyVolume3Month": 76037476,
+    "regularMarketPreviousClose": 11.21,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 9.995,
+    "regularMarketOpen": 10.89,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "ONDS",
     "underlyingSymbol": null,
@@ -554,13 +556,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5556201472
+    "marketCap": 5263769600
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4723085824,
-    "forwardPE": -86.230774,
+    "forwardPE": -151.71428,
     "profitMargins": -2.60233,
     "floatShares": 463863332,
     "sharesOutstanding": 495646865,
@@ -577,20 +579,20 @@
     "impliedSharesOutstanding": 495646865,
     "category": null,
     "bookValue": 1.15,
-    "priceToBook": 9.747827,
+    "priceToBook": 9.234783,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-12-31T00:00:00.000Z",
     "mostRecentQuarter": "2025-12-31T00:00:00.000Z",
     "netIncomeToCommon": -137171008,
-    "trailingEps": -0.62,
+    "trailingEps": 0.3,
     "forwardEps": -0.07,
     "lastSplitFactor": null,
     "enterpriseToRevenue": 93.101,
     "enterpriseToEbitda": -99.812,
-    "52WeekChange": 11.053763,
-    "SandP52WeekChange": 0.2589395,
+    "52WeekChange": 9.847804,
+    "SandP52WeekChange": 0.24228656,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -853,17 +855,6 @@
         "shares": 21035,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "COHEN RICHARD M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 21035,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "SEIDL RANDALL P",
         "filerRelation": "Director",
         "moneyText": "",
@@ -887,6 +878,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SEIDL RANDY",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 21035,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "COHEN RICHARD M",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-20T00:00:00.000Z",
@@ -975,6 +977,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 100000,
+        "value": 67020,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 0.67 per share.",
+        "filerName": "POPOLO JOSEPH V",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2024-06-07T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
         "shares": 78948,
         "filerUrl": "",
         "transactionText": "",
@@ -1005,18 +1019,6 @@
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 100000,
-        "value": 67020,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 0.67 per share.",
-        "filerName": "POPOLO JOSEPH V",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
-        "moneyText": "",
-        "startDate": "2024-06-07T00:00:00.000Z",
-        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1071,7 +1073,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 11.21,
+    "currentPrice": 10.62,
     "targetHighPrice": 25,
     "targetLowPrice": 16,
     "targetMeanPrice": 20.125,
@@ -1100,6 +1102,6 @@
     "profitMargins": -2.60233,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-15T05:53:47.841Z",
+  "lastUpdated": "2026-05-16T05:26:23.395Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -4,8 +4,8 @@
       {
         "period": "0m",
         "strongBuy": 2,
-        "buy": 6,
-        "hold": 5,
+        "buy": 7,
+        "hold": 4,
         "sell": 1,
         "strongSell": 0
       },
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1363,
         "position": 12487506,
-        "value": 2634114546,
+        "value": 2556442243,
         "pctChange": 0.0202
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.053400002,
         "position": 4891237,
-        "value": 1031757544,
+        "value": 1001334044,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.044699997,
         "position": 4094093,
-        "value": 863607987,
+        "value": 838142723,
         "pctChange": 1
       },
       {
@@ -72,7 +72,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.039300002,
         "position": 3598185,
-        "value": 759001152,
+        "value": 736620437,
         "pctChange": 0.0018000001
       },
       {
@@ -81,7 +81,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.028099999,
         "position": 2572811,
-        "value": 542708758,
+        "value": 526705871,
         "pctChange": 0.2662
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0275,
         "position": 2522532,
-        "value": 532102906,
+        "value": 516412754,
         "pctChange": -0.0178
       },
       {
@@ -99,7 +99,7 @@
         "organization": "T. Rowe Price Investment Management, Inc.",
         "pctHeld": 0.0209,
         "position": 1914049,
-        "value": 403749500,
+        "value": 391844113,
         "pctChange": -0.36119998
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Franklin Resources, Inc.",
         "pctHeld": 0.0208,
         "position": 1901316,
-        "value": 401063601,
+        "value": 389237413,
         "pctChange": -0.15810001
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.020299999,
         "position": 1857716,
-        "value": 391866617,
+        "value": 380311621,
         "pctChange": 0.039100002
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Alkeon Capital Management LLC",
         "pctHeld": 0.0173,
         "position": 1580848,
-        "value": 333464080,
+        "value": 323631204,
         "pctChange": 0.0018000001
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0036199999,
-    "institutionsPercentHeld": 0.95318,
-    "institutionsFloatPercentHeld": 0.95664,
-    "institutionsCount": 1021
+    "institutionsPercentHeld": 0.94694,
+    "institutionsFloatPercentHeld": 0.95038,
+    "institutionsCount": 1024
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1777925220
         }
       ],
-      "currentQuarterEstimate": 1.04999,
+      "currentQuarterEstimate": 1.04444,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-15T10:02:40.000Z",
+        "firm": "Deutsche Bank",
+        "toGrade": "Buy",
+        "fromGrade": "Hold",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 255,
+        "priorPriceTarget": 205
+      },
       {
         "epochGradeDate": "2026-05-11T14:36:50.000Z",
         "firm": "Truist Securities",
@@ -1117,28 +1127,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.014506483,
-    "postMarketChange": 3.0599976,
-    "postMarketTime": "2026-05-14T23:58:58.000Z",
-    "postMarketPrice": 214,
+    "postMarketChangePercent": 0.0005861426,
+    "postMarketChange": 0.11999512,
+    "postMarketTime": "2026-05-15T23:58:41.000Z",
+    "postMarketPrice": 204.84,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0198714,
-    "regularMarketChange": 4.11,
-    "regularMarketTime": "2026-05-14T20:00:03.000Z",
+    "regularMarketChangePercent": -0.0294871,
+    "regularMarketChange": -6.22,
+    "regularMarketTime": "2026-05-15T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 210.94,
-    "regularMarketDayHigh": 211.575,
-    "regularMarketDayLow": 205.037,
-    "regularMarketVolume": 1063686,
-    "averageDailyVolume10Day": 1129060,
-    "averageDailyVolume3Month": 1020056,
-    "regularMarketPreviousClose": 206.83,
+    "regularMarketPrice": 204.72,
+    "regularMarketDayHigh": 209,
+    "regularMarketDayLow": 202.25,
+    "regularMarketVolume": 847158,
+    "averageDailyVolume10Day": 1152900,
+    "averageDailyVolume3Month": 1017331,
+    "regularMarketPreviousClose": 210.94,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 207.16,
+    "regularMarketOpen": 208.22,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "BWXT",
     "underlyingSymbol": null,
@@ -1150,15 +1160,15 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 19325194240
+    "marketCap": 18755350528
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 20830593024,
-    "forwardPE": 40.645504,
+    "enterpriseValue": 20260749312,
+    "forwardPE": 39.330353,
     "profitMargins": 0.10205,
-    "floatShares": 91197802,
+    "floatShares": 91207880,
     "sharesOutstanding": 91614649,
     "sharesShort": 2904075,
     "sharesShortPriorMonth": "1970-02-04T13:43:40.000Z",
@@ -1166,14 +1176,14 @@
     "dateShortInterest": "2026-04-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0317,
     "heldPercentInsiders": 0.0036199999,
-    "heldPercentInstitutions": 0.95318,
+    "heldPercentInstitutions": 0.94694,
     "shortRatio": 2.99,
     "shortPercentOfFloat": 0.04,
     "beta": 0.778,
     "impliedSharesOutstanding": 91614649,
     "category": null,
     "bookValue": 13.976,
-    "priceToBook": 15.093017,
+    "priceToBook": 14.647968,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1182,14 +1192,14 @@
     "earningsQuarterlyGrowth": 0.207,
     "netIncomeToCommon": 344551008,
     "trailingEps": 3.75,
-    "forwardEps": 5.18975,
+    "forwardEps": 5.20514,
     "pegRatio": 1.67,
     "lastSplitFactor": "1398:1000",
     "lastSplitDate": 1435708800,
-    "enterpriseToRevenue": 6.169,
-    "enterpriseToEbitda": 44.837,
-    "52WeekChange": 0.9230559,
-    "SandP52WeekChange": 0.2589395,
+    "enterpriseToRevenue": 6.001,
+    "enterpriseToEbitda": 43.611,
+    "52WeekChange": 0.86126006,
+    "SandP52WeekChange": 0.24228656,
     "lastDividendValue": 0.27,
     "lastDividendDate": "2026-03-11T00:00:00.000Z",
     "latestShareClass": null,
@@ -1644,6 +1654,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 25,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DUFFY ROBERT L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-28T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 760,
         "filerUrl": "",
         "transactionText": "",
@@ -1660,17 +1681,6 @@
         "transactionText": "",
         "filerName": "GEVEDEN REX D",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-28T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 25,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DUFFY ROBERT L",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-28T00:00:00.000Z",
         "ownership": "D"
@@ -1721,6 +1731,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 91,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DUFFY ROBERT L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-02-27T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1162,
         "filerUrl": "",
         "transactionText": "",
@@ -1737,17 +1758,6 @@
         "transactionText": "",
         "filerName": "GEVEDEN REX D",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-02-27T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 91,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DUFFY ROBERT L",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-02-27T00:00:00.000Z",
         "ownership": "D"
@@ -1924,11 +1934,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 210.94,
+    "currentPrice": 204.72,
     "targetHighPrice": 290,
     "targetLowPrice": 200,
-    "targetMeanPrice": 234.72726,
-    "targetMedianPrice": 230,
+    "targetMeanPrice": 239.27274,
+    "targetMedianPrice": 235,
     "recommendationMean": 2.14286,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 11,
@@ -1954,6 +1964,6 @@
     "profitMargins": 0.10205,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-15T05:55:36.204Z",
+  "lastUpdated": "2026-05-16T05:28:15.977Z",
   "source": "Static Build (yahoo-finance2)"
 }
