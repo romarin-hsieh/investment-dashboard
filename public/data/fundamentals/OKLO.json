@@ -143,17 +143,6 @@
     "earningsChart": {
       "quarterly": [
         {
-          "date": "1Q2025",
-          "actual": -0.07,
-          "estimate": -0.11,
-          "fiscalQuarter": "1Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "0.04",
-          "surprisePct": "36.36",
-          "periodEndDate": 1743379200,
-          "reportedDate": 1747169678
-        },
-        {
           "date": "2Q2025",
           "actual": -0.18,
           "estimate": -0.11,
@@ -185,14 +174,21 @@
           "surprisePct": "-65.05",
           "periodEndDate": 1767139200,
           "reportedDate": 1773777906
+        },
+        {
+          "date": "1Q2026",
+          "estimate": -0.18373,
+          "fiscalQuarter": "1Q2026",
+          "calendarQuarter": "1Q2026",
+          "periodEndDate": 1774915200
         }
       ],
-      "currentQuarterEstimate": -0.18373,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": -0.16257,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "1Q2026",
-      "currentPeriodEndDate": 1774915200,
+      "currentFiscalQuarter": "2Q2026",
+      "currentPeriodEndDate": 1782777600,
       "earningsDate": [
         "2026-08-10T20:00:00.000Z"
       ],
@@ -815,14 +811,14 @@
     "regularMarketDayLow": 61.73,
     "regularMarketVolume": 11762227,
     "averageDailyVolume10Day": 13872250,
-    "averageDailyVolume3Month": 11199751,
+    "averageDailyVolume3Month": 11297829,
     "regularMarketPreviousClose": 67.21,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 64.8,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "OKLO",
     "underlyingSymbol": null,
@@ -1943,6 +1939,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-17T05:48:28.785Z",
+  "lastUpdated": "2026-05-18T06:12:47.507Z",
   "source": "Static Build (yahoo-finance2)"
 }
