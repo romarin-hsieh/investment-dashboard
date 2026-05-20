@@ -45,7 +45,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.9251,
         "position": 18314187,
-        "value": 177647610,
+        "value": 167116956,
         "pctChange": 1
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Defiance Etfs, LLC",
         "pctHeld": 0.5227,
         "position": 10348366,
-        "value": 100379148,
+        "value": 94428839,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Hood River Capital Management LLC",
         "pctHeld": 0.5184,
         "position": 10261811,
-        "value": 99539564,
+        "value": 93639025,
         "pctChange": -0.4088
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Van Eck Associates Corporation",
         "pctHeld": 0.5148,
         "position": 10191759,
-        "value": 98860060,
+        "value": 92999800,
         "pctChange": 0.397
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.4704,
         "position": 9311954,
-        "value": 90325952,
+        "value": 84971580,
         "pctChange": 0.2741
       },
       {
@@ -90,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.3507,
         "position": 6943244,
-        "value": 67349465,
+        "value": 63357101,
         "pctChange": 36.7547
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.3458,
         "position": 6844823,
-        "value": 66394781,
+        "value": 62459009,
         "pctChange": 3.4257002
       },
       {
@@ -108,8 +108,17 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.3245,
         "position": 6423139,
-        "value": 62304447,
+        "value": 58611143,
         "pctChange": 0.24430001
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Morgan Stanley",
+        "pctHeld": 0.3234,
+        "position": 6403010,
+        "value": 58427466,
+        "pctChange": 1.3917
       },
       {
         "maxAge": 1,
@@ -117,17 +126,8 @@
         "organization": "Millennium Management Llc",
         "pctHeld": 0.28370002,
         "position": 5616989,
-        "value": 54484792,
+        "value": 51255024,
         "pctChange": 0.33400002
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2026-03-31T00:00:00.000Z",
-        "organization": "Geode Capital Management, LLC",
-        "pctHeld": 0.2678,
-        "position": 5301134,
-        "value": 51420998,
-        "pctChange": 0.2456
       }
     ]
   },
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-19T10:46:40.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "reit",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 23,
+        "priorPriceTarget": 23
+      },
       {
         "epochGradeDate": "2026-03-26T17:49:23.000Z",
         "firm": "Northland Capital Markets",
@@ -527,24 +537,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.007216562,
-    "postMarketChange": 0.07000065,
-    "postMarketTime": "2026-05-18T23:59:56.000Z",
-    "postMarketPrice": 9.77,
+    "postMarketChangePercent": 0.007835598,
+    "postMarketChange": 0.071499825,
+    "postMarketTime": "2026-05-19T23:59:58.000Z",
+    "postMarketPrice": 9.1965,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.086629,
-    "regularMarketChange": -0.92,
-    "regularMarketTime": "2026-05-18T20:00:00.000Z",
+    "regularMarketChangePercent": -0.059278302,
+    "regularMarketChange": -0.575,
+    "regularMarketTime": "2026-05-19T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 9.7,
-    "regularMarketDayHigh": 10.67,
-    "regularMarketDayLow": 9.46,
-    "regularMarketVolume": 77698656,
-    "averageDailyVolume10Day": 78612230,
-    "averageDailyVolume3Month": 75087352,
-    "regularMarketPreviousClose": 10.62,
+    "regularMarketPrice": 9.125,
+    "regularMarketDayHigh": 9.88,
+    "regularMarketDayLow": 8.97,
+    "regularMarketVolume": 55343289,
+    "averageDailyVolume10Day": 78565020,
+    "averageDailyVolume3Month": 74177868,
+    "regularMarketPreviousClose": 9.7,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 10.63,
+    "regularMarketOpen": 9.825,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -560,13 +570,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 4808897536
+    "marketCap": 4523834368
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 4723085824,
-    "forwardPE": -138.57143,
+    "forwardPE": -130.35715,
     "profitMargins": -2.60233,
     "floatShares": 463863332,
     "sharesOutstanding": 495762650,
@@ -583,7 +593,7 @@
     "impliedSharesOutstanding": 495762650,
     "category": null,
     "bookValue": 1.15,
-    "priceToBook": 8.434783,
+    "priceToBook": 7.934783,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -595,8 +605,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 93.101,
     "enterpriseToEbitda": -99.812,
-    "52WeekChange": 9.286321,
-    "SandP52WeekChange": 0.24620819,
+    "52WeekChange": 9.549133,
+    "SandP52WeekChange": 0.25818658,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1077,7 +1087,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 9.7,
+    "currentPrice": 9.125,
     "targetHighPrice": 25,
     "targetLowPrice": 16,
     "targetMeanPrice": 20.125,
@@ -1106,6 +1116,6 @@
     "profitMargins": -2.60233,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-19T06:05:47.624Z",
+  "lastUpdated": "2026-05-20T06:05:29.560Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.056799997,
         "position": 28142025,
-        "value": 594922391,
+        "value": 600550817,
         "pctChange": 0.0088
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.045300003,
         "position": 22462422,
-        "value": 474855587,
+        "value": 479348088,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Lone Pine Capital Llc",
         "pctHeld": 0.0402,
         "position": 19921430,
-        "value": 421139018,
+        "value": 425123319,
         "pctChange": 1
       },
       {
@@ -72,17 +72,8 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0315,
         "position": 15627257,
-        "value": 330360203,
+        "value": 333485666,
         "pctChange": 1
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Morgan Stanley",
-        "pctHeld": 0.0195,
-        "position": 9641209,
-        "value": 203815152,
-        "pctChange": 0.081199996
       },
       {
         "maxAge": 1,
@@ -90,7 +81,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0189,
         "position": 9374298,
-        "value": 198172653,
+        "value": 200047520,
         "pctChange": 1.9422001
       },
       {
@@ -99,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0172,
         "position": 8523976,
-        "value": 180196847,
+        "value": 181901649,
         "pctChange": 0.0175
       },
       {
@@ -108,8 +99,17 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.015800001,
         "position": 7837097,
-        "value": 165676225,
+        "value": 167243651,
         "pctChange": 0.981
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Value Aligned Research Advisors, LLC                          ",
+        "pctHeld": 0.015800001,
+        "position": 7848232,
+        "value": 167481272,
+        "pctChange": 1
       },
       {
         "maxAge": 1,
@@ -117,7 +117,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0154,
         "position": 7613660,
-        "value": 160952767,
+        "value": 162475505,
         "pctChange": 0.0359
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Scoggin Management, LP",
         "pctHeld": 0.0150999995,
         "position": 7500000,
-        "value": 158549995,
+        "value": 160050001,
         "pctChange": 0.1858
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.22734,
-    "institutionsPercentHeld": 0.75331,
-    "institutionsFloatPercentHeld": 0.97496,
-    "institutionsCount": 566
+    "institutionsPercentHeld": 0.77026004,
+    "institutionsFloatPercentHeld": 0.9969,
+    "institutionsCount": 568
   },
   "earnings": {
     "maxAge": 86400,
@@ -178,11 +178,11 @@
         {
           "date": "1Q2026",
           "actual": -0.1976,
-          "estimate": -0.2175,
+          "estimate": -0.23667,
           "fiscalQuarter": "1Q2026",
           "calendarQuarter": "1Q2026",
-          "difference": "0.02",
-          "surprisePct": "9.15",
+          "difference": "0.04",
+          "surprisePct": "16.51",
           "periodEndDate": 1774915200,
           "reportedDate": 1778238000
         }
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-19T13:41:13.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 42,
+        "priorPriceTarget": 41.5
+      },
       {
         "epochGradeDate": "2026-05-14T20:18:24.000Z",
         "firm": "Jefferies",
@@ -1107,24 +1117,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0023652387,
-    "postMarketChange": 0.050001144,
-    "postMarketTime": "2026-05-18T23:59:35.000Z",
-    "postMarketPrice": 21.19,
+    "postMarketChangePercent": 0.00093722856,
+    "postMarketChange": 0.020000458,
+    "postMarketTime": "2026-05-19T23:58:02.000Z",
+    "postMarketPrice": 21.36,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.052867398,
-    "regularMarketChange": -1.18,
-    "regularMarketTime": "2026-05-18T20:00:00.000Z",
+    "regularMarketChangePercent": 0.00946077,
+    "regularMarketChange": 0.200001,
+    "regularMarketTime": "2026-05-19T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 21.14,
-    "regularMarketDayHigh": 21.69,
-    "regularMarketDayLow": 20.26,
-    "regularMarketVolume": 31096119,
-    "averageDailyVolume10Day": 30042670,
-    "averageDailyVolume3Month": 31246742,
-    "regularMarketPreviousClose": 22.32,
+    "regularMarketPrice": 21.34,
+    "regularMarketDayHigh": 21.405,
+    "regularMarketDayLow": 19.6,
+    "regularMarketVolume": 22572663,
+    "averageDailyVolume10Day": 29086120,
+    "averageDailyVolume3Month": 31174014,
+    "regularMarketPreviousClose": 21.14,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 21.4,
+    "regularMarketOpen": 20.68,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -1140,13 +1150,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 10475559936
+    "marketCap": 10574666752
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 13160785920,
-    "forwardPE": 138.62294,
+    "enterpriseValue": 13259892736,
+    "forwardPE": 70.352425,
     "profitMargins": 0,
     "floatShares": 384572975,
     "sharesOutstanding": 495532645,
@@ -1156,14 +1166,14 @@
     "dateShortInterest": "2026-04-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.21370001,
     "heldPercentInsiders": 0.22734,
-    "heldPercentInstitutions": 0.75331,
+    "heldPercentInstitutions": 0.77026004,
     "shortRatio": 3.15,
     "shortPercentOfFloat": 0.25190002,
     "beta": 4.284,
     "impliedSharesOutstanding": 495532645,
     "category": null,
     "bookValue": 0.334,
-    "priceToBook": 63.29341,
+    "priceToBook": 63.89222,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1174,10 +1184,10 @@
     "forwardEps": 0.30333,
     "lastSplitFactor": "3:2",
     "lastSplitDate": 1084492800,
-    "enterpriseToRevenue": 78.309,
-    "enterpriseToEbitda": -90.913,
-    "52WeekChange": 4.392857,
-    "SandP52WeekChange": 0.24620819,
+    "enterpriseToRevenue": 78.899,
+    "enterpriseToEbitda": -91.597,
+    "52WeekChange": 4.4578004,
+    "SandP52WeekChange": 0.25818658,
     "lastDividendValue": 5,
     "lastDividendDate": "2021-12-14T00:00:00.000Z",
     "latestShareClass": null,
@@ -2627,71 +2637,16 @@
         "moneyText": "",
         "startDate": "2024-06-07T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2022926,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KHAN NAZAR M.",
-        "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-05-20T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 154000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DEANE KENNETH J.",
-        "filerRelation": "Officer and Treasurer",
-        "moneyText": "",
-        "startDate": "2024-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 390000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FLEURY PATRICK",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 140000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "LANGLAIS KERRI M.",
-        "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2024-05-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 500000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PRAGER PAUL B.",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-05-20T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 21.14,
-    "targetHighPrice": 41.5,
+    "currentPrice": 21.34,
+    "targetHighPrice": 42,
     "targetLowPrice": 25,
-    "targetMeanPrice": 30.80769,
+    "targetMeanPrice": 30.84615,
     "targetMedianPrice": 30,
     "recommendationMean": 1.41667,
     "recommendationKey": "strong_buy",
@@ -2716,6 +2671,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-19T06:09:44.526Z",
+  "lastUpdated": "2026-05-20T06:09:46.331Z",
   "source": "Static Build (yahoo-finance2)"
 }

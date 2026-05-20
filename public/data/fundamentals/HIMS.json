@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1181,
         "position": 26337158,
-        "value": 587055275,
+        "value": 591005839,
         "pctChange": -0.0089
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.045700002,
         "position": 10183813,
-        "value": 226997201,
+        "value": 228524769,
         "pctChange": 1
       },
       {
@@ -63,8 +63,17 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0419,
         "position": 9339711,
-        "value": 208182166,
+        "value": 209583119,
         "pctChange": 1
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Morgan Stanley",
+        "pctHeld": 0.0398,
+        "position": 8889088,
+        "value": 199471139,
+        "pctChange": 1.2623
       },
       {
         "maxAge": 1,
@@ -72,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0334,
         "position": 7460023,
-        "value": 166283919,
+        "value": 167402920,
         "pctChange": 0.0211
       },
       {
@@ -81,7 +90,7 @@
         "organization": "Defiance Etfs, LLC",
         "pctHeld": 0.033299997,
         "position": 7424258,
-        "value": 165486717,
+        "value": 166600353,
         "pctChange": 1
       },
       {
@@ -90,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0235,
         "position": 5240816,
-        "value": 116817793,
+        "value": 117603913,
         "pctChange": -0.7218
       },
       {
@@ -99,8 +108,17 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0233,
         "position": 5198779,
-        "value": 115880788,
+        "value": 116660603,
         "pctChange": -0.056399997
+      },
+      {
+        "maxAge": 1,
+        "reportDate": "2026-03-31T00:00:00.000Z",
+        "organization": "Bank of America Corporation",
+        "pctHeld": 0.0195,
+        "position": 4357672,
+        "value": 97786162,
+        "pctChange": 1.9441
       },
       {
         "maxAge": 1,
@@ -108,35 +126,17 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0186,
         "position": 4151638,
-        "value": 92540014,
+        "value": 93162758,
         "pctChange": -0.0874
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2025-12-31T00:00:00.000Z",
-        "organization": "Morgan Stanley",
-        "pctHeld": 0.0176,
-        "position": 3929232,
-        "value": 87582584,
-        "pctChange": -0.46
-      },
-      {
-        "maxAge": 1,
-        "reportDate": "2026-03-31T00:00:00.000Z",
-        "organization": "Goldman Sachs Group Inc",
-        "pctHeld": 0.011,
-        "position": 2454695,
-        "value": 54715153,
-        "pctChange": -0.7628
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.05408,
-    "institutionsPercentHeld": 0.68578005,
-    "institutionsFloatPercentHeld": 0.72499,
-    "institutionsCount": 609
+    "institutionsPercentHeld": 0.69918996,
+    "institutionsFloatPercentHeld": 0.73916,
+    "institutionsCount": 607
   },
   "earnings": {
     "maxAge": 86400,
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-19T18:51:34.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 28,
+        "priorPriceTarget": 30
+      },
       {
         "epochGradeDate": "2026-05-13T10:54:45.000Z",
         "firm": "B of A Securities",
@@ -1577,24 +1587,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0026872307,
-    "postMarketChange": 0.059898376,
-    "postMarketTime": "2026-05-18T23:59:48.000Z",
-    "postMarketPrice": 22.3499,
+    "postMarketChangePercent": -0.0009358248,
+    "postMarketChange": -0.020999908,
+    "postMarketTime": "2026-05-19T23:59:59.000Z",
+    "postMarketPrice": 22.419,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.11018,
-    "regularMarketChange": -2.76,
-    "regularMarketTime": "2026-05-18T20:00:02.000Z",
+    "regularMarketChangePercent": 0.00672946,
+    "regularMarketChange": 0.15,
+    "regularMarketTime": "2026-05-19T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 22.29,
-    "regularMarketDayHigh": 23.98,
-    "regularMarketDayLow": 22.14,
-    "regularMarketVolume": 28782358,
-    "averageDailyVolume10Day": 28692130,
-    "averageDailyVolume3Month": 36444381,
-    "regularMarketPreviousClose": 25.05,
+    "regularMarketPrice": 22.44,
+    "regularMarketDayHigh": 22.69,
+    "regularMarketDayLow": 21.53,
+    "regularMarketVolume": 26391048,
+    "averageDailyVolume10Day": 29877100,
+    "averageDailyVolume3Month": 36476988,
+    "regularMarketPreviousClose": 22.29,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 23.98,
+    "regularMarketOpen": 22.14,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -1610,13 +1620,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 5159192064
+    "marketCap": 5193910784
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 5540354048,
-    "forwardPE": 15.286075,
+    "enterpriseValue": 5575072768,
+    "forwardPE": 15.388942,
     "profitMargins": -0.00559,
     "floatShares": 210943599,
     "sharesOutstanding": 223080072,
@@ -1626,14 +1636,14 @@
     "dateShortInterest": "2026-04-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2733,
     "heldPercentInsiders": 0.05408,
-    "heldPercentInstitutions": 0.68578005,
+    "heldPercentInstitutions": 0.69918996,
     "shortRatio": 1.92,
     "shortPercentOfFloat": 0.32919997,
     "beta": 2.423,
     "impliedSharesOutstanding": 231457695,
     "category": null,
     "bookValue": 2.38,
-    "priceToBook": 9.365546,
+    "priceToBook": 9.428571,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1641,13 +1651,13 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "netIncomeToCommon": -13235000,
     "trailingEps": -0.09,
-    "forwardEps": 1.36389,
+    "forwardEps": 1.28663,
     "pegRatio": 2.15,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 2.338,
-    "enterpriseToEbitda": 66.418,
-    "52WeekChange": -0.6358438,
-    "SandP52WeekChange": 0.24620819,
+    "enterpriseToRevenue": 2.353,
+    "enterpriseToEbitda": 66.835,
+    "52WeekChange": -0.61310345,
+    "SandP52WeekChange": 0.25818658,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2112,6 +2122,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 164369,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DUDUM ANDREW",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-12-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 105201,
         "filerUrl": "",
         "transactionText": "",
@@ -2150,17 +2171,6 @@
         "transactionText": "",
         "filerName": "AUTOR DEBORAH M",
         "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-12-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 164369,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DUDUM ANDREW",
-        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-12-15T00:00:00.000Z",
         "ownership": "D"
@@ -2609,6 +2619,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 6623,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "SCHULTZ KARE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 215199,
         "value": 551100,
         "filerUrl": "",
@@ -2621,11 +2642,12 @@
       },
       {
         "maxAge": 1,
-        "shares": 6623,
+        "shares": 76256,
+        "value": 25680,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "SCHULTZ KARE",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 5.01 - 11.53 per share.",
+        "filerName": "CHI MICHAEL Y",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
@@ -2659,18 +2681,6 @@
         "transactionText": "",
         "filerName": "CARROLL PATRICK HARRISON",
         "filerRelation": "Officer and Director",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 76256,
-        "value": 25680,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 5.01 - 11.53 per share.",
-        "filerName": "CHI MICHAEL Y",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
         "ownership": "D"
@@ -3037,17 +3047,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 105199,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "OKUPE OLUYEMI",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-06-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 19975,
         "filerUrl": "",
         "transactionText": "",
@@ -3070,10 +3069,21 @@
       },
       {
         "maxAge": 1,
-        "shares": 41420,
+        "shares": 105199,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "BOUGHTON SOLEIL",
+        "filerName": "OKUPE OLUYEMI",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-06-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 87106,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "CHI MICHAEL Y",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-13T00:00:00.000Z",
@@ -3103,24 +3113,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 87106,
+        "shares": 41420,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CHI MICHAEL Y",
+        "filerName": "BOUGHTON SOLEIL",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-13T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9935,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PENDARVIS CHRISTIANE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -3151,6 +3150,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "COSGROVE DELOS M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 9935,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PENDARVIS CHRISTIANE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-12T00:00:00.000Z",
@@ -3447,7 +3457,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 22.29,
+    "currentPrice": 22.44,
     "targetHighPrice": 35,
     "targetLowPrice": 18,
     "targetMeanPrice": 26.46429,
@@ -3476,6 +3486,6 @@
     "profitMargins": -0.00559,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-19T06:06:22.006Z",
+  "lastUpdated": "2026-05-20T06:06:03.691Z",
   "source": "Static Build (yahoo-finance2)"
 }
