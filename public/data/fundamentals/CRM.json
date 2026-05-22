@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.097399995,
         "position": 79691184,
-        "value": 14352382724,
+        "value": 14050352456,
         "pctChange": -0.0123000005
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0725,
         "position": 59333776,
-        "value": 10686013419,
+        "value": 10461137901,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0598,
         "position": 48953388,
-        "value": 8816505477,
+        "value": 8630971718,
         "pctChange": -0.0225
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0387,
         "position": 31675603,
-        "value": 5704776293,
+        "value": 5584725487,
         "pctChange": 0.6663
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0272,
         "position": 22225157,
-        "value": 4002750911,
+        "value": 3918517376,
         "pctChange": 0.020299999
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.023699999,
         "position": 19419407,
-        "value": 3497435319,
+        "value": 3423835600,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.020399999,
         "position": 16711525,
-        "value": 3009745754,
+        "value": 2946408931,
         "pctChange": -0.1505
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Harris Associates L.P.",
         "pctHeld": 0.0182,
         "position": 14917993,
-        "value": 2686730630,
+        "value": 2630191309,
         "pctChange": 0.5236
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0168,
         "position": 13705564,
-        "value": 2468372160,
+        "value": 2416427955,
         "pctChange": 0.44759998
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Arrowstreet Capital, Limited Partnership",
         "pctHeld": 0.0155,
         "position": 12659217,
-        "value": 2279925058,
+        "value": 2231946518,
         "pctChange": 1.3021001
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.029879998,
-    "institutionsPercentHeld": 0.94346,
-    "institutionsFloatPercentHeld": 0.97252,
-    "institutionsCount": 3718
+    "institutionsPercentHeld": 0.94371,
+    "institutionsFloatPercentHeld": 0.97278,
+    "institutionsCount": 3721
   },
   "earnings": {
     "maxAge": 86400,
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-21T20:37:50.000Z",
+        "firm": "UBS",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 185,
+        "priorPriceTarget": 200
+      },
       {
         "epochGradeDate": "2026-05-12T18:16:27.000Z",
         "firm": "Citigroup",
@@ -9277,24 +9287,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.018656306,
-    "postMarketChange": -3.3600006,
-    "postMarketTime": "2026-05-20T23:59:27.000Z",
-    "postMarketPrice": 176.74,
-    "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.0037900298,
-    "regularMarketChange": 0.680008,
-    "regularMarketTime": "2026-05-20T20:00:02.000Z",
+    "postMarketChangePercent": 0.013555666,
+    "postMarketChange": 2.3899994,
+    "postMarketTime": "2026-05-21T23:59:25.000Z",
+    "postMarketPrice": 178.7,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.021043899,
+    "regularMarketChange": -3.79001,
+    "regularMarketTime": "2026-05-21T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 180.1,
-    "regularMarketDayHigh": 180.31,
-    "regularMarketDayLow": 173.34,
-    "regularMarketVolume": 12430490,
-    "averageDailyVolume10Day": 13021450,
-    "averageDailyVolume3Month": 13630795,
-    "regularMarketPreviousClose": 179.42,
+    "regularMarketPrice": 176.31,
+    "regularMarketDayHigh": 177.34,
+    "regularMarketDayLow": 171.99,
+    "regularMarketVolume": 7757580,
+    "averageDailyVolume10Day": 12720460,
+    "averageDailyVolume3Month": 13588166,
+    "regularMarketPreviousClose": 180.1,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 176.04,
+    "regularMarketOpen": 175.38,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -9305,18 +9315,18 @@
     "shortName": "Salesforce, Inc.",
     "longName": "Salesforce, Inc.",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 147331481600
+    "marketCap": 144231055360
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 174378303488,
-    "forwardPE": 12.049781,
+    "enterpriseValue": 170880122880,
+    "forwardPE": 11.796206,
     "profitMargins": 0.17958,
     "floatShares": 894405460,
     "sharesOutstanding": 818053744,
@@ -9326,14 +9336,14 @@
     "dateShortInterest": "2026-04-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0851,
     "heldPercentInsiders": 0.029879998,
-    "heldPercentInstitutions": 0.94346,
+    "heldPercentInstitutions": 0.94371,
     "shortRatio": 5.16,
     "shortPercentOfFloat": 0.098500006,
     "beta": 1.139,
     "impliedSharesOutstanding": 818053744,
     "category": null,
     "bookValue": 63.662,
-    "priceToBook": 2.8290033,
+    "priceToBook": 2.76947,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2026-01-31T00:00:00.000Z",
@@ -9341,15 +9351,15 @@
     "mostRecentQuarter": "2026-01-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.138,
     "netIncomeToCommon": 7456999936,
-    "trailingEps": 7.8,
-    "forwardEps": 14.94413,
+    "trailingEps": 7.79,
+    "forwardEps": 14.96833,
     "pegRatio": 0.98,
     "lastSplitFactor": "4:1",
     "lastSplitDate": 1366243200,
-    "enterpriseToRevenue": 4.199,
-    "enterpriseToEbitda": 13.897,
-    "52WeekChange": -0.3645473,
-    "SandP52WeekChange": 0.27233088,
+    "enterpriseToRevenue": 4.115,
+    "enterpriseToEbitda": 13.618,
+    "52WeekChange": -0.3544832,
+    "SandP52WeekChange": 0.283121,
     "lastDividendValue": 0.44,
     "lastDividendDate": "2026-04-09T00:00:00.000Z",
     "latestShareClass": null,
@@ -9546,6 +9556,17 @@
         "shares": 442,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "MUNOZ OSCAR X",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 442,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "WEBB MAYNARD GEORGE JR",
         "filerRelation": "Director",
         "moneyText": "",
@@ -9562,17 +9583,6 @@
         "moneyText": "",
         "startDate": "2026-02-20T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 442,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "MUNOZ OSCAR X",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-02-20T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -11138,7 +11148,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 180.1,
+    "currentPrice": 176.31,
     "targetHighPrice": 475,
     "targetLowPrice": 160,
     "targetMeanPrice": 265.00793,
@@ -11168,6 +11178,6 @@
     "profitMargins": 0.17958,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-21T06:08:47.761Z",
+  "lastUpdated": "2026-05-22T06:05:15.523Z",
   "source": "Static Build (yahoo-finance2)"
 }
