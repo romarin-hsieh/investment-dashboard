@@ -3,7 +3,7 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 0,
+        "strongBuy": 1,
         "buy": 2,
         "hold": 7,
         "sell": 0,
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0709,
         "position": 24083779,
-        "value": 196764476,
+        "value": 194115268,
         "pctChange": 0.028099999
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Driehaus Capital Management, LLC",
         "pctHeld": 0.0438,
         "position": 14869170,
-        "value": 121481120,
+        "value": 119845516,
         "pctChange": 0.042
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0437,
         "position": 14835437,
-        "value": 121205521,
+        "value": 119573628,
         "pctChange": 1
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Two Sigma Investments, LP",
         "pctHeld": 0.041500002,
         "position": 14074001,
-        "value": 114984589,
+        "value": 113436453,
         "pctChange": 1.6307001
       },
       {
@@ -81,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.023599999,
         "position": 8017930,
-        "value": 65506488,
+        "value": 64624519,
         "pctChange": 0.0427
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.023,
         "position": 7812894,
-        "value": 63831344,
+        "value": 62971928,
         "pctChange": 0.084300004
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0195,
         "position": 6611495,
-        "value": 54015914,
+        "value": 53288652,
         "pctChange": 35.293602
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Susquehanna International Group, LLP",
         "pctHeld": 0.0187,
         "position": 6350481,
-        "value": 51883430,
+        "value": 51184879,
         "pctChange": -0.0346
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Citadel Advisors Llc",
         "pctHeld": 0.018,
         "position": 6100772,
-        "value": 49843307,
+        "value": 49172224,
         "pctChange": 1.478
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Electron Capital Partners, LLC",
         "pctHeld": 0.015800001,
         "position": 5379661,
-        "value": 43951830,
+        "value": 43360069,
         "pctChange": -0.121199995
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.012569999,
-    "institutionsPercentHeld": 0.62514997,
-    "institutionsFloatPercentHeld": 0.63311,
-    "institutionsCount": 411
+    "institutionsPercentHeld": 0.62581,
+    "institutionsFloatPercentHeld": 0.63378,
+    "institutionsCount": 413
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1778668619
         }
       ],
-      "currentQuarterEstimate": -0.24206,
+      "currentQuarterEstimate": -0.24655,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-05-22T11:24:47.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 11,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-05-14T14:38:35.000Z",
         "firm": "TD Cowen",
@@ -747,28 +757,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0036719379,
-    "postMarketChange": 0.029999733,
-    "postMarketTime": "2026-05-21T23:59:25.000Z",
-    "postMarketPrice": 8.2,
+    "postMarketChangePercent": -0.01116633,
+    "postMarketChange": -0.09000063,
+    "postMarketTime": "2026-05-22T23:59:49.000Z",
+    "postMarketPrice": 7.97,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.149086,
-    "regularMarketChange": 1.06,
-    "regularMarketTime": "2026-05-21T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0134639,
+    "regularMarketChange": -0.11,
+    "regularMarketTime": "2026-05-22T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 8.17,
-    "regularMarketDayHigh": 8.22,
-    "regularMarketDayLow": 7.06,
-    "regularMarketVolume": 33680728,
-    "averageDailyVolume10Day": 42837080,
-    "averageDailyVolume3Month": 28398473,
-    "regularMarketPreviousClose": 7.11,
+    "regularMarketPrice": 8.06,
+    "regularMarketDayHigh": 8.6358,
+    "regularMarketDayLow": 7.985,
+    "regularMarketVolume": 24305653,
+    "averageDailyVolume10Day": 39901850,
+    "averageDailyVolume3Month": 28570636,
+    "regularMarketPreviousClose": 8.17,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 7.11,
+    "regularMarketOpen": 8.528,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "EOSE",
     "underlyingSymbol": null,
@@ -780,13 +790,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2773829632
+    "marketCap": 2736483072
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3588722688,
-    "forwardPE": -155.7971,
+    "enterpriseValue": 3551376128,
+    "forwardPE": -169.89883,
     "profitMargins": -2.96125,
     "floatShares": 334981515,
     "sharesOutstanding": 339514027,
@@ -796,7 +806,7 @@
     "dateShortInterest": "2026-04-30T00:00:00.000Z",
     "sharesPercentSharesOut": 0.2999,
     "heldPercentInsiders": 0.012569999,
-    "heldPercentInstitutions": 0.62514997,
+    "heldPercentInstitutions": 0.62581,
     "shortRatio": 3.94,
     "shortPercentOfFloat": 0.3031,
     "beta": 2.57,
@@ -811,12 +821,12 @@
     "earningsQuarterlyGrowth": 32.621,
     "netIncomeToCommon": -1013340032,
     "trailingEps": -6.37,
-    "forwardEps": -0.05244,
+    "forwardEps": -0.05595,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 22.331,
-    "enterpriseToEbitda": -13.418,
-    "52WeekChange": 0.2805643,
-    "SandP52WeekChange": 0.283121,
+    "enterpriseToRevenue": 22.098,
+    "enterpriseToEbitda": -13.278,
+    "52WeekChange": 0.36842108,
+    "SandP52WeekChange": 0.26208222,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -849,17 +859,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 7.07 per share.",
         "filerName": "WALTERS MARIAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-05-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 23111,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DEMBY CLAUDE Z",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-05-19T00:00:00.000Z",
@@ -916,6 +915,17 @@
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 1.18 per share.",
         "filerName": "WALTERS MARIAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-19T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 23111,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DEMBY CLAUDE Z",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-05-19T00:00:00.000Z",
@@ -1208,6 +1218,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 220833,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-07-25T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 145833,
         "filerUrl": "",
         "transactionText": "",
@@ -1241,17 +1262,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 220833,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KROEKER NATHAN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-07-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 71378,
         "value": 358176,
         "filerUrl": "",
@@ -1276,22 +1286,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 254303,
+        "shares": 158617,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MASTRANGELO JOE",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-07-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 158617,
+        "shares": 254303,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KROEKER NATHAN",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "MASTRANGELO JOE",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-07-03T00:00:00.000Z",
         "ownership": "D"
@@ -1342,28 +1352,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 105263,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "STIDOLPH RUSSELL MONOKI",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 78947,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DEMBY CLAUDE Z",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1434,6 +1422,39 @@
       },
       {
         "maxAge": 1,
+        "shares": 105263,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "STIDOLPH RUSSELL MONOKI",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 78947,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DEMBY CLAUDE Z",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 311375,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 205625,
         "filerUrl": "",
         "transactionText": "",
@@ -1460,17 +1481,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "PURI SUMEET",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 311375,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "KROEKER NATHAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-08T00:00:00.000Z",
@@ -1559,22 +1569,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 254304,
+        "shares": 105008,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "MASTRANGELO JOE",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "KROEKER NATHAN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-07-05T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 105008,
+        "shares": 254304,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "KROEKER NATHAN",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "MASTRANGELO JOE",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-07-05T00:00:00.000Z",
         "ownership": "D"
@@ -1595,14 +1605,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 8.17,
+    "currentPrice": 8.06,
     "targetHighPrice": 18,
     "targetLowPrice": 5,
-    "targetMeanPrice": 9.42857,
-    "targetMedianPrice": 8,
+    "targetMeanPrice": 9.625,
+    "targetMedianPrice": 8.5,
     "recommendationMean": 2.55556,
     "recommendationKey": "hold",
-    "numberOfAnalystOpinions": 7,
+    "numberOfAnalystOpinions": 8,
     "totalCash": 410660000,
     "totalCashPerShare": 1.21,
     "ebitda": -267462000,
@@ -1622,6 +1632,6 @@
     "profitMargins": -2.96125,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-22T06:05:49.633Z",
+  "lastUpdated": "2026-05-23T05:39:31.406Z",
   "source": "Static Build (yahoo-finance2)"
 }
