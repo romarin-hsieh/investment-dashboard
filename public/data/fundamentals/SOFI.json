@@ -2061,14 +2061,14 @@
     "regularMarketDayLow": 15.36,
     "regularMarketVolume": 58168199,
     "averageDailyVolume10Day": 59488340,
-    "averageDailyVolume3Month": 65709642,
+    "averageDailyVolume3Month": 65640003,
     "regularMarketPreviousClose": 15.65,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 15.71,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "SOFI",
     "underlyingSymbol": null,
@@ -2145,13 +2145,14 @@
     "transactions": [
       {
         "maxAge": 1,
-        "shares": 45388,
+        "shares": 10037,
+        "value": 155921,
         "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PINTO ARUN",
+        "transactionText": "Sale at price 15.53 per share.",
+        "filerName": "KEOUGH KELLI ALLEN",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2026-05-14T00:00:00.000Z",
+        "startDate": "2026-05-20T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2160,6 +2161,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "SCHUPPENHAUER ERIC",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-05-14T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 45388,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "PINTO ARUN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-05-14T00:00:00.000Z",
@@ -2329,17 +2341,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 45389,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "PINTO ARUN",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-02-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 55731,
         "filerUrl": "",
         "transactionText": "",
@@ -2351,14 +2352,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 94225,
-        "value": 1913710,
+        "shares": 45389,
         "filerUrl": "",
-        "transactionText": "Sale at price 20.31 per share.",
-        "filerName": "FREIBERG STEVEN J",
-        "filerRelation": "Director",
+        "transactionText": "",
+        "filerName": "PINTO ARUN",
+        "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2026-02-06T00:00:00.000Z",
+        "startDate": "2026-02-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2384,6 +2384,18 @@
         "moneyText": "",
         "startDate": "2026-02-06T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 94225,
+        "value": 1913710,
+        "filerUrl": "",
+        "transactionText": "Sale at price 20.31 per share.",
+        "filerName": "FREIBERG STEVEN J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-06T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3570,6 +3582,6 @@
     "profitMargins": 0.14761,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-25T06:26:08.296Z",
+  "lastUpdated": "2026-05-26T06:05:35.313Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -4631,21 +4631,20 @@
     "regularMarketDayLow": 217.165,
     "regularMarketVolume": 3844386,
     "averageDailyVolume10Day": 7866490,
-    "averageDailyVolume3Month": 6951060,
+    "averageDailyVolume3Month": 6990023,
     "regularMarketPreviousClose": 219.61,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 220.85,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "BA",
     "underlyingSymbol": null,
     "shortName": "Boeing Company (The)",
     "longName": "The Boeing Company",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
@@ -4717,6 +4716,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 1370,
+        "value": 299345,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 218.50 per share.",
+        "filerName": "TILDEN BRADLEY DOUGLAS",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 2230,
@@ -5291,6 +5302,6 @@
     "profitMargins": 0.024600001,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-25T06:27:26.526Z",
+  "lastUpdated": "2026-05-26T06:06:56.630Z",
   "source": "Static Build (yahoo-finance2)"
 }

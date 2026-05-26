@@ -1421,14 +1421,14 @@
     "regularMarketDayLow": 131.31,
     "regularMarketVolume": 32970699,
     "averageDailyVolume10Day": 31378810,
-    "averageDailyVolume3Month": 24888886,
+    "averageDailyVolume3Month": 24996841,
     "regularMarketPreviousClose": 125.45,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 131.51,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "RKLB",
     "underlyingSymbol": null,
@@ -1462,8 +1462,8 @@
     "beta": 2.313,
     "impliedSharesOutstanding": 578867475,
     "category": null,
-    "bookValue": 3.168,
-    "priceToBook": 42.853535,
+    "bookValue": 3.933,
+    "priceToBook": 34.518177,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1504,15 +1504,15 @@
     "transactions": [
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 11807634,
+        "shares": 2482,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 115.05 - 120.01 per share.",
-        "filerName": "SLUSKY ALEXANDER R",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ARMAGNO NINA M.",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2026-05-12T00:00:00.000Z",
-        "ownership": "I"
+        "startDate": "2026-05-20T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -1525,6 +1525,18 @@
         "moneyText": "",
         "startDate": "2026-05-12T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 11807634,
+        "filerUrl": "",
+        "transactionText": "Sale at price 115.05 - 120.01 per share.",
+        "filerName": "SLUSKY ALEXANDER R",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-12T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -1672,11 +1684,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 2500,
-        "value": 193472,
+        "shares": 20000,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "Sale at price 77.39 per share.",
-        "filerName": "FRANK EDWARD H",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "SLUSKY ALEXANDER R",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-23T00:00:00.000Z",
@@ -1708,14 +1720,26 @@
       },
       {
         "maxAge": 1,
-        "shares": 20000,
-        "value": 0,
+        "shares": 2500,
+        "value": 193472,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "SLUSKY ALEXANDER R",
+        "transactionText": "Sale at price 77.39 per share.",
+        "filerName": "FRANK EDWARD H",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-23T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15000,
+        "value": 1022773,
+        "filerUrl": "",
+        "transactionText": "Sale at price 61.12 - 70.20 per share.",
+        "filerName": "OLSON JON A",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-19T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1737,18 +1761,6 @@
         "filerUrl": "",
         "transactionText": "Sale at price 60.98 - 70.18 per share.",
         "filerName": "ARMAGNO NINA M.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-19T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 15000,
-        "value": 1022773,
-        "filerUrl": "",
-        "transactionText": "Sale at price 61.12 - 70.20 per share.",
-        "filerName": "OLSON JON A",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-19T00:00:00.000Z",
@@ -2223,6 +2235,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 20000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FRANK EDWARD H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-12-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10000,
         "value": 236345,
         "filerUrl": "",
@@ -2235,13 +2258,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 20000,
+        "shares": 789373,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "FRANK EDWARD H",
-        "filerRelation": "Director",
+        "filerName": "BECK PETER",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
-        "startDate": "2024-12-11T00:00:00.000Z",
+        "startDate": "2024-12-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2258,17 +2281,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 789373,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "BECK PETER",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-12-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 50000,
         "value": 1277475,
         "filerUrl": "",
@@ -2277,6 +2289,18 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-11-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 62511,
+        "value": 1509366,
+        "filerUrl": "",
+        "transactionText": "Sale at price 24.15 per share.",
+        "filerName": "SPICE ADAM C",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-11-25T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2299,18 +2323,6 @@
         "transactionText": "Sale at price 24.15 per share.",
         "filerName": "KLEIN FRANK",
         "filerRelation": "Chief Operating Officer",
-        "moneyText": "",
-        "startDate": "2024-11-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 62511,
-        "value": 1509366,
-        "filerUrl": "",
-        "transactionText": "Sale at price 24.15 per share.",
-        "filerName": "SPICE ADAM C",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-11-25T00:00:00.000Z",
         "ownership": "D"
@@ -2385,6 +2397,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 62512,
+        "value": 435084,
+        "filerUrl": "",
+        "transactionText": "Sale at price 6.96 per share.",
+        "filerName": "SPICE ADAM C",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-08-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 28563,
         "value": 198798,
         "filerUrl": "",
@@ -2406,18 +2430,6 @@
         "moneyText": "",
         "startDate": "2024-08-22T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 62512,
-        "value": 435084,
-        "filerUrl": "",
-        "transactionText": "Sale at price 6.96 per share.",
-        "filerName": "SPICE ADAM C",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-08-22T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2530,6 +2542,6 @@
     "profitMargins": -0.26872,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-25T06:25:36.019Z",
+  "lastUpdated": "2026-05-26T06:05:02.037Z",
   "source": "Static Build (yahoo-finance2)"
 }

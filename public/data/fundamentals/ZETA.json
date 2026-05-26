@@ -1769,14 +1769,14 @@
     "regularMarketDayLow": 18.18,
     "regularMarketVolume": 4946438,
     "averageDailyVolume10Day": 8587770,
-    "averageDailyVolume3Month": 7822424,
+    "averageDailyVolume3Month": 7761620,
     "regularMarketPreviousClose": 18.05,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 18.2,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "ZETA",
     "underlyingSymbol": null,
@@ -1852,6 +1852,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 724021,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "GERBER STEVEN H",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-05-20T00:00:00.000Z",
+        "ownership": "I"
+      },
       {
         "maxAge": 1,
         "shares": 60000,
@@ -2082,18 +2094,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "RAVELLA SATISH",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-05-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1932331,
         "value": 0,
         "filerUrl": "",
@@ -2112,6 +2112,18 @@
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "GREINER CHRISTOPHER E",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-05-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "RAVELLA SATISH",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-09T00:00:00.000Z",
         "ownership": "D"
@@ -2666,6 +2678,6 @@
     "profitMargins": -0.01612,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-25T06:27:05.378Z",
+  "lastUpdated": "2026-05-26T06:06:34.249Z",
   "source": "Static Build (yahoo-finance2)"
 }

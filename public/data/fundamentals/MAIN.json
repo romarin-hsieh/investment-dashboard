@@ -961,14 +961,14 @@
     "regularMarketDayLow": 48.95,
     "regularMarketVolume": 1886663,
     "averageDailyVolume10Day": 976670,
-    "averageDailyVolume3Month": 849162,
+    "averageDailyVolume3Month": 849730,
     "regularMarketPreviousClose": 51.02,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 51,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "MAIN",
     "underlyingSymbol": null,
@@ -1048,6 +1048,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 71000,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "FOSTER VINCENT D",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-18T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 1883,
@@ -1470,24 +1482,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
-        "value": 6966000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 58.05 per share.",
-        "filerName": "HYZAK DWAYNE L",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 100000,
         "value": 5805000,
         "filerUrl": "",
         "transactionText": "Sale at price 58.05 per share.",
         "filerName": "MAGDOL DAVID L",
         "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2025-03-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 120000,
+        "value": 6966000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 58.05 per share.",
+        "filerName": "HYZAK DWAYNE L",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-03-26T00:00:00.000Z",
         "ownership": "D"
@@ -1610,6 +1622,6 @@
     "profitMargins": 0.74861,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-05-25T06:28:24.198Z",
+  "lastUpdated": "2026-05-26T06:07:52.178Z",
   "source": "Static Build (yahoo-finance2)"
 }

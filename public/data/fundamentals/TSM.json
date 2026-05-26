@@ -1211,14 +1211,14 @@
     "regularMarketDayLow": 402.86,
     "regularMarketVolume": 7085377,
     "averageDailyVolume10Day": 12886420,
-    "averageDailyVolume3Month": 13778993,
+    "averageDailyVolume3Month": 13766381,
     "regularMarketPreviousClose": 407.15,
     "regularMarketSource": "FREE_REALTIME",
     "regularMarketOpen": 409.43,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "CLOSED",
+    "marketState": "PREPRE",
     "quoteType": "EQUITY",
     "symbol": "TSM",
     "underlyingSymbol": null,
@@ -1239,7 +1239,7 @@
     "forwardPE": 20.726833,
     "profitMargins": 0.46505,
     "floatShares": 23636058637,
-    "sharesOutstanding": 5186474000,
+    "sharesOutstanding": 5186474013,
     "sharesShort": 26712803,
     "sharesShortPriorMonth": "1970-09-17T22:24:42.000Z",
     "sharesShortPreviousMonthDate": "2026-03-31T00:00:00.000Z",
@@ -1250,7 +1250,7 @@
     "shortRatio": 1.93,
     "shortPercentOfFloat": 0.0055,
     "beta": 1.264,
-    "impliedSharesOutstanding": 5186474000,
+    "impliedSharesOutstanding": 5186474013,
     "category": null,
     "bookValue": 6.5373535,
     "priceToBook": 61.87825,
@@ -1299,6 +1299,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 17,
+        "value": 6718,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 391.81 - 400.00 per share.",
+        "filerName": "TIEN BOR-ZEN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-05-20T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 20,
@@ -1358,6 +1370,6 @@
     "profitMargins": 0.46505,
     "financialCurrency": "TWD"
   },
-  "lastUpdated": "2026-05-25T06:25:34.145Z",
+  "lastUpdated": "2026-05-26T06:05:00.435Z",
   "source": "Static Build (yahoo-finance2)"
 }
