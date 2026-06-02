@@ -24,14 +24,6 @@
         "hold": 5,
         "sell": 0,
         "strongSell": 0
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 4,
-        "buy": 16,
-        "hold": 6,
-        "sell": 0,
-        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -45,7 +37,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1038,
         "position": 35769222,
-        "value": 19000969204,
+        "value": 19537149493,
         "pctChange": 0.0073
       },
       {
@@ -54,7 +46,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0917,
         "position": 31623418,
-        "value": 16798676570,
+        "value": 17272711297,
         "pctChange": -0.0642
       },
       {
@@ -63,7 +55,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0639,
         "position": 22034861,
-        "value": 11705138995,
+        "value": 12035441347,
         "pctChange": 1
       },
       {
@@ -72,7 +64,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0508,
         "position": 17512148,
-        "value": 9302628523,
+        "value": 9565135451,
         "pctChange": 0.225
       },
       {
@@ -81,7 +73,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0498,
         "position": 17172653,
-        "value": 9122285377,
+        "value": 9379703278,
         "pctChange": 1
       },
       {
@@ -90,7 +82,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.044899996,
         "position": 15465766,
-        "value": 8215569896,
+        "value": 8447401577,
         "pctChange": -0.0147
       },
       {
@@ -99,7 +91,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0345,
         "position": 11880038,
-        "value": 6310795247,
+        "value": 6488876900,
         "pctChange": 10.1696005
       },
       {
@@ -108,7 +100,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0275,
         "position": 9477201,
-        "value": 5034384151,
+        "value": 5176447301,
         "pctChange": 0.021
       },
       {
@@ -117,7 +109,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.024600001,
         "position": 8489612,
-        "value": 4509766977,
+        "value": 4637026178,
         "pctChange": -0.2952
       },
       {
@@ -126,7 +118,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.023,
         "position": 7939106,
-        "value": 4217332672,
+        "value": 4336339794,
         "pctChange": -0.0552
       }
     ]
@@ -261,6 +253,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T15:56:32.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 575,
+        "priorPriceTarget": 500
+      },
       {
         "epochGradeDate": "2026-05-27T16:14:59.000Z",
         "firm": "Barclays",
@@ -5867,24 +5869,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.003972151,
-    "postMarketChange": -2.1100464,
-    "postMarketTime": "2026-05-29T23:59:50.000Z",
-    "postMarketPrice": 529.1,
+    "postMarketChangePercent": 0.006005068,
+    "postMarketChange": 3.2799683,
+    "postMarketTime": "2026-06-01T23:59:55.000Z",
+    "postMarketPrice": 549.48,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.000056533187,
-    "regularMarketChange": 0.030029297,
-    "regularMarketTime": "2026-05-29T20:00:01.000Z",
+    "regularMarketChangePercent": 0.0282186,
+    "regularMarketChange": 14.99,
+    "regularMarketTime": "2026-06-01T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 531.21,
-    "regularMarketDayHigh": 544.26,
-    "regularMarketDayLow": 518.6801,
-    "regularMarketVolume": 8391544,
-    "averageDailyVolume10Day": 6495600,
-    "averageDailyVolume3Month": 7958238,
-    "regularMarketPreviousClose": 531.18,
+    "regularMarketPrice": 546.2,
+    "regularMarketDayHigh": 564.14,
+    "regularMarketDayLow": 534.265,
+    "regularMarketVolume": 5922278,
+    "averageDailyVolume10Day": 6417450,
+    "averageDailyVolume3Month": 7939574,
+    "regularMarketPreviousClose": 531.21,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 542.3,
+    "regularMarketOpen": 536,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -5900,13 +5902,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 183098605568
+    "marketCap": 188265398272
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 181585592320,
-    "forwardPE": 30.159443,
+    "enterpriseValue": 186752385024,
+    "forwardPE": 31.0105,
     "profitMargins": 0.55286,
     "floatShares": 342276250,
     "sharesOutstanding": 344682131,
@@ -5923,7 +5925,7 @@
     "impliedSharesOutstanding": 344682131,
     "category": null,
     "bookValue": 20.915,
-    "priceToBook": 25.398518,
+    "priceToBook": 26.115229,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-06-27T00:00:00.000Z",
@@ -5931,15 +5933,15 @@
     "mostRecentQuarter": "2026-04-03T00:00:00.000Z",
     "earningsQuarterlyGrowth": 5.163,
     "netIncomeToCommon": 6350000128,
-    "trailingEps": 16.73,
+    "trailingEps": 16.71,
     "forwardEps": 17.61339,
     "pegRatio": 0.47,
     "lastSplitFactor": "1323:1000",
     "lastSplitDate": 1740355200,
-    "enterpriseToRevenue": 15.419,
-    "enterpriseToEbitda": 46.229,
-    "52WeekChange": 9.178387,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 15.857,
+    "enterpriseToEbitda": 47.544,
+    "52WeekChange": 9.158081,
+    "SandP52WeekChange": 0.27294624,
     "lastDividendValue": 0.125,
     "lastDividendDate": "2026-03-05T00:00:00.000Z",
     "latestShareClass": null,
@@ -5968,6 +5970,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 750,
+        "value": 396390,
+        "filerUrl": "",
+        "transactionText": "Sale at price 528.52 per share.",
+        "filerName": "KIDDOO BRUCE E",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 522,
@@ -7149,6 +7163,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 9,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUBBI VIDYADHARA K",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-21T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 18,
         "filerUrl": "",
         "transactionText": "",
@@ -7165,17 +7190,6 @@
         "transactionText": "",
         "filerName": "TAN IRVING",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 9,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUBBI VIDYADHARA K",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-21T00:00:00.000Z",
         "ownership": "D"
@@ -7306,17 +7320,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 28,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "DAVIS BRIAN SCOTT",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-20T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 6,
         "filerUrl": "",
         "transactionText": "",
@@ -7332,6 +7335,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GUBBI VIDYADHARA K",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-20T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DAVIS BRIAN SCOTT",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-20T00:00:00.000Z",
@@ -7684,25 +7698,13 @@
         "moneyText": "",
         "startDate": "2024-09-26T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2000,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "GOECKELER DAVID V",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-09-06T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 531.21,
+    "currentPrice": 546.2,
     "targetHighPrice": 660,
     "targetLowPrice": 360,
     "targetMeanPrice": 518.26086,
@@ -7732,6 +7734,6 @@
     "profitMargins": 0.55286,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:56:54.000Z",
+  "lastUpdated": "2026-06-02T06:44:38.002Z",
   "source": "Static Build (yahoo-finance2)"
 }

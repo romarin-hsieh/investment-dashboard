@@ -3,14 +3,22 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 11,
-        "buy": 41,
+        "strongBuy": 13,
+        "buy": 40,
         "hold": 3,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-1m",
+        "strongBuy": 12,
+        "buy": 40,
+        "hold": 3,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 9,
         "buy": 42,
         "hold": 3,
@@ -18,17 +26,9 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
-        "strongBuy": 10,
-        "buy": 45,
-        "hold": 3,
-        "sell": 0,
-        "strongSell": 0
-      },
-      {
         "period": "-3m",
         "strongBuy": 10,
-        "buy": 44,
+        "buy": 45,
         "hold": 3,
         "sell": 0,
         "strongSell": 0
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0799,
         "position": 593328571,
-        "value": 267140250012,
+        "value": 273239666998,
         "pctChange": -0.014199999
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.065,
         "position": 482558086,
-        "value": 217266947928,
+        "value": 222227644463,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.041300002,
         "position": 306708289,
-        "value": 138092337044,
+        "value": 141245297880,
         "pctChange": 0.0018000001
       },
       {
@@ -72,7 +72,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0256,
         "position": 190211367,
-        "value": 85640764020,
+        "value": 87596136641,
         "pctChange": -0.053400002
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0254,
         "position": 188501918,
-        "value": 84871101719,
+        "value": 86808901206,
         "pctChange": 0.0322
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0225,
         "position": 167490848,
-        "value": 75411077767,
+        "value": 77132883480,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0171,
         "position": 127128999,
-        "value": 57238559268,
+        "value": 58545445222,
         "pctChange": -0.1396
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0168,
         "position": 124881288,
-        "value": 56226549889,
+        "value": 57510329377,
         "pctChange": 0.038599998
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.015800001,
         "position": 117242934,
-        "value": 52787457459,
+        "value": 53992714677,
         "pctChange": -0.0673
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0128999995,
         "position": 96093061,
-        "value": 43264938846,
+        "value": 44252775396,
         "pctChange": 0.3105
       }
     ]
@@ -187,7 +187,7 @@
           "reportedDate": 1777493011
         }
       ],
-      "currentQuarterEstimate": 4.23636,
+      "currentQuarterEstimate": 4.23745,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -261,6 +261,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T16:00:02.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 650,
+        "priorPriceTarget": 625
+      },
+      {
+        "epochGradeDate": "2026-06-01T15:05:35.000Z",
+        "firm": "Citizens",
+        "toGrade": "Market Outperform",
+        "fromGrade": "",
+        "action": "init",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 550,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-05-13T14:42:16.000Z",
         "firm": "Wedbush",
@@ -9207,24 +9227,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0005552594,
-    "postMarketChange": -0.25,
-    "postMarketTime": "2026-05-29T23:59:59.000Z",
-    "postMarketPrice": 449.99,
+    "postMarketChangePercent": -0.017653901,
+    "postMarketChange": -8.129974,
+    "postMarketTime": "2026-06-01T23:59:56.000Z",
+    "postMarketPrice": 452.39,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.054450925,
-    "regularMarketChange": 23.25,
-    "regularMarketTime": "2026-05-29T20:00:01.000Z",
+    "regularMarketChangePercent": 0.0228323,
+    "regularMarketChange": 10.28,
+    "regularMarketTime": "2026-06-01T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 450.24,
-    "regularMarketDayHigh": 450.33,
-    "regularMarketDayLow": 432.36,
-    "regularMarketVolume": 79654376,
-    "averageDailyVolume10Day": 38407440,
-    "averageDailyVolume3Month": 34295722,
-    "regularMarketPreviousClose": 426.99,
+    "regularMarketPrice": 460.52,
+    "regularMarketDayHigh": 466.32,
+    "regularMarketDayLow": 458.27,
+    "regularMarketVolume": 52107975,
+    "averageDailyVolume10Day": 38676080,
+    "averageDailyVolume3Month": 34581161,
+    "regularMarketPreviousClose": 450.24,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 432.7125,
+    "regularMarketOpen": 465.06,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -9240,13 +9260,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 3344578379776
+    "marketCap": 3420942761984
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 3391782387712,
-    "forwardPE": 23.28298,
+    "enterpriseValue": 3468146769920,
+    "forwardPE": 23.808857,
     "profitMargins": 0.39341998,
     "floatShares": 7417440621,
     "sharesOutstanding": 7428434704,
@@ -9263,7 +9283,7 @@
     "impliedSharesOutstanding": 7428434704,
     "category": null,
     "bookValue": 55.777,
-    "priceToBook": 8.0721445,
+    "priceToBook": 8.25645,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-06-30T00:00:00.000Z",
@@ -9272,14 +9292,14 @@
     "earningsQuarterlyGrowth": 0.231,
     "netIncomeToCommon": 125215997952,
     "trailingEps": 16.79,
-    "forwardEps": 19.33773,
-    "pegRatio": 1.39,
+    "forwardEps": 19.34238,
+    "pegRatio": 1.42,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1045526400,
-    "enterpriseToRevenue": 10.657,
-    "enterpriseToEbitda": 18.388,
-    "52WeekChange": -0.02539128,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 10.897,
+    "enterpriseToEbitda": 18.802,
+    "52WeekChange": -0.005291939,
+    "SandP52WeekChange": 0.27294624,
     "lastDividendValue": 0.91,
     "lastDividendDate": "2026-05-21T00:00:00.000Z",
     "latestShareClass": null,
@@ -9526,18 +9546,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 6513,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HOGAN KATHLEEN T",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 26151,
         "value": 0,
         "filerUrl": "",
@@ -9579,6 +9587,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "COLEMAN AMY",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6513,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HOGAN KATHLEEN T",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-15T00:00:00.000Z",
@@ -9670,18 +9690,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 20386,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HOGAN KATHLEEN T",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 45220,
         "value": 0,
         "filerUrl": "",
@@ -9699,6 +9707,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NUMOTO TAKESHI",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20386,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HOGAN KATHLEEN T",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-02T00:00:00.000Z",
@@ -10114,30 +10134,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 7912,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HOGAN KATHLEEN T",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 8990,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YOUNG CHRISTOPHER DAVID",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 23374,
         "value": 0,
         "filerUrl": "",
@@ -10155,6 +10151,30 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NUMOTO TAKESHI",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7912,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HOGAN KATHLEEN T",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 8990,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YOUNG CHRISTOPHER DAVID",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-16T00:00:00.000Z",
@@ -10318,30 +10338,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 17224,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "HOGAN KATHLEEN T",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 19573,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "YOUNG CHRISTOPHER DAVID",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 32881,
         "value": 0,
         "filerUrl": "",
@@ -10359,6 +10355,30 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NUMOTO TAKESHI",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 17224,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "HOGAN KATHLEEN T",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 19573,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "YOUNG CHRISTOPHER DAVID",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-03T00:00:00.000Z",
@@ -10501,14 +10521,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 450.24,
+    "currentPrice": 460.52,
     "targetHighPrice": 870,
     "targetLowPrice": 400,
-    "targetMeanPrice": 560.6302,
-    "targetMedianPrice": 557.5,
-    "recommendationMean": 1.30909,
+    "targetMeanPrice": 560.8915,
+    "targetMedianPrice": 555,
+    "recommendationMean": 1.33929,
     "recommendationKey": "strong_buy",
-    "numberOfAnalystOpinions": 54,
+    "numberOfAnalystOpinions": 55,
     "totalCash": 78227996672,
     "totalCashPerShare": 10.531,
     "ebitda": 184457003008,
@@ -10531,6 +10551,6 @@
     "profitMargins": 0.39341998,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:54:30.630Z",
+  "lastUpdated": "2026-06-02T06:42:14.084Z",
   "source": "Static Build (yahoo-finance2)"
 }

@@ -12,24 +12,24 @@
       {
         "period": "-1m",
         "strongBuy": 11,
+        "buy": 29,
+        "hold": 11,
+        "sell": 0,
+        "strongSell": 1
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 11,
         "buy": 31,
         "hold": 12,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 11,
         "buy": 31,
         "hold": 14,
-        "sell": 0,
-        "strongSell": 0
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 9,
-        "buy": 28,
-        "hold": 17,
         "sell": 0,
         "strongSell": 0
       }
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.084,
         "position": 21373637,
-        "value": 15624128647,
+        "value": 16717817287,
         "pctChange": 0.010299999
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0627,
         "position": 15965393,
-        "value": 11670702283,
+        "value": 12487651169,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0437,
         "position": 11137162,
-        "value": 8141265422,
+        "value": 8711153811,
         "pctChange": -0.0022
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.025799999,
         "position": 6557957,
-        "value": 4793866567,
+        "value": 5129437114,
         "pctChange": 0.0146
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.023699999,
         "position": 6033794,
-        "value": 4410703414,
+        "value": 4719452549,
         "pctChange": 1
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.023599999,
         "position": 5997348,
-        "value": 4384061388,
+        "value": 4690945582,
         "pctChange": 0.0083
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0163,
         "position": 4152386,
-        "value": 3035394166,
+        "value": 3247871686,
         "pctChange": -0.0279
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Jennison Associates LLC",
         "pctHeld": 0.015,
         "position": 3829124,
-        "value": 2799089644,
+        "value": 2995025853,
         "pctChange": -0.3048
       },
       {
@@ -117,7 +117,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.014099999,
         "position": 3588362,
-        "value": 2623092622,
+        "value": 2806709044,
         "pctChange": -0.35900003
       },
       {
@@ -126,7 +126,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0135,
         "position": 3440202,
-        "value": 2514787662,
+        "value": 2690822739,
         "pctChange": 0.0515
       }
     ]
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T16:38:54.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "In-Line",
+        "fromGrade": "In-Line",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 710,
+        "priorPriceTarget": 395
+      },
       {
         "epochGradeDate": "2026-05-29T19:25:41.000Z",
         "firm": "Jefferies",
@@ -7697,24 +7707,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0023255982,
-    "postMarketChange": -1.7000122,
-    "postMarketTime": "2026-05-29T23:59:37.000Z",
-    "postMarketPrice": 729.3,
+    "postMarketChangePercent": -0.009793233,
+    "postMarketChange": -7.659973,
+    "postMarketTime": "2026-06-01T23:59:44.000Z",
+    "postMarketPrice": 774.51,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.08941878,
-    "regularMarketChange": 60,
-    "regularMarketTime": "2026-05-29T20:00:01.000Z",
+    "regularMarketChangePercent": 0.07,
+    "regularMarketChange": 51.17,
+    "regularMarketTime": "2026-06-01T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 731,
-    "regularMarketDayHigh": 731.49,
-    "regularMarketDayLow": 674.94,
-    "regularMarketVolume": 4820454,
-    "averageDailyVolume10Day": 3537110,
-    "averageDailyVolume3Month": 3587226,
-    "regularMarketPreviousClose": 671,
+    "regularMarketPrice": 782.17,
+    "regularMarketDayHigh": 785.66,
+    "regularMarketDayLow": 734,
+    "regularMarketVolume": 4513942,
+    "averageDailyVolume10Day": 3608700,
+    "averageDailyVolume3Month": 3599985,
+    "regularMarketPreviousClose": 731,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 675.86,
+    "regularMarketOpen": 734.985,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -7730,13 +7740,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 186066206720
+    "marketCap": 199090831360
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 181026062336,
-    "forwardPE": 118.45845,
+    "enterpriseValue": 194003501056,
+    "forwardPE": 126.75054,
     "profitMargins": -0.033770002,
     "floatShares": 249008458,
     "sharesOutstanding": 254536521,
@@ -7753,21 +7763,21 @@
     "impliedSharesOutstanding": 254536521,
     "category": null,
     "bookValue": 17.478,
-    "priceToBook": 41.824005,
+    "priceToBook": 44.751686,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2026-01-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2027-01-31T00:00:00.000Z",
     "mostRecentQuarter": "2026-01-31T00:00:00.000Z",
     "netIncomeToCommon": -162502000,
-    "trailingEps": -0.66,
+    "trailingEps": -0.63,
     "forwardEps": 6.17094,
     "pegRatio": 6.03,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 37.62,
-    "enterpriseToEbitda": -3879.352,
-    "52WeekChange": 0.52555466,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 40.317,
+    "enterpriseToEbitda": -4157.455,
+    "52WeekChange": 0.6003151,
+    "SandP52WeekChange": 0.27294624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -7794,6 +7804,42 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 2193,
+        "value": 1486491,
+        "filerUrl": "",
+        "transactionText": "Sale at price 661.43 - 709.93 per share.",
+        "filerName": "KURTZ GEORGE ROBERT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-05-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1967,
+        "value": 1421423,
+        "filerUrl": "",
+        "transactionText": "Sale at price 711.43 - 731.13 per share.",
+        "filerName": "KURTZ GEORGE ROBERT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-05-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3340,
+        "value": 2165165,
+        "filerUrl": "",
+        "transactionText": "Sale at price 637.82 - 659.91 per share.",
+        "filerName": "KURTZ GEORGE ROBERT",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-05-28T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 4961,
@@ -9280,18 +9326,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 15680,
-        "value": 7352769,
-        "filerUrl": "",
-        "transactionText": "Sale at price 468.59 - 469.39 per share.",
-        "filerName": "O'LEARY DENIS J",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-09T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 7188,
         "value": 3379798,
         "filerUrl": "",
@@ -9301,6 +9335,18 @@
         "moneyText": "",
         "startDate": "2025-06-09T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 15680,
+        "value": 7352769,
+        "filerUrl": "",
+        "transactionText": "Sale at price 468.59 - 469.39 per share.",
+        "filerName": "O'LEARY DENIS J",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-09T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -9553,56 +9599,20 @@
         "moneyText": "",
         "startDate": "2025-03-24T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3637,
-        "value": 1332497,
-        "filerUrl": "",
-        "transactionText": "Sale at price 353.76 - 371.79 per share.",
-        "filerName": "SAHA ANURAG",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-03-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 13529,
-        "value": 4844717,
-        "filerUrl": "",
-        "transactionText": "Sale at price 354.29 - 360.14 per share.",
-        "filerName": "PODBERE BURT W.",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-03-21T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 22449,
-        "value": 8051996,
-        "filerUrl": "",
-        "transactionText": "Sale at price 357.15 - 358.70 per share.",
-        "filerName": "KURTZ GEORGE ROBERT",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-03-21T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 731,
+    "currentPrice": 782.17,
     "targetHighPrice": 775,
     "targetLowPrice": 368,
-    "targetMeanPrice": 555.92,
+    "targetMeanPrice": 564.2384,
     "targetMedianPrice": 525,
     "recommendationMean": 1.69231,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 51,
+    "numberOfAnalystOpinions": 50,
     "totalCash": 5230125056,
     "totalCashPerShare": 20.622,
     "ebitda": -46664000,
@@ -9624,6 +9634,6 @@
     "profitMargins": -0.033770002,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:54:38.174Z",
+  "lastUpdated": "2026-06-02T06:42:21.287Z",
   "source": "Static Build (yahoo-finance2)"
 }

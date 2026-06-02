@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 5,
+        "buy": 36,
+        "hold": 10,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 4,
         "buy": 33,
         "hold": 13,
@@ -18,16 +26,8 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
-        "strongBuy": 5,
-        "buy": 34,
-        "hold": 12,
-        "sell": 0,
-        "strongSell": 0
-      },
-      {
         "period": "-3m",
-        "strongBuy": 6,
+        "strongBuy": 5,
         "buy": 34,
         "hold": 12,
         "sell": 0,
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.08930001,
         "position": 145574284,
-        "value": 75130884418,
+        "value": 74261810207,
         "pctChange": -0.013200001
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.065,
         "position": 105940266,
-        "value": 54675768696,
+        "value": 54043308411,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.045900002,
         "position": 74771220,
-        "value": 38589424816,
+        "value": 38143042823,
         "pctChange": -0.002
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024400001,
         "position": 39791086,
-        "value": 20536178513,
+        "value": 20298626895,
         "pctChange": 0.0587
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0231,
         "position": 37603675,
-        "value": 19407255749,
+        "value": 19182762911,
         "pctChange": 1
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.0177,
         "position": 28846470,
-        "value": 14887662462,
+        "value": 14715449881,
         "pctChange": 0.41919997
       },
       {
@@ -99,7 +99,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0149,
         "position": 24248547,
-        "value": 12514674514,
+        "value": 12369911399,
         "pctChange": 0.1596
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0146,
         "position": 23781608,
-        "value": 12273687308,
+        "value": 12131711805,
         "pctChange": -0.20889999
       },
       {
@@ -117,7 +117,7 @@
         "organization": "UBS AM, a distinct business unit of UBS ASSET MANAGEMENT AMERICAS LLC",
         "pctHeld": 0.0117999995,
         "position": 19192764,
-        "value": 9905385031,
+        "value": 9790804793,
         "pctChange": 0.030199999
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0101,
         "position": 16427217,
-        "value": 8478086292,
+        "value": 8380016288,
         "pctChange": -0.0111
       }
     ]
@@ -187,7 +187,7 @@
           "reportedDate": 1778012166
         }
       ],
-      "currentQuarterEstimate": 1.60538,
+      "currentQuarterEstimate": 1.60563,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -261,6 +261,36 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T18:28:28.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 665,
+        "priorPriceTarget": 500
+      },
+      {
+        "epochGradeDate": "2026-06-01T14:40:49.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 600,
+        "priorPriceTarget": 500
+      },
+      {
+        "epochGradeDate": "2026-06-01T11:37:52.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 615,
+        "priorPriceTarget": 515
+      },
       {
         "epochGradeDate": "2026-05-19T10:58:46.000Z",
         "firm": "Evercore ISI Group",
@@ -7427,24 +7457,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.001840634,
-    "postMarketChange": -0.9499512,
-    "postMarketTime": "2026-05-29T23:59:55.000Z",
-    "postMarketPrice": 515.15,
+    "postMarketChangePercent": -0.006210599,
+    "postMarketChange": -3.168213,
+    "postMarketTime": "2026-06-01T23:59:54.000Z",
+    "postMarketPrice": 506.9618,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.003841013,
-    "regularMarketChange": -1.9899902,
-    "regularMarketTime": "2026-05-29T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0115674995,
+    "regularMarketChange": -5.96997,
+    "regularMarketTime": "2026-06-01T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 516.1,
-    "regularMarketDayHigh": 522,
-    "regularMarketDayLow": 503.43,
-    "regularMarketVolume": 30803236,
-    "averageDailyVolume10Day": 32270940,
-    "averageDailyVolume3Month": 37878044,
-    "regularMarketPreviousClose": 518.08997,
+    "regularMarketPrice": 510.13,
+    "regularMarketDayHigh": 517.5,
+    "regularMarketDayLow": 486.8,
+    "regularMarketVolume": 33164674,
+    "averageDailyVolume10Day": 32687150,
+    "averageDailyVolume3Month": 37864925,
+    "regularMarketPreviousClose": 516.1,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 520.43,
+    "regularMarketOpen": 500.355,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -7460,13 +7490,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 841552887808
+    "marketCap": 831818301440
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 833076985856,
-    "forwardPE": 39.82394,
+    "enterpriseValue": 823342333952,
+    "forwardPE": 39.010876,
     "profitMargins": 0.13374,
     "floatShares": 1621860620,
     "sharesOutstanding": 1630600639,
@@ -7483,7 +7513,7 @@
     "impliedSharesOutstanding": 1630600639,
     "category": null,
     "bookValue": 39.547,
-    "priceToBook": 13.050294,
+    "priceToBook": 12.899335,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-27T00:00:00.000Z",
@@ -7491,15 +7521,15 @@
     "mostRecentQuarter": "2026-03-28T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.951,
     "netIncomeToCommon": 4931999744,
-    "trailingEps": 2.99,
-    "forwardEps": 13.00665,
-    "pegRatio": 1.24,
+    "trailingEps": 3.01,
+    "forwardEps": 13.07661,
+    "pegRatio": 1.23,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 966902400,
-    "enterpriseToRevenue": 22.243,
-    "enterpriseToEbitda": 112.123,
-    "52WeekChange": 3.5023117,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 21.983,
+    "enterpriseToEbitda": 110.813,
+    "52WeekChange": 3.3485637,
+    "SandP52WeekChange": 0.27294624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -8233,17 +8263,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 4584,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "GUIDO PHILIP",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-08-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 23258,
         "filerUrl": "",
         "transactionText": "",
@@ -8259,6 +8278,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "HUYNH JACK M",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-08-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4584,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GUIDO PHILIP",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-08T00:00:00.000Z",
@@ -8868,10 +8898,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 2642,
+        "shares": 6544,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "GUIDO PHILIP",
+        "filerName": "HUYNH JACK M",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-08-09T00:00:00.000Z",
@@ -8879,10 +8909,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 6544,
+        "shares": 2642,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HUYNH JACK M",
+        "filerName": "GUIDO PHILIP",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-08-09T00:00:00.000Z",
@@ -8912,22 +8942,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 3303,
+        "shares": 807409,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HU JEAN X",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "SU LISA T",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-08-09T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 807409,
+        "shares": 3303,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "SU LISA T",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "HU JEAN X",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-08-09T00:00:00.000Z",
         "ownership": "D"
@@ -9137,10 +9167,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 516.1,
-    "targetHighPrice": 625,
+    "currentPrice": 510.13,
+    "targetHighPrice": 665,
     "targetLowPrice": 225,
-    "targetMeanPrice": 472.16666,
+    "targetMeanPrice": 479.77084,
     "targetMedianPrice": 482.5,
     "recommendationMean": 1.4902,
     "recommendationKey": "strong_buy",
@@ -9167,6 +9197,6 @@
     "profitMargins": 0.13374,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:55:00.783Z",
+  "lastUpdated": "2026-06-02T06:42:44.446Z",
   "source": "Static Build (yahoo-finance2)"
 }

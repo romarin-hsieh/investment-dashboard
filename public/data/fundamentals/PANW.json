@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 10,
+        "buy": 34,
+        "hold": 9,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 11,
         "buy": 34,
         "hold": 10,
@@ -18,19 +26,11 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 11,
         "buy": 35,
         "hold": 10,
         "sell": 1,
-        "strongSell": 0
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 12,
-        "buy": 32,
-        "hold": 10,
-        "sell": 2,
         "strongSell": 0
       }
     ],
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.7436,
         "position": 72431433,
-        "value": 20403210538,
+        "value": 21764197783,
         "pctChange": 0.216
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.5417,
         "position": 52765656,
-        "value": 14863557767,
+        "value": 15855024894,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.3643,
         "position": 35486318,
-        "value": 9996141004,
+        "value": 10662929222,
         "pctChange": 0.1699
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.3318,
         "position": 32318958,
-        "value": 9103927357,
+        "value": 9711200854,
         "pctChange": 0.0507
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.2308,
         "position": 22476753,
-        "value": 6331476607,
+        "value": 6753814988,
         "pctChange": 0.1601
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.20120001,
         "position": 19601462,
-        "value": 5521535878,
+        "value": 5889847517,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.1984,
         "position": 19323515,
-        "value": 5443240987,
+        "value": 5806329999,
         "pctChange": 0.2085
       },
       {
@@ -108,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.1383,
         "position": 13469336,
-        "value": 3794177290,
+        "value": 4047266229,
         "pctChange": 0.1709
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.089099996,
         "position": 8680485,
-        "value": 2445205840,
+        "value": 2608312228,
         "pctChange": 0.1542
       },
       {
@@ -126,7 +126,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0848,
         "position": 8255352,
-        "value": 2325450125,
+        "value": 2480568259,
         "pctChange": -0.065799996
       }
     ]
@@ -261,6 +261,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T18:16:24.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 300,
+        "priorPriceTarget": 200
+      },
+      {
+        "epochGradeDate": "2026-06-01T12:07:11.000Z",
+        "firm": "Baird",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 300,
+        "priorPriceTarget": 265
+      },
       {
         "epochGradeDate": "2026-05-29T19:30:48.000Z",
         "firm": "Jefferies",
@@ -8867,24 +8887,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.005191856,
-    "postMarketChange": -1.4624939,
-    "postMarketTime": "2026-05-29T23:59:47.000Z",
-    "postMarketPrice": 280.2275,
+    "postMarketChangePercent": -0.0022634275,
+    "postMarketChange": -0.68011475,
+    "postMarketTime": "2026-06-01T23:59:53.000Z",
+    "postMarketPrice": 299.7999,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.09279596,
-    "regularMarketChange": 23.920013,
-    "regularMarketTime": "2026-05-29T20:00:01.000Z",
+    "regularMarketChangePercent": 0.0667046,
+    "regularMarketChange": 18.79,
+    "regularMarketTime": "2026-06-01T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 281.69,
-    "regularMarketDayHigh": 283.435,
-    "regularMarketDayLow": 256.01,
-    "regularMarketVolume": 14998907,
-    "averageDailyVolume10Day": 8909760,
-    "averageDailyVolume3Month": 7990204,
-    "regularMarketPreviousClose": 257.77,
+    "regularMarketPrice": 300.48,
+    "regularMarketDayHigh": 302.95,
+    "regularMarketDayLow": 283.8,
+    "regularMarketVolume": 13405338,
+    "averageDailyVolume10Day": 9123950,
+    "averageDailyVolume3Month": 8076103,
+    "regularMarketPreviousClose": 281.69,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 256.315,
+    "regularMarketOpen": 286.45,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -8900,13 +8920,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 228450598912
+    "marketCap": 243689291776
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 225782038528,
-    "forwardPE": 70.777985,
+    "enterpriseValue": 241114677248,
+    "forwardPE": 75.4992,
     "profitMargins": 0.12956999,
     "floatShares": 809112960,
     "sharesOutstanding": 811000000,
@@ -8923,7 +8943,7 @@
     "impliedSharesOutstanding": 811000000,
     "category": null,
     "bookValue": 13.361,
-    "priceToBook": 21.083002,
+    "priceToBook": 22.489336,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-07-31T00:00:00.000Z",
@@ -8936,10 +8956,10 @@
     "pegRatio": 4.72,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1734307200,
-    "enterpriseToRevenue": 22.821,
-    "enterpriseToEbitda": 146.946,
-    "52WeekChange": 0.44560194,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 24.371,
+    "enterpriseToEbitda": 156.925,
+    "52WeekChange": 0.52435064,
+    "SandP52WeekChange": 0.27294624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -9243,6 +9263,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 1983,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "THORNING SCHMIDT HELLE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2033,
         "value": 0,
         "filerUrl": "",
@@ -9272,18 +9304,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "KEY JOHN PHILLIP",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-09T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1983,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "THORNING SCHMIDT HELLE",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-09T00:00:00.000Z",
@@ -10095,24 +10115,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
-        "value": 3870000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 32.25 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 788404,
         "value": 26083085,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 33.08 per share.",
         "filerName": "ARORA NIKESH",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-01-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 120000,
+        "value": 3870000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 32.25 per share.",
+        "filerName": "KLARICH LEE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-06T00:00:00.000Z",
         "ownership": "D"
@@ -10299,24 +10319,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2500,
-        "value": 975600,
-        "filerUrl": "",
-        "transactionText": "Sale at price 390.24 per share.",
-        "filerName": "GOLECHHA DIPAK",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-12-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 60000,
         "value": 23364704,
         "filerUrl": "",
         "transactionText": "Sale at price 387.39 - 391.73 per share.",
         "filerName": "KLARICH LEE",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2500,
+        "value": 975600,
+        "filerUrl": "",
+        "transactionText": "Sale at price 390.24 per share.",
+        "filerName": "GOLECHHA DIPAK",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-12-02T00:00:00.000Z",
         "ownership": "D"
@@ -10527,24 +10547,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 60000,
-        "value": 3870198,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 64.50 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-09-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 66666,
         "value": 4411069,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 66.17 per share.",
         "filerName": "ARORA NIKESH",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-09-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 60000,
+        "value": 3870198,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 64.50 per share.",
+        "filerName": "KLARICH LEE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-09-04T00:00:00.000Z",
         "ownership": "D"
@@ -10770,14 +10790,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 281.69,
+    "currentPrice": 300.48,
     "targetHighPrice": 320,
     "targetLowPrice": 114,
-    "targetMeanPrice": 230.81714,
-    "targetMedianPrice": 224,
+    "targetMeanPrice": 234.48,
+    "targetMedianPrice": 225,
     "recommendationMean": 1.59259,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 49,
+    "numberOfAnalystOpinions": 48,
     "totalCash": 4536000000,
     "totalCashPerShare": 5.559,
     "ebitda": 1536499968,
@@ -10800,6 +10820,6 @@
     "profitMargins": 0.12956999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:54:36.357Z",
+  "lastUpdated": "2026-06-02T06:42:19.367Z",
   "source": "Static Build (yahoo-finance2)"
 }

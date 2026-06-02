@@ -4,13 +4,21 @@
       {
         "period": "0m",
         "strongBuy": 8,
+        "buy": 31,
+        "hold": 8,
+        "sell": 0,
+        "strongSell": 0
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 8,
         "buy": 30,
         "hold": 9,
         "sell": 0,
         "strongSell": 0
       },
       {
-        "period": "-1m",
+        "period": "-2m",
         "strongBuy": 7,
         "buy": 32,
         "hold": 9,
@@ -18,17 +26,9 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
-        "strongBuy": 8,
-        "buy": 33,
-        "hold": 9,
-        "sell": 0,
-        "strongSell": 0
-      },
-      {
         "period": "-3m",
         "strongBuy": 8,
-        "buy": 32,
+        "buy": 33,
         "hold": 9,
         "sell": 0,
         "strongSell": 0
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.053000003,
         "position": 8568317,
-        "value": 1197250897,
+        "value": 1334172697,
         "pctChange": 0.0942
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0367,
         "position": 5930635,
-        "value": 828687603,
+        "value": 923459215,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.028800001,
         "position": 4660890,
-        "value": 651266139,
+        "value": 725747213,
         "pctChange": 1
       },
       {
@@ -72,7 +72,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0218,
         "position": 3518678,
-        "value": 491664861,
+        "value": 547893375,
         "pctChange": 0.3623
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.018099999,
         "position": 2924939,
-        "value": 408701713,
+        "value": 455442271,
         "pctChange": 0.2125
       },
       {
@@ -90,7 +90,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0147,
         "position": 2384518,
-        "value": 333188689,
+        "value": 371293313,
         "pctChange": 0.0201
       },
       {
@@ -99,7 +99,7 @@
         "organization": "American Century Companies Inc",
         "pctHeld": 0.0147,
         "position": 2384425,
-        "value": 333175695,
+        "value": 371278832,
         "pctChange": -0.0072000003
       },
       {
@@ -108,7 +108,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0135,
         "position": 2190318,
-        "value": 306053124,
+        "value": 341054430,
         "pctChange": -0.5164
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0128999995,
         "position": 2086910,
-        "value": 291603925,
+        "value": 324952770,
         "pctChange": 0.0083
       },
       {
@@ -126,7 +126,7 @@
         "organization": "UBS AM, a distinct business unit of UBS ASSET MANAGEMENT AMERICAS LLC",
         "pctHeld": 0.012200001,
         "position": 1965114,
-        "value": 274585370,
+        "value": 305987914,
         "pctChange": 0.17709999
       }
     ]
@@ -259,6 +259,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T12:11:53.000Z",
+        "firm": "Guggenheim",
+        "toGrade": "Buy",
+        "fromGrade": "Neutral",
+        "action": "up",
+        "priceTargetAction": "Announces",
+        "currentPriceTarget": 214,
+        "priorPriceTarget": 0
+      },
       {
         "epochGradeDate": "2026-05-28T14:28:01.000Z",
         "firm": "Wells Fargo",
@@ -6695,24 +6705,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.005081931,
-    "postMarketChange": -0.71009827,
-    "postMarketTime": "2026-05-29T23:59:59.000Z",
-    "postMarketPrice": 139.0199,
+    "postMarketChangePercent": -0.0104040215,
+    "postMarketChange": -1.6200104,
+    "postMarketTime": "2026-06-01T23:59:47.000Z",
+    "postMarketPrice": 154.09,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.07451556,
-    "regularMarketChange": 9.690002,
-    "regularMarketTime": "2026-05-29T20:00:00.000Z",
+    "regularMarketChangePercent": 0.114363,
+    "regularMarketChange": 15.98,
+    "regularMarketTime": "2026-06-01T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 139.73,
-    "regularMarketDayHigh": 139.9,
-    "regularMarketDayLow": 130.365,
-    "regularMarketVolume": 11010088,
-    "averageDailyVolume10Day": 9371620,
-    "averageDailyVolume3Month": 3850174,
-    "regularMarketPreviousClose": 130.04,
+    "regularMarketPrice": 155.71,
+    "regularMarketDayHigh": 157.7,
+    "regularMarketDayLow": 143.75,
+    "regularMarketVolume": 10153332,
+    "averageDailyVolume10Day": 9989530,
+    "averageDailyVolume3Month": 3944363,
+    "regularMarketPreviousClose": 139.73,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 132.225,
+    "regularMarketOpen": 144.5,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -6728,13 +6738,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 22595670016
+    "marketCap": 25179791360
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 20924727296,
-    "forwardPE": 30.393002,
+    "enterpriseValue": 23508846592,
+    "forwardPE": 33.86885,
     "profitMargins": -0.024389999,
     "floatShares": 105132213,
     "sharesOutstanding": 161709525,
@@ -6751,7 +6761,7 @@
     "impliedSharesOutstanding": 161709525,
     "category": null,
     "bookValue": 14.635,
-    "priceToBook": 9.547659,
+    "priceToBook": 10.639563,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-07-31T00:00:00.000Z",
@@ -6762,10 +6772,10 @@
     "forwardEps": 4.59744,
     "pegRatio": 1.52,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 6.593,
-    "enterpriseToEbitda": -344.179,
-    "52WeekChange": -0.52339864,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 7.408,
+    "enterpriseToEbitda": -386.684,
+    "52WeekChange": -0.47222316,
+    "SandP52WeekChange": 0.27294624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -6817,18 +6827,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3147,
-        "value": 492799,
-        "filerUrl": "",
-        "transactionText": "Sale at price 156.59 per share.",
-        "filerName": "RICH MICHAEL J",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2488,
         "value": 389604,
         "filerUrl": "",
@@ -6846,6 +6844,18 @@
         "filerUrl": "",
         "transactionText": "Sale at price 156.59 per share.",
         "filerName": "SCHLOSSMAN ROBERT S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 3147,
+        "value": 492799,
+        "filerUrl": "",
+        "transactionText": "Sale at price 156.59 per share.",
+        "filerName": "RICH MICHAEL J",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-17T00:00:00.000Z",
@@ -6881,7 +6891,7 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DARLING SCOTT C",
+        "filerName": "SCHNEIDER DAVID L.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-01-12T00:00:00.000Z",
@@ -6906,6 +6916,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GIANCARLO CHARLES H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1076,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DARLING SCOTT C",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-01-12T00:00:00.000Z",
@@ -6949,18 +6971,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1076,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHNEIDER DAVID L.",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-01-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 653,
         "value": 148048,
         "filerUrl": "",
@@ -6985,18 +6995,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 3680,
-        "value": 852608,
-        "filerUrl": "",
-        "transactionText": "Sale at price 230.82 - 232.79 per share.",
-        "filerName": "GELLER ADAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-12-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5433,
         "value": 1258670,
         "filerUrl": "",
@@ -7009,14 +7007,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 4100,
-        "value": 946359,
+        "shares": 3680,
+        "value": 852608,
         "filerUrl": "",
-        "transactionText": "Sale at price 230.82 per share.",
-        "filerName": "RICH MICHAEL J",
+        "transactionText": "Sale at price 230.82 - 232.79 per share.",
+        "filerName": "GELLER ADAM",
         "filerRelation": "Officer",
         "moneyText": "",
-        "startDate": "2025-12-16T00:00:00.000Z",
+        "startDate": "2025-12-17T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -7027,6 +7025,18 @@
         "transactionText": "Sale at price 230.82 per share.",
         "filerName": "JUDGE RAJ",
         "filerRelation": "Officer and Director",
+        "moneyText": "",
+        "startDate": "2025-12-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 4100,
+        "value": 946359,
+        "filerUrl": "",
+        "transactionText": "Sale at price 230.82 per share.",
+        "filerName": "RICH MICHAEL J",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-12-16T00:00:00.000Z",
         "ownership": "D"
@@ -7069,6 +7079,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 7154,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHLOSSMAN ROBERT S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 10730,
         "value": 0,
         "filerUrl": "",
@@ -7086,18 +7108,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GELLER ADAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7154,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-10-15T00:00:00.000Z",
@@ -7141,6 +7151,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3832,
+        "value": 1075629,
+        "filerUrl": "",
+        "transactionText": "Sale at price 280.70 per share.",
+        "filerName": "SCHLOSSMAN ROBERT S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 11718,
         "value": 3289216,
         "filerUrl": "",
@@ -7171,18 +7193,6 @@
         "transactionText": "Sale at price 280.70 per share.",
         "filerName": "CHAUDHRY JAGTAR SINGH",
         "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-09-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 3832,
-        "value": 1075629,
-        "filerUrl": "",
-        "transactionText": "Sale at price 280.70 per share.",
-        "filerName": "SCHLOSSMAN ROBERT S",
-        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-16T00:00:00.000Z",
         "ownership": "D"
@@ -7237,11 +7247,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 6671,
-        "value": 2037037,
+        "shares": 6764,
+        "value": 2058590,
         "filerUrl": "",
-        "transactionText": "Sale at price 303.70 - 308.05 per share.",
-        "filerName": "GELLER ADAM",
+        "transactionText": "Sale at price 303.46 - 306.77 per share.",
+        "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-18T00:00:00.000Z",
@@ -7249,11 +7259,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 6764,
-        "value": 2058590,
+        "shares": 6671,
+        "value": 2037037,
         "filerUrl": "",
-        "transactionText": "Sale at price 303.46 - 306.77 per share.",
-        "filerName": "SCHLOSSMAN ROBERT S",
+        "transactionText": "Sale at price 303.70 - 308.05 per share.",
+        "filerName": "GELLER ADAM",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-18T00:00:00.000Z",
@@ -7357,24 +7367,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 20333,
-        "value": 6033118,
-        "filerUrl": "",
-        "transactionText": "Sale at price 296.71 - 296.99 per share.",
-        "filerName": "BROWN ANDREW WILLIAM FRASER",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-04T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 4618,
         "value": 1385400,
         "filerUrl": "",
         "transactionText": "Sale at price 300.00 per share.",
         "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20333,
+        "value": 6033118,
+        "filerUrl": "",
+        "transactionText": "Sale at price 296.71 - 296.99 per share.",
+        "filerName": "BROWN ANDREW WILLIAM FRASER",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-04T00:00:00.000Z",
         "ownership": "D"
@@ -7417,24 +7427,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 28947,
-        "value": 7236750,
-        "filerUrl": "",
-        "transactionText": "Sale at price 250.00 per share.",
-        "filerName": "NAIR SYAM",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-05-16T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3590,
         "value": 897500,
         "filerUrl": "",
         "transactionText": "Sale at price 250.00 per share.",
         "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-16T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 28947,
+        "value": 7236750,
+        "filerUrl": "",
+        "transactionText": "Sale at price 250.00 per share.",
+        "filerName": "NAIR SYAM",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-05-16T00:00:00.000Z",
         "ownership": "D"
@@ -7541,18 +7551,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DARLING SCOTT C",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-01-10T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1309,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "BROWN ANDREW WILLIAM FRASER",
         "filerRelation": "Director",
         "moneyText": "",
@@ -7566,6 +7564,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GIANCARLO CHARLES H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-01-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1309,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DARLING SCOTT C",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-01-10T00:00:00.000Z",
@@ -7621,24 +7631,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 6915,
-        "value": 1383177,
-        "filerUrl": "",
-        "transactionText": "Sale at price 199.27 - 200.32 per share.",
-        "filerName": "CANESSA REMO E",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-12-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 6293,
         "value": 1234190,
         "filerUrl": "",
         "transactionText": "Sale at price 186.08 - 200.32 per share.",
         "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6915,
+        "value": 1383177,
+        "filerUrl": "",
+        "transactionText": "Sale at price 199.27 - 200.32 per share.",
+        "filerName": "CANESSA REMO E",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-12-18T00:00:00.000Z",
         "ownership": "D"
@@ -7693,6 +7703,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 10952,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SCHLOSSMAN ROBERT S",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-12-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 16428,
         "value": 0,
         "filerUrl": "",
@@ -7722,18 +7744,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GELLER ADAM",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-12-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10952,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2024-12-05T00:00:00.000Z",
@@ -7825,24 +7835,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 2852,
-        "value": 488491,
-        "filerUrl": "",
-        "transactionText": "Sale at price 171.28 per share.",
-        "filerName": "CHAUDHRY JAGTAR SINGH",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2024-09-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 6220,
         "value": 1065362,
         "filerUrl": "",
         "transactionText": "Sale at price 171.28 per share.",
         "filerName": "SCHLOSSMAN ROBERT S",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2024-09-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2852,
+        "value": 488491,
+        "filerUrl": "",
+        "transactionText": "Sale at price 171.28 per share.",
+        "filerName": "CHAUDHRY JAGTAR SINGH",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-09-17T00:00:00.000Z",
         "ownership": "D"
@@ -7936,14 +7946,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 139.73,
+    "currentPrice": 155.71,
     "targetHighPrice": 250,
     "targetLowPrice": 145,
-    "targetMeanPrice": 194.4625,
-    "targetMedianPrice": 195,
+    "targetMeanPrice": 194.89667,
+    "targetMedianPrice": 200,
     "recommendationMean": 1.55319,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 44,
+    "numberOfAnalystOpinions": 45,
     "totalCash": 3539107072,
     "totalCashPerShare": 21.886,
     "ebitda": -60796000,
@@ -7965,6 +7975,6 @@
     "profitMargins": -0.024389999,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:57:03.343Z",
+  "lastUpdated": "2026-06-02T06:44:46.926Z",
   "source": "Static Build (yahoo-finance2)"
 }

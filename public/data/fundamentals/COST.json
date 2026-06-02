@@ -14,13 +14,13 @@
         "strongBuy": 3,
         "buy": 19,
         "hold": 12,
-        "sell": 2,
-        "strongSell": 0
+        "sell": 1,
+        "strongSell": 1
       },
       {
         "period": "-2m",
         "strongBuy": 3,
-        "buy": 20,
+        "buy": 19,
         "hold": 12,
         "sell": 2,
         "strongSell": 0
@@ -30,8 +30,8 @@
         "strongBuy": 3,
         "buy": 20,
         "hold": 12,
-        "sell": 1,
-        "strongSell": 1
+        "sell": 2,
+        "strongSell": 0
       }
     ],
     "maxAge": 86400
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0788,
         "position": 34947040,
-        "value": 33420553548,
+        "value": 33063743502,
         "pctChange": -0.0043
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.065,
         "position": 28847448,
-        "value": 27587391682,
+        "value": 27292858604,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.040900003,
         "position": 18152232,
-        "value": 17359342639,
+        "value": 17174007951,
         "pctChange": 0.00029999999
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0241,
         "position": 10705635,
-        "value": 10238012941,
+        "value": 10128708173,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024,
         "position": 10659224,
-        "value": 10193629173,
+        "value": 10084798262,
         "pctChange": 0.026099999
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0223,
         "position": 9898711,
-        "value": 9466335376,
+        "value": 9365269319,
         "pctChange": 0.0513
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.016900001,
         "position": 7515031,
-        "value": 7186774500,
+        "value": 7110045869,
         "pctChange": 0.1148
       },
       {
@@ -108,7 +108,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0150999995,
         "position": 6718589,
-        "value": 6425121081,
+        "value": 6356524140,
         "pctChange": 0.0038
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.0111,
         "position": 4928107,
-        "value": 4712847322,
+        "value": 4662531241,
         "pctChange": 0.0029
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0097,
         "position": 4313506,
-        "value": 4125092089,
+        "value": 4081051098,
         "pctChange": -0.0034999999
       }
     ]
@@ -259,6 +259,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T13:39:04.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 1000,
+        "priorPriceTarget": 1000
+      },
       {
         "epochGradeDate": "2026-05-29T18:41:55.000Z",
         "firm": "DA Davidson",
@@ -6505,24 +6515,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0018508653,
-    "postMarketChange": 1.7700195,
-    "postMarketTime": "2026-05-29T23:59:53.000Z",
-    "postMarketPrice": 958.09,
+    "postMarketChangePercent": -0.0010986986,
+    "postMarketChange": -1.0394897,
+    "postMarketTime": "2026-06-01T23:59:43.000Z",
+    "postMarketPrice": 945.0705,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.03906753,
-    "regularMarketChange": -38.880005,
-    "regularMarketTime": "2026-05-29T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0106764,
+    "regularMarketChange": -10.21,
+    "regularMarketTime": "2026-06-01T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 956.32,
-    "regularMarketDayHigh": 998.6576,
-    "regularMarketDayLow": 945.45,
-    "regularMarketVolume": 7034527,
-    "averageDailyVolume10Day": 2850390,
-    "averageDailyVolume3Month": 1958038,
-    "regularMarketPreviousClose": 995.2,
+    "regularMarketPrice": 946.11,
+    "regularMarketDayHigh": 959.21,
+    "regularMarketDayLow": 936.51,
+    "regularMarketVolume": 2809569,
+    "averageDailyVolume10Day": 2934950,
+    "averageDailyVolume3Month": 1971144,
+    "regularMarketPreviousClose": 956.32,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 985.482,
+    "regularMarketOpen": 954.99,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -6538,13 +6548,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 424273805312
+    "marketCap": 419744088064
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 422422282240,
-    "forwardPE": 42.29425,
+    "enterpriseValue": 417908031488,
+    "forwardPE": 41.8427,
     "profitMargins": 0.0301,
     "floatShares": 440916269,
     "sharesOutstanding": 443652540,
@@ -6561,7 +6571,7 @@
     "impliedSharesOutstanding": 443652540,
     "category": null,
     "bookValue": 37.278,
-    "priceToBook": 25.653738,
+    "priceToBook": 25.379848,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-08-31T00:00:00.000Z",
@@ -6569,15 +6579,15 @@
     "mostRecentQuarter": "2021-05-09T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.456,
     "netIncomeToCommon": 8837999616,
-    "trailingEps": 19.22,
+    "trailingEps": 19.87,
     "forwardEps": 22.61111,
     "pegRatio": 4.86,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 947808000,
-    "enterpriseToRevenue": 1.439,
-    "enterpriseToEbitda": 30.633,
-    "52WeekChange": -0.09512228,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 1.423,
+    "enterpriseToEbitda": 30.305,
+    "52WeekChange": -0.103714526,
+    "SandP52WeekChange": 0.27294624,
     "lastDividendValue": 1.47,
     "lastDividendDate": "2026-05-01T00:00:00.000Z",
     "latestShareClass": null,
@@ -6848,18 +6858,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 286,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "FOULKES HELENA BUONANNO",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-10-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2118,
         "value": 0,
         "filerUrl": "",
@@ -6872,11 +6870,23 @@
       },
       {
         "maxAge": 1,
+        "shares": 4654,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SULLIVAN JOHN CHRISTOPHER",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-10-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 286,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DECKER SUSAN LYNNE",
+        "filerName": "FOULKES HELENA BUONANNO",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-22T00:00:00.000Z",
@@ -6908,24 +6918,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 4654,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SULLIVAN JOHN CHRISTOPHER",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-10-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 13834,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "VACHRIS ROLAND MICHAEL",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-10-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 286,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DECKER SUSAN LYNNE",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-10-22T00:00:00.000Z",
         "ownership": "D"
@@ -7364,18 +7374,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 303,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "DECKER SUSAN LYNNE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-10-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2149,
         "value": 0,
         "filerUrl": "",
@@ -7430,6 +7428,18 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "VACHRIS ROLAND MICHAEL",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2024-10-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 303,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "DECKER SUSAN LYNNE",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-10-22T00:00:00.000Z",
         "ownership": "D"
@@ -7739,7 +7749,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 956.32,
+    "currentPrice": 946.11,
     "targetHighPrice": 1315,
     "targetLowPrice": 740,
     "targetMeanPrice": 1083.9688,
@@ -7769,6 +7779,6 @@
     "profitMargins": 0.0301,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:55:16.452Z",
+  "lastUpdated": "2026-06-02T06:43:00.721Z",
   "source": "Static Build (yahoo-finance2)"
 }

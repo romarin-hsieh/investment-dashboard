@@ -11,6 +11,14 @@
       },
       {
         "period": "-1m",
+        "strongBuy": 6,
+        "buy": 16,
+        "hold": 5,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
         "strongBuy": 7,
         "buy": 16,
         "hold": 4,
@@ -18,18 +26,10 @@
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 6,
         "buy": 16,
         "hold": 5,
-        "sell": 2,
-        "strongSell": 0
-      },
-      {
-        "period": "-3m",
-        "strongBuy": 6,
-        "buy": 15,
-        "hold": 6,
         "sell": 2,
         "strongSell": 0
       }
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0809,
         "position": 73467531,
-        "value": 27940436535,
+        "value": 27907375249,
         "pctChange": -0.0171
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0648,
         "position": 58870777,
-        "value": 22389145057,
+        "value": 22362652488,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0499,
         "position": 45332186,
-        "value": 17240283546,
+        "value": 17219883509,
         "pctChange": 0.0022
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0306,
         "position": 27783415,
-        "value": 10566310490,
+        "value": 10553807614,
         "pctChange": 0.2298
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.026500002,
         "position": 24036504,
-        "value": 9141322777,
+        "value": 9130506057,
         "pctChange": 1
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0251,
         "position": 22768695,
-        "value": 8659162339,
+        "value": 8648916149,
         "pctChange": 0.0448
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Price (T.Rowe) Associates Inc",
         "pctHeld": 0.023,
         "position": 20873946,
-        "value": 7938570352,
+        "value": 7929176821,
         "pctChange": 0.1086
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Charles Schwab Investment Management, Inc.",
         "pctHeld": 0.0229,
         "position": 20817755,
-        "value": 7917200353,
+        "value": 7907832109,
         "pctChange": 1.4664999
       },
       {
@@ -117,7 +117,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.021,
         "position": 19102541,
-        "value": 7264887321,
+        "value": 7256290944,
         "pctChange": 0.1107
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Capital Research Global Investors",
         "pctHeld": 0.0188,
         "position": 17112218,
-        "value": 6507947585,
+        "value": 6500246878,
         "pctChange": 1.7328
       }
     ]
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T14:22:30.000Z",
+        "firm": "Truist Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 440,
+        "priorPriceTarget": 395
+      },
       {
         "epochGradeDate": "2026-05-27T11:44:32.000Z",
         "firm": "Bernstein",
@@ -5477,24 +5487,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0026557539,
-    "postMarketChange": -1.0100098,
-    "postMarketTime": "2026-05-29T23:59:56.000Z",
-    "postMarketPrice": 379.3,
+    "postMarketChangePercent": -0.0038434989,
+    "postMarketChange": -1.4599915,
+    "postMarketTime": "2026-06-01T23:59:31.000Z",
+    "postMarketPrice": 378.4,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.00580347,
-    "regularMarketChange": -2.22,
-    "regularMarketTime": "2026-05-29T20:00:02.000Z",
+    "regularMarketChangePercent": -0.00118328,
+    "regularMarketChange": -0.450012,
+    "regularMarketTime": "2026-06-01T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 380.31,
-    "regularMarketDayHigh": 385.12,
-    "regularMarketDayLow": 375.45,
-    "regularMarketVolume": 10246752,
-    "averageDailyVolume10Day": 6697450,
-    "averageDailyVolume3Month": 8176511,
-    "regularMarketPreviousClose": 382.53,
+    "regularMarketPrice": 379.86,
+    "regularMarketDayHigh": 383.345,
+    "regularMarketDayLow": 375.925,
+    "regularMarketVolume": 6519009,
+    "averageDailyVolume10Day": 6378380,
+    "averageDailyVolume3Month": 8152369,
+    "regularMarketPreviousClose": 380.31,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 383.78,
+    "regularMarketOpen": 376.105,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -5510,13 +5520,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 345376391168
+    "marketCap": 344967708672
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 399502409728,
-    "forwardPE": 18.222345,
+    "enterpriseValue": 399093727232,
+    "forwardPE": 18.200783,
     "profitMargins": 0.02678,
     "floatShares": 905438134,
     "sharesOutstanding": 908144404,
@@ -5533,7 +5543,7 @@
     "impliedSharesOutstanding": 908144404,
     "category": null,
     "bookValue": 107.798,
-    "priceToBook": 3.5279877,
+    "priceToBook": 3.523813,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -5541,15 +5551,15 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": -0.002,
     "netIncomeToCommon": 12044000256,
-    "trailingEps": 13.27,
+    "trailingEps": 13.3,
     "forwardEps": 20.87053,
     "pegRatio": 1.32,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1117497600,
-    "enterpriseToRevenue": 0.888,
-    "enterpriseToEbitda": 18.613,
-    "52WeekChange": 0.2480638,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 0.887,
+    "enterpriseToEbitda": 18.594,
+    "52WeekChange": 0.26107168,
+    "SandP52WeekChange": 0.27294624,
     "lastDividendValue": 2.21,
     "lastDividendDate": "2026-03-09T00:00:00.000Z",
     "latestShareClass": null,
@@ -5723,24 +5733,36 @@
       },
       {
         "maxAge": 1,
-        "shares": 125,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "CONWAY PATRICK HUGH M.D.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-03-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 16,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "GARCIA PAUL REU",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 64,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCNABB FREDERICK WILLIAM III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-17T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 125,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "CONWAY PATRICK HUGH M.D.",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-17T00:00:00.000Z",
         "ownership": "D"
@@ -5776,18 +5798,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NOSEWORTHY JOHN H",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-17T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 64,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCNABB FREDERICK WILLIAM III",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-03-17T00:00:00.000Z",
@@ -5963,6 +5973,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 316,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MCNABB FREDERICK WILLIAM III",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 279,
         "value": 0,
         "filerUrl": "",
@@ -5980,18 +6002,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NOSEWORTHY JOHN H",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-01-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 316,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MCNABB FREDERICK WILLIAM III",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-01-02T00:00:00.000Z",
@@ -6351,6 +6361,18 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ZAETTA CHRISTOPHER R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-09-23T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 42,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "NOEL TIMOTHY JOHN",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -6364,18 +6386,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "CONWAY PATRICK HUGH M.D.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-09-23T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 42,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ZAETTA CHRISTOPHER R",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-09-23T00:00:00.000Z",
@@ -6659,6 +6669,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 48,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "ZAETTA CHRISTOPHER R",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-06-24T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 47,
         "value": 0,
         "filerUrl": "",
@@ -6676,18 +6698,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "CONWAY PATRICK HUGH M.D.",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-06-24T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 48,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "ZAETTA CHRISTOPHER R",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-06-24T00:00:00.000Z",
@@ -6911,18 +6921,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1533,
-        "value": 491786,
-        "filerUrl": "",
-        "transactionText": "Purchase at price 320.80 per share.",
-        "filerName": "FLYNN TIMOTHY PATRICK",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-05-14T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 300,
         "value": 93647,
         "filerUrl": "",
@@ -6932,6 +6930,18 @@
         "moneyText": "",
         "startDate": "2025-05-14T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1533,
+        "value": 491786,
+        "filerUrl": "",
+        "transactionText": "Purchase at price 320.80 per share.",
+        "filerName": "FLYNN TIMOTHY PATRICK",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-14T00:00:00.000Z",
+        "ownership": "I"
       },
       {
         "maxAge": 1,
@@ -6995,11 +7005,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 108,
+        "shares": 180,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GIL KRISTEN",
+        "filerName": "MONTGOMERY RICE VALERIE C",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
@@ -7007,11 +7017,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 180,
+        "shares": 108,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MONTGOMERY RICE VALERIE C",
+        "filerName": "GIL KRISTEN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-01T00:00:00.000Z",
@@ -7163,11 +7173,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 4,
+        "shares": 24,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "GIL KRISTEN",
+        "filerName": "MONTGOMERY RICE VALERIE C",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-18T00:00:00.000Z",
@@ -7175,11 +7185,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 24,
+        "shares": 4,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MONTGOMERY RICE VALERIE C",
+        "filerName": "GIL KRISTEN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-18T00:00:00.000Z",
@@ -7382,11 +7392,11 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 380.31,
+    "currentPrice": 379.86,
     "targetHighPrice": 492,
     "targetLowPrice": 287,
-    "targetMeanPrice": 399.73077,
-    "targetMedianPrice": 400.5,
+    "targetMeanPrice": 401.46155,
+    "targetMedianPrice": 410.5,
     "recommendationMean": 1.71429,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 26,
@@ -7412,6 +7422,6 @@
     "profitMargins": 0.02678,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:56:39.078Z",
+  "lastUpdated": "2026-06-02T06:44:22.438Z",
   "source": "Static Build (yahoo-finance2)"
 }

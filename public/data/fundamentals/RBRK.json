@@ -12,15 +12,15 @@
       {
         "period": "-1m",
         "strongBuy": 3,
-        "buy": 24,
-        "hold": 1,
+        "buy": 26,
+        "hold": 0,
         "sell": 0,
         "strongSell": 0
       },
       {
         "period": "-2m",
-        "strongBuy": 2,
-        "buy": 23,
+        "strongBuy": 3,
+        "buy": 24,
         "hold": 1,
         "sell": 0,
         "strongSell": 0
@@ -28,7 +28,7 @@
       {
         "period": "-3m",
         "strongBuy": 2,
-        "buy": 22,
+        "buy": 23,
         "hold": 1,
         "sell": 0,
         "strongSell": 0
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0548,
         "position": 8816816,
-        "value": 693266217,
+        "value": 750046534,
         "pctChange": -0.2475
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0513,
         "position": 8261391,
-        "value": 649593151,
+        "value": 702796529,
         "pctChange": 0.5671
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0499,
         "position": 8029608,
-        "value": 631368054,
+        "value": 683078750,
         "pctChange": 1
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.040700004,
         "position": 6555111,
-        "value": 515428359,
+        "value": 557643290,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.0304,
         "position": 4895715,
-        "value": 384950057,
+        "value": 416478473,
         "pctChange": -0.307
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Voya Investment Management LLC",
         "pctHeld": 0.0232,
         "position": 3736521,
-        "value": 293802635,
+        "value": 317865840,
         "pctChange": -0.024300002
       },
       {
@@ -99,7 +99,7 @@
         "organization": "PointState Capital LP",
         "pctHeld": 0.0227,
         "position": 3646244,
-        "value": 286704155,
+        "value": 310185975,
         "pctChange": 0.7363
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Pictet Asset Management Holding SA",
         "pctHeld": 0.0207,
         "position": 3325503,
-        "value": 261484291,
+        "value": 282900539,
         "pctChange": 1.0412
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0168,
         "position": 2702893,
-        "value": 212528469,
+        "value": 229935106,
         "pctChange": 0.0689
       },
       {
@@ -126,7 +126,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0159,
         "position": 2566813,
-        "value": 201828499,
+        "value": 218358781,
         "pctChange": 0.089099996
       }
     ]
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-01T16:06:32.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 90,
+        "priorPriceTarget": 90
+      },
       {
         "epochGradeDate": "2026-05-21T11:01:34.000Z",
         "firm": "BTIG",
@@ -1627,24 +1637,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.004578413,
-    "postMarketChange": -0.3600006,
-    "postMarketTime": "2026-05-29T23:59:31.000Z",
-    "postMarketPrice": 78.27,
+    "postMarketChangePercent": -0.006877845,
+    "postMarketChange": -0.58509827,
+    "postMarketTime": "2026-06-01T23:59:25.000Z",
+    "postMarketPrice": 84.4849,
     "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.118174,
-    "regularMarketChange": 8.31,
-    "regularMarketTime": "2026-05-29T20:00:02.000Z",
+    "regularMarketChangePercent": 0.0819026,
+    "regularMarketChange": 6.44,
+    "regularMarketTime": "2026-06-01T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 78.63,
-    "regularMarketDayHigh": 78.88,
-    "regularMarketDayLow": 71.01,
-    "regularMarketVolume": 4736405,
-    "averageDailyVolume10Day": 3499460,
-    "averageDailyVolume3Month": 3759884,
-    "regularMarketPreviousClose": 70.32,
+    "regularMarketPrice": 85.07,
+    "regularMarketDayHigh": 86.455,
+    "regularMarketDayLow": 79.1502,
+    "regularMarketVolume": 6622453,
+    "averageDailyVolume10Day": 3900370,
+    "averageDailyVolume3Month": 3822385,
+    "regularMarketPreviousClose": 78.63,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 72,
+    "regularMarketOpen": 79.75,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -1660,13 +1670,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 16182827008
+    "marketCap": 17508243456
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 15396880384,
-    "forwardPE": 134.9431,
+    "enterpriseValue": 16699539456,
+    "forwardPE": 145.9953,
     "profitMargins": -0.26503,
     "floatShares": 154688655,
     "sharesOutstanding": 160938033,
@@ -1692,10 +1702,10 @@
     "trailingEps": -1.78,
     "forwardEps": 0.58269,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 11.698,
-    "enterpriseToEbitda": -48.085,
-    "52WeekChange": -0.21165031,
-    "SandP52WeekChange": 0.27697718,
+    "enterpriseToRevenue": 12.688,
+    "enterpriseToEbitda": -52.153,
+    "52WeekChange": -0.1325584,
+    "SandP52WeekChange": 0.27294624,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -1978,6 +1988,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 220,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 513,
         "value": 0,
         "filerUrl": "",
@@ -2019,18 +2041,6 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MCLAUGHLIN MARK D",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 220,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MHATRE RAVI",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-01-15T00:00:00.000Z",
@@ -2887,8 +2897,8 @@
         "value": 1519558,
         "filerUrl": "",
         "transactionText": "Sale at price 89.47 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
+        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
         "ownership": "I"
@@ -2899,8 +2909,8 @@
         "value": 1519558,
         "filerUrl": "",
         "transactionText": "Sale at price 89.47 per share.",
-        "filerName": "LIGHTSPEED MANAGEMENT CO L L C",
-        "filerRelation": "Beneficial Owner of more than 10% of a Class of Security",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-06-30T00:00:00.000Z",
         "ownership": "I"
@@ -2949,6 +2959,18 @@
         "moneyText": "",
         "startDate": "2025-06-26T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2702,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "MHATRE RAVI",
+        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
+        "moneyText": "",
+        "startDate": "2025-06-25T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -3006,18 +3028,6 @@
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MCLAUGHLIN MARK D",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-25T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2702,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "MHATRE RAVI",
-        "filerRelation": "Director and Beneficial Owner of more than 10% of a Class of Security",
         "moneyText": "",
         "startDate": "2025-06-25T00:00:00.000Z",
         "ownership": "D"
@@ -3313,24 +3323,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 900700,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.07 per share.",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 25000,
         "value": 2252500,
         "filerUrl": "",
         "transactionText": "Sale at price 90.10 per share.",
         "filerName": "MCCARTHY BRIAN KEITH",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2025-05-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 900700,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.07 per share.",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-22T00:00:00.000Z",
         "ownership": "D"
@@ -3396,24 +3406,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 5000,
-        "value": 375000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 75.00 per share.",
-        "filerName": "CHOUDARY KIRAN KUMAR",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-05-05T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 2000,
         "value": 144480,
         "filerUrl": "",
         "transactionText": "Sale at price 72.24 per share.",
         "filerName": "WASSENAAR YVONNE",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-05-05T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5000,
+        "value": 375000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 75.00 per share.",
+        "filerName": "CHOUDARY KIRAN KUMAR",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-05T00:00:00.000Z",
         "ownership": "D"
@@ -3469,14 +3479,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 78.63,
+    "currentPrice": 85.07,
     "targetHighPrice": 126,
     "targetLowPrice": 65,
-    "targetMeanPrice": 84.85714,
-    "targetMedianPrice": 83,
+    "targetMeanPrice": 85.40741,
+    "targetMedianPrice": 84,
     "recommendationMean": 1.10345,
     "recommendationKey": "strong_buy",
-    "numberOfAnalystOpinions": 28,
+    "numberOfAnalystOpinions": 27,
     "totalCash": 1675774976,
     "totalCashPerShare": 8.285,
     "ebitda": -320200992,
@@ -3496,6 +3506,6 @@
     "profitMargins": -0.26503,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-01T06:53:46.129Z",
+  "lastUpdated": "2026-06-02T06:41:30.116Z",
   "source": "Static Build (yahoo-finance2)"
 }
