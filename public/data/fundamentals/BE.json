@@ -6,11 +6,19 @@
         "strongBuy": 5,
         "buy": 9,
         "hold": 11,
+        "sell": 1,
+        "strongSell": 1
+      },
+      {
+        "period": "-1m",
+        "strongBuy": 5,
+        "buy": 9,
+        "hold": 11,
         "sell": 2,
         "strongSell": 0
       },
       {
-        "period": "-1m",
+        "period": "-2m",
         "strongBuy": 4,
         "buy": 9,
         "hold": 12,
@@ -18,7 +26,7 @@
         "strongSell": 1
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 4,
         "buy": 9,
         "hold": 11,
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0881,
         "position": 25060806,
-        "value": 7589665250,
+        "value": 7200470963,
         "pctChange": 0.0374
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Ameriprise Financial, Inc.",
         "pctHeld": 0.0805,
         "position": 22889027,
-        "value": 6931941966,
+        "value": 6576475405,
         "pctChange": -0.201
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.045100003,
         "position": 12829781,
-        "value": 3885499254,
+        "value": 3686252770,
         "pctChange": 1
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.041500002,
         "position": 11796818,
-        "value": 3572666403,
+        "value": 3389461834,
         "pctChange": 1
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0321,
         "position": 9120513,
-        "value": 2762147417,
+        "value": 2620505861,
         "pctChange": 3.5012
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0269,
         "position": 7644234,
-        "value": 2315056313,
+        "value": 2196341368,
         "pctChange": -0.131
       },
       {
@@ -91,7 +99,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0228,
         "position": 6473617,
-        "value": 1960534947,
+        "value": 1859999683,
         "pctChange": 0.0727
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Situational Awareness Partners LP",
         "pctHeld": 0.0228,
         "position": 6485408,
-        "value": 1964105852,
+        "value": 1863387474,
         "pctChange": 1
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Situational Awareness LP                          ",
         "pctHeld": 0.0228,
         "position": 6485408,
-        "value": 1964105852,
+        "value": 1863387474,
         "pctChange": -0.35639998
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0209,
         "position": 5947076,
-        "value": 1801072002,
+        "value": 1708713919,
         "pctChange": 0.1269
       }
     ]
@@ -2617,24 +2625,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.00049527455,
-    "postMarketChange": -0.1499939,
-    "postMarketTime": "2026-06-02T23:59:59.000Z",
-    "postMarketPrice": 302.7,
-    "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.107272,
-    "regularMarketChange": 29.34,
-    "regularMarketTime": "2026-06-02T20:00:03.000Z",
+    "postMarketChangePercent": -0.021996405,
+    "postMarketChange": -6.3200073,
+    "postMarketTime": "2026-06-03T23:59:59.000Z",
+    "postMarketPrice": 281,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.0512795,
+    "regularMarketChange": -15.53,
+    "regularMarketTime": "2026-06-03T20:00:03.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 302.85,
-    "regularMarketDayHigh": 305.11,
-    "regularMarketDayLow": 279.69,
-    "regularMarketVolume": 9373193,
-    "averageDailyVolume10Day": 10599070,
-    "averageDailyVolume3Month": 10502946,
-    "regularMarketPreviousClose": 273.51,
+    "regularMarketPrice": 287.32,
+    "regularMarketDayHigh": 298.5,
+    "regularMarketDayLow": 282.9101,
+    "regularMarketVolume": 7617398,
+    "averageDailyVolume10Day": 10602370,
+    "averageDailyVolume3Month": 10513991,
+    "regularMarketPreviousClose": 302.85,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 280.39,
+    "regularMarketOpen": 296.81,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
@@ -2645,18 +2653,18 @@
     "shortName": "Bloom Energy Corporation",
     "longName": "Bloom Energy Corporation",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 86143827968
+    "marketCap": 81726414848
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 86631751680,
-    "forwardPE": 69.612686,
+    "enterpriseValue": 82214338560,
+    "forwardPE": 66.042984,
     "profitMargins": 0.00246,
     "floatShares": 268034301,
     "sharesOutstanding": 284443868,
@@ -2673,7 +2681,7 @@
     "impliedSharesOutstanding": 284443868,
     "category": null,
     "bookValue": 3.242,
-    "priceToBook": 93.41456,
+    "priceToBook": 88.624306,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -2682,12 +2690,12 @@
     "netIncomeToCommon": 6033000,
     "trailingEps": -0.03,
     "forwardEps": 4.3505,
-    "pegRatio": 1.51,
+    "pegRatio": 1.61,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 35.374,
-    "enterpriseToEbitda": 374.074,
-    "52WeekChange": 13.955556,
-    "SandP52WeekChange": 0.27449715,
+    "enterpriseToRevenue": 33.57,
+    "enterpriseToEbitda": 355,
+    "52WeekChange": 13.809291,
+    "SandP52WeekChange": 0.2812587,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -4297,12 +4305,12 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 302.85,
+    "currentPrice": 287.32,
     "targetHighPrice": 335,
     "targetLowPrice": 55,
     "targetMeanPrice": 263.13333,
     "targetMedianPrice": 283,
-    "recommendationMean": 2.2963,
+    "recommendationMean": 2.25926,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 24,
     "totalCash": 2491432960,
@@ -4326,6 +4334,6 @@
     "profitMargins": 0.00246,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-03T06:53:02.591Z",
+  "lastUpdated": "2026-06-04T06:43:10.806Z",
   "source": "Static Build (yahoo-finance2)"
 }

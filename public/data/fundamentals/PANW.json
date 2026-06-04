@@ -5,7 +5,7 @@
         "period": "0m",
         "strongBuy": 10,
         "buy": 34,
-        "hold": 9,
+        "hold": 10,
         "sell": 1,
         "strongSell": 0
       },
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.7436,
         "position": 72431433,
-        "value": 21525172728,
+        "value": 20311946225,
         "pctChange": 0.216
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.5417,
         "position": 52765656,
-        "value": 15680897263,
+        "value": 14797072525,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.3643,
         "position": 35486318,
-        "value": 10545823723,
+        "value": 9951427896,
         "pctChange": 0.1699
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.3318,
         "position": 32318958,
-        "value": 9604547701,
+        "value": 9063205155,
         "pctChange": 0.0507
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Bank of America Corporation",
         "pctHeld": 0.2308,
         "position": 22476753,
-        "value": 6679641291,
+        "value": 6303155679,
         "pctChange": 0.1601
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.20120001,
         "position": 19601462,
-        "value": 5825162333,
+        "value": 5496837845,
         "pctChange": 1
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.1984,
         "position": 19323515,
-        "value": 5742562046,
+        "value": 5418893169,
         "pctChange": 0.2085
       },
       {
@@ -108,7 +108,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.1383,
         "position": 13469336,
-        "value": 4002817173,
+        "value": 3777205795,
         "pctChange": 0.1709
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Northern Trust Corporation",
         "pctHeld": 0.089099996,
         "position": 8680485,
-        "value": 2579666468,
+        "value": 2434268344,
         "pctChange": 0.1542
       },
       {
@@ -126,7 +126,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0848,
         "position": 8255352,
-        "value": 2453325446,
+        "value": 2315048300,
         "pctChange": -0.065799996
       }
     ]
@@ -134,25 +134,14 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.0076599997,
-    "institutionsPercentHeld": 0.8365,
-    "institutionsFloatPercentHeld": 0.84295,
+    "institutionsPercentHeld": 0.83647,
+    "institutionsFloatPercentHeld": 0.84293,
     "institutionsCount": 3376
   },
   "earnings": {
     "maxAge": 86400,
     "earningsChart": {
       "quarterly": [
-        {
-          "date": "1Q2025",
-          "actual": 0.8,
-          "estimate": 0.77227,
-          "fiscalQuarter": "3Q2025",
-          "calendarQuarter": "1Q2025",
-          "difference": "0.03",
-          "surprisePct": "3.59",
-          "periodEndDate": 1745971200,
-          "reportedDate": 1747771500
-        },
         {
           "date": "2Q2025",
           "actual": 0.95,
@@ -185,17 +174,29 @@
           "surprisePct": "9.94",
           "periodEndDate": 1769817600,
           "reportedDate": 1771362300
+        },
+        {
+          "date": "1Q2026",
+          "actual": 0.85,
+          "estimate": 0.7972,
+          "fiscalQuarter": "3Q2026",
+          "calendarQuarter": "1Q2026",
+          "difference": "0.05",
+          "surprisePct": "6.62",
+          "periodEndDate": 1777507200,
+          "reportedDate": 1780430700
         }
       ],
-      "currentQuarterEstimate": 0.7972,
-      "currentQuarterActual": 0.85,
-      "currentQuarterEstimateDate": "1Q",
-      "currentCalendarQuarter": "1Q2026",
+      "currentQuarterEstimate": 0.97678,
+      "currentQuarterEstimateDate": "2Q",
+      "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
-      "currentFiscalQuarter": "3Q2026",
-      "currentPeriodEndDate": 1777507200,
-      "earningsDate": [],
-      "isEarningsDateEstimate": false
+      "currentFiscalQuarter": "4Q2026",
+      "currentPeriodEndDate": 1785456000,
+      "earningsDate": [
+        "2026-08-18T20:00:00.000Z"
+      ],
+      "isEarningsDateEstimate": true
     },
     "financialsChart": {
       "yearly": [
@@ -260,6 +261,296 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-03T20:34:22.000Z",
+        "firm": "Citigroup",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 340,
+        "priorPriceTarget": 210
+      },
+      {
+        "epochGradeDate": "2026-06-03T18:39:05.000Z",
+        "firm": "UBS",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 300,
+        "priorPriceTarget": 183
+      },
+      {
+        "epochGradeDate": "2026-06-03T18:07:57.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 305,
+        "priorPriceTarget": 265
+      },
+      {
+        "epochGradeDate": "2026-06-03T17:43:38.000Z",
+        "firm": "Morgan Stanley",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 320,
+        "priorPriceTarget": 253
+      },
+      {
+        "epochGradeDate": "2026-06-03T17:21:53.000Z",
+        "firm": "BNP Paribas",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 330,
+        "priorPriceTarget": 220
+      },
+      {
+        "epochGradeDate": "2026-06-03T16:48:13.000Z",
+        "firm": "Susquehanna",
+        "toGrade": "Positive",
+        "fromGrade": "Positive",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 350,
+        "priorPriceTarget": 200
+      },
+      {
+        "epochGradeDate": "2026-06-03T16:11:56.000Z",
+        "firm": "Piper Sandler",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "reit",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 345,
+        "priorPriceTarget": 265
+      },
+      {
+        "epochGradeDate": "2026-06-03T16:09:16.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 326,
+        "priorPriceTarget": 300
+      },
+      {
+        "epochGradeDate": "2026-06-03T16:00:12.000Z",
+        "firm": "RBC Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 330,
+        "priorPriceTarget": 255
+      },
+      {
+        "epochGradeDate": "2026-06-03T15:16:27.000Z",
+        "firm": "Jefferies",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 335,
+        "priorPriceTarget": 300
+      },
+      {
+        "epochGradeDate": "2026-06-03T15:14:23.000Z",
+        "firm": "Stifel",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 330,
+        "priorPriceTarget": 275
+      },
+      {
+        "epochGradeDate": "2026-06-03T15:04:55.000Z",
+        "firm": "Evercore ISI Group",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 375,
+        "priorPriceTarget": 320
+      },
+      {
+        "epochGradeDate": "2026-06-03T14:47:59.000Z",
+        "firm": "Oppenheimer",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 350,
+        "priorPriceTarget": 275
+      },
+      {
+        "epochGradeDate": "2026-06-03T14:29:17.000Z",
+        "firm": "Truist Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 375,
+        "priorPriceTarget": 275
+      },
+      {
+        "epochGradeDate": "2026-06-03T14:14:50.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 355,
+        "priorPriceTarget": 275
+      },
+      {
+        "epochGradeDate": "2026-06-03T14:14:16.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 330,
+        "priorPriceTarget": 255
+      },
+      {
+        "epochGradeDate": "2026-06-03T14:14:11.000Z",
+        "firm": "BMO Capital",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 335,
+        "priorPriceTarget": 270
+      },
+      {
+        "epochGradeDate": "2026-06-03T13:46:36.000Z",
+        "firm": "Wells Fargo",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 325,
+        "priorPriceTarget": 285
+      },
+      {
+        "epochGradeDate": "2026-06-03T13:40:33.000Z",
+        "firm": "Cantor Fitzgerald",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 340,
+        "priorPriceTarget": 285
+      },
+      {
+        "epochGradeDate": "2026-06-03T13:31:45.000Z",
+        "firm": "Citizens",
+        "toGrade": "Market Outperform",
+        "fromGrade": "Market Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 320,
+        "priorPriceTarget": 250
+      },
+      {
+        "epochGradeDate": "2026-06-03T13:28:53.000Z",
+        "firm": "Wedbush",
+        "toGrade": "Outperform",
+        "fromGrade": "Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 340,
+        "priorPriceTarget": 300
+      },
+      {
+        "epochGradeDate": "2026-06-03T13:13:31.000Z",
+        "firm": "Barclays",
+        "toGrade": "Overweight",
+        "fromGrade": "Overweight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 315,
+        "priorPriceTarget": 220
+      },
+      {
+        "epochGradeDate": "2026-06-03T13:06:52.000Z",
+        "firm": "Scotiabank",
+        "toGrade": "Sector Outperform",
+        "fromGrade": "Sector Outperform",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 320,
+        "priorPriceTarget": 180
+      },
+      {
+        "epochGradeDate": "2026-06-03T12:55:21.000Z",
+        "firm": "Loop Capital",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 290,
+        "priorPriceTarget": 160
+      },
+      {
+        "epochGradeDate": "2026-06-03T12:33:34.000Z",
+        "firm": "DA Davidson",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 345,
+        "priorPriceTarget": 190
+      },
+      {
+        "epochGradeDate": "2026-06-03T12:19:33.000Z",
+        "firm": "Stephens & Co.",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 300,
+        "priorPriceTarget": 180
+      },
+      {
+        "epochGradeDate": "2026-06-03T12:11:20.000Z",
+        "firm": "Benchmark",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 340,
+        "priorPriceTarget": 270
+      },
+      {
+        "epochGradeDate": "2026-06-03T10:34:27.000Z",
+        "firm": "Needham",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 350,
+        "priorPriceTarget": 200
+      },
+      {
+        "epochGradeDate": "2026-06-03T10:26:55.000Z",
+        "firm": "BTIG",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 333,
+        "priorPriceTarget": 268
+      },
       {
         "epochGradeDate": "2026-06-01T18:16:24.000Z",
         "firm": "JP Morgan",
@@ -8886,24 +9177,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.03156338,
-    "postMarketChange": -9.380005,
-    "postMarketTime": "2026-06-02T23:59:59.000Z",
-    "postMarketPrice": 287.8,
+    "postMarketChangePercent": -0.032592747,
+    "postMarketChange": -9.139984,
+    "postMarketTime": "2026-06-03T23:59:45.000Z",
+    "postMarketPrice": 271.29,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0109825,
-    "regularMarketChange": -3.30002,
-    "regularMarketTime": "2026-06-02T20:00:00.000Z",
+    "regularMarketChangePercent": -0.056363102,
+    "regularMarketChange": -16.75,
+    "regularMarketTime": "2026-06-03T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 297.18,
-    "regularMarketDayHigh": 299.33,
-    "regularMarketDayLow": 287.27,
-    "regularMarketVolume": 14726121,
-    "averageDailyVolume10Day": 10272810,
-    "averageDailyVolume3Month": 8233309,
-    "regularMarketPreviousClose": 300.48,
+    "regularMarketPrice": 280.43,
+    "regularMarketDayHigh": 288,
+    "regularMarketDayLow": 275.85,
+    "regularMarketVolume": 14527883,
+    "averageDailyVolume10Day": 10332120,
+    "averageDailyVolume3Month": 8221769,
+    "regularMarketPreviousClose": 297.18,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 287.3634,
+    "regularMarketOpen": 284,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -8919,46 +9210,45 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 241012981760
+    "marketCap": 228550443008
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 238421884928,
-    "forwardPE": 74.67003,
-    "profitMargins": 0.12956999,
-    "floatShares": 809112960,
-    "sharesOutstanding": 811000000,
+    "enterpriseValue": 223584436224,
+    "forwardPE": 68.50215,
+    "profitMargins": 0.07947,
+    "floatShares": 794239560,
+    "sharesOutstanding": 815000000,
     "sharesShort": 27988535,
     "sharesShortPriorMonth": "1970-10-26T17:51:36.000Z",
     "sharesShortPreviousMonthDate": "2026-04-15T00:00:00.000Z",
     "dateShortInterest": "2026-05-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0345,
     "heldPercentInsiders": 0.0076599997,
-    "heldPercentInstitutions": 0.8365,
+    "heldPercentInstitutions": 0.83647,
     "shortRatio": 3.85,
     "shortPercentOfFloat": 0.0348,
-    "beta": 0.77,
-    "impliedSharesOutstanding": 811000000,
+    "beta": 0.942,
+    "impliedSharesOutstanding": 815000000,
     "category": null,
     "bookValue": 13.361,
-    "priceToBook": 22.242346,
+    "priceToBook": 20.988697,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-07-31T00:00:00.000Z",
     "nextFiscalYearEnd": "2026-07-31T00:00:00.000Z",
-    "mostRecentQuarter": "2026-01-31T00:00:00.000Z",
-    "earningsQuarterlyGrowth": 0.618,
-    "netIncomeToCommon": 1281900032,
-    "trailingEps": 1.16,
-    "forwardEps": 3.98501,
-    "pegRatio": 5.04,
+    "mostRecentQuarter": "2026-04-30T00:00:00.000Z",
+    "netIncomeToCommon": 842899968,
+    "trailingEps": 1.15,
+    "forwardEps": 4.10276,
+    "pegRatio": 4.98,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1734307200,
-    "enterpriseToRevenue": 24.099,
-    "enterpriseToEbitda": 155.172,
-    "52WeekChange": 0.53130317,
-    "SandP52WeekChange": 0.27449715,
+    "enterpriseToRevenue": 21.08,
+    "enterpriseToEbitda": 199.558,
+    "52WeekChange": 0.507686,
+    "SandP52WeekChange": 0.2812587,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -8977,13 +9267,25 @@
     "sectorKey": "technology",
     "sectorDisp": "Technology",
     "longBusinessSummary": "Palo Alto Networks, Inc. provides cybersecurity solutions in the Americas, Europe, the Middle East, Africa, the Asia Pacific, and Japan. It offers Prisma Access, a secure access service edge solution; Strata Cloud Manager, a network security management solution; and Prisma AIRS to protect customers' entire AI ecosystem. It provides a comprehensive cloud native application protection platform; and Code to Cloud platform, as well as offers VM-Series and CN-Series virtual firewalls for inline network security on multi- and hybrid-cloud environments. It provides security operation solutions through the Cortex platform that includes Cortex XSIAM, an AI-driven security operations platform; Cortex XDR to prevent, detect, and respond to cybersecurity attacks; and Cortex XSOAR for security orchestration, automation, and response; and Cortex Xpanse for attack surface management, as well as offers threat intelligence and advisory services under the Unit 42 name. It provides subscription services covering the areas of threat prevention, malware and persistent threat, URL filtering, laptop and mobile device protection, DNS security, Internet of Things security, SaaS security API, and SaaS security inline; and threat intelligence, data loss prevention, services to resolve network disruptions, and sensitive data protection. It offers professional services, including architecture design and planning, implementation, configuration, and firewall migration; education services, such as certifications, as well as online and in-classroom training; and support services. It sells its products and services through its channel partners, as well as directly to enterprises, service providers, and government entities operating in various industries, including education, energy, financial services, government entities, healthcare, Internet and media, manufacturing, public sector, and telecommunications. The company was incorporated in 2005 and is headquartered in Santa Clara, California.",
-    "fullTimeEmployees": 17027,
+    "fullTimeEmployees": 16068,
     "companyOfficers": [],
     "executiveTeam": [],
     "maxAge": 86400
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 1100,
+        "value": 313588,
+        "filerUrl": "",
+        "transactionText": "Sale at price 285.08 per share.",
+        "filerName": "PAUL JOSHUA D.",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-06-01T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 62904,
@@ -10114,24 +10416,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 120000,
-        "value": 3870000,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 32.25 per share.",
-        "filerName": "KLARICH LEE",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2025-01-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 788404,
         "value": 26083085,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 33.08 per share.",
         "filerName": "ARORA NIKESH",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-01-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 120000,
+        "value": 3870000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 32.25 per share.",
+        "filerName": "KLARICH LEE",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-01-06T00:00:00.000Z",
         "ownership": "D"
@@ -10771,54 +11073,39 @@
         "moneyText": "",
         "startDate": "2024-08-05T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 36000,
-        "value": 11439762,
-        "filerUrl": "",
-        "transactionText": "Sale at price 312.85 - 325.32 per share.",
-        "filerName": "ZUK NIR",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-08-01T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 297.18,
-    "targetHighPrice": 320,
+    "currentPrice": 280.43,
+    "targetHighPrice": 375,
     "targetLowPrice": 114,
-    "targetMeanPrice": 234.48,
-    "targetMedianPrice": 225,
+    "targetMeanPrice": 300.5608,
+    "targetMedianPrice": 322.5,
     "recommendationMean": 1.59259,
     "recommendationKey": "buy",
-    "numberOfAnalystOpinions": 48,
-    "totalCash": 4536000000,
-    "totalCashPerShare": 5.559,
-    "ebitda": 1536499968,
-    "totalDebt": 459000000,
-    "quickRatio": 0.914,
-    "currentRatio": 1.045,
-    "totalRevenue": 9893499904,
-    "debtToEquity": 4.887,
-    "revenuePerShare": 14.517,
-    "returnOnAssets": 0.034479998,
-    "returnOnEquity": 0.16259001,
-    "grossProfits": 7271900160,
-    "freeCashflow": 2859225088,
-    "operatingCashflow": 3974000128,
-    "earningsGrowth": 0.605,
-    "revenueGrowth": 0.149,
-    "grossMargins": 0.73502,
-    "ebitdaMargins": 0.15529999,
-    "operatingMargins": 0.15496999,
-    "profitMargins": 0.12956999,
+    "numberOfAnalystOpinions": 50,
+    "totalCash": 3111000064,
+    "totalCashPerShare": 3.884,
+    "ebitda": 1120400000,
+    "totalDebt": 2071000064,
+    "quickRatio": 0.728,
+    "currentRatio": 0.856,
+    "totalRevenue": 10606499840,
+    "debtToEquity": 7.485,
+    "revenuePerShare": 14.834,
+    "returnOnAssets": 0.01549,
+    "returnOnEquity": 0.048309997,
+    "grossProfits": 7629899776,
+    "revenueGrowth": 0.311,
+    "grossMargins": 0.71936,
+    "ebitdaMargins": 0.105629995,
+    "operatingMargins": -0.060960002,
+    "profitMargins": 0.07947,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-03T06:52:28.655Z",
+  "lastUpdated": "2026-06-04T06:42:39.003Z",
   "source": "Static Build (yahoo-finance2)"
 }

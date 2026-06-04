@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 3,
+        "buy": 12,
+        "hold": 20,
+        "sell": 4,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 3,
         "buy": 13,
         "hold": 19,
         "sell": 4,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 3,
         "buy": 14,
         "hold": 18,
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.101,
         "position": 40809940,
-        "value": 10696692775,
+        "value": 10457138627,
         "pctChange": 0.0094
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.066,
         "position": 26679971,
-        "value": 6993086807,
+        "value": 6836475508,
         "pctChange": 1
       },
       {
@@ -55,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0493,
         "position": 19913187,
-        "value": 5219445152,
+        "value": 5102554842,
         "pctChange": -0.0274
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.029000001,
         "position": 11726888,
-        "value": 3073734441,
+        "value": 3004897666,
         "pctChange": 0.016900001
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0247,
         "position": 9972632,
-        "value": 2613926427,
+        "value": 2555387126,
         "pctChange": 1
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Arrowstreet Capital, Limited Partnership",
         "pctHeld": 0.0168,
         "position": 6792275,
-        "value": 1780323100,
+        "value": 1740452479,
         "pctChange": 0.090500005
       },
       {
@@ -91,7 +99,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0139999995,
         "position": 5676933,
-        "value": 1487980825,
+        "value": 1454657256,
         "pctChange": -0.17879999
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0138,
         "position": 5571545,
-        "value": 1460357578,
+        "value": 1427652636,
         "pctChange": 0.0884
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Bank Of New York Mellon Corporation",
         "pctHeld": 0.0128999995,
         "position": 5206791,
-        "value": 1364751912,
+        "value": 1334188074,
         "pctChange": -0.0679
       },
       {
@@ -118,7 +126,7 @@
         "organization": "UBS AM, a distinct business unit of UBS ASSET MANAGEMENT AMERICAS LLC",
         "pctHeld": 0.0124,
         "position": 5026552,
-        "value": 1317509471,
+        "value": 1288003635,
         "pctChange": -0.0112
       }
     ]
@@ -126,7 +134,7 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.00223,
-    "institutionsPercentHeld": 0.86177003,
+    "institutionsPercentHeld": 0.86178,
     "institutionsFloatPercentHeld": 0.86370003,
     "institutionsCount": 3199
   },
@@ -7159,24 +7167,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0041585458,
-    "postMarketChange": -1.0899963,
-    "postMarketTime": "2026-06-02T23:59:51.000Z",
-    "postMarketPrice": 261.02,
+    "postMarketChangePercent": -0.0049172435,
+    "postMarketChange": -1.2599945,
+    "postMarketTime": "2026-06-03T23:59:48.000Z",
+    "postMarketPrice": 254.98,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.043498904,
-    "regularMarketChange": -11.92,
-    "regularMarketTime": "2026-06-02T20:00:01.000Z",
+    "regularMarketChangePercent": -0.022395201,
+    "regularMarketChange": -5.87,
+    "regularMarketTime": "2026-06-03T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 262.11,
-    "regularMarketDayHigh": 272.03,
-    "regularMarketDayLow": 260.05,
-    "regularMarketVolume": 5525683,
-    "averageDailyVolume10Day": 5370970,
-    "averageDailyVolume3Month": 5562457,
-    "regularMarketPreviousClose": 274.03,
+    "regularMarketPrice": 256.24,
+    "regularMarketDayHigh": 260,
+    "regularMarketDayLow": 252.34,
+    "regularMarketVolume": 4851106,
+    "averageDailyVolume10Day": 5372060,
+    "averageDailyVolume3Month": 5582524,
+    "regularMarketPreviousClose": 262.11,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 267.98,
+    "regularMarketOpen": 259.09,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -7192,13 +7200,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 105944858624
+    "marketCap": 103572201472
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 105715859456,
-    "forwardPE": 9.93365,
+    "enterpriseValue": 103343210496,
+    "forwardPE": 9.7111845,
     "profitMargins": 0.29477,
     "floatShares": 402963148,
     "sharesOutstanding": 404200000,
@@ -7208,14 +7216,14 @@
     "dateShortInterest": "2026-05-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.047,
     "heldPercentInsiders": 0.00223,
-    "heldPercentInstitutions": 0.86177003,
+    "heldPercentInstitutions": 0.86178,
     "shortRatio": 3.74,
     "shortPercentOfFloat": 0.052399997,
     "beta": 1.417,
     "impliedSharesOutstanding": 404200000,
     "category": null,
     "bookValue": 28.16,
-    "priceToBook": 9.307883,
+    "priceToBook": 9.099432,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-11-28T00:00:00.000Z",
@@ -7228,10 +7236,10 @@
     "pegRatio": 0.74,
     "lastSplitFactor": "2:1",
     "lastSplitDate": 1116892800,
-    "enterpriseToRevenue": 4.323,
-    "enterpriseToEbitda": 11.109,
-    "52WeekChange": -0.36674637,
-    "SandP52WeekChange": 0.27449715,
+    "enterpriseToRevenue": 4.226,
+    "enterpriseToEbitda": 10.86,
+    "52WeekChange": -0.36871386,
+    "SandP52WeekChange": 0.2812587,
     "lastDividendValue": 0.0065,
     "lastDividendDate": "2005-03-24T00:00:00.000Z",
     "latestShareClass": null,
@@ -7299,6 +7307,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 900,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "AMON CRISTIANO RENNO",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-04-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 3022,
         "filerUrl": "",
         "transactionText": "",
@@ -7313,7 +7332,7 @@
         "shares": 900,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DESMOND LAURA B",
+        "filerName": "NEUMANN SPENCER ADAM",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-04-15T00:00:00.000Z",
@@ -7324,7 +7343,7 @@
         "shares": 900,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "AMON CRISTIANO RENNO",
+        "filerName": "DESMOND LAURA B",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-04-15T00:00:00.000Z",
@@ -7354,33 +7373,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 900,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "RICKS DAVID A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-04-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 900,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEUMANN SPENCER ADAM",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-04-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 3022,
         "filerUrl": "",
         "transactionText": "",
         "filerName": "WADHWANI DAVID",
         "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-04-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 900,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "RICKS DAVID A",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-04-15T00:00:00.000Z",
         "ownership": "D"
@@ -7608,6 +7616,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 117,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "FORUSZ JILLIAN",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-01-15T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1938,
         "filerUrl": "",
         "transactionText": "",
@@ -7623,17 +7642,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "BALAZS LARA",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2026-01-15T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 117,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-01-15T00:00:00.000Z",
@@ -8029,10 +8037,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 424,
+        "shares": 30,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "CHEN GLORIA T",
+        "filerName": "FORUSZ JILLIAN",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-04-24T00:00:00.000Z",
@@ -8040,10 +8048,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 30,
+        "shares": 424,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "FORUSZ JILLIAN",
+        "filerName": "CHEN GLORIA T",
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-04-24T00:00:00.000Z",
@@ -8076,7 +8084,7 @@
         "shares": 633,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "DESMOND LAURA B",
+        "filerName": "AMON CRISTIANO RENNO",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-22T00:00:00.000Z",
@@ -8087,7 +8095,18 @@
         "shares": 633,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "AMON CRISTIANO RENNO",
+        "filerName": "NEUMANN SPENCER ADAM",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-04-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 633,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "DESMOND LAURA B",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-22T00:00:00.000Z",
@@ -8121,17 +8140,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "RICKS DAVID A",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-04-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 633,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEUMANN SPENCER ADAM",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-04-22T00:00:00.000Z",
@@ -8939,7 +8947,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 262.11,
+    "currentPrice": 256.24,
     "targetHighPrice": 487,
     "targetLowPrice": 220,
     "targetMeanPrice": 327.2847,
@@ -8969,6 +8977,6 @@
     "profitMargins": 0.29477,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-03T06:52:25.169Z",
+  "lastUpdated": "2026-06-04T06:42:35.183Z",
   "source": "Static Build (yahoo-finance2)"
 }
