@@ -12,13 +12,21 @@
       {
         "period": "-1m",
         "strongBuy": 2,
+        "buy": 11,
+        "hold": 10,
+        "sell": 2,
+        "strongSell": 0
+      },
+      {
+        "period": "-2m",
+        "strongBuy": 2,
         "buy": 9,
         "hold": 11,
         "sell": 2,
         "strongSell": 0
       },
       {
-        "period": "-2m",
+        "period": "-3m",
         "strongBuy": 2,
         "buy": 9,
         "hold": 11,
@@ -37,7 +45,7 @@
         "organization": "IDG China Capital Fund III Associates L.P.",
         "pctHeld": 0.0392,
         "position": 9003674,
-        "value": 815192652,
+        "value": 722814937,
         "pctChange": -0.096499994
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Idg-accel China Capital II Associates L.P.",
         "pctHeld": 0.0304,
         "position": 6996111,
-        "value": 633427896,
+        "value": 561647782,
         "pctChange": 0
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Marshall Wace LLP",
         "pctHeld": 0.0252,
         "position": 5800350,
-        "value": 525163694,
+        "value": 465652090,
         "pctChange": -0.41869998
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0239,
         "position": 5489236,
-        "value": 496995432,
+        "value": 440675859,
         "pctChange": 1
       },
       {
@@ -73,7 +81,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.022,
         "position": 5059120,
-        "value": 458052729,
+        "value": 406146147,
         "pctChange": -0.1084
       },
       {
@@ -82,8 +90,8 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0217,
         "position": 4981737,
-        "value": 451046472,
-        "pctChange": 3.7712
+        "value": 399933840,
+        "pctChange": 2.4104
       },
       {
         "maxAge": 1,
@@ -91,7 +99,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.02,
         "position": 4607007,
-        "value": 417118417,
+        "value": 369850516,
         "pctChange": 1
       },
       {
@@ -100,7 +108,7 @@
         "organization": "ARK Investment Management, LLC",
         "pctHeld": 0.0196,
         "position": 4509482,
-        "value": 408288504,
+        "value": 362021209,
         "pctChange": 0.0888
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Southpoint Capital Advisors Lp",
         "pctHeld": 0.014400001,
         "position": 3300000,
-        "value": 298782003,
+        "value": 264923995,
         "pctChange": 1.75
       },
       {
@@ -118,16 +126,16 @@
         "organization": "Sumitomo Mitsui Trust Group, Inc.",
         "pctHeld": 0.0127,
         "position": 2917764,
-        "value": 264174355,
+        "value": 234238090,
         "pctChange": 0.1328
       }
     ]
   },
   "majorHoldersBreakdown": {
     "maxAge": 1,
-    "insidersPercentHeld": 0.024300002,
-    "institutionsPercentHeld": 0.63451,
-    "institutionsFloatPercentHeld": 0.65031,
+    "insidersPercentHeld": 0.025320001,
+    "institutionsPercentHeld": 0.63452,
+    "institutionsFloatPercentHeld": 0.65099996,
     "institutionsCount": 704
   },
   "earnings": {
@@ -241,6 +249,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-05T13:32:54.000Z",
+        "firm": "Mizuho",
+        "toGrade": "Neutral",
+        "fromGrade": "Neutral",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 85,
+        "priorPriceTarget": 135
+      },
       {
         "epochGradeDate": "2026-05-26T09:19:14.000Z",
         "firm": "Keybanc",
@@ -807,46 +825,46 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0016567431,
-    "postMarketChange": 0.15000153,
-    "postMarketTime": "2026-06-04T23:59:57.000Z",
-    "postMarketPrice": 90.69,
-    "postMarketSource": "DELAYED",
-    "regularMarketChangePercent": 0.00454903,
-    "regularMarketChange": 0.410004,
-    "regularMarketTime": "2026-06-04T20:00:02.000Z",
+    "postMarketChangePercent": -0.00012459065,
+    "postMarketChange": -0.010002136,
+    "postMarketTime": "2026-06-05T23:59:59.000Z",
+    "postMarketPrice": 80.27,
+    "postMarketSource": "FREE_REALTIME",
+    "regularMarketChangePercent": -0.11332,
+    "regularMarketChange": -10.26,
+    "regularMarketTime": "2026-06-05T20:00:02.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 90.54,
-    "regularMarketDayHigh": 95.18,
-    "regularMarketDayLow": 89.2,
-    "regularMarketVolume": 12120114,
+    "regularMarketPrice": 80.28,
+    "regularMarketDayHigh": 88.11,
+    "regularMarketDayLow": 78.42,
+    "regularMarketVolume": 24313007,
     "averageDailyVolume10Day": 13344620,
     "averageDailyVolume3Month": 16360031,
-    "regularMarketPreviousClose": 90.13,
+    "regularMarketPreviousClose": 90.54,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 90.89,
+    "regularMarketOpen": 88.11,
     "exchange": "NYQ",
     "exchangeName": "NYSE",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "CRCL",
     "underlyingSymbol": null,
     "shortName": "Circle Internet Group, Inc.",
     "longName": "Circle Internet Group",
     "currency": "USD",
-    "quoteSourceName": "Delayed Quote",
+    "quoteSourceName": "Nasdaq Real Time Price",
     "currencySymbol": "$",
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 24200499200
+    "marketCap": 21458096128
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 21004998656,
-    "forwardPE": 40.583427,
+    "enterpriseValue": 18454607872,
+    "forwardPE": 36.051735,
     "profitMargins": -0.02762,
     "floatShares": 191547717,
     "sharesOutstanding": 229857799,
@@ -855,14 +873,14 @@
     "sharesShortPreviousMonthDate": "2026-04-15T00:00:00.000Z",
     "dateShortInterest": "2026-05-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.0728,
-    "heldPercentInsiders": 0.024300002,
-    "heldPercentInstitutions": 0.63451,
+    "heldPercentInsiders": 0.025320001,
+    "heldPercentInstitutions": 0.63452,
     "shortRatio": 1.09,
     "shortPercentOfFloat": 0.080299996,
     "impliedSharesOutstanding": 267290681,
     "category": null,
     "bookValue": 13.839,
-    "priceToBook": 6.5423803,
+    "priceToBook": 5.8009973,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -874,8 +892,8 @@
     "forwardEps": 2.2268,
     "pegRatio": 4.34,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 7.339,
-    "enterpriseToEbitda": -157.475,
+    "enterpriseToRevenue": 6.448,
+    "enterpriseToEbitda": -138.355,
     "52WeekChange": 0.08290279,
     "SandP52WeekChange": 0.27181315,
     "latestShareClass": null,
@@ -917,15 +935,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 35000,
-        "value": 3750986,
+        "shares": 280797,
         "filerUrl": "",
-        "transactionText": "Sale at price 106.22 - 108.75 per share.",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
+        "transactionText": "",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2026-06-01T00:00:00.000Z",
-        "ownership": "D/I"
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -940,10 +957,34 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 1110000,
+        "shares": 1194,
+        "value": 121573,
         "filerUrl": "",
-        "transactionText": "Sale at price 111.00 per share.",
+        "transactionText": "Sale at price 101.82 per share.",
+        "filerName": "SCHULZ TAMARA L",
+        "filerRelation": "Officer",
+        "moneyText": "",
+        "startDate": "2026-06-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35000,
+        "value": 3750986,
+        "filerUrl": "",
+        "transactionText": "Sale at price 106.22 - 108.75 per share.",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-06-01T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 258100,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -953,9 +994,9 @@
       {
         "maxAge": 1,
         "shares": 10000,
-        "value": 258100,
+        "value": 1110000,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "transactionText": "Sale at price 111.00 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -1073,9 +1114,9 @@
       {
         "maxAge": 1,
         "shares": 3819,
-        "value": 439185,
+        "value": 306,
         "filerUrl": "",
-        "transactionText": "Sale at price 115.00 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
         "filerName": "DATE RAJEEV V",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1085,9 +1126,9 @@
       {
         "maxAge": 1,
         "shares": 3819,
-        "value": 306,
+        "value": 439185,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
+        "transactionText": "Sale at price 115.00 per share.",
         "filerName": "DATE RAJEEV V",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1132,18 +1173,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 35000,
-        "value": 3242700,
-        "filerUrl": "",
-        "transactionText": "Sale at price 92.64 - 92.65 per share.",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-05-01T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 2434,
         "value": 242670,
         "filerUrl": "",
@@ -1179,10 +1208,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 1040000,
+        "shares": 35000,
+        "value": 3242700,
         "filerUrl": "",
-        "transactionText": "Sale at price 104.00 per share.",
+        "transactionText": "Sale at price 92.64 - 92.65 per share.",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-01T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 258100,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -1192,9 +1233,9 @@
       {
         "maxAge": 1,
         "shares": 10000,
-        "value": 258100,
+        "value": 1040000,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "transactionText": "Sale at price 104.00 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -1216,9 +1257,9 @@
       {
         "maxAge": 1,
         "shares": 3819,
-        "value": 357688,
+        "value": 306,
         "filerUrl": "",
-        "transactionText": "Sale at price 92.99 - 95.00 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
         "filerName": "DATE RAJEEV V",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1228,9 +1269,9 @@
       {
         "maxAge": 1,
         "shares": 3819,
-        "value": 306,
+        "value": 357688,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
+        "transactionText": "Sale at price 92.99 - 95.00 per share.",
         "filerName": "DATE RAJEEV V",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1275,18 +1316,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 35000,
-        "value": 3431400,
-        "filerUrl": "",
-        "transactionText": "Sale at price 98.04 per share.",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-04-01T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
         "shares": 2434,
         "value": 220861,
         "filerUrl": "",
@@ -1322,10 +1351,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 1230800,
+        "shares": 35000,
+        "value": 3431400,
         "filerUrl": "",
-        "transactionText": "Sale at price 123.08 per share.",
+        "transactionText": "Sale at price 98.04 per share.",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-04-01T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 258100,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -1335,9 +1376,9 @@
       {
         "maxAge": 1,
         "shares": 10000,
-        "value": 258100,
+        "value": 1230800,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "transactionText": "Sale at price 123.08 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Officer",
         "moneyText": "",
@@ -1370,6 +1411,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 3819,
+        "value": 306,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
+        "filerName": "DATE RAJEEV V",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 11670,
         "value": 1315303,
         "filerUrl": "",
@@ -1394,22 +1447,10 @@
       },
       {
         "maxAge": 1,
-        "shares": 3819,
-        "value": 306,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
-        "filerName": "DATE RAJEEV V",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 43694,
-        "value": 5146956,
+        "value": 1096282,
         "filerUrl": "",
-        "transactionText": "Sale at price 115.12 - 121.48 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.09 per share.",
         "filerName": "TARBERT HEATH",
         "filerRelation": "President",
         "moneyText": "",
@@ -1419,9 +1460,9 @@
       {
         "maxAge": 1,
         "shares": 43694,
-        "value": 1096282,
+        "value": 5146956,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.09 per share.",
+        "transactionText": "Sale at price 115.12 - 121.48 per share.",
         "filerName": "TARBERT HEATH",
         "filerRelation": "President",
         "moneyText": "",
@@ -1443,6 +1484,18 @@
       {
         "maxAge": 1,
         "shares": 25000,
+        "value": 2000,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
+        "filerName": "BURNS M MICHELE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-04T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 25000,
         "value": 2625000,
         "filerUrl": "",
         "transactionText": "Sale at price 105.00 per share.",
@@ -1454,14 +1507,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 2000,
+        "shares": 165000,
+        "value": 13200,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
         "filerName": "BURNS M MICHELE",
         "filerRelation": "Director",
         "moneyText": "",
-        "startDate": "2026-03-04T00:00:00.000Z",
+        "startDate": "2026-03-03T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1510,89 +1563,6 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 165000,
-        "value": 13200,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
-        "filerName": "BURNS M MICHELE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 35000,
-        "value": 3150000,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.00 per share.",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 122007,
-        "value": 11496556,
-        "filerUrl": "",
-        "transactionText": "Sale at price 90.24 - 96.12 per share.",
-        "filerName": "TARBERT HEATH",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2435,
-        "value": 234101,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 96.14 per share.",
-        "filerName": "ALLAIRE JEREMY D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7200,
-        "value": 72792,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
-        "filerName": "FOX-GEEN JEREMY",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 35000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 75108,
-        "value": 1884460,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.09 per share.",
-        "filerName": "TARBERT HEATH",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-03-02T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1653,6 +1623,136 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 75108,
+        "value": 1884460,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.09 per share.",
+        "filerName": "TARBERT HEATH",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2435,
+        "value": 234101,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 96.14 per share.",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7200,
+        "value": 72792,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
+        "filerName": "FOX-GEEN JEREMY",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35000,
+        "value": 3150000,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.00 per share.",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 122007,
+        "value": 11496556,
+        "filerUrl": "",
+        "transactionText": "Sale at price 90.24 - 96.12 per share.",
+        "filerName": "TARBERT HEATH",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-03-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 20000,
+        "value": 516200,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "filerName": "CHANDHOK NIKHIL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-02-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 800,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
+        "filerName": "BURNS M MICHELE",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14400,
+        "value": 145584,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
+        "filerName": "FOX-GEEN JEREMY",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-02-26T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-02-26T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 2000,
+        "value": 50180,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.09 per share.",
+        "filerName": "TARBERT HEATH",
+        "filerRelation": "President",
+        "moneyText": "",
+        "startDate": "2026-02-26T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1753,65 +1853,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 800,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 0.08 per share.",
-        "filerName": "BURNS M MICHELE",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-02-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 14400,
-        "value": 145584,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
-        "filerName": "FOX-GEEN JEREMY",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-02-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 35000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-02-26T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 2000,
-        "value": 50180,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.09 per share.",
-        "filerName": "TARBERT HEATH",
-        "filerRelation": "President",
-        "moneyText": "",
-        "startDate": "2026-02-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 20000,
-        "value": 516200,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
-        "filerName": "CHANDHOK NIKHIL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2026-02-26T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1527,
         "value": 91315,
         "filerUrl": "",
@@ -1884,6 +1925,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 10000,
+        "value": 258100,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "filerName": "CHANDHOK NIKHIL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-22T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 7813,
         "value": 703717,
         "filerUrl": "",
@@ -1920,18 +1973,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 10000,
-        "value": 258100,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
-        "filerName": "CHANDHOK NIKHIL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-22T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 39564,
         "value": 399992,
         "filerUrl": "",
@@ -1941,6 +1982,52 @@
         "moneyText": "",
         "startDate": "2025-12-18T00:00:00.000Z",
         "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 10000,
+        "value": 258100,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "filerName": "CHANDHOK NIKHIL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14400,
+        "value": 145584,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
+        "filerName": "FOX-GEEN JEREMY",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D/I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 35000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-12T00:00:00.000Z",
+        "ownership": "D/I"
       },
       {
         "maxAge": 1,
@@ -2016,56 +2103,9 @@
       },
       {
         "maxAge": 1,
-        "shares": 14400,
-        "value": 145584,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
-        "filerName": "FOX-GEEN JEREMY",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 35000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 35000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D/I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 10000,
-        "value": 258100,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
-        "filerName": "CHANDHOK NIKHIL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-12-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 238500,
-        "value": 0,
         "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
+        "transactionText": "",
         "filerName": "ALLAIRE JEREMY D",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2075,8 +2115,9 @@
       {
         "maxAge": 1,
         "shares": 238500,
+        "value": 0,
         "filerUrl": "",
-        "transactionText": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "ALLAIRE JEREMY D",
         "filerRelation": "Chief Executive Officer",
         "moneyText": "",
@@ -2098,9 +2139,9 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 7708004,
+        "value": 2581000,
         "filerUrl": "",
-        "transactionText": "Sale at price 75.80 - 78.92 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -2122,9 +2163,9 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 2581000,
+        "value": 7708004,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 25.81 per share.",
+        "transactionText": "Sale at price 75.80 - 78.92 per share.",
         "filerName": "CHANDHOK NIKHIL",
         "filerRelation": "Chief Technology Officer",
         "moneyText": "",
@@ -2193,6 +2234,17 @@
       },
       {
         "maxAge": 1,
+        "shares": 84627,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-11-13T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 2662,
         "value": 225445,
         "filerUrl": "",
@@ -2214,17 +2266,6 @@
         "moneyText": "",
         "startDate": "2025-11-13T00:00:00.000Z",
         "ownership": "I"
-      },
-      {
-        "maxAge": 1,
-        "shares": 84627,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ALLAIRE JEREMY D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-11-13T00:00:00.000Z",
-        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -2265,9 +2306,9 @@
       {
         "maxAge": 1,
         "shares": 33608,
-        "value": 4081692,
+        "value": 339777,
         "filerUrl": "",
-        "transactionText": "Sale at price 121.45 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
         "filerName": "FOX-GEEN JEREMY",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -2277,9 +2318,9 @@
       {
         "maxAge": 1,
         "shares": 33608,
-        "value": 339777,
+        "value": 4081692,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 10.11 per share.",
+        "transactionText": "Sale at price 121.45 per share.",
         "filerName": "FOX-GEEN JEREMY",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -2308,6 +2349,28 @@
         "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-08-29T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 357812,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 260374,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-08-18T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2432,28 +2495,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 357812,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ALLAIRE JEREMY D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 260374,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-08-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 1634,
         "value": 274675,
         "filerUrl": "",
@@ -2498,6 +2539,28 @@
         "filerRelation": "President",
         "moneyText": "",
         "startDate": "2025-07-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1582160,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "ALLAIRE JEREMY D",
+        "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1000000,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NEVILLE PATRICK SEAN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -2622,28 +2685,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1582160,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "ALLAIRE JEREMY D",
-        "filerRelation": "Chief Executive Officer",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1000000,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "NEVILLE PATRICK SEAN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-06T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 160000,
         "value": 1617600,
         "filerUrl": "",
@@ -2659,10 +2700,10 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 90.54,
+    "currentPrice": 80.28,
     "targetHighPrice": 243,
     "targetLowPrice": 65,
-    "targetMeanPrice": 145.80228,
+    "targetMeanPrice": 143.48409,
     "targetMedianPrice": 146,
     "recommendationMean": 2.2,
     "recommendationKey": "buy",
@@ -2689,6 +2730,6 @@
     "profitMargins": -0.02762,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-05T06:22:00.561Z",
+  "lastUpdated": "2026-06-06T05:54:25.909Z",
   "source": "Static Build (yahoo-finance2)"
 }

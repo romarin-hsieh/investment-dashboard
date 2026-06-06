@@ -5,9 +5,9 @@
         "period": "0m",
         "strongBuy": 5,
         "buy": 18,
-        "hold": 17,
+        "hold": 18,
         "sell": 4,
-        "strongSell": 3
+        "strongSell": 2
       },
       {
         "period": "-1m",
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0554,
         "position": 208095009,
-        "value": 87077359056,
+        "value": 81365148519,
         "pctChange": -0.0069999998
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.048699997,
         "position": 182850783,
-        "value": 76513912378,
+        "value": 71494656153,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0305,
         "position": 114695458,
-        "value": 47994315800,
+        "value": 44845924078,
         "pctChange": -0.0013
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.018099999,
         "position": 68003110,
-        "value": 28455902209,
+        "value": 26589216010,
         "pctChange": 0.035
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.013099999,
         "position": 49252925,
-        "value": 20609887067,
+        "value": 19257893675,
         "pctChange": 1
       },
       {
@@ -90,7 +90,7 @@
         "organization": "JPMORGAN CHASE & CO",
         "pctHeld": 0.0123000005,
         "position": 46075161,
-        "value": 19280151682,
+        "value": 18015387951,
         "pctChange": 0.033299997
       },
       {
@@ -99,7 +99,7 @@
         "organization": "Capital World Investors",
         "pctHeld": 0.0114,
         "position": 42904073,
-        "value": 17953209870,
+        "value": 16775492543,
         "pctChange": 0.0099
       },
       {
@@ -108,8 +108,8 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0104,
         "position": 39177400,
-        "value": 16393783508,
-        "pctChange": 0.0838
+        "value": 15318363400,
+        "pctChange": 0.0949
       },
       {
         "maxAge": 1,
@@ -117,7 +117,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.0095999995,
         "position": 36027976,
-        "value": 15075906996,
+        "value": 14086938616,
         "pctChange": -0.0875
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0078,
         "position": 29398294,
-        "value": 12301716483,
+        "value": 11494732954,
         "pctChange": 0.0722
       }
     ]
@@ -134,9 +134,9 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.11111,
-    "institutionsPercentHeld": 0.44912,
-    "institutionsFloatPercentHeld": 0.50526,
-    "institutionsCount": 5234
+    "institutionsPercentHeld": 0.44912997,
+    "institutionsFloatPercentHeld": 0.50527,
+    "institutionsCount": 5233
   },
   "earnings": {
     "maxAge": 86400,
@@ -187,7 +187,7 @@
           "reportedDate": 1776888644
         }
       ],
-      "currentQuarterEstimate": 0.45396,
+      "currentQuarterEstimate": 0.45432,
       "currentQuarterEstimateDate": "2Q",
       "currentCalendarQuarter": "2Q2026",
       "currentQuarterEstimateYear": 2026,
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-05T12:44:11.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Neutral",
+        "fromGrade": "Underweight",
+        "action": "up",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 475,
+        "priorPriceTarget": 145
+      },
       {
         "epochGradeDate": "2026-06-04T14:30:54.000Z",
         "firm": "TD Cowen",
@@ -460,6 +470,16 @@
         "priceTargetAction": "Maintains",
         "currentPriceTarget": 25.28,
         "priorPriceTarget": 25.28
+      },
+      {
+        "epochGradeDate": "2026-01-30T21:47:47.000Z",
+        "firm": "JP Morgan",
+        "toGrade": "Underweight",
+        "fromGrade": "Underweight",
+        "action": "main",
+        "priceTargetAction": "Lowers",
+        "currentPriceTarget": 145,
+        "priorPriceTarget": 150
       },
       {
         "epochGradeDate": "2026-01-29T18:01:44.000Z",
@@ -10107,28 +10127,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0054009072,
-    "postMarketChange": -2.2600098,
-    "postMarketTime": "2026-06-04T23:59:59.000Z",
-    "postMarketPrice": 416.19,
+    "postMarketChangePercent": 0.0008248331,
+    "postMarketChange": 0.32250977,
+    "postMarketTime": "2026-06-05T23:59:59.000Z",
+    "postMarketPrice": 391.3225,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0123908,
-    "regularMarketChange": -5.25,
-    "regularMarketTime": "2026-06-04T20:00:00.000Z",
+    "regularMarketChangePercent": -0.0655993,
+    "regularMarketChange": -27.45,
+    "regularMarketTime": "2026-06-05T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 418.45,
-    "regularMarketDayHigh": 426.3499,
-    "regularMarketDayLow": 417.16,
-    "regularMarketVolume": 34237925,
+    "regularMarketPrice": 391,
+    "regularMarketDayHigh": 424.6799,
+    "regularMarketDayLow": 388.59,
+    "regularMarketVolume": 60830180,
     "averageDailyVolume10Day": 42880690,
     "averageDailyVolume3Month": 59863080,
-    "regularMarketPreviousClose": 423.7,
+    "regularMarketPreviousClose": 418.45,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 419.79,
+    "regularMarketOpen": 420.545,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "TSLA",
     "underlyingSymbol": null,
@@ -10140,13 +10160,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 1571582640128
+    "marketCap": 1468487958528
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 1543415660544,
-    "forwardPE": 166.73375,
+    "enterpriseValue": 1440320978944,
+    "forwardPE": 156.1115,
     "profitMargins": 0.03946,
     "floatShares": 2815891530,
     "sharesOutstanding": 3755723871,
@@ -10156,14 +10176,14 @@
     "dateShortInterest": "2026-05-15T00:00:00.000Z",
     "sharesPercentSharesOut": 0.02,
     "heldPercentInsiders": 0.11111,
-    "heldPercentInstitutions": 0.44912,
+    "heldPercentInstitutions": 0.44912997,
     "shortRatio": 1.18,
     "shortPercentOfFloat": 0.0225,
-    "beta": 1.793,
+    "beta": 1.798,
     "impliedSharesOutstanding": 3755723871,
     "category": null,
     "bookValue": 21.897,
-    "priceToBook": 19.109924,
+    "priceToBook": 17.856327,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -10172,12 +10192,12 @@
     "earningsQuarterlyGrowth": 0.166,
     "netIncomeToCommon": 3862000128,
     "trailingEps": 1.09,
-    "forwardEps": 2.50969,
-    "pegRatio": 5.83,
+    "forwardEps": 2.50472,
+    "pegRatio": 5.38,
     "lastSplitFactor": "3:1",
     "lastSplitDate": 1661385600,
-    "enterpriseToRevenue": 15.769,
-    "enterpriseToEbitda": 139.122,
+    "enterpriseToRevenue": 14.715,
+    "enterpriseToEbitda": 129.829,
     "52WeekChange": 0.4882332,
     "SandP52WeekChange": 0.27181315,
     "latestShareClass": null,
@@ -10599,11 +10619,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 91588,
-        "value": 2264971,
+        "shares": 477572,
+        "value": 170636358,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 24.73 per share.",
-        "filerName": "MUSK KIMBAL J",
+        "transactionText": "Sale at price 347.61 - 363.24 per share.",
+        "filerName": "EHRENPREIS IRA MATTHEW",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-27T00:00:00.000Z",
@@ -10624,9 +10644,9 @@
       {
         "maxAge": 1,
         "shares": 91588,
-        "value": 32732230,
+        "value": 2264971,
         "filerUrl": "",
-        "transactionText": "Sale at price 347.88 - 363.11 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 24.73 per share.",
         "filerName": "MUSK KIMBAL J",
         "filerRelation": "Director",
         "moneyText": "",
@@ -10635,11 +10655,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 477572,
-        "value": 170636358,
+        "shares": 91588,
+        "value": 32732230,
         "filerUrl": "",
-        "transactionText": "Sale at price 347.61 - 363.24 per share.",
-        "filerName": "EHRENPREIS IRA MATTHEW",
+        "transactionText": "Sale at price 347.88 - 363.11 per share.",
+        "filerName": "MUSK KIMBAL J",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-05-27T00:00:00.000Z",
@@ -10874,24 +10894,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 112390,
-        "value": 33672976,
-        "filerUrl": "",
-        "transactionText": "Sale at price 292.75 - 303.59 per share.",
-        "filerName": "DENHOLM ROBYN M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 6000,
         "value": 1776112,
         "filerUrl": "",
         "transactionText": "Sale at price 279.53 - 301.73 per share.",
         "filerName": "TANEJA VAIBHAV",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2025-03-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 112390,
+        "value": 33672976,
+        "filerUrl": "",
+        "transactionText": "Sale at price 292.75 - 303.59 per share.",
+        "filerName": "DENHOLM ROBYN M",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-03T00:00:00.000Z",
         "ownership": "D"
@@ -10934,18 +10954,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 112390,
-        "value": 43162564,
-        "filerUrl": "",
-        "transactionText": "Sale at price 375.06 - 389.08 per share.",
-        "filerName": "DENHOLM ROBYN M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-02-03T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 7000,
         "value": 2681789,
         "filerUrl": "",
@@ -10958,10 +10966,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 1499000,
+        "shares": 112390,
+        "value": 43162564,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 14.99 per share.",
+        "transactionText": "Sale at price 375.06 - 389.08 per share.",
+        "filerName": "DENHOLM ROBYN M",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-02-03T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 100000,
+        "value": 41162799,
+        "filerUrl": "",
+        "transactionText": "Sale at price 402.84 - 426.14 per share.",
         "filerName": "WILSON - THOMPSON KATHLEEN",
         "filerRelation": "Director",
         "moneyText": "",
@@ -10982,24 +11002,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 7000,
-        "value": 2894918,
+        "shares": 100000,
+        "value": 1499000,
         "filerUrl": "",
-        "transactionText": "Sale at price 402.85 - 423.14 per share.",
-        "filerName": "TANEJA VAIBHAV",
-        "filerRelation": "Chief Financial Officer",
+        "transactionText": "Conversion of Exercise of derivative security at price 14.99 per share.",
+        "filerName": "WILSON - THOMPSON KATHLEEN",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-01-06T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 41162799,
+        "shares": 7000,
+        "value": 2894918,
         "filerUrl": "",
-        "transactionText": "Sale at price 402.84 - 426.14 per share.",
-        "filerName": "WILSON - THOMPSON KATHLEEN",
-        "filerRelation": "Director",
+        "transactionText": "Sale at price 402.85 - 423.14 per share.",
+        "filerName": "TANEJA VAIBHAV",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-01-06T00:00:00.000Z",
         "ownership": "D"
@@ -11054,9 +11074,9 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 1499000,
+        "value": 35253875,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 14.99 per share.",
+        "transactionText": "Sale at price 349.20 - 357.93 per share.",
         "filerName": "WILSON - THOMPSON KATHLEEN",
         "filerRelation": "Director",
         "moneyText": "",
@@ -11066,9 +11086,9 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 35253875,
+        "value": 1499000,
         "filerUrl": "",
-        "transactionText": "Sale at price 349.20 - 357.93 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 14.99 per share.",
         "filerName": "WILSON - THOMPSON KATHLEEN",
         "filerRelation": "Director",
         "moneyText": "",
@@ -11101,24 +11121,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 112390,
-        "value": 39793301,
-        "filerUrl": "",
-        "transactionText": "Sale at price 352.74 - 358.64 per share.",
-        "filerName": "DENHOLM ROBYN M",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 7000,
         "value": 2481039,
         "filerUrl": "",
         "transactionText": "Sale at price 352.70 - 359.94 per share.",
         "filerName": "TANEJA VAIBHAV",
         "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-12-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 112390,
+        "value": 39793301,
+        "filerUrl": "",
+        "transactionText": "Sale at price 352.74 - 358.64 per share.",
+        "filerName": "DENHOLM ROBYN M",
+        "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-02T00:00:00.000Z",
         "ownership": "D"
@@ -11150,9 +11170,9 @@
       {
         "maxAge": 1,
         "shares": 100000,
-        "value": 1504664,
+        "value": 34602454,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 14.99 - 16.10 per share.",
+        "transactionText": "Sale at price 336.95 - 358.35 per share.",
         "filerName": "WILSON - THOMPSON KATHLEEN",
         "filerRelation": "Director",
         "moneyText": "",
@@ -11173,6 +11193,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 100000,
+        "value": 1504664,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 14.99 - 16.10 per share.",
+        "filerName": "WILSON - THOMPSON KATHLEEN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-11-11T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 12000,
         "value": 3802956,
         "filerUrl": "",
@@ -11185,14 +11217,14 @@
       },
       {
         "maxAge": 1,
-        "shares": 100000,
-        "value": 34602454,
+        "shares": 4000,
+        "value": 72880,
         "filerUrl": "",
-        "transactionText": "Sale at price 336.95 - 358.35 per share.",
-        "filerName": "WILSON - THOMPSON KATHLEEN",
-        "filerRelation": "Director",
+        "transactionText": "Conversion of Exercise of derivative security at price 18.22 per share.",
+        "filerName": "TANEJA VAIBHAV",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
-        "startDate": "2024-11-11T00:00:00.000Z",
+        "startDate": "2024-11-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -11210,9 +11242,9 @@
       {
         "maxAge": 1,
         "shares": 4000,
-        "value": 72880,
+        "value": 1007040,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 18.22 per share.",
+        "transactionText": "Sale at price 251.76 per share.",
         "filerName": "TANEJA VAIBHAV",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -11227,18 +11259,6 @@
         "transactionText": "Sale at price 247.32 - 253.78 per share.",
         "filerName": "MUSK KIMBAL J",
         "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-11-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4000,
-        "value": 1007040,
-        "filerUrl": "",
-        "transactionText": "Sale at price 251.76 per share.",
-        "filerName": "TANEJA VAIBHAV",
-        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2024-11-01T00:00:00.000Z",
         "ownership": "D"
@@ -11337,30 +11357,18 @@
         "moneyText": "",
         "startDate": "2024-07-25T00:00:00.000Z",
         "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 649,
-        "value": 113151,
-        "filerUrl": "",
-        "transactionText": "Sale at price 174.21 per share.",
-        "filerName": "ZHU XIAOTONG",
-        "filerRelation": "Officer",
-        "moneyText": "",
-        "startDate": "2024-06-06T00:00:00.000Z",
-        "ownership": "D"
       }
     ],
     "maxAge": 1
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 418.45,
+    "currentPrice": 391,
     "targetHighPrice": 600,
     "targetLowPrice": 123,
-    "targetMeanPrice": 411.8878,
-    "targetMedianPrice": 450,
-    "recommendationMean": 2.3617,
+    "targetMeanPrice": 419.93658,
+    "targetMedianPrice": 460,
+    "recommendationMean": 2.34043,
     "recommendationKey": "buy",
     "numberOfAnalystOpinions": 41,
     "totalCash": 44743000064,
@@ -11385,6 +11393,6 @@
     "profitMargins": 0.03946,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-05T06:21:16.691Z",
+  "lastUpdated": "2026-06-06T05:53:44.456Z",
   "source": "Static Build (yahoo-finance2)"
 }
