@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0846,
         "position": 61968733,
-        "value": 8965635836,
+        "value": 8864007152,
         "pctChange": 0.0123000005
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0543,
         "position": 39754778,
-        "value": 5751720989,
+        "value": 5686523178,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0395,
         "position": 28929635,
-        "value": 4185539379,
+        "value": 4138094796,
         "pctChange": -0.0072000003
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0342,
         "position": 25037687,
-        "value": 3622452371,
+        "value": 3581390580,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0238,
         "position": 17461777,
-        "value": 2526369768,
+        "value": 2497732464,
         "pctChange": 0.0286
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Bank Of New York Mellon Corporation",
         "pctHeld": 0.0182,
         "position": 13333083,
-        "value": 1929030350,
+        "value": 1907164102,
         "pctChange": -0.0808
       },
       {
@@ -99,7 +99,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.015700001,
         "position": 11506173,
-        "value": 1664713025,
+        "value": 1645842908,
         "pctChange": 0.45509997
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0137,
         "position": 10005263,
-        "value": 1447561377,
+        "value": 1431152752,
         "pctChange": -0.0764
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Arrowstreet Capital, Limited Partnership",
         "pctHeld": 0.013200001,
         "position": 9651024,
-        "value": 1396310081,
+        "value": 1380482408,
         "pctChange": 0.8737
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0123000005,
         "position": 8976963,
-        "value": 1298786941,
+        "value": 1284064727,
         "pctChange": 0.105100006
       }
     ]
@@ -261,6 +261,26 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-08T16:30:06.000Z",
+        "firm": "B of A Securities",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 180,
+        "priorPriceTarget": 130
+      },
+      {
+        "epochGradeDate": "2026-06-08T15:31:19.000Z",
+        "firm": "TD Cowen",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 160,
+        "priorPriceTarget": 125
+      },
       {
         "epochGradeDate": "2026-05-26T10:33:12.000Z",
         "firm": "BTIG",
@@ -6567,24 +6587,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.0060823173,
-    "postMarketChange": -0.8799896,
-    "postMarketTime": "2026-06-05T23:59:39.000Z",
-    "postMarketPrice": 143.8,
+    "postMarketChangePercent": -0.0072706467,
+    "postMarketChange": -1.0399933,
+    "postMarketTime": "2026-06-08T23:59:01.000Z",
+    "postMarketPrice": 142,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.03334005,
-    "regularMarketChange": -4.9900055,
-    "regularMarketTime": "2026-06-05T20:00:01.000Z",
+    "regularMarketChangePercent": -0.0113354,
+    "regularMarketChange": -1.64,
+    "regularMarketTime": "2026-06-08T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 144.68,
-    "regularMarketDayHigh": 149.05,
-    "regularMarketDayLow": 143.455,
-    "regularMarketVolume": 7122674,
-    "averageDailyVolume10Day": 6596610,
-    "averageDailyVolume3Month": 6169761,
-    "regularMarketPreviousClose": 149.67,
+    "regularMarketPrice": 143.04,
+    "regularMarketDayHigh": 147,
+    "regularMarketDayLow": 142.505,
+    "regularMarketVolume": 5332547,
+    "averageDailyVolume10Day": 6776000,
+    "averageDailyVolume3Month": 6173120,
+    "regularMarketPreviousClose": 144.68,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 149.03,
+    "regularMarketOpen": 146,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
@@ -6600,13 +6620,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 105999564800
+    "marketCap": 104798019584
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 103271866368,
-    "forwardPE": 42.231113,
+    "enterpriseValue": 102070329344,
+    "forwardPE": 41.752407,
     "profitMargins": 0.27491,
     "floatShares": 617659226,
     "sharesOutstanding": 732648391,
@@ -6623,7 +6643,7 @@
     "impliedSharesOutstanding": 732648391,
     "category": null,
     "bookValue": 1.348,
-    "priceToBook": 107.32937,
+    "priceToBook": 106.11275,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -6631,15 +6651,15 @@
     "mostRecentQuarter": "2026-03-31T00:00:00.000Z",
     "earningsQuarterlyGrowth": 0.233,
     "netIncomeToCommon": 1954499968,
-    "trailingEps": 2.58,
+    "trailingEps": 2.57,
     "forwardEps": 3.42591,
     "pegRatio": 3.26,
     "lastSplitFactor": "5:1",
     "lastSplitDate": 1655942400,
-    "enterpriseToRevenue": 14.526,
-    "enterpriseToEbitda": 43.733,
-    "52WeekChange": 0.41526568,
-    "SandP52WeekChange": 0.27181315,
+    "enterpriseToRevenue": 14.357,
+    "enterpriseToEbitda": 43.224,
+    "52WeekChange": 0.40745842,
+    "SandP52WeekChange": 0.22635591,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -6666,6 +6686,18 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 5250,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-06-04T00:00:00.000Z",
+        "ownership": "D/I"
+      },
       {
         "maxAge": 1,
         "shares": 3907,
@@ -6836,28 +6868,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 6305,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2026-05-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 4903,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "OHLGART CHRISTIANE MARGRIT",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2026-05-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 13092,
         "filerUrl": "",
         "transactionText": "",
@@ -6880,6 +6890,28 @@
       },
       {
         "maxAge": 1,
+        "shares": 4903,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "OHLGART CHRISTIANE MARGRIT",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2026-05-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 6305,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2026-05-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 1418586,
         "value": 0,
         "filerUrl": "",
@@ -6889,6 +6921,17 @@
         "moneyText": "",
         "startDate": "2026-04-17T00:00:00.000Z",
         "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 649,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HU JEAN X",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
       },
       {
         "maxAge": 1,
@@ -6947,17 +6990,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 649,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HU JEAN X",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 507,
         "value": 40930,
         "filerUrl": "",
@@ -6970,24 +7002,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 365345,
-        "value": 5479768,
-        "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 16.90 per share.",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2026-02-02T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 222928,
         "value": 2279202,
         "filerUrl": "",
         "transactionText": "Conversion of Exercise of derivative security at price 16.90 per share.",
         "filerName": "XIE KENNETH QING",
         "filerRelation": "Chief Executive Officer",
+        "moneyText": "",
+        "startDate": "2026-02-02T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 365345,
+        "value": 5479768,
+        "filerUrl": "",
+        "transactionText": "Conversion of Exercise of derivative security at price 16.90 per share.",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2026-02-02T00:00:00.000Z",
         "ownership": "D"
@@ -7018,22 +7050,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 3285,
+        "shares": 29132,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "OHLGART CHRISTIANE MARGRIT",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "WHITTLE JOHN",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2026-01-30T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 29132,
+        "shares": 3285,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WHITTLE JOHN",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "OHLGART CHRISTIANE MARGRIT",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2026-01-30T00:00:00.000Z",
         "ownership": "D"
@@ -7054,7 +7086,7 @@
         "shares": 649,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HSIEH MING",
+        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
@@ -7066,6 +7098,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "NAPOLITANO JANET ANN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 649,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HSIEH MING",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
@@ -7088,17 +7131,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "STAVRIDIS JAMES G",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 649,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-12-31T00:00:00.000Z",
@@ -7166,11 +7198,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 7035,
+        "shares": 4615,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "WHITTLE JOHN",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-10-31T00:00:00.000Z",
         "ownership": "D"
@@ -7188,11 +7220,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 4615,
+        "shares": 7035,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WHITTLE JOHN",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-10-31T00:00:00.000Z",
         "ownership": "D"
@@ -7202,7 +7234,7 @@
         "shares": 649,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HSIEH MING",
+        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-30T00:00:00.000Z",
@@ -7214,6 +7246,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "NAPOLITANO JANET ANN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 649,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HSIEH MING",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-30T00:00:00.000Z",
@@ -7247,17 +7290,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GOLDMAN KENNETH ALLEN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 649,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-09-30T00:00:00.000Z",
@@ -7325,11 +7357,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 7035,
+        "shares": 4616,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Officer and Director",
+        "filerName": "WHITTLE JOHN",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2025-08-01T00:00:00.000Z",
         "ownership": "D"
@@ -7347,24 +7379,13 @@
       },
       {
         "maxAge": 1,
-        "shares": 4616,
+        "shares": 7035,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WHITTLE JOHN",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Officer and Director",
         "moneyText": "",
         "startDate": "2025-08-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1130,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "WILDEROTTER MARY AGNES",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-12T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -7383,7 +7404,18 @@
         "shares": 1130,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "HSIEH MING",
+        "filerName": "WILDEROTTER MARY AGNES",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1130,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-12T00:00:00.000Z",
@@ -7395,6 +7427,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "NAPOLITANO JANET ANN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-12T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1130,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "HSIEH MING",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-12T00:00:00.000Z",
@@ -7428,17 +7471,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GOLDMAN KENNETH ALLEN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1130,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-12T00:00:00.000Z",
@@ -7518,22 +7550,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 7036,
+        "shares": 6289,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2025-05-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 7120,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "OHLGART CHRISTIANE MARGRIT",
-        "filerRelation": "Officer",
+        "filerName": "JENSEN KEITH FRANKLIN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
         "ownership": "D"
@@ -7551,13 +7572,35 @@
       },
       {
         "maxAge": 1,
-        "shares": 6289,
+        "shares": 7120,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "JENSEN KEITH FRANKLIN",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "OHLGART CHRISTIANE MARGRIT",
+        "filerRelation": "Officer",
         "moneyText": "",
         "startDate": "2025-05-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 7036,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
+        "moneyText": "",
+        "startDate": "2025-05-01T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1130,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "NEUKOM WILLIAM H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-03-31T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -7576,7 +7619,7 @@
         "shares": 1130,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NEUKOM WILLIAM H",
+        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-31T00:00:00.000Z",
@@ -7621,17 +7664,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GOLDMAN KENNETH ALLEN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1130,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-03-31T00:00:00.000Z",
@@ -7712,9 +7744,9 @@
       {
         "maxAge": 1,
         "shares": 17660,
-        "value": 764579,
+        "value": 1928064,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 34.39 - 62.11 per share.",
+        "transactionText": "Sale at price 108.84 - 110.11 per share.",
         "filerName": "JENSEN KEITH FRANKLIN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -7724,9 +7756,9 @@
       {
         "maxAge": 1,
         "shares": 17660,
-        "value": 1928064,
+        "value": 764579,
         "filerUrl": "",
-        "transactionText": "Sale at price 108.84 - 110.11 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 34.39 - 62.11 per share.",
         "filerName": "JENSEN KEITH FRANKLIN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -7795,22 +7827,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 50351,
+        "shares": 111072,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "XIE KENNETH QING",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2025-01-31T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 111072,
+        "shares": 43921,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "XIE KENNETH QING",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "JENSEN KEITH FRANKLIN",
+        "filerRelation": "Chief Financial Officer",
         "moneyText": "",
         "startDate": "2025-01-31T00:00:00.000Z",
         "ownership": "D"
@@ -7828,11 +7860,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 43921,
+        "shares": 50351,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "JENSEN KEITH FRANKLIN",
-        "filerRelation": "Chief Financial Officer",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2025-01-31T00:00:00.000Z",
         "ownership": "D"
@@ -7866,6 +7898,17 @@
         "shares": 1130,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "NEUKOM WILLIAM H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-12-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1130,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "WILDEROTTER MARY AGNES",
         "filerRelation": "Director",
         "moneyText": "",
@@ -7877,7 +7920,7 @@
         "shares": 1130,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NEUKOM WILLIAM H",
+        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-31T00:00:00.000Z",
@@ -7922,17 +7965,6 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "GOLDMAN KENNETH ALLEN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-12-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 1130,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-12-31T00:00:00.000Z",
@@ -7989,9 +8021,9 @@
       {
         "maxAge": 1,
         "shares": 17650,
-        "value": 764097,
+        "value": 1688337,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 34.39 - 62.11 per share.",
+        "transactionText": "Sale at price 94.97 - 96.45 per share.",
         "filerName": "JENSEN KEITH FRANKLIN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -8001,9 +8033,9 @@
       {
         "maxAge": 1,
         "shares": 17650,
-        "value": 1688337,
+        "value": 764097,
         "filerUrl": "",
-        "transactionText": "Sale at price 94.97 - 96.45 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 34.39 - 62.11 per share.",
         "filerName": "JENSEN KEITH FRANKLIN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -8048,6 +8080,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 56705,
+        "value": 4840490,
+        "filerUrl": "",
+        "transactionText": "Sale at price 85.00 - 86.91 per share.",
+        "filerName": "JENSEN KEITH FRANKLIN",
+        "filerRelation": "Chief Financial Officer",
+        "moneyText": "",
+        "startDate": "2024-11-08T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 38495,
         "value": 3293666,
         "filerUrl": "",
@@ -8084,18 +8128,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 56705,
-        "value": 4840490,
-        "filerUrl": "",
-        "transactionText": "Sale at price 85.00 - 86.91 per share.",
-        "filerName": "JENSEN KEITH FRANKLIN",
-        "filerRelation": "Chief Financial Officer",
-        "moneyText": "",
-        "startDate": "2024-11-08T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 24712,
         "value": 1948883,
         "filerUrl": "",
@@ -8108,22 +8140,22 @@
       },
       {
         "maxAge": 1,
-        "shares": 9349,
+        "shares": 5333,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
+        "filerName": "WHITTLE JOHN",
+        "filerRelation": "Chief Operating Officer",
         "moneyText": "",
         "startDate": "2024-11-01T00:00:00.000Z",
         "ownership": "D"
       },
       {
         "maxAge": 1,
-        "shares": 5333,
+        "shares": 23610,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WHITTLE JOHN",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "XIE KENNETH QING",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-11-01T00:00:00.000Z",
         "ownership": "D"
@@ -8141,11 +8173,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 23610,
+        "shares": 9349,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "XIE KENNETH QING",
-        "filerRelation": "Chief Executive Officer",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2024-11-01T00:00:00.000Z",
         "ownership": "D"
@@ -8179,6 +8211,17 @@
         "shares": 1129,
         "filerUrl": "",
         "transactionText": "",
+        "filerName": "NEUKOM WILLIAM H",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-09-30T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 1129,
+        "filerUrl": "",
+        "transactionText": "",
         "filerName": "WILDEROTTER MARY AGNES",
         "filerRelation": "Director",
         "moneyText": "",
@@ -8190,7 +8233,7 @@
         "shares": 1129,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "NEUKOM WILLIAM H",
+        "filerName": "HU JEAN X",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2024-09-30T00:00:00.000Z",
@@ -8242,17 +8285,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 1129,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "HU JEAN X",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-09-30T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 83333,
         "value": 817663,
         "filerUrl": "",
@@ -8278,9 +8310,9 @@
       {
         "maxAge": 1,
         "shares": 11985,
-        "value": 412116,
+        "value": 905465,
         "filerUrl": "",
-        "transactionText": "Conversion of Exercise of derivative security at price 34.39 per share.",
+        "transactionText": "Sale at price 75.49 - 75.87 per share.",
         "filerName": "JENSEN KEITH FRANKLIN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -8290,9 +8322,9 @@
       {
         "maxAge": 1,
         "shares": 11985,
-        "value": 905465,
+        "value": 412116,
         "filerUrl": "",
-        "transactionText": "Sale at price 75.49 - 75.87 per share.",
+        "transactionText": "Conversion of Exercise of derivative security at price 34.39 per share.",
         "filerName": "JENSEN KEITH FRANKLIN",
         "filerRelation": "Chief Financial Officer",
         "moneyText": "",
@@ -8373,17 +8405,6 @@
       },
       {
         "maxAge": 1,
-        "shares": 9348,
-        "filerUrl": "",
-        "transactionText": "",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2024-08-01T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
         "shares": 5328,
         "filerUrl": "",
         "transactionText": "",
@@ -8398,7 +8419,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 144.68,
+    "currentPrice": 143.04,
     "targetHighPrice": 150,
     "targetLowPrice": 70,
     "targetMeanPrice": 107.86111,
@@ -8428,6 +8449,6 @@
     "profitMargins": 0.27491,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-08T06:43:54.837Z",
+  "lastUpdated": "2026-06-09T06:10:47.105Z",
   "source": "Static Build (yahoo-finance2)"
 }
