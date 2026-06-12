@@ -21,6 +21,14 @@
         "period": "-2m",
         "strongBuy": 1,
         "buy": 8,
+        "hold": 3,
+        "sell": 1,
+        "strongSell": 0
+      },
+      {
+        "period": "-3m",
+        "strongBuy": 1,
+        "buy": 8,
         "hold": 2,
         "sell": 1,
         "strongSell": 0
@@ -37,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0765,
         "position": 25435282,
-        "value": 494589050,
+        "value": 524729846,
         "pctChange": -0.0271
       },
       {
@@ -46,7 +54,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0586,
         "position": 19466522,
-        "value": 378526514,
+        "value": 401594332,
         "pctChange": 1
       },
       {
@@ -55,7 +63,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0429,
         "position": 14258562,
-        "value": 277257733,
+        "value": 294154122,
         "pctChange": 1
       },
       {
@@ -64,7 +72,7 @@
         "organization": "Shaw D.E. & Co., Inc.",
         "pctHeld": 0.0419,
         "position": 13922073,
-        "value": 270714705,
+        "value": 287212354,
         "pctChange": 2.9557998
       },
       {
@@ -73,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0305,
         "position": 10138079,
-        "value": 197134943,
+        "value": 209148561,
         "pctChange": 0.1196
       },
       {
@@ -82,7 +90,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024500001,
         "position": 8127635,
-        "value": 158041860,
+        "value": 167673103,
         "pctChange": 0.0315
       },
       {
@@ -91,7 +99,7 @@
         "organization": "UBS Group AG",
         "pctHeld": 0.0146,
         "position": 4848625,
-        "value": 94281511,
+        "value": 100027129,
         "pctChange": 0.70949996
       },
       {
@@ -100,7 +108,7 @@
         "organization": "Defiance Etfs, LLC",
         "pctHeld": 0.0139999995,
         "position": 4650185,
-        "value": 90422845,
+        "value": 95933312,
         "pctChange": 2.0412
       },
       {
@@ -109,7 +117,7 @@
         "organization": "Morgan Stanley",
         "pctHeld": 0.0117,
         "position": 3878470,
-        "value": 75416847,
+        "value": 80012832,
         "pctChange": 0.6013
       },
       {
@@ -118,7 +126,7 @@
         "organization": "Unicom Systems, Inc.                          ",
         "pctHeld": 0.0106,
         "position": 3521935,
-        "value": 68484025,
+        "value": 72657516,
         "pctChange": 0
       }
     ]
@@ -251,6 +259,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-11T15:02:49.000Z",
+        "firm": "Rosenblatt",
+        "toGrade": "Buy",
+        "fromGrade": "Buy",
+        "action": "main",
+        "priceTargetAction": "Maintains",
+        "currentPriceTarget": 40,
+        "priorPriceTarget": 40
+      },
       {
         "epochGradeDate": "2026-05-12T13:09:17.000Z",
         "firm": "Mizuho",
@@ -837,24 +855,24 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": -0.011056835,
-    "postMarketChange": -0.21500015,
-    "postMarketTime": "2026-06-10T23:59:52.000Z",
-    "postMarketPrice": 19.23,
+    "postMarketChangePercent": 0.022360634,
+    "postMarketChange": 0.4612999,
+    "postMarketTime": "2026-06-11T23:59:59.000Z",
+    "postMarketPrice": 21.0913,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0124429,
-    "regularMarketChange": -0.245001,
-    "regularMarketTime": "2026-06-10T20:00:00.000Z",
+    "regularMarketChangePercent": 0.0609411,
+    "regularMarketChange": 1.185,
+    "regularMarketTime": "2026-06-11T20:00:00.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 19.445,
-    "regularMarketDayHigh": 20.84,
-    "regularMarketDayLow": 19.375,
-    "regularMarketVolume": 32285381,
-    "averageDailyVolume10Day": 60905340,
-    "averageDailyVolume3Month": 39566098,
-    "regularMarketPreviousClose": 19.69,
+    "regularMarketPrice": 20.63,
+    "regularMarketDayHigh": 21.2314,
+    "regularMarketDayLow": 19.1683,
+    "regularMarketVolume": 44629537,
+    "averageDailyVolume10Day": 54564250,
+    "averageDailyVolume3Month": 39800400,
+    "regularMarketPreviousClose": 19.445,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 19.59,
+    "regularMarketOpen": 19.3,
     "exchange": "NCM",
     "exchangeName": "NasdaqCM",
     "exchangeDataDelayedBy": 0,
@@ -870,13 +888,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 6463494656
+    "marketCap": 6857387520
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 6052032000,
-    "forwardPE": -95.63271,
+    "enterpriseValue": 6445924352,
+    "forwardPE": -101.46068,
     "profitMargins": 0,
     "floatShares": 327495925,
     "sharesOutstanding": 332398807,
@@ -893,7 +911,7 @@
     "impliedSharesOutstanding": 332398807,
     "category": null,
     "bookValue": 1.756,
-    "priceToBook": 11.073462,
+    "priceToBook": 11.748291,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -904,10 +922,10 @@
     "trailingEps": -0.89,
     "forwardEps": -0.20333,
     "lastSplitFactor": null,
-    "enterpriseToRevenue": 604.236,
-    "enterpriseToEbitda": -75.628,
-    "52WeekChange": 0.6272727,
-    "SandP52WeekChange": 0.22189116,
+    "enterpriseToRevenue": 643.563,
+    "enterpriseToEbitda": -80.55,
+    "52WeekChange": 0.8096491,
+    "SandP52WeekChange": 0.23713183,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -933,6 +951,30 @@
   },
   "insiderTransactions": {
     "transactions": [
+      {
+        "maxAge": 1,
+        "shares": 9208,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "JOHNSON RAY O",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-06-09T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 122188,
+        "value": 2602841,
+        "filerUrl": "",
+        "transactionText": "Sale at price 21.28 - 21.76 per share.",
+        "filerName": "JOHNSON RAY O",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-06-08T00:00:00.000Z",
+        "ownership": "D"
+      },
       {
         "maxAge": 1,
         "shares": 104190,
@@ -1247,11 +1289,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 40420,
-        "value": 606300,
+        "shares": 25000,
+        "value": 375000,
         "filerUrl": "",
         "transactionText": "Sale at price 15.00 per share.",
-        "filerName": "JOHNSON RAY O",
+        "filerName": "CLIFTON MICHAEL S.",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-07-16T00:00:00.000Z",
@@ -1259,11 +1301,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 25000,
-        "value": 375000,
+        "shares": 40420,
+        "value": 606300,
         "filerUrl": "",
         "transactionText": "Sale at price 15.00 per share.",
-        "filerName": "CLIFTON MICHAEL S.",
+        "filerName": "JOHNSON RAY O",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-07-16T00:00:00.000Z",
@@ -1279,18 +1321,6 @@
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-12T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 14902,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SANDFORD HELENE GAIL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2025-06-10T00:00:00.000Z",
         "ownership": "D"
       },
       {
@@ -1336,6 +1366,18 @@
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "FITZGERALD ALISSA",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2025-06-10T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 14902,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SANDFORD HELENE GAIL",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2025-06-10T00:00:00.000Z",
@@ -1731,18 +1773,6 @@
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Award(Grant) at price 0.00 per share.",
-        "filerName": "SANDFORD HELENE GAIL",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2024-06-18T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 142857,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
         "filerName": "MCCARTHY CATHY L",
         "filerRelation": "Director",
         "moneyText": "",
@@ -1787,6 +1817,18 @@
       },
       {
         "maxAge": 1,
+        "shares": 142857,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Award(Grant) at price 0.00 per share.",
+        "filerName": "SANDFORD HELENE GAIL",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2024-06-18T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
         "shares": 50000,
         "value": 50000,
         "filerUrl": "",
@@ -1802,12 +1844,13 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 19.445,
+    "currentPrice": 20.63,
     "targetHighPrice": 40,
     "targetLowPrice": 15.91,
     "targetMeanPrice": 29.2425,
     "targetMedianPrice": 30,
-    "recommendationKey": "none",
+    "recommendationMean": 1.84615,
+    "recommendationKey": "buy",
     "numberOfAnalystOpinions": 12,
     "totalCash": 418246016,
     "totalCashPerShare": 1.258,
@@ -1830,6 +1873,6 @@
     "profitMargins": 0,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-11T06:50:17.078Z",
+  "lastUpdated": "2026-06-12T06:42:51.438Z",
   "source": "Static Build (yahoo-finance2)"
 }
