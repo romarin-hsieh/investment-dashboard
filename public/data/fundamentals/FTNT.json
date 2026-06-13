@@ -3,7 +3,7 @@
     "trend": [
       {
         "period": "0m",
-        "strongBuy": 0,
+        "strongBuy": 1,
         "buy": 10,
         "hold": 28,
         "sell": 3,
@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.0846,
         "position": 61968733,
-        "value": 8989184257,
+        "value": 9066025827,
         "pctChange": 0.0123000005
       },
       {
@@ -54,7 +54,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0543,
         "position": 39754778,
-        "value": 5766827999,
+        "value": 5816124142,
         "pctChange": 1
       },
       {
@@ -63,7 +63,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0395,
         "position": 28929635,
-        "value": 4196532782,
+        "value": 4232405688,
         "pctChange": -0.0072000003
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0342,
         "position": 25037687,
-        "value": 3631966815,
+        "value": 3663013684,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.0238,
         "position": 17461777,
-        "value": 2533005328,
+        "value": 2554658028,
         "pctChange": 0.0286
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Bank Of New York Mellon Corporation",
         "pctHeld": 0.0182,
         "position": 13333083,
-        "value": 1934096987,
+        "value": 1950630083,
         "pctChange": -0.0808
       },
       {
@@ -99,7 +99,7 @@
         "organization": "First Trust Advisors LP",
         "pctHeld": 0.015700001,
         "position": 11506173,
-        "value": 1669085427,
+        "value": 1683353145,
         "pctChange": 0.45509997
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.0137,
         "position": 10005263,
-        "value": 1451363426,
+        "value": 1463770007,
         "pctChange": -0.0764
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Arrowstreet Capital, Limited Partnership",
         "pctHeld": 0.013200001,
         "position": 9651024,
-        "value": 1399977517,
+        "value": 1411944840,
         "pctChange": 0.8737
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0123000005,
         "position": 8976963,
-        "value": 1302198230,
+        "value": 1313329714,
         "pctChange": 0.105100006
       }
     ]
@@ -134,7 +134,7 @@
   "majorHoldersBreakdown": {
     "maxAge": 1,
     "insidersPercentHeld": 0.17386,
-    "institutionsPercentHeld": 0.72503,
+    "institutionsPercentHeld": 0.72503996,
     "institutionsFloatPercentHeld": 0.87761,
     "institutionsCount": 1988
   },
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-12T13:27:49.000Z",
+        "firm": "Barclays",
+        "toGrade": "Equal-Weight",
+        "fromGrade": "Equal-Weight",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 155,
+        "priorPriceTarget": 115
+      },
       {
         "epochGradeDate": "2026-06-08T16:30:06.000Z",
         "firm": "B of A Securities",
@@ -6587,28 +6597,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.002991905,
-    "postMarketChange": 0.43400574,
-    "postMarketTime": "2026-06-11T23:59:51.000Z",
-    "postMarketPrice": 145.494,
+    "postMarketChangePercent": 0.0013670331,
+    "postMarketChange": 0.19999695,
+    "postMarketTime": "2026-06-12T23:58:59.000Z",
+    "postMarketPrice": 146.5,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": 0.0444988,
-    "regularMarketChange": 6.17999,
-    "regularMarketTime": "2026-06-11T20:00:00.000Z",
+    "regularMarketChangePercent": 0.00854823,
+    "regularMarketChange": 1.24001,
+    "regularMarketTime": "2026-06-12T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 145.06,
-    "regularMarketDayHigh": 146.31,
-    "regularMarketDayLow": 139.475,
-    "regularMarketVolume": 6964737,
-    "averageDailyVolume10Day": 7177090,
-    "averageDailyVolume3Month": 6252653,
-    "regularMarketPreviousClose": 138.88,
+    "regularMarketPrice": 146.3,
+    "regularMarketDayHigh": 146.38,
+    "regularMarketDayLow": 142.1478,
+    "regularMarketVolume": 4652459,
+    "averageDailyVolume10Day": 6723170,
+    "averageDailyVolume3Month": 6270511,
+    "regularMarketPreviousClose": 145.06,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 141,
+    "regularMarketOpen": 143.642,
     "exchange": "NMS",
     "exchangeName": "NasdaqGS",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "FTNT",
     "underlyingSymbol": null,
@@ -6620,13 +6630,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 106277969920
+    "marketCap": 107186462720
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
-    "enterpriseValue": 103550279680,
-    "forwardPE": 42.342033,
+    "enterpriseValue": 104458756096,
+    "forwardPE": 42.703983,
     "profitMargins": 0.27491,
     "floatShares": 617659226,
     "sharesOutstanding": 732648391,
@@ -6636,14 +6646,14 @@
     "dateShortInterest": "2026-05-29T00:00:00.000Z",
     "sharesPercentSharesOut": 0.023,
     "heldPercentInsiders": 0.17386,
-    "heldPercentInstitutions": 0.72503,
+    "heldPercentInstitutions": 0.72503996,
     "shortRatio": 2.61,
     "shortPercentOfFloat": 0.0279,
     "beta": 1.109,
     "impliedSharesOutstanding": 732648391,
     "category": null,
     "bookValue": 1.348,
-    "priceToBook": 107.61127,
+    "priceToBook": 108.53116,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -6653,13 +6663,13 @@
     "netIncomeToCommon": 1954499968,
     "trailingEps": 2.58,
     "forwardEps": 3.42591,
-    "pegRatio": 3.13,
+    "pegRatio": 3.3,
     "lastSplitFactor": "5:1",
     "lastSplitDate": 1655942400,
-    "enterpriseToRevenue": 14.565,
-    "enterpriseToEbitda": 43.851,
-    "52WeekChange": 0.43865907,
-    "SandP52WeekChange": 0.23713183,
+    "enterpriseToRevenue": 14.693,
+    "enterpriseToEbitda": 44.236,
+    "52WeekChange": 0.4350171,
+    "SandP52WeekChange": 0.23177934,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -6772,24 +6782,24 @@
       },
       {
         "maxAge": 1,
-        "shares": 5854588,
-        "value": 0,
-        "filerUrl": "",
-        "transactionText": "Stock Gift at price 0.00 per share.",
-        "filerName": "XIE MICHAEL",
-        "filerRelation": "Chief Technology Officer",
-        "moneyText": "",
-        "startDate": "2026-05-19T00:00:00.000Z",
-        "ownership": "I"
-      },
-      {
-        "maxAge": 1,
         "shares": 1500,
         "value": 0,
         "filerUrl": "",
         "transactionText": "Stock Gift at price 0.00 per share.",
         "filerName": "GOLDMAN KENNETH ALLEN",
         "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-05-19T00:00:00.000Z",
+        "ownership": "I"
+      },
+      {
+        "maxAge": 1,
+        "shares": 5854588,
+        "value": 0,
+        "filerUrl": "",
+        "transactionText": "Stock Gift at price 0.00 per share.",
+        "filerName": "XIE MICHAEL",
+        "filerRelation": "Chief Technology Officer",
         "moneyText": "",
         "startDate": "2026-05-19T00:00:00.000Z",
         "ownership": "I"
@@ -6960,17 +6970,6 @@
         "shares": 649,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "GOLDMAN KENNETH ALLEN",
-        "filerRelation": "Director",
-        "moneyText": "",
-        "startDate": "2026-03-31T00:00:00.000Z",
-        "ownership": "D"
-      },
-      {
-        "maxAge": 1,
-        "shares": 649,
-        "filerUrl": "",
-        "transactionText": "",
         "filerName": "HSIEH MING",
         "filerRelation": "Director",
         "moneyText": "",
@@ -6983,6 +6982,17 @@
         "filerUrl": "",
         "transactionText": "",
         "filerName": "NAPOLITANO JANET ANN",
+        "filerRelation": "Director",
+        "moneyText": "",
+        "startDate": "2026-03-31T00:00:00.000Z",
+        "ownership": "D"
+      },
+      {
+        "maxAge": 1,
+        "shares": 649,
+        "filerUrl": "",
+        "transactionText": "",
+        "filerName": "GOLDMAN KENNETH ALLEN",
         "filerRelation": "Director",
         "moneyText": "",
         "startDate": "2026-03-31T00:00:00.000Z",
@@ -8405,11 +8415,11 @@
       },
       {
         "maxAge": 1,
-        "shares": 5328,
+        "shares": 23615,
         "filerUrl": "",
         "transactionText": "",
-        "filerName": "WHITTLE JOHN",
-        "filerRelation": "Chief Operating Officer",
+        "filerName": "XIE KENNETH QING",
+        "filerRelation": "Chief Executive Officer",
         "moneyText": "",
         "startDate": "2024-08-01T00:00:00.000Z",
         "ownership": "D"
@@ -8419,14 +8429,14 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 145.06,
+    "currentPrice": 146.3,
     "targetHighPrice": 180,
     "targetLowPrice": 70,
-    "targetMeanPrice": 110.22222,
+    "targetMeanPrice": 112.48649,
     "targetMedianPrice": 110,
-    "recommendationMean": 2.72093,
+    "recommendationMean": 2.70455,
     "recommendationKey": "hold",
-    "numberOfAnalystOpinions": 36,
+    "numberOfAnalystOpinions": 37,
     "totalCash": 3294899968,
     "totalCashPerShare": 4.497,
     "ebitda": 2361400064,
@@ -8449,6 +8459,6 @@
     "profitMargins": 0.27491,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-12T06:41:58.307Z",
+  "lastUpdated": "2026-06-13T06:17:52.739Z",
   "source": "Static Build (yahoo-finance2)"
 }
