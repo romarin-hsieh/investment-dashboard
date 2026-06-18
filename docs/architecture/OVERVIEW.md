@@ -126,7 +126,7 @@ Single-page Vue 3 application built with Vite. No Pinia/Vuex — state is held i
 | `utils/` | performanceCache (Tier 1), autoUpdateScheduler, cacheWarmupService, technical-analysis helpers |
 | `composables/` | Vue 3 composition helpers (currently just `useTheme`) |
 | `types/` | **Authoritative TypeScript contracts** (`types/index.ts`) — single source for data shapes |
-| `lib/` | Fetchers (`fetcher.ts`, `fetcher-optimized.ts`) |
+| `lib/` | Fetchers (`fetcher.ts`) |
 
 For inter-component dependencies see [COMPONENT_DEPENDENCIES.md](COMPONENT_DEPENDENCIES.md).
 

@@ -20,8 +20,9 @@ class ProductionOptimizer {
     // 1. 預載入關鍵資源
     this.preloadCriticalResources()
 
-    // 2. 設定 Service Worker (如果可用)
-    this.setupServiceWorker()
+    // 2. 清除舊版 Service Worker (ADR-0006 rejects a SW; the old one mis-registered
+    //    at /sw.js, 404'd under the /investment-dashboard/ base, and never installed)
+    this.unregisterLegacyServiceWorker()
 
     // 3. 優化圖片載入
     this.optimizeImageLoading()
@@ -55,16 +56,29 @@ class ProductionOptimizer {
     console.log('📦 Preloaded critical resources')
   }
 
-  // 設定 Service Worker
-  setupServiceWorker() {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-          console.log('✅ Service Worker registered:', registration)
-        })
-        .catch(error => {
-          console.log('❌ Service Worker registration failed:', error)
-        })
+  // 清除舊版 Service Worker
+  // The previous SW registered at '/sw.js' — the wrong scope under the
+  // '/investment-dashboard/' base, so it 404'd and never installed — and is rejected
+  // by ADR-0006. This one-time cleanup unregisters any stale registration and drops
+  // its caches so no client is left serving cache-first stale daily data.
+  unregisterLegacyServiceWorker() {
+    if (!('serviceWorker' in navigator)) return
+
+    navigator.serviceWorker.getRegistrations()
+      .then(registrations => {
+        registrations.forEach(registration => registration.unregister())
+        if (registrations.length > 0) {
+          console.log(`🧹 Unregistered ${registrations.length} legacy service worker(s)`)
+        }
+      })
+      .catch(() => { /* best-effort cleanup */ })
+
+    if (window.caches && caches.keys) {
+      caches.keys()
+        .then(keys => keys
+          .filter(key => /^(investment-dashboard|static-|api-)/.test(key))
+          .forEach(key => caches.delete(key)))
+        .catch(() => { /* best-effort cleanup */ })
     }
   }
 
