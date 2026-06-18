@@ -20,6 +20,28 @@ export function withBase(path) {
 }
 
 /**
+ * 資料來源 base URL。預設等同 app 的 BASE_URL（與舊行為一致），但可由
+ * VITE_DATA_BASE_URL 覆寫，讓 public/data 改由獨立的 data repo / 站台供應。
+ * 一律以 '/' 結尾，方便串接相對路徑。
+ * @returns {string} data base URL（結尾含 '/'）
+ */
+export function getDataBaseUrl() {
+  const base = import.meta.env.VITE_DATA_BASE_URL || import.meta.env.BASE_URL || '/';
+  return base.endsWith('/') ? base : `${base}/`;
+}
+
+/**
+ * 將「資料」相對路徑轉換為完整 URL（使用 getDataBaseUrl）。
+ * 對應 withBase，但走可覆寫的資料來源而非 app base。
+ * @param {string} path - 相對路徑 (如 'data/ohlcv/AAPL.json')
+ * @returns {string} 完整路徑
+ */
+export function withDataBase(path) {
+  const cleanPath = String(path).replace(/^\/+/, '');
+  return `${getDataBaseUrl()}${cleanPath}`;
+}
+
+/**
  * 獲取當前的 base URL
  * @returns {string} base URL
  */
@@ -58,45 +80,47 @@ export function getEnvironmentInfo() {
 }
 
 // 常用路徑 helpers
+// 資料檔（data/*）走 withDataBase（可由 VITE_DATA_BASE_URL 覆寫到獨立 data 站台）；
+// 設定檔（config/*）與 app 資產（package.json）留在 app repo，走 withBase。
 export const paths = {
   // OHLCV 數據路徑
-  ohlcv: (symbol) => withBase(`data/ohlcv/${symbol.toUpperCase()}.json`),
+  ohlcv: (symbol) => withDataBase(`data/ohlcv/${symbol.toUpperCase()}.json`),
   ohlcvPrecomputed: (symbol, period = '1d', days = 90) =>
-    withBase(`data/ohlcv/${symbol.toLowerCase()}_${period}_${days}d.json`),
+    withDataBase(`data/ohlcv/${symbol.toLowerCase()}_${period}_${days}d.json`),
   ohlcvIndex: (options = {}) => {
-    const url = withBase('data/ohlcv/index.json');
+    const url = withDataBase('data/ohlcv/index.json');
     return options.v ? `${url}?v=${options.v}` : url;
   },
 
   // 技術指標路徑
   technicalIndicators: (date, symbol) =>
-    withBase(`data/technical-indicators/${date}_${symbol}.json`),
+    withDataBase(`data/technical-indicators/${date}_${symbol}.json`),
   technicalIndicatorsIndex: (options = {}) => {
-    const url = withBase('data/technical-indicators/latest_index.json');
+    const url = withDataBase('data/technical-indicators/latest_index.json');
     return options.v ? `${url}?v=${options.v}` : url;
   },
 
   // Metadata 路徑
   symbolsMetadata: (options = {}) => {
-    const url = withBase('data/symbols_metadata.json');
+    const url = withDataBase('data/symbols_metadata.json');
     return options.v ? `${url}?v=${options.v}` : url;
   },
-  sectorIndustry: () => withBase('data/sector_industry.json'),
+  sectorIndustry: () => withDataBase('data/sector_industry.json'),
 
-  // 配置文件路徑
+  // 配置文件路徑 (app repo, not the data store)
   universe: () => withBase('config/universe.json'),
   stocks: () => withBase('config/stocks.json'),
 
   // 狀態和索引文件 (需要 cache busting)
   status: (options = {}) => {
-    const url = withBase('data/status.json');
+    const url = withDataBase('data/status.json');
     return options.v ? `${url}?v=${options.v}` : url;
   },
 
   // 其他常用路徑
   packageJson: () => withBase('package.json'),
-  quotesLatest: () => withBase('data/quotes/latest.json'),
-  daily: (date) => withBase(`data/daily/${date}.json`)
+  quotesLatest: () => withDataBase('data/quotes/latest.json'),
+  daily: (date) => withDataBase(`data/daily/${date}.json`)
 };
 
 // Debug helper
@@ -114,7 +138,9 @@ export function debugPaths() {
 
 export default {
   withBase,
+  withDataBase,
   getBaseUrl,
+  getDataBaseUrl,
   isProduction,
   isDevelopment,
   getEnvironmentInfo,

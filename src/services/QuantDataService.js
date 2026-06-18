@@ -1,5 +1,7 @@
 
 // Simple in-memory cache service for Quant Data
+import { withDataBase } from '../utils/baseUrl.js'
+
 class QuantDataService {
     constructor() {
         this.cache = null;
@@ -22,10 +24,7 @@ class QuantDataService {
         }
 
         // Fetch new data
-        const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-            ? import.meta.env.BASE_URL.slice(0, -1)
-            : import.meta.env.BASE_URL;
-        this.fetchPromise = fetch(`${baseUrl}/data/dashboard_status.json`)
+        this.fetchPromise = fetch(withDataBase('data/dashboard_status.json'))
             .then(res => {
                 if (!res.ok) throw new Error('Network response was not ok');
                 return res.json();

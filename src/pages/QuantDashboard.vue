@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue';
 import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
 import SignalCard from '@/components/SignalCard.vue';
+import { withDataBase } from '@/utils/baseUrl.js';
 
 const latestData = ref([]);
 const selectedTicker = ref('SPY');
@@ -16,10 +17,7 @@ const fetchData = async () => {
     try {
         loading.value = true;
         // Fetch the generated analysis report
-        const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
-            ? import.meta.env.BASE_URL.slice(0, -1) 
-            : import.meta.env.BASE_URL;
-        const response = await fetch(`${baseUrl}/data/dashboard_status.json`);
+        const response = await fetch(withDataBase('data/dashboard_status.json'));
         if (!response.ok) throw new Error('Failed to load analysis data');
         
         const jsonData = await response.json();

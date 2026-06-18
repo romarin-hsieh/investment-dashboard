@@ -14,6 +14,7 @@
  */
 
 import technicalIndicatorsCache from '../utils/technicalIndicatorsCache.js';
+import { getDataBaseUrl } from '../utils/baseUrl.js';
 import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
 import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';
 import { getDefaultExchange, getMarketCapCategory, createFallbackStockInfo } from './dataTransformers';
@@ -555,7 +556,7 @@ class YahooFinanceAPI {
     if (typeof window === 'undefined') return null; // Node env doesn't need this
 
     try {
-      const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+      const baseUrl = getDataBaseUrl();
 
       // 1. Get/Refresh Index (Check availability)
       if (!this.latestIndex || Date.now() - this.latestIndexTimestamp > 60 * 60 * 1000) {
@@ -843,7 +844,7 @@ class YahooFinanceAPI {
     // 0. 嘗試從靜態數據文件獲取 (Static Data Pipeline)
     try {
       console.log(`Attempting to fetch static data for ${symbol}...`);
-      const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+      const baseUrl = getDataBaseUrl();
       const staticResponse = await fetch(`${baseUrl}data/fundamentals/${symbol}.json?t=${Date.now()}`);
       if (staticResponse.ok) {
         const staticData = await staticResponse.json();
@@ -1252,7 +1253,7 @@ class YahooFinanceAPI {
     try {
       const isNode = typeof window === 'undefined';
       if (!isNode) {
-        const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+        const baseUrl = getDataBaseUrl();
         // Use standard path for static OHLCV
         const safeSymbol = symbol.replace(/:/g, '_').toUpperCase(); // Matches generated filenames (mostly)
         // Note: generate-real-ohlcv-yfinance.py uses sym.replace(":", "_") but casing depends on input. 

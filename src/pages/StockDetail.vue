@@ -286,6 +286,7 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
+import { withDataBase } from '@/utils/baseUrl.js'
 import FastTradingViewWidget from '@/components/FastTradingViewWidget.vue'
 import AdvancedChartWidget from '@/components/AdvancedChartWidget.vue'
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
@@ -620,11 +621,8 @@ export default {
     async fetchDataromaData() {
       this.dataromaLoading = true
       try {
-        const basePath = import.meta.env.BASE_URL.endsWith('/') 
-            ? import.meta.env.BASE_URL.slice(0, -1) 
-            : import.meta.env.BASE_URL
-            
-        const response = await fetch(`${basePath}/data/dataroma/${this.symbol}.json?t=${Date.now()}`)
+        const url = withDataBase(`data/dataroma/${this.symbol}.json`)
+        const response = await fetch(`${url}?t=${Date.now()}`)
         if (response.ok) {
           this.dataromaData = await response.json()
         } else {
