@@ -16,7 +16,7 @@
                                      │ HTTPS
                                      ▼
    ┌────────────────────────────────────────────────────┐
-   │   Kiro Investment Dashboard (Vue 3 SPA)             │
+   │   Investment Dashboard (Vue 3 SPA)                  │
    │   Hosted on GitHub Pages — base path                │
    │   /investment-dashboard/                            │
    └─────┬──────────────────────────────┬───────────────┘

@@ -1,6 +1,6 @@
 # Roadmap
 
-> **Scope of this doc**: Forward-looking horizons for Kiro Investment Dashboard. *Now* lists active workstreams. *Next* lists committed-but-not-started work. *Later* lists ideas with one-line theses — design space, not commitments.
+> **Scope of this doc**: Forward-looking horizons for Investment Dashboard. *Now* lists active workstreams. *Next* lists committed-but-not-started work. *Later* lists ideas with one-line theses — design space, not commitments.
 >
 > **Cadence**: Review monthly. Move items between horizons as priorities change. *Now* should never have more than ~5 active workstreams.
 >

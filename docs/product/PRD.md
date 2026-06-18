@@ -1,16 +1,16 @@
-# Product Requirements Document — Kiro Investment Dashboard
+# Product Requirements Document — Investment Dashboard
 
 > **Scope of this doc**: Answers *what* the product is and *why* it exists. Users, jobs, features, priorities, acceptance. Does **not** describe *how* it's built — that is in [architecture/OVERVIEW.md](../architecture/OVERVIEW.md) and [architecture/BUILD_SPEC.md](../architecture/BUILD_SPEC.md).
 >
 > **Owner**: Project owner (solo PM + RD + SA)
-> **Status**: Live. Revision: v2.5 (Quant Edition) baseline.
+> **Status**: Live.
 > **Terminology**: Every term in bold traces to [GLOSSARY.md](GLOSSARY.md).
 
 ---
 
 ## 1. Vision
 
-Kiro Investment Dashboard is **the Bloomberg Terminal for the Static Web** — a zero-maintenance, high-performance, deeply customized investment-analysis dashboard for a single operator and a small circle of core investment partners. It serves *specific* trading hypotheses (MFI-based capital flow, deviation strategies, 3D Quant Kinetic State) that off-the-shelf tools cannot express, and it runs on infrastructure that costs effectively nothing while achieving sub-second load times through aggressive pre-computation.
+Investment Dashboard is a private investment-analysis dashboard for a single operator and a small circle of core investment partners. It expresses *specific* trading hypotheses — **MFI**-based capital flow, deviation strategies, and the **3D Quant Kinetic State** — that off-the-shelf tools cannot, and it runs on near-zero-cost static infrastructure (pre-computed data served from GitHub Pages) with sub-second load times.
 
 ---
 
