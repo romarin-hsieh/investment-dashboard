@@ -1,5 +1,6 @@
 // 從靜態文件讀取預計算的技術指標數據
 import { technicalIndicatorsCache } from '../utils/technicalIndicatorsCache.js';
+import { getDataBaseUrl } from '../utils/baseUrl.js';
 
 class PrecomputedIndicatorsAPI {
   constructor() {
@@ -27,8 +28,8 @@ class PrecomputedIndicatorsAPI {
 
   // 獲取正確的基礎 URL
   getCorrectBaseUrl() {
-    // 使用統一的 baseUrl helper
-    const base = import.meta.env.BASE_URL || '/';
+    // 使用統一的 data base helper (可由 VITE_DATA_BASE_URL 覆寫至獨立 data 站台)
+    const base = getDataBaseUrl();
     return `${base}data/technical-indicators/`;
   }
 

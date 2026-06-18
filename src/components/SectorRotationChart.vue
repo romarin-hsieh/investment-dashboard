@@ -39,6 +39,7 @@ import {
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
 import { formatNumber } from '@/utils/numberFormat'
+import { withDataBase } from '@/utils/baseUrl.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -235,10 +236,7 @@ export default {
     },
     async fetchData() {
       try {
-        const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
-          ? import.meta.env.BASE_URL 
-          : import.meta.env.BASE_URL + '/'
-        const response = await fetch(`${baseUrl}data/smart_money_sector_rotation.json`)
+        const response = await fetch(withDataBase('data/smart_money_sector_rotation.json'))
         if (!response.ok) throw new Error("Failed to load data")
         
         const data = await response.json()

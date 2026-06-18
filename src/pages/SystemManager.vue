@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import { withBase } from '@/utils/baseUrl.js';
+import { withDataBase } from '@/utils/baseUrl.js';
 
 export default {
   name: 'SystemManager',
@@ -162,8 +162,8 @@ export default {
         // `await` on an already-rejected promise re-throws into its own
         // catch block.
         const cacheBust = '?t=' + new Date().getTime();
-        const indexPromise = fetch(withBase('data/technical-indicators/latest_index.json') + cacheBust);
-        const metaPromise = fetch(withBase('data/symbols_metadata.json') + cacheBust);
+        const indexPromise = fetch(withDataBase('data/technical-indicators/latest_index.json') + cacheBust);
+        const metaPromise = fetch(withDataBase('data/symbols_metadata.json') + cacheBust);
 
         // 1. Fetch Technical Indicators Index (The heartbeat of the daily update)
         try {

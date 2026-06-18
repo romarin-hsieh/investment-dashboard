@@ -2,6 +2,8 @@
 // 為股票提供每日緩存，避免重複計算
 // 使用 latest_index.json timestamp 決定 cache bust
 
+import { getDataBaseUrl } from './baseUrl.js';
+
 class TechnicalIndicatorsCache {
   constructor() {
     this.cachePrefix = 'technical_indicators_v3_';
@@ -79,7 +81,7 @@ class TechnicalIndicatorsCache {
 
     try {
       this._indexFetchPromise = (async () => {
-        const baseUrl = import.meta.env.BASE_URL || '/';
+        const baseUrl = getDataBaseUrl();
         // 移除 ?t= 時間戳，允許瀏覽器緩存，依賴 DataVersionService 進行版本控制
         const response = await fetch(`${baseUrl}data/technical-indicators/latest_index.json`);
 
