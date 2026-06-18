@@ -34,16 +34,56 @@ export interface FetchResult<T> {
 export class DataFetcher {
   private baseUrl: string
   private cacheBustingEnabled: boolean
+  private readonly statusMemoTtlMs: number
 
-  constructor(baseUrl: string = '', cacheBustingEnabled: boolean = true) {
+  // Tier-1 in-memory memo for the system status (ADR-0003). See fetchSystemStatus().
+  private statusMemo: { result: FetchResult<SystemStatus>; at: number } | null = null
+  private statusInflight: Promise<FetchResult<SystemStatus>> | null = null
+
+  constructor(baseUrl: string = '', cacheBustingEnabled: boolean = true, statusMemoTtlMs: number = 60_000) {
     this.baseUrl = baseUrl
     this.cacheBustingEnabled = cacheBustingEnabled
+    this.statusMemoTtlMs = statusMemoTtlMs
   }
 
   /**
-   * 獲取系統狀態 - 所有其他請求的基礎
+   * 獲取系統狀態 - 所有其他請求的基礎。
+   *
+   * Tier-1 in-memory memo (ADR-0003): this is the prerequisite first step of every
+   * quotes/daily/metadata read and re-runs on every page remount. Without the memo,
+   * each of those re-fetches the (uncacheable) status.json — an extra network
+   * round-trip per data call and per navigation. Reuse a recent successful status
+   * within a short TTL, and dedupe concurrent callers via an in-flight promise.
    */
   async fetchSystemStatus(): Promise<FetchResult<SystemStatus>> {
+    if (this.statusMemo && Date.now() - this.statusMemo.at < this.statusMemoTtlMs) {
+      return this.statusMemo.result
+    }
+    if (this.statusInflight) {
+      return this.statusInflight
+    }
+
+    this.statusInflight = this.fetchSystemStatusFromNetwork()
+    try {
+      const result = await this.statusInflight
+      // Only memo a genuine network success; never cache a fallback/error so a
+      // transient failure doesn't stick for the whole TTL.
+      if (result.source === 'network' && result.data) {
+        this.statusMemo = { result, at: Date.now() }
+      }
+      return result
+    } finally {
+      this.statusInflight = null
+    }
+  }
+
+  /** Clear the in-memory status memo — e.g. when a new data version is detected. */
+  clearStatusCache(): void {
+    this.statusMemo = null
+    this.statusInflight = null
+  }
+
+  private async fetchSystemStatusFromNetwork(): Promise<FetchResult<SystemStatus>> {
     try {
       const timestamp = new Date().getTime()
       const response = await fetch(`${this.baseUrl}/data/status.json?t=${timestamp}`)
