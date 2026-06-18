@@ -1,6 +1,6 @@
 # Configuration Files
 
-This directory contains static JSON configuration files for the Investment Dashboard POC.
+This directory contains static JSON configuration files for the Investment Dashboard.
 
 ## Files Overview
 

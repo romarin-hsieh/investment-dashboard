@@ -1,6 +1,6 @@
 # Glossary (EN / 繁體中文)
 
-> **Scope**: Canonical vocabulary for the Kiro Investment Dashboard. When a term appears in any other doc — PRD, BUILD_SPEC, ADRs, specs — it MUST match the English key here. 繁中 column is the authorized translation for user-facing UI copy. Add new terms alphabetically within each section.
+> **Scope**: Canonical vocabulary for the Investment Dashboard. When a term appears in any other doc — PRD, BUILD_SPEC, ADRs, specs — it MUST match the English key here. 繁中 column is the authorized translation for user-facing UI copy. Add new terms alphabetically within each section.
 
 ---
 
@@ -62,9 +62,7 @@
 
 | English | 繁體中文 | Definition |
 |---|---|---|
-| **Kiro Investment Dashboard** | Kiro 投資儀表板 | Canonical product name. |
-| **v2.5 Quant Edition** | v2.5 量化版 | Current production release tag. |
-| **Bloomberg Terminal for the Static Web** | 靜態網頁版彭博終端機 | Aspirational tagline used in PROJECT_SCOPE. |
+| **Investment Dashboard** | 投資儀表板 | Canonical product name. |
 
 ---
 

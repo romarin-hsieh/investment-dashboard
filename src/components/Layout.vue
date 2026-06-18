@@ -43,7 +43,7 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <span class="copyright">&copy; 2025 Investment Dashboard POC</span>
+          <span class="copyright">&copy; 2025 Investment Dashboard</span>
           <span class="separator">•</span>
           <span class="attribution">
             Market data powered by 

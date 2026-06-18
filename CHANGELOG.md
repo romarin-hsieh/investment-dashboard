@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Kiro Investment Dashboard. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning is semver-ish (date-anchored at this stage of the project).
+All notable changes to Investment Dashboard. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning is semver-ish (date-anchored at this stage of the project).
 
 ---
 
