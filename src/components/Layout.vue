@@ -129,14 +129,13 @@ export default {
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
+  color: var(--text-primary);
   background-color: var(--bg-secondary);
 }
 
 .nav-link.router-link-active {
-  color: var(--bg-card); /* White in Light / Dark in Dark (if background is primary) */
-  color: #fff; /* Always white for active pill if primary color is dark */
-  background-color: var(--primary-color);
+  color: #fff; /* white text on the darkened brand fill (passes WCAG AA) */
+  background-color: var(--primary-strong);
 }
 
 .theme-toggle {
@@ -187,7 +186,7 @@ export default {
 }
 
 .tradingview-link {
-  color: var(--primary-color);
+  color: var(--primary-text);
   text-decoration: none;
   font-weight: 500;
 }
