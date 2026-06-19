@@ -53,6 +53,7 @@
 | [0006](0006-static-data-caching-on-github-pages.md) | Static-Data Caching on GitHub Pages (layered client-side strategy) | Accepted | `deployment`, `performance`, `hosting` |
 | [0007](0007-bundle-size-budgets.md) | Bundle-Size Budgets and Enforcement | Accepted | `performance`, `ci-cd`, `frontend`, `quality-gate` |
 | [0008](0008-separate-data-repository.md) | Separate Data Repository (same-origin GitHub Pages) | Accepted | `data`, `deployment`, `repo-hygiene`, `cost` |
+| [0009](0009-i18n-message-precompilation-csp.md) | Precompile i18n Messages (CSP, no runtime eval) | Accepted | `i18n`, `security`, `build`, `incident` |
 
 ## Lifecycle
 

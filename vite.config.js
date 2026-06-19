@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { resolve } from 'path'
 
@@ -8,6 +9,17 @@ const ANALYZE = process.env.ANALYZE === '1'
 export default defineConfig({
   plugins: [
     vue(),
+    // Precompile locale JSON to message functions at build time and DROP the
+    // runtime message compiler. vue-i18n's compiler uses `new Function`, which the
+    // app's Content-Security-Policy (no 'unsafe-eval') blocks — that crashed the
+    // whole SPA in production. Precompiling removes any runtime eval. See ADR-0009.
+    VueI18nPlugin({
+      runtimeOnly: true,
+      compositionOnly: true,
+      jitCompilation: false,
+      dropMessageCompiler: true,
+      include: [resolve(__dirname, './src/locales/**')]
+    }),
     ...(ANALYZE
       ? [
           visualizer({
