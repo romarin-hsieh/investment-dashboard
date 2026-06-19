@@ -29,12 +29,12 @@
            │ commits nightly
   ┌────────┴───────────────────────────────────────────┐
   │   GitHub Actions ETL ("backend")                    │
-  │   Python 3.11 + Node 18 — see workflows below       │
+  │   Python 3.11 + Node 20 — see workflows below       │
   └────────┬───────────────────────────────────────────┘
            ▼
    ┌──────────┬──────────┬──────────────┬──────────┐
    │  Yahoo   │ Dataroma │ CNN F&G      │ (future) │
-   │  Finance │  13F     │ (Puppeteer)  │ Obsidian │
+   │  Finance │  13F     │ (CNN API)    │ Obsidian │
    └──────────┴──────────┴──────────────┴──────────┘
 ```
 

@@ -181,7 +181,7 @@ All three ETL pipelines **seed from and mirror to** the data repo (`investment-d
 |---|---|---|---|
 | Yahoo Finance (OHLCV) | `yfinance` Python lib | ~2k req/day | None (public) |
 | yahoo-finance2 (fundamentals) | JS lib | ~1.5k req/day | None (auto crumb/cookie) |
-| CNN Fear & Greed | HTTP scrape (Puppeteer) | N/A | User-Agent only |
+| CNN Fear & Greed | HTTP (CNN API, `requests`) | N/A | None |
 | Dataroma | HTTP scrape (BeautifulSoup) | Self-imposed ~10 req/s | None (public) |
 | CORS Proxies (Tier 3) | Rotated list | Per-proxy | None |
 

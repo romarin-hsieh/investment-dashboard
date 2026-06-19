@@ -44,7 +44,7 @@ Investment Dashboard is a private investment-analysis dashboard for a single ope
 | F3 | Smart Money Tracking (Dataroma holdings) | **M** | Production | [specs/DATAROMA_INTEGRATION.md](../specs/DATAROMA_INTEGRATION.md) |
 | F4 | MFI Volume Profile | **M** | Production | [specs/SMART_MONEY_SCORE_SPEC.md](../specs/SMART_MONEY_SCORE_SPEC.md) |
 | F5 | Market Regime / Sector Rotation | **M** | Production | [specs/QUANT_STRATEGY_DOSSIER.md](../specs/QUANT_STRATEGY_DOSSIER.md) |
-| F6 | Fear & Greed Index | **S** (Should) | Production | (puppeteer scrape — see DATA_OPERATIONS) |
+| F6 | Fear & Greed Index | **S** (Should) | Production | (via `scripts/update_sentiment.py` — see DATA_OPERATIONS) |
 | F7 | Insider Sentiment Visualization | **S** | Production | [specs/TRADING_MODELS.md](../specs/TRADING_MODELS.md) |
 | F8 | Fundamental Analysis Panel | **S** | Production | [specs/TRADING_MODELS.md](../specs/TRADING_MODELS.md) |
 | F9 | 3-Tier Cache with Staleness Flags | **M** | Production | [architecture/OVERVIEW.md](../architecture/OVERVIEW.md) |
