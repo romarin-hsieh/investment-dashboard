@@ -126,6 +126,18 @@ onMounted(() => {
           :changePercent="currentTickerData.change_percent"
           :coordinates="currentTickerData.coordinates"
         />
+
+        <!-- Kinetic-state legend: in-UI explanation of the axes + signal types (onboarding). -->
+        <details class="kinetic-legend">
+          <summary>{{ $t('quant.legend.title') }}</summary>
+          <p class="legend-axes">{{ $t('quant.legend.axes') }}</p>
+          <ul>
+            <li><span class="signal-dot launchpad"></span>{{ $t('quant.legend.launchpad') }}</li>
+            <li><span class="signal-dot dip_buy"></span>{{ $t('quant.legend.dipBuy') }}</li>
+            <li><span class="signal-dot climax"></span>{{ $t('quant.legend.climax') }}</li>
+            <li><span class="signal-dot avoid"></span>{{ $t('quant.legend.avoid') }}</li>
+          </ul>
+        </details>
       </div>
     </div>
   </div>
@@ -266,4 +278,39 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+/* Kinetic-state legend (onboarding) — collapsible, token-driven. */
+.kinetic-legend {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+.kinetic-legend summary {
+  cursor: pointer;
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  list-style: none;
+}
+.kinetic-legend summary::-webkit-details-marker { display: none; }
+.kinetic-legend summary::before {
+  content: '▸';
+  display: inline-block;
+  margin-right: var(--space-2);
+  transition: transform var(--transition-fast) ease;
+}
+.kinetic-legend[open] summary::before { transform: rotate(90deg); }
+.kinetic-legend .legend-axes { margin: var(--space-3) 0; line-height: 1.5; }
+.kinetic-legend ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.kinetic-legend li { display: flex; align-items: center; gap: var(--space-2); line-height: 1.4; }
+.kinetic-legend li .signal-dot { flex-shrink: 0; }
 </style>
