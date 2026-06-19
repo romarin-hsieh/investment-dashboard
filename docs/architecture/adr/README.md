@@ -52,6 +52,7 @@
 | [0005](0005-technical-indicator-library-choice.md) | Four Charting Libraries (Plotly + TV Lightweight + TV iframe + Chart.js) | Accepted | `frontend`, `charting`, `performance` |
 | [0006](0006-static-data-caching-on-github-pages.md) | Static-Data Caching on GitHub Pages (layered client-side strategy) | Accepted | `deployment`, `performance`, `hosting` |
 | [0007](0007-bundle-size-budgets.md) | Bundle-Size Budgets and Enforcement | Accepted | `performance`, `ci-cd`, `frontend`, `quality-gate` |
+| [0008](0008-separate-data-repository.md) | Separate Data Repository (same-origin GitHub Pages) | Accepted | `data`, `deployment`, `repo-hygiene`, `cost` |
 
 ## Lifecycle
 

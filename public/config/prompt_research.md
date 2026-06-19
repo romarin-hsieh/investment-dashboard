@@ -69,4 +69,4 @@ When LLM generation fails, the system uses a deterministic template:
 
 ---
 
-*This prompt configuration is designed for POC usage and may be updated based on performance metrics and user feedback.*
+*This prompt configuration may be updated based on performance metrics and user feedback.*
