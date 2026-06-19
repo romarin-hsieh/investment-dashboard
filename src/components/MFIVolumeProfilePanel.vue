@@ -848,7 +848,6 @@ export default {
   margin-bottom: 0.5rem;
   padding: 0.75rem;
   background: var(--bg-secondary);
-  border-left: 3px solid var(--blue-500);
   border-radius: var(--radius-xs);
 }
 

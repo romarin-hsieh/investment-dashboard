@@ -462,7 +462,6 @@ onUnmounted(() => {
     font-weight: 500;
     color: var(--text-color); /* Improve contrast */
     background: rgba(41, 98, 255, 0.08); /* Highlight bg */
-    border-left: 3px solid #2962FF; /* Accent bar */
     padding: 0.75rem;
     border-radius: var(--radius-xs);
 }
