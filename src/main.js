@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
+import i18n from './i18n.js'
 import './styles/tokens.css'  // Neutral palette + semantic-state tokens (load first)
 import './style.css'          // Brand theme (overrides apply)
 
@@ -47,6 +48,7 @@ const router = createRouter({
 })
 
 const app = createApp(App)
+app.use(i18n)
 app.use(router)
 app.mount('#app')
 

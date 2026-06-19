@@ -39,7 +39,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['vue', 'vue-router'],
+          // vue-i18n is framework infra (like vue-router); keep it in the
+          // long-cached vendor chunk so it stays out of the entry chunk.
+          vendor: ['vue', 'vue-router', 'vue-i18n'],
           utils: ['zod'],
           // WS-C PR-C1: split Plotly (~1.2 MB uncompressed) into its own chunk.
           // Combined with dynamic `await import('plotly.js-dist-min')` inside

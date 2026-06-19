@@ -2,11 +2,11 @@
   <div class="vix-mini-widget" ref="vixContainer" :style="{ height: '400px' }">
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
-      <span>Loading VIX Index...</span>
+      <span>{{ $t('vix.loading') }}</span>
     </div>
     <div v-if="error" class="error-state">
-      <span>⚠️ Failed to load VIX</span>
-      <button @click="loadVixWidget" class="retry-btn">Retry</button>
+      <span>⚠️ {{ $t('vix.failed') }}</span>
+      <button @click="loadVixWidget" class="retry-btn">{{ $t('common.retry') }}</button>
     </div>
   </div>
 </template>

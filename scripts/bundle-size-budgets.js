@@ -36,9 +36,10 @@ export const BUDGETS = {
   // growth signals new tab content rather than tab-merge regression.
   'assets/StockDetail.js':  { gzip: 130 * KB,  headroomPct: 21 },
 
-  // Shared deps (Vue + vue-router). Should be near-flat over time; growth
-  // here usually means an unintended dep bleed from a route chunk.
-  'assets/vendor.js':       { gzip: 80 * KB,   headroomPct: 31 },
+  // Shared deps (Vue + vue-router + vue-i18n). vue-i18n was added in PR 6-1 for
+  // bilingual EN/繁中 support and deliberately placed in this long-cached chunk
+  // (rather than the entry chunk) so the cost is paid once — see ADR-0007 change log.
+  'assets/vendor.js':       { gzip: 105 * KB,  headroomPct: 11 },
 
   // Last-line whole-bundle safety net. Catches the case where a new chunk
   // we didn't anticipate (and therefore didn't budget individually) eats

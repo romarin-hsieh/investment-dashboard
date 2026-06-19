@@ -1,132 +1,132 @@
 <template>
   <div class="indicators-manager">
     <div class="manager-header">
-      <h2>技術指標管理中心</h2>
-      <p>監控和管理預計算技術指標系統</p>
+      <h2>{{ $t('techIndicators.title') }}</h2>
+      <p>{{ $t('techIndicators.subtitle') }}</p>
     </div>
 
-    <!-- 數據源狀態 -->
+    <!-- Data sources -->
     <div class="status-section">
-      <h3>數據源狀態</h3>
-      
+      <h3>{{ $t('techIndicators.dataSources') }}</h3>
+
       <div class="status-grid">
-        <!-- 預計算數據狀態 -->
+        <!-- Pre-computed data -->
         <div class="status-card" :class="{ 'available': dataSourceStatus?.precomputed?.available }">
           <div class="status-header">
-            <h4>預計算數據</h4>
+            <h4>{{ $t('techIndicators.precomputed') }}</h4>
             <span class="status-badge" :class="dataSourceStatus?.precomputed?.available ? 'success' : 'error'">
-              {{ dataSourceStatus?.precomputed?.available ? '可用' : '不可用' }}
+              {{ dataSourceStatus?.precomputed?.available ? $t('common.available') : $t('common.unavailable') }}
             </span>
           </div>
-          
+
           <div v-if="dataSourceStatus?.precomputed?.available" class="status-details">
-            <p><strong>股票數量:</strong> {{ dataSourceStatus.precomputed.symbols.length }}</p>
-            <p><strong>成功:</strong> {{ dataSourceStatus.precomputed.successful }}</p>
-            <p><strong>失敗:</strong> {{ dataSourceStatus.precomputed.failed }}</p>
-            <p><strong>最後更新:</strong> {{ formatDate(dataSourceStatus.precomputed.lastUpdate) }}</p>
+            <p><strong>{{ $t('techIndicators.symbolCount') }}:</strong> {{ dataSourceStatus.precomputed.symbols.length }}</p>
+            <p><strong>{{ $t('techIndicators.successful') }}:</strong> {{ dataSourceStatus.precomputed.successful }}</p>
+            <p><strong>{{ $t('techIndicators.failed') }}:</strong> {{ dataSourceStatus.precomputed.failed }}</p>
+            <p><strong>{{ $t('techIndicators.lastUpdate') }}:</strong> {{ formatDate(dataSourceStatus.precomputed.lastUpdate) }}</p>
           </div>
         </div>
 
-        <!-- 緩存狀態 -->
+        <!-- Cache -->
         <div class="status-card available">
           <div class="status-header">
-            <h4>每日緩存</h4>
-            <span class="status-badge success">可用</span>
+            <h4>{{ $t('techIndicators.dailyCache') }}</h4>
+            <span class="status-badge success">{{ $t('common.available') }}</span>
           </div>
-          
+
           <div class="status-details">
-            <p><strong>內存緩存:</strong> {{ dataSourceStatus?.cache?.memoryCache || 0 }} 項目</p>
-            <p><strong>本地存儲:</strong> {{ dataSourceStatus?.cache?.localStorageCache || 0 }} 項目</p>
-            <p><strong>總大小:</strong> {{ formatBytes(dataSourceStatus?.cache?.totalSize || 0) }}</p>
+            <p><strong>{{ $t('techIndicators.memoryCache') }}:</strong> {{ dataSourceStatus?.cache?.memoryCache || 0 }} {{ $t('techIndicators.items') }}</p>
+            <p><strong>{{ $t('techIndicators.localStorage') }}:</strong> {{ dataSourceStatus?.cache?.localStorageCache || 0 }} {{ $t('techIndicators.items') }}</p>
+            <p><strong>{{ $t('techIndicators.totalSize') }}:</strong> {{ formatBytes(dataSourceStatus?.cache?.totalSize || 0) }}</p>
           </div>
         </div>
 
-        <!-- 實時計算狀態 -->
+        <!-- Real-time -->
         <div class="status-card available">
           <div class="status-header">
-            <h4>實時計算</h4>
-            <span class="status-badge success">可用</span>
+            <h4>{{ $t('techIndicators.realtime') }}</h4>
+            <span class="status-badge success">{{ $t('common.available') }}</span>
           </div>
-          
+
           <div class="status-details">
-            <p><strong>代理服務:</strong> {{ dataSourceStatus?.realtime?.proxies || 0 }} 個</p>
-            <p><strong>狀態:</strong> 備用方案</p>
-            <p><strong>預期延遲:</strong> 2-20秒</p>
+            <p><strong>{{ $t('techIndicators.dataSourcesCount') }}:</strong> {{ dataSourceStatus?.realtime?.proxies || 0 }}</p>
+            <p><strong>{{ $t('techIndicators.statusLabel') }}:</strong> {{ $t('techIndicators.statusFallback') }}</p>
+            <p><strong>{{ $t('techIndicators.expectedDelayLabel') }}:</strong> {{ $t('techIndicators.expectedDelayValue') }}</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 控制面板 -->
+    <!-- Controls -->
     <div class="control-section">
-      <h3>控制面板</h3>
-      
+      <h3>{{ $t('techIndicators.controls') }}</h3>
+
       <div class="control-grid">
         <button @click="refreshStatus()" class="control-btn primary" :disabled="loading">
-          {{ loading ? '載入中...' : '刷新狀態' }}
+          {{ loading ? $t('common.loading') : $t('techIndicators.refreshStatus') }}
         </button>
-        
+
         <button @click="clearAllCaches()" class="control-btn warning">
-          清除所有緩存
+          {{ $t('techIndicators.clearAllCaches') }}
         </button>
-        
+
         <button @click="testPrecomputed()" class="control-btn info" :disabled="testing">
-          {{ testing ? '測試中...' : '測試預計算' }}
+          {{ testing ? $t('techIndicators.testing') : $t('techIndicators.testPrecomputed') }}
         </button>
-        
+
         <button @click="showPreferences = !showPreferences" class="control-btn secondary">
-          {{ showPreferences ? '隱藏設定' : '顯示設定' }}
+          {{ showPreferences ? $t('techIndicators.hideSettings') : $t('techIndicators.showSettings') }}
         </button>
       </div>
     </div>
 
-    <!-- 偏好設定 -->
+    <!-- Preferences -->
     <div v-if="showPreferences" class="preferences-section">
-      <h3>系統偏好設定</h3>
-      
+      <h3>{{ $t('techIndicators.preferences') }}</h3>
+
       <div class="preferences-form">
         <div class="form-group">
           <label>
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               v-model="preferences.preferPrecomputed"
               @change="updatePreferences"
             />
-            優先使用預計算數據
+            {{ $t('techIndicators.preferPrecomputed') }}
           </label>
         </div>
-        
+
         <div class="form-group">
           <label>
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               v-model="preferences.fallbackToRealtime"
               @change="updatePreferences"
             />
-            允許回退到實時計算
+            {{ $t('techIndicators.allowFallback') }}
           </label>
         </div>
-        
+
         <div class="form-group">
-          <label>預計算數據最大年齡 (小時):</label>
-          <input 
-            type="number" 
+          <label>{{ $t('techIndicators.maxAgeLabel') }}</label>
+          <input
+            type="number"
             v-model.number="preferences.maxAgeHours"
             @change="updatePreferences"
-            min="1" 
+            min="1"
             max="72"
           />
         </div>
       </div>
     </div>
 
-    <!-- 測試結果 -->
+    <!-- Test results -->
     <div v-if="testResults.length > 0" class="test-results-section">
-      <h3>測試結果</h3>
-      
+      <h3>{{ $t('techIndicators.testResults') }}</h3>
+
       <div class="test-results">
-        <div 
-          v-for="(result, index) in testResults" 
+        <div
+          v-for="(result, index) in testResults"
           :key="index"
           class="test-result-item"
           :class="{ 'success': result.success, 'error': !result.success }"
@@ -136,27 +136,27 @@
             <span class="source">{{ result.source }}</span>
             <span class="load-time">{{ result.loadTime }}</span>
           </div>
-          
+
           <div v-if="result.error" class="error-message">
             {{ result.error }}
           </div>
-          
+
           <div v-else class="indicators-preview">
-            <span>MA5: {{ result.data.ma5?.value || 'N/A' }}</span>
-            <span>ADX: {{ result.data.adx14?.value || 'N/A' }}</span>
-            <span>MACD: {{ result.data.macd?.signal || 'N/A' }}</span>
+            <span>MA5: {{ result.data.ma5?.value || $t('common.na') }}</span>
+            <span>ADX: {{ result.data.adx14?.value || $t('common.na') }}</span>
+            <span>MACD: {{ result.data.macd?.signal || $t('common.na') }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 預計算股票列表 -->
+    <!-- Pre-computed symbols -->
     <div v-if="dataSourceStatus?.precomputed?.available" class="symbols-section">
-      <h3>預計算股票列表</h3>
-      
+      <h3>{{ $t('techIndicators.precomputedSymbols') }}</h3>
+
       <div class="symbols-grid">
-        <span 
-          v-for="symbol in dataSourceStatus.precomputed.symbols" 
+        <span
+          v-for="symbol in dataSourceStatus.precomputed.symbols"
           :key="symbol"
           class="symbol-tag"
         >
@@ -196,25 +196,25 @@ export default {
         this.dataSourceStatus = await hybridTechnicalIndicatorsAPI.getDataSourceStatus();
       } catch (error) {
         console.error('Failed to refresh status:', error);
-        alert('刷新狀態失敗: ' + error.message);
+        alert(this.$t('techIndicators.refreshFailed') + error.message);
       } finally {
         this.loading = false;
       }
     },
     
     async clearAllCaches() {
-      if (!confirm('確定要清除所有緩存嗎？這將導致下次載入時間較長。')) {
+      if (!confirm(this.$t('techIndicators.confirmClear'))) {
         return;
       }
-      
+
       try {
         // 這裡需要調用各個緩存清理方法
         // technicalIndicatorsCache.clearAllCache();
         // precomputedIndicatorsAPI.clearCache();
-        alert('所有緩存已清除');
+        alert(this.$t('techIndicators.cachesCleared'));
         await this.refreshStatus();
       } catch (error) {
-        alert('清除緩存失敗: ' + error.message);
+        alert(this.$t('techIndicators.clearFailed') + error.message);
       }
     },
     
@@ -266,8 +266,9 @@ export default {
     },
     
     formatDate(dateString) {
-      if (!dateString) return 'N/A';
-      return new Date(dateString).toLocaleString('zh-TW');
+      if (!dateString) return this.$t('common.na');
+      const loc = this.$i18n.locale.value === 'zh-TW' ? 'zh-TW' : 'en-US';
+      return new Date(dateString).toLocaleString(loc);
     },
     
     formatBytes(bytes) {
