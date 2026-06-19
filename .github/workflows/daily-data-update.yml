@@ -147,6 +147,11 @@ jobs:
         git push
         echo "✅ Data updated and pushed"
 
+    - name: Mirror data to the data repo
+      env:
+        DATA_REPO_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+      run: bash scripts/mirror-data-to-repo.sh
+
     - name: Summary
       run: |
         echo "📊 Daily Data Update Summary:"

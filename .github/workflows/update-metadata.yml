@@ -85,6 +85,11 @@ jobs:
         git pull --rebase origin main || true
         git push
     
+    - name: Mirror data to the data repo
+      env:
+        DATA_REPO_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+      run: bash scripts/mirror-data-to-repo.sh
+
     - name: Create summary
       if: always()
       run: |
