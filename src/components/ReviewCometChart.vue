@@ -352,7 +352,7 @@ onUnmounted(() => {
     background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     border: 1px solid rgba(128,128,128,0.1);
 }
 @keyframes loading {
@@ -361,13 +361,13 @@ onUnmounted(() => {
 }
 
 /* Theme Colors */
-.review-comet-container.dark .grid-cell { background: #1E222D; }
+.review-comet-container.dark .grid-cell { background: var(--chart-bg-deep); }
 .review-comet-container.light .grid-cell { background: #FFFFFF; }
 
 /* Subtler Borders */
 .chart-box, .card-cell {
-    border: 1px solid; 
-    border-radius: 4px;
+    border: 1px solid;
+    border-radius: var(--radius-xs);
 }
 
 /* Theme Borders */
@@ -447,8 +447,8 @@ onUnmounted(() => {
 }
 
 /* Dashed lines color adaptation */
-.review-comet-container.dark .table-row.dashed { border-color: #2A2E39; }
-.review-comet-container.light .table-row.dashed { border-color: #E0E3EB; }
+.review-comet-container.dark .table-row.dashed { border-color: var(--chart-bg); }
+.review-comet-container.light .table-row.dashed { border-color: var(--grey-250); }
 
 .col-val { text-align: right; font-family: 'Roboto Mono', monospace; }
 .col-val.highlight { font-weight: bold; color: #2962FF; }
@@ -464,22 +464,22 @@ onUnmounted(() => {
     background: rgba(41, 98, 255, 0.08); /* Highlight bg */
     border-left: 3px solid #2962FF; /* Accent bar */
     padding: 0.75rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
 }
 
 .signal-badge {
     padding: 2px 8px;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     font-size: 0.75rem;
     text-transform: uppercase;
     font-weight: bold;
     color: #fff;
     letter-spacing: 0.5px;
 }
-.signal-badge.dip_buy { background: #089981; }
-.signal-badge.launchpad { background: #FFD700; color: #000; }
-.signal-badge.climax { background: #F23645; }
-.signal-badge.wait { background: #787B86; }
+.signal-badge.dip_buy { background: var(--chart-up-alt); }
+.signal-badge.launchpad { background: var(--signal-launchpad); color: #000; }
+.signal-badge.climax { background: var(--chart-down-alt); }
+.signal-badge.wait { background: var(--grey-500); }
 
 /* Popover */
 .info-btn {
@@ -498,7 +498,7 @@ onUnmounted(() => {
     position: absolute; top: 30px; right: 10px;
     background: var(--bg-card, #1E222D);
     border: 1px solid var(--border-color, #2A2E39);
-    padding: 0.8rem; border-radius: 4px; 
+    padding: 0.8rem; border-radius: var(--radius-xs);
     z-index: 10000; /* Super high Z-index */
     width: 180px; font-size: 0.75rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);

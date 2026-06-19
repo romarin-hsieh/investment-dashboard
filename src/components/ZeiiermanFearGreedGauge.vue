@@ -542,7 +542,7 @@ export default {
   
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 12px; /* Softer rounded corners */
+  border-radius: var(--radius-md); /* Softer rounded corners */
   padding: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: var(--shadow-sm);
@@ -636,7 +636,7 @@ export default {
 .current-sentiment {
   text-align: center;
   padding: 1.25rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   background: var(--bg-secondary);
   border: 1px solid transparent;
   width: 100%;
@@ -705,9 +705,9 @@ export default {
 .component-bar { 
   position: relative; 
   height: 24px; 
-  background: var(--bg-secondary); 
-  border-radius: 4px; 
-  overflow: hidden; 
+  background: var(--bg-secondary);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
   width: 100%; 
   border: 1px solid var(--border-color); /* Subtle border */
 }
@@ -784,7 +784,7 @@ export default {
       border-bottom: none;
       background: var(--bg-secondary);
       padding: 1rem;
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
   }
 }
 </style>

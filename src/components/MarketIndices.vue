@@ -131,7 +131,7 @@ export default {
 .market-indices-container {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 1.5rem;
 }
@@ -210,11 +210,11 @@ export default {
 }
 
 .index-change.positive {
-  color: #22ab94;
+  color: var(--chart-up);
 }
 
 .index-change.negative {
-  color: #f7525f;
+  color: var(--chart-down);
 }
 
 .index-change.neutral {

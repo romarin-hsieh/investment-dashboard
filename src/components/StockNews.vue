@@ -207,7 +207,7 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  color: #6c757d;
+  color: var(--grey-550);
   font-size: 0.9rem;
   padding: 3rem;
   text-align: center;
@@ -216,8 +216,8 @@ export default {
 .loading-spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid #e9ecef;
-  border-top: 2px solid #007bff;
+  border: 2px solid var(--grey-100);
+  border-top: 2px solid var(--blue-500);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -228,7 +228,7 @@ export default {
 }
 
 .error-state {
-  color: #dc3545;
+  color: var(--danger-solid);
 }
 
 .error-icon, .info-icon {
@@ -253,7 +253,7 @@ export default {
 }
 
 .news-item:hover {
-  border-color: #007bff;
+  border-color: var(--blue-500);
   box-shadow: 0 2px 8px rgba(0,123,255,0.15);
   transform: translateY(-1px);
 }
@@ -307,7 +307,7 @@ export default {
 
 .news-publisher {
   font-size: 0.75rem;
-  color: #007bff;
+  color: var(--blue-500);
   font-weight: 600;
 }
 
@@ -325,7 +325,7 @@ export default {
   flex-shrink: 0;
   width: 70px;
   height: 50px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   overflow: hidden;
   background: var(--bg-secondary);
 }
@@ -345,13 +345,13 @@ export default {
 
 .read-more {
   font-size: 0.8rem;
-  color: #007bff;
+  color: var(--blue-500);
   font-weight: 600;
   transition: color 0.2s;
 }
 
 .news-item:hover .read-more {
-  color: #0056b3;
+  color: var(--blue-700);
 }
 
 /* 響應式設計 */

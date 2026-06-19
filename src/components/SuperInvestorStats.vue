@@ -373,7 +373,7 @@ export default {
   padding: 0.25rem 0.6rem;
   font-size: 0.75rem; /* Match exchange-tag size */
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   transition: all 0.2s;
   font-weight: 500;
 }
@@ -470,9 +470,9 @@ export default {
   color: var(--text-secondary);
   width: 20px;
   height: 20px;
-  line-height: 1; 
+  line-height: 1;
   padding: 0;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 14px;
   display: inline-flex;

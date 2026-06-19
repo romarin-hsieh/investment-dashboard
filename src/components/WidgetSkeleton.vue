@@ -99,7 +99,7 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Header */
@@ -145,7 +145,7 @@ export default {
 .skeleton-grid-item {
   background: var(--bg-secondary);
   padding: 0.75rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -177,6 +177,6 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 </style>

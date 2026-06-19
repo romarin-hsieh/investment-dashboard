@@ -86,7 +86,7 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Page Header 骨架 */
@@ -112,7 +112,7 @@ export default {
 .skeleton-widget-container {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   margin-bottom: 2rem;
   overflow: hidden;
@@ -163,14 +163,14 @@ export default {
   @extend .skeleton-base;
   width: 100%;
   height: 550px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 /* Configuration Info 骨架 */
 .skeleton-config-info {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   margin-top: 2rem;
 }
@@ -237,7 +237,7 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* 響應式設計 */

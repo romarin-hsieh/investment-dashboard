@@ -338,7 +338,7 @@ export default {
   position: absolute;
   background: rgba(0, 0, 0, 0.85);
   color: white;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   pointer-events: none;
   /* transform is now handled in JS for smart positioning */
   transition: all 0.1s ease;
@@ -408,7 +408,7 @@ export default {
   color: var(--text-muted);
   font-size: 0.75rem;
   padding: 2px 8px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
 }
 

@@ -152,7 +152,7 @@ export default {
 .top-stories-container {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   margin-bottom: 2rem;
   overflow: hidden;
@@ -198,7 +198,7 @@ export default {
   width: 20px;
   height: 20px;
   border: 2px solid var(--border-color);
-  border-top: 2px solid #007bff;
+  border-top: 2px solid var(--blue-500);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -218,15 +218,15 @@ export default {
   background: #f8d7da;
   border: 1px solid #f5c6cb;
   color: #721c24;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 .retry-btn {
   padding: 0.25rem 0.75rem;
-  background: #dc3545;
+  background: var(--danger-solid);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 500;

@@ -352,7 +352,7 @@ h4 {
     font-size: 0.8rem;
     background: var(--bg-secondary);
     padding: 4px 8px;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     text-align: center;
     color: var(--text-primary);
 }
@@ -367,7 +367,7 @@ h4 {
 .pattern-badge {
     font-size: 0.75rem;
     padding: 2px 8px;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     font-weight: 600;
 }
 
@@ -412,7 +412,7 @@ h4 {
     background: var(--bg-card);
     width: 90%;
     max-width: 400px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     overflow: hidden;
 }

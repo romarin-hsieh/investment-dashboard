@@ -269,10 +269,10 @@ export default {
 .overview-card {
     background: var(--bg-card);
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
-    border-top: 5px solid var(--border-color); 
+    border-top: 5px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -322,7 +322,7 @@ export default {
 .detail-card {
     background: var(--bg-card);
     padding: 2rem;
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
 }
@@ -371,19 +371,19 @@ export default {
     overflow-y: auto;
     background: #1e1e1e; /* Logs always dark looks fine, or use bg-secondary? Let's keep logs dark terminal style */
     color: #fff;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 1rem;
     font-family: 'Consolas', monospace;
 }
 
 .log-entry {
     padding: 0.4rem 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--grey-800);
     display: flex;
     gap: 1rem;
 }
 
-.log-entry .time { color: #6c757d; font-size: 0.8rem; min-width: 80px; }
+.log-entry .time { color: var(--grey-550); font-size: 0.8rem; min-width: 80px; }
 .log-entry.info .msg { color: #4dabf7; }
 .log-entry.success .msg { color: #40c057; }
 .log-entry.warning .msg { color: #ffd43b; }

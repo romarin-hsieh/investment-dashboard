@@ -172,7 +172,7 @@ kbd {
   padding: 0.15rem 0.5rem;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-family: ui-monospace, monospace;
   font-size: 0.9rem;
   text-align: center;

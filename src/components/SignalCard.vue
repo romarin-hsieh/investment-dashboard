@@ -112,7 +112,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 /* Always-dark card (does not invert in light mode — uses chart palette tokens) */
 .signal-card {
   background: var(--chart-bg-deep);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1.5rem;
   color: var(--grey-350);
   border: 1px solid var(--chart-bg);
@@ -154,7 +154,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 
 .signal-badge {
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   border: 2px solid;
   font-weight: bold;
   font-size: 0.9rem;
@@ -196,7 +196,7 @@ const isPositive = computed(() => props.changePercent >= 0);
   align-items: center;
   background: var(--chart-bg);
   padding: 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 .metric-label {

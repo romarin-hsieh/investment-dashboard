@@ -561,9 +561,8 @@ export default {
 
 <style scoped>
 .auto-update-monitor {
-  padding: 1rem;
-  max-width: 1600px;
-  margin: 0 auto;
+  /* Gutter, max-width and centering come from Layout's .container;
+     vertical spacing from .main-content. */
 }
 
 .monitor-header {
@@ -595,7 +594,7 @@ export default {
 .status-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 
@@ -616,7 +615,7 @@ export default {
 
 .status-indicator {
   padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -691,7 +690,7 @@ export default {
 .btn {
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s;
@@ -766,7 +765,7 @@ export default {
 .update-logs, .config-panel {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin-bottom: 2rem;
 }
 
@@ -879,7 +878,7 @@ export default {
 .config-item input[type="number"] {
   padding: 0.375rem 0.75rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   width: 80px;
 }
 

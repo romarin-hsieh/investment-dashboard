@@ -244,7 +244,7 @@ export default {
   height: 100%;
   min-height: 850px;
   background: var(--bg-card);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: var(--text-secondary);
   margin: -8px;
 }
@@ -278,7 +278,7 @@ export default {
   min-height: 850px;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: #721c24;
   margin: -8px;
 }
@@ -286,10 +286,10 @@ export default {
 .retry-btn {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #dc3545;
+  background: var(--danger-solid);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;
@@ -313,7 +313,7 @@ export default {
 
 .tradingview-widget-copyright {
   font-size: 11px;
-  color: #787B86;
+  color: var(--grey-500);
   text-align: center;
   padding: 5px 0;
   line-height: 1.2;
@@ -321,7 +321,7 @@ export default {
 
 .tradingview-widget-copyright a {
   text-decoration: none;
-  color: #787B86;
+  color: var(--grey-500);
 }
 
 .tradingview-widget-copyright .blue-text {
@@ -329,7 +329,7 @@ export default {
 }
 
 .tradingview-widget-copyright .trademark {
-  color: #787B86;
+  color: var(--grey-500);
 }
 
 .tradingview-widget-copyright a:hover .blue-text {

@@ -378,7 +378,7 @@ export default {
   justify-content: center;
   background: var(--bg-card);
   border: 1px solid var(--error-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: var(--error-color);
 }
 
@@ -401,7 +401,7 @@ export default {
   background: var(--error-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;

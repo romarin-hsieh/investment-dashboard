@@ -167,7 +167,7 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Breadcrumb 骨架 */
@@ -199,7 +199,7 @@ export default {
 .skeleton-stock-header {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -262,7 +262,7 @@ export default {
 .skeleton-widget-technical {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -287,7 +287,7 @@ export default {
   flex: 1;
   margin: 1rem;
   min-height: 380px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 /* Insight Widgets 骨架 */
@@ -301,7 +301,7 @@ export default {
 .skeleton-insight-widget {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -313,14 +313,14 @@ export default {
   flex: 1;
   margin: 1rem;
   min-height: 540px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 /* Widget 容器骨架 */
 .skeleton-widget-container {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   margin-bottom: 1.5rem;
   overflow: hidden;
@@ -341,7 +341,7 @@ export default {
   gap: 0.5rem;
   padding: 1rem;
   background: var(--skeleton-bg);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .skeleton-indicator-name {
@@ -377,7 +377,7 @@ export default {
   gap: 0.5rem;
   padding: 1rem;
   background: var(--skeleton-bg);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .skeleton-performance-label {
@@ -404,7 +404,7 @@ export default {
 .skeleton-profile-row {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   overflow: hidden;
 }
@@ -460,7 +460,7 @@ export default {
   gap: 0.5rem;
   padding: 1rem;
   background: var(--skeleton-bg);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .skeleton-fundamental-label {
@@ -492,7 +492,7 @@ export default {
   align-items: center;
   padding: 0.75rem;
   background: var(--skeleton-bg);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .skeleton-profile-label {
@@ -532,7 +532,7 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* 響應式設計 */

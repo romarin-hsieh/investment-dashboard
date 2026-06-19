@@ -699,8 +699,8 @@ h3 {
 }
 
 .meter-bar-dual .segment { height: 100%; }
-.meter-bar-dual .segment.buy { background: #28a745; margin-left: auto; }
-.meter-bar-dual .segment.sell { background: #dc3545; margin-right: auto; }
+.meter-bar-dual .segment.buy { background: var(--success-solid); margin-left: auto; }
+.meter-bar-dual .segment.sell { background: var(--danger-solid); margin-right: auto; }
 
 .meter-labels {
     display: flex;

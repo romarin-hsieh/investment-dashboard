@@ -284,9 +284,8 @@ export default {
 
 <style scoped>
 .indicators-manager {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* Gutter, max-width and centering come from Layout's .container;
+     vertical spacing from .main-content. */
 }
 
 .manager-header {
@@ -302,7 +301,7 @@ export default {
 .status-section, .control-section, .preferences-section, .test-results-section, .symbols-section {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -321,13 +320,13 @@ export default {
 .status-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
-  border-left: 4px solid #dc3545;
+  border-left: 4px solid var(--danger-solid);
 }
 
 .status-card.available {
-  border-left-color: #28a745;
+  border-left-color: var(--success-solid);
 }
 
 .status-header {
@@ -344,7 +343,7 @@ export default {
 
 .status-badge {
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -374,7 +373,7 @@ export default {
 .control-btn {
   padding: 0.75rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
@@ -382,17 +381,17 @@ export default {
 }
 
 .control-btn.primary {
-  background: #007bff;
+  background: var(--blue-500);
   color: white;
 }
 
 .control-btn.primary:hover:not(:disabled) {
-  background: #0056b3;
+  background: var(--blue-700);
 }
 
 .control-btn.warning {
-  background: #ffc107;
-  color: #212529;
+  background: var(--warning-solid);
+  color: var(--grey-850);
 }
 
 .control-btn.warning:hover {
@@ -400,7 +399,7 @@ export default {
 }
 
 .control-btn.info {
-  background: #17a2b8;
+  background: var(--info-solid);
   color: white;
 }
 
@@ -409,7 +408,7 @@ export default {
 }
 
 .control-btn.secondary {
-  background: #6c757d;
+  background: var(--grey-550);
   color: white;
 }
 
@@ -438,7 +437,7 @@ export default {
 .form-group input[type="number"] {
   padding: 0.5rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   width: 100px;
 }
 
@@ -451,13 +450,13 @@ export default {
 .test-result-item {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
-  border-left: 4px solid #dc3545;
+  border-left: 4px solid var(--danger-solid);
 }
 
 .test-result-item.success {
-  border-left-color: #28a745;
+  border-left-color: var(--success-solid);
 }
 
 .result-header {
@@ -478,11 +477,11 @@ export default {
 
 .load-time {
   margin-left: auto;
-  color: #007bff;
+  color: var(--blue-500);
 }
 
 .error-message {
-  color: #dc3545;
+  color: var(--danger-solid);
   font-size: 0.9rem;
 }
 
@@ -503,7 +502,7 @@ export default {
   background: var(--bg-secondary);
   color: var(--text-secondary);
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: 500;
 }
