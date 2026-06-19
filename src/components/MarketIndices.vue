@@ -122,29 +122,29 @@ export default {
 
 <style scoped>
 .market-indices-container {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1.5rem;
 }
 
 .widget-header {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .widget-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0 0 0.25rem 0;
 }
 
 .widget-description {
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -152,11 +152,11 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1px;
-  background: #e9ecef;
+  background: var(--border-color);
 }
 
 .index-card {
-  background: white;
+  background: var(--bg-card);
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -165,7 +165,7 @@ export default {
 }
 
 .index-card:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .index-info {
@@ -175,13 +175,13 @@ export default {
 .index-name {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0 0 0.25rem 0;
 }
 
 .index-symbol {
   font-size: 0.8rem;
-  color: #6c757d;
+  color: var(--text-secondary);
   margin: 0;
   font-family: 'Courier New', monospace;
 }
@@ -193,7 +193,7 @@ export default {
 .index-price {
   font-size: 1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
@@ -211,7 +211,7 @@ export default {
 }
 
 .index-change.neutral {
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 /* 響應式設計 */

@@ -592,7 +592,7 @@ export default {
 }
 
 .status-card {
-  background: white;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
@@ -603,7 +603,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: var(--grey-50);
+  background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -763,7 +763,7 @@ export default {
 }
 
 .update-logs, .config-panel {
-  background: white;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 2rem;
@@ -774,7 +774,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background: var(--grey-50);
+  background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -877,7 +877,7 @@ export default {
 
 .config-item input[type="number"] {
   padding: 0.375rem 0.75rem;
-  border: 1px solid var(--grey-300);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   width: 80px;
 }
