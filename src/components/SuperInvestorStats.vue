@@ -374,7 +374,7 @@ export default {
   font-size: var(--text-xs); /* Match exchange-tag size */
   cursor: pointer;
   border-radius: var(--radius-xs);
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   font-weight: var(--weight-medium);
 }
 
@@ -478,7 +478,7 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .expand-btn:hover {

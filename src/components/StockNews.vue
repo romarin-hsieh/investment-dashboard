@@ -248,7 +248,7 @@ export default {
   border-radius: 6px;
   padding: 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
   box-shadow: var(--shadow-sm);
 }
 
@@ -347,7 +347,7 @@ export default {
   font-size: 0.8rem;
   color: var(--blue-500);
   font-weight: var(--weight-semibold);
-  transition: color 0.2s;
+  transition: color var(--transition-base);
 }
 
 .news-item:hover .read-more {

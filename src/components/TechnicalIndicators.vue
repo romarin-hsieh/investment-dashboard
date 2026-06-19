@@ -683,7 +683,7 @@ export default {
   margin-left: 8px;
   display: flex;
   align-items: center;
-  transition: color 0.2s;
+  transition: color var(--transition-base);
 }
 
 .header-info-btn:hover {

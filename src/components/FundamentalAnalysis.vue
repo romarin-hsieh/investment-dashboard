@@ -794,7 +794,9 @@ export default {
     color: white;
     font-size: 0.8rem;
     font-weight: var(--weight-bold);
-    transition: width 0.3s ease;
+    /* width is the correct animated property here: a flex segment sized by the
+       recommendation proportion; transform: scaleX would distort the label inside. */
+    transition: width var(--transition-slow) ease;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 .bg-strong-buy { background-color: var(--chart-up); } /* TradingView Green */
@@ -927,7 +929,7 @@ tbody tr:hover {
     padding: 0.4rem 0.8rem;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition-base);
     background: var(--bg-card);
     color: var(--text-primary);
 }

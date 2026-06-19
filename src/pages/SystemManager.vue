@@ -357,7 +357,7 @@ export default {
     color: white;
     cursor: pointer;
     font-weight: var(--weight-semibold);
-    transition: background 0.2s;
+    transition: background var(--transition-base);
 }
 
 .btn:hover { background: var(--primary-hover); }

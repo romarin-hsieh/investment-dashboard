@@ -289,18 +289,18 @@ export default {
 }
 
 /* 動畫延遲效果 */
-.skeleton-insight-section:nth-child(1) { animation-delay: 0.1s; }
-.skeleton-insight-section:nth-child(2) { animation-delay: 0.2s; }
+.skeleton-insight-section:nth-child(1) { animation-delay: var(--transition-fast); }
+.skeleton-insight-section:nth-child(2) { animation-delay: var(--transition-base); }
 
-.skeleton-config-section:nth-child(1) { animation-delay: 0.1s; }
-.skeleton-config-section:nth-child(2) { animation-delay: 0.2s; }
+.skeleton-config-section:nth-child(1) { animation-delay: var(--transition-fast); }
+.skeleton-config-section:nth-child(2) { animation-delay: var(--transition-base); }
 
-.skeleton-config-item:nth-child(odd) { animation-delay: 0.1s; }
-.skeleton-config-item:nth-child(even) { animation-delay: 0.2s; }
+.skeleton-config-item:nth-child(odd) { animation-delay: var(--transition-fast); }
+.skeleton-config-item:nth-child(even) { animation-delay: var(--transition-base); }
 
 /* 淡入效果 */
 .stock-market-insight-skeleton {
-  animation: fadeIn 0.3s ease-in;
+  animation: fadeIn var(--transition-slow) ease-in;
 }
 
 @keyframes fadeIn {

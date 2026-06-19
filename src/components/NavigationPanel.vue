@@ -173,7 +173,7 @@ export default {
   font-size: 0.9rem;
   background: var(--bg-primary); /* Slightly distinct from card bg */
   color: var(--text-primary);
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
 }
 
 .search-input::placeholder {

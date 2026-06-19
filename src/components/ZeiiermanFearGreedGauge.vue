@@ -546,7 +546,7 @@ export default {
   padding: 1.5rem;
   margin-bottom: 2rem;
   box-shadow: var(--shadow-sm);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color var(--transition-slow) ease, border-color var(--transition-slow) ease;
 }
 
 .widget-header {
@@ -616,7 +616,7 @@ export default {
   text-align: center; 
   flex: 1; 
   opacity: 0.8; 
-  transition: opacity 0.2s;
+  transition: opacity var(--transition-base);
   /* Ensure height alignment */
   display: flex;
   flex-direction: column;
@@ -640,7 +640,7 @@ export default {
   background: var(--bg-secondary);
   border: 1px solid transparent;
   width: 100%;
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow) ease;
 }
 .sentiment-indicator {
   display: flex;
@@ -714,8 +714,10 @@ export default {
 .component-fill { 
   height: 100%; 
   background: linear-gradient(90deg, var(--c-ex-fear) 0%, var(--c-fear) 25%, var(--c-neutral) 50%, var(--c-greed) 75%, var(--c-ex-greed) 100%); 
-  width: 0; 
-  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); 
+  width: 0;
+  /* width is intentional: reveals the full-spectrum gradient gauge left-to-right;
+     transform: scaleX would squash the gradient rather than reveal it. */
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0.85;
 }
 .component-value { 

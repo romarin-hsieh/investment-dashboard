@@ -341,7 +341,7 @@ export default {
   border-radius: var(--radius-xs);
   pointer-events: none;
   /* transform is now handled in JS for smart positioning */
-  transition: all 0.1s ease;
+  transition: all var(--transition-fast) ease;
   padding: 8px;
   z-index: 100;
   font-size: 0.85rem;

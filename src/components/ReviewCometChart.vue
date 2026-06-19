@@ -483,7 +483,7 @@ onUnmounted(() => {
 /* Popover */
 .info-btn {
     opacity: 0.6; /* Increased base opacity */
-    transition: all 0.2s;
+    transition: all var(--transition-base);
     border-radius: 50%;
     border: 1px solid currentColor;
     width: 18px; height: 18px; /* Bigger hit area */

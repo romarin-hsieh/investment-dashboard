@@ -400,19 +400,19 @@ export default {
 }
 
 /* 動畫延遲效果 */
-.skeleton-ticker-item:nth-child(1) { animation-delay: 0.1s; }
-.skeleton-ticker-item:nth-child(2) { animation-delay: 0.2s; }
-.skeleton-ticker-item:nth-child(3) { animation-delay: 0.3s; }
+.skeleton-ticker-item:nth-child(1) { animation-delay: var(--transition-fast); }
+.skeleton-ticker-item:nth-child(2) { animation-delay: var(--transition-base); }
+.skeleton-ticker-item:nth-child(3) { animation-delay: var(--transition-slow); }
 .skeleton-ticker-item:nth-child(4) { animation-delay: 0.4s; }
 .skeleton-ticker-item:nth-child(5) { animation-delay: 0.5s; }
 .skeleton-ticker-item:nth-child(6) { animation-delay: 0.6s; }
 
-.skeleton-story-item:nth-child(odd) { animation-delay: 0.1s; }
-.skeleton-story-item:nth-child(even) { animation-delay: 0.2s; }
+.skeleton-story-item:nth-child(odd) { animation-delay: var(--transition-fast); }
+.skeleton-story-item:nth-child(even) { animation-delay: var(--transition-base); }
 
 /* 淡入效果 */
 .market-overview-skeleton {
-  animation: fadeIn 0.3s ease-in;
+  animation: fadeIn var(--transition-slow) ease-in;
 }
 
 @keyframes fadeIn {

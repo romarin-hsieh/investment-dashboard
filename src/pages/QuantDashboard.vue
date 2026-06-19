@@ -224,7 +224,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 /* `--chart-bg` is #2a2e39; this hover uses a slightly lighter shade. No

@@ -719,7 +719,7 @@ export default {
   justify-content: center;
   color: var(--text-muted); /* Subtle color */
   opacity: 0.6;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
   padding: 4px;
   border-radius: var(--radius-xs);
 }
@@ -1035,7 +1035,7 @@ export default {
   font-size: 0.85rem;
   font-weight: var(--weight-semibold);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
   line-height: 1;
   min-height: 36px;
@@ -1349,7 +1349,7 @@ export default {
     font-size: var(--text-md);
     font-weight: var(--weight-semibold);
     color: var(--grey-550);
-    transition: all 0.2s;
+    transition: all var(--transition-base);
 }
 
 .tab-btn:hover {
@@ -1391,7 +1391,7 @@ export default {
   padding: 4px;
   color: var(--text-muted);
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color var(--transition-base);
   display: flex;
   align-items: center;
 }
