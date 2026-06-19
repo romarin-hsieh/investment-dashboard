@@ -71,6 +71,18 @@ jobs:
           echo "🚀 Dispatching daily-data-update to generate data for the new symbol(s)..."
           gh workflow run daily-data-update.yml --ref main
 
+      - name: Trigger Pages deploy (publish updated config to the live site)
+        # The commit above is pushed with GITHUB_TOKEN, which does NOT trigger
+        # deploy.yml (Actions anti-recursion). The app serves config/stocks.json
+        # from its own Pages build, so a deploy is required for the new symbol to
+        # appear in the live universe — independent of run_etl_now (data vs config).
+        if: ${{ steps.commit.outputs.committed == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 Dispatching deploy so the new symbol appears in the live app's universe..."
+          gh workflow run deploy.yml --ref main
+
       - name: Summary
         if: always()
         run: |
@@ -79,3 +91,4 @@ jobs:
           echo "**Requested:** ${{ inputs.symbols }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Committed:** ${{ steps.commit.outputs.committed }}" >> "$GITHUB_STEP_SUMMARY"
           echo "**Pipeline triggered:** ${{ inputs.run_etl_now && steps.commit.outputs.committed == 'true' }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Deploy triggered:** ${{ steps.commit.outputs.committed == 'true' }}" >> "$GITHUB_STEP_SUMMARY"
