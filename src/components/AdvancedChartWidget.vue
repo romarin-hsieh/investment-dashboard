@@ -6,8 +6,8 @@
     </div>
     <!-- Error state -->
     <div v-if="error" class="widget-overlay error-overlay">
-      <span>⚠️ Chart unavailable</span>
-      <button class="retry-btn" @click="retry">Retry</button>
+      <span>⚠️ {{ $t('errors.chartUnavailable') }}</span>
+      <button class="retry-btn" @click="retry">{{ $t('common.retry') }}</button>
     </div>
     <!-- Widget target -->
     <div ref="widgetTarget" class="widget-target"></div>

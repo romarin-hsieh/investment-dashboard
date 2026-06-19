@@ -4,30 +4,38 @@
       <nav class="nav">
         <div class="container nav-container">
           <div class="nav-brand">
-            <h1>Investment Dashboard</h1>
+            <h1>{{ $t('nav.brand') }}</h1>
           </div>
           <div class="nav-controls">
             <ul class="nav-list">
               <li>
-                <router-link to="/market-overview" class="nav-link">Market Overview</router-link>
+                <router-link to="/market-overview" class="nav-link">{{ $t('nav.marketOverview') }}</router-link>
               </li>
               <li>
-                <router-link to="/stock-overview" class="nav-link">Stock Overview</router-link>
+                <router-link to="/stock-overview" class="nav-link">{{ $t('nav.stockOverview') }}</router-link>
               </li>
 
               <li>
-                <router-link to="/system-manager" class="nav-link">Control Panel</router-link>
+                <router-link to="/system-manager" class="nav-link">{{ $t('nav.controlPanel') }}</router-link>
               </li>
             </ul>
             <button
               @click="toggleTheme"
               class="theme-toggle"
-              :title="theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'"
-              :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+              :title="theme === 'dark' ? $t('nav.switchToLight') : $t('nav.switchToDark')"
+              :aria-label="theme === 'dark' ? $t('nav.switchToLightAria') : $t('nav.switchToDarkAria')"
               :aria-pressed="theme === 'dark' ? 'true' : 'false'"
             >
                <span aria-hidden="true" v-if="theme === 'dark'">☀️</span>
                <span aria-hidden="true" v-else>🌙</span>
+            </button>
+            <button
+              @click="toggleLocale"
+              class="lang-toggle"
+              :title="$t('nav.languageAria')"
+              :aria-label="$t('nav.languageAria')"
+            >
+               <span aria-hidden="true">{{ currentLocale === 'en' ? '中' : 'EN' }}</span>
             </button>
           </div>
         </div>
@@ -43,10 +51,10 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <span class="copyright">&copy; 2025 Investment Dashboard</span>
+          <span class="copyright">{{ $t('nav.footerCopyright') }}</span>
           <span class="separator">•</span>
           <span class="attribution">
-            Market data powered by 
+            {{ $t('nav.footerPoweredBy') }}
             <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="tradingview-link">
               TradingView
             </a>
@@ -59,12 +67,14 @@
 
 <script>
 import { useTheme } from '../composables/useTheme.js'
+import { useLocale } from '../composables/useLocale.js'
 
 export default {
   name: 'Layout',
   setup() {
     const { theme, toggleTheme } = useTheme()
-    return { theme, toggleTheme }
+    const { currentLocale, toggleLocale } = useLocale()
+    return { theme, toggleTheme, currentLocale, toggleLocale }
   }
 }
 </script>
@@ -154,6 +164,28 @@ export default {
 }
 
 .theme-toggle:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.lang-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    min-width: 36px;
+    height: 36px;
+    padding: 0 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.lang-toggle:hover {
     background-color: var(--bg-secondary);
     color: var(--text-primary);
 }

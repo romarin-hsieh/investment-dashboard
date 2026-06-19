@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * add-symbol.js — self-service "add a tracked symbol" helper.
  *

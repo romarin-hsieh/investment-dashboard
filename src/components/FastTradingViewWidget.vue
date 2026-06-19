@@ -7,8 +7,8 @@
     
     <!-- Overlay for Error -->
     <div v-if="error" class="widget-overlay fast-error">
-      <span>⚠️ Failed to load</span>
-      <button @click="retry" class="retry-btn">Retry</button>
+      <span>⚠️ {{ $t('errors.widgetFailed') }}</span>
+      <button @click="retry" class="retry-btn">{{ $t('common.retry') }}</button>
     </div>
 
     <!-- Static Widget Target -->
