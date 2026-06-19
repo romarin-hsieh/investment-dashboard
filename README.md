@@ -48,10 +48,12 @@ banner appears when the last update exceeds the freshness window.
 git clone https://github.com/romarin-hsieh/investment-dashboard.git
 cd investment-dashboard
 npm install
+npm run seed-data    # populate public/data/ from the data repo (data is not committed here)
 npm run dev          # http://localhost:3000
 ```
 
 Requires Node 20+. Python 3.11+ is only needed to run the data pipeline locally.
+The pre-computed data lives in a separate repo ([ADR-0008](docs/architecture/adr/0008-separate-data-repository.md)); `seed-data` clones it into `public/data/`.
 
 ## Regenerate data locally
 

@@ -5,13 +5,9 @@ dist-deploy
 .kiro
 .env
 *.log
-public/data/quotes/*
-!public/data/quotes/latest.json
-public/data/daily/*
-!public/data/daily/*.json
-
-
-public/data/metrics
+# Pre-computed data lives in the separate data repo (ADR-0008). It is generated
+# locally (npm run seed-data) or by the nightly workflows, but never committed here.
+public/data/
 node_modules
 
 # Backup files
