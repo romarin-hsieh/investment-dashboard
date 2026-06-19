@@ -1,7 +1,12 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import en from './locales/en.json'
-import zhTW from './locales/zh-TW.json'
+import fs from 'fs'
+import path from 'path'
 import { resolveInitialLocale, SUPPORTED_LOCALES } from './i18n.js'
+
+// Read the raw source JSON via fs (not an import) so this asserts on the actual
+// source files, immune to any build-time locale transform.
+const en = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/locales/en.json'), 'utf8'))
+const zhTW = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), 'src/locales/zh-TW.json'), 'utf8'))
 
 function flatEntries(obj, prefix = '') {
   return Object.entries(obj).flatMap(([k, v]) => {

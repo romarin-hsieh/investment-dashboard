@@ -83,3 +83,4 @@ A running ledger of every budget change since this ADR was accepted. Append a ro
 | Date | PR | Chunk | Old budget | New budget | Justification |
 |---|---|---|---|---|---|
 | 2026-04-25 | PR-D3 | (initial calibration) | — | see table above | Initial budgets calibrated against measured baseline at PR-D3 merge time |
+| 2026-06-19 | PR 6-1 | `assets/vendor.js` | 80 KB | 105 KB | **Justified growth** — `vue-i18n` added for bilingual EN/繁中 UI (⑥). Placed in the long-cached `vendor` chunk (framework infra, like `vue-router`) via `manualChunks`, so the ~33 KB gzip cost is paid once and cached rather than inflating the per-visit entry `index.js` chunk (which stays at its prior ~140 KB). Measured vendor after: 93.7 KB → 105 KB budget (~11 % headroom). |
