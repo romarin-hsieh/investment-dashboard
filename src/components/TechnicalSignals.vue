@@ -315,7 +315,7 @@ export default {
 h4 {
     margin: 0;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     color: var(--text-secondary);
     border: none;
     padding: 0;
@@ -365,10 +365,10 @@ h4 {
 }
 
 .pattern-badge {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 2px 8px;
     border-radius: var(--radius-md);
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
 }
 
 .pattern-badge.bullish { background: rgba(34, 171, 148, 0.15); color: var(--success-color); border: 1px solid rgba(34, 171, 148, 0.3); }
@@ -428,14 +428,14 @@ h4 {
 
 .modal-header h5 {
     margin: 0;
-    font-size: 1rem;
+    font-size: var(--text-md);
     color: var(--text-secondary);
 }
 
 .close-btn {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: var(--text-xl);
     line-height: 1;
     cursor: pointer;
     color: var(--text-muted);
@@ -450,7 +450,7 @@ h4 {
 .modal-body h6 {
     margin: 0.5rem 0 0.5rem 0;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     color: var(--primary-color);
 }
 

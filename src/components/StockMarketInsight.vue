@@ -316,7 +316,7 @@ export default {
 
 .widget-header h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
 }
@@ -341,7 +341,7 @@ export default {
 
 .section-header h4 {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
 }
@@ -404,7 +404,7 @@ export default {
   border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .retry-btn:hover {

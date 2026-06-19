@@ -465,7 +465,7 @@ export default {
 
 .market-dashboard .widget-header h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
 }
@@ -495,7 +495,7 @@ export default {
 
 .market-dashboard .section-header h4 {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
 }

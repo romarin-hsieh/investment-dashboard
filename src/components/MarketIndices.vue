@@ -144,7 +144,7 @@ export default {
 
 .widget-header h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0 0 0.25rem 0;
 }
@@ -181,7 +181,7 @@ export default {
 
 .index-name {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0 0 0.25rem 0;
 }
@@ -198,15 +198,15 @@ export default {
 }
 
 .index-price {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
 .index-change {
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .index-change.positive {

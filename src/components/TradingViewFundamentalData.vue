@@ -227,7 +227,7 @@ export default {
   border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .retry-btn:hover {

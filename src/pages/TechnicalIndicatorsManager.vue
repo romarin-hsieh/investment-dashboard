@@ -341,7 +341,7 @@ export default {
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .status-badge.success {
@@ -372,7 +372,7 @@ export default {
   border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   transition: all 0.2s;
 }
 
@@ -427,7 +427,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .form-group input[type="number"] {
@@ -463,7 +463,7 @@ export default {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .symbol {
@@ -504,7 +504,7 @@ export default {
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 @media (max-width: 768px) {

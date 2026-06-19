@@ -142,17 +142,15 @@ onMounted(() => {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
   margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, var(--grey-250) 0%, var(--grey-500) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
 }
 
 .subtitle {
   color: var(--grey-500);
-  font-size: 1rem;
+  font-size: var(--text-md);
 }
 
 .dashboard-grid {

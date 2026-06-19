@@ -538,14 +538,14 @@ export default {
 }
 
 .section-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
 }
 
 .last-updated {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-muted);
 }
 
@@ -569,7 +569,7 @@ export default {
     margin: 0;
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-color);
 }
@@ -595,7 +595,7 @@ export default {
 
 .col-label {
     color: var(--text-muted);
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     width: 45%; 
     white-space: nowrap;
     overflow: hidden;
@@ -604,7 +604,7 @@ export default {
 
 .col-value {
     color: var(--text-primary);
-    font-weight: 700;
+    font-weight: var(--weight-bold);
     text-align: right;
     width: 25%; 
     white-space: nowrap;
@@ -617,8 +617,8 @@ export default {
 
 /* Tags */
 .change-tag {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-semibold);
 }
 
 .change-tag.pos { color: var(--success-color); }
@@ -628,7 +628,7 @@ export default {
     font-size: 0.6rem; 
     padding: 2px 4px;
     border-radius: var(--radius-xs);
-    font-weight: 700;
+    font-weight: var(--weight-bold);
     text-transform: lowercase; 
     white-space: nowrap; 
     display: inline-block;

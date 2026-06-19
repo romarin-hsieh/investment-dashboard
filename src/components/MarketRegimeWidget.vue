@@ -266,7 +266,7 @@ export default {
 
 .chart-loading span {
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .chart-error {
@@ -292,7 +292,7 @@ export default {
   border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .retry-btn:hover {

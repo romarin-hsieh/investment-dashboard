@@ -274,7 +274,7 @@ export default {
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
   cursor: pointer;
 }
 
@@ -294,7 +294,7 @@ export default {
   border: none;
   color: var(--text-secondary);
   cursor: pointer;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   border-bottom: 2px solid transparent;
 }
 

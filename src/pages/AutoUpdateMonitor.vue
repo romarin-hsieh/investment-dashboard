@@ -617,7 +617,7 @@ export default {
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-md);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .status-success {
@@ -661,7 +661,7 @@ export default {
 }
 
 .status-item .value {
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   color: var(--text-primary);
 }
 
@@ -818,7 +818,7 @@ export default {
 }
 
 .log-level {
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   min-width: 60px;
 }
 
@@ -857,7 +857,7 @@ export default {
 .config-section h4 {
   margin: 0 0 1rem 0;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: var(--text-md);
 }
 
 .config-item {

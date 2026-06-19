@@ -384,7 +384,7 @@ onUnmounted(() => {
 .box-header {
     padding: 0.5rem 0.8rem;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     opacity: 0.9;
     border-bottom: 1px solid rgba(128, 128, 128, 0.2);
     display: flex; 
@@ -417,10 +417,10 @@ onUnmounted(() => {
     border-bottom: 1px solid rgba(128, 128, 128, 0.2); 
 }
 
-.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: 600; color: var(--grey-350); }
+.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: var(--weight-semibold); color: var(--grey-350); }
 
 .signal-badge {
-    padding: 2px 8px; border-radius: var(--radius-xs); font-size: 0.75rem; font-weight: bold; color: #fff;
+    padding: 2px 8px; border-radius: var(--radius-xs); font-size: var(--text-xs); font-weight: bold; color: #fff;
     text-transform: uppercase;
 }
 .signal-badge.dip_buy { background: var(--chart-up-alt); }
@@ -430,7 +430,7 @@ onUnmounted(() => {
 
 .commentary {
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     color: var(--grey-350);
     background: rgba(41, 98, 255, 0.08);
     padding: 0.6rem;
@@ -446,7 +446,7 @@ onUnmounted(() => {
     display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
     padding: 6px 4px; align-items: center;
 }
-.table-row.header { font-weight: 600; opacity: 0.6; font-size: 0.7rem; border-bottom: 1px solid rgba(128,128,128,0.2); }
+.table-row.header { font-weight: var(--weight-semibold); opacity: 0.6; font-size: 0.7rem; border-bottom: 1px solid rgba(128,128,128,0.2); }
 .table-row.dashed { border-bottom: 1px dashed rgba(128,128,128,0.2); }
 .col-val { text-align: right; font-family: 'Roboto Mono', monospace; }
 .col-val.highlight { font-weight: bold; color: #2962FF; }
@@ -463,7 +463,7 @@ onUnmounted(() => {
     position: absolute; top: 25px; right: 5px;
     background: var(--chart-bg); border: 1px solid var(--grey-500);
     padding: 0.8rem; border-radius: var(--radius-xs);
-    z-index: 100; width: 150px; font-size: 0.75rem; color: var(--grey-350);
+    z-index: 100; width: 150px; font-size: var(--text-xs); color: var(--grey-350);
 }
 
 @media (max-width: 1200px) {

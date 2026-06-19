@@ -95,7 +95,7 @@ export default {
 }
 
 .sector-label {
-  font-weight: 700;
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
   background: transparent;
   padding: 0.5rem 0.5rem;
@@ -124,7 +124,7 @@ export default {
 }
 
 .industry-label {
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   padding: 0.5rem 0.75rem;
   padding-left: 0.75rem;
@@ -171,7 +171,7 @@ export default {
 .symbol-node.is-active {
   background: var(--bg-secondary);
   color: var(--primary-color);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   border-left-color: var(--primary-color);
 }
 
@@ -197,7 +197,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   margin-right: 0.5rem;
 }
 
@@ -208,14 +208,14 @@ export default {
   color: var(--text-muted);
   border: 1px solid var(--border-color);
   border-radius: 2px;
-  font-weight: 400;
+  font-weight: var(--weight-normal);
   flex-shrink: 0; 
 }
 
 .item-count {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-muted);
-  font-weight: 400;
+  font-weight: var(--weight-normal);
   flex-shrink: 0;
 }
 
@@ -248,7 +248,7 @@ export default {
   
   .label-text,
   .symbol-text {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
   }
 }
 </style>

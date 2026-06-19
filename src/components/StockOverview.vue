@@ -1031,7 +1031,7 @@ export default {
 
 .widget-container-ticker .widget-header h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
 }
@@ -1041,14 +1041,14 @@ export default {
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--border-color);
   color: var(--primary-color);
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .sector-title .stock-count {
-  font-size: 1rem;
+  font-size: var(--text-md);
   color: var(--text-muted);
   font-weight: normal;
 }

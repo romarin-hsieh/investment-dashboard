@@ -128,7 +128,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 
 .ticker-info h2 {
   margin: 0;
-  font-size: 2rem;
+  font-size: var(--text-2xl);
   color: white;
 }
 
@@ -138,7 +138,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 }
 
 .price {
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
   margin-right: 0.5rem;
 }
 
@@ -177,7 +177,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 
 .commentary-box p {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1.5;
   color: var(--grey-250);
 }
@@ -200,14 +200,14 @@ const isPositive = computed(() => props.changePercent >= 0);
 }
 
 .metric-label {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--grey-500);
   margin-bottom: 0.25rem;
 }
 
 .metric-value {
   font-family: 'Roboto Mono', monospace;
-  font-size: 1rem;
+  font-size: var(--text-md);
   color: var(--grey-250);
 }
 
