@@ -19,7 +19,7 @@
 - **[architecture/OVERVIEW.md](architecture/OVERVIEW.md)** — C4 context, 3-tier cache, ETL phases, frontend layout
 - **[architecture/BUILD_SPEC.md](architecture/BUILD_SPEC.md)** — interface contracts, CI/CD rules, security model, performance budget
 - **[architecture/COMPONENT_DEPENDENCIES.md](architecture/COMPONENT_DEPENDENCIES.md)** — Vue component dependency graph
-- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (9 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries, static-data caching, bundle budgets, separate data repository, i18n message precompilation)
+- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (12 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries, static-data caching, bundle budgets, separate data repository, i18n message precompilation, design-system tokens, bilingual i18n architecture, self-service add-symbol)
 
 ### "How does the math / strategy work?"
 - **[specs/QUANT_STRATEGY_DOSSIER.md](specs/QUANT_STRATEGY_DOSSIER.md)** — quant engine: regime → sector → signal selection logic
@@ -69,6 +69,9 @@
   - [0007 Bundle-Size Budgets](architecture/adr/0007-bundle-size-budgets.md)
   - [0008 Separate Data Repository](architecture/adr/0008-separate-data-repository.md)
   - [0009 i18n Message Precompilation (CSP)](architecture/adr/0009-i18n-message-precompilation-csp.md)
+  - [0010 Design System & CSS Tokens](architecture/adr/0010-design-system-css-tokens.md)
+  - [0011 Bilingual i18n Architecture](architecture/adr/0011-bilingual-i18n-architecture.md)
+  - [0012 Self-Service Add-Symbol Workflow](architecture/adr/0012-self-service-add-symbol.md)
 
 ### Specs (`specs/` — algorithms, schemas, integrations)
 - [DATA_DICTIONARY.md](specs/DATA_DICTIONARY.md)
@@ -88,6 +91,8 @@
 ### Contributing (`contributing/`)
 - [CODING_STANDARDS.md](contributing/CODING_STANDARDS.md)
 - [CORS_PROXY_NOTES.md](contributing/CORS_PROXY_NOTES.md)
+- [I18N_HOWTO.md](contributing/I18N_HOWTO.md) — adding/translating UI strings
+- [DATA_REPO_SETUP.md](contributing/DATA_REPO_SETUP.md) — local data setup (separate data repo)
 
 ### Archive (`archive/` — read-only history)
 - [README.md](archive/README.md) — annotated index

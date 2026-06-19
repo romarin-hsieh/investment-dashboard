@@ -54,6 +54,9 @@
 | [0007](0007-bundle-size-budgets.md) | Bundle-Size Budgets and Enforcement | Accepted | `performance`, `ci-cd`, `frontend`, `quality-gate` |
 | [0008](0008-separate-data-repository.md) | Separate Data Repository (same-origin GitHub Pages) | Accepted | `data`, `deployment`, `repo-hygiene`, `cost` |
 | [0009](0009-i18n-message-precompilation-csp.md) | Precompile i18n Messages (CSP, no runtime eval) | Accepted | `i18n`, `security`, `build`, `incident` |
+| [0010](0010-design-system-css-tokens.md) | Design System & CSS Token Architecture | Accepted | `frontend`, `design-system`, `theming`, `maintainability` |
+| [0011](0011-bilingual-i18n-architecture.md) | Bilingual i18n Architecture (vue-i18n, EN / 繁中) | Accepted | `i18n`, `frontend`, `architecture` |
+| [0012](0012-self-service-add-symbol.md) | Self-Service Symbol Addition Workflow | Accepted | `operations`, `ci-cd`, `data` |
 
 ## Lifecycle
 
