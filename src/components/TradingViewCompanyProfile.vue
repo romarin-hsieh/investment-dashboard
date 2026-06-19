@@ -182,15 +182,15 @@ export default {
   justify-content: center;
   gap: 0.5rem;
   height: 100%;
-  color: #6c757d;
+  color: var(--grey-550);
   font-size: 0.9rem;
 }
 
 .loading-spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid #e9ecef;
-  border-top: 2px solid #007bff;
+  border: 2px solid var(--grey-100);
+  border-top: 2px solid var(--blue-500);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -209,16 +209,16 @@ export default {
   height: 100%;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   color: #721c24;
 }
 
 .retry-btn {
   padding: 0.25rem 0.75rem;
-  background: #dc3545;
+  background: var(--danger-solid);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 500;

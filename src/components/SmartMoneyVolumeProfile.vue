@@ -378,7 +378,7 @@ export default {
 .range-selector {
     padding: 0.2rem 0.5rem;
     border: 1px solid var(--border-color);
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     background-color: var(--bg-card);
     color: var(--text-primary);
     font-size: 0.85rem;

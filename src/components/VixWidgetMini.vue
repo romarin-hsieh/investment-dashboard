@@ -133,7 +133,7 @@ export default {
 .vix-mini-widget {
   width: 100%;
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: visible !important; /* 確保內容不被隱藏 */
 }
 
@@ -213,8 +213,8 @@ export default {
 .loading-spinner {
   width: 32px;
   height: 32px;
-  border: 3px solid #e9ecef;
-  border-top: 3px solid #007bff;
+  border: 3px solid var(--grey-100);
+  border-top: 3px solid var(--blue-500);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -239,10 +239,10 @@ export default {
 .retry-btn {
   margin-top: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #dc3545;
+  background: var(--danger-solid);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.85rem;
 }

@@ -118,14 +118,14 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Widget 容器骨架 */
 .skeleton-widget-container {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   margin-bottom: 2rem;
   overflow: hidden;
@@ -166,7 +166,7 @@ export default {
   flex: 1;
   min-width: 120px;
   height: 60px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 /* Fear & Greed Gauge 骨架 */
@@ -277,7 +277,7 @@ export default {
   @extend .skeleton-base;
   width: 100%;
   height: 500px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 /* Stock Heatmap 骨架 */
@@ -298,7 +298,7 @@ export default {
 
 .skeleton-heatmap-cell {
   @extend .skeleton-base;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* Performance Monitor 骨架 */
@@ -315,7 +315,7 @@ export default {
   gap: 0.5rem;
   padding: 1rem;
   background: var(--bg-primary);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .skeleton-performance-label {
@@ -347,7 +347,7 @@ export default {
   background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 /* 響應式設計 */

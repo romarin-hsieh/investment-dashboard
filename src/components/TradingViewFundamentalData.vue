@@ -215,16 +215,16 @@ export default {
   height: 100%;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   color: #721c24;
 }
 
 .retry-btn {
   padding: 0.25rem 0.75rem;
-  background: #dc3545;
+  background: var(--danger-solid);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 500;

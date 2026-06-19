@@ -111,7 +111,7 @@ export default {
 .vix-indicator-container {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   margin-bottom: 2rem;
 }
@@ -205,7 +205,7 @@ export default {
   text-align: center;
   background: var(--bg-card);
   padding: 0.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -304,7 +304,7 @@ export default {
   align-items: center;
   padding: 0.5rem;
   background: var(--grey-50);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 0.85rem;
 }
 

@@ -461,7 +461,7 @@ export default {
   z-index: 10;
   background: rgba(255, 255, 255, 0.1);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 1.1rem;
   padding: 4px 8px;
@@ -502,7 +502,7 @@ export default {
   background: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 12px;
   pointer-events: none;
   z-index: 10;

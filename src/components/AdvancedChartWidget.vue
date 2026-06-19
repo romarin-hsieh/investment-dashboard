@@ -181,7 +181,7 @@ export default {
 .skeleton-overlay .skeleton-pulse {
   width: 80%;
   height: 60%;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: linear-gradient(
     90deg,
     var(--bg-secondary) 25%,
@@ -208,7 +208,7 @@ export default {
   background: var(--error-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;

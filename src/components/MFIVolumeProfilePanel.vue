@@ -534,20 +534,20 @@ export default {
 
 .retry-btn {
   padding: 0.5rem 1rem;
-  background: #007bff;
+  background: var(--blue-500);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.9rem;
 }
 
 .retry-btn:hover {
-  background: #0056b3;
+  background: var(--blue-700);
 }
 
 .dev-info {
-  color: #6c757d;
+  color: var(--grey-550);
   font-style: italic;
 }
 
@@ -648,7 +648,7 @@ export default {
 
 .metric-detail {
   font-size: 0.75rem;
-  color: #6c757d;
+  color: var(--grey-550);
 }
 
 
@@ -684,7 +684,7 @@ export default {
 .range-selector {
   padding: 0.25rem 0.5rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 0.8rem;
   background: var(--bg-card);
   color: var(--text-primary);
@@ -815,7 +815,7 @@ export default {
 
 .signal-badge {
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -848,8 +848,8 @@ export default {
   margin-bottom: 0.5rem;
   padding: 0.75rem;
   background: var(--bg-secondary);
-  border-left: 3px solid #007bff;
-  border-radius: 4px;
+  border-left: 3px solid var(--blue-500);
+  border-radius: var(--radius-xs);
 }
 
 /* Tooltip */
@@ -857,7 +857,7 @@ export default {
   background: rgba(0, 0, 0, 0.9);
   color: white;
   padding: 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 0.8rem;
   pointer-events: none;
   max-width: 200px;
@@ -868,7 +868,7 @@ export default {
     background: none;
     border: none;
     padding: 2px 4px;
-    color: #adb5bd;
+    color: var(--grey-400);
     cursor: pointer;
     margin-left: 8px;
     display: flex;
@@ -877,12 +877,12 @@ export default {
 }
 
 .inline-info-btn:hover {
-    color: #007bff;
+    color: var(--blue-500);
 }
 
 .no-signals {
     font-size: 0.85rem;
-    color: #6c757d;
+    color: var(--grey-550);
     font-style: italic;
     padding: 0.5rem 0;
 }
@@ -905,7 +905,7 @@ export default {
     background: var(--bg-card);
     width: 90%;
     max-width: 500px;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     overflow: hidden;
 }
@@ -931,7 +931,7 @@ export default {
     font-size: 1.5rem;
     line-height: 1;
     cursor: pointer;
-    color: #6c757d;
+    color: var(--grey-550);
 }
 
 .modal-body {
@@ -944,7 +944,7 @@ export default {
     margin: 1rem 0 0.5rem 0;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #007bff;
+    color: var(--blue-500);
 }
 
 .modal-body h6:first-child {

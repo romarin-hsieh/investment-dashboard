@@ -219,7 +219,7 @@ export default {
 
 .stale-indicator {
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -248,7 +248,7 @@ export default {
 .markets-tile {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   transition: all 0.2s;
 }
@@ -344,7 +344,7 @@ export default {
   padding: 1rem;
   background-color: var(--danger-bg);
   border: 1px solid var(--danger-border);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   margin-top: 1rem;
 }
 

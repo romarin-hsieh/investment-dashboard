@@ -721,7 +721,7 @@ export default {
   opacity: 0.6;
   transition: all 0.2s ease;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 .realtime-btn:hover {
@@ -995,7 +995,7 @@ export default {
   color: var(--tag-text-blue);
   background-color: var(--tag-bg-blue);
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-weight: 500;
   border: 1px solid transparent;
   display: inline-block;
@@ -1006,7 +1006,7 @@ export default {
   color: var(--text-secondary);
   background-color: var(--bg-secondary);
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-weight: 500;
   border: 1px solid transparent;
   display: inline-block;

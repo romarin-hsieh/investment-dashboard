@@ -403,7 +403,7 @@ export default {
   padding: 2rem;
   background-color: var(--bg-card);
   border: 1px solid var(--error-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   margin: 1rem 0;
   color: var(--error-color);
 }
@@ -411,7 +411,7 @@ export default {
 .btn {
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.9rem;
 }

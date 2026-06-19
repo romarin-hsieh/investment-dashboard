@@ -377,7 +377,7 @@ export default {
   opacity: 0.6;
   transition: all 0.2s ease;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
 }
 
 .realtime-btn:hover {
@@ -398,9 +398,9 @@ export default {
   color: var(--tag-text-blue);
   background-color: var(--tag-bg-blue);
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-weight: 500;
-  border: 1px solid transparent; 
+  border: 1px solid transparent;
 }
 
 .industry-tag {
@@ -408,7 +408,7 @@ export default {
   color: var(--text-secondary);
   background-color: var(--bg-secondary);
   padding: 0.25rem 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   font-weight: 500;
   border: 1px solid transparent;
 }
@@ -443,7 +443,7 @@ export default {
 .widget-technical {
   background: var(--bg-card); /* Should match card bg or slightly different? Usually plain bg is fine */
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -508,7 +508,7 @@ export default {
 .trend-badge {
     font-size: 0.75rem;
     padding: 2px 8px;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -525,7 +525,7 @@ export default {
 .analysis-point {
     padding: 0.8rem 1rem;
     background: rgba(0, 0, 0, 0.02); /* Very subtle background */
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     font-size: 0.9rem;
     color: var(--text-secondary);
     border-left: 3px solid var(--border-color);

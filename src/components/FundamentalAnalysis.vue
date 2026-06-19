@@ -797,11 +797,11 @@ export default {
     transition: width 0.3s ease;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-.bg-strong-buy { background-color: #22ab94; } /* TradingView Green */
+.bg-strong-buy { background-color: var(--chart-up); } /* TradingView Green */
 .bg-buy { background-color: rgba(34, 171, 148, 0.7); }
-.bg-hold { background-color: #DCC070; color: #333; } /* Theme Warning */
+.bg-hold { background-color: #DCC070; color: var(--grey-800); } /* Theme Warning */
 .bg-sell { background-color: rgba(247, 82, 95, 0.7); }
-.bg-strong-sell { background-color: #f7525f; } /* TradingView Red */
+.bg-strong-sell { background-color: var(--chart-down); } /* TradingView Red */
 
 .legend-row {
     display: flex;

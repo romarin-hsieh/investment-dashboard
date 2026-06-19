@@ -411,7 +411,7 @@ export default {
   z-index: 10;
   background: rgba(255, 255, 255, 0.1);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 1.1rem;
   padding: 4px 8px;

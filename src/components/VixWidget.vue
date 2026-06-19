@@ -193,7 +193,7 @@ export default {
 .vix-widget-container {
   width: 100%;
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
 }
 
@@ -239,7 +239,7 @@ export default {
   background: var(--error-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.85rem;
 }

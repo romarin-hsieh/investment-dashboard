@@ -230,7 +230,7 @@ export default {
   right: 20px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   min-width: 300px;
@@ -270,7 +270,7 @@ export default {
 }
 
 .toggle-btn:hover {
-  color: #007bff;
+  color: var(--blue-500);
 }
 
 .monitor-content {
@@ -336,22 +336,22 @@ export default {
 }
 
 .time-good {
-  color: #28a745;
+  color: var(--success-solid);
 }
 
 .time-ok {
-  color: #ffc107;
+  color: var(--warning-solid);
 }
 
 .time-slow {
-  color: #dc3545;
+  color: var(--danger-solid);
 }
 
 .widget-priority {
-  background: #007bff;
+  background: var(--blue-500);
   color: white;
   padding: 0.125rem 0.375rem;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   font-size: 0.7rem;
   font-weight: 500;
 }
@@ -366,7 +366,7 @@ export default {
   flex: 1;
   padding: 0.5rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   background: var(--bg-card);
   cursor: pointer;
   font-size: 0.8rem;
@@ -378,13 +378,13 @@ export default {
 }
 
 .export-btn {
-  background: #007bff;
+  background: var(--blue-500);
   color: white;
-  border-color: #007bff;
+  border-color: var(--blue-500);
 }
 
 .export-btn:hover {
-  background: #0056b3;
+  background: var(--blue-700);
 }
 
 /* 響應式設計 */

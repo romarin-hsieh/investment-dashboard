@@ -626,8 +626,8 @@ export default {
 
 .signal-tag {
     font-size: 0.6rem; 
-    padding: 2px 4px;   
-    border-radius: 4px;
+    padding: 2px 4px;
+    border-radius: var(--radius-xs);
     font-weight: 700;
     text-transform: lowercase; 
     white-space: nowrap; 
@@ -669,7 +669,7 @@ export default {
   background: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
 }
 

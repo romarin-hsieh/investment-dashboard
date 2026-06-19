@@ -246,7 +246,7 @@ export default {
   height: 100%;
   min-height: 500px;
   background: var(--bg-secondary);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: var(--text-muted);
 }
 
@@ -284,7 +284,7 @@ export default {
   min-height: 500px;
   background: var(--bg-card);
   border: 1px solid var(--error-color);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: var(--error-color);
 }
 
@@ -299,7 +299,7 @@ export default {
   background: var(--error-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;

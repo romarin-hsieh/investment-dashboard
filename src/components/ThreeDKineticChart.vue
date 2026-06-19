@@ -361,7 +361,7 @@ onUnmounted(() => {
   width: 100%;
   height: 600px;
   background: #131722;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -377,8 +377,8 @@ onUnmounted(() => {
 
 .chart-box, .card-cell {
     border: 1px solid rgba(42, 46, 57, 0.6);
-    border-radius: 4px;
-    background: #1E222D; /* Card bg */
+    border-radius: var(--radius-xs);
+    background: var(--chart-bg-deep); /* Card bg */
 }
 
 .box-header {
@@ -417,25 +417,25 @@ onUnmounted(() => {
     border-bottom: 1px solid rgba(128, 128, 128, 0.2); 
 }
 
-.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: 600; color: #D1D4DC; }
+.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: 600; color: var(--grey-350); }
 
 .signal-badge {
-    padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; color: #fff;
+    padding: 2px 8px; border-radius: var(--radius-xs); font-size: 0.75rem; font-weight: bold; color: #fff;
     text-transform: uppercase;
 }
-.signal-badge.dip_buy { background: #089981; }
-.signal-badge.launchpad { background: #FFD700; color: #000; }
-.signal-badge.climax { background: #F23645; }
-.signal-badge.wait { background: #787B86; }
+.signal-badge.dip_buy { background: var(--chart-up-alt); }
+.signal-badge.launchpad { background: var(--signal-launchpad); color: #000; }
+.signal-badge.climax { background: var(--chart-down-alt); }
+.signal-badge.wait { background: var(--grey-500); }
 
 .commentary {
     font-size: 0.8rem;
     font-weight: 500;
-    color: #D1D4DC;
+    color: var(--grey-350);
     background: rgba(41, 98, 255, 0.08);
     border-left: 3px solid #2962FF;
     padding: 0.6rem;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
 }
 
 /* Metrics Table */
@@ -457,14 +457,14 @@ onUnmounted(() => {
 .info-btn {
     opacity: 0.6; border-radius: 50%; border: 1px solid currentColor;
     width: 16px; height: 16px; font-size: 10px;
-    display: flex; align-items: center; justify-content: center; cursor: pointer; color: #D1D4DC;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--grey-350);
     background: transparent;
 }
 .popover {
     position: absolute; top: 25px; right: 5px;
-    background: #2A2E39; border: 1px solid #787B86;
-    padding: 0.8rem; border-radius: 4px; 
-    z-index: 100; width: 150px; font-size: 0.75rem; color: #D1D4DC;
+    background: var(--chart-bg); border: 1px solid var(--grey-500);
+    padding: 0.8rem; border-radius: var(--radius-xs);
+    z-index: 100; width: 150px; font-size: 0.75rem; color: var(--grey-350);
 }
 
 @media (max-width: 1200px) {

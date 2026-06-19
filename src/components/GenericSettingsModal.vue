@@ -249,7 +249,7 @@ export default {
   background: var(--bg-card);
   width: 400px;
   max-width: 90%;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-lg);
   display: flex;
@@ -336,7 +336,7 @@ export default {
 .setting-input select {
   padding: 0.4rem;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   background: var(--bg-secondary);
   color: var(--text-primary);
   width: 100px;
@@ -356,7 +356,7 @@ export default {
 .color-preview {
     width: 20px;
     height: 20px;
-    border-radius: 4px;
+    border-radius: var(--radius-xs);
     border: 1px solid var(--border-color);
 }
 
@@ -382,7 +382,7 @@ export default {
   background: var(--primary-strong);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
 }
 

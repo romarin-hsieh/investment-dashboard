@@ -212,7 +212,7 @@ h1 {
   gap: 0.5rem;
   background: var(--chart-bg-deep);
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   border: 1px solid var(--chart-bg);
 }
 
@@ -221,7 +221,7 @@ h1 {
   border: 1px solid transparent;
   color: var(--grey-350);
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
   display: flex;
   align-items: center;
