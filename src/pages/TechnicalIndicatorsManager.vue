@@ -349,13 +349,13 @@ export default {
 }
 
 .status-badge.success {
-  background: #d4edda;
-  color: #155724;
+  background: var(--success-bg);
+  color: var(--success-fg);
 }
 
 .status-badge.error {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--danger-bg);
+  color: var(--danger-fg);
 }
 
 .status-details p {

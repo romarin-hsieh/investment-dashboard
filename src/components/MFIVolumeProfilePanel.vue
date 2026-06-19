@@ -821,18 +821,18 @@ export default {
 }
 
 .signal-badge.signal-buy {
-  background: #d4edda;
-  color: #155724;
+  background: var(--success-bg);
+  color: var(--success-fg);
 }
 
 .signal-badge.signal-sell {
-  background: #f8d7da;
-  color: #721c24;
+  background: var(--danger-bg);
+  color: var(--danger-fg);
 }
 
 .signal-badge.signal-hold, .signal-badge.signal-neutral {
-  background: #fff3cd;
-  color: #856404;
+  background: var(--warning-bg);
+  color: var(--warning-fg);
 }
 
 

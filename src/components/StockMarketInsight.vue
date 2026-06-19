@@ -390,9 +390,9 @@ export default {
   justify-content: center;
   gap: 1rem;
   height: 100%;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
-  color: #721c24;
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger-fg);
   border-radius: var(--radius-xs);
 }
 
