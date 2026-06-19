@@ -265,7 +265,7 @@ The base price time series for one symbol. Columnar layout (parallel arrays) for
 
 ⚠️ **Producer bug to watch**: when source data has gaps, lengths can drift apart. Frontend code should `Math.min(arr.length)` before iterating.
 
-**Frontend consumers**: `src/services/ohlcvApi.js`, `src/api/precomputedOhlcvApi.js`, all chart components.
+**Frontend consumers**: `src/services/ohlcvApi.js`, all chart components.
 
 ---
 

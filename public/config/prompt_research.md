@@ -64,7 +64,7 @@ When LLM generation fails, the system uses a deterministic template:
 
 ## Version Information
 - **Prompt Version**: 1.0.0
-- **Last Updated**: 2025-01-22
+- **Last Updated**: 2026-06-19
 - **Review Cycle**: Monthly or as needed for market changes
 
 ---

@@ -33,7 +33,7 @@ We adopt a **layered client-side caching strategy** on top of GitHub Pages' fixe
 
 1. **Browser HTTP cache (10 min)** — inherited from GH Pages, handled automatically. Covers rapid in-session navigation.
 2. **`<link rel="prefetch">` hints in [index.html](../../../index.html)** — the browser fetches the 2–3 data files that every page-load needs (`latest_index.json`, `latest_all.json`, `dashboard_status.json`) during idle, populating the HTTP cache *before* the SPA's `fetch()` runs. On first paint the data appears instantly.
-3. **Hourly URL cache-busting** (`?t=${Math.floor(Date.now() / 3_600_000)}`) — used by `precomputedIndicatorsApi.js`, `precomputedOhlcvApi.js`, etc. The URL is stable within an hour, so browser HTTP + CDN caches serve the file for ~1 h before the timestamp bucket rolls over.
+3. **Hourly URL cache-busting** (`?t=${Math.floor(Date.now() / 3_600_000)}`) — used by `precomputedIndicatorsApi.js`, etc. The URL is stable within an hour, so browser HTTP + CDN caches serve the file for ~1 h before the timestamp bucket rolls over.
 4. **In-memory cache** — `src/utils/performanceCache.js`, `QuantDataService.js` in-memory Maps avoid even cache-hit round-trips within a session.
 5. **LocalStorage cache with LRU** — `src/utils/technicalIndicatorsCache.js` (rewritten in WS-B PR-B4) persists processed indicator data across sessions, with a 24 h TTL, 3 MB cap, and access-time eviction.
 

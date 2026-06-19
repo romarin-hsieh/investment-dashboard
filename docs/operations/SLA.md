@@ -80,7 +80,7 @@ These are deliberately not tracked because they are noise at this scale:
 3. Does this change introduce a new external dependency? — If so, does it have its own SLA, or am I inheriting another point of failure?
 4. Does this change make Tier-3 fallback more likely? — If so, am I willing to spend SLO 6's budget?
 
-**To replenish budget**, prioritise PRs from the [Code/UI Remediation Roadmap](../../). Workstream B (Data Correctness) directly improves SLOs 1, 2, 6, 10. Workstream C (Performance) directly improves SLOs 4, 5, 7, 8.
+**To replenish budget**, prioritise PRs from the [Code/UI Remediation Roadmap](../product/ROADMAP.md). Workstream B (Data Correctness) directly improves SLOs 1, 2, 6, 10. Workstream C (Performance) directly improves SLOs 4, 5, 7, 8.
 
 ---
 
@@ -97,4 +97,4 @@ These are deliberately not tracked because they are noise at this scale:
 - Performance budget: [../architecture/BUILD_SPEC.md §7](../architecture/BUILD_SPEC.md#7-performance-budget)
 - Operational playbooks (when an SLO is breached): [RUNBOOK.md](RUNBOOK.md)
 - Decision records: [../architecture/adr/](../architecture/adr/)
-- Code/UI remediation roadmap (where SLO improvements live): see project plan file
+- Code/UI remediation roadmap (where SLO improvements live): [ROADMAP.md](../product/ROADMAP.md)

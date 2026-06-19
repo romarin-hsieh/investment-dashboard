@@ -15,18 +15,10 @@ function getStocksFromConfig() {
     console.log(`📊 Loaded ${enabledSymbols.length} enabled symbols from stocks.json`)
     return enabledSymbols
   } catch (error) {
+    // config/stocks.json is the sole source (universe.json was removed in the
+    // ADR-0008 data-repo split); surface the real error instead of masking it.
     console.error('Failed to read stocks.json:', error)
-    
-    // Fallback 到 universe.json
-    try {
-      console.warn('⚠️ Falling back to universe.json')
-      const universePath = path.join(__dirname, '../config/universe.json')
-      const universeData = JSON.parse(fs.readFileSync(universePath, 'utf8'))
-      return universeData.symbols || []
-    } catch (fallbackError) {
-      console.error('Failed to read universe.json fallback:', fallbackError)
-      throw fallbackError
-    }
+    throw error
   }
 }
 
