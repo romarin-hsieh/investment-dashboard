@@ -5,6 +5,8 @@
 - **Deciders**: Project owner
 - **Context tags**: `ci-cd`, `cost`, `operations`
 
+> **Amended by [ADR-0008](0008-separate-data-repository.md) (2026-06).** The data-commit target changed: workflows no longer commit `public/data` to the app repo. Each ETL workflow now **seeds** `public/data` from the data repo, regenerates, and **mirrors** the result back to the data repo (via a `DATA_REPO_TOKEN` PAT); the app repo receives **config-only** commits. GitHub Actions remains the ETL runtime — only where the data lands changed.
+
 ## Context & Problem
 
 The Static-First model ([ADR-0001](0001-static-first-architecture.md)) requires a daily job that fetches ~560 symbols of OHLCV from Yahoo Finance, computes 11+ technical indicators, runs the quant engine, scrapes Dataroma + CNN Fear & Greed, and commits ~4,000+ JSON files to `public/data/`. We need a runtime that is free, scheduled, auditable, and does not require a separate deployment target.

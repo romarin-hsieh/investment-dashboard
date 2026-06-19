@@ -3,9 +3,12 @@
 > [!IMPORTANT]
 > This document serves as the **Single Source of Truth** for maintaining the data integrity of the Investment Dashboard. All future agents and developers must follow these procedures.
 > 
-> **最後更新**: 2026-02-12
+> **最後更新**: 2026-06-19
 > **維護者**: 當資料架構、處理流程、前後端互動流程、驗證機制有任何異動時，必須同步更新本文件。
 > **自動維護**: 參見 `.agent/workflows/etl-docs-maintenance.md`
+
+> [!NOTE]
+> **資料儲存架構（[ADR-0008](../architecture/adr/0008-separate-data-repository.md)）**：預先計算的資料（OHLCV、技術指標、fundamentals、dataroma、daily、quotes、status…）已**外移至獨立的資料 repo** [`romarin-hsieh/investment-dashboard-data`](https://github.com/romarin-hsieh/investment-dashboard-data)，由它自己的 GitHub Pages（同源、無 CORS）提供。App repo **不再 commit `public/data`**（已被 gitignore）；每個 ETL workflow 會先從資料 repo **seed**、產生資料後再 **mirror** 回資料 repo，且只對 app repo commit `public/config`。前端的「資料」走資料 repo（`VITE_DATA_BASE_URL` / `withDataBase`），「設定」走 app repo（`withBase`）。本文件中所有 `public/data/...` 路徑指的是 ETL 執行時的**產生位置（staging）**，最終對外來源是資料 repo。本機開發請先執行 `npm run seed-data` 還原 `public/data`。
 
 ---
 
@@ -111,6 +114,9 @@ sequenceDiagram
 }
 ```
 
+> [!TIP]
+> 多數情況不需要手動編輯：用 **Add Symbol** workflow（Actions 分頁手動觸發 `add-symbol.yml`，或本機 `npm run add-symbol -- ABNB`）即可自動驗證代號、用 Yahoo Finance 補上 exchange/sector/industry、寫入 `config/stocks.json` 並同步 `public/config/`。詳見 [ADD_NEW_SYMBOL.md](ADD_NEW_SYMBOL.md)。
+
 ---
 
 ## 3. ETL Pipeline Architecture
@@ -152,6 +158,13 @@ graph TB
         L10["public/data/smart_money_sector_rotation.json"]
     end
 
+    subgraph "🪞 Publish (對外發佈)"
+        M1["mirror-data-to-repo.sh<br>public/data → 資料 repo /data"]
+        M2["investment-dashboard-data<br>GitHub Pages（前端實際讀取來源）"]
+    end
+
+    S0["seed-data-from-repo.sh<br>workflow 開始時先還原 public/data"] --> T1
+
     E1 --> T1 --> L1
     E1 --> T8 --> L8
     L1 --> T2 --> L2
@@ -162,6 +175,7 @@ graph TB
     L1 --> T7 --> L7
     E4 --> T9 --> L10
     E4 --> T10 --> L9
+    L1 & L2 & L3 & L4 & L5 & L6 & L7 & L8 & L9 & L10 --> M1 --> M2
 ```
 
 ### 3.2 完整排程表 (4 Workflows)
@@ -181,29 +195,33 @@ graph TB
 
 ```
 UTC 02:00 (台北 10:00) - Daily Workflow
-├── Step 1:  Sync Config (config/ → public/config/) ──────────┬─ 0-1 min
-├── Step 2:  Generate OHLCV (137 symbols × 5年, yfinance) ────┼─ 5-10 min
-├── Step 3:  Validate OHLCV index (symbols 非空驗證) ──────────┼─ < 1 min
-├── Step 4:  Generate Technical Indicators (137 × 30+) ────────┼─ 3-5 min
-├── Step 5:  Cleanup old indicators (30天 retention) ──────────┼─ < 1 min
-├── Step 6:  Update Metadata (僅週一執行) ─────────────────────┼─ 2-3 min
-├── Step 7:  Fetch Fundamentals (yahoo-finance2) ─────────────┼─ 3-5 min
-├── Step 8:  Generate Quotes Snapshot ─────────────────────────┼─ < 1 min
-├── Step 9:  Generate Daily Snapshot ──────────────────────────┼─ < 1 min
-├── Step 10: Generate Dashboard Status (Quant Signal) ─────────┼─ 1-2 min
-├── Step 11: Update Sentiment (CNN F&G + Z-Score) ─────────────┼─ < 1 min
-├── Step 12: Update Status File (health check) ────────────────┼─ < 1 min
-└── Step 13: Commit & Push ────────────────────────────────────┴─ 1-2 min
+├── Step 0:  Seed public/data from 資料 repo (seed-data-from-repo.sh) ─┬─ 1-2 min
+├── Step 1:  Sync Config (config/stocks.json → public/config/) ───────┼─ 0-1 min
+├── Step 2:  Generate OHLCV (137 symbols × 5年, yfinance) ────────────┼─ 5-10 min
+├── Step 3:  Validate OHLCV index (symbols 非空驗證) ─────────────────┼─ < 1 min
+├── Step 4:  Generate Technical Indicators (137 × 30+) ───────────────┼─ 3-5 min
+├── Step 5:  Cleanup old indicators (保留最近 2 天；Pages 1GB 限制) ───┼─ < 1 min
+├── Step 6:  Update Metadata (僅週一執行) ────────────────────────────┼─ 2-3 min
+├── Step 7:  Fetch Fundamentals (yahoo-finance2) ────────────────────┼─ 3-5 min
+├── Step 8:  Generate Quotes Snapshot ───────────────────────────────┼─ < 1 min
+├── Step 9:  Generate Daily Snapshot ────────────────────────────────┼─ < 1 min
+├── Step 10: Generate Dashboard Status (Quant Signal) ───────────────┼─ 1-2 min
+├── Step 11: Update Sentiment (Fear & Greed) ────────────────────────┼─ < 1 min
+├── Step 12: Update Status File (health check) ──────────────────────┼─ < 1 min
+├── Step 13: Commit **config-only** to app repo (git add public/config)┼─ < 1 min
+└── Step 14: Mirror public/data → 資料 repo (mirror-data-to-repo.sh) ─┴─ 2-3 min
 ```
 
 ### 3.4 Timeflow：dataroma-stock-update.yml
 
 ```
 UTC 00:00 (台北 08:00) - Dataroma Workflow
-├── Step 1: Crawl Dataroma Managers (Sector Rotation) ────────┬─ 1-2 min
-├── Step 2: Crawl Dataroma Stock (PL, NVDA, TSLA) ────────────┼─ 1-3 min
-└── Step 3: Commit & Push (skip ci) ──────────────────────────┴─ < 1 min
+├── Step 0: Seed public/data from 資料 repo (seed-data-from-repo.sh) ─┬─ 1-2 min
+├── Step 1: Crawl Dataroma Managers (Sector Rotation) ───────────────┼─ 1-2 min
+├── Step 2: Crawl Dataroma Stock (PL, NVDA, TSLA) ──────────────────┼─ 1-3 min
+└── Step 3: Mirror public/data → 資料 repo (mirror-data-to-repo.sh) ─┴─ 1-2 min
 ```
+> 註：dataroma workflow 不再對 app repo commit 資料；產生的 dataroma 檔案直接 mirror 到資料 repo。
 
 > [!WARNING]
 > `dataroma-stock-update.yml` 的 tickers 為 **硬編碼** (`PL`, `NVDA`, `TSLA`)。
@@ -213,9 +231,10 @@ UTC 00:00 (台北 08:00) - Dataroma Workflow
 
 ```
 UTC 02:00 Sunday (台北週日 10:00) - Weekly Metadata Workflow
-├── Step 1: Update Sector/Industry (yfinance) ────────────────┬─ 5-10 min
-├── Step 2: Update Metadata (yfinance) ───────────────────────┼─ 2-3 min
-└── Step 3: Commit & Push ────────────────────────────────────┴─ 1 min
+├── Step 0: Seed public/data from 資料 repo (seed-data-from-repo.sh) ─┬─ 1-2 min
+├── Step 1: Update Sector/Industry (yfinance) ───────────────────────┼─ 5-10 min
+├── Step 2: Update Metadata (yfinance) ──────────────────────────────┼─ 2-3 min
+└── Step 3: Mirror public/data → 資料 repo (mirror-data-to-repo.sh) ─┴─ 1-2 min
 ```
 
 ### 3.6 deploy.yml (事件驅動)
@@ -225,12 +244,16 @@ UTC 02:00 Sunday (台北週日 10:00) - Weekly Metadata Workflow
 - **不參與 ETL**，僅負責將 `dist/` 部署至 GitHub Pages
 
 > [!IMPORTANT]
-> 每次 daily-data-update 完成 commit & push 後，會觸發 `deploy.yml` 自動重新部署。
-> 如果 daily-data-update 失敗未產生 commit，則 deploy **不會**被觸發，前端資料將停留在上次成功更新的日期。
+> **資料更新不需要重新部署 app**：每日資料透過 mirror 推到資料 repo，由資料 repo 的 GitHub Pages 直接提供，前端在 runtime 讀取最新 JSON。
+> ETL 對 app repo 的 commit 僅限 `public/config`，且以 `GITHUB_TOKEN` 推送，**不會**觸發 `deploy.yml`（Actions 防遞迴機制）。
+> `deploy.yml` 只在「程式碼／設定」被人為（PR merge）推送、或 `add-symbol.yml` 明確 `gh workflow run deploy.yml` 時才執行。若某天資料 repo 的 mirror 失敗，前端資料會停留在上次成功 mirror 的日期。
 
 ---
 
 ## 4. Data File Format Specifications
+
+> [!NOTE]
+> 以下所有檔案在 ETL 執行時產生於 app repo 的 `public/data/`（staging），隨後由 `mirror-data-to-repo.sh` mirror 到資料 repo `romarin-hsieh/investment-dashboard-data` 的 `/data/`。**前端實際從資料 repo 的 GitHub Pages 讀取**（`VITE_DATA_BASE_URL` / `withDataBase`），不是 app repo。兩邊路徑結構相同（`public/data/x` ↔ 資料 repo `data/x`）。
 
 ### 4.1 OHLCV (`public/data/ohlcv/{SYMBOL}.json`)
 
@@ -403,6 +426,9 @@ UTC 02:00 Sunday (台北週日 10:00) - Weekly Metadata Workflow
 
 ## 5. Frontend Data Requirements
 
+> [!NOTE]
+> 前端有兩個來源 base：**設定**（`config/stocks.json`）由 `withBase()` 走 app repo 的 Pages origin；**資料**（quotes / daily / technical-indicators / symbols_metadata / ohlcv / status…）由 `withDataBase()` 走資料 repo 的 Pages origin（`VITE_DATA_BASE_URL`）。見 `src/utils/baseUrl.js`。下圖中 `stocksConfigService` 讀 app repo，其餘 data fetcher 讀資料 repo。
+
 ### 5.1 StockOverview 頁面所需數據
 
 ```mermaid
@@ -455,15 +481,18 @@ graph LR
 
 ## 6. GitHub Actions Workflows
 
+> [!NOTE]
+> 三個 ETL workflow（daily / dataroma / metadata）都遵循相同外框：**開頭 `seed-data-from-repo.sh` 還原 `public/data`** → 跑各自的產生步驟 → **結尾 `mirror-data-to-repo.sh` 推回資料 repo**。只有 daily 會額外對 app repo commit `public/config`。下方各表只列出該 workflow 的核心產生步驟。
+
 ### 6.1 daily-data-update.yml (每日 UTC 02:00)
 
 | 步驟 | 腳本 | 輸入 | 輸出 |
 |-----|------|-----|------|
-| Sync Config | `cp config/ → public/config/` | `config/stocks.json` | `public/config/stocks.json` |
+| Sync Config | `cp config/stocks.json → public/config/` | `config/stocks.json` | `public/config/stocks.json` |
 | OHLCV | `generate-real-ohlcv-yfinance.py` | `public/config/stocks.json` | `public/data/ohlcv/*.json` |
 | Validate OHLCV | inline Python | `ohlcv/index.json` | pass/fail |
 | Technical Indicators | `generate-daily-technical-indicators.js` | OHLCV files + Benchmark | `technical-indicators/*.json`, `latest_all.json` |
-| Cleanup | `cleanup-old-technical-indicators.js` | `--retention-days=30` | 刪除 >30 天的指標檔 |
+| Cleanup | `cleanup-old-technical-indicators.js` | `--retention-days=2` | 刪除 >2 天的指標檔 (Pages 1GB 限制) |
 | Metadata (週一) | `update-metadata-python.py` | yfinance API | `symbols_metadata.json` |
 | Fundamentals | `fetch-fundamentals.js` | `public/config/stocks.json` | `public/data/fundamentals/*.json` |
 | Quotes | `generate-quotes-snapshot.js` | config + OHLCV | `public/data/quotes/latest.json` |
@@ -476,7 +505,8 @@ graph LR
 
 ```mermaid
 graph LR
-    A[Config Sync] --> B[OHLCV]
+    S[Seed from 資料 repo] --> A[Config Sync]
+    A --> B[OHLCV]
     B --> C[Validate]
     C --> D[Tech Indicators]
     D --> E[Cleanup]
@@ -484,12 +514,13 @@ graph LR
     F --> G[Quotes]
     G --> H[Daily Snapshot]
     B --> I[Quant/Dashboard]
-    J[Sentiment] 
+    J[Sentiment]
     K[Status]
     E --> K
     H --> K
     I --> K
     J --> K
+    K --> M[Mirror → 資料 repo]
 ```
 
 ### 6.2 update-metadata.yml (每週日 UTC 02:00)
@@ -519,11 +550,14 @@ graph LR
 
 > [!NOTE]
 > `deploy.yml` 使用 `concurrency: group: "pages"` 確保不會同時部署。
-> commit message 含 `[skip ci]` 的推送 (如 Dataroma) **不會**觸發部署。
+> ETL 以 `GITHUB_TOKEN` 對 `public/config` 的 commit **不會**觸發 `deploy.yml`（Actions 防遞迴）；資料更新走資料 repo mirror，不需重新部署 app。詳見 §3.6。
 
 ---
 
 ## 7. Data Validation
+
+> [!NOTE]
+> 驗證在 ETL 產生資料後、mirror 前對 `public/data`（staging）執行；mirror 會把通過驗證的同一份資料推到資料 repo。
 
 ### 驗證指令
 
@@ -557,7 +591,7 @@ flowchart TD
     D -->|"OHLCV (yfinance)"| E["yfinance API 可能限流或異動"]
     D -->|"Tech Indicators"| F["檢查新增的指標計算是否有 bug"]
     D -->|"Commit & Push"| G["可能有 git conflict，檢查 rebase 步驟"]
-    B -->|"Workflow 成功但 deploy 未觸發"| H["deploy.yml 檢查 push trigger"]
+    B -->|"Workflow 成功但資料沒更新"| H["檢查 mirror-data-to-repo.sh 與資料 repo Pages build"]
 ```
 
 ### 問題: 前端顯示 "No Data"
@@ -565,12 +599,12 @@ flowchart TD
 ```mermaid
 flowchart TD
     A[No Data 問題] --> B{檢查 status.json}
-    B -->|timestamp 過舊| C[Workflow 可能失敗]
-    B -->|timestamp 正常| D{檢查 quotes/latest.json}
-    D -->|404| E[.gitignore 可能忽略了檔案]
+    B -->|timestamp 過舊| C[Workflow 或 mirror 可能失敗]
+    B -->|timestamp 正常| D{檢查資料 repo 的 quotes/latest.json}
+    D -->|404| E[資料 repo 缺檔：檢查 mirror-data-to-repo.sh 是否成功 / 資料 repo Pages build 是否完成]
     D -->|存在| F{檢查 symbols_metadata.json}
     F -->|symbol 不存在| G[需等待週日 metadata 更新]
-    F -->|symbol 存在| H[檢查 Browser DevTools Console]
+    F -->|symbol 存在| H[檢查 DevTools Console + VITE_DATA_BASE_URL]
 ```
 
 ### 問題: Sector 顯示 "Unknown"
@@ -609,7 +643,7 @@ graph TB
         B2 --> B3
     end
 
-    subgraph "📦 Static Data Layer (public/data/)"
+    subgraph "📦 Generated Data (public/data/ — staging)"
         C1["ohlcv/*.json"]
         C2["technical-indicators/*.json"]
         C3["quotes/latest.json"]
@@ -626,17 +660,22 @@ graph TB
         B3 --> C7
     end
 
+    subgraph "🪞 Data Repo (對外來源)"
+        MIR["mirror-data-to-repo.sh"]
+        DR["investment-dashboard-data<br>GitHub Pages"]
+        C1 & C2 & C3 & C4 & C5 & C6 & C7 --> MIR --> DR
+    end
+
     subgraph "🖥️ Frontend Layer (Vue.js)"
         D1["stocksConfigService.js"]
         D2["dataFetcher.ts"]
         D3["metadataService.js"]
         D4["precomputedIndicatorsApi.js"]
         D5["performanceCache.js"]
-        A2 --> D1
-        C3 --> D2
-        C4 --> D2
-        C5 --> D3
-        C2 --> D4
+        A2 -->|"withBase (app repo)"| D1
+        DR -->|"withDataBase"| D2
+        DR -->|"withDataBase"| D3
+        DR -->|"withDataBase"| D4
         D2 --> D5
         D3 --> D5
         D4 --> D5
@@ -687,8 +726,11 @@ graph TB
 |------|------|------|---------|
 | `generate-real-ohlcv-yfinance.py` | Python | 抓取 OHLCV 歷史數據 (yfinance) | daily-data-update |
 | `generate-daily-technical-indicators.js` | Node.js | 計算 30+ 技術指標 | daily-data-update |
-| `cleanup-old-technical-indicators.js` | Node.js | 清理 >30 天的指標檔 | daily-data-update |
+| `cleanup-old-technical-indicators.js` | Node.js | 清理 >2 天的指標檔 | daily-data-update |
 | `fetch-fundamentals.js` | Node.js | 抓取基本面 (yahoo-finance2) | daily-data-update |
+| `seed-data-from-repo.sh` | Bash | 從資料 repo 還原 `public/data` (所有 ETL workflow 開頭) | daily / dataroma / metadata |
+| `mirror-data-to-repo.sh` | Bash | 將 `public/data` mirror 到資料 repo (所有 ETL workflow 結尾) | daily / dataroma / metadata |
+| `add-symbol.js` | Node.js | 自助新增股票代號 (驗證 + 補 metadata + 寫 config) | add-symbol |
 | `generate-quotes-snapshot.js` | Node.js | 產生報價快照 | daily-data-update |
 | `generate-daily-snapshot.js` | Node.js | 產生每日總覽 | daily-data-update |
 | `update-status.js` | Node.js | 產生 status.json | daily-data-update |
@@ -742,6 +784,9 @@ graph TB
 ### 11.1 完整 ETL 重跑 (本地)
 
 ```bash
+# Step 0: Seed public/data from the data repo (資料不再 commit 在本 repo)
+npm run seed-data
+
 # Step 1: Config Sync
 cp config/stocks.json public/config/stocks.json
 
@@ -752,7 +797,7 @@ python scripts/generate-real-ohlcv-yfinance.py --days 1825 --interval 1d --min-r
 node scripts/generate-daily-technical-indicators.js
 
 # Step 4: Cleanup (可選)
-node scripts/cleanup-old-technical-indicators.js --retention-days=30 --verbose
+node scripts/cleanup-old-technical-indicators.js --retention-days=2 --verbose
 
 # Step 5: Fundamentals
 node scripts/fetch-fundamentals.js
@@ -808,6 +853,7 @@ npm ci
 
 | 日期 | 變更內容 |
 |-----|---------|
+| 2026-06-19 | **重大更新（[ADR-0008](../architecture/adr/0008-separate-data-repository.md) 外部資料）**：資料外移至獨立 repo `investment-dashboard-data`，app repo 不再 commit `public/data`；補上 seed→generate→mirror 流程、§3.6 部署觸發修正、retention 30→2、移除 universe.json、新增 Add Symbol 自助流程、雙來源 base URL 說明 |
 | 2026-02-12 | **重大更新**：新增 §10 腳本清單、§11 本地測試指南、§3.4/3.6 完整 4-Workflow 排程、Dataroma/Deploy 文件化、修正 OHLCV 格式為 parallel arrays、指標新增 Beta 1Y |
 | 2026-02-08 | 大幅擴充文件，新增 ETL 架構、數據格式、前端需求、時序圖 |
 | 2026-02-07 | 修正 config 來源說明，釐清 config/ vs public/config/ |

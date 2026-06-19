@@ -5,6 +5,8 @@
 - **Deciders**: Project owner
 - **Context tags**: `performance`, `data`, `reliability`
 
+> **Amended by [ADR-0008](0008-separate-data-repository.md) (2026-06).** Tier-2's Golden Source origin moved from the app-repo GitHub Pages to the dedicated **data repo's** GitHub Pages (`VITE_DATA_BASE_URL`, same origin → no CORS). The 3-tier hierarchy and fallback behavior are unchanged; only the Tier-2 host moved.
+
 ## Context & Problem
 
 The Static-First model ([ADR-0001](0001-static-first-architecture.md)) makes static JSON the Golden Source, but it leaves two gaps:

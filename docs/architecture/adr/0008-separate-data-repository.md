@@ -18,7 +18,7 @@ The frontend resolves every data URL through a single `VITE_DATA_BASE_URL`, cons
 **Rollout (phased):**
 1. **Frontend indirection** (PR #49) — introduce `VITE_DATA_BASE_URL`; no-op by default.
 2. **Cutover** (PR #50) — point the production build at the data repo and have the nightly workflows **mirror** `public/data` to the data repo via a `DATA_REPO_TOKEN` PAT. *Dual-push transition*: the app repo stays the working source as a safety net.
-3. **Sole-source cut** (planned) — drop `public/data` from the app repo, switch the workflows to seed-from-the-data-repo, and optionally purge the app repo's `.git` history.
+3. **Sole-source cut** (done, PR #56) — dropped `public/data` from the app repo (now gitignored), switched the workflows to seed-from-the-data-repo + mirror-back, and made the data repo the sole source. (Optional `.git` history purge still pending.)
 
 ## Consequences
 
@@ -33,7 +33,7 @@ The frontend resolves every data URL through a single `VITE_DATA_BASE_URL`, cons
 - Requires a long-lived `DATA_REPO_TOKEN` (fine-grained PAT, Contents: Read+Write on the data repo) as a secret.
 
 **Neutral**
-- Amends the *data-location* aspect of ADR-0001, ADR-0003 (Tier-2 source), and ADR-0006 (caching). Those decisions still hold — only the host moves; the static-first, no-backend, 3-tier-cache model is unchanged.
+- Amends the *data-location* aspect of ADR-0001, ADR-0003 (Tier-2 source), ADR-0004 (ETL commit target), and ADR-0006 (caching). Those decisions still hold — only the host (and the ETL commit target) move; the static-first, no-backend, 3-tier-cache model is unchanged.
 
 ## Alternatives Considered
 
@@ -44,6 +44,6 @@ The frontend resolves every data URL through a single `VITE_DATA_BASE_URL`, cons
 
 ## Follow-ups
 
-- Phase 3 (sole-source cut) tracked in the refactor plan.
+- Phase 3 (sole-source cut) **done** (PR #56). Optional `.git` history purge still pending.
+- `docs/operations/DATA_OPERATIONS.md` and `docs/architecture/OVERVIEW.md` updated to the external-data model (2026-06).
 - Watch the data repo's Pages artifact against the 1 GB limit as the symbol universe grows (the `technical-indicators` retention=2 policy keeps it bounded).
-- Update `docs/operations/DATA_OPERATIONS.md` and `docs/architecture/OVERVIEW.md` once phase 3 lands, so they describe the final (external) data location rather than a half-state.
