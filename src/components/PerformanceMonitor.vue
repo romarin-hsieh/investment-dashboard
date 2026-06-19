@@ -241,7 +241,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--border-color);
   background: var(--bg-secondary);
   border-radius: 8px 8px 0 0;
@@ -274,19 +274,19 @@ export default {
 }
 
 .monitor-content {
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .metrics-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .metric-card {
   background: var(--bg-secondary);
-  padding: 0.75rem;
+  padding: var(--space-3);
   border-radius: 6px;
   text-align: center;
 }
@@ -294,7 +294,7 @@ export default {
 .metric-label {
   font-size: var(--text-xs);
   color: var(--text-secondary);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
 }
 
 .metric-value {
@@ -304,12 +304,12 @@ export default {
 }
 
 .widgets-list {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .widgets-list h5 {
   font-size: 0.85rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--space-2) 0;
   color: var(--text-primary);
 }
 
@@ -317,10 +317,10 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: var(--space-2);
   background: var(--bg-secondary);
   border-radius: var(--radius-xs);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
   font-size: 0.8rem;
 }
 
@@ -331,7 +331,7 @@ export default {
 }
 
 .widget-time {
-  margin-right: 0.5rem;
+  margin-right: var(--space-2);
   font-weight: var(--weight-semibold);
 }
 
@@ -358,13 +358,13 @@ export default {
 
 .actions {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .clear-btn,
 .export-btn {
   flex: 1;
-  padding: 0.5rem;
+  padding: var(--space-2);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xs);
   background: var(--bg-card);
@@ -393,7 +393,7 @@ export default {
     position: relative;
     top: auto;
     right: auto;
-    margin: 1rem;
+    margin: var(--space-4);
     width: calc(100% - 2rem);
   }
 }

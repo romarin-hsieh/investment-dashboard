@@ -677,7 +677,7 @@ export default {
 .breadcrumb {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   font-size: 0.9rem;
 }
 
@@ -692,7 +692,7 @@ export default {
 }
 
 .breadcrumb-separator {
-  margin: 0 0.5rem;
+  margin: 0 var(--space-2);
   color: var(--text-muted);
 }
 
@@ -706,7 +706,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .symbol-wrapper .symbol {
@@ -735,8 +735,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
   box-shadow: var(--shadow-sm);
 }
 
@@ -744,16 +744,16 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 /* Widgets Container - Same as StockCard */
 .widgets-container {
   display: grid;
   grid-template-columns: 2fr 1fr; 
-  gap: 1.5rem;
+  gap: var(--space-6);
   margin-bottom: 0px; 
   min-height: 450px;
   will-change: transform;
@@ -781,7 +781,7 @@ export default {
 }
 
 .widget-header {
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--border-color);
   background: transparent; /* Removed gray background */
   flex-shrink: 0;
@@ -834,15 +834,15 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
   box-shadow: var(--shadow-sm);
 }
 
 .insight-header {
-  padding-bottom: 1rem;
+  padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .insight-header h3 {
@@ -856,7 +856,7 @@ export default {
 .insight-widgets-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 /* Full Width Insight Widgets */
@@ -869,7 +869,7 @@ export default {
   flex-direction: column;
   min-height: 900px; 
   height: 900px;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 /* Remove borders from full-width chart widgets to avoid double borders */
@@ -890,7 +890,7 @@ export default {
 
 /* Quant Review Block Styling */
 .review-block {
-    margin-top: 2rem; 
+    margin-top: var(--space-8); 
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -900,12 +900,12 @@ export default {
 
 .review-block .widget-header {
     background: transparent;
-    padding: 1rem;
+    padding: var(--space-4);
     border-bottom: 1px solid var(--border-color);
 }
 
 .insight-full-widget .widget-header {
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--border-color);
   /* border-top-left-radius: 8px; Removed */
   /* border-top-right-radius: 8px; Removed */
@@ -946,9 +946,9 @@ export default {
 }
 
 .insight-widget .widget-header {
-  padding-bottom: 0.75rem;
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   flex-shrink: 0;
   height: auto; /* 改為 auto 讓高度自適應 */
   display: flex;
@@ -980,12 +980,12 @@ export default {
   font-size: var(--text-xl);
   font-weight: var(--weight-bold);
   color: var(--text-primary);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--space-2) 0;
 }
 
 .symbol-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
   align-items: center;
   flex-wrap: wrap;
 }
@@ -994,7 +994,7 @@ export default {
   font-size: var(--text-xs);
   color: var(--tag-text-blue);
   background-color: var(--tag-bg-blue);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-weight: var(--weight-medium);
   border: 1px solid transparent;
@@ -1005,7 +1005,7 @@ export default {
   font-size: var(--text-xs);
   color: var(--text-secondary);
   background-color: var(--bg-secondary);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-weight: var(--weight-medium);
   border: 1px solid transparent;
@@ -1019,15 +1019,15 @@ export default {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .detail-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
   background: linear-gradient(135deg, var(--grey-550), var(--grey-650));
   color: white;
   border: none;
@@ -1059,8 +1059,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
 }
@@ -1069,8 +1069,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem; /* 保持 widget-container 內的 header margin */
-  padding-bottom: 0.75rem;
+  margin-bottom: var(--space-4); /* 保持 widget-container 內的 header margin */
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
   background: transparent; /* Ensure transparent */
 }
@@ -1107,12 +1107,12 @@ export default {
 @media (max-width: 1200px) {
   .widgets-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .insight-widgets-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .insight-full-widget {
@@ -1138,37 +1138,37 @@ export default {
   }
   
   .symbol-insight-block {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .widget-container {
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
+    padding: var(--space-3);
+    margin-bottom: var(--space-6);
   }
 }
 
 @media (max-width: 768px) {
   .stock-detail {
-    padding: 0.5rem;
+    padding: var(--space-2);
   }
   
   .stock-header {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .symbol-insight-block {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .widget-container {
-    padding: 0.75rem;
-    margin-bottom: 1.5rem;
+    padding: var(--space-3);
+    margin-bottom: var(--space-6);
   }
   
   .stock-info-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .header-actions {
@@ -1178,13 +1178,13 @@ export default {
   
   .widgets-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
     min-height: auto;
   }
   
   .insight-widgets-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .insight-full-widget {
@@ -1236,11 +1236,11 @@ export default {
   }
   
   .stock-header {
-    padding: 0.75rem;
+    padding: var(--space-3);
   }
   
   .symbol-insight-block {
-    padding: 0.75rem;
+    padding: var(--space-3);
   }
   
   .insight-header h3 {
@@ -1252,7 +1252,7 @@ export default {
   }
   
   .widget-header {
-    padding: 0.5rem 0.75rem;
+    padding: var(--space-2) var(--space-3);
   }
   
   .widget-header h4 {
@@ -1261,7 +1261,7 @@ export default {
   
   .widget-title {
     font-size: 0.9rem;
-    padding: 0.5rem 0.75rem;
+    padding: var(--space-2) var(--space-3);
   }
   
   .detail-btn {
@@ -1270,17 +1270,17 @@ export default {
   }
   
   .widgets-container {
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .insight-widgets-container {
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .insight-full-widget {
     min-height: 600px;
     height: 600px;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
   }
   
   .insight-full-widget.mfi-volume-profile {
@@ -1321,7 +1321,7 @@ export default {
   }
   
   .content-layout {
-    margin-top: 0.75rem; /* 小螢幕進一步減少間隔 */
+    margin-top: var(--space-3); /* 小螢幕進一步減少間隔 */
   }
   
   .company-profile-row .widget-container {
@@ -1334,14 +1334,14 @@ export default {
 /* Tabs Navigation */
 .tabs-nav {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0px;
 }
 
 .tab-btn {
-    padding: 0.75rem 1.5rem;
+    padding: var(--space-3) var(--space-6);
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
@@ -1366,7 +1366,7 @@ export default {
 .tactical-grid {
     display: grid;
     grid-template-columns: 1fr 3fr; /* 1:3 ratio ensures all 4 inner columns are effectively equal (25% each) */
-    gap: 1.5rem;
+    gap: var(--space-6);
     align-items: start;
 }
 

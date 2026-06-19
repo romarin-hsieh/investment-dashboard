@@ -138,13 +138,13 @@ onMounted(() => {
 }
 
 .header-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
 }
 
 h1 {
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
   color: var(--text-primary);
 }
 
@@ -156,7 +156,7 @@ h1 {
 .dashboard-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 2rem;
+  gap: var(--space-8);
 }
 
 /* PR-E4: empty-state styling — quiet, centered, with token-aligned colours
@@ -164,13 +164,13 @@ h1 {
  * branches. */
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 4rem var(--space-8);
   color: var(--text-secondary);
 }
 
 .empty-state__title {
   font-size: 1.1rem;
-  margin: 0 0 0.5rem;
+  margin: 0 0 var(--space-2);
   color: var(--text-primary);
 }
 
@@ -201,15 +201,15 @@ h1 {
 .side-panel {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .ticker-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
   background: var(--chart-bg-deep);
-  padding: 1rem;
+  padding: var(--space-4);
   border-radius: var(--radius-sm);
   border: 1px solid var(--chart-bg);
 }
@@ -218,12 +218,12 @@ h1 {
   background: var(--chart-bg);
   border: 1px solid transparent;
   color: var(--grey-350);
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-xs);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   transition: all var(--transition-base);
 }
 

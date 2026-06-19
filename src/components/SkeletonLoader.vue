@@ -87,7 +87,7 @@ export default {
 }
 
 .skeleton-loader {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 /* 通用骨架樣式 */
@@ -103,16 +103,16 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
 }
 
 .skeleton-widget-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -130,7 +130,7 @@ export default {
 
 .skeleton-ticker-area {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
   overflow: hidden;
   min-height: 100px;  /* 改為與 LazyTradingViewWidget 相同的高度 */
   align-items: center;
@@ -149,20 +149,20 @@ export default {
 .skeleton-sector-groups {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-8);
 }
 
 .skeleton-sector-group {
   background: var(--bg-secondary);
   border-radius: var(--radius-sm);
-  padding: 1.5rem;
+  padding: var(--space-6);
 }
 
 .skeleton-sector-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
 }
 
 .skeleton-sector-title {
@@ -181,14 +181,14 @@ export default {
 .skeleton-stocks-grid {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-8);
 }
 
 .skeleton-stock-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1.5rem;
+  padding: var(--space-6);
   width: 100%;
 }
 
@@ -196,7 +196,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .skeleton-stock-symbol {
@@ -214,15 +214,15 @@ export default {
 
 .skeleton-stock-content {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .skeleton-stock-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-info-line {
@@ -244,7 +244,7 @@ export default {
 
 .skeleton-stock-footer {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-tag {
@@ -274,13 +274,13 @@ export default {
 /* 響應式設計 */
 @media (max-width: 768px) {
   .skeleton-widget-container {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
+    padding: var(--space-3);
+    margin-bottom: var(--space-4);
   }
   
   .skeleton-ticker-area {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .skeleton-ticker-item {
@@ -289,7 +289,7 @@ export default {
   }
   
   .skeleton-sector-group {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .skeleton-stock-content {
@@ -304,23 +304,23 @@ export default {
 
 @media (max-width: 480px) {
   .skeleton-widget-container {
-    padding: 0.5rem;
-    margin: 0 -0.25rem 1rem -0.25rem;
+    padding: var(--space-2);
+    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
   }
   
   .skeleton-sector-group {
-    padding: 0.75rem;
-    margin: 0 -0.25rem;
+    padding: var(--space-3);
+    margin: 0 -var(--space-1);
   }
   
   .skeleton-stock-card {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .skeleton-stock-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 }
 

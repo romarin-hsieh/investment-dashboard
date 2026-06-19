@@ -112,16 +112,16 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
 }
 
 .widget-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -141,7 +141,7 @@ export default {
 .vix-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: var(--space-8);
   align-items: center;
 }
 
@@ -204,7 +204,7 @@ export default {
   transform: translateX(-50%);
   text-align: center;
   background: var(--bg-card);
-  padding: 0.5rem;
+  padding: var(--space-2);
   border-radius: var(--radius-sm);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -219,7 +219,7 @@ export default {
 .vix-label {
   font-size: 0.8rem;
   color: var(--text-secondary);
-  margin-top: 0.25rem;
+  margin-top: var(--space-1);
 }
 
 /* 狀態指示器 */
@@ -231,8 +231,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
 }
 
 .status-dot {
@@ -251,7 +251,7 @@ export default {
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.4;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 /* 情緒狀態顏色 */
@@ -292,9 +292,9 @@ export default {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--border-color);
 }
 
@@ -302,7 +302,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: var(--space-2);
   background: var(--grey-50);
   border-radius: var(--radius-xs);
   font-size: 0.85rem;
@@ -331,7 +331,7 @@ export default {
 @media (max-width: 768px) {
   .vix-content {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--space-6);
   }
   
   .gauge-container {
@@ -356,14 +356,14 @@ export default {
 
 @media (max-width: 480px) {
   .vix-indicator-container {
-    padding: 0.75rem;
-    margin: 0 -0.25rem 2rem -0.25rem;
+    padding: var(--space-3);
+    margin: 0 -var(--space-1) var(--space-8) -var(--space-1);
   }
   
   .widget-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.25rem;
+    gap: var(--space-1);
   }
 }
 </style>

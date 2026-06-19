@@ -117,13 +117,13 @@ export default {
 .nav-controls {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .nav-list {
   display: flex;
   list-style: none;
-  gap: 0.5rem;
+  gap: var(--space-2);
   margin: 0;
   padding: 0;
 }
@@ -132,7 +132,7 @@ export default {
   text-decoration: none;
   color: var(--text-secondary);
   font-weight: var(--weight-medium);
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-sm);
   transition: all var(--transition-base);
   font-size: 0.95rem;
@@ -174,7 +174,7 @@ export default {
     color: var(--text-secondary);
     min-width: 36px;
     height: 36px;
-    padding: 0 0.5rem;
+    padding: 0 var(--space-2);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -208,7 +208,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
   font-size: var(--text-sm);
   color: var(--text-muted);
 }
@@ -231,14 +231,14 @@ export default {
   .nav-container {
     flex-direction: column;
     height: auto;
-    padding: 1rem;
-    gap: 1rem;
+    padding: var(--space-4);
+    gap: var(--space-4);
   }
   
   .nav-controls {
     flex-direction: column;
     width: 100%;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .nav-list {
@@ -248,7 +248,7 @@ export default {
   
   .footer-content {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .separator { display: none; }

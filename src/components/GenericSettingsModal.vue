@@ -257,7 +257,7 @@ export default {
 }
 
 .modal-header {
-  padding: 1rem;
+  padding: var(--space-4);
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
@@ -289,7 +289,7 @@ export default {
 }
 
 .tab-btn {
-  padding: 0.75rem 1.5rem;
+  padding: var(--space-3) var(--space-6);
   background: none;
   border: none;
   color: var(--text-secondary);
@@ -305,7 +305,7 @@ export default {
 }
 
 .tab-content {
-  padding: 1.5rem;
+  padding: var(--space-6);
   max-height: 400px;
   overflow-y: auto;
 }
@@ -314,7 +314,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .setting-label {
@@ -322,7 +322,7 @@ export default {
   font-size: 0.9rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .info-icon {
@@ -350,7 +350,7 @@ export default {
 .style-input-group {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-2);
 }
 
 .color-preview {
@@ -361,15 +361,15 @@ export default {
 }
 
 .modal-footer {
-  padding: 1rem;
+  padding: var(--space-4);
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: flex-end;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .btn-cancel {
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
@@ -378,7 +378,7 @@ export default {
 }
 
 .btn-save {
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   background: var(--primary-strong);
   color: white;
   border: none;

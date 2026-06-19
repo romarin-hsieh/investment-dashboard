@@ -133,12 +133,12 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   overflow: hidden;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .widget-header {
   background: var(--bg-secondary);
-  padding: 1rem 1.5rem;
+  padding: var(--space-4) var(--space-6);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -146,7 +146,7 @@ export default {
   font-size: 1.1rem;
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 var(--space-1) 0;
 }
 
 .widget-description {
@@ -164,7 +164,7 @@ export default {
 
 .index-card {
   background: var(--bg-card);
-  padding: 1rem 1.5rem;
+  padding: var(--space-4) var(--space-6);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -183,7 +183,7 @@ export default {
   font-size: 0.95rem;
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 var(--space-1) 0;
 }
 
 .index-symbol {
@@ -201,7 +201,7 @@ export default {
   font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
 }
 
 .index-change {
@@ -228,7 +228,7 @@ export default {
   }
   
   .index-card {
-    padding: 0.75rem 1rem;
+    padding: var(--space-3) var(--space-4);
   }
   
   .index-name {

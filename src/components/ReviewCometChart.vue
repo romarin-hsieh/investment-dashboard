@@ -328,7 +328,7 @@ onUnmounted(() => {
 
 <style scoped>
 .review-comet-container {
-    padding: 1.5rem; 
+    padding: var(--space-6); 
     background: transparent;
 }
 
@@ -336,7 +336,7 @@ onUnmounted(() => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 1.5rem; 
+    gap: var(--space-6); 
     width: 100%;
 }
 
@@ -381,7 +381,7 @@ onUnmounted(() => {
 }
 
 .box-header {
-    padding: 0.75rem 1rem;
+    padding: var(--space-3) var(--space-4);
     font-size: 0.85rem;
     font-weight: var(--weight-medium);
     opacity: 0.9;
@@ -405,7 +405,7 @@ onUnmounted(() => {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
+    padding: var(--space-2);
     gap: 1.2rem;
 }
 
@@ -413,7 +413,7 @@ onUnmounted(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 0.5rem;
+    padding-bottom: var(--space-2);
     border-bottom: 1px solid;
     border-color: rgba(128, 128, 128, 0.2); 
 }
@@ -462,7 +462,7 @@ onUnmounted(() => {
     font-weight: var(--weight-medium);
     color: var(--text-color); /* Improve contrast */
     background: rgba(41, 98, 255, 0.08); /* Highlight bg */
-    padding: 0.75rem;
+    padding: var(--space-3);
     border-radius: var(--radius-xs);
 }
 

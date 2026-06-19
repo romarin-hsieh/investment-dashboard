@@ -494,7 +494,7 @@ export default {
   border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 @keyframes spin {
@@ -510,17 +510,17 @@ export default {
   justify-content: center;
   height: 400px;
   color: var(--text-secondary);
-  padding: 2rem;
+  padding: var(--space-8);
   text-align: center;
 }
 
 .error-icon {
   font-size: var(--text-2xl);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .error-message {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   color: var(--error-color);
   max-width: 400px;
 }
@@ -529,11 +529,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .retry-btn {
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   background: var(--blue-500);
   color: white;
   border: none;
@@ -564,11 +564,11 @@ export default {
 
 .no-data-icon {
   font-size: var(--text-2xl);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .dev-fallback {
-  margin-top: 1rem;
+  margin-top: var(--space-4);
 }
 
 /* Panel Content */
@@ -576,7 +576,7 @@ export default {
   display: flex;
   flex-direction: column;
   /* 移除 height: 100% 限制，讓內容自然展開 */
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 /* New Layout Styles */
@@ -584,7 +584,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
 }
 
 .title-section {
@@ -602,9 +602,9 @@ export default {
 .metrics-status-bar {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding: 0 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--space-8);
+  padding: 0 var(--space-2);
+  margin-bottom: var(--space-4);
   font-size: 0.9rem;
   white-space: nowrap;
   overflow-x: auto; /* Handle overflow gracefully if screen is very narrow */
@@ -614,7 +614,7 @@ export default {
 .status-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .status-label {
@@ -661,7 +661,7 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   /* 確保圖表容器不被其他元素壓縮 */
   flex-shrink: 0;
 }
@@ -670,7 +670,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
 }
@@ -682,7 +682,7 @@ export default {
 }
 
 .range-selector {
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
@@ -710,7 +710,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 0.5rem;
+  padding-right: var(--space-2);
   font-size: 0.7rem;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-color);
@@ -784,7 +784,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 0.5rem;
+  padding-left: var(--space-2);
   font-size: 0.7rem;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-color);
@@ -794,8 +794,8 @@ export default {
 .trading-signals {
   background: transparent;
   border: none;
-  padding: 1rem 0 0 0;
-  margin-top: 1rem;
+  padding: var(--space-4) 0 0 0;
+  margin-top: var(--space-4);
   border-top: 1px solid var(--border-color);
   border-radius: 0;
 }
@@ -804,7 +804,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .signals-header h4 {
@@ -814,7 +814,7 @@ export default {
 }
 
 .signal-badge {
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: var(--weight-semibold);
@@ -839,14 +839,14 @@ export default {
 
 /* Recommendations */
 .recommendations {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .recommendation {
   font-size: 0.85rem;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  padding: 0.75rem;
+  margin-bottom: var(--space-2);
+  padding: var(--space-3);
   background: var(--bg-secondary);
   border-radius: var(--radius-xs);
 }
@@ -855,7 +855,7 @@ export default {
 .tooltip {
   background: rgba(0, 0, 0, 0.9);
   color: white;
-  padding: 0.5rem;
+  padding: var(--space-2);
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
   pointer-events: none;
@@ -883,7 +883,7 @@ export default {
     font-size: 0.85rem;
     color: var(--grey-550);
     font-style: italic;
-    padding: 0.5rem 0;
+    padding: var(--space-2) 0;
 }
 
 /* Modal */
@@ -913,7 +913,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: var(--space-4);
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
 }
@@ -934,13 +934,13 @@ export default {
 }
 
 .modal-body {
-    padding: 1rem 1.5rem;
+    padding: var(--space-4) var(--space-6);
     font-size: 0.9rem;
     color: var(--text-primary);
 }
 
 .modal-body h6 {
-    margin: 1rem 0 0.5rem 0;
+    margin: var(--space-4) 0 var(--space-2) 0;
     font-size: 0.95rem;
     font-weight: var(--weight-semibold);
     color: var(--blue-500);
@@ -951,7 +951,7 @@ export default {
 }
 
 .modal-body ul {
-    margin: 0 0 1rem 0;
+    margin: 0 0 var(--space-4) 0;
     padding-left: 1.2rem;
 }
 
@@ -960,7 +960,7 @@ export default {
 }
 
 .tooltip-content div {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
 }
 
 .tooltip-content div:last-child {
@@ -971,17 +971,17 @@ export default {
 @media (max-width: 768px) {
   .metrics-header {
     grid-template-columns: 1fr;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .chart-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .panel-content {
-    padding: 0.75rem;
+    padding: var(--space-3);
   }
   
   .chart-container {
@@ -1002,7 +1002,7 @@ export default {
   .signals-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .chart-container {

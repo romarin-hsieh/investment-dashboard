@@ -299,8 +299,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
 }
@@ -309,8 +309,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -324,18 +324,18 @@ export default {
 .insight-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
   align-items: start;
 }
 
 .insight-section {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .section-header {
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -363,7 +363,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   height: 100%;
   color: var(--text-muted);
   font-size: 0.9rem;
@@ -388,7 +388,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--space-4);
   height: 100%;
   background: var(--danger-bg);
   border: 1px solid var(--danger-border);
@@ -397,7 +397,7 @@ export default {
 }
 
 .retry-btn {
-  padding: 0.25rem 0.75rem;
+  padding: var(--space-1) var(--space-3);
   background: var(--danger-solid);
   color: white;
   border: none;
@@ -438,7 +438,7 @@ export default {
   .widget-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .daily-widget,
@@ -450,12 +450,12 @@ export default {
 
 @media (max-width: 480px) {
   .stock-market-insight-container {
-    padding: 0.75rem;
-    margin: 0 -0.25rem 2rem -0.25rem;
+    padding: var(--space-3);
+    margin: 0 -var(--space-1) var(--space-8) -var(--space-1);
   }
   
   .insight-grid {
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .daily-widget,

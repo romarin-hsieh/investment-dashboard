@@ -588,7 +588,7 @@ export default {
 
 <style scoped>
 .holdings-analysis {
-    /* padding: 1rem; Removed */
+    /* padding: var(--space-4); Removed */
     /* background: var(--bg-primary); Removed */
     /* border-radius: 8px; Removed */
     background: transparent;
@@ -597,12 +597,12 @@ export default {
 .holdings-grid {
     display: flex; 
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: var(--space-6);
 }
 
 .card {
     background: var(--bg-card);
-    padding: 1.5rem;
+    padding: var(--space-6);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
@@ -630,11 +630,11 @@ export default {
 }
 
 h3 {
-    margin: 0 0 1rem 0;
+    margin: 0 0 var(--space-4) 0;
     font-size: 1.1rem;
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
+    padding-bottom: var(--space-2);
 }
 
 .chart-container {
@@ -646,7 +646,7 @@ h3 {
 .stats-row {
     display: flex;
     justify-content: space-around;
-    margin-top: 1rem;
+    margin-top: var(--space-4);
 }
 .stat {
     display: flex;
@@ -675,7 +675,7 @@ h3 {
 /* Sentiment (Full Width Layout) */
 .sentiment-container {
     display: flex;
-    gap: 1.5rem;
+    gap: var(--space-6);
     flex-direction: column; /* Vertical split */
     align-items: stretch;
 }
@@ -695,7 +695,7 @@ h3 {
     border-radius: 6px;
     overflow: hidden;
     display: flex;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
 }
 
 .meter-bar-dual .segment { height: 100%; }
@@ -715,7 +715,7 @@ h3 {
 
 .no-data {
     text-align: center;
-    padding: 2rem;
+    padding: var(--space-8);
     color: var(--text-muted);
 }
 
@@ -726,7 +726,7 @@ h3 {
 .transaction-header {
     display: flex;
     align-items: center;
-    padding: 0.75rem 0; /* Match TH padding slightly better */
+    padding: var(--space-3) 0; /* Match TH padding slightly better */
     border-bottom: 1px solid var(--border-color);
     font-size: var(--text-xs);
     font-weight: var(--weight-medium);
@@ -761,7 +761,7 @@ h3 {
     color: var(--text-muted); 
     width: 90px; 
     flex-shrink: 0;
-    margin-right: 1.5rem; /* Add spacing between Date and Holder */
+    margin-right: var(--space-6); /* Add spacing between Date and Holder */
 }
 
 .name { 
@@ -825,7 +825,7 @@ table {
 
 th {
     text-align: left;
-    padding: 0.75rem;
+    padding: var(--space-3);
     background: transparent; 
     color: var(--text-muted);
     font-weight: var(--weight-medium);
@@ -833,7 +833,7 @@ th {
 }
 
 td {
-    padding: 0.75rem;
+    padding: var(--space-3);
     border-bottom: 1px solid var(--border-color-soft);
     color: var(--text-secondary);
 }

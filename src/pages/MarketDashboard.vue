@@ -387,7 +387,7 @@ export default {
 }
 
 .mb-3 {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
 }
 
 .text-muted {
@@ -400,16 +400,16 @@ export default {
 
 .error {
   text-align: center;
-  padding: 2rem;
+  padding: var(--space-8);
   background-color: var(--bg-card);
   border: 1px solid var(--error-color);
   border-radius: var(--radius-sm);
-  margin: 1rem 0;
+  margin: var(--space-4) 0;
   color: var(--error-color);
 }
 
 .btn {
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
@@ -426,7 +426,7 @@ export default {
 }
 
 .btn-sm {
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   font-size: 0.8rem;
 }
 
@@ -435,8 +435,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow-md);
@@ -447,8 +447,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow-md);
@@ -458,8 +458,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -473,24 +473,24 @@ export default {
 .market-dashboard .insight-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
   align-items: start;
 }
 
 .market-dashboard .insight-section {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 /* 第二個 insight-section 上方添加間隔線 */
 .market-dashboard .weekly-section {
   border-top: 1px solid var(--border-color);
-  padding-top: 1.5rem;
+  padding-top: var(--space-6);
 }
 
 .market-dashboard .section-header {
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--space-2);
 }
 
 .market-dashboard .section-header h4 {
@@ -511,18 +511,18 @@ export default {
   .market-dashboard .widget-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 }
 
 @media (max-width: 480px) {
   .market-dashboard .widget-container {
-    padding: 0.75rem;
-    margin: 0 -0.25rem 2rem -0.25rem;
+    padding: var(--space-3);
+    margin: 0 -var(--space-1) var(--space-8) -var(--space-1);
   }
   
   .market-dashboard .insight-grid {
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
 }
 </style>

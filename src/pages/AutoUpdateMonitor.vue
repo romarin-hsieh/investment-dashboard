@@ -569,8 +569,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -581,14 +581,14 @@ export default {
 
 .header-actions {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .monitor-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .status-card {
@@ -602,7 +602,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: var(--space-4);
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
 }
@@ -614,7 +614,7 @@ export default {
 }
 
 .status-indicator {
-  padding: 0.25rem 0.75rem;
+  padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-md);
   font-size: 0.8rem;
   font-weight: var(--weight-medium);
@@ -641,14 +641,14 @@ export default {
 }
 
 .card-content {
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .status-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
 }
 
 .status-item:last-child {
@@ -678,17 +678,17 @@ export default {
 }
 
 .card-actions {
-  padding: 0 1rem 1rem;
+  padding: 0 var(--space-4) var(--space-4);
 }
 
 .update-note {
-  margin-top: 0.5rem;
+  margin-top: var(--space-2);
   color: var(--grey-550);
   font-style: italic;
 }
 
 .btn {
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
@@ -747,7 +747,7 @@ export default {
 }
 
 .btn-sm {
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem var(--space-3);
   font-size: 0.8rem;
 }
 
@@ -766,14 +766,14 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
 }
 
 .logs-header, .config-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: var(--space-4);
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
 }
@@ -790,19 +790,19 @@ export default {
 }
 
 .no-logs {
-  padding: 2rem;
+  padding: var(--space-8);
   text-align: center;
   color: var(--text-secondary);
 }
 
 .log-entries {
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .log-entry {
   display: flex;
-  gap: 1rem;
-  padding: 0.5rem;
+  gap: var(--space-4);
+  padding: var(--space-2);
   border-bottom: 1px solid var(--border-color);
   font-size: 0.9rem;
 }
@@ -843,11 +843,11 @@ export default {
 }
 
 .config-content {
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .config-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
 }
 
 .config-section:last-child {
@@ -855,7 +855,7 @@ export default {
 }
 
 .config-section h4 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--space-4) 0;
   color: var(--text-primary);
   font-size: var(--text-md);
 }
@@ -863,20 +863,20 @@ export default {
 .config-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
+  gap: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 .config-item label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   color: var(--text-primary);
   font-size: 0.9rem;
 }
 
 .config-item input[type="number"] {
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem var(--space-3);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xs);
   width: 80px;
@@ -890,7 +890,7 @@ export default {
   .monitor-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 
   .header-actions {
@@ -905,12 +905,12 @@ export default {
   .status-item {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.25rem;
+    gap: var(--space-1);
   }
 
   .log-entry {
     flex-direction: column;
-    gap: 0.25rem;
+    gap: var(--space-1);
   }
 
   .log-time {

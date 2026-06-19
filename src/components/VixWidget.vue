@@ -214,7 +214,7 @@ export default {
   border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 @keyframes spin {
@@ -234,8 +234,8 @@ export default {
 }
 
 .retry-btn {
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-4);
   background: var(--error-color);
   color: white;
   border: none;

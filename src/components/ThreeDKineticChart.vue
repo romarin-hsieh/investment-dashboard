@@ -357,12 +357,12 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 Column Layout */
   grid-template-rows: repeat(2, 1fr);    /* 2 Row Layout */
-  gap: 1rem;
+  gap: var(--space-4);
   width: 100%;
   height: 600px;
   background: #131722;
   border-radius: var(--radius-sm);
-  padding: 1rem;
+  padding: var(--space-4);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -382,7 +382,7 @@ onUnmounted(() => {
 }
 
 .box-header {
-    padding: 0.5rem 0.8rem;
+    padding: var(--space-2) 0.8rem;
     font-size: 0.85rem;
     font-weight: var(--weight-medium);
     opacity: 0.9;
@@ -406,14 +406,14 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     padding: 0.8rem;
-    gap: 1rem;
+    gap: var(--space-4);
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 0.5rem;
+    padding-bottom: var(--space-2);
     border-bottom: 1px solid rgba(128, 128, 128, 0.2); 
 }
 

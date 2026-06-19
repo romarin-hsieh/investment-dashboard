@@ -156,7 +156,7 @@ export default {
 
 .stock-detail-skeleton {
   background: var(--bg-primary);
-  padding: 1rem;
+  padding: var(--space-4);
   min-height: 100vh;
   overflow-x: hidden;
   max-width: 100%;
@@ -174,8 +174,8 @@ export default {
 .skeleton-breadcrumb {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  gap: 0.5rem;
+  margin-bottom: var(--space-4);
+  gap: var(--space-2);
 }
 
 .skeleton-breadcrumb-link {
@@ -186,7 +186,7 @@ export default {
 
 .skeleton-breadcrumb-separator {
   color: var(--text-muted);
-  margin: 0 0.25rem;
+  margin: 0 var(--space-1);
 }
 
 .skeleton-breadcrumb-current {
@@ -200,23 +200,23 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
 }
 
 .skeleton-header-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .skeleton-symbol-info {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-symbol {
@@ -227,7 +227,7 @@ export default {
 
 .skeleton-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-tag {
@@ -253,8 +253,8 @@ export default {
 .skeleton-widgets-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
   min-height: 450px;
 }
 
@@ -270,7 +270,7 @@ export default {
 
 .skeleton-widget-header {
   background: var(--bg-card);
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--border-color);
   flex-shrink: 0;
 }
@@ -285,7 +285,7 @@ export default {
 .skeleton-technical-content {
   @extend .skeleton-base;
   flex: 1;
-  margin: 1rem;
+  margin: var(--space-4);
   min-height: 380px;
   border-radius: var(--radius-sm);
 }
@@ -294,8 +294,8 @@ export default {
 .skeleton-insight-widgets {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
 }
 
 .skeleton-insight-widget {
@@ -311,7 +311,7 @@ export default {
 .skeleton-insight-content {
   @extend .skeleton-base;
   flex: 1;
-  margin: 1rem;
+  margin: var(--space-4);
   min-height: 540px;
   border-radius: var(--radius-sm);
 }
@@ -321,8 +321,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
   overflow: hidden;
   position: relative;
 }
@@ -331,15 +331,15 @@ export default {
 .skeleton-technical-indicators {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
   min-height: 300px;
 }
 
 .skeleton-indicator-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: var(--space-2);
+  padding: var(--space-4);
   background: var(--skeleton-bg);
   border-radius: var(--radius-sm);
 }
@@ -367,15 +367,15 @@ export default {
 .skeleton-performance-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
   min-height: 120px;
 }
 
 .skeleton-performance-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: var(--space-2);
+  padding: var(--space-4);
   background: var(--skeleton-bg);
   border-radius: var(--radius-sm);
 }
@@ -396,7 +396,7 @@ export default {
 .skeleton-content-layout {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .skeleton-news-row,
@@ -405,7 +405,7 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
+  padding: var(--space-4);
   overflow: hidden;
 }
 
@@ -413,15 +413,15 @@ export default {
 .skeleton-news-content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
   min-height: 400px;
 }
 
 .skeleton-news-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: var(--space-2);
+  padding: var(--space-4);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -451,14 +451,14 @@ export default {
 .skeleton-fundamental-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .skeleton-fundamental-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: var(--space-2);
+  padding: var(--space-4);
   background: var(--skeleton-bg);
   border-radius: var(--radius-sm);
 }
@@ -483,14 +483,14 @@ export default {
 .skeleton-profile-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .skeleton-profile-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem;
+  padding: var(--space-3);
   background: var(--skeleton-bg);
   border-radius: var(--radius-sm);
 }
@@ -539,39 +539,39 @@ export default {
 @media (max-width: 1200px) {
   .skeleton-widgets-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .skeleton-insight-widgets {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
 }
 
 @media (max-width: 768px) {
   .stock-detail-skeleton {
-    padding: 0.5rem;
+    padding: var(--space-2);
   }
   
   .skeleton-stock-header {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .skeleton-header-info {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .skeleton-widgets-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
     min-height: auto;
   }
   
   .skeleton-insight-widgets {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .skeleton-insight-widget {
@@ -607,16 +607,16 @@ export default {
 
 @media (max-width: 480px) {
   .skeleton-stock-header {
-    padding: 0.75rem;
-    margin: 0 -0.25rem 1rem -0.25rem;
+    padding: var(--space-3);
+    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
   }
   
   .skeleton-widget-container,
   .skeleton-news-row,
   .skeleton-fundamental-row,
   .skeleton-profile-row {
-    padding: 0.5rem;
-    margin: 0 -0.25rem 1rem -0.25rem;
+    padding: var(--space-2);
+    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
   }
   
   .skeleton-fundamental-grid {

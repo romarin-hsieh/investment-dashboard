@@ -973,13 +973,13 @@ export default {
 
 <style scoped>
 .stock-overview {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 /* Main Layout */
 .main-layout {
   display: flex;
-  gap: 2rem;
+  gap: var(--space-8);
   align-items: flex-start;
 }
 
@@ -998,7 +998,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .stock-header h2 {
@@ -1006,26 +1006,26 @@ export default {
 }
 
 .widget-wrapper {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
   background: var(--bg-card);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .widget-container-ticker {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
   background: var(--bg-card);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 .widget-container-ticker .widget-header {
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -1037,14 +1037,14 @@ export default {
 }
 
 .sector-title {
-  margin: 2rem 0 1rem 0;
-  padding-bottom: 0.5rem;
+  margin: var(--space-8) 0 var(--space-4) 0;
+  padding-bottom: var(--space-2);
   border-bottom: 2px solid var(--border-color);
   color: var(--primary-color);
   font-size: var(--text-lg);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .sector-title .stock-count {
@@ -1054,22 +1054,22 @@ export default {
 }
 
 .sector-group {
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-12);
     scroll-margin-top: 100px;
 }
 
 .stocks-in-group {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: var(--space-6);
 }
 
 .loading, .error, .no-data {
   text-align: center;
-  padding: 3rem;
+  padding: var(--space-12);
   background: var(--bg-card);
   border-radius: var(--radius-md);
-  margin-top: 1rem;
+  margin-top: var(--space-4);
   color: var(--text-secondary);
 }
 
@@ -1077,8 +1077,8 @@ export default {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    padding: var(--space-6);
+    margin-bottom: var(--space-8);
 }
 
 .spinner {
@@ -1088,7 +1088,7 @@ export default {
   border-top: 4px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 1rem;
+  margin: 0 auto var(--space-4);
 }
 
 @keyframes spin {
@@ -1115,7 +1115,7 @@ export default {
     position: static;
     max-height: 40vh;
     overflow-y: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-6);
   }
 }
 </style>

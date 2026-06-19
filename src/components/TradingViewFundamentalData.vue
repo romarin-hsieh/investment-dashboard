@@ -211,7 +211,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--space-4);
   height: 100%;
   background: var(--danger-bg);
   border: 1px solid var(--danger-border);
@@ -220,7 +220,7 @@ export default {
 }
 
 .retry-btn {
-  padding: 0.25rem 0.75rem;
+  padding: var(--space-1) var(--space-3);
   background: var(--danger-solid);
   color: white;
   border: none;

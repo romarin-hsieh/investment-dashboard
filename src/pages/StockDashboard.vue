@@ -27,7 +27,7 @@ export default {
 }
 
 .mb-3 {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
 }
 
 .text-muted {

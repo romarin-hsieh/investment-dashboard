@@ -203,8 +203,8 @@ export default {
 }
 
 .retry-btn {
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-4);
   background: var(--error-color);
   color: white;
   border: none;

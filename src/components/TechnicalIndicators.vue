@@ -534,7 +534,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .section-title {
@@ -552,7 +552,7 @@ export default {
 .grouped-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .indicator-group {
@@ -567,7 +567,7 @@ export default {
 .group-title {
     background: transparent;
     margin: 0;
-    padding: 0.75rem 1rem;
+    padding: var(--space-3) var(--space-4);
     font-size: 0.9rem;
     font-weight: var(--weight-semibold);
     color: var(--text-secondary);
@@ -585,7 +585,7 @@ export default {
 }
 
 .compact-table td {
-    padding: 0.6rem 1rem;
+    padding: 0.6rem var(--space-4);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -643,7 +643,7 @@ export default {
 /* Loading / Error */
 .loading-state, .error-state {
   text-align: center;
-  padding: 2rem;
+  padding: var(--space-8);
   background: var(--bg-card);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
@@ -656,7 +656,7 @@ export default {
   border-top: 3px solid var(--primary-color);
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: 0 auto 0.5rem;
+  margin: 0 auto var(--space-2);
 }
 
 @keyframes spin {
@@ -735,7 +735,7 @@ export default {
   }
   
   .compact-table td {
-      padding: 0.5rem 0.75rem;
+      padding: var(--space-2) var(--space-3);
   }
 }
 </style>
