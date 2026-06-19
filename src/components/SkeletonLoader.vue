@@ -100,7 +100,7 @@ export default {
 
 /* Market Index Widget 骨架 */
 .skeleton-widget-container {
-  background: white;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
@@ -153,7 +153,7 @@ export default {
 }
 
 .skeleton-sector-group {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -185,7 +185,7 @@ export default {
 }
 
 .skeleton-stock-card {
-  background: white;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;

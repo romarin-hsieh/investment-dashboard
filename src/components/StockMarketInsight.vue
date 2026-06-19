@@ -296,8 +296,8 @@ export default {
 
 <style scoped>
 .stock-market-insight-container {
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -311,13 +311,13 @@ export default {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .widget-header h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -336,13 +336,13 @@ export default {
 
 .section-header {
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .section-header h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #555;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -353,9 +353,9 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
-  border: 1px solid #e9ecef;
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  background: #fafafa;
+  background: var(--bg-secondary);
 }
 
 /* Loading 狀態 */
@@ -365,7 +365,7 @@ export default {
   justify-content: center;
   gap: 0.5rem;
   height: 100%;
-  color: #6c757d;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 

@@ -902,7 +902,7 @@ export default {
 }
 
 .modal-content {
-    background: white;
+    background: var(--bg-card);
     width: 90%;
     max-width: 500px;
     border-radius: 8px;
@@ -915,14 +915,14 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .modal-header h5 {
     margin: 0;
     font-size: 1rem;
-    color: #495057;
+    color: var(--text-primary);
 }
 
 .close-btn {
@@ -937,7 +937,7 @@ export default {
 .modal-body {
     padding: 1rem 1.5rem;
     font-size: 0.9rem;
-    color: #212529;
+    color: var(--text-primary);
 }
 
 .modal-body h6 {

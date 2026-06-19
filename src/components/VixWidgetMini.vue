@@ -206,8 +206,8 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100%;
-  background: #f8f9fa;
-  color: #6c757d;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
 }
 
 .loading-spinner {

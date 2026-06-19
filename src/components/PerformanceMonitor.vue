@@ -228,8 +228,8 @@ export default {
   position: fixed;
   top: 80px;
   right: 20px;
-  background: white;
-  border: 1px solid #e0e0e0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -242,8 +242,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #f0f0f0;
-  background: #f8f9fa;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
   border-radius: 8px 8px 0 0;
 }
 
@@ -251,7 +251,7 @@ export default {
   margin: 0;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .toggle-btn {
@@ -260,7 +260,7 @@ export default {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  color: #666;
+  color: var(--text-secondary);
   padding: 0;
   width: 24px;
   height: 24px;
@@ -285,7 +285,7 @@ export default {
 }
 
 .metric-card {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   padding: 0.75rem;
   border-radius: 6px;
   text-align: center;
@@ -293,14 +293,14 @@ export default {
 
 .metric-label {
   font-size: 0.75rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 0.25rem;
 }
 
 .metric-value {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .widgets-list {
@@ -310,7 +310,7 @@ export default {
 .widgets-list h5 {
   font-size: 0.85rem;
   margin: 0 0 0.5rem 0;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .widget-item {
@@ -318,7 +318,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 4px;
   margin-bottom: 0.25rem;
   font-size: 0.8rem;
@@ -326,7 +326,7 @@ export default {
 
 .widget-name {
   flex: 1;
-  color: #333;
+  color: var(--text-primary);
   font-weight: 500;
 }
 
@@ -365,16 +365,16 @@ export default {
 .export-btn {
   flex: 1;
   padding: 0.5rem;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  background: white;
+  background: var(--bg-card);
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 500;
 }
 
 .clear-btn:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
 }
 
 .export-btn {

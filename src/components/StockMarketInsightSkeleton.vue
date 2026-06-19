@@ -110,7 +110,7 @@ export default {
 
 /* Widget 容器骨架 */
 .skeleton-widget-container {
-  background: white;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
@@ -168,8 +168,8 @@ export default {
 
 /* Configuration Info 骨架 */
 .skeleton-config-info {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   margin-top: 2rem;

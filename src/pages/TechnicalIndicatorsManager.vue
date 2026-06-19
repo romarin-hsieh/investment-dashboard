@@ -294,13 +294,13 @@ export default {
 }
 
 .manager-header h2 {
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .status-section, .control-section, .preferences-section, .test-results-section, .symbols-section {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -308,7 +308,7 @@ export default {
 
 .status-section h3, .control-section h3, .preferences-section h3, .test-results-section h3, .symbols-section h3 {
   margin: 0 0 1rem 0;
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .status-grid {
@@ -318,8 +318,8 @@ export default {
 }
 
 .status-card {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   border-left: 4px solid #dc3545;
@@ -338,7 +338,7 @@ export default {
 
 .status-header h4 {
   margin: 0;
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .status-badge {
@@ -361,7 +361,7 @@ export default {
 .status-details p {
   margin: 0.25rem 0;
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 .control-grid {
@@ -436,7 +436,7 @@ export default {
 
 .form-group input[type="number"] {
   padding: 0.5rem;
-  border: 1px solid #ced4da;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   width: 100px;
 }
@@ -448,8 +448,8 @@ export default {
 }
 
 .test-result-item {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   border-left: 4px solid #dc3545;
@@ -467,11 +467,11 @@ export default {
 }
 
 .symbol {
-  color: #495057;
+  color: var(--text-secondary);
 }
 
 .source {
-  color: #6c757d;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
@@ -489,7 +489,7 @@ export default {
   display: flex;
   gap: 1rem;
   font-size: 0.9rem;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 .symbols-grid {
@@ -499,8 +499,8 @@ export default {
 }
 
 .symbol-tag {
-  background: #e9ecef;
-  color: #495057;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   font-size: 0.8rem;
