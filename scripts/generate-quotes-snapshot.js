@@ -46,17 +46,7 @@ class QuotesSnapshotGenerator {
       return enabledSymbols
     } catch (error) {
       console.error('Failed to read stocks.json:', error)
-
-      // Fallback 到 universe.json
-      try {
-        console.warn('⚠️ Falling back to universe.json')
-        const universePath = path.join(this.projectRoot, 'config', 'universe.json')
-        const universeData = JSON.parse(fs.readFileSync(universePath, 'utf8'))
-        return universeData.symbols || []
-      } catch (fallbackError) {
-        console.error('Failed to read universe.json fallback:', fallbackError)
-        throw fallbackError
-      }
+      throw error
     }
   }
 

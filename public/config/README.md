@@ -4,13 +4,14 @@ This directory contains static JSON configuration files for the Investment Dashb
 
 ## Files Overview
 
-### `universe.json`
-- **Purpose**: Defines the fixed list of 10 trackable stock symbols
-- **Symbols**: ONDS, PL, RKLB, ASTS, RIVN, MDB, ORCL, TSM, AVAV, RDW
-- **Validation**: Symbol format rules and constraints
-- **Requirements**: 2.1, 2.2, 2.3, 2.4
+### `stocks.json`
+- **Purpose**: The single source of truth for the tracked stock universe
+- **Schema**: `stocks[]` of `{ symbol, exchange, sector, industry, enabled, priority }` plus a `metadata` summary
+- **Edited by**: `scripts/add-symbol.js` / the **Add Symbol** GitHub Action. The daily workflow
+  syncs the root `config/stocks.json` here, and the frontend reads this served copy
+- **Consumed by**: every ETL generator and the frontend symbol list
 
-### `macro_indicators.json`
+### `markets_indicators.json`
 - **Purpose**: Configuration for 10 macro economic indicators
 - **Features**: Scrape-only flags, data sources, update frequencies
 - **Indicators**: S&P 500, NASDAQ, VIX, Treasury yields, DXY, Gold, Oil, Bitcoin, Unemployment, Fed Funds Rate
@@ -21,12 +22,6 @@ This directory contains static JSON configuration files for the Investment Dashb
 - **Sources**: Reuters, Bloomberg, CNBC, MarketWatch, Yahoo Finance, Seeking Alpha
 - **Features**: Deduplication settings, content filtering, priority levels
 - **Requirements**: 6.4
-
-### `wish.json`
-- **Purpose**: External wish channel for non-Universe symbol requests
-- **Channel**: GitHub Issues integration
-- **Features**: URL templates, validation rules, UI settings
-- **Requirements**: 2.2, 2.5
 
 ### `version.json`
 - **Purpose**: Build metadata and version information

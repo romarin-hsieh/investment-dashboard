@@ -108,7 +108,6 @@ export const paths = {
   sectorIndustry: () => withDataBase('data/sector_industry.json'),
 
   // 配置文件路徑 (app repo, not the data store)
-  universe: () => withBase('config/universe.json'),
   stocks: () => withBase('config/stocks.json'),
 
   // 狀態和索引文件 (需要 cache busting)

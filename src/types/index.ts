@@ -350,31 +350,6 @@ export interface ContentFilteringSettings {
   required_keywords: string[]
 }
 
-export interface WishConfig {
-  description: string
-  version: string
-  last_updated: string
-  wish_channel: WishChannel
-  alternative_channels: WishChannel[]
-  validation: ValidationRules
-  ui_settings: WishUISettings
-}
-
-export interface WishChannel {
-  type: string
-  url_template: string
-  button_text: string
-  description: string
-  enabled?: boolean
-}
-
-export interface WishUISettings {
-  show_alternative_channels: boolean
-  confirmation_message: string
-  modal_title: string
-  modal_description: string
-}
-
 export interface VersionConfig {
   description: string
   version: string

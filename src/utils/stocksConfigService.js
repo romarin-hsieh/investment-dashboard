@@ -243,7 +243,7 @@ class StocksConfigService {
   }
 
   /**
-   * 獲取與舊版 symbolsConfig 兼容的格式
+   * 別名：回傳啟用的股票代號清單 (與舊版 getSymbolsList 介面相容)
    */
   async getSymbolsList() {
     return await this.getEnabledSymbols()

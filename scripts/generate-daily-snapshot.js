@@ -56,23 +56,14 @@ class DailySnapshotGenerator {
       console.log(`📊 Loaded ${enabledSymbols.length} enabled symbols from stocks.json`)
       return enabledSymbols
     } catch (error) {
-      console.warn('Failed to read stocks.json, falling back to universe.json:', error)
-
-      // Fallback 到 universe.json
-      try {
-        const universePath = path.join(this.projectRoot, 'config', 'universe.json')
-        const universeData = JSON.parse(fs.readFileSync(universePath, 'utf8'))
-        return universeData.symbols || []
-      } catch (fallbackError) {
-        console.warn('Failed to read universe.json, using hardcoded fallback:', fallbackError)
-        return [
-          'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW',
-          'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
-          'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
-          'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
-          'IONQ', 'PLTR', 'HIMS', 'TSLA'
-        ]
-      }
+      console.warn('Failed to read stocks.json, using hardcoded fallback:', error)
+      return [
+        'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW',
+        'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
+        'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG',
+        'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
+        'IONQ', 'PLTR', 'HIMS', 'TSLA'
+      ]
     }
   }
 

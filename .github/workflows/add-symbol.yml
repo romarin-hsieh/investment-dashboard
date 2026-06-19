@@ -1,0 +1,81 @@
+name: Add Symbol
+
+# Self-service "add a tracked symbol" — run from the Actions tab (no local setup).
+# Validates each ticker against Yahoo Finance, auto-fills exchange/sector/industry,
+# appends it to config/stocks.json, commits, and (optionally) kicks off the daily
+# pipeline so data is generated right away instead of waiting for the nightly run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      symbols:
+        description: 'Ticker(s) to add — comma or space separated (e.g. "ABNB, SHOP")'
+        required: true
+        type: string
+      run_etl_now:
+        description: 'Run the daily data pipeline immediately after adding'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write   # commit the config change
+  actions: write    # dispatch the daily-data-update workflow
+
+jobs:
+  add-symbol:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Add symbol(s) to config
+        run: node scripts/add-symbol.js "${{ inputs.symbols }}"
+
+      - name: Commit config changes
+        id: commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git add config/stocks.json public/config/stocks.json
+
+          if git diff --staged --quiet; then
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            echo "ℹ️ No config changes (symbols already present or invalid) — nothing to commit."
+            exit 0
+          fi
+
+          git commit -m "feat(config): add symbol(s) ${{ inputs.symbols }}"
+          git pull --rebase origin main || true
+          git push
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+          echo "✅ Config updated and pushed."
+
+      - name: Trigger daily data pipeline
+        if: ${{ inputs.run_etl_now && steps.commit.outputs.committed == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 Dispatching daily-data-update to generate data for the new symbol(s)..."
+          gh workflow run daily-data-update.yml --ref main
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## ➕ Add Symbol" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Requested:** ${{ inputs.symbols }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Committed:** ${{ steps.commit.outputs.committed }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Pipeline triggered:** ${{ inputs.run_etl_now && steps.commit.outputs.committed == 'true' }}" >> "$GITHUB_STEP_SUMMARY"

@@ -1256,9 +1256,8 @@ class YahooFinanceAPI {
         const baseUrl = getDataBaseUrl();
         // Use standard path for static OHLCV
         const safeSymbol = symbol.replace(/:/g, '_').toUpperCase(); // Matches generated filenames (mostly)
-        // Note: generate-real-ohlcv-yfinance.py uses sym.replace(":", "_") but casing depends on input. 
-        // universe.json usually has UPPERCASE. 
-        // Let's try UPPERCASE first as per usual convention.
+        // generate-real-ohlcv-yfinance.py uses sym.replace(":", "_"); generated files are UPPERCASE,
+        // so try UPPERCASE first as per convention.
 
         const staticUrl = `${baseUrl}data/ohlcv/${safeSymbol}.json?t=${Math.floor(Date.now() / 60000)}`; // Simple cache bust
         console.log(`📊 Attempting static OHLCV fetch: ${staticUrl}`);
