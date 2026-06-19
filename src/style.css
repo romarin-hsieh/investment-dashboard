@@ -14,7 +14,7 @@
   /* Soft Charcoal */
   --text-secondary: #595959;
   /* Muted Grey */
-  --text-muted: #8C8C8C;
+  --text-muted: #6E6E6E;
 
   --border-color: #E0DDD9;
 
@@ -22,6 +22,12 @@
   --primary-color: #6B7F82;
   /* Florentine Blue/Grey */
   --primary-hover: #5A6B6E;
+  /* Darkened brand FILL for button/pill surfaces so white text passes WCAG AA
+     (the mid-tone --primary-color #6B7F82 only reaches 4.21 with white). */
+  --primary-strong: #5E7174;
+  /* Brand-coloured TEXT (links, outline). Theme-aware so it passes AA on the
+     surface — separate from the fill token per §2.4. */
+  --primary-text: #5E7174;
   --secondary-color: #A09080;
   /* Warm Taupe */
 
@@ -33,6 +39,12 @@
   --warning-color: #C29B40;
   /* Antique Gold */
 
+  /* Strong (AA-as-text) variants. Raw --*-color are tuned for 3:1 fills/dots;
+     these reach 4.5:1 as small text on the card/page surface (§2.1). */
+  --success-strong: #137059;
+  --danger-strong: #BC3A42;
+  --warning-strong: #6E5111;
+
   /* Tags (for Pills) */
   --tag-bg-green: #E8F0E9;
   --tag-text-green: #2D5232;
@@ -41,7 +53,7 @@
   --tag-bg-blue: #E6EEF0;
   --tag-text-blue: #4A6366;
   --tag-bg-yellow: #F7F3E1;
-  --tag-text-yellow: #8F7225;
+  --tag-text-yellow: #6F5618;
 
   /* Spacing & Radius */
   --radius-sm: 8px;
@@ -73,7 +85,7 @@
   /* Bone White */
   --text-secondary: #B0AAA5;
   /* Warm Grey */
-  --text-muted: #7A7570;
+  --text-muted: #A09990;
 
   --border-color: #3D3D3D;
 
@@ -81,10 +93,17 @@
   /* Lighter Florentine Blue */
   --primary-hover: #9DAEB0;
   --secondary-color: #B5A89A;
+  /* Brand text on the dark surface (the lighter brand passes AA as text here). */
+  --primary-text: #8A9A9C;
 
   --success-color: #22ab94;
   --error-color: #f7525f;
   --warning-color: #DCC070;
+
+  /* Strong status text variants — lighter ramps for the dark surface. */
+  --success-strong: #2DBD9E;
+  --danger-strong: #F08A8A;
+  --warning-strong: #DCC070;
 
   /* Dark Tags */
   --tag-bg-green: #2A382C;
@@ -176,7 +195,7 @@ nav.nav {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background-color: var(--primary-strong);
   color: #fff;
 }
 
@@ -192,13 +211,13 @@ nav.nav {
 
 .btn-outline-primary {
   background: transparent;
-  color: var(--primary-color);
+  color: var(--primary-text);
   border: 1px solid var(--primary-color);
 }
 
 /* Unified Renaissance Button */
 .btn-renaissance {
-  background-color: var(--primary-color);
+  background-color: var(--primary-strong);
   color: #fff;
   border: none;
   border-radius: var(--radius-sm);
@@ -218,7 +237,7 @@ nav.nav {
 }
 
 .dark-mode .btn-renaissance {
-  background-color: var(--primary-color);
+  background-color: var(--primary-strong);
   /* Maintain readability in dark mode */
 }
 
@@ -231,15 +250,15 @@ nav.nav {
 }
 
 .text-success {
-  color: var(--success-color) !important;
+  color: var(--success-strong) !important;
 }
 
 .text-danger {
-  color: var(--error-color) !important;
+  color: var(--danger-strong) !important;
 }
 
 .text-warning {
-  color: var(--warning-color) !important;
+  color: var(--warning-strong) !important;
 }
 
 /* Grid Layouts */
