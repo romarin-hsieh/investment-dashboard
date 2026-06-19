@@ -39,6 +39,9 @@ jobs:
       run: |
         pip install yfinance pandas numpy requests pytz
 
+    - name: Seed public/data from the data repo
+      run: bash scripts/seed-data-from-repo.sh
+
     - name: Create data directories
       run: |
         mkdir -p public/data/ohlcv
@@ -127,25 +130,24 @@ jobs:
         echo "🔄 Updating status file..."
         node scripts/update-status.js
 
-    # ✅ 更安全的 commit（包含新檔）
-    - name: Commit and push changes
+    # Data now lives in the separate data repo (ADR-0008) and is pushed by the
+    # mirror step below. Only public/config stays in this repo.
+    - name: Commit config changes to dashboard repo
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        
-        git add -A public/data public/config
-        
+
+        git add -A public/config
+
         if git diff --staged --quiet; then
-          echo "ℹ️ No changes to commit"
+          echo "ℹ️ No config changes to commit"
           exit 0
         fi
-        
-        git commit -m "🤖 Daily data update $(date -u +%Y-%m-%d)"
-        
-        # 嘗試拉取最新變更以避免衝突
+
+        git commit -m "🤖 Config sync $(date -u +%Y-%m-%d)"
         git pull --rebase origin main || true
         git push
-        echo "✅ Data updated and pushed"
+        echo "✅ Config updated and pushed"
 
     - name: Mirror data to the data repo
       env:

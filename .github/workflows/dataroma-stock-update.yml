@@ -26,6 +26,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4 yfinance
 
+      - name: Seed public/data from the data repo
+        run: bash scripts/seed-data-from-repo.sh
+
       - name: Crawl Dataroma Managers (Sector Rotation)
         run: |
           echo "Processing Sector Rotation Data..."
@@ -41,21 +44,6 @@ jobs:
             echo "Processing $ticker..."
             python scripts/crawl_dataroma_stock.py --ticker "$ticker"
           done
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add public/data/dataroma/*.json
-          git add public/data/smart_money_sector_rotation.json
-          git add public/data/stock_sector_map.json
-          # Check for changes
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "data: Update Dataroma stock & sector rotation data [skip ci]"
-            git push
-          fi
 
       - name: Mirror data to the data repo
         env:
