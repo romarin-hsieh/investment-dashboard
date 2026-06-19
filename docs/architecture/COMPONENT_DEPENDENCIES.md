@@ -10,12 +10,11 @@
 
 ## 📊 OHLCV 數據服務
 
-專案中存在兩個 OHLCV 數據服務，功能相似但使用場景不同：
+專案使用單一 OHLCV 數據服務（舊備用服務 `precomputedOhlcvApi.js` 為死碼，已於 2026-06 刪除）：
 
 | 服務 | 路徑 | 檔案格式 | 使用情境 |
 |------|------|----------|----------|
 | `ohlcvApi` | `@/services/ohlcvApi.js` | `{symbol}_1d_1825d.json` | **主要服務**，所有用到 OHLCV 的組件皆使用 |
-| `precomputedOhlcvApi` | `@/api/precomputedOhlcvApi.js` | `{symbol}_1d_{days}d.json` | 備用服務，**目前 0 個 import（死碼，可刪除候選）** |
 
 ### ohlcvApi 數據流
 
@@ -45,7 +44,7 @@ StockDetail.vue
 
 ### 已移除（2026-02）
 
-`MFIVolumeProfileWidget.vue` 已於 2026-02 移除（功能由 `MFIVolumeProfilePanel.vue` 取代，見下方清理記錄）。它是 `precomputedOhlcvApi` 的唯一消費者，因此該備用服務目前已 **0 個 import**（死碼，可刪除候選）。`SmartMoneyVolumeProfile.vue` 也使用主要的 `ohlcvApi`。
+`MFIVolumeProfileWidget.vue` 已於 2026-02 移除（功能由 `MFIVolumeProfilePanel.vue` 取代，見下方清理記錄）。它是備用服務 `precomputedOhlcvApi.js` 的唯一消費者；該服務隨後成為死碼，已於 2026-06 刪除。`SmartMoneyVolumeProfile.vue` 也使用主要的 `ohlcvApi`。
 
 ---
 
@@ -118,10 +117,9 @@ StockDetail.vue
 ### 2026-06 更新
 
 - 資料來源遷移至獨立倉庫（[ADR-0008](adr/0008-separate-data-repository.md)）；前端改用 `withDataBase()` 解析路徑。
-- 確認 `MFIVolumeProfileWidget.vue` 已移除；其唯一消費者 `precomputedOhlcvApi` 現已 0 個 import。
+- 移除死碼備用服務 `precomputedOhlcvApi.js`（隨 2026-02 的 `MFIVolumeProfileWidget.vue` 移除後已 0 個 import）。
 - 設計系統 token 化（[ADR-0010](adr/0010-design-system-css-tokens.md)）與雙語 i18n（[ADR-0011](adr/0011-bilingual-i18n-architecture.md)）已套用至全部組件，但不影響資料依賴關係，故不列於本表。
 
 ### 待處理項目
 
-- [ ] 刪除死碼 `precomputedOhlcvApi.js`（已 0 import），或與 `ohlcvApi` 合併為單一服務
 - [ ] 統一檔案命名格式 (目前有舊式 `{SYMBOL}.json` 與 `pl_1d_1825d.json` 兩種；歷史檔前端不應讀取，見 [DATA_DICTIONARY.md](../specs/DATA_DICTIONARY.md))
