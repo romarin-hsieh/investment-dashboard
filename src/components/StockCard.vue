@@ -326,7 +326,7 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 1.5rem;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   position: relative;
   width: 100%;
   scroll-margin-top: 80px;
@@ -375,7 +375,7 @@ export default {
   justify-content: center;
   color: var(--text-muted); /* Subtle color */
   opacity: 0.6;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
   padding: 4px;
   border-radius: var(--radius-xs);
 }

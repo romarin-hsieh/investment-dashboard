@@ -625,25 +625,25 @@ export default {
 }
 
 /* 動畫延遲效果 */
-.skeleton-tag:nth-child(1) { animation-delay: 0.1s; }
-.skeleton-tag:nth-child(2) { animation-delay: 0.2s; }
+.skeleton-tag:nth-child(1) { animation-delay: var(--transition-fast); }
+.skeleton-tag:nth-child(2) { animation-delay: var(--transition-base); }
 
-.skeleton-indicator-item:nth-child(odd) { animation-delay: 0.1s; }
-.skeleton-indicator-item:nth-child(even) { animation-delay: 0.2s; }
+.skeleton-indicator-item:nth-child(odd) { animation-delay: var(--transition-fast); }
+.skeleton-indicator-item:nth-child(even) { animation-delay: var(--transition-base); }
 
-.skeleton-news-item:nth-child(1) { animation-delay: 0.1s; }
-.skeleton-news-item:nth-child(2) { animation-delay: 0.2s; }
-.skeleton-news-item:nth-child(3) { animation-delay: 0.3s; }
+.skeleton-news-item:nth-child(1) { animation-delay: var(--transition-fast); }
+.skeleton-news-item:nth-child(2) { animation-delay: var(--transition-base); }
+.skeleton-news-item:nth-child(3) { animation-delay: var(--transition-slow); }
 
-.skeleton-fundamental-item:nth-child(odd) { animation-delay: 0.1s; }
-.skeleton-fundamental-item:nth-child(even) { animation-delay: 0.2s; }
+.skeleton-fundamental-item:nth-child(odd) { animation-delay: var(--transition-fast); }
+.skeleton-fundamental-item:nth-child(even) { animation-delay: var(--transition-base); }
 
-.skeleton-profile-item:nth-child(odd) { animation-delay: 0.1s; }
-.skeleton-profile-item:nth-child(even) { animation-delay: 0.2s; }
+.skeleton-profile-item:nth-child(odd) { animation-delay: var(--transition-fast); }
+.skeleton-profile-item:nth-child(even) { animation-delay: var(--transition-base); }
 
 /* 淡入效果 */
 .stock-detail-skeleton {
-  animation: fadeIn 0.3s ease-in;
+  animation: fadeIn var(--transition-slow) ease-in;
 }
 
 @keyframes fadeIn {

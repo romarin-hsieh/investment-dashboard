@@ -157,7 +157,7 @@ export default {
   border: none;
   border-left: 3px solid transparent;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
   text-align: left;
   font-size: 0.85rem;
   color: var(--text-secondary);

@@ -250,7 +250,7 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 1rem;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .markets-tile:hover {

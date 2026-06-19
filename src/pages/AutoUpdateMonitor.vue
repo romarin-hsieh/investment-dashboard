@@ -693,7 +693,7 @@ export default {
   border-radius: var(--radius-xs);
   cursor: pointer;
   font-size: 0.9rem;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .btn:disabled {

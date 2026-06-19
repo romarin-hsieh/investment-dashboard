@@ -466,7 +466,7 @@ export default {
   font-size: 1.1rem;
   padding: 4px 8px;
   color: var(--text-secondary);
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .settings-floating-btn:hover {

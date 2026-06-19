@@ -108,10 +108,11 @@
   --weight-extrabold: 800;
 
   /* === Motion ===
-   * Standard transition durations (audit found 0.1s–0.3s used ad hoc). */
-  --transition-fast: 0.12s ease-in-out;
-  --transition-base: 0.2s ease-in-out;
-  --transition-slow: 0.3s ease-in-out;
+   * Standard transition DURATIONS. Compose with a timing function, e.g.
+   * `transition: color var(--transition-base) ease`. (Audit found 0.1–0.3s ad hoc.) */
+  --transition-fast: 0.1s;
+  --transition-base: 0.2s;
+  --transition-slow: 0.3s;
 
   /* === Breakpoints (canonical convention) ===
    * CSS custom properties cannot be used inside @media, so these are a

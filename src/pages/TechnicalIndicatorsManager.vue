@@ -373,7 +373,7 @@ export default {
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: var(--weight-semibold);
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 }
 
 .control-btn.primary {

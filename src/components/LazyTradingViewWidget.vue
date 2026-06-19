@@ -313,7 +313,7 @@ export default {
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: var(--weight-medium);
-  transition: background-color 0.2s;
+  transition: background-color var(--transition-base);
 }
 
 .retry-btn:hover {

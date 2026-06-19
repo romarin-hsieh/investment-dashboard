@@ -71,7 +71,7 @@ export default {
   border-radius: var(--radius-sm);
   padding: 1.5rem;
   margin-bottom: 1rem;
-  animation: fadeIn 0.3s ease-in;
+  animation: fadeIn var(--transition-slow) ease-in;
 }
 
 /* Header 骨架 */
@@ -297,15 +297,15 @@ export default {
 
 /* 動畫延遲效果 */
 .skeleton-symbol {
-  animation-delay: 0.1s;
+  animation-delay: var(--transition-fast);
 }
 
 .skeleton-price {
-  animation-delay: 0.2s;
+  animation-delay: var(--transition-base);
 }
 
 .skeleton-change {
-  animation-delay: 0.3s;
+  animation-delay: var(--transition-slow);
 }
 
 .skeleton-company-name {

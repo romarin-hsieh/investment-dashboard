@@ -326,15 +326,15 @@ export default {
 
 /* 特殊動畫效果 */
 .skeleton-ticker-item {
-  animation-delay: 0.1s;
+  animation-delay: var(--transition-fast);
 }
 
 .skeleton-ticker-item:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: var(--transition-base);
 }
 
 .skeleton-ticker-item:nth-child(3) {
-  animation-delay: 0.3s;
+  animation-delay: var(--transition-slow);
 }
 
 .skeleton-ticker-item:nth-child(4) {
@@ -351,7 +351,7 @@ export default {
 
 /* 淡入效果 */
 .skeleton-loader {
-  animation: fadeIn 0.3s ease-in;
+  animation: fadeIn var(--transition-slow) ease-in;
 }
 
 @keyframes fadeIn {

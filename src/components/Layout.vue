@@ -96,7 +96,7 @@ export default {
   background: var(--bg-header);
   border-bottom: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow) ease;
 }
 
 .nav-container {
@@ -134,7 +134,7 @@ export default {
   font-weight: var(--weight-medium);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
-  transition: all 0.2s;
+  transition: all var(--transition-base);
   font-size: 0.95rem;
 }
 
@@ -159,7 +159,7 @@ export default {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition-base);
     font-size: 1.2rem;
 }
 
@@ -180,7 +180,7 @@ export default {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition-base);
     font-size: 0.85rem;
     font-weight: var(--weight-semibold);
 }

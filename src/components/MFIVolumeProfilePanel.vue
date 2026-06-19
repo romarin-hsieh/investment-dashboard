@@ -741,7 +741,7 @@ export default {
 }
 
 .bar-fill {
-  transition: all 0.2s ease;
+  transition: all var(--transition-base) ease;
 }
 
 /* POC and Value Area Markers */
@@ -872,7 +872,7 @@ export default {
     margin-left: 8px;
     display: flex;
     align-items: center;
-    transition: color 0.2s;
+    transition: color var(--transition-base);
 }
 
 .inline-info-btn:hover {
