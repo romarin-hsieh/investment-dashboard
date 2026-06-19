@@ -250,7 +250,7 @@ export default {
 .monitor-header h4 {
   margin: 0;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
 }
 
@@ -292,14 +292,14 @@ export default {
 }
 
 .metric-label {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-secondary);
   margin-bottom: 0.25rem;
 }
 
 .metric-value {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
 }
 
@@ -327,12 +327,12 @@ export default {
 .widget-name {
   flex: 1;
   color: var(--text-primary);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .widget-time {
   margin-right: 0.5rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .time-good {
@@ -353,7 +353,7 @@ export default {
   padding: 0.125rem 0.375rem;
   border-radius: var(--radius-md);
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .actions {
@@ -370,7 +370,7 @@ export default {
   background: var(--bg-card);
   cursor: pointer;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .clear-btn:hover {

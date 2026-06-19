@@ -139,7 +139,7 @@ export default {
 .shortcuts-close {
   background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
   line-height: 1;
   color: var(--text-muted);
   cursor: pointer;

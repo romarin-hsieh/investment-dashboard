@@ -383,7 +383,7 @@ onUnmounted(() => {
 .box-header {
     padding: 0.75rem 1rem;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     opacity: 0.9;
     border-bottom: 1px solid;
     border-color: rgba(128, 128, 128, 0.2);
@@ -418,7 +418,7 @@ onUnmounted(() => {
     border-color: rgba(128, 128, 128, 0.2); 
 }
 
-.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: 600; }
+.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: var(--weight-semibold); }
 
 .metrics-table {
     display: flex;
@@ -435,9 +435,9 @@ onUnmounted(() => {
 }
 
 .table-row.header {
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     opacity: 0.6;
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding-bottom: 4px;
 }
 
@@ -459,7 +459,7 @@ onUnmounted(() => {
     margin-bottom: 0.8rem; /* Add spacing below */
     font-size: 0.85rem;
     line-height: 1.4;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     color: var(--text-color); /* Improve contrast */
     background: rgba(41, 98, 255, 0.08); /* Highlight bg */
     padding: 0.75rem;
@@ -469,7 +469,7 @@ onUnmounted(() => {
 .signal-badge {
     padding: 2px 8px;
     border-radius: var(--radius-xs);
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     text-transform: uppercase;
     font-weight: bold;
     color: #fff;
@@ -499,7 +499,7 @@ onUnmounted(() => {
     border: 1px solid var(--border-color, #2A2E39);
     padding: 0.8rem; border-radius: var(--radius-xs);
     z-index: 10000; /* Super high Z-index */
-    width: 180px; font-size: 0.75rem;
+    width: 180px; font-size: var(--text-xs);
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 

@@ -246,7 +246,7 @@ export default {
 }
 
 .manager-header h2 {
-    font-size: 2rem;
+    font-size: var(--text-2xl);
     color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
@@ -290,7 +290,7 @@ export default {
 
 .card-content h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: var(--text-md);
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -298,7 +298,7 @@ export default {
 
 .status-val {
     font-size: 1.8rem;
-    font-weight: 800;
+    font-weight: var(--weight-extrabold);
     margin: 0.2rem 0;
     color: var(--text-primary);
 }
@@ -356,7 +356,7 @@ export default {
     background: var(--primary-color);
     color: white;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     transition: background 0.2s;
 }
 

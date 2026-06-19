@@ -268,7 +268,7 @@ export default {
 
 .news-title {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
   line-height: 1.3;
@@ -276,10 +276,10 @@ export default {
 }
 
 .news-date {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-secondary);
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .news-content {
@@ -306,9 +306,9 @@ export default {
 }
 
 .news-publisher {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--blue-500);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .news-type {
@@ -318,7 +318,7 @@ export default {
   padding: 0.2rem 0.4rem;
   border-radius: 3px;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .news-thumbnail {
@@ -346,7 +346,7 @@ export default {
 .read-more {
   font-size: 0.8rem;
   color: var(--blue-500);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   transition: color 0.2s;
 }
 

@@ -221,7 +221,7 @@ export default {
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .stale-fresh {
@@ -270,14 +270,14 @@ export default {
 
 .markets-name {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
 
 .markets-value {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
   margin-bottom: 0.5rem;
   min-height: 2rem;
@@ -304,7 +304,7 @@ export default {
   padding: 0.125rem 0.375rem;
   border-radius: 3px;
   font-size: 0.7rem;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   text-transform: uppercase;
 }
 
@@ -329,7 +329,7 @@ export default {
 }
 
 .markets-time {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-muted);
 }
 

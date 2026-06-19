@@ -308,7 +308,7 @@ export default {
 
 .section-header h3 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
   color: var(--text-primary);
 }
 
@@ -340,9 +340,9 @@ export default {
 
 .subsection-header h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--text-md);
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .subsection-content {
@@ -371,11 +371,11 @@ export default {
   border: none;
   color: var(--text-secondary);
   padding: 0.25rem 0.6rem;
-  font-size: 0.75rem; /* Match exchange-tag size */
+  font-size: var(--text-xs); /* Match exchange-tag size */
   cursor: pointer;
   border-radius: var(--radius-xs);
   transition: all 0.2s;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .filter-btn:hover {
@@ -386,7 +386,7 @@ export default {
 .filter-btn.active {
   background-color: var(--tag-bg-blue);
   color: var(--tag-text-blue);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .table-responsive {
@@ -401,7 +401,7 @@ export default {
 
 .data-table th {
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   padding: 12px 15px;
   border-bottom: 1px solid var(--border-color);
   white-space: nowrap;
@@ -418,7 +418,7 @@ export default {
 }
 
 .font-medium {
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   color: var(--text-primary);
 }
 
@@ -431,7 +431,7 @@ export default {
 .text-muted { color: var(--text-muted); }
 
 .action-text {
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .no-data-state {
@@ -509,7 +509,7 @@ export default {
   text-align: left;
   padding: 8px 12px;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   border-bottom: 1px solid var(--border-color);
   opacity: 0.8;
 }

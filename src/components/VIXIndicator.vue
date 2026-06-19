@@ -127,7 +127,7 @@ export default {
 
 .widget-header h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
 }
@@ -210,8 +210,8 @@ export default {
 }
 
 .vix-value {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
   line-height: 1;
 }
@@ -244,7 +244,7 @@ export default {
 
 .status-text {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .vix-description {
@@ -309,7 +309,7 @@ export default {
 }
 
 .level-label {
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   color: var(--grey-700);
 }
 

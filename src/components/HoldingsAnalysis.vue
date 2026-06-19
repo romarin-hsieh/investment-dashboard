@@ -654,7 +654,7 @@ h3 {
     align-items: center;
 }
 .stat .label { font-size: 0.8rem; color: var(--text-muted); }
-.stat .value { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
+.stat .value { font-size: 1.1rem; font-weight: var(--weight-semibold); color: var(--text-primary); }
 
 /* Smart Money Strength */
 .smart-money-content {
@@ -720,7 +720,7 @@ h3 {
 }
 
 .label-buy { color: var(--success-color); }
-.label-sentiment { color: var(--text-secondary); font-weight: 700; }
+.label-sentiment { color: var(--text-secondary); font-weight: var(--weight-bold); }
 
 /* Transactions List */
 .transaction-header {
@@ -728,8 +728,8 @@ h3 {
     align-items: center;
     padding: 0.75rem 0; /* Match TH padding slightly better */
     border-bottom: 1px solid var(--border-color);
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
     color: var(--text-muted);
     margin-bottom: 0;
 }
@@ -753,8 +753,8 @@ h3 {
     border-bottom: none;
 }
 
-.transaction-list li.buy .type { color: var(--success-color); font-weight: 500; }
-.transaction-list li.sell .type { color: var(--error-color); font-weight: 500; }
+.transaction-list li.buy .type { color: var(--success-color); font-weight: var(--weight-medium); }
+.transaction-list li.sell .type { color: var(--error-color); font-weight: var(--weight-medium); }
 .transaction-list li.neutral .type { color: var(--text-muted); }
 
 .date { 
@@ -771,7 +771,7 @@ h3 {
     overflow: hidden; 
     text-overflow: ellipsis; 
     padding-right: 15px;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     color: var(--text-primary);
 }
 
@@ -798,7 +798,7 @@ h3 {
     width: 80px; 
     text-align: right; 
     font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     color: var(--text-primary);
     flex-shrink: 0;
 }
@@ -807,7 +807,7 @@ h3 {
     width: 90px;
     text-align: right; 
     font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     color: var(--text-primary);
     flex-shrink: 0;
 }
@@ -828,7 +828,7 @@ th {
     padding: 0.75rem;
     background: transparent; 
     color: var(--text-muted);
-    font-weight: 500;
+    font-weight: var(--weight-medium);
     border-bottom: 1px solid var(--border-color); 
 }
 
@@ -840,7 +840,7 @@ td {
 
 td:nth-child(2) {
     color: var(--text-primary);
-    font-weight: 500;
+    font-weight: var(--weight-medium);
 }
 
 /* Align right for % Out, Shares, Value (Columns 3, 4, 5) */

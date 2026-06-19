@@ -515,7 +515,7 @@ export default {
 }
 
 .error-icon {
-  font-size: 2rem;
+  font-size: var(--text-2xl);
   margin-bottom: 1rem;
 }
 
@@ -563,7 +563,7 @@ export default {
 }
 
 .no-data-icon {
-  font-size: 2rem;
+  font-size: var(--text-2xl);
   margin-bottom: 1rem;
 }
 
@@ -595,7 +595,7 @@ export default {
 .title-section h4 {
   margin: 0;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
 }
 
@@ -618,12 +618,12 @@ export default {
 }
 
 .status-label {
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
 }
 
 .status-value {
-  font-weight: 700;
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
 }
 
@@ -647,7 +647,7 @@ export default {
 .sentiment-neutral { color: #f59e0b; }
 
 .metric-detail {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--grey-550);
 }
 
@@ -809,7 +809,7 @@ export default {
 
 .signals-header h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--text-md);
   color: var(--text-secondary);
 }
 
@@ -817,7 +817,7 @@ export default {
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .signal-badge.signal-buy {
@@ -920,14 +920,14 @@ export default {
 
 .modal-header h5 {
     margin: 0;
-    font-size: 1rem;
+    font-size: var(--text-md);
     color: var(--text-primary);
 }
 
 .close-btn {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: var(--text-xl);
     line-height: 1;
     cursor: pointer;
     color: var(--grey-550);
@@ -942,7 +942,7 @@ export default {
 .modal-body h6 {
     margin: 1rem 0 0.5rem 0;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     color: var(--blue-500);
 }
 

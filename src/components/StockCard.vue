@@ -352,8 +352,8 @@ export default {
 }
 
 .symbol-info .symbol {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
   margin: 0 0 0.5rem 0;
 }
@@ -394,22 +394,22 @@ export default {
 }
 
 .exchange-tag {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--tag-text-blue);
   background-color: var(--tag-bg-blue);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   border: 1px solid transparent;
 }
 
 .industry-tag {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-secondary);
   background-color: var(--bg-secondary);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   border: 1px solid transparent;
 }
 
@@ -423,7 +423,7 @@ export default {
 /* Orphaned .detail-btn styles removed */
 
 .btn-icon {
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -469,7 +469,7 @@ export default {
 
 .widget-header h4 {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
 }
@@ -499,17 +499,17 @@ export default {
 }
 
 .analysis-header h5 {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
     color: var(--text-primary);
     margin: 0;
 }
 
 .trend-badge {
-    font-size: 0.75rem;
+    font-size: var(--text-xs);
     padding: 2px 8px;
     border-radius: var(--radius-xs);
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -555,8 +555,8 @@ export default {
   padding: 0.6rem 1rem;
   margin-bottom: 1rem;
   border-radius: var(--radius-sm);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   /* Default: less-severe ('stale') uses the warning palette */
   background-color: var(--warning-bg);
   color: var(--warning-fg);

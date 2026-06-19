@@ -559,8 +559,8 @@ export default {
 }
 
 .widget-header h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.02em;
@@ -601,7 +601,7 @@ export default {
 }
 .gauge-value {
   font-size: 32px;
-  font-weight: 800;
+  font-weight: var(--weight-extrabold);
   font-family: var(--font-heading, sans-serif);
 }
 .gauge-labels {
@@ -609,7 +609,7 @@ export default {
   justify-content: space-between;
   margin-top: 5px;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   padding: 0 10px;
 }
 .label-item { 
@@ -656,8 +656,8 @@ export default {
   box-shadow: 0 0 10px currentColor; /* Glow effect */
 }
 .sentiment-text {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-extrabold);
   color: var(--text-primary);
   line-height: 1.2;
 }
@@ -691,7 +691,7 @@ export default {
 /* Components Section */
 .components-section h4, .history-section h4 {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   opacity: 0.9;
   margin-bottom: 1.25rem;
@@ -700,7 +700,7 @@ export default {
 }
 .components-grid { display: flex; flex-direction: column; gap: 1rem; }
 .component-item { display: flex; flex-direction: column; gap: 0.5rem; }
-.component-name { font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); }
+.component-name { font-size: 0.85rem; font-weight: var(--weight-medium); color: var(--text-secondary); }
 
 .component-bar { 
   position: relative; 
@@ -726,7 +726,7 @@ export default {
   display: flex; 
   align-items: center; 
   font-size: 0.8rem; 
-  font-weight: 700; 
+  font-weight: var(--weight-bold); 
   color: var(--text-primary);
   /* Ensure visibility on various backgrounds */
   mix-blend-mode: exclusion; 
@@ -737,9 +737,9 @@ export default {
 .history-item { display: flex; flex-direction: column; gap: 0.6rem; padding-bottom: 0.5rem; border-bottom: 1px dashed var(--border-color); }
 .history-item:last-child { border-bottom: none; }
 
-.history-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500;}
+.history-label { font-size: 0.8rem; color: var(--text-muted); font-weight: var(--weight-medium);}
 .history-value-container { display: flex; justify-content: space-between; align-items: center; }
-.history-sentiment { font-weight: 700; font-size: 1rem; }
+.history-sentiment { font-weight: var(--weight-bold); font-size: var(--text-md); }
 .history-circle {
     width: 38px;
     height: 38px;
@@ -747,7 +747,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    font-weight: var(--weight-bold);
     font-size: 0.95rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

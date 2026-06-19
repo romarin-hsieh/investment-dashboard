@@ -684,7 +684,7 @@ export default {
 .breadcrumb-link {
   color: var(--primary-color);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .breadcrumb-link:hover {
@@ -698,7 +698,7 @@ export default {
 
 .breadcrumb-current {
   color: var(--text-secondary);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 /* Symbol Wrapper & Realtime Btn */
@@ -790,7 +790,7 @@ export default {
 
 .widget-header h4 {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
 }
@@ -846,8 +846,8 @@ export default {
 }
 
 .insight-header h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
 }
@@ -916,7 +916,7 @@ export default {
 
 .insight-full-widget .widget-header h4 {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
 }
@@ -957,7 +957,7 @@ export default {
 
 .insight-widget .widget-header h4 {
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
   line-height: 1.2;
@@ -977,8 +977,8 @@ export default {
 }
 
 .symbol-info .symbol {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
   margin: 0 0 0.5rem 0;
 }
@@ -991,23 +991,23 @@ export default {
 }
 
 .exchange-tag {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--tag-text-blue);
   background-color: var(--tag-bg-blue);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   border: 1px solid transparent;
   display: inline-block;
 }
 
 .industry-tag {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   color: var(--text-secondary);
   background-color: var(--bg-secondary);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-xs);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   border: 1px solid transparent;
   display: inline-block;
 }
@@ -1033,7 +1033,7 @@ export default {
   border: none;
   border-radius: 6px;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
@@ -1048,7 +1048,7 @@ export default {
 }
 
 .btn-icon {
-  font-size: 1rem;
+  font-size: var(--text-md);
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -1077,7 +1077,7 @@ export default {
 
 .widget-container .widget-header h3 {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
 }
@@ -1346,8 +1346,8 @@ export default {
     border: none;
     border-bottom: 3px solid transparent;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: var(--text-md);
+    font-weight: var(--weight-semibold);
     color: var(--grey-550);
     transition: all 0.2s;
 }

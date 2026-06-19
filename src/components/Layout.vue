@@ -108,9 +108,9 @@ export default {
 
 .nav-brand h1 {
   color: var(--primary-color);
-  font-size: 1.5rem;
+  font-size: var(--text-xl);
   margin: 0;
-  font-weight: 700;
+  font-weight: var(--weight-bold);
   letter-spacing: -0.5px;
 }
 
@@ -131,7 +131,7 @@ export default {
 .nav-link {
   text-decoration: none;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
   transition: all 0.2s;
@@ -182,7 +182,7 @@ export default {
     cursor: pointer;
     transition: all 0.2s;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
 }
 
 .lang-toggle:hover {
@@ -209,7 +209,7 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.875rem;
+  font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
@@ -220,7 +220,7 @@ export default {
 .tradingview-link {
   color: var(--primary-text);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
 }
 
 .tradingview-link:hover {

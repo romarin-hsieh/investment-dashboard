@@ -358,7 +358,7 @@ export default {
 .external-tooltip :deep(th) {
   text-align: left;
   padding-bottom: 6px;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   border-bottom: 1px solid rgba(255,255,255,0.1);
   margin-bottom: 4px;
   display: block;
@@ -377,11 +377,11 @@ export default {
 }
 .external-tooltip :deep(.text-green) {
   color: #48c774; /* Bulma Success Green */
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 .external-tooltip :deep(.text-red) {
   color: #ff3860; /* Bulma Danger Red */
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .chart-header {
@@ -406,7 +406,7 @@ export default {
 .badge {
   background: var(--bg-secondary);
   color: var(--text-muted);
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   padding: 2px 8px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);

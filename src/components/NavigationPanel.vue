@@ -145,8 +145,8 @@ export default {
 
 .panel-header h3 {
   margin: 0 0 0.75rem 0;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
   color: var(--text-primary);
 }
 

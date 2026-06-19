@@ -672,7 +672,7 @@ export default {
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border-color);
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     color: var(--text-secondary);
 }
 
@@ -697,7 +697,7 @@ export default {
     font-size: 0.95rem;
     color: var(--text-muted);
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
 }
@@ -776,7 +776,7 @@ export default {
     width: 70px;
     font-size: 0.9rem;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: var(--weight-medium);
 }
 .rec-bar {
     flex: 1;
@@ -793,7 +793,7 @@ export default {
     justify-content: center;
     color: white;
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: var(--weight-bold);
     transition: width 0.3s ease;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
@@ -830,8 +830,8 @@ export default {
     gap: 1.5rem;
 }
 .metric-value {
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
     margin-top: 0.2rem;
     color: var(--text-primary);
 }
@@ -889,7 +889,7 @@ th, td {
 }
 th {
     background: var(--bg-secondary);
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     color: var(--text-secondary);
 }
 tbody tr:hover {
