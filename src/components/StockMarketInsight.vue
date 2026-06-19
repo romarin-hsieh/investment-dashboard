@@ -1,24 +1,24 @@
 <template>
   <div class="stock-market-insight-container">
     <div class="widget-header">
-      <h3>Stock Market Insight</h3>
+      <h3>{{ $t('marketInsight.title') }}</h3>
     </div>
     
     <div class="insight-grid">
       <!-- Stock Market Daily -->
       <div class="insight-section">
         <div class="section-header">
-          <h4>Stock Market Daily</h4>
+          <h4>{{ $t('marketInsight.dailyTitle') }}</h4>
         </div>
         <div class="daily-widget" :id="dailyWidgetId" ref="dailyContainer">
           <div v-if="!dailyLoaded && !dailyError" class="widget-loading">
             <div class="loading-spinner"></div>
-            <span>Loading daily market data...</span>
+            <span>{{ $t('marketInsight.dailyLoading') }}</span>
           </div>
-          
+
           <div v-if="dailyError" class="widget-error">
-            <span>⚠️ Failed to load daily data</span>
-            <button @click="retryDaily" class="retry-btn">Retry</button>
+            <span>⚠️ {{ $t('marketInsight.dailyError') }}</span>
+            <button @click="retryDaily" class="retry-btn">{{ $t('marketInsight.retry') }}</button>
           </div>
         </div>
       </div>
@@ -26,17 +26,17 @@
       <!-- Stock Market Weekly -->
       <div class="insight-section">
         <div class="section-header">
-          <h4>Stock Market Weekly</h4>
+          <h4>{{ $t('marketInsight.weeklyTitle') }}</h4>
         </div>
         <div class="weekly-widget" :id="weeklyWidgetId" ref="weeklyContainer">
           <div v-if="!weeklyLoaded && !weeklyError" class="widget-loading">
             <div class="loading-spinner"></div>
-            <span>Loading weekly market data...</span>
+            <span>{{ $t('marketInsight.weeklyLoading') }}</span>
           </div>
-          
+
           <div v-if="weeklyError" class="widget-error">
-            <span>⚠️ Failed to load weekly data</span>
-            <button @click="retryWeekly" class="retry-btn">Retry</button>
+            <span>⚠️ {{ $t('marketInsight.weeklyError') }}</span>
+            <button @click="retryWeekly" class="retry-btn">{{ $t('marketInsight.retry') }}</button>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 <template>
   <div class="market-indices-container">
     <div class="widget-header">
-      <h3>Index Insight</h3>
-      <p class="widget-description">Real-time performance of global stock indices</p>
+      <h3>{{ $t('marketIndices.title') }}</h3>
+      <p class="widget-description">{{ $t('marketIndices.description') }}</p>
     </div>
     <div class="indices-grid">
       <div 
@@ -11,7 +11,7 @@
         class="index-card"
       >
         <div class="index-info">
-          <h4 class="index-name">{{ index.name }}</h4>
+          <h4 class="index-name">{{ indexName(index) }}</h4>
           <p class="index-symbol">{{ index.symbol }}</p>
         </div>
         <div class="index-values">
@@ -94,6 +94,13 @@ export default {
     }
   },
   methods: {
+    indexName(index) {
+      const key = `marketIndices.names.${index.symbol}`
+      const translated = this.$t(key)
+      // Fall back to the data-provided name if no translation exists for the symbol
+      return translated === key ? index.name : translated
+    },
+
     formatPrice(price) {
       return new Intl.NumberFormat('en-US', {
         minimumFractionDigits: 2,

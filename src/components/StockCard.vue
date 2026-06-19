@@ -24,7 +24,7 @@
       <div class="symbol-info">
         <div class="symbol-wrapper">
           <h3 class="symbol">{{ quote.symbol }}</h3>
-          <a :href="`https://finance.yahoo.com/chart/${quote.symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" title="View Realtime Chart on Yahoo Finance" :aria-label="`Open realtime chart for ${quote.symbol} on Yahoo Finance (opens in new tab)`">
+          <a :href="`https://finance.yahoo.com/chart/${quote.symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" :title="$t('stockCard.realtimeChartTitle')" :aria-label="$t('stockCard.realtimeChartAria', { symbol: quote.symbol })">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
         </div>
@@ -34,8 +34,8 @@
         </div>
       </div>
       <div class="header-actions">
-        <button class="btn btn-renaissance" @click.stop="goToDetail" :title="`View detailed analysis for ${quote.symbol}`">
-            Detail <span>→</span>
+        <button class="btn btn-renaissance" @click.stop="goToDetail" :title="$t('stockCard.detailButtonTitle', { symbol: quote.symbol })">
+            {{ $t('stockCard.detailButton') }} <span>→</span>
         </button>
       </div>
     </div>
@@ -45,7 +45,7 @@
       <!-- Symbol Overview (2/3 width) -->
       <div class="widget-overview">
         <div class="widget-header">
-          <h4>Symbol Overview</h4>
+          <h4>{{ $t('stockCard.symbolOverview') }}</h4>
         </div>
         <FastTradingViewWidget 
           widget-type="overview"
@@ -58,7 +58,7 @@
       <!-- Technical Analysis (1/3 width) - 使用新的 TechnicalAnalysisWidget -->
       <div class="widget-overview">
         <div class="widget-header">
-          <h4>Technical Analysis</h4>
+          <h4>{{ $t('stockCard.technicalAnalysis') }}</h4>
         </div>
         <FastTradingViewWidget 
           widget-type="technical"
@@ -74,7 +74,7 @@
     <div v-if="dailyData" class="additional-info">
     <div class="trading-analysis-section">
         <div class="analysis-header">
-            <h5>Trading Analysis</h5>
+            <h5>{{ $t('stockCard.tradingAnalysis') }}</h5>
             <span class="trend-badge" :class="analysisTrendClass">{{ analysisTrend }}</span>
         </div>
         <div class="analysis-content">
@@ -140,10 +140,10 @@ export default {
     analysisTrend() {
         // Support both real API (regularMarket...) and Mock Data (change_percent...) keys
         const change = this.quote.change_percent !== undefined ? this.quote.change_percent : (this.quote.regularMarketChangePercent || 0);
-        
-        if (change > 0.5) return 'Bullish';
-        if (change < -0.5) return 'Bearish';
-        return 'Neutral';
+
+        if (change > 0.5) return this.$t('stockCard.trendBullish');
+        if (change < -0.5) return this.$t('stockCard.trendBearish');
+        return this.$t('stockCard.trendNeutral');
     },
     
     analysisTrendClass() {
@@ -156,31 +156,37 @@ export default {
   },
   methods: {
     getSector() {
-      if (!this.metadata) return 'Unknown'
-      
+      if (!this.metadata) return this.$t('stockCard.unknownSector')
+
       // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
       if (this.metadata.confidence < 0.7) {
-        return 'Unknown'
+        return this.$t('stockCard.unknownSector')
       }
-      
-      return this.metadata.sector || 'Unknown'
+
+      return this.metadata.sector || this.$t('stockCard.unknownSector')
     },
 
     getIndustry() {
       if (!this.metadata) {
-        return 'Unknown Industry'
+        return this.$t('stockCard.unknownIndustry')
       }
-      
+
       if (this.metadata.confidence < 0.7) {
-        return 'Unknown Industry'
+        return this.$t('stockCard.unknownIndustry')
       }
-      
-      return this.metadata.industry || this.metadata.sector || 'Unknown Industry'
+
+      return this.metadata.industry || this.metadata.sector || this.$t('stockCard.unknownIndustry')
     },
 
     getIndustryCategory() {
-      const industry = this.getIndustry()
-      
+      // Match against the raw industry value (not the localized display label),
+      // so the CSS category stays correct in any UI language.
+      const industry = this.metadata && this.metadata.confidence >= 0.7
+        ? (this.metadata.industry || this.metadata.sector)
+        : null
+
+      if (!industry) return 'unknown'
+
       // 根據 industry 返回主要分類，用於樣式
       const industryCategories = {
         'Industrial IoT Solutions': 'tech-iot',
@@ -191,10 +197,9 @@ export default {
         'Aerospace & Defense': 'industrial-aerospace',
         'Space Infrastructure': 'industrial-space',
         'Satellite Communications': 'communications',
-        'Electric Vehicles': 'automotive',
-        'Unknown Industry': 'unknown'
+        'Electric Vehicles': 'automotive'
       }
-      
+
       return industryCategories[industry] || 'other'
     },
 
@@ -231,9 +236,9 @@ export default {
       // the full string; sighted users see the matching banner colour.
       switch (this.quote.stale_level) {
         case 'stale':
-          return 'Data may be stale — daily refresh delayed'
+          return this.$t('stockCard.staleText')
         case 'very_stale':
-          return 'Data is significantly stale — last successful refresh was over 48 hours ago'
+          return this.$t('stockCard.veryStaleText')
         default:
           return ''
       }
@@ -274,38 +279,38 @@ export default {
         // 1. Trend Analysis
         if (fiftyDayAverage && twoHundredDayAverage) {
             if (price > fiftyDayAverage && price > twoHundredDayAverage) {
-                analysis.push({ text: "Primary trend is bullish; price is sustaining above key moving averages.", type: 'bullish' });
+                analysis.push({ text: this.$t('stockCard.analysisTrendBullishMA'), type: 'bullish' });
             } else if (price < fiftyDayAverage && price < twoHundredDayAverage) {
-                analysis.push({ text: "Primary trend is bearish, trading below major resistance levels.", type: 'bearish' });
+                analysis.push({ text: this.$t('stockCard.analysisTrendBearishMA'), type: 'bearish' });
             } else if (Math.abs(change) < 0.5) {
-                analysis.push({ text: "Price action is consolidating sideways, awaiting a directional catalyst.", type: 'neutral' });
+                analysis.push({ text: this.$t('stockCard.analysisTrendConsolidating'), type: 'neutral' });
             } else {
-                analysis.push({ text: "Market structure is mixed; monitor local support levels closely.", type: 'neutral' });
+                analysis.push({ text: this.$t('stockCard.analysisTrendMixed'), type: 'neutral' });
             }
         } else {
             // Fallback for Mock Data (No MA) - Use Change % Intensity
             if (change > 3.0) {
-                 analysis.push({ text: "Strong bullish momentum detected; price is surging significantly.", type: 'bullish' });
+                 analysis.push({ text: this.$t('stockCard.analysisStrongBullish'), type: 'bullish' });
             } else if (change > 0.5) {
-                 analysis.push({ text: "Positive price action observed; trend inclination is bullish.", type: 'bullish' });
+                 analysis.push({ text: this.$t('stockCard.analysisPositiveBullish'), type: 'bullish' });
             } else if (change < -3.0) {
-                 analysis.push({ text: "Strong bearish pressure; sharp decline suggests caution.", type: 'bearish' });
+                 analysis.push({ text: this.$t('stockCard.analysisStrongBearish'), type: 'bearish' });
             } else if (change < -0.5) {
-                 analysis.push({ text: "Minor weakness in price action; short-term bias is bearish.", type: 'bearish' });
+                 analysis.push({ text: this.$t('stockCard.analysisMinorBearish'), type: 'bearish' });
             } else {
-                 analysis.push({ text: "Price is ranging tightly; market sentiment appears neutral.", type: 'neutral' });
+                 analysis.push({ text: this.$t('stockCard.analysisRangingNeutral'), type: 'neutral' });
             }
         }
-        
+
         // 2. Momentum / Volume Analysis
         if (avgVolume > 0 && volume > avgVolume * 1.5) {
-             const direction = change > 0 ? "buying pressure" : "selling pressure";
-             analysis.push({ text: `Significant volume spike detected, indicating strong ${direction}.`, type: change > 0 ? 'bullish' : 'bearish' });
+             const direction = change > 0 ? this.$t('stockCard.buyingPressure') : this.$t('stockCard.sellingPressure');
+             analysis.push({ text: this.$t('stockCard.analysisVolumeSpike', { direction }), type: change > 0 ? 'bullish' : 'bearish' });
         } else if (Math.abs(change) > 2.0) {
-             const sentiment = change > 0 ? "Positive" : "Negative";
-             analysis.push({ text: `${sentiment} momentum is accelerating in the short term.`, type: change > 0 ? 'bullish' : 'bearish' });
+             const sentiment = change > 0 ? this.$t('stockCard.sentimentPositive') : this.$t('stockCard.sentimentNegative');
+             analysis.push({ text: this.$t('stockCard.analysisMomentumAccelerating', { sentiment }), type: change > 0 ? 'bullish' : 'bearish' });
         } else {
-             analysis.push({ text: "Volatility remains within standard ranges.", type: 'neutral' });
+             analysis.push({ text: this.$t('stockCard.analysisVolatilityNormal'), type: 'neutral' });
         }
         
         return analysis;
