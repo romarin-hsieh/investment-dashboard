@@ -54,7 +54,6 @@ jobs:
       run: |
         echo "🔄 Syncing config files..."
         cp config/stocks.json public/config/stocks.json
-        cp config/universe.json public/config/universe.json || true
         echo "✅ Config files synced to public/config/"
 
     # ✅ T2：用真實行情重產 precomputed OHLCV（不經 CORS）

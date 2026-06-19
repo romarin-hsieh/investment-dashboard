@@ -28,7 +28,6 @@ The type system provides:
 - `UniverseConfig`: Stock symbol allowlist configuration
 - `MacroIndicatorConfig`: Macro economic indicator definitions
 - `NewsSourcesConfig`: RSS feed source configurations
-- `WishConfig`: External wish channel configuration
 
 ## Validation Features
 

@@ -43,7 +43,6 @@ describe('getDataBaseUrl / withDataBase', () => {
     expect(paths.status()).toBe('https://data.example.com/data/status.json')
     expect(paths.daily('2026-06-18')).toBe('https://data.example.com/data/daily/2026-06-18.json')
     // Config + package.json live in the app repo, so they stay on the app BASE_URL ('/').
-    expect(paths.universe()).toBe('/config/universe.json')
     expect(paths.stocks()).toBe('/config/stocks.json')
     expect(paths.packageJson()).toBe('/package.json')
   })
