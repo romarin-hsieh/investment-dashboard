@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* 基礎骨架動畫 */
 @keyframes shimmer {
   0% {
@@ -83,7 +83,7 @@ export default {
 
 /* 通用骨架樣式 */
 .skeleton-base {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;
@@ -111,7 +111,7 @@ export default {
 /* Widget 容器骨架 */
 .skeleton-widget-container {
   background: white;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -138,7 +138,7 @@ export default {
 }
 
 .skeleton-insight-section:nth-child(2) {
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-color);
   padding-top: 1.5rem;
 }
 
@@ -234,7 +234,7 @@ export default {
 .skeleton-config-section-title,
 .skeleton-config-label,
 .skeleton-config-value {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background: linear-gradient(90deg, var(--skeleton-base) 25%, var(--skeleton-highlight) 50%, var(--skeleton-base) 75%);
   background-size: 200px 100%;
   animation: shimmer 1.5s infinite linear;
   border-radius: 4px;
