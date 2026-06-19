@@ -669,8 +669,8 @@ export default {
 <style scoped>
 .stock-detail {
   background: var(--bg-primary);
-  padding: 1rem;
   min-height: 100vh;
+  /* Horizontal gutter comes from Layout's .container. */
 }
 
 /* Breadcrumb */

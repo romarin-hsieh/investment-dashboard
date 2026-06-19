@@ -133,9 +133,8 @@ onMounted(() => {
 
 <style scoped>
 .quant-dashboard {
-  padding: 2rem;
-  max-width: 1600px;
-  margin: 0 auto;
+  /* Gutter, max-width and centering come from Layout's .container;
+     vertical spacing from .main-content. */
 }
 
 .header-section {

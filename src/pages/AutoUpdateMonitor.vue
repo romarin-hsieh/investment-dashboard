@@ -561,9 +561,8 @@ export default {
 
 <style scoped>
 .auto-update-monitor {
-  padding: 1rem;
-  max-width: 1600px;
-  margin: 0 auto;
+  /* Gutter, max-width and centering come from Layout's .container;
+     vertical spacing from .main-content. */
 }
 
 .monitor-header {

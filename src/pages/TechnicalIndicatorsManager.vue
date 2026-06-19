@@ -284,9 +284,8 @@ export default {
 
 <style scoped>
 .indicators-manager {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* Gutter, max-width and centering come from Layout's .container;
+     vertical spacing from .main-content. */
 }
 
 .manager-header {
