@@ -249,7 +249,7 @@ export default {
   background: var(--bg-card);
   width: 400px;
   max-width: 90%;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md); /* align modal corners with the card baseline */
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-lg);
   display: flex;
@@ -373,7 +373,7 @@ export default {
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   cursor: pointer;
 }
 

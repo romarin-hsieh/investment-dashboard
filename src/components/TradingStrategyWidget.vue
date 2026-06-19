@@ -279,7 +279,7 @@ export default {
   min-height: 850px;
   background: var(--danger-bg);
   border: 1px solid var(--danger-border);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   color: var(--danger-fg);
   margin: -8px;
 }
