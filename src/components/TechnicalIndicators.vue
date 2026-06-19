@@ -3,8 +3,8 @@
     <!-- Build Stamp -->
     <div class="header-row" v-if="showTitle">
       <div style="display: flex; align-items: center;">
-          <h4 class="section-title">Technical Indicators</h4>
-          <button class="header-info-btn" @click="showInfo = true" title="Indicator Guide" aria-label="Open Indicator Guide">
+          <h4 class="section-title">{{ $t('indicators.title') }}</h4>
+          <button class="header-info-btn" @click="showInfo = true" :title="$t('indicators.guideTitle')" :aria-label="$t('indicators.openGuideAria')">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
@@ -13,7 +13,7 @@
           </button>
       </div>
 
-      <span class="last-updated" v-if="lastUpdated">Updated: {{ lastUpdated }}</span>
+      <span class="last-updated" v-if="lastUpdated">{{ $t('indicators.lastUpdated', { time: lastUpdated }) }}</span>
     </div>
 
     <!-- Loading State -->
@@ -26,13 +26,13 @@
     <!-- Error State -->
     <div v-else-if="error" class="error-state">
       <p class="error-message">{{ error }}</p>
-      <button @click="loadData" class="retry-btn">Retry</button>
+      <button @click="loadData" class="retry-btn">{{ $t('indicators.retry') }}</button>
     </div>
     
     <!-- Grouped Indicators Grid -->
     <div v-else class="grouped-grid">
       <div v-for="(group, groupName) in groupedIndicators" :key="groupName" class="indicator-group" :class="groupName.toLowerCase()">
-        <h5 class="group-title">{{ groupName }}</h5>
+        <h5 class="group-title">{{ $t('indicators.groups.' + groupName.toLowerCase()) }}</h5>
         <div class="group-table-container">
             <table class="compact-table">
                 <tbody>
@@ -41,7 +41,7 @@
                         <td class="col-value">{{ indicator.value }}</td>
                         <td class="col-meta">
                             <span v-if="indicator.change" class="change-tag" :class="indicator.changeClass">{{ indicator.change }}</span>
-                            <span v-else-if="indicator.signal && indicator.signal !== 'N/A'" class="signal-tag" :class="indicator.signalClass || getSignalClass(indicator.signal)">{{ indicator.signal }}</span>
+                            <span v-else-if="indicator.signal && indicator.signal !== 'N/A'" class="signal-tag" :class="indicator.signalClass || getSignalClass(indicator.signal)">{{ signalLabel(indicator.signal) }}</span>
                         </td>
                     </tr>
                 </tbody>
@@ -54,33 +54,33 @@
     <div v-if="showInfo" class="modal-overlay" @click.self="showInfo = false">
         <div class="modal-content">
             <div class="modal-header">
-                <h5>Indicator Guide</h5>
-                <button class="close-btn" @click="showInfo = false" aria-label="Close Indicator Guide">&times;</button>
+                <h5>{{ $t('indicators.guideTitle') }}</h5>
+                <button class="close-btn" @click="showInfo = false" :aria-label="$t('indicators.closeGuideAria')">&times;</button>
             </div>
             <div class="modal-body">
-                <h6>Trend Indicators</h6>
+                <h6>{{ $t('indicators.guide.trendHeading') }}</h6>
                 <ul>
-                    <li><strong>MA (Moving Average):</strong> Average price over specific days (5, 10, 30).</li>
-                    <li><strong>SMA (Simple Moving Average):</strong> Good for identifying trend direction & support/resistance.</li>
-                    <li><strong>SuperTrend:</strong> Trend following indicator using ATR. Dynamic Stop-Loss level.</li>
-                    <li><strong>Parabolic SAR:</strong> Trend-following indicator. Dots below price = Uptrend, above element = Downtrend.</li>
-                    <li><strong>VWMA (Volume Weighted MA):</strong> Weights price by volume. Rising VWMA > SMA implies strong uptrend.</li>
+                    <li><strong>{{ $t('indicators.guide.ma.term') }}</strong> {{ $t('indicators.guide.ma.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.sma.term') }}</strong> {{ $t('indicators.guide.sma.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.superTrend.term') }}</strong> {{ $t('indicators.guide.superTrend.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.sar.term') }}</strong> {{ $t('indicators.guide.sar.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.vwma.term') }}</strong> {{ $t('indicators.guide.vwma.desc') }}</li>
                 </ul>
-                <h6>Oscillators</h6>
+                <h6>{{ $t('indicators.guide.oscillatorsHeading') }}</h6>
                 <ul>
-                    <li><strong>RSI (Relative Strength Index):</strong> Momentum oscillator (0-100). >70 Overbought, <30 Oversold.</li>
-                    <li><strong>Stochastic (%K/%D):</strong> Momentum indicator comparing closing price to a range. >80 Overbought, <20 Oversold.</li>
-                    <li><strong>CCI (Commodity Channel Index):</strong> Measures deviation from statistical average. >100 / <-100 implies strong move.</li>
-                    <li><strong>MACD:</strong> Trend-following momentum indicator. Signal line crossovers indicate Buy/Sell.</li>
-                    <li><strong>ADX (Avg Directional Index):</strong> Measure of trend strength. >25 indicates strong trend.</li>
-                    <li><strong>Ichimoku:</strong> Comprehensive trend system. Price above Cloud = Bullish.</li>
+                    <li><strong>{{ $t('indicators.guide.rsi.term') }}</strong> {{ $t('indicators.guide.rsi.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.stochastic.term') }}</strong> {{ $t('indicators.guide.stochastic.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.cci.term') }}</strong> {{ $t('indicators.guide.cci.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.macd.term') }}</strong> {{ $t('indicators.guide.macd.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.adx.term') }}</strong> {{ $t('indicators.guide.adx.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.ichimoku.term') }}</strong> {{ $t('indicators.guide.ichimoku.desc') }}</li>
                 </ul>
-                <h6>Market & Volatility</h6>
+                <h6>{{ $t('indicators.guide.marketHeading') }}</h6>
                 <ul>
-                    <li><strong>ATR (Average True Range):</strong> Measures market volatility. Higher value = Higher volatility.</li>
-                    <li><strong>MFI (Money Flow Index):</strong> Volume-weighted RSI. >80 Overbought, <20 Oversold.</li>
-                    <li><strong>OBV (On-Balance Volume):</strong> Cumulative volume flow. Confirms trend direction.</li>
-                    <li><strong>Beta:</strong> Stock's volatility in relation to the market. >1.0 means more volatile.</li>
+                    <li><strong>{{ $t('indicators.guide.atr.term') }}</strong> {{ $t('indicators.guide.atr.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.mfi.term') }}</strong> {{ $t('indicators.guide.mfi.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.obv.term') }}</strong> {{ $t('indicators.guide.obv.desc') }}</li>
+                    <li><strong>{{ $t('indicators.guide.beta.term') }}</strong> {{ $t('indicators.guide.beta.desc') }}</li>
                 </ul>
             </div>
         </div>
@@ -141,7 +141,7 @@ export default {
         const data = await hybridTechnicalIndicatorsAPI.getTechnicalIndicators(this.symbol);
         
         if (!data) {
-          throw new Error(`No data available for ${this.symbol}`)
+          throw new Error(this.$t('indicators.noDataForSymbol', { symbol: this.symbol }))
         }
 
         // Render immediately with available data (using precomputed YF data if available)
@@ -187,7 +187,7 @@ export default {
         
       } catch (err) {
         console.error('Error loading technical indicators:', err)
-        this.error = `Failed to load indicators: ${err.message}`
+        this.error = this.$t('indicators.loadFailed', { message: err.message })
         this.loading = false;
       }
     },
@@ -255,34 +255,34 @@ export default {
       };
 
       // Group 1: Trend (MA, SMA, Ichimoku, VWMA)
-      groups['Trend'].push(getIndicator('ma5', 'EMA(5)', 'EMA_5'));
-      groups['Trend'].push(getIndicator('ma10', 'EMA(10)', 'EMA_10'));
+      groups['Trend'].push(getIndicator('ma5', this.$t('indicators.labels.ema5'), 'EMA_5'));
+      groups['Trend'].push(getIndicator('ma10', this.$t('indicators.labels.ema10'), 'EMA_10'));
       // New: EMA (20) placed between 10 and 30 for correct sequence
-      groups['Trend'].push(getIndicator('ema20', 'EMA(20)', 'EMA_20')); 
-      groups['Trend'].push(getIndicator('ma30', 'EMA(30)', 'EMA_30')); 
-      
-      groups['Trend'].push(getIndicator('sma5', 'SMA(5)', 'SMA_5'));
-      groups['Trend'].push(getIndicator('sma10', 'SMA(10)', 'SMA_10'));
-      groups['Trend'].push(getIndicator('sma30', 'SMA(30)', 'SMA_30'));
-      groups['Trend'].push(getIndicator('superTrend', 'SuperTrend', 'SUPERTREND'));
-      groups['Trend'].push(getIndicator('parabolicSAR', 'SAR', 'SAR'));
-      groups['Trend'].push(getIndicator('vwma20', 'VWMA(20)', 'VWMA_20'));
-      
+      groups['Trend'].push(getIndicator('ema20', this.$t('indicators.labels.ema20'), 'EMA_20'));
+      groups['Trend'].push(getIndicator('ma30', this.$t('indicators.labels.ema30'), 'EMA_30'));
+
+      groups['Trend'].push(getIndicator('sma5', this.$t('indicators.labels.sma5'), 'SMA_5'));
+      groups['Trend'].push(getIndicator('sma10', this.$t('indicators.labels.sma10'), 'SMA_10'));
+      groups['Trend'].push(getIndicator('sma30', this.$t('indicators.labels.sma30'), 'SMA_30'));
+      groups['Trend'].push(getIndicator('superTrend', this.$t('indicators.labels.superTrend'), 'SUPERTREND'));
+      groups['Trend'].push(getIndicator('parabolicSAR', this.$t('indicators.labels.sar'), 'SAR'));
+      groups['Trend'].push(getIndicator('vwma20', this.$t('indicators.labels.vwma20'), 'VWMA_20'));
+
       // Group 2: Oscillators & Ichimoku Components
-      groups['Oscillators'].push(getIndicator('rsi14', 'RSI (14)', 'RSI_14', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('rsi14', this.$t('indicators.labels.rsi14'), 'RSI_14', 'Oscillators'));
       // New: Williams %R (14)
-      groups['Oscillators'].push(getIndicator('willr14', 'Will %R (14)', 'WILLR_14', 'Oscillators'));
-      
-      groups['Oscillators'].push(getIndicator('stochK', 'Stoch %K', 'STOCH_K', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('stochD', 'Stoch %D', 'STOCH_D', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('cci20', 'CCI (20)', 'CCI_20', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('adx14', 'ADX (14)', 'ADX_14', 'Oscillators'));
-      
+      groups['Oscillators'].push(getIndicator('willr14', this.$t('indicators.labels.willr14'), 'WILLR_14', 'Oscillators'));
+
+      groups['Oscillators'].push(getIndicator('stochK', this.$t('indicators.labels.stochK'), 'STOCH_K', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('stochD', this.$t('indicators.labels.stochD'), 'STOCH_D', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('cci20', this.$t('indicators.labels.cci20'), 'CCI_20', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('adx14', this.$t('indicators.labels.adx14'), 'ADX_14', 'Oscillators'));
+
       // MACD (Note: Reverted to default gray styling as per user request)
-      groups['Oscillators'].push(getIndicator('macd', 'MACD', 'MACD_12_26_9', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('ichimokuConversionLine', 'Ichi Conv (9)', 'ICHIMOKU_CONVERSIONLINE_9', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('ichimokuBaseLine', 'Ichi Base (26)', 'ICHIMOKU_BASELINE_26', 'Oscillators'));
-      groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', 'Ichi Lag (26)', 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('macd', this.$t('indicators.labels.macd'), 'MACD_12_26_9', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('ichimokuConversionLine', this.$t('indicators.labels.ichiConv'), 'ICHIMOKU_CONVERSIONLINE_9', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('ichimokuBaseLine', this.$t('indicators.labels.ichiBase'), 'ICHIMOKU_BASELINE_26', 'Oscillators'));
+      groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', this.$t('indicators.labels.ichiLag'), 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));
 
       // Group 3: Market & Volume (YFinance + Precomputed)
       const yf = data.yf || data.indicators?.yf || {};
@@ -293,13 +293,13 @@ export default {
       const preMarket = data.market || {};
       const preBeta = data.beta || {};
 
-      groups['Market'].push(getIndicator('atr14', 'ATR (14)', 'ATR_14', 'Market'));
-      groups['Market'].push(getIndicator('mfi14', 'MFI (14)', 'MFI_14', 'Market'));
-      
-      // CMF (20)
-      groups['Market'].push(getIndicator('cmf20', 'CMF (20)', 'CMF_20', 'Market', this.formatNumber(this.getLatestValue(series.CMF_20), 3))); 
+      groups['Market'].push(getIndicator('atr14', this.$t('indicators.labels.atr14'), 'ATR_14', 'Market'));
+      groups['Market'].push(getIndicator('mfi14', this.$t('indicators.labels.mfi14'), 'MFI_14', 'Market'));
 
-      groups['Market'].push(getIndicator('obv', 'OBV', 'OBV', 'Market', this.formatVolume(data.obv?.value)));
+      // CMF (20)
+      groups['Market'].push(getIndicator('cmf20', this.$t('indicators.labels.cmf20'), 'CMF_20', 'Market', this.formatNumber(this.getLatestValue(series.CMF_20), 3)));
+
+      groups['Market'].push(getIndicator('obv', this.$t('indicators.labels.obv'), 'OBV', 'Market', this.formatVolume(data.obv?.value)));
       
       // Volume - Prefer real Volume from StockInfo, fallback to Precomputed, then Series
       let volChange = yf.volume_last_day_pct;
@@ -319,7 +319,7 @@ export default {
       const displayMarketCap = yf.extMarketCap || preMarket.marketCap || yf.market_cap;
 
       groups['Market'].push({
-          label: 'Volume',
+          label: this.$t('indicators.labels.volume'),
           value: this.formatVolume(displayVolume),
           change: this.fmtChangePct(Number(volChange)),
           changeClass: this.getChangeClass(volChange),
@@ -334,7 +334,7 @@ export default {
       }
       
       groups['Market'].push({
-          label: 'Avg Vol (10D)',
+          label: this.$t('indicators.labels.avgVol10D'),
           value: this.formatVolume(displayAvgVol10D),
           change: this.fmtChangePct(avgVolDiffPct),
           changeClass: this.getChangeClass(avgVolDiffPct),
@@ -343,7 +343,7 @@ export default {
       });
       
       groups['Market'].push({
-          label: 'Market Cap',
+          label: this.$t('indicators.labels.marketCap'),
           value: this.formatMarketCap(displayMarketCap),
           signal: this.getMarketCapCategory(displayMarketCap),
           change: this.fmtChangePct(yf.regularMarketChangePercent !== undefined ? yf.regularMarketChangePercent * 100 : null),
@@ -354,32 +354,32 @@ export default {
       // Beta - Custom Periods
       
       // Beta (10D)
-      groups['Market'].push({ 
-          label: 'Beta (10D)', 
-          value: this.formatBeta(yf.beta_10d || preBeta.beta_10d || data.beta_10d?.value), 
+      groups['Market'].push({
+          label: this.$t('indicators.labels.beta10D'),
+          value: this.formatBeta(yf.beta_10d || preBeta.beta_10d || data.beta_10d?.value),
           signal: this.getBetaCategory(yf.beta_10d || preBeta.beta_10d || data.beta_10d?.value)
       });
 
       // Beta (3M)
-      groups['Market'].push({ 
-          label: 'Beta (3M)', 
-          value: this.formatBeta(yf.beta_3mo || preBeta.beta_3mo || data.beta_3mo?.value), 
+      groups['Market'].push({
+          label: this.$t('indicators.labels.beta3M'),
+          value: this.formatBeta(yf.beta_3mo || preBeta.beta_3mo || data.beta_3mo?.value),
           signal: this.getBetaCategory(yf.beta_3mo || preBeta.beta_3mo || data.beta_3mo?.value)
       });
 
       // Beta (1Y)
-      groups['Market'].push({ 
-         label: 'Beta (1Y)', 
-         value: this.formatBeta(yf.extBeta || preBeta.beta_1y || data.beta_1y?.value || yf.beta || yf.beta_1y), 
+      groups['Market'].push({
+         label: this.$t('indicators.labels.beta1Y'),
+         value: this.formatBeta(yf.extBeta || preBeta.beta_1y || data.beta_1y?.value || yf.beta || yf.beta_1y),
          signal: this.getBetaCategory(yf.extBeta || preBeta.beta_1y || data.beta_1y?.value || yf.beta || yf.beta_1y)
       });
-      
+
       // Beta (5Y) - Keep if available
       if (yf.beta_5y) {
-          groups['Market'].push({ 
-              label: 'Beta (5Y)', 
-              value: this.formatBeta(yf.beta_5y), 
-              signal: this.getBetaCategory(yf.beta_5y) 
+          groups['Market'].push({
+              label: this.$t('indicators.labels.beta5Y'),
+              value: this.formatBeta(yf.beta_5y),
+              signal: this.getBetaCategory(yf.beta_5y)
           });
       }
 
@@ -474,6 +474,20 @@ export default {
       }
     },
 
+
+    /**
+     * Translate a known signal/category token (e.g. 'BUY', 'MEGA CAP', 'HIGH VOL')
+     * for display. Falls back to the raw token for any value not in the table so
+     * unexpected upstream signals still render rather than vanishing.
+     */
+    signalLabel(signal) {
+      if (signal === null || signal === undefined || signal === 'N/A') return signal
+      const key = String(signal).toUpperCase().replace(/[^A-Z0-9]+/g, '_')
+      const path = `indicators.signals.${key}`
+      const translated = this.$t(path)
+      // vue-i18n returns the key path itself when no translation exists
+      return translated === path ? signal : translated
+    },
 
     getChangeClass(value) {
       if (value === null || value === undefined) return ''

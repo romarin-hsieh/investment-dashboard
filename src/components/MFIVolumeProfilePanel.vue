@@ -3,7 +3,7 @@
     <!-- Loading State -->
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
-      <p>Loading MFI Volume Profile...</p>
+      <p>{{ $t('mfi.loading') }}</p>
     </div>
 
     <!-- Error State with Graceful Fallback -->
@@ -11,9 +11,9 @@
       <div class="error-icon">⚠️</div>
       <p class="error-message">{{ error }}</p>
       <div class="error-actions">
-        <button @click="loadData" class="retry-btn">Retry</button>
+        <button @click="loadData" class="retry-btn">{{ $t('mfi.retry') }}</button>
         <div v-if="isDev" class="dev-info">
-          <small>DEV mode: Trying Yahoo Finance fallback</small>
+          <small>{{ $t('mfi.devFallbackNote') }}</small>
         </div>
       </div>
     </div>
@@ -22,8 +22,8 @@
     <div v-else-if="profileData" class="panel-content">
       <div class="mfi-header-row">
           <div class="title-section">
-              <h4>MFI Volume Profile</h4>
-              <button class="header-info-btn inline-info-btn" @click="openInfo()" title="Analysis Logic" aria-label="View MFI analysis logic">
+              <h4>{{ $t('mfi.title') }}</h4>
+              <button class="header-info-btn inline-info-btn" @click="openInfo()" :title="$t('mfi.infoButtonTitle')" :aria-label="$t('mfi.infoButtonAriaLabel')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
@@ -33,9 +33,9 @@
           </div>
           <div class="chart-controls">
             <select v-model="selectedRange" @change="onRangeChange" class="range-selector">
-              <option value="3mo">3 Months</option>
-              <option value="6mo">6 Months</option>
-              <option value="1y">1 Year</option>
+              <option value="3mo">{{ $t('mfi.range3mo') }}</option>
+              <option value="6mo">{{ $t('mfi.range6mo') }}</option>
+              <option value="1y">{{ $t('mfi.range1y') }}</option>
             </select>
           </div>
       </div>
@@ -43,21 +43,21 @@
       <!-- Metrics Status Bar -->
       <div class="metrics-status-bar">
         <div class="status-item">
-          <span class="status-label">MFI Signal:</span>
+          <span class="status-label">{{ $t('mfi.statusMfiSignal') }}</span>
           <span class="status-value" :class="`signal-${profileData.mfi.signal.toLowerCase()}`">{{ profileData.mfi.signal }}</span>
           <span class="status-detail">({{ formatNumber(profileData.mfi.latest, 2) }})</span>
         </div>
         <div class="status-divider">|</div>
         <div class="status-item">
-          <span class="status-label">Sentiment:</span>
+          <span class="status-label">{{ $t('mfi.statusSentiment') }}</span>
           <span class="status-value" :class="`sentiment-${profileData.marketSentiment.toLowerCase()}`">{{ profileData.marketSentiment }}</span>
-          <span class="status-detail">(Buy: {{ formatNumber(profileData.statistics.buyingRatio * 100, 0) }}%)</span>
+          <span class="status-detail">({{ $t('mfi.statusBuyShare', { pct: formatNumber(profileData.statistics.buyingRatio * 100, 0) }) }})</span>
         </div>
         <div class="status-divider">|</div>
         <div class="status-item">
-          <span class="status-label">POC:</span>
+          <span class="status-label">{{ $t('mfi.statusPoc') }}</span>
           <span class="status-value">${{ formatNumber(profileData.pointOfControl.priceLevel, 2) }}</span>
-          <span class="status-detail">({{ formatNumber(profileData.pointOfControl.percentage, 1) }}% vol)</span>
+          <span class="status-detail">({{ $t('mfi.statusVolShare', { pct: formatNumber(profileData.pointOfControl.percentage, 1) }) }})</span>
         </div>
       </div>
 
@@ -97,16 +97,16 @@
               </div>
               
               <!-- POC Marker -->
-              <div v-if="bin.priceLevel === profileData.pointOfControl.priceLevel" class="poc-marker">
-                POC
+              <div v-if="bin.priceLevel === profileData.pointOfControl.priceLevel" class="poc-marker" :title="$t('mfi.pocMarkerTitle')">
+                {{ $t('mfi.pocMarker') }}
               </div>
-              
+
               <!-- Value Area Markers -->
-              <div v-if="bin.priceLevel === profileData.valueArea.high" class="va-marker va-high">
-                VAH
+              <div v-if="bin.priceLevel === profileData.valueArea.high" class="va-marker va-high" :title="$t('mfi.vahMarkerTitle')">
+                {{ $t('mfi.vahMarker') }}
               </div>
-              <div v-if="bin.priceLevel === profileData.valueArea.low" class="va-marker va-low">
-                VAL
+              <div v-if="bin.priceLevel === profileData.valueArea.low" class="va-marker va-low" :title="$t('mfi.valMarkerTitle')">
+                {{ $t('mfi.valMarker') }}
               </div>
             </div>
           </div>
@@ -129,8 +129,8 @@
       <div class="trading-signals">
         <div class="signals-header">
           <div style="display: flex; align-items: center;">
-             <h4>Trading Analysis</h4>
-             <button class="inline-info-btn" @click="openInfo()" title="Analysis Logic" aria-label="View MFI analysis logic">
+             <h4>{{ $t('mfi.tradingAnalysisTitle') }}</h4>
+             <button class="inline-info-btn" @click="openInfo()" :title="$t('mfi.infoButtonTitle')" :aria-label="$t('mfi.infoButtonAriaLabel')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
@@ -151,7 +151,7 @@
           </div>
         </div>
         <div v-else class="no-signals">
-            <p>No clean trading signals detected at this moment. Market may be ranging or data insufficient.</p>
+            <p>{{ $t('mfi.noSignals') }}</p>
         </div>
       </div>
     </div>
@@ -161,9 +161,9 @@
     <!-- No Data State -->
     <div v-else class="no-data-state">
       <div class="no-data-icon">📊</div>
-      <p>No MFI Volume Profile data available for {{ symbol }}</p>
+      <p>{{ $t('mfi.noData', { symbol }) }}</p>
       <div v-if="isDev" class="dev-fallback">
-        <button @click="loadData" class="retry-btn">Try Yahoo Finance (DEV)</button>
+        <button @click="loadData" class="retry-btn">{{ $t('mfi.devFallbackButton') }}</button>
       </div>
     </div>
 
@@ -171,29 +171,29 @@
     <div v-if="showInfo" class="modal-overlay" @click.self="showInfo = false">
         <div class="modal-content">
             <div class="modal-header">
-                <h5>MFI & Volume Profile Guide</h5>
-                <button class="close-btn" @click="showInfo = false" aria-label="Close MFI & Volume Profile Guide">&times;</button>
+                <h5>{{ $t('mfi.modalTitle') }}</h5>
+                <button class="close-btn" @click="showInfo = false" :aria-label="$t('mfi.modalCloseAriaLabel')">&times;</button>
             </div>
             <div class="modal-body">
-                <h6>MFI (Money Flow Index)</h6>
-                <p>Volume-weighted RSI. Measures buying/selling pressure.</p>
+                <h6>{{ $t('mfi.modalMfiHeading') }}</h6>
+                <p>{{ $t('mfi.modalMfiDesc') }}</p>
                 <ul>
-                    <li><strong>>80:</strong> Overbought (Potential Top)</li>
-                    <li><strong><20:</strong> Oversold (Potential Bottom)</li>
+                    <li><strong>{{ $t('mfi.modalMfiOverboughtTerm') }}</strong> {{ $t('mfi.modalMfiOverboughtDesc') }}</li>
+                    <li><strong>{{ $t('mfi.modalMfiOversoldTerm') }}</strong> {{ $t('mfi.modalMfiOversoldDesc') }}</li>
                 </ul>
 
-                <h6>Volume Profile</h6>
-                <p>Displays trading activity at specific price levels.</p>
+                <h6>{{ $t('mfi.modalVpHeading') }}</h6>
+                <p>{{ $t('mfi.modalVpDesc') }}</p>
                 <ul>
-                    <li><strong>POC (Point of Control):</strong> Price level with highest volume. Acts as strong support/resistance.</li>
-                    <li><strong>Value Area (VA):</strong> Range where 70% of volume occurred.</li>
+                    <li><strong>{{ $t('mfi.modalPocTerm') }}</strong> {{ $t('mfi.modalPocDesc') }}</li>
+                    <li><strong>{{ $t('mfi.modalVaTerm') }}</strong> {{ $t('mfi.modalVaDesc') }}</li>
                 </ul>
 
-                <h6>Trading Analysis Logic</h6>
+                <h6>{{ $t('mfi.modalLogicHeading') }}</h6>
                 <ul>
-                    <li><strong>Bullish:</strong> Price above POC + Rising MFI (or Oversold MFI rebound).</li>
-                    <li><strong>Bearish:</strong> Price below POC + Falling MFI (or Overbought MFI rejection).</li>
-                    <li><strong>Buying/Selling Ratio:</strong> Derived from Up/Down volume in candles.</li>
+                    <li><strong>{{ $t('mfi.modalBullishTerm') }}</strong> {{ $t('mfi.modalBullishDesc') }}</li>
+                    <li><strong>{{ $t('mfi.modalBearishTerm') }}</strong> {{ $t('mfi.modalBearishDesc') }}</li>
+                    <li><strong>{{ $t('mfi.modalRatioTerm') }}</strong> {{ $t('mfi.modalRatioDesc') }}</li>
                 </ul>
             </div>
         </div>
@@ -202,11 +202,11 @@
     <!-- Tooltip -->
     <div v-if="tooltip.visible" class="tooltip" :style="tooltip.style">
       <div class="tooltip-content">
-        <div><strong>Price Range:</strong> ${{ formatNumber(tooltip.data.minPrice, 2) }} - ${{ formatNumber(tooltip.data.maxPrice, 2) }}</div>
-        <div><strong>Volume:</strong> {{ formatVolume(tooltip.data.volume) }}</div>
-        <div><strong>Avg MFI:</strong> {{ formatNumber(tooltip.data.mfiAverage, 1) }}</div>
-        <div><strong>Buying:</strong> {{ formatVolume(tooltip.data.positiveVolume) }}</div>
-        <div><strong>Selling:</strong> {{ formatVolume(tooltip.data.negativeVolume) }}</div>
+        <div><strong>{{ $t('mfi.tooltipPriceRange') }}</strong> ${{ formatNumber(tooltip.data.minPrice, 2) }} - ${{ formatNumber(tooltip.data.maxPrice, 2) }}</div>
+        <div><strong>{{ $t('mfi.tooltipVolume') }}</strong> {{ formatVolume(tooltip.data.volume) }}</div>
+        <div><strong>{{ $t('mfi.tooltipAvgMfi') }}</strong> {{ formatNumber(tooltip.data.mfiAverage, 1) }}</div>
+        <div><strong>{{ $t('mfi.tooltipBuying') }}</strong> {{ formatVolume(tooltip.data.positiveVolume) }}</div>
+        <div><strong>{{ $t('mfi.tooltipSelling') }}</strong> {{ formatVolume(tooltip.data.negativeVolume) }}</div>
       </div>
     </div>
   </div>
@@ -338,13 +338,13 @@ export default {
     
     getErrorMessage(error) {
       if (error.message.includes('CORS')) {
-        return 'Data source blocked by browser security. Try disabling ad blockers or privacy extensions.';
+        return this.$t('mfi.errorCors');
       } else if (error.message.includes('404') || error.message.includes('not found')) {
-        return `No OHLCV data available for ${this.symbol}. This symbol may not be supported yet.`;
+        return this.$t('mfi.errorNoData', { symbol: this.symbol });
       } else if (error.message.includes('Insufficient')) {
-        return 'Insufficient historical data for MFI Volume Profile calculation.';
+        return this.$t('mfi.errorInsufficient');
       } else {
-        return `Failed to load data: ${error.message}`;
+        return this.$t('mfi.errorGeneric', { message: error.message });
       }
     },
     
@@ -434,7 +434,7 @@ export default {
     formatNumber,
 
     formatVolume(volume) {
-      if (!Number.isFinite(volume)) return 'N/A';
+      if (!Number.isFinite(volume)) return this.$t('mfi.notAvailable');
       if (volume >= 1000000000) {
         return formatNumber(volume / 1000000000, 1) + 'B';
       } else if (volume >= 1000000) {

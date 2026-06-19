@@ -122,7 +122,7 @@ describe('MFIVolumeProfilePanel — mount + loadData lifecycle', () => {
     const wrapper = mount(MFIVolumeProfilePanel, { props: { symbol: 'AAPL' } })
     await flushPromises()
 
-    expect(wrapper.vm.error).toMatch(/blocked by browser security/)
+    expect(wrapper.vm.error).toMatch(/blocked by your browser's security/)
     expect(wrapper.vm.loading).toBe(false)
     expect(wrapper.vm.profileData).toBeNull()
   })
@@ -165,14 +165,14 @@ describe('MFIVolumeProfilePanel — pure helpers', () => {
 
   it('getErrorMessage returns user-facing copy per error class', () => {
     expect(wrapper.vm.getErrorMessage(new Error('CORS error')))
-      .toMatch(/blocked by browser security/)
+      .toMatch(/blocked by your browser's security/)
     expect(wrapper.vm.getErrorMessage(new Error('404 not found')))
       .toMatch(/may not be supported/)
     expect(wrapper.vm.getErrorMessage(new Error('Insufficient historical data')))
-      .toMatch(/Insufficient historical data/)
-    // Generic fallback retains the original message
+      .toMatch(/Not enough price history/)
+    // Generic fallback echoes the underlying message
     expect(wrapper.vm.getErrorMessage(new Error('boom')))
-      .toMatch(/Failed to load data: boom/)
+      .toMatch(/Couldn't load data: boom/)
   })
 
   it('getCurrentPrice returns last finite close (skips trailing null/NaN)', () => {

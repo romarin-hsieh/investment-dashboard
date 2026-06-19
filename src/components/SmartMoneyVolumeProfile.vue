@@ -1,27 +1,27 @@
 <template>
   <div class="smart-money-volume-profile">
     <div class="header">
-      <h3>Smart Money Volume Profile ({{ selectedRangeLabel }})</h3>
+      <h3>{{ $t('smartMoney.title', { range: selectedRangeLabel }) }}</h3>
       <select v-model="selectedRange" @change="onRangeChange" class="range-selector">
-        <option value="6mo">6 Months</option>
-        <option value="1y">1 Year</option>
-        <option value="5y">5 Years</option>
+        <option value="6mo">{{ $t('smartMoney.range.6mo') }}</option>
+        <option value="1y">{{ $t('smartMoney.range.1y') }}</option>
+        <option value="5y">{{ $t('smartMoney.range.5y') }}</option>
       </select>
     </div>
-    
+
     <div v-if="loading" class="loading-state">
       <div class="spinner"></div>
-      <span>Calculating volume profile...</span>
+      <span>{{ $t('smartMoney.loading') }}</span>
     </div>
-    
+
     <div v-else-if="error" class="error-state">
       <div class="error-icon">⚠️</div>
       <p>{{ error }}</p>
     </div>
-    
+
     <div v-else class="chart-container-profile">
       <Bar v-if="chartData" :data="chartData" :options="chartOptions" />
-      <div v-else class="no-data">Insufficient volume data</div>
+      <div v-else class="no-data">{{ $t('smartMoney.noData') }}</div>
     </div>
   </div>
 </template>
@@ -58,8 +58,12 @@ export default {
   },
   computed: {
     selectedRangeLabel() {
-        const map = { '6mo': '6M', '1y': '1Y', '5y': '5Y' };
-        return map[this.selectedRange] || '6M';
+        const map = {
+            '6mo': this.$t('smartMoney.rangeShort.6mo'),
+            '1y': this.$t('smartMoney.rangeShort.1y'),
+            '5y': this.$t('smartMoney.rangeShort.5y')
+        };
+        return map[this.selectedRange] || this.$t('smartMoney.rangeShort.6mo');
     },
     isDark() { return this.theme === 'dark' },
     chartOptions() {
@@ -70,13 +74,13 @@ export default {
         scales: {
           x: {
             display: true,
-            title: { display: true, text: 'Total Volume', color: this.isDark ? '#aaa':'#666' },
+            title: { display: true, text: this.$t('smartMoney.axis.totalVolume'), color: this.isDark ? '#aaa':'#666' },
             grid: { color: this.isDark ? '#333':'#eee' },
             ticks: { color: this.isDark ? '#aaa':'#666', callback: (val) => this.formatVolume(val) }
           },
           y: {
             display: true,
-            title: { display: true, text: 'Price Zone', color: this.isDark ? '#aaa':'#666' },
+            title: { display: true, text: this.$t('smartMoney.axis.priceZone'), color: this.isDark ? '#aaa':'#666' },
             grid: { display: false },
             ticks: { color: this.isDark ? '#aaa':'#666', font: { size: 11 } }
           }
@@ -97,12 +101,12 @@ export default {
                 const bin = this.bins[this.bins.length - 1 - dataIndex];
                 
                 const volStr = this.formatVolume(raw);
-                let label = `Total Vol: ${volStr}`;
-                
+                let label = this.$t('smartMoney.tooltip.totalVolume', { volume: volStr });
+
                 if (bin) {
-                    if (bin.netSmartShares > 0) label += ` | Smart Net Buy: +${this.formatNumber(bin.netSmartShares)}`;
-                    else if (bin.netSmartShares < 0) label += ` | Smart Net Sell: ${this.formatNumber(bin.netSmartShares)}`;
-                    else label += ` | Smart Money: Neutral`;
+                    if (bin.netSmartShares > 0) label += ` | ${this.$t('smartMoney.tooltip.netBuy', { shares: '+' + this.formatNumber(bin.netSmartShares) })}`;
+                    else if (bin.netSmartShares < 0) label += ` | ${this.$t('smartMoney.tooltip.netSell', { shares: this.formatNumber(bin.netSmartShares) })}`;
+                    else label += ` | ${this.$t('smartMoney.tooltip.neutral')}`;
                 }
                 return label;
               }
@@ -135,7 +139,7 @@ export default {
         }
       } catch (err) {
         console.error('Profile Load Error:', err);
-        this.error = 'Failed to load volume profile data';
+        this.error = this.$t('smartMoney.error.loadFailed');
       } finally {
         this.loading = false;
       }
@@ -322,7 +326,7 @@ export default {
             labels,
             datasets: [
                 {
-                    label: 'Volume Profile',
+                    label: this.$t('smartMoney.dataset.volumeProfile'),
                     data: data,
                     backgroundColor: backgroundColors,
                     borderColor: borderColors,
@@ -337,14 +341,14 @@ export default {
     generateLegendLabels(chart) {
         // Custom Legend to explain colors
         return [
-           { text: 'Smart Money Buy', fillStyle: '#28a745', strokeStyle: '#28a745' },
-           { text: 'Smart Money Sell', fillStyle: '#dc3545', strokeStyle: '#dc3545' },
-           { text: 'Neutral / Retail', fillStyle: this.isDark ? '#343a40':'#e9ecef', strokeStyle: this.isDark ? '#495057':'#ced4da' }
+           { text: this.$t('smartMoney.legend.buy'), fillStyle: '#28a745', strokeStyle: '#28a745' },
+           { text: this.$t('smartMoney.legend.sell'), fillStyle: '#dc3545', strokeStyle: '#dc3545' },
+           { text: this.$t('smartMoney.legend.neutral'), fillStyle: this.isDark ? '#343a40':'#e9ecef', strokeStyle: this.isDark ? '#495057':'#ced4da' }
         ];
     },
     
     formatVolume(num) {
-        if (!Number.isFinite(num)) return 'N/A';
+        if (!Number.isFinite(num)) return this.$t('smartMoney.notAvailable');
         if (num > 1000000) return fmtNumber(num / 1000000, 1) + 'M';
         if (num > 1000) return fmtNumber(num / 1000, 1) + 'K';
         return fmtNumber(num, 0);

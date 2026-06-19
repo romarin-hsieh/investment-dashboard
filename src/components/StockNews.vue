@@ -2,17 +2,17 @@
   <div class="stock-news">
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
-      <span>Loading latest news for {{ symbol }}...</span>
+      <span>{{ $t('stockNews.loading', { symbol }) }}</span>
     </div>
-    
+
     <div v-else-if="error" class="error-state">
       <span class="error-icon">⚠️</span>
       <span>{{ error }}</span>
     </div>
-    
+
     <div v-else-if="news.length === 0" class="no-news-state">
       <span class="info-icon">ℹ️</span>
-      <span>No recent news available for {{ symbol }}</span>
+      <span>{{ $t('stockNews.empty', { symbol }) }}</span>
     </div>
     
     <div v-else class="news-grid">
@@ -46,7 +46,7 @@
         </div>
         
         <div class="news-footer">
-          <span class="read-more">Read more →</span>
+          <span class="read-more">{{ $t('stockNews.readMore') }}</span>
         </div>
       </article>
     </div>
@@ -154,21 +154,21 @@ export default {
     },
     
     formatDate(timestamp) {
-      if (!timestamp) return 'Unknown date';
-      
+      if (!timestamp) return this.$t('stockNews.unknownDate');
+
       const date = new Date(timestamp * 1000);
       const now = new Date();
       const diffMs = now - date;
       const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
       const diffDays = Math.floor(diffHours / 24);
-      
+
       if (diffHours < 1) {
         const diffMinutes = Math.floor(diffMs / (1000 * 60));
-        return `${diffMinutes}m ago`;
+        return this.$t('stockNews.minutesAgo', { n: diffMinutes });
       } else if (diffHours < 24) {
-        return `${diffHours}h ago`;
+        return this.$t('stockNews.hoursAgo', { n: diffHours });
       } else if (diffDays < 7) {
-        return `${diffDays}d ago`;
+        return this.$t('stockNews.daysAgo', { n: diffDays });
       } else {
         return date.toLocaleDateString('en-US', { 
           month: 'short', 

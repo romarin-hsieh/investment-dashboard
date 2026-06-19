@@ -3,7 +3,7 @@
     <div v-if="loading" class="holdings-grid">
       <!-- Ownership Skeleton -->
       <div class="card ownership-card">
-        <h3>Ownership Structure</h3>
+        <h3>{{ $t('holdings.ownershipStructure') }}</h3>
         <div class="chart-container">
           <WidgetSkeleton type="chart" :show-header="false" :bordered="false" />
         </div>
@@ -11,44 +11,44 @@
 
       <!-- Sentiment Skeleton -->
       <div class="card sentiment-card">
-        <h3>Insider Sentiment (6M)</h3>
+        <h3>{{ $t('holdings.insiderSentiment6m') }}</h3>
          <WidgetSkeleton type="list" :item-count="3" :show-header="false" :bordered="false" />
       </div>
 
       <!-- Institutions Skeleton -->
       <div class="card institutions-card full-width">
-        <h3>Top Institutional Holders</h3>
+        <h3>{{ $t('holdings.topInstitutionalHolders') }}</h3>
          <WidgetSkeleton type="list" :item-count="5" :show-header="false" :bordered="false" />
       </div>
     </div>
 
     <div v-else-if="error" class="error-state">
       <p>{{ error }}</p>
-      <button @click="loadData">Retry</button>
+      <button @click="loadData">{{ $t('holdings.retry') }}</button>
     </div>
 
     <div v-else class="holdings-grid">
       <!-- Row 1 Left: Stock Structure (1/3) -->
       <div class="card ownership-card">
-        <h3>Ownership Structure</h3>
+        <h3>{{ $t('holdings.ownershipStructure') }}</h3>
         <div class="chart-container">
           <Doughnut v-if="ownershipChartData" :data="ownershipChartData" :options="ownershipChartOptions" />
         </div>
         <div class="stats-row">
             <div class="stat">
-                <span class="label">Insiders</span>
+                <span class="label">{{ $t('holdings.insiders') }}</span>
                 <span class="value">{{ holders.insidersPercent || '0%' }}</span>
             </div>
              <div class="stat">
-                <span class="label">Institutions</span>
+                <span class="label">{{ $t('holdings.institutions') }}</span>
                 <span class="value">{{ holders.institutionsPercent || '0%' }}</span>
             </div>
         </div>
       </div>
-      
+
       <!-- Row 1 Right: Smart Money Trend (2/3) -->
       <div class="card smart-money-card">
-          <h3>Smart Money Trend</h3>
+          <h3>{{ $t('holdings.smartMoneyTrend') }}</h3>
           <div class="smart-money-content" v-if="smartMoneyChartData">
               <!-- Right: Trend Chart (Full Width) -->
               <div class="trend-chart-container">
@@ -56,7 +56,7 @@
               </div>
           </div>
           <div v-else class="no-data">
-              Loading Smart Money Data...
+              {{ $t('holdings.loadingSmartMoney') }}
           </div>
       </div>
 
@@ -69,7 +69,7 @@
 
       <!-- Row 2: Insider Sentiment (Full) -->
       <div class="card sentiment-card full-width">
-        <h3>Insider Sentiment (6M)</h3>
+        <h3>{{ $t('holdings.insiderSentiment6m') }}</h3>
         <div class="sentiment-container">
             <!-- Left: Meter -->
              <div class="sentiment-meter-section">
@@ -79,23 +79,23 @@
                         <div class="segment buy" :style="{ width: getSentimentStyles().buy + '%'}"></div>
                     </div>
                     <div class="meter-labels">
-                        <span class="label-sell">{{ Math.round(getSentimentStyles().sell) }}% Selling</span>
+                        <span class="label-sell">{{ $t('holdings.percentSelling', { n: Math.round(getSentimentStyles().sell) }) }}</span>
                         <span class="label-sentiment">{{ sentimentLabel }}</span>
-                        <span class="label-buy">{{ Math.round(getSentimentStyles().buy) }}% Buying</span>
+                        <span class="label-buy">{{ $t('holdings.percentBuying', { n: Math.round(getSentimentStyles().buy) }) }}</span>
                     </div>
                 </div>
              </div>
-             
+
              <!-- Right: Transactions -->
             <div class="recent-transactions">
-                <h4>Recent Transactions</h4>
+                <h4>{{ $t('holdings.recentTransactions') }}</h4>
                 <div class="transaction-header">
-                    <span class="date">Date Reported</span>
-                    <span class="name">Holder</span>
-                    <span class="relationship">Relationship</span>
-                    <span class="type">Transaction</span>
-                    <span class="shares">Shares</span>
-                    <span class="value">Value</span>
+                    <span class="date">{{ $t('holdings.dateReported') }}</span>
+                    <span class="name">{{ $t('holdings.holder') }}</span>
+                    <span class="relationship">{{ $t('holdings.relationship') }}</span>
+                    <span class="type">{{ $t('holdings.transaction') }}</span>
+                    <span class="shares">{{ $t('holdings.shares') }}</span>
+                    <span class="value">{{ $t('holdings.value') }}</span>
                 </div>
                 <ul class="transaction-list">
                     <li v-for="(tx, idx) in recentInsiders" :key="idx" :class="tx.buySell">
@@ -103,8 +103,8 @@
                         <span class="name" :title="tx.filerName">{{ tx.filerName }}</span>
                         <span class="relationship" :title="tx.relationship">{{ tx.relationship || '-' }}</span>
                         <span class="type">{{ tx.transactionText }}</span>
-                        <span class="shares">{{ tx.shares ? tx.shares.fmt : 'N/A' }}</span>
-                        <span class="value">{{ tx.value ? tx.value.fmt : 'N/A' }}</span>
+                        <span class="shares">{{ tx.shares ? tx.shares.fmt : $t('holdings.notAvailable') }}</span>
+                        <span class="value">{{ tx.value ? tx.value.fmt : $t('holdings.notAvailable') }}</span>
                     </li>
                 </ul>
             </div>
@@ -113,25 +113,25 @@
 
       <!-- Row 3: Top Institutions (Full) -->
       <div class="card institutions-card full-width">
-        <h3>Top Institutional Holders</h3>
+        <h3>{{ $t('holdings.topInstitutionalHolders') }}</h3>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>Date Reported</th>
-                        <th>Holder</th>
-                        <th>% Out</th>
-                        <th>Shares</th>
-                        <th>Value</th>
+                        <th>{{ $t('holdings.dateReported') }}</th>
+                        <th>{{ $t('holdings.holder') }}</th>
+                        <th>{{ $t('holdings.percentOutstanding') }}</th>
+                        <th>{{ $t('holdings.shares') }}</th>
+                        <th>{{ $t('holdings.value') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(inst, idx) in holders.topInstitutions.slice(0, 10)" :key="idx">
-                        <td>{{ inst.reportDate ? inst.reportDate.fmt : 'N/A' }}</td>
+                        <td>{{ inst.reportDate ? inst.reportDate.fmt : $t('holdings.notAvailable') }}</td>
                         <td>{{ inst.organization }}</td>
-                        <td>{{ inst.pctHeld ? inst.pctHeld.fmt : 'N/A' }}</td>
-                        <td>{{ inst.position ? inst.position.fmt : 'N/A' }}</td>
-                        <td>{{ inst.value ? ('$' + inst.value.fmt) : 'N/A' }}</td>
+                        <td>{{ inst.pctHeld ? inst.pctHeld.fmt : $t('holdings.notAvailable') }}</td>
+                        <td>{{ inst.position ? inst.position.fmt : $t('holdings.notAvailable') }}</td>
+                        <td>{{ inst.value ? ('$' + inst.value.fmt) : $t('holdings.notAvailable') }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -223,9 +223,9 @@ export default {
           return (buys / total) * 100;
       },
       sentimentLabel() {
-          if (this.sentimentScore > 60) return 'Bullish';
-          if (this.sentimentScore < 40) return 'Bearish';
-          return 'Neutral';
+          if (this.sentimentScore > 60) return this.$t('holdings.sentimentBullish');
+          if (this.sentimentScore < 40) return this.$t('holdings.sentimentBearish');
+          return this.$t('holdings.sentimentNeutral');
       },
       sentimentColor() {
           if (this.sentimentScore < 40) return getToken('--danger-solid');
@@ -233,17 +233,17 @@ export default {
       },
       smartMoneyScoreDetails() {
          const score = this.calculatedSmartMoneyScore;
-         let text = 'Neutral';
+         let text = this.$t('holdings.scoreNeutral');
          let color = getToken('--warning-solid');  // amber default
 
          if (score >= 75) {
-             text = 'Strong Accumulation (Safe Buy)';
+             text = this.$t('holdings.scoreStrongAccumulation');
              color = getToken('--success-solid');
          } else if (score < 50) {
-             text = 'Weak / Distribution (Caution)';
+             text = this.$t('holdings.scoreWeakDistribution');
              color = getToken('--danger-solid');
          } else {
-             text = 'Stable / Neutral';
+             text = this.$t('holdings.scoreStableNeutral');
          }
 
          return { score, text, color };
@@ -266,7 +266,7 @@ export default {
                       type: 'linear',
                       display: true,
                       position: 'left',
-                      title: { display: true, text: 'Shares Held', color: axisTextColor },
+                      title: { display: true, text: this.$t('holdings.axisSharesHeld'), color: axisTextColor },
                       grid: { color: gridColor },
                       ticks: { color: axisTextColor }
                   },
@@ -274,7 +274,7 @@ export default {
                       type: 'linear',
                       display: true,
                       position: 'right',
-                      title: { display: true, text: 'Stock Price', color: axisTextColor },
+                      title: { display: true, text: this.$t('holdings.axisStockPrice'), color: axisTextColor },
                       grid: { drawOnChartArea: false }, // only want the grid lines for one axis
                       ticks: { color: axisTextColor, callback: (val) => '$' + val }
                   }
@@ -346,7 +346,7 @@ export default {
                     this.error = null;
                 }
             } catch (fbErr) {
-                 this.error = 'Failed to load holdings data';
+                 this.error = this.$t('holdings.errorLoadFailed');
             }
         } finally {
             this.loading = false;
@@ -365,7 +365,7 @@ export default {
                 startDate: tx.transaction_date, // "09 Oct 2025" or "2025-10-09"
                 filerName: tx.reporter,
                 relationship: tx.relationship || tx.filerRelation || '',
-                transactionText: `${tx.transaction_type} at $${tx.price}`,
+                transactionText: this.$t('holdings.transactionAtPrice', { type: tx.transaction_type, price: tx.price }),
                 shares: { fmt: new Intl.NumberFormat('en-US').format(tx.shares) },
                 buySell: isBuy ? 'buy' : (isSell ? 'sell' : 'neutral'),
                 value: { fmt: '$' + new Intl.NumberFormat('en-US').format(tx.value) }
@@ -419,7 +419,7 @@ export default {
             labels,
             datasets: [
                 {
-                    label: 'Smart Money Shares',
+                    label: this.$t('holdings.datasetSmartMoneyShares'),
                     type: 'bar',
                     data: sharesData,
                     backgroundColor: 'rgba(40, 167, 69, 0.6)',
@@ -428,7 +428,7 @@ export default {
                     yAxisID: 'y'
                 },
                 {
-                    label: 'Avg Reported Price',
+                    label: this.$t('holdings.datasetAvgReportedPrice'),
                     type: 'line',
                     data: priceData,
                     borderColor: getToken('--blue-500'),
@@ -524,7 +524,7 @@ export default {
         const hoverPublic      = this.isDark ? '#5D5D5D' : '#C4BEB8';
 
         this.ownershipChartData = {
-            labels: ['Insiders', 'Institutions', 'Public/Other'],
+            labels: [this.$t('holdings.insiders'), this.$t('holdings.institutions'), this.$t('holdings.publicOther')],
             datasets: [{
                 data: [insiders, institutions, publicFloat],
                 backgroundColor: [
@@ -563,7 +563,7 @@ export default {
     },
 
     formatDate(dateObj) {
-        if (!dateObj) return 'N/A';
+        if (!dateObj) return this.$t('holdings.notAvailable');
         const raw = (typeof dateObj === 'string') ? dateObj : (dateObj.raw || dateObj.fmt || dateObj);
         
         // Try parsing

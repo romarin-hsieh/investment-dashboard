@@ -279,5 +279,468 @@
     "qualityDegraded": "降級",
     "qualityDisabled": "已停用",
     "qualityUnknown": "未知"
+  },
+  "stockDetail": {
+    "breadcrumb": {
+      "stockOverview": "股票總覽",
+      "symbolAnalysis": "{symbol} 分析"
+    },
+    "tabs": {
+      "overview": "總覽與技術面",
+      "holdings": "持股與市場情緒",
+      "analysis": "基本面分析"
+    },
+    "actions": {
+      "retry": "重試",
+      "backToStockOverview": "返回股票總覽",
+      "viewRealtimeChartTitle": "在 Yahoo Finance 查看即時走勢圖",
+      "viewRealtimeChartAria": "在 Yahoo Finance 開啟 {symbol} 的即時走勢圖（於新分頁開啟）",
+      "signalSpecsTitle": "這些訊號如何計算",
+      "signalSpecsAria": "開啟訊號計算說明"
+    },
+    "widgets": {
+      "symbolOverview": "價格走勢圖",
+      "technicalAnalysis": "技術分析",
+      "marketRegime": "市場狀態",
+      "tradingStrategy": "交易策略",
+      "trendlinesSR": "趨勢線與支撐／壓力區",
+      "cisdProjections": "CISD 價格預測",
+      "mfiVolumeProfile": "MFI 量能分佈",
+      "dailyInsight": "日線趨勢（5 日移動平均）",
+      "weeklyInsight": "週線趨勢（4 週移動平均）"
+    },
+    "sections": {
+      "technicalIndicators": "技術指標",
+      "quantKineticState": "量化動能狀態",
+      "symbolInsight": "個股洞察",
+      "latestNews": "最新消息",
+      "deepResearch": "深度研究",
+      "financialsOverview": "財務概覽",
+      "companyProfile": "公司簡介",
+      "institutionalInsiderHoldings": "機構與內部人持股"
+    },
+    "industry": {
+      "unknown": "未知",
+      "unknownIndustry": "未知產業"
+    }
+  },
+  "fundamentals": {
+    "priceTargets": {
+      "title": "分析師目標價",
+      "low": "最低",
+      "high": "最高",
+      "average": "平均",
+      "current": "目前",
+      "noData": "暫無分析師目標價資料"
+    },
+    "recommendations": {
+      "title": "分析師評等",
+      "strongBuy": "強力買進",
+      "buy": "買進",
+      "hold": "持有",
+      "sell": "賣出",
+      "strongSell": "強力賣出",
+      "noData": "暫無分析師評等資料"
+    },
+    "keyMetrics": {
+      "title": "關鍵指標",
+      "revenueGrowth": "營收成長率（年增率）",
+      "profitMargin": "淨利率",
+      "forwardPE": "預估本益比（股價相對於預期獲利）",
+      "beta": "Beta 值（相對於大盤的波動性）",
+      "notAvailable": "無資料"
+    },
+    "earnings": {
+      "title": "獲利與營收歷史",
+      "epsAxis": "EPS（每股盈餘）",
+      "revenueAxis": "營收",
+      "revenueSeries": "營收",
+      "earningsSeries": "獲利"
+    },
+    "targetPriceChart": {
+      "title": "分析師目標價走勢",
+      "priceAxis": "股價（美元）",
+      "priceTargetSeries": "目標價"
+    },
+    "periods": {
+      "current": "目前",
+      "oneMonthAgo": "1 個月前",
+      "twoMonthsAgo": "2 個月前",
+      "threeMonthsAgo": "3 個月前"
+    },
+    "errors": {
+      "loadFailed": "無法載入基本面資料，請稍後再試。"
+    }
+  },
+  "holdings": {
+    "ownershipStructure": "股權結構",
+    "insiderSentiment6m": "內部人情緒（近 6 個月）",
+    "topInstitutionalHolders": "主要機構持股人",
+    "smartMoneyTrend": "聰明錢趨勢",
+    "loadingSmartMoney": "正在載入聰明錢資料…",
+    "recentTransactions": "近期交易",
+    "retry": "重試",
+    "notAvailable": "無資料",
+    "insiders": "內部人",
+    "institutions": "機構",
+    "publicOther": "公眾／其他",
+    "percentSelling": "{n}% 賣出",
+    "percentBuying": "{n}% 買入",
+    "dateReported": "申報日期",
+    "holder": "持股人",
+    "relationship": "關係",
+    "transaction": "交易",
+    "shares": "股數",
+    "value": "金額",
+    "percentOutstanding": "佔流通股比例",
+    "sentimentBullish": "看多",
+    "sentimentBearish": "看空",
+    "sentimentNeutral": "中性",
+    "scoreNeutral": "中性",
+    "scoreStrongAccumulation": "強力買進（可安心買入）",
+    "scoreWeakDistribution": "偏弱／出貨中（請謹慎）",
+    "scoreStableNeutral": "穩定／中性",
+    "axisSharesHeld": "持有股數",
+    "axisStockPrice": "股價",
+    "datasetSmartMoneyShares": "聰明錢持股",
+    "datasetAvgReportedPrice": "平均申報價格",
+    "transactionAtPrice": "{type}，價格 ${price}",
+    "errorLoadFailed": "無法載入持股資料，請重試。"
+  },
+  "indicators": {
+    "title": "技術指標",
+    "guideTitle": "指標說明",
+    "openGuideAria": "開啟指標說明",
+    "closeGuideAria": "關閉指標說明",
+    "lastUpdated": "最後更新：{time}",
+    "retry": "重試",
+    "noDataForSymbol": "找不到 {symbol} 的技術指標資料。",
+    "loadFailed": "無法載入技術指標：{message}",
+    "groups": {
+      "trend": "趨勢",
+      "oscillators": "擺盪指標",
+      "market": "市場"
+    },
+    "labels": {
+      "ema5": "EMA(5)",
+      "ema10": "EMA(10)",
+      "ema20": "EMA(20)",
+      "ema30": "EMA(30)",
+      "sma5": "SMA(5)",
+      "sma10": "SMA(10)",
+      "sma30": "SMA(30)",
+      "superTrend": "SuperTrend",
+      "sar": "SAR",
+      "vwma20": "VWMA(20)",
+      "rsi14": "RSI (14)",
+      "willr14": "威廉 %R (14)",
+      "stochK": "Stoch %K",
+      "stochD": "Stoch %D",
+      "cci20": "CCI (20)",
+      "adx14": "ADX (14)",
+      "macd": "MACD",
+      "ichiConv": "一目轉換線 (9)",
+      "ichiBase": "一目基準線 (26)",
+      "ichiLag": "一目延遲線 (26)",
+      "atr14": "ATR (14)",
+      "mfi14": "MFI (14)",
+      "cmf20": "CMF (20)",
+      "obv": "OBV",
+      "volume": "成交量",
+      "avgVol10D": "平均成交量（10 日）",
+      "marketCap": "市值",
+      "beta10D": "Beta（10 日）",
+      "beta3M": "Beta（3 個月）",
+      "beta1Y": "Beta（1 年）",
+      "beta5Y": "Beta（5 年）"
+    },
+    "guide": {
+      "trendHeading": "趨勢指標",
+      "oscillatorsHeading": "擺盪指標",
+      "marketHeading": "市場與波動度",
+      "ma": {
+        "term": "MA（移動平均）：",
+        "desc": "指定天數（例如 5、10、30 日）內的平均價格。"
+      },
+      "sma": {
+        "term": "SMA（簡單移動平均）：",
+        "desc": "有助於判斷趨勢方向，以及重要的支撐／壓力位置。"
+      },
+      "superTrend": {
+        "term": "SuperTrend：",
+        "desc": "以 ATR（波動度）為基礎的順勢指標，也可作為動態停損點。"
+      },
+      "sar": {
+        "term": "拋物線 SAR：",
+        "desc": "順勢指標：圓點位於價格下方代表上升趨勢，位於價格上方代表下降趨勢。"
+      },
+      "vwma": {
+        "term": "VWMA（成交量加權移動平均）：",
+        "desc": "依成交量為價格加權的移動平均。VWMA 上升且高於 SMA 時，代表強勁的上升趨勢。"
+      },
+      "rsi": {
+        "term": "RSI（相對強弱指標）：",
+        "desc": "0 到 100 的動能指標。高於 70 視為超買，低於 30 視為超賣。"
+      },
+      "stochastic": {
+        "term": "隨機指標（%K／%D）：",
+        "desc": "比較收盤價與近期區間的位置。高於 80 為超買，低於 20 為超賣。"
+      },
+      "cci": {
+        "term": "CCI（順勢指標）：",
+        "desc": "衡量價格偏離其統計平均的程度。高於 100 或低於 -100 代表出現強勁走勢。"
+      },
+      "macd": {
+        "term": "MACD：",
+        "desc": "順勢動能指標。當 MACD 線與訊號線交叉時，可能出現買進或賣出訊號。"
+      },
+      "adx": {
+        "term": "ADX（平均趨向指標）：",
+        "desc": "衡量趨勢的強度。讀數高於 25 代表趨勢強勁。"
+      },
+      "ichimoku": {
+        "term": "一目均衡表：",
+        "desc": "全方位趨勢系統。價格位於雲帶上方偏多，位於下方偏空。"
+      },
+      "atr": {
+        "term": "ATR（平均真實區間）：",
+        "desc": "衡量市場波動度。數值越高代表價格波動越大。"
+      },
+      "mfi": {
+        "term": "MFI（資金流量指標）：",
+        "desc": "以成交量加權的 RSI。高於 80 為超買，低於 20 為超賣。"
+      },
+      "obv": {
+        "term": "OBV（能量潮）：",
+        "desc": "累計成交量以確認趨勢的方向。"
+      },
+      "beta": {
+        "term": "Beta（貝他值）：",
+        "desc": "個股相對於整體市場的波動幅度。高於 1.0 代表波動大於大盤。"
+      }
+    },
+    "signals": {
+      "BUY": "買進",
+      "SELL": "賣出",
+      "BULLISH": "偏多",
+      "BEARISH": "偏空",
+      "STRONG_TREND": "強趨勢",
+      "WEAK_TREND": "弱趨勢",
+      "OVERBOUGHT": "超買",
+      "OVERSOLD": "超賣",
+      "HIGH_VOLATILITY": "高波動",
+      "LOW_VOLATILITY": "低波動",
+      "MEGA_CAP": "超大型股",
+      "LARGE_CAP": "大型股",
+      "MID_CAP": "中型股",
+      "SMALL_CAP": "小型股",
+      "MICRO_CAP": "微型股",
+      "HIGH_VOL": "高波動",
+      "MED_VOL": "中波動",
+      "LOW_VOL": "低波動",
+      "VERY_LOW": "極低",
+      "ABOVE_AVG": "高於均量",
+      "BELOW_AVG": "低於均量"
+    }
+  },
+  "signals": {
+    "pivots": {
+      "title": "樞紐點（標準）",
+      "pivot": "樞紐點",
+      "currentlyLabel": "目前價格位於："
+    },
+    "zones": {
+      "aboveR2": "高於 R2 — 強勁上漲動能",
+      "testingR1R2": "介於 R1 與 R2 之間 — 測試壓力",
+      "abovePivot": "高於樞紐點 — 略偏多",
+      "belowPivot": "低於樞紐點 — 略偏空",
+      "testingS1S2": "介於 S1 與 S2 之間 — 測試支撐",
+      "belowS2": "低於 S2 — 嚴重超賣"
+    },
+    "patterns": {
+      "title": "K 線型態",
+      "empty": "近期未偵測到型態"
+    },
+    "patternNames": {
+      "hammer": "鎚子線（Hammer）",
+      "bullishEngulfing": "多頭吞噬（Bullish Engulfing）",
+      "bearishEngulfing": "空頭吞噬（Bearish Engulfing）",
+      "doji": "十字星（Doji）"
+    },
+    "risk": {
+      "title": "風險與波動度",
+      "atrLabel": "ATR（14 日）",
+      "volatilityLabel": "波動度（標準差）",
+      "notAvailable": "無資料"
+    },
+    "info": {
+      "title": "這些訊號如何運作",
+      "closeAriaLabel": "關閉訊號說明",
+      "pivotsDescription": "依前一交易日的最高、最低與收盤價計算（樞紐點 =（最高 + 最低 + 收盤）/ 3）。支撐位（S1、S2）與壓力位（R1、R2）標示出價格可能停滯或反轉的位置。",
+      "atrTerm": "ATR（14 日）：",
+      "atrDescription": "平均真實區間 — 衡量價格每日通常波動的幅度。ATR 越高代表波動越大，風險與機會也越大。",
+      "volatilityTerm": "波動度（標準差）：",
+      "volatilityDescription": "報酬率相對平均值的擺動幅度，是衡量價格穩定或劇烈程度的統計指標。",
+      "patternsHeading": "K 線型態（近 5 日）",
+      "hammerTerm": "鎚子線（Hammer）：",
+      "hammerDescription": "可能的向上反轉訊號，特徵是長長的下影線。",
+      "engulfingTerm": "吞噬型態（Engulfing）：",
+      "engulfingDescription": "強烈的反轉訊號，可向上（多頭）或向下（空頭）。",
+      "dojiTerm": "十字星（Doji）：",
+      "dojiDescription": "市場猶豫不決，特徵是極小的實體。"
+    }
+  },
+  "mfi": {
+    "title": "MFI 成交量分佈",
+    "loading": "正在載入 MFI 成交量分佈…",
+    "retry": "重試",
+    "notAvailable": "無資料",
+    "devFallbackNote": "開發模式：正在嘗試 Yahoo Finance 備援來源",
+    "devFallbackButton": "嘗試 Yahoo Finance（僅限開發）",
+    "infoButtonTitle": "此分析的運作方式",
+    "infoButtonAriaLabel": "查看 MFI 成交量分佈分析的運作方式",
+    "range3mo": "3 個月",
+    "range6mo": "6 個月",
+    "range1y": "1 年",
+    "statusMfiSignal": "MFI 訊號：",
+    "statusSentiment": "市場情緒：",
+    "statusPoc": "POC（成交量最大價位）：",
+    "statusBuyShare": "買盤佔比：{pct}%",
+    "statusVolShare": "佔總成交量 {pct}%",
+    "pocMarker": "POC",
+    "pocMarkerTitle": "控制點（Point of Control）：成交量最大的價位",
+    "vahMarker": "VAH",
+    "vahMarkerTitle": "價值區上緣（Value Area High）：涵蓋 70% 成交量區間的頂端",
+    "valMarker": "VAL",
+    "valMarkerTitle": "價值區下緣（Value Area Low）：涵蓋 70% 成交量區間的底端",
+    "tradingAnalysisTitle": "交易分析",
+    "noSignals": "目前沒有明確的交易訊號。市場可能正在橫盤整理，或是資料還不足。",
+    "noData": "{symbol} 沒有可用的 MFI 成交量分佈資料。",
+    "modalTitle": "MFI 與成交量分佈說明",
+    "modalCloseAriaLabel": "關閉 MFI 與成交量分佈說明",
+    "modalMfiHeading": "MFI（資金流量指標）",
+    "modalMfiDesc": "以成交量加權的 RSI，用來衡量市場中買盤與賣盤壓力的強弱。",
+    "modalMfiOverboughtTerm": "高於 80：",
+    "modalMfiOverboughtDesc": "超買——可能形成頭部。",
+    "modalMfiOversoldTerm": "低於 20：",
+    "modalMfiOversoldDesc": "超賣——可能形成底部。",
+    "modalVpHeading": "成交量分佈",
+    "modalVpDesc": "顯示各個價位各成交了多少量。",
+    "modalPocTerm": "POC（控制點）：",
+    "modalPocDesc": "成交量最大的價位，通常會成為強力的支撐或壓力。",
+    "modalVaTerm": "價值區（VA）：",
+    "modalVaDesc": "涵蓋 70% 成交量的價格區間。",
+    "modalLogicHeading": "交易分析的判斷依據",
+    "modalBullishTerm": "看漲：",
+    "modalBullishDesc": "價格在 POC 之上且 MFI 上升（或自超賣區反彈）。",
+    "modalBearishTerm": "看跌：",
+    "modalBearishDesc": "價格在 POC 之下且 MFI 下降（或自超買區回落）。",
+    "modalRatioTerm": "買 / 賣比率：",
+    "modalRatioDesc": "由每根 K 線的上漲量與下跌量推算而來。",
+    "tooltipPriceRange": "價格區間：",
+    "tooltipVolume": "成交量：",
+    "tooltipAvgMfi": "平均 MFI：",
+    "tooltipBuying": "買進量：",
+    "tooltipSelling": "賣出量：",
+    "errorCors": "資料來源被瀏覽器的安全機制封鎖。請嘗試停用廣告攔截器或隱私擴充功能。",
+    "errorNoData": "{symbol} 沒有可用的價量資料，此代號可能尚未支援。",
+    "errorInsufficient": "歷史資料不足，無法計算 MFI 成交量分佈。",
+    "errorGeneric": "資料載入失敗：{message}"
+  },
+  "smartMoney": {
+    "title": "聰明錢成交量分佈（{range}）",
+    "range": {
+      "6mo": "6 個月",
+      "1y": "1 年",
+      "5y": "5 年"
+    },
+    "rangeShort": {
+      "6mo": "6個月",
+      "1y": "1年",
+      "5y": "5年"
+    },
+    "loading": "正在計算成交量分佈…",
+    "noData": "成交量資料不足，無法顯示分佈",
+    "notAvailable": "無資料",
+    "axis": {
+      "totalVolume": "總成交量",
+      "priceZone": "價格區間"
+    },
+    "tooltip": {
+      "totalVolume": "總成交量：{volume}",
+      "netBuy": "聰明錢淨買入：{shares} 股",
+      "netSell": "聰明錢淨賣出：{shares} 股",
+      "neutral": "聰明錢：中性"
+    },
+    "dataset": {
+      "volumeProfile": "成交量分佈"
+    },
+    "legend": {
+      "buy": "聰明錢買入",
+      "sell": "聰明錢賣出",
+      "neutral": "中性／散戶"
+    },
+    "error": {
+      "loadFailed": "無法載入成交量分佈資料，請稍後再試。"
+    }
+  },
+  "tradingStrategy": {
+    "loading": "正在載入交易策略圖表…",
+    "loadFailed": "圖表載入失敗",
+    "retry": "重試",
+    "symbolChart": "{symbol} 價格走勢圖"
+  },
+  "cisd": {
+    "settingsButtonTitle": "指標設定",
+    "modalTitle": "CISD 投射設定",
+    "schema": {
+      "groupInputs": "輸入參數",
+      "groupStyle": "樣式",
+      "groupLevels": "投射層級",
+      "barsThreshold": "連續走勢最少 K 棒數",
+      "cisdFilter": "啟用 CISD 過濾",
+      "filterLength": "過濾回看 K 棒數",
+      "invalidateOnChoch": "出現 CHoCH（特性轉變）時取消",
+      "bullishColor": "看漲顏色",
+      "bearishColor": "看跌顏色",
+      "backgroundFill": "為投射範圍填色",
+      "showBaseLevel": "顯示基準層級",
+      "labelsSize": "標籤文字大小",
+      "showLevel": "顯示第 {n} 層",
+      "levelMultiplier": "第 {n} 層距離倍數"
+    }
+  },
+  "trendlines": {
+    "settingsButtonTitle": "指標設定",
+    "settingsModalTitle": "趨勢線與支撐／壓力設定",
+    "settings": {
+      "groupInputs": "參數",
+      "groupStyle": "樣式",
+      "leftBars": "樞紐回看（左側 K 棒數）",
+      "rightBars": "樞紐回看（右側 K 棒數）",
+      "extendBars": "延伸線段（K 棒數）",
+      "multiplier": "價格容差倍數",
+      "highLineColor": "壓力線顏色",
+      "lowLineColor": "支撐線顏色",
+      "vdZoneColorSupply": "供給區顏色",
+      "vdZoneColorDemand": "需求區顏色",
+      "vdBarAlign": "成交量量條對齊方向"
+    }
+  },
+  "stockNews": {
+    "loading": "正在載入 {symbol} 的最新新聞…",
+    "empty": "目前沒有 {symbol} 的近期新聞。",
+    "readMore": "閱讀更多 →",
+    "unknownDate": "日期不明",
+    "minutesAgo": "{n} 分鐘前",
+    "hoursAgo": "{n} 小時前",
+    "daysAgo": "{n} 天前"
+  },
+  "marketRegime": {
+    "loading": "正在載入市場狀態圖表…",
+    "loadFailed": "圖表載入失敗",
+    "retry": "重試",
+    "symbolPriceChart": "{symbol} 價格走勢圖",
+    "byTradingView": "由 TradingView 提供"
   }
 }

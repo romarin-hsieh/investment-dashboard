@@ -13,7 +13,7 @@
       <!-- Pivot Points -->
       <div class="signal-block pivots-block">
                 <div class="section-header">
-                    <h4>Pivot Points (Standard)</h4>
+                    <h4>{{ $t('signals.pivots.title') }}</h4>
                 </div>
                 <div class="block-content">
                 <div class="pivot-grid">
@@ -26,7 +26,7 @@
                         <span class="value">{{ formatPrice(pivots.r1) }}</span>
                     </div>
                     <div class="pivot-row main">
-                        <span class="label">Pivot</span>
+                        <span class="label">{{ $t('signals.pivots.pivot') }}</span>
                         <span class="value">{{ formatPrice(pivots.p) }}</span>
                     </div>
                     <div class="pivot-row support">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="current-zone" v-if="currentZone">
-                    Currently: <strong>{{ currentZone }}</strong>
+                    {{ $t('signals.pivots.currentlyLabel') }} <strong>{{ currentZone }}</strong>
                 </div>
                 </div>
       </div>
@@ -47,7 +47,7 @@
               <!-- Patterns -->
               <div class="signal-block patterns-block">
                 <div class="section-header">
-                    <h4>Candlestick Patterns</h4>
+                    <h4>{{ $t('signals.patterns.title') }}</h4>
                 </div>
                 <div class="block-content">
                 <div class="patterns-list" v-if="patterns.length > 0">
@@ -55,23 +55,23 @@
                         {{ p.name }}
                     </div>
                 </div>
-                <div v-else class="no-patterns">No recent patterns detected</div>
+                <div v-else class="no-patterns">{{ $t('signals.patterns.empty') }}</div>
                 </div>
       </div>
         
               <!-- Volatility -->
               <div class="signal-block risk-block">
                 <div class="section-header">
-                    <h4>Risk & Volatility</h4>
+                    <h4>{{ $t('signals.risk.title') }}</h4>
                 </div>
                 <div class="block-content">
                 <div class="risk-metric">
-                    <span class="label">ATR (14)</span>
+                    <span class="label">{{ $t('signals.risk.atrLabel') }}</span>
                     <span class="value">{{ formatPrice(risk.atr) }}</span>
                 </div>
                 <div class="risk-metric">
-                    <span class="label">Volatility (SD)</span>
-                    <span class="value">{{ risk.volatility || 'N/A' }}</span>
+                    <span class="label">{{ $t('signals.risk.volatilityLabel') }}</span>
+                    <span class="value">{{ risk.volatility || $t('signals.risk.notAvailable') }}</span>
               </div>
             </div>
           </div>
@@ -81,24 +81,24 @@
             <div v-if="showInfo" class="modal-overlay" @click.self="showInfo = false">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5>Signal Specifications</h5>
-                        <button class="close-btn" @click="showInfo = false" aria-label="Close Signal Specifications">&times;</button>
+                        <h5>{{ $t('signals.info.title') }}</h5>
+                        <button class="close-btn" @click="showInfo = false" :aria-label="$t('signals.info.closeAriaLabel')">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <h6>Pivot Points (Standard)</h6>
-                        <p>Calculated using High, Low, Close of the previous trading day (P = (H+L+C)/3). Support (S1, S2) and Resistance (R1, R2) levels potential price reversal zones.</p>
-                        
-                        <h6>Risk & Volatility</h6>
+                        <h6>{{ $t('signals.pivots.title') }}</h6>
+                        <p>{{ $t('signals.info.pivotsDescription') }}</p>
+
+                        <h6>{{ $t('signals.risk.title') }}</h6>
                         <ul>
-                            <li><strong>ATR (14):</strong> Average True Range. Measures market volatility. Higher ATR = higher risk/opportunity.</li>
-                            <li><strong>Volatility (SD):</strong> Standard Deviation of returns. Statistical measure of price stability.</li>
+                            <li><strong>{{ $t('signals.info.atrTerm') }}</strong> {{ $t('signals.info.atrDescription') }}</li>
+                            <li><strong>{{ $t('signals.info.volatilityTerm') }}</strong> {{ $t('signals.info.volatilityDescription') }}</li>
                         </ul>
-                        
-                        <h6>Candlestick Patterns (Last 5 Days)</h6>
+
+                        <h6>{{ $t('signals.info.patternsHeading') }}</h6>
                         <ul>
-                            <li><strong>Hammer:</strong> Bullish reversal signal. Long lower shadow.</li>
-                            <li><strong>Engulfing:</strong> Strong reversal signal (Bullish/Bearish).</li>
-                            <li><strong>Doji:</strong> Indecision signal. Small body.</li>
+                            <li><strong>{{ $t('signals.info.hammerTerm') }}</strong> {{ $t('signals.info.hammerDescription') }}</li>
+                            <li><strong>{{ $t('signals.info.engulfingTerm') }}</strong> {{ $t('signals.info.engulfingDescription') }}</li>
+                            <li><strong>{{ $t('signals.info.dojiTerm') }}</strong> {{ $t('signals.info.dojiDescription') }}</li>
                         </ul>
             </div>
         </div>
@@ -140,12 +140,12 @@ export default {
         const p = this.pivots;
         const cp = this.currentPrice;
         
-        if (cp > p.r2) return 'Above R2 (Strong Bullish)';
-        if (cp > p.r1) return 'Testing R1-R2 Zone';
-        if (cp > p.p) return 'Above Pivot (Bullish Bias)';
-        if (cp > p.s1) return 'Below Pivot (Bearish Bias)';
-        if (cp > p.s2) return 'Testing S1-S2 Zone';
-        return 'Below S2 (Oversold)';
+        if (cp > p.r2) return this.$t('signals.zones.aboveR2');
+        if (cp > p.r1) return this.$t('signals.zones.testingR1R2');
+        if (cp > p.p) return this.$t('signals.zones.abovePivot');
+        if (cp > p.s1) return this.$t('signals.zones.belowPivot');
+        if (cp > p.s2) return this.$t('signals.zones.testingS1S2');
+        return this.$t('signals.zones.belowS2');
     }
   },
   watch: {
@@ -231,24 +231,24 @@ export default {
              const range = fullSize(i);
              
              if (range > 0 && lowerShadow > 2 * body && upperShadow < body) {
-                 rawPatterns.push({ name: 'Hammer', type: 'bullish', date: dateStr });
+                 rawPatterns.push({ name: this.$t('signals.patternNames.hammer'), type: 'bullish', date: dateStr });
              }
              
              // 2. Engulfing
              const prev = i - 1;
              if (isBullish(i) && !isBullish(prev)) {
                   if (data.close[i] > data.open[prev] && data.open[i] < data.close[prev]) {
-                      rawPatterns.push({ name: 'Bullish Engulfing', type: 'bullish', date: dateStr });
+                      rawPatterns.push({ name: this.$t('signals.patternNames.bullishEngulfing'), type: 'bullish', date: dateStr });
                   }
              } else if (!isBullish(i) && isBullish(prev)) {
                  if (data.close[i] < data.open[prev] && data.open[i] > data.close[prev]) {
-                     rawPatterns.push({ name: 'Bearish Engulfing', type: 'bearish', date: dateStr });
+                     rawPatterns.push({ name: this.$t('signals.patternNames.bearishEngulfing'), type: 'bearish', date: dateStr });
                  }
              }
              
              // 3. Doji (Very small body)
              if (range > 0 && body < range * 0.1) {
-                 rawPatterns.push({ name: 'Doji', type: 'neutral', date: dateStr });
+                 rawPatterns.push({ name: this.$t('signals.patternNames.doji'), type: 'neutral', date: dateStr });
              }
              
              // Stop if we found enough patterns to avoid clutter

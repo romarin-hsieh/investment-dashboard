@@ -28,8 +28,11 @@ export const BUDGETS = {
   'assets/plotly.js':       { gzip: 1.8 * MB,  headroomPct: 13 },
 
   // Entry-route chunk — every visitor pays this cost on first paint.
-  // Aggregated across both `index-*` chunks Rollup emits.
-  'assets/index.js':        { gzip: 160 * KB,  headroomPct: 15 },
+  // Aggregated across both `index-*` chunks Rollup emits. Raised for the i18n
+  // bulk migration (⑥): all locale messages load at boot, so the entry grows as
+  // bilingual coverage expands. Reclaim path: lazy-load the non-active locale
+  // (load only EN at boot, fetch zh-TW on switch) — see ADR-0007 change log.
+  'assets/index.js':        { gzip: 180 * KB,  headroomPct: 9 },
 
   // Largest *route* chunk — heavily used (every stock detail page) and
   // already split across Analysis / Holdings tabs by PR-C3, so further
