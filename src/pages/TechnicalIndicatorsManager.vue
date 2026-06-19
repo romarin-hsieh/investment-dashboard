@@ -322,12 +322,8 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 1rem;
-  border-left: 4px solid var(--danger-solid);
 }
-
-.status-card.available {
-  border-left-color: var(--success-solid);
-}
+/* Status is conveyed by the .status-badge in each card header (no side-stripe). */
 
 .status-header {
   display: flex;
@@ -452,11 +448,15 @@ export default {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 1rem;
-  border-left: 4px solid var(--danger-solid);
 }
 
+/* Pass/fail conveyed by a calm full-card tint (mode-aware tokens), not a side-stripe. */
 .test-result-item.success {
-  border-left-color: var(--success-solid);
+  background: var(--success-bg);
+}
+
+.test-result-item.error {
+  background: var(--danger-bg);
 }
 
 .result-header {

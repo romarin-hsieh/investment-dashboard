@@ -528,7 +528,6 @@ export default {
     border-radius: var(--radius-xs);
     font-size: 0.9rem;
     color: var(--text-secondary);
-    border-left: 3px solid var(--border-color);
     line-height: 1.5;
 }
 

@@ -272,7 +272,6 @@ export default {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
-    border-top: 5px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: 1.5rem;
