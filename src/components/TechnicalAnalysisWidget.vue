@@ -2,12 +2,12 @@
   <div class="fast-widget overview-widget" :id="containerId" ref="container">
     <div v-if="!loaded && !error" class="fast-loading">
       <div class="loading-spinner"></div>
-      <span>Loading Technical Analysis...</span>
+      <span>{{ $t('techAnalysisWidget.loading') }}</span>
     </div>
-    
+
     <div v-if="error" class="fast-error">
-      <span>⚠️ Failed to load</span>
-      <button @click="retry" class="retry-btn">Retry</button>
+      <span>{{ $t('techAnalysisWidget.loadFailed') }}</span>
+      <button @click="retry" class="retry-btn">{{ $t('techAnalysisWidget.retry') }}</button>
     </div>
 
     <!-- TradingView Widget Container -->

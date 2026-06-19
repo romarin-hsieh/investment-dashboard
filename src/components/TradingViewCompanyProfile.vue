@@ -2,12 +2,12 @@
   <div class="company-profile-container">
     <div v-if="!loaded && !error" class="profile-loading">
       <div class="loading-spinner"></div>
-      <span>Loading company profile...</span>
+      <span>{{ $t('tvWidgets.loadingCompanyProfile') }}</span>
     </div>
-      
+
     <div v-if="error" class="profile-error">
-      <span>⚠️ Failed to load company profile</span>
-      <button @click="retry" class="retry-btn">Retry</button>
+      <span>⚠️ {{ $t('tvWidgets.errorCompanyProfile') }}</span>
+      <button @click="retry" class="retry-btn">{{ $t('tvWidgets.retry') }}</button>
     </div>
 
     <!-- Dedicated container for TradingView widget -->

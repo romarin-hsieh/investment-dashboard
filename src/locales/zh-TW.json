@@ -742,5 +742,276 @@
     "retry": "重試",
     "symbolPriceChart": "{symbol} 價格走勢圖",
     "byTradingView": "由 TradingView 提供"
+  },
+  "settings": {
+    "title": "設定",
+    "subtitle": "調整偏好設定並查看系統狀態",
+    "privacy": {
+      "title": "隱私與追蹤",
+      "description": "選擇允許哪些活動追蹤與資料收集"
+    },
+    "diagnostics": {
+      "title": "系統診斷",
+      "description": "查看系統狀態與資料的最後更新時間"
+    },
+    "importExport": {
+      "title": "匯入與匯出",
+      "description": "備份您的設定，或從已儲存的檔案還原"
+    }
+  },
+  "systemManager": {
+    "pageTitle": "系統狀態",
+    "pageSubtitle": "部署與資料管線監控",
+    "never": "從未",
+    "clearCacheConfirm": "要清除瀏覽器快取嗎？頁面將重新載入。",
+    "pipelineStatus": {
+      "title": "管線狀態",
+      "healthy": "正常",
+      "stale": "過期",
+      "daysStale": "已落後 {n} 天"
+    },
+    "lastUpdate": {
+      "title": "上次資料更新"
+    },
+    "coverage": {
+      "title": "標的涵蓋範圍",
+      "activeSymbols": "使用中標的"
+    },
+    "pipelineInfo": {
+      "title": "資料管線資訊",
+      "source": "來源：",
+      "generatedFiles": "產生檔案數：",
+      "symbolTotal": "標的總數："
+    },
+    "actions": {
+      "checking": "檢查中…",
+      "refreshStatus": "重新整理狀態",
+      "clearCache": "清除瀏覽器快取"
+    },
+    "logs": {
+      "title": "系統紀錄"
+    },
+    "log": {
+      "checkingStatus": "正在檢查系統狀態…",
+      "indexLoaded": "已載入管線索引（{date}）",
+      "indexFailed": "無法載入每日管線索引",
+      "metadataLoaded": "已載入標的清單（{count} 檔）",
+      "metadataFailed": "無法載入標的中繼資料",
+      "systemCheckFailed": "系統檢查失敗：{error}"
+    }
+  },
+  "quant": {
+    "title": "量化策略：3D 動態市場狀態",
+    "subtitle": "即時分析，結合趨勢（McGinley Dynamic）、動能（Stochastic RSI）與波動壓縮（Squeeze）",
+    "loading": "正在載入市場分析…",
+    "errorLoadFailed": "無法載入分析資料，請稍後再試。",
+    "emptyTitle": "目前尚無訊號",
+    "emptyHintBefore": "訊號由每日 02:00 UTC 的資料排程產生。若排程執行後仍為空白，可能是資料回傳為空——請至 ",
+    "emptyHintLink": "系統管理",
+    "emptyHintAfter": " 查看資料的最後更新時間。"
+  },
+  "navPanel": {
+    "heading": "快速導覽",
+    "searchPlaceholder": "搜尋代號、公司、產業…",
+    "searchAriaLabel": "搜尋股票"
+  },
+  "settingsModal": {
+    "defaultTitle": "設定",
+    "closeAriaLabel": "關閉設定",
+    "tabInputs": "輸入參數",
+    "tabStyle": "樣式",
+    "cancel": "取消",
+    "save": "儲存"
+  },
+  "shortcuts": {
+    "title": "鍵盤快速鍵",
+    "closeAriaLabel": "關閉鍵盤快速鍵"
+  },
+  "signalCard": {
+    "analysisTitle": "演算法分析",
+    "priceUp": "上漲 {percent}%",
+    "priceDown": "下跌 {percent}%",
+    "signals": {
+      "launchpad": "起漲點",
+      "dipBuy": "回檔買進",
+      "climax": "高潮過熱",
+      "avoid": "避開"
+    },
+    "metrics": {
+      "trend": "X：趨勢",
+      "momentum": "Y：動能",
+      "structure": "Z：結構"
+    }
+  },
+  "superInvestor": {
+    "title": "頂尖基金",
+    "loading": "正在載入機構持股資料…",
+    "noData": "目前沒有此股票的機構持股資料。",
+    "ownership": {
+      "heading": "持股",
+      "colHolder": "基金",
+      "colPortfolioPercent": "佔投組比重",
+      "colRecentActivity": "近期動向",
+      "colShares": "股數",
+      "colValue": "市值",
+      "showHistory": "顯示歷史",
+      "hideHistory": "隱藏歷史",
+      "showHistoryFor": "顯示 {manager} 的持股歷史",
+      "hideHistoryFor": "隱藏 {manager} 的持股歷史",
+      "empty": "查無持股紀錄。"
+    },
+    "history": {
+      "colQuarter": "季度",
+      "colShares": "股數",
+      "colPortfolioPercent": "佔投組比重",
+      "colActivity": "動向",
+      "colPortfolioChange": "投組比重變化",
+      "colReportedPrice": "申報價格",
+      "empty": "查無歷史資料。"
+    },
+    "activity": {
+      "heading": "動向",
+      "filterAll": "全部",
+      "filterBuys": "買進",
+      "filterSells": "賣出",
+      "colQuarter": "季度",
+      "colHolder": "基金",
+      "colPortfolioChange": "投組比重變化",
+      "colActivity": "動向",
+      "colSharesChanged": "股數變動",
+      "empty": "沒有符合此篩選條件的動向。"
+    }
+  },
+  "vixIndicator": {
+    "title": "恐懼與貪婪指數",
+    "subtitle": "VIX 波動率指數",
+    "gaugeLabel": "VIX",
+    "levels": {
+      "extremeFear": "極度恐懼",
+      "fear": "恐懼",
+      "neutral": "中性",
+      "greed": "貪婪"
+    },
+    "descriptions": {
+      "extremeFear": "市場陷入恐慌，波動性極高",
+      "fear": "投資人情緒緊張，不確定性升高",
+      "neutral": "市場平穩，波動性正常且溫和",
+      "greed": "波動性偏低，顯示投資人可能過度樂觀"
+    }
+  },
+  "techAnalysisWidget": {
+    "loading": "正在載入技術分析…",
+    "loadFailed": "⚠️ 無法載入技術分析",
+    "retry": "重試"
+  },
+  "perfMonitor": {
+    "title": "效能監控",
+    "expand": "展開面板",
+    "collapse": "收合面板",
+    "pageLoad": "頁面載入時間",
+    "widgetsLoaded": "已載入元件",
+    "totalSize": "總下載大小",
+    "memoryUsage": "記憶體用量",
+    "widgetLoadTimes": "元件載入時間",
+    "priorityShort": "P{n}",
+    "priorityLabel": "優先順序 {n}",
+    "clear": "清除",
+    "export": "匯出",
+    "notAvailable": "無法取得",
+    "unknownWidget": "未知元件"
+  },
+  "kineticChart": {
+    "signalStatus": "訊號狀態",
+    "fallbackNeutral": "中性 — 尚無進場條件",
+    "fallbackSignalDetected": "偵測到 {signal} 訊號",
+    "colMetric": "指標",
+    "colNow": "目前",
+    "col5d": "5 天前",
+    "col20d": "20 天前",
+    "rowTrend": "X · 趨勢",
+    "rowMomentum": "Y · 動能",
+    "rowStructure": "Z · 結構",
+    "trendVelocity": "趨勢速度",
+    "sectorVelocity": "類股速度",
+    "threeDInteractive": "3D 視圖（拖曳可旋轉）",
+    "squeezePotential": "壓縮潛力",
+    "sectorPotential": "類股潛力",
+    "infoButtonAria": "顯示說明",
+    "popTrendMomentumTitle": "趨勢 (X) vs 動能 (Y)",
+    "popUptrend": "X 大於 0 表示上升趨勢",
+    "popOverheated": "Y 大於 0.8 表示過熱",
+    "popTrendStructureTitle": "趨勢 (X) vs 結構 (Z)",
+    "popSqueeze": "Z 大於 0.8 表示壓縮（以黃色標示）"
+  },
+  "cometChart": {
+    "emptyState": {
+      "noAnalysis": "{symbol} 目前尚無量化分析資料。"
+    },
+    "errors": {
+      "noDataForSymbol": "找不到此標的的資料。"
+    },
+    "signalCard": {
+      "title": "訊號狀態"
+    },
+    "commentary": {
+      "launchpad": "偵測到佈局：結構收斂（Z = {z}）且趨勢偏多，突破可能即將發生。",
+      "dipBuy": "回檔買點：動能降溫，但主趨勢仍維持（X = {x}）。",
+      "climax": "注意：動能過熱（Y = {y}），反轉風險偏高。",
+      "neutral": "中性：等待更明確的訊號。目前趨勢強度為 X = {x}。"
+    },
+    "metricsTable": {
+      "metric": "指標",
+      "now": "目前",
+      "day5": "5 日",
+      "day20": "20 日",
+      "xTrend": "X（趨勢）",
+      "yMomentum": "Y（動能）",
+      "zStructure": "Z（結構）"
+    },
+    "charts": {
+      "trendVelocity": "趨勢速度",
+      "sectorVelocity": "類股速度",
+      "interactive3d": "3D 視圖",
+      "squeezePotential": "壓縮潛力",
+      "sectorPotential": "類股潛力",
+      "infoButtonLabel": "這張圖表代表什麼？"
+    },
+    "popovers": {
+      "stockTop": {
+        "title": "趨勢（X）對動能（Y）",
+        "line1": "X 大於 0：上升趨勢",
+        "line2": "Y 大於 0.8：過熱",
+        "line3": "Y 越高代表價格移動越快"
+      },
+      "stockSide": {
+        "title": "趨勢（X）對結構（Z）",
+        "line1": "Z 大於 0.8：壓縮（黃色區域）",
+        "line2": "Z 越高代表結構越緊、突破潛力越大"
+      }
+    }
+  },
+  "topStories": {
+    "heading": "市場頭條新聞",
+    "loading": "正在載入最新市場新聞…",
+    "errorTitle": "無法載入市場新聞",
+    "retry": "重試"
+  },
+  "tvVix": {
+    "title": "VIX 波動率指數",
+    "subtitle": "市場恐慌指標（VIX 越高代表恐慌越強）",
+    "loading": "正在載入 VIX 資料...",
+    "errorMessage": "無法載入 VIX 資料",
+    "retry": "重試"
+  },
+  "vixWidget": {
+    "loading": "正在載入 VIX 波動率指數…",
+    "loadError": "無法載入 VIX 圖表",
+    "retry": "重試"
+  },
+  "tvWidgets": {
+    "loadingCompanyProfile": "正在載入公司簡介…",
+    "errorCompanyProfile": "無法載入公司簡介，請檢查網路連線後重試。",
+    "errorData": "無法載入資料，請檢查網路連線後重試。",
+    "retry": "重試"
   }
 }

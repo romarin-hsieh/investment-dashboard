@@ -1,6 +1,9 @@
 <script setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { getToken } from '@/utils/designTokens';
+
+const { t } = useI18n();
 
 const props = defineProps({
   ticker: {
@@ -44,7 +47,13 @@ const signalColor = computed(() => {
 });
 
 const signalText = computed(() => {
-  return props.signal.replace('_', ' ');
+  switch (props.signal) {
+    case 'LAUNCHPAD': return t('signalCard.signals.launchpad');
+    case 'DIP_BUY':   return t('signalCard.signals.dipBuy');
+    case 'CLIMAX':    return t('signalCard.signals.climax');
+    case 'AVOID':     return t('signalCard.signals.avoid');
+    default:          return props.signal.replace('_', ' ');
+  }
 });
 
 const isPositive = computed(() => props.changePercent >= 0);
@@ -60,7 +69,7 @@ const isPositive = computed(() => props.changePercent >= 0);
           <span
             class="change"
             :class="{ 'up': isPositive, 'down': !isPositive }"
-            :aria-label="isPositive ? `Up ${changePercent}%` : `Down ${changePercent}%`"
+            :aria-label="isPositive ? $t('signalCard.priceUp', { percent: changePercent }) : $t('signalCard.priceDown', { percent: changePercent })"
           >
             <!-- Glyph carries direction for colour-blind / greyscale users.
                  Hidden from screen readers (which use the aria-label above)
@@ -78,21 +87,21 @@ const isPositive = computed(() => props.changePercent >= 0);
     <div class="divider"></div>
     
     <div class="commentary-box">
-      <h4>Algorithmic Analysis</h4>
+      <h4>{{ $t('signalCard.analysisTitle') }}</h4>
       <p>{{ commentary }}</p>
     </div>
 
     <div class="metrics-grid" v-if="coordinates">
       <div class="metric-item">
-        <span class="metric-label">X: Trend</span>
+        <span class="metric-label">{{ $t('signalCard.metrics.trend') }}</span>
         <span class="metric-value">{{ coordinates.x_trend }}</span>
       </div>
       <div class="metric-item">
-        <span class="metric-label">Y: Momentum</span>
+        <span class="metric-label">{{ $t('signalCard.metrics.momentum') }}</span>
         <span class="metric-value">{{ coordinates.y_momentum }}</span>
       </div>
       <div class="metric-item">
-        <span class="metric-label">Z: Structure</span>
+        <span class="metric-label">{{ $t('signalCard.metrics.structure') }}</span>
         <span class="metric-value">{{ coordinates.z_structure }}</span>
       </div>
     </div>

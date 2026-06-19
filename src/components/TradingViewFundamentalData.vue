@@ -5,8 +5,8 @@
     </div>
     
     <div v-if="error" class="error-state">
-      <span>⚠️ Failed to load data</span>
-      <button @click="retry" class="retry-btn">Retry</button>
+      <span>⚠️ {{ $t('tvWidgets.errorData') }}</span>
+      <button @click="retry" class="retry-btn">{{ $t('tvWidgets.retry') }}</button>
     </div>
 
     <!-- Dedicated container that Vue ignores after mount -->

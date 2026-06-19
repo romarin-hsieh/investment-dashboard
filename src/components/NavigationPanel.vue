@@ -1,7 +1,7 @@
 <template>
   <div class="navigation-panel" :class="{ 'is-visible': isVisible }">
     <div class="panel-header">
-      <h3>Quick Navigation</h3>
+      <h3>{{ $t('navPanel.heading') }}</h3>
       <div class="search-container">
         <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -10,9 +10,9 @@
         <input
           v-model="localSearchQuery"
           type="text"
-          placeholder="Search..."
+          :placeholder="$t('navPanel.searchPlaceholder')"
           class="search-input"
-          aria-label="Search stocks"
+          :aria-label="$t('navPanel.searchAriaLabel')"
           @input="onSearchChange"
         />
       </div>

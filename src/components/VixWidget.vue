@@ -2,11 +2,11 @@
   <div class="vix-widget-container" :style="{ height: '600px' }">
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
-      <span>Loading VIX Index...</span>
+      <span>{{ $t('vixWidget.loading') }}</span>
     </div>
     <div v-if="error" class="error-state">
-      <span>⚠️ Failed to load VIX</span>
-      <button @click="loadVixWidget" class="retry-btn">Retry</button>
+      <span>⚠️ {{ $t('vixWidget.loadError') }}</span>
+      <button @click="loadVixWidget" class="retry-btn">{{ $t('vixWidget.retry') }}</button>
     </div>
     <!-- Dedicated Mount Point that Vue doesn't touch internally, but we manage manually -->
     <div ref="tvMountPoint" class="tv-mount-point" v-show="!loading && !error"></div>

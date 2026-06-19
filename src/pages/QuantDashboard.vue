@@ -1,8 +1,11 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
 import SignalCard from '@/components/SignalCard.vue';
 import { withDataBase } from '@/utils/baseUrl.js';
+
+const { t } = useI18n();
 
 const latestData = ref([]);
 const selectedTicker = ref('SPY');
@@ -18,7 +21,7 @@ const fetchData = async () => {
         loading.value = true;
         // Fetch the generated analysis report
         const response = await fetch(withDataBase('data/dashboard_status.json'));
-        if (!response.ok) throw new Error('Failed to load analysis data');
+        if (!response.ok) throw new Error(t('quant.errorLoadFailed'));
         
         const jsonData = await response.json();
         latestData.value = jsonData.data || [];
@@ -60,12 +63,12 @@ onMounted(() => {
 <template>
   <div class="quant-dashboard">
     <div class="header-section">
-      <h1>Quant Strategy: 3D Kinetic Market State</h1>
-      <p class="subtitle">Real-time analysis based on McGinley Dynamic, StochRSI, and Volatility Squeeze</p>
+      <h1>{{ $t('quant.title') }}</h1>
+      <p class="subtitle">{{ $t('quant.subtitle') }}</p>
     </div>
 
     <div v-if="loading" class="loading-state">
-      Loading Analysis Engines...
+      {{ $t('quant.loading') }}
     </div>
 
     <div v-else-if="error" class="error-state">
@@ -77,9 +80,9 @@ onMounted(() => {
          the next successful run). Without this branch we'd render an
          empty .ticker-list with no visual feedback. -->
     <div v-else-if="latestData.length === 0" class="empty-state" role="status" aria-live="polite">
-      <p class="empty-state__title">No quant signals available yet</p>
+      <p class="empty-state__title">{{ $t('quant.emptyTitle') }}</p>
       <p class="empty-state__hint">
-        The daily ETL run at 02:00 UTC produces these signals. If you're seeing this after a pipeline run, the upstream <code>dashboard_status.json</code> may have been served empty &mdash; check <a href="/system-manager">System Manager</a> for ETL freshness.
+        {{ $t('quant.emptyHintBefore') }}<a href="/system-manager">{{ $t('quant.emptyHintLink') }}</a>{{ $t('quant.emptyHintAfter') }}
       </p>
     </div>
 
