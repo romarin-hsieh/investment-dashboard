@@ -14,8 +14,8 @@
     
     <!-- Error State -->
     <div v-if="error" class="widget-overlay widget-error">
-      <span>⚠️ Failed to load</span>
-      <button @click="retry" class="retry-btn">Retry</button>
+      <span>⚠️ {{ $t('lazyWidget.failedToLoad') }}</span>
+      <button @click="retry" class="retry-btn">{{ $t('lazyWidget.retry') }}</button>
     </div>
 
     <!-- Widget Target Container (This must be separate!) -->

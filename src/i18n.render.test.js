@@ -29,4 +29,15 @@ describe('i18n precompiled-message rendering (CSP-safe path)', () => {
     i18n.global.locale.value = 'zh-TW'
     expect(i18n.global.t('nav.marketOverview')).toBe('市場總覽')
   })
+
+  // ⑥-5: the two components missed by the bulk migration (found via live preview)
+  it('resolves the coverage-gap keys (SectorRotationChart + LazyTradingViewWidget) in both locales', () => {
+    i18n.global.locale.value = 'en'
+    expect(i18n.global.t('sectorRotation.title')).toBe('Smart Money Sector Allocation')
+    expect(i18n.global.t('sectorRotation.superinvestors', { n: 3 })).toBe('3 Superinvestors')
+    expect(i18n.global.t('lazyWidget.failedToLoad')).toBe('Failed to load')
+    i18n.global.locale.value = 'zh-TW'
+    expect(i18n.global.t('sectorRotation.superinvestors', { n: 3 })).toBe('3 位頂尖投資人')
+    expect(i18n.global.t('lazyWidget.retry')).toBe('重試')
+  })
 })

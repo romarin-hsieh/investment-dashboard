@@ -19,7 +19,7 @@
 - **[architecture/OVERVIEW.md](architecture/OVERVIEW.md)** — C4 context, 3-tier cache, ETL phases, frontend layout
 - **[architecture/BUILD_SPEC.md](architecture/BUILD_SPEC.md)** — interface contracts, CI/CD rules, security model, performance budget
 - **[architecture/COMPONENT_DEPENDENCIES.md](architecture/COMPONENT_DEPENDENCIES.md)** — Vue component dependency graph
-- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (5 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries)
+- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (9 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries, static-data caching, bundle budgets, separate data repository, i18n message precompilation)
 
 ### "How does the math / strategy work?"
 - **[specs/QUANT_STRATEGY_DOSSIER.md](specs/QUANT_STRATEGY_DOSSIER.md)** — quant engine: regime → sector → signal selection logic
@@ -65,6 +65,10 @@
   - [0003 3-Tier Cache Model](architecture/adr/0003-three-tier-cache-model.md)
   - [0004 GitHub Actions ETL](architecture/adr/0004-github-actions-etl.md)
   - [0005 Charting Library Choice](architecture/adr/0005-technical-indicator-library-choice.md)
+  - [0006 Static-Data Caching on GitHub Pages](architecture/adr/0006-static-data-caching-on-github-pages.md)
+  - [0007 Bundle-Size Budgets](architecture/adr/0007-bundle-size-budgets.md)
+  - [0008 Separate Data Repository](architecture/adr/0008-separate-data-repository.md)
+  - [0009 i18n Message Precompilation (CSP)](architecture/adr/0009-i18n-message-precompilation-csp.md)
 
 ### Specs (`specs/` — algorithms, schemas, integrations)
 - [DATA_DICTIONARY.md](specs/DATA_DICTIONARY.md)

@@ -3,8 +3,8 @@
   <div class="sector-rotation-chart">
     <div class="chart-header">
       <div class="title-row">
-        <h4>Smart Money Sector Allocation</h4>
-        <span class="badge" v-if="managerCount > 0">{{ managerCount }} Superinvestors</span>
+        <h4>{{ $t('sectorRotation.title') }}</h4>
+        <span class="badge" v-if="managerCount > 0">{{ $t('sectorRotation.superinvestors', { n: managerCount }) }}</span>
       </div>
       <div class="legend-filter">
         <!-- Optional: Custom Legend or Filters -->
@@ -18,7 +18,7 @@
 
     <div v-else-if="loading" class="loading-state">
       <div class="spinner"></div>
-      Loading Rotation Data...
+      {{ $t('sectorRotation.loading') }}
     </div>
 
     <div v-else-if="error" class="error-state">

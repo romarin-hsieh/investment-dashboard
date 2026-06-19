@@ -22,7 +22,7 @@ We use **GitHub Actions** as the ETL runtime. Four workflows are defined under `
 | `update-metadata.yml` | Cron `0 2 * * 0` UTC + manual | Weekly sector/industry metadata refresh |
 | `deploy.yml` | Push to `main` | Vite build + deploy to `gh-pages` |
 
-All workflows run on `ubuntu-latest` with Python 3.11 + Node 18. Data output is committed directly to `main` by the action (using the default `GITHUB_TOKEN`). Deploy is then triggered by the commit push.
+All workflows run on `ubuntu-latest` with Python 3.11 + Node 20. *As originally decided*, data output was committed directly to `main` by the action (using the default `GITHUB_TOKEN`), with deploy triggered by the commit push. Per the [ADR-0008](0008-separate-data-repository.md) amendment above, data is now mirrored to the separate data repo and the app repo receives **config-only** commits.
 
 **Failure semantics**: Per-symbol failures are logged and the pipeline continues ("stale > broken"). Whole-workflow failures surface in the GitHub Actions UI; no external alerting (solo operator reviews each morning).
 

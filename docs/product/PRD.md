@@ -54,7 +54,7 @@ Investment Dashboard is a private investment-analysis dashboard for a single ope
 | F13 | Automated Test Suite | **S** | ⚠️ Missing | TBD — see ROADMAP.md |
 | F14 | Research Ingestion (Obsidian / NotebookLM) | **C** (Could) | Planned | [ROADMAP.md](ROADMAP.md) |
 | F15 | n8n-based ETL orchestration | **C** | Planned | [ROADMAP.md](ROADMAP.md) |
-| F16 | Bilingual UI (EN / 繁中) | **C** | Partial | [GLOSSARY.md](GLOSSARY.md) |
+| F16 | Bilingual UI (EN / 繁中) | **C** | Production | [ADR-0009](../architecture/adr/0009-i18n-message-precompilation-csp.md) |
 
 Priority key: **M** Must-have (shipped or blocking), **S** Should-have (valuable, not blocking), **C** Could-have (nice, backlog), **W** Won't-have (see §4).
 
@@ -171,7 +171,7 @@ Feature: Nightly pipeline maintains the Static Lake
 
 1. **Testing strategy**: F13 is Should-have but currently missing (zero test coverage). Does the next iteration prioritise (a) Vitest component tests for critical widgets, (b) Python integration tests for the quant pipeline, or (c) Playwright E2E for the user-facing golden paths? → Needs ADR.
 2. **Research-to-site integration path** (F14/F15): Which platform owns the daily note — Obsidian (local, Markdown) or NotebookLM (cloud, summarization)? What JSON contract does the frontend consume? → Needs a dedicated ADR in the next cycle.
-3. **Bilingual UI (F16)**: Full i18n framework (vue-i18n), or just swap copy via a lightweight lookup? Glossary is locked; implementation strategy is not. → Defer to ROADMAP v3.1.
+3. **Bilingual UI (F16)**: ✅ **Resolved (2026-06)** — adopted vue-i18n with build-time message precompilation for CSP compliance ([ADR-0009](../architecture/adr/0009-i18n-message-precompilation-csp.md)). Full EN/繁中 runtime toggle shipped in PRs #60–#65.
 4. **CORS proxy SLA**: Tier-3 fallback depends on free third-party proxies. At what failure rate do we invest in a self-hosted proxy? → Track in SLA.md after one quarter of data.
 5. **Universe cap**: Currently ~50 active symbols in quant engine but `public/data/ohlcv/` hosts ~560. What's the upper bound before CI time becomes a bottleneck? → Monitor, revisit at 100 symbols.
 

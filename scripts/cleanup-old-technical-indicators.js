@@ -7,9 +7,10 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Parse command line arguments manually since 'util.parseArgs' might not be available in older Node 18 environments or just for simplicity
+// Parse command line arguments manually since 'util.parseArgs' might not be available in older Node environments or just for simplicity
 const args = process.argv.slice(2);
-let retentionDays = 30;
+// Default matches the deployed daily-data-update.yml policy (--retention-days=2).
+let retentionDays = 2;
 let verbose = false;
 
 args.forEach(arg => {
@@ -21,8 +22,8 @@ args.forEach(arg => {
 });
 
 if (isNaN(retentionDays) || retentionDays < 1) {
-    console.error('Invalid retention-days. Using default: 30');
-    retentionDays = 30;
+    console.error('Invalid retention-days. Using default: 2');
+    retentionDays = 2;
 }
 
 const TARGET_DIR = path.join(__dirname, '../public/data/technical-indicators');
