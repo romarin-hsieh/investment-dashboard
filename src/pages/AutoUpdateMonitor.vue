@@ -1,12 +1,12 @@
 <template>
   <div class="auto-update-monitor">
     <div class="monitor-header">
-      <h2>自動更新監控面板</h2>
+      <h2>{{ $t('autoUpdate.title') }}</h2>
       <div class="header-actions">
         <button @click="refreshStatus" class="btn btn-secondary" :disabled="loading">
           <span v-if="loading">🔄</span>
           <span v-else>🔄</span>
-          刷新狀態
+          {{ $t('autoUpdate.refreshStatus') }}
         </button>
         <button @click="toggleScheduler" :class="schedulerButtonClass" :disabled="loading">
           {{ schedulerButtonText }}
@@ -15,192 +15,192 @@
     </div>
 
     <div class="monitor-grid">
-      <!-- 調度器狀態 -->
+      <!-- Scheduler -->
       <div class="status-card">
         <div class="card-header">
-          <h3>調度器狀態</h3>
+          <h3>{{ $t('autoUpdate.schedulerStatus') }}</h3>
           <div class="status-indicator" :class="schedulerStatusClass">
             {{ schedulerStatus }}
           </div>
         </div>
         <div class="card-content">
           <div class="status-item">
-            <span class="label">運行狀態:</span>
+            <span class="label">{{ $t('autoUpdate.runState') }}:</span>
             <span class="value" :class="schedulerStatusClass">
-              {{ status.isRunning ? '運行中' : '已停止' }}
+              {{ status.isRunning ? $t('autoUpdate.running') : $t('autoUpdate.stopped') }}
             </span>
           </div>
           <div class="status-item">
-            <span class="label">活動任務:</span>
-            <span class="value">{{ status.activeIntervals?.length || 0 }} 個</span>
+            <span class="label">{{ $t('autoUpdate.activeTasks') }}:</span>
+            <span class="value">{{ status.activeIntervals?.length || 0 }}</span>
           </div>
           <div class="status-item">
-            <span class="label">啟動時間:</span>
+            <span class="label">{{ $t('autoUpdate.startTime') }}:</span>
             <span class="value">{{ formatTime(startTime) }}</span>
           </div>
         </div>
       </div>
 
-      <!-- 技術指標狀態 -->
+      <!-- Technical indicators -->
       <div class="status-card">
         <div class="card-header">
-          <h3>技術指標</h3>
+          <h3>{{ $t('autoUpdate.technicalIndicators') }}</h3>
           <div class="status-indicator" :class="technicalIndicatorsStatusClass">
             {{ technicalIndicatorsStatus }}
           </div>
         </div>
         <div class="card-content">
           <div class="status-item">
-            <span class="label">最後更新:</span>
+            <span class="label">{{ $t('autoUpdate.lastUpdate') }}:</span>
             <span class="value">{{ formatTime(technicalIndicatorsLastUpdate) }}</span>
           </div>
           <div class="status-item">
-            <span class="label">數據年齡:</span>
+            <span class="label">{{ $t('autoUpdate.dataAge') }}:</span>
             <span class="value" :class="getDataAgeClass(technicalIndicatorsAge)">
               {{ formatDataAge(technicalIndicatorsAge) }}
             </span>
           </div>
           <div class="status-item">
-            <span class="label">下次更新:</span>
+            <span class="label">{{ $t('autoUpdate.nextUpdate') }}:</span>
             <span class="value">{{ formatTime(status.nextUpdates?.technicalIndicators) }}</span>
           </div>
           <div class="status-item">
-            <span class="label">成功率:</span>
+            <span class="label">{{ $t('autoUpdate.successRate') }}:</span>
             <span class="value">{{ technicalIndicatorsSuccessRate }}%</span>
           </div>
         </div>
         <div class="card-actions">
           <button @click="triggerUpdate('technicalIndicators')" class="btn btn-primary btn-sm" :disabled="loading">
-            清除緩存
+            {{ $t('autoUpdate.clearCache') }}
           </button>
           <div class="update-note">
-            <small>註: 實際預計算需要在服務器端執行</small>
+            <small>{{ $t('autoUpdate.noteServerSide') }}</small>
           </div>
         </div>
       </div>
 
-      <!-- 元數據狀態 -->
+      <!-- Metadata -->
       <div class="status-card">
         <div class="card-header">
-          <h3>元數據</h3>
+          <h3>{{ $t('autoUpdate.metadata') }}</h3>
           <div class="status-indicator" :class="metadataStatusClass">
             {{ metadataStatus }}
           </div>
         </div>
         <div class="card-content">
           <div class="status-item">
-            <span class="label">最後更新:</span>
+            <span class="label">{{ $t('autoUpdate.lastUpdate') }}:</span>
             <span class="value">{{ formatTime(metadataLastUpdate) }}</span>
           </div>
           <div class="status-item">
-            <span class="label">數據年齡:</span>
+            <span class="label">{{ $t('autoUpdate.dataAge') }}:</span>
             <span class="value" :class="getDataAgeClass(metadataAge)">
               {{ formatDataAge(metadataAge) }}
             </span>
           </div>
           <div class="status-item">
-            <span class="label">下次更新:</span>
+            <span class="label">{{ $t('autoUpdate.nextUpdate') }}:</span>
             <span class="value">{{ formatTime(status.nextUpdates?.metadata) }}</span>
           </div>
           <div class="status-item">
-            <span class="label">股票數量:</span>
-            <span class="value">{{ metadataSymbolCount }} 支</span>
+            <span class="label">{{ $t('autoUpdate.symbolCount') }}:</span>
+            <span class="value">{{ metadataSymbolCount }}</span>
           </div>
         </div>
         <div class="card-actions">
           <button @click="triggerUpdate('metadata')" class="btn btn-primary btn-sm" :disabled="loading">
-            手動更新
+            {{ $t('autoUpdate.manualUpdate') }}
           </button>
         </div>
       </div>
 
-      <!-- 緩存預熱狀態 -->
+      <!-- Cache warm-up -->
       <div class="status-card">
         <div class="card-header">
-          <h3>緩存預熱</h3>
+          <h3>{{ $t('autoUpdate.cacheWarmup') }}</h3>
           <div class="status-indicator" :class="warmupStatusClass">
             {{ warmupStatus }}
           </div>
         </div>
         <div class="card-content">
           <div class="status-item">
-            <span class="label">預熱狀態:</span>
+            <span class="label">{{ $t('autoUpdate.warmupState') }}:</span>
             <span class="value" :class="warmupStatusClass">
-              {{ warmupInfo.isWarming ? '進行中' : '待機中' }}
+              {{ warmupInfo.isWarming ? $t('autoUpdate.inProgress') : $t('autoUpdate.idle') }}
             </span>
           </div>
           <div class="status-item">
-            <span class="label">進度:</span>
+            <span class="label">{{ $t('autoUpdate.progress') }}:</span>
             <span class="value">{{ Math.round(warmupInfo.progress) }}%</span>
           </div>
           <div class="status-item">
-            <span class="label">追蹤股票:</span>
-            <span class="value">{{ warmupInfo.trackedSymbols?.length || 0 }} 支</span>
+            <span class="label">{{ $t('autoUpdate.trackedSymbols') }}:</span>
+            <span class="value">{{ warmupInfo.trackedSymbols?.length || 0 }}</span>
           </div>
           <div class="status-item">
-            <span class="label">上次預熱:</span>
+            <span class="label">{{ $t('autoUpdate.lastWarmup') }}:</span>
             <span class="value">{{ formatTime(warmupInfo.lastWarmupTime) }}</span>
           </div>
         </div>
         <div class="card-actions">
           <button @click="triggerWarmup" class="btn btn-info btn-sm" :disabled="loading || warmupInfo.isWarming">
-            {{ warmupInfo.isWarming ? '預熱中...' : '手動預熱' }}
+            {{ warmupInfo.isWarming ? $t('autoUpdate.warmingUp') : $t('autoUpdate.manualWarmup') }}
           </button>
           <div class="update-note">
-            <small>註: 預熱所有股票的技術指標數據</small>
+            <small>{{ $t('autoUpdate.noteWarmup') }}</small>
           </div>
         </div>
       </div>
 
-      <!-- 緩存狀態 -->
+      <!-- Cache status -->
       <div class="status-card">
         <div class="card-header">
-          <h3>緩存狀態</h3>
+          <h3>{{ $t('autoUpdate.cacheStatus') }}</h3>
           <div class="status-indicator status-info">
             {{ cacheStatus }}
           </div>
         </div>
         <div class="card-content">
           <div class="status-item">
-            <span class="label">內存緩存:</span>
-            <span class="value">{{ cacheStats.memoryCache }} 項</span>
+            <span class="label">{{ $t('autoUpdate.memoryCache') }}:</span>
+            <span class="value">{{ cacheStats.memoryCache }}</span>
           </div>
           <div class="status-item">
-            <span class="label">本地存儲:</span>
-            <span class="value">{{ cacheStats.localStorage }} 項</span>
+            <span class="label">{{ $t('autoUpdate.localStorage') }}:</span>
+            <span class="value">{{ cacheStats.localStorage }}</span>
           </div>
           <div class="status-item">
-            <span class="label">總大小:</span>
-            <span class="value">{{ cacheStats.totalSize }} 項</span>
+            <span class="label">{{ $t('autoUpdate.totalSize') }}:</span>
+            <span class="value">{{ cacheStats.totalSize }}</span>
           </div>
           <div class="status-item">
-            <span class="label">下次清理:</span>
+            <span class="label">{{ $t('autoUpdate.nextCleanup') }}:</span>
             <span class="value">{{ formatTime(status.nextUpdates?.cacheCleanup) }}</span>
           </div>
         </div>
         <div class="card-actions">
           <button @click="triggerUpdate('cache')" class="btn btn-warning btn-sm" :disabled="loading">
-            清理緩存
+            {{ $t('autoUpdate.cleanCache') }}
           </button>
         </div>
       </div>
     </div>
 
-    <!-- 更新日誌 -->
+    <!-- Update log -->
     <div class="update-logs">
       <div class="logs-header">
-        <h3>更新日誌</h3>
-        <button @click="clearLogs" class="btn btn-sm btn-outline">清除日誌</button>
+        <h3>{{ $t('autoUpdate.updateLog') }}</h3>
+        <button @click="clearLogs" class="btn btn-sm btn-outline">{{ $t('autoUpdate.clearLog') }}</button>
       </div>
       <div class="logs-content">
         <div v-if="logs.length === 0" class="no-logs">
-          暫無日誌記錄
+          {{ $t('autoUpdate.noLogs') }}
         </div>
         <div v-else class="log-entries">
-          <div 
-            v-for="(log, index) in logs" 
-            :key="index" 
-            class="log-entry" 
+          <div
+            v-for="(log, index) in logs"
+            :key="index"
+            class="log-entry"
             :class="getLogLevelClass(log.level)"
           >
             <span class="log-time">{{ formatTime(log.timestamp) }}</span>
@@ -211,56 +211,56 @@
       </div>
     </div>
 
-    <!-- 配置面板 -->
+    <!-- Config -->
     <div class="config-panel">
       <div class="config-header">
-        <h3>配置設定</h3>
+        <h3>{{ $t('autoUpdate.config') }}</h3>
         <button @click="saveConfig" class="btn btn-success btn-sm" :disabled="!configChanged">
-          保存配置
+          {{ $t('autoUpdate.saveConfig') }}
         </button>
       </div>
       <div class="config-content">
         <div class="config-section">
-          <h4>技術指標更新</h4>
+          <h4>{{ $t('autoUpdate.tiUpdates') }}</h4>
           <div class="config-item">
             <label>
               <input type="checkbox" v-model="config.technicalIndicators.enabled" @change="onConfigChange">
-              啟用自動更新
+              {{ $t('autoUpdate.enableAuto') }}
             </label>
           </div>
           <div class="config-item">
-            <label>更新間隔 (小時):</label>
-            <input 
-              type="number" 
-              v-model.number="config.technicalIndicators.intervalHours" 
+            <label>{{ $t('autoUpdate.intervalHours') }}</label>
+            <input
+              type="number"
+              v-model.number="config.technicalIndicators.intervalHours"
               @change="onConfigChange"
-              min="1" 
+              min="1"
               max="24"
             >
           </div>
           <div class="config-item">
             <label>
               <input type="checkbox" v-model="config.technicalIndicators.marketHoursOnly" @change="onConfigChange">
-              僅在市場時間更新
+              {{ $t('autoUpdate.marketHoursOnly') }}
             </label>
           </div>
         </div>
 
         <div class="config-section">
-          <h4>元數據更新</h4>
+          <h4>{{ $t('autoUpdate.metadataUpdates') }}</h4>
           <div class="config-item">
             <label>
               <input type="checkbox" v-model="config.metadata.enabled" @change="onConfigChange">
-              啟用自動更新
+              {{ $t('autoUpdate.enableAuto') }}
             </label>
           </div>
           <div class="config-item">
-            <label>更新間隔 (小時):</label>
-            <input 
-              type="number" 
-              v-model.number="config.metadata.intervalHours" 
+            <label>{{ $t('autoUpdate.intervalHours') }}</label>
+            <input
+              type="number"
+              v-model.number="config.metadata.intervalHours"
               @change="onConfigChange"
-              min="1" 
+              min="1"
               max="168"
             >
           </div>
@@ -313,22 +313,22 @@ export default {
   },
   computed: {
     schedulerStatus() {
-      return this.status.isRunning ? '運行中' : '已停止'
+      return this.status.isRunning ? this.$t('autoUpdate.running') : this.$t('autoUpdate.stopped')
     },
     schedulerStatusClass() {
       return this.status.isRunning ? 'status-success' : 'status-error'
     },
     schedulerButtonText() {
-      return this.status.isRunning ? '停止調度器' : '啟動調度器'
+      return this.status.isRunning ? this.$t('autoUpdate.stopScheduler') : this.$t('autoUpdate.startScheduler')
     },
     schedulerButtonClass() {
       return this.status.isRunning ? 'btn btn-danger' : 'btn btn-success'
     },
     technicalIndicatorsStatus() {
-      if (this.technicalIndicatorsAge < 1) return '最新'
-      if (this.technicalIndicatorsAge < 12) return '較新'
-      if (this.technicalIndicatorsAge < 24) return '過時'
-      return '舊數據'
+      if (this.technicalIndicatorsAge < 1) return this.$t('autoUpdate.fresh')
+      if (this.technicalIndicatorsAge < 12) return this.$t('autoUpdate.recent')
+      if (this.technicalIndicatorsAge < 24) return this.$t('autoUpdate.stale')
+      return this.$t('autoUpdate.outdated')
     },
     technicalIndicatorsStatusClass() {
       if (this.technicalIndicatorsAge < 1) return 'status-success'
@@ -336,9 +336,9 @@ export default {
       return 'status-error'
     },
     metadataStatus() {
-      if (this.metadataAge < 24) return '最新'
-      if (this.metadataAge < 72) return '較新'
-      return '過時'
+      if (this.metadataAge < 24) return this.$t('autoUpdate.fresh')
+      if (this.metadataAge < 72) return this.$t('autoUpdate.recent')
+      return this.$t('autoUpdate.stale')
     },
     metadataStatusClass() {
       if (this.metadataAge < 24) return 'status-success'
@@ -347,15 +347,15 @@ export default {
     },
     cacheStatus() {
       const total = this.cacheStats.totalSize || 0
-      if (total > 100) return '需要清理'
-      if (total > 50) return '正常'
-      return '良好'
+      if (total > 100) return this.$t('autoUpdate.needsCleanup')
+      if (total > 50) return this.$t('autoUpdate.normal')
+      return this.$t('autoUpdate.good')
     },
     warmupStatus() {
-      if (this.warmupInfo.isWarming) return '預熱中'
-      if (this.warmupInfo.progress === 100) return '已完成'
-      if (this.warmupInfo.lastWarmupTime) return '待機中'
-      return '未預熱'
+      if (this.warmupInfo.isWarming) return this.$t('autoUpdate.warming')
+      if (this.warmupInfo.progress === 100) return this.$t('autoUpdate.completed')
+      if (this.warmupInfo.lastWarmupTime) return this.$t('autoUpdate.idle')
+      return this.$t('autoUpdate.notWarmed')
     },
     warmupStatusClass() {
       if (this.warmupInfo.isWarming) return 'status-warning'
@@ -382,9 +382,9 @@ export default {
         await this.loadMetadataStatus()
         await this.loadWarmupStatus()
         this.startTime = new Date()
-        this.addLog('監控面板已初始化', 'INFO')
+        this.addLog(this.$t('autoUpdate.logInitialized'), 'INFO')
       } catch (error) {
-        this.addLog(`初始化失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logInitFailed') + error.message, 'ERROR')
       } finally {
         this.loading = false
       }
@@ -395,7 +395,7 @@ export default {
         this.status = autoUpdateScheduler.getStatus()
         this.cacheStats = performanceCache.getStats()
       } catch (error) {
-        this.addLog(`刷新狀態失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logRefreshFailed') + error.message, 'ERROR')
       }
     },
 
@@ -411,7 +411,7 @@ export default {
           this.technicalIndicatorsSuccessRate = total > 0 ? Math.round((successful / total) * 100) : 0
         }
       } catch (error) {
-        this.addLog(`載入技術指標狀態失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logTiStatusFailed') + error.message, 'ERROR')
       }
     },
 
@@ -422,7 +422,7 @@ export default {
         this.metadataAge = 0
         this.metadataSymbolCount = 24 // 暫時硬編碼
       } catch (error) {
-        this.addLog(`載入元數據狀態失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logMetadataFailed') + error.message, 'ERROR')
       }
     },
 
@@ -430,19 +430,19 @@ export default {
       try {
         this.warmupInfo = cacheWarmupService.getWarmupStatus()
       } catch (error) {
-        this.addLog(`載入預熱狀態失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logWarmupStatusFailed') + error.message, 'ERROR')
       }
     },
 
     async triggerWarmup() {
       this.loading = true
       try {
-        this.addLog('手動觸發緩存預熱', 'INFO')
+        this.addLog(this.$t('autoUpdate.logWarmupTriggered'), 'INFO')
         await cacheWarmupService.triggerManualWarmup()
-        this.addLog('緩存預熱完成', 'SUCCESS')
+        this.addLog(this.$t('autoUpdate.logWarmupDone'), 'SUCCESS')
         await this.loadWarmupStatus()
       } catch (error) {
-        this.addLog(`緩存預熱失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logWarmupFailed') + error.message, 'ERROR')
       } finally {
         this.loading = false
       }
@@ -453,14 +453,14 @@ export default {
       try {
         if (this.status.isRunning) {
           autoUpdateScheduler.stop()
-          this.addLog('調度器已停止', 'INFO')
+          this.addLog(this.$t('autoUpdate.logSchedulerStopped'), 'INFO')
         } else {
           autoUpdateScheduler.start()
-          this.addLog('調度器已啟動', 'INFO')
+          this.addLog(this.$t('autoUpdate.logSchedulerStarted'), 'INFO')
         }
         await this.refreshStatus()
       } catch (error) {
-        this.addLog(`切換調度器失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logToggleFailed') + error.message, 'ERROR')
       } finally {
         this.loading = false
       }
@@ -469,9 +469,9 @@ export default {
     async triggerUpdate(updateType) {
       this.loading = true
       try {
-        this.addLog(`手動觸發更新: ${updateType}`, 'INFO')
+        this.addLog(this.$t('autoUpdate.logUpdateTriggered') + updateType, 'INFO')
         await autoUpdateScheduler.triggerManualUpdate(updateType)
-        this.addLog(`手動更新完成: ${updateType}`, 'SUCCESS')
+        this.addLog(this.$t('autoUpdate.logUpdateDone') + updateType, 'SUCCESS')
         await this.refreshStatus()
         
         if (updateType === 'technicalIndicators') {
@@ -480,7 +480,7 @@ export default {
           await this.loadMetadataStatus()
         }
       } catch (error) {
-        this.addLog(`手動更新失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logUpdateFailed') + error.message, 'ERROR')
       } finally {
         this.loading = false
       }
@@ -511,7 +511,7 @@ export default {
 
     clearLogs() {
       this.logs = []
-      this.addLog('日誌已清除', 'INFO')
+      this.addLog(this.$t('autoUpdate.logCleared'), 'INFO')
     },
 
     onConfigChange() {
@@ -523,21 +523,22 @@ export default {
         // 這裡可以保存配置到本地存儲或發送到服務器
         localStorage.setItem('autoUpdateConfig', JSON.stringify(this.config))
         this.configChanged = false
-        this.addLog('配置已保存', 'SUCCESS')
+        this.addLog(this.$t('autoUpdate.logConfigSaved'), 'SUCCESS')
       } catch (error) {
-        this.addLog(`保存配置失敗: ${error.message}`, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logSaveConfigFailed') + error.message, 'ERROR')
       }
     },
 
     formatTime(date) {
-      if (!date) return 'N/A'
-      return new Date(date).toLocaleString('zh-TW')
+      if (!date) return this.$t('common.na')
+      const loc = this.$i18n.locale.value === 'zh-TW' ? 'zh-TW' : 'en-US'
+      return new Date(date).toLocaleString(loc)
     },
 
     formatDataAge(ageHours) {
-      if (ageHours < 1) return '< 1 小時'
-      if (ageHours < 24) return `${Math.round(ageHours)} 小時`
-      return `${Math.round(ageHours / 24)} 天`
+      if (ageHours < 1) return this.$t('autoUpdate.ageUnder1h')
+      if (ageHours < 24) return this.$t('autoUpdate.ageHours', { n: Math.round(ageHours) })
+      return this.$t('autoUpdate.ageDays', { n: Math.round(ageHours / 24) })
     },
 
     getDataAgeClass(ageHours) {
