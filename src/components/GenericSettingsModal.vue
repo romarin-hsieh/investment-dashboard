@@ -242,7 +242,7 @@ export default {
   max-width: 90%;
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
 }
@@ -370,7 +370,7 @@ export default {
 
 .btn-save {
   padding: 0.5rem 1rem;
-  background: var(--primary-color);
+  background: var(--primary-strong);
   color: white;
   border: none;
   border-radius: 4px;
@@ -378,6 +378,6 @@ export default {
 }
 
 .btn-save:hover {
-  background: var(--primary-color-dark, #2962ff);
+  background: var(--primary-hover);
 }
 </style>
