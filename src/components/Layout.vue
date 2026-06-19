@@ -192,14 +192,14 @@ export default {
 
 .main-content {
   flex: 1;
-  padding-top: 2rem;
-  padding-bottom: 3rem;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-12);
 }
 
 .footer {
   flex-shrink: 0;
   background: var(--bg-header);
-  padding: 1.5rem 0;
+  padding: var(--space-6) 0;
   margin-top: auto;
   border-top: 1px solid var(--border-color);
 }
