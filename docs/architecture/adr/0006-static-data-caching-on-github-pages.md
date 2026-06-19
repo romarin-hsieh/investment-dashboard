@@ -5,6 +5,8 @@
 - **Deciders**: Project owner
 - **Context tags**: `deployment`, `performance`, `hosting`
 
+> **Amended by [ADR-0008](0008-separate-data-repository.md) (2026-06).** Data URLs now resolve to the **data repo's** GitHub Pages (e.g. `https://romarin-hsieh.github.io/investment-dashboard-data/data/...`) via `VITE_DATA_BASE_URL` / `withDataBase()`. The layered client-side caching strategy below is unchanged in behavior; the `index.html` prefetch hints were repointed to the data-repo origin.
+
 ## Context & Problem
 
 The Code / UI Remediation Roadmap (tracked in the project plan file) scoped a PR to "add `Cache-Control: max-age=86400, immutable` for `public/data/*.json` via a Vite plugin" so that repeat visits serve those files from the browser's disk cache instead of re-downloading them. The goal: make the dashboard feel instant on the second visit.

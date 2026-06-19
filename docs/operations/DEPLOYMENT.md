@@ -19,13 +19,11 @@ The project relies heavily on GitHub Actions to maintain its "Static-First" arch
   4. Commits changes to the repo.
 - **Failure Handling**: If a symbol fails, the script logs an error but continues. The previous day's JSON remains (Stale is better than broken).
 
-### 2. Technical Analysis Pre-compute (`precompute-indicators.yml`)
-- **Schedule**: `0 22 * * 1-5` (Weekdays Post-market)
-- **Core Script**: `scripts/precompute-with-browser.js` (Puppeteer)
-- **Purpose**:
-  - Scrapes CNN Fear & Greed Index (which has no public API).
-  - Calculates complex indicators (e.g., specific MFI logic) server-side.
-- **Environment**: Requires `ubuntu-latest` with Chrome installed.
+### 2. Market Sentiment (Fear & Greed)
+- **Where**: a step in the daily pipeline (`daily-data-update.yml`), **not** a separate workflow.
+- **Core Script**: `scripts/update_sentiment.py`
+- **Purpose**: produces the CNN Fear & Greed Index → `public/data/technical-indicators/market-sentiment.json` (CNN API, with a Z-Score model fallback). No browser/Puppeteer scrape.
+- **Note**: the technical indicators themselves are generated in the same daily pipeline by `scripts/generate-daily-technical-indicators.js`.
 
 ### 3. Production Deployment (`deploy.yml`)
 - **Trigger**: Push to `main` branch.

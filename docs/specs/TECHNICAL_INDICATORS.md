@@ -381,7 +381,7 @@
 
 ## Appendix A — Fear & Greed Index Sub-Indicators
 
-The CNN Fear & Greed Index (scraped daily via `scripts/precompute-with-browser.js`) is an equal-weighted average of the seven normalised sub-indicators below (each on a 0–100 scale). Useful when interpreting the headline F&G value on the Market page.
+The CNN Fear & Greed Index (produced daily by `scripts/update_sentiment.py` → `market-sentiment.json`) is an equal-weighted average of the seven normalised sub-indicators below (each on a 0–100 scale). Useful when interpreting the headline F&G value on the Market page.
 
 ### A.1 Stock Price Momentum (Market Momentum)
 - **Definition**: S&P 500 vs. its 125-day Moving Average
@@ -425,4 +425,4 @@ The CNN Fear & Greed Index (scraped daily via `scripts/precompute-with-browser.j
 - **Greed**: Spread narrowing (investors accept lower yields for risk)
 - **Read**: A tight spread indicates comfort with credit risk (greed)
 
-**Implementation**: `scripts/calc_fear_greed.py` (if present) or the Puppeteer scrape in `scripts/precompute-with-browser.js` — equal-weighted average of the seven normalised values (0–100 scale).
+**Implementation**: `scripts/update_sentiment.py` — fetches the CNN Fear & Greed Index (Z-Score model fallback) and writes `market-sentiment.json` (equal-weighted average of the seven normalised values, 0–100 scale).

@@ -41,7 +41,7 @@
 | **Smart Money** | 聰明錢 | Institutional capital flows tracked via Dataroma (Super Investor 13F filings). |
 | **Super Investors** | 超級投資人 | The curated Dataroma list (Buffett, Ackman, etc.) whose holdings are scraped. |
 | **Insider Sentiment** | 內部人情緒 | Aggregated C-Suite buy/sell activity per symbol. |
-| **Fear & Greed Index** | 恐懼與貪婪指數 | CNN daily sentiment score, scraped by `precompute-with-browser.js` (Puppeteer). |
+| **Fear & Greed Index** | 恐懼與貪婪指數 | CNN daily sentiment score, produced by `scripts/update_sentiment.py` (CNN API, Z-Score fallback) → `market-sentiment.json`. |
 | **Dataroma** | Dataroma | Third-party aggregator of 13F institutional holdings. Source for Smart Money features. |
 
 ## D. Operations & Engineering Terms

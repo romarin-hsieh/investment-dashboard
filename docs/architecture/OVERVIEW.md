@@ -15,26 +15,22 @@
                     └─────────────────┬───────────────┘
                                       │ HTTPS
                                       ▼
-              ┌────────────────────────────────────────┐
-              │   GitHub Pages (CDN) — the Runtime     │
-              │   Serves static HTML/JS/CSS + JSON     │
-              └─────────┬───────────────────┬──────────┘
-                        │ reads             │ (fallback only)
-                        │                   ▼
-                        │           ┌─────────────────┐
-                        │           │  CORS Proxies   │───► Yahoo Finance
-                        │           │ (rotated list)  │
-                        │           └─────────────────┘
-                        │
-              ┌─────────▼──────────────────────────────┐
-              │  Static Lake (public/data/*.json)       │
-              │  Golden Source — updated nightly        │
-              └─────────▲───────────────────────────────┘
-                        │ commits (02:00 UTC daily)
-              ┌─────────┴───────────────────────────────┐
-              │   GitHub Actions — the "Backend"        │
-              │   Python + Node.js ETL Pipeline          │
-              └─────────┬───────────────────────────────┘
+     ┌──────────────────────────────┐   ┌────────────────────────────────┐
+     │ App GitHub Pages             │   │ Data GitHub Pages (same origin)│
+     │ investment-dashboard          │   │ investment-dashboard-data      │
+     │ UI + public/config (withBase) │   │ /data/*.json — Static Lake     │
+     └──────────────────────────────┘   └───────────────▲────────────────┘
+                        │ reads config        reads data │
+                        │              (fallback)         │ mirror (nightly)
+                        │            ┌─────────────────┐  │
+                        │            │  CORS Proxies   │──┼─► Yahoo Finance
+                        │            │ (rotated list)  │  │
+                        │            └─────────────────┘  │
+              ┌─────────┴────────────────────────────────┴─┐
+              │   GitHub Actions — the "Backend"            │
+              │   seed ← data repo → ETL (Python + Node)    │
+              │   → commit config to app repo → mirror data │
+              └─────────┬───────────────────────────────────┘
                         │ scrapes / fetches
                         ▼
            ┌─────────┬─────────┬─────────┬──────────┐
@@ -43,13 +39,13 @@
            └─────────┴─────────┴─────────┴──────────┘
 ```
 
-**Key insight**: there is no runtime backend. The "backend" is a nightly CI job that produces JSON files. All runtime logic lives in the browser.
+**Key insight**: there is no runtime backend. The "backend" is a nightly CI job that produces JSON files. The pre-computed data lives in a **separate same-origin repo** (`investment-dashboard-data`) served from its own GitHub Pages; the app repo ships only the UI + `public/config`. All runtime logic lives in the browser. See [ADR-0008](adr/0008-separate-data-repository.md).
 
 ---
 
 ## 2. The Static-First Paradigm
 
-The dashboard operates on a **Serverless / Static-First** architecture. There is no Node.js/Python server handling user requests. Instead, the application relies on a **Static Lake** of pre-computed JSON files hosted on GitHub Pages (CDN).
+The dashboard operates on a **Serverless / Static-First** architecture. There is no Node.js/Python server handling user requests. Instead, the application relies on a **Static Lake** of pre-computed JSON files hosted on a **separate data repository's** GitHub Pages (`investment-dashboard-data`, same origin as the app — see [ADR-0008](adr/0008-separate-data-repository.md)). The app repo itself ships only the UI and `public/config`.
 
 **Why this model** (see [ADR-0001](adr/0001-static-first-architecture.md)):
 - Operating cost approaches $0
@@ -76,11 +72,13 @@ The frontend data layer (`src/services/`, `src/api/`, `src/utils/performanceCach
 
 See [ADR-0003](adr/0003-three-tier-cache-model.md) for rationale and [ADR-0002](adr/0002-cors-proxy-strategy.md) for the proxy strategy.
 
+> Tier-2's origin is the **data repo's** GitHub Pages, resolved via `VITE_DATA_BASE_URL` — same origin as the app, so no CORS. Only the host moved; the cache hierarchy is unchanged ([ADR-0008](adr/0008-separate-data-repository.md)).
+
 ---
 
 ## 4. Data Pipeline (ETL) — Daily at 02:00 UTC
 
-The `daily-data-update.yml` workflow runs three logical phases. For the operational playbook see [operations/DATA_OPERATIONS.md](../operations/DATA_OPERATIONS.md).
+The `daily-data-update.yml` workflow runs three logical phases. Each ETL workflow first **seeds** `public/data` from the data repo, regenerates, then **mirrors** the result back to the data repo (the app repo no longer commits data — only `public/config`). The `public/data/...` paths below are the generation targets; the live site fetches them from the data repo. For the operational playbook see [operations/DATA_OPERATIONS.md](../operations/DATA_OPERATIONS.md).
 
 ### Phase 1 — Market Data Acquisition
 
@@ -88,7 +86,7 @@ The `daily-data-update.yml` workflow runs three logical phases. For the operatio
 |---|---|---|
 | `public/data/ohlcv/{symbol}.json` | Yahoo Finance | `scripts/generate-real-ohlcv-yfinance.py` |
 | `public/data/symbols_metadata.json` | yahoo-finance2 | `scripts/fetch-fundamentals.js` |
-| `public/data/technical-indicators/fear-greed.json` | CNN F&G (Puppeteer) | `scripts/precompute-with-browser.js` |
+| `public/data/technical-indicators/market-sentiment.json` | CNN Fear & Greed | `scripts/update_sentiment.py` |
 
 ### Phase 2 — Institutional Intelligence
 
@@ -114,6 +112,8 @@ The quant engine applies 3 filter layers (see [specs/QUANT_STRATEGY_DOSSIER.md](
 ## 5. Frontend Architecture
 
 Single-page Vue 3 application built with Vite. No Pinia/Vuex — state is held in per-service closures and a lightweight reactive `state-manager.ts`.
+
+Data URLs are resolved in `src/utils/baseUrl.js`: `withBase()` for app-repo assets (config) and `withDataBase()` — driven by `VITE_DATA_BASE_URL` — for every `data/*` file served from the data repo ([ADR-0008](adr/0008-separate-data-repository.md)).
 
 **Directory layout** (under `src/`):
 
@@ -165,13 +165,13 @@ This mix is a conscious trade-off (see [ADR-0005](adr/0005-technical-indicator-l
 
 | Component | Runs On | Trigger |
 |---|---|---|
-| Daily ETL pipeline | `ubuntu-latest` + Python 3.11 + Node 18 | Cron `0 2 * * *` UTC |
-| Indicator precompute (Puppeteer scrape) | `ubuntu-latest` + headless Chrome | Cron `0 22 * * 1-5` UTC |
+| Daily ETL pipeline | `ubuntu-latest` + Python 3.11 + Node 20 | Cron `0 2 * * *` UTC |
 | Dataroma scraper | `ubuntu-latest` + Python + BeautifulSoup | Cron `0 0 * * *` UTC |
 | Metadata refresh | `ubuntu-latest` | Weekly (Sunday 02:00 UTC) |
-| Frontend build + publish | `ubuntu-latest` | Push to `main` |
+| Frontend build + publish | `ubuntu-latest` | Push to `main` + add-symbol dispatch |
+| Add symbol (self-service) | `ubuntu-latest` + Node 20 | Manual `workflow_dispatch` |
 
-See [operations/DEPLOYMENT.md](../operations/DEPLOYMENT.md) for the operational detail.
+All three ETL pipelines **seed from and mirror to** the data repo (`investment-dashboard-data`) using a `DATA_REPO_TOKEN` PAT; see [ADR-0008](adr/0008-separate-data-repository.md). See [operations/DEPLOYMENT.md](../operations/DEPLOYMENT.md) for the operational detail.
 
 ---
 
@@ -181,7 +181,7 @@ See [operations/DEPLOYMENT.md](../operations/DEPLOYMENT.md) for the operational 
 |---|---|---|---|
 | Yahoo Finance (OHLCV) | `yfinance` Python lib | ~2k req/day | None (public) |
 | yahoo-finance2 (fundamentals) | JS lib | ~1.5k req/day | None (auto crumb/cookie) |
-| CNN Fear & Greed | HTTP scrape (Puppeteer) | N/A | User-Agent only |
+| CNN Fear & Greed | HTTP (CNN API, `requests`) | N/A | None |
 | Dataroma | HTTP scrape (BeautifulSoup) | Self-imposed ~10 req/s | None (public) |
 | CORS Proxies (Tier 3) | Rotated list | Per-proxy | None |
 

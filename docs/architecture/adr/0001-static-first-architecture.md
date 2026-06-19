@@ -5,9 +5,11 @@
 - **Deciders**: Project owner
 - **Context tags**: `deployment`, `cost`, `reliability`
 
+> **Amended by [ADR-0008](0008-separate-data-repository.md) (2026-06).** The static JSON "Static Lake" now lives in a separate data repository (`investment-dashboard-data`) served from its own same-origin GitHub Pages, resolved via `VITE_DATA_BASE_URL` / `withDataBase()`. The static-first, no-backend, CDN-delivered model is unchanged — only the data *host* moved.
+
 ## Context & Problem
 
-Kiro Investment Dashboard is a private tool serving one operator and a small partner circle. It needs to display dense, fresh financial data (OHLCV, technical indicators, institutional holdings, proprietary quant signals) with low latency and near-zero operating cost. A classical three-tier web stack (DB + API + SPA) would require continuously running infrastructure — database, server, cache — plus monitoring and on-call burden that a solo operator cannot absorb. External paid market-data APIs would also bleed money continuously.
+The Investment Dashboard is a private tool serving one operator and a small partner circle. It needs to display dense, fresh financial data (OHLCV, technical indicators, institutional holdings, proprietary quant signals) with low latency and near-zero operating cost. A classical three-tier web stack (DB + API + SPA) would require continuously running infrastructure — database, server, cache — plus monitoring and on-call burden that a solo operator cannot absorb. External paid market-data APIs would also bleed money continuously.
 
 ## Decision
 
