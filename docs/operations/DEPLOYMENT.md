@@ -11,12 +11,12 @@ The project relies heavily on GitHub Actions to maintain its "Static-First" arch
   - Fundamentals: `scripts/fetch-fundamentals.js`
   - Quant Engine: `scripts/production/daily_update.py`
   - Sentiment: `scripts/update_sentiment.py`
-- **Output**: Updates all files in `public/data/`
+- **Output**: Regenerates the Static Lake and mirrors it to the **separate data repo** (`investment-dashboard-data`); the app repo receives **config-only** commits (see [ADR-0008](../architecture/adr/0008-separate-data-repository.md)).
 - **Logic**:
-  1. Fetches list of symbols from `public/config/stocks.json`.
-  2. For each symbol, downloads 5Y historic data from Yahoo Finance.
-  3. Validates data integrity (Checks for nulls/gaps).
-  4. Commits changes to the repo.
+  1. **Seed**: clones the latest `public/data` from the data repo (`npm run seed-data`).
+  2. Fetches the list of symbols from `public/config/stocks.json`.
+  3. For each symbol, downloads 5Y historic data from Yahoo Finance, computes indicators, and validates integrity (nulls/gaps).
+  4. **Mirror**: pushes the regenerated `public/data` back to the data repo (via a `DATA_REPO_TOKEN` PAT). The app repo's `public/data` is git-ignored.
 - **Failure Handling**: If a symbol fails, the script logs an error but continues. The previous day's JSON remains (Stale is better than broken).
 
 ### 2. Market Sentiment (Fear & Greed)

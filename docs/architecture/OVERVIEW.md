@@ -120,7 +120,7 @@ Data URLs are resolved in `src/utils/baseUrl.js`: `withBase()` for app-repo asse
 | Dir | Role |
 |---|---|
 | `pages/` | 8 route-level views (Market, StockDetail, Settings, SystemManager, etc.) |
-| `components/` | 44 widgets (ThreeDKineticChart, FastTradingViewWidget, SignalCard, MFIVolumeProfilePanel, …) |
+| `components/` | 45 components (ThreeDKineticChart, FastTradingViewWidget, SignalCard, MFIVolumeProfilePanel, …) |
 | `services/` | App-level orchestrators (ohlcvApi, NavigationService, QuantDataService, ScrollSpyService) |
 | `api/` | External adapters (yahooFinanceApi, hybridTechnicalIndicatorsApi, corsProxyManager) |
 | `utils/` | performanceCache (Tier 1), autoUpdateScheduler, cacheWarmupService, technical-analysis helpers |

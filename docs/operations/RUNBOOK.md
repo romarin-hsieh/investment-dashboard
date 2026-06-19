@@ -16,7 +16,7 @@
 - [Playbook 4 — Dataroma scrape returns 0 entries](#playbook-4--dataroma-scrape-returns-0-entries)
 - [Playbook 5 — All Tier-3 CORS proxies failing](#playbook-5--all-tier-3-cors-proxies-failing)
 - [Playbook 6 — Frontend deploy succeeded but app is blank](#playbook-6--frontend-deploy-succeeded-but-app-is-blank)
-- [Playbook 7 — Bad data committed and is now in main (rollback)](#playbook-7--bad-data-committed-and-is-now-in-main-rollback)
+- [Playbook 7 — Bad data published and is now live (rollback)](#playbook-7--bad-data-published-and-is-now-live-rollback)
 - [Playbook 8 — Adding a new symbol to the universe](#playbook-8--adding-a-new-symbol-to-the-universe)
 
 ---
@@ -58,18 +58,18 @@
 
 1. Check GitHub Actions tab — did the daily run succeed?
    - **No** → go to Playbook 1
-   - **Yes** → check whether the commit landed on `main`
+   - **Yes** → check whether the mirror commit landed in the data repo (`investment-dashboard-data`)
 2. If the commit landed but `status.json` shows a stale timestamp, then the producer is broken: the workflow ran but `update-status.js` failed to update `status.json`
 3. Check the timestamps on individual data files (`public/data/dashboard_status.json`, `public/data/ohlcv/index.json`) — are they recent?
 
 **Remediate**:
 
-- If the bot committed but `status.json` is stale: re-run `npm run update-daily` locally and commit `status.json`
+- If the workflow ran but `status.json` is stale: re-dispatch the `daily-data-update.yml` workflow from the GitHub Actions tab — it regenerates `status.json` and mirrors it to the data repo
 - If individual data files are also stale: investigate why the workflow's `Commit and push` step succeeded but data didn't update — possibly only metadata changed and there was nothing to commit
 
 **Escalate**:
 
-- 48 h stale: prepare a manual run of `npm run update-daily` from a local Windows machine using `run_local_system.bat`, commit results, push to `main`. Deploy will trigger automatically.
+- 48 h stale: manually dispatch the `daily-data-update.yml` workflow from the Actions tab — it seeds `public/data` from the data repo, regenerates, and mirrors the result back. (Local runs write to the git-ignored `public/data` and no longer commit to `main` — see [ADR-0008](../architecture/adr/0008-separate-data-repository.md).) The frontend serves refreshed data once the data repo's Pages redeploys.
 
 ---
 
@@ -164,30 +164,31 @@
 
 ---
 
-## Playbook 7 — Bad data committed and is now in main (rollback)
+## Playbook 7 — Bad data published and is now live (rollback)
 
-**Symptom**: A daily ETL run committed obviously wrong data (e.g., all stocks show the same price; signals are nonsensical; UI breaks because of malformed JSON).
+**Symptom**: A daily ETL run published obviously wrong data (e.g., all stocks show the same price; signals are nonsensical; UI breaks because of malformed JSON).
 
 **Diagnose** (2 min):
 
-1. Identify the bad commit (latest auto-commit on `main`)
-2. Identify the previous *known-good* commit
-3. Confirm the issue is data, not a code regression
+1. Identify the bad **mirror commit** in the data repo (`investment-dashboard-data`) — the latest auto-commit pushed by the ETL workflow.
+2. Identify the previous *known-good* mirror commit.
+3. Confirm the issue is data, not a code regression in the app repo.
 
 **Remediate**:
 
-- **Option A (preferred)**: re-run the daily workflow with corrected inputs. The next run produces a new commit overwriting the bad data — Git history retains both.
-- **Option B**: if the bad data is causing UI to crash, do a `git revert` of just the bad data commit:
+- **Option A (preferred)**: re-dispatch the `daily-data-update.yml` workflow with corrected inputs. The next run seeds → regenerates → mirrors a new commit to the data repo, overwriting the bad data — git history retains both.
+- **Option B**: if the bad data is crashing the UI, `git revert` the bad **mirror commit in the data repo**:
   ```bash
+  # in a clone of romarin-hsieh/investment-dashboard-data
   git revert <BAD_SHA> --no-commit
-  git commit -m "revert: bad daily data from <DATE> — see RUNBOOK §7"
+  git commit -m "revert: bad daily data from <DATE> — see app RUNBOOK §7"
   git push origin main
   ```
-- The deploy will trigger and serve restored data within a few minutes
+- The data repo's GitHub Pages redeploys and serves restored data within a few minutes. The app repo is **not** involved — data no longer lives there (see [ADR-0008](../architecture/adr/0008-separate-data-repository.md)).
 
 **Escalate**:
 
-- If the cause is a producer-script bug introduced in a PR: revert the PR, then revert the data commit, then write a regression test in WS-B (PR-B1 or follow-up).
+- If the cause is a producer-script bug introduced in a PR: revert the PR in the app repo, then revert the bad mirror commit in the data repo, then add a regression test.
 
 ---
 

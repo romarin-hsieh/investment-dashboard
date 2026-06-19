@@ -57,6 +57,7 @@
 | **Job Story** | 任務故事 | "When [context], I want [capability], so I can [outcome]." Preferred over personas for solo-operator tools. |
 | **Pre-computation** | 預先計算 | Moving expensive work from runtime (user request) to build-time (CI/CD). |
 | **Warm Boot (Widget)** | 暖啟動（元件） | Technique in `FastTradingViewWidget.vue` that caches widget scripts to bypass re-download on nav. |
+| **Add-Symbol Workflow** | 新增股票工作流 | Self-service GitHub Actions workflow (`add-symbol.yml`, or `npm run add-symbol`) that validates a new ticker via yahoo-finance2, auto-fills exchange/sector/industry, appends it to `config/stocks.json`, and triggers an ETL + deploy. See `docs/operations/ADD_NEW_SYMBOL.md`. |
 
 ## E. Project Nicknames & Codenames
 

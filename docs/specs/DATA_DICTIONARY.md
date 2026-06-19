@@ -2,6 +2,8 @@
 
 > **Scope of this doc**: Field-level schemas for every JSON file the frontend consumes from the Static Lake. Each entry is the *contract* between the ETL pipeline (Python + Node.js) and the frontend (`src/services/`, `src/api/`). A breaking change here requires version bumps in both producers and consumers.
 >
+> **Where it lives**: the Static Lake is served from the separate `investment-dashboard-data` repository (same-origin GitHub Pages), not the app repo — see [ADR-0008](../architecture/adr/0008-separate-data-repository.md). The app repo git-ignores `public/data`; the frontend resolves data paths against `VITE_DATA_BASE_URL` (historically `public/data/`).
+>
 > **Source of truth for type shapes**: see `src/types/index.ts`. This doc is the human-readable surface; types in code are authoritative when they disagree.
 >
 > **Conventions**:
