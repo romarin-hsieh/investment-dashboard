@@ -56,3 +56,8 @@ jobs:
             git commit -m "data: Update Dataroma stock & sector rotation data [skip ci]"
             git push
           fi
+
+      - name: Mirror data to the data repo
+        env:
+          DATA_REPO_TOKEN: ${{ secrets.DATA_REPO_TOKEN }}
+        run: bash scripts/mirror-data-to-repo.sh
