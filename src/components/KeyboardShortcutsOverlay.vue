@@ -120,14 +120,14 @@ export default {
   color: var(--text-primary);
   min-width: 320px;
   max-width: 420px;
-  padding: 1.5rem;
+  padding: var(--space-6);
 }
 
 .shortcuts-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .shortcuts-header h3 {
@@ -143,7 +143,7 @@ export default {
   line-height: 1;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0 0.25rem;
+  padding: 0 var(--space-1);
 }
 
 .shortcuts-close:hover {
@@ -156,20 +156,20 @@ export default {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .shortcuts-list li {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
   color: var(--text-secondary);
 }
 
 kbd {
   display: inline-block;
   min-width: 2rem;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem var(--space-2);
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xs);

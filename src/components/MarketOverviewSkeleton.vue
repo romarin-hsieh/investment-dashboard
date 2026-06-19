@@ -126,8 +126,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
 }
@@ -140,8 +140,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -154,7 +154,7 @@ export default {
 /* Market Index Ticker 骨架 */
 .skeleton-ticker-area {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
   overflow: hidden;
   min-height: 100px;
   align-items: center;
@@ -174,7 +174,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: var(--space-8);
   min-height: 200px;
 }
 
@@ -188,7 +188,7 @@ export default {
 .skeleton-gauge-info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .skeleton-gauge-value {
@@ -207,15 +207,15 @@ export default {
 .skeleton-stories-area {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
   min-height: 600px;
 }
 
 .skeleton-story-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: var(--space-2);
+  padding: var(--space-4);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -241,23 +241,23 @@ export default {
 .skeleton-insight-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
   align-items: start;
 }
 
 .skeleton-insight-section {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .skeleton-insight-section:nth-child(2) {
   border-top: 1px solid var(--border-color);
-  padding-top: 1.5rem;
+  padding-top: var(--space-6);
 }
 
 .skeleton-section-header {
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--space-2);
 }
 
 .skeleton-section-title {
@@ -291,7 +291,7 @@ export default {
 .skeleton-heatmap-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 0.5rem;
+  gap: var(--space-2);
   width: 100%;
   height: 400px;
 }
@@ -305,15 +305,15 @@ export default {
 .skeleton-performance-area {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
   min-height: 120px;
 }
 
 .skeleton-performance-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: var(--space-2);
+  padding: var(--space-4);
   background: var(--bg-primary);
   border-radius: var(--radius-sm);
 }
@@ -353,13 +353,13 @@ export default {
 /* 響應式設計 */
 @media (max-width: 768px) {
   .skeleton-widget-container {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
+    padding: var(--space-3);
+    margin-bottom: var(--space-4);
   }
   
   .skeleton-ticker-area {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .skeleton-ticker-item {
@@ -369,7 +369,7 @@ export default {
   
   .skeleton-gauge-area {
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .skeleton-gauge-circle {
@@ -389,8 +389,8 @@ export default {
 
 @media (max-width: 480px) {
   .skeleton-widget-container {
-    padding: 0.5rem;
-    margin: 0 -0.25rem 1rem -0.25rem;
+    padding: var(--space-2);
+    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
   }
   
   .skeleton-heatmap-grid {

@@ -362,21 +362,21 @@ export default {
 
 <style scoped>
 .smart-money-volume-profile {
-  /* margin-top: 1.5rem; Handled by card class */
-  /* padding: 1.5rem; Handled by card class */
+  /* margin-top: var(--space-6); Handled by card class */
+  /* padding: var(--space-6); Handled by card class */
   height: 100%;
 }
 
 .header {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
+    padding-bottom: var(--space-2);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .range-selector {
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem var(--space-2);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xs);
     background-color: var(--bg-card);

@@ -91,21 +91,21 @@ export default {
 
 /* Page Header 骨架 */
 .skeleton-page-header {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .skeleton-page-title {
   @extend .skeleton-base;
   width: 320px;
   height: 32px;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .skeleton-page-description {
   @extend .skeleton-base;
   width: 450px;
   height: 16px;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
 }
 
 /* Widget 容器骨架 */
@@ -113,8 +113,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-bottom: 2rem;
+  padding: var(--space-4);
+  margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
 }
@@ -127,23 +127,23 @@ export default {
 .skeleton-insight-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
   align-items: start;
 }
 
 .skeleton-insight-section {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .skeleton-insight-section:nth-child(2) {
   border-top: 1px solid var(--border-color);
-  padding-top: 1.5rem;
+  padding-top: var(--space-6);
 }
 
 .skeleton-section-header {
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--space-2);
 }
 
 .skeleton-section-title {
@@ -171,27 +171,27 @@ export default {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
-  margin-top: 2rem;
+  padding: var(--space-4);
+  margin-top: var(--space-8);
 }
 
 .skeleton-config-title {
   @extend .skeleton-base;
   width: 200px;
   height: 20px;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .skeleton-config-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
 }
 
 .skeleton-config-section {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--space-3);
 }
 
 .skeleton-config-section-title {
@@ -203,14 +203,14 @@ export default {
 .skeleton-config-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-config-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .skeleton-config-label {
@@ -243,8 +243,8 @@ export default {
 /* 響應式設計 */
 @media (max-width: 768px) {
   .skeleton-widget-container {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
+    padding: var(--space-3);
+    margin-bottom: var(--space-4);
   }
   
   .skeleton-widget-container.large {
@@ -260,14 +260,14 @@ export default {
   }
   
   .skeleton-config-info {
-    padding: 0.75rem;
+    padding: var(--space-3);
   }
 }
 
 @media (max-width: 480px) {
   .skeleton-widget-container {
-    padding: 0.5rem;
-    margin: 0 -0.25rem 1rem -0.25rem;
+    padding: var(--space-2);
+    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
   }
   
   .skeleton-widget-container.large {
@@ -283,8 +283,8 @@ export default {
   }
   
   .skeleton-config-info {
-    padding: 0.5rem;
-    margin: 0 -0.25rem 2rem -0.25rem;
+    padding: var(--space-2);
+    margin: 0 -var(--space-1) var(--space-8) -var(--space-1);
   }
 }
 

@@ -663,14 +663,14 @@ export default {
 
 <style scoped>
 .fundamental-analysis {
-    /* padding: 1rem;  Removed to use parent container's spacing */
+    /* padding: var(--space-4);  Removed to use parent container's spacing */
     /* background: var(--bg-primary); Removed gray background */
     /* border-radius: 8px; Removed */
     background: transparent;
 }
 .section-title {
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-2);
     border-bottom: 1px solid var(--border-color);
     font-weight: var(--weight-semibold);
     color: var(--text-secondary);
@@ -680,12 +680,12 @@ export default {
 .analyst-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
 }
 .section-card {
     background: var(--bg-card);
-    padding: 1.5rem;
+    padding: var(--space-6);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     height: 100%;
@@ -696,17 +696,17 @@ export default {
 .metric-label {
     font-size: 0.95rem;
     color: var(--text-muted);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
     font-weight: var(--weight-semibold);
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
+    padding-bottom: var(--space-2);
 }
 
 /* Price Targets Visual */
 .price-target-visual {
     position: relative;
     height: 80px; 
-    margin: 2rem 0;
+    margin: var(--space-8) 0;
     flex: 1;
     display: flex;
     align-items: center;
@@ -808,9 +808,9 @@ export default {
 .legend-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: var(--space-4);
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-top: var(--space-6);
     font-size: 0.8rem;
     color: var(--text-muted);
 }
@@ -829,7 +829,7 @@ export default {
 .metrics-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: var(--space-6);
 }
 .metric-value {
     font-size: var(--text-lg);
@@ -841,7 +841,7 @@ export default {
 /* Utilities */
 .full-width {
     grid-column: 1 / -1;
-    margin-top: 1rem;
+    margin-top: var(--space-4);
 }
 .text-success { color: var(--success-color) !important; }
 .text-danger { color: var(--error-color) !important; }
@@ -850,7 +850,7 @@ export default {
 /* Loading/Error */
 .loading-state, .error-state {
     text-align: center;
-    padding: 3rem;
+    padding: var(--space-12);
 }
 .spinner {
     width: 40px; 
@@ -859,7 +859,7 @@ export default {
     border-top: 4px solid var(--primary-color); 
     border-radius: 50%; 
     animation: spin 1s linear infinite; 
-    margin: 0 auto 1rem;
+    margin: 0 auto var(--space-4);
 }
 @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -869,14 +869,14 @@ export default {
 /* History Card & Tables */
 .earnings-card {
     background: var(--bg-card);
-    padding: 1.5rem;
+    padding: var(--space-6);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
 }
 .table-container {
     overflow-x: auto;
-    margin-top: 1rem;
+    margin-top: var(--space-4);
 }
 table {
     width: 100%;
@@ -884,7 +884,7 @@ table {
     font-size: 0.95rem;
 }
 th, td {
-    padding: 1rem;
+    padding: var(--space-4);
     text-align: left;
     border-bottom: 1px solid var(--border-color);
     color: var(--text-primary);
@@ -909,7 +909,7 @@ tbody tr:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
 }
 .chart-header h3 {
     margin: 0;

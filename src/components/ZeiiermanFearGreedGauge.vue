@@ -543,8 +543,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md); /* Softer rounded corners */
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
   box-shadow: var(--shadow-sm);
   transition: background-color var(--transition-slow) ease, border-color var(--transition-slow) ease;
 }
@@ -553,8 +553,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -574,7 +574,7 @@ export default {
 .market-fng-gauge__meter-container {
   display: grid;
   grid-template-columns: 1.2fr 1fr 0.8fr;
-  gap: 2rem;
+  gap: var(--space-8);
   align-items: start;
 }
 
@@ -582,7 +582,7 @@ export default {
 .left-side {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--space-8);
   align-items: center;
   justify-content: center;
 }
@@ -635,7 +635,7 @@ export default {
 /* Current Sentiment Box */
 .current-sentiment {
   text-align: center;
-  padding: 1.25rem;
+  padding: var(--space-5);
   border-radius: var(--radius-md);
   background: var(--bg-secondary);
   border: 1px solid transparent;
@@ -646,8 +646,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 .sentiment-dot {
   width: 10px;
@@ -694,12 +694,12 @@ export default {
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   opacity: 0.9;
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--space-5);
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
-.components-grid { display: flex; flex-direction: column; gap: 1rem; }
-.component-item { display: flex; flex-direction: column; gap: 0.5rem; }
+.components-grid { display: flex; flex-direction: column; gap: var(--space-4); }
+.component-item { display: flex; flex-direction: column; gap: var(--space-2); }
 .component-name { font-size: 0.85rem; font-weight: var(--weight-medium); color: var(--text-secondary); }
 
 .component-bar { 
@@ -735,8 +735,8 @@ export default {
 }
 
 /* History Section */
-.history-grid { display: flex; flex-direction: column; gap: 1.5rem; }
-.history-item { display: flex; flex-direction: column; gap: 0.6rem; padding-bottom: 0.5rem; border-bottom: 1px dashed var(--border-color); }
+.history-grid { display: flex; flex-direction: column; gap: var(--space-6); }
+.history-item { display: flex; flex-direction: column; gap: 0.6rem; padding-bottom: var(--space-2); border-bottom: 1px dashed var(--border-color); }
 .history-item:last-child { border-bottom: none; }
 
 .history-label { font-size: 0.8rem; color: var(--text-muted); font-weight: var(--weight-medium);}
@@ -774,18 +774,18 @@ export default {
 @media (max-width: 1024px) {
   .market-fng-gauge__meter-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: var(--space-12);
   }
   .history-grid {
       flex-direction: row;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: var(--space-4);
   }
   .history-item {
       width: 48%;
       border-bottom: none;
       background: var(--bg-secondary);
-      padding: 1rem;
+      padding: var(--space-4);
       border-radius: var(--radius-sm);
   }
 }

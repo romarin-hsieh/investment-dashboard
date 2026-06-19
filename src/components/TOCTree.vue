@@ -91,31 +91,31 @@ export default {
 
 /* Sector Styles - Level 0 */
 .sector-node {
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
 }
 
 .sector-label {
   font-weight: var(--weight-bold);
   color: var(--text-primary);
   background: transparent;
-  padding: 0.5rem 0.5rem;
+  padding: var(--space-2) var(--space-2);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--space-2);
   border: none;
   text-align: left;
   width: 100%;
   cursor: default;
   font-size: 0.95rem; /* Slightly larger heading */
   letter-spacing: 0.02em;
-  margin-top: 1.5rem; /* Use whitespace for separation */
-  margin-bottom: 0.25rem;
+  margin-top: var(--space-6); /* Use whitespace for separation */
+  margin-bottom: var(--space-1);
   opacity: 0.9;
 }
 
 .sector-node:first-child .sector-label {
-  margin-top: 0.5rem;
+  margin-top: var(--space-2);
 }
 
 /* Industry Styles - Level 1 */
@@ -126,12 +126,12 @@ export default {
 .industry-label {
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
-  padding: 0.5rem 0.75rem;
-  padding-left: 0.75rem;
+  padding: var(--space-2) var(--space-3);
+  padding-left: var(--space-3);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--space-2);
   background: transparent;
   border: none;
   text-align: left;
@@ -141,7 +141,7 @@ export default {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   opacity: 0.8;
-  margin-top: 0.5rem;
+  margin-top: var(--space-2);
 }
 
 /* Symbol Styles - Level 2 */
@@ -150,8 +150,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 0.75rem;
-  padding-left: 1.5rem;
+  padding: var(--space-2) var(--space-3);
+  padding-left: var(--space-6);
   margin-bottom: 2px;
   background: transparent;
   border: none;
@@ -188,7 +188,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-right: 0.5rem;
+  margin-right: var(--space-2);
 }
 
 .symbol-text {
@@ -198,12 +198,12 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: var(--weight-medium);
-  margin-right: 0.5rem;
+  margin-right: var(--space-2);
 }
 
 .exchange-badge {
   font-size: 0.7rem;
-  padding: 0.125rem 0.25rem;
+  padding: 0.125rem var(--space-1);
   background: var(--bg-secondary);
   color: var(--text-muted);
   border: 1px solid var(--border-color);
@@ -239,11 +239,11 @@ export default {
 /* Responsive adjustments */
 @media (max-width: 320px) {
   .industry-label {
-    padding-left: 1.5rem; 
+    padding-left: var(--space-6); 
   }
   
   .symbol-node {
-    padding-left: 2.5rem;
+    padding-left: var(--space-10);
   }
   
   .label-text,

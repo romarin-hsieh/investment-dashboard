@@ -295,7 +295,7 @@ export default {
 }
 
 .loading-simple {
-    padding: 2rem;
+    padding: var(--space-8);
     font-size: 0.9rem;
     color: var(--text-muted);
     text-align: center;
@@ -303,7 +303,7 @@ export default {
 
 .section-header {
     background: transparent;
-    padding: 0.75rem 1rem;
+    padding: var(--space-3) var(--space-4);
     border-bottom: 1px solid var(--border-color);
     border-top: 1px solid var(--border-color);
 }
@@ -322,7 +322,7 @@ h4 {
 }
 
 .block-content {
-    padding: 1rem;
+    padding: var(--space-4);
 }
 
 .signal-block {
@@ -348,7 +348,7 @@ h4 {
 .pivot-row.main { font-weight: bold; color: var(--text-secondary); border-top: 1px dashed var(--border-color); border-bottom: 1px dashed var(--border-color); padding: 4px 0; }
 
 .current-zone {
-    margin-top: 0.5rem;
+    margin-top: var(--space-2);
     font-size: 0.8rem;
     background: var(--bg-secondary);
     padding: 4px 8px;
@@ -421,7 +421,7 @@ h4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1rem;
+    padding: 0.8rem var(--space-4);
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
 }
@@ -442,20 +442,20 @@ h4 {
 }
 
 .modal-body {
-    padding: 1rem;
+    padding: var(--space-4);
     font-size: 0.9rem;
     color: var(--text-primary);
 }
 
 .modal-body h6 {
-    margin: 0.5rem 0 0.5rem 0;
+    margin: var(--space-2) 0 var(--space-2) 0;
     font-size: 0.95rem;
     font-weight: var(--weight-semibold);
     color: var(--primary-color);
 }
 
 .modal-body ul {
-    margin: 0 0 1rem 0;
+    margin: 0 0 var(--space-4) 0;
     padding-left: 1.2rem;
 }
 

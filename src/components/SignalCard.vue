@@ -113,7 +113,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 .signal-card {
   background: var(--chart-bg-deep);
   border-radius: var(--radius-sm);
-  padding: 1.5rem;
+  padding: var(--space-6);
   color: var(--grey-350);
   border: 1px solid var(--chart-bg);
   box-shadow: 0 4px 6px rgba(0,0,0,0.2);
@@ -123,7 +123,7 @@ const isPositive = computed(() => props.changePercent >= 0);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .ticker-info h2 {
@@ -133,13 +133,13 @@ const isPositive = computed(() => props.changePercent >= 0);
 }
 
 .price-info {
-  margin-top: 0.25rem;
+  margin-top: var(--space-1);
   font-family: 'Roboto Mono', monospace;
 }
 
 .price {
   font-size: var(--text-lg);
-  margin-right: 0.5rem;
+  margin-right: var(--space-2);
 }
 
 .change.up { color: var(--chart-up-alt); }
@@ -153,7 +153,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 }
 
 .signal-badge {
-  padding: 0.5rem 1rem;
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-xs);
   border: 2px solid;
   font-weight: bold;
@@ -164,11 +164,11 @@ const isPositive = computed(() => props.changePercent >= 0);
 .divider {
   height: 1px;
   background: var(--chart-bg);
-  margin: 1rem 0;
+  margin: var(--space-4) 0;
 }
 
 .commentary-box h4 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--space-2) 0;
   font-size: 0.85rem;
   text-transform: uppercase;
   color: var(--grey-500);
@@ -184,10 +184,10 @@ const isPositive = computed(() => props.changePercent >= 0);
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
   border-top: 1px solid var(--chart-bg);
-  padding-top: 1rem;
+  padding-top: var(--space-4);
 }
 
 .metric-item {
@@ -195,14 +195,14 @@ const isPositive = computed(() => props.changePercent >= 0);
   flex-direction: column;
   align-items: center;
   background: var(--chart-bg);
-  padding: 0.5rem;
+  padding: var(--space-2);
   border-radius: var(--radius-xs);
 }
 
 .metric-label {
   font-size: var(--text-xs);
   color: var(--grey-500);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
 }
 
 .metric-value {

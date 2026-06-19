@@ -290,38 +290,38 @@ export default {
 
 .manager-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
 }
 
 .manager-header h2 {
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .status-section, .control-section, .preferences-section, .test-results-section, .symbols-section {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1.5rem;
-  margin-bottom: 2rem;
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .status-section h3, .control-section h3, .preferences-section h3, .test-results-section h3, .symbols-section h3 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--space-4) 0;
   color: var(--text-secondary);
 }
 
 .status-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .status-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
+  padding: var(--space-4);
 }
 /* Status is conveyed by the .status-badge in each card header (no side-stripe). */
 
@@ -329,7 +329,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .status-header h4 {
@@ -338,7 +338,7 @@ export default {
 }
 
 .status-badge {
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: var(--weight-semibold);
@@ -355,7 +355,7 @@ export default {
 }
 
 .status-details p {
-  margin: 0.25rem 0;
+  margin: var(--space-1) 0;
   font-size: 0.9rem;
   color: var(--text-muted);
 }
@@ -363,11 +363,11 @@ export default {
 .control-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .control-btn {
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
@@ -420,18 +420,18 @@ export default {
 .preferences-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .form-group label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   font-weight: var(--weight-medium);
 }
 
 .form-group input[type="number"] {
-  padding: 0.5rem;
+  padding: var(--space-2);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xs);
   width: 100px;
@@ -440,14 +440,14 @@ export default {
 .test-results {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .test-result-item {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 /* Pass/fail conveyed by a calm full-card tint (mode-aware tokens), not a side-stripe. */
@@ -461,8 +461,8 @@ export default {
 
 .result-header {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
   font-weight: var(--weight-semibold);
 }
 
@@ -487,7 +487,7 @@ export default {
 
 .indicators-preview {
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
   font-size: 0.9rem;
   color: var(--text-muted);
 }
@@ -495,13 +495,13 @@ export default {
 .symbols-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .symbol-tag {
   background: var(--bg-secondary);
   color: var(--text-secondary);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: var(--weight-medium);
@@ -509,7 +509,7 @@ export default {
 
 @media (max-width: 768px) {
   .indicators-manager {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .status-grid, .control-grid {
@@ -518,7 +518,7 @@ export default {
   
   .result-header {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .load-time {

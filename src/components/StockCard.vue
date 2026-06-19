@@ -325,7 +325,7 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
+  padding: var(--space-6);
   transition: all var(--transition-base);
   position: relative;
   width: 100%;
@@ -346,8 +346,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -355,14 +355,14 @@ export default {
   font-size: var(--text-xl);
   font-weight: var(--weight-bold);
   color: var(--text-primary);
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--space-2) 0;
 }
 
 .symbol-wrapper {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .symbol-wrapper .symbol {
@@ -388,7 +388,7 @@ export default {
 
 .symbol-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
   align-items: center;
   flex-wrap: wrap;
 }
@@ -397,7 +397,7 @@ export default {
   font-size: var(--text-xs);
   color: var(--tag-text-blue);
   background-color: var(--tag-bg-blue);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-weight: var(--weight-medium);
   border: 1px solid transparent;
@@ -407,7 +407,7 @@ export default {
   font-size: var(--text-xs);
   color: var(--text-secondary);
   background-color: var(--bg-secondary);
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-weight: var(--weight-medium);
   border: 1px solid transparent;
@@ -417,7 +417,7 @@ export default {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 /* Orphaned .detail-btn styles removed */
@@ -433,7 +433,7 @@ export default {
 .widgets-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
   margin-bottom: 0px; 
   min-height: 450px; 
   will-change: transform; 
@@ -462,7 +462,7 @@ export default {
 
 .widget-header {
   background: transparent;
-  padding: 0.75rem 1rem;
+  padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--border-color);
   flex-shrink: 0; 
 }
@@ -487,8 +487,8 @@ export default {
 
 /* Trading Analysis Section */
 .trading-analysis-section {
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
 }
 
 .analysis-header {
@@ -519,11 +519,11 @@ export default {
 .analysis-content {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
 }
 
 .analysis-point {
-    padding: 0.8rem 1rem;
+    padding: 0.8rem var(--space-4);
     background: rgba(0, 0, 0, 0.02); /* Very subtle background */
     border-radius: var(--radius-xs);
     font-size: 0.9rem;
@@ -544,16 +544,16 @@ export default {
 .analysis-point.neutral { border-left-color: var(--text-muted); }
 
 .additional-info {
-  /* margin-bottom: 1rem; Removed logic */ 
+  /* margin-bottom: var(--space-4); Removed logic */ 
 }
 
 /* Stale Data Banner — top of card, full width, prominent */
 .stale-banner {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  margin-bottom: 1rem;
+  gap: var(--space-2);
+  padding: 0.6rem var(--space-4);
+  margin-bottom: var(--space-4);
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
@@ -599,7 +599,7 @@ export default {
 /* 大螢幕 (桌機) - 1200px 以上 */
 @media (min-width: 1201px) {
   .stock-card-pair {
-    padding: 2rem;
+    padding: var(--space-8);
   }
   
   .symbol-info .symbol {
@@ -607,19 +607,19 @@ export default {
   }
   
   .widgets-container {
-    gap: 2rem;
+    gap: var(--space-8);
   }
 }
 
 /* 類似 StockDetail: 1200px 以下就轉為單欄，避免 Technical Widget 過窄出現卷軸 */
 @media (max-width: 1200px) {
   .stock-card-pair {
-    padding: 1.5rem;
+    padding: var(--space-6);
   }
 
   .widgets-container {
     grid-template-columns: 1fr; /* Switch to 1 column earlier */
-    gap: 1.5rem;
+    gap: var(--space-6);
   }
 
   /* 讓 Overview 和 Technical 高度一致或自適應 */
@@ -633,13 +633,13 @@ export default {
 /* 中小螢幕調整 - 768px 以下 */
 @media (max-width: 767px) {
   .stock-card-pair {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .stock-info-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .header-actions {
@@ -659,7 +659,7 @@ export default {
   /* 手機版：widgets 垂直排列 */
   .widgets-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .widget-overview {
@@ -680,7 +680,7 @@ export default {
 /* 極小螢幕 (小手機) - 480px 以下 */
 @media (max-width: 480px) {
   .stock-card-pair {
-    padding: 0.75rem;
+    padding: var(--space-3);
   }
   
   .symbol-info .symbol {
@@ -694,7 +694,7 @@ export default {
   }
   
   .widgets-container {
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .widget-overview {
@@ -708,7 +708,7 @@ export default {
   }
   
   .widget-header {
-    padding: 0.5rem 0.75rem;
+    padding: var(--space-2) var(--space-3);
   }
 }
 </style>

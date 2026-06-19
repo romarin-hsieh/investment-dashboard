@@ -206,10 +206,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: var(--space-3);
   color: var(--grey-550);
   font-size: 0.9rem;
-  padding: 3rem;
+  padding: var(--space-12);
   text-align: center;
 }
 
@@ -238,15 +238,15 @@ export default {
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
-  padding: 0.75rem;
+  gap: var(--space-4);
+  padding: var(--space-3);
 }
 
 .news-item {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 1rem;
+  padding: var(--space-4);
   cursor: pointer;
   transition: all var(--transition-base) ease;
   box-shadow: var(--shadow-sm);
@@ -262,8 +262,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 .news-title {
@@ -284,8 +284,8 @@ export default {
 
 .news-content {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
 }
 
 .news-text {
@@ -296,12 +296,12 @@ export default {
   font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.4;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--space-2) 0;
 }
 
 .news-meta {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--space-3);
   align-items: center;
 }
 
@@ -339,7 +339,7 @@ export default {
 .news-footer {
   display: flex;
   justify-content: flex-end;
-  padding-top: 0.5rem;
+  padding-top: var(--space-2);
   border-top: 1px solid var(--border-color);
 }
 
@@ -358,23 +358,23 @@ export default {
 @media (max-width: 768px) {
   .news-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0.5rem;
+    gap: var(--space-4);
+    padding: var(--space-2);
   }
   
   .news-item {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .news-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .news-content {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .news-thumbnail {
@@ -393,11 +393,11 @@ export default {
 
 @media (max-width: 480px) {
   .news-grid {
-    padding: 0.25rem;
+    padding: var(--space-1);
   }
   
   .news-item {
-    padding: 0.75rem;
+    padding: var(--space-3);
   }
   
   .news-title {
@@ -411,7 +411,7 @@ export default {
   .news-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 }
 </style>

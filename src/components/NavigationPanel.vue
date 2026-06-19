@@ -137,14 +137,14 @@ export default {
 }
 
 .panel-header {
-  padding: 1rem;
+  padding: var(--space-4);
   border-bottom: 1px solid var(--border-color);
   background: var(--bg-secondary);
   flex-shrink: 0;
 }
 
 .panel-header h3 {
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 var(--space-3) 0;
   font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
@@ -167,7 +167,7 @@ export default {
 
 .search-input {
   width: 100%;
-  padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+  padding: var(--space-2) var(--space-3) var(--space-2) 2.25rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
@@ -200,7 +200,7 @@ export default {
 .panel-content {
   flex: 1;
   overflow-y: auto;
-  padding: 0.5rem;
+  padding: var(--space-2);
   background: var(--bg-card);
 }
 

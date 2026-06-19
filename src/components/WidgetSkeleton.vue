@@ -87,7 +87,7 @@ export default {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
-  padding: 1rem;
+  padding: var(--space-4);
 }
 
 /* Base Skeleton Animation */
@@ -104,15 +104,15 @@ export default {
 
 /* Header */
 .skeleton-header {
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--border-color);
 }
 
 .skeleton-title {
   width: 120px;
   height: 20px;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .skeleton-subtitle {
@@ -122,10 +122,10 @@ export default {
 
 /* List Layout */
 .skeleton-list-item {
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-line {
@@ -139,16 +139,16 @@ export default {
 .skeleton-content.grid-layout {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .skeleton-grid-item {
   background: var(--bg-secondary);
-  padding: 0.75rem;
+  padding: var(--space-3);
   border-radius: var(--radius-xs);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-label {

@@ -284,8 +284,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
-  margin-top: 1.5rem;
+  padding: var(--space-6);
+  margin-top: var(--space-6);
   box-shadow: var(--shadow-sm);
 }
 
@@ -301,8 +301,8 @@ export default {
   font: inherit;
   color: inherit;
   /* Original visual styling */
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -313,7 +313,7 @@ export default {
 }
 
 .stats-subsection {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -360,7 +360,7 @@ export default {
 
 .filter-controls {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
   background: transparent;
   padding: 0;
   align-items: center;
@@ -370,7 +370,7 @@ export default {
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  padding: 0.25rem 0.6rem;
+  padding: var(--space-1) 0.6rem;
   font-size: var(--text-xs); /* Match exchange-tag size */
   cursor: pointer;
   border-radius: var(--radius-xs);
@@ -436,7 +436,7 @@ export default {
 
 .no-data-state {
   text-align: center;
-  padding: 2rem;
+  padding: var(--space-8);
   color: var(--text-muted);
 }
 
@@ -445,7 +445,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: var(--space-8);
   gap: 10px;
   color: var(--text-muted);
 }
@@ -492,7 +492,7 @@ export default {
 }
 
 .history-container {
-  padding: 1rem;
+  padding: var(--space-4);
   background-color: var(--bg-secondary-alt, rgba(0, 0, 0, 0.02)); 
   border-bottom: 1px solid var(--border-color);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);

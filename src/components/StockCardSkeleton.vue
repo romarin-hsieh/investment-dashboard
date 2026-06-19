@@ -69,8 +69,8 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
+  padding: var(--space-6);
+  margin-bottom: var(--space-4);
   animation: fadeIn var(--transition-slow) ease-in;
 }
 
@@ -79,7 +79,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .skeleton-symbol {
@@ -93,7 +93,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.25rem;
+  gap: var(--space-1);
 }
 
 .skeleton-price {
@@ -110,23 +110,23 @@ export default {
 
 /* Content 骨架 */
 .skeleton-content {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .skeleton-widgets-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
+  gap: var(--space-6);
   width: 100%;
 }
 
 .skeleton-widget {
   background: var(--bg-primary); /* Slightly different from card base */
   border-radius: var(--radius-sm);
-  padding: 1rem;
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .skeleton-widget.overview {
@@ -166,12 +166,12 @@ export default {
 
 @media (max-width: 480px) {
   .stock-card-skeleton {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .skeleton-header {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .skeleton-price-group {
@@ -193,7 +193,7 @@ export default {
 
 .skeleton-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .skeleton-tag {
@@ -214,7 +214,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.25rem;
+  gap: var(--space-1);
 }
 
 .skeleton-confidence {
@@ -253,7 +253,7 @@ export default {
 @media (max-width: 768px) {
   .skeleton-content {
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-4);
   }
   
   .skeleton-chart-section {
@@ -267,7 +267,7 @@ export default {
   .skeleton-footer {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .skeleton-metadata {
@@ -277,12 +277,12 @@ export default {
 
 @media (max-width: 480px) {
   .stock-card-skeleton {
-    padding: 1rem;
+    padding: var(--space-4);
   }
   
   .skeleton-header {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
   
   .skeleton-price-group {
@@ -291,7 +291,7 @@ export default {
   
   .skeleton-market-info {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
 }
 

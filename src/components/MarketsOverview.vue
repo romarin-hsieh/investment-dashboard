@@ -203,22 +203,22 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .markets-grid {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-8);
 }
 
 .update-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
   font-size: 0.9rem;
 }
 
 .stale-indicator {
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
   font-size: 0.8rem;
   font-weight: var(--weight-medium);
@@ -242,14 +242,14 @@ export default {
 .markets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .markets-tile {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  padding: 1rem;
+  padding: var(--space-4);
   transition: all var(--transition-base);
 }
 
@@ -272,14 +272,14 @@ export default {
   font-size: 0.9rem;
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .markets-value {
   font-size: var(--text-xl);
   font-weight: var(--weight-bold);
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
   min-height: 2rem;
 }
 
@@ -292,7 +292,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
   font-size: 0.8rem;
 }
 
@@ -335,17 +335,17 @@ export default {
 
 .loading {
   text-align: center;
-  padding: 2rem;
+  padding: var(--space-8);
   color: var(--text-secondary);
 }
 
 .error {
   text-align: center;
-  padding: 1rem;
+  padding: var(--space-4);
   background-color: var(--danger-bg);
   border: 1px solid var(--danger-border);
   border-radius: var(--radius-xs);
-  margin-top: 1rem;
+  margin-top: var(--space-4);
 }
 
 /* 響應式設計 */
@@ -357,13 +357,13 @@ export default {
   .markets-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: var(--space-2);
   }
   
   .update-info {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.25rem;
+    gap: var(--space-1);
   }
 }
 </style>

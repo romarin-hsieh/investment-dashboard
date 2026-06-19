@@ -235,20 +235,20 @@ export default {
 
 <style scoped>
 .system-manager {
-    padding: 2rem;
+    padding: var(--space-8);
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .manager-header {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
     text-align: center;
 }
 
 .manager-header h2 {
     font-size: var(--text-2xl);
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
 }
 
 .manager-header p {
@@ -257,24 +257,24 @@ export default {
 
 /* Status Cards */
 .overview-section {
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
 }
 
 .overview-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: var(--space-6);
 }
 
 .overview-card {
     background: var(--bg-card);
-    padding: 1.5rem;
+    padding: var(--space-6);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: var(--space-6);
 }
 
 .card-icon {
@@ -315,12 +315,12 @@ export default {
 .details-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 1.5rem;
+    gap: var(--space-6);
 }
 
 .detail-card {
     background: var(--bg-card);
-    padding: 2rem;
+    padding: var(--space-8);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
@@ -328,9 +328,9 @@ export default {
 
 .detail-card h3 {
     margin-top: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-6);
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1rem;
+    padding-bottom: var(--space-4);
     color: var(--text-primary);
 }
 
@@ -343,9 +343,9 @@ export default {
 }
 
 .actions {
-    margin-top: 2rem;
+    margin-top: var(--space-8);
     display: flex;
-    gap: 1rem;
+    gap: var(--space-4);
     flex-wrap: wrap;
 }
 
@@ -371,7 +371,7 @@ export default {
     background: #1e1e1e; /* Logs always dark looks fine, or use bg-secondary? Let's keep logs dark terminal style */
     color: #fff;
     border-radius: var(--radius-sm);
-    padding: 1rem;
+    padding: var(--space-4);
     font-family: 'Consolas', monospace;
 }
 
@@ -379,7 +379,7 @@ export default {
     padding: 0.4rem 0;
     border-bottom: 1px solid var(--grey-800);
     display: flex;
-    gap: 1rem;
+    gap: var(--space-4);
 }
 
 .log-entry .time { color: var(--grey-550); font-size: 0.8rem; min-width: 80px; }
