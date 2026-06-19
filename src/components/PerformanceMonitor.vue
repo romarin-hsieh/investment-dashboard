@@ -319,7 +319,7 @@ export default {
   align-items: center;
   padding: 0.5rem;
   background: var(--bg-secondary);
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   margin-bottom: 0.25rem;
   font-size: 0.8rem;
 }

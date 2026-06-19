@@ -207,10 +207,10 @@ export default {
   justify-content: center;
   gap: 1rem;
   height: 100%;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
   border-radius: var(--radius-xs);
-  color: #721c24;
+  color: var(--danger-fg);
 }
 
 .retry-btn {

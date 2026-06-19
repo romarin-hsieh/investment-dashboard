@@ -277,10 +277,10 @@ export default {
   justify-content: center;
   height: 100%;
   min-height: 850px;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
-  color: #721c24;
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-sm);
+  color: var(--danger-fg);
   margin: -8px;
 }
 
