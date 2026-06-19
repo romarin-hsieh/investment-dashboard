@@ -1,7 +1,7 @@
 <template>
   <div class="cisd-widget">
     <!-- Floating Settings Button (Top-Right, avoiding Y-Axis) -->
-    <button class="settings-floating-btn" @click="showSettings = true" title="Indicator Settings">
+    <button class="settings-floating-btn" @click="showSettings = true" :title="$t('cisd.settingsButtonTitle')">
       ⚙️
     </button>
 
@@ -17,7 +17,7 @@
     <!-- Settings Modal -->
     <GenericSettingsModal
       v-model:isOpen="showSettings"
-      title="CISD Projections Settings"
+      :title="$t('cisd.modalTitle')"
       :schema="settingsSchema"
       :modelValue="algoConfig"
       @save="onSettingsSave"
@@ -87,23 +87,23 @@ export default {
       
       // Settings Schema
       settingsSchema: [
-        { key: 'runBarsThreshold', label: 'Bars Threshold', type: 'number', min: 1, group: 'Inputs' },
-        { key: 'cisdFilter', label: 'CISD Filter', type: 'checkbox', group: 'Inputs' },
-        { key: 'cisdFilterLength', label: 'Filter Length', type: 'number', min: 1, group: 'Inputs' },
-        { key: 'invalidateCISD', label: 'Invalidate on CHoCH', type: 'checkbox', group: 'Inputs' },
-        
-        { key: 'bullishColor', label: 'Bullish Color', type: 'text', group: 'Style' },
-        { key: 'bearishColor', label: 'Bearish Color', type: 'text', group: 'Style' },
-        { key: 'backgroundFill', label: 'Background Fill', type: 'checkbox', group: 'Style' },
-        { key: 'baseLevel', label: 'Show Base Level', type: 'checkbox', group: 'Style' },
-        { key: 'labelsSize', label: 'Labels Size', type: 'number', min: 8, group: 'Style' },
+        { key: 'runBarsThreshold', label: this.$t('cisd.schema.barsThreshold'), type: 'number', min: 1, group: this.$t('cisd.schema.groupInputs') },
+        { key: 'cisdFilter', label: this.$t('cisd.schema.cisdFilter'), type: 'checkbox', group: this.$t('cisd.schema.groupInputs') },
+        { key: 'cisdFilterLength', label: this.$t('cisd.schema.filterLength'), type: 'number', min: 1, group: this.$t('cisd.schema.groupInputs') },
+        { key: 'invalidateCISD', label: this.$t('cisd.schema.invalidateOnChoch'), type: 'checkbox', group: this.$t('cisd.schema.groupInputs') },
 
-        { key: 'level1', label: 'Show Level 1', type: 'checkbox', group: 'Levels' },
-        { key: 'level1Mult', label: 'Level 1 Multiplier', type: 'number', step: 0.1, group: 'Levels' },
-        { key: 'level2', label: 'Show Level 2', type: 'checkbox', group: 'Levels' },
-        { key: 'level2Mult', label: 'Level 2 Multiplier', type: 'number', step: 0.1, group: 'Levels' },
-        { key: 'level3', label: 'Show Level 3', type: 'checkbox', group: 'Levels' },
-        { key: 'level3Mult', label: 'Level 3 Multiplier', type: 'number', step: 0.1, group: 'Levels' },
+        { key: 'bullishColor', label: this.$t('cisd.schema.bullishColor'), type: 'text', group: this.$t('cisd.schema.groupStyle') },
+        { key: 'bearishColor', label: this.$t('cisd.schema.bearishColor'), type: 'text', group: this.$t('cisd.schema.groupStyle') },
+        { key: 'backgroundFill', label: this.$t('cisd.schema.backgroundFill'), type: 'checkbox', group: this.$t('cisd.schema.groupStyle') },
+        { key: 'baseLevel', label: this.$t('cisd.schema.showBaseLevel'), type: 'checkbox', group: this.$t('cisd.schema.groupStyle') },
+        { key: 'labelsSize', label: this.$t('cisd.schema.labelsSize'), type: 'number', min: 8, group: this.$t('cisd.schema.groupStyle') },
+
+        { key: 'level1', label: this.$t('cisd.schema.showLevel', { n: 1 }), type: 'checkbox', group: this.$t('cisd.schema.groupLevels') },
+        { key: 'level1Mult', label: this.$t('cisd.schema.levelMultiplier', { n: 1 }), type: 'number', step: 0.1, group: this.$t('cisd.schema.groupLevels') },
+        { key: 'level2', label: this.$t('cisd.schema.showLevel', { n: 2 }), type: 'checkbox', group: this.$t('cisd.schema.groupLevels') },
+        { key: 'level2Mult', label: this.$t('cisd.schema.levelMultiplier', { n: 2 }), type: 'number', step: 0.1, group: this.$t('cisd.schema.groupLevels') },
+        { key: 'level3', label: this.$t('cisd.schema.showLevel', { n: 3 }), type: 'checkbox', group: this.$t('cisd.schema.groupLevels') },
+        { key: 'level3Mult', label: this.$t('cisd.schema.levelMultiplier', { n: 3 }), type: 'number', step: 0.1, group: this.$t('cisd.schema.groupLevels') },
       ],
 
       resizeObserver: null,

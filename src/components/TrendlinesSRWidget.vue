@@ -1,7 +1,7 @@
 <template>
   <div class="trendlines-sr-widget">
     <!-- Floating Settings Button (Top-Right, avoiding Y-Axis) -->
-    <button class="settings-floating-btn" @click="showSettings = true" title="Indicator Settings">
+    <button class="settings-floating-btn" @click="showSettings = true" :title="$t('trendlines.settingsButtonTitle')">
       ⚙️
     </button>
 
@@ -26,7 +26,7 @@
     <!-- Settings Modal -->
     <GenericSettingsModal
       v-model:isOpen="showSettings"
-      title="Trendlines & SR Settings"
+      :title="$t('trendlines.settingsModalTitle')"
       :schema="settingsSchema"
       :modelValue="algoConfig"
       @save="onSettingsSave"
@@ -94,16 +94,16 @@ export default {
       
       // Settings Schema (Driven by data above)
       settingsSchema: [
-        { key: 'leftBars', label: 'Pivot Left Bars', type: 'number', min: 1, group: 'Inputs' },
-        { key: 'rightBars', label: 'Pivot Right Bars', type: 'number', min: 1, group: 'Inputs' },
-        { key: 'extendBars', label: 'Extend Lines', type: 'number', min: 0, group: 'Inputs' },
-        { key: 'multiplier', label: 'Tolerance Multiplier', type: 'number', step: 0.1, group: 'Inputs' },
-        { key: 'highLineColor', label: 'Resistance Color', type: 'text', group: 'Style' },
-        { key: 'lowLineColor', label: 'Support Color', type: 'text', group: 'Style' },
-        { key: 'vdZoneColorSupply', label: 'Supply Zone Color', type: 'text', group: 'Style' },
+        { key: 'leftBars', label: this.$t('trendlines.settings.leftBars'), type: 'number', min: 1, group: this.$t('trendlines.settings.groupInputs') },
+        { key: 'rightBars', label: this.$t('trendlines.settings.rightBars'), type: 'number', min: 1, group: this.$t('trendlines.settings.groupInputs') },
+        { key: 'extendBars', label: this.$t('trendlines.settings.extendBars'), type: 'number', min: 0, group: this.$t('trendlines.settings.groupInputs') },
+        { key: 'multiplier', label: this.$t('trendlines.settings.multiplier'), type: 'number', step: 0.1, group: this.$t('trendlines.settings.groupInputs') },
+        { key: 'highLineColor', label: this.$t('trendlines.settings.highLineColor'), type: 'text', group: this.$t('trendlines.settings.groupStyle') },
+        { key: 'lowLineColor', label: this.$t('trendlines.settings.lowLineColor'), type: 'text', group: this.$t('trendlines.settings.groupStyle') },
+        { key: 'vdZoneColorSupply', label: this.$t('trendlines.settings.vdZoneColorSupply'), type: 'text', group: this.$t('trendlines.settings.groupStyle') },
 
-        { key: 'vdZoneColorDemand', label: 'Demand Zone Color', type: 'text', group: 'Style' },
-        { key: 'vdBarAlign', label: 'Bar Alignment', type: 'select', options: ['right', 'left'], group: 'Style' }
+        { key: 'vdZoneColorDemand', label: this.$t('trendlines.settings.vdZoneColorDemand'), type: 'text', group: this.$t('trendlines.settings.groupStyle') },
+        { key: 'vdBarAlign', label: this.$t('trendlines.settings.vdBarAlign'), type: 'select', options: ['right', 'left'], group: this.$t('trendlines.settings.groupStyle') }
       ],
 
       tooltip: { visible: false, x: 0, y: 0, text: '' },

@@ -2,12 +2,12 @@
   <div class="advanced-chart-widget" :id="containerId" ref="container">
     <div v-if="!loaded && !error" class="chart-loading">
       <div class="loading-spinner"></div>
-      <span>Loading Market Regime...</span>
+      <span>{{ $t('marketRegime.loading') }}</span>
     </div>
-    
+
     <div v-if="error" class="chart-error">
-      <span>⚠️ Failed to load</span>
-      <button @click="retry" class="retry-btn">Retry</button>
+      <span>⚠️ {{ $t('marketRegime.loadFailed') }}</span>
+      <button @click="retry" class="retry-btn">{{ $t('marketRegime.retry') }}</button>
     </div>
 
     <!-- TradingView Advanced Chart Container -->
@@ -15,9 +15,9 @@
       <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
       <div class="tradingview-widget-copyright">
         <a :href="`https://www.tradingview.com/symbols/${exchange}-${symbol}/`" rel="noopener nofollow" target="_blank">
-          <span class="blue-text">{{ symbol }} stock chart</span>
+          <span class="blue-text">{{ $t('marketRegime.symbolPriceChart', { symbol }) }}</span>
         </a>
-        <span class="trademark"> by TradingView</span>
+        <span class="trademark"> {{ $t('marketRegime.byTradingView') }}</span>
       </div>
     </div>
   </div>

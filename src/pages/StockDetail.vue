@@ -2,9 +2,9 @@
   <div class="stock-detail">
     <!-- Breadcrumb -->
     <nav class="breadcrumb">
-      <router-link to="/stock-overview" class="breadcrumb-link">Stock Overview</router-link>
+      <router-link to="/stock-overview" class="breadcrumb-link">{{ $t('stockDetail.breadcrumb.stockOverview') }}</router-link>
       <span class="breadcrumb-separator">›</span>
-      <span class="breadcrumb-current">{{ symbol }} Analysis</span>
+      <span class="breadcrumb-current">{{ $t('stockDetail.breadcrumb.symbolAnalysis', { symbol }) }}</span>
     </nav>
 
     <!-- 載入狀態顯示骨架屏 -->
@@ -15,7 +15,7 @@
     <!-- 錯誤狀態 -->
     <div v-else-if="error" class="error">
       <p class="text-danger">{{ error }}</p>
-      <button @click="refresh" class="btn btn-secondary">Retry</button>
+      <button @click="refresh" class="btn btn-secondary">{{ $t('stockDetail.actions.retry') }}</button>
     </div>
 
     <!-- 正常內容 -->
@@ -26,7 +26,7 @@
           <div class="symbol-info">
             <div class="symbol-wrapper">
               <h3 class="symbol">{{ symbol }}</h3>
-              <a :href="`https://finance.yahoo.com/chart/${symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" title="View Realtime Chart on Yahoo Finance" :aria-label="`Open realtime chart for ${symbol} on Yahoo Finance (opens in new tab)`">
+              <a :href="`https://finance.yahoo.com/chart/${symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" :title="$t('stockDetail.actions.viewRealtimeChartTitle')" :aria-label="$t('stockDetail.actions.viewRealtimeChartAria', { symbol })">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
             </div>
@@ -38,7 +38,7 @@
           <div class="header-actions">
             <button @click="goBack" class="btn btn-renaissance">
               <span class="btn-icon">←</span>
-              Back to Stock Overview
+              {{ $t('stockDetail.actions.backToStockOverview') }}
             </button>
           </div>
         </div>
@@ -48,9 +48,9 @@
           <!-- Symbol Overview (2/3 width) -->
           <div class="widget-overview">
             <div class="widget-header">
-              <h4>Symbol Overview</h4>
+              <h4>{{ $t('stockDetail.widgets.symbolOverview') }}</h4>
             </div>
-            <AdvancedChartWidget 
+            <AdvancedChartWidget
               :symbol="symbol" 
               :exchange="exchange"
             />
@@ -59,9 +59,9 @@
           <!-- Technical Analysis (1/3 width) - 仿照 Symbol Overview 樣式 -->
           <div class="widget-technical">
             <div class="widget-header">
-              <h4>Technical Analysis</h4>
+              <h4>{{ $t('stockDetail.widgets.technicalAnalysis') }}</h4>
             </div>
-            <FastTradingViewWidget 
+            <FastTradingViewWidget
               widget-type="technical"
               :symbol="symbol" 
               :exchange="exchange"
@@ -78,21 +78,21 @@
             :class="{ active: activeTab === 'overview' }"
             @click="activeTab = 'overview'"
         >
-            Overview & Technicals
+            {{ $t('stockDetail.tabs.overview') }}
         </button>
         <button 
             class="tab-btn" 
             :class="{ active: activeTab === 'holdings' }"
             @click="activeTab = 'holdings'"
         >
-            Holdings & Sentiment
+            {{ $t('stockDetail.tabs.holdings') }}
         </button>
         <button 
             class="tab-btn" 
             :class="{ active: activeTab === 'analysis' }"
             @click="activeTab = 'analysis'"
         >
-            Fundamental Analysis
+            {{ $t('stockDetail.tabs.analysis') }}
         </button>
       </div>
 
@@ -103,8 +103,8 @@
           <div class="widget-container">
             <div class="widget-header flex-header">
                 <div style="display: flex; align-items: center;">
-                    <h3>Technical Indicators</h3>
-                    <button class="header-info-btn" @click="$refs.technicalSignals.openModal()" title="Signal Specifications" aria-label="Open Signal Specifications" style="margin-left: 8px;">
+                    <h3>{{ $t('stockDetail.sections.technicalIndicators') }}</h3>
+                    <button class="header-info-btn" @click="$refs.technicalSignals.openModal()" :title="$t('stockDetail.actions.signalSpecsTitle')" :aria-label="$t('stockDetail.actions.signalSpecsAria')" style="margin-left: 8px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
@@ -120,7 +120,7 @@
             
             <!-- Quant Review Block -->
             <div class="review-block">
-              <div class="widget-header"><h3>Quant Kinetic State</h3></div>
+              <div class="widget-header"><h3>{{ $t('stockDetail.sections.quantKineticState') }}</h3></div>
               <ReviewCometChart :symbol="symbol" :theme="theme" />
             </div>
           </div>
@@ -128,13 +128,13 @@
           <!-- Symbol Insight Block -->
           <div class="symbol-insight-block">
             <div class="insight-header">
-              <h3>Symbol Insight</h3>
+              <h3>{{ $t('stockDetail.sections.symbolInsight') }}</h3>
             </div>
             
             <!-- Market Regime Block (Full Width) -->
             <div class="insight-full-widget market-regime">
               <div class="widget-header">
-                <h4>Market Regime</h4>
+                <h4>{{ $t('stockDetail.widgets.marketRegime') }}</h4>
               </div>
               <MarketRegimeWidget
                 :symbol="symbol"
@@ -146,7 +146,7 @@
             <!-- Trading Strategy Block (Full Width) -->
             <div class="insight-full-widget trading-strategy">
               <div class="widget-header">
-                <h4>Trading Strategy</h4>
+                <h4>{{ $t('stockDetail.widgets.tradingStrategy') }}</h4>
               </div>
               <TradingStrategyWidget
                 :symbol="symbol"
@@ -158,7 +158,7 @@
             <!-- Trendlines & SR Zones Block (Full Width) -->
             <div class="insight-full-widget trendlines-sr">
               <div class="widget-header">
-                <h4>Trendlines & SR Zones</h4>
+                <h4>{{ $t('stockDetail.widgets.trendlinesSR') }}</h4>
               </div>
               <TrendlinesSRWidget
                 :symbol="symbol"
@@ -169,7 +169,7 @@
             <!-- CISD Projections Block (Full Width) -->
             <div class="insight-full-widget cisd-projections">
               <div class="widget-header">
-                <h4>CISD Projections</h4>
+                <h4>{{ $t('stockDetail.widgets.cisdProjections') }}</h4>
               </div>
               <CisdWidget
                 :symbol="symbol"
@@ -180,7 +180,7 @@
             <!-- MFI Volume Profile Block (Full Width) -->
             <div class="insight-full-widget mfi-volume-profile">
               <div class="widget-header">
-                <h4>MFI Volume Profile</h4>
+                <h4>{{ $t('stockDetail.widgets.mfiVolumeProfile') }}</h4>
               </div>
               <MFIVolumeProfilePanel :symbol="symbol" />
             </div>
@@ -190,7 +190,7 @@
               <!-- Daily Insight (MA5) - Left -->
               <div class="insight-widget daily-insight">
                 <div class="widget-header">
-                  <h4>Daily Insight (MA5)</h4>
+                  <h4>{{ $t('stockDetail.widgets.dailyInsight') }}</h4>
                 </div>
                 <LazyTradingViewWidget
                   widget-type="Daily Insight"
@@ -204,7 +204,7 @@
               <!-- Weekly Insight (MA4) - Right -->
               <div class="insight-widget weekly-insight">
                 <div class="widget-header">
-                  <h4>Weekly Insight (MA4)</h4>
+                  <h4>{{ $t('stockDetail.widgets.weeklyInsight') }}</h4>
                 </div>
                 <LazyTradingViewWidget
                   widget-type="Weekly Insight"
@@ -223,7 +223,7 @@
           <!-- Latest News -->
           <div class="widget-container">
             <div class="widget-header">
-                <h3>Latest News</h3>
+                <h3>{{ $t('stockDetail.sections.latestNews') }}</h3>
             </div>
             <StockNews :symbol="symbol" />
           </div>
@@ -232,7 +232,7 @@
       <!-- Tab Content: Analysis -->
       <div v-if="activeTab === 'analysis'" class="tab-content">
           <div class="widget-container">
-             <div class="widget-header"><h3>Deep Research</h3></div>
+             <div class="widget-header"><h3>{{ $t('stockDetail.sections.deepResearch') }}</h3></div>
              <FundamentalAnalysis :symbol="symbol" />
           </div>
           
@@ -240,7 +240,7 @@
             <!-- Row 2: Fundamental Data (Full Width) -->
             <div class="widget-container financials-widget-container">
               <div class="widget-header">
-                <h3>Financials Overview</h3>
+                <h3>{{ $t('stockDetail.sections.financialsOverview') }}</h3>
               </div>
               <TradingViewFundamentalData 
                 :symbol="symbol" 
@@ -252,7 +252,7 @@
             <!-- Row 3: Company Profile (Full Width) -->
             <div class="widget-container">
               <div class="widget-header">
-                <h3>Company Profile</h3>
+                <h3>{{ $t('stockDetail.sections.companyProfile') }}</h3>
               </div>
               <TradingViewCompanyProfile 
                 :symbol="symbol" 
@@ -270,7 +270,7 @@
            and their chunks only fetch when the user activates this tab. -->
       <div v-if="activeTab === 'holdings'" class="tab-content">
           <div class="widget-container">
-             <div class="widget-header"><h3>Institutional & Insider Holdings</h3></div>
+             <div class="widget-header"><h3>{{ $t('stockDetail.sections.institutionalInsiderHoldings') }}</h3></div>
              <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData" />
           </div>
 
@@ -555,26 +555,39 @@ export default {
 
     getSector() {
       if (!this.metadata || this.metadata.confidence < 0.7) {
-        return 'Unknown'
+        return this.$t('stockDetail.industry.unknown')
       }
-      return this.metadata.sector || 'Unknown'
+      return this.metadata.sector || this.$t('stockDetail.industry.unknown')
     },
 
-    getIndustry() {
+    // Raw (untranslated) industry value used both for display and as a lookup
+    // key in getIndustryCategory(). The 'Unknown Industry' sentinel must stay
+    // in English so the category map below resolves it correctly.
+    getIndustryRaw() {
       if (!this.metadata) {
         return 'Unknown Industry'
       }
-      
+
       // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
       if (this.metadata.confidence < 0.7) {
         return 'Unknown Industry'
       }
-      
+
       return this.metadata.industry || this.metadata.sector || 'Unknown Industry'
     },
 
+    getIndustry() {
+      const raw = this.getIndustryRaw()
+      // Only the hardcoded fallback is user-facing copy; real industry names
+      // come from metadata (dynamic data) and are shown verbatim.
+      if (raw === 'Unknown Industry') {
+        return this.$t('stockDetail.industry.unknownIndustry')
+      }
+      return raw
+    },
+
     getIndustryCategory() {
-      const industry = this.getIndustry()
+      const industry = this.getIndustryRaw()
       
       // 根據 industry 返回主要分類，用於樣式
       const industryCategories = {

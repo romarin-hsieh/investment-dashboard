@@ -191,7 +191,7 @@ describe('FundamentalAnalysis — mount + loadData cascade', () => {
     const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
     await flushPromises()
 
-    expect(wrapper.vm.error).toBe('Failed to load fundamental data')
+    expect(wrapper.vm.error).toBe('Could not load fundamental data. Please try again later.')
     expect(wrapper.vm.loading).toBe(false)
   })
 

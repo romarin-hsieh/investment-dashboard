@@ -26,7 +26,7 @@
         <div class="analyst-grid">
             <!-- 1. Analyst Price Targets -->
             <div class="section-card">
-                <h6 class="metric-label">Analyst Price Targets</h6>
+                <h6 class="metric-label">{{ $t('fundamentals.priceTargets.title') }}</h6>
                 <div class="price-target-visual" v-if="priceTargets">
                     <!-- Track -->
                     <div class="range-track"></div>
@@ -40,31 +40,31 @@
                     
                     <!-- Markers -->
                     <div class="marker low" :style="{ left: getPricePosition(priceTargets.low) }">
-                        <span class="label bottom">{{ formatCurrency(priceTargets.low) }}<br>Low</span>
+                        <span class="label bottom">{{ formatCurrency(priceTargets.low) }}<br>{{ $t('fundamentals.priceTargets.low') }}</span>
                     </div>
-                    
+
                     <div class="marker high" :style="{ left: getPricePosition(priceTargets.high) }">
-                        <span class="label bottom">{{ formatCurrency(priceTargets.high) }}<br>High</span>
+                        <span class="label bottom">{{ formatCurrency(priceTargets.high) }}<br>{{ $t('fundamentals.priceTargets.high') }}</span>
                     </div>
-                    
+
                     <div class="marker avg" :style="{ left: getPricePosition(priceTargets.mean) }">
-                        <span class="label top">{{ formatCurrency(priceTargets.mean) }}<br>Average</span>
+                        <span class="label top">{{ formatCurrency(priceTargets.mean) }}<br>{{ $t('fundamentals.priceTargets.average') }}</span>
                     </div>
-                    
+
                     <div class="marker current" :style="{ left: getPricePosition(priceTargets.current) }">
                          <span class="label top" style="top: -45px; font-weight: bold; color: var(--success-color);">
-                            {{ formatCurrency(priceTargets.current) }}<br>Current
+                            {{ formatCurrency(priceTargets.current) }}<br>{{ $t('fundamentals.priceTargets.current') }}
                          </span>
                     </div>
                 </div>
                 <div v-else class="text-center text-muted py-5">
-                    No Price Target Data Available
+                    {{ $t('fundamentals.priceTargets.noData') }}
                 </div>
             </div>
 
             <!-- 2. Analyst Recommendations (Stacked Bar) -->
             <div class="section-card">
-                <h6 class="metric-label">Analyst Recommendations</h6>
+                <h6 class="metric-label">{{ $t('fundamentals.recommendations.title') }}</h6>
                 <div v-if="recommendationTrend && recommendationTrend.length > 0" class="mt-3">
                     <div v-for="period in recommendationTrend" :key="period.period" class="rec-row">
                         <div class="rec-label">{{ getPeriodLabel(period.period) }}</div>
@@ -89,44 +89,44 @@
                     
                     <!-- Legend -->
                     <div class="legend-row">
-                        <div class="legend-item"><div class="dot bg-strong-buy"></div> Strong Buy</div>
-                        <div class="legend-item"><div class="dot bg-buy"></div> Buy</div>
-                        <div class="legend-item"><div class="dot bg-hold"></div> Hold</div>
-                        <div class="legend-item"><div class="dot bg-sell"></div> Sell</div>
-                        <div class="legend-item"><div class="dot bg-strong-sell"></div> Strong Sell</div>
+                        <div class="legend-item"><div class="dot bg-strong-buy"></div> {{ $t('fundamentals.recommendations.strongBuy') }}</div>
+                        <div class="legend-item"><div class="dot bg-buy"></div> {{ $t('fundamentals.recommendations.buy') }}</div>
+                        <div class="legend-item"><div class="dot bg-hold"></div> {{ $t('fundamentals.recommendations.hold') }}</div>
+                        <div class="legend-item"><div class="dot bg-sell"></div> {{ $t('fundamentals.recommendations.sell') }}</div>
+                        <div class="legend-item"><div class="dot bg-strong-sell"></div> {{ $t('fundamentals.recommendations.strongSell') }}</div>
                     </div>
                 </div>
                 <div v-else class="text-center text-muted py-5">
-                    No Recommendation Data Available
+                    {{ $t('fundamentals.recommendations.noData') }}
                 </div>
             </div>
 
             <!-- 3. Key Metrics (Preserved) -->
             <div class="section-card">
-                <h6 class="metric-label">Key Metrics</h6>
+                <h6 class="metric-label">{{ $t('fundamentals.keyMetrics.title') }}</h6>
                 <div class="metrics-grid mt-3">
                      <div>
-                        <div class="metric-label">Revenue Growth (YoY)</div>
+                        <div class="metric-label">{{ $t('fundamentals.keyMetrics.revenueGrowth') }}</div>
                         <div class="metric-value" :class="getGrowthClass(metrics.revenueGrowth)">
-                            {{ metrics.revenueGrowth || 'N/A' }}
+                            {{ metrics.revenueGrowth || $t('fundamentals.keyMetrics.notAvailable') }}
                         </div>
                      </div>
                      <div>
-                        <div class="metric-label">Profit Margin</div>
+                        <div class="metric-label">{{ $t('fundamentals.keyMetrics.profitMargin') }}</div>
                         <div class="metric-value" :class="getGrowthClass(metrics.profitMargins)">
-                             {{ metrics.profitMargins || 'N/A' }}
+                             {{ metrics.profitMargins || $t('fundamentals.keyMetrics.notAvailable') }}
                         </div>
                      </div>
                      <div>
-                        <div class="metric-label">Forward P/E</div>
+                        <div class="metric-label">{{ $t('fundamentals.keyMetrics.forwardPE') }}</div>
                         <div class="metric-value">
-                             {{ metrics.forwardPE ? formatNumber(parseFloat(metrics.forwardPE), 2) : 'N/A' }}
+                             {{ metrics.forwardPE ? formatNumber(parseFloat(metrics.forwardPE), 2) : $t('fundamentals.keyMetrics.notAvailable') }}
                         </div>
                      </div>
                      <div>
-                        <div class="metric-label">Beta</div>
+                        <div class="metric-label">{{ $t('fundamentals.keyMetrics.beta') }}</div>
                         <div class="metric-value">
-                            {{ metrics.beta || 'N/A' }}
+                            {{ metrics.beta || $t('fundamentals.keyMetrics.notAvailable') }}
                         </div>
                      </div>
                 </div>
@@ -136,7 +136,7 @@
       <!-- Earnings Trend -->
       <div class="card earnings-card full-width">
         <div class="chart-header">
-            <h3>Earnings & Revenue History</h3>
+            <h3>{{ $t('fundamentals.earnings.title') }}</h3>
             <!-- Toggle removed as Quarterly data is unavailable -->
             <!-- <div class="btn-group" role="group">
                 <button type="button" class="btn btn-sm" :class="earningsViewMode === 'yearly' ? 'btn-primary' : 'btn-outline-primary'" @click="setEarningsView('yearly')">Yearly</button>
@@ -254,7 +254,7 @@ export default {
                 type: 'linear',
                 display: true,
                 position: 'left',
-                title: { display: true, text: 'EPS', color: this.commonChartColors.text },
+                title: { display: true, text: this.$t('fundamentals.earnings.epsAxis'), color: this.commonChartColors.text },
                 ticks: { color: this.commonChartColors.text },
                 grid: { color: this.commonChartColors.grid }
               },
@@ -262,7 +262,7 @@ export default {
                 type: 'linear',
                 display: true,
                 position: 'right',
-                title: { display: true, text: 'Revenue', color: this.commonChartColors.text },
+                title: { display: true, text: this.$t('fundamentals.earnings.revenueAxis'), color: this.commonChartColors.text },
                 grid: { drawOnChartArea: false },
                 ticks: {
                     color: this.commonChartColors.text,
@@ -286,7 +286,7 @@ export default {
             maintainAspectRatio: false,
             plugins: {
               legend: { display: false },
-              title: { display: true, text: 'Price Target Values', color: this.commonChartColors.text }
+              title: { display: true, text: this.$t('fundamentals.targetPriceChart.title'), color: this.commonChartColors.text }
             },
             scales: {
               x: {
@@ -295,7 +295,7 @@ export default {
               },
               y: {
                 beginAtZero: false,
-                title: { display: true, text: 'Price ($)', color: this.commonChartColors.text },
+                title: { display: true, text: this.$t('fundamentals.targetPriceChart.priceAxis'), color: this.commonChartColors.text },
                 ticks: { color: this.commonChartColors.text },
                 grid: { color: this.commonChartColors.grid }
               }
@@ -375,7 +375,7 @@ export default {
                 }
             } catch (fallbackErr) {
                 console.error('Fallback failed:', fallbackErr);
-                this.error = 'Failed to load fundamental data';
+                this.error = this.$t('fundamentals.errors.loadFailed');
             }
         } finally {
             this.loading = false;
@@ -491,7 +491,7 @@ export default {
             datasets: [
                 {
                     type: 'bar',
-                    label: 'Revenue',
+                    label: this.$t('fundamentals.earnings.revenueSeries'),
                     // Support both object with .raw (legacy/live API) and direct number (new static data)
                     data: history.map(item => item.revenue?.raw !== undefined ? item.revenue.raw : item.revenue),
                     backgroundColor: this.theme === 'dark' ? 'rgba(138, 154, 156, 0.6)' : 'rgba(107, 127, 130, 0.6)', // Primary Color with opacity
@@ -500,7 +500,7 @@ export default {
                 },
                 {
                     type: 'line',
-                    label: 'Earnings',
+                    label: this.$t('fundamentals.earnings.earningsSeries'),
                     data: history.map(item => item.earnings?.raw !== undefined ? item.earnings.raw : item.earnings),
                     borderColor: '#22ab94', // Success Color
                     backgroundColor: '#22ab94',
@@ -546,11 +546,11 @@ export default {
     },
 
     formatPercent(val) {
-        if (val === undefined || val === null) return 'N/A';
+        if (val === undefined || val === null) return this.$t('fundamentals.keyMetrics.notAvailable');
         // Handle both raw number (0.36) and object ({fmt: '36%'})
         const num = typeof val === 'object' ? val.raw : val;
         const pct = formatNumber(num * 100, 2, null);
-        return pct === null ? 'N/A' : pct + '%';
+        return pct === null ? this.$t('fundamentals.keyMetrics.notAvailable') : pct + '%';
     },
 
     prepareTargetPriceChart(validItems) {
@@ -564,7 +564,7 @@ export default {
             this.targetPriceChartData = {
                 labels: chartItems.map(item => this.formatDate(item.epochGradeDate)),
                 datasets: [{
-                    label: 'Price Target',
+                    label: this.$t('fundamentals.targetPriceChart.priceTargetSeries'),
                     data: chartItems.map(item => item.currentPriceTarget),
                     borderColor: '#ffc107',
                     backgroundColor: 'rgba(255, 193, 7, 0.2)',
@@ -581,7 +581,7 @@ export default {
     },
 
     formatCurrency(val) {
-        if (val === undefined || val === null) return 'N/A';
+        if (val === undefined || val === null) return this.$t('fundamentals.keyMetrics.notAvailable');
         return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
     },
     
@@ -649,7 +649,12 @@ export default {
     
     getPeriodLabel(periodKey) {
         // Simple mapping for 0m, -1m, etc.
-        const map = { '0m': 'Current', '-1m': '1M Ago', '-2m': '2M Ago', '-3m': '3M Ago' };
+        const map = {
+            '0m': this.$t('fundamentals.periods.current'),
+            '-1m': this.$t('fundamentals.periods.oneMonthAgo'),
+            '-2m': this.$t('fundamentals.periods.twoMonthsAgo'),
+            '-3m': this.$t('fundamentals.periods.threeMonthsAgo')
+        };
         return map[periodKey] || periodKey;
     }
   }

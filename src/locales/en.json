@@ -279,5 +279,468 @@
     "qualityDegraded": "Degraded",
     "qualityDisabled": "Disabled",
     "qualityUnknown": "Unknown"
+  },
+  "stockDetail": {
+    "breadcrumb": {
+      "stockOverview": "Stock Overview",
+      "symbolAnalysis": "{symbol} Analysis"
+    },
+    "tabs": {
+      "overview": "Overview & Technicals",
+      "holdings": "Holdings & Sentiment",
+      "analysis": "Fundamental Analysis"
+    },
+    "actions": {
+      "retry": "Retry",
+      "backToStockOverview": "Back to Stock Overview",
+      "viewRealtimeChartTitle": "View live chart on Yahoo Finance",
+      "viewRealtimeChartAria": "Open the live chart for {symbol} on Yahoo Finance (opens in a new tab)",
+      "signalSpecsTitle": "How these signals are calculated",
+      "signalSpecsAria": "Open the signal calculation reference"
+    },
+    "widgets": {
+      "symbolOverview": "Price Chart",
+      "technicalAnalysis": "Technical Analysis",
+      "marketRegime": "Market Regime",
+      "tradingStrategy": "Trading Strategy",
+      "trendlinesSR": "Trendlines & Support/Resistance Zones",
+      "cisdProjections": "CISD Price Projections",
+      "mfiVolumeProfile": "MFI Volume Profile",
+      "dailyInsight": "Daily Trend (5-day moving average)",
+      "weeklyInsight": "Weekly Trend (4-week moving average)"
+    },
+    "sections": {
+      "technicalIndicators": "Technical Indicators",
+      "quantKineticState": "Quant Kinetic State",
+      "symbolInsight": "Symbol Insight",
+      "latestNews": "Latest News",
+      "deepResearch": "Deep Research",
+      "financialsOverview": "Financials Overview",
+      "companyProfile": "Company Profile",
+      "institutionalInsiderHoldings": "Institutional & Insider Holdings"
+    },
+    "industry": {
+      "unknown": "Unknown",
+      "unknownIndustry": "Unknown Industry"
+    }
+  },
+  "fundamentals": {
+    "priceTargets": {
+      "title": "Analyst Price Targets",
+      "low": "Low",
+      "high": "High",
+      "average": "Average",
+      "current": "Current",
+      "noData": "No analyst price targets available"
+    },
+    "recommendations": {
+      "title": "Analyst Recommendations",
+      "strongBuy": "Strong Buy",
+      "buy": "Buy",
+      "hold": "Hold",
+      "sell": "Sell",
+      "strongSell": "Strong Sell",
+      "noData": "No analyst recommendations available"
+    },
+    "keyMetrics": {
+      "title": "Key Metrics",
+      "revenueGrowth": "Revenue Growth (year over year)",
+      "profitMargin": "Profit Margin",
+      "forwardPE": "Forward P/E (price relative to expected earnings)",
+      "beta": "Beta (volatility vs. the market)",
+      "notAvailable": "N/A"
+    },
+    "earnings": {
+      "title": "Earnings & Revenue History",
+      "epsAxis": "EPS (earnings per share)",
+      "revenueAxis": "Revenue",
+      "revenueSeries": "Revenue",
+      "earningsSeries": "Earnings"
+    },
+    "targetPriceChart": {
+      "title": "Analyst Price Target Over Time",
+      "priceAxis": "Price ($)",
+      "priceTargetSeries": "Price Target"
+    },
+    "periods": {
+      "current": "Current",
+      "oneMonthAgo": "1 Month Ago",
+      "twoMonthsAgo": "2 Months Ago",
+      "threeMonthsAgo": "3 Months Ago"
+    },
+    "errors": {
+      "loadFailed": "Could not load fundamental data. Please try again later."
+    }
+  },
+  "holdings": {
+    "ownershipStructure": "Ownership Structure",
+    "insiderSentiment6m": "Insider Sentiment (last 6 months)",
+    "topInstitutionalHolders": "Top Institutional Holders",
+    "smartMoneyTrend": "Smart Money Trend",
+    "loadingSmartMoney": "Loading smart money data...",
+    "recentTransactions": "Recent Transactions",
+    "retry": "Retry",
+    "notAvailable": "N/A",
+    "insiders": "Insiders",
+    "institutions": "Institutions",
+    "publicOther": "Public / Other",
+    "percentSelling": "{n}% Selling",
+    "percentBuying": "{n}% Buying",
+    "dateReported": "Date Reported",
+    "holder": "Holder",
+    "relationship": "Relationship",
+    "transaction": "Transaction",
+    "shares": "Shares",
+    "value": "Value",
+    "percentOutstanding": "% of Shares Outstanding",
+    "sentimentBullish": "Bullish",
+    "sentimentBearish": "Bearish",
+    "sentimentNeutral": "Neutral",
+    "scoreNeutral": "Neutral",
+    "scoreStrongAccumulation": "Strong Accumulation (Safe to Buy)",
+    "scoreWeakDistribution": "Weak / Selling Off (Use Caution)",
+    "scoreStableNeutral": "Stable / Neutral",
+    "axisSharesHeld": "Shares Held",
+    "axisStockPrice": "Stock Price",
+    "datasetSmartMoneyShares": "Smart Money Shares",
+    "datasetAvgReportedPrice": "Average Reported Price",
+    "transactionAtPrice": "{type} at ${price}",
+    "errorLoadFailed": "Could not load holdings data. Please try again."
+  },
+  "indicators": {
+    "title": "Technical Indicators",
+    "guideTitle": "Indicator Guide",
+    "openGuideAria": "Open the indicator guide",
+    "closeGuideAria": "Close the indicator guide",
+    "lastUpdated": "Last updated: {time}",
+    "retry": "Retry",
+    "noDataForSymbol": "No technical-indicator data is available for {symbol}.",
+    "loadFailed": "Could not load technical indicators: {message}",
+    "groups": {
+      "trend": "Trend",
+      "oscillators": "Oscillators",
+      "market": "Market"
+    },
+    "labels": {
+      "ema5": "EMA(5)",
+      "ema10": "EMA(10)",
+      "ema20": "EMA(20)",
+      "ema30": "EMA(30)",
+      "sma5": "SMA(5)",
+      "sma10": "SMA(10)",
+      "sma30": "SMA(30)",
+      "superTrend": "SuperTrend",
+      "sar": "SAR",
+      "vwma20": "VWMA(20)",
+      "rsi14": "RSI (14)",
+      "willr14": "Williams %R (14)",
+      "stochK": "Stoch %K",
+      "stochD": "Stoch %D",
+      "cci20": "CCI (20)",
+      "adx14": "ADX (14)",
+      "macd": "MACD",
+      "ichiConv": "Ichimoku Conversion (9)",
+      "ichiBase": "Ichimoku Base (26)",
+      "ichiLag": "Ichimoku Lagging (26)",
+      "atr14": "ATR (14)",
+      "mfi14": "MFI (14)",
+      "cmf20": "CMF (20)",
+      "obv": "OBV",
+      "volume": "Volume",
+      "avgVol10D": "Avg Volume (10D)",
+      "marketCap": "Market Cap",
+      "beta10D": "Beta (10D)",
+      "beta3M": "Beta (3M)",
+      "beta1Y": "Beta (1Y)",
+      "beta5Y": "Beta (5Y)"
+    },
+    "guide": {
+      "trendHeading": "Trend Indicators",
+      "oscillatorsHeading": "Oscillators",
+      "marketHeading": "Market & Volatility",
+      "ma": {
+        "term": "MA (Moving Average):",
+        "desc": "The average price over a set number of days (e.g. 5, 10, 30)."
+      },
+      "sma": {
+        "term": "SMA (Simple Moving Average):",
+        "desc": "Helps identify the trend direction and key support/resistance levels."
+      },
+      "superTrend": {
+        "term": "SuperTrend:",
+        "desc": "A trend-following indicator based on ATR (volatility); also used as a dynamic stop-loss level."
+      },
+      "sar": {
+        "term": "Parabolic SAR:",
+        "desc": "A trend-following indicator: dots below the price signal an uptrend, dots above the price signal a downtrend."
+      },
+      "vwma": {
+        "term": "VWMA (Volume-Weighted Moving Average):",
+        "desc": "A moving average that weights price by traded volume. A rising VWMA above the SMA suggests a strong uptrend."
+      },
+      "rsi": {
+        "term": "RSI (Relative Strength Index):",
+        "desc": "A momentum gauge from 0 to 100. Above 70 is considered overbought, below 30 oversold."
+      },
+      "stochastic": {
+        "term": "Stochastic (%K / %D):",
+        "desc": "Compares the closing price to its recent range. Above 80 is overbought, below 20 oversold."
+      },
+      "cci": {
+        "term": "CCI (Commodity Channel Index):",
+        "desc": "Measures how far the price has moved from its statistical average. Readings above 100 or below -100 suggest a strong move."
+      },
+      "macd": {
+        "term": "MACD:",
+        "desc": "A trend-following momentum indicator. When its line crosses the signal line, it can flag a buy or sell."
+      },
+      "adx": {
+        "term": "ADX (Average Directional Index):",
+        "desc": "Measures how strong a trend is. A reading above 25 indicates a strong trend."
+      },
+      "ichimoku": {
+        "term": "Ichimoku:",
+        "desc": "An all-in-one trend system. A price above the cloud is bullish; below it is bearish."
+      },
+      "atr": {
+        "term": "ATR (Average True Range):",
+        "desc": "Measures market volatility. A higher value means larger price swings."
+      },
+      "mfi": {
+        "term": "MFI (Money Flow Index):",
+        "desc": "A volume-weighted version of RSI. Above 80 is overbought, below 20 oversold."
+      },
+      "obv": {
+        "term": "OBV (On-Balance Volume):",
+        "desc": "Adds up volume over time to confirm the direction of a trend."
+      },
+      "beta": {
+        "term": "Beta:",
+        "desc": "How much a stock moves relative to the overall market. Above 1.0 means it is more volatile than the market."
+      }
+    },
+    "signals": {
+      "BUY": "Buy",
+      "SELL": "Sell",
+      "BULLISH": "Bullish",
+      "BEARISH": "Bearish",
+      "STRONG_TREND": "Strong trend",
+      "WEAK_TREND": "Weak trend",
+      "OVERBOUGHT": "Overbought",
+      "OVERSOLD": "Oversold",
+      "HIGH_VOLATILITY": "High volatility",
+      "LOW_VOLATILITY": "Low volatility",
+      "MEGA_CAP": "Mega cap",
+      "LARGE_CAP": "Large cap",
+      "MID_CAP": "Mid cap",
+      "SMALL_CAP": "Small cap",
+      "MICRO_CAP": "Micro cap",
+      "HIGH_VOL": "High volatility",
+      "MED_VOL": "Medium volatility",
+      "LOW_VOL": "Low volatility",
+      "VERY_LOW": "Very low",
+      "ABOVE_AVG": "Above average",
+      "BELOW_AVG": "Below average"
+    }
+  },
+  "signals": {
+    "pivots": {
+      "title": "Pivot Points (Standard)",
+      "pivot": "Pivot",
+      "currentlyLabel": "Price is currently:"
+    },
+    "zones": {
+      "aboveR2": "Above R2 — strong upward momentum",
+      "testingR1R2": "Between R1 and R2 — testing resistance",
+      "abovePivot": "Above the pivot — slight upward bias",
+      "belowPivot": "Below the pivot — slight downward bias",
+      "testingS1S2": "Between S1 and S2 — testing support",
+      "belowS2": "Below S2 — heavily oversold"
+    },
+    "patterns": {
+      "title": "Candlestick Patterns",
+      "empty": "No recent patterns detected"
+    },
+    "patternNames": {
+      "hammer": "Hammer",
+      "bullishEngulfing": "Bullish Engulfing",
+      "bearishEngulfing": "Bearish Engulfing",
+      "doji": "Doji"
+    },
+    "risk": {
+      "title": "Risk & Volatility",
+      "atrLabel": "ATR (14-day)",
+      "volatilityLabel": "Volatility (standard deviation)",
+      "notAvailable": "N/A"
+    },
+    "info": {
+      "title": "How These Signals Work",
+      "closeAriaLabel": "Close signal explanations",
+      "pivotsDescription": "Calculated from yesterday's high, low, and close (Pivot = (High + Low + Close) / 3). The support levels (S1, S2) and resistance levels (R1, R2) mark prices where the trend may stall or reverse.",
+      "atrTerm": "ATR (14-day):",
+      "atrDescription": "Average True Range — measures how much the price typically moves each day. A higher ATR means more volatility, so more risk and more opportunity.",
+      "volatilityTerm": "Volatility (standard deviation):",
+      "volatilityDescription": "How much returns swing around their average. A statistical gauge of how stable or jumpy the price has been.",
+      "patternsHeading": "Candlestick Patterns (Last 5 Days)",
+      "hammerTerm": "Hammer:",
+      "hammerDescription": "A possible upward reversal, shown by a long lower wick.",
+      "engulfingTerm": "Engulfing:",
+      "engulfingDescription": "A strong reversal signal that can point up (bullish) or down (bearish).",
+      "dojiTerm": "Doji:",
+      "dojiDescription": "Market indecision, shown by a very small candle body."
+    }
+  },
+  "mfi": {
+    "title": "MFI Volume Profile",
+    "loading": "Loading MFI Volume Profile...",
+    "retry": "Retry",
+    "notAvailable": "N/A",
+    "devFallbackNote": "Dev mode: trying the Yahoo Finance fallback source",
+    "devFallbackButton": "Try Yahoo Finance (dev only)",
+    "infoButtonTitle": "How this analysis works",
+    "infoButtonAriaLabel": "View how the MFI Volume Profile analysis works",
+    "range3mo": "3 Months",
+    "range6mo": "6 Months",
+    "range1y": "1 Year",
+    "statusMfiSignal": "MFI Signal:",
+    "statusSentiment": "Sentiment:",
+    "statusPoc": "POC (peak-volume price):",
+    "statusBuyShare": "Buy share: {pct}%",
+    "statusVolShare": "{pct}% of volume",
+    "pocMarker": "POC",
+    "pocMarkerTitle": "Point of Control: the price with the most traded volume",
+    "vahMarker": "VAH",
+    "vahMarkerTitle": "Value Area High: top of the range holding 70% of volume",
+    "valMarker": "VAL",
+    "valMarkerTitle": "Value Area Low: bottom of the range holding 70% of volume",
+    "tradingAnalysisTitle": "Trading Analysis",
+    "noSignals": "No clear trading signal right now. The market may be moving sideways, or there isn't enough data yet.",
+    "noData": "No MFI Volume Profile data is available for {symbol}.",
+    "modalTitle": "MFI & Volume Profile Guide",
+    "modalCloseAriaLabel": "Close the MFI & Volume Profile guide",
+    "modalMfiHeading": "MFI (Money Flow Index)",
+    "modalMfiDesc": "A volume-weighted version of RSI. It gauges how much buying versus selling pressure is in the market.",
+    "modalMfiOverboughtTerm": "Above 80:",
+    "modalMfiOverboughtDesc": "Overbought — a possible market top.",
+    "modalMfiOversoldTerm": "Below 20:",
+    "modalMfiOversoldDesc": "Oversold — a possible market bottom.",
+    "modalVpHeading": "Volume Profile",
+    "modalVpDesc": "Shows how much trading happened at each price level.",
+    "modalPocTerm": "POC (Point of Control):",
+    "modalPocDesc": "The price level with the most volume. It often acts as strong support or resistance.",
+    "modalVaTerm": "Value Area (VA):",
+    "modalVaDesc": "The price range where 70% of the volume traded.",
+    "modalLogicHeading": "How the Trading Analysis decides",
+    "modalBullishTerm": "Bullish:",
+    "modalBullishDesc": "Price above the POC with rising MFI (or a rebound from oversold MFI).",
+    "modalBearishTerm": "Bearish:",
+    "modalBearishDesc": "Price below the POC with falling MFI (or a rejection from overbought MFI).",
+    "modalRatioTerm": "Buy / sell ratio:",
+    "modalRatioDesc": "Worked out from up-volume versus down-volume in each candle.",
+    "tooltipPriceRange": "Price Range:",
+    "tooltipVolume": "Volume:",
+    "tooltipAvgMfi": "Avg MFI:",
+    "tooltipBuying": "Buying:",
+    "tooltipSelling": "Selling:",
+    "errorCors": "The data source was blocked by your browser's security. Try disabling ad blockers or privacy extensions.",
+    "errorNoData": "No price/volume data is available for {symbol}. This symbol may not be supported yet.",
+    "errorInsufficient": "Not enough price history to calculate the MFI Volume Profile.",
+    "errorGeneric": "Couldn't load data: {message}"
+  },
+  "smartMoney": {
+    "title": "Smart Money Volume Profile ({range})",
+    "range": {
+      "6mo": "6 Months",
+      "1y": "1 Year",
+      "5y": "5 Years"
+    },
+    "rangeShort": {
+      "6mo": "6M",
+      "1y": "1Y",
+      "5y": "5Y"
+    },
+    "loading": "Calculating volume profile...",
+    "noData": "Not enough volume data to show a profile",
+    "notAvailable": "N/A",
+    "axis": {
+      "totalVolume": "Total Volume",
+      "priceZone": "Price Range"
+    },
+    "tooltip": {
+      "totalVolume": "Total volume: {volume}",
+      "netBuy": "Smart-money net buying: {shares} shares",
+      "netSell": "Smart-money net selling: {shares} shares",
+      "neutral": "Smart money: neutral"
+    },
+    "dataset": {
+      "volumeProfile": "Volume Profile"
+    },
+    "legend": {
+      "buy": "Smart-money buying",
+      "sell": "Smart-money selling",
+      "neutral": "Neutral / retail"
+    },
+    "error": {
+      "loadFailed": "Couldn't load the volume profile data. Please try again."
+    }
+  },
+  "tradingStrategy": {
+    "loading": "Loading trading strategy chart…",
+    "loadFailed": "Couldn't load the chart",
+    "retry": "Try again",
+    "symbolChart": "{symbol} price chart"
+  },
+  "cisd": {
+    "settingsButtonTitle": "Indicator settings",
+    "modalTitle": "CISD Projection Settings",
+    "schema": {
+      "groupInputs": "Inputs",
+      "groupStyle": "Style",
+      "groupLevels": "Projection Levels",
+      "barsThreshold": "Minimum bars in a run",
+      "cisdFilter": "Enable CISD filter",
+      "filterLength": "Filter lookback (bars)",
+      "invalidateOnChoch": "Cancel on CHoCH (change of character)",
+      "bullishColor": "Bullish color",
+      "bearishColor": "Bearish color",
+      "backgroundFill": "Shade projection background",
+      "showBaseLevel": "Show base level",
+      "labelsSize": "Label text size",
+      "showLevel": "Show level {n}",
+      "levelMultiplier": "Level {n} distance multiplier"
+    }
+  },
+  "trendlines": {
+    "settingsButtonTitle": "Indicator settings",
+    "settingsModalTitle": "Trendlines & Support/Resistance settings",
+    "settings": {
+      "groupInputs": "Inputs",
+      "groupStyle": "Style",
+      "leftBars": "Pivot lookback (bars to the left)",
+      "rightBars": "Pivot lookback (bars to the right)",
+      "extendBars": "Extend lines (bars)",
+      "multiplier": "Price tolerance multiplier",
+      "highLineColor": "Resistance line color",
+      "lowLineColor": "Support line color",
+      "vdZoneColorSupply": "Supply zone color",
+      "vdZoneColorDemand": "Demand zone color",
+      "vdBarAlign": "Volume bar alignment"
+    }
+  },
+  "stockNews": {
+    "loading": "Loading the latest news for {symbol}…",
+    "empty": "No recent news available for {symbol}.",
+    "readMore": "Read more →",
+    "unknownDate": "Date unknown",
+    "minutesAgo": "{n}m ago",
+    "hoursAgo": "{n}h ago",
+    "daysAgo": "{n}d ago"
+  },
+  "marketRegime": {
+    "loading": "Loading market regime chart…",
+    "loadFailed": "Couldn't load the chart",
+    "retry": "Retry",
+    "symbolPriceChart": "{symbol} price chart",
+    "byTradingView": "by TradingView"
   }
 }
