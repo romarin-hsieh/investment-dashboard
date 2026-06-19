@@ -145,5 +145,139 @@
     "logCleared": "日誌已清除",
     "logConfigSaved": "配置已保存",
     "logSaveConfigFailed": "保存配置失敗："
+  },
+  "market": {
+    "title": "市場總覽",
+    "subtitle": "全球市場指數、波動率指標與熱門市場新聞",
+    "retry": "重試",
+    "marketIndex": "市場指數",
+    "topStories": "頭條新聞",
+    "vixIndex": "VIX 指數（波動率指數）",
+    "marketInsight": "市場洞察",
+    "dailyInsight": "日線洞察（5 日 MA）",
+    "weeklyInsight": "週線洞察（4 週 MA）",
+    "stockHeatmap": "股票熱力圖"
+  },
+  "stockOverview": {
+    "title": "個股總覽",
+    "subtitle": "依產業類別與行業分組，追蹤各檔個股的表現",
+    "lastUpdated": "最後更新：{time}",
+    "retry": "重試",
+    "marketIndex": "大盤指數",
+    "noData": "目前沒有可用的股票資料",
+    "shortcuts": {
+      "nextStock": "下一檔股票",
+      "previousStock": "上一檔股票",
+      "openDetail": "開啟所選股票的詳細資料",
+      "clearSelection": "清除選取 / 關閉說明",
+      "showHelp": "顯示此說明"
+    }
+  },
+  "stockCard": {
+    "realtimeChartTitle": "在 Yahoo Finance 查看即時走勢圖",
+    "realtimeChartAria": "在 Yahoo Finance 開啟 {symbol} 的即時走勢圖（在新分頁開啟）",
+    "detailButton": "詳細資訊",
+    "detailButtonTitle": "查看 {symbol} 的詳細分析",
+    "symbolOverview": "標的總覽",
+    "technicalAnalysis": "技術分析",
+    "tradingAnalysis": "交易分析",
+    "unknownSector": "未知",
+    "unknownIndustry": "未知產業",
+    "staleText": "資料可能已過時——今日更新延遲",
+    "veryStaleText": "資料已明顯過時——上次成功更新已超過 48 小時",
+    "trendBullish": "偏多",
+    "trendBearish": "偏空",
+    "trendNeutral": "中性",
+    "analysisTrendBullishMA": "主要趨勢偏多；價格持續站穩在關鍵移動平均線之上。",
+    "analysisTrendBearishMA": "主要趨勢偏空；價格在主要壓力區之下交易。",
+    "analysisTrendConsolidating": "價格橫向盤整，等待明確的方向性催化因素。",
+    "analysisTrendMixed": "盤面結構混沌；請密切留意鄰近的支撐位。",
+    "analysisStrongBullish": "出現強勁多頭動能；價格大幅上漲。",
+    "analysisPositiveBullish": "價格表現正向；趨勢傾向偏多。",
+    "analysisStrongBearish": "出現強勁空頭壓力；急跌顯示需保持謹慎。",
+    "analysisMinorBearish": "價格表現略顯疲弱；短線偏空。",
+    "analysisRangingNeutral": "價格在狹幅區間內交易；市場情緒看似中性。",
+    "analysisVolumeSpike": "成交量大幅放大，顯示強勁的{direction}。",
+    "analysisMomentumAccelerating": "短線{sentiment}動能正在加速。",
+    "analysisVolatilityNormal": "波動度維持在正常範圍內。",
+    "buyingPressure": "買盤壓力",
+    "sellingPressure": "賣盤壓力",
+    "sentimentPositive": "正向",
+    "sentimentNegative": "負向"
+  },
+  "marketIndices": {
+    "title": "指數洞察",
+    "description": "全球主要股市指數的即時表現",
+    "names": {
+      "SPX": "S&P 500",
+      "DJI": "道瓊工業指數",
+      "IXIC": "那斯達克",
+      "RUT": "羅素 2000",
+      "UKX": "FTSE 100",
+      "NKY": "日經 225",
+      "DAX": "DAX",
+      "SHCOMP": "上證綜合指數"
+    }
+  },
+  "fearGreed": {
+    "title": "恐懼與貪婪指數儀表",
+    "source": "資料來源：市場數據分析",
+    "zones": {
+      "extremeFear": "極度恐懼",
+      "fear": "恐懼",
+      "neutral": "中性",
+      "greed": "貪婪",
+      "extremeGreed": "極度貪婪"
+    },
+    "descriptions": {
+      "extremeFear": "市場極度悲觀，正出現恐慌性拋售",
+      "fear": "市場焦慮升高，投資人轉趨防禦性佈局",
+      "neutral": "市場情緒平衡，投資人訊號分歧",
+      "greed": "市場樂觀，風險偏好逐漸升高",
+      "extremeGreed": "市場過度狂熱，可能是估值偏高的訊號"
+    },
+    "componentsTitle": "指數組成因子",
+    "components": {
+      "sp125": "S&P 500 相對 125 日移動平均線",
+      "hl52": "52 週高低點強度",
+      "mcsi": "市場廣度（McClellan）",
+      "putCall": "Put/Call 比率",
+      "vix50": "VIX 相對 50 日移動平均線",
+      "safe": "避險需求",
+      "yieldSpread": "垃圾債需求"
+    },
+    "historyTitle": "歷史數值",
+    "history": {
+      "previousClose": "前一交易日收盤 - {date}",
+      "oneWeekAgo": "一週前 - {date}",
+      "oneMonthAgo": "一個月前 - {date}",
+      "oneYearAgo": "一年前 - {date}"
+    }
+  },
+  "marketInsight": {
+    "title": "股市洞察",
+    "dailyTitle": "每日股市走勢圖",
+    "weeklyTitle": "每週股市走勢圖",
+    "dailyLoading": "正在載入每日市場資料...",
+    "weeklyLoading": "正在載入每週市場資料...",
+    "dailyError": "無法載入每日市場資料",
+    "weeklyError": "無法載入每週市場資料",
+    "retry": "重試"
+  },
+  "marketsOverview": {
+    "lastUpdated": "最後更新：{time}",
+    "loading": "載入市場指標中...",
+    "retry": "重試",
+    "notAvailable": "無資料",
+    "errorNoData": "無可用的市場資料",
+    "staleFresh": "即時",
+    "staleStale": "略舊",
+    "staleVeryStale": "嚴重過期",
+    "staleUnknown": "未知",
+    "qualityGood": "良好",
+    "qualityStale": "略舊",
+    "qualityDegraded": "降級",
+    "qualityDisabled": "已停用",
+    "qualityUnknown": "未知"
   }
 }

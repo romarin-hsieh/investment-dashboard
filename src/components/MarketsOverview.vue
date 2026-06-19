@@ -2,7 +2,7 @@
   <div>
     <div class="markets-header">
       <div class="update-info" v-if="lastUpdate">
-        <span class="text-muted">Last updated: {{ formatTime(lastUpdate) }}</span>
+        <span class="text-muted">{{ $t('marketsOverview.lastUpdated', { time: formatTime(lastUpdate) }) }}</span>
         <span class="stale-indicator" :class="staleClass">{{ staleText }}</span>
       </div>
     </div>
@@ -29,12 +29,12 @@
     </div>
 
     <div v-if="loading" class="loading">
-      Loading markets indicators...
+      {{ $t('marketsOverview.loading') }}
     </div>
 
     <div v-if="error" class="error">
       <p class="text-danger">{{ error }}</p>
-      <button @click="refresh" class="btn btn-secondary btn-sm">Retry</button>
+      <button @click="refresh" class="btn btn-secondary btn-sm">{{ $t('marketsOverview.retry') }}</button>
     </div>
   </div>
 </template>
@@ -60,10 +60,10 @@ export default {
     },
     staleText() {
       switch (this.staleLevel) {
-        case 'fresh': return '🟢 Fresh'
-        case 'stale': return '🟡 Stale'
-        case 'very_stale': return '🔴 Very Stale'
-        default: return '⚪ Unknown'
+        case 'fresh': return `🟢 ${this.$t('marketsOverview.staleFresh')}`
+        case 'stale': return `🟡 ${this.$t('marketsOverview.staleStale')}`
+        case 'very_stale': return `🔴 ${this.$t('marketsOverview.staleVeryStale')}`
+        default: return `⚪ ${this.$t('marketsOverview.staleUnknown')}`
       }
     }
   },
@@ -83,7 +83,7 @@ export default {
           this.lastUpdate = result.as_of
           this.staleLevel = result.stale_level
         } else {
-          throw new Error('No markets data available')
+          throw new Error(this.$t('marketsOverview.errorNoData'))
         }
       } catch (err) {
         this.error = String(err)
@@ -115,7 +115,7 @@ export default {
 
     formatValue(value, id) {
       if (value === null || value === undefined) {
-        return 'N/A'
+        return this.$t('marketsOverview.notAvailable')
       }
 
       // 根據指標類型格式化數值
@@ -187,11 +187,11 @@ export default {
 
     getQualityText(qualityFlag) {
       switch (qualityFlag) {
-        case 'good': return 'Good'
-        case 'stale': return 'Stale'
-        case 'degraded': return 'Degraded'
-        case 'disabled_scrape': return 'Disabled'
-        default: return 'Unknown'
+        case 'good': return this.$t('marketsOverview.qualityGood')
+        case 'stale': return this.$t('marketsOverview.qualityStale')
+        case 'degraded': return this.$t('marketsOverview.qualityDegraded')
+        case 'disabled_scrape': return this.$t('marketsOverview.qualityDisabled')
+        default: return this.$t('marketsOverview.qualityUnknown')
       }
     }
   }

@@ -145,5 +145,139 @@
     "logCleared": "Log cleared",
     "logConfigSaved": "Configuration saved",
     "logSaveConfigFailed": "Failed to save configuration: "
+  },
+  "market": {
+    "title": "Market Overview",
+    "subtitle": "Global market indices, volatility gauges, and trending market news",
+    "retry": "Retry",
+    "marketIndex": "Market Index",
+    "topStories": "Top Stories",
+    "vixIndex": "VIX Index (Volatility Index)",
+    "marketInsight": "Market Insight",
+    "dailyInsight": "Daily Insight (5-day MA)",
+    "weeklyInsight": "Weekly Insight (4-week MA)",
+    "stockHeatmap": "Stock Heatmap"
+  },
+  "stockOverview": {
+    "title": "Stock Overview",
+    "subtitle": "Track how individual stocks are performing, grouped by sector and industry",
+    "lastUpdated": "Last updated: {time}",
+    "retry": "Retry",
+    "marketIndex": "Market Index",
+    "noData": "No stock data available",
+    "shortcuts": {
+      "nextStock": "Next stock",
+      "previousStock": "Previous stock",
+      "openDetail": "Open selected stock detail",
+      "clearSelection": "Clear selection / close help",
+      "showHelp": "Show this help"
+    }
+  },
+  "stockCard": {
+    "realtimeChartTitle": "View live chart on Yahoo Finance",
+    "realtimeChartAria": "Open the live chart for {symbol} on Yahoo Finance (opens in a new tab)",
+    "detailButton": "Details",
+    "detailButtonTitle": "View the detailed analysis for {symbol}",
+    "symbolOverview": "Symbol Overview",
+    "technicalAnalysis": "Technical Analysis",
+    "tradingAnalysis": "Trading Analysis",
+    "unknownSector": "Unknown",
+    "unknownIndustry": "Unknown industry",
+    "staleText": "Data may be out of date — today's refresh is delayed",
+    "veryStaleText": "Data is well out of date — the last successful refresh was over 48 hours ago",
+    "trendBullish": "Bullish",
+    "trendBearish": "Bearish",
+    "trendNeutral": "Neutral",
+    "analysisTrendBullishMA": "The main trend is bullish; the price is holding above its key moving averages.",
+    "analysisTrendBearishMA": "The main trend is bearish; the price is trading below major resistance levels.",
+    "analysisTrendConsolidating": "The price is moving sideways, waiting for a clear directional trigger.",
+    "analysisTrendMixed": "The market picture is mixed; watch nearby support levels closely.",
+    "analysisStrongBullish": "Strong bullish momentum; the price is rising sharply.",
+    "analysisPositiveBullish": "Positive price action; the trend is leaning bullish.",
+    "analysisStrongBearish": "Strong bearish pressure; the sharp drop suggests caution.",
+    "analysisMinorBearish": "Slight weakness in price action; the short-term bias is bearish.",
+    "analysisRangingNeutral": "The price is trading in a tight range; sentiment looks neutral.",
+    "analysisVolumeSpike": "A large volume spike points to strong {direction}.",
+    "analysisMomentumAccelerating": "{sentiment} momentum is building in the short term.",
+    "analysisVolatilityNormal": "Volatility is within its usual range.",
+    "buyingPressure": "buying pressure",
+    "sellingPressure": "selling pressure",
+    "sentimentPositive": "Positive",
+    "sentimentNegative": "Negative"
+  },
+  "marketIndices": {
+    "title": "Index Insight",
+    "description": "Live performance of major global stock market indices",
+    "names": {
+      "SPX": "S&P 500",
+      "DJI": "Dow Jones",
+      "IXIC": "NASDAQ",
+      "RUT": "Russell 2000",
+      "UKX": "FTSE 100",
+      "NKY": "Nikkei 225",
+      "DAX": "DAX",
+      "SHCOMP": "Shanghai Composite"
+    }
+  },
+  "fearGreed": {
+    "title": "Fear & Greed Index Gauge",
+    "source": "Source: Market Data Analytics",
+    "zones": {
+      "extremeFear": "Extreme Fear",
+      "fear": "Fear",
+      "neutral": "Neutral",
+      "greed": "Greed",
+      "extremeGreed": "Extreme Greed"
+    },
+    "descriptions": {
+      "extremeFear": "Market is in extreme pessimism, with panic selling under way",
+      "fear": "Heightened market anxiety, with investors positioning defensively",
+      "neutral": "Balanced market sentiment, with mixed signals from investors",
+      "greed": "Optimistic market conditions, with a growing appetite for risk",
+      "extremeGreed": "Excessive market euphoria, a possible sign of overvaluation"
+    },
+    "componentsTitle": "Index Components",
+    "components": {
+      "sp125": "S&P 500 vs. its 125-day moving average",
+      "hl52": "52-week high/low strength",
+      "mcsi": "Market breadth (McClellan)",
+      "putCall": "Put/Call ratio",
+      "vix50": "VIX vs. its 50-day moving average",
+      "safe": "Safe-haven demand",
+      "yieldSpread": "Junk bond demand"
+    },
+    "historyTitle": "Historical Values",
+    "history": {
+      "previousClose": "Previous close - {date}",
+      "oneWeekAgo": "1 week ago - {date}",
+      "oneMonthAgo": "1 month ago - {date}",
+      "oneYearAgo": "1 year ago - {date}"
+    }
+  },
+  "marketInsight": {
+    "title": "Stock Market Insight",
+    "dailyTitle": "Daily Stock Market Chart",
+    "weeklyTitle": "Weekly Stock Market Chart",
+    "dailyLoading": "Loading daily market data...",
+    "weeklyLoading": "Loading weekly market data...",
+    "dailyError": "Could not load daily market data",
+    "weeklyError": "Could not load weekly market data",
+    "retry": "Retry"
+  },
+  "marketsOverview": {
+    "lastUpdated": "Last updated: {time}",
+    "loading": "Loading market indicators...",
+    "retry": "Retry",
+    "notAvailable": "N/A",
+    "errorNoData": "No market data available",
+    "staleFresh": "Fresh",
+    "staleStale": "Stale",
+    "staleVeryStale": "Very stale",
+    "staleUnknown": "Unknown",
+    "qualityGood": "Good",
+    "qualityStale": "Stale",
+    "qualityDegraded": "Degraded",
+    "qualityDisabled": "Disabled",
+    "qualityUnknown": "Unknown"
   }
 }

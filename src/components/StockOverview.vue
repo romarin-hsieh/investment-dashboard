@@ -1,21 +1,21 @@
 ﻿<template>
   <div class="stock-overview">
     <div class="stock-header">
-      <h2>Stock Overview</h2>
+      <h2>{{ $t('stockOverview.title') }}</h2>
       <div class="header-right">
         <div class="update-info" v-if="lastUpdate">
-          <span class="text-muted">Last updated: {{ formatTime(lastUpdate) }}</span>
+          <span class="text-muted">{{ $t('stockOverview.lastUpdated', { time: formatTime(lastUpdate) }) }}</span>
         </div>
       </div>
     </div>
-    
-    <p class="text-muted mb-3">Detailed performance tracking of individual stocks, organized by sector and industry</p>
+
+    <p class="text-muted mb-3">{{ $t('stockOverview.subtitle') }}</p>
 
     <!-- Loading State removed from here to allow layout to persist -->
 
     <div v-if="error" class="error">
       <p class="text-danger">{{ error }}</p>
-      <button @click="refresh" class="btn btn-secondary">Retry</button>
+      <button @click="refresh" class="btn btn-secondary">{{ $t('stockOverview.retry') }}</button>
     </div>
 
     <div v-else class="main-layout">
@@ -35,7 +35,7 @@
         <!-- Market Index Section -->
         <div class="widget-container-ticker">
           <div class="widget-header">
-            <h3>Market Index</h3>
+            <h3>{{ $t('stockOverview.marketIndex') }}</h3>
           </div>
           <LazyTradingViewWidget
             widget-type="Market Index"
@@ -84,7 +84,7 @@
     </div>
 
     <div v-if="!loading && Object.keys(groupedStocks).length === 0" class="no-data">
-      <p>No stock data available</p>
+      <p>{{ $t('stockOverview.noData') }}</p>
     </div>
 
     <KeyboardShortcutsOverlay
@@ -612,11 +612,11 @@ export default {
       // could be the user's exit-fullscreen / cancel-IME signal — both are
       // legitimate browser behaviours we shouldn't suppress globally.
       return [
-        { key: 'j', description: 'Next stock', preventDefault: true, handler: () => this.moveSelection(1) },
-        { key: 'k', description: 'Previous stock', preventDefault: true, handler: () => this.moveSelection(-1) },
-        { key: 'Enter', description: 'Open selected stock detail', handler: () => this.openSelectedDetail() },
-        { key: 'Escape', description: 'Clear selection / close help', handler: () => this.clearSelection() },
-        { key: '?', description: 'Show this help', preventDefault: true, handler: () => { this.showShortcutsHelp = !this.showShortcutsHelp } }
+        { key: 'j', description: this.$t('stockOverview.shortcuts.nextStock'), preventDefault: true, handler: () => this.moveSelection(1) },
+        { key: 'k', description: this.$t('stockOverview.shortcuts.previousStock'), preventDefault: true, handler: () => this.moveSelection(-1) },
+        { key: 'Enter', description: this.$t('stockOverview.shortcuts.openDetail'), handler: () => this.openSelectedDetail() },
+        { key: 'Escape', description: this.$t('stockOverview.shortcuts.clearSelection'), handler: () => this.clearSelection() },
+        { key: '?', description: this.$t('stockOverview.shortcuts.showHelp'), preventDefault: true, handler: () => { this.showShortcutsHelp = !this.showShortcutsHelp } }
       ]
     }
   },

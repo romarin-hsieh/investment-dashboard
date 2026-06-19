@@ -1,7 +1,7 @@
 <template>
   <div class="market-dashboard">
-    <h2>Market Overview</h2>
-    <p class="text-muted mb-3">Global market indices, volatility metrics, and trending market news</p>
+    <h2>{{ $t('market.title') }}</h2>
+    <p class="text-muted mb-3">{{ $t('market.subtitle') }}</p>
 
     <!-- 載入狀態顯示骨架屏 -->
     <div v-if="loading" class="loading-with-skeleton">
@@ -11,7 +11,7 @@
     <!-- 錯誤狀態 -->
     <div v-else-if="error" class="error">
       <p class="text-danger">{{ error }}</p>
-      <button @click="refresh" class="btn btn-secondary">Retry</button>
+      <button @click="refresh" class="btn btn-secondary">{{ $t('market.retry') }}</button>
     </div>
 
     <!-- 正常內容 -->
@@ -19,7 +19,7 @@
       <!-- Major Market Indices - 高優先級 -->
       <div class="widget-container-ticker">
         <div class="widget-header">
-          <h3>Market Index</h3>
+          <h3>{{ $t('market.marketIndex') }}</h3>
         </div>
         <LazyTradingViewWidget
           widget-type="Market Index"
@@ -33,7 +33,7 @@
       <!-- Top Stories - 移到 Market Index 下方 -->
       <div class="widget-container">
         <div class="widget-header">
-          <h3>Top Stories</h3>
+          <h3>{{ $t('market.topStories') }}</h3>
         </div>
         <LazyTradingViewWidget
           :config="topStoriesConfig"
@@ -50,7 +50,7 @@
       <!-- VIX Index - 移到 Fear & Greed Index 下方 -->
       <div class="widget-container vix-container">
         <div class="widget-header">
-          <h3>VIX Index (Volatility Index)</h3>
+          <h3>{{ $t('market.vixIndex') }}</h3>
         </div>
         <VixWidget :key="`vix-${vixKey}`" />
       </div>
@@ -63,13 +63,13 @@
       <!-- Stock Market Insight -->
       <div class="widget-container">
         <div class="widget-header">
-          <h3>Market Insight</h3>
+          <h3>{{ $t('market.marketInsight') }}</h3>
         </div>
         
         <div class="insight-grid">
           <div class="insight-section">
             <div class="section-header">
-              <h4>Market Daily Insight (MA5)</h4>
+              <h4>{{ $t('market.dailyInsight') }}</h4>
             </div>
             <LazyTradingViewWidget
               widget-type="Market Daily Insight"
@@ -82,7 +82,7 @@
 
           <div class="insight-section weekly-section">
             <div class="section-header">
-              <h4>Market Weekly Insight (MA4)</h4>
+              <h4>{{ $t('market.weeklyInsight') }}</h4>
             </div>
             <LazyTradingViewWidget
               widget-type="Market Weekly Insight"
@@ -98,7 +98,7 @@
       <!-- Stock Heatmap - 低優先級 -->
       <div class="widget-container">
         <div class="widget-header">
-          <h3>Stock Heatmap</h3>
+          <h3>{{ $t('market.stockHeatmap') }}</h3>
         </div>
         <LazyTradingViewWidget
           widget-type="Stock Heatmap"

@@ -1,9 +1,9 @@
 <template>
   <div class="fear-greed-gauge-container">
     <div class="widget-header">
-      <h3>Fear & Greed Index Gauge</h3>
+      <h3>{{ $t('fearGreed.title') }}</h3>
       <div class="chart-info">
-        <span class="chart-description">Source: Market Data Analytics</span>
+        <span class="chart-description">{{ $t('fearGreed.source') }}</span>
       </div>
     </div>
     
@@ -63,23 +63,23 @@
           <!-- Labels -->
           <div class="gauge-labels">
             <div class="label-item extreme-fear">
-                <span class="label-text">Extreme Fear</span>
+                <span class="label-text">{{ $t('fearGreed.zones.extremeFear') }}</span>
                 <span class="label-range">0-25</span>
             </div>
             <div class="label-item fear">
-                <span class="label-text">Fear</span>
+                <span class="label-text">{{ $t('fearGreed.zones.fear') }}</span>
                 <span class="label-range">25-45</span>
             </div>
             <div class="label-item neutral">
-                <span class="label-text">Neutral</span>
+                <span class="label-text">{{ $t('fearGreed.zones.neutral') }}</span>
                 <span class="label-range">45-55</span>
             </div>
             <div class="label-item greed">
-                <span class="label-text">Greed</span>
+                <span class="label-text">{{ $t('fearGreed.zones.greed') }}</span>
                 <span class="label-range">55-75</span>
             </div>
             <div class="label-item extreme-greed">
-                <span class="label-text">Extreme Greed</span>
+                <span class="label-text">{{ $t('fearGreed.zones.extremeGreed') }}</span>
                 <span class="label-range">75-100</span>
             </div>
           </div>
@@ -88,34 +88,34 @@
       
       <!-- Middle: Component Breakdown -->
       <div class="components-section">
-        <h4>Index Components</h4>
+        <h4>{{ $t('fearGreed.componentsTitle') }}</h4>
         <div class="components-grid">
           <div class="component-item">
-            <span class="component-name">S&P 500 vs 125-day MA</span>
+            <span class="component-name">{{ $t('fearGreed.components.sp125') }}</span>
             <div class="component-bar"><div class="component-fill" :style="{ width: components.sp125 + '%' }"></div><span class="component-value">{{ components.sp125 }}</span></div>
           </div>
           <div class="component-item">
-            <span class="component-name">52-Week High/Low Strength</span>
+            <span class="component-name">{{ $t('fearGreed.components.hl52') }}</span>
             <div class="component-bar"><div class="component-fill" :style="{ width: components.hl52 + '%' }"></div><span class="component-value">{{ components.hl52 }}</span></div>
           </div>
           <div class="component-item">
-            <span class="component-name">Market Breadth (McClellan)</span>
+            <span class="component-name">{{ $t('fearGreed.components.mcsi') }}</span>
             <div class="component-bar"><div class="component-fill" :style="{ width: components.mcsi + '%' }"></div><span class="component-value">{{ components.mcsi }}</span></div>
           </div>
           <div class="component-item">
-            <span class="component-name">Put/Call Ratio</span>
+            <span class="component-name">{{ $t('fearGreed.components.putCall') }}</span>
             <div class="component-bar"><div class="component-fill" :style="{ width: components.putCall + '%' }"></div><span class="component-value">{{ components.putCall }}</span></div>
           </div>
           <div class="component-item">
-            <span class="component-name">VIX vs 50-day MA</span>
+            <span class="component-name">{{ $t('fearGreed.components.vix50') }}</span>
             <div class="component-bar"><div class="component-fill" :style="{ width: components.vix50 + '%' }"></div><span class="component-value">{{ components.vix50 }}</span></div>
           </div>
           <div class="component-item">
-            <span class="component-name">Safe Haven Demand</span>
+            <span class="component-name">{{ $t('fearGreed.components.safe') }}</span>
             <div class="component-bar"><div class="component-fill" :style="{ width: components.safe + '%' }"></div><span class="component-value">{{ components.safe }}</span></div>
           </div>
           <div class="component-item">
-            <span class="component-name">Junk Bond Demand</span>
+            <span class="component-name">{{ $t('fearGreed.components.yieldSpread') }}</span>
             <div class="component-bar"><div class="component-fill" :style="{ width: components.yieldSpread + '%' }"></div><span class="component-value">{{ components.yieldSpread }}</span></div>
           </div>
         </div>
@@ -123,31 +123,31 @@
 
       <!-- Right Side: Historical Data -->
       <div class="history-section">
-        <h4>Historical Values</h4>
+        <h4>{{ $t('fearGreed.historyTitle') }}</h4>
         <div class="history-grid">
             <div class="history-item">
-                <span class="history-label">Previous Close - {{ historyDates.prev }}</span>
+                <span class="history-label">{{ $t('fearGreed.history.previousClose', { date: historyDates.prev }) }}</span>
                 <div class="history-value-container">
                     <span class="history-sentiment" :class="getSentimentClass(history.prev)">{{ getSentimentText(history.prev) }}</span>
                     <div class="history-circle" :class="getSentimentClass(history.prev)">{{ history.prev }}</div>
                 </div>
             </div>
             <div class="history-item">
-                <span class="history-label">1 Week Ago - {{ historyDates.week }}</span>
+                <span class="history-label">{{ $t('fearGreed.history.oneWeekAgo', { date: historyDates.week }) }}</span>
                 <div class="history-value-container">
                     <span class="history-sentiment" :class="getSentimentClass(history.week)">{{ getSentimentText(history.week) }}</span>
                     <div class="history-circle" :class="getSentimentClass(history.week)">{{ history.week }}</div>
                 </div>
             </div>
             <div class="history-item">
-                <span class="history-label">1 Month Ago - {{ historyDates.month }}</span>
+                <span class="history-label">{{ $t('fearGreed.history.oneMonthAgo', { date: historyDates.month }) }}</span>
                 <div class="history-value-container">
                     <span class="history-sentiment" :class="getSentimentClass(history.month)">{{ getSentimentText(history.month) }}</span>
                     <div class="history-circle" :class="getSentimentClass(history.month)">{{ history.month }}</div>
                 </div>
             </div>
             <div class="history-item">
-                <span class="history-label">1 Year Ago - {{ historyDates.year }}</span>
+                <span class="history-label">{{ $t('fearGreed.history.oneYearAgo', { date: historyDates.year }) }}</span>
                 <div class="history-value-container">
                     <span class="history-sentiment" :class="getSentimentClass(history.year)">{{ getSentimentText(history.year) }}</span>
                     <div class="history-circle" :class="getSentimentClass(history.year)">{{ history.year }}</div>
@@ -195,11 +195,11 @@ export default {
     currentSentiment() { return this.getSentimentText(this.fearGreedValue) },
     sentimentClass() { return this.getSentimentClass(this.fearGreedValue) },
     sentimentDescription() {
-      if (this.fearGreedValue <= 25) return 'Market showing extreme pessimism and panic selling conditions'
-      if (this.fearGreedValue <= 45) return 'Elevated market anxiety with defensive investor positioning'
-      if (this.fearGreedValue <= 55) return 'Balanced market sentiment with mixed investor signals'
-      if (this.fearGreedValue <= 75) return 'Optimistic market conditions with increased risk appetite'
-      return 'Excessive market euphoria indicating potential overvaluation'
+      if (this.fearGreedValue <= 25) return this.$t('fearGreed.descriptions.extremeFear')
+      if (this.fearGreedValue <= 45) return this.$t('fearGreed.descriptions.fear')
+      if (this.fearGreedValue <= 55) return this.$t('fearGreed.descriptions.neutral')
+      if (this.fearGreedValue <= 75) return this.$t('fearGreed.descriptions.greed')
+      return this.$t('fearGreed.descriptions.extremeGreed')
     },
     needleColor() { return this.theme === 'dark' ? '#E6E1DC' : '#333333' },
     textColor() { return this.theme === 'dark' ? '#E6E1DC' : '#333333' }
@@ -209,11 +209,11 @@ export default {
   },
   methods: {
     getSentimentText(val) {
-      if (val <= 25) return 'Extreme Fear';
-      if (val <= 45) return 'Fear';
-      if (val <= 55) return 'Neutral';
-      if (val <= 75) return 'Greed';
-      return 'Extreme Greed';
+      if (val <= 25) return this.$t('fearGreed.zones.extremeFear');
+      if (val <= 45) return this.$t('fearGreed.zones.fear');
+      if (val <= 55) return this.$t('fearGreed.zones.neutral');
+      if (val <= 75) return this.$t('fearGreed.zones.greed');
+      return this.$t('fearGreed.zones.extremeGreed');
     },
     async fetchExternalSentiment() {
         try {
