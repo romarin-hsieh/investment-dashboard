@@ -1,20 +1,20 @@
 <template>
   <div class="vix-container">
     <div class="widget-header">
-      <h3>VIX Volatility Index</h3>
+      <h3>{{ $t('tvVix.title') }}</h3>
       <div class="vix-info">
-        <span class="vix-description">Market Fear & Greed Indicator</span>
+        <span class="vix-description">{{ $t('tvVix.subtitle') }}</span>
       </div>
     </div>
     <div class="vix-widget" :id="widgetId" ref="container">
       <div v-if="!loaded && !error" class="vix-loading">
         <div class="loading-spinner"></div>
-        <span>Loading VIX data...</span>
+        <span>{{ $t('tvVix.loading') }}</span>
       </div>
-      
+
       <div v-if="error" class="vix-error">
-        <span>⚠️ Failed to load VIX data</span>
-        <button @click="retry" class="retry-btn">Retry</button>
+        <span>⚠️ {{ $t('tvVix.errorMessage') }}</span>
+        <button @click="retry" class="retry-btn">{{ $t('tvVix.retry') }}</button>
       </div>
     </div>
   </div>

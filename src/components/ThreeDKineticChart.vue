@@ -263,7 +263,7 @@ onUnmounted(() => {
     <div class="grid-cell card-cell">
         <div class="inner-card">
             <div class="card-header">
-                <h4>Signal Status</h4>
+                <h4>{{ $t('kineticChart.signalStatus') }}</h4>
                 <span class="signal-badge" :class="(signal || 'WAIT').toLowerCase()">
                     {{ (signal || 'WAIT').replace('_', ' ') }}
                 </span>
@@ -272,31 +272,31 @@ onUnmounted(() => {
             <div class="commentary" v-if="commentary">{{ commentary }}</div>
             <div class="commentary" v-else>
                 <!-- Fallback commentary if none provided -->
-               {{ signal === 'WAIT' ? 'Neutral State' : `${signal} Detected` }}
+               {{ signal === 'WAIT' ? $t('kineticChart.fallbackNeutral') : $t('kineticChart.fallbackSignalDetected', { signal }) }}
             </div>
             
             <!-- Historical Metrics -->
             <div class="metrics-table">
                 <div class="table-row header">
-                    <span class="col-lbl">Metric</span>
-                    <span class="col-val">Now</span>
-                    <span class="col-val">5D</span>
-                    <span class="col-val">20D</span>
+                    <span class="col-lbl">{{ $t('kineticChart.colMetric') }}</span>
+                    <span class="col-val">{{ $t('kineticChart.colNow') }}</span>
+                    <span class="col-val">{{ $t('kineticChart.col5d') }}</span>
+                    <span class="col-val">{{ $t('kineticChart.col20d') }}</span>
                 </div>
                 <div class="table-row dashed">
-                    <span class="col-lbl">X (Trend)</span>
+                    <span class="col-lbl">{{ $t('kineticChart.rowTrend') }}</span>
                     <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.x_trend, 2) }}</span>
                     <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.x_trend, 2) }}</span>
                     <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.x_trend, 2) }}</span>
                 </div>
                 <div class="table-row dashed">
-                    <span class="col-lbl">Y (Momtm)</span>
+                    <span class="col-lbl">{{ $t('kineticChart.rowMomentum') }}</span>
                     <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.y_momentum, 2) }}</span>
                     <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.y_momentum, 2) }}</span>
                     <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.y_momentum, 2) }}</span>
                 </div>
                 <div class="table-row dashed">
-                    <span class="col-lbl">Z (Struct)</span>
+                    <span class="col-lbl">{{ $t('kineticChart.rowStructure') }}</span>
                     <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.z_structure, 2) }}</span>
                     <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.z_structure, 2) }}</span>
                     <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.z_structure, 2) }}</span>
@@ -308,11 +308,11 @@ onUnmounted(() => {
     <!-- 2. Stock Top (Trend Velocity) (Top Middle) -->
     <div class="grid-cell chart-box">
         <div class="box-header">
-            <span>Trend Velocity</span>
-             <button class="info-btn" @click.stop="togglePopover('stock-top')">?</button>
+            <span>{{ $t('kineticChart.trendVelocity') }}</span>
+             <button class="info-btn" :aria-label="$t('kineticChart.infoButtonAria')" @click.stop="togglePopover('stock-top')">?</button>
              <div v-if="activePopover === 'stock-top'" class="popover">
-                <strong>Trend (X) vs Momentum (Y)</strong>
-                <p>X > 0: Uptrend</p><p>Y > 0.8: Overheated</p>
+                <strong>{{ $t('kineticChart.popTrendMomentumTitle') }}</strong>
+                <p>{{ $t('kineticChart.popUptrend') }}</p><p>{{ $t('kineticChart.popOverheated') }}</p>
             </div>
         </div>
         <div ref="container2DTop" class="plotly-container"></div>
@@ -320,24 +320,24 @@ onUnmounted(() => {
 
     <!-- 3. Sector Top (Sector Velocity) (Top Right) -->
     <div class="grid-cell chart-box">
-        <div class="box-header"><span>Sector Velocity</span></div>
+        <div class="box-header"><span>{{ $t('kineticChart.sectorVelocity') }}</span></div>
         <div ref="containerSectorTop" class="plotly-container"></div>
     </div>
     
     <!-- 4. 3D Interactive (Bottom Left) -->
     <div class="grid-cell chart-box">
-         <div class="box-header"><span>3D Interactive</span></div>
+         <div class="box-header"><span>{{ $t('kineticChart.threeDInteractive') }}</span></div>
          <div ref="container3D" class="plotly-container"></div>
     </div>
 
     <!-- 5. Stock Side (Squeeze Potential) (Bottom Middle) -->
     <div class="grid-cell chart-box">
         <div class="box-header">
-            <span>Squeeze Potential</span>
-             <button class="info-btn" @click.stop="togglePopover('stock-side')">?</button>
+            <span>{{ $t('kineticChart.squeezePotential') }}</span>
+             <button class="info-btn" :aria-label="$t('kineticChart.infoButtonAria')" @click.stop="togglePopover('stock-side')">?</button>
              <div v-if="activePopover === 'stock-side'" class="popover">
-                 <strong>Trend (X) vs Structure (Z)</strong>
-                <p>Z > 0.8: Squeeze (Yellow)</p>
+                 <strong>{{ $t('kineticChart.popTrendStructureTitle') }}</strong>
+                <p>{{ $t('kineticChart.popSqueeze') }}</p>
             </div>
         </div>
         <div ref="container2DSide" class="plotly-container"></div>
@@ -345,7 +345,7 @@ onUnmounted(() => {
 
     <!-- 6. Sector Side (Sector Potential) (Bottom Right) -->
     <div class="grid-cell chart-box">
-        <div class="box-header"><span>Sector Potential</span></div>
+        <div class="box-header"><span>{{ $t('kineticChart.sectorPotential') }}</span></div>
         <div ref="containerSectorSide" class="plotly-container"></div>
     </div>
 

@@ -1,23 +1,23 @@
 <template>
   <div class="settings">
-    <h2>Settings</h2>
-    <p class="text-muted mb-3">Configure system preferences and view diagnostics</p>
+    <h2>{{ $t('settings.title') }}</h2>
+    <p class="text-muted mb-3">{{ $t('settings.subtitle') }}</p>
 
     <div class="card">
-      <h3>Privacy & Analytics</h3>
-      <p class="text-muted">Toggle tracking and scraping preferences</p>
+      <h3>{{ $t('settings.privacy.title') }}</h3>
+      <p class="text-muted">{{ $t('settings.privacy.description') }}</p>
       <!-- Settings toggles will be implemented in task 7.1 -->
     </div>
 
     <div class="card">
-      <h3>System Diagnostics</h3>
-      <p class="text-muted">View system status and data freshness</p>
+      <h3>{{ $t('settings.diagnostics.title') }}</h3>
+      <p class="text-muted">{{ $t('settings.diagnostics.description') }}</p>
       <!-- Diagnostics panel will be implemented in task 7.2 -->
     </div>
 
     <div class="card">
-      <h3>Import/Export</h3>
-      <p class="text-muted">Backup and restore your configuration</p>
+      <h3>{{ $t('settings.importExport.title') }}</h3>
+      <p class="text-muted">{{ $t('settings.importExport.description') }}</p>
       <!-- Import/export functionality will be implemented in task 7.3 -->
     </div>
   </div>

@@ -1,8 +1,8 @@
 <template>
   <div class="system-manager">
     <div class="manager-header">
-      <h2>System Status</h2>
-      <p>Deployment & Data Pipeline Monitoring</p>
+      <h2>{{ $t('systemManager.pageTitle') }}</h2>
+      <p>{{ $t('systemManager.pageSubtitle') }}</p>
     </div>
 
     <!-- Status Overview -->
@@ -12,12 +12,12 @@
         <div class="overview-card" :style="{ borderColor: statusColor }">
             <div class="card-icon">🚀</div>
             <div class="card-content">
-                <h3>Pipeline Status</h3>
+                <h3>{{ $t('systemManager.pipelineStatus.title') }}</h3>
                 <div class="status-val" :style="{ color: statusColor }">
-                    {{ isDataFresh ? 'Healthy' : 'Stale' }}
+                    {{ isDataFresh ? $t('systemManager.pipelineStatus.healthy') : $t('systemManager.pipelineStatus.stale') }}
                 </div>
                 <div class="sub-text" v-if="!isDataFresh && daysSinceUpdate > 0">
-                    {{ daysSinceUpdate }} days stale
+                    {{ $t('systemManager.pipelineStatus.daysStale', { n: daysSinceUpdate }) }}
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="overview-card">
             <div class="card-icon">🕒</div>
             <div class="card-content">
-                <h3>Last Data Update</h3>
+                <h3>{{ $t('systemManager.lastUpdate.title') }}</h3>
                 <div class="status-val text-dark">
                     {{ formatDate(pipelineStatus.generatedAt).split(',')[0] }}
                 </div>
@@ -40,11 +40,11 @@
         <div class="overview-card">
             <div class="card-icon">📈</div>
             <div class="card-content">
-                <h3>Symbol Coverage</h3>
+                <h3>{{ $t('systemManager.coverage.title') }}</h3>
                 <div class="status-val text-blue">
                     {{ pipelineStatus.symbolsCount || universeInfo.total }}
                 </div>
-                <div class="sub-text">Active Symbols</div>
+                <div class="sub-text">{{ $t('systemManager.coverage.activeSymbols') }}</div>
             </div>
         </div>
       </div>
@@ -54,32 +54,32 @@
     <div class="details-section">
         <div class="details-grid">
             <div class="detail-card">
-                <h3>📦 Data Pipeline Info</h3>
+                <h3>{{ $t('systemManager.pipelineInfo.title') }}</h3>
                 <div class="info-row">
-                    <span>Source:</span> 
+                    <span>{{ $t('systemManager.pipelineInfo.source') }}</span>
                     <strong>{{ pipelineStatus.source }}</strong>
                 </div>
                 <div class="info-row">
-                    <span>Generated Files:</span> 
+                    <span>{{ $t('systemManager.pipelineInfo.generatedFiles') }}</span>
                     <strong>{{ pipelineStatus.totalFiles }}</strong>
                 </div>
                 <div class="info-row">
-                    <span>Symbol Total:</span>
+                    <span>{{ $t('systemManager.pipelineInfo.symbolTotal') }}</span>
                     <strong>{{ universeInfo.total }}</strong>
                 </div>
                 <hr>
                 <div class="actions">
                     <button class="btn" @click="refreshStatus" :disabled="loading">
-                        {{ loading ? 'Checking...' : 'Refresh Status' }}
+                        {{ loading ? $t('systemManager.actions.checking') : $t('systemManager.actions.refreshStatus') }}
                     </button>
                     <button class="btn warning" @click="clearCache">
-                        Clear Browser Cache
+                        {{ $t('systemManager.actions.clearCache') }}
                     </button>
                 </div>
             </div>
 
             <div class="detail-card">
-                <h3>📋 System Logs</h3>
+                <h3>{{ $t('systemManager.logs.title') }}</h3>
                 <div class="logs-container">
                     <div v-for="log in systemLogs" :key="log.id" class="log-entry" :class="log.level">
                         <span class="time">{{ new Date(log.timestamp).toLocaleTimeString() }}</span>
@@ -151,7 +151,7 @@ export default {
     async refreshStatus() {
       this.loading = true;
       this.error = null;
-      this.addLog('info', 'Checking system status...');
+      this.addLog('info', this.$t('systemManager.log.checkingStatus'));
       
       try {
         // PR-F1 (audit finding #3): kick off both independent fetches in
@@ -178,11 +178,11 @@ export default {
                 source: idx.source || 'GitHub Actions',
                 status: 'Active'
             };
-            this.addLog('success', `Pipeline Index Loaded: ${idx.date}`);
+            this.addLog('success', this.$t('systemManager.log.indexLoaded', { date: idx.date }));
         } catch (e) {
             console.error(e);
             this.pipelineStatus.status = 'Unreachable';
-            this.addLog('error', 'Failed to load latest_index.json');
+            this.addLog('error', this.$t('systemManager.log.indexFailed'));
         }
 
         // 2. Fetch Symbols Metadata (Universe)
@@ -196,14 +196,14 @@ export default {
                 sectors: [...new Set(items.map(s => s.sector))].filter(Boolean),
                 sources: ['Yahoo Finance']
             };
-             this.addLog('success', `Universe Metadata Loaded: ${items.length} symbols`);
+             this.addLog('success', this.$t('systemManager.log.metadataLoaded', { count: items.length }));
         } catch (e) {
-             this.addLog('warning', 'Failed to load symbols_metadata.json');
+             this.addLog('warning', this.$t('systemManager.log.metadataFailed'));
         }
 
       } catch (err) {
         this.error = err.message;
-        this.addLog('error', `System Check Failed: ${err.message}`);
+        this.addLog('error', this.$t('systemManager.log.systemCheckFailed', { error: err.message }));
       } finally {
         this.loading = false;
       }
@@ -220,12 +220,12 @@ export default {
     },
     
     formatDate(isoString) {
-      if (!isoString) return 'Never';
+      if (!isoString) return this.$t('systemManager.never');
       return new Date(isoString).toLocaleString();
     },
 
     clearCache() {
-        if(confirm('Clear browser cache? This will force reload.')) {
+        if(confirm(this.$t('systemManager.clearCacheConfirm'))) {
             window.location.reload(true);
         }
     }

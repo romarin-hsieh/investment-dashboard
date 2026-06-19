@@ -1,8 +1,8 @@
 <template>
   <div class="performance-monitor" v-if="showMonitor">
     <div class="monitor-header">
-      <h4>Performance Monitor</h4>
-      <button @click="toggleMonitor" class="toggle-btn">
+      <h4>{{ $t('perfMonitor.title') }}</h4>
+      <button @click="toggleMonitor" class="toggle-btn" :title="expanded ? $t('perfMonitor.collapse') : $t('perfMonitor.expand')">
         {{ expanded ? '−' : '+' }}
       </button>
     </div>
@@ -10,40 +10,40 @@
     <div v-if="expanded" class="monitor-content">
       <div class="metrics-grid">
         <div class="metric-card">
-          <div class="metric-label">Page Load</div>
+          <div class="metric-label">{{ $t('perfMonitor.pageLoad') }}</div>
           <div class="metric-value">{{ pageLoadTime }}ms</div>
         </div>
-        
+
         <div class="metric-card">
-          <div class="metric-label">Widgets Loaded</div>
+          <div class="metric-label">{{ $t('perfMonitor.widgetsLoaded') }}</div>
           <div class="metric-value">{{ widgetsLoaded }}/{{ totalWidgets }}</div>
         </div>
-        
+
         <div class="metric-card">
-          <div class="metric-label">Total Size</div>
+          <div class="metric-label">{{ $t('perfMonitor.totalSize') }}</div>
           <div class="metric-value">{{ totalSize }}</div>
         </div>
-        
+
         <div class="metric-card">
-          <div class="metric-label">Memory Usage</div>
+          <div class="metric-label">{{ $t('perfMonitor.memoryUsage') }}</div>
           <div class="metric-value">{{ memoryUsage }}</div>
         </div>
       </div>
       
       <div class="widgets-list">
-        <h5>Widget Load Times</h5>
+        <h5>{{ $t('perfMonitor.widgetLoadTimes') }}</h5>
         <div v-for="widget in widgetTimes" :key="widget.id" class="widget-item">
           <span class="widget-name">{{ widget.name }}</span>
           <span class="widget-time" :class="getTimeClass(widget.time)">
             {{ widget.time }}ms
           </span>
-          <span class="widget-priority">P{{ widget.priority }}</span>
+          <span class="widget-priority" :title="$t('perfMonitor.priorityLabel', { n: widget.priority })">{{ $t('perfMonitor.priorityShort', { n: widget.priority }) }}</span>
         </div>
       </div>
-      
+
       <div class="actions">
-        <button @click="clearMetrics" class="clear-btn">Clear</button>
-        <button @click="exportMetrics" class="export-btn">Export</button>
+        <button @click="clearMetrics" class="clear-btn">{{ $t('perfMonitor.clear') }}</button>
+        <button @click="exportMetrics" class="export-btn">{{ $t('perfMonitor.export') }}</button>
       </div>
     </div>
   </div>
@@ -80,9 +80,9 @@ export default {
         }
         return `${totalBytes}B`
       }
-      return 'N/A'
+      return this.$t('perfMonitor.notAvailable')
     },
-    
+
     memoryUsage() {
       if (typeof performance !== 'undefined' && performance.memory) {
         const used = performance.memory.usedJSHeapSize
@@ -91,7 +91,7 @@ export default {
         }
         return `${formatNumber(used / 1024, 1)}KB`
       }
-      return 'N/A'
+      return this.$t('perfMonitor.notAvailable')
     }
   },
   mounted() {
@@ -141,7 +141,7 @@ export default {
               // 只監聽 TradingView 相關的資源
               if (entry.name.includes('tradingview') || entry.name.includes('widget')) {
                 this.addWidgetTime({
-                  name: entry.name.split('/').pop() || 'Unknown Widget',
+                  name: entry.name.split('/').pop() || this.$t('perfMonitor.unknownWidget'),
                   time: Math.round(entry.duration),
                   priority: 2
                 })

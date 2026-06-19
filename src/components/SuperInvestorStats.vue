@@ -7,18 +7,18 @@
       :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
       aria-controls="ownership-section"
     >
-      <h3>Elite Funds</h3>
+      <h3>{{ $t('superInvestor.title') }}</h3>
     </button>
 
     <!-- Loading State -->
     <div v-if="loading" class="loading-state">
       <div class="spinner"></div>
-      <span>Loading investor data...</span>
+      <span>{{ $t('superInvestor.loading') }}</span>
     </div>
 
     <!-- No Data State -->
     <div v-else-if="!hasData" class="no-data-state">
-      <p>No super investor data available for this stock.</p>
+      <p>{{ $t('superInvestor.noData') }}</p>
     </div>
 
     <!-- Data Content -->
@@ -33,7 +33,7 @@
           :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
           aria-controls="ownership-content"
         >
-          <h4>Ownership</h4>
+          <h4>{{ $t('superInvestor.ownership.heading') }}</h4>
         </button>
 
         <div id="ownership-content" v-show="expandedSections.ownership" class="subsection-content">
@@ -42,11 +42,11 @@
                <thead>
                  <tr>
                    <th class="text-left" style="width: 40px;"></th>
-                   <th class="text-left">Holder</th>
-                   <th class="text-center">% of portfolio</th>
-                   <th class="text-center">Recent activity</th>
-                   <th class="text-right">Shares</th>
-                   <th class="text-right">Value</th>
+                   <th class="text-left">{{ $t('superInvestor.ownership.colHolder') }}</th>
+                   <th class="text-center">{{ $t('superInvestor.ownership.colPortfolioPercent') }}</th>
+                   <th class="text-center">{{ $t('superInvestor.ownership.colRecentActivity') }}</th>
+                   <th class="text-right">{{ $t('superInvestor.ownership.colShares') }}</th>
+                   <th class="text-right">{{ $t('superInvestor.ownership.colValue') }}</th>
                  </tr>
                </thead>
                <tbody>
@@ -56,8 +56,8 @@
                         <button
                           class="expand-btn"
                           @click.stop="toggleHistory(index)"
-                          :title="isHistoryExpanded(index) ? 'Hide History' : 'Show History'"
-                          :aria-label="isHistoryExpanded(index) ? `Hide holdings history for ${item.manager}` : `Show holdings history for ${item.manager}`"
+                          :title="isHistoryExpanded(index) ? $t('superInvestor.ownership.hideHistory') : $t('superInvestor.ownership.showHistory')"
+                          :aria-label="isHistoryExpanded(index) ? $t('superInvestor.ownership.hideHistoryFor', { manager: item.manager }) : $t('superInvestor.ownership.showHistoryFor', { manager: item.manager })"
                           :aria-expanded="isHistoryExpanded(index) ? 'true' : 'false'"
                         >
                           {{ isHistoryExpanded(index) ? '−' : '+' }}
@@ -76,12 +76,12 @@
                             <table class="history-table">
                               <thead>
                                 <tr>
-                                  <th>Quarter</th>
-                                  <th class="text-right">Shares</th>
-                                  <th class="text-center">% of Portfolio</th>
-                                  <th class="text-right">Activity</th>
-                                  <th class="text-center">% Change to Portfolio</th>
-                                  <th class="text-right">Reported Price</th>
+                                  <th>{{ $t('superInvestor.history.colQuarter') }}</th>
+                                  <th class="text-right">{{ $t('superInvestor.history.colShares') }}</th>
+                                  <th class="text-center">{{ $t('superInvestor.history.colPortfolioPercent') }}</th>
+                                  <th class="text-right">{{ $t('superInvestor.history.colActivity') }}</th>
+                                  <th class="text-center">{{ $t('superInvestor.history.colPortfolioChange') }}</th>
+                                  <th class="text-right">{{ $t('superInvestor.history.colReportedPrice') }}</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -94,7 +94,7 @@
                                   <td class="text-right">{{ hItem.reported_price }}</td>
                                 </tr>
                                 <tr v-if="!item.history || item.history.length === 0">
-                                   <td colspan="6" class="text-center text-muted p-3">No history data available.</td>
+                                   <td colspan="6" class="text-center text-muted p-3">{{ $t('superInvestor.history.empty') }}</td>
                                 </tr>
                               </tbody>
                             </table>
@@ -103,7 +103,7 @@
                    </tr>
                  </template>
                  <tr v-if="ownershipData.length === 0">
-                   <td colspan="6" class="text-center text-muted">No ownership records found.</td>
+                   <td colspan="6" class="text-center text-muted">{{ $t('superInvestor.ownership.empty') }}</td>
                  </tr>
                </tbody>
              </table>
@@ -120,20 +120,20 @@
           :aria-expanded="expandedSections.activity ? 'true' : 'false'"
           aria-controls="activity-content"
         >
-          <h4>Activity</h4>
+          <h4>{{ $t('superInvestor.activity.heading') }}</h4>
         </button>
 
         <div id="activity-content" v-show="expandedSections.activity" class="subsection-content">
           <div class="controls-area">
              <!-- Filter Controls -->
              <div class="filter-controls">
-                <button 
-                  v-for="filter in ['All', 'Buys', 'Sells']" 
+                <button
+                  v-for="filter in ['All', 'Buys', 'Sells']"
                   :key="filter"
                   :class="['filter-btn', { active: activityFilter === filter }]"
                   @click="activityFilter = filter"
                 >
-                  {{ filter }}
+                  {{ $t('superInvestor.activity.filter' + filter) }}
                 </button>
              </div>
           </div>
@@ -142,11 +142,11 @@
              <table class="data-table">
                <thead>
                  <tr>
-                   <th class="text-left">Quarter</th>
-                   <th class="text-left">Holder</th>
-                   <th class="text-center">% change to portfolio</th>
-                   <th class="text-center">Activity</th>
-                   <th class="text-right">Shares Changed</th>
+                   <th class="text-left">{{ $t('superInvestor.activity.colQuarter') }}</th>
+                   <th class="text-left">{{ $t('superInvestor.activity.colHolder') }}</th>
+                   <th class="text-center">{{ $t('superInvestor.activity.colPortfolioChange') }}</th>
+                   <th class="text-center">{{ $t('superInvestor.activity.colActivity') }}</th>
+                   <th class="text-right">{{ $t('superInvestor.activity.colSharesChanged') }}</th>
                  </tr>
                </thead>
                <tbody>
@@ -164,7 +164,7 @@
                    </td>
                  </tr>
                  <tr v-if="activityList.length === 0">
-                   <td colspan="5" class="text-center text-muted">No activity found for this filter.</td>
+                   <td colspan="5" class="text-center text-muted">{{ $t('superInvestor.activity.empty') }}</td>
                  </tr>
                </tbody>
              </table>

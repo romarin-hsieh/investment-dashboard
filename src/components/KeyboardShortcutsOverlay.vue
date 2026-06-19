@@ -11,11 +11,11 @@
   >
     <div class="shortcuts-panel">
       <div class="shortcuts-header">
-        <h3 id="shortcuts-title">Keyboard shortcuts</h3>
+        <h3 id="shortcuts-title">{{ $t('shortcuts.title') }}</h3>
         <button
           ref="closeBtn"
           class="shortcuts-close"
-          aria-label="Close keyboard shortcuts"
+          :aria-label="$t('shortcuts.closeAriaLabel')"
           @click="$emit('close')"
         >×</button>
       </div>

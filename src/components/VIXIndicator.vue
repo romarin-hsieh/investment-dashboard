@@ -1,8 +1,8 @@
 <template>
   <div class="vix-indicator-container">
     <div class="widget-header">
-      <h3>Fear & Greed Index</h3>
-      <div class="vix-subtitle">VIX Volatility Index</div>
+      <h3>{{ $t('vixIndicator.title') }}</h3>
+      <div class="vix-subtitle">{{ $t('vixIndicator.subtitle') }}</div>
     </div>
     
     <div class="vix-content">
@@ -16,7 +16,7 @@
           </div>
           <div class="gauge-center">
             <div class="vix-value">{{ vixValue }}</div>
-            <div class="vix-label">VIX</div>
+            <div class="vix-label">{{ $t('vixIndicator.gaugeLabel') }}</div>
           </div>
         </div>
       </div>
@@ -33,19 +33,19 @@
       
       <div class="vix-levels">
         <div class="level-item">
-          <span class="level-label">Extreme Fear</span>
+          <span class="level-label">{{ $t('vixIndicator.levels.extremeFear') }}</span>
           <span class="level-range">&gt; 30</span>
         </div>
         <div class="level-item">
-          <span class="level-label">Fear</span>
+          <span class="level-label">{{ $t('vixIndicator.levels.fear') }}</span>
           <span class="level-range">20 - 30</span>
         </div>
         <div class="level-item">
-          <span class="level-label">Neutral</span>
+          <span class="level-label">{{ $t('vixIndicator.levels.neutral') }}</span>
           <span class="level-range">12 - 20</span>
         </div>
         <div class="level-item">
-          <span class="level-label">Greed</span>
+          <span class="level-label">{{ $t('vixIndicator.levels.greed') }}</span>
           <span class="level-range">&lt; 12</span>
         </div>
       </div>
@@ -80,17 +80,17 @@ export default {
     },
     
     sentimentText() {
-      if (this.vixValue > 30) return 'Extreme Fear'
-      if (this.vixValue > 20) return 'Fear'
-      if (this.vixValue > 12) return 'Neutral'
-      return 'Greed'
+      if (this.vixValue > 30) return this.$t('vixIndicator.levels.extremeFear')
+      if (this.vixValue > 20) return this.$t('vixIndicator.levels.fear')
+      if (this.vixValue > 12) return this.$t('vixIndicator.levels.neutral')
+      return this.$t('vixIndicator.levels.greed')
     },
-    
+
     sentimentDescription() {
-      if (this.vixValue > 30) return 'Market showing signs of panic and extreme volatility'
-      if (this.vixValue > 20) return 'Elevated market anxiety and uncertainty'
-      if (this.vixValue > 12) return 'Normal market conditions with moderate volatility'
-      return 'Low volatility indicating market complacency'
+      if (this.vixValue > 30) return this.$t('vixIndicator.descriptions.extremeFear')
+      if (this.vixValue > 20) return this.$t('vixIndicator.descriptions.fear')
+      if (this.vixValue > 12) return this.$t('vixIndicator.descriptions.neutral')
+      return this.$t('vixIndicator.descriptions.greed')
     }
   },
   mounted() {

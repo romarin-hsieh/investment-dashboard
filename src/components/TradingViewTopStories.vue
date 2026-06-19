@@ -1,18 +1,18 @@
 <template>
   <div class="top-stories-container">
     <div class="widget-header">
-      <h3>Top Stories</h3>
+      <h3>{{ $t('topStories.heading') }}</h3>
     </div>
-    
+
     <div class="top-stories-widget" :id="widgetId" ref="container">
       <div v-if="!loaded && !error" class="stories-loading">
         <div class="loading-spinner"></div>
-        <span>Loading market news...</span>
+        <span>{{ $t('topStories.loading') }}</span>
       </div>
-      
+
       <div v-if="error" class="stories-error">
-        <span>⚠️ Failed to load market news</span>
-        <button @click="retry" class="retry-btn">Retry</button>
+        <span>⚠️ {{ $t('topStories.errorTitle') }}</span>
+        <button @click="retry" class="retry-btn">{{ $t('topStories.retry') }}</button>
       </div>
     </div>
   </div>

@@ -12,8 +12,8 @@
   >
     <div class="settings-modal">
       <div class="modal-header">
-        <h3 :id="titleId">{{ title }}</h3>
-        <button ref="closeBtn" class="close-btn" @click="close" aria-label="Close settings">&times;</button>
+        <h3 :id="titleId">{{ displayTitle }}</h3>
+        <button ref="closeBtn" class="close-btn" @click="close" :aria-label="$t('settingsModal.closeAriaLabel')">&times;</button>
       </div>
       
       <div class="modal-body">
@@ -22,11 +22,11 @@
           <button 
             v-for="tab in ['Inputs', 'Style']" 
             :key="tab"
-            class="tab-btn" 
+            class="tab-btn"
             :class="{ active: activeTab === tab }"
             @click="activeTab = tab"
           >
-            {{ tab }}
+            {{ tabLabel(tab) }}
           </button>
         </div>
 
@@ -112,8 +112,8 @@
       </div>
 
       <div class="modal-footer">
-        <button class="btn-cancel" @click="close">Cancel</button>
-        <button class="btn-save" @click="save">OK</button>
+        <button class="btn-cancel" @click="close">{{ $t('settingsModal.cancel') }}</button>
+        <button class="btn-save" @click="save">{{ $t('settingsModal.save') }}</button>
       </div>
     </div>
   </div>
@@ -129,7 +129,7 @@ export default {
     },
     title: {
       type: String,
-      default: 'Settings'
+      default: ''
     },
     schema: {
       type: Array,
@@ -155,6 +155,9 @@ export default {
     }
   },
   computed: {
+    displayTitle() {
+      return this.title || this.$t('settingsModal.defaultTitle');
+    },
     inputFields() {
       return this.schema.filter(f => !f.group || f.group === 'Inputs');
     },
@@ -186,6 +189,12 @@ export default {
     }
   },
   methods: {
+    tabLabel(tab) {
+      // `tab` is a stable internal key ('Inputs' | 'Style'); only its display
+      // text is localized, the comparison/state value stays untranslated.
+      const map = { Inputs: 'settingsModal.tabInputs', Style: 'settingsModal.tabStyle' };
+      return map[tab] ? this.$t(map[tab]) : tab;
+    },
     close() {
       this.$emit('update:isOpen', false);
     },

@@ -1,7 +1,10 @@
 <script setup>
 import { ref, shallowRef, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { quantDataService } from '@/services/QuantDataService.js';
 import { formatNumber } from '@/utils/numberFormat';
+
+const { t } = useI18n();
 
 // WS-C PR-C1: Plotly (~1.2 MB uncompressed) is dynamically imported in
 // renderChartsSequentially() below, so it loads from its own Vite chunk
@@ -61,10 +64,10 @@ const getCommentary = (d) => {
     const y = d.coordinates.y_momentum;
     const z = d.coordinates.z_structure;
     
-    if (sig === 'LAUNCHPAD') return `Setup Detected: Structure is tight (Z=${formatNumber(z, 2)}) while Trend is positive. Potential breakout imminent.`;
-    if (sig === 'DIP_BUY') return `Retracement Opportunity: Momentum cooled off but main Trend remains intact (X=${formatNumber(x, 2)}).`;
-    if (sig === 'CLIMAX') return `Caution: Momentum is overheated (Y=${formatNumber(y, 2)}). Risk of reversal high.`;
-    return `Neutral State: Waiting for clearer signal. Current Trend Strength: ${formatNumber(x, 2)}.`;
+    if (sig === 'LAUNCHPAD') return t('cometChart.commentary.launchpad', { z: formatNumber(z, 2) });
+    if (sig === 'DIP_BUY') return t('cometChart.commentary.dipBuy', { x: formatNumber(x, 2) });
+    if (sig === 'CLIMAX') return t('cometChart.commentary.climax', { y: formatNumber(y, 2) });
+    return t('cometChart.commentary.neutral', { x: formatNumber(x, 2) });
 };
 
 const fetchData = async () => {
@@ -79,7 +82,7 @@ const fetchData = async () => {
             cometData.value = tickerData;
             error.value = null;
         } else {
-            error.value = "Data not found for this symbol.";
+            error.value = t('cometChart.errors.noDataForSymbol');
             cometData.value = null;
         }
     } catch (e) {
@@ -227,7 +230,7 @@ onUnmounted(() => {
 
     <!-- Error State -->
     <div v-else-if="error || !cometData" class="error-state">
-        <span class="no-data-msg">Quant Analysis Not Available for {{ symbol }}</span>
+        <span class="no-data-msg">{{ $t('cometChart.emptyState.noAnalysis', { symbol }) }}</span>
     </div>
     
     <!-- Main Content -->
@@ -236,7 +239,7 @@ onUnmounted(() => {
         <div class="grid-cell card-cell">
             <div class="inner-card">
                 <div class="card-header">
-                    <h4>Signal Status</h4>
+                    <h4>{{ $t('cometChart.signalCard.title') }}</h4>
                     <span class="signal-badge" :class="cometData.signal.toLowerCase()">
                         {{ cometData.signal.replace('_', ' ') }}
                     </span>
@@ -247,25 +250,25 @@ onUnmounted(() => {
                 <!-- Historical Metrics Table -->
                 <div class="metrics-table" v-if="historicalMetrics">
                     <div class="table-row header">
-                        <span class="col-lbl">Metric</span>
-                        <span class="col-val">Now</span>
-                        <span class="col-val">5D</span>
-                        <span class="col-val">20D</span>
+                        <span class="col-lbl">{{ $t('cometChart.metricsTable.metric') }}</span>
+                        <span class="col-val">{{ $t('cometChart.metricsTable.now') }}</span>
+                        <span class="col-val">{{ $t('cometChart.metricsTable.day5') }}</span>
+                        <span class="col-val">{{ $t('cometChart.metricsTable.day20') }}</span>
                     </div>
                     <div class="table-row dashed">
-                        <span class="col-lbl">X (Trend)</span>
+                        <span class="col-lbl">{{ $t('cometChart.metricsTable.xTrend') }}</span>
                         <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.x_trend, 2) }}</span>
                         <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.x_trend, 2) }}</span>
                         <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.x_trend, 2) }}</span>
                     </div>
                     <div class="table-row dashed">
-                        <span class="col-lbl">Y (Momtm)</span>
+                        <span class="col-lbl">{{ $t('cometChart.metricsTable.yMomentum') }}</span>
                         <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.y_momentum, 2) }}</span>
                         <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.y_momentum, 2) }}</span>
                         <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.y_momentum, 2) }}</span>
                     </div>
                     <div class="table-row dashed">
-                        <span class="col-lbl">Z (Struct)</span>
+                        <span class="col-lbl">{{ $t('cometChart.metricsTable.zStructure') }}</span>
                         <span class="col-val highlight">{{ formatNumber(historicalMetrics.now.z_structure, 2) }}</span>
                         <span class="col-val muted">{{ formatNumber(historicalMetrics.d5.z_structure, 2) }}</span>
                         <span class="col-val muted">{{ formatNumber(historicalMetrics.d20.z_structure, 2) }}</span>
@@ -277,12 +280,12 @@ onUnmounted(() => {
         <!-- 2. Stock Top -->
         <div class="grid-cell chart-box">
             <div class="box-header">
-                <span>Trend Velocity</span>
-                <button class="info-btn" @click.stop="togglePopover('stock-top')">?</button>
+                <span>{{ $t('cometChart.charts.trendVelocity') }}</span>
+                <button class="info-btn" :aria-label="$t('cometChart.charts.infoButtonLabel')" @click.stop="togglePopover('stock-top')">?</button>
                  <div v-if="activePopover === 'stock-top'" class="popover">
-                    <strong>Trend (X) vs Momentum (Y)</strong>
-                    <p>X > 0: Uptrend</p><p>Y > 0.8: Overheated</p>
-                    <p>High Y = Fast Movement</p>
+                    <strong>{{ $t('cometChart.popovers.stockTop.title') }}</strong>
+                    <p>{{ $t('cometChart.popovers.stockTop.line1') }}</p><p>{{ $t('cometChart.popovers.stockTop.line2') }}</p>
+                    <p>{{ $t('cometChart.popovers.stockTop.line3') }}</p>
                 </div>
             </div>
             <div class="chart-canvas" ref="chartStockTop"></div>
@@ -290,25 +293,25 @@ onUnmounted(() => {
 
         <!-- 3. Sector Top -->
         <div class="grid-cell chart-box">
-            <div class="box-header"><span>Sector Velocity</span></div>
+            <div class="box-header"><span>{{ $t('cometChart.charts.sectorVelocity') }}</span></div>
             <div class="chart-canvas" ref="chartSectorTop"></div>
         </div>
 
         <!-- 4. 3D Chart -->
         <div class="grid-cell chart-box">
-             <div class="box-header"><span>3D Interactive</span></div>
+             <div class="box-header"><span>{{ $t('cometChart.charts.interactive3d') }}</span></div>
              <div class="chart-canvas" ref="chart3D"></div>
         </div>
 
         <!-- 5. Stock Side -->
         <div class="grid-cell chart-box">
             <div class="box-header">
-                <span>Squeeze Potential</span>
-                 <button class="info-btn" @click.stop="togglePopover('stock-side')">?</button>
+                <span>{{ $t('cometChart.charts.squeezePotential') }}</span>
+                 <button class="info-btn" :aria-label="$t('cometChart.charts.infoButtonLabel')" @click.stop="togglePopover('stock-side')">?</button>
                  <div v-if="activePopover === 'stock-side'" class="popover">
-                     <strong>Trend (X) vs Structure (Z)</strong>
-                    <p>Z > 0.8: Squeeze (Yellow)</p>
-                    <p>High Z = Tight Structure (Explosive Potential)</p>
+                     <strong>{{ $t('cometChart.popovers.stockSide.title') }}</strong>
+                    <p>{{ $t('cometChart.popovers.stockSide.line1') }}</p>
+                    <p>{{ $t('cometChart.popovers.stockSide.line2') }}</p>
                 </div>
             </div>
             <div class="chart-canvas" ref="chartStockSide"></div>
@@ -316,7 +319,7 @@ onUnmounted(() => {
 
         <!-- 6. Sector Side -->
         <div class="grid-cell chart-box">
-            <div class="box-header"><span>Sector Potential</span></div>
+            <div class="box-header"><span>{{ $t('cometChart.charts.sectorPotential') }}</span></div>
             <div class="chart-canvas" ref="chartSectorSide"></div>
         </div>
     </div>
