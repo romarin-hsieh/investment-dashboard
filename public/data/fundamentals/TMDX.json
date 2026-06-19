@@ -45,7 +45,7 @@
         "organization": "Blackrock Inc.",
         "pctHeld": 0.1532,
         "position": 5293331,
-        "value": 387577702,
+        "value": 417061554,
         "pctChange": -0.0189
       },
       {
@@ -54,7 +54,7 @@
         "organization": "FMR, LLC",
         "pctHeld": 0.1475,
         "position": 5096243,
-        "value": 373146918,
+        "value": 401532990,
         "pctChange": 0.0038
       },
       {
@@ -63,7 +63,7 @@
         "organization": "Vanguard Portfolio Management LLC",
         "pctHeld": 0.0555,
         "position": 1919535,
-        "value": 140548355,
+        "value": 151240164,
         "pctChange": 1
       },
       {
@@ -72,7 +72,7 @@
         "organization": "Vanguard Capital Management LLC",
         "pctHeld": 0.0428,
         "position": 1478152,
-        "value": 108230291,
+        "value": 116463597,
         "pctChange": 1
       },
       {
@@ -81,7 +81,7 @@
         "organization": "State Street Corporation",
         "pctHeld": 0.0382,
         "position": 1319479,
-        "value": 96612253,
+        "value": 103961751,
         "pctChange": 0.0348
       },
       {
@@ -90,7 +90,7 @@
         "organization": "Invesco Ltd.",
         "pctHeld": 0.03,
         "position": 1037974,
-        "value": 76000457,
+        "value": 81781972,
         "pctChange": 0.5162
       },
       {
@@ -99,7 +99,7 @@
         "organization": "UBS AM, a distinct business unit of UBS ASSET MANAGEMENT AMERICAS LLC",
         "pctHeld": 0.0272,
         "position": 939523,
-        "value": 68791875,
+        "value": 74025018,
         "pctChange": -0.0575
       },
       {
@@ -108,7 +108,7 @@
         "organization": "Nomura Asset Management International Inc",
         "pctHeld": 0.0256,
         "position": 885841,
-        "value": 64861279,
+        "value": 69795413,
         "pctChange": 0.0644
       },
       {
@@ -117,7 +117,7 @@
         "organization": "Goldman Sachs Group Inc",
         "pctHeld": 0.0251,
         "position": 866282,
-        "value": 63429169,
+        "value": 68254359,
         "pctChange": -0.103199996
       },
       {
@@ -126,7 +126,7 @@
         "organization": "Geode Capital Management, LLC",
         "pctHeld": 0.024300002,
         "position": 839155,
-        "value": 61442930,
+        "value": 66117023,
         "pctChange": 0.0278
       }
     ]
@@ -261,6 +261,16 @@
   },
   "upgradeDowngradeHistory": {
     "history": [
+      {
+        "epochGradeDate": "2026-06-18T12:34:47.000Z",
+        "firm": "Stifel",
+        "toGrade": "Hold",
+        "fromGrade": "Hold",
+        "action": "main",
+        "priceTargetAction": "Raises",
+        "currentPriceTarget": 80,
+        "priorPriceTarget": 75
+      },
       {
         "epochGradeDate": "2026-05-26T15:53:34.000Z",
         "firm": "Stifel",
@@ -1427,28 +1437,28 @@
   "price": {
     "maxAge": 1,
     "preMarketSource": "FREE_REALTIME",
-    "postMarketChangePercent": 0.0038240752,
-    "postMarketChange": 0.27999878,
-    "postMarketTime": "2026-06-17T23:58:06.000Z",
-    "postMarketPrice": 73.5,
+    "postMarketChangePercent": 0,
+    "postMarketChange": 0,
+    "postMarketTime": "2026-06-18T23:58:41.000Z",
+    "postMarketPrice": 78.79,
     "postMarketSource": "FREE_REALTIME",
-    "regularMarketChangePercent": -0.0342917,
-    "regularMarketChange": -2.6,
-    "regularMarketTime": "2026-06-17T20:00:01.000Z",
+    "regularMarketChangePercent": 0.076072104,
+    "regularMarketChange": 5.57,
+    "regularMarketTime": "2026-06-18T20:00:01.000Z",
     "priceHint": 2,
-    "regularMarketPrice": 73.22,
-    "regularMarketDayHigh": 77.4999,
-    "regularMarketDayLow": 72.85,
-    "regularMarketVolume": 850130,
-    "averageDailyVolume10Day": 950160,
-    "averageDailyVolume3Month": 1303555,
-    "regularMarketPreviousClose": 75.82,
+    "regularMarketPrice": 78.79,
+    "regularMarketDayHigh": 80.72,
+    "regularMarketDayLow": 75.1151,
+    "regularMarketVolume": 1719376,
+    "averageDailyVolume10Day": 1038400,
+    "averageDailyVolume3Month": 1312979,
+    "regularMarketPreviousClose": 73.22,
     "regularMarketSource": "FREE_REALTIME",
-    "regularMarketOpen": 75.65,
+    "regularMarketOpen": 75.26,
     "exchange": "NGM",
     "exchangeName": "NasdaqGM",
     "exchangeDataDelayedBy": 0,
-    "marketState": "PREPRE",
+    "marketState": "CLOSED",
     "quoteType": "EQUITY",
     "symbol": "TMDX",
     "underlyingSymbol": null,
@@ -1460,13 +1470,13 @@
     "fromCurrency": null,
     "toCurrency": null,
     "lastMarket": null,
-    "marketCap": 2530550016
+    "marketCap": 2723054336
   },
   "defaultKeyStatistics": {
     "maxAge": 1,
     "priceHint": 2,
     "enterpriseValue": 3022084352,
-    "forwardPE": 22.218311,
+    "forwardPE": 23.908504,
     "profitMargins": 0.27037,
     "floatShares": 33436990,
     "sharesOutstanding": 34560911,
@@ -1483,7 +1493,7 @@
     "impliedSharesOutstanding": 34560911,
     "category": null,
     "bookValue": 13.806,
-    "priceToBook": 5.3034916,
+    "priceToBook": 5.706939,
     "fundFamily": null,
     "legalType": null,
     "lastFiscalYearEnd": "2025-12-31T00:00:00.000Z",
@@ -1496,8 +1506,8 @@
     "lastSplitFactor": null,
     "enterpriseToRevenue": 4.753,
     "enterpriseToEbitda": 24.109,
-    "52WeekChange": -0.40741342,
-    "SandP52WeekChange": 0.24334764,
+    "52WeekChange": -0.36233407,
+    "SandP52WeekChange": 0.2568333,
     "latestShareClass": null,
     "leadInvestor": null
   },
@@ -2525,7 +2535,7 @@
   },
   "financialData": {
     "maxAge": 86400,
-    "currentPrice": 73.22,
+    "currentPrice": 78.79,
     "targetHighPrice": 142,
     "targetLowPrice": 75,
     "targetMeanPrice": 116.77778,
@@ -2555,6 +2565,6 @@
     "profitMargins": 0.27037,
     "financialCurrency": "USD"
   },
-  "lastUpdated": "2026-06-18T06:51:18.441Z",
+  "lastUpdated": "2026-06-19T07:05:11.079Z",
   "source": "Static Build (yahoo-finance2)"
 }
