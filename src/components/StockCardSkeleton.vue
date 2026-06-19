@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* 基礎骨架動畫 */
 @keyframes shimmer {
   0% {

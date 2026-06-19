@@ -96,7 +96,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* 基礎骨架動畫 */
 @keyframes shimmer {
   0% {
@@ -142,7 +142,7 @@ export default {
   align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .skeleton-title {
@@ -216,7 +216,7 @@ export default {
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .skeleton-story-time {
@@ -252,7 +252,7 @@ export default {
 }
 
 .skeleton-insight-section:nth-child(2) {
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-color);
   padding-top: 1.5rem;
 }
 
