@@ -67,7 +67,6 @@
 | Adapter | Purpose | Source | Failure mode |
 |---|---|---|---|
 | `src/api/yahooFinanceApi.js` | Live OHLCV + quotes via CORS proxy | Yahoo Finance | Returns `null`, surfaces `isLive: false` flag downstream |
-| `src/api/precomputedOhlcvApi.js` | OHLCV from Static Lake | `public/data/ohlcv/{symbol}.json` | Returns `null` on 404; consumer must handle |
 | `src/api/precomputedIndicatorsApi.js` | Indicators from Static Lake | `public/data/technical-indicators/{date}_{symbol}.json` | Returns `null`; falls back to hybrid path |
 | `src/api/hybridTechnicalIndicatorsApi.js` | Stale-tolerant indicators | Above + last-known | Returns stale data with `isStale: true` flag |
 | `src/api/corsProxyManager.ts` | Tier-3 proxy rotation | External public proxies | Cycles through list; widget-scoped error if all fail |
