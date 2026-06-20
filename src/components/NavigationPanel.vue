@@ -170,7 +170,7 @@ export default {
   padding: var(--space-2) var(--space-3) var(--space-2) 2.25rem;
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   background: var(--bg-primary); /* Slightly distinct from card bg */
   color: var(--text-primary);
   transition: all var(--transition-base) ease;
@@ -178,7 +178,7 @@ export default {
 
 .search-input::placeholder {
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
 }
 
 .search-input:focus {

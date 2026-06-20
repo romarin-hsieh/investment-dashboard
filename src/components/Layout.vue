@@ -135,7 +135,7 @@ export default {
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-sm);
   transition: all var(--transition-base);
-  font-size: 0.95rem;
+  font-size: var(--text-base);
 }
 
 .nav-link:hover {
@@ -160,7 +160,7 @@ export default {
     justify-content: center;
     cursor: pointer;
     transition: all var(--transition-base);
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
 }
 
 .theme-toggle:hover {
@@ -181,7 +181,7 @@ export default {
     justify-content: center;
     cursor: pointer;
     transition: all var(--transition-base);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     font-weight: var(--weight-semibold);
 }
 

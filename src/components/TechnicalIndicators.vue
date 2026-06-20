@@ -568,7 +568,7 @@ export default {
     background: transparent;
     margin: 0;
     padding: var(--space-3) var(--space-4);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     font-weight: var(--weight-semibold);
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-color);
@@ -581,7 +581,7 @@ export default {
 .compact-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
 }
 
 .compact-table td {
@@ -625,7 +625,7 @@ export default {
 .change-tag.neg { color: var(--error-color); }
 
 .signal-tag {
-    font-size: 0.6rem; 
+    font-size: var(--text-xs); 
     padding: 2px 4px;
     border-radius: var(--radius-xs);
     font-weight: var(--weight-bold);

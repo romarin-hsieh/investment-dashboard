@@ -609,14 +609,14 @@ export default {
 
 .card-header h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--text-primary);
 }
 
 .status-indicator {
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-md);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 
@@ -657,7 +657,7 @@ export default {
 
 .status-item .label {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .status-item .value {
@@ -692,7 +692,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   transition: all var(--transition-base);
 }
 
@@ -748,7 +748,7 @@ export default {
 
 .btn-sm {
   padding: 0.375rem var(--space-3);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
 }
 
 .btn-outline {
@@ -780,7 +780,7 @@ export default {
 
 .logs-header h3, .config-header h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--text-primary);
 }
 
@@ -804,7 +804,7 @@ export default {
   gap: var(--space-4);
   padding: var(--space-2);
   border-bottom: 1px solid var(--border-color);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .log-entry:last-child {
@@ -872,7 +872,7 @@ export default {
   align-items: center;
   gap: var(--space-2);
   color: var(--text-primary);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .config-item input[type="number"] {

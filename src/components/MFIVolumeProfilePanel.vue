@@ -539,7 +539,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .retry-btn:hover {
@@ -594,7 +594,7 @@ export default {
 
 .title-section h4 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
 }
@@ -605,7 +605,7 @@ export default {
   gap: var(--space-8);
   padding: 0 var(--space-2);
   margin-bottom: var(--space-4);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   white-space: nowrap;
   overflow-x: auto; /* Handle overflow gracefully if screen is very narrow */
   scrollbar-width: none; /* Hide scrollbar */
@@ -634,7 +634,7 @@ export default {
 
 .status-divider {
   color: var(--border-color);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
 }
 
 /* Updated Colors for text */
@@ -677,7 +677,7 @@ export default {
 
 .chart-header h4 {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   color: var(--text-secondary);
 }
 
@@ -685,7 +685,7 @@ export default {
   padding: var(--space-1) var(--space-2);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xs);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   background: var(--bg-card);
   color: var(--text-primary);
 }
@@ -711,7 +711,7 @@ export default {
   align-items: center;
   justify-content: flex-end;
   padding-right: var(--space-2);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-color);
 }
@@ -754,7 +754,7 @@ export default {
   color: white;
   padding: 2px 4px;
   border-radius: 2px;
-  font-size: 0.6rem;
+  font-size: var(--text-xs);
   font-weight: bold;
   z-index: 10;
 }
@@ -768,7 +768,7 @@ export default {
   color: white;
   padding: 2px 4px;
   border-radius: 2px;
-  font-size: 0.6rem;
+  font-size: var(--text-xs);
   font-weight: bold;
   z-index: 10;
 }
@@ -785,7 +785,7 @@ export default {
   align-items: center;
   justify-content: flex-start;
   padding-left: var(--space-2);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-color);
 }
@@ -816,7 +816,7 @@ export default {
 .signal-badge {
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
 }
 
@@ -843,7 +843,7 @@ export default {
 }
 
 .recommendation {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--text-primary);
   margin-bottom: var(--space-2);
   padding: var(--space-3);
@@ -857,7 +857,7 @@ export default {
   color: white;
   padding: var(--space-2);
   border-radius: var(--radius-xs);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   pointer-events: none;
   max-width: 200px;
 }
@@ -880,7 +880,7 @@ export default {
 }
 
 .no-signals {
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--grey-550);
     font-style: italic;
     padding: var(--space-2) 0;
@@ -935,13 +935,13 @@ export default {
 
 .modal-body {
     padding: var(--space-4) var(--space-6);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     color: var(--text-primary);
 }
 
 .modal-body h6 {
     margin: var(--space-4) 0 var(--space-2) 0;
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     font-weight: var(--weight-semibold);
     color: var(--blue-500);
 }
@@ -994,7 +994,7 @@ export default {
   }
   
   .price-label, .volume-label {
-    font-size: 0.65rem;
+    font-size: var(--text-xs);
   }
 }
 
@@ -1015,7 +1015,7 @@ export default {
   }
   
   .poc-marker, .va-marker {
-    font-size: 0.5rem;
+    font-size: var(--text-xs);
     padding: 1px 2px;
   }
 }

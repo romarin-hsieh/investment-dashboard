@@ -278,7 +278,7 @@ export default {
 }
 
 .card-icon {
-    font-size: 2.5rem;
+    font-size: var(--text-3xl);
     background: var(--bg-secondary);
     width: 60px;
     height: 60px;
@@ -297,14 +297,14 @@ export default {
 }
 
 .status-val {
-    font-size: 1.8rem;
+    font-size: var(--text-2xl);
     font-weight: var(--weight-extrabold);
     margin: 0.2rem 0;
     color: var(--text-primary);
 }
 
 .sub-text {
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     color: var(--text-muted);
 }
 
@@ -382,7 +382,7 @@ export default {
     gap: var(--space-4);
 }
 
-.log-entry .time { color: var(--grey-550); font-size: 0.8rem; min-width: 80px; }
+.log-entry .time { color: var(--grey-550); font-size: var(--text-sm); min-width: 80px; }
 .log-entry.info .msg { color: #4dabf7; }
 .log-entry.success .msg { color: #40c057; }
 .log-entry.warning .msg { color: #ffd43b; }

@@ -296,7 +296,7 @@ export default {
 
 .loading-simple {
     padding: var(--space-8);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     color: var(--text-muted);
     text-align: center;
 }
@@ -314,7 +314,7 @@ export default {
 
 h4 {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     font-weight: var(--weight-semibold);
     color: var(--text-secondary);
     border: none;
@@ -339,7 +339,7 @@ h4 {
 .pivot-row {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     padding: 2px 0;
 }
 
@@ -349,7 +349,7 @@ h4 {
 
 .current-zone {
     margin-top: var(--space-2);
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     background: var(--bg-secondary);
     padding: 4px 8px;
     border-radius: var(--radius-xs);
@@ -376,7 +376,7 @@ h4 {
 .pattern-badge.neutral { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-color); }
 
 .no-patterns {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
     font-style: italic;
 }
@@ -385,7 +385,7 @@ h4 {
 .risk-metric {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     margin-bottom: 4px;
 }
 
@@ -443,13 +443,13 @@ h4 {
 
 .modal-body {
     padding: var(--space-4);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     color: var(--text-primary);
 }
 
 .modal-body h6 {
     margin: var(--space-2) 0 var(--space-2) 0;
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     font-weight: var(--weight-semibold);
     color: var(--primary-color);
 }

@@ -214,13 +214,13 @@ export default {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .stale-indicator {
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 
@@ -269,7 +269,7 @@ export default {
 }
 
 .markets-name {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin-bottom: var(--space-2);
@@ -293,7 +293,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-1);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
 }
 
 .source {
@@ -303,7 +303,7 @@ export default {
 .quality-flag {
   padding: 0.125rem 0.375rem;
   border-radius: 3px;
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: var(--weight-medium);
   text-transform: uppercase;
 }

@@ -1030,7 +1030,7 @@ export default {
 }
 
 .widget-container-ticker .widget-header h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;

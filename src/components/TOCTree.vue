@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 .toc-tree {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
 }
 
 .tree-node {
@@ -107,7 +107,7 @@ export default {
   text-align: left;
   width: 100%;
   cursor: default;
-  font-size: 0.95rem; /* Slightly larger heading */
+  font-size: var(--text-base); /* Slightly larger heading */
   letter-spacing: 0.02em;
   margin-top: var(--space-6); /* Use whitespace for separation */
   margin-bottom: var(--space-1);
@@ -137,7 +137,7 @@ export default {
   text-align: left;
   width: 100%;
   cursor: default;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   opacity: 0.8;
@@ -159,7 +159,7 @@ export default {
   cursor: pointer;
   transition: all var(--transition-base) ease;
   text-align: left;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
 }
 
@@ -202,7 +202,7 @@ export default {
 }
 
 .exchange-badge {
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   padding: 0.125rem var(--space-1);
   background: var(--bg-secondary);
   color: var(--text-muted);

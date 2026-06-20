@@ -132,7 +132,7 @@ export default {
 
 .shortcuts-header h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--text-primary);
 }
 
@@ -174,7 +174,7 @@ kbd {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-xs);
   font-family: ui-monospace, monospace;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   text-align: center;
   color: var(--text-primary);
 }

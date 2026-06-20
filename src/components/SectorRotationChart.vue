@@ -344,7 +344,7 @@ export default {
   transition: all var(--transition-fast) ease;
   padding: 8px;
   z-index: 100;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   line-height: 1.4;
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -399,7 +399,7 @@ export default {
 
 .title-row h4 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--text-primary);
 }
 
@@ -425,7 +425,7 @@ export default {
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .spinner {

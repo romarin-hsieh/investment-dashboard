@@ -181,13 +181,13 @@ h1 {
 }
 
 .empty-state__title {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   margin: 0 0 var(--space-2);
   color: var(--text-primary);
 }
 
 .empty-state__hint {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   margin: 0 auto;
   max-width: 480px;
   line-height: 1.5;
@@ -198,7 +198,7 @@ h1 {
   padding: 0.1rem 0.4rem;
   border-radius: 3px;
   font-family: ui-monospace, monospace;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
 }
 
 .empty-state a {
