@@ -1,7 +1,10 @@
 <template>
   <div class="market-dashboard">
-    <h2>{{ $t('market.title') }}</h2>
-    <p class="text-muted mb-3">{{ $t('market.subtitle') }}</p>
+    <header class="page-masthead">
+      <span class="masthead-kicker">{{ $t('market.asOf') }} {{ todayStr }}</span>
+      <h2 class="masthead-title">{{ $t('market.title') }}</h2>
+      <p class="masthead-subtitle">{{ $t('market.subtitle') }}</p>
+    </header>
 
     <!-- 載入狀態顯示骨架屏 -->
     <div v-if="loading" class="loading-with-skeleton">
@@ -196,6 +199,14 @@ export default {
 
   },
   computed: {
+    todayStr() {
+      const locale = this.$i18n && this.$i18n.locale === 'zh-TW' ? 'zh-TW' : 'en-US'
+      try {
+        return new Date().toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })
+      } catch (e) {
+        return new Date().toLocaleDateString()
+      }
+    },
     tickersConfig() {
       const isDark = this.theme === 'dark';
       return {
@@ -386,12 +397,45 @@ export default {
   max-width: 100%;
 }
 
-.mb-3 {
-  margin-bottom: var(--space-3);
+/* Editorial masthead — a museum wall-label entry point, not a timid UA-default
+   heading. Title carries the page; one Florentine-blue hairline rule states the
+   brand once; the kicker reads as a tracked plaque caption. */
+.page-masthead {
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--primary-color);
 }
 
-.text-muted {
+.masthead-kicker {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary-text);
+  margin-bottom: var(--space-2);
+}
+
+.masthead-title {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.masthead-subtitle {
+  font-size: var(--text-base);
   color: var(--text-muted);
+  max-width: 60ch;
+  margin: var(--space-2) 0 0;
+}
+
+@media (max-width: 900px) {
+  .masthead-title {
+    font-size: var(--text-2xl);
+  }
 }
 
 .loading-with-skeleton {
@@ -461,11 +505,25 @@ export default {
   margin-bottom: var(--space-4);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+/* Brand accent tick: a short mark sitting ON the header rule (a bottom mark,
+   never a side-stripe) — a quiet Renaissance through-line across sections. */
+.market-dashboard .widget-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-color);
 }
 
 .market-dashboard .widget-header h3 {
-  font-size: var(--text-md);
-  font-weight: var(--weight-semibold);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.02em;
   color: var(--text-primary);
   margin: 0;
 }
@@ -496,6 +554,8 @@ export default {
 .market-dashboard .section-header h4 {
   font-size: var(--text-base);
   font-weight: var(--weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-secondary);
   margin: 0;
 }

@@ -56,8 +56,9 @@
               <circle cx="200" cy="200" r="8" :fill="needleColor" />
             </g>
             
-            <!-- Value Display -->
-            <text x="200" y="260" text-anchor="middle" class="gauge-value" :fill="textColor">{{ fearGreedValue }}</text>
+            <!-- Value Display — engraved plaque: tracked caption above the score -->
+            <text x="200" y="226" text-anchor="middle" class="gauge-caption">{{ $t('fearGreed.scoreCaption') }}</text>
+            <text x="200" y="258" text-anchor="middle" class="gauge-value" :fill="textColor">{{ fearGreedValue }}</text>
           </svg>
           
           <!-- Labels -->
@@ -545,7 +546,7 @@ export default {
   border-radius: var(--radius-md); /* Softer rounded corners */
   padding: var(--space-6);
   margin-bottom: var(--space-8);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   transition: background-color var(--transition-slow) ease, border-color var(--transition-slow) ease;
 }
 
@@ -556,6 +557,19 @@ export default {
   margin-bottom: var(--space-6);
   padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+/* Brand accent tick on the rule — matches the section headers on the parent
+   surface so the hero card carries the same Renaissance through-line. */
+.widget-header::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-color);
 }
 
 .widget-header h3 {
@@ -600,9 +614,20 @@ export default {
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 .gauge-value {
-  font-size: 32px;
-  font-weight: var(--weight-extrabold);
-  font-family: var(--font-heading, sans-serif);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+/* Plaque caption above the engraved score — brand-toned, tracked. */
+.gauge-caption {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: var(--primary-text);
 }
 .gauge-labels {
   display: flex;
@@ -730,8 +755,9 @@ export default {
   font-size: var(--text-sm); 
   font-weight: var(--weight-bold); 
   color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
   /* Ensure visibility on various backgrounds */
-  mix-blend-mode: exclusion; 
+  mix-blend-mode: exclusion;
 }
 
 /* History Section */
@@ -751,6 +777,7 @@ export default {
     justify-content: center;
     font-weight: var(--weight-bold);
     font-size: var(--text-base);
+    font-variant-numeric: tabular-nums;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
