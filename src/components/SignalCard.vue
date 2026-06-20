@@ -157,7 +157,7 @@ const isPositive = computed(() => props.changePercent >= 0);
   border-radius: var(--radius-xs);
   border: 2px solid;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   letter-spacing: 1px;
 }
 
@@ -169,7 +169,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 
 .commentary-box h4 {
   margin: 0 0 var(--space-2) 0;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   text-transform: uppercase;
   color: var(--grey-500);
   letter-spacing: 0.5px;

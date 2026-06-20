@@ -183,7 +183,7 @@ export default {
   gap: var(--space-2);
   height: 100%;
   color: var(--grey-550);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .loading-spinner {
@@ -220,7 +220,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 

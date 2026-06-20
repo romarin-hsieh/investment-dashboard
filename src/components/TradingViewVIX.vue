@@ -187,7 +187,7 @@ export default {
 }
 
 .widget-header h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
@@ -200,7 +200,7 @@ export default {
 }
 
 .vix-description {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--text-muted);
   font-style: italic;
 }
@@ -219,7 +219,7 @@ export default {
   gap: var(--space-2);
   height: 100%;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .loading-spinner {
@@ -255,7 +255,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 

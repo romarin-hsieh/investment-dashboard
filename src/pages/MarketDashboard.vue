@@ -413,7 +413,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .btn-secondary {
@@ -427,7 +427,7 @@ export default {
 
 .btn-sm {
   padding: var(--space-1) var(--space-2);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
 }
 
 /* 統一的 Widget 容器樣式 - 限定在 market-dashboard 內 */
@@ -464,7 +464,7 @@ export default {
 }
 
 .market-dashboard .widget-header h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
@@ -494,7 +494,7 @@ export default {
 }
 
 .market-dashboard .section-header h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;

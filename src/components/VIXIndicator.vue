@@ -126,14 +126,14 @@ export default {
 }
 
 .widget-header h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
 }
 
 .vix-subtitle {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
   font-style: italic;
 }
@@ -217,7 +217,7 @@ export default {
 }
 
 .vix-label {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
   margin-top: var(--space-1);
 }
@@ -243,12 +243,12 @@ export default {
 }
 
 .status-text {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
 }
 
 .vix-description {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   color: var(--text-secondary);
   line-height: 1.4;
   margin-bottom: var(--space-6);
@@ -305,7 +305,7 @@ export default {
   padding: var(--space-2);
   background: var(--grey-50);
   border-radius: var(--radius-xs);
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
 }
 
 .level-label {

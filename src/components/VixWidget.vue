@@ -241,7 +241,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
 }
 
 .retry-btn:hover {

@@ -631,7 +631,7 @@ export default {
 
 h3 {
     margin: 0 0 var(--space-4) 0;
-    font-size: 1.1rem;
+    font-size: var(--text-md);
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: var(--space-2);
@@ -653,8 +653,8 @@ h3 {
     flex-direction: column;
     align-items: center;
 }
-.stat .label { font-size: 0.8rem; color: var(--text-muted); }
-.stat .value { font-size: 1.1rem; font-weight: var(--weight-semibold); color: var(--text-primary); }
+.stat .label { font-size: var(--text-sm); color: var(--text-muted); }
+.stat .value { font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--text-primary); }
 
 /* Smart Money Strength */
 .smart-money-content {
@@ -705,7 +705,7 @@ h3 {
 .meter-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
 }
 
@@ -738,7 +738,7 @@ h3 {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
 }
 
 .transaction-list li {
@@ -746,7 +746,7 @@ h3 {
     align-items: center; 
     padding: 0.6rem 0;
     border-bottom: 1px solid var(--border-color-soft); /* Softer border */
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
 }
 
 .transaction-list li:last-child {
@@ -820,7 +820,7 @@ h3 {
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: var(--text-base);
 }
 
 th {

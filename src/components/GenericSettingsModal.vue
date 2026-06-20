@@ -266,7 +266,7 @@ export default {
 
 .modal-header h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   color: var(--text-primary);
 }
 
@@ -319,7 +319,7 @@ export default {
 
 .setting-label {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -327,7 +327,7 @@ export default {
 
 .info-icon {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   cursor: help;
 }
 

@@ -694,7 +694,7 @@ export default {
     border: 1px solid var(--border-color);
 }
 .metric-label {
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     color: var(--text-muted);
     margin-bottom: var(--space-4);
     font-weight: var(--weight-semibold);
@@ -756,7 +756,7 @@ export default {
 }
 .label {
     position: absolute;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     color: var(--text-secondary);
     white-space: nowrap;
     transform: translateX(-50%);
@@ -774,7 +774,7 @@ export default {
 }
 .rec-label {
     width: 70px;
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     color: var(--text-secondary);
     font-weight: var(--weight-medium);
 }
@@ -792,7 +792,7 @@ export default {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     font-weight: var(--weight-bold);
     /* width is the correct animated property here: a flex segment sized by the
        recommendation proportion; transform: scaleX would distort the label inside. */
@@ -811,7 +811,7 @@ export default {
     gap: var(--space-4);
     justify-content: center;
     margin-top: var(--space-6);
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
     color: var(--text-muted);
 }
 .legend-item {
@@ -881,7 +881,7 @@ export default {
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.95rem;
+    font-size: var(--text-base);
 }
 th, td {
     padding: var(--space-4);
@@ -913,7 +913,7 @@ tbody tr:hover {
 }
 .chart-header h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: var(--text-md);
     color: var(--text-primary);
 }
 
@@ -927,7 +927,7 @@ tbody tr:hover {
 .btn {
     border: none;
     padding: 0.4rem 0.8rem;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     cursor: pointer;
     transition: all var(--transition-base);
     background: var(--bg-card);

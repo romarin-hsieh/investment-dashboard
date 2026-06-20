@@ -678,7 +678,7 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: var(--space-4);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .breadcrumb-link {
@@ -789,7 +789,7 @@ export default {
 }
 
 .widget-header h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
@@ -915,7 +915,7 @@ export default {
 }
 
 .insight-full-widget .widget-header h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
@@ -956,7 +956,7 @@ export default {
 }
 
 .insight-widget .widget-header h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
@@ -1032,7 +1032,7 @@ export default {
   color: white;
   border: none;
   border-radius: 6px;
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -1076,7 +1076,7 @@ export default {
 }
 
 .widget-container .widget-header h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0;
@@ -1232,7 +1232,7 @@ export default {
 
 @media (max-width: 480px) {
   .breadcrumb {
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
   }
   
   .stock-header {
@@ -1244,11 +1244,11 @@ export default {
   }
   
   .insight-header h3 {
-    font-size: 1.1rem;
+    font-size: var(--text-md);
   }
   
   .symbol-info .symbol {
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
   }
   
   .widget-header {
@@ -1256,17 +1256,17 @@ export default {
   }
   
   .widget-header h4 {
-    font-size: 0.9rem;
+    font-size: var(--text-base);
   }
   
   .widget-title {
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     padding: var(--space-2) var(--space-3);
   }
   
   .detail-btn {
     padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
   }
   
   .widgets-container {

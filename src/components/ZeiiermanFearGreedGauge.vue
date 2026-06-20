@@ -567,7 +567,7 @@ export default {
 }
 
 .chart-description {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--text-muted);
 }
 
@@ -608,7 +608,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
   padding: 0 10px;
 }
@@ -624,7 +624,7 @@ export default {
 }
 .label-item:hover { opacity: 1; }
 .label-text { display: block; margin-bottom: 4px; line-height: 1.2; }
-.label-range { display: block; opacity: 0.6; font-size: 0.65rem; }
+.label-range { display: block; opacity: 0.6; font-size: var(--text-xs); }
 
 .label-item.extreme-fear .label-text { color: var(--c-ex-fear); }
 .label-item.fear .label-text { color: var(--c-fear); }
@@ -662,7 +662,7 @@ export default {
   line-height: 1.2;
 }
 .sentiment-description {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   color: var(--text-muted);
   max-width: 90%;
   margin: 0 auto;
@@ -690,7 +690,7 @@ export default {
 
 /* Components Section */
 .components-section h4, .history-section h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   opacity: 0.9;
@@ -700,7 +700,7 @@ export default {
 }
 .components-grid { display: flex; flex-direction: column; gap: var(--space-4); }
 .component-item { display: flex; flex-direction: column; gap: var(--space-2); }
-.component-name { font-size: 0.85rem; font-weight: var(--weight-medium); color: var(--text-secondary); }
+.component-name { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-secondary); }
 
 .component-bar { 
   position: relative; 
@@ -727,7 +727,7 @@ export default {
   bottom: 0; 
   display: flex; 
   align-items: center; 
-  font-size: 0.8rem; 
+  font-size: var(--text-sm); 
   font-weight: var(--weight-bold); 
   color: var(--text-primary);
   /* Ensure visibility on various backgrounds */
@@ -739,7 +739,7 @@ export default {
 .history-item { display: flex; flex-direction: column; gap: 0.6rem; padding-bottom: var(--space-2); border-bottom: 1px dashed var(--border-color); }
 .history-item:last-child { border-bottom: none; }
 
-.history-label { font-size: 0.8rem; color: var(--text-muted); font-weight: var(--weight-medium);}
+.history-label { font-size: var(--text-sm); color: var(--text-muted); font-weight: var(--weight-medium);}
 .history-value-container { display: flex; justify-content: space-between; align-items: center; }
 .history-sentiment { font-weight: var(--weight-bold); font-size: var(--text-md); }
 .history-circle {
@@ -750,7 +750,7 @@ export default {
     align-items: center;
     justify-content: center;
     font-weight: var(--weight-bold);
-    font-size: 0.95rem;
+    font-size: var(--text-base);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 

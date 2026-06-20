@@ -340,7 +340,7 @@ export default {
 .status-badge {
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
 }
 
@@ -356,7 +356,7 @@ export default {
 
 .status-details p {
   margin: var(--space-1) 0;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   color: var(--text-muted);
 }
 
@@ -371,7 +371,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   transition: all var(--transition-base);
 }
@@ -472,7 +472,7 @@ export default {
 
 .source {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .load-time {
@@ -482,13 +482,13 @@ export default {
 
 .error-message {
   color: var(--danger-solid);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .indicators-preview {
   display: flex;
   gap: var(--space-4);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   color: var(--text-muted);
 }
 
@@ -503,7 +503,7 @@ export default {
   color: var(--text-secondary);
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-xs);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 

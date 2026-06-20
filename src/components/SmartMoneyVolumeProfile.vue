@@ -381,7 +381,7 @@ export default {
     border-radius: var(--radius-xs);
     background-color: var(--bg-card);
     color: var(--text-primary);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     cursor: pointer;
 }
 .range-selector:focus {
@@ -397,7 +397,7 @@ export default {
 }
 .header h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: var(--text-md);
     color: var(--text-primary);
 }
 

@@ -468,7 +468,7 @@ export default {
 }
 
 .widget-header h4 {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-secondary);
   margin: 0;
@@ -526,7 +526,7 @@ export default {
     padding: 0.8rem var(--space-4);
     background: rgba(0, 0, 0, 0.02); /* Very subtle background */
     border-radius: var(--radius-xs);
-    font-size: 0.9rem;
+    font-size: var(--text-base);
     color: var(--text-secondary);
     line-height: 1.5;
 }
@@ -571,7 +571,7 @@ export default {
 }
 
 .stale-banner-icon {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   line-height: 1;
 }
 
@@ -603,7 +603,7 @@ export default {
   }
   
   .symbol-info .symbol {
-    font-size: 1.6rem;
+    font-size: var(--text-xl);
   }
   
   .widgets-container {
@@ -649,11 +649,11 @@ export default {
   
   .btn-renaissance {
     padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    font-size: var(--text-sm);
   }
   
   .symbol-info .symbol {
-    font-size: 1.3rem;
+    font-size: var(--text-lg);
   }
   
   /* 手機版：widgets 垂直排列 */
@@ -673,7 +673,7 @@ export default {
   }
   
   .widget-header h4 {
-    font-size: 0.9rem;
+    font-size: var(--text-base);
   }
 }
 
@@ -684,12 +684,12 @@ export default {
   }
   
   .symbol-info .symbol {
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
   }
   
   .exchange-tag,
   .industry-tag {
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
     padding: 0.2rem 0.4rem;
   }
   

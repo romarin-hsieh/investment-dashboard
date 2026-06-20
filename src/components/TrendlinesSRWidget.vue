@@ -463,7 +463,7 @@ export default {
   border: none;
   border-radius: var(--radius-xs);
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   padding: 4px 8px;
   color: var(--text-secondary);
   transition: all var(--transition-base);

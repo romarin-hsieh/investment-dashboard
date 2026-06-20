@@ -143,14 +143,14 @@ export default {
 }
 
 .widget-header h3 {
-  font-size: 1.1rem;
+  font-size: var(--text-md);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0 0 var(--space-1) 0;
 }
 
 .widget-description {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   color: var(--text-secondary);
   margin: 0;
 }
@@ -180,14 +180,14 @@ export default {
 }
 
 .index-name {
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
   margin: 0 0 var(--space-1) 0;
 }
 
 .index-symbol {
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   color: var(--text-secondary);
   margin: 0;
   font-family: 'Courier New', monospace;
@@ -205,7 +205,7 @@ export default {
 }
 
 .index-change {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 
@@ -232,11 +232,11 @@ export default {
   }
   
   .index-name {
-    font-size: 0.9rem;
+    font-size: var(--text-base);
   }
   
   .index-price {
-    font-size: 0.95rem;
+    font-size: var(--text-base);
   }
 }
 </style>

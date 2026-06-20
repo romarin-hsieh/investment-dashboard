@@ -396,7 +396,7 @@ export default {
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
 }
 
 .data-table th {
@@ -501,7 +501,7 @@ export default {
 .history-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   background: transparent;
 }
 

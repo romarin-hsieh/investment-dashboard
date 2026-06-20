@@ -249,7 +249,7 @@ export default {
 
 .monitor-header h4 {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
 }
@@ -257,7 +257,7 @@ export default {
 .toggle-btn {
   background: none;
   border: none;
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
   font-weight: bold;
   cursor: pointer;
   color: var(--text-secondary);
@@ -298,7 +298,7 @@ export default {
 }
 
 .metric-value {
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
   color: var(--text-primary);
 }
@@ -308,7 +308,7 @@ export default {
 }
 
 .widgets-list h5 {
-  font-size: 0.85rem;
+  font-size: var(--text-sm);
   margin: 0 0 var(--space-2) 0;
   color: var(--text-primary);
 }
@@ -321,7 +321,7 @@ export default {
   background: var(--bg-secondary);
   border-radius: var(--radius-xs);
   margin-bottom: var(--space-1);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
 }
 
 .widget-name {
@@ -352,7 +352,7 @@ export default {
   color: white;
   padding: 0.125rem 0.375rem;
   border-radius: var(--radius-md);
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: var(--weight-medium);
 }
 
@@ -369,7 +369,7 @@ export default {
   border-radius: var(--radius-xs);
   background: var(--bg-card);
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: var(--weight-medium);
 }
 

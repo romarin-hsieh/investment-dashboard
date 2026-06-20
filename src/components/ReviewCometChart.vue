@@ -382,7 +382,7 @@ onUnmounted(() => {
 
 .box-header {
     padding: var(--space-3) var(--space-4);
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     font-weight: var(--weight-medium);
     opacity: 0.9;
     border-bottom: 1px solid;
@@ -418,13 +418,13 @@ onUnmounted(() => {
     border-color: rgba(128, 128, 128, 0.2); 
 }
 
-.card-header h4 { margin: 0; font-size: 0.9rem; font-weight: var(--weight-semibold); }
+.card-header h4 { margin: 0; font-size: var(--text-base); font-weight: var(--weight-semibold); }
 
 .metrics-table {
     display: flex;
     flex-direction: column;
     width: 100%;
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
 }
 
 .table-row {
@@ -452,12 +452,12 @@ onUnmounted(() => {
 
 .col-val { text-align: right; font-family: 'Roboto Mono', monospace; }
 .col-val.highlight { font-weight: bold; color: #2962FF; }
-.col-val.muted { opacity: 0.6; font-size: 0.8rem; }
+.col-val.muted { opacity: 0.6; font-size: var(--text-sm); }
 
 .commentary {
     /* margin-top: auto; Removed to allow being pushed to top */
     margin-bottom: 0.8rem; /* Add spacing below */
-    font-size: 0.85rem;
+    font-size: var(--text-sm);
     line-height: 1.4;
     font-weight: var(--weight-medium);
     color: var(--text-color); /* Improve contrast */

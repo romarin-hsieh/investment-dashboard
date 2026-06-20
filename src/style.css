@@ -91,16 +91,18 @@
   --section-gap: var(--space-6);           /* between major sections */
   --section-gap-sm: var(--space-4);        /* between related items */
 
-  /* === Typography scale ===
-   * Pair a --text-* size with a --weight-*. Audit found ad-hoc per-component
-   * font-sizes/weights; these give a single ramp to converge on. */
-  --text-xs:   0.75rem;
-  --text-sm:   0.875rem;
-  --text-base: 0.9375rem;
-  --text-md:   1rem;
-  --text-lg:   1.25rem;
-  --text-xl:   1.5rem;
-  --text-2xl:  2rem;
+  /* === Typography scale (converged, ~1.13–1.2 ratio) ===
+   * Fixed rem ramp tuned for this dense financial UI. Every component
+   * font-size flows through one of these tokens; no off-scale literals.
+   * Pair a --text-* size with a --weight-*. */
+  --text-xs:   0.6875rem;  /* 11px · micro: badges, tags, tiny meta */
+  --text-sm:   0.8125rem;  /* 13px · caption: secondary labels, meta, dense tables */
+  --text-base: 0.9375rem;  /* 15px · body: default text, tables, descriptions, nav */
+  --text-md:   1.0625rem;  /* 17px · emphasis / widget heading (h3/h4), stat value */
+  --text-lg:   1.25rem;    /* 20px · subheading / section title */
+  --text-xl:   1.5rem;     /* 24px · heading */
+  --text-2xl:  2rem;       /* 32px · page title */
+  --text-3xl:  2.5rem;     /* 40px · display / hero figure */
   --weight-normal:   400;
   --weight-medium:   500;
   --weight-semibold: 600;
