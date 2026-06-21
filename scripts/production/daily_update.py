@@ -21,7 +21,18 @@ class DailyUpdate:
         self.symbol_data = {}
         self.spy_data = None
         self.sector_data = {} # Cache for XLK, etc.
-        
+
+    def _load_universe(self):
+        """Canonical symbol set from config/stocks.json (ADR-0008 sole source)."""
+        for p in ("public/config/stocks.json", "config/stocks.json"):
+            try:
+                with open(p, 'r', encoding='utf-8') as f:
+                    cfg = json.load(f)
+                return {s['symbol'].upper() for s in cfg.get('stocks', []) if s.get('symbol')}
+            except Exception:
+                continue
+        return set()
+
     def load_data(self):
         print("Loading Market Data...")
         # SPY
@@ -44,6 +55,17 @@ class DailyUpdate:
         else:
             files = [f for f in os.listdir(DATA_DIR) if f.endswith('.json') and not f.startswith('index') and 'SPY' not in f and 'sector' not in f]
             dir_to_scan = DATA_DIR
+
+        # The ohlcv dir also holds per-lookback analysis slices (e.g.
+        # TRV_1D_1825D.json) whose filenames are NOT tickers. config/stocks.json
+        # is the sole symbol source (ADR-0008), so emit a dashboard row only for
+        # files whose name matches a real universe symbol — otherwise the ~417
+        # variant files leak into dashboard_status.json as phantom "tickers".
+        universe = self._load_universe()
+        if universe:
+            before = len(files)
+            files = [f for f in files if f.replace('.json', '').upper() in universe]
+            print(f"Universe filter: {before} ohlcv files -> {len(files)} universe symbols")
 
         for fname in files:
             try:

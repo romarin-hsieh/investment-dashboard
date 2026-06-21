@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { getToken } from '@/utils/designTokens';
+import { formatNumber } from '@/utils/numberFormat';
 
 const { t } = useI18n();
 
@@ -65,17 +66,17 @@ const isPositive = computed(() => props.changePercent >= 0);
       <div class="ticker-info">
         <h2>{{ ticker }}</h2>
         <div class="price-info">
-          <span class="price">${{ price }}</span>
+          <span class="price">${{ formatNumber(price, 2) }}</span>
           <span
             class="change"
             :class="{ 'up': isPositive, 'down': !isPositive }"
-            :aria-label="isPositive ? $t('signalCard.priceUp', { percent: changePercent }) : $t('signalCard.priceDown', { percent: changePercent })"
+            :aria-label="isPositive ? $t('signalCard.priceUp', { percent: formatNumber(changePercent, 2) }) : $t('signalCard.priceDown', { percent: formatNumber(changePercent, 2) })"
           >
             <!-- Glyph carries direction for colour-blind / greyscale users.
                  Hidden from screen readers (which use the aria-label above)
                  to avoid 'up arrow up two percent' double-reading. -->
             <span class="change-glyph" aria-hidden="true">{{ isPositive ? '▲' : '▼' }}</span>
-            {{ isPositive ? '+' : '' }}{{ changePercent }}%
+            {{ isPositive ? '+' : '' }}{{ formatNumber(changePercent, 2) }}%
           </span>
         </div>
       </div>
