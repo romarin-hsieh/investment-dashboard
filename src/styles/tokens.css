@@ -77,6 +77,7 @@
   --chart-down-alt: #f23645;
   --chart-bg:       #2a2e39;
   --chart-bg-deep:  #1e222d;
+  --chart-grid:     rgba(0, 0, 0, 0.05);  /* candlestick axis/grid lines — THEME-VARIANT (dark override below) */
 
   /* Kinetic-chart series palette — THEME-FIXED (the Quant Plotly plates stay
    * dark in both modes, so these are tuned to read on #1e222d, not to invert).
@@ -116,6 +117,8 @@
 
   --info-bg:      #1e3336;
   --info-fg:      #a8c4c7;
+
+  --chart-grid:   rgba(255, 255, 255, 0.05);
 }
 
 /* === Focus indicator baseline =========================================

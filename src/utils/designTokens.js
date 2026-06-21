@@ -41,6 +41,32 @@ export function getToken (name) {
 }
 
 /**
+ * Read a hex colour token and return it as an `rgba()` string at the given
+ * alpha. Charting libs that draw translucent fills (zone overlays, area
+ * shading) need rgba, but our colour tokens are stored as solid hex — this
+ * bridges the two without hardcoding the rgb triplet in component scripts.
+ *
+ * Falls back to returning the raw token value untouched when it is not a
+ * #rgb / #rrggbb hex (e.g. already an rgb()/rgba() string, or empty).
+ *
+ * @param {string} name — token name including the leading '--'
+ * @param {number} alpha — 0..1 opacity
+ * @returns {string} e.g. 'rgba(8, 153, 129, 0.3)'
+ */
+export function getTokenRgba (name, alpha) {
+  const value = getToken(name)
+  const hex = value.replace('#', '')
+  const full = hex.length === 3
+    ? hex.split('').map((c) => c + c).join('')
+    : hex
+  if (full.length !== 6 || /[^0-9a-f]/i.test(full)) return value
+  const r = parseInt(full.slice(0, 2), 16)
+  const g = parseInt(full.slice(2, 4), 16)
+  const b = parseInt(full.slice(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
+/**
  * Convenience: read several tokens at once. Returns an object keyed by the
  * token name without the leading '--' (so '--chart-up' becomes `chartUp`).
  *
