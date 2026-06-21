@@ -244,7 +244,7 @@ export default {
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--border-color);
   background: var(--bg-secondary);
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 
 .monitor-header h4 {
@@ -287,7 +287,7 @@ export default {
 .metric-card {
   background: var(--bg-secondary);
   padding: var(--space-3);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   text-align: center;
 }
 

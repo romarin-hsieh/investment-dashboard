@@ -719,7 +719,7 @@ export default {
     height: 6px;
     background: var(--bg-secondary);
     transform: translateY(-50%);
-    border-radius: 3px;
+    border-radius: var(--radius-pill);
 }
 .range-fill {
     position: absolute;
@@ -782,7 +782,7 @@ export default {
     flex: 1;
     height: 28px;
     display: flex;
-    border-radius: 6px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
     background: var(--bg-secondary);
 }
@@ -920,7 +920,7 @@ tbody tr:hover {
 /* Button Group */
 .btn-group {
     display: inline-flex;
-    border-radius: 6px;
+    border-radius: var(--radius-xs);
     overflow: hidden;
     border: 1px solid var(--border-color);
 }

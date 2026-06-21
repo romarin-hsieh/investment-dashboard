@@ -659,7 +659,7 @@ export default {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
   margin-bottom: var(--space-4);
   /* 確保圖表容器不被其他元素壓縮 */

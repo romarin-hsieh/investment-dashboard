@@ -352,7 +352,7 @@ export default {
 .btn {
     padding: 0.6rem 1.2rem;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-xs);
     background: var(--primary-color);
     color: white;
     cursor: pointer;

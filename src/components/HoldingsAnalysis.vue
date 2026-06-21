@@ -692,7 +692,7 @@ h3 {
 .meter-bar-dual {
     height: 12px;
     background: var(--bg-surface-tone);
-    border-radius: 6px;
+    border-radius: var(--radius-pill);
     overflow: hidden;
     display: flex;
     margin-bottom: var(--space-2);
