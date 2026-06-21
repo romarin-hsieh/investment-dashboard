@@ -28,11 +28,18 @@ export const BUDGETS = {
   'assets/plotly.js':       { gzip: 1.8 * MB,  headroomPct: 13 },
 
   // Entry-route chunk — every visitor pays this cost on first paint.
-  // Aggregated across both `index-*` chunks Rollup emits. Raised for the i18n
-  // bulk migration (⑥): all locale messages load at boot, so the entry grows as
-  // bilingual coverage expands. Reclaim path: lazy-load the non-active locale
-  // (load only EN at boot, fetch zh-TW on switch) — see ADR-0007 change log.
-  'assets/index.js':        { gzip: 180 * KB,  headroomPct: 9 },
+  // Aggregated across both `index-*` chunks Rollup emits. The non-active locale
+  // is now lazy-loaded (boot active-only, dynamic-import the other on switch), so
+  // both locale trees moved out of the entry into their own chunks — reclaimed
+  // 180→160 KB (measured 144.9 KB). Active locale ships as a separate chunk below.
+  'assets/index.js':        { gzip: 160 * KB,  headroomPct: 10 },
+
+  // Per-locale message chunks (precompiled → CSP-safe). Lazy-loaded: the active
+  // locale at boot, the other on first switch. Split out of `index.js` so the
+  // entry no longer carries both locales' strings. Grow with bilingual coverage,
+  // which is parity-enforced so EN and 繁中 track together (measured 12.8 / 14.2 KB).
+  'assets/en.js':           { gzip: 18 * KB,   headroomPct: 41 },
+  'assets/zh-TW.js':        { gzip: 18 * KB,   headroomPct: 27 },
 
   // Largest *route* chunk — heavily used (every stock detail page) and
   // already split across Analysis / Holdings tabs by PR-C3, so further

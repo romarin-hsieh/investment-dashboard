@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
-import i18n from './i18n.js'
+import i18n, { loadLocaleMessages } from './i18n.js'
 import './styles/tokens.css'  // Neutral palette + semantic-state tokens (load first)
 import './style.css'          // Brand theme (overrides apply)
 
@@ -50,7 +50,11 @@ const router = createRouter({
 const app = createApp(App)
 app.use(i18n)
 app.use(router)
-app.mount('#app')
+
+// Load the active locale's (precompiled) messages before first paint so no keys
+// flash as raw paths; the non-active locale is fetched lazily on first switch.
+// `.finally` so the app still mounts even if the locale chunk fails to load.
+loadLocaleMessages(i18n.global.locale.value).finally(() => app.mount('#app'))
 
 // Initialize auto-update scheduler after app is mounted
 // Delay startup to avoid interfering with initial page load
