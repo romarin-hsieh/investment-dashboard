@@ -220,12 +220,12 @@ export default {
 
 .panel-content::-webkit-scrollbar-track {
   background: var(--bg-secondary);
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
 }
 
 .panel-content::-webkit-scrollbar-thumb {
   background: var(--border-color);
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
 }
 
 .panel-content::-webkit-scrollbar-thumb:hover {

@@ -354,7 +354,7 @@ export default {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--bg-secondary);
 }
 

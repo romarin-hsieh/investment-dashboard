@@ -245,7 +245,7 @@ export default {
 .news-item {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
   padding: var(--space-4);
   cursor: pointer;
   transition: all var(--transition-base) ease;
@@ -316,7 +316,7 @@ export default {
   color: var(--text-secondary);
   background: var(--bg-secondary);
   padding: 0.2rem 0.4rem;
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
   text-transform: uppercase;
   font-weight: var(--weight-medium);
 }

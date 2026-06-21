@@ -234,7 +234,7 @@ export default {
   @extend .skeleton-base;
   width: 80px;
   height: 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-pill);
 }
 
 .skeleton-header-actions {
@@ -246,7 +246,7 @@ export default {
   @extend .skeleton-base;
   width: 160px;
   height: 36px;
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
 }
 
 /* Widgets Container 骨架 */
@@ -360,7 +360,7 @@ export default {
   @extend .skeleton-base;
   width: 60px;
   height: 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-pill);
 }
 
 /* Performance Monitor 骨架 */

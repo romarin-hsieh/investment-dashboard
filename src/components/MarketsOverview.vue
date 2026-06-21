@@ -302,7 +302,7 @@ export default {
 
 .quality-flag {
   padding: 0.125rem 0.375rem;
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
   font-size: var(--text-xs);
   font-weight: var(--weight-medium);
   text-transform: uppercase;

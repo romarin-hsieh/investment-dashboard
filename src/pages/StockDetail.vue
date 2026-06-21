@@ -1031,7 +1031,7 @@ export default {
   background: linear-gradient(135deg, var(--grey-550), var(--grey-650));
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-xs);
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
   cursor: pointer;

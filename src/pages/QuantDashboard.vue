@@ -257,7 +257,7 @@ h1 {
 .empty-state code {
   background: var(--bg-secondary);
   padding: 0.1rem 0.4rem;
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
   font-family: ui-monospace, monospace;
   font-size: var(--text-sm);
 }
