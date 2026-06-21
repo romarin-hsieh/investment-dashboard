@@ -161,6 +161,7 @@ import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
 import { formatNumber } from '@/utils/numberFormat'
 import { useTheme } from '@/composables/useTheme.js'
+import { getToken, getTokenRgba } from '@/utils/designTokens.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController)
 
@@ -206,11 +207,14 @@ export default {
         return this.theme === 'dark';
     },
     commonChartColors() {
+        // Touch `theme` so this computed re-evaluates (re-reads tokens) on
+        // light/dark toggle — getToken() reads the DOM, not a reactive dep.
+        void this.theme;
         return {
-            text: this.isDark ? '#E6E1DC' : '#666',
-            grid: this.isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
-            tooltipBg: this.isDark ? 'rgba(30, 30, 30, 0.9)' : 'rgba(255, 255, 255, 0.9)',
-            tooltipText: this.isDark ? '#fff' : '#000'
+            text: getToken('--text-secondary'),
+            grid: getToken('--chart-grid'),
+            tooltipBg: getTokenRgba('--bg-card', 0.9),
+            tooltipText: getToken('--text-primary')
         }
     },
     recommendationChartOptions() {
@@ -494,16 +498,16 @@ export default {
                     label: this.$t('fundamentals.earnings.revenueSeries'),
                     // Support both object with .raw (legacy/live API) and direct number (new static data)
                     data: history.map(item => item.revenue?.raw !== undefined ? item.revenue.raw : item.revenue),
-                    backgroundColor: this.theme === 'dark' ? 'rgba(138, 154, 156, 0.6)' : 'rgba(107, 127, 130, 0.6)', // Primary Color with opacity
-                    hoverBackgroundColor: this.theme === 'dark' ? '#8A9A9C' : '#6B7F82',
+                    backgroundColor: getTokenRgba('--primary-color', 0.6), // brand primary with opacity
+                    hoverBackgroundColor: getToken('--primary-color'),
                     yAxisID: 'y1'
                 },
                 {
                     type: 'line',
                     label: this.$t('fundamentals.earnings.earningsSeries'),
                     data: history.map(item => item.earnings?.raw !== undefined ? item.earnings.raw : item.earnings),
-                    borderColor: '#22ab94', // Success Color
-                    backgroundColor: '#22ab94',
+                    borderColor: getToken('--chart-up'),
+                    backgroundColor: getToken('--chart-up'),
                     fill: false,
                     tension: 0.4,
                     yAxisID: 'y'
@@ -566,8 +570,8 @@ export default {
                 datasets: [{
                     label: this.$t('fundamentals.targetPriceChart.priceTargetSeries'),
                     data: chartItems.map(item => item.currentPriceTarget),
-                    borderColor: '#ffc107',
-                    backgroundColor: 'rgba(255, 193, 7, 0.2)',
+                    borderColor: getToken('--warning-solid'),
+                    backgroundColor: getTokenRgba('--warning-solid', 0.2),
                     pointRadius: 4,
                     pointHoverRadius: 6,
                     fill: true,

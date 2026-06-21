@@ -40,6 +40,7 @@ import {
 import { Bar } from 'vue-chartjs'
 import { formatNumber } from '@/utils/numberFormat'
 import { withDataBase } from '@/utils/baseUrl.js'
+import { getToken } from '@/utils/designTokens.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -102,13 +103,13 @@ export default {
         scales: {
           x: {
             stacked: true,
-            grid: { color: 'rgba(255,255,255,0.05)' }
+            grid: { color: getToken('--chart-grid') }
           },
           y: {
             stacked: true,
             beginAtZero: true,
             max: 100,
-            grid: { color: 'rgba(255,255,255,0.05)' },
+            grid: { color: getToken('--chart-grid') },
             ticks: {
               callback: (value) => value + '%'
             }
@@ -118,7 +119,7 @@ export default {
           legend: {
             position: 'bottom',
             labels: {
-              color: '#888',
+              color: getToken('--text-secondary'),
               usePointStyle: true,
               font: { size: 11 }
             }
@@ -180,7 +181,7 @@ export default {
             
              if (diff !== 0) {
                 const sign = diff > 0 ? '+' : ''
-                const colorStyle = diff > 0 ? 'color:#48c774' : 'color:#ff3860'
+                const colorStyle = diff > 0 ? `color:${getToken('--chart-up')}` : `color:${getToken('--chart-down')}`
                 changeHtml = `<span style="${colorStyle}; font-weight:600">(${sign}${formatNumber(diff, 1)}%)</span>`
              }
           }

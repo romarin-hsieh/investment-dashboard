@@ -32,6 +32,7 @@ import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import { ohlcvApi } from '@/services/ohlcvApi.js'
 import { useTheme } from '@/composables/useTheme.js'
+import { getToken } from '@/utils/designTokens.js'
 import { formatNumber as fmtNumber } from '@/utils/numberFormat'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -67,6 +68,8 @@ export default {
     },
     isDark() { return this.theme === 'dark' },
     chartOptions() {
+      // Touch `theme` so options re-read tokens on light/dark toggle.
+      void this.theme;
       return {
         indexAxis: 'y', // Horizontal Bar
         responsive: true,
@@ -74,21 +77,21 @@ export default {
         scales: {
           x: {
             display: true,
-            title: { display: true, text: this.$t('smartMoney.axis.totalVolume'), color: this.isDark ? '#aaa':'#666' },
-            grid: { color: this.isDark ? '#333':'#eee' },
-            ticks: { color: this.isDark ? '#aaa':'#666', callback: (val) => this.formatVolume(val) }
+            title: { display: true, text: this.$t('smartMoney.axis.totalVolume'), color: getToken('--text-secondary') },
+            grid: { color: getToken('--chart-grid') },
+            ticks: { color: getToken('--text-secondary'), callback: (val) => this.formatVolume(val) }
           },
           y: {
             display: true,
-            title: { display: true, text: this.$t('smartMoney.axis.priceZone'), color: this.isDark ? '#aaa':'#666' },
+            title: { display: true, text: this.$t('smartMoney.axis.priceZone'), color: getToken('--text-secondary') },
             grid: { display: false },
-            ticks: { color: this.isDark ? '#aaa':'#666', font: { size: 11 } }
+            ticks: { color: getToken('--text-secondary'), font: { size: 11 } }
           }
         },
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: this.isDark ? '#E6E1DC' : '#666', generateLabels: this.generateLegendLabels }
+            labels: { color: getToken('--text-secondary'), generateLabels: this.generateLegendLabels }
           },
           tooltip: {
             callbacks: {
@@ -309,17 +312,17 @@ export default {
         // Neutral => Grey
         
         const backgroundColors = reversedBins.map(b => {
-            if (b.netSmartShares > 1000) return '#28a745'; // Significant Buy (Green)
-            if (b.netSmartShares > 0) return '#82c91e'; // Muted Green
-            if (b.netSmartShares < -1000) return '#dc3545'; // Significant Sell (Red)
-            if (b.netSmartShares < 0) return '#ff8787'; // Muted Red
-            return this.isDark ? '#343a40' : '#e9ecef'; // Neutral Grey (Base)
+            if (b.netSmartShares > 1000) return getToken('--success-solid'); // Significant Buy
+            if (b.netSmartShares > 0) return '#82c91e'; // Muted Green — chart-local intensity tint (no brand token)
+            if (b.netSmartShares < -1000) return getToken('--danger-solid'); // Significant Sell
+            if (b.netSmartShares < 0) return '#ff8787'; // Muted Red — chart-local intensity tint (no brand token)
+            return this.isDark ? getToken('--grey-750') : getToken('--grey-100'); // Neutral base
         });
         
         const borderColors = reversedBins.map(b => {
-             if (b.netSmartShares > 0) return '#28a745';
-             if (b.netSmartShares < 0) return '#dc3545';
-             return this.isDark ? '#495057' : '#ced4da';
+             if (b.netSmartShares > 0) return getToken('--success-solid');
+             if (b.netSmartShares < 0) return getToken('--danger-solid');
+             return this.isDark ? getToken('--grey-700') : getToken('--grey-300');
         });
 
         this.chartData = {
@@ -341,9 +344,9 @@ export default {
     generateLegendLabels(chart) {
         // Custom Legend to explain colors
         return [
-           { text: this.$t('smartMoney.legend.buy'), fillStyle: '#28a745', strokeStyle: '#28a745' },
-           { text: this.$t('smartMoney.legend.sell'), fillStyle: '#dc3545', strokeStyle: '#dc3545' },
-           { text: this.$t('smartMoney.legend.neutral'), fillStyle: this.isDark ? '#343a40':'#e9ecef', strokeStyle: this.isDark ? '#495057':'#ced4da' }
+           { text: this.$t('smartMoney.legend.buy'), fillStyle: getToken('--success-solid'), strokeStyle: getToken('--success-solid') },
+           { text: this.$t('smartMoney.legend.sell'), fillStyle: getToken('--danger-solid'), strokeStyle: getToken('--danger-solid') },
+           { text: this.$t('smartMoney.legend.neutral'), fillStyle: this.isDark ? getToken('--grey-750') : getToken('--grey-100'), strokeStyle: this.isDark ? getToken('--grey-700') : getToken('--grey-300') }
         ];
     },
     
