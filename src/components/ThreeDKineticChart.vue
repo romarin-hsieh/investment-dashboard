@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref, watch, nextTick, computed } from 'vue';
 import { formatNumber } from '@/utils/numberFormat';
+import { getToken } from '@/utils/designTokens';
 
 // WS-C PR-C1: Plotly (~1.2 MB uncompressed) is dynamically imported on
 // first render so it loads from its own Vite chunk only when the user
@@ -57,13 +58,25 @@ const isDataEmpty = computed(() => {
     return !props.dataPoint || Object.keys(props.dataPoint).length === 0;
 });
 
-const commonLayout = {
+// Resolve the kinetic-chart palette from tokens at render time (Plotly needs
+// real colour strings, not CSS vars). The --chart-series-* tokens are
+// theme-fixed, so this is stable regardless of the app theme.
+const chartPalette = () => ({
+    trend:   getToken('--chart-series-trend'),
+    current: getToken('--chart-series-current'),
+    accent:  getToken('--chart-series-accent'),
+    ghost:   getToken('--grey-500'),
+    grid:    getToken('--chart-bg'),
+    font:    getToken('--grey-350'),
+});
+
+const baseLayout = (C) => ({
     paper_bgcolor: 'rgba(0,0,0,0)',
     plot_bgcolor: 'rgba(0,0,0,0)',
-    font: { color: '#D1D4DC', size: 10 },
+    font: { color: C.font, size: 10 },
     margin: { l: 30, r: 10, b: 30, t: 10 },
     showlegend: false
-};
+});
 
 const renderCharts = async () => {
     if (isDataEmpty.value) return;
@@ -78,6 +91,7 @@ const renderCharts = async () => {
 
 const render3D = () => {
     if (!container3D.value) return;
+    const C = chartPalette();
 
     const x = props.dataPoint.x_trend;
     const y = props.dataPoint.y_momentum;
@@ -86,7 +100,7 @@ const render3D = () => {
     const currentTrace = {
         x: [x], y: [y], z: [z],
         mode: 'markers',
-        marker: { size: 5, color: '#F23645' }, // Smaller marker to match refined style
+        marker: { size: 5, color: C.current }, // Smaller marker to match refined style
         type: 'scatter3d', name: 'Current'
     };
 
@@ -96,7 +110,7 @@ const render3D = () => {
         y: validHistory.map(p => p.y_momentum),
         z: validHistory.map(p => p.z_structure),
         mode: 'lines',
-        line: { color: '#2962FF', width: 4 },
+        line: { color: C.trend, width: 4 },
         type: 'scatter3d', name: 'Path'
     };
 
@@ -105,16 +119,16 @@ const render3D = () => {
         x: [-3, 3, 3, -3, -3, 3, 3, -3],
         y: [0, 0, 1, 1, 0, 0, 1, 1],
         z: [0.8, 0.8, 0.8, 0.8, 1, 1, 1, 1],
-        opacity: 0.1, color: '#FFD700', name: 'Squeeze'
+        opacity: 0.1, color: C.accent, name: 'Squeeze'
     };
 
     const layout = {
-        ...commonLayout,
+        ...baseLayout(C),
         margin: { l: 0, r: 0, b: 0, t: 0 },
         scene: {
-            xaxis: { title: 'X', range: [-3, 3], gridcolor: '#2A2E39' },
-            yaxis: { title: 'Y', range: [0, 1], gridcolor: '#2A2E39' },
-            zaxis: { title: 'Z', range: [0, 1], gridcolor: '#2A2E39' },
+            xaxis: { title: 'X', range: [-3, 3], gridcolor: C.grid },
+            yaxis: { title: 'Y', range: [0, 1], gridcolor: C.grid },
+            zaxis: { title: 'Z', range: [0, 1], gridcolor: C.grid },
             camera: { eye: { x: 1.5, y: 1.5, z: 1.5 } }
         },
         height: undefined, // Let container dictate
@@ -126,6 +140,7 @@ const render3D = () => {
 
 const renderStock2D = () => {
     if (!container2DTop.value || !container2DSide.value) return;
+    const C = chartPalette();
 
     const x = props.dataPoint.x_trend;
     const y = props.dataPoint.y_momentum;
@@ -136,20 +151,20 @@ const renderStock2D = () => {
         x: props.historyTrace.map(p => p.x_trend),
         y: props.historyTrace.map(p => p.y_momentum),
         mode: 'lines',
-        line: { color: '#2962FF', width: 2 },
+        line: { color: C.trend, width: 2 },
         type: 'scatter', hoverinfo: 'none'
     };
     const topCurrent = {
         x: [x], y: [y], mode: 'markers',
-        marker: { size: 8, color: '#F23645' }, type: 'scatter'
+        marker: { size: 8, color: C.current }, type: 'scatter'
     };
     const layoutTop = {
-        ...commonLayout,
-        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: '#2A2E39' },
-        yaxis: { title: 'Momentum (Y)', range: [0, 1.1], showgrid: true, gridcolor: '#2A2E39' },
+        ...baseLayout(C),
+        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: C.grid },
+        yaxis: { title: 'Momentum (Y)', range: [0, 1.1], showgrid: true, gridcolor: C.grid },
         shapes: [
-            { type: 'line', x0: -3, x1: 3, y0: 0.5, y1: 0.5, line: { color: '#2A2E39', width: 1, dash: 'dot' } }, 
-            { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }
+            { type: 'line', x0: -3, x1: 3, y0: 0.5, y1: 0.5, line: { color: C.grid, width: 1, dash: 'dot' } }, 
+            { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: C.accent, opacity: 0.1, line: { width: 0 } }
         ],
         autosize: true
     };
@@ -160,19 +175,19 @@ const renderStock2D = () => {
         x: props.historyTrace.map(p => p.x_trend),
         y: props.historyTrace.map(p => p.z_structure),
         mode: 'lines',
-        line: { color: '#8E24AA', width: 2 },
+        line: { color: C.trend, width: 2 },
         type: 'scatter', hoverinfo: 'none'
     };
     const sideCurrent = {
         x: [x], y: [z], mode: 'markers',
-        marker: { size: 8, color: '#F23645' }, type: 'scatter'
+        marker: { size: 8, color: C.current }, type: 'scatter'
     };
     const layoutSide = {
-        ...commonLayout,
-        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: '#2A2E39' },
-        yaxis: { title: 'Structure (Z)', range: [0, 1.1], showgrid: true, gridcolor: '#2A2E39' },
+        ...baseLayout(C),
+        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: C.grid },
+        yaxis: { title: 'Structure (Z)', range: [0, 1.1], showgrid: true, gridcolor: C.grid },
         shapes: [
-             { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }
+             { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: C.accent, opacity: 0.1, line: { width: 0 } }
         ],
         autosize: true
     };
@@ -181,8 +196,9 @@ const renderStock2D = () => {
 
 const renderSector2D = () => {
     if (!containerSectorTop.value || !containerSectorSide.value) return;
-    
-    const validSector = props.sectorTrace && props.sectorTrace.length > 0 
+    const C = chartPalette();
+
+    const validSector = props.sectorTrace && props.sectorTrace.length > 0
         ? props.sectorTrace.filter(p => p.x_trend !== undefined) 
         : [];
         
@@ -196,20 +212,20 @@ const renderSector2D = () => {
         x: validSector.map(p => p.x_trend),
         y: validSector.map(p => p.y_momentum),
         mode: 'lines',
-        line: { color: '#888888', width: 2, dash: 'dot' },
+        line: { color: C.ghost, width: 2, dash: 'dot' },
         type: 'scatter', hoverinfo: 'none'
     };
     const ghostHeadTop = {
         x: [last.x_trend], y: [last.y_momentum], mode: 'markers',
-        marker: { size: 6, color: '#888888' }, type: 'scatter'
+        marker: { size: 6, color: C.ghost }, type: 'scatter'
     };
     
     const layoutTop = {
-        ...commonLayout,
-        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: '#2A2E39' },
-        yaxis: { title: 'Momentum (Y)', range: [0, 1.1], showgrid: true, gridcolor: '#2A2E39' },
+        ...baseLayout(C),
+        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: C.grid },
+        yaxis: { title: 'Momentum (Y)', range: [0, 1.1], showgrid: true, gridcolor: C.grid },
         shapes: [
-             { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }
+             { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: C.accent, opacity: 0.1, line: { width: 0 } }
         ],
         autosize: true
     };
@@ -220,20 +236,20 @@ const renderSector2D = () => {
         x: validSector.map(p => p.x_trend),
         y: validSector.map(p => p.z_structure),
         mode: 'lines',
-        line: { color: '#888888', width: 2, dash: 'dot' },
+        line: { color: C.ghost, width: 2, dash: 'dot' },
         type: 'scatter', hoverinfo: 'none'
     };
     const ghostHeadSide = {
         x: [last.x_trend], y: [last.z_structure], mode: 'markers',
-        marker: { size: 6, color: '#888888' }, type: 'scatter'
+        marker: { size: 6, color: C.ghost }, type: 'scatter'
     };
 
     const layoutSide = {
-        ...commonLayout,
-        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: '#2A2E39' },
-        yaxis: { title: 'Structure (Z)', range: [0, 1.1], showgrid: true, gridcolor: '#2A2E39' },
+        ...baseLayout(C),
+        xaxis: { title: 'Trend (X)', range: [-3, 3], showgrid: true, gridcolor: C.grid },
+        yaxis: { title: 'Structure (Z)', range: [0, 1.1], showgrid: true, gridcolor: C.grid },
         shapes: [
-             { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }
+             { type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: C.accent, opacity: 0.1, line: { width: 0 } }
         ],
         autosize: true
     };
@@ -435,7 +451,7 @@ onUnmounted(() => {
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
     color: var(--grey-350);
-    background: rgba(41, 98, 255, 0.08);
+    background: rgba(138, 154, 156, 0.1); /* faint Florentine, de-neoned from terminal blue */
     padding: 0.6rem;
     border-radius: var(--radius-xs);
 }
@@ -452,7 +468,7 @@ onUnmounted(() => {
 .table-row.header { font-weight: var(--weight-semibold); opacity: 0.6; font-size: var(--text-xs); border-bottom: 1px solid rgba(128,128,128,0.2); }
 .table-row.dashed { border-bottom: 1px dashed rgba(128,128,128,0.2); }
 .col-val { text-align: right; font-family: 'Roboto Mono', monospace; }
-.col-val.highlight { font-weight: bold; color: #2962FF; }
+.col-val.highlight { font-weight: bold; color: var(--chart-series-trend); }
 .col-val.muted { opacity: 0.6; }
 
 /* Popover */

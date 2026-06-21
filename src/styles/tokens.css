@@ -78,6 +78,13 @@
   --chart-bg:       #2a2e39;
   --chart-bg-deep:  #1e222d;
 
+  /* Kinetic-chart series palette — THEME-FIXED (the Quant Plotly plates stay
+   * dark in both modes, so these are tuned to read on #1e222d, not to invert).
+   * Renaissance-toned, de-neoned from the old #2962FF/#F23645 terminal hexes. */
+  --chart-series-trend:   #8a9a9c;  /* Florentine — history trails / projection lines */
+  --chart-series-current: #c97b5a;  /* Terracotta — current "you are here" marker */
+  --chart-series-accent:  #d9b44a;  /* Antique gold — volatility-squeeze zone */
+
   /* === Quant signal palette ===
    * Used by SignalCard / SignalBadge to colour the kinetic-state classification.
    * Read from JS via getToken() in src/utils/designTokens.js — do not inline. */
