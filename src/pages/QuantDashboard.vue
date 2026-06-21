@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n';
 import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
 import SignalCard from '@/components/SignalCard.vue';
 import { withDataBase } from '@/utils/baseUrl.js';
+import { formatNumber } from '@/utils/numberFormat';
 
 const { t } = useI18n();
 
@@ -55,6 +56,22 @@ const currentTickerData = computed(() => {
     return latestData.value.find(d => d.ticker === selectedTicker.value);
 });
 
+const isPositive = computed(() => (currentTickerData.value?.change_percent ?? 0) >= 0);
+
+const signalLabel = computed(() => {
+    const s = currentTickerData.value?.signal;
+    switch (s) {
+        case 'LAUNCHPAD': return t('signalCard.signals.launchpad');
+        case 'DIP_BUY':   return t('signalCard.signals.dipBuy');
+        case 'CLIMAX':    return t('signalCard.signals.climax');
+        case 'AVOID':     return t('signalCard.signals.avoid');
+        default:          return (s || 'WAIT').replace('_', ' ');
+    }
+});
+
+const displayPrice = computed(() => formatNumber(currentTickerData.value?.price ?? 0, 2));
+const displayChange = computed(() => formatNumber(currentTickerData.value?.change_percent ?? 0, 2));
+
 onMounted(() => {
     fetchData();
 });
@@ -87,9 +104,26 @@ onMounted(() => {
     </div>
 
     <div v-else class="dashboard-grid">
-      <!-- Left Panel: Comet Chart -->
+      <!-- Left Panel: Verdict band + Comet Chart -->
       <div class="chart-panel">
-        <ThreeDKineticChart 
+        <div class="verdict-band" v-if="currentTickerData">
+          <div class="verdict-id">
+            <span class="verdict-ticker">{{ selectedTicker }}</span>
+            <span class="verdict-quote">
+              <span class="verdict-price">${{ displayPrice }}</span>
+              <span
+                class="verdict-change"
+                :class="{ up: isPositive, down: !isPositive }"
+                :aria-label="isPositive ? $t('signalCard.priceUp', { percent: displayChange }) : $t('signalCard.priceDown', { percent: displayChange })"
+              >
+                <span class="change-glyph" aria-hidden="true">{{ isPositive ? '▲' : '▼' }}</span>{{ isPositive ? '+' : '' }}{{ displayChange }}%
+              </span>
+            </span>
+          </div>
+          <span class="verdict-pill" :class="currentTickerData.signal.toLowerCase()">{{ signalLabel }}</span>
+        </div>
+
+        <ThreeDKineticChart
           v-if="currentDataPoint && currentTickerData" 
           :dataPoint="currentDataPoint"
           :historyTrace="historyTrace"
@@ -151,11 +185,14 @@ onMounted(() => {
 
 .header-section {
   margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--primary-color);
 }
 
 h1 {
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: -0.02em;
   margin-bottom: var(--space-2);
   color: var(--text-primary);
 }
@@ -210,6 +247,69 @@ h1 {
   min-height: 600px;
 }
 
+/* Verdict band — the single committed-accent zone on the surface: ticker,
+   directional price, and signal verdict fused into one brand bar above the
+   matted kinetic plot. */
+.verdict-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  background: var(--primary-strong);
+  color: #fff;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.verdict-id {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.verdict-ticker {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-extrabold);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.verdict-quote {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-family: 'Roboto Mono', monospace;
+}
+
+.verdict-price { font-size: var(--text-xl); font-weight: var(--weight-semibold); }
+.verdict-change { font-size: var(--text-md); font-variant-numeric: tabular-nums; }
+.verdict-change .change-glyph { margin-right: 0.1em; font-size: 0.85em; }
+
+.verdict-pill {
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  /* Default covers wait / neutral / no_data / no_trade — slate + white. */
+  background: var(--signal-neutral);
+  color: #fff;
+}
+
+/* Filled verdict pill — the large bold label clears 3:1 large-text AA, so
+   light fills (gold / avoid-grey) take dark --signal-ink and the rest white. */
+.verdict-pill.launchpad { background: var(--signal-launchpad); color: var(--signal-ink); }
+.verdict-pill.dip_buy   { background: var(--signal-dip-buy);   color: #fff; }
+.verdict-pill.climax    { background: var(--signal-climax);    color: #fff; }
+.verdict-pill.avoid     { background: var(--signal-avoid);     color: var(--signal-ink); }
+
 .side-panel {
   display: flex;
   flex-direction: column;
@@ -243,12 +343,13 @@ h1 {
   background: var(--border-color);
 }
 
-/* Selected ticker = a restrained brand fill (the AA-safe --primary-strong),
-   replacing the off-brand TradingView blue. Theme-aware so it inverts. */
+/* Selected ticker = restrained (outline + brand-toned label) so the only
+   full-saturation zone on the surface is the verdict band. */
 .ticker-btn.active {
-  background: var(--primary-strong);
-  color: #fff;
-  border-color: var(--primary-strong);
+  background: var(--bg-card);
+  border-color: var(--primary-color);
+  color: var(--primary-text);
+  font-weight: var(--weight-semibold);
 }
 
 .signal-dot {
@@ -272,6 +373,7 @@ h1 {
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
+  h1 { font-size: var(--text-2xl); }
 }
 
 /* Kinetic-state legend (onboarding) — collapsible, token-driven. */
