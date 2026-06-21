@@ -79,7 +79,7 @@ const isPositive = computed(() => props.changePercent >= 0);
           </span>
         </div>
       </div>
-      <div class="signal-badge" :style="{ borderColor: signalColor, color: signalColor }">
+      <div class="signal-badge" :style="{ borderColor: signalColor }">
         {{ signalText }}
       </div>
     </div>
@@ -109,14 +109,15 @@ const isPositive = computed(() => props.changePercent >= 0);
 </template>
 
 <style scoped>
-/* Always-dark card (does not invert in light mode — uses chart palette tokens) */
+/* Theme-aware card — inverts with the app (warm plaster in light, museum
+   charcoal in dark) instead of staying pinned to the chart palette. */
 .signal-card {
-  background: var(--chart-bg-deep);
+  background: var(--bg-card);
   border-radius: var(--radius-sm);
   padding: var(--space-6);
-  color: var(--grey-350);
-  border: 1px solid var(--chart-bg);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
 }
 
 .header {
@@ -129,7 +130,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 .ticker-info h2 {
   margin: 0;
   font-size: var(--text-2xl);
-  color: white;
+  color: var(--text-primary);
 }
 
 .price-info {
@@ -142,8 +143,8 @@ const isPositive = computed(() => props.changePercent >= 0);
   margin-right: var(--space-2);
 }
 
-.change.up { color: var(--chart-up-alt); }
-.change.down { color: var(--chart-down-alt); }
+.change.up { color: var(--success-strong); }
+.change.down { color: var(--danger-strong); }
 
 /* Glyph spacing — keeps arrow tight to the number, not floating away */
 .change-glyph {
@@ -152,10 +153,14 @@ const isPositive = computed(() => props.changePercent >= 0);
   font-size: 0.85em;
 }
 
+/* Outline badge: the signal hue carries on the border + the ticker-list dot,
+   while the label stays theme-primary so it's AA-legible on either surface.
+   (The bold solid-filled verdict pill is the Q2 "Verdict Plate" move.) */
 .signal-badge {
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-xs);
   border: 2px solid;
+  color: var(--text-primary);
   font-weight: bold;
   font-size: var(--text-base);
   letter-spacing: 1px;
@@ -163,7 +168,7 @@ const isPositive = computed(() => props.changePercent >= 0);
 
 .divider {
   height: 1px;
-  background: var(--chart-bg);
+  background: var(--border-color);
   margin: var(--space-4) 0;
 }
 
@@ -171,7 +176,7 @@ const isPositive = computed(() => props.changePercent >= 0);
   margin: 0 0 var(--space-2) 0;
   font-size: var(--text-sm);
   text-transform: uppercase;
-  color: var(--grey-500);
+  color: var(--text-secondary);
   letter-spacing: 0.5px;
 }
 
@@ -179,14 +184,14 @@ const isPositive = computed(() => props.changePercent >= 0);
   margin: 0;
   font-size: var(--text-md);
   line-height: 1.5;
-  color: var(--grey-250);
+  color: var(--text-primary);
 }
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
   margin-top: var(--space-6);
-  border-top: 1px solid var(--chart-bg);
+  border-top: 1px solid var(--border-color);
   padding-top: var(--space-4);
 }
 
@@ -194,21 +199,21 @@ const isPositive = computed(() => props.changePercent >= 0);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: var(--chart-bg);
+  background: var(--bg-secondary);
   padding: var(--space-2);
   border-radius: var(--radius-xs);
 }
 
 .metric-label {
   font-size: var(--text-xs);
-  color: var(--grey-500);
+  color: var(--text-secondary);
   margin-bottom: var(--space-1);
 }
 
 .metric-value {
   font-family: 'Roboto Mono', monospace;
   font-size: var(--text-md);
-  color: var(--grey-250);
+  color: var(--text-primary);
 }
 
 /* Narrow viewports: 3-column metrics grid is too cramped at <600px.

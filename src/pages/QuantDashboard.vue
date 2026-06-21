@@ -161,7 +161,7 @@ h1 {
 }
 
 .subtitle {
-  color: var(--grey-500);
+  color: var(--text-secondary);
   font-size: var(--text-md);
 }
 
@@ -220,16 +220,16 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  background: var(--chart-bg-deep);
+  background: var(--bg-secondary);
   padding: var(--space-4);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--chart-bg);
+  border: 1px solid var(--border-color);
 }
 
 .ticker-btn {
-  background: var(--chart-bg);
+  background: var(--bg-card);
   border: 1px solid transparent;
-  color: var(--grey-350);
+  color: var(--text-secondary);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-xs);
   cursor: pointer;
@@ -239,21 +239,16 @@ h1 {
   transition: all var(--transition-base);
 }
 
-/* `--chart-bg` is #2a2e39; this hover uses a slightly lighter shade. No
- * matching token in tokens.css today — TradingView-style chrome doesn't
- * fit the brand greyscale exactly. Kept inline rather than introducing a
- * one-off `--chart-bg-hover` until another component needs the same shade. */
 .ticker-btn:hover {
-  background: #363A45;
+  background: var(--border-color);
 }
 
-/* TradingView-themed accent blue — distinct from --blue-500 (#007bff) and
- * --blue-700 (#0056b3) brand blues. Kept inline; promote to a token if
- * another TV-themed surface needs the same hue. */
+/* Selected ticker = a restrained brand fill (the AA-safe --primary-strong),
+   replacing the off-brand TradingView blue. Theme-aware so it inverts. */
 .ticker-btn.active {
-  background: #2962FF;
-  color: white;
-  border-color: #2962FF;
+  background: var(--primary-strong);
+  color: #fff;
+  border-color: var(--primary-strong);
 }
 
 .signal-dot {
