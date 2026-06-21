@@ -25,10 +25,19 @@ const fetchData = async () => {
         if (!response.ok) throw new Error(t('quant.errorLoadFailed'));
         
         const jsonData = await response.json();
-        latestData.value = jsonData.data || [];
-        
-        // Initialize with first ticker or previously selected
-        selectTicker(selectedTicker.value);
+        const rows = jsonData.data || [];
+        // Defensive: the ETL has leaked per-lookback OHLCV variant keys (e.g.
+        // TRV_1D_1825D) as phantom rows alongside the clean per-symbol rows.
+        // Keep only real symbols so the selector isn't flooded with ~400 dupes.
+        latestData.value = rows.filter(d => d && d.ticker && !/_\d+[a-z]_\d+[a-z]$/i.test(d.ticker));
+
+        // Select the saved/default ticker if present, else fall back to the first
+        // available row — the hardcoded 'SPY' default isn't always in the dataset,
+        // which previously left the dashboard blank until a ticker was clicked.
+        const initial = latestData.value.some(d => d.ticker === selectedTicker.value)
+            ? selectedTicker.value
+            : latestData.value[0]?.ticker;
+        if (initial) selectTicker(initial);
     } catch (e) {
         error.value = e.message;
         console.error(e);
@@ -324,6 +333,10 @@ h1 {
   padding: var(--space-4);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
+  /* Cap the selector so a large universe scrolls instead of burying the
+     SignalCard below a tall wall of buttons. */
+  max-height: 340px;
+  overflow-y: auto;
 }
 
 .ticker-btn {
