@@ -93,31 +93,31 @@
         <div class="components-grid">
           <div class="component-item">
             <span class="component-name">{{ $t('fearGreed.components.sp125') }}</span>
-            <div class="component-bar"><div class="component-fill" :style="{ width: components.sp125 + '%' }"></div><span class="component-value">{{ components.sp125 }}</span></div>
+            <div class="component-row"><div class="component-bar"><div class="component-fill" :style="{ width: components.sp125 + '%' }"></div></div><span class="component-value">{{ components.sp125 }}</span></div>
           </div>
           <div class="component-item">
             <span class="component-name">{{ $t('fearGreed.components.hl52') }}</span>
-            <div class="component-bar"><div class="component-fill" :style="{ width: components.hl52 + '%' }"></div><span class="component-value">{{ components.hl52 }}</span></div>
+            <div class="component-row"><div class="component-bar"><div class="component-fill" :style="{ width: components.hl52 + '%' }"></div></div><span class="component-value">{{ components.hl52 }}</span></div>
           </div>
           <div class="component-item">
             <span class="component-name">{{ $t('fearGreed.components.mcsi') }}</span>
-            <div class="component-bar"><div class="component-fill" :style="{ width: components.mcsi + '%' }"></div><span class="component-value">{{ components.mcsi }}</span></div>
+            <div class="component-row"><div class="component-bar"><div class="component-fill" :style="{ width: components.mcsi + '%' }"></div></div><span class="component-value">{{ components.mcsi }}</span></div>
           </div>
           <div class="component-item">
             <span class="component-name">{{ $t('fearGreed.components.putCall') }}</span>
-            <div class="component-bar"><div class="component-fill" :style="{ width: components.putCall + '%' }"></div><span class="component-value">{{ components.putCall }}</span></div>
+            <div class="component-row"><div class="component-bar"><div class="component-fill" :style="{ width: components.putCall + '%' }"></div></div><span class="component-value">{{ components.putCall }}</span></div>
           </div>
           <div class="component-item">
             <span class="component-name">{{ $t('fearGreed.components.vix50') }}</span>
-            <div class="component-bar"><div class="component-fill" :style="{ width: components.vix50 + '%' }"></div><span class="component-value">{{ components.vix50 }}</span></div>
+            <div class="component-row"><div class="component-bar"><div class="component-fill" :style="{ width: components.vix50 + '%' }"></div></div><span class="component-value">{{ components.vix50 }}</span></div>
           </div>
           <div class="component-item">
             <span class="component-name">{{ $t('fearGreed.components.safe') }}</span>
-            <div class="component-bar"><div class="component-fill" :style="{ width: components.safe + '%' }"></div><span class="component-value">{{ components.safe }}</span></div>
+            <div class="component-row"><div class="component-bar"><div class="component-fill" :style="{ width: components.safe + '%' }"></div></div><span class="component-value">{{ components.safe }}</span></div>
           </div>
           <div class="component-item">
             <span class="component-name">{{ $t('fearGreed.components.yieldSpread') }}</span>
-            <div class="component-bar"><div class="component-fill" :style="{ width: components.yieldSpread + '%' }"></div><span class="component-value">{{ components.yieldSpread }}</span></div>
+            <div class="component-row"><div class="component-bar"><div class="component-fill" :style="{ width: components.yieldSpread + '%' }"></div></div><span class="component-value">{{ components.yieldSpread }}</span></div>
           </div>
         </div>
       </div>
@@ -725,6 +725,7 @@ export default {
 }
 .components-grid { display: flex; flex-direction: column; gap: var(--space-4); }
 .component-item { display: flex; flex-direction: column; gap: var(--space-2); }
+.component-row { display: flex; align-items: center; gap: var(--space-3); }
 .component-name { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-secondary); }
 
 .component-bar { 
@@ -733,7 +734,8 @@ export default {
   background: var(--bg-secondary);
   border-radius: var(--radius-xs);
   overflow: hidden;
-  width: 100%; 
+  flex: 1;
+  min-width: 0;
   border: 1px solid var(--border-color); /* Subtle border */
 }
 .component-fill { 
@@ -745,19 +747,16 @@ export default {
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0.85;
 }
-.component-value { 
-  position: absolute; 
-  right: 10px; 
-  top: 0; 
-  bottom: 0; 
-  display: flex; 
-  align-items: center; 
-  font-size: var(--text-sm); 
-  font-weight: var(--weight-bold); 
+/* Value sits BESIDE the bar on the card surface (not overlaid), so it keeps a
+   consistent --text-primary ink at AA on any fill level — no mix-blend hack. */
+.component-value {
+  flex-shrink: 0;
+  min-width: 2.5ch;
+  text-align: right;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
-  /* Ensure visibility on various backgrounds */
-  mix-blend-mode: exclusion;
 }
 
 /* History Section */
