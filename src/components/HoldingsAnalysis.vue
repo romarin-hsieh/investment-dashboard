@@ -147,7 +147,7 @@ import { Doughnut, Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
 import { useTheme } from '@/composables/useTheme.js'
-import { getToken } from '@/utils/designTokens.js'
+import { getToken, getTokenRgba } from '@/utils/designTokens.js'
 
 ChartJS.register(ArcElement, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend)
 
@@ -422,7 +422,7 @@ export default {
                     label: this.$t('holdings.datasetSmartMoneyShares'),
                     type: 'bar',
                     data: sharesData,
-                    backgroundColor: 'rgba(40, 167, 69, 0.6)',
+                    backgroundColor: getTokenRgba('--success-solid', 0.6),
                     borderColor: getToken('--success-solid'),
                     borderWidth: 1,
                     yAxisID: 'y'
