@@ -42,6 +42,7 @@ import { ohlcvApi } from '@/services/ohlcvApi.js';
 import { TrendlinesAlgo } from '@/utils/technical-analysis/TrendlinesAlgo.js';
 import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives.js';
 import { useTheme } from '@/composables/useTheme.js';
+import { getToken, getTokenRgba } from '@/utils/designTokens.js';
 // Components
 import GenericSettingsModal from '@/components/GenericSettingsModal.vue';
 
@@ -81,13 +82,13 @@ export default {
         extendBars: 50,
         period: 100,
         multiplier: 1.0,
-        highLineColor: 'rgba(255, 59, 48, 1)',
-        lowLineColor: 'rgba(52, 199, 89, 1)',
+        highLineColor: getToken('--chart-down-alt'),
+        lowLineColor: getToken('--chart-up-alt'),
         
         // Volume Delta
         vdLookback: 200,
-        vdZoneColorDemand: 'rgba(52, 199, 89, 0.3)',
-        vdZoneColorSupply: 'rgba(255, 59, 48, 0.3)',
+        vdZoneColorDemand: getTokenRgba('--chart-up-alt', 0.3),
+        vdZoneColorSupply: getTokenRgba('--chart-down-alt', 0.3),
         vdZoneNum: 3,
         vdBarAlign: 'left'
       },
@@ -144,11 +145,11 @@ export default {
       const chartOptions = this.getChartOptions();
       this.chart = createChart(this.$refs.chartDiv, chartOptions);
       this.candlestickSeries = this.chart.addCandlestickSeries({
-          upColor: '#26a69a', 
-          downColor: '#ef5350', 
-          borderVisible: false, 
-          wickUpColor: '#26a69a', 
-          wickDownColor: '#ef5350' 
+          upColor: getToken('--chart-up'),
+          downColor: getToken('--chart-down'),
+          borderVisible: false,
+          wickUpColor: getToken('--chart-up'),
+          wickDownColor: getToken('--chart-down')
       });
 
       // Subscribe to visible range changes to redraw overlay
@@ -159,9 +160,8 @@ export default {
     },
 
     getChartOptions() {
-        const isDark = this.theme === 'dark';
-        const textColor = isDark ? '#D9D9D9' : '#191919';
-        const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+        const textColor = getToken('--text-primary');
+        const gridColor = getToken('--chart-grid');
         const bgColor = 'transparent'; // Let CSS handle background
 
         return {

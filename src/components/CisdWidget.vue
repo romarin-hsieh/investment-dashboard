@@ -33,6 +33,7 @@ import { ohlcvApi } from '@/services/ohlcvApi.js';
 import { CisdAlgo } from '@/utils/technical-analysis/CisdAlgo.js';
 import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives.js';
 import { useTheme } from '@/composables/useTheme.js';
+import { getToken } from '@/utils/designTokens.js';
 // Components
 import GenericSettingsModal from '@/components/GenericSettingsModal.vue';
 
@@ -80,8 +81,8 @@ export default {
         baseLevel: true,
         baseLevelStyle: 'dotted',
         labelsSize: 12,
-        bullishColor: '#089981', 
-        bearishColor: '#F23645',
+        bullishColor: getToken('--chart-up-alt'),
+        bearishColor: getToken('--chart-down-alt'),
         backgroundFill: true
       },
       
@@ -140,11 +141,11 @@ export default {
       const chartOptions = this.getChartOptions();
       this.chart = createChart(this.$refs.chartDiv, chartOptions);
       this.candlestickSeries = this.chart.addCandlestickSeries({
-          upColor: '#26a69a', 
-          downColor: '#ef5350', 
-          borderVisible: false, 
-          wickUpColor: '#26a69a', 
-          wickDownColor: '#ef5350' 
+          upColor: getToken('--chart-up'),
+          downColor: getToken('--chart-down'),
+          borderVisible: false,
+          wickUpColor: getToken('--chart-up'),
+          wickDownColor: getToken('--chart-down')
       });
       // Subscribe to visible range changes to redraw overlay
       this.chart.timeScale().subscribeVisibleTimeRangeChange(this.drawOverlay);
@@ -152,9 +153,8 @@ export default {
     },
 
     getChartOptions() {
-        const isDark = this.theme === 'dark';
-        const textColor = isDark ? '#D9D9D9' : '#191919';
-        const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+        const textColor = getToken('--text-primary');
+        const gridColor = getToken('--chart-grid');
         const bgColor = 'transparent'; 
 
         return {
