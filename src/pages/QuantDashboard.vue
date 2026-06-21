@@ -6,7 +6,7 @@ import SignalCard from '@/components/SignalCard.vue';
 import { withDataBase } from '@/utils/baseUrl.js';
 import { formatNumber } from '@/utils/numberFormat';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 const latestData = ref([]);
 const selectedTicker = ref('SPY');
@@ -81,6 +81,20 @@ const signalLabel = computed(() => {
 const displayPrice = computed(() => formatNumber(currentTickerData.value?.price ?? 0, 2));
 const displayChange = computed(() => formatNumber(currentTickerData.value?.change_percent ?? 0, 2));
 
+// Analysis date for this ticker (the data's `date` field) — surfaced as a plate
+// caption beneath the kinetic plot; parsed at local midnight to avoid a TZ
+// day-shift, falls back to the raw string if unparseable.
+const dataDateLabel = computed(() => {
+    const d = currentTickerData.value?.date;
+    if (!d) return '';
+    const localeStr = locale.value === 'zh-TW' ? 'zh-TW' : 'en-US';
+    try {
+        return new Date(d + 'T00:00:00').toLocaleDateString(localeStr, { year: 'numeric', month: 'short', day: 'numeric' });
+    } catch (e) {
+        return d;
+    }
+});
+
 onMounted(() => {
     fetchData();
 });
@@ -141,6 +155,7 @@ onMounted(() => {
           :commentary="currentTickerData.commentary"
           :ticker="selectedTicker"
         />
+        <p class="plate-caption" v-if="dataDateLabel">{{ $t('market.asOf') }} {{ dataDateLabel }}</p>
       </div>
 
       <!-- Right Panel: Signals & List -->
@@ -254,6 +269,19 @@ h1 {
 
 .chart-panel {
   min-height: 600px;
+}
+
+/* Museum plate caption beneath the kinetic specimen — surfaces the analysis
+   date (not shown elsewhere) and labels the matted instrument. */
+.plate-caption {
+  margin-top: var(--space-3);
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 /* Verdict band — the single committed-accent zone on the surface: ticker,
