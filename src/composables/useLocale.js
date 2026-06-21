@@ -1,5 +1,6 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { loadLocaleMessages } from '../i18n.js'
 
 const STORAGE_KEY = 'locale'
 
@@ -11,27 +12,29 @@ export const SUPPORTED_LOCALES = [
 /**
  * Locale companion to useTheme: a reactive, persisted current-locale plus a
  * toggle. Persists to localStorage ('locale') and keeps <html lang> in sync.
- * Must be called from within setup() (it uses vue-i18n's global scope).
+ * Switching is async because the target locale's messages are lazy-loaded
+ * (only the active locale ships at boot). Must be called from within setup().
  */
 export function useLocale() {
   const { locale } = useI18n({ useScope: 'global' })
 
-  const currentLocale = computed({
-    get: () => locale.value,
-    set: (value) => {
-      locale.value = value
-      try {
-        localStorage.setItem(STORAGE_KEY, value)
-      } catch (e) {
-        /* ignore persistence failure */
-      }
-      if (typeof document !== 'undefined') document.documentElement.lang = value
-    },
-  })
+  const currentLocale = computed(() => locale.value)
 
-  const toggleLocale = () => {
-    currentLocale.value = currentLocale.value === 'en' ? 'zh-TW' : 'en'
+  async function setLocale(value) {
+    if (value === locale.value) return
+    // Fetch the target locale's chunk before flipping so there's no
+    // missing-key flash on first switch.
+    await loadLocaleMessages(value)
+    locale.value = value
+    try {
+      localStorage.setItem(STORAGE_KEY, value)
+    } catch (e) {
+      /* ignore persistence failure */
+    }
+    if (typeof document !== 'undefined') document.documentElement.lang = value
   }
 
-  return { currentLocale, toggleLocale, supportedLocales: SUPPORTED_LOCALES }
+  const toggleLocale = () => setLocale(locale.value === 'en' ? 'zh-TW' : 'en')
+
+  return { currentLocale, toggleLocale, setLocale, supportedLocales: SUPPORTED_LOCALES }
 }
