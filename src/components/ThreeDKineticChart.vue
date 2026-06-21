@@ -360,10 +360,13 @@ onUnmounted(() => {
   gap: var(--space-4);
   width: 100%;
   height: 600px;
-  background: #131722;
+  /* Theme-aware "mat": the dark instrument cells sit framed on the app
+     surface (warm plaster in light, museum charcoal in dark) instead of a
+     hardcoded near-black slab that never inverted. Plotly plates stay dark. */
+  background: var(--bg-card);
   border-radius: var(--radius-sm);
   padding: var(--space-4);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 .grid-cell {
