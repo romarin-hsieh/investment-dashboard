@@ -128,14 +128,14 @@ Detailed specification can be found in [SMART_MONEY_SCORE_SPEC.md](SMART_MONEY_S
 python scripts/batch_crawl_dataroma.py
 ```
 *   **耗時預估**：約 45 分鐘 (每支股票約 20 秒，含隨機延遲)。
-*   **來源清單**：自動讀取 `scripts/data/category_universes.py` 與基礎清單。
+*   **來源清單**：自動讀取 `config/stocks.json` 的 enabled 股票清單（ADR-0012 單一來源）。
+    可用 `--dry-run` 預覽清單、`--priority N` 只爬指定優先級：
+    ```bash
+    python scripts/batch_crawl_dataroma.py --dry-run
+    python scripts/batch_crawl_dataroma.py --priority 1
+    ```
 
 ### Adding New Tickers
-要在監控清單中加入新股票，請修改 Workflow 檔案中的 `TICKERS` 變數：
-
-```yaml
-- name: Crawl Dataroma Data
-  run: |
-    # Modify this list to add more stocks
-    TICKERS=("PL" "NVDA" "TSLA" "AAPL") 
-```
+監控清單已 config-driven：在 `config/stocks.json` 新增（或用 self-service add-symbol 流程，見
+`ADD_NEW_SYMBOL.md`）一支 enabled 股票，當晚的 Dataroma workflow 就會自動納入爬取——**毋須**
+再修改 workflow 檔。基金 / ETF 沒有 Dataroma 持股頁，會被回報為 failed，屬正常現象。

@@ -36,14 +36,11 @@ jobs:
 
       - name: Crawl Dataroma Data
         run: |
-          # Define tickers to crawl here. 
-          # In future steps, this could be read from a config file.
-          TICKERS=("PL" "NVDA" "TSLA")
-          
-          for ticker in "${TICKERS[@]}"; do
-            echo "Processing $ticker..."
-            python scripts/crawl_dataroma_stock.py --ticker "$ticker"
-          done
+          # Config-driven: batch_crawl_dataroma.py reads the enabled universe
+          # from config/stocks.json (ADR-0012 single source of truth), so any
+          # symbol added via the self-service flow is picked up automatically —
+          # no hardcoded ticker list to maintain here.
+          python scripts/batch_crawl_dataroma.py
 
       - name: Mirror data to the data repo
         env:

@@ -38,8 +38,10 @@ unrelated push (the [#58](https://github.com/romarin-hsieh/investment-dashboard/
 - Real-ticker + metadata checks prevent bad entries reaching the universe.
 
 **Negative / Trade-offs**
-- Dataroma institutional-holdings tracking is **separate** — it follows a small
-  hardcoded crawler list, not `stocks.json` (documented in `ADD_NEW_SYMBOL.md`).
+- ~~Dataroma institutional-holdings tracking is **separate** — it follows a small
+  hardcoded crawler list, not `stocks.json`.~~ **Resolved:** the nightly Dataroma
+  workflow now runs `scripts/batch_crawl_dataroma.py`, which crawls the enabled
+  `config/stocks.json` universe, so added symbols are picked up automatically.
 - Two extra workflow dispatches per add (ETL + deploy) consume Actions minutes.
 
 **Neutral**
