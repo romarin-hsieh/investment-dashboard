@@ -21,3 +21,7 @@ node_modules
 # Vendored third-party skill pack — kept local only, not committed (12MB / 326 files).
 # Avoids bloating the tracked tree / .git history.
 .agent/skills/ui-ux-pro-max-skill-main/
+
+# Python bytecode cache
+__pycache__/
+*.pyc

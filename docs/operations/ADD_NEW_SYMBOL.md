@@ -77,10 +77,11 @@ data repo, so the new symbol shows up on its own once the pipeline has run.
 
 ## Notes & limits
 
-- **Institutional holdings (Dataroma)** are *not* driven by `stocks.json`. The Dataroma
-  crawler tracks a small hardcoded list (`TICKERS` in
-  `.github/workflows/dataroma-stock-update.yml`); add a ticker there if you want its
-  Smart-Money / 13F data.
+- **Institutional holdings (Dataroma)** are now driven by `stocks.json` too: the nightly
+  Dataroma workflow runs `scripts/batch_crawl_dataroma.py`, which crawls every enabled
+  symbol in `config/stocks.json`. Adding a symbol therefore picks up its Smart-Money / 13F
+  data automatically — no separate list to edit. (Funds/ETFs have no Dataroma holdings page
+  and are reported as skipped/failed, which is expected.)
 - **Rate limits**: adding many symbols at once can hit Yahoo Finance throttling during
   the next ETL run — add in small batches if you're onboarding a lot.
 - **Validation**: a symbol that doesn't resolve on Yahoo Finance is rejected at add time,

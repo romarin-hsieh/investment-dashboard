@@ -1,42 +1,52 @@
 import sys
 import os
-import time
+import argparse
 import subprocess
-from data.category_universes import get_all_category_tickers
 
-# Add local directory to path to allow imports if running from scripts dir
+# Add local directory to path so `data.*` package imports resolve when run
+# either from the repo root or from scripts/.
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from data.tracked_symbols import load_tracked_symbols
+
 
 def main():
-    # 1. Gather all tickers
-    category_tickers = get_all_category_tickers()
-    base_tickers = ["SPY", "QQQ", "IWM", "DIA", "VUG", "VTV", "VYM", "^VIX"]
-    
-    # Combined unique set
-    all_tickers = sorted(list(set(category_tickers + base_tickers)))
-    
-    # Filter out problematic tickers if known (e.g. indices with ^ might need special handling or skip)
-    # Dataroma likely doesn't have data for ^VIX.
-    valid_tickers = [t for t in all_tickers if not t.startswith('^')]
-    
-    print(f"Found {len(valid_tickers)} tickers to process.")
-    
-    # 2. Process each ticker
+    parser = argparse.ArgumentParser(
+        description="Batch-crawl Dataroma for the tracked stock universe "
+                    "(config/stocks.json — the ADR-0012 single source of truth)."
+    )
+    parser.add_argument(
+        "--priority", type=int, default=None,
+        help="Only crawl symbols with this priority value (default: all enabled).",
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true",
+        help="Print the resolved ticker list and exit without crawling.",
+    )
+    args = parser.parse_args()
+
+    # 1. Resolve the ticker universe from config (no hardcoded list).
+    tickers = load_tracked_symbols(enabled_only=True, priority=args.priority)
+    scope = "all enabled" if args.priority is None else f"priority={args.priority}"
+    print(f"Found {len(tickers)} tickers to process "
+          f"(source: config/stocks.json, scope: {scope}).")
+
+    if args.dry_run:
+        print(", ".join(tickers))
+        return
+
+    # 2. Process each ticker via the single-ticker crawler (isolated subprocess).
     failed = []
     success = []
-    
-    for i, ticker in enumerate(valid_tickers):
-        print(f"[{i+1}/{len(valid_tickers)}] Processing {ticker}...")
+
+    for i, ticker in enumerate(tickers):
+        print(f"[{i + 1}/{len(tickers)}] Processing {ticker}...")
         try:
-            # Run the existing crawler script as a subprocess
-            # This ensures we use the logic exactly as defined in crawl_dataroma_stock.py
-            # and isolates memory/state.
             result = subprocess.run(
-                ["python", "scripts/crawl_dataroma_stock.py", "--ticker", ticker],
+                [sys.executable, "scripts/crawl_dataroma_stock.py", "--ticker", ticker],
                 capture_output=True,
-                text=True
+                text=True,
             )
-            
+
             if result.returncode == 0:
                 print(f"SUCCESS: {ticker}")
                 success.append(ticker)
@@ -44,24 +54,21 @@ def main():
                 print(f"FAILED: {ticker}")
                 print(f"Error output: {result.stderr}")
                 failed.append(ticker)
-                
+
         except Exception as e:
             print(f"EXCEPTION for {ticker}: {e}")
             failed.append(ticker)
-        
-        # Add a small delay between subprocess calls on top of the internal script delay
-        # just to be extra safe, though the script has its own.
-        # Actually the script has a start delay. We don't need double delay if calling sequentially.
-        
+
     # 3. Summary
-    print("\n" + "="*30)
+    print("\n" + "=" * 30)
     print("BATCH CRAWL COMPLETE")
-    print(f"Total: {len(valid_tickers)}")
+    print(f"Total: {len(tickers)}")
     print(f"Success: {len(success)}")
     print(f"Failed: {len(failed)}")
-    
+
     if failed:
         print(f"Failed Tickers: {', '.join(failed)}")
+
 
 if __name__ == "__main__":
     main()
