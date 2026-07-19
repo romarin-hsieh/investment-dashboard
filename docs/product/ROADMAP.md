@@ -10,14 +10,13 @@
 
 ## Now (Active — being executed)
 
-*No active workstream this cycle.* WS-E Audit Sweep 2026-04-25 shipped fully on 2026-04-26 (4 PRs — see *Recently shipped*). Next pickable items are in *Next*.
+### 🧪 WS-H — Component test coverage (started 2026-07-20)
+Risk-weighted expansion of Vue Test Utils coverage, governed by [ADR-0013](../architecture/adr/0013-component-test-coverage-policy.md). Coverage is now gated by **ratchet floors** in `vitest.config.js` (global + per-file), mirroring the ADR-0007 bundle-size contract. Six components in risk order: `NavigationPanel` → `StockCard` → `TechnicalIndicators` → `MFIVolumeProfilePanel` → `FundamentalAnalysis` → `StockOverview`, each PR raising its own floor. 35 vetted cases; the planning pass also surfaced real defects (stale-response races, `getGrowthClass` crash + payload mutation, null-price `BEARISH` call) which are fixed alongside their regression tests.
 
 ---
 
 ## Next (Committed but not yet started)
 
-### 🧪 Component test coverage expansion
-Once the Vitest baseline (WS-B PR-B1) is in place, expand to Vue Test Utils tests for the three largest components: `MFIVolumeProfilePanel.vue` (1024 LOC), `StockOverview.vue` (1011 LOC), `FundamentalAnalysis.vue` (932 LOC). Goal: catch UI regressions when refactoring those monoliths. Decision will live in an ADR.
 
 ### 🔄 TypeScript migration of top 5 critical `.js` files
 In priority order: `yahooFinanceApi.js` (1380 LOC), `technicalIndicatorsCore.js` (1256), `mfiVolumeProfile.js` (402), `autoUpdateScheduler.js` (435), `technicalIndicatorsCache.js` (418). These are the largest sources of silent type-safety risk. Run after WS-B unit tests are in place so we have a regression net.
