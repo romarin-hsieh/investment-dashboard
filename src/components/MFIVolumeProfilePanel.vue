@@ -214,7 +214,7 @@
 
 <script>
 import { ohlcvApi } from '@/services/ohlcvApi.js';
-import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile.js';
+import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile';
 import { formatNumber } from '@/utils/numberFormat';
 
 export default {

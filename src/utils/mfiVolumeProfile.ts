@@ -1,19 +1,151 @@
 // MFI Volume Profile Calculation
 // Combines Money Flow Index with Volume Profile analysis for advanced trading insights
 
-import { calculateMFIWithMetadata } from './mfi';
+import { calculateMFIWithMetadata, type MFIInput } from './mfi';
 import { formatNumber } from './numberFormat';
+
+/** MFI averaging strategy for per-bin MFI aggregation. */
+export type MFIAvgMode = 'weighted' | 'legacy';
+
+/** Overall market-sentiment classification. */
+export type MarketSentiment = 'BULLISH' | 'BEARISH' | 'NEUTRAL';
+
+/** Trading signal emitted by getMFIVolumeProfileSignals. */
+export type TradingSignal = 'BUY' | 'SELL' | 'HOLD' | 'NEUTRAL';
+
+/** Support/resistance classification tags. */
+export type SupportResistanceType =
+  | 'BUYING_SUPPORT'
+  | 'SELLING_SUPPORT'
+  | 'SELLING_RESISTANCE'
+  | 'BUYING_RESISTANCE';
+
+/** Additional options accepted by calculateMFIVolumeProfile. */
+export interface MFIVolumeProfileOptions {
+  /** 'weighted' (default) or 'legacy' for MFI averaging method */
+  mfiAvgMode?: MFIAvgMode;
+}
+
+/** A single price bin of the volume profile. */
+export interface VolumeProfileBin {
+  priceLevel: number;
+  minPrice: number;
+  maxPrice: number;
+  volume: number;
+  positiveVolume: number; // Volume when MFI indicates buying pressure
+  negativeVolume: number; // Volume when MFI indicates selling pressure
+  neutralVolume: number;  // Volume when MFI is neutral
+  mfiAverage: number;     // Volume-weighted average MFI for this price level
+  mfiCount: number;       // Count of MFI values for averaging (legacy)
+  candleCount: number;    // Number of candles in this bin
+  // New fields for volume-weighted MFI calculation
+  mfiWeightedSum: number;    // Σ(mfi * volumeAllocation)
+  mfiWeightedVolume: number; // Σ(volumeAllocation) for MFI calculation
+  mfiAverageLegacy: number;  // Legacy count-based average (for rollback)
+  mfiCountLegacy: number;    // Legacy count (for rollback)
+}
+
+/** A price level exhibiting net buying pressure. */
+export interface BuyingPressureLevel {
+  priceLevel: number;
+  volume: number;
+  mfiAverage: number;
+  buyingRatio: number;
+}
+
+/** A price level exhibiting net selling pressure. */
+export interface SellingPressureLevel {
+  priceLevel: number;
+  volume: number;
+  mfiAverage: number;
+  sellingRatio: number;
+}
+
+/** Aggregated MFI-derived pressure insights across the profile. */
+export interface MFIInsights {
+  buyingPressureLevels: BuyingPressureLevel[];
+  sellingPressureLevels: SellingPressureLevel[];
+  totalBuyingVolume: number;
+  totalSellingVolume: number;
+  totalNeutralVolume: number;
+}
+
+/** Full result of calculateMFIVolumeProfile. */
+export interface MFIVolumeProfileResult {
+  volumeProfile: VolumeProfileBin[];
+  mfi: ReturnType<typeof calculateMFIWithMetadata>;
+  pointOfControl: {
+    priceLevel: number;
+    volume: number;
+    percentage: number;
+  };
+  valueArea: {
+    low: number;
+    high: number;
+    volume: number;
+    percentage: number;
+  };
+  mfiInsights: MFIInsights;
+  marketSentiment: MarketSentiment;
+  statistics: {
+    totalVolume: number;
+    maxVolumeInBin: number;
+    priceRange: {
+      min: number;
+      max: number;
+      range: number;
+    };
+    bins: number;
+    buyingRatio: number;
+    sellingRatio: number;
+    neutralRatio: number;
+  };
+  metadata: {
+    calculatedAt: string;
+    dataPoints: number;
+    mfiPeriod: number;
+    mfiAvgMode: MFIAvgMode;
+    algorithm: string;
+  };
+}
+
+/** A support or resistance price level derived from the profile. */
+export interface SupportResistanceLevel {
+  price: number;
+  strength: number;
+  type: SupportResistanceType;
+}
+
+/** Trading signals and recommendations from getMFIVolumeProfileSignals. */
+export interface MFIVolumeProfileSignals {
+  signal: TradingSignal;
+  confidence: number;
+  recommendations: string[];
+  supportLevels: SupportResistanceLevel[];
+  resistanceLevels: SupportResistanceLevel[];
+  marketContext?: {
+    pocDistance: number;
+    inValueArea: boolean;
+    marketSentiment: MarketSentiment;
+    volumeBalance: number;
+  };
+}
 
 /**
  * Calculate Volume Profile with MFI integration
- * @param {Object} ohlcv - OHLCV data object
- * @param {number} bins - Number of price bins for volume profile (default: 20)
- * @param {number} mfiPeriod - Period for MFI calculation (default: 14)
- * @param {Object} options - Additional options
- * @param {string} options.mfiAvgMode - 'weighted' (default) or 'legacy' for MFI averaging method
- * @returns {Object} Volume profile with MFI data
+ * @param ohlcv - OHLCV data object
+ * @param bins - Number of price bins for volume profile (default: 20)
+ * @param mfiPeriod - Period for MFI calculation (default: 14)
+ * @param options - Additional options
+ * @param options.mfiAvgMode - 'weighted' (default) or 'legacy' for MFI averaging method
+ * @returns Volume profile with MFI data
  */
-export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, options = {}) {
+export function calculateMFIVolumeProfile(
+  ohlcv: MFIInput | null | undefined,
+  bins = 20,
+  mfiPeriod = 14,
+  options: MFIVolumeProfileOptions = {}
+): MFIVolumeProfileResult {
   const { mfiAvgMode = 'weighted' } = options;
 
   console.log(`📊 Calculating MFI Volume Profile with ${bins} bins, MFI period=${mfiPeriod}, avgMode=${mfiAvgMode}`);
@@ -33,10 +165,14 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
     const mfiResult = calculateMFIWithMetadata(ohlcv, mfiPeriod);
 
     // Step 2: Find price range for binning
-    const validPrices = [];
+    const validPrices: number[] = [];
     for (let i = 0; i < length; i++) {
-      if (ohlcv.high[i] != null && ohlcv.low[i] != null) {
-        validPrices.push(ohlcv.high[i], ohlcv.low[i]);
+      // Bind before use: TS does not carry `high[i] != null` narrowing across
+      // separate indexed reads, so read each element into a local first.
+      const h = ohlcv.high[i];
+      const l = ohlcv.low[i];
+      if (h != null && l != null) {
+        validPrices.push(h, l);
       }
     }
 
@@ -59,7 +195,7 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
     console.log(`📊 Price range: ${minPrice.toFixed(2)} - ${maxPrice.toFixed(2)}, bin size: ${binSize.toFixed(4)}`);
 
     // Step 3: Initialize volume profile bins
-    const volumeProfile = new Array(bins).fill(0).map((_, index) => ({
+    const volumeProfile: VolumeProfileBin[] = new Array(bins).fill(0).map((_, index) => ({
       priceLevel: minPrice + (index + 0.5) * binSize,
       minPrice: minPrice + index * binSize,
       maxPrice: minPrice + (index + 1) * binSize,
@@ -79,14 +215,17 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
 
     // Step 4: Distribute volume across price bins with MFI classification
     for (let i = 0; i < length; i++) {
-      if (ohlcv.high[i] == null || ohlcv.low[i] == null ||
-        ohlcv.close[i] == null || ohlcv.volume[i] == null || ohlcv.volume[i] <= 0) {
-        continue;
-      }
-
+      // Bind before use: read each indexed value into a local so the null
+      // guard below narrows the locals (TS does not carry `x[i]` narrowing
+      // across separate indexed reads).
       const high = ohlcv.high[i];
       const low = ohlcv.low[i];
       const volume = ohlcv.volume[i];
+      if (high == null || low == null ||
+        ohlcv.close[i] == null || volume == null || volume <= 0) {
+        continue;
+      }
+
       const mfiValue = mfiResult.values[i];
 
       // Determine which bins this candle spans
@@ -108,7 +247,7 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
         const overlapRange = Math.max(0, overlapHigh - overlapLow);
 
         // Proportional volume allocation
-        let volumeAllocation;
+        let volumeAllocation: number;
         if (candleRange > 0) {
           volumeAllocation = volume * (overlapRange / candleRange);
         } else {
@@ -202,10 +341,10 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
     }
 
     // Step 6: Calculate MFI-based insights
-    const mfiInsights = {
+    const mfiInsights: MFIInsights = {
       buyingPressureLevels: volumeProfile
         .filter(bin => bin.positiveVolume > bin.negativeVolume && bin.volume > totalVolume / bins)
-        .map(bin => ({
+        .map((bin): BuyingPressureLevel => ({
           priceLevel: bin.priceLevel,
           volume: bin.volume,
           mfiAverage: bin.mfiAverage,
@@ -216,7 +355,7 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
 
       sellingPressureLevels: volumeProfile
         .filter(bin => bin.negativeVolume > bin.positiveVolume && bin.volume > totalVolume / bins)
-        .map(bin => ({
+        .map((bin): SellingPressureLevel => ({
           priceLevel: bin.priceLevel,
           volume: bin.volume,
           mfiAverage: bin.mfiAverage,
@@ -234,14 +373,14 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
     const buyingRatio = mfiInsights.totalBuyingVolume / totalVolume;
     const sellingRatio = mfiInsights.totalSellingVolume / totalVolume;
 
-    let marketSentiment = 'NEUTRAL';
+    let marketSentiment: MarketSentiment = 'NEUTRAL';
     if (buyingRatio > 0.4) {
       marketSentiment = 'BULLISH';
     } else if (sellingRatio > 0.4) {
       marketSentiment = 'BEARISH';
     }
 
-    const result = {
+    const result: MFIVolumeProfileResult = {
       volumeProfile: volumeProfile,
       mfi: mfiResult,
       pointOfControl: {
@@ -297,11 +436,14 @@ export function calculateMFIVolumeProfile(ohlcv, bins = 20, mfiPeriod = 14, opti
 
 /**
  * Get trading signals based on MFI Volume Profile
- * @param {Object} mfiVolumeProfile - Result from calculateMFIVolumeProfile
- * @param {number} currentPrice - Current stock price
- * @returns {Object} Trading signals and recommendations
+ * @param mfiVolumeProfile - Result from calculateMFIVolumeProfile
+ * @param currentPrice - Current stock price
+ * @returns Trading signals and recommendations
  */
-export function getMFIVolumeProfileSignals(mfiVolumeProfile, currentPrice) {
+export function getMFIVolumeProfileSignals(
+  mfiVolumeProfile: MFIVolumeProfileResult | null | undefined,
+  currentPrice: number | null | undefined
+): MFIVolumeProfileSignals {
   if (!mfiVolumeProfile || !currentPrice) {
     return {
       signal: 'NEUTRAL',
@@ -319,7 +461,7 @@ export function getMFIVolumeProfileSignals(mfiVolumeProfile, currentPrice) {
     .filter(bin => bin.priceLevel < currentPrice && bin.volume > mfiVolumeProfile.statistics.totalVolume / 30)
     .sort((a, b) => b.volume - a.volume)
     .slice(0, 3)
-    .map(bin => ({
+    .map((bin): SupportResistanceLevel => ({
       price: bin.priceLevel,
       strength: bin.volume / mfiVolumeProfile.statistics.maxVolumeInBin,
       type: bin.positiveVolume > bin.negativeVolume ? 'BUYING_SUPPORT' : 'SELLING_SUPPORT'
@@ -329,16 +471,16 @@ export function getMFIVolumeProfileSignals(mfiVolumeProfile, currentPrice) {
     .filter(bin => bin.priceLevel > currentPrice && bin.volume > mfiVolumeProfile.statistics.totalVolume / 30)
     .sort((a, b) => b.volume - a.volume)
     .slice(0, 3)
-    .map(bin => ({
+    .map((bin): SupportResistanceLevel => ({
       price: bin.priceLevel,
       strength: bin.volume / mfiVolumeProfile.statistics.maxVolumeInBin,
       type: bin.negativeVolume > bin.positiveVolume ? 'SELLING_RESISTANCE' : 'BUYING_RESISTANCE'
     }));
 
   // Generate trading signal
-  let signal = 'NEUTRAL';
+  let signal: TradingSignal = 'NEUTRAL';
   let confidence = 0;
-  const recommendations = [];
+  const recommendations: string[] = [];
 
   // Check position relative to POC and Value Area
   const pocDistance = (currentPrice - pointOfControl.priceLevel) / pointOfControl.priceLevel;

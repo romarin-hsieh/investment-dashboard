@@ -19,11 +19,11 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 vi.mock('@/api/hybridTechnicalIndicatorsApi.js', () => ({
   hybridTechnicalIndicatorsAPI: { fetchTechnicalIndicators: vi.fn() }
 }))
-vi.mock('./performanceCache.js', () => ({
+vi.mock('./performanceCache', () => ({
   performanceCache: { get: vi.fn(), set: vi.fn(), clear: vi.fn() },
   CACHE_KEYS: {}
 }))
-vi.mock('./performanceMonitor.js', () => ({
+vi.mock('./performanceMonitor', () => ({
   performanceMonitor: { start: vi.fn(), end: vi.fn() }
 }))
 

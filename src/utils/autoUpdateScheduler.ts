@@ -1,10 +1,36 @@
 // 自動更新調度器
 // 負責管理技術指標和元數據的自動更新
 
-import { performanceMonitor } from './performanceMonitor.js'
-import { performanceCache, CACHE_KEYS } from './performanceCache.js'
+import { performanceMonitor } from './performanceMonitor'
+import { performanceCache, CACHE_KEYS } from './performanceCache'
+
+// 技術指標 / 元數據的更新配置區塊
+interface UpdateSectionConfig {
+  enabled: boolean
+  interval: number
+  retryAttempts: number
+  retryDelay: number
+}
+
+// 緩存清理配置區塊
+interface CacheCleanupConfig {
+  enabled: boolean
+  interval: number
+  maxAge: number
+}
+
+// 調度器完整配置
+interface SchedulerConfig {
+  technicalIndicators: UpdateSectionConfig
+  metadata: UpdateSectionConfig
+  cacheCleanup: CacheCleanupConfig
+}
 
 class AutoUpdateScheduler {
+  updateIntervals: Map<string, ReturnType<typeof setInterval>>
+  isRunning: boolean
+  config: SchedulerConfig
+
   constructor() {
     this.updateIntervals = new Map()
     this.isRunning = false
@@ -59,23 +85,23 @@ class AutoUpdateScheduler {
     }
 
     console.log('🛑 Stopping auto update scheduler...')
-    
+
     // 清除所有定時器
     for (const [name, intervalId] of this.updateIntervals) {
       clearInterval(intervalId)
       console.log(`   Cleared interval: ${name}`)
     }
-    
+
     this.updateIntervals.clear()
     this.isRunning = false
-    
+
     console.log('✅ Auto update scheduler stopped')
   }
 
   // 執行初始更新
   async performInitialUpdate() {
     console.log('🔄 Performing initial update check...')
-    
+
     try {
       // 檢查技術指標是否需要更新
       if (this.config.technicalIndicators.enabled) {
@@ -141,7 +167,7 @@ class AutoUpdateScheduler {
       // 使用新的版本驅動檢查，完全取代時間窗口檢查
       const { dataVersionService } = await import('./dataVersionService');
       const versionChanged = await dataVersionService.checkDataVersionAndRefresh();
-      
+
       if (versionChanged) {
         console.log('✅ Data version changed - technical indicators refreshed automatically')
         return
@@ -152,7 +178,7 @@ class AutoUpdateScheduler {
 
     } catch (error) {
       console.error('❌ Technical indicators version check failed:', error)
-      
+
       // 版本檢查失敗時的備用邏輯 - 檢查數據年齡
       try {
         const needsUpdate = await this.checkTechnicalIndicatorsAge()
@@ -163,7 +189,7 @@ class AutoUpdateScheduler {
       } catch (fallbackError) {
         console.error('❌ Fallback check also failed:', fallbackError)
       }
-      
+
     } finally {
       performanceMonitor.end(label)
     }
@@ -180,7 +206,7 @@ class AutoUpdateScheduler {
       // 使用版本驅動檢查，取代時間窗口檢查
       const { dataVersionService } = await import('./dataVersionService');
       const versionChanged = await dataVersionService.checkDataVersionAndRefresh();
-      
+
       if (versionChanged) {
         console.log('✅ Data version changed - metadata refreshed automatically')
         return
@@ -191,7 +217,7 @@ class AutoUpdateScheduler {
 
     } catch (error) {
       console.error('❌ Metadata version check failed:', error)
-      
+
       // 版本檢查失敗時的備用邏輯
       try {
         const needsUpdate = await this.checkMetadataAge()
@@ -202,7 +228,7 @@ class AutoUpdateScheduler {
       } catch (fallbackError) {
         console.error('❌ Metadata fallback check failed:', fallbackError)
       }
-      
+
     } finally {
       performanceMonitor.end(label)
     }
@@ -219,13 +245,15 @@ class AutoUpdateScheduler {
         return true
       }
 
-      const index = await response.json()
+      const index: { generatedAt: string } = await response.json()
       const lastUpdate = new Date(index.generatedAt)
       const now = new Date()
-      const ageHours = (now - lastUpdate) / (1000 * 60 * 60)
+      // `Date - Date` is valueOf()-based millisecond subtraction; spell it out
+      // with getTime() so TypeScript sees numeric arithmetic (same result).
+      const ageHours = (now.getTime() - lastUpdate.getTime()) / (1000 * 60 * 60)
 
       console.log(`📊 Technical indicators age: ${ageHours.toFixed(1)} hours`)
-      
+
       // 如果數據超過 24 小時，需要更新
       return ageHours > 24
 
@@ -240,7 +268,7 @@ class AutoUpdateScheduler {
     try {
       // 檢查靜態元數據的最後更新時間
       // 這裡可以檢查文件修改時間或版本號
-      const cachedMetadata = performanceCache.get(CACHE_KEYS.METADATA_BATCH)
+      const cachedMetadata = performanceCache.get<{ timestamp: number }>(CACHE_KEYS.METADATA_BATCH)
       if (!cachedMetadata) {
         return true // 沒有緩存數據，需要更新
       }
@@ -250,7 +278,7 @@ class AutoUpdateScheduler {
       const ageHours = cacheAge / (1000 * 60 * 60)
 
       console.log(`📋 Metadata cache age: ${ageHours.toFixed(1)} hours`)
-      
+
       // 如果緩存超過 24 小時，需要更新
       return ageHours > 24
 
@@ -266,19 +294,19 @@ class AutoUpdateScheduler {
     // 這個功能需要在服務器端或通過 API 調用來實現
     console.log('🔄 Technical indicators update requested')
     console.log('⚠️ Note: Actual precomputation requires server-side execution')
-    
+
     // 在瀏覽器環境中，我們可以：
     // 1. 清除相關緩存，強制重新載入數據
     // 2. 觸發 API 調用來請求最新數據
     // 3. 通知用戶需要手動執行預計算腳本
-    
+
     try {
       // 清除技術指標相關的緩存
       this.clearTechnicalIndicatorsCache()
-      
+
       // 模擬更新完成
       console.log('✅ Technical indicators cache cleared, data will be refreshed on next load')
-      
+
     } catch (error) {
       console.error('Failed to update technical indicators:', error)
       throw error
@@ -297,11 +325,11 @@ class AutoUpdateScheduler {
   clearTechnicalIndicatorsCache() {
     try {
       // 清除 localStorage 中的技術指標相關緩存
-      const keysToRemove = []
+      const keysToRemove: string[] = []
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i)
         if (key && (
-          key.includes('technical_indicators_') || 
+          key.includes('technical_indicators_') ||
           key.includes('precomputed_') ||
           key.includes('TECHNICAL_INDICATORS') ||
           key.includes('hybrid_technical_')
@@ -309,20 +337,26 @@ class AutoUpdateScheduler {
           keysToRemove.push(key)
         }
       }
-      
+
       keysToRemove.forEach(key => {
         localStorage.removeItem(key)
         console.log(`🗑️ Cleared cache key: ${key}`)
       })
-      
+
       // 清除性能緩存中的相關項目
-      if (typeof performanceCache !== 'undefined' && performanceCache.clear) {
-        // 如果有性能緩存，清除相關項目
+      // NOTE (ts migration): this branch has ALWAYS been a no-op — it logs
+      // "Cleared" but never calls performanceCache.clear(). Behaviour is
+      // preserved intentionally: clear() wipes the ENTIRE perf cache
+      // (quotes/daily/metadata/…), not just technical-indicator entries, so
+      // calling it here would over-clear. The real fix (a prefix-scoped
+      // clear, or dropping this dead log) is a separate behaviour change,
+      // not part of the rename. Guard rewritten only to satisfy TS2774.
+      if (typeof performanceCache.clear === 'function') {
         console.log('🗑️ Cleared performance cache items')
       }
-      
+
       console.log(`✅ Cleared ${keysToRemove.length} technical indicators cache entries`)
-      
+
     } catch (error) {
       console.error('Error clearing technical indicators cache:', error)
     }
@@ -338,33 +372,33 @@ class AutoUpdateScheduler {
   // 執行緩存清理
   async performCacheCleanup() {
     console.log('🧹 Performing cache cleanup...')
-    
+
     try {
       const stats = performanceCache.getStats()
       console.log('📊 Cache stats before cleanup:', stats)
-      
+
       // 清理過期的緩存項
       // 這裡可以實施更精細的清理邏輯
-      
+
       const statsAfter = performanceCache.getStats()
       console.log('📊 Cache stats after cleanup:', statsAfter)
-      
+
       console.log('✅ Cache cleanup completed')
-      
+
     } catch (error) {
       console.error('❌ Cache cleanup failed:', error)
     }
   }
 
   // 重試更新
-  async retryUpdate(updateType, originalError) {
+  async retryUpdate(updateType: 'technicalIndicators' | 'metadata', _originalError: unknown) {
     const config = this.config[updateType]
     if (!config || !config.retryAttempts) {
       return
     }
 
     console.log(`🔄 Retrying ${updateType} update in ${config.retryDelay / 60000} minutes...`)
-    
+
     setTimeout(async () => {
       try {
         if (updateType === 'technicalIndicators') {
@@ -399,24 +433,24 @@ class AutoUpdateScheduler {
   }
 
   // 手動觸發更新
-  async triggerManualUpdate(updateType = 'all') {
+  async triggerManualUpdate(updateType: string = 'all') {
     console.log(`🔄 Manual update triggered: ${updateType}`)
-    
+
     try {
       if (updateType === 'all' || updateType === 'technicalIndicators') {
         await this.checkAndUpdateTechnicalIndicators()
       }
-      
+
       if (updateType === 'all' || updateType === 'metadata') {
         await this.checkAndUpdateMetadata()
       }
-      
+
       if (updateType === 'all' || updateType === 'cache') {
         await this.performCacheCleanup()
       }
-      
+
       console.log('✅ Manual update completed')
-      
+
     } catch (error) {
       console.error('❌ Manual update failed:', error)
       throw error
