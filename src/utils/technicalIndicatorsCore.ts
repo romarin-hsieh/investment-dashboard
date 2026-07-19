@@ -1,7 +1,7 @@
 /**
  * 技術指標核心實現
  * 基於 YAML 規格 indicator_algorithms v2.0.0
- * 
+ *
  * 特點:
  * - 所有輸出序列與輸入對齊，長度一致
  * - 前 (period-1) 根輸出 NaN
@@ -17,21 +17,59 @@
 const EPSILON = 1e-12; // 避免除以 0
 
 /**
- * 數值策略處理
+ * OHLCV 輸入資料模型 (所有陣列等長)
  */
-function handleNaN(value) {
-  return (value === null || value === undefined || !isFinite(value)) ? NaN : value;
+interface OHLCV {
+  open: number[];
+  high: number[];
+  low: number[];
+  close: number[];
+  volume: number[];
 }
 
-function clampRSI(rsi) {
+/**
+ * ADX 計算結果。adx 可能含有 undefined「洞」(warm-up 窗口遇 NaN 時)。
+ */
+interface ADXResult {
+  adx: (number | undefined)[];
+  plusDI: number[];
+  minusDI: number[];
+}
+
+/**
+ * MACD 計算結果
+ */
+interface MACDResult {
+  macd: number[];
+  signal: number[];
+  histogram: number[];
+}
+
+/**
+ * Stochastic 計算結果
+ */
+interface StochasticResult {
+  k: number[];
+  d: number[];
+}
+
+/**
+ * SuperTrend 計算結果
+ */
+interface SuperTrendResult {
+  superTrend: number[];
+  trend: number;
+}
+
+function clampRSI(rsi: number): number {
   return Math.max(0, Math.min(100, rsi));
 }
 
 /**
  * 滾動窗口極值計算
  */
-function rollingMax(values, period) {
-  const result = new Array(values.length);
+function rollingMax(values: number[], period: number): number[] {
+  const result: number[] = new Array(values.length);
 
   for (let i = 0; i < values.length; i++) {
     if (i < period - 1) {
@@ -50,8 +88,8 @@ function rollingMax(values, period) {
   return result;
 }
 
-function rollingMin(values, period) {
-  const result = new Array(values.length);
+function rollingMin(values: number[], period: number): number[] {
+  const result: number[] = new Array(values.length);
 
   for (let i = 0; i < values.length; i++) {
     if (i < period - 1) {
@@ -76,17 +114,17 @@ function rollingMin(values, period) {
 
 /**
  * SMA Helper - 基於 v2.0.0 規格
- * @param {number[]} values - 輸入序列
- * @param {number} period - 週期 N
- * @param {string} nanPolicy - NaN 處理策略: 'strict' | 'skipna'
- * @param {number} minPeriods - skipna 模式下的最小有效值數量
- * @returns {number[]} SMA 序列，與輸入對齊
+ * @param values - 輸入序列
+ * @param period - 週期 N
+ * @param nanPolicy - NaN 處理策略: 'strict' | 'skipna'
+ * @param minPeriods - skipna 模式下的最小有效值數量
+ * @returns SMA 序列，與輸入對齊
  */
-function sma(values, period, nanPolicy = 'strict', minPeriods = null) {
+function sma(values: number[], period: number, nanPolicy: string = 'strict', minPeriods: number | null = null): number[] {
   if (period <= 0) throw new Error('Period must be positive');
 
   const L = values.length;
-  const result = new Array(L).fill(NaN);
+  const result: number[] = new Array(L).fill(NaN);
 
   // minPeriods 預設為 period
   if (minPeriods === null) minPeriods = period;
@@ -123,18 +161,18 @@ function sma(values, period, nanPolicy = 'strict', minPeriods = null) {
 
 /**
  * EMA Helper - 基於 v2.0.0 規格
- * @param {number[]} values - 輸入序列
- * @param {number} period - 週期 N
- * @param {number} alpha - 平滑係數，預設 2/(period+1)
- * @param {string} initMode - 初始化策略: 'sma_seed' | 'first_value'
- * @param {string} nanPolicy - NaN 處理策略: 'strict_break' | 'strict_recover' | 'hold_last'
- * @returns {number[]} EMA 序列，與輸入對齊
+ * @param values - 輸入序列
+ * @param period - 週期 N
+ * @param alpha - 平滑係數，預設 2/(period+1)
+ * @param initMode - 初始化策略: 'sma_seed' | 'first_value'
+ * @param nanPolicy - NaN 處理策略: 'strict_break' | 'strict_recover' | 'hold_last'
+ * @returns EMA 序列，與輸入對齊
  */
-function ema(values, period, alpha = null, initMode = 'sma_seed', nanPolicy = 'strict_recover') {
+function ema(values: number[], period: number, alpha: number | null = null, initMode: string = 'sma_seed', nanPolicy: string = 'strict_recover'): number[] {
   if (period <= 0) throw new Error('Period must be positive');
 
   const L = values.length;
-  const result = new Array(L).fill(NaN);
+  const result: number[] = new Array(L).fill(NaN);
 
   // 預設 alpha = 2/(N+1)
   if (alpha === null) alpha = 2 / (period + 1);
@@ -243,14 +281,14 @@ function ema(values, period, alpha = null, initMode = 'sma_seed', nanPolicy = 's
 
 /**
  * Wilder 平滑 Helper (增強版，更好的 NaN 處理)
- * @param {number[]} values - 輸入序列
- * @param {number} period - 週期
- * @returns {number[]} Wilder 平滑序列
+ * @param values - 輸入序列
+ * @param period - 週期
+ * @returns Wilder 平滑序列 (warm-up 窗口遇 NaN 時可能留下 undefined 洞)
  */
-function wilderSmoothing(values, period) {
+function wilderSmoothing(values: number[], period: number): (number | undefined)[] {
   if (period <= 0) throw new Error('Period must be positive');
 
-  const result = new Array(values.length);
+  const result: (number | undefined)[] = new Array(values.length);
 
   // 初始化階段
   for (let i = 0; i < period - 1; i++) {
@@ -265,7 +303,7 @@ function wilderSmoothing(values, period) {
   // 第一個值使用 SMA - 尋找足夠的有效值
   let sum = 0;
   let count = 0;
-  let validIndices = [];
+  const validIndices: number[] = [];
 
   // 收集前 period 個有效值
   for (let j = 0; j < values.length && validIndices.length < period; j++) {
@@ -291,14 +329,15 @@ function wilderSmoothing(values, period) {
 
   // Wilder 遞迴平滑 - 從初始化點開始
   for (let i = initIndex + 1; i < values.length; i++) {
-    if (isNaN(result[i - 1]) || isNaN(values[i])) {
+    const prev = result[i - 1];
+    if (prev === undefined || isNaN(prev) || isNaN(values[i])) {
       result[i] = NaN;
     } else {
-      result[i] = (result[i - 1] * (period - 1) + values[i]) / period;
+      result[i] = (prev * (period - 1) + values[i]) / period;
     }
   }
 
-  const validCount = result.filter(v => !isNaN(v)).length;
+  const validCount = result.filter(v => v !== undefined && !isNaN(v)).length;
   console.log(`Wilder: Generated ${validCount} valid smoothed values`);
 
   return result;
@@ -311,25 +350,25 @@ function wilderSmoothing(values, period) {
 /**
  * MA (EMA) - 指數移動平均線 - v2.0.0 規格
  */
-function calculateMA(close, period = 5, alpha = null, initMode = 'sma_seed', nanPolicy = 'strict_recover') {
+function calculateMA(close: number[], period: number = 5, alpha: number | null = null, initMode: string = 'sma_seed', nanPolicy: string = 'strict_recover'): number[] {
   return ema(close, period, alpha, initMode, nanPolicy);
 }
 
 /**
  * SMA - 簡單移動平均線 - v2.0.0 規格
  */
-function calculateSMA(close, period = 5, nanPolicy = 'strict', minPeriods = null) {
+function calculateSMA(close: number[], period: number = 5, nanPolicy: string = 'strict', minPeriods: number | null = null): number[] {
   return sma(close, period, nanPolicy, minPeriods);
 }
 
 /**
  * Ichimoku Base Line (Kijun-sen)
  */
-function calculateIchimokuBaseLine(high, low, period = 26) {
+function calculateIchimokuBaseLine(high: number[], low: number[], period: number = 26): number[] {
   const hh = rollingMax(high, period);
   const ll = rollingMin(low, period);
 
-  const result = new Array(high.length);
+  const result: number[] = new Array(high.length);
   for (let i = 0; i < high.length; i++) {
     if (isNaN(hh[i]) || isNaN(ll[i])) {
       result[i] = NaN;
@@ -344,17 +383,17 @@ function calculateIchimokuBaseLine(high, low, period = 26) {
 /**
  * Ichimoku Conversion Line (Tenkan-sen)
  */
-function calculateIchimokuConversionLine(high, low, period = 9) {
+function calculateIchimokuConversionLine(high: number[], low: number[], period: number = 9): number[] {
   return calculateIchimokuBaseLine(high, low, period);
 }
 
 /**
  * Ichimoku Lagging Span (Chikou Span)
  */
-function calculateIchimokuLaggingSpan(close, shift = 26) {
+function calculateIchimokuLaggingSpan(close: number[], shift: number = 26): number[] {
   if (shift < 0) throw new Error('Shift must be non-negative');
 
-  const result = new Array(close.length);
+  const result: number[] = new Array(close.length);
 
   for (let i = 0; i < close.length; i++) {
     if (i + shift < close.length) {
@@ -370,8 +409,8 @@ function calculateIchimokuLaggingSpan(close, shift = 26) {
 /**
  * VWMA - 成交量加權移動平均線
  */
-function calculateVWMA(close, volume, period = 20) {
-  const result = new Array(close.length);
+function calculateVWMA(close: number[], volume: number[], period: number = 20): number[] {
+  const result: number[] = new Array(close.length);
 
   for (let i = 0; i < close.length; i++) {
     if (i < period - 1) {
@@ -397,15 +436,15 @@ function calculateVWMA(close, volume, period = 20) {
 /**
  * RSI - 相對強弱指數 (Wilder 平滑)
  */
-function calculateRSI(close, period = 14) {
+function calculateRSI(close: number[], period: number = 14): number[] {
   if (close.length < period + 1) {
     return new Array(close.length).fill(NaN);
   }
 
   // Step A: 計算價格變化和收益/損失
-  const delta = new Array(close.length);
-  const gain = new Array(close.length);
-  const loss = new Array(close.length);
+  const delta: number[] = new Array(close.length);
+  const gain: number[] = new Array(close.length);
+  const loss: number[] = new Array(close.length);
 
   delta[0] = NaN;
   gain[0] = NaN;
@@ -428,14 +467,14 @@ function calculateRSI(close, period = 14) {
   const avgLoss = wilderSmoothing(loss.slice(1), period);
 
   // Step C: 計算 RSI
-  const result = new Array(close.length);
+  const result: number[] = new Array(close.length);
   result[0] = NaN; // 第一個點沒有 delta
 
   for (let i = 1; i < close.length; i++) {
     const avgGainValue = avgGain[i - 1];
     const avgLossValue = avgLoss[i - 1];
 
-    if (isNaN(avgGainValue) || isNaN(avgLossValue)) {
+    if (avgGainValue === undefined || avgLossValue === undefined || isNaN(avgGainValue) || isNaN(avgLossValue)) {
       result[i] = NaN;
     } else if (avgLossValue <= EPSILON) {
       result[i] = 100; // 沒有下跌
@@ -452,7 +491,7 @@ function calculateRSI(close, period = 14) {
 /**
  * ADX - 平均趨向指數 (完整 Wilder 實現，增強數據驗證)
  */
-function calculateADX(high, low, close, period = 14) {
+function calculateADX(high: number[], low: number[], close: number[], period: number = 14): ADXResult {
   const length = Math.min(high.length, low.length, close.length);
 
   // 增強數據驗證
@@ -485,11 +524,11 @@ function calculateADX(high, low, close, period = 14) {
   }
 
   // Step A: 計算 DM 和 TR
-  const upMove = new Array(length);
-  const downMove = new Array(length);
-  const plusDM = new Array(length);
-  const minusDM = new Array(length);
-  const tr = new Array(length);
+  const upMove: number[] = new Array(length);
+  const downMove: number[] = new Array(length);
+  const plusDM: number[] = new Array(length);
+  const minusDM: number[] = new Array(length);
+  const tr: number[] = new Array(length);
 
   upMove[0] = NaN;
   downMove[0] = NaN;
@@ -538,12 +577,12 @@ function calculateADX(high, low, close, period = 14) {
   const smPlusDM = wilderSmoothing(plusDM.slice(1), period);
   const smMinusDM = wilderSmoothing(minusDM.slice(1), period);
 
-  console.log(`ADX: Wilder smoothing results - TR valid: ${smTR.filter(v => !isNaN(v)).length}, +DM valid: ${smPlusDM.filter(v => !isNaN(v)).length}, -DM valid: ${smMinusDM.filter(v => !isNaN(v)).length}`);
+  console.log(`ADX: Wilder smoothing results - TR valid: ${smTR.filter(v => v !== undefined && !isNaN(v)).length}, +DM valid: ${smPlusDM.filter(v => v !== undefined && !isNaN(v)).length}, -DM valid: ${smMinusDM.filter(v => v !== undefined && !isNaN(v)).length}`);
 
   // Step C: 計算 DI
-  const plusDI = new Array(length);
-  const minusDI = new Array(length);
-  const dx = new Array(length);
+  const plusDI: number[] = new Array(length);
+  const minusDI: number[] = new Array(length);
+  const dx: number[] = new Array(length);
 
   plusDI[0] = NaN;
   minusDI[0] = NaN;
@@ -554,7 +593,8 @@ function calculateADX(high, low, close, period = 14) {
     const smPlusDMValue = smPlusDM[i - 1];
     const smMinusDMValue = smMinusDM[i - 1];
 
-    if (isNaN(smTRValue) || isNaN(smPlusDMValue) || isNaN(smMinusDMValue) || smTRValue <= EPSILON) {
+    if (smTRValue === undefined || smPlusDMValue === undefined || smMinusDMValue === undefined ||
+      isNaN(smTRValue) || isNaN(smPlusDMValue) || isNaN(smMinusDMValue) || smTRValue <= EPSILON) {
       plusDI[i] = NaN;
       minusDI[i] = NaN;
       dx[i] = NaN;
@@ -574,17 +614,17 @@ function calculateADX(high, low, close, period = 14) {
   // Step D: ADX Wilder 平滑
   const adx = wilderSmoothing(dx.slice(1), period);
 
-  console.log(`ADX: Final ADX smoothing - DX valid: ${dx.filter(v => !isNaN(v)).length}, ADX valid: ${adx.filter(v => !isNaN(v)).length}`);
+  console.log(`ADX: Final ADX smoothing - DX valid: ${dx.filter(v => !isNaN(v)).length}, ADX valid: ${adx.filter(v => v !== undefined && !isNaN(v)).length}`);
 
   // 對齊結果
-  const adxResult = new Array(length);
+  const adxResult: (number | undefined)[] = new Array(length);
   adxResult[0] = NaN;
   for (let i = 1; i < length; i++) {
     adxResult[i] = adx[i - 1];
   }
 
   // 最終驗證
-  const finalValidADX = adxResult.filter(v => !isNaN(v)).length;
+  const finalValidADX = adxResult.filter(v => v !== undefined && !isNaN(v)).length;
   console.log(`ADX: Final result - ${finalValidADX} valid ADX values out of ${length} total`);
 
   return {
@@ -597,7 +637,7 @@ function calculateADX(high, low, close, period = 14) {
 /**
  * MACD - 移動平均收斂發散
  */
-function calculateMACD(close, fastPeriod = 12, slowPeriod = 26, signalPeriod = 9) {
+function calculateMACD(close: number[], fastPeriod: number = 12, slowPeriod: number = 26, signalPeriod: number = 9): MACDResult {
   if (slowPeriod <= fastPeriod) {
     console.warn('Slow period should be greater than fast period');
   }
@@ -606,7 +646,7 @@ function calculateMACD(close, fastPeriod = 12, slowPeriod = 26, signalPeriod = 9
   const emaSlow = ema(close, slowPeriod);
 
   // MACD Line
-  const macd = new Array(close.length);
+  const macd: number[] = new Array(close.length);
   for (let i = 0; i < close.length; i++) {
     if (isNaN(emaFast[i]) || isNaN(emaSlow[i])) {
       macd[i] = NaN;
@@ -619,7 +659,7 @@ function calculateMACD(close, fastPeriod = 12, slowPeriod = 26, signalPeriod = 9
   const signal = ema(macd, signalPeriod);
 
   // Histogram
-  const histogram = new Array(close.length);
+  const histogram: number[] = new Array(close.length);
   for (let i = 0; i < close.length; i++) {
     if (isNaN(macd[i]) || isNaN(signal[i])) {
       histogram[i] = NaN;
@@ -638,9 +678,9 @@ function calculateMACD(close, fastPeriod = 12, slowPeriod = 26, signalPeriod = 9
 /**
  * Parabolic SAR - 拋物線轉向指標
  */
-function calculateParabolicSAR(high, low, close, startAf = 0.02, maxAf = 0.2) {
+function calculateParabolicSAR(high: number[], low: number[], close: number[], startAf: number = 0.02, maxAf: number = 0.2): number[] {
   const length = close.length;
-  const psar = new Array(length).fill(NaN);
+  const psar: number[] = new Array(length).fill(NaN);
 
   // 至少需要一些數據來初始化
   if (length < 5) return psar;
@@ -703,9 +743,9 @@ function calculateParabolicSAR(high, low, close, startAf = 0.02, maxAf = 0.2) {
 /**
  * Stochastic Oscillator - 隨機指標 (K%D)
  */
-function calculateStochastic(high, low, close, period = 14, signalPeriod = 3) {
+function calculateStochastic(high: number[], low: number[], close: number[], period: number = 14, signalPeriod: number = 3): StochasticResult {
   const length = close.length;
-  const kLine = new Array(length).fill(NaN);
+  const kLine: number[] = new Array(length).fill(NaN);
 
   // 計算 Fast %K
   for (let i = period - 1; i < length; i++) {
@@ -733,10 +773,10 @@ function calculateStochastic(high, low, close, period = 14, signalPeriod = 3) {
 /**
  * CCI - 順勢指標
  */
-function calculateCCI(high, low, close, period = 20) {
+function calculateCCI(high: number[], low: number[], close: number[], period: number = 20): number[] {
   const length = close.length;
-  const cci = new Array(length).fill(NaN);
-  const tp = new Array(length); // Typical Price
+  const cci: number[] = new Array(length).fill(NaN);
+  const tp: number[] = new Array(length); // Typical Price
 
   for (let i = 0; i < length; i++) {
     tp[i] = (high[i] + low[i] + close[i]) / 3;
@@ -768,9 +808,9 @@ function calculateCCI(high, low, close, period = 20) {
 /**
  * ATR - 平均真實波幅
  */
-function calculateATR(high, low, close, period = 14) {
+function calculateATR(high: number[], low: number[], close: number[], period: number = 14): (number | undefined)[] {
   const length = close.length;
-  const tr = new Array(length).fill(NaN);
+  const tr: number[] = new Array(length).fill(NaN);
 
   // TR 計算
   for (let i = 1; i < length; i++) {
@@ -784,7 +824,7 @@ function calculateATR(high, low, close, period = 14) {
   // 先去掉 TR 的第一個 NaN 再平滑，然後補回
   const smoothedTr = wilderSmoothing(tr.slice(1), period);
 
-  const result = new Array(length).fill(NaN);
+  const result: (number | undefined)[] = new Array(length).fill(NaN);
   for (let i = 1; i < length; i++) {
     result[i] = smoothedTr[i - 1];
   }
@@ -795,9 +835,9 @@ function calculateATR(high, low, close, period = 14) {
 /**
  * OBV - 能量潮
  */
-function calculateOBV(close, volume) {
+function calculateOBV(close: number[], volume: number[]): number[] {
   const length = close.length;
-  const obv = new Array(length).fill(NaN);
+  const obv: number[] = new Array(length).fill(NaN);
 
   let currentOBV = 0;
   let startIndex = 0;
@@ -844,33 +884,34 @@ function calculateOBV(close, volume) {
 
 /**
  * SuperTrend - 超級趨勢指標
- * @param {Array} high
- * @param {Array} low
- * @param {Array} close
- * @param {Number} period (default 10)
- * @param {Number} multiplier (default 3)
+ * @param high
+ * @param low
+ * @param close
+ * @param period (default 10)
+ * @param multiplier (default 3)
  */
-function calculateSuperTrend(high, low, close, period = 10, multiplier = 3) {
+function calculateSuperTrend(high: number[], low: number[], close: number[], period: number = 10, multiplier: number = 3): SuperTrendResult {
   const length = close.length;
   const atr = calculateATR(high, low, close, period);
-  const superTrend = new Array(length).fill(NaN);
+  const superTrend: number[] = new Array(length).fill(NaN);
 
   // Basic Upper/Lower Bands
-  const basicUpper = new Array(length).fill(NaN);
-  const basicLower = new Array(length).fill(NaN);
+  const basicUpper: number[] = new Array(length).fill(NaN);
+  const basicLower: number[] = new Array(length).fill(NaN);
 
   // Final Upper/Lower Bands
-  const finalUpper = new Array(length).fill(NaN);
-  const finalLower = new Array(length).fill(NaN);
+  const finalUpper: number[] = new Array(length).fill(NaN);
+  const finalLower: number[] = new Array(length).fill(NaN);
 
   let trend = 1; // 1: Bullish, -1: Bearish
 
   for (let i = 1; i < length; i++) {
-    if (isNaN(atr[i])) continue;
+    const atrI = atr[i];
+    if (atrI === undefined || isNaN(atrI)) continue;
 
     const hl2 = (high[i] + low[i]) / 2;
-    basicUpper[i] = hl2 + (multiplier * atr[i]);
-    basicLower[i] = hl2 - (multiplier * atr[i]);
+    basicUpper[i] = hl2 + (multiplier * atrI);
+    basicLower[i] = hl2 - (multiplier * atrI);
 
     // Initialize Final Bands
     // If previous final band is NaN, use current basic band
@@ -923,10 +964,10 @@ function calculateSuperTrend(high, low, close, period = 10, multiplier = 3) {
 /**
  * MFI - 資金流量指標 (Money Flow Index)
  */
-function calculateMFI(high, low, close, volume, period = 14) {
+function calculateMFI(high: number[], low: number[], close: number[], volume: number[], period: number = 14): number[] {
   const length = close.length;
-  const mfi = new Array(length).fill(NaN);
-  const tp = new Array(length); // Typical Price
+  const mfi: number[] = new Array(length).fill(NaN);
+  const tp: number[] = new Array(length); // Typical Price
 
   for (let i = 0; i < length; i++) {
     tp[i] = (high[i] + low[i] + close[i]) / 3;
@@ -963,11 +1004,11 @@ function calculateMFI(high, low, close, volume, period = 14) {
 
 /**
  * 計算所有技術指標
- * @param {Object} ohlcv - OHLCV 數據 {open, high, low, close, volume}
- * @param {Array} benchmarkClose - Benchmark close prices (optional, for Beta)
- * @returns {Object} 所有指標結果
+ * @param ohlcv - OHLCV 數據 {open, high, low, close, volume}
+ * @param benchmarkClose - Benchmark close prices (optional, for Beta)
+ * @returns 所有指標結果
  */
-function calculateAllIndicators(ohlcv, benchmarkClose = null) {
+function calculateAllIndicators(ohlcv: OHLCV, benchmarkClose: number[] | null = null) {
   const { open, high, low, close, volume } = ohlcv;
 
   // 驗證數據長度一致
@@ -1058,21 +1099,21 @@ function calculateAllIndicators(ohlcv, benchmarkClose = null) {
 
 /**
  * Beta - 波動率係數
- * @param {Array} close - Stock Close Prices
- * @param {Array} benchmarkClose - Benchmark Close Prices (Must be aligned or same length)
- * @param {Number} period - Calculation window (e.g., 14 for 10D, 60 for 3M)
+ * @param close - Stock Close Prices
+ * @param benchmarkClose - Benchmark Close Prices (Must be aligned or same length)
+ * @param period - Calculation window (e.g., 14 for 10D, 60 for 3M)
  */
-function calculateBeta(close, benchmarkClose, period = 14) {
+function calculateBeta(close: number[], benchmarkClose: number[] | null, period: number = 14): number[] {
   if (!benchmarkClose || benchmarkClose.length === 0 || close.length !== benchmarkClose.length) {
     return new Array(close.length).fill(NaN);
   }
 
   const length = close.length;
-  const beta = new Array(length).fill(NaN);
+  const beta: number[] = new Array(length).fill(NaN);
 
   // Need percent change
-  const stockReturns = new Array(length).fill(NaN);
-  const benchReturns = new Array(length).fill(NaN);
+  const stockReturns: number[] = new Array(length).fill(NaN);
+  const benchReturns: number[] = new Array(length).fill(NaN);
 
   for (let i = 1; i < length; i++) {
     if (close[i - 1] && close[i]) stockReturns[i] = (close[i] - close[i - 1]) / close[i - 1];
@@ -1125,14 +1166,14 @@ function calculateBeta(close, benchmarkClose, period = 14) {
 
 /**
  * Williams %R - 威廉指標
- * @param {Array} high 
- * @param {Array} low 
- * @param {Array} close 
- * @param {Number} period 
+ * @param high
+ * @param low
+ * @param close
+ * @param period
  */
-function calculateWilliamsR(high, low, close, period = 14) {
+function calculateWilliamsR(high: number[], low: number[], close: number[], period: number = 14): number[] {
   const length = close.length;
-  const result = new Array(length).fill(NaN);
+  const result: number[] = new Array(length).fill(NaN);
 
   for (let i = period - 1; i < length; i++) {
     let highestHigh = -Infinity;
@@ -1156,19 +1197,19 @@ function calculateWilliamsR(high, low, close, period = 14) {
 
 /**
  * Chaikin Money Flow (CMF) - 蔡金資金流向
- * @param {Array} high 
- * @param {Array} low 
- * @param {Array} close 
- * @param {Array} volume 
- * @param {Number} period 
+ * @param high
+ * @param low
+ * @param close
+ * @param volume
+ * @param period
  */
-function calculateCMF(high, low, close, volume, period = 20) {
+function calculateCMF(high: number[], low: number[], close: number[], volume: number[], period: number = 20): number[] {
   const length = close.length;
-  const cmf = new Array(length).fill(NaN);
+  const cmf: number[] = new Array(length).fill(NaN);
 
   // Money Flow Multiplier (MFM) = ((Close - Low) - (High - Close)) / (High - Low)
   // Money Flow Volume (MFV) = MFM * Volume
-  const mfv = new Array(length).fill(0);
+  const mfv: number[] = new Array(length).fill(0);
 
   for (let i = 0; i < length; i++) {
     const range = high[i] - low[i];

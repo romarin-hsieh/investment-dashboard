@@ -219,10 +219,11 @@ async function fetchYahooData(page, symbol) {
 // Let's copy calculateSimpleMA and RSI for robustness or try to import.
 // For now, I will extract close prices and volume.
 
-import * as indicators from '../src/utils/technicalIndicatorsCore.js';
-// Note: importing local JS file in Node requires it to be ESM or handled. 
-// project package.json says "type": "module"? I should check. 
-// Assuming ESM is ON.
+import * as indicators from '../src/utils/technicalIndicatorsCore';
+// Note: technicalIndicatorsCore is now TypeScript (ADR-0014). This experimental
+// script is not wired into any workflow/npm script; if run directly it needs a
+// TS-aware runner (e.g. `npx tsx scripts/precompute-with-browser.js`) or should
+// import the built output, since plain Node cannot load a .ts source.
 
 async function processSymbol(browser, symbol) {
     const page = await browser.newPage();
