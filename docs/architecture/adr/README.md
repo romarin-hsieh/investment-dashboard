@@ -57,6 +57,7 @@
 | [0010](0010-design-system-css-tokens.md) | Design System & CSS Token Architecture | Accepted | `frontend`, `design-system`, `theming`, `maintainability` |
 | [0011](0011-bilingual-i18n-architecture.md) | Bilingual i18n Architecture (vue-i18n, EN / 繁中) | Accepted | `i18n`, `frontend`, `architecture` |
 | [0012](0012-self-service-add-symbol.md) | Self-Service Symbol Addition Workflow | Accepted | `operations`, `ci-cd`, `data` |
+| [0013](0013-component-test-coverage-policy.md) | Component Test Coverage Policy (ratchet floors) | Accepted | `testing`, `quality-gate`, `frontend` |
 
 ## Lifecycle
 

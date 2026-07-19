@@ -19,7 +19,7 @@
 - **[architecture/OVERVIEW.md](architecture/OVERVIEW.md)** — C4 context, 3-tier cache, ETL phases, frontend layout
 - **[architecture/BUILD_SPEC.md](architecture/BUILD_SPEC.md)** — interface contracts, CI/CD rules, security model, performance budget
 - **[architecture/COMPONENT_DEPENDENCIES.md](architecture/COMPONENT_DEPENDENCIES.md)** — Vue component dependency graph
-- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (12 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries, static-data caching, bundle budgets, separate data repository, i18n message precompilation, design-system tokens, bilingual i18n architecture, self-service add-symbol)
+- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (13 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries, static-data caching, bundle budgets, separate data repository, i18n message precompilation, design-system tokens, bilingual i18n architecture, self-service add-symbol, component test coverage)
 
 ### "How does the math / strategy work?"
 - **[specs/QUANT_STRATEGY_DOSSIER.md](specs/QUANT_STRATEGY_DOSSIER.md)** — quant engine: regime → sector → signal selection logic
@@ -72,6 +72,7 @@
   - [0010 Design System & CSS Tokens](architecture/adr/0010-design-system-css-tokens.md)
   - [0011 Bilingual i18n Architecture](architecture/adr/0011-bilingual-i18n-architecture.md)
   - [0012 Self-Service Add-Symbol Workflow](architecture/adr/0012-self-service-add-symbol.md)
+  - [0013 Component Test Coverage Policy](architecture/adr/0013-component-test-coverage-policy.md)
 
 ### Specs (`specs/` — algorithms, schemas, integrations)
 - [DATA_DICTIONARY.md](specs/DATA_DICTIONARY.md)
