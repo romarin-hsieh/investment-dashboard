@@ -126,20 +126,28 @@ export default {
       this.loadData()
     }
   },
+  created() {
+    // Non-reactive request token. Guards against a slow response for a PREVIOUS
+    // symbol landing on the currently-selected one (see loadData).
+    this.loadSeq = 0
+  },
   mounted() {
     this.loadData()
   },
   methods: {
     async loadData() {
+      const seq = ++this.loadSeq
       this.loading = true
       this.error = null
-      
+
       try {
         console.log(`🔄 Loading technical indicators for ${this.symbol} via Hybrid API (Progressive)`)
         
         // Step 1: Load Technical Indicators (Fast - Precomputed)
         const data = await hybridTechnicalIndicatorsAPI.getTechnicalIndicators(this.symbol);
-        
+        // A newer symbol started loading while we awaited — drop this response.
+        if (seq !== this.loadSeq) return
+
         if (!data) {
           throw new Error(this.$t('indicators.noDataForSymbol', { symbol: this.symbol }))
         }
@@ -161,6 +169,9 @@ export default {
         // Only if we want to enrich with latest Volume/MarketCap
         try {
             const stockInfo = await yahooFinanceAPI.getStockInfo(this.symbol);
+            // Phase 2 is the SLOW call. Without this guard the PREVIOUS symbol's
+            // volume / market-cap / beta gets spread onto the newly-selected ticker.
+            if (seq !== this.loadSeq) return
             if (stockInfo) {
                 const existingYf = this.rawData.yf || {};
                 this.rawData = {
@@ -186,6 +197,8 @@ export default {
         }
         
       } catch (err) {
+        // A stale failure must not replace the panel a newer load already owns.
+        if (seq !== this.loadSeq) return
         console.error('Error loading technical indicators:', err)
         this.error = this.$t('indicators.loadFailed', { message: err.message })
         this.loading = false;
@@ -408,9 +421,29 @@ export default {
     },
     
     // Formatting Methods
+    /**
+     * Coerce an upstream value to a finite number, or null.
+     *
+     * Yahoo's getFmt() stringifies EVERY field, so numbers arrive as strings
+     * ('1.23') and missing values as the literal string 'N/A'. A bare Number()
+     * is not enough in either direction:
+     *   - Number(null) and Number('') are 0 (finite) — which rendered a
+     *     fabricated "0" / "0.00" reading for absent data;
+     *   - a numeric string was rejected by the formatters as 'N/A' yet still
+     *     satisfied the `>` comparisons in the category helpers, printing
+     *     "N/A" beside a confident tag like 'MED VOL'.
+     * Routing both the formatters and the category helpers through this keeps
+     * the displayed value and its tag in agreement.
+     */
+    toFiniteNumber(value) {
+      if (value === null || value === undefined || value === '' || value === 'N/A') return null
+      const n = Number(value)
+      return Number.isFinite(n) ? n : null
+    },
+
     formatNumber(value, decimals = 2) {
-      if (value === null || value === undefined || value === 'N/A' || isNaN(value)) return 'N/A'
-      return Number(value).toFixed(decimals)
+      const n = this.toFiniteNumber(value)
+      return n === null ? 'N/A' : n.toFixed(decimals)
     },
 
     /**
@@ -426,9 +459,10 @@ export default {
     },
     
     formatVolume(value) {
-      // `!value && value !== 0` catches NaN, null, undefined, and "" — all fall to N/A.
-      if (!Number.isFinite(Number(value))) return 'N/A'
-      const n = Number(value)
+      // NaN, null, undefined, '' and 'N/A' all fall to N/A (Number(null) === 0 is
+      // finite, which is exactly how absent volume used to render as "0").
+      const n = this.toFiniteNumber(value)
+      if (n === null) return 'N/A'
       if (n >= 1e9) return formatNumber(n / 1e9, 1) + 'B'
       if (n >= 1e6) return formatNumber(n / 1e6, 1) + 'M'
       if (n >= 1e3) return formatNumber(n / 1e3, 1) + 'K'
@@ -436,8 +470,8 @@ export default {
     },
 
     formatMarketCap(value) {
-      if (!Number.isFinite(Number(value))) return 'N/A'
-      const n = Number(value)
+      const n = this.toFiniteNumber(value)
+      if (n === null) return 'N/A'
       if (n >= 1e12) return '$' + formatNumber(n / 1e12, 2) + 'T'
       if (n >= 1e9)  return '$' + formatNumber(n / 1e9, 1) + 'B'
       if (n >= 1e6)  return '$' + formatNumber(n / 1e6, 1) + 'M'
@@ -445,9 +479,10 @@ export default {
     },
 
     formatBeta(value) {
-      // Explicit isFinite guard — previous version passed NaN through to
-      // Number(NaN).toFixed(2) = "NaN" (rendered directly to UI).
-      return formatNumber(value, 2)
+      // Local formatter (not the util) so numeric STRINGS from the Yahoo
+      // enrichment format correctly instead of rendering 'N/A' next to a
+      // confident volatility tag.
+      return this.formatNumber(value, 2)
     },
     
     // Style Methods
@@ -496,25 +531,34 @@ export default {
     
     // Category Methods
     getMarketCapCategory(value) {
-      if (!value) return null
-      if (value >= 200e9) return 'MEGA CAP'
-      if (value >= 10e9) return 'LARGE CAP'
-      if (value >= 2e9) return 'MID CAP'
-      if (value >= 300e6) return 'SMALL CAP'
+      // 'N/A' is truthy and fails every >= test, so it used to fall through to
+      // 'MICRO CAP' — a fabricated size classification for missing data.
+      const n = this.toFiniteNumber(value)
+      if (n === null || n <= 0) return null
+      if (n >= 200e9) return 'MEGA CAP'
+      if (n >= 10e9) return 'LARGE CAP'
+      if (n >= 2e9) return 'MID CAP'
+      if (n >= 300e6) return 'SMALL CAP'
       return 'MICRO CAP'
     },
     
     getBetaCategory(value) {
-      if (value === null || value === undefined) return null
-      if (value > 1.5) return 'HIGH VOL'
-      if (value > 1.0) return 'MED VOL'
-      if (value > 0.5) return 'LOW VOL'
+      // 'N/A' passed the null check and failed every > test, yielding a
+      // confident 'VERY LOW' tag for a beta we do not actually have.
+      const n = this.toFiniteNumber(value)
+      if (n === null) return null
+      if (n > 1.5) return 'HIGH VOL'
+      if (n > 1.0) return 'MED VOL'
+      if (n > 0.5) return 'LOW VOL'
       return 'VERY LOW'
     },
 
     getVolumeCategory(volume, avgVolume) {
-        if (!volume || !avgVolume) return null;
-        const ratio = volume / avgVolume;
+        const v = this.toFiniteNumber(volume)
+        const avg = this.toFiniteNumber(avgVolume)
+        // A zero/absent average would divide to Infinity.
+        if (v === null || !avg) return null;
+        const ratio = v / avg;
         if (ratio > 1.5) return 'HIGH VOL';
         if (ratio > 1.0) return 'ABOVE AVG';
         if (ratio < 0.5) return 'LOW VOL';
