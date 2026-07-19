@@ -320,7 +320,7 @@ import ReviewCometChart from '@/components/ReviewCometChart.vue'
 //       (Holdings tab only). Static import removed in WS-C PR-C3.
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { useTheme } from '@/composables/useTheme.js'
-import { getToken } from '@/utils/designTokens.js'
+import { getToken } from '@/utils/designTokens'
 
 export default {
   name: 'StockDetail',

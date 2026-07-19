@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { calculateMFI, getMFISignal, calculateMFIWithMetadata } from './mfi.js'
+import { calculateMFI, getMFISignal, calculateMFIWithMetadata } from './mfi'
 
 /**
  * Silence the informational console output from the production code during

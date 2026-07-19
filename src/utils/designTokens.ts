@@ -32,10 +32,10 @@ const ROOT = typeof document !== 'undefined' ? document.documentElement : null
  * Read a CSS custom property from :root. Returns the trimmed value as a
  * string, or an empty string if not defined / not in a browser context.
  *
- * @param {string} name — token name, including the leading '--' (e.g. '--chart-up')
- * @returns {string} hex colour or empty string
+ * @param name — token name, including the leading '--' (e.g. '--chart-up')
+ * @returns hex colour or empty string
  */
-export function getToken (name) {
+export function getToken (name: string): string {
   if (!ROOT) return ''
   return getComputedStyle(ROOT).getPropertyValue(name).trim()
 }
@@ -49,11 +49,11 @@ export function getToken (name) {
  * Falls back to returning the raw token value untouched when it is not a
  * #rgb / #rrggbb hex (e.g. already an rgb()/rgba() string, or empty).
  *
- * @param {string} name — token name including the leading '--'
- * @param {number} alpha — 0..1 opacity
- * @returns {string} e.g. 'rgba(8, 153, 129, 0.3)'
+ * @param name — token name including the leading '--'
+ * @param alpha — 0..1 opacity
+ * @returns e.g. 'rgba(8, 153, 129, 0.3)'
  */
-export function getTokenRgba (name, alpha) {
+export function getTokenRgba (name: string, alpha: number): string {
   const value = getToken(name)
   const hex = value.replace('#', '')
   const full = hex.length === 3
@@ -70,13 +70,12 @@ export function getTokenRgba (name, alpha) {
  * Convenience: read several tokens at once. Returns an object keyed by the
  * token name without the leading '--' (so '--chart-up' becomes `chartUp`).
  *
- * @param {string[]} names
- * @returns {Record<string, string>}
+ * @param names
  */
-export function getTokens (names) {
-  const out = {}
+export function getTokens (names: string[]): Record<string, string> {
+  const out: Record<string, string> = {}
   for (const name of names) {
-    const key = name.replace(/^--/, '').replace(/-([a-z])/g, (_, c) => c.toUpperCase())
+    const key = name.replace(/^--/, '').replace(/-([a-z])/g, (_: string, c: string) => c.toUpperCase())
     out[key] = getToken(name)
   }
   return out
