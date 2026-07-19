@@ -70,11 +70,39 @@ rewrite, make TypeScript *real* first, then migrate behind the gate:
 
 ## Follow-ups
 
-- Migration order: start with small, **well-tested** utilities (they now have a
-  regression net), then the ROADMAP's top-5 by risk — `yahooFinanceApi.js`,
-  `technicalIndicatorsCore.js`, `mfiVolumeProfile.js`, `autoUpdateScheduler.js`,
-  `technicalIndicatorsCache.js`.
+Migration order: start with small, **well-tested** utilities (they now have a regression
+net), then the ROADMAP's top-5 by risk. Each file is renamed, typed with no `any` and no
+gate-loosening, and its type enforcement is probe-tested (inject a deliberate violation,
+confirm the error code, revert to green) before the PR merges.
+
+### Migration progress
+
+`.ts` file count: **7 → 16** (utilities). `.vue` SFCs still use plain `<script>` and are
+not yet opted in (`lang="ts"` is the per-file switch).
+
+| Batch / PR | Files migrated to `.ts` | Notes |
+|---|---|---|
+| #102 | `baseUrl` | first real migration; foundational to ADR-0008 |
+| #103 | `designTokens`, `mfi` | `mfi` exposed `MFISeries = (number \| null)[]` — nulls were laundered by `new Array()` |
+| #104 | `dataVersionService`, `technicalIndicatorsCache` | fixed a real `isChecking` latch bug the compiler forced out (+ regression test) |
+| #105 | `performanceCache`, `performanceMonitor`, `mfiVolumeProfile`, `autoUpdateScheduler` | leaves-first: the perf pair migrated to avoid throwaway `.d.ts` sidecars |
+
+**Remaining top-5 by risk** (both large and **untested**, so each gets a characterization
+test pass first, then a solo migration PR):
+- `technicalIndicatorsCore.js` (~1256 LOC, pure indicator math)
+- `api/yahooFinanceApi.js` (~1406 LOC, I/O-heavy API client)
+
+After the top-5: the remaining ~26 `.js` utilities/services (migrate in dependency order,
+leaves first — importing a still-`.js` module from strict `.ts` raises TS7016, and the fix
+is to migrate the leaf, not to hand-write a sidecar), then the `.vue` SFCs.
+
+### Other
+
 - The shelved migration-strategy draft lives on the `claude/adr-ts-migration-strategy`
   branch (from closed PR #44); fold anything still useful into the migration PRs.
 - Gate verified both ways on introduction: `npm run typecheck` exits 0, and a deliberate
   `const x: number = "str"` correctly fails with `error TS2322`.
+- Recurring lesson from the ramp: `tsc` silently resolves a `.js` import specifier to a
+  sibling `.ts`, so a stale specifier keeps **typecheck** green while breaking the Vite/
+  Rollup **build** — rewrite every specifier (including dynamic `import()` and `vi.mock`
+  factory paths) to extensionless form, and always re-run the build, not just typecheck.
