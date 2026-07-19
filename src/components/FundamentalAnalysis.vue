@@ -120,13 +120,13 @@
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.forwardPE') }}</div>
                         <div class="metric-value">
-                             {{ metrics.forwardPE ? formatNumber(parseFloat(metrics.forwardPE), 2) : $t('fundamentals.keyMetrics.notAvailable') }}
+                             {{ displayMetric(metrics.forwardPE, 2) }}
                         </div>
                      </div>
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.beta') }}</div>
                         <div class="metric-value">
-                            {{ metrics.beta || $t('fundamentals.keyMetrics.notAvailable') }}
+                            {{ displayMetric(metrics.beta, 2) }}
                         </div>
                      </div>
                 </div>
@@ -406,18 +406,22 @@ export default {
         }
         
         // Extract Yearly Data
+        // COPY, never alias: the synthesis step below pushes onto this array, and
+        // `earnings` is a cached API payload — aliasing meant we mutated the
+        // caller's (cached) object, so re-entering this view appended duplicate
+        // synthesized years each time.
         if (earnings.financialsChart.yearly) {
-            this.yearlyEarningsData = earnings.financialsChart.yearly;
+            this.yearlyEarningsData = [...earnings.financialsChart.yearly];
         } else if (Array.isArray(earnings.financialsChart)) {
             // Legacy handling, assuming array is yearly if not specified
-            this.yearlyEarningsData = earnings.financialsChart;
+            this.yearlyEarningsData = [...earnings.financialsChart];
         } else {
             this.yearlyEarningsData = [];
         }
 
         // Extract Quarterly Data
         if (earnings.financialsChart.quarterly) {
-            this.quarterlyEarningsData = earnings.financialsChart.quarterly;
+            this.quarterlyEarningsData = [...earnings.financialsChart.quarterly];
         } else {
             this.quarterlyEarningsData = [];
         }
@@ -456,6 +460,9 @@ export default {
             Object.keys(quarterlyByYear).sort().forEach(yearStr => {
                 const year = parseInt(yearStr);
                 const data = quarterlyByYear[year];
+                // Only synthesize a COMPLETE fiscal year. Aggregating 1-3 quarters
+                // and charting it beside full years reads as a revenue collapse.
+                if (data.count !== 4) return;
                 // Push synthesized aggregation
                 this.yearlyEarningsData.push({
                     date: year,
@@ -601,9 +608,44 @@ export default {
         return 'text-warning';
     },
 
+    /**
+     * Yahoo returns `{ raw, fmt }` envelopes for many fields. Unwrap to a primitive
+     * so downstream code never stringifies an object into the UI.
+     */
+    unwrapValue(val) {
+      if (val && typeof val === 'object' && !Array.isArray(val)) {
+        if (val.raw !== undefined) return val.raw
+        if (val.fmt !== undefined) return val.fmt
+        return null
+      }
+      return val
+    },
+
+    /**
+     * Render a metric that may arrive as a number, a numeric string, or a Yahoo
+     * `{ raw, fmt }` envelope. The envelope used to fall through as truthy and
+     * render literally as "[object Object]" (beta), or die in
+     * parseFloat({}) -> NaN and show a silent N/A for a value we DO have (forwardPE).
+     */
+    displayMetric(value, decimals = 2) {
+      const raw = this.unwrapValue(value)
+      if (raw === null || raw === undefined || raw === '') {
+        return this.$t('fundamentals.keyMetrics.notAvailable')
+      }
+      const n = typeof raw === 'number' ? raw : parseFloat(raw)
+      if (!Number.isFinite(n)) return this.$t('fundamentals.keyMetrics.notAvailable')
+      return formatNumber(n, decimals)
+    },
+
     getGrowthClass(val) {
-        if (!val) return '';
-        return val.includes('-') ? 'text-danger' : 'text-success';
+        // Previously `val.includes('-')`, which THREW on a number or a {raw,fmt}
+        // object, and returned 'text-success' for any string without a '-' —
+        // painting missing data ('N/A') green, i.e. as positive growth.
+        const raw = this.unwrapValue(val)
+        if (raw === null || raw === undefined || raw === '') return '';
+        const n = typeof raw === 'number' ? raw : parseFloat(String(raw).replace(/[%,\s]/g, ''))
+        if (!Number.isFinite(n)) return '';   // unknown -> no colour, never green
+        return n < 0 ? 'text-danger' : 'text-success';
     },
 
     formatDate(epoch) {
@@ -637,6 +679,9 @@ export default {
          const total = max - min;
          
          let pct = ((price - min) / total) * 100;
+         // A missing high/low makes `range` NaN, which propagated all the way out
+         // as the literal CSS string 'NaN%' on the marker's `left`/`right`.
+         if (!Number.isFinite(pct)) return '0%';
          return Math.max(0, Math.min(100, pct)) + '%';
     },
     
