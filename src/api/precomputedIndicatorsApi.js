@@ -1,6 +1,6 @@
 // 從靜態文件讀取預計算的技術指標數據
 import { technicalIndicatorsCache } from '../utils/technicalIndicatorsCache.js';
-import { getDataBaseUrl } from '../utils/baseUrl.js';
+import { getDataBaseUrl } from '../utils/baseUrl';
 
 class PrecomputedIndicatorsAPI {
   constructor() {

@@ -39,7 +39,7 @@ import {
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
 import { formatNumber } from '@/utils/numberFormat'
-import { withDataBase } from '@/utils/baseUrl.js'
+import { withDataBase } from '@/utils/baseUrl'
 import { getToken } from '@/utils/designTokens.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)

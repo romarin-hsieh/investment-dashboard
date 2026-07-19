@@ -6,7 +6,7 @@
  * change is a no-op until the data repo exists). Config paths stay on the app base.
  */
 import { describe, it, expect, afterEach, vi } from 'vitest'
-import { withBase, withDataBase, getDataBaseUrl, paths } from './baseUrl.js'
+import { withBase, withDataBase, getDataBaseUrl, paths } from './baseUrl'
 
 afterEach(() => {
   vi.unstubAllEnvs()

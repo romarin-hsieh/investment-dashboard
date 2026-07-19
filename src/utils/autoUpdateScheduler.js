@@ -212,7 +212,7 @@ class AutoUpdateScheduler {
   async checkTechnicalIndicatorsAge() {
     try {
       // 檢查預計算數據的最新日期
-      const { paths } = await import('./baseUrl.js');
+      const { paths } = await import('./baseUrl');
       const response = await fetch(paths.technicalIndicatorsIndex())
       if (!response.ok) {
         console.log('📊 No precomputed data found, update needed')

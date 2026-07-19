@@ -164,7 +164,7 @@
 <script>
 import { useTheme } from '@/composables/useTheme.js';
 import { ohlcvApi } from '@/services/ohlcvApi.js';
-import { withDataBase } from '@/utils/baseUrl.js';
+import { withDataBase } from '@/utils/baseUrl';
 
 export default {
   name: 'ZeiiermanFearGreedGauge',

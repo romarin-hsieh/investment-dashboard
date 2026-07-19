@@ -3,7 +3,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
 import SignalCard from '@/components/SignalCard.vue';
-import { withDataBase } from '@/utils/baseUrl.js';
+import { withDataBase } from '@/utils/baseUrl';
 import { formatNumber } from '@/utils/numberFormat';
 
 const { t, locale } = useI18n();
