@@ -10,7 +10,7 @@
  * is the pure logic + storage + listener machinery.
  */
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { dataVersionService } from './dataVersionService.js'
+import { dataVersionService } from './dataVersionService'
 
 beforeEach(() => {
   vi.spyOn(console, 'log').mockImplementation(() => {})
@@ -23,6 +23,7 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.restoreAllMocks()
+  vi.unstubAllGlobals()
   // Clean up any listeners attached during the test so cross-test
   // notification leaks aren't possible.
   for (const l of [...dataVersionService.listeners]) {
@@ -95,6 +96,31 @@ describe('localStorage-backed version tracking', () => {
     localStorage.setItem(dataVersionService.STORAGE_KEY, '2026-04-26')
     dataVersionService.resetVersionCheck()
     expect(dataVersionService.getCurrentVersion()).toBeNull()
+  })
+})
+
+describe('checkDataVersionAndRefresh — isChecking lifecycle', () => {
+  // Regression guard for a bug the TS migration surfaced: the `finally`
+  // block reset `this._isChecking` (a property that never existed) instead
+  // of `this.isChecking`, so the flag latched `true` after the first check
+  // and `getStatus().isChecking` was permanently wrong for any diagnostic
+  // UI. The re-entry guard uses a separate promise, so this was silent.
+  it('resets isChecking to false after a check completes (even on fetch failure)', async () => {
+    // Defeat the 5s throttle + promise-dedup so the method actually runs
+    // its body (and therefore its finally) rather than short-circuiting.
+    dataVersionService._lastCheckTime = 0
+    dataVersionService._currentVersionCheckPromise = null
+
+    const fetchMock = vi.fn().mockRejectedValue(new Error('network down'))
+    vi.stubGlobal('fetch', fetchMock)
+
+    const triggered = await dataVersionService.checkDataVersionAndRefresh()
+
+    // Sanity: we got past the throttle and truly executed the fetch path.
+    expect(fetchMock).toHaveBeenCalled()
+    expect(triggered).toBe(false)
+    // The actual regression assertion: the flag must return to false.
+    expect(dataVersionService.getStatus().isChecking).toBe(false)
   })
 })
 

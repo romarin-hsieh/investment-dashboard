@@ -139,7 +139,7 @@ class AutoUpdateScheduler {
       console.log('🔍 Checking technical indicators update...')
 
       // 使用新的版本驅動檢查，完全取代時間窗口檢查
-      const { dataVersionService } = await import('./dataVersionService.js');
+      const { dataVersionService } = await import('./dataVersionService');
       const versionChanged = await dataVersionService.checkDataVersionAndRefresh();
       
       if (versionChanged) {
@@ -178,7 +178,7 @@ class AutoUpdateScheduler {
       console.log('🔍 Checking metadata update...')
 
       // 使用版本驅動檢查，取代時間窗口檢查
-      const { dataVersionService } = await import('./dataVersionService.js');
+      const { dataVersionService } = await import('./dataVersionService');
       const versionChanged = await dataVersionService.checkDataVersionAndRefresh();
       
       if (versionChanged) {

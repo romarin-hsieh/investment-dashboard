@@ -13,7 +13,7 @@
  * @module api/yahooFinanceApi
  */
 
-import technicalIndicatorsCache from '../utils/technicalIndicatorsCache.js';
+import technicalIndicatorsCache from '../utils/technicalIndicatorsCache';
 import { getDataBaseUrl } from '../utils/baseUrl';
 import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
 import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';

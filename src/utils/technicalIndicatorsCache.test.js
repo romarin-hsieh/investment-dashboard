@@ -19,7 +19,7 @@ beforeEach(async () => {
   // Returning null makes getCacheKey fall back to today's date.
   global.fetch = vi.fn(async () => ({ ok: false, status: 404 }))
 
-  cacheModule = await import('./technicalIndicatorsCache.js')
+  cacheModule = await import('./technicalIndicatorsCache')
 })
 
 afterEach(() => {
