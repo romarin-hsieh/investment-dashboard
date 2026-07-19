@@ -139,17 +139,20 @@ describe('MFIVolumeProfilePanel — mount + loadData lifecycle', () => {
     expect(ohlcvApi.getOhlcv).toHaveBeenLastCalledWith('MSFT', '1d', '3mo')
   })
 
-  it('early-returns from loadData when already loading (re-entry guard)', async () => {
+  it('supersedes an in-flight request instead of refusing to re-fetch', async () => {
+    // REPLACES the old "early-returns from loadData when already loading" case.
+    // That test asserted the `if (this.loading) return` re-entry guard — which was
+    // itself the bug: a symbol change mid-flight was silently dropped, leaving the
+    // PREVIOUS symbol's profile on screen permanently. loadData now uses a
+    // generation token, so a concurrent call DOES re-fetch and the newest wins.
     const wrapper = mount(MFIVolumeProfilePanel, { props: { symbol: 'AAPL' } })
     await flushPromises()
     expect(ohlcvApi.getOhlcv).toHaveBeenCalledTimes(1)
 
-    // Simulate a second loadData attempt mid-flight by forcing the guard flag
-    wrapper.vm.loading = true
     await wrapper.vm.loadData()
 
-    // Still only the original mount-time call; the guard prevented a re-fetch.
-    expect(ohlcvApi.getOhlcv).toHaveBeenCalledTimes(1)
+    expect(ohlcvApi.getOhlcv).toHaveBeenCalledTimes(2)
+    expect(wrapper.vm.loading).toBe(false)
   })
 })
 
@@ -216,5 +219,134 @@ describe('MFIVolumeProfilePanel — pure helpers', () => {
     wrapper.vm.profileData = null
     await wrapper.vm.$nextTick()
     expect(wrapper.vm.displayBins).toEqual([])
+  })
+})
+
+// ---------- WS-H PR 5 additions (ADR-0013) ----------
+//
+// The file read 84.6% statements but only 53.1% FUNCTIONS — the bar renderer and
+// the range/race paths never executed. These four blocks close that gap.
+
+function deferred () {
+  let resolve
+  const promise = new Promise((res) => { resolve = res })
+  return { promise, resolve }
+}
+
+describe('MFIVolumeProfilePanel — getBarFillStyle (the only live visual encoding)', () => {
+  // NOTE: `.bullish` / `.bearish` / `.poc` classes have NO CSS rule anywhere, so
+  // the inline style from getBarFillStyle is the sole support/resistance signal.
+  // An inverted comparison here flips support and resistance for every user with
+  // no other symptom.
+  const SUPPORT = '#10b981' // bin fully BELOW price  -> profit/support
+  const RESIST  = '#ef4444' // bin fully ABOVE price  -> trapped/resistance
+  const AT_PX   = '#f59e0b' // bin straddles price
+
+  async function mountLoaded () {
+    const wrapper = mount(MFIVolumeProfilePanel, { props: { symbol: 'AAPL' } })
+    await flushPromises()
+    return wrapper
+  }
+
+  it('colours bins by position relative to currentPrice', async () => {
+    const wrapper = await mountLoaded()
+    const [low, high] = wrapper.vm.profileData.volumeProfile // 98-102 and 103-107
+
+    wrapper.vm.currentPrice = 110 // both bins below price
+    expect(wrapper.vm.getBarFillStyle(low).backgroundColor).toBe(SUPPORT)
+    expect(wrapper.vm.getBarFillStyle(high).backgroundColor).toBe(SUPPORT)
+
+    wrapper.vm.currentPrice = 95 // both bins above price
+    expect(wrapper.vm.getBarFillStyle(low).backgroundColor).toBe(RESIST)
+
+    wrapper.vm.currentPrice = 100 // straddles the low bin, below the high bin
+    expect(wrapper.vm.getBarFillStyle(low).backgroundColor).toBe(AT_PX)
+    expect(wrapper.vm.getBarFillStyle(high).backgroundColor).toBe(RESIST)
+  })
+
+  it('scales bar width against maxVolumeInBin, with a floor and a zero-divisor guard', async () => {
+    const wrapper = await mountLoaded()
+    const [poc] = wrapper.vm.profileData.volumeProfile // volume 5000 === maxVolumeInBin
+
+    expect(wrapper.vm.getBarFillStyle(poc).width).toBe('100%')
+    expect(wrapper.vm.getBarFillStyle({ ...poc, volume: 2500 }).width).toBe('50%')
+
+    // Zero divisor must not produce 'NaN%' — the floor keeps the bar visible.
+    wrapper.vm.profileData.statistics.maxVolumeInBin = 0
+    expect(wrapper.vm.getBarFillStyle(poc).width).toBe('1%')
+
+    // No data at all -> collapsed bar, not a crash.
+    wrapper.vm.profileData = null
+    expect(wrapper.vm.getBarFillStyle(poc)).toEqual({ width: '0%' })
+  })
+
+  it('falls back to neutral grey and emits no signals when currentPrice is null', async () => {
+    // A close series of all-nulls makes getCurrentPrice return null. The chart still
+    // renders perfectly normally — every bar just silently loses its support /
+    // resistance meaning, so this needs pinning.
+    ohlcvApi.getOhlcv.mockResolvedValue({ ...makeOhlcvStub(), close: [null, null, null, null, null] })
+
+    const wrapper = mount(MFIVolumeProfilePanel, { props: { symbol: 'AAPL' } })
+    await flushPromises()
+
+    expect(wrapper.vm.currentPrice).toBeNull()
+    expect(wrapper.vm.tradingSignals).toBeNull()
+    expect(getMFIVolumeProfileSignals).not.toHaveBeenCalled()
+
+    const [bin] = wrapper.vm.profileData.volumeProfile
+    expect(wrapper.vm.getBarFillStyle(bin).backgroundColor).toBe('#6b7280') // neutral
+  })
+})
+
+describe('MFIVolumeProfilePanel — range selector', () => {
+  it('re-fetches with the newly selected range', async () => {
+    const wrapper = mount(MFIVolumeProfilePanel, { props: { symbol: 'AAPL' } })
+    await flushPromises()
+    ohlcvApi.getOhlcv.mockClear()
+
+    await wrapper.find('select.range-selector').setValue('1y')
+    await flushPromises()
+
+    expect(ohlcvApi.getOhlcv).toHaveBeenCalledWith('AAPL', '1d', '1y')
+  })
+
+  it('offers exactly the ranges the API accepts', async () => {
+    // These are API contract values (not UI copy), so asserting them is safe.
+    const wrapper = mount(MFIVolumeProfilePanel, { props: { symbol: 'AAPL' } })
+    await flushPromises()
+
+    const values = wrapper.findAll('select.range-selector option').map(o => o.element.value)
+    expect(values).toEqual(['3mo', '6mo', '1y'])
+  })
+})
+
+describe('MFIVolumeProfilePanel — in-flight request supersession', () => {
+  it('loads the NEW symbol when it changes mid-flight, and discards the stale response', async () => {
+    // REGRESSION: `loadData` opened with `if (this.loading) return`, so a symbol
+    // change while a request was in flight early-returned — the new symbol never
+    // loaded and the panel kept showing the PREVIOUS symbol's profile under the
+    // new symbol's header, permanently, with no refetch.
+    const slowOld = deferred()
+    ohlcvApi.getOhlcv
+      .mockReturnValueOnce(slowOld.promise)      // AAPL — still in flight
+      .mockResolvedValueOnce(makeOhlcvStub())    // MSFT — resolves promptly
+    calculateMFIVolumeProfile.mockReturnValue({ ...makeProfileStub(), marketSentiment: 'MSFT_RESULT' })
+
+    const wrapper = mount(MFIVolumeProfilePanel, { props: { symbol: 'AAPL' } })
+    await wrapper.setProps({ symbol: 'MSFT' })
+    await flushPromises()
+
+    // The new symbol must actually have been requested (no starvation).
+    expect(ohlcvApi.getOhlcv).toHaveBeenCalledTimes(2)
+    expect(ohlcvApi.getOhlcv).toHaveBeenLastCalledWith('MSFT', '1d', '3mo')
+    expect(wrapper.vm.profileData.marketSentiment).toBe('MSFT_RESULT')
+
+    // The stale AAPL response now lands — it must be dropped, not rendered.
+    calculateMFIVolumeProfile.mockReturnValue({ ...makeProfileStub(), marketSentiment: 'AAPL_RESULT' })
+    slowOld.resolve(makeOhlcvStub())
+    await flushPromises()
+
+    expect(wrapper.vm.profileData.marketSentiment).toBe('MSFT_RESULT')
+    expect(wrapper.vm.loading).toBe(false)
   })
 })
