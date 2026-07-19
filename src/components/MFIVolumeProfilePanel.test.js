@@ -22,14 +22,14 @@ import { mount, flushPromises } from '@vue/test-utils'
 vi.mock('@/services/ohlcvApi.js', () => ({
   ohlcvApi: { getOhlcv: vi.fn() }
 }))
-vi.mock('@/utils/mfiVolumeProfile.js', () => ({
+vi.mock('@/utils/mfiVolumeProfile', () => ({
   calculateMFIVolumeProfile: vi.fn(),
   getMFIVolumeProfileSignals: vi.fn()
 }))
 
 import MFIVolumeProfilePanel from './MFIVolumeProfilePanel.vue'
 import { ohlcvApi } from '@/services/ohlcvApi.js'
-import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile.js'
+import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile'
 
 // ---------- fixtures ----------
 

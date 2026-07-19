@@ -2,8 +2,8 @@
 // 在環境版本更新時預載所有股票的技術指標數據
 
 import { hybridTechnicalIndicatorsAPI } from '@/api/hybridTechnicalIndicatorsApi.js'
-import { performanceCache, CACHE_KEYS } from './performanceCache.js'
-import { performanceMonitor } from './performanceMonitor.js'
+import { performanceCache, CACHE_KEYS } from './performanceCache'
+import { performanceMonitor } from './performanceMonitor'
 
 class CacheWarmupService {
   constructor() {

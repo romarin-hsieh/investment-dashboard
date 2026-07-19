@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { calculateMFIVolumeProfile } from './mfiVolumeProfile.js'
+import { calculateMFIVolumeProfile } from './mfiVolumeProfile'
 
 beforeEach(() => {
   vi.spyOn(console, 'log').mockImplementation(() => {})

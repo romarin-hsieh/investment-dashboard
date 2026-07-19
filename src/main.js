@@ -9,7 +9,7 @@ import './style.css'          // Brand theme (overrides apply)
 import '@/utils/widgetPreloader'
 
 // Import and initialize auto-update scheduler
-import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler.js'
+import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 
 // Import cache warmup service
 import { cacheWarmupService } from '@/utils/cacheWarmupService.js'

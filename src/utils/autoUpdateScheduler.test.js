@@ -18,10 +18,10 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 // Mock heavy collaborators so importing the service doesn't fire side effects.
-vi.mock('./performanceMonitor.js', () => ({
+vi.mock('./performanceMonitor', () => ({
   performanceMonitor: { start: vi.fn(), end: vi.fn() }
 }))
-vi.mock('./performanceCache.js', () => ({
+vi.mock('./performanceCache', () => ({
   performanceCache: { get: vi.fn(), set: vi.fn(), clear: vi.fn() },
   CACHE_KEYS: {}
 }))
@@ -35,7 +35,7 @@ beforeEach(async () => {
   vi.spyOn(console, 'log').mockImplementation(() => {})
   vi.spyOn(console, 'warn').mockImplementation(() => {})
   vi.spyOn(console, 'error').mockImplementation(() => {})
-  module = await import('./autoUpdateScheduler.js')
+  module = await import('./autoUpdateScheduler')
 })
 
 afterEach(() => {

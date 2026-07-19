@@ -3,8 +3,8 @@
 // Optimized for fast loading of the Stock Overview page
 // 專門優化 Stock Overview 頁面的載入效能
 
-import { performanceCache, CACHE_KEYS, CACHE_TTL } from './performanceCache.js'
-import { performanceMonitor, PERFORMANCE_LABELS } from './performanceMonitor.js'
+import { performanceCache, CACHE_KEYS, CACHE_TTL } from './performanceCache'
+import { performanceMonitor, PERFORMANCE_LABELS } from './performanceMonitor'
 import { dataFetcher } from '@/lib/fetcher'
 import { stocksConfig } from './stocksConfigService.js'
 import { metadataService } from './metadataService.js'

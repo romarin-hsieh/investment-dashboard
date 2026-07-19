@@ -271,9 +271,9 @@
 </template>
 
 <script>
-import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler.js'
+import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 import { withDataBase } from '@/utils/baseUrl'
-import { performanceCache } from '@/utils/performanceCache.js'
+import { performanceCache } from '@/utils/performanceCache'
 import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
 
 export default {
