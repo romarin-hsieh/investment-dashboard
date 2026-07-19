@@ -15,7 +15,7 @@
 
 import technicalIndicatorsCache from '../utils/technicalIndicatorsCache';
 import { getDataBaseUrl } from '../utils/baseUrl';
-import { calculateAllIndicators } from '../utils/technicalIndicatorsCore.js';
+import { calculateAllIndicators } from '../utils/technicalIndicatorsCore';
 import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';
 import { getDefaultExchange, getMarketCapCategory, createFallbackStockInfo } from './dataTransformers';
 import { formatNumber } from '../utils/numberFormat';
