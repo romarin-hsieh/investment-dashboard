@@ -10,7 +10,7 @@
  * is the pure logic + storage + listener machinery.
  */
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { dataVersionService } from './dataVersionService.js'
+import { dataVersionService } from './dataVersionService'
 
 beforeEach(() => {
   vi.spyOn(console, 'log').mockImplementation(() => {})

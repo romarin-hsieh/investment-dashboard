@@ -4,36 +4,139 @@
 
 import { getDataBaseUrl } from './baseUrl';
 
-class TechnicalIndicatorsCache {
-  constructor() {
-    this.cachePrefix = 'technical_indicators_v3_';
-    this.cacheTimeout = 24 * 60 * 60 * 1000; // 24 小時緩存
-    this.memoryCache = new Map(); // 內存緩存，提高性能 (insertion-order = LRU position)
-    this.indexCache = null; // latest_index.json 緩存
-    this.indexCacheTimestamp = null;
-    this.indexCacheTimeout = 5 * 60 * 1000; // 5分鐘緩存索引
+/**
+ * 單一指標的值容器（例如 OBV）。靜態 JSON 與即時計算的欄位並不一致，
+ * 這裡只固定 `value`，其餘欄位維持 `unknown`。
+ */
+export interface IndicatorValue {
+  value?: number | null;
+  [key: string]: unknown;
+}
 
-    // LRU limits (WS-B PR-B4). Proactive capping so we rarely hit the
-    // browser's localStorage QuotaExceededError reactively.
-    this.MAX_BYTES = 3 * 1024 * 1024;   // 3 MB ceiling for technical-indicator cache
-    this.MAX_ITEMS = 150;               // ~1 entry per tracked symbol + headroom
-    this.MEMORY_MAX_ITEMS = 150;        // same cap for the in-memory Map
-    this.EVICT_FRACTION = 0.2;          // drop oldest 20% on each prune
-  }
+/** Yahoo Finance 補充欄位（Beta 等）。 */
+export interface YahooFinanceFields {
+  beta_10d?: number | null;
+  beta_3mo?: number | null;
+  [key: string]: unknown;
+}
+
+/** `indicators` 子物件；靜態 JSON 會把指標包在這一層。 */
+export interface IndicatorBundle {
+  obv?: IndicatorValue | null;
+  yf?: YahooFinanceFields | null;
+  [key: string]: unknown;
+}
+
+/**
+ * 技術指標數據。兩種來源（靜態 JSON / 即時計算）結構不同：
+ * 前者把欄位放在 `indicators` 之下，後者放在頂層，因此兩處都是 optional。
+ */
+export interface TechnicalIndicatorData {
+  obv?: IndicatorValue | null;
+  yf?: YahooFinanceFields | null;
+  indicators?: IndicatorBundle | null;
+  /** 讀取時附加的來源標記（Daily Cache (Memory) / (LocalStorage)） */
+  source?: string;
+  [key: string]: unknown;
+}
+
+/** localStorage / memoryCache 中實際存放的紀錄。 */
+export interface CachedIndicatorRecord {
+  data: TechnicalIndicatorData;
+  /** 寫入時間（毫秒），用於 TTL 判斷 */
+  timestamp: number;
+  /** 最後讀取時間（毫秒），LRU 依據；PR-B4 之前的舊資料沒有這個欄位 */
+  lastAccess?: number;
+  symbol: string;
+  date: string;
+  /** 寫入當下的 latest_index timestamp */
+  indexTimestamp?: IndexTimestamp;
+}
+
+/** latest_index.json 的 timestamp 欄位型別。 */
+export type IndexTimestamp = string | number | null;
+
+/** latest_index.json 的最小契約。 */
+export interface LatestIndex {
+  /** yfinance 更新時間（優先） */
+  yf_updated?: unknown;
+  /** 產生時間（備援） */
+  generatedAt?: unknown;
+  [key: string]: unknown;
+}
+
+/** `getCacheStats()` 回傳值。 */
+export interface CacheStats {
+  /** 內存 Map 的項目數 */
+  memoryCache: number;
+  /** localStorage 中屬於本快取的項目數 */
+  localStorageCache: number;
+  /** localStorage 中的總字元數（非 bytes） */
+  totalSize: number;
+}
+
+/** pruneCache 排序用的中間結構。 */
+interface PruneCandidate {
+  key: string;
+  sortKey: number;
+  size: number;
+}
+
+/** 收窄 `unknown` 為可索引的物件。 */
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+/**
+ * 判斷 JSON.parse 的結果是否為一筆快取紀錄。
+ * 只要求 `timestamp` 為數字 + `data` 為物件，其餘欄位容忍缺漏（舊格式）。
+ */
+function isCachedIndicatorRecord(value: unknown): value is CachedIndicatorRecord {
+  return isRecord(value) && typeof value.timestamp === 'number' && isRecord(value.data);
+}
+
+/**
+ * `TechnicalIndicatorData` 的欄位全為 optional，因此任何物件在結構上都符合。
+ * 這個 predicate 只確認「是物件」，用來把 JSON.parse 的 `unknown` 帶入型別系統
+ * 而不使用 cast；個別欄位仍在使用點各自檢查。
+ */
+function isTechnicalIndicatorData(value: unknown): value is TechnicalIndicatorData {
+  return isRecord(value);
+}
+
+class TechnicalIndicatorsCache {
+  cachePrefix = 'technical_indicators_v3_';
+  cacheTimeout = 24 * 60 * 60 * 1000; // 24 小時緩存
+  memoryCache = new Map<string, CachedIndicatorRecord>(); // 內存緩存，提高性能 (insertion-order = LRU position)
+  indexCache: LatestIndex | null = null; // latest_index.json 緩存
+  indexCacheTimestamp: number | null = null;
+  indexCacheTimeout = 5 * 60 * 1000; // 5分鐘緩存索引
+
+  // LRU limits (WS-B PR-B4). Proactive capping so we rarely hit the
+  // browser's localStorage QuotaExceededError reactively.
+  MAX_BYTES = 3 * 1024 * 1024;   // 3 MB ceiling for technical-indicator cache
+  MAX_ITEMS = 150;               // ~1 entry per tracked symbol + headroom
+  MEMORY_MAX_ITEMS = 150;        // same cap for the in-memory Map
+  EVICT_FRACTION = 0.2;          // drop oldest 20% on each prune
+
+  /** 進行中的 latest_index 請求（去重用），閒置時為 null。 */
+  _indexFetchPromise: Promise<LatestIndex | null> | null = null;
 
   /**
    * Move a key to the "most recently used" position in memoryCache.
    * Relies on Map's insertion-order iteration — delete-then-set puts
    * the key at the end. On size overflow, drop the oldest (first).
    */
-  _touchMemory (key, value) {
+  _touchMemory (key: string, value: CachedIndicatorRecord): void {
     if (this.memoryCache.has(key)) {
       this.memoryCache.delete(key);
     }
     this.memoryCache.set(key, value);
     if (this.memoryCache.size > this.MEMORY_MAX_ITEMS) {
       const oldestKey = this.memoryCache.keys().next().value;
-      this.memoryCache.delete(oldestKey);
+      if (oldestKey !== undefined) {
+        this.memoryCache.delete(oldestKey);
+      }
     }
   }
 
@@ -41,7 +144,7 @@ class TechnicalIndicatorsCache {
    * Sum the byte footprint (approx — UTF-16 char × 2) of our cache entries
    * in localStorage. Used to decide whether to prune BEFORE a write.
    */
-  _countLocalStorageBytes () {
+  _countLocalStorageBytes (): number {
     let total = 0;
     try {
       for (let i = 0; i < localStorage.length; i++) {
@@ -51,23 +154,23 @@ class TechnicalIndicatorsCache {
           if (val) total += val.length * 2;
         }
       }
-    } catch (_) { /* storage unavailable — treat as 0 */ }
+    } catch { /* storage unavailable — treat as 0 */ }
     return total;
   }
 
-  _countLocalStorageItems () {
+  _countLocalStorageItems (): number {
     let count = 0;
     try {
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key && key.startsWith(this.cachePrefix)) count++;
       }
-    } catch (_) { /* ignore */ }
+    } catch { /* ignore */ }
     return count;
   }
 
   // 獲取 latest_index.json 的完整數據
-  async getLatestIndex() {
+  async getLatestIndex(): Promise<LatestIndex | null> {
     // 檢查索引緩存
     if (this.indexCache && this.indexCacheTimestamp &&
       (Date.now() - this.indexCacheTimestamp < this.indexCacheTimeout)) {
@@ -80,13 +183,14 @@ class TechnicalIndicatorsCache {
     }
 
     try {
-      this._indexFetchPromise = (async () => {
+      this._indexFetchPromise = (async (): Promise<LatestIndex | null> => {
         const baseUrl = getDataBaseUrl();
         // 移除 ?t= 時間戳，允許瀏覽器緩存，依賴 DataVersionService 進行版本控制
         const response = await fetch(`${baseUrl}data/technical-indicators/latest_index.json`);
 
         if (response.ok) {
-          const index = await response.json();
+          const parsed: unknown = await response.json();
+          const index: LatestIndex | null = isRecord(parsed) ? parsed : null;
           this.indexCache = index;
           this.indexCacheTimestamp = Date.now();
           return index;
@@ -105,17 +209,20 @@ class TechnicalIndicatorsCache {
   }
 
   // 獲取 latest_index.json 的 timestamp (兼容舊 API)
-  async getLatestIndexTimestamp() {
+  async getLatestIndexTimestamp(): Promise<IndexTimestamp> {
     const index = await this.getLatestIndex();
     if (index) {
       // 優先使用 yf_updated，其次是 generatedAt
-      return index.yf_updated || index.generatedAt;
+      const timestamp = index.yf_updated || index.generatedAt;
+      if (typeof timestamp === 'string' || typeof timestamp === 'number') {
+        return timestamp;
+      }
     }
     return null;
   }
 
   // 生成緩存鍵（包含 timestamp）
-  async getCacheKey(symbol) {
+  async getCacheKey(symbol: string): Promise<string> {
     const latestTimestamp = await this.getLatestIndexTimestamp();
     if (latestTimestamp) {
       // 使用 timestamp 的日期部分作為緩存鍵
@@ -129,13 +236,12 @@ class TechnicalIndicatorsCache {
   }
 
   // 從緩存獲取技術指標數據
-  async getTechnicalIndicators(symbol) {
+  async getTechnicalIndicators(symbol: string): Promise<TechnicalIndicatorData | null> {
     const cacheKey = await this.getCacheKey(symbol);
-    const latestTimestamp = await this.getLatestIndexTimestamp();
 
     // 1. 先檢查內存緩存
-    if (this.memoryCache.has(cacheKey)) {
-      const cached = this.memoryCache.get(cacheKey);
+    const cached = this.memoryCache.get(cacheKey);
+    if (cached) {
 
       // 只要 key (包含日期) 匹配且未過期，就視為有效
       if (Date.now() - cached.timestamp < this.cacheTimeout) {
@@ -144,9 +250,9 @@ class TechnicalIndicatorsCache {
         if (this._isValidData(cached.data)) {
           console.log(`Using memory cache for ${symbol}`);
           // LRU: touch this key so it moves to the most-recently-used position
-          const touched = { ...cached, lastAccess: Date.now() };
+          const touched: CachedIndicatorRecord = { ...cached, lastAccess: Date.now() };
           this._touchMemory(cacheKey, touched);
-          const dataWithSource = { ...cached.data, source: 'Daily Cache (Memory)' };
+          const dataWithSource: TechnicalIndicatorData = { ...cached.data, source: 'Daily Cache (Memory)' };
           return dataWithSource;
         } else {
           console.warn(`Memory cache for ${symbol} is invalid/incomplete. Clearing.`);
@@ -161,11 +267,12 @@ class TechnicalIndicatorsCache {
     try {
       const cachedData = localStorage.getItem(cacheKey);
       if (cachedData) {
-        const parsed = JSON.parse(cachedData);
+        const rawParsed: unknown = JSON.parse(cachedData);
 
         // 同樣移除對 indexTimestamp 的嚴格檢查
         // 只要緩存未過期且 Key 匹配 (即日期匹配)
-        if (Date.now() - parsed.timestamp < this.cacheTimeout) {
+        if (isCachedIndicatorRecord(rawParsed) && Date.now() - rawParsed.timestamp < this.cacheTimeout) {
+          const parsed = rawParsed;
 
           // [New] Validate Data Completeness
           if (this._isValidData(parsed.data)) {
@@ -175,12 +282,12 @@ class TechnicalIndicatorsCache {
             parsed.lastAccess = Date.now();
             try {
               localStorage.setItem(cacheKey, JSON.stringify(parsed));
-            } catch (_) {
+            } catch {
               // Non-fatal: memory cache is still touched below, so LRU
               // ordering still works in-session even if persistence fails.
             }
             this._touchMemory(cacheKey, parsed);
-            const dataWithSource = { ...parsed.data, source: 'Daily Cache (LocalStorage)' };
+            const dataWithSource: TechnicalIndicatorData = { ...parsed.data, source: 'Daily Cache (LocalStorage)' };
             return dataWithSource;
           } else {
             console.warn(`LocalStorage cache for ${symbol} is invalid/incomplete. Clearing.`);
@@ -202,7 +309,7 @@ class TechnicalIndicatorsCache {
   }
 
   // 驗證數據完整性
-  _isValidData(data) {
+  _isValidData(data: TechnicalIndicatorData | null | undefined): boolean {
     if (!data) return false;
 
     // 檢查關鍵指標是否存在 (OBV, Beta)且有值
@@ -222,7 +329,7 @@ class TechnicalIndicatorsCache {
     if (!hasOBV) {
       // Relaxed check: Log warning but allow if other data exists to prevent infinite loops
       // console.warn('Cache validation failed: Missing OBV');
-      // return false; 
+      // return false;
 
       // Changed strategy: If we have basic indicators, treat as valid to avoid hammering the API
       // The UI will handle missing OBV gracefully (show N/A)
@@ -241,29 +348,33 @@ class TechnicalIndicatorsCache {
   }
 
   // 將技術指標數據存入緩存 (Merge Strategy)
-  async setTechnicalIndicators(symbol, data) {
+  async setTechnicalIndicators(symbol: string, data: TechnicalIndicatorData): Promise<void> {
     const cacheKey = await this.getCacheKey(symbol);
     const latestTimestamp = await this.getLatestIndexTimestamp();
 
     // 嘗試獲取現有緩存以進行合併
-    let existingData = {};
+    let existingData: TechnicalIndicatorData = {};
     try {
-      if (this.memoryCache.has(cacheKey)) {
-        existingData = this.memoryCache.get(cacheKey).data || {};
+      const memoryRecord = this.memoryCache.get(cacheKey);
+      if (memoryRecord) {
+        existingData = memoryRecord.data || {};
       } else {
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
-          existingData = JSON.parse(cached).data || {};
+          const parsed: unknown = JSON.parse(cached);
+          if (isRecord(parsed) && isTechnicalIndicatorData(parsed.data)) {
+            existingData = parsed.data;
+          }
         }
       }
-    } catch (e) {
+    } catch {
       // Ignore read errors
     }
 
     // 合併數據：保留這兩個來源的數據
     // 如果 data 是實時計算的 (沒有 yf)，而 existing 是 JSON (有 yf)，我們希望保留 yf
     // 如果 data 是 JSON (有 yf)，我們希望更新 yf
-    const mergedData = { ...existingData, ...data };
+    const mergedData: TechnicalIndicatorData = { ...existingData, ...data };
 
     // 特別處理 indicators 對象 (如果存在)
     if (data.indicators && existingData.indicators) {
@@ -283,7 +394,7 @@ class TechnicalIndicatorsCache {
       }
     }
 
-    const cacheData = {
+    const cacheData: CachedIndicatorRecord = {
       data: mergedData,
       timestamp: Date.now(),
       lastAccess: Date.now(), // LRU anchor (PR-B4)
@@ -336,7 +447,7 @@ class TechnicalIndicatorsCache {
   }
 
   // 檢查是否是 QuotaExceededError
-  _isQuotaExceeded(e) {
+  _isQuotaExceeded(e: unknown): boolean {
     return e instanceof DOMException && (
       // everything except Firefox
       e.code === 22 ||
@@ -361,10 +472,10 @@ class TechnicalIndicatorsCache {
    * Performance: on 150-item cache, profiled at < 30 ms in jsdom; well
    * under the 100 ms target in the WS-B plan.
    */
-  pruneCache() {
+  pruneCache(): boolean {
     try {
       // 1. Collect keys first (avoid index-shift bugs when deleting during iteration)
-      const keys = [];
+      const keys: string[] = [];
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key && key.startsWith(this.cachePrefix)) keys.push(key);
@@ -374,16 +485,27 @@ class TechnicalIndicatorsCache {
 
       // 2. For each key, read + parse. Use lastAccess (PR-B4 LRU anchor)
       //    when present; fall back to write timestamp for legacy entries.
-      const items = keys.map(key => {
+      const items: PruneCandidate[] = keys.map(key => {
+        const val = localStorage.getItem(key);
+        // Missing value (evicted between the key scan and the read) is
+        // treated exactly like a corrupt entry: sortKey 0 → evict first.
+        if (val === null) return { key, sortKey: 0, size: 0 };
         try {
-          const val = localStorage.getItem(key);
-          const parsed = JSON.parse(val);
-          return {
-            key,
-            sortKey: parsed.lastAccess || parsed.timestamp || 0,
-            size: val ? val.length * 2 : 0
-          };
-        } catch (e) {
+          const parsed: unknown = JSON.parse(val);
+          // Faithful to the original `parsed.lastAccess || parsed.timestamp || 0`,
+          // which only needed `parsed` to be an object — not a fully-valid
+          // record. Using the stricter isCachedIndicatorRecord guard here would
+          // give sortKey 0 (evict-first) to any entry that has a lastAccess but
+          // no numeric timestamp, changing LRU order. Read the two fields
+          // directly off any object instead.
+          let sortKey = 0;
+          if (isRecord(parsed)) {
+            const la = typeof parsed.lastAccess === 'number' ? parsed.lastAccess : 0;
+            const ts = typeof parsed.timestamp === 'number' ? parsed.timestamp : 0;
+            sortKey = la || ts || 0;
+          }
+          return { key, sortKey, size: val.length * 2 };
+        } catch {
           // Corrupt entry — sortKey 0 puts it at the front for immediate eviction
           return { key, sortKey: 0, size: 0 };
         }
@@ -398,12 +520,13 @@ class TechnicalIndicatorsCache {
       let deletedSize = 0;
       const limit = Math.min(items.length, targetCount);
       for (let i = 0; i < limit; i++) {
-        localStorage.removeItem(items[i].key);
+        const item = items[i];
+        localStorage.removeItem(item.key);
         // Also drop from memory cache so subsequent reads re-fetch fresh
         // rather than resurrecting an evicted entry.
-        this.memoryCache.delete(items[i].key);
+        this.memoryCache.delete(item.key);
         deletedCount++;
-        deletedSize += items[i].size;
+        deletedSize += item.size;
       }
 
       console.log(`Pruned ${deletedCount} cache items (~${(deletedSize / 1024).toFixed(2)} KB) by LRU.`);
@@ -423,18 +546,30 @@ class TechnicalIndicatorsCache {
    * deletes — avoids the iterator-shift bug entirely. Also purges
    * entries with corrupt JSON so they don't linger forever.
    */
-  cleanupOldCache() {
-    const keysToDelete = [];
+  cleanupOldCache(): void {
+    const keysToDelete: string[] = [];
     try {
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key && key.startsWith(this.cachePrefix)) {
+          const raw = localStorage.getItem(key);
+          if (raw === null) {
+            // Vanished between scan and read — nothing to delete.
+            continue;
+          }
           try {
-            const parsed = JSON.parse(localStorage.getItem(key));
-            if (Date.now() - parsed.timestamp > this.cacheTimeout) {
+            const parsed: unknown = JSON.parse(raw);
+            // Behaviour-preserving: the original compared
+            // `Date.now() - parsed.timestamp > cacheTimeout`, so an entry
+            // whose timestamp was missing/non-numeric produced `NaN > n` ===
+            // false and was KEPT. Mirror that with `&&` (not `!record ||`),
+            // which would have started purging those entries. The read path
+            // already discards malformed entries, so this only governs the
+            // background sweep and must not change what it deletes.
+            if (isCachedIndicatorRecord(parsed) && Date.now() - parsed.timestamp > this.cacheTimeout) {
               keysToDelete.push(key);
             }
-          } catch (e) {
+          } catch {
             // Corrupt entry — purge
             keysToDelete.push(key);
           }
@@ -450,7 +585,7 @@ class TechnicalIndicatorsCache {
   }
 
   // 強制清除指定股票的緩存
-  async clearSymbolCache(symbol) {
+  async clearSymbolCache(symbol: string): Promise<void> {
     const cacheKey = await this.getCacheKey(symbol);
 
     // 清除 localStorage
@@ -463,10 +598,10 @@ class TechnicalIndicatorsCache {
   }
 
   // 清除所有技術指標緩存
-  clearAllCache() {
+  clearAllCache(): void {
     try {
       // 清除 localStorage 中的所有技術指標緩存
-      const keysToRemove = [];
+      const keysToRemove: string[] = [];
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         if (key && key.startsWith(this.cachePrefix)) {
@@ -487,8 +622,8 @@ class TechnicalIndicatorsCache {
   }
 
   // 獲取緩存統計信息
-  getCacheStats() {
-    const stats = {
+  getCacheStats(): CacheStats {
+    const stats: CacheStats = {
       memoryCache: this.memoryCache.size,
       localStorageCache: 0,
       totalSize: 0
@@ -512,6 +647,8 @@ class TechnicalIndicatorsCache {
     return stats;
   }
 }
+
+export type { TechnicalIndicatorsCache };
 
 // 創建單例實例
 export const technicalIndicatorsCache = new TechnicalIndicatorsCache();

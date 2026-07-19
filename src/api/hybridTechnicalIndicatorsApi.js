@@ -3,7 +3,7 @@
 
 import precomputedIndicatorsAPI from './precomputedIndicatorsApi.js';
 import yahooFinanceAPI from './yahooFinanceApi.js';
-import technicalIndicatorsCache from '../utils/technicalIndicatorsCache.js';
+import technicalIndicatorsCache from '../utils/technicalIndicatorsCache';
 
 class HybridTechnicalIndicatorsAPI {
   constructor() {
