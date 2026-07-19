@@ -35,5 +35,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Type gate (ADR-0014). Today this checks the .ts sources; as .js files
+      # migrate to .ts they are covered automatically. Must stay green.
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Run tests
         run: npm test
