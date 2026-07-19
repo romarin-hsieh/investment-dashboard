@@ -126,7 +126,10 @@ export default {
   },
   computed: {
     isStale() {
-      return this.quote.stale_level !== 'fresh'
+      // Only a KNOWN stale level shows the banner. `!== 'fresh'` also matched a
+      // MISSING stale_level, which rendered a wordless ⚠ banner (getStaleText()
+      // returns '' for that case) — an aria-live region that announces nothing.
+      return this.quote.stale_level === 'stale' || this.quote.stale_level === 'very_stale'
     },
 
     domId() {
@@ -267,7 +270,10 @@ export default {
         const analysis = [];
         // Support both real API (regularMarket...) and Mock Data (change_percent...) keys
         const change = this.quote.change_percent !== undefined ? this.quote.change_percent : (this.quote.regularMarketChangePercent || 0);
-        const price = this.quote.price_usd !== undefined ? this.quote.price_usd : (this.quote.regularMarketPrice || 0);
+        // `??` (not `!== undefined`) so a NULL price falls back instead of poisoning the
+        // comparisons below: `null < fiftyDayAverage` coerces to `0 < x`, which fabricated a
+        // BEARISH moving-average call for a stock trading ABOVE both averages.
+        const price = this.quote.price_usd ?? this.quote.regularMarketPrice ?? null;
         
         // Mock data lacks MA, so we rely on price action/change for trend if MA is missing
         const fiftyDayAverage = this.quote.fiftyDayAverage;
@@ -276,8 +282,10 @@ export default {
         const volume = this.quote.volume !== undefined ? this.quote.volume : (this.quote.regularMarketVolume || 0);
         const avgVolume = this.quote.averageDailyVolume3Month || 0;
         
-        // 1. Trend Analysis
-        if (fiftyDayAverage && twoHundredDayAverage) {
+        // 1. Trend Analysis — an MA claim requires a usable price. Without one we fall
+        // through to the change-based reading rather than inventing a trend.
+        const hasPrice = Number.isFinite(price) && price > 0;
+        if (hasPrice && fiftyDayAverage && twoHundredDayAverage) {
             if (price > fiftyDayAverage && price > twoHundredDayAverage) {
                 analysis.push({ text: this.$t('stockCard.analysisTrendBullishMA'), type: 'bullish' });
             } else if (price < fiftyDayAverage && price < twoHundredDayAverage) {
@@ -304,8 +312,15 @@ export default {
 
         // 2. Momentum / Volume Analysis
         if (avgVolume > 0 && volume > avgVolume * 1.5) {
-             const direction = change > 0 ? this.$t('stockCard.buyingPressure') : this.$t('stockCard.sellingPressure');
-             analysis.push({ text: this.$t('stockCard.analysisVolumeSpike', { direction }), type: change > 0 ? 'bullish' : 'bearish' });
+             if (change > 0 || change < 0) {
+                 const direction = change > 0 ? this.$t('stockCard.buyingPressure') : this.$t('stockCard.sellingPressure');
+                 analysis.push({ text: this.$t('stockCard.analysisVolumeSpike', { direction }), type: change > 0 ? 'bullish' : 'bearish' });
+             } else {
+                 // Flat (or missing) change: the spike is real but has no direction.
+                 // `change > 0 ? buying : selling` used to report SELLING pressure on a
+                 // 0% day — a fabricated directional signal.
+                 analysis.push({ text: this.$t('stockCard.analysisVolumeSpikeNeutral'), type: 'neutral' });
+             }
         } else if (Math.abs(change) > 2.0) {
              const sentiment = change > 0 ? this.$t('stockCard.sentimentPositive') : this.$t('stockCard.sentimentNegative');
              analysis.push({ text: this.$t('stockCard.analysisMomentumAccelerating', { sentiment }), type: change > 0 ? 'bullish' : 'bearish' });
