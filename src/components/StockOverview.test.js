@@ -71,7 +71,7 @@ vi.mock('@/services/ScrollSpyService.js', () => ({
 vi.mock('@/lib/fetcher', () => ({
   dataFetcher: { fetchQuotesSnapshot: vi.fn(), fetchDailySnapshot: vi.fn() }
 }))
-vi.mock('@/composables/useTheme.js', () => ({
+vi.mock('@/composables/useTheme', () => ({
   useTheme: () => ({
     theme:       ref('light'),
     toggleTheme: vi.fn(),

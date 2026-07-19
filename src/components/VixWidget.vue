@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { useTheme } from '@/composables/useTheme.js';
+import { useTheme } from '@/composables/useTheme';
 
 export default {
   name: 'VixWidget',

@@ -21,7 +21,7 @@ import { widgetCache } from '@/utils/widgetCache'
 import { widgetThrottle } from '@/utils/widgetThrottle'
 import { widgetPreloader } from '@/utils/widgetPreloader'
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
-import { useTheme } from '@/composables/useTheme.js'
+import { useTheme } from '@/composables/useTheme'
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
 import { watch } from 'vue'
 

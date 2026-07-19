@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import fs from 'fs'
 import path from 'path'
-import { resolveInitialLocale, SUPPORTED_LOCALES } from './i18n.js'
+import { resolveInitialLocale, SUPPORTED_LOCALES } from './i18n'
 
 // Read the raw source JSON via fs (not an import) so this asserts on the actual
 // source files, immune to any build-time locale transform.

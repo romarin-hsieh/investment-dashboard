@@ -122,7 +122,7 @@ import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
-import { useTheme } from '@/composables/useTheme.js'
+import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
 import { defineAsyncComponent } from 'vue'
 

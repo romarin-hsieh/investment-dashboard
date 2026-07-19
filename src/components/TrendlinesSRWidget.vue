@@ -41,7 +41,7 @@ import { createChart } from 'lightweight-charts';
 import { ohlcvApi } from '@/services/ohlcvApi.js';
 import { TrendlinesAlgo } from '@/utils/technical-analysis/TrendlinesAlgo.js';
 import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives.js';
-import { useTheme } from '@/composables/useTheme.js';
+import { useTheme } from '@/composables/useTheme';
 import { getToken, getTokenRgba } from '@/utils/designTokens';
 // Components
 import GenericSettingsModal from '@/components/GenericSettingsModal.vue';

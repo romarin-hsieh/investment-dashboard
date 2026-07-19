@@ -319,7 +319,7 @@ import ReviewCometChart from '@/components/ReviewCometChart.vue'
 // NOTE: SuperInvestorStats is lazy-loaded via defineAsyncComponent above
 //       (Holdings tab only). Static import removed in WS-C PR-C3.
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
-import { useTheme } from '@/composables/useTheme.js'
+import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
 
 export default {

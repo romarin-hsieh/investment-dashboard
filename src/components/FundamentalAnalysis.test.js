@@ -34,7 +34,7 @@ vi.mock('@/api/yahooFinanceApi.js', () => ({
 vi.mock('@/api/precomputedIndicatorsApi.js', () => ({
   precomputedIndicatorsAPI: { getTechnicalIndicators: vi.fn() }
 }))
-vi.mock('@/composables/useTheme.js', () => ({
+vi.mock('@/composables/useTheme', () => ({
   useTheme: () => ({
     theme:       ref('light'),
     toggleTheme: vi.fn(),

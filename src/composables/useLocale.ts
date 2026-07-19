@@ -1,10 +1,17 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { loadLocaleMessages } from '../i18n.js'
+import { loadLocaleMessages } from '../i18n'
 
 const STORAGE_KEY = 'locale'
 
-export const SUPPORTED_LOCALES = [
+/** 一個支援語系的顯示中繼資料。 */
+export interface SupportedLocale {
+  code: string;
+  label: string;
+  name: string;
+}
+
+export const SUPPORTED_LOCALES: SupportedLocale[] = [
   { code: 'en', label: 'EN', name: 'English' },
   { code: 'zh-TW', label: '中', name: '繁體中文' },
 ]
@@ -20,7 +27,7 @@ export function useLocale() {
 
   const currentLocale = computed(() => locale.value)
 
-  async function setLocale(value) {
+  async function setLocale(value: string): Promise<void> {
     if (value === locale.value) return
     // Fetch the target locale's chunk before flipping so there's no
     // missing-key flash on first switch.
