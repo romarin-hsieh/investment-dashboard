@@ -274,6 +274,10 @@ export default {
   mounted() {
     this.loadData();
   },
+  created() {
+    // Non-reactive request token; see loadData.
+    this.loadSeq = 0;
+  },
   watch: {
     symbol() {
       this.loadData();
@@ -286,8 +290,13 @@ export default {
         this.showInfo = true;
     },
     async loadData() {
-      if (this.loading) return;
-      
+      // Generation token. This REPLACES an `if (this.loading) return` guard which
+      // made a symbol change mid-flight EARLY-RETURN — the panel then kept showing
+      // the PREVIOUS symbol's profile under the new symbol's header, permanently,
+      // with no refetch. The token also stops a slower earlier response (e.g. a
+      // range change) from overwriting a newer one.
+      const seq = ++this.loadSeq;
+
       this.loading = true;
       this.error = null;
       this.profileData = null;
@@ -298,7 +307,9 @@ export default {
         
         // Step 1: Get OHLCV data using the new API service
         const ohlcvData = await ohlcvApi.getOhlcv(this.symbol, '1d', this.selectedRange);
-        
+        // Superseded by a newer symbol/range while awaiting — drop this response.
+        if (seq !== this.loadSeq) return;
+
         if (!ohlcvData) {
           throw new Error(`No OHLCV data available for ${this.symbol}`);
         }
@@ -319,10 +330,13 @@ export default {
         console.log(`📊 MFI Volume Profile loaded successfully for ${this.symbol}`);
         
       } catch (error) {
+        // A stale failure must not replace a panel a newer load already owns.
+        if (seq !== this.loadSeq) return;
         console.error(`📊 MFI Volume Profile error for ${this.symbol}:`, error);
         this.error = this.getErrorMessage(error);
       } finally {
-        this.loading = false;
+        // Only the newest request owns the loading flag.
+        if (seq === this.loadSeq) this.loading = false;
       }
     },
     
@@ -350,9 +364,8 @@ export default {
     
     onRangeChange() {
       console.log(`📊 Range changed to ${this.selectedRange} for ${this.symbol}`);
-      // Don't set loading here - loadData() handles it internally
-      // Setting it here would cause loadData() to return immediately due to guard
-      this.loading = false; // Reset loading state to allow loadData to proceed
+      // No loading-flag hack needed any more: loadData's generation token
+      // supersedes whatever request is already in flight.
       this.loadData();
     },
     
