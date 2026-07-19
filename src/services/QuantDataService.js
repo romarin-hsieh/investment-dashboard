@@ -1,6 +1,6 @@
 
 // Simple in-memory cache service for Quant Data
-import { withDataBase } from '../utils/baseUrl.js'
+import { withDataBase } from '../utils/baseUrl'
 
 class QuantDataService {
     constructor() {

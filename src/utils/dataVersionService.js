@@ -5,7 +5,7 @@
  * 取代固定時間窗口的更新邏輯
  */
 
-import { paths } from './baseUrl.js';
+import { paths } from './baseUrl';
 
 class DataVersionService {
   constructor() {

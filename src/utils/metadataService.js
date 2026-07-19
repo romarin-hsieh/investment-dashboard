@@ -2,7 +2,7 @@
 // 支援動態 API (Yahoo Finance) 和靜態文件兩種模式
 import { dataFetcher } from '@/lib/fetcher'
 import { dynamicMetadataService } from './dynamicMetadataService.js'
-import { paths } from './baseUrl.js'
+import { paths } from './baseUrl'
 
 class MetadataService {
   constructor() {

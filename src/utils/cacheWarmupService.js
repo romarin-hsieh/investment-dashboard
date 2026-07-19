@@ -259,7 +259,7 @@ class CacheWarmupService {
   // 獲取正確的 package.json URL (支援 GitHub Pages)
   getPackageJsonUrl() {
     // 使用統一的 baseUrl helper
-    import('./baseUrl.js').then(({ paths }) => {
+    import('./baseUrl').then(({ paths }) => {
       return paths.packageJson();
     });
 

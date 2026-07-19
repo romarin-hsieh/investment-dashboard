@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import { withDataBase } from '@/utils/baseUrl.js';
+import { withDataBase } from '@/utils/baseUrl';
 
 export default {
   name: 'SystemManager',

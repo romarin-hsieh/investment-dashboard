@@ -2,7 +2,7 @@
 // 為股票提供每日緩存，避免重複計算
 // 使用 latest_index.json timestamp 決定 cache bust
 
-import { getDataBaseUrl } from './baseUrl.js';
+import { getDataBaseUrl } from './baseUrl';
 
 class TechnicalIndicatorsCache {
   constructor() {

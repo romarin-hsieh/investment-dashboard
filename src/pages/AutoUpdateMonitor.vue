@@ -272,7 +272,7 @@
 
 <script>
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler.js'
-import { withDataBase } from '@/utils/baseUrl.js'
+import { withDataBase } from '@/utils/baseUrl'
 import { performanceCache } from '@/utils/performanceCache.js'
 import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
 

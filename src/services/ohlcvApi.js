@@ -2,7 +2,7 @@
 // 按照最穩架構：Production 只用站內 JSON，避免 CORS proxy 翻車
 
 import { yahooFinanceAPI } from '@/api/yahooFinanceApi.js';
-import { paths } from '../utils/baseUrl.js';
+import { paths } from '../utils/baseUrl';
 
 class OhlcvApi {
   constructor() {

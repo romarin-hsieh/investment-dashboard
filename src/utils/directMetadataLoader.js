@@ -1,7 +1,7 @@
 // 直接載入 metadata 的簡化服務
 // 繞過複雜的 dataFetcher 和 metadataService
 
-import { paths } from './baseUrl.js';
+import { paths } from './baseUrl';
 
 class DirectMetadataLoader {
   constructor() {

@@ -286,7 +286,7 @@
 
 <script>
 import { defineAsyncComponent } from 'vue'
-import { withDataBase } from '@/utils/baseUrl.js'
+import { withDataBase } from '@/utils/baseUrl'
 import FastTradingViewWidget from '@/components/FastTradingViewWidget.vue'
 import AdvancedChartWidget from '@/components/AdvancedChartWidget.vue'
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
