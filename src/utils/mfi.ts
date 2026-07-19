@@ -1,6 +1,20 @@
 // Money Flow Index (MFI) Calculation
 // MFI is a momentum oscillator that uses price and volume to identify overbought/oversold conditions
 
+/** MFI series tolerate gaps: null marks a missing bar or the warm-up window. */
+export type MFISeries = (number | null)[];
+
+/** The three states getMFISignal can report. */
+export type MFISignal = 'OVERBOUGHT' | 'OVERSOLD' | 'NEUTRAL';
+
+/** OHLCV bundle accepted by calculateMFIWithMetadata. */
+export interface MFIInput {
+  high: MFISeries;
+  low: MFISeries;
+  close: MFISeries;
+  volume: MFISeries;
+}
+
 /**
  * Calculate Money Flow Index (MFI)
  * @param {Array} high - Array of high prices
@@ -10,7 +24,13 @@
  * @param {number} period - Period for MFI calculation (default: 14)
  * @returns {Array} Array of MFI values
  */
-export function calculateMFI(high, low, close, volume, period = 14) {
+export function calculateMFI(
+  high: MFISeries,
+  low: MFISeries,
+  close: MFISeries,
+  volume: MFISeries,
+  period = 14
+): MFISeries {
   if (!high || !low || !close || !volume) {
     throw new Error('MFI calculation requires high, low, close, and volume arrays');
   }
@@ -24,40 +44,50 @@ export function calculateMFI(high, low, close, volume, period = 14) {
   console.log(`📊 Calculating MFI with ${length} data points, period=${period}`);
   
   // Step 1: Calculate Typical Price (TP)
-  const typicalPrice = new Array(length);
+  const typicalPrice: MFISeries = new Array(length);
   for (let i = 0; i < length; i++) {
-    if (high[i] != null && low[i] != null && close[i] != null) {
-      typicalPrice[i] = (high[i] + low[i] + close[i]) / 3;
+    // Bind before use: TS does not carry `high[i] != null` narrowing across
+    // separate indexed reads, and the locals read better anyway.
+    const h = high[i];
+    const l = low[i];
+    const c = close[i];
+    if (h != null && l != null && c != null) {
+      typicalPrice[i] = (h + l + c) / 3;
     } else {
       typicalPrice[i] = null;
     }
   }
   
   // Step 2: Calculate Raw Money Flow (RMF)
-  const rawMoneyFlow = new Array(length);
+  const rawMoneyFlow: MFISeries = new Array(length);
   for (let i = 0; i < length; i++) {
-    if (typicalPrice[i] != null && volume[i] != null) {
-      rawMoneyFlow[i] = typicalPrice[i] * volume[i];
+    const tp = typicalPrice[i];
+    const v = volume[i];
+    if (tp != null && v != null) {
+      rawMoneyFlow[i] = tp * v;
     } else {
       rawMoneyFlow[i] = null;
     }
   }
   
   // Step 3: Calculate Positive and Negative Money Flow
-  const positiveMoneyFlow = new Array(length);
-  const negativeMoneyFlow = new Array(length);
+  const positiveMoneyFlow: MFISeries = new Array(length);
+  const negativeMoneyFlow: MFISeries = new Array(length);
   
   positiveMoneyFlow[0] = 0;
   negativeMoneyFlow[0] = 0;
   
   for (let i = 1; i < length; i++) {
-    if (typicalPrice[i] != null && typicalPrice[i - 1] != null && rawMoneyFlow[i] != null) {
-      if (typicalPrice[i] > typicalPrice[i - 1]) {
-        positiveMoneyFlow[i] = rawMoneyFlow[i];
+    const tp = typicalPrice[i];
+    const tpPrev = typicalPrice[i - 1];
+    const rmf = rawMoneyFlow[i];
+    if (tp != null && tpPrev != null && rmf != null) {
+      if (tp > tpPrev) {
+        positiveMoneyFlow[i] = rmf;
         negativeMoneyFlow[i] = 0;
-      } else if (typicalPrice[i] < typicalPrice[i - 1]) {
+      } else if (tp < tpPrev) {
         positiveMoneyFlow[i] = 0;
-        negativeMoneyFlow[i] = rawMoneyFlow[i];
+        negativeMoneyFlow[i] = rmf;
       } else {
         positiveMoneyFlow[i] = 0;
         negativeMoneyFlow[i] = 0;
@@ -78,9 +108,11 @@ export function calculateMFI(high, low, close, volume, period = 14) {
     
     // Sum over the period
     for (let j = i - period + 1; j <= i; j++) {
-      if (positiveMoneyFlow[j] != null && negativeMoneyFlow[j] != null) {
-        positiveMFSum += positiveMoneyFlow[j];
-        negativeMFSum += negativeMoneyFlow[j];
+      const pmf = positiveMoneyFlow[j];
+      const nmf = negativeMoneyFlow[j];
+      if (pmf != null && nmf != null) {
+        positiveMFSum += pmf;
+        negativeMFSum += nmf;
         validPeriods++;
       }
     }
@@ -108,7 +140,7 @@ export function calculateMFI(high, low, close, volume, period = 14) {
  * @param {number} mfiValue - Current MFI value
  * @returns {string} Signal: 'OVERBOUGHT', 'OVERSOLD', or 'NEUTRAL'
  */
-export function getMFISignal(mfiValue) {
+export function getMFISignal(mfiValue: number | null | undefined): MFISignal {
   if (mfiValue == null || isNaN(mfiValue)) {
     return 'NEUTRAL';
   }
@@ -128,15 +160,16 @@ export function getMFISignal(mfiValue) {
  * @param {number} period - Period for MFI calculation
  * @returns {Object} MFI results with metadata
  */
-export function calculateMFIWithMetadata(ohlcv, period = 14) {
+export function calculateMFIWithMetadata(ohlcv: MFIInput, period = 14) {
   try {
     const mfiValues = calculateMFI(ohlcv.high, ohlcv.low, ohlcv.close, ohlcv.volume, period);
     
     // Get the latest valid MFI value
     let latestMFI = null;
     for (let i = mfiValues.length - 1; i >= 0; i--) {
-      if (mfiValues[i] != null && !isNaN(mfiValues[i])) {
-        latestMFI = mfiValues[i];
+      const v = mfiValues[i];
+      if (v != null && !isNaN(v)) {
+        latestMFI = v;
         break;
       }
     }
@@ -144,7 +177,7 @@ export function calculateMFIWithMetadata(ohlcv, period = 14) {
     const signal = getMFISignal(latestMFI);
     
     // Calculate statistics
-    const validValues = mfiValues.filter(v => v != null && !isNaN(v));
+    const validValues = mfiValues.filter((v): v is number => v != null && !isNaN(v));
     const avgMFI = validValues.length > 0 ? validValues.reduce((sum, val) => sum + val, 0) / validValues.length : null;
     const maxMFI = validValues.length > 0 ? Math.max(...validValues) : null;
     const minMFI = validValues.length > 0 ? Math.min(...validValues) : null;
@@ -174,7 +207,7 @@ export function calculateMFIWithMetadata(ohlcv, period = 14) {
       latest: null,
       signal: 'ERROR',
       period: period,
-      error: error.message,
+      error: error instanceof Error ? error.message : String(error),
       metadata: {
         calculatedAt: new Date().toISOString(),
         algorithm: 'Standard MFI'

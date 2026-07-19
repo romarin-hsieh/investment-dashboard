@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest'
-import { getTokenRgba } from './designTokens.js'
+import { getTokenRgba } from './designTokens'
 
 describe('getTokenRgba', () => {
   afterEach(() => {

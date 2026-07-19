@@ -1,7 +1,7 @@
 // MFI Volume Profile Calculation
 // Combines Money Flow Index with Volume Profile analysis for advanced trading insights
 
-import { calculateMFIWithMetadata } from './mfi.js';
+import { calculateMFIWithMetadata } from './mfi';
 import { formatNumber } from './numberFormat';
 
 /**

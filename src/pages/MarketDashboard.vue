@@ -123,7 +123,7 @@ import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
 import { useTheme } from '@/composables/useTheme.js'
-import { getToken } from '@/utils/designTokens.js'
+import { getToken } from '@/utils/designTokens'
 import { defineAsyncComponent } from 'vue'
 
 export default {

@@ -32,7 +32,7 @@ import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import { ohlcvApi } from '@/services/ohlcvApi.js'
 import { useTheme } from '@/composables/useTheme.js'
-import { getToken } from '@/utils/designTokens.js'
+import { getToken } from '@/utils/designTokens'
 import { formatNumber as fmtNumber } from '@/utils/numberFormat'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
