@@ -187,10 +187,16 @@ export default {
         return {}
       }
       
+      // A degraded 200 (envelope present, but `items` missing or not an array)
+      // must NOT throw here — `this.metadata.items.find` blanked the ENTIRE page.
+      // Fall back to "no metadata": every symbol files under Unknown, but the
+      // grid still renders.
+      const items = Array.isArray(this.metadata.items) ? this.metadata.items : []
+
       const groups = {}
-      
+
       this.quotes.forEach(quote => {
-        const symbolMetadata = this.metadata.items.find(m => m.symbol === quote.symbol)
+        const symbolMetadata = items.find(m => m.symbol === quote.symbol)
         const symbolDailyData = this.dailyData?.per_symbol?.find(d => d.symbol === quote.symbol)
         
         let sector = 'Unknown'
