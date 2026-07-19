@@ -30,18 +30,19 @@ export default defineConfig({
        * Never lower a floor to make a build pass; fix the test instead.
        */
       thresholds: {
-        // Global floor. Raised by WS-H PR 2 (NavigationPanel): 32.7 -> 33.2 stmts,
-        // 25.1 -> 25.6 branch, 34.0 -> 35.5 funcs.
-        statements: 33,
-        branches: 25,
-        functions: 35,
-        lines: 33,
+        // Global floor. Raised by WS-H PR 3 (StockCard): 33.2 -> 34.6 stmts,
+        // 25.6 -> 28.7 branch, 35.5 -> 37.1 funcs.
+        statements: 34,
+        branches: 28,
+        functions: 37,
+        lines: 34,
 
         // Per-file floors for the components in the ADR-0013 coverage workstream.
         'src/components/MFIVolumeProfilePanel.vue': { statements: 83, branches: 75, functions: 52 },
         'src/components/FundamentalAnalysis.vue': { statements: 79, branches: 71, functions: 80 },
         'src/components/StockOverview.vue': { statements: 71, branches: 70, functions: 64 },
-        'src/components/StockCard.vue': { statements: 16 },
+        // WS-H PR 3: 16.8 -> 78.8 stmts / 75.0 branch / 75.0 funcs.
+        'src/components/StockCard.vue': { statements: 78, branches: 74, functions: 74 },
         // WS-H PR 2: 14.8 -> 96.3 stmts / 100 branch / 91.7 funcs.
         'src/components/NavigationPanel.vue': { statements: 95, branches: 95, functions: 90 },
         'src/components/TechnicalIndicators.vue': { statements: 7 }
