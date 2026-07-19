@@ -10,16 +10,24 @@
 
 ## Now (Active — being executed)
 
-### 🧪 WS-H — Component test coverage (started 2026-07-20)
-Risk-weighted expansion of Vue Test Utils coverage, governed by [ADR-0013](../architecture/adr/0013-component-test-coverage-policy.md). Coverage is now gated by **ratchet floors** in `vitest.config.js` (global + per-file), mirroring the ADR-0007 bundle-size contract. Six components in risk order: `NavigationPanel` → `StockCard` → `TechnicalIndicators` → `MFIVolumeProfilePanel` → `FundamentalAnalysis` → `StockOverview`, each PR raising its own floor. 35 vetted cases; the planning pass also surfaced real defects (stale-response races, `getGrowthClass` crash + payload mutation, null-price `BEARISH` call) which are fixed alongside their regression tests.
+### 🔤 WS-F — TypeScript stack unification (started 2026-07-20)
+Making TypeScript real and then migrating `.js` → `.ts` incrementally behind a strict
+typecheck gate, governed by [ADR-0014](../architecture/adr/0014-typescript-unification.md).
+The gate (`vue-tsc --noEmit`) runs in CI before the tests; `strict` is never relaxed to make
+a migration pass. **16 `.ts` files so far** (was 7): the type gate itself, then `baseUrl`,
+`designTokens`, `mfi`, `dataVersionService`, `technicalIndicatorsCache`, `performanceCache`,
+`performanceMonitor`, `mfiVolumeProfile`, `autoUpdateScheduler`. See the ADR-0014 progress
+table for the per-batch log and what remains. The migration has also forced out real bugs
+(an `isChecking` latch, null-laundering `new Array()` intermediates), each fixed with a
+regression test.
+
+### 🧪 WS-H — Component test coverage (2026-07-20, shipped)
+Risk-weighted expansion of Vue Test Utils coverage, governed by [ADR-0013](../architecture/adr/0013-component-test-coverage-policy.md). Coverage is gated by **ratchet floors** in `vitest.config.js` (global + per-file), mirroring the ADR-0007 bundle-size contract. Six components migrated in risk order: `NavigationPanel` → `StockCard` → `TechnicalIndicators` → `MFIVolumeProfilePanel` → `FundamentalAnalysis` → `StockOverview`, each PR raising its own floor. The planning pass also surfaced 11 real defects (stale-response races, `getGrowthClass` crash + payload mutation, null-price `BEARISH` call, fabricated signals) which were fixed alongside their regression tests. Global coverage 32.7% → 38.8% stmts.
 
 ---
 
 ## Next (Committed but not yet started)
 
-
-### 🔄 TypeScript migration of top 5 critical `.js` files
-In priority order: `yahooFinanceApi.js` (1380 LOC), `technicalIndicatorsCore.js` (1256), `mfiVolumeProfile.js` (402), `autoUpdateScheduler.js` (435), `technicalIndicatorsCache.js` (418). These are the largest sources of silent type-safety risk. Run after WS-B unit tests are in place so we have a regression net.
 
 ### 🖥️ Self-hosted CORS proxy (Cloudflare Worker)
 Activate when public proxy failure rate exceeds 5% over 30 days, per [ADR-0002](../architecture/adr/0002-cors-proxy-strategy.md) follow-up. Cloudflare Workers free tier covers our scale.
