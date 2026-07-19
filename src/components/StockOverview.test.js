@@ -54,7 +54,7 @@ vi.mock('@/utils/stockOverviewOptimizer.js', () => ({
 vi.mock('@/utils/directMetadataLoader.js', () => ({
   directMetadataLoader: { loadMetadata: vi.fn() }
 }))
-vi.mock('@/services/NavigationService.js', () => ({
+vi.mock('@/services/NavigationService', () => ({
   navigationService: {
     scrollToSymbol: vi.fn().mockResolvedValue(undefined),
     isSymbolValid:  vi.fn().mockReturnValue(true)
@@ -86,7 +86,7 @@ import StockOverview from './StockOverview.vue'
 import { stocksConfig } from '@/utils/stocksConfigService.js'
 import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
-import { navigationService } from '@/services/NavigationService.js'
+import { navigationService } from '@/services/NavigationService'
 import { scrollSpyService } from '@/services/ScrollSpyService.js'
 
 // ---------- fixtures ----------
