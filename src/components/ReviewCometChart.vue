@@ -1,7 +1,7 @@
 <script setup>
 import { ref, shallowRef, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { quantDataService } from '@/services/QuantDataService.js';
+import { quantDataService } from '@/services/QuantDataService';
 import { formatNumber } from '@/utils/numberFormat';
 
 const { t } = useI18n();

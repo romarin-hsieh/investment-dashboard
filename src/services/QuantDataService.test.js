@@ -18,7 +18,7 @@ beforeEach(async () => {
   vi.spyOn(console, 'log').mockImplementation(() => {})
   vi.spyOn(console, 'warn').mockImplementation(() => {})
   vi.spyOn(console, 'error').mockImplementation(() => {})
-  module = await import('./QuantDataService.js')
+  module = await import('./QuantDataService')
 })
 
 afterEach(() => {

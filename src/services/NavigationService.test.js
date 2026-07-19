@@ -9,7 +9,7 @@
  * tests to internals that are likely to be refactored.
  */
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { NavigationService, navigationService } from './NavigationService.js'
+import { NavigationService, navigationService } from './NavigationService'
 
 beforeEach(() => {
   // Silence production console noise — NavigationService logs verbose

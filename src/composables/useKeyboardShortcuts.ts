@@ -1,5 +1,18 @@
 import { onMounted, onBeforeUnmount } from 'vue'
 
+/** 單一鍵盤綁定：對應 KeyboardEvent.key 的按鍵、處理函式，以及是否攔截預設行為。 */
+export interface KeyBinding {
+  /** 精確比對 KeyboardEvent.key（'j'、'J'、'Enter'、'ArrowUp' …）。 */
+  key: string;
+  /** 命中時執行的處理函式。 */
+  handler: (event: KeyboardEvent) => void;
+  /**
+   * 是否在文字輸入過濾之後、handler 之前呼叫 event.preventDefault()。
+   * 預設 false，僅為絕不該觸發瀏覽器預設行為的按鍵開啟。
+   */
+  preventDefault?: boolean;
+}
+
 /**
  * Build a keydown handler from a list of bindings.
  *
@@ -24,8 +37,8 @@ import { onMounted, onBeforeUnmount } from 'vue'
  * Avoid for `Enter` / `Escape` since those have legitimate defaults
  * (button-click activation, fullscreen exit, etc.) the user may rely on.
  */
-export function createKeyHandler (bindings) {
-  return (event) => {
+export function createKeyHandler (bindings: KeyBinding[]): (event: KeyboardEvent) => void {
+  return (event: KeyboardEvent) => {
     if (isTextInput(event.target)) return
     const binding = bindings.find(b => b.key === event.key)
     if (!binding) return
@@ -42,14 +55,18 @@ export function createKeyHandler (bindings) {
  * Listener attaches on mount and detaches on unmount, so a parent component
  * using this composable can never leak global handlers.
  */
-export function useKeyboardShortcuts (bindings) {
+export function useKeyboardShortcuts (bindings: KeyBinding[]): void {
   const handler = createKeyHandler(bindings)
   onMounted(() => window.addEventListener('keydown', handler))
   onBeforeUnmount(() => window.removeEventListener('keydown', handler))
 }
 
-function isTextInput (el) {
-  if (!el || !el.tagName) return false
+function isTextInput (el: EventTarget | null): boolean {
+  // 原本以 `el.tagName` 判斷；改用 instanceof 使 EventTarget 窄化為
+  // HTMLElement，才能安全讀取 tagName / isContentEditable。所有真實文字
+  // 輸入目標（input/textarea/select/contenteditable）皆為 HTMLElement，
+  // null 與非 HTMLElement 目標一律回傳 false，語意與原本相同。
+  if (!(el instanceof HTMLElement)) return false
   const tag = el.tagName
   if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return true
   if (el.isContentEditable) return true

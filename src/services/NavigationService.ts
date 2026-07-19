@@ -3,17 +3,14 @@
  * 使用純 DOM scroll 避免與 Hash Router 衝突
  */
 export class NavigationService {
-  constructor() {
-    this.headerOffset = 80 // 預設 header 高度
-  }
+  private headerOffset = 80 // 預設 header 高度
 
   /**
    * 滾動到指定的股票 symbol
-   * @param {string} symbol - 股票代碼
-   * @param {boolean} smooth - 是否使用平滑滾動
-   * @returns {Promise<void>}
+   * @param symbol - 股票代碼
+   * @param smooth - 是否使用平滑滾動
    */
-  async scrollToSymbol(symbol, smooth = true) {
+  async scrollToSymbol(symbol: string, smooth = true): Promise<void> {
     try {
       const sanitizedSymbol = this.sanitizeSymbol(symbol)
       const targetId = `sym-${sanitizedSymbol}`
@@ -26,13 +23,13 @@ export class NavigationService {
 
       // 檢查 prefers-reduced-motion 設定
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      
+
       // 計算滾動位置，考慮 sticky header
       const elementTop = targetElement.offsetTop
       const scrollTop = elementTop - this.getHeaderOffset()
       const currentScrollTop = window.pageYOffset
       const scrollDistance = Math.abs(scrollTop - currentScrollTop)
-      
+
       // 距離感知滾動：超過 2 個 viewport 高度使用瞬移
       const viewportHeight = window.innerHeight
       const distanceThreshold = viewportHeight * 2
@@ -64,24 +61,26 @@ export class NavigationService {
 
   /**
    * 清理 symbol 為有效的 DOM ID
-   * @param {string} symbol - 原始 symbol
-   * @returns {string} 清理後的 symbol
+   * @param symbol - 原始 symbol
+   * @returns 清理後的 symbol
    */
-  sanitizeSymbol(symbol) {
+  sanitizeSymbol(symbol: string): string {
     return symbol.replace(/[^a-zA-Z0-9]/g, '_')
   }
 
   /**
    * 更新 URL query 參數
    * @deprecated 不建議在 Hash Router 環境下使用。請使用 Vue Router query 方法代替。
-   * @param {string} symbol - 股票代碼
+   * @param symbol - 股票代碼
    */
-  updateQueryParam(symbol) {
+  updateQueryParam(symbol: string): void {
     console.warn('DEPRECATED: NavigationService.updateQueryParam() should not be used with Hash Router. Use Vue Router query methods instead.')
-    
+
     try {
-      const url = new URL(window.location)
-      
+      // window.location 以 href 字串建構 URL（原本傳 Location 物件，靠其
+      // toString() 隱式轉換；.href 語意相同且型別正確）。
+      const url = new URL(window.location.href)
+
       if (symbol) {
         url.searchParams.set('focus', symbol)
       } else {
@@ -90,7 +89,7 @@ export class NavigationService {
 
       // 使用 replaceState 避免影響瀏覽器歷史
       window.history.replaceState(null, '', url.toString())
-      
+
       console.log(`NavigationService: Updated URL query param to focus=${symbol}`)
     } catch (error) {
       console.error('NavigationService: Error updating query param:', error)
@@ -100,13 +99,13 @@ export class NavigationService {
   /**
    * 從 URL query 參數讀取 focus symbol
    * @deprecated 不建議在 Hash Router 環境下使用。請使用 Vue Router $route.query 代替。
-   * @returns {string|null} focus symbol 或 null
+   * @returns focus symbol 或 null
    */
-  getFocusSymbolFromQuery() {
+  getFocusSymbolFromQuery(): string | null {
     console.warn('DEPRECATED: NavigationService.getFocusSymbolFromQuery() should not be used with Hash Router. Use Vue Router $route.query.focus instead.')
-    
+
     try {
-      const url = new URL(window.location)
+      const url = new URL(window.location.href)
       return url.searchParams.get('focus')
     } catch (error) {
       console.error('NavigationService: Error reading query param:', error)
@@ -116,9 +115,9 @@ export class NavigationService {
 
   /**
    * 獲取當前 header 高度
-   * @returns {number} header 高度（像素）
+   * @returns header 高度（像素）
    */
-  getHeaderOffset() {
+  getHeaderOffset(): number {
     try {
       // 嘗試動態計算 header 高度
       const header = document.querySelector('header, .header, .navbar, .app-header')
@@ -129,22 +128,21 @@ export class NavigationService {
     } catch (error) {
       console.warn('NavigationService: Could not calculate header height:', error)
     }
-    
+
     return this.headerOffset // 使用預設值
   }
 
   /**
    * 等待平滑滾動完成
-   * @returns {Promise<void>}
    */
-  waitForScrollComplete() {
+  waitForScrollComplete(): Promise<void> {
     return new Promise(resolve => {
       let lastScrollTop = window.pageYOffset
-      let scrollEndTimer = null
+      let scrollEndTimer: ReturnType<typeof setTimeout>
 
       const checkScrollEnd = () => {
         const currentScrollTop = window.pageYOffset
-        
+
         if (Math.abs(currentScrollTop - lastScrollTop) < 1) {
           // 滾動已停止
           clearTimeout(scrollEndTimer)
@@ -158,7 +156,7 @@ export class NavigationService {
 
       // 開始檢查
       scrollEndTimer = setTimeout(checkScrollEnd, 50)
-      
+
       // 最大等待時間 2 秒
       setTimeout(resolve, 2000)
     })
@@ -166,10 +164,10 @@ export class NavigationService {
 
   /**
    * 驗證 symbol 是否存在於頁面中
-   * @param {string} symbol - 股票代碼
-   * @returns {boolean} 是否存在
+   * @param symbol - 股票代碼
+   * @returns 是否存在
    */
-  isSymbolValid(symbol) {
+  isSymbolValid(symbol: string): boolean {
     const sanitizedSymbol = this.sanitizeSymbol(symbol)
     const targetId = `sym-${sanitizedSymbol}`
     return document.getElementById(targetId) !== null

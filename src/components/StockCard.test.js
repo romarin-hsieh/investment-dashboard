@@ -35,7 +35,7 @@ vi.mock('./TechnicalIndicators.vue', () => ({
 }))
 
 import StockCard from './StockCard.vue'
-import { navigationService } from '@/services/NavigationService.js'
+import { navigationService } from '@/services/NavigationService'
 
 // ---------- fixtures ----------
 
