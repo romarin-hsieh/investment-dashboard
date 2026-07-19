@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent, h } from 'vue'
-import i18n from './i18n.js'
+import i18n from './i18n'
 
 /**
  * Guards the CSP fix (ADR-0009): locale messages must be PRECOMPILED at build,

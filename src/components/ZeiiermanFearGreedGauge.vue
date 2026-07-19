@@ -162,7 +162,7 @@
 </template>
 
 <script>
-import { useTheme } from '@/composables/useTheme.js';
+import { useTheme } from '@/composables/useTheme';
 import { ohlcvApi } from '@/services/ohlcvApi.js';
 import { withDataBase } from '@/utils/baseUrl';
 

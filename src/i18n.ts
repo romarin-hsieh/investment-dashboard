@@ -9,7 +9,7 @@ const STORAGE_KEY = 'locale'
  * 2. the browser language (any zh-* → zh-TW), else
  * 3. English.
  */
-export function resolveInitialLocale() {
+export function resolveInitialLocale(): string {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved && SUPPORTED_LOCALES.includes(saved)) return saved
@@ -33,22 +33,26 @@ export const i18n = createI18n({
   messages: {},
 })
 
+/** A lazy locale-chunk loader; the JSON default is the precompiled message tree. */
+type LocaleLoader = () => Promise<{ default: Record<string, unknown> }>
+
 // Dynamic imports of src/locales/** are precompiled by @intlify/unplugin-vue-i18n
 // the same as the old static imports were, so each locale chunk is message
 // FUNCTIONS — no runtime compile, no CSP 'unsafe-eval' (ADR-0009).
-const LOCALE_LOADERS = {
+const LOCALE_LOADERS: Record<string, LocaleLoader> = {
   en: () => import('./locales/en.json'),
   'zh-TW': () => import('./locales/zh-TW.json'),
 }
-const loadedLocales = new Set()
+const loadedLocales = new Set<string>()
 
 /**
  * Fetch + install a locale's messages once. Awaited before mount for the active
  * locale, and before switching to a not-yet-loaded locale (so no missing-key flash).
  */
-export async function loadLocaleMessages(loc) {
-  if (loadedLocales.has(loc) || !LOCALE_LOADERS[loc]) return
-  const mod = await LOCALE_LOADERS[loc]()
+export async function loadLocaleMessages(loc: string): Promise<void> {
+  const loader = LOCALE_LOADERS[loc]
+  if (loadedLocales.has(loc) || !loader) return
+  const mod = await loader()
   i18n.global.setLocaleMessage(loc, mod.default ?? mod)
   loadedLocales.add(loc)
 }

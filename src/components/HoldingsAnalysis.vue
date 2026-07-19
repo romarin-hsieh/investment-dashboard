@@ -146,7 +146,7 @@ import { Chart as ChartJS, ArcElement, BarElement, LineElement, PointElement, Ca
 import { Doughnut, Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
-import { useTheme } from '@/composables/useTheme.js'
+import { useTheme } from '@/composables/useTheme'
 import { getToken, getTokenRgba } from '@/utils/designTokens'
 
 ChartJS.register(ArcElement, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend)

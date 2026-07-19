@@ -66,8 +66,8 @@
 </template>
 
 <script>
-import { useTheme } from '../composables/useTheme.js'
-import { useLocale } from '../composables/useLocale.js'
+import { useTheme } from '../composables/useTheme'
+import { useLocale } from '../composables/useLocale'
 
 export default {
   name: 'Layout',

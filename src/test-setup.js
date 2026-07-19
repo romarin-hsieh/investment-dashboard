@@ -3,7 +3,7 @@
 // the i18n plugin; installing it once here keeps component unit tests focused on
 // behaviour rather than i18n wiring. Locale defaults to 'en'.
 import { config } from '@vue/test-utils'
-import i18n from './i18n.js'
+import i18n from './i18n'
 import en from './locales/en.json'
 import zhTW from './locales/zh-TW.json'
 

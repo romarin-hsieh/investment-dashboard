@@ -1,5 +1,6 @@
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
+// Shared singleton theme state across all useTheme() callers.
 const theme = ref('light')
 
 export function useTheme() {
@@ -8,7 +9,7 @@ export function useTheme() {
         applyTheme()
     }
 
-    const setTheme = (newTheme) => {
+    const setTheme = (newTheme: string) => {
         if (['light', 'dark'].includes(newTheme)) {
             theme.value = newTheme
             applyTheme()

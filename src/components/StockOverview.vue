@@ -108,7 +108,7 @@ import { scrollSpyService } from '@/services/ScrollSpyService.js'
 import { dataFetcher } from '@/lib/fetcher'
 import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
 import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
-import { useTheme } from '@/composables/useTheme.js'
+import { useTheme } from '@/composables/useTheme'
 import { createKeyHandler } from '@/composables/useKeyboardShortcuts'
 import { computed } from 'vue'
 

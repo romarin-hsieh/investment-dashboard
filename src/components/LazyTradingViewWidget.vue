@@ -25,7 +25,7 @@
 
 <script>
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
-import { useTheme } from '@/composables/useTheme.js'
+import { useTheme } from '@/composables/useTheme'
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
 import { watch, computed } from 'vue'
 

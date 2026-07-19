@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import App from './App.vue'
-import i18n, { loadLocaleMessages } from './i18n.js'
+import i18n, { loadLocaleMessages } from './i18n'
 import './styles/tokens.css'  // Neutral palette + semantic-state tokens (load first)
 import './style.css'          // Brand theme (overrides apply)
 

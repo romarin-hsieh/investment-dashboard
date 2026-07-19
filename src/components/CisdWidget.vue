@@ -32,7 +32,7 @@ import { createChart } from 'lightweight-charts';
 import { ohlcvApi } from '@/services/ohlcvApi.js';
 import { CisdAlgo } from '@/utils/technical-analysis/CisdAlgo.js';
 import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives.js';
-import { useTheme } from '@/composables/useTheme.js';
+import { useTheme } from '@/composables/useTheme';
 import { getToken } from '@/utils/designTokens';
 // Components
 import GenericSettingsModal from '@/components/GenericSettingsModal.vue';
