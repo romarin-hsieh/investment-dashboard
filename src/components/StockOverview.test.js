@@ -555,3 +555,116 @@ describe('StockOverview — pure helpers', () => {
       .toEqual(['industry-foo', 'sector-Technology'])
   })
 })
+
+// ---------- WS-H PR 7 additions (ADR-0013) ----------
+
+describe('StockOverview — degraded metadata', () => {
+  const symbolsIn = (groups) =>
+    Object.values(groups).flat().map(s => s.quote.symbol)
+
+  it('does not blank the page when the metadata envelope has no usable items', async () => {
+    // REGRESSION: `this.metadata.items.find(...)` threw on a degraded 200
+    // (envelope present, `items` null) — the computed blew up and the ENTIRE
+    // grid disappeared. It must fall back to "no metadata" instead.
+    stockOverviewOptimizer.loadOptimizedStockData.mockResolvedValue({
+      ...makeOptimizerPayload(),
+      metadata: { items: null }
+    })
+    directMetadataLoader.loadMetadata.mockResolvedValue({ items: null })
+
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+
+    expect(symbolsIn(wrapper.vm.groupedStocks))
+      .toEqual(expect.arrayContaining(['AAPL', 'NVDA', 'AMD', 'JPM']))
+  })
+
+  it('files symbols with no metadata row under Unknown', async () => {
+    stockOverviewOptimizer.loadOptimizedStockData.mockResolvedValue({
+      ...makeOptimizerPayload(),
+      // Only AAPL has a metadata row; the rest have none at all.
+      metadata: { items: [{ symbol: 'AAPL', sector: 'Technology', industry: 'Consumer Electronics', confidence: 0.95, market_cap: 3e12, exchange: 'NMS' }] }
+    })
+
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+
+    const unknown = wrapper.vm.groupedStocks['Unknown']
+    expect(unknown).toBeTruthy()
+    expect(unknown.map(s => s.quote.symbol))
+      .toEqual(expect.arrayContaining(['AMD', 'JPM', 'NVDA']))
+    expect(wrapper.vm.groupedStocks['Technology'].map(s => s.quote.symbol)).toEqual(['AAPL'])
+  })
+
+  it('files low-confidence metadata under Unknown rather than trusting it', async () => {
+    // confidence < 0.7 is explicitly untrusted (PRD rule) — it must not silently
+    // place a symbol in a sector we are not confident about.
+    stockOverviewOptimizer.loadOptimizedStockData.mockResolvedValue({
+      ...makeOptimizerPayload(),
+      metadata: { items: [
+        { symbol: 'AAPL', sector: 'Technology', industry: 'Consumer Electronics', confidence: 0.4, market_cap: 3e12, exchange: 'NMS' }
+      ] }
+    })
+
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+
+    expect(wrapper.vm.groupedStocks['Technology']).toBeUndefined()
+    expect(wrapper.vm.groupedStocks['Unknown'].map(s => s.quote.symbol)).toContain('AAPL')
+  })
+})
+
+describe('StockOverview — recovery + wiring', () => {
+  it('recovers from a failed load when Retry is pressed', async () => {
+    stockOverviewOptimizer.loadOptimizedStockData.mockRejectedValueOnce(new Error('network down'))
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+    expect(wrapper.vm.error).toBeTruthy()
+
+    stockOverviewOptimizer.loadOptimizedStockData.mockResolvedValue(makeOptimizerPayload())
+    await wrapper.vm.refresh()
+    await flushPromises()
+
+    expect(wrapper.vm.error).toBeFalsy()
+    expect(Object.keys(wrapper.vm.groupedStocks).length).toBeGreaterThan(0)
+  })
+
+  it('registers the keyboard handler on mount and removes it on unmount', async () => {
+    const addSpy = vi.spyOn(window, 'addEventListener')
+    const removeSpy = vi.spyOn(window, 'removeEventListener')
+
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+
+    const handler = wrapper.vm._keyboardHandler
+    expect(handler).toBeTypeOf('function')
+    expect(addSpy).toHaveBeenCalledWith('keydown', handler)
+
+    wrapper.unmount()
+    // Leaking this listener would keep j/k firing against a dead component.
+    expect(removeSpy).toHaveBeenCalledWith('keydown', handler)
+  })
+
+  it('resumes ScrollSpy on the delayed timer even when scrollToSymbol rejects', async () => {
+    // Without the `finally`, one failed scroll would leave ScrollSpy paused for
+    // the rest of the session and the nav highlight would silently stop tracking.
+    // Note: onSymbolClick has try/finally and NO catch, so the rejection
+    // propagates to the caller by design; resume() fires on a 500ms timer.
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+
+    navigationService.scrollToSymbol.mockRejectedValueOnce(new Error('no element'))
+    vi.useFakeTimers()
+    try {
+      await expect(wrapper.vm.onSymbolClick('NVDA')).rejects.toThrow('no element')
+
+      expect(scrollSpyService.pause).toHaveBeenCalled()
+      expect(scrollSpyService.resume).not.toHaveBeenCalled()
+
+      vi.advanceTimersByTime(500)
+      expect(scrollSpyService.resume).toHaveBeenCalled()
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+})
