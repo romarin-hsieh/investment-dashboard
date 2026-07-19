@@ -40,7 +40,8 @@ export default defineConfig({
         // Per-file floors for the components in the ADR-0013 coverage workstream.
         // WS-H PR 5: 84.6 -> 89.3 stmts / 76.1 -> 82.3 branch / 53.1 -> 63.6 funcs.
         'src/components/MFIVolumeProfilePanel.vue': { statements: 88, branches: 81, functions: 62 },
-        'src/components/FundamentalAnalysis.vue': { statements: 79, branches: 71, functions: 80 },
+        // WS-H PR 6: 80.5 -> 81.9 stmts / 72.8 -> 76.9 branch / 81.6 -> 82.5 funcs.
+        'src/components/FundamentalAnalysis.vue': { statements: 81, branches: 76, functions: 82 },
         'src/components/StockOverview.vue': { statements: 71, branches: 70, functions: 64 },
         // WS-H PR 3: 16.8 -> 78.8 stmts / 75.0 branch / 75.0 funcs.
         'src/components/StockCard.vue': { statements: 78, branches: 74, functions: 74 },

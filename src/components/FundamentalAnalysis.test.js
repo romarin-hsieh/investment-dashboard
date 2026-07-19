@@ -253,3 +253,128 @@ describe('FundamentalAnalysis — pure helpers', () => {
     expect(wrapper.vm.getVotePct(empty, 'strongBuy')).toBe('0%')
   })
 })
+
+// ---------- WS-H PR 6 additions (ADR-0013) ----------
+
+describe('FundamentalAnalysis — getGrowthClass', () => {
+  it('never throws, and never paints unknown data green', async () => {
+    // REGRESSION: `val.includes('-')` THREW on a number or a {raw,fmt} envelope
+    // ("includes is not a function", taking the whole panel down), and returned
+    // 'text-success' for any string without a '-' — so 'N/A' rendered GREEN,
+    // i.e. missing data looked like positive growth.
+    const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
+    await flushPromises()
+    const vm = wrapper.vm
+
+    expect(() => vm.getGrowthClass(-0.15)).not.toThrow()
+    expect(vm.getGrowthClass(-0.15)).toBe('text-danger')
+    expect(vm.getGrowthClass(0.22)).toBe('text-success')
+    expect(vm.getGrowthClass({ raw: -0.1, fmt: '-10%' })).toBe('text-danger')
+
+    // Strings still behave.
+    expect(vm.getGrowthClass('-12.3%')).toBe('text-danger')
+    expect(vm.getGrowthClass('8.4%')).toBe('text-success')
+
+    // Unknown must be COLOURLESS, never green.
+    for (const unknown of [null, undefined, '', 'N/A']) {
+      expect(vm.getGrowthClass(unknown)).toBe('')
+    }
+  })
+})
+
+describe('FundamentalAnalysis — Yahoo {raw, fmt} envelopes', () => {
+  it('renders the real number instead of [object Object] or a silent N/A', async () => {
+    // REGRESSION: an envelope is truthy, so beta rendered literally as
+    // "[object Object]", while forwardPE died in parseFloat({}) -> NaN and showed
+    // N/A for a value we actually had.
+    const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
+    await flushPromises()
+    const vm = wrapper.vm
+    const NA = vm.$t('fundamentals.keyMetrics.notAvailable')
+
+    expect(vm.displayMetric({ raw: 1.234, fmt: '1.23' }, 2)).toBe('1.23')
+    expect(vm.displayMetric(1.234, 2)).toBe('1.23')
+    expect(vm.displayMetric('1.234', 2)).toBe('1.23')
+    expect(vm.displayMetric({ raw: 1.234 }, 2)).not.toContain('object')
+
+    // Genuinely absent values still read as N/A.
+    for (const missing of [null, undefined, '', {}]) {
+      expect(vm.displayMetric(missing, 2)).toBe(NA)
+    }
+  })
+})
+
+describe('FundamentalAnalysis — getPricePosition', () => {
+  it('never emits NaN% into inline CSS when a target is missing', async () => {
+    // REGRESSION: a missing high/low made `range` NaN, which propagated out as the
+    // literal CSS string 'NaN%' on the marker left/right offsets.
+    const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
+    await flushPromises()
+    const vm = wrapper.vm
+
+    vm.priceTargets = { low: 100, high: 200, mean: 150, current: 150 }
+    expect(vm.getPricePosition(150)).toMatch(/^\d+(\.\d+)?%$/)
+
+    vm.priceTargets = { low: 100, high: undefined, mean: 150, current: 150 }
+    expect(vm.getPricePosition(150)).not.toContain('NaN')
+
+    vm.priceTargets = { low: undefined, high: undefined, mean: null, current: 150 }
+    expect(vm.getPricePosition(150)).not.toContain('NaN')
+  })
+})
+
+describe('FundamentalAnalysis — quarterly synthesis', () => {
+  function payload (quarters) {
+    return {
+      financialsChart: {
+        yearly: [
+          { date: 2023, revenue: 100, earnings: 10 },
+          { date: 2024, revenue: 120, earnings: 12 }
+        ],
+        quarterly: quarters
+      }
+    }
+  }
+
+  it('does NOT mutate the caller\'s (cached) payload', async () => {
+    // REGRESSION: `yearlyEarningsData` aliased the API array and synthesis pushed
+    // onto it — mutating the CACHED response, so re-entering the view appended
+    // duplicate synthesized years every time.
+    const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
+    await flushPromises()
+
+    const data = payload([
+      { date: '1Q2025', revenue: 30, earnings: 3 },
+      { date: '2Q2025', revenue: 30, earnings: 3 },
+      { date: '3Q2025', revenue: 30, earnings: 3 },
+      { date: '4Q2025', revenue: 30, earnings: 3 }
+    ])
+
+    wrapper.vm.processEarningsHistory(data)
+    wrapper.vm.processEarningsHistory(data) // re-entry must be idempotent
+
+    expect(data.financialsChart.yearly).toHaveLength(2)
+  })
+
+  it('synthesizes a COMPLETE year but never a partial one', async () => {
+    const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
+    await flushPromises()
+
+    // Only 2 of 4 quarters: charting that beside full years reads as a collapse.
+    wrapper.vm.processEarningsHistory(payload([
+      { date: '1Q2025', revenue: 30, earnings: 3 },
+      { date: '2Q2025', revenue: 30, earnings: 3 }
+    ]))
+    expect(wrapper.vm.yearlyEarningsData.map(y => y.date)).toEqual([2023, 2024])
+
+    // All four quarters: safe to aggregate.
+    wrapper.vm.processEarningsHistory(payload([
+      { date: '1Q2025', revenue: 30, earnings: 3 },
+      { date: '2Q2025', revenue: 30, earnings: 3 },
+      { date: '3Q2025', revenue: 30, earnings: 3 },
+      { date: '4Q2025', revenue: 30, earnings: 3 }
+    ]))
+    const synth = wrapper.vm.yearlyEarningsData.find(y => y.date === 2025)
+    expect(synth).toMatchObject({ revenue: 120, earnings: 12, synthesized: true })
+  })
+})
