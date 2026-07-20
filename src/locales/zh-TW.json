@@ -793,7 +793,8 @@
     "actions": {
       "checking": "檢查中…",
       "refreshStatus": "重新整理狀態",
-      "clearCache": "清除瀏覽器快取"
+      "clearCache": "清除瀏覽器快取",
+      "retry": "重試"
     },
     "logs": {
       "title": "系統紀錄"
@@ -804,8 +805,11 @@
       "indexFailed": "無法載入每日管線索引",
       "metadataLoaded": "已載入標的清單（{count} 檔）",
       "metadataFailed": "無法載入標的中繼資料",
-      "systemCheckFailed": "系統檢查失敗：{error}"
-    }
+      "systemCheckFailed": "系統檢查失敗：{error}",
+      "cacheCleared": "快取已清除；重新載入中…",
+      "cacheClearFailed": "清除快取失敗：{error}"
+    },
+    "errorBanner": "系統檢查失敗：{error}"
   },
   "quant": {
     "title": "量化策略：3D 動態市場狀態",

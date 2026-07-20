@@ -169,6 +169,8 @@
 
 <script>
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
+import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache'
+import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 
 export default {
   name: 'TechnicalIndicatorsManager',
@@ -208,9 +210,11 @@ export default {
       }
 
       try {
-        // 這裡需要調用各個緩存清理方法
-        // technicalIndicatorsCache.clearAllCache();
-        // precomputedIndicatorsAPI.clearCache();
+        // Actually clear the caches. These calls used to be commented out while
+        // the success alert fired unconditionally — the user was told the purge
+        // succeeded when nothing had been cleared.
+        technicalIndicatorsCache.clearAllCache();
+        precomputedIndicatorsAPI.clearCache();
         alert(this.$t('techIndicators.cachesCleared'));
         await this.refreshStatus();
       } catch (error) {

@@ -5,6 +5,13 @@
       <p>{{ $t('systemManager.pageSubtitle') }}</p>
     </div>
 
+    <!-- Error banner: `error` was assigned on a failed status check but never
+         rendered, so a total fetch failure showed only stale/zero values. -->
+    <div v-if="error" class="error-banner" role="alert">
+      <span>{{ $t('systemManager.errorBanner', { error }) }}</span>
+      <button class="btn" @click="refreshStatus" :disabled="loading">{{ $t('systemManager.actions.retry') }}</button>
+    </div>
+
     <!-- Status Overview -->
     <div class="overview-section">
       <div class="overview-grid">
@@ -72,7 +79,7 @@
                     <button class="btn" @click="refreshStatus" :disabled="loading">
                         {{ loading ? $t('systemManager.actions.checking') : $t('systemManager.actions.refreshStatus') }}
                     </button>
-                    <button class="btn warning" @click="clearCache">
+                    <button class="btn warning" @click="clearCache" :disabled="loading">
                         {{ $t('systemManager.actions.clearCache') }}
                     </button>
                 </div>
@@ -94,6 +101,8 @@
 
 <script>
 import { withDataBase } from '@/utils/baseUrl';
+import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache';
+import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi';
 
 export default {
   name: 'SystemManager',
@@ -225,8 +234,19 @@ export default {
     },
 
     clearCache() {
-        if(confirm(this.$t('systemManager.clearCacheConfirm'))) {
-            window.location.reload(true);
+        if (!confirm(this.$t('systemManager.clearCacheConfirm'))) return;
+        // Actually clear the data caches, THEN reload to re-fetch fresh. The old
+        // body only did `reload(true)` — a mislabeled reload that purged nothing
+        // (localStorage-backed caches survived; the `true` arg is ignored by
+        // modern browsers).
+        try {
+            technicalIndicatorsCache.clearAllCache();
+            precomputedIndicatorsAPI.clearCache();
+            this.addLog('success', this.$t('systemManager.log.cacheCleared'));
+            window.location.reload();
+        } catch (e) {
+            this.error = e.message;
+            this.addLog('error', this.$t('systemManager.log.cacheClearFailed', { error: e.message }));
         }
     }
   }
@@ -339,6 +359,21 @@ export default {
     justify-content: space-between;
     padding: 0.8rem 0;
     border-bottom: 1px solid var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.error-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-6);
+    padding: var(--space-4) var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--danger-solid);
+    border-left-width: 4px;
+    border-radius: var(--radius-md);
     color: var(--text-primary);
 }
 
