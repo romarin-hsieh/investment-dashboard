@@ -3,7 +3,17 @@
  * 避免重複載入相同的 widgets
  */
 
+interface CacheEntry {
+  data: unknown
+  timestamp: number
+}
+
 class WidgetCache {
+  cache: Map<string, CacheEntry>
+  loadingPromises: Map<string, Promise<unknown>>
+  maxCacheSize: number
+  cacheTimeout: number
+
   constructor() {
     this.cache = new Map()
     this.loadingPromises = new Map()
@@ -14,54 +24,56 @@ class WidgetCache {
   /**
    * 生成快取鍵值
    */
-  generateKey(widgetType, symbol, exchange) {
+  generateKey(widgetType: string, symbol: string, exchange: string): string {
     return `${widgetType}-${symbol}-${exchange}`
   }
 
   /**
    * 檢查是否已快取
    */
-  has(widgetType, symbol, exchange) {
+  has(widgetType: string, symbol: string, exchange: string): boolean {
     const key = this.generateKey(widgetType, symbol, exchange)
     const cached = this.cache.get(key)
-    
+
     if (!cached) return false
-    
+
     // 檢查是否過期
     if (Date.now() - cached.timestamp > this.cacheTimeout) {
       this.cache.delete(key)
       return false
     }
-    
+
     return true
   }
 
   /**
    * 獲取快取的 widget
    */
-  get(widgetType, symbol, exchange) {
+  get(widgetType: string, symbol: string, exchange: string): unknown {
     const key = this.generateKey(widgetType, symbol, exchange)
     const cached = this.cache.get(key)
-    
+
     if (cached && Date.now() - cached.timestamp <= this.cacheTimeout) {
       return cached.data
     }
-    
+
     return null
   }
 
   /**
    * 設定快取
    */
-  set(widgetType, symbol, exchange, data) {
+  set(widgetType: string, symbol: string, exchange: string, data: unknown): void {
     const key = this.generateKey(widgetType, symbol, exchange)
-    
+
     // 如果快取已滿，刪除最舊的項目
     if (this.cache.size >= this.maxCacheSize) {
       const firstKey = this.cache.keys().next().value
-      this.cache.delete(firstKey)
+      if (firstKey !== undefined) {
+        this.cache.delete(firstKey)
+      }
     }
-    
+
     this.cache.set(key, {
       data,
       timestamp: Date.now()
@@ -71,7 +83,7 @@ class WidgetCache {
   /**
    * 檢查是否正在載入
    */
-  isLoading(widgetType, symbol, exchange) {
+  isLoading(widgetType: string, symbol: string, exchange: string): boolean {
     const key = this.generateKey(widgetType, symbol, exchange)
     return this.loadingPromises.has(key)
   }
@@ -79,22 +91,22 @@ class WidgetCache {
   /**
    * 設定載入狀態
    */
-  setLoading(widgetType, symbol, exchange, promise) {
+  setLoading(widgetType: string, symbol: string, exchange: string, promise: Promise<unknown>): Promise<unknown> {
     const key = this.generateKey(widgetType, symbol, exchange)
     this.loadingPromises.set(key, promise)
-    
+
     // 載入完成後清除
     promise.finally(() => {
       this.loadingPromises.delete(key)
     })
-    
+
     return promise
   }
 
   /**
    * 獲取載入中的 Promise
    */
-  getLoadingPromise(widgetType, symbol, exchange) {
+  getLoadingPromise(widgetType: string, symbol: string, exchange: string): Promise<unknown> | undefined {
     const key = this.generateKey(widgetType, symbol, exchange)
     return this.loadingPromises.get(key)
   }
@@ -102,7 +114,7 @@ class WidgetCache {
   /**
    * 清除快取
    */
-  clear() {
+  clear(): void {
     this.cache.clear()
     this.loadingPromises.clear()
   }
@@ -110,7 +122,7 @@ class WidgetCache {
   /**
    * 清除過期快取
    */
-  clearExpired() {
+  clearExpired(): void {
     const now = Date.now()
     for (const [key, cached] of this.cache.entries()) {
       if (now - cached.timestamp > this.cacheTimeout) {
@@ -122,7 +134,7 @@ class WidgetCache {
   /**
    * 獲取快取統計
    */
-  getStats() {
+  getStats(): { cacheSize: number; loadingCount: number; maxCacheSize: number } {
     return {
       cacheSize: this.cache.size,
       loadingCount: this.loadingPromises.size,

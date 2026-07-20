@@ -39,8 +39,8 @@
 import { createChart } from 'lightweight-charts';
 // Services & Algos
 import { ohlcvApi } from '@/services/ohlcvApi.js';
-import { TrendlinesAlgo } from '@/utils/technical-analysis/TrendlinesAlgo.js';
-import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives.js';
+import { TrendlinesAlgo } from '@/utils/technical-analysis/TrendlinesAlgo';
+import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives';
 import { useTheme } from '@/composables/useTheme';
 import { getToken, getTokenRgba } from '@/utils/designTokens';
 // Components

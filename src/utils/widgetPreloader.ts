@@ -4,6 +4,9 @@
  */
 
 class WidgetPreloader {
+  preloadedScripts: Set<string>
+  scriptPromises: Map<string, Promise<void>>
+
   constructor() {
     this.preloadedScripts = new Set()
     this.scriptPromises = new Map()
@@ -12,31 +15,32 @@ class WidgetPreloader {
   /**
    * 預載入 TradingView 腳本
    */
-  preloadScript(scriptUrl) {
+  preloadScript(scriptUrl: string): Promise<void> {
     if (this.preloadedScripts.has(scriptUrl)) {
       return Promise.resolve()
     }
 
-    if (this.scriptPromises.has(scriptUrl)) {
-      return this.scriptPromises.get(scriptUrl)
+    const cached = this.scriptPromises.get(scriptUrl)
+    if (cached) {
+      return cached
     }
 
-    const promise = new Promise((resolve, reject) => {
+    const promise = new Promise<void>((resolve, reject) => {
       const link = document.createElement('link')
       link.rel = 'preload'
       link.as = 'script'
       link.href = scriptUrl
       link.crossOrigin = 'anonymous'
-      
+
       link.onload = () => {
         this.preloadedScripts.add(scriptUrl)
         resolve()
       }
-      
+
       link.onerror = () => {
         reject(new Error(`Failed to preload script: ${scriptUrl}`))
       }
-      
+
       document.head.appendChild(link)
     })
 
@@ -47,7 +51,7 @@ class WidgetPreloader {
   /**
    * 預載入所有常用的 TradingView 腳本
    */
-  async preloadAllScripts() {
+  async preloadAllScripts(): Promise<void> {
     const scripts = [
       'https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js',
       'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js'
@@ -64,7 +68,7 @@ class WidgetPreloader {
   /**
    * 檢查腳本是否已預載入
    */
-  isPreloaded(scriptUrl) {
+  isPreloaded(scriptUrl: string): boolean {
     return this.preloadedScripts.has(scriptUrl)
   }
 }
