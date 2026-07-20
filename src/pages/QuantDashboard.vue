@@ -5,8 +5,9 @@ import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
 import SignalCard from '@/components/SignalCard.vue';
 import { withDataBase } from '@/utils/baseUrl';
 import { formatNumber } from '@/utils/numberFormat';
+import { formatDate as i18nDate } from '@/utils/dateFormat';
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 
 const latestData = ref([]);
 const selectedTicker = ref('SPY');
@@ -87,12 +88,7 @@ const displayChange = computed(() => formatNumber(currentTickerData.value?.chang
 const dataDateLabel = computed(() => {
     const d = currentTickerData.value?.date;
     if (!d) return '';
-    const localeStr = locale.value === 'zh-TW' ? 'zh-TW' : 'en-US';
-    try {
-        return new Date(d + 'T00:00:00').toLocaleDateString(localeStr, { year: 'numeric', month: 'short', day: 'numeric' });
-    } catch (e) {
-        return d;
-    }
+    return i18nDate(d + 'T00:00:00', { year: 'numeric', month: 'short', day: 'numeric' }, d);
 });
 
 onMounted(() => {

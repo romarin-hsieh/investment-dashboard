@@ -125,6 +125,7 @@ import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
 import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
 import { defineAsyncComponent } from 'vue'
+import { formatDate as i18nDate } from '@/utils/dateFormat'
 
 export default {
   name: 'MarketDashboard',
@@ -200,12 +201,7 @@ export default {
   },
   computed: {
     todayStr() {
-      const locale = this.$i18n && this.$i18n.locale === 'zh-TW' ? 'zh-TW' : 'en-US'
-      try {
-        return new Date().toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })
-      } catch (e) {
-        return new Date().toLocaleDateString()
-      }
+      return i18nDate(new Date(), { year: 'numeric', month: 'short', day: 'numeric' })
     },
     tickersConfig() {
       const isDark = this.theme === 'dark';

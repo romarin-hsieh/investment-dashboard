@@ -171,6 +171,7 @@
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
 import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
+import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 
 export default {
   name: 'TechnicalIndicatorsManager',
@@ -271,8 +272,7 @@ export default {
     
     formatDate(dateString) {
       if (!dateString) return this.$t('common.na');
-      const loc = this.$i18n.locale.value === 'zh-TW' ? 'zh-TW' : 'en-US';
-      return new Date(dateString).toLocaleString(loc);
+      return i18nDateTime(dateString);
     },
     
     formatBytes(bytes) {

@@ -93,6 +93,7 @@ import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import WidgetSkeleton from './WidgetSkeleton.vue'
 import { formatNumber } from '@/utils/numberFormat'
+import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 
 export default {
   name: 'TechnicalIndicators',
@@ -157,9 +158,9 @@ export default {
         this.processGroupedIndicators();
         
         if (data.lastUpdated) {
-            this.lastUpdated = new Date(data.lastUpdated).toLocaleString();
+            this.lastUpdated = i18nDateTime(data.lastUpdated);
         } else {
-            this.lastUpdated = new Date().toLocaleString() + ' (Live)';
+            this.lastUpdated = i18nDateTime(new Date()) + ' (Live)';
         }
         
         console.log(`✅ Technical indicators loaded for ${this.symbol} (Fast Render)`);

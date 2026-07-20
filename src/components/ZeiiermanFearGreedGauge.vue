@@ -165,6 +165,7 @@
 import { useTheme } from '@/composables/useTheme';
 import { ohlcvApi } from '@/services/ohlcvApi.js';
 import { withDataBase } from '@/utils/baseUrl';
+import { formatDate as i18nDate } from '@/utils/dateFormat';
 
 export default {
   name: 'ZeiiermanFearGreedGauge',
@@ -290,7 +291,7 @@ export default {
             const lastTs = spx.timestamps[spx.timestamps.length - 1];
             // Fix ms/sec issue for log
             const ts = lastTs < 1000000000000 ? lastTs * 1000 : lastTs;
-            console.log('📊 Latest SPX Date:', new Date(ts).toLocaleDateString()); // User expects 2026/1/9
+            console.log('📊 Latest SPX Date:', i18nDate(ts)); // User expects 2026/1/9
         }
 
         // Only run local compute if we have data
@@ -333,7 +334,7 @@ export default {
         }
         
         const d = new Date(ts);
-        return d.toLocaleDateString();
+        return i18nDate(d);
     },
 
     // Core Calculation Logic - Z-Score Based (CNN Methodology)
@@ -523,7 +524,7 @@ export default {
         let ts = data.timestamps[idx];
         if (ts < 1000000000000) ts *= 1000;
         const d = new Date(ts);
-        return d.toLocaleDateString();
+        return i18nDate(d);
     },
 
   }
