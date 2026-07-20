@@ -608,7 +608,7 @@ export default {
 @media (max-width: 480px) {
   .skeleton-stock-header {
     padding: var(--space-3);
-    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
+    margin: 0 calc(-1 * var(--space-1)) var(--space-4) calc(-1 * var(--space-1));
   }
   
   .skeleton-widget-container,
@@ -616,7 +616,7 @@ export default {
   .skeleton-fundamental-row,
   .skeleton-profile-row {
     padding: var(--space-2);
-    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
+    margin: 0 calc(-1 * var(--space-1)) var(--space-4) calc(-1 * var(--space-1));
   }
   
   .skeleton-fundamental-grid {

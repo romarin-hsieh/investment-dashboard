@@ -390,7 +390,7 @@ export default {
 @media (max-width: 480px) {
   .skeleton-widget-container {
     padding: var(--space-2);
-    margin: 0 -var(--space-1) var(--space-4) -var(--space-1);
+    margin: 0 calc(-1 * var(--space-1)) var(--space-4) calc(-1 * var(--space-1));
   }
   
   .skeleton-heatmap-grid {
