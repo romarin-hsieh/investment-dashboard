@@ -410,7 +410,10 @@ export default {
         // `earnings` is a cached API payload — aliasing meant we mutated the
         // caller's (cached) object, so re-entering this view appended duplicate
         // synthesized years each time.
-        if (earnings.financialsChart.yearly) {
+        // Array.isArray, not truthiness: a degraded payload where `yearly` is a
+        // truthy non-array ({} or a string) made `[...]` throw a TypeError and
+        // took the whole earnings section down with it.
+        if (Array.isArray(earnings.financialsChart.yearly)) {
             this.yearlyEarningsData = [...earnings.financialsChart.yearly];
         } else if (Array.isArray(earnings.financialsChart)) {
             // Legacy handling, assuming array is yearly if not specified
@@ -420,7 +423,7 @@ export default {
         }
 
         // Extract Quarterly Data
-        if (earnings.financialsChart.quarterly) {
+        if (Array.isArray(earnings.financialsChart.quarterly)) {
             this.quarterlyEarningsData = [...earnings.financialsChart.quarterly];
         } else {
             this.quarterlyEarningsData = [];
@@ -632,7 +635,10 @@ export default {
       if (raw === null || raw === undefined || raw === '') {
         return this.$t('fundamentals.keyMetrics.notAvailable')
       }
-      const n = typeof raw === 'number' ? raw : parseFloat(raw)
+      // Same normalization as getGrowthClass below: a fmt-only envelope hands us
+      // a display string like "1,250.40", and bare parseFloat stops at the comma
+      // and returns 1 — a silently wrong number, worse than N/A.
+      const n = typeof raw === 'number' ? raw : parseFloat(String(raw).replace(/[%,\s]/g, ''))
       if (!Number.isFinite(n)) return this.$t('fundamentals.keyMetrics.notAvailable')
       return formatNumber(n, decimals)
     },

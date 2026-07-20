@@ -28,6 +28,7 @@ vi.mock('./performanceMonitor', () => ({
 }))
 
 import { cacheWarmupService } from './cacheWarmupService.js'
+import { paths } from './baseUrl'
 
 beforeEach(() => {
   vi.spyOn(console, 'log').mockImplementation(() => {})
@@ -84,6 +85,18 @@ describe('updateConfig', () => {
 
     // Restore so we don't leak state into other test files
     cacheWarmupService.config = before
+  })
+})
+
+describe('getPackageJsonUrl', () => {
+  it('returns the baseUrl helper path synchronously', () => {
+    // Gemini review on PR #102: the old body fired `import('./baseUrl').then(...)`
+    // whose result was discarded (the method returned a hand-built fallback
+    // synchronously), making the dynamic import a pure no-op. The output string
+    // is identical by construction (withBase === BASE_URL + path); this test
+    // locks the contract onto the single helper.
+    expect(cacheWarmupService.getPackageJsonUrl()).toBe(paths.packageJson())
+    expect(cacheWarmupService.getPackageJsonUrl()).toMatch(/package\.json$/)
   })
 })
 

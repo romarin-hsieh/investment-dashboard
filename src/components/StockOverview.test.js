@@ -579,6 +579,28 @@ describe('StockOverview — degraded metadata', () => {
       .toEqual(expect.arrayContaining(['AAPL', 'NVDA', 'AMD', 'JPM']))
   })
 
+  it('skips null/garbage entries inside a degraded items array instead of throwing', async () => {
+    // REGRESSION (Gemini review on PR #100): `items.find(m => m.symbol === ...)`
+    // threw a TypeError on a null element inside `items` — same page-blanking
+    // failure class as the non-array envelope, one level deeper. m?.symbol must
+    // treat the bad entry as a miss and keep grouping the rest.
+    stockOverviewOptimizer.loadOptimizedStockData.mockResolvedValue({
+      ...makeOptimizerPayload(),
+      metadata: { items: [
+        null,
+        'garbage',
+        { symbol: 'AAPL', sector: 'Technology', industry: 'Consumer Electronics', confidence: 0.95, market_cap: 3e12, exchange: 'NMS' }
+      ] }
+    })
+
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+
+    expect(wrapper.vm.groupedStocks['Technology'].map(s => s.quote.symbol)).toEqual(['AAPL'])
+    expect(symbolsIn(wrapper.vm.groupedStocks))
+      .toEqual(expect.arrayContaining(['AAPL', 'NVDA', 'AMD', 'JPM']))
+  })
+
   it('files symbols with no metadata row under Unknown', async () => {
     stockOverviewOptimizer.loadOptimizedStockData.mockResolvedValue({
       ...makeOptimizerPayload(),

@@ -4,6 +4,7 @@
 import { hybridTechnicalIndicatorsAPI } from '@/api/hybridTechnicalIndicatorsApi.js'
 import { performanceCache, CACHE_KEYS } from './performanceCache'
 import { performanceMonitor } from './performanceMonitor'
+import { paths } from './baseUrl'
 
 class CacheWarmupService {
   constructor() {
@@ -258,14 +259,11 @@ class CacheWarmupService {
 
   // 獲取正確的 package.json URL (支援 GitHub Pages)
   getPackageJsonUrl() {
-    // 使用統一的 baseUrl helper
-    import('./baseUrl').then(({ paths }) => {
-      return paths.packageJson();
-    });
-
-    // 同步版本 - 直接使用 import.meta.env.BASE_URL
-    const base = import.meta.env.BASE_URL || '/';
-    return `${base}package.json`;
+    // 使用統一的 baseUrl helper。先前這裡發出一個 dynamic import 並在 .then 裡
+    // return —— 該回傳值無人接收，方法本身同步走 fallback，import 是純粹的
+    // no-op。輸出字串相同（withBase 就是 BASE_URL + path），改為靜態 import
+    // 移除被丟棄的非同步工作。
+    return paths.packageJson();
   }
 
   // 獲取上次預熱版本
