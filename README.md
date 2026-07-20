@@ -1,5 +1,7 @@
 # Investment Dashboard
 
+**English** | [繁體中文](README.zh-TW.md)
+
 [![Tests](https://github.com/romarin-hsieh/investment-dashboard/actions/workflows/test.yml/badge.svg)](https://github.com/romarin-hsieh/investment-dashboard/actions/workflows/test.yml)
 [![Deploy](https://github.com/romarin-hsieh/investment-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/romarin-hsieh/investment-dashboard/actions/workflows/deploy.yml)
 
