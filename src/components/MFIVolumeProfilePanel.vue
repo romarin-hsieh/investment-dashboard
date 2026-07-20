@@ -550,7 +550,7 @@ export default {
   background: var(--blue-500);
   color: white;
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: var(--text-base);
 }

@@ -372,7 +372,7 @@ h1 {
   border: 1px solid transparent;
   color: var(--text-secondary);
   padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   display: flex;
   align-items: center;

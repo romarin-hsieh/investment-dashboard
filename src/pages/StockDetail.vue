@@ -721,7 +721,7 @@ export default {
   opacity: 0.6;
   transition: all var(--transition-base) ease;
   padding: 4px;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
 }
 
 .realtime-btn:hover {
@@ -735,9 +735,9 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: var(--space-6);
+  padding: var(--card-padding);
   margin-bottom: var(--space-6);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .stock-info-header {
@@ -834,9 +834,9 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: var(--space-6);
+  padding: var(--card-padding);
   margin-bottom: var(--space-6);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
 }
 
 .insight-header {
@@ -895,7 +895,7 @@ export default {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: var(--shadow-sm); /* Added Shadow */
+    box-shadow: var(--shadow-md); /* Added Shadow */
 }
 
 .review-block .widget-header {
@@ -1031,7 +1031,7 @@ export default {
   background: linear-gradient(135deg, var(--grey-550), var(--grey-650));
   color: white;
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
   cursor: pointer;
@@ -1059,10 +1059,11 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
+  padding: var(--widget-padding);
   margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
+  box-shadow: var(--shadow-md);
 }
 
 .widget-container .widget-header {

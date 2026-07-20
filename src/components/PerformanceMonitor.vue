@@ -366,7 +366,7 @@ export default {
   flex: 1;
   padding: var(--space-2);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   background: var(--bg-card);
   cursor: pointer;
   font-size: var(--text-sm);

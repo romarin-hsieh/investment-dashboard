@@ -713,7 +713,7 @@ export default {
   background: var(--primary-color);
   color: white;
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 

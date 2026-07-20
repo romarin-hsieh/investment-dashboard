@@ -340,7 +340,7 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: var(--space-6);
+  padding: var(--card-padding);
   transition: all var(--transition-base);
   position: relative;
   width: 100%;
@@ -392,7 +392,7 @@ export default {
   opacity: 0.6;
   transition: all var(--transition-base) ease;
   padding: 4px;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
 }
 
 .realtime-btn:hover {
