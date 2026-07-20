@@ -387,7 +387,7 @@ export default {
 
 .control-btn.warning {
   background: var(--warning-solid);
-  color: var(--grey-850);
+  color: var(--text-secondary);
 }
 
 .control-btn.warning:hover {

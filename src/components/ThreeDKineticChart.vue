@@ -436,7 +436,7 @@ onUnmounted(() => {
     border-bottom: 1px solid rgba(128, 128, 128, 0.2); 
 }
 
-.card-header h4 { margin: 0; font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--grey-350); }
+.card-header h4 { margin: 0; font-size: var(--text-base); font-weight: var(--weight-semibold); color: var(--text-secondary); }
 
 .signal-badge {
     padding: 2px 8px; border-radius: var(--radius-xs); font-size: var(--text-xs); font-weight: bold; color: #fff;
@@ -450,7 +450,7 @@ onUnmounted(() => {
 .commentary {
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
-    color: var(--grey-350);
+    color: var(--text-secondary);
     background: rgba(138, 154, 156, 0.1); /* faint Florentine, de-neoned from terminal blue */
     padding: 0.6rem;
     border-radius: var(--radius-xs);
@@ -475,14 +475,14 @@ onUnmounted(() => {
 .info-btn {
     opacity: 0.6; border-radius: 50%; border: 1px solid currentColor;
     width: 16px; height: 16px; font-size: 10px;
-    display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--grey-350);
+    display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-secondary);
     background: transparent;
 }
 .popover {
     position: absolute; top: 25px; right: 5px;
     background: var(--chart-bg); border: 1px solid var(--grey-500);
     padding: 0.8rem; border-radius: var(--radius-xs);
-    z-index: 100; width: 150px; font-size: var(--text-xs); color: var(--grey-350);
+    z-index: 100; width: 150px; font-size: var(--text-xs); color: var(--text-secondary);
 }
 
 @media (max-width: 1200px) {

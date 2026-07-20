@@ -683,7 +683,7 @@ export default {
 
 .update-note {
   margin-top: var(--space-2);
-  color: var(--grey-550);
+  color: var(--text-secondary);
   font-style: italic;
 }
 
@@ -739,7 +739,7 @@ export default {
 
 .btn-warning {
   background: var(--warning-solid);
-  color: var(--grey-850);
+  color: var(--text-secondary);
 }
 
 .btn-warning:hover:not(:disabled) {
@@ -754,7 +754,7 @@ export default {
 .btn-outline {
   background: transparent;
   border: 1px solid var(--grey-550);
-  color: var(--grey-550);
+  color: var(--text-secondary);
 }
 
 .btn-outline:hover:not(:disabled) {

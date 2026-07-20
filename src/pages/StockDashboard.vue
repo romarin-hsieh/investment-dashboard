@@ -31,6 +31,6 @@ export default {
 }
 
 .text-muted {
-  color: var(--grey-550);
+  color: var(--text-secondary);
 }
 </style>

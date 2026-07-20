@@ -560,7 +560,7 @@ export default {
 }
 
 .dev-info {
-  color: var(--grey-550);
+  color: var(--text-secondary);
   font-style: italic;
 }
 
@@ -661,7 +661,7 @@ export default {
 
 .metric-detail {
   font-size: var(--text-xs);
-  color: var(--grey-550);
+  color: var(--text-secondary);
 }
 
 
@@ -880,7 +880,7 @@ export default {
     background: none;
     border: none;
     padding: 2px 4px;
-    color: var(--grey-400);
+    color: var(--text-secondary);
     cursor: pointer;
     margin-left: 8px;
     display: flex;
@@ -894,7 +894,7 @@ export default {
 
 .no-signals {
     font-size: var(--text-sm);
-    color: var(--grey-550);
+    color: var(--text-secondary);
     font-style: italic;
     padding: var(--space-2) 0;
 }
@@ -943,7 +943,7 @@ export default {
     font-size: var(--text-xl);
     line-height: 1;
     cursor: pointer;
-    color: var(--grey-550);
+    color: var(--text-secondary);
 }
 
 .modal-body {
