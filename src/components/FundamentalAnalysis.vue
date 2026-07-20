@@ -160,6 +160,7 @@ import { Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 import { formatNumber } from '@/utils/numberFormat'
+import { formatDate as i18nDate } from '@/utils/dateFormat'
 import { useTheme } from '@/composables/useTheme'
 import { getToken, getTokenRgba } from '@/utils/designTokens'
 
@@ -658,7 +659,7 @@ export default {
         if (!epoch) return '-';
         // Check if it's already a date string
         if (typeof epoch === 'string' && epoch.includes('T')) {
-           return new Date(epoch).toLocaleDateString();
+           return i18nDate(epoch);
         }
         
         // Check if it's likely seconds (small number) or milliseconds (large number)
@@ -666,10 +667,10 @@ export default {
         // Seconds for 2000-01-01 is about 946684800 (9 digits)
         // If it's less than 100 billion, assume seconds.
         if (typeof epoch === 'number' && epoch < 100000000000) {
-            return new Date(epoch * 1000).toLocaleDateString();
+            return i18nDate(epoch * 1000);
         }
         
-        return new Date(epoch).toLocaleDateString();
+        return i18nDate(epoch);
     },
     
     // Helpers for Analyst Visuals

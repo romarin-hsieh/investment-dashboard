@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import { formatDate as i18nDate } from '@/utils/dateFormat'
+
 export default {
   name: 'StockNews',
   props: {
@@ -170,7 +172,7 @@ export default {
       } else if (diffDays < 7) {
         return this.$t('stockNews.daysAgo', { n: diffDays });
       } else {
-        return date.toLocaleDateString('en-US', { 
+        return i18nDate(date, { 
           month: 'short', 
           day: 'numeric',
           year: date.getFullYear() !== now.getFullYear() ? 'numeric' : undefined

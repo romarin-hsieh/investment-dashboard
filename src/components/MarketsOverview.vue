@@ -42,6 +42,7 @@
 <script>
 import { dataFetcher } from '@/lib/fetcher'
 import { formatNumber } from '@/utils/numberFormat'
+import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 
 export default {
   name: 'MarketsOverview',
@@ -148,17 +149,12 @@ export default {
     formatTime(timeString) {
       if (!timeString) return ''
       
-      try {
-        const date = new Date(timeString)
-        return date.toLocaleString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        })
-      } catch {
-        return timeString
-      }
+      return i18nDateTime(timeString, {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }, timeString)
     },
 
     getTileClass(indicator) {

@@ -115,6 +115,7 @@ import { dataFetcher } from '@/lib/fetcher'
 import { directMetadataLoader } from '@/utils/directMetadataLoader'
 import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
 import { useTheme } from '@/composables/useTheme'
+import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 import { createKeyHandler } from '@/composables/useKeyboardShortcuts'
 import { computed } from 'vue'
 
@@ -759,17 +760,12 @@ export default {
     formatTime(timeString) {
       if (!timeString) return ''
       
-      try {
-        const date = new Date(timeString)
-        return date.toLocaleString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        })
-      } catch {
-        return timeString
-      }
+      return i18nDateTime(timeString, {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }, timeString)
     },
 
     // Helper method to map exchange codes to display names

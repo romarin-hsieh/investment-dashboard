@@ -89,7 +89,7 @@
                 <h3>{{ $t('systemManager.logs.title') }}</h3>
                 <div class="logs-container">
                     <div v-for="log in systemLogs" :key="log.id" class="log-entry" :class="log.level">
-                        <span class="time">{{ new Date(log.timestamp).toLocaleTimeString() }}</span>
+                        <span class="time">{{ formatTime(log.timestamp) }}</span>
                         <span class="msg">{{ log.message }}</span>
                     </div>
                 </div>
@@ -103,6 +103,7 @@
 import { withDataBase } from '@/utils/baseUrl';
 import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache';
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi';
+import { formatTime as i18nTime, formatDateTime as i18nDateTime } from '@/utils/dateFormat';
 
 export default {
   name: 'SystemManager',
@@ -230,7 +231,11 @@ export default {
     
     formatDate(isoString) {
       if (!isoString) return this.$t('systemManager.never');
-      return new Date(isoString).toLocaleString();
+      return i18nDateTime(isoString);
+    },
+
+    formatTime(timestamp) {
+      return i18nTime(timestamp);
     },
 
     clearCache() {

@@ -109,6 +109,7 @@
 <script>
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
 import WidgetSkeleton from './WidgetSkeleton.vue'
+import { formatDate as i18nDate } from '@/utils/dateFormat'
 
 export default {
   name: 'TechnicalSignals',
@@ -222,7 +223,7 @@ export default {
              if (i < 2) continue;
              
              const date = new Date(data.date ? data.date[i] : Date.now()); 
-             const dateStr = (data.date && data.date[i]) ? new Date(data.date[i]).toLocaleDateString() : '';
+             const dateStr = (data.date && data.date[i]) ? i18nDate(data.date[i]) : '';
 
              // 1. Hammer (Small body, long lower shadow)
              const lowerShadow = Math.min(data.open[i], data.close[i]) - data.low[i];

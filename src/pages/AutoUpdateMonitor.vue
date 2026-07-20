@@ -275,6 +275,7 @@ import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 import { withDataBase } from '@/utils/baseUrl'
 import { performanceCache } from '@/utils/performanceCache'
 import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
+import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 
 export default {
   name: 'AutoUpdateMonitor',
@@ -548,8 +549,7 @@ export default {
 
     formatTime(date) {
       if (!date) return this.$t('common.na')
-      const loc = this.$i18n.locale.value === 'zh-TW' ? 'zh-TW' : 'en-US'
-      return new Date(date).toLocaleString(loc)
+      return i18nDateTime(date)
     },
 
     formatDataAge(ageHours) {
