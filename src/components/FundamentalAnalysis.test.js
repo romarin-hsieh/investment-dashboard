@@ -302,6 +302,37 @@ describe('FundamentalAnalysis — Yahoo {raw, fmt} envelopes', () => {
       expect(vm.displayMetric(missing, 2)).toBe(NA)
     }
   })
+
+  it('parses comma-formatted fmt strings instead of truncating at the comma', async () => {
+    // REGRESSION (Gemini review on PR #99): a fmt-only envelope hands
+    // displayMetric a display string like "1,250.40" — bare parseFloat stops at
+    // the comma and renders 1.00. A silently wrong number is worse than N/A.
+    const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
+    await flushPromises()
+    const vm = wrapper.vm
+
+    expect(vm.displayMetric({ fmt: '1,250.40' }, 2)).toBe('1250.40')
+    expect(vm.displayMetric('12,345,678.9', 1)).toBe('12345678.9')
+    // Percent strings keep working (same normalization as getGrowthClass).
+    expect(vm.displayMetric('1.25%', 2)).toBe('1.25')
+  })
+})
+
+describe('FundamentalAnalysis — degraded earnings payloads', () => {
+  it('treats truthy non-array financialsChart members as empty instead of throwing', async () => {
+    // REGRESSION (Gemini review on PR #99): `[...earnings.financialsChart.yearly]`
+    // threw a TypeError when the API returned {} (or a string) for yearly/quarterly,
+    // killing the entire earnings section.
+    const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
+    await flushPromises()
+    const vm = wrapper.vm
+
+    expect(() => vm.processEarningsHistory({
+      financialsChart: { yearly: {}, quarterly: 'oops' }
+    })).not.toThrow()
+    expect(vm.yearlyEarningsData).toEqual([])
+    expect(vm.quarterlyEarningsData).toEqual([])
+  })
 })
 
 describe('FundamentalAnalysis — getPricePosition', () => {

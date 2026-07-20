@@ -196,7 +196,10 @@ export default {
       const groups = {}
 
       this.quotes.forEach(quote => {
-        const symbolMetadata = items.find(m => m.symbol === quote.symbol)
+        // m?. — a null/non-object entry inside a degraded `items` array must
+        // fall through as a miss, not throw and blank the page (same failure
+        // class as the non-array envelope handled above, one level deeper).
+        const symbolMetadata = items.find(m => m?.symbol === quote.symbol)
         const symbolDailyData = this.dailyData?.per_symbol?.find(d => d.symbol === quote.symbol)
         
         let sector = 'Unknown'
