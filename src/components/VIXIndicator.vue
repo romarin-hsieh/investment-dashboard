@@ -310,7 +310,7 @@ export default {
 
 .level-label {
   font-weight: var(--weight-medium);
-  color: var(--grey-700);
+  color: var(--text-secondary);
 }
 
 .level-range {

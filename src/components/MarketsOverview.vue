@@ -325,7 +325,7 @@ export default {
 
 .quality-disabled {
   background-color: var(--grey-200);
-  color: var(--grey-550);
+  color: var(--text-secondary);
 }
 
 .markets-time {

@@ -1348,7 +1348,7 @@ export default {
     cursor: pointer;
     font-size: var(--text-md);
     font-weight: var(--weight-semibold);
-    color: var(--grey-550);
+    color: var(--text-secondary);
     transition: all var(--transition-base);
 }
 

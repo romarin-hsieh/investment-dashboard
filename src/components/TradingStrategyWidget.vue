@@ -314,7 +314,7 @@ export default {
 
 .tradingview-widget-copyright {
   font-size: 11px;
-  color: var(--grey-500);
+  color: var(--text-secondary);
   text-align: center;
   padding: 5px 0;
   line-height: 1.2;
@@ -322,7 +322,7 @@ export default {
 
 .tradingview-widget-copyright a {
   text-decoration: none;
-  color: var(--grey-500);
+  color: var(--text-secondary);
 }
 
 .tradingview-widget-copyright .blue-text {
@@ -330,7 +330,7 @@ export default {
 }
 
 .tradingview-widget-copyright .trademark {
-  color: var(--grey-500);
+  color: var(--text-secondary);
 }
 
 .tradingview-widget-copyright a:hover .blue-text {

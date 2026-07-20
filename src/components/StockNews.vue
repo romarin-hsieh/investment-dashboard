@@ -207,7 +207,7 @@ export default {
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  color: var(--grey-550);
+  color: var(--text-secondary);
   font-size: var(--text-base);
   padding: var(--space-12);
   text-align: center;

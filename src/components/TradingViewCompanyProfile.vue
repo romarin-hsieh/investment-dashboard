@@ -182,7 +182,7 @@ export default {
   justify-content: center;
   gap: var(--space-2);
   height: 100%;
-  color: var(--grey-550);
+  color: var(--text-secondary);
   font-size: var(--text-base);
 }
 

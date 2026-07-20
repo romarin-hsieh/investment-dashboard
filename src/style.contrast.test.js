@@ -57,6 +57,15 @@ const PAIRS = [
   ['brand text on page', 'primary-text', 'bg-primary'],
   ['muted text on card', 'text-muted', 'bg-card'],
   ['muted text on page', 'text-muted', 'bg-primary'],
+  // Secondary text is now the target for 27 former grey-ramp foregrounds (audit
+  // A1). Guard it on every theme-aware surface it lands on so the dark-mode
+  // contrast regression cannot come back.
+  ['secondary text on card', 'text-secondary', 'bg-card'],
+  ['secondary text on page', 'text-secondary', 'bg-primary'],
+  ['secondary text on secondary bg', 'text-secondary', 'bg-secondary'],
+  // NB: text-muted on bg-secondary is a pre-existing borderline pair (~4.15:1 in
+  // light, just under AA) — not introduced by A1 (which swaps to text-secondary),
+  // so it is deliberately not asserted here. Tracked for a separate token pass.
   ['success-strong on card', 'success-strong', 'bg-card'],
   ['danger-strong on card', 'danger-strong', 'bg-card'],
   ['warning-strong on card', 'warning-strong', 'bg-card'],
