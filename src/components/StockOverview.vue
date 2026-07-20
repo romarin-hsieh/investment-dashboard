@@ -57,9 +57,9 @@
           </div>
 
           <!-- Real Data -->
-          <div 
+          <div
             v-else
-            v-for="(group, sector) in groupedStocks" 
+            v-for="(group, sector) in displayGroups"
             :key="sector"
             class="sector-group"
           >
@@ -85,6 +85,12 @@
 
     <div v-if="!loading && Object.keys(groupedStocks).length === 0" class="no-data">
       <p>{{ $t('stockOverview.noData') }}</p>
+    </div>
+
+    <!-- Data loaded, but the active search matches no card. Distinct from
+         "no data" so the user knows it's their query, not a load failure. -->
+    <div v-else-if="!loading && searchQuery.trim() && Object.keys(displayGroups).length === 0" class="no-data">
+      <p>{{ $t('stockOverview.noSearchResults', { query: searchQuery.trim() }) }}</p>
     </div>
 
     <KeyboardShortcutsOverlay
@@ -506,6 +512,24 @@ export default {
       return sortedGroups
     },
 
+    // The content grid the template actually renders. Previously the template
+    // iterated `groupedStocks` directly and the search box only reshaped the
+    // sidebar nav tree (NavigationPanel.filteredTocTree) — so typing a query
+    // visibly filtered the nav while the grid stayed full, an affordance that
+    // silently did the wrong thing (audit N2). displayGroups applies the SAME
+    // query to the grid, matching the same fields the nav does (symbol, sector,
+    // industry, + any company-name field), and drops sectors with no matches.
+    displayGroups() {
+      const q = (this.searchQuery || '').trim().toLowerCase()
+      if (!q) return this.groupedStocks
+      const out = {}
+      for (const [sector, stocks] of Object.entries(this.groupedStocks)) {
+        const matched = stocks.filter(stock => this.stockMatchesQuery(stock, q, sector))
+        if (matched.length) out[sector] = matched
+      }
+      return out
+    },
+
     tocTree() {
       if (!this.quotes.length || !this.metadata) {
         return []
@@ -630,6 +654,12 @@ export default {
     }
   },
   async mounted() {
+    // Restore a persisted search from the URL (?q=) before the first render so
+    // a reload / back-navigation lands on the same filtered view (audit N2).
+    const urlQuery = this.$route?.query?.q
+    if (typeof urlQuery === 'string' && urlQuery.trim()) {
+      this.searchQuery = urlQuery
+    }
     await this.loadStockData()
     this.initializeNavigation()
     this._keyboardHandler = createKeyHandler(this.shortcutBindings)
@@ -798,6 +828,32 @@ export default {
 
     onSearchChange(query) {
       this.searchQuery = query
+      this.syncSearchToUrl(query)
+    },
+
+    // Does a stock row match the active query? Same fields the sidebar nav
+    // matches (NavigationPanel.filteredTocTree), so grid and nav stay in sync.
+    stockMatchesQuery(stock, q, sector) {
+      const hay = [
+        stock.quote?.symbol,
+        stock.quote?.name, stock.quote?.companyName, stock.quote?.shortName,
+        sector,
+        stock.metadata?.sector, stock.metadata?.industry
+      ]
+      return hay.some(t => t != null && String(t).toLowerCase().includes(q))
+    },
+
+    // Persist the query to the URL (?q=) so a search survives reload and
+    // back/forward — previously searchQuery was component-local and lost on any
+    // navigation (audit N2). replace(), not push(), so keystrokes don't spam
+    // history; undefined drops the param entirely when the query is cleared.
+    syncSearchToUrl(query) {
+      const q = (query || '').trim()
+      const current = (this.$route?.query?.q) || ''
+      if (q === current) return
+      this.$router.replace({
+        query: { ...this.$route.query, q: q || undefined }
+      }).catch(() => {})
     },
 
     onToggleSection(sectionId, expanded) {
@@ -1065,6 +1121,16 @@ export default {
 .sector-group {
     margin-bottom: var(--space-12);
     scroll-margin-top: 100px;
+    /* Native render-virtualization (audit N2): the whole universe (~15 sectors,
+       138 cards) is in the DOM at once, so first paint and scroll had to lay out
+       and paint everything. content-visibility:auto lets the browser skip layout
+       + paint for off-screen sector groups while keeping them in the DOM (so
+       scroll-spy, keyboard nav and a11y are unaffected). contain-intrinsic-size
+       reserves an estimated height so the scrollbar stays stable; `auto` then
+       remembers each group's real size after its first render. A graceful no-op
+       in browsers without support (the list simply renders as before). */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
 }
 
 .stocks-in-group {
