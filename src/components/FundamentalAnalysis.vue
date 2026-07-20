@@ -158,7 +158,7 @@
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController } from 'chart.js'
 import { Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
-import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi.js'
+import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 import { formatNumber } from '@/utils/numberFormat'
 import { useTheme } from '@/composables/useTheme'
 import { getToken, getTokenRgba } from '@/utils/designTokens'

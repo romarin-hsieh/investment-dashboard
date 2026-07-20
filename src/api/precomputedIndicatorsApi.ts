@@ -1,18 +1,88 @@
 // 從靜態文件讀取預計算的技術指標數據
-import { technicalIndicatorsCache } from '../utils/technicalIndicatorsCache';
+import { technicalIndicatorsCache, type LatestIndex } from '../utils/technicalIndicatorsCache';
 import { getDataBaseUrl } from '../utils/baseUrl';
 
+/** 單一指標序列（可能含 null 空洞）。 */
+type Series = (number | null)[];
+
+/**
+ * 靜態 JSON 的 `indicators` 區塊。各群組皆為 optional（不同來源欄位不一），
+ * 序列型欄位為 `Series`，`market` 內的統計為純量。其餘容器以 index signature 容納。
+ */
+export interface RawIndicators {
+  sma?: { sma5?: Series; sma10?: Series; sma20?: Series; sma30?: Series; sma50?: Series; sma60?: Series } | null;
+  ema?: { ema5?: Series; ema10?: Series; ema20?: Series; ema30?: Series; ema50?: Series; ema60?: Series } | null;
+  rsi?: { rsi14?: Series } | null;
+  adx?: { adx?: Series } | null;
+  stoch?: { k?: Series; d?: Series } | null;
+  cci?: { cci20?: Series } | null;
+  macd?: { macd?: Series; signal?: Series; histogram?: Series } | null;
+  ichimoku?: { conversion?: Series; base?: Series; lagging?: Series; spanA?: Series; spanB?: Series } | null;
+  vwma?: { vwma?: Series } | null;
+  psar?: { sar?: Series } | null;
+  supertrend?: { supertrend?: Series } | null;
+  obv?: { value?: Series } | null;
+  atr?: { atr14?: Series } | null;
+  mfi?: { mfi14?: Series } | null;
+  cmf?: { cmf20?: Series } | null;
+  williamsR?: { r14?: Series } | null;
+  beta?: { beta10d?: Series; beta3m?: Series; beta1y?: Series } | null;
+  market?: { avgVolume10d?: number | null; avgVolume3m?: number | null; volumeLastDay?: number | null } | null;
+  yf?: unknown;
+  [key: string]: unknown;
+}
+
+/**
+ * 單一預計算檔案（`<date>_<SYMBOL>.json`）的最小契約。
+ * `indicators` 必填以對應原始碼假設（缺漏時與 .js 相同會在存取時丟出）。
+ * `fundamentals` 下只固定 arithmetic 會用到的 `sharesOutstanding` / `currentPrice`，其餘 `unknown`。
+ */
+export interface PrecomputedFile {
+  indicators: RawIndicators;
+  fundamentals?: {
+    defaultKeyStatistics?: { beta?: unknown; sharesOutstanding?: number | null; [key: string]: unknown } | null;
+    price?: { marketCap?: unknown; averageDailyVolume10Day?: unknown; regularMarketVolume?: unknown; [key: string]: unknown } | null;
+    summaryDetail?: { marketCap?: unknown; [key: string]: unknown } | null;
+    financialData?: { currentPrice?: number | null; [key: string]: unknown } | null;
+    quoteType?: { marketCap?: unknown; [key: string]: unknown } | null;
+    [key: string]: unknown;
+  } | null;
+  metadata?: { generated?: unknown; [key: string]: unknown } | null;
+  computedAt?: unknown;
+  date?: unknown;
+  [key: string]: unknown;
+}
+
+/**
+ * `getTechnicalIndicators` 攤平後的輸出。欄位由靜態 JSON 展開（`...raw`）而來、
+ * 形狀寬鬆，故以 index signature 容納；消費端（多為 .js/.vue）不依賴精確型別。
+ */
+export interface ProcessedIndicators {
+  [key: string]: unknown;
+}
+
+/** 記憶體快取的紀錄。`data` 形狀因寫入點而異（單檔攤平 / 整批原始），故為 `unknown`。 */
+interface CacheRecord {
+  data: unknown;
+  timestamp: number;
+}
+
 class PrecomputedIndicatorsAPI {
+  baseUrl: string;
+  cache = new Map<string, CacheRecord>();
+  cacheTimeout = 60 * 60 * 1000; // 1小時緩存 (技術指標每日更新)
+
+  // 索引緩存 - 避免重複載入 latest_index.json
+  indexCache: LatestIndex | null = null;
+  indexCacheTimestamp: number | null = null;
+  indexCacheTimeout = 10 * 60 * 1000; // 10分鐘緩存索引
+
+  // 正在進行的請求 PromiseMap (用於去重)
+  fetchingPromises = new Map<string, Promise<ProcessedIndicators>>();
+
   constructor() {
     // 更強健的環境檢測和路徑設定
     this.baseUrl = this.getCorrectBaseUrl();
-    this.cache = new Map();
-    this.cacheTimeout = 60 * 60 * 1000; // 1小時緩存 (技術指標每日更新)
-
-    // 索引緩存 - 避免重複載入 latest_index.json
-    this.indexCache = null;
-    this.indexCacheTimestamp = null;
-    this.indexCacheTimeout = 10 * 60 * 1000; // 10分鐘緩存索引
 
     // 調試日誌
     console.log('PrecomputedIndicatorsAPI initialized:', {
@@ -21,25 +91,22 @@ class PrecomputedIndicatorsAPI {
       baseUrl: this.baseUrl,
       fullUrl: window.location.href
     });
-
-    // 正在進行的請求 PromiseMap (用於去重)
-    this.fetchingPromises = new Map();
   }
 
   // 獲取正確的基礎 URL
-  getCorrectBaseUrl() {
+  getCorrectBaseUrl(): string {
     // 使用統一的 data base helper (可由 VITE_DATA_BASE_URL 覆寫至獨立 data 站台)
     const base = getDataBaseUrl();
     return `${base}data/technical-indicators/`;
   }
 
   // 獲取今天的日期字符串
-  getTodayString() {
+  getTodayString(): string {
     return new Date().toISOString().split('T')[0];
   }
 
   // 獲取緩存的索引數據（避免重複載入）
-  async getCachedIndex() {
+  async getCachedIndex(): Promise<LatestIndex | null> {
     // 委託給 technicalIndicatorsCache 處理，確保全局單例和去重
     try {
       const index = await technicalIndicatorsCache.getLatestIndex();
@@ -63,39 +130,42 @@ class PrecomputedIndicatorsAPI {
   }
 
   // 獲取預計算的技術指標數據
-  async getTechnicalIndicators(symbolInput) {
+  async getTechnicalIndicators(symbolInput: string): Promise<ProcessedIndicators> {
     const symbol = symbolInput.toUpperCase();
     const cacheKey = `precomputed_${symbol}`;
 
     // 檢查緩存
-    if (this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey);
-      if (Date.now() - cached.timestamp < this.cacheTimeout) {
-        console.log(`📦 Using precomputed cache for ${symbol}`);
-        return cached.data;
-      }
+    const cachedEntry = this.cache.get(cacheKey);
+    if (cachedEntry && Date.now() - cachedEntry.timestamp < this.cacheTimeout) {
+      console.log(`📦 Using precomputed cache for ${symbol}`);
+      return cachedEntry.data as ProcessedIndicators;
     }
 
     // 檢查是否有正在進行的請求 (去重)
     // 檢查是否有正在進行的請求 (去重)
-    if (this.fetchingPromises.has(cacheKey)) {
+    const inflight = this.fetchingPromises.get(cacheKey);
+    if (inflight) {
       console.log(`⏳ [Dedup] Waiting for existing precomputed request for ${symbol}`);
-      return this.fetchingPromises.get(cacheKey);
+      return inflight;
     }
 
     try {
       // 創建新的請求 Promise
-      const fetchPromise = (async () => {
+      const fetchPromise = (async (): Promise<ProcessedIndicators> => {
         // 🚀 性能優化：只有在需要時才載入索引
         // 使用緩存的索引數據，避免每個股票都重複載入
         const index = await this.getCachedIndex();
         let latestDate = this.getTodayString(); // 默認使用今天
 
         if (index) {
-          latestDate = index.date; // 使用索引中的最新日期
+          // 使用索引中的最新日期
+          if (typeof index.date === 'string') {
+            latestDate = index.date;
+          }
 
           // 檢查該 symbol 是否在可用列表中
-          if (!index.symbols.includes(symbol)) {
+          const symbols = index.symbols;
+          if (!Array.isArray(symbols) || !symbols.includes(symbol)) {
             throw new Error(`Symbol ${symbol} not found in precomputed data`);
           }
         }
@@ -113,24 +183,53 @@ class PrecomputedIndicatorsAPI {
           throw new Error(`Precomputed data not found for ${symbol} (${response.status})`);
         }
 
-        const data = await response.json();
+        const data: PrecomputedFile = await response.json();
 
         // 轉換數據格式以匹配原有 API
         const raw = data.indicators;
 
         // Helper to get last valid value
-        const getLast = (arr) => {
+        const getLast = (arr?: Series): number | null => {
           if (!arr || arr.length === 0) return null;
           for (let i = arr.length - 1; i >= 0; i--) {
-            if (arr[i] !== null && arr[i] !== undefined) return arr[i];
+            const v = arr[i];
+            if (v !== null && v !== undefined) return v;
           }
           return null;
+        };
+
+        // Market Cap 由 sharesOutstanding * currentPrice 推導時所需的兩個純量
+        const sharesOutstanding = data.fundamentals?.defaultKeyStatistics?.sharesOutstanding;
+        const currentPrice = data.fundamentals?.financialData?.currentPrice;
+
+        // Other fundamentals (grouped under 'yf' for compatibility)
+        const yf = {
+          beta: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A',
+          beta_10d: getLast(raw.beta?.beta10d),
+          beta_3mo: getLast(raw.beta?.beta3m),
+          beta_1y: getLast(raw.beta?.beta1y),
+
+          // Market Cap with multiple fallbacks
+          market_cap: data.fundamentals?.price?.marketCap
+            || data.fundamentals?.summaryDetail?.marketCap
+            || (sharesOutstanding && currentPrice ? sharesOutstanding * currentPrice : null)
+            || data.fundamentals?.quoteType?.marketCap
+            || 'N/A',
+
+          // Volume Stats (Calculated from OHLCV in generation script)
+          avg_volume_10d: raw.market?.avgVolume10d || data.fundamentals?.price?.averageDailyVolume10Day || 'N/A',
+          avg_volume_3m: raw.market?.avgVolume3m || 'N/A',
+          volume_last_day: raw.market?.volumeLastDay || data.fundamentals?.price?.regularMarketVolume || 'N/A',
+
+          // Legacy fallbacks if needed (for older files without 'market' object)
+          extAvgVol10D: raw.market?.avgVolume10d,
+          extVolume: raw.market?.volumeLastDay
         };
 
         // 轉換數據格式以匹配原有 API
         // Map new hierarchical structure to flat keys expected by UI/Validation
         // Note: UI props 'ma5' usually refer to EMA in modern context if distinct from 'sma5'
-        const indicators = {
+        const indicators: ProcessedIndicators = {
           ...raw,
           // SMA
           sma5: { value: getLast(raw.sma?.sma5), signal: 'N/A' },
@@ -181,29 +280,7 @@ class PrecomputedIndicatorsAPI {
           cmf20: { value: getLast(raw.cmf?.cmf20), signal: 'N/A' },
           willr14: { value: getLast(raw.williamsR?.r14), signal: 'N/A' },
 
-          // Other fundamentals (grouped under 'yf' for compatibility)
-          yf: {
-            beta: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A',
-            beta_10d: getLast(raw.beta?.beta10d),
-            beta_3mo: getLast(raw.beta?.beta3m),
-            beta_1y: getLast(raw.beta?.beta1y),
-
-            // Market Cap with multiple fallbacks
-            market_cap: data.fundamentals?.price?.marketCap
-              || data.fundamentals?.summaryDetail?.marketCap
-              || (data.fundamentals?.defaultKeyStatistics?.sharesOutstanding && data.fundamentals?.financialData?.currentPrice ? data.fundamentals.defaultKeyStatistics.sharesOutstanding * data.fundamentals.financialData.currentPrice : null)
-              || data.fundamentals?.quoteType?.marketCap
-              || 'N/A',
-
-            // Volume Stats (Calculated from OHLCV in generation script)
-            avg_volume_10d: raw.market?.avgVolume10d || data.fundamentals?.price?.averageDailyVolume10Day || 'N/A',
-            avg_volume_3m: raw.market?.avgVolume3m || 'N/A',
-            volume_last_day: raw.market?.volumeLastDay || data.fundamentals?.price?.regularMarketVolume || 'N/A',
-
-            // Legacy fallbacks if needed (for older files without 'market' object)
-            extAvgVol10D: raw.market?.avgVolume10d,
-            extVolume: raw.market?.volumeLastDay
-          },
+          yf,
           beta: { value: data.fundamentals?.defaultKeyStatistics?.beta || 'N/A', signal: 'N/A' },
 
           // Full Series for Charts (Mapping to Expected Keys)
@@ -245,15 +322,15 @@ class PrecomputedIndicatorsAPI {
           source: 'Precomputed',
           lastUpdated: data.metadata?.generated || data.computedAt || new Date().toISOString(),
           dataAge: this.calculateDataAge(data.metadata?.generated || data.computedAt),
-          precomputedDate: data.date || (data.metadata?.generated ? data.metadata.generated.split('T')[0] : null),
+          precomputedDate: data.date || (typeof data.metadata?.generated === 'string' ? data.metadata.generated.split('T')[0] : null),
           symbol: symbol
         };
 
         // 調試：檢查 yfinance 數據
         console.log(`🔍 YFinance data check for ${symbol}:`, {
           hasYFInRaw: !!(data.indicators && data.indicators.yf),
-          hasYFInProcessed: !!indicators.yf,
-          yfKeys: indicators.yf ? Object.keys(indicators.yf) : 'none',
+          hasYFInProcessed: !!yf,
+          yfKeys: Object.keys(yf),
           rawYF: data.indicators?.yf
         });
 
@@ -284,10 +361,10 @@ class PrecomputedIndicatorsAPI {
   }
 
   // 計算數據年齡
-  calculateDataAge(computedAt) {
+  calculateDataAge(computedAt: unknown): string {
     const now = new Date();
-    const computed = new Date(computedAt);
-    const diffMs = now - computed;
+    const computed = new Date(computedAt as string | number | Date);
+    const diffMs = now.getTime() - computed.getTime();
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
 
@@ -299,22 +376,22 @@ class PrecomputedIndicatorsAPI {
   }
 
   // 獲取可用的預計算數據索引
-  async getAvailableData() {
+  async getAvailableData(): Promise<LatestIndex | null> {
     return await this.getCachedIndex();
   }
 
   // 檢查預計算數據是否可用
-  async isPrecomputedDataAvailable(symbol) {
+  async isPrecomputedDataAvailable(symbol: string): Promise<boolean> {
     try {
       const index = await this.getCachedIndex();
-      return index && index.symbols.includes(symbol);
+      return !!(index && Array.isArray(index.symbols) && index.symbols.includes(symbol));
     } catch (error) {
       return false;
     }
   }
 
   // 清除緩存
-  clearCache() {
+  clearCache(): void {
     this.cache.clear();
     this.indexCache = null;
     this.indexCacheTimestamp = null;
@@ -322,17 +399,15 @@ class PrecomputedIndicatorsAPI {
   }
 
   // 批量獲取所有技術指標 (Load Consolidated File)
-  async getAllTechnicalIndicators() {
+  async getAllTechnicalIndicators(): Promise<Record<string, unknown> | null> {
     console.log('📦 Loading consolidated technical indicators (latest_all.json)...');
 
     // Check cache first
     const cacheKey = 'ALL_INDICATORS';
-    if (this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey);
-      if (Date.now() - cached.timestamp < this.cacheTimeout) {
-        console.log('📦 Using cached consolidated data');
-        return cached.data;
-      }
+    const cachedEntry = this.cache.get(cacheKey);
+    if (cachedEntry && Date.now() - cachedEntry.timestamp < this.cacheTimeout) {
+      console.log('📦 Using cached consolidated data');
+      return cachedEntry.data as Record<string, unknown>;
     }
 
     try {
@@ -344,7 +419,7 @@ class PrecomputedIndicatorsAPI {
         throw new Error(`Failed to load latest_all.json (${response.status})`);
       }
 
-      const data = await response.json();
+      const data: Record<string, unknown> = await response.json();
 
       // Cache the bulk data
       this.cache.set(cacheKey, {
@@ -370,7 +445,12 @@ class PrecomputedIndicatorsAPI {
 
   // 獲取緩存統計
   getCacheStats() {
-    const stats = {
+    const stats: {
+      size: number;
+      indexCached: boolean;
+      indexAge: number | null;
+      items: Array<{ key: string; age: number; expired: boolean }>;
+    } = {
       size: this.cache.size,
       indexCached: !!this.indexCache,
       indexAge: this.indexCacheTimestamp ? Date.now() - this.indexCacheTimestamp : null,

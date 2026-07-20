@@ -44,14 +44,14 @@ import { ref } from 'vue'
 
 // ---------- module mocks (must precede component import) ----------
 
-vi.mock('@/utils/stocksConfigService.js', () => ({
+vi.mock('@/utils/stocksConfigService', () => ({
   stocksConfig: { getEnabledSymbols: vi.fn() }
 }))
 vi.mock('@/utils/stockOverviewOptimizer.js', () => ({
   stockOverviewOptimizer: { loadOptimizedStockData: vi.fn() },
   default: { loadOptimizedStockData: vi.fn() }
 }))
-vi.mock('@/utils/directMetadataLoader.js', () => ({
+vi.mock('@/utils/directMetadataLoader', () => ({
   directMetadataLoader: { loadMetadata: vi.fn() }
 }))
 vi.mock('@/services/NavigationService', () => ({
@@ -60,7 +60,7 @@ vi.mock('@/services/NavigationService', () => ({
     isSymbolValid:  vi.fn().mockReturnValue(true)
   }
 }))
-vi.mock('@/services/ScrollSpyService.js', () => ({
+vi.mock('@/services/ScrollSpyService', () => ({
   scrollSpyService: {
     setup:   vi.fn(),
     cleanup: vi.fn(),
@@ -83,11 +83,11 @@ vi.mock('@/composables/useKeyboardShortcuts', () => ({
 }))
 
 import StockOverview from './StockOverview.vue'
-import { stocksConfig } from '@/utils/stocksConfigService.js'
+import { stocksConfig } from '@/utils/stocksConfigService'
 import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
-import { directMetadataLoader } from '@/utils/directMetadataLoader.js'
+import { directMetadataLoader } from '@/utils/directMetadataLoader'
 import { navigationService } from '@/services/NavigationService'
-import { scrollSpyService } from '@/services/ScrollSpyService.js'
+import { scrollSpyService } from '@/services/ScrollSpyService'
 
 // ---------- fixtures ----------
 
