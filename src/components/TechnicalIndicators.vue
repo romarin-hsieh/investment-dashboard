@@ -90,7 +90,7 @@
 
 <script>
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
-import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import WidgetSkeleton from './WidgetSkeleton.vue'
 import { formatNumber } from '@/utils/numberFormat'
 import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'

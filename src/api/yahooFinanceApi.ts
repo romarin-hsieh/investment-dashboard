@@ -17,10 +17,144 @@ import technicalIndicatorsCache from '../utils/technicalIndicatorsCache';
 import { getDataBaseUrl } from '../utils/baseUrl';
 import { calculateAllIndicators } from '../utils/technicalIndicatorsCore';
 import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';
-import { getDefaultExchange, getMarketCapCategory, createFallbackStockInfo } from './dataTransformers';
 import { formatNumber } from '../utils/numberFormat';
 
+// =========================================================================
+// Yahoo Finance payload boundary types
+// 外部 JSON 的邊界型別（fetch().json() 為 any，這裡以 interface 收窄）
+// =========================================================================
+
+/** Yahoo v8 chart payload — only the fields this client reads. */
+export interface YahooChartQuote {
+  open?: (number | null)[];
+  high?: (number | null)[];
+  low?: (number | null)[];
+  close?: (number | null)[];
+  volume?: (number | null)[];
+}
+export interface YahooChartResult {
+  timestamp?: number[];
+  indicators?: { quote?: YahooChartQuote[] };
+}
+export interface YahooChartResponse {
+  chart?: { result?: YahooChartResult[] };
+}
+
+// Raw quoteSummary sub-shapes. Values arrive as { raw, fmt } wrappers OR plain
+// primitives; the getRaw/getFmt/getPercentFmt/createFmt helpers narrow each at
+// its use site, so the numeric wrapper fields stay `unknown` here.
+interface RawSummaryProfile { sector?: string; industry?: string; country?: string; website?: string; fullTimeEmployees?: number; longBusinessSummary?: string }
+interface RawPrice { exchangeName?: string; exchange?: string; currency?: string; marketCap?: unknown; regularMarketVolume?: unknown; averageDailyVolume10Day?: unknown; averageDailyVolume3Month?: unknown; regularMarketChangePercent?: unknown }
+interface RawKeyStats { beta?: unknown; forwardPE?: unknown }
+interface RawFinancialData { targetMeanPrice?: unknown; targetLowPrice?: unknown; targetHighPrice?: unknown; targetMedianPrice?: unknown; currentPrice?: unknown; recommendationKey?: string; revenueGrowth?: unknown; profitMargins?: unknown; totalRevenue?: unknown; ebitda?: unknown }
+interface RawQuarterlyEarnings { date?: unknown; actual?: unknown; estimate?: unknown }
+interface RawYearlyFinancials { date?: unknown; revenue?: unknown; earnings?: unknown }
+interface RawEarnings { earningsChart?: { quarterly?: RawQuarterlyEarnings[] }; financialsChart?: { yearly?: RawYearlyFinancials[] } }
+interface RawHolders { insidersPercentHeld?: unknown; institutionsPercentHeld?: unknown }
+interface RawOwnership { organization?: unknown; position?: unknown; reportDate?: unknown; pctHeld?: unknown; value?: unknown }
+interface RawInstitutionOwnership { ownershipList?: RawOwnership[] }
+interface RawInsiderTransaction {
+  filerName?: unknown; transactionText?: unknown; moneyText?: unknown; ownership?: unknown;
+  startDate?: unknown; startEpoch?: unknown;
+  // `value` / `shares` are { raw, fmt } wrappers at runtime, but typed `number`
+  // so the pinned `value / shares` object-division (→ NaN → 'N/A' for every real
+  // payload) compiles verbatim. See the "SURPRISING: value / shares divides the
+  // {raw,fmt} OBJECTS" characterization test — DO NOT "fix" this.
+  shares?: number; value?: number;
+  filerRelation?: unknown; filerUrl?: unknown;
+}
+interface RawInsiderTx { transactions?: RawInsiderTransaction[] }
+interface RawRecommendationTrend { trend?: unknown[] }
+interface RawUpgradeDowngradeHistory { history?: unknown[] }
+
+/** quoteSummary result[0] — the object `_processQuoteSummaryResult` maps. */
+export interface RawQuoteSummaryResult {
+  summaryProfile?: RawSummaryProfile;
+  price?: RawPrice;
+  defaultKeyStatistics?: RawKeyStats;
+  financialData?: RawFinancialData;
+  earnings?: RawEarnings;
+  majorHoldersBreakdown?: RawHolders;
+  insiderTransactions?: RawInsiderTx;
+  institutionOwnership?: RawInstitutionOwnership;
+  recommendationTrend?: RawRecommendationTrend;
+  upgradeDowngradeHistory?: RawUpgradeDowngradeHistory;
+  lastUpdated?: string;
+}
+interface QuoteSummaryResponse { quoteSummary?: { result?: RawQuoteSummaryResult[] } }
+
+/** Static pre-computed technical-indicators file (GitHub Actions generator output). */
+interface StaticIndicatorArrays {
+  sma?: { sma5?: number[]; sma10?: number[]; sma30?: number[]; sma50?: number[] };
+  ichimoku?: { base?: number[]; conversion?: number[]; lagging?: number[] };
+  vwma?: { vwma?: number[] };
+  rsi?: { rsi14?: number[] };
+  adx?: { adx?: number[]; pdi?: number[]; mdi?: number[] };
+  macd?: { macd?: number[]; signal?: number[]; histogram?: number[] };
+  psar?: { psar?: number[] };
+  stoch?: { k?: number[]; d?: number[] };
+  cci?: { cci?: number[] };
+  obv?: { obv?: number[] };
+  supertrend?: { supertrend?: number[] };
+}
+interface StaticTechnicalFile { metadata?: { generated?: string }; indicators?: StaticIndicatorArrays }
+
+/** latest_index.json — only `date` is read here. */
+interface StaticIndex { date?: string }
+
+/** OHLCV result returned by getOhlcv / getBenchmarkHistory / _getOhlcvInternal. */
+export interface OhlcvResult {
+  timestamps?: unknown;
+  open?: unknown; high?: unknown; low?: unknown;
+  close?: (number | null)[];
+  volume?: unknown;
+  metadata?: unknown;
+  [key: string]: unknown;
+}
+/** Static OHLCV JSON (public/data/ohlcv/*.json), optionally wrapped in { ohlcv }. */
+interface StaticOhlcv { symbol?: string; timestamps?: number[]; close?: (number | null)[]; [key: string]: unknown }
+interface StaticOhlcvFile extends StaticOhlcv { ohlcv?: StaticOhlcv }
+
+/** Technical-indicator display bundle (success OR error shape). Callers branch
+ *  on `.error`; per-indicator fields vary by source, hence the index signature. */
+export interface TechnicalIndicatorResult { error?: string; [key: string]: unknown }
+
+/** Mapped stock-info shape (live / static / fallback). Consumers read fields
+ *  dynamically, so precise per-field types live at the call sites. */
+export interface StockInfo { isStatic?: boolean; [key: string]: unknown }
+
+/** Threshold config for signal derivation (discriminated by `type`). */
+type SignalThresholds =
+  | { type: 'price_comparison'; buy: number; sell: number }
+  | { type: 'rsi'; overbought: number; oversold: number }
+  | { type: 'adx'; strong: number; weak: number };
+
+/** Internal request-queue entry (generic T erased to unknown at the boundary). */
+interface QueuedRequest {
+  requestFn: () => Promise<unknown>;
+  resolve: (value: unknown) => void;
+  reject: (reason?: unknown) => void;
+}
+
+/** In-memory API cache entry. */
+interface CacheEntry { data: unknown; timestamp: number }
+
 class YahooFinanceAPI {
+  corsProxies: readonly string[];
+  proxyManager: typeof corsProxyManager;
+  baseUrl: string;
+  staticTechBaseUrl: string;
+  cache: Map<string, CacheEntry>;
+  cacheTimeout: number;
+  currentProxyIndex: number;
+  requestQueue: QueuedRequest[];
+  activeRequests: number;
+  MAX_CONCURRENT_REQUESTS: number;
+  REQUEST_DELAY: number;
+  pendingRequests: Map<string, Promise<unknown>>;
+  latestIndex: StaticIndex | null;
+  latestIndexTimestamp: number;
+
   constructor() {
     console.warn("YahooFinanceAPI: Loaded version with Modular Refactor - v3.0");
     // Use CORS proxy manager for proxy rotation
@@ -57,21 +191,22 @@ class YahooFinanceAPI {
   }
 
   // 加入請求隊列
-  enqueueRequest(requestFn) {
-    return new Promise((resolve, reject) => {
-      this.requestQueue.push({ requestFn, resolve, reject });
+  enqueueRequest<T>(requestFn: () => Promise<T>): Promise<T> {
+    return new Promise<T>((resolve, reject) => {
+      // T is erased to unknown at the shared queue boundary (heterogeneous entries).
+      this.requestQueue.push({ requestFn, resolve, reject } as QueuedRequest);
       this.processQueue();
     });
   }
 
   // 處理請求隊列
-  async processQueue() {
+  async processQueue(): Promise<void> {
     if (this.activeRequests >= this.MAX_CONCURRENT_REQUESTS || this.requestQueue.length === 0) {
       return;
     }
 
     this.activeRequests++;
-    const { requestFn, resolve, reject } = this.requestQueue.shift();
+    const { requestFn, resolve, reject } = this.requestQueue.shift()!;
 
     try {
       // 執行請求
@@ -89,7 +224,7 @@ class YahooFinanceAPI {
   }
 
   // 獲取技術指標數據 (帶每日緩存 + 靜態文件優先)
-  async getTechnicalIndicators(symbol) {
+  async getTechnicalIndicators(symbol: string) {
     // 1. 先檢查內存緩存
     const cachedData = await technicalIndicatorsCache.getTechnicalIndicators(symbol);
     if (cachedData) {
@@ -121,11 +256,11 @@ class YahooFinanceAPI {
   }
 
   // 從 API 獲取技術指標數據 (包裝器) - 增加去重機制
-  async fetchTechnicalIndicatorsFromAPI(symbol) {
+  async fetchTechnicalIndicatorsFromAPI(symbol: string): Promise<TechnicalIndicatorResult | undefined> {
     const requestKey = `tech_${symbol}`;
     if (this.pendingRequests.has(requestKey)) {
       console.log(`Using pending request for technical indicators: ${symbol}`);
-      return this.pendingRequests.get(requestKey);
+      return this.pendingRequests.get(requestKey) as Promise<TechnicalIndicatorResult | undefined>;
     }
 
     const promise = this.enqueueRequest(() => this._fetchTechnicalIndicatorsFromAPIInternal(symbol))
@@ -138,15 +273,15 @@ class YahooFinanceAPI {
   }
 
   // 從 API 獲取技術指標數據 (內部實現)
-  async _fetchTechnicalIndicatorsFromAPIInternal(symbol) {
+  async _fetchTechnicalIndicatorsFromAPIInternal(symbol: string): Promise<TechnicalIndicatorResult | undefined> {
     const cacheKey = `technical_${symbol}`;
 
     // 檢查緩存
     if (this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey);
+      const cached = this.cache.get(cacheKey)!;
       if (Date.now() - cached.timestamp < this.cacheTimeout) {
         console.log(`Using cached data for ${symbol}`);
-        return cached.data;
+        return cached.data as TechnicalIndicatorResult;
       }
     }
 
@@ -164,7 +299,7 @@ class YahooFinanceAPI {
         // 構建請求 URL
         const targetUrl = `${this.baseUrl}${symbol}?interval=1d&range=5y&indicators=quote&includePrePost=false`;
         let url = '';
-        const headers = {};
+        const headers: Record<string, string> = {};
 
         if (isNode) {
           url = targetUrl;
@@ -200,7 +335,7 @@ class YahooFinanceAPI {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data: YahooChartResponse = await response.json();
         console.log(`Raw data structure:`, data);
 
         // 檢查數據結構
@@ -228,20 +363,28 @@ class YahooFinanceAPI {
         // 過濾掉 null 值，保持索引對齊，並確保數據質量
         const length = rawData.close.length;
         const ohlcv = {
-          open: new Array(length),
-          high: new Array(length),
-          low: new Array(length),
-          close: new Array(length),
-          volume: new Array(length)
+          open: new Array<number>(length),
+          high: new Array<number>(length),
+          low: new Array<number>(length),
+          close: new Array<number>(length),
+          volume: new Array<number>(length)
         };
 
         let validDataPoints = 0;
         for (let i = 0; i < length; i++) {
-          ohlcv.open[i] = rawData.open[i] !== null ? rawData.open[i] : NaN;
-          ohlcv.high[i] = rawData.high[i] !== null ? rawData.high[i] : NaN;
-          ohlcv.low[i] = rawData.low[i] !== null ? rawData.low[i] : NaN;
-          ohlcv.close[i] = rawData.close[i] !== null ? rawData.close[i] : NaN;
-          ohlcv.volume[i] = rawData.volume[i] !== null ? rawData.volume[i] : NaN;
+          // Bind each read to a local const first: TS does not carry the
+          // `x[i] !== null` narrowing across the two separate indexed reads
+          // in the ternary, so `(number|null)[]` would leak null otherwise.
+          const rawOpen = rawData.open[i];
+          const rawHigh = rawData.high[i];
+          const rawLow = rawData.low[i];
+          const rawClose = rawData.close[i];
+          const rawVolume = rawData.volume[i];
+          ohlcv.open[i] = rawOpen !== null ? rawOpen : NaN;
+          ohlcv.high[i] = rawHigh !== null ? rawHigh : NaN;
+          ohlcv.low[i] = rawLow !== null ? rawLow : NaN;
+          ohlcv.close[i] = rawClose !== null ? rawClose : NaN;
+          ohlcv.volume[i] = rawVolume !== null ? rawVolume : NaN;
 
           // 計算有效數據點（OHLC 都不是 NaN）
           if (!isNaN(ohlcv.open[i]) && !isNaN(ohlcv.high[i]) &&
@@ -262,11 +405,13 @@ class YahooFinanceAPI {
         }
 
         // Fetch Benchmark Data (S&P 500) for Beta Calculation
-        let benchmarkClose = null;
+        let benchmarkClose: number[] | null = null;
         try {
           const benchmarkData = await this.getBenchmarkHistory('5y'); // Matches approx range
           if (benchmarkData && benchmarkData.close) {
-            benchmarkClose = benchmarkData.close;
+            // Benchmark closes are numeric in practice; calculateBeta tolerates any
+            // residual null gaps via its own isNaN filtering.
+            benchmarkClose = benchmarkData.close as number[];
             // Align Benchmark: Simple slicing if needed, but calculateAllIndicators handles length check
             // Ideally usage aligns by Date, but here we assume recent correlation of similar length arrays
             // If lengths differ significantly, calculation might be skew, but for daily data over 6mo it's close enough for 10D/3M estimate
@@ -283,7 +428,7 @@ class YahooFinanceAPI {
         const coreResults = calculateAllIndicators(ohlcv, benchmarkClose);
 
         // 轉換為舊格式以保持兼容性
-        const getLastValue = (series) => {
+        const getLastValue = (series: (number | null | undefined)[] | null | undefined): number | null => {
           if (!series || !Array.isArray(series)) {
             console.warn('getLastValue: Invalid series data');
             return null;
@@ -300,7 +445,7 @@ class YahooFinanceAPI {
           return null;
         };
 
-        const createIndicatorResult = (series, signalThresholds = null) => {
+        const createIndicatorResult = (series: (number | null | undefined)[] | null | undefined, signalThresholds: SignalThresholds | null = null) => {
           const lastValue = getLastValue(series);
           const currentPrice = getLastValue(ohlcv.close);
 
@@ -326,7 +471,7 @@ class YahooFinanceAPI {
         };
 
         // 計算技術指標（保持舊接口兼容性）
-        const indicators = {
+        const indicators: TechnicalIndicatorResult = {
           // 移動平均線
           ma5: createIndicatorResult(coreResults.MA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
           sma5: createIndicatorResult(coreResults.SMA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
@@ -472,13 +617,13 @@ class YahooFinanceAPI {
         // Calculate Volume Change
         const latestVolume = getLastValue(ohlcv.volume);
         const prevVolume = getLastValue(ohlcv.volume.slice(0, -1));
-        let volumeChangePct = null;
+        let volumeChangePct: number | null = null;
         if (latestVolume && prevVolume) {
           volumeChangePct = ((latestVolume - prevVolume) / prevVolume) * 100;
         }
 
         // Calculate Average Volumes
-        const calcAvgVol = (days) => {
+        const calcAvgVol = (days: number): number | null => {
           const validVols = ohlcv.volume.filter(v => v !== null && !isNaN(v));
           if (validVols.length < days) return null;
           const slice = validVols.slice(-days);
@@ -512,7 +657,7 @@ class YahooFinanceAPI {
         return indicators;
 
       } catch (error) {
-        console.warn(`Proxy ${i + 1} failed for ${symbol}:`, error.message);
+        console.warn(`Proxy ${i + 1} failed for ${symbol}:`, (error as Error).message);
 
         // 如果是最後一個代理也失敗了，返回錯誤
         if (i === this.corsProxies.length - 1 || (import.meta.env.DEV && !isNode)) {
@@ -535,7 +680,7 @@ class YahooFinanceAPI {
             adx14: { value: null, signal: 'N/A' },
             macd: { value: null, signal: 'N/A' },
             lastUpdated: new Date().toISOString(),
-            error: `All proxies failed: ${error.message}`,
+            error: `All proxies failed: ${(error as Error).message}`,
             source: 'Error',
             parabolicSAR: { value: null, signal: 'N/A' },
             stochK: { value: null, signal: 'N/A' },
@@ -552,7 +697,7 @@ class YahooFinanceAPI {
   }
 
   // 嘗試獲取靜態生成的技術指標
-  async _fetchStaticTechnicalIndicators(symbol) {
+  async _fetchStaticTechnicalIndicators(symbol: string): Promise<TechnicalIndicatorResult | null> {
     if (typeof window === 'undefined') return null; // Node env doesn't need this
 
     try {
@@ -587,7 +732,7 @@ class YahooFinanceAPI {
       }
 
       console.warn(`[DEBUG_REV3] Static fetch OK, parsing JSON...`);
-      const staticRaw = await dataResp.json();
+      const staticRaw: StaticTechnicalFile = await dataResp.json();
       console.warn(`[DEBUG_REV3] JSON parsed. Keys: ${Object.keys(staticRaw)}`);
 
       // 4. Transform static data to runtime format
@@ -668,8 +813,8 @@ class YahooFinanceAPI {
   }
 
   // Helper: map core data series to frontend { value, signal } format
-  _mapCoreResultsToIndicators(coreResults, currentPrice, sourceLabel) {
-    const getLastValue = (series) => {
+  _mapCoreResultsToIndicators(coreResults: Record<string, (number | null)[] | null | undefined>, currentPrice: number | null, _sourceLabel: string): TechnicalIndicatorResult {
+    const getLastValue = (series: (number | null)[] | null | undefined): number | null => {
       if (!series || !Array.isArray(series)) return null;
       for (let i = series.length - 1; i >= 0; i--) {
         const val = series[i];
@@ -678,9 +823,9 @@ class YahooFinanceAPI {
       return null;
     };
 
-    const createIndicatorResult = (series, signalThresholds = null) => {
+    const createIndicatorResult = (series: (number | null)[] | null | undefined, signalThresholds: SignalThresholds | null = null) => {
       const lastValue = getLastValue(series);
-      // Use provided currentPrice or try to find it? 
+      // Use provided currentPrice or try to find it?
       // If currentPrice is passed as null, signal calculation might be limited.
 
       let signal = 'NEUTRAL';
@@ -811,11 +956,11 @@ class YahooFinanceAPI {
   }
 
   // 獲取股票基本信息 (包裝器) - 增加去重機制
-  async getStockInfo(symbol) {
+  async getStockInfo(symbol: string): Promise<StockInfo | undefined> {
     const requestKey = `info_${symbol}`;
     if (this.pendingRequests.has(requestKey)) {
       console.log(`Using pending request for stock info: ${symbol}`);
-      return this.pendingRequests.get(requestKey);
+      return this.pendingRequests.get(requestKey) as Promise<StockInfo | undefined>;
     }
 
     const promise = this.enqueueRequest(() => this._getStockInfoInternal(symbol))
@@ -828,16 +973,16 @@ class YahooFinanceAPI {
   }
 
   // 獲取股票基本信息 (內部實現)
-  async _getStockInfoInternal(symbol) {
+  async _getStockInfoInternal(symbol: string): Promise<StockInfo | undefined> {
     const cacheKey = `info_${symbol}`;
 
     // 檢查緩存 (24小時有效期)
     const longCacheTimeout = 24 * 60 * 60 * 1000; // 24 hours
     if (this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey);
+      const cached = this.cache.get(cacheKey)!;
       if (Date.now() - cached.timestamp < longCacheTimeout) {
         console.log(`Using cached stock info for ${symbol}`);
-        return cached.data;
+        return cached.data as StockInfo;
       }
     }
 
@@ -847,7 +992,7 @@ class YahooFinanceAPI {
       const baseUrl = getDataBaseUrl();
       const staticResponse = await fetch(`${baseUrl}data/fundamentals/${symbol}.json?t=${Date.now()}`);
       if (staticResponse.ok) {
-        const staticData = await staticResponse.json();
+        const staticData: RawQuoteSummaryResult = await staticResponse.json();
         console.log(`✅ Loaded static fundamental data for ${symbol}`);
 
         // Transform the raw static data using the shared logic
@@ -887,7 +1032,7 @@ class YahooFinanceAPI {
         const targetUrl = `https://query1.finance.yahoo.com/v7/finance/quoteSummary/${symbol}?modules=${modules}`;
 
         let url = '';
-        const headers = {};
+        const headers: Record<string, string> = {};
 
         if (isNode) {
           // Node environment: Direct fetch with User-Agent
@@ -909,7 +1054,7 @@ class YahooFinanceAPI {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data: QuoteSummaryResponse = await response.json();
 
         // 檢查數據結構
         if (!data.quoteSummary || !data.quoteSummary.result || data.quoteSummary.result.length === 0) {
@@ -939,13 +1084,13 @@ class YahooFinanceAPI {
 
 
       } catch (error) {
-        console.warn(`Proxy ${i + 1} failed for stock info ${symbol}:`, error.message);
+        console.warn(`Proxy ${i + 1} failed for stock info ${symbol}:`, (error as Error).message);
 
         // 如果是最後一個代理也失敗了，返回默認信息
         if (i === this.corsProxies.length - 1) {
           console.error(`All proxies failed for stock info ${symbol}:`, error);
 
-          const defaultInfo = this._getFallbackStockInfo(symbol, error.message);
+          const defaultInfo = this._getFallbackStockInfo(symbol, (error as Error).message);
 
           // 短期緩存錯誤結果 (1小時)
           this.cache.set(cacheKey, {
@@ -960,39 +1105,39 @@ class YahooFinanceAPI {
   }
 
   // Helper: Process raw quoteSummary result into app structure
-  _processQuoteSummaryResult(symbol, result, source, proxyInfo) {
-    const summaryProfile = result.summaryProfile || {};
-    const price = result.price || {};
-    const keyStats = result.defaultKeyStatistics || {};
-    const financialData = result.financialData || {};
-    const earnings = result.earnings || {};
-    const holders = result.majorHoldersBreakdown || {};
-    const insiderTx = result.insiderTransactions || {};
-    const institutionOwn = result.institutionOwnership || {};
-    const trend = result.recommendationTrend || {};
+  _processQuoteSummaryResult(symbol: string, result: RawQuoteSummaryResult, source: string, proxyInfo: string): StockInfo {
+    const summaryProfile: RawSummaryProfile = result.summaryProfile || {};
+    const price: RawPrice = result.price || {};
+    const keyStats: RawKeyStats = result.defaultKeyStatistics || {};
+    const financialData: RawFinancialData = result.financialData || {};
+    const earnings: RawEarnings = result.earnings || {};
+    const holders: RawHolders = result.majorHoldersBreakdown || {};
+    const insiderTx: RawInsiderTx = result.insiderTransactions || {};
+    const institutionOwn: RawInstitutionOwnership = result.institutionOwnership || {};
+    const trend: RawRecommendationTrend = result.recommendationTrend || {};
 
     // Robust helpers to handle both Raw API ({raw, fmt}) and yahoo-finance2 (value) formats
-    const getRaw = (val) => (val && typeof val === 'object' && val.raw !== undefined) ? val.raw : val;
-    const getFmt = (val) => (val && typeof val === 'object' && val.fmt !== undefined) ? val.fmt : (val !== null && val !== undefined ? String(val) : null);
+    const getRaw = (val: unknown): unknown => (val && typeof val === 'object' && 'raw' in val && val.raw !== undefined) ? val.raw : val;
+    const getFmt = (val: unknown): string | null => (val && typeof val === 'object' && 'fmt' in val && val.fmt !== undefined) ? (val.fmt as string) : (val !== null && val !== undefined ? String(val) : null);
     // For percentages, yahoo-finance2 might return 0.12 for 12%, while API fmt returns "12%"
     // We might need to format numbers if fmt is missing but components expect formatted strings?
     // Let's rely on simple string conversion for start, or specific formatting if needed.
-    const getPercentFmt = (val) => {
-      if (val && typeof val === 'object' && val.fmt) return val.fmt;
+    const getPercentFmt = (val: unknown): string => {
+      if (val && typeof val === 'object' && 'fmt' in val && val.fmt) return val.fmt as string;
       if (typeof val === 'number') {
         // Guard NaN / Infinity — those previously produced "NaN%" / "Infinity%"
         const formatted = formatNumber(val * 100, 2, null);
         return formatted !== null ? formatted + '%' : 'N/A';
       }
-      return val || '0%';
+      return (val as string) || '0%';
     };
 
     // Helper to create the { raw, fmt } structure expected by the component
-    const createFmt = (val, formatter) => {
-      if (val && typeof val === 'object' && val.fmt) return val; // Already in correct format
+    const createFmt = (val: unknown, formatter: (v: number) => string): unknown => {
+      if (val && typeof val === 'object' && 'fmt' in val && val.fmt) return val; // Already in correct format
       return {
         raw: val,
-        fmt: val !== null && val !== undefined ? formatter(val) : 'N/A'
+        fmt: val !== null && val !== undefined ? formatter(val as number) : 'N/A'
       };
     };
 
@@ -1093,7 +1238,7 @@ class YahooFinanceAPI {
       })),
       recommendationTrend: trend.trend || [],
       upgradesDowngrades: (result.upgradeDowngradeHistory && result.upgradeDowngradeHistory.history) ? result.upgradeDowngradeHistory.history.slice(0, 50) : [],
-      marketCapCategory: this.getMarketCapCategory(getRaw(price.marketCap)),
+      marketCapCategory: this.getMarketCapCategory(getRaw(price.marketCap) as number | null),
 
       lastUpdated: result.lastUpdated || new Date().toISOString(),
       source: source,
@@ -1103,7 +1248,7 @@ class YahooFinanceAPI {
   }
 
   // Helper: Get Fallback Info
-  _getFallbackStockInfo(symbol, errorMessage) {
+  _getFallbackStockInfo(symbol: string, errorMessage: string): StockInfo {
     return {
       symbol: symbol,
       sector: 'Unknown',
@@ -1132,7 +1277,7 @@ class YahooFinanceAPI {
   }
 
   // 獲取默認交易所
-  getDefaultExchange(symbol) {
+  getDefaultExchange(symbol: string): string {
     const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS', 'FTNT', 'WDC', 'CSCO'];
     const nyseSymbols = ['TSM', 'ORCL', 'RDW', 'GLW'];
 
@@ -1146,7 +1291,7 @@ class YahooFinanceAPI {
   }
 
   // 根據市值分類
-  getMarketCapCategory(marketCap) {
+  getMarketCapCategory(marketCap: number | null | undefined): string {
     if (!marketCap || marketCap <= 0) {
       return 'unknown';
     }
@@ -1172,7 +1317,7 @@ class YahooFinanceAPI {
 
   // 獲取緩存統計
   getCacheStats() {
-    const apiCacheStats = {};
+    const apiCacheStats: Record<string, { age: number; expired: boolean }> = {};
     for (const [key, value] of this.cache.entries()) {
       apiCacheStats[key] = {
         age: Date.now() - value.timestamp,
@@ -1187,21 +1332,21 @@ class YahooFinanceAPI {
   }
 
   // Build proxy URL for Yahoo Finance API requests
-  buildProxyUrl(targetUrl) {
+  buildProxyUrl(targetUrl: string): string {
     const proxy = this.corsProxies[this.currentProxyIndex];
     return `${proxy}${encodeURIComponent(targetUrl)}`;
   }
 
   // Get Benchmark (SPY) OHLCV for Beta calculation
-  async getBenchmarkHistory(range = '6mo') {
+  async getBenchmarkHistory(range: string = '6mo'): Promise<OhlcvResult | null | undefined> {
     const symbol = '^GSPC'; // S&P 500
     const cacheKey = `ohlcv_${symbol}_1d_${range}`;
 
     // Check cache (Longer timeout for benchmark)
     if (this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey);
+      const cached = this.cache.get(cacheKey)!;
       if (Date.now() - cached.timestamp < 12 * 60 * 60 * 1000) { // 12 hours
-        return cached.data;
+        return cached.data as OhlcvResult;
       }
     }
 
@@ -1219,11 +1364,11 @@ class YahooFinanceAPI {
 
 
   // Get OHLCV data for MFI Volume Profile calculations (Wrapper) - 增加去重機制
-  async getOhlcv(symbol, period = '1d', range = '3mo') {
+  async getOhlcv(symbol: string, period: string = '1d', range: string = '3mo'): Promise<OhlcvResult | undefined> {
     const requestKey = `ohlcv_${symbol}_${period}_${range}`;
     if (this.pendingRequests.has(requestKey)) {
       console.log(`Using pending request for OHLCV: ${requestKey}`);
-      return this.pendingRequests.get(requestKey);
+      return this.pendingRequests.get(requestKey) as Promise<OhlcvResult | undefined>;
     }
 
     const promise = this.enqueueRequest(() => this._getOhlcvInternal(symbol, period, range))
@@ -1236,15 +1381,15 @@ class YahooFinanceAPI {
   }
 
   // Get OHLCV data (Internal Implementation)
-  async _getOhlcvInternal(symbol, period = '1d', range = '3mo') {
+  async _getOhlcvInternal(symbol: string, period: string = '1d', range: string = '3mo'): Promise<OhlcvResult | undefined> {
     const cacheKey = `ohlcv_${symbol}_${period}_${range}`;
 
     // Check cache first
     if (this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey);
+      const cached = this.cache.get(cacheKey)!;
       if (Date.now() - cached.timestamp < this.cacheTimeout) {
         console.log(`📊 Using cached OHLCV data for ${symbol}`);
-        return cached.data;
+        return cached.data as OhlcvResult;
       }
     }
 
@@ -1264,8 +1409,8 @@ class YahooFinanceAPI {
 
         const resp = await fetch(staticUrl);
         if (resp.ok) {
-          const raw = await resp.json();
-          let data = raw;
+          const raw: StaticOhlcvFile = await resp.json();
+          let data: StaticOhlcv = raw;
           // Unwrap if necessary (OhlcvApi logic)
           if (raw.ohlcv) {
             data = raw.ohlcv;
@@ -1298,7 +1443,8 @@ class YahooFinanceAPI {
     for (let i = 0; i < this.corsProxies.length; i++) {
       try {
         const proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
-        const proxy = this.corsProxies[proxyIndex];
+        // NOTE: the proxy URL is built via buildProxyUrl() (which reads
+        // this.currentProxyIndex), so the resolved proxy string is not needed here.
 
         console.log(`📊 Fetching OHLCV data for ${symbol} using proxy ${proxyIndex + 1}...`);
 
@@ -1315,7 +1461,7 @@ class YahooFinanceAPI {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data: YahooChartResponse = await response.json();
 
         // Validate data structure
         if (!data.chart || !data.chart.result || data.chart.result.length === 0) {
@@ -1390,12 +1536,12 @@ class YahooFinanceAPI {
         return ohlcvResult;
 
       } catch (error) {
-        console.warn(`📊 Proxy ${i + 1} failed for OHLCV ${symbol}:`, error.message);
+        console.warn(`📊 Proxy ${i + 1} failed for OHLCV ${symbol}:`, (error as Error).message);
 
         // If all proxies failed, throw error
         if (i === this.corsProxies.length - 1) {
           console.error(`📊 All proxies failed for OHLCV ${symbol}:`, error);
-          throw new Error(`Failed to fetch OHLCV data: ${error.message}`);
+          throw new Error(`Failed to fetch OHLCV data: ${(error as Error).message}`);
         }
       }
     }

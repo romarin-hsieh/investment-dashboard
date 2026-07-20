@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 導入我們的 Yahoo Finance API
-import('../src/api/yahooFinanceApi.js').then(async ({ yahooFinanceAPI }) => {
+import('../src/api/yahooFinanceApi').then(async ({ yahooFinanceAPI }) => {
 
   class TechnicalIndicatorsPrecomputer {
     constructor() {

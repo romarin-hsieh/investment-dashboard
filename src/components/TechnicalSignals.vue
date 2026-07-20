@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import WidgetSkeleton from './WidgetSkeleton.vue'
 import { formatDate as i18nDate } from '@/utils/dateFormat'
 
