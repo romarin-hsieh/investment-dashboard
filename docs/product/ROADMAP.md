@@ -28,6 +28,11 @@ Risk-weighted expansion of Vue Test Utils coverage, governed by [ADR-0013](../ar
 
 ## Next (Committed but not yet started)
 
+### 🧪 WS-I — Test-strategy execution
+Five sequenced test PRs per the [2026-07-20 test-strategy audit](../audits/2026-07-20-test-strategy.md): state-manager resilience (stops silent portfolio loss) → data-repo contract/golden-file tier → ingestion guards (fetcher/Yahoo/ohlcv) → test-quality anti-pattern fixes → first page-integration + a11y/E2E harness. Each PR raises its coverage floors per ADR-0013.
+
+### 🎨 WS-J — UI/UX remediation (top-8)
+Ranked fixes per the [2026-07-20 adversarial UI/UX audit](../audits/2026-07-20-adversarial-uiux-audit.md): navigation for the three orphaned routes, dark-mode grey-token contrast (WCAG AA), truthful monitoring pages (AutoUpdateMonitor / clear-cache no-ops), StockDetail tab tokens, `-var()` CSS fix + stylelint guard, stock-grid virtualization + search wiring, token-layer consolidation.
 
 ### 🖥️ Self-hosted CORS proxy (Cloudflare Worker)
 Activate when public proxy failure rate exceeds 5% over 30 days, per [ADR-0002](../architecture/adr/0002-cors-proxy-strategy.md) follow-up. Cloudflare Workers free tier covers our scale.

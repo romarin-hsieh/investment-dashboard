@@ -43,6 +43,10 @@
 ### "What does this term mean?"
 - **[product/GLOSSARY.md](product/GLOSSARY.md)** — bilingual EN/繁中 vocabulary
 
+### "Where are the known quality gaps?"
+- **[audits/2026-07-20-adversarial-uiux-audit.md](audits/2026-07-20-adversarial-uiux-audit.md)** — 18 verified UI/UX + accessibility findings, ranked top-8 fixes
+- **[audits/2026-07-20-test-strategy.md](audits/2026-07-20-test-strategy.md)** — coverage gaps ranked by risk + the next 5 test PRs
+
 ### "Where did this old idea go?"
 - **[archive/README.md](archive/README.md)** — annotated index of 22 superseded docs (strategy specs, validation reports, old PRD fragments)
 
@@ -95,6 +99,10 @@
 - [CORS_PROXY_NOTES.md](contributing/CORS_PROXY_NOTES.md)
 - [I18N_HOWTO.md](contributing/I18N_HOWTO.md) — adding/translating UI strings
 - [DATA_REPO_SETUP.md](contributing/DATA_REPO_SETUP.md) — local data setup (separate data repo)
+
+### Audits (`audits/` — dated adversarial reviews)
+- [2026-07-20-adversarial-uiux-audit.md](audits/2026-07-20-adversarial-uiux-audit.md)
+- [2026-07-20-test-strategy.md](audits/2026-07-20-test-strategy.md)
 
 ### Archive (`archive/` — read-only history)
 - [README.md](archive/README.md) — annotated index
