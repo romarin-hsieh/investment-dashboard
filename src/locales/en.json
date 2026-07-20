@@ -793,7 +793,8 @@
     "actions": {
       "checking": "Checking…",
       "refreshStatus": "Refresh Status",
-      "clearCache": "Clear Browser Cache"
+      "clearCache": "Clear Browser Cache",
+      "retry": "Retry"
     },
     "logs": {
       "title": "System Logs"
@@ -804,8 +805,11 @@
       "indexFailed": "Could not load the daily pipeline index",
       "metadataLoaded": "Symbol list loaded ({count} symbols)",
       "metadataFailed": "Could not load the symbol metadata",
-      "systemCheckFailed": "System check failed: {error}"
-    }
+      "systemCheckFailed": "System check failed: {error}",
+      "cacheCleared": "Caches cleared; reloading…",
+      "cacheClearFailed": "Failed to clear caches: {error}"
+    },
+    "errorBanner": "System check failed: {error}"
   },
   "quant": {
     "title": "Quant Strategy: 3D Kinetic Market State",

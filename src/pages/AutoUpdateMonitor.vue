@@ -406,9 +406,14 @@ export default {
           const data = await response.json()
           this.technicalIndicatorsLastUpdate = new Date(data.generatedAt)
           this.technicalIndicatorsAge = (Date.now() - this.technicalIndicatorsLastUpdate) / (1000 * 60 * 60)
-          const total = data.totalSymbols || 0
-          const successful = data.successfulSymbols || 0
-          this.technicalIndicatorsSuccessRate = total > 0 ? Math.round((successful / total) * 100) : 0
+          // Real coverage: files generated ÷ symbols requested. The index carries
+          // `symbols[]` + `totalFiles`, NOT the totalSymbols/successfulSymbols this
+          // used to read — those fields never existed, so the rate was a permanent 0%.
+          const total = Array.isArray(data.symbols) ? data.symbols.length : 0
+          const generated = typeof data.totalFiles === 'number' ? data.totalFiles : 0
+          this.technicalIndicatorsSuccessRate = total > 0
+            ? Math.round((Math.min(generated, total) / total) * 100)
+            : 0
         }
       } catch (error) {
         this.addLog(this.$t('autoUpdate.logTiStatusFailed') + error.message, 'ERROR')
@@ -417,11 +422,23 @@ export default {
 
     async loadMetadataStatus() {
       try {
-        // 這裡可以檢查元數據的狀態
-        this.metadataLastUpdate = new Date() // 暫時使用當前時間
-        this.metadataAge = 0
-        this.metadataSymbolCount = 24 // 暫時硬編碼
+        // Read REAL metadata status. Previously this hardcoded now()/age 0/24
+        // symbols (a "暫時" placeholder), so the card was permanently green and
+        // "Fresh" no matter how stale the feed actually was.
+        const response = await fetch(withDataBase('data/symbols_metadata.json'))
+        if (!response.ok) throw new Error(`HTTP ${response.status}`)
+        const data = await response.json()
+        const asOf = data.as_of || data.generatedAt || null
+        this.metadataLastUpdate = asOf ? new Date(asOf) : null
+        this.metadataAge = this.metadataLastUpdate
+          ? (Date.now() - this.metadataLastUpdate.getTime()) / (1000 * 60 * 60)
+          : 24 * 365 // no timestamp → read as stale, never "fresh"
+        this.metadataSymbolCount = Array.isArray(data.items)
+          ? data.items.length
+          : (data.refresh_metadata?.symbols_updated ?? 0)
       } catch (error) {
+        this.metadataLastUpdate = null
+        this.metadataAge = 24 * 365
         this.addLog(this.$t('autoUpdate.logMetadataFailed') + error.message, 'ERROR')
       }
     },
