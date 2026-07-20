@@ -1353,13 +1353,15 @@ export default {
 }
 
 .tab-btn:hover {
-    color: var(--blue-500);
-    background: rgba(0, 123, 255, 0.05);
+    /* Brand accent + theme-aware neutral hover (matches the nav-link convention),
+       replacing raw Bootstrap --blue-500 and a hardcoded rgba wash (audit V1). */
+    color: var(--primary-text);
+    background: var(--bg-secondary);
 }
 
 .tab-btn.active {
-    color: var(--blue-500);
-    border-bottom-color: var(--blue-500);
+    color: var(--primary-text);
+    border-bottom-color: var(--primary-color);
 }
 
 /* Tactical Grid for Overview Tab */

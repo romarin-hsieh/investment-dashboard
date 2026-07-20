@@ -267,7 +267,7 @@ export default {
 @media (max-width: 480px) {
   .top-stories-container {
     padding: var(--space-3);
-    margin: 0 -var(--space-1) var(--space-8) -var(--space-1);
+    margin: 0 calc(-1 * var(--space-1)) var(--space-8) calc(-1 * var(--space-1));
   }
   
   .top-stories-widget {
