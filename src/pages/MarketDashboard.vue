@@ -455,7 +455,7 @@ export default {
 .btn {
   padding: var(--space-2) var(--space-4);
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: var(--text-base);
 }
@@ -479,7 +479,7 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
+  padding: var(--widget-padding);
   margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;
@@ -491,7 +491,7 @@ export default {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
+  padding: var(--widget-padding);
   margin-bottom: var(--space-8);
   overflow: hidden;
   position: relative;

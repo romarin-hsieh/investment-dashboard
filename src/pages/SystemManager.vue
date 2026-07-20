@@ -288,7 +288,7 @@ export default {
 
 .overview-card {
     background: var(--bg-card);
-    padding: var(--space-6);
+    padding: var(--card-padding);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
@@ -387,7 +387,7 @@ export default {
 .btn {
     padding: 0.6rem 1.2rem;
     border: none;
-    border-radius: var(--radius-xs);
+    border-radius: var(--radius-sm);
     background: var(--primary-color);
     color: white;
     cursor: pointer;

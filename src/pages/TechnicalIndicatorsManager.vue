@@ -373,7 +373,7 @@ export default {
 .control-btn {
   padding: var(--space-3) var(--space-4);
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: var(--text-base);
   font-weight: var(--weight-semibold);

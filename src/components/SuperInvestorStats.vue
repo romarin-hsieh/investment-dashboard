@@ -373,7 +373,7 @@ export default {
   padding: var(--space-1) 0.6rem;
   font-size: var(--text-xs); /* Match exchange-tag size */
   cursor: pointer;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   transition: all var(--transition-base);
   font-weight: var(--weight-medium);
 }
@@ -472,7 +472,7 @@ export default {
   height: 20px;
   line-height: 1;
   padding: 0;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: 14px;
   display: inline-flex;

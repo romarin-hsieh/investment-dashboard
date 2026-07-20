@@ -707,7 +707,7 @@ export default {
 .btn {
   padding: var(--space-2) var(--space-4);
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: var(--text-base);
   transition: all var(--transition-base);

@@ -208,7 +208,7 @@ export default {
   background: var(--error-color);
   color: white;
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);

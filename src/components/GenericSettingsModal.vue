@@ -373,7 +373,7 @@ export default {
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 
@@ -382,7 +382,7 @@ export default {
   background: var(--primary-strong);
   color: white;
   border: none;
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 
