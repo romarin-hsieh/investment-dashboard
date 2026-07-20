@@ -30,8 +30,8 @@
 import { createChart } from 'lightweight-charts';
 // Services & Algos
 import { ohlcvApi } from '@/services/ohlcvApi.js';
-import { CisdAlgo } from '@/utils/technical-analysis/CisdAlgo.js';
-import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives.js';
+import { CisdAlgo } from '@/utils/technical-analysis/CisdAlgo';
+import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives';
 import { useTheme } from '@/composables/useTheme';
 import { getToken } from '@/utils/designTokens';
 // Components

@@ -1,11 +1,76 @@
-import { LineObject, BoxObject, LabelObject, ArrowObject, SideBarObject } from './StandardPrimitives.js';
+import { LineObject, BoxObject, LabelObject, ArrowObject, SideBarObject } from './StandardPrimitives';
+
+/** OHLCV series consumed by the Trendlines / SR-Zones algorithm. */
+export interface OhlcvData {
+    timestamps: number[];
+    open: number[];
+    high: number[];
+    low: number[];
+    close: number[];
+    volume: number[];
+}
+
+/** Full, resolved settings for a Trendlines run (defaults merged with user config). */
+export interface TrendlinesSettings {
+    // Trendlines
+    leftBars: number;
+    rightBars: number;
+    extendBars: number;
+    period: number;
+    multiplier: number;
+    highLineColor: string;
+    lowLineColor: string;
+
+    // Breakouts
+    enableBreakouts: boolean;
+
+    // Volume Delta
+    vdLookback: number;
+    vdRows: number;
+    vdSections: number;
+    vdZoneNum: number;
+    vdZoneExtend: number;
+    vdPanelWidth: number;
+    vdZoneColorDemand: string;
+    vdZoneColorSupply: string;
+    vdBarAlign: string;
+}
+
+/** A candidate/active trendline tracked bar-by-bar (mirrors Pine's var arrays). */
+interface TrendLine {
+    isHigh: boolean;
+    x1: number;
+    y1: number;
+    x2: number;
+    y2: number;
+    slope: number;
+    tolerance: number;
+    broken: boolean;
+    breakBar: number;
+    alertGiven: boolean;
+    creationIndex: number;
+}
+
+/** An aggregated volume-delta section over a price band. */
+interface Section {
+    deltaPct: number;
+    total: number;
+    top: number;
+    bottom: number;
+    isDemand: boolean;
+}
+
+type TrendlinePrimitive = LineObject | BoxObject | LabelObject | ArrowObject | SideBarObject;
 
 /**
  * Trendlines & SR Zones Algorithm
  * Ported strictly from provided Pine Script v6
  */
 export class TrendlinesAlgo {
-    constructor(ohlcvData) {
+    ohlcv: OhlcvData;
+    primitives: TrendlinePrimitive[];
+
+    constructor(ohlcvData: OhlcvData) {
         this.ohlcv = ohlcvData; // { timestamps, open, high, low, close, volume }
         this.primitives = [];
     }
@@ -13,9 +78,9 @@ export class TrendlinesAlgo {
     /**
      * Main calculation function
      */
-    calculate(config = {}) {
+    calculate(config: Partial<TrendlinesSettings> = {}): TrendlinePrimitive[] {
         this.primitives = [];
-        const defaults = {
+        const defaults: TrendlinesSettings = {
             // Trendlines
             leftBars: 10,
             rightBars: 10,
@@ -36,14 +101,13 @@ export class TrendlinesAlgo {
             vdZoneExtend: 50,
             vdPanelWidth: 40, // Visual width scaler
             vdZoneColorDemand: 'rgba(52, 199, 89, 0.3)',
-            vdZoneColorDemand: 'rgba(52, 199, 89, 0.3)',
             vdZoneColorSupply: 'rgba(255, 59, 48, 0.3)',
             vdBarAlign: 'left' // 'right' or 'left'
         };
 
-        const settings = { ...defaults, ...config };
+        const settings: TrendlinesSettings = { ...defaults, ...config };
 
-        const { timestamps, open, high, low, close, volume } = this.ohlcv;
+        const { timestamps, open, high, low, close } = this.ohlcv;
         const len = timestamps.length;
         if (len < settings.leftBars + settings.rightBars) return [];
 
@@ -57,7 +121,7 @@ export class TrendlinesAlgo {
 
         // Storage for Active Trendlines (simulating Pine's var arrays)
         // We need to track them chronologically as they are created
-        let allLines = []; // objects: { x1, y1, x2, y2, slope, tolerance, isHigh, broken, breakBar, alertGiven, creationIndex }
+        const allLines: TrendLine[] = []; // objects: { x1, y1, x2, y2, slope, tolerance, isHigh, broken, breakBar, alertGiven, creationIndex }
 
         // We simulate the bar-by-bar execution for Pivot detection and Line management
         // Start iteration from enough history
@@ -132,7 +196,7 @@ export class TrendlinesAlgo {
     // TRAILING HELPERS
     // ==========================================================
 
-    getTimeCount(timestamps, index) {
+    getTimeCount(timestamps: number[], index: number): number {
         if (index < 0) return timestamps[0];
         if (index < timestamps.length) return timestamps[index];
 
@@ -152,11 +216,19 @@ export class TrendlinesAlgo {
     // TRENDLINE HELPERS
     // ==========================================================
 
-    handlePivot(settings, allLines, isHigh, idx, price, avgBodyArr, currentBarIdx) {
+    handlePivot(
+        settings: TrendlinesSettings,
+        allLines: TrendLine[],
+        isHigh: boolean,
+        idx: number,
+        price: number,
+        avgBodyArr: number[],
+        _currentBarIdx: number
+    ): void {
         const currentTolerance = settings.multiplier * (avgBodyArr[idx] || 0);
 
         // Create New Line Candidate
-        const newLine = {
+        const newLine: TrendLine = {
             isHigh: isHigh,
             x1: idx,
             y1: price,
@@ -217,7 +289,15 @@ export class TrendlinesAlgo {
         }
     }
 
-    checkBreakouts(settings, allLines, i, timestamps, high, low, close) {
+    checkBreakouts(
+        _settings: TrendlinesSettings,
+        allLines: TrendLine[],
+        i: number,
+        timestamps: number[],
+        high: number[],
+        low: number[],
+        close: number[]
+    ): void {
         if (i <= 0) return;
 
         allLines.forEach(l => {
@@ -279,7 +359,7 @@ export class TrendlinesAlgo {
         });
     }
 
-    isPivot(data, index, left, right, isHigh) {
+    isPivot(data: number[], index: number, left: number, right: number, isHigh: boolean): boolean {
         if (index - left < 0 || index + right >= data.length) return false;
         const val = data[index];
         for (let i = 1; i <= left; i++) {
@@ -293,8 +373,8 @@ export class TrendlinesAlgo {
         return true;
     }
 
-    calculateSMA(data, period) {
-        let sma = new Array(data.length).fill(0);
+    calculateSMA(data: number[], period: number): number[] {
+        const sma: number[] = new Array(data.length).fill(0);
         for (let i = 0; i < data.length; i++) {
             if (i < period - 1) { sma[i] = 0; continue; }
             let sum = 0;
@@ -307,7 +387,7 @@ export class TrendlinesAlgo {
     // ==========================================================
     // VOLUME DELTA ZONES LOGIC
     // ==========================================================
-    calculateVolumeDeltaZones(settings) {
+    calculateVolumeDeltaZones(settings: TrendlinesSettings): void {
         const { timestamps, high, low, close, open, volume } = this.ohlcv;
         const len = timestamps.length;
         if (len < settings.vdLookback) return;
@@ -327,8 +407,8 @@ export class TrendlinesAlgo {
         const rowCount = settings.vdRows;
         const rowSize = priceRange / rowCount;
 
-        const binsBull = new Array(rowCount).fill(0);
-        const binsBear = new Array(rowCount).fill(0);
+        const binsBull: number[] = new Array(rowCount).fill(0);
+        const binsBear: number[] = new Array(rowCount).fill(0);
 
         // 2. Populate Bins
         for (let i = startIdx; i < len; i++) {
@@ -348,14 +428,14 @@ export class TrendlinesAlgo {
         const sectionCount = settings.vdSections;
         const rowsPerSection = Math.max(1, Math.floor(rowCount / sectionCount));
 
-        let sections = [];
+        const sections: Section[] = [];
         let maxTotalVol = 0;
 
         for (let s = 0; s < sectionCount; s++) {
             let sBull = 0, sBear = 0;
             const startBin = s * rowsPerSection;
             // Fix: Strict Pine Script logic - Last section grabs all remaining rows
-            let endBin;
+            let endBin: number;
             if (s === sectionCount - 1) {
                 endBin = rowCount - 1;
             } else {

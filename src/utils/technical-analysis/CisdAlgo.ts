@@ -1,14 +1,88 @@
-import { LineObject, LabelObject, BoxObject, FilledAreaObject } from './StandardPrimitives.js';
+import { LineObject, LabelObject, FilledAreaObject } from './StandardPrimitives';
+import type { FilledAreaPoint } from './StandardPrimitives';
+
+/** OHLCV series consumed by the CISD algorithm. */
+export interface OhlcvData {
+    timestamps: number[];
+    open: number[];
+    high: number[];
+    low: number[];
+    close: number[];
+}
+
+/** Full, resolved settings for a CISD run (defaults merged with user config). */
+export interface CisdSettings {
+    runBarsThreshold: number;
+    cisdFilter: boolean;
+    cisdFilterLength: number;
+    invalidateCISD: boolean;
+
+    level1: boolean; level1Mult: number; level1Style: string;
+    level2: boolean; level2Mult: number; level2Style: string;
+    level3: boolean; level3Mult: number; level3Style: string;
+    level4: boolean; level4Mult: number; level4Style: string;
+    level5: boolean; level5Mult: number; level5Style: string;
+
+    baseLevel: boolean;
+    baseLevelStyle: string;
+    labelsSize: number;
+    bullishColor: string;
+    bearishColor: string;
+    backgroundFill: boolean;
+}
+
+/** One enabled projection level: multiplier, line style, and its stable index. */
+interface CustomLevel {
+    m: number;
+    s: string;
+    idx: number;
+}
+
+/** A single point where the fill polygon hugs the candles. */
+interface FillPoint {
+    time: number;
+    price: number;
+}
+
+/**
+ * A "run" of consecutive same-direction bars. Once triggered it is promoted
+ * into the `cisds` list and drives the level/fill geometry.
+ */
+interface Run {
+    openPrice: number;
+    top: number;
+    bottom: number;
+    bias: number;
+    triggered: boolean;
+    startTime: number;
+    endTime: number;
+    fillEndTime: number | null;
+    bars: number;
+    reachedIndices: Set<number>;
+    levelEndTimes: Record<number, number>;
+    timeSeries: number[];
+    highest: number | null;
+    lowest: number | null;
+    invalid: boolean;
+    invalidationTime: number | null;
+    isTerminated: boolean;
+    fillPoints?: FillPoint[];
+}
+
+type CisdPrimitive = LineObject | LabelObject | FilledAreaObject;
 
 export class CisdAlgo {
-    constructor(ohlcvData) {
+    ohlcv: OhlcvData;
+    primitives: CisdPrimitive[];
+
+    constructor(ohlcvData: OhlcvData) {
         this.ohlcv = ohlcvData;
         this.primitives = [];
     }
 
-    hexToRgba(hex, alpha) {
+    hexToRgba(hex: string, alpha: number): string {
         const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-        hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
+        hex = hex.replace(shorthandRegex, (_m, r, g, b) => r + r + g + g + b + b);
 
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         if (!result) return `rgba(128, 128, 128, ${alpha})`;
@@ -19,9 +93,9 @@ export class CisdAlgo {
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
-    calculate(config = {}) {
+    calculate(config: Partial<CisdSettings> = {}): CisdPrimitive[] {
         this.primitives = [];
-        const settings = {
+        const settings: CisdSettings = {
             runBarsThreshold: 2,
             cisdFilter: false,
             cisdFilterLength: 20,
@@ -42,7 +116,7 @@ export class CisdAlgo {
             ...config
         };
 
-        const customLevels = [];
+        const customLevels: CustomLevel[] = [];
         if (settings.level1) customLevels.push({ m: settings.level1Mult, s: settings.level1Style, idx: 0 });
         if (settings.level2) customLevels.push({ m: settings.level2Mult, s: settings.level2Style, idx: 1 });
         if (settings.level3) customLevels.push({ m: settings.level3Mult, s: settings.level3Style, idx: 2 });
@@ -61,8 +135,8 @@ export class CisdAlgo {
 
         if (len < settings.cisdFilterLength) return [];
 
-        let runs = [];
-        let cisds = [];
+        const runs: Run[] = [];
+        const cisds: Run[] = [];
 
         const startIndex = settings.cisdFilterLength;
 
@@ -106,7 +180,7 @@ export class CisdAlgo {
                     fillEndTime: null, // For visualization
                     bars: 1,
 
-                    reachedIndices: new Set(),
+                    reachedIndices: new Set<number>(),
                     levelEndTimes: {},
                     timeSeries: [timestamps[i]], // For fill
 
@@ -148,13 +222,13 @@ export class CisdAlgo {
                     currentCisd.endTime = timestamps[i]; // Extend visibility to now
 
                     // Calculate Geometric Params to check Levels
-                    // Pine: 
+                    // Pine:
                     // BULLISH Run (Green) -> Bearish Color -> Base=Top, Proj=Down
                     // BEARISH Run (Red)   -> Bullish Color -> Base=Bottom, Proj=Up -- WAIT
 
                     // Pine Reference:
                     // basePrice = bias == BULLISH ? bottom : top
-                    // BULLISH (Green) -> Base = Bottom. 
+                    // BULLISH (Green) -> Base = Bottom.
                     // BEARISH (Red)   -> Base = Top.
 
                     // priceBias = bias == BULLISH ? -1 : 1
@@ -229,19 +303,21 @@ export class CisdAlgo {
             const priceBias = run.bias === BULLISH ? -1 : 1;
             const runRange = run.top - run.bottom;
 
-            const globalLimit = run.invalid ? run.invalidationTime : timestamps[len - 1];
+            const globalLimit: number = run.invalid && run.invalidationTime !== null
+                ? run.invalidationTime
+                : timestamps[len - 1];
 
             // 1. Fill (Curtain)
             if (settings.backgroundFill && run.fillPoints) {
                 const fillEnd = run.fillEndTime || globalLimit;
                 const extensionPrice = basePrice + priceBias * (maxMult * runRange);
-                const points = [];
+                const points: FilledAreaPoint[] = [];
 
                 // Add start point?
 
-                for (let pt of run.fillPoints) {
+                for (const pt of run.fillPoints) {
                     if (pt.time > fillEnd) break;
-                    if (run.invalid && pt.time > run.invalidationTime) break;
+                    if (run.invalid && run.invalidationTime !== null && pt.time > run.invalidationTime) break;
 
                     // Inner = pt.price (Hugging candles)
                     // Outer = extensionPrice
@@ -249,7 +325,8 @@ export class CisdAlgo {
                     // Bearish Run (Red) -> Green Zone (Up). Base=Top. Proj=Up.
                     // Inner = high (High of candles).
 
-                    let yTop, yBottom;
+                    let yTop: number;
+                    let yBottom: number;
                     if (run.bias === BEARISH) { // Green Zone, Up
                         yTop = extensionPrice;
                         yBottom = pt.price; // Hugs Highs
@@ -266,9 +343,15 @@ export class CisdAlgo {
             }
 
             // 2. Levels
-            const drawLevel = (price, style, endTimeOverride = null, isLabel = false, val = null) => {
+            const drawLevel = (
+                price: number,
+                style: string,
+                endTimeOverride: number | null = null,
+                isLabel = false,
+                val: number | null = null
+            ): void => {
                 let end = endTimeOverride || run.endTime;
-                if (run.invalid) end = Math.min(end, run.invalidationTime);
+                if (run.invalid && run.invalidationTime !== null) end = Math.min(end, run.invalidationTime);
                 if (end > globalLimit) end = globalLimit;
 
                 this.primitives.push(new LineObject({
@@ -302,7 +385,7 @@ export class CisdAlgo {
         return this.primitives;
     }
 
-    getHighest(data, endIndex, length) {
+    getHighest(data: number[], endIndex: number, length: number): number {
         let maxVal = -Infinity;
         const start = Math.max(0, endIndex - length + 1);
         for (let k = start; k <= endIndex; k++) {
@@ -311,7 +394,7 @@ export class CisdAlgo {
         return maxVal;
     }
 
-    getLowest(data, endIndex, length) {
+    getLowest(data: number[], endIndex: number, length: number): number {
         let minVal = Infinity;
         const start = Math.max(0, endIndex - length + 1);
         for (let k = start; k <= endIndex; k++) {
@@ -320,15 +403,16 @@ export class CisdAlgo {
         return minVal;
     }
 
-    checkCISD(run, settings, cisds, i, close) {
+    checkCISD(run: Run, settings: CisdSettings, cisds: Run[], i: number, close: number[]): void {
         if (run.triggered) return;
 
         // Pine Logic:
         const FILTER_EPSILON = 1e-9;
+        const { lowest, highest } = run;
         // topFilterOk: bias == BEARISH and bottom == lowest
-        const topFilterOk = (run.bias === 0 && Math.abs(run.bottom - run.lowest) < FILTER_EPSILON);
+        const topFilterOk = (run.bias === 0 && lowest !== null && Math.abs(run.bottom - lowest) < FILTER_EPSILON);
         // bottomFilterOk: bias == BULLISH and top == highest
-        const bottomFilterOk = (run.bias === 1 && Math.abs(run.top - run.highest) < FILTER_EPSILON);
+        const bottomFilterOk = (run.bias === 1 && highest !== null && Math.abs(run.top - highest) < FILTER_EPSILON);
 
         const filterOK = !settings.cisdFilter || (settings.cisdFilter && (topFilterOk || bottomFilterOk));
         const thresholdOK = run.bars >= settings.runBarsThreshold;
@@ -380,7 +464,7 @@ export class CisdAlgo {
                 // Wait, `runs.last()` in Pine is the `currentRun` itself or the one before?
                 // `checkCISD(currentRun)` -> `currentRun` is `runs.last()`.
                 // So `max(runs.last().top, currentRun.top)` is self-comparison?
-                // No, Pine `runs` array. 
+                // No, Pine `runs` array.
                 // If `runs.size() >= 2` check prev.
                 // If `runs.size() > 0` check last.
                 // Actually this logic seems to stabilize the Top/Bottom of the *triggered* run?
@@ -393,7 +477,7 @@ export class CisdAlgo {
         }
     }
 
-    invalidateCISD(run, settings, i, close) {
+    invalidateCISD(run: Run, settings: CisdSettings, i: number, close: number[]): void {
         if (!run.invalid && settings.invalidateCISD) {
             // Pine:
             // invalid = (bias == BEARISH and close < bottom) or (bias == BULLISH and close > top)
