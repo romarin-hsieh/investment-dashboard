@@ -24,14 +24,14 @@ vi.mock('@/api/hybridTechnicalIndicatorsApi.js', () => {
   const api = { getTechnicalIndicators: vi.fn() }
   return { default: api, hybridTechnicalIndicatorsAPI: api }
 })
-vi.mock('@/api/yahooFinanceApi.js', () => {
+vi.mock('@/api/yahooFinanceApi', () => {
   const api = { getStockInfo: vi.fn() }
   return { default: api, yahooFinanceAPI: api }
 })
 
 import TechnicalIndicators from './TechnicalIndicators.vue'
 import hybridApi from '@/api/hybridTechnicalIndicatorsApi.js'
-import yahooApi from '@/api/yahooFinanceApi.js'
+import yahooApi from '@/api/yahooFinanceApi'
 
 // ---------- helpers ----------
 

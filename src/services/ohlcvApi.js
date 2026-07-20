@@ -1,7 +1,7 @@
 // OHLCV API Service - 優先本地 JSON，DEV 模式可 fallback 到 Yahoo Finance
 // 按照最穩架構：Production 只用站內 JSON，避免 CORS proxy 翻車
 
-import { yahooFinanceAPI } from '@/api/yahooFinanceApi.js';
+import { yahooFinanceAPI } from '@/api/yahooFinanceApi';
 import { paths } from '../utils/baseUrl';
 
 class OhlcvApi {

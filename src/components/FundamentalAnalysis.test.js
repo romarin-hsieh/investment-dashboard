@@ -28,7 +28,7 @@ import { ref } from 'vue'
 
 // ---------- module mocks (must precede component import) ----------
 
-vi.mock('@/api/yahooFinanceApi.js', () => ({
+vi.mock('@/api/yahooFinanceApi', () => ({
   default: { getStockInfo: vi.fn() }
 }))
 vi.mock('@/api/precomputedIndicatorsApi', () => ({
@@ -43,7 +43,7 @@ vi.mock('@/composables/useTheme', () => ({
 }))
 
 import FundamentalAnalysis from './FundamentalAnalysis.vue'
-import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 
 // ---------- fixtures ----------

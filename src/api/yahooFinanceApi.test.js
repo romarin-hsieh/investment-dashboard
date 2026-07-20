@@ -40,7 +40,7 @@ beforeEach(async () => {
   vi.spyOn(console, 'log').mockImplementation(() => {})
   warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
   vi.spyOn(console, 'error').mockImplementation(() => {})
-  mod = await import('./yahooFinanceApi.js')
+  mod = await import('./yahooFinanceApi')
 })
 afterEach(() => {
   vi.restoreAllMocks()

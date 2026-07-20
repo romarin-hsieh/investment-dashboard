@@ -1,5 +1,5 @@
 // 動態元數據服務 - 使用 Yahoo Finance API 獲取即時的 sector 和 industry 信息
-import { yahooFinanceAPI } from '@/api/yahooFinanceApi.js'
+import { yahooFinanceAPI } from '@/api/yahooFinanceApi'
 
 class DynamicMetadataService {
   constructor() {

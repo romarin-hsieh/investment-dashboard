@@ -144,7 +144,7 @@
 <script>
 import { Chart as ChartJS, ArcElement, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
 import { Doughnut, Bar, Line } from 'vue-chartjs'
-import yahooFinanceAPI from '@/api/yahooFinanceApi.js'
+import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 import { useTheme } from '@/composables/useTheme'
 import { getToken, getTokenRgba } from '@/utils/designTokens'

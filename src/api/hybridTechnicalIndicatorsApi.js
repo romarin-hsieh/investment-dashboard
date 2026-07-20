@@ -2,7 +2,7 @@
 // 優先使用預計算數據，回退到實時計算
 
 import precomputedIndicatorsAPI from './precomputedIndicatorsApi';
-import yahooFinanceAPI from './yahooFinanceApi.js';
+import yahooFinanceAPI from './yahooFinanceApi';
 import technicalIndicatorsCache from '../utils/technicalIndicatorsCache';
 
 class HybridTechnicalIndicatorsAPI {
