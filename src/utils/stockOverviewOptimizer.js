@@ -6,7 +6,7 @@
 import { performanceCache, CACHE_KEYS, CACHE_TTL } from './performanceCache'
 import { performanceMonitor, PERFORMANCE_LABELS } from './performanceMonitor'
 import { dataFetcher } from '@/lib/fetcher'
-import { stocksConfig } from './stocksConfigService.js'
+import { stocksConfig } from './stocksConfigService'
 import { metadataService } from './metadataService.js'
 
 class StockOverviewOptimizer {

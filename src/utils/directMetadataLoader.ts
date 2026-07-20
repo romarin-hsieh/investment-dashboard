@@ -3,13 +3,33 @@
 
 import { paths } from './baseUrl';
 
+/** symbols_metadata.json 內單一股票的紀錄。欄位寬鬆，僅固定常用鍵。 */
+export interface SymbolMetadataItem {
+  symbol: string
+  sector?: string
+  industry?: string
+  exchange?: string
+  confidence?: number
+  [key: string]: unknown
+}
+
+/** symbols_metadata.json 的最小契約。 */
+export interface MetadataFile {
+  items?: SymbolMetadataItem[]
+  [key: string]: unknown
+}
+
 class DirectMetadataLoader {
+  cache: MetadataFile | null
+  loading: boolean
+  _fetchPromise?: Promise<MetadataFile | null> | null
+
   constructor() {
     this.cache = null
     this.loading = false
   }
 
-  async loadMetadata() {
+  async loadMetadata(): Promise<MetadataFile | null> {
     if (this.cache) {
       return this.cache
     }
@@ -22,7 +42,7 @@ class DirectMetadataLoader {
     this.loading = true
 
     try {
-      this._fetchPromise = (async () => {
+      const fetchPromise = (async () => {
         const url = paths.symbolsMetadata({ v: Date.now() })
         console.log('🔍 DirectMetadataLoader fetching from:', url)
 
@@ -31,12 +51,13 @@ class DirectMetadataLoader {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`)
         }
 
-        const data = await response.json()
+        const data: MetadataFile = await response.json()
         this.cache = data
         return data
       })();
+      this._fetchPromise = fetchPromise;
 
-      const data = await this._fetchPromise;
+      const data = await fetchPromise;
       console.log('✅ DirectMetadataLoader loaded successfully:', data.items?.length, 'items')
       return data
 
@@ -49,7 +70,7 @@ class DirectMetadataLoader {
     }
   }
 
-  async getSymbolMetadata(symbol) {
+  async getSymbolMetadata(symbol: string) {
     const data = await this.loadMetadata()
     if (!data || !data.items) {
       return {
@@ -80,8 +101,8 @@ class DirectMetadataLoader {
     }
   }
 
-  async getBatchMetadata(symbols) {
-    const results = new Map()
+  async getBatchMetadata(symbols: string[]) {
+    const results = new Map<string, unknown>()
 
     for (const symbol of symbols) {
       const metadata = await this.getSymbolMetadata(symbol)

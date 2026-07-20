@@ -3,7 +3,36 @@
  * 所有模組都通過此服務獲取股票配置，避免重複維護多個配置文件
  */
 
+/** config/stocks.json 內單一股票的設定。核心欄位固定，其餘以 index signature 容納。 */
+export interface StockConfigEntry {
+  symbol: string
+  exchange: string
+  sector: string
+  industry: string
+  enabled: boolean
+  priority: number
+  visible?: boolean
+  [key: string]: unknown
+}
+
+/** config/stocks.json 的結構契約。 */
+export interface StocksConfig {
+  version?: string
+  last_updated?: string
+  stocks: StockConfigEntry[]
+  metadata?: {
+    exchanges?: string[]
+    sectors?: string[]
+    [key: string]: unknown
+  }
+  [key: string]: unknown
+}
+
 class StocksConfigService {
+  cache: StocksConfig | null
+  lastUpdate: number | null
+  cacheTimeout: number
+
   constructor() {
     this.cache = null
     this.lastUpdate = null
@@ -13,7 +42,7 @@ class StocksConfigService {
   /**
    * 獲取股票配置文件的 URL
    */
-  getConfigUrl() {
+  getConfigUrl(): string {
     // 使用 import.meta.env 動態處理路徑
     const basePath = import.meta.env.PROD ? '/investment-dashboard' : ''
     return `${basePath}/config/stocks.json`
@@ -22,7 +51,7 @@ class StocksConfigService {
   /**
    * 載入股票配置
    */
-  async loadConfig() {
+  async loadConfig(): Promise<StocksConfig> {
     try {
       // 檢查緩存
       if (this.cache && this.lastUpdate &&
@@ -37,7 +66,7 @@ class StocksConfigService {
         throw new Error(`HTTP ${response.status}`)
       }
 
-      const config = await response.json()
+      const config: StocksConfig = await response.json()
 
       // 驗證配置格式
       if (!config.stocks || !Array.isArray(config.stocks)) {
@@ -68,7 +97,7 @@ class StocksConfigService {
   /**
    * 獲取所有啟用的股票符號
    */
-  async getEnabledSymbols() {
+  async getEnabledSymbols(): Promise<string[]> {
     const config = await this.loadConfig()
     return config.stocks
       .filter(stock => stock.enabled && stock.visible !== false)
@@ -78,7 +107,7 @@ class StocksConfigService {
   /**
    * 獲取指定優先級的股票符號
    */
-  async getSymbolsByPriority(priority = 1) {
+  async getSymbolsByPriority(priority = 1): Promise<string[]> {
     const config = await this.loadConfig()
     return config.stocks
       .filter(stock => stock.enabled && stock.priority === priority)
@@ -88,7 +117,7 @@ class StocksConfigService {
   /**
    * 獲取股票的交易所
    */
-  async getStockExchange(symbol) {
+  async getStockExchange(symbol: string) {
     const config = await this.loadConfig()
     const stock = config.stocks.find(s => s.symbol === symbol)
     return stock ? stock.exchange : 'NASDAQ' // 預設為 NASDAQ
@@ -97,7 +126,7 @@ class StocksConfigService {
   /**
    * 獲取股票的 sector
    */
-  async getStockSector(symbol) {
+  async getStockSector(symbol: string) {
     const config = await this.loadConfig()
     const stock = config.stocks.find(s => s.symbol === symbol)
     return stock ? stock.sector : 'Unknown'
@@ -106,7 +135,7 @@ class StocksConfigService {
   /**
    * 獲取股票的 industry
    */
-  async getStockIndustry(symbol) {
+  async getStockIndustry(symbol: string) {
     const config = await this.loadConfig()
     const stock = config.stocks.find(s => s.symbol === symbol)
     return stock ? stock.industry : 'Unknown'
@@ -115,7 +144,7 @@ class StocksConfigService {
   /**
    * 獲取完整的股票信息
    */
-  async getStockInfo(symbol) {
+  async getStockInfo(symbol: string): Promise<StockConfigEntry | null> {
     const config = await this.loadConfig()
     return config.stocks.find(s => s.symbol === symbol) || null
   }
@@ -141,7 +170,7 @@ class StocksConfigService {
    */
   async getStocksByExchange() {
     const config = await this.loadConfig()
-    const groups = {}
+    const groups: Record<string, string[]> = {}
 
     config.stocks
       .filter(stock => stock.enabled)
@@ -160,7 +189,7 @@ class StocksConfigService {
    */
   async getStocksBySector() {
     const config = await this.loadConfig()
-    const groups = {}
+    const groups: Record<string, string[]> = {}
 
     config.stocks
       .filter(stock => stock.enabled)
@@ -195,7 +224,7 @@ class StocksConfigService {
   /**
    * 清除緩存
    */
-  clearCache() {
+  clearCache(): void {
     this.cache = null
     this.lastUpdate = null
     console.log('🗑️ StocksConfigService cache cleared')
@@ -204,7 +233,7 @@ class StocksConfigService {
   /**
    * 手動刷新配置
    */
-  async refresh() {
+  async refresh(): Promise<StocksConfig> {
     this.clearCache()
     return await this.loadConfig()
   }
@@ -212,7 +241,7 @@ class StocksConfigService {
   /**
    * 緊急 fallback 配置
    */
-  getFallbackConfig() {
+  getFallbackConfig(): StocksConfig {
     console.warn('⚠️ Using emergency fallback config')
     return {
       version: "1.0.0-fallback",
@@ -237,7 +266,7 @@ class StocksConfigService {
   /**
    * 驗證股票符號是否存在
    */
-  async isValidSymbol(symbol) {
+  async isValidSymbol(symbol: string): Promise<boolean> {
     const config = await this.loadConfig()
     return config.stocks.some(stock => stock.symbol === symbol && stock.enabled)
   }
@@ -245,14 +274,14 @@ class StocksConfigService {
   /**
    * 別名：回傳啟用的股票代號清單 (與舊版 getSymbolsList 介面相容)
    */
-  async getSymbolsList() {
+  async getSymbolsList(): Promise<string[]> {
     return await this.getEnabledSymbols()
   }
 
   /**
    * 獲取配置來源信息
    */
-  getConfigSource() {
+  getConfigSource(): string {
     return this.cache ? 'stocks.json' : 'fallback'
   }
 

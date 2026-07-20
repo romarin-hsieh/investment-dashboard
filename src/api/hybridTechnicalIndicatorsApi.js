@@ -1,7 +1,7 @@
 // 混合技術指標 API
 // 優先使用預計算數據，回退到實時計算
 
-import precomputedIndicatorsAPI from './precomputedIndicatorsApi.js';
+import precomputedIndicatorsAPI from './precomputedIndicatorsApi';
 import yahooFinanceAPI from './yahooFinanceApi.js';
 import technicalIndicatorsCache from '../utils/technicalIndicatorsCache';
 

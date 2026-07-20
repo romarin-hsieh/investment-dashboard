@@ -2,13 +2,29 @@
  * ScrollSpyService - 使用 IntersectionObserver 監控 StockCard 可見性
  * 提供高效能的 ScrollSpy 功能
  */
+
+/** 單一可見元素的量測資訊。 */
+interface VisibleElement {
+  element: Element
+  symbol: string
+  intersectionRatio: number
+  boundingClientRect: DOMRectReadOnly
+}
+
 export class ScrollSpyService {
+  observer: IntersectionObserver | null
+  callback: ((symbol: string) => void) | null
+  observedElements: Map<Element, string>
+  isActive: boolean
+  observerOptions: IntersectionObserverInit
+  debounceTimer?: ReturnType<typeof setTimeout> | null
+
   constructor() {
     this.observer = null
     this.callback = null
     this.observedElements = new Map() // element -> symbol mapping
     this.isActive = false
-    
+
     // IntersectionObserver 配置
     this.observerOptions = {
       root: null, // 使用 viewport
@@ -19,13 +35,13 @@ export class ScrollSpyService {
 
   /**
    * 初始化 ScrollSpy 服務
-   * @param {Element[]} elements - 要監控的 StockCard 元素
-   * @param {Function} callback - 當 active symbol 變更時的回調函數
+   * @param elements - 要監控的 StockCard 元素
+   * @param callback - 當 active symbol 變更時的回調函數
    */
-  setup(elements, callback) {
+  setup(elements: Element[], callback: (symbol: string) => void): void {
     try {
       this.cleanup() // 清理現有的 observer
-      
+
       this.callback = callback
       this.observedElements.clear()
 
@@ -34,13 +50,15 @@ export class ScrollSpyService {
         this.handleIntersection.bind(this),
         this.observerOptions
       )
+      // 綁定為區域常數，讓型別在 forEach closure 內保持非 null
+      const observer = this.observer
 
       // 開始觀察所有元素
       elements.forEach(element => {
-        const symbol = element.dataset.symbol
+        const symbol = (element as HTMLElement).dataset.symbol
         if (symbol) {
           this.observedElements.set(element, symbol)
-          this.observer.observe(element)
+          observer.observe(element)
         }
       })
 
@@ -53,15 +71,15 @@ export class ScrollSpyService {
 
   /**
    * 處理 IntersectionObserver 回調
-   * @param {IntersectionObserverEntry[]} entries - 交集變更條目
+   * @param entries - 交集變更條目
    */
-  handleIntersection(entries) {
+  handleIntersection(entries: IntersectionObserverEntry[]): void {
     if (!this.isActive || !this.callback) return
 
     try {
       // 收集所有可見的元素及其交集比例
-      const visibleElements = []
-      
+      const visibleElements: VisibleElement[] = []
+
       entries.forEach(entry => {
         const symbol = this.observedElements.get(entry.target)
         if (symbol && entry.isIntersecting) {
@@ -79,7 +97,7 @@ export class ScrollSpyService {
 
       // 找出最佳的 active symbol
       const activeSymbol = this.determineActiveSymbol(visibleElements)
-      
+
       if (activeSymbol) {
         // 使用 debounce 避免過度頻繁的回調
         this.debouncedCallback(activeSymbol)
@@ -91,10 +109,10 @@ export class ScrollSpyService {
 
   /**
    * 確定當前的 active symbol
-   * @param {Object[]} visibleElements - 可見元素列表
-   * @returns {string|null} active symbol
+   * @param visibleElements - 可見元素列表
+   * @returns active symbol
    */
-  determineActiveSymbol(visibleElements) {
+  determineActiveSymbol(visibleElements: VisibleElement[]): string | null {
     if (visibleElements.length === 0) return null
     if (visibleElements.length === 1) return visibleElements[0].symbol
 
@@ -109,7 +127,7 @@ export class ScrollSpyService {
     for (let i = 1; i < visibleElements.length; i++) {
       const element = visibleElements[i]
       const score = this.calculateElementScore(element, viewportCenter)
-      
+
       if (score > bestScore) {
         bestElement = element
         bestScore = score
@@ -121,34 +139,34 @@ export class ScrollSpyService {
 
   /**
    * 計算元素的評分（用於確定最佳 active element）
-   * @param {Object} elementInfo - 元素資訊
-   * @param {number} viewportCenter - 視窗中心位置
-   * @returns {number} 評分
+   * @param elementInfo - 元素資訊
+   * @param viewportCenter - 視窗中心位置
+   * @returns 評分
    */
-  calculateElementScore(elementInfo, viewportCenter) {
+  calculateElementScore(elementInfo: VisibleElement, viewportCenter: number): number {
     const { intersectionRatio, boundingClientRect } = elementInfo
-    
+
     // 元素中心位置
     const elementCenter = boundingClientRect.top + (boundingClientRect.height / 2)
-    
+
     // 距離視窗中心的距離（越近越好）
     const distanceFromCenter = Math.abs(elementCenter - viewportCenter)
     const maxDistance = viewportCenter // 最大可能距離
     const centerScore = 1 - (distanceFromCenter / maxDistance)
-    
+
     // 綜合評分：交集比例 (70%) + 中心距離 (30%)
     return (intersectionRatio * 0.7) + (centerScore * 0.3)
   }
 
   /**
    * 防抖回調函數
-   * @param {string} symbol - active symbol
+   * @param symbol - active symbol
    */
-  debouncedCallback(symbol) {
+  debouncedCallback(symbol: string): void {
     if (this.debounceTimer) {
       clearTimeout(this.debounceTimer)
     }
-    
+
     this.debounceTimer = setTimeout(() => {
       if (this.callback && this.isActive) {
         this.callback(symbol)
@@ -158,9 +176,9 @@ export class ScrollSpyService {
 
   /**
    * 更新 active symbol（手動觸發）
-   * @param {string} symbol - 要設為 active 的 symbol
+   * @param symbol - 要設為 active 的 symbol
    */
-  updateActiveSymbol(symbol) {
+  updateActiveSymbol(symbol: string): void {
     if (this.callback && this.isActive) {
       this.callback(symbol)
     }
@@ -169,18 +187,18 @@ export class ScrollSpyService {
   /**
    * 重新掃描所有元素並更新 active symbol
    */
-  refresh() {
+  refresh(): void {
     if (!this.observer || !this.isActive) return
 
     try {
       // 觸發重新檢查所有觀察的元素
       const elements = Array.from(this.observedElements.keys())
-      const visibleElements = []
+      const visibleElements: VisibleElement[] = []
 
       elements.forEach(element => {
         const rect = element.getBoundingClientRect()
         const symbol = this.observedElements.get(element)
-        
+
         // 檢查元素是否在視窗內
         if (rect.top < window.innerHeight && rect.bottom > 0 && symbol) {
           const intersectionRatio = this.calculateIntersectionRatio(rect)
@@ -206,39 +224,39 @@ export class ScrollSpyService {
 
   /**
    * 計算元素的交集比例
-   * @param {DOMRect} rect - 元素的 bounding rect
-   * @returns {number} 交集比例 (0-1)
+   * @param rect - 元素的 bounding rect
+   * @returns 交集比例 (0-1)
    */
-  calculateIntersectionRatio(rect) {
+  calculateIntersectionRatio(rect: DOMRect): number {
     const viewportHeight = window.innerHeight
     const headerOffset = 80 // 考慮 header 高度
-    
+
     const visibleTop = Math.max(rect.top, headerOffset)
     const visibleBottom = Math.min(rect.bottom, viewportHeight)
     const visibleHeight = Math.max(0, visibleBottom - visibleTop)
-    
+
     return visibleHeight / rect.height
   }
 
   /**
    * 清理 ScrollSpy 服務
    */
-  cleanup() {
+  cleanup(): void {
     try {
       if (this.observer) {
         this.observer.disconnect()
         this.observer = null
       }
-      
+
       if (this.debounceTimer) {
         clearTimeout(this.debounceTimer)
         this.debounceTimer = null
       }
-      
+
       this.observedElements.clear()
       this.callback = null
       this.isActive = false
-      
+
       console.log('ScrollSpyService: Cleaned up')
     } catch (error) {
       console.error('ScrollSpyService: Error during cleanup:', error)
@@ -248,14 +266,14 @@ export class ScrollSpyService {
   /**
    * 暫停 ScrollSpy 服務
    */
-  pause() {
+  pause(): void {
     this.isActive = false
   }
 
   /**
    * 恢復 ScrollSpy 服務
    */
-  resume() {
+  resume(): void {
     this.isActive = true
     this.refresh() // 立即刷新狀態
   }

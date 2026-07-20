@@ -1,7 +1,17 @@
 // 正式環境效能優化器
 // 專門針對正式環境的效能問題進行優化
 
+declare global {
+  interface Window {
+    TradingViewWidgetConfig?: Record<string, unknown>
+  }
+}
+
 class ProductionOptimizer {
+  isProduction: boolean
+  optimizations: Map<string, unknown>
+  performanceMetrics: Map<string, unknown>
+
   constructor() {
     this.isProduction = process.env.NODE_ENV === 'production'
     this.optimizations = new Map()
@@ -86,10 +96,10 @@ class ProductionOptimizer {
   optimizeImageLoading() {
     // 實施圖片懶載入
     if ('IntersectionObserver' in window) {
-      const imageObserver = new IntersectionObserver((entries) => {
+      const imageObserver = new IntersectionObserver((entries: IntersectionObserverEntry[]) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const img = entry.target
+            const img = entry.target as HTMLImageElement
             if (img.dataset.src) {
               img.src = img.dataset.src
               img.removeAttribute('data-src')
@@ -131,7 +141,7 @@ class ProductionOptimizer {
   // 監控 Widget 錯誤
   monitorWidgetErrors() {
     const originalConsoleError = console.error
-    console.error = (...args) => {
+    console.error = (...args: unknown[]) => {
       const message = args.join(' ')
       if (message.includes('TradingView') || message.includes('widget')) {
         this.logError('TradingView Widget Error', {
@@ -179,7 +189,7 @@ class ProductionOptimizer {
   }
 
   // 記錄錯誤
-  logError(type, details) {
+  logError(type: string, details: unknown) {
     const errorLog = {
       type,
       details,
@@ -203,7 +213,7 @@ class ProductionOptimizer {
     // 監控頁面載入效能
     window.addEventListener('load', () => {
       setTimeout(() => {
-        const perfData = performance.getEntriesByType('navigation')[0]
+        const perfData = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
         this.performanceMetrics.set('pageLoad', {
           domContentLoaded: perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart,
           loadComplete: perfData.loadEventEnd - perfData.loadEventStart,
@@ -221,7 +231,7 @@ class ProductionOptimizer {
           this.performanceMetrics.set(`widget_${Date.now()}`, {
             name: entry.name,
             duration: entry.duration,
-            transferSize: entry.transferSize
+            transferSize: (entry as PerformanceResourceTiming).transferSize
           })
         }
       })
