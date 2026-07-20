@@ -15,8 +15,35 @@
                 <router-link to="/stock-overview" class="nav-link">{{ $t('nav.stockOverview') }}</router-link>
               </li>
 
-              <li>
-                <router-link to="/system-manager" class="nav-link">{{ $t('nav.controlPanel') }}</router-link>
+              <!-- Tools disclosure: previously only /system-manager was linked, leaving
+                   /technical-manager, /auto-update-monitor and /settings reachable only by
+                   typing a URL (audit N1). All operational + config pages now live here. -->
+              <li class="nav-tools" ref="toolsRoot">
+                <button
+                  class="nav-link nav-tools-toggle"
+                  :class="{ 'router-link-active': isToolsRouteActive }"
+                  @click="toolsOpen = !toolsOpen"
+                  :aria-expanded="toolsOpen ? 'true' : 'false'"
+                  aria-haspopup="true"
+                  aria-controls="nav-tools-menu"
+                >
+                  {{ $t('nav.tools') }}
+                  <span class="nav-tools-caret" :class="{ open: toolsOpen }" aria-hidden="true">▾</span>
+                </button>
+                <ul v-show="toolsOpen" id="nav-tools-menu" class="nav-tools-menu">
+                  <li>
+                    <router-link to="/system-manager" class="nav-tools-item">{{ $t('nav.controlPanel') }}</router-link>
+                  </li>
+                  <li>
+                    <router-link to="/technical-manager" class="nav-tools-item">{{ $t('nav.technicalManager') }}</router-link>
+                  </li>
+                  <li>
+                    <router-link to="/auto-update-monitor" class="nav-tools-item">{{ $t('nav.autoUpdateMonitor') }}</router-link>
+                  </li>
+                  <li>
+                    <router-link to="/settings" class="nav-tools-item">{{ $t('nav.settings') }}</router-link>
+                  </li>
+                </ul>
               </li>
             </ul>
             <button
@@ -51,7 +78,7 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <span class="copyright">{{ $t('nav.footerCopyright') }}</span>
+          <span class="copyright">{{ $t('nav.footerCopyright', { year }) }}</span>
           <span class="separator">•</span>
           <span class="attribution">
             {{ $t('nav.footerPoweredBy') }}
@@ -69,12 +96,54 @@
 import { useTheme } from '../composables/useTheme'
 import { useLocale } from '../composables/useLocale'
 
+// Routes surfaced by the Tools disclosure — used to mark the toggle active.
+const TOOLS_ROUTES = ['/system-manager', '/technical-manager', '/auto-update-monitor', '/settings']
+
 export default {
   name: 'Layout',
   setup() {
     const { theme, toggleTheme } = useTheme()
     const { currentLocale, toggleLocale } = useLocale()
     return { theme, toggleTheme, currentLocale, toggleLocale }
+  },
+  data() {
+    return { toolsOpen: false }
+  },
+  computed: {
+    year() {
+      return new Date().getFullYear()
+    },
+    isToolsRouteActive() {
+      return TOOLS_ROUTES.includes(this.$route.path)
+    }
+  },
+  watch: {
+    // Any navigation closes the menu (including selecting an item within it).
+    $route() {
+      this.toolsOpen = false
+    }
+  },
+  mounted() {
+    document.addEventListener('keydown', this.onDocKeydown)
+    document.addEventListener('click', this.onDocClick)
+  },
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.onDocKeydown)
+    document.removeEventListener('click', this.onDocClick)
+  },
+  methods: {
+    onDocKeydown(e) {
+      if (e.key === 'Escape' && this.toolsOpen) {
+        this.toolsOpen = false
+        // Return focus to the toggle so keyboard users are not stranded.
+        this.$refs.toolsRoot?.querySelector('.nav-tools-toggle')?.focus()
+      }
+    },
+    onDocClick(e) {
+      if (this.toolsOpen && this.$refs.toolsRoot && !this.$refs.toolsRoot.contains(e.target)) {
+        this.toolsOpen = false
+      }
+    }
   }
 }
 </script>
@@ -145,6 +214,60 @@ export default {
 
 .nav-link.router-link-active {
   color: #fff; /* white text on the darkened brand fill (passes WCAG AA) */
+  background-color: var(--primary-strong);
+}
+
+/* Tools disclosure (N1). All tokens theme-aware so the menu is legible in both
+   themes without touching the fixed greyscale ramp (audit A1). */
+.nav-tools {
+  position: relative;
+}
+.nav-tools-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.nav-tools-caret {
+  font-size: 0.7em;
+  transition: transform var(--transition-base);
+}
+.nav-tools-caret.open {
+  transform: rotate(180deg);
+}
+.nav-tools-menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 220px;
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  z-index: 50;
+}
+.nav-tools-item {
+  display: block;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-xs);
+  white-space: nowrap;
+  transition: all var(--transition-base);
+}
+.nav-tools-item:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+}
+.nav-tools-item.router-link-active {
+  color: #fff;
   background-color: var(--primary-strong);
 }
 
