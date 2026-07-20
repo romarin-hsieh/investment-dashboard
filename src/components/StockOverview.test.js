@@ -690,3 +690,76 @@ describe('StockOverview — recovery + wiring', () => {
     }
   })
 })
+
+describe('StockOverview — search filters the content grid (N2)', () => {
+  const symsIn = (groups) => Object.values(groups).flat().map(s => s.quote.symbol)
+
+  it('displayGroups equals groupedStocks when the query is empty', async () => {
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+    expect(wrapper.vm.displayGroups).toEqual(wrapper.vm.groupedStocks)
+  })
+
+  it('filters the grid by symbol', async () => {
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+    wrapper.vm.searchQuery = 'nvda'    // case-insensitive
+    expect(symsIn(wrapper.vm.displayGroups)).toEqual(['NVDA'])
+  })
+
+  it('filters by industry and drops sectors with no match', async () => {
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+    wrapper.vm.searchQuery = 'Semiconductors'
+    const groups = wrapper.vm.displayGroups
+    expect(Object.keys(groups)).toEqual(['Technology'])              // Financial Services gone
+    expect(symsIn(groups).sort()).toEqual(['AMD', 'NVDA'])           // AAPL (Consumer Electronics) excluded
+  })
+
+  it('yields no groups (and would show no-results) when nothing matches', async () => {
+    const wrapper = mount(StockOverview, makeMountOpts())
+    await flushPromises()
+    wrapper.vm.searchQuery = 'zzzznope'
+    expect(Object.keys(wrapper.vm.displayGroups)).toEqual([])
+    // groupedStocks is non-empty, so this is the no-search-results branch, not no-data.
+    expect(Object.keys(wrapper.vm.groupedStocks).length).toBeGreaterThan(0)
+  })
+})
+
+describe('StockOverview — search persists to the URL (N2)', () => {
+  it('onSearchChange writes ?q= via router.replace', async () => {
+    const opts = makeMountOpts()
+    const wrapper = mount(StockOverview, opts)
+    await flushPromises()
+
+    wrapper.vm.onSearchChange('NVDA')
+
+    expect(wrapper.vm.searchQuery).toBe('NVDA')
+    expect(opts.global.mocks.$router.replace).toHaveBeenCalledWith(
+      expect.objectContaining({ query: expect.objectContaining({ q: 'NVDA' }) })
+    )
+  })
+
+  it('clearing the search drops the q param', async () => {
+    const opts = makeMountOpts()
+    opts.global.mocks.$route.query = { q: 'NVDA' }   // pretend a query is already in the URL
+    const wrapper = mount(StockOverview, opts)
+    await flushPromises()
+
+    wrapper.vm.onSearchChange('')
+
+    expect(opts.global.mocks.$router.replace).toHaveBeenCalledWith(
+      expect.objectContaining({ query: expect.objectContaining({ q: undefined }) })
+    )
+  })
+
+  it('restores searchQuery from ?q= on mount so a reload lands filtered', async () => {
+    const opts = makeMountOpts()
+    opts.global.mocks.$route.query = { q: 'AMD' }
+    const wrapper = mount(StockOverview, opts)
+    await flushPromises()
+
+    expect(wrapper.vm.searchQuery).toBe('AMD')
+    expect(Object.values(wrapper.vm.displayGroups).flat().map(s => s.quote.symbol)).toEqual(['AMD'])
+  })
+})
