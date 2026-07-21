@@ -361,7 +361,18 @@ class YahooFinanceAPI {
         };
 
         // 過濾掉 null 值，保持索引對齊，並確保數據質量
-        const length = rawData.close.length;
+        // Length-equality guard (audit R5): a thin/halted symbol can return
+        // series of unequal length. Sizing everything to close.length then
+        // indexing a shorter high/volume array past its end produced
+        // undefined/NaN tails that flowed into ADX/OBV/Beta. Truncate to the
+        // shortest series so every indicator sees aligned, real data.
+        const length = Math.min(
+          rawData.open.length,
+          rawData.high.length,
+          rawData.low.length,
+          rawData.close.length,
+          rawData.volume.length
+        );
         const ohlcv = {
           open: new Array<number>(length),
           high: new Array<number>(length),

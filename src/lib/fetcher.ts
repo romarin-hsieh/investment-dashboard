@@ -203,8 +203,11 @@ export class DataFetcher {
     // 如果有緩存且有效，直接返回 (避免重複請求)
     const userState = StateManager.loadState()
     if (userState.cache.last_daily_snapshot) {
-      const cachedDateStr = userState.cache.last_daily_snapshot.generated_at_utc.split('T')[0]
-      // 如果緩存的日期是我們想要的，或是我們正在尋找的日期範圍內
+      // Compare by the snapshot's Taipei date, not generated_at_utc's date
+      // (audit R4): targetDate is a Taipei date, so splitting the UTC timestamp
+      // misses a valid same-day cache during the UTC-evening / Taipei-next-day
+      // window. as_of_date_taipei is the pipeline's own Taipei date.
+      const cachedDateStr = userState.cache.last_daily_snapshot.as_of_date_taipei
       if (cachedDateStr === targetDate) {
         return {
           data: userState.cache.last_daily_snapshot,
