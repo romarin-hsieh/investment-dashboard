@@ -49,7 +49,10 @@ export default defineConfig({
         // WS-H PR 2: 14.8 -> 96.3 stmts / 100 branch / 91.7 funcs.
         'src/components/NavigationPanel.vue': { statements: 95, branches: 95, functions: 90 },
         // WS-H PR 4: 7.1 -> 78.2 stmts / 65.6 branch / 89.3 funcs.
-        'src/components/TechnicalIndicators.vue': { statements: 77, branches: 64, functions: 88 }
+        'src/components/TechnicalIndicators.vue': { statements: 77, branches: 64, functions: 88 },
+        // WS-I PR 1: 8.6 -> 82.2 stmts / 71.1 branch / 100 funcs (cache-drift
+        // resilience). Floors at measured-minus-1 per ADR-0013.
+        'src/utils/state-manager.ts': { statements: 81, branches: 70, functions: 100, lines: 81 }
       }
     }
   }

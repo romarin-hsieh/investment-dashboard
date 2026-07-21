@@ -437,6 +437,10 @@ export function validateImportData(data: unknown): ValidationResult<UserState> {
     }
   }
 
-  // Then validate the full schema
-  return validateUserState(data)
+  // Format + known-keys gate only. Full schema validation is deferred to the
+  // caller (StateManager.importState → validatePreservingUserData), so a stale
+  // cached snapshot inside an otherwise-valid import doesn't reject the whole
+  // file and cost the user their watchlist/holdings — the same resilience the
+  // load path has.
+  return { success: true, data: data as UserState }
 }
