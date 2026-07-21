@@ -30,12 +30,15 @@ export default defineConfig({
        * Never lower a floor to make a build pass; fix the test instead.
        */
       thresholds: {
-        // Global floor. Raised through WS-H PRs 4-7: 32.7 -> 38.8 stmts,
-        // 25.1 -> 35.4 branch, 34.0 -> 41.5 funcs.
-        statements: 38,
-        branches: 35,
-        functions: 41,
-        lines: 38,
+        // Global floor. Raised through WS-H PRs 4-7 (32.7 -> 38.8 stmts) and
+        // again after the WS-I/WS-J test push (yahoo char suite, state-manager,
+        // ingestion guards, page tests) took measured global to 67.5 stmts /
+        // 62.7 branch / 59.6 funcs — floors set below that with headroom so a
+        // future PR touching an untested file doesn't spuriously fail.
+        statements: 60,
+        branches: 55,
+        functions: 55,
+        lines: 60,
 
         // Per-file floors for the components in the ADR-0013 coverage workstream.
         // WS-H PR 5: 84.6 -> 89.3 stmts / 76.1 -> 82.3 branch / 53.1 -> 63.6 funcs.
@@ -52,7 +55,11 @@ export default defineConfig({
         'src/components/TechnicalIndicators.vue': { statements: 77, branches: 64, functions: 88 },
         // WS-I PR 1: 8.6 -> 82.2 stmts / 71.1 branch / 100 funcs (cache-drift
         // resilience). Floors at measured-minus-1 per ADR-0013.
-        'src/utils/state-manager.ts': { statements: 81, branches: 70, functions: 100, lines: 81 }
+        'src/utils/state-manager.ts': { statements: 81, branches: 70, functions: 100, lines: 81 },
+        // WS-I PR 3 ingestion guards: fetcher 24 -> 89.3 stmts / 78.7 branch;
+        // ohlcv 37 -> 82.3 stmts / 78.8 branch. Floors at measured-minus-~1.
+        'src/lib/fetcher.ts': { statements: 88, branches: 77, functions: 100, lines: 88 },
+        'src/services/ohlcvApi.js': { statements: 81, branches: 77, functions: 100, lines: 81 }
       }
     }
   }

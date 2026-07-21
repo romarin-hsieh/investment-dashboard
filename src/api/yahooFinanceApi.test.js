@@ -870,3 +870,69 @@ describe('getTechnicalIndicators (orchestration)', () => {
     expect(r.lastUpdated).toBe('2026-07-20T12:00:00.000Z')
   })
 })
+
+// ===================================================================
+// R5 guard: unequal-length quote arrays. A thin/halted symbol can return
+// OHLCV series of DIFFERENT lengths. The guard sizes `length` to the MIN of
+// the five series (not close.length) before building the aligned arrays, so
+// no undefined/NaN tail leaks into ADX/OBV/etc; and the <50 "Insufficient
+// data" throw fires on that MIN length.
+// ===================================================================
+describe('fetchTechnicalIndicatorsFromAPI — unequal-length quote arrays (R5 guard)', () => {
+  /** Chart payload whose OHLCV series have DIFFERENT lengths (per `lens`). */
+  function unequalPayload (lens) {
+    const maxLen = Math.max(lens.open, lens.high, lens.low, lens.close, lens.volume)
+    return {
+      chart: {
+        result: [{
+          meta: { regularMarketPrice: REG_PRICE, symbol: 'UNEQ', currency: 'USD' },
+          timestamp: TIMESTAMP.slice(0, maxLen),
+          indicators: {
+            quote: [{
+              open: OPEN.slice(0, lens.open),
+              high: HIGH.slice(0, lens.high),
+              low: LOW.slice(0, lens.low),
+              close: CLOSE.slice(0, lens.close),
+              volume: VOLUME.slice(0, lens.volume)
+            }]
+          }
+        }],
+        error: null
+      }
+    }
+  }
+
+  it('truncates to the shortest series (min 50) → FINITE indicators, no NaN tail', async () => {
+    withNodeEnv()
+    // close=60, high=55, volume=50, open/low=60 → min = 50 (>=50, no throw)
+    global.fetch = vi.fn(async () => okResp(unequalPayload({ open: 60, high: 55, low: 60, close: 60, volume: 50 })))
+    const api = mod.yahooFinanceAPI
+
+    const ind = await api.fetchTechnicalIndicatorsFromAPI('UNEQ50')
+    expect(ind).toBeTypeOf('object')
+    expect(ind.error).toBeUndefined()   // did NOT fall into the error-shaped object
+    expect(ind.dataPoints).toBe(50)     // sized to the MIN, not close.length (60)
+    // Every headline value is a real finite number — the shorter high/volume
+    // series did NOT leak undefined→NaN into the tail the indicators read.
+    for (const key of ['adx14', 'rsi14', 'ma5', 'atr14', 'macd', 'obv']) {
+      expect(Number.isFinite(parseFloat(ind[key].value)), `${key}.value finite`).toBe(true)
+    }
+  })
+
+  it('still throws "Insufficient data" when the MIN length is 49 (guard measures the min, not close.length)', async () => {
+    withNodeEnv()
+    // close=60 but volume=49 → min = 49 (<50) → internal throw; Node branch
+    // swallows it and returns undefined (see the pinned SURPRISING tests).
+    global.fetch = vi.fn(async () => okResp(unequalPayload({ open: 60, high: 55, low: 60, close: 60, volume: 49 })))
+    const api = mod.yahooFinanceAPI
+
+    const ind = await api.fetchTechnicalIndicatorsFromAPI('UNEQ49')
+    expect(ind).toBeUndefined()
+    // Smoking gun: the guard reported 49 (the min), proving it did NOT size on
+    // close.length (60) — which would have passed the >=50 check and returned data.
+    const threw49 = warnSpy.mock.calls
+      .map(c => String(c[1] ?? c[0]))
+      .some(s => s.includes('Insufficient data points (49)'))
+    expect(threw49).toBe(true)
+  })
+})
