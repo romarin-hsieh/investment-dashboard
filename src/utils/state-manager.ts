@@ -36,8 +36,8 @@ export class StateManager {
 
       const parsed = JSON.parse(stored)
       const migrated = StateManager.migrateState(parsed)
-      const validation = validateUserState(migrated)
-      
+      const validation = StateManager.validatePreservingUserData(migrated)
+
       if (validation.success && validation.data) {
         return validation.data
       } else {
@@ -101,8 +101,8 @@ export class StateManager {
       }
 
       const migrated = StateManager.migrateState(validation.data!)
-      const finalValidation = validateUserState(migrated)
-      
+      const finalValidation = StateManager.validatePreservingUserData(migrated)
+
       if (!finalValidation.success) {
         return finalValidation
       }
@@ -276,6 +276,39 @@ export class StateManager {
     }
 
     return migrated
+  }
+
+  /**
+   * Validate a UserState, but never let a bad CACHE slice cost the user their
+   * watchlist/holdings.
+   *
+   * UserStateSchema embeds the full DailySnapshot/QuotesSnapshot/Metadata
+   * schemas inside `cache` (validation.ts). Those tighten over time (e.g.
+   * `macro.items.min(1)`), and the cache is populated with real fetched
+   * snapshots — so an older app version's cached snapshot can stop validating
+   * and, under whole-object validation, invalidate the ENTIRE state, silently
+   * wiping the portfolio on the next load.
+   *
+   * So: validate the whole object first; if that fails, retry with the cache
+   * dropped. If the user-data portion is valid, keep it and discard only the
+   * stale cache slice. Only if the user data itself is invalid do we surface the
+   * failure (→ callers fall back to defaults).
+   */
+  private static validatePreservingUserData(migrated: UserState): ValidationResult<UserState> {
+    const full = validateUserState(migrated)
+    if (full.success) {
+      return full
+    }
+
+    const withoutCache: UserState = { ...migrated, cache: {} }
+    const partial = validateUserState(withoutCache)
+    if (partial.success && partial.data) {
+      console.warn('Dropping an invalid cache slice; user watchlist/holdings preserved:', full.error)
+      return partial
+    }
+
+    // The user data itself is invalid — surface the original error.
+    return full
   }
 
   /**
