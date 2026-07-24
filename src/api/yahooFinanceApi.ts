@@ -1415,7 +1415,7 @@ class YahooFinanceAPI {
     }
 
     // 0. Try Static Local JSON (Priority 1)
-    // This duplicates logic from ohlcvApi.js to ensure direct consumers of yahooFinanceAPI also benefit
+    // This duplicates logic from ohlcvApi.ts to ensure direct consumers of yahooFinanceAPI also benefit
     try {
       const isNode = typeof window === 'undefined';
       if (!isNode) {

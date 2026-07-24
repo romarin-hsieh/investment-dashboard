@@ -29,7 +29,7 @@
 // Libraries
 import { createChart } from 'lightweight-charts';
 // Services & Algos
-import { ohlcvApi } from '@/services/ohlcvApi.js';
+import { ohlcvApi } from '@/services/ohlcvApi';
 import { CisdAlgo } from '@/utils/technical-analysis/CisdAlgo';
 import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives';
 import { useTheme } from '@/composables/useTheme';

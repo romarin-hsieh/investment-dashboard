@@ -213,7 +213,7 @@
 </template>
 
 <script>
-import { ohlcvApi } from '@/services/ohlcvApi.js';
+import { ohlcvApi } from '@/services/ohlcvApi';
 import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile';
 import { formatNumber } from '@/utils/numberFormat';
 

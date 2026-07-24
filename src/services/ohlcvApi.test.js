@@ -22,7 +22,7 @@ beforeEach(async () => {
   vi.spyOn(console, 'warn').mockImplementation(() => {})
   vi.spyOn(console, 'error').mockImplementation(() => {})
   // Re-import after reset
-  ohlcvApiModule = await import('./ohlcvApi.js')
+  ohlcvApiModule = await import('./ohlcvApi')
 })
 afterEach(() => {
   vi.restoreAllMocks()
