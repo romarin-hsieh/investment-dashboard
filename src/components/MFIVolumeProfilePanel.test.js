@@ -19,7 +19,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 
 // Module-level mocks must declare BEFORE the component import resolves them.
-vi.mock('@/services/ohlcvApi.js', () => ({
+vi.mock('@/services/ohlcvApi', () => ({
   ohlcvApi: { getOhlcv: vi.fn() }
 }))
 vi.mock('@/utils/mfiVolumeProfile', () => ({
@@ -28,7 +28,7 @@ vi.mock('@/utils/mfiVolumeProfile', () => ({
 }))
 
 import MFIVolumeProfilePanel from './MFIVolumeProfilePanel.vue'
-import { ohlcvApi } from '@/services/ohlcvApi.js'
+import { ohlcvApi } from '@/services/ohlcvApi'
 import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile'
 
 // ---------- fixtures ----------

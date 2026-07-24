@@ -163,7 +163,7 @@
 
 <script>
 import { useTheme } from '@/composables/useTheme';
-import { ohlcvApi } from '@/services/ohlcvApi.js';
+import { ohlcvApi } from '@/services/ohlcvApi';
 import { withDataBase } from '@/utils/baseUrl';
 import { formatDate as i18nDate } from '@/utils/dateFormat';
 
