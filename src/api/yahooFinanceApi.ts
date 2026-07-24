@@ -56,11 +56,10 @@ interface RawInstitutionOwnership { ownershipList?: RawOwnership[] }
 interface RawInsiderTransaction {
   filerName?: unknown; transactionText?: unknown; moneyText?: unknown; ownership?: unknown;
   startDate?: unknown; startEpoch?: unknown;
-  // `value` / `shares` are { raw, fmt } wrappers at runtime, but typed `number`
-  // so the pinned `value / shares` object-division (→ NaN → 'N/A' for every real
-  // payload) compiles verbatim. See the "SURPRISING: value / shares divides the
-  // {raw,fmt} OBJECTS" characterization test — DO NOT "fix" this.
-  shares?: number; value?: number;
+  // `value` / `shares` are { raw, fmt } wrappers at runtime; unwrap with getRaw
+  // before arithmetic (transactionPrice = value/shares). Typed `unknown` so the
+  // getRaw + typeof guards are honest rather than papering over the wrappers.
+  shares?: unknown; value?: unknown;
   filerRelation?: unknown; filerUrl?: unknown;
 }
 interface RawInsiderTx { transactions?: RawInsiderTransaction[] }
@@ -1234,19 +1233,30 @@ class YahooFinanceAPI {
         })
       },
 
-      insiderTransactions: (insiderTx.transactions || []).map(tx => ({
-        filerName: tx.filerName,
-        transactionText: tx.transactionText,
-        moneyText: tx.moneyText,
-        ownership: tx.ownership,
-        startDate: createFmt(tx.startDate, v => new Date(v).toLocaleDateString()),
-        startEpoch: tx.startEpoch,
-        shares: createFmt(tx.shares, v => Number(v).toLocaleString()),
-        value: createFmt(tx.value, v => Number(v).toLocaleString()),
-        filerRelation: tx.filerRelation,
-        filerUrl: tx.filerUrl,
-        transactionPrice: createFmt(tx.value && tx.shares ? tx.value / tx.shares : 0, v => formatNumber(v, 2))
-      })),
+      insiderTransactions: (insiderTx.transactions || []).map(tx => {
+        // value / shares arrive as { raw, fmt } wrappers — unwrap with getRaw
+        // before dividing. Previously this divided the wrapper OBJECTS
+        // (tx.value / tx.shares), so transactionPrice was NaN -> 'N/A' for every
+        // real Yahoo payload. e.g. value 95,000,000 / shares 500,000 = 190.00.
+        const rawValue = getRaw(tx.value);
+        const rawShares = getRaw(tx.shares);
+        const price = (typeof rawValue === 'number' && typeof rawShares === 'number' && rawShares !== 0)
+          ? rawValue / rawShares
+          : 0;
+        return {
+          filerName: tx.filerName,
+          transactionText: tx.transactionText,
+          moneyText: tx.moneyText,
+          ownership: tx.ownership,
+          startDate: createFmt(tx.startDate, v => new Date(v).toLocaleDateString()),
+          startEpoch: tx.startEpoch,
+          shares: createFmt(tx.shares, v => Number(v).toLocaleString()),
+          value: createFmt(tx.value, v => Number(v).toLocaleString()),
+          filerRelation: tx.filerRelation,
+          filerUrl: tx.filerUrl,
+          transactionPrice: createFmt(price, v => formatNumber(v, 2))
+        };
+      }),
       recommendationTrend: trend.trend || [],
       upgradesDowngrades: (result.upgradeDowngradeHistory && result.upgradeDowngradeHistory.history) ? result.upgradeDowngradeHistory.history.slice(0, 50) : [],
       marketCapCategory: this.getMarketCapCategory(getRaw(price.marketCap) as number | null),
