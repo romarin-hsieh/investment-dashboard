@@ -343,17 +343,12 @@ class AutoUpdateScheduler {
         console.log(`🗑️ Cleared cache key: ${key}`)
       })
 
-      // 清除性能緩存中的相關項目
-      // NOTE (ts migration): this branch has ALWAYS been a no-op — it logs
-      // "Cleared" but never calls performanceCache.clear(). Behaviour is
-      // preserved intentionally: clear() wipes the ENTIRE perf cache
-      // (quotes/daily/metadata/…), not just technical-indicator entries, so
-      // calling it here would over-clear. The real fix (a prefix-scoped
-      // clear, or dropping this dead log) is a separate behaviour change,
-      // not part of the rename. Guard rewritten only to satisfy TS2774.
-      if (typeof performanceCache.clear === 'function') {
-        console.log('🗑️ Cleared performance cache items')
-      }
+      // Removed a dead, misleading branch here that logged "Cleared performance
+      // cache items" but never called performanceCache.clear() — and wouldn't
+      // want to: performanceCache holds quotes/daily/metadata/stock-overview
+      // (see CACHE_KEYS), not technical-indicator entries, which live in the
+      // localStorage keys cleared in the loop above. The log claimed work that
+      // was neither done nor relevant here.
 
       console.log(`✅ Cleared ${keysToRemove.length} technical indicators cache entries`)
 

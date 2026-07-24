@@ -137,3 +137,27 @@ describe('singleton', () => {
     expect(typeof module.autoUpdateScheduler.stop).toBe('function')
   })
 })
+
+describe('clearTechnicalIndicatorsCache', () => {
+  beforeEach(() => localStorage.clear())
+  afterEach(() => localStorage.clear())
+
+  it('removes only the technical-indicator localStorage keys, leaving unrelated ones', () => {
+    localStorage.setItem('technical_indicators_AAPL', '1')
+    localStorage.setItem('precomputed_NVDA', '1')
+    localStorage.setItem('hybrid_technical_TSLA', '1')
+    localStorage.setItem('TECHNICAL_INDICATORS_META', '1')
+    localStorage.setItem('user_theme', 'dark')          // unrelated — must survive
+    localStorage.setItem('watchlist', '["AMD"]')        // unrelated — must survive
+
+    // Must not throw (a dead, misleading "cleared performance cache" branch was removed).
+    expect(() => module.autoUpdateScheduler.clearTechnicalIndicatorsCache()).not.toThrow()
+
+    expect(localStorage.getItem('technical_indicators_AAPL')).toBeNull()
+    expect(localStorage.getItem('precomputed_NVDA')).toBeNull()
+    expect(localStorage.getItem('hybrid_technical_TSLA')).toBeNull()
+    expect(localStorage.getItem('TECHNICAL_INDICATORS_META')).toBeNull()
+    expect(localStorage.getItem('user_theme')).toBe('dark')
+    expect(localStorage.getItem('watchlist')).toBe('["AMD"]')
+  })
+})
