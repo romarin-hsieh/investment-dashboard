@@ -85,6 +85,8 @@ vi.mock('@/composables/useKeyboardShortcuts', () => ({
 import StockOverview from './StockOverview.vue'
 import { stocksConfig } from '@/utils/stocksConfigService'
 import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
+import { i18n } from '@/i18n'
+import { createKeyHandler } from '@/composables/useKeyboardShortcuts'
 import { directMetadataLoader } from '@/utils/directMetadataLoader'
 import { navigationService } from '@/services/NavigationService'
 import { scrollSpyService } from '@/services/ScrollSpyService'
@@ -495,6 +497,57 @@ describe('StockOverview — keyboard navigation', () => {
   })
 })
 
+describe('StockOverview — REAL keyboard handler (integration, audit Q1)', () => {
+  // The rest of this file mocks createKeyHandler to a no-op and calls
+  // moveSelection()/openSelectedDetail() directly, so nothing verifies the
+  // actual j/k/Enter bindings or preventDefault — swapping j and k, mis-binding
+  // Enter, or dropping preventDefault would pass every other test. This block
+  // restores the REAL createKeyHandler and dispatches real keydown events, so
+  // the binding wiring is exercised end to end.
+  let realCreateKeyHandler
+
+  beforeEach(async () => {
+    const actual = await vi.importActual('@/composables/useKeyboardShortcuts')
+    realCreateKeyHandler = actual.createKeyHandler
+    createKeyHandler.mockImplementation(realCreateKeyHandler)
+  })
+
+  it('j/k move selection, Enter opens detail, and j preventDefaults — through the real handler', async () => {
+    const opts = makeMountOpts()
+    const wrapper = mount(StockOverview, opts)
+    await flushPromises()
+
+    const press = (key, cancelable = false) => {
+      const ev = new KeyboardEvent('keydown', { key, cancelable })
+      window.dispatchEvent(ev)
+      return ev
+    }
+
+    expect(wrapper.vm.selectedIndex).toBe(-1)
+    press('j')                                   // handler → moveSelection(1)
+    expect(wrapper.vm.selectedIndex).toBe(0)
+    press('j')
+    expect(wrapper.vm.selectedIndex).toBe(1)
+    press('k')                                   // handler → moveSelection(-1)
+    expect(wrapper.vm.selectedIndex).toBe(0)
+
+    press('Enter')                               // handler → openSelectedDetail()
+    expect(opts.global.mocks.$router.push).toHaveBeenCalled()
+
+    // j is bound with preventDefault: true — the real handler must call it.
+    const jEvent = press('j', true)
+    // (already selected; just assert the default was prevented)
+    expect(jEvent.defaultPrevented).toBe(true)
+
+    // A key with no binding is ignored (no throw, no selection change).
+    const before = wrapper.vm.selectedIndex
+    press('x')
+    expect(wrapper.vm.selectedIndex).toBe(before)
+
+    wrapper.unmount()
+  })
+})
+
 // ---------- pure helpers ----------
 
 describe('StockOverview — pure helpers', () => {
@@ -509,14 +562,24 @@ describe('StockOverview — pure helpers', () => {
     wrapper?.unmount()
   })
 
-  it('formatTime returns localised string for valid input, "" for null', () => {
+  it('formatTime follows the active i18n locale (en vs zh-TW differ), "" for null', () => {
+    // Was named "returns localised string" but only asserted /Apr/ against a
+    // then-hardcoded 'en-US' — it never verified locale-awareness (audit Q6).
+    // formatTime now routes through the locale helper (audit S1), so assert the
+    // output genuinely changes with the language toggle.
     expect(wrapper.vm.formatTime(null)).toBe('')
     expect(wrapper.vm.formatTime('')).toBe('')
 
-    const out = wrapper.vm.formatTime('2026-04-27T10:00:00Z')
-    // Locale-dependent; assert structurally rather than exact text.
-    expect(out).toMatch(/Apr/)
-    expect(out.length).toBeGreaterThan(0)
+    try {
+      i18n.global.locale.value = 'en'
+      const en = wrapper.vm.formatTime('2026-04-27T10:00:00Z')
+      i18n.global.locale.value = 'zh-TW'
+      const zh = wrapper.vm.formatTime('2026-04-27T10:00:00Z')
+      expect(en.length).toBeGreaterThan(0)
+      expect(en).not.toBe(zh)
+    } finally {
+      i18n.global.locale.value = 'en'   // never leak the locale to other tests
+    }
   })
 
   it('mapExchangeCode translates known codes; passes through unknowns', () => {

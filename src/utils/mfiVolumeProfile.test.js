@@ -92,5 +92,13 @@ describe('calculateMFIVolumeProfile', () => {
       expect(bin.mfiAverage).toBeGreaterThanOrEqual(0)
       expect(bin.mfiAverage).toBeLessThanOrEqual(100)
     })
+
+    // The clamp assertions above are identical for both modes, so deleting the
+    // legacy branch would pass them (audit Q2). Prove the branch actually
+    // matters: at least one bin's mfiAverage must differ between the modes.
+    const differs = weighted.volumeProfile.some(
+      (bin, i) => bin.mfiAverage !== legacy.volumeProfile[i].mfiAverage
+    )
+    expect(differs, 'weighted and legacy mfiAvgMode produced identical output').toBe(true)
   })
 })

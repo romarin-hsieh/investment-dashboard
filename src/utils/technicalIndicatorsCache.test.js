@@ -125,8 +125,13 @@ describe('TechnicalIndicatorsCache — pruneCache', () => {
     expect(localStorage.getItem(`${cache.cachePrefix}CORRUPT_2026-04-19`)).toBeNull()
   })
 
-  it('completes in under 100 ms for a 200-entry cache (PR-B4 target)', async () => {
+  it('pruneCache evicts entries on a large cache (correctness, not a wall-clock budget)', () => {
+    // Replaces a flaky `expect(elapsed).toBeLessThan(100)` (audit Q5): a
+    // wall-clock upper bound proves nothing about correctness and fails under CI
+    // load. Assert the actual behaviour instead — a large cache gets pruned down,
+    // but not wiped.
     const cache = cacheModule.technicalIndicatorsCache
+    const count = () => Object.keys(localStorage).filter(k => k.startsWith(cache.cachePrefix)).length
     for (let i = 0; i < 200; i++) {
       seedEntry(cache, `PERF${i}`, {
         writtenAt: 3_000_000_000 + i,
@@ -134,10 +139,14 @@ describe('TechnicalIndicatorsCache — pruneCache', () => {
         sizeBytes: 800
       })
     }
-    const start = performance.now()
+    const before = count()
+    expect(before).toBe(200)
+
     cache.pruneCache()
-    const elapsed = performance.now() - start
-    expect(elapsed).toBeLessThan(100)
+
+    const after = count()
+    expect(after).toBeLessThan(before)   // some evicted
+    expect(after).toBeGreaterThan(0)     // not everything
   })
 })
 

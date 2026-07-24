@@ -191,7 +191,10 @@ describe('FundamentalAnalysis — mount + loadData cascade', () => {
     const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
     await flushPromises()
 
-    expect(wrapper.vm.error).toBe('Could not load fundamental data. Please try again later.')
+    // Assert via the i18n key, not the raw English literal (audit Q3): this
+    // survives copy edits AND fails if the source ever regresses to a
+    // hard-coded string, protecting the bilingual guarantee.
+    expect(wrapper.vm.error).toBe(wrapper.vm.$t('fundamentals.errors.loadFailed'))
     expect(wrapper.vm.loading).toBe(false)
   })
 
