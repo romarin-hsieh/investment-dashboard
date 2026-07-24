@@ -22,9 +22,9 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
  *    "last proxy" error-return. The browser branch DOES return the error object.
  *  - The <50-points guard THROWS internally but the surrounding try/catch
  *    swallows it — callers never see the throw.
- *  - _processQuoteSummaryResult computes insider `transactionPrice` by dividing
- *    the {raw,fmt} wrapper OBJECTS (value / shares), which is NaN -> "N/A" for
- *    every real Yahoo payload.
+ *  - _processQuoteSummaryResult insider `transactionPrice`: FIXED — value/shares
+ *    are now unwrapped via getRaw before dividing (was NaN -> "N/A" for every
+ *    real payload because it divided the {raw,fmt} objects). Test asserts 190.00.
  *  - The static-data path's divergent parser (ind.psar.psar / ind.obv.obv /
  *    ind.cci.cci) is only reachable when `window` is defined (browser); in Node
  *    _fetchStaticTechnicalIndicators returns null before it runs.
@@ -529,8 +529,9 @@ describe('_processQuoteSummaryResult', () => {
         value: { raw: 95000000, fmt: '95,000,000' },
         filerRelation: 'Chief Executive Officer',
         filerUrl: '',
-        // SURPRISING: value / shares divides the {raw,fmt} OBJECTS -> NaN -> 'N/A'
-        transactionPrice: { raw: NaN, fmt: 'N/A' }
+        // FIXED: value/shares are now unwrapped via getRaw before dividing, so
+        // 95,000,000 / 500,000 = 190.00 (was NaN -> 'N/A' — it divided the objects).
+        transactionPrice: { raw: 190, fmt: '190.00' }
       }],
       recommendationTrend: [{ period: '0m', strongBuy: 11, buy: 21, hold: 6, sell: 0, strongSell: 0 }],
       upgradesDowngrades: [{ epochGradeDate: 1700000000, firm: 'Morgan Stanley', toGrade: 'Overweight', fromGrade: '', action: 'main' }],
