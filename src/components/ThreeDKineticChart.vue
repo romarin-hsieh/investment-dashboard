@@ -1,37 +1,48 @@
-<script setup>
-import { onMounted, ref, watch, nextTick, computed } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref, watch, nextTick, computed, type PropType } from 'vue';
 import { formatNumber } from '@/utils/numberFormat';
 import { getToken } from '@/utils/designTokens';
+import type { PlotlyStatic } from 'plotly.js-dist-min';
+
+/** One kinetic-state coordinate (loose — history/sector points may omit axes). */
+interface KineticPoint {
+  x_trend?: number
+  y_momentum?: number
+  z_structure?: number
+  [key: string]: unknown
+}
 
 // WS-C PR-C1: Plotly (~1.2 MB uncompressed) is dynamically imported on
 // first render so it loads from its own Vite chunk only when the user
 // visits a page that mounts a Kinetic Chart. Keeping the top-level
 // import would force every visitor to download Plotly up front.
 // Module-scoped cache — import once per tab session.
-let Plotly = null;
-async function loadPlotly () {
+let Plotly: PlotlyStatic | null = null;
+async function loadPlotly (): Promise<PlotlyStatic> {
   if (Plotly) return Plotly;
   Plotly = (await import('plotly.js-dist-min')).default;
   return Plotly;
 }
 
 const props = defineProps({
-  dataPoint: { type: Object, required: true },
-  historyTrace: { type: Array, default: () => [] },
-  sectorTrace: { type: Array, default: () => [] },
+  dataPoint: { type: Object as PropType<KineticPoint>, required: true },
+  // Loose chart-series arrays fed straight into Plotly traces; the parent
+  // (QuantDashboard) supplies these as unknown[], hence any[] at this boundary.
+  historyTrace: { type: Array as PropType<any[]>, default: () => [] },
+  sectorTrace: { type: Array as PropType<any[]>, default: () => [] },
   signal: { type: String, default: 'WAIT' },
   commentary: { type: String, default: '' },
   ticker: { type: String, default: 'STOCK' }
 });
 
-const container3D = ref(null);
-const container2DTop = ref(null);
-const container2DSide = ref(null);
-const containerSectorTop = ref(null);
-const containerSectorSide = ref(null);
+const container3D = ref<HTMLElement | null>(null);
+const container2DTop = ref<HTMLElement | null>(null);
+const container2DSide = ref<HTMLElement | null>(null);
+const containerSectorTop = ref<HTMLElement | null>(null);
+const containerSectorSide = ref<HTMLElement | null>(null);
 
-const activePopover = ref(null);
-const togglePopover = (id) => {
+const activePopover = ref<string | null>(null);
+const togglePopover = (id: string) => {
     if (activePopover.value === id) activePopover.value = null;
     else activePopover.value = id;
 };
@@ -41,7 +52,7 @@ const historicalMetrics = computed(() => {
     const trace = props.historyTrace;
     const len = trace.length;
     // Helper to safely get point
-    const getPoint = (idx) => {
+    const getPoint = (idx: number) => {
         if (idx < 0 || idx >= len) return { x_trend: 0, y_momentum: 0, z_structure: 0 };
         return trace[idx];
     };
@@ -70,7 +81,7 @@ const chartPalette = () => ({
     font:    getToken('--grey-350'),
 });
 
-const baseLayout = (C) => ({
+const baseLayout = (C: ReturnType<typeof chartPalette>) => ({
     paper_bgcolor: 'rgba(0,0,0,0)',
     plot_bgcolor: 'rgba(0,0,0,0)',
     font: { color: C.font, size: 10 },
@@ -90,7 +101,8 @@ const renderCharts = async () => {
 };
 
 const render3D = () => {
-    if (!container3D.value) return;
+    const el = container3D.value;
+    if (!el || !Plotly) return;
     const C = chartPalette();
 
     const x = props.dataPoint.x_trend;
@@ -135,11 +147,13 @@ const render3D = () => {
         autosize: true
     };
 
-    Plotly.newPlot(container3D.value, [tailTrace, currentTrace, squeezeZone], layout, { displayModeBar: false, responsive: true });
+    Plotly.newPlot(el, [tailTrace, currentTrace, squeezeZone], layout, { displayModeBar: false, responsive: true });
 };
 
 const renderStock2D = () => {
-    if (!container2DTop.value || !container2DSide.value) return;
+    const elTop = container2DTop.value;
+    const elSide = container2DSide.value;
+    if (!elTop || !elSide || !Plotly) return;
     const C = chartPalette();
 
     const x = props.dataPoint.x_trend;
@@ -168,7 +182,7 @@ const renderStock2D = () => {
         ],
         autosize: true
     };
-    Plotly.newPlot(container2DTop.value, [topTrace, topCurrent], layoutTop, { displayModeBar: false, responsive: true });
+    Plotly.newPlot(elTop, [topTrace, topCurrent], layoutTop, { displayModeBar: false, responsive: true });
 
     // --- Stock Side View (Trend vs Structure) ---
     const sideTrace = {
@@ -191,11 +205,13 @@ const renderStock2D = () => {
         ],
         autosize: true
     };
-    Plotly.newPlot(container2DSide.value, [sideTrace, sideCurrent], layoutSide, { displayModeBar: false, responsive: true });
+    Plotly.newPlot(elSide, [sideTrace, sideCurrent], layoutSide, { displayModeBar: false, responsive: true });
 };
 
 const renderSector2D = () => {
-    if (!containerSectorTop.value || !containerSectorSide.value) return;
+    const elTop = containerSectorTop.value;
+    const elSide = containerSectorSide.value;
+    if (!elTop || !elSide || !Plotly) return;
     const C = chartPalette();
 
     const validSector = props.sectorTrace && props.sectorTrace.length > 0
@@ -229,7 +245,7 @@ const renderSector2D = () => {
         ],
         autosize: true
     };
-    Plotly.newPlot(containerSectorTop.value, [ghostTraceTop, ghostHeadTop], layoutTop, { displayModeBar: false, responsive: true });
+    Plotly.newPlot(elTop, [ghostTraceTop, ghostHeadTop], layoutTop, { displayModeBar: false, responsive: true });
 
     // --- Sector Side View ---
     const ghostTraceSide = {
@@ -253,7 +269,7 @@ const renderSector2D = () => {
         ],
         autosize: true
     };
-    Plotly.newPlot(containerSectorSide.value, [ghostTraceSide, ghostHeadSide], layoutSide, { displayModeBar: false, responsive: true });
+    Plotly.newPlot(elSide, [ghostTraceSide, ghostHeadSide], layoutSide, { displayModeBar: false, responsive: true });
 };
 
 watch(() => props.dataPoint, () => {
