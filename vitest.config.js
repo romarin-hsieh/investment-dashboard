@@ -63,7 +63,7 @@ export default defineConfig({
         // WS-I PR 3 ingestion guards: fetcher 24 -> 89.3 stmts / 78.7 branch;
         // ohlcv 37 -> 82.3 stmts / 78.8 branch. Floors at measured-minus-~1.
         'src/lib/fetcher.ts': { statements: 88, branches: 77, functions: 100, lines: 88 },
-        'src/services/ohlcvApi.js': { statements: 81, branches: 77, functions: 100, lines: 81 }
+        'src/services/ohlcvApi.ts': { statements: 81, branches: 77, functions: 100, lines: 81 }
       }
     }
   }

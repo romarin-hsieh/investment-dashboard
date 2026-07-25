@@ -345,7 +345,7 @@ export default {
 
 .detail-card {
     background: var(--bg-card);
-    padding: var(--space-8);
+    padding: var(--card-padding-large);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
