@@ -12,7 +12,7 @@ import '@/utils/widgetPreloader'
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 
 // Import cache warmup service
-import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
+import { cacheWarmupService } from '@/utils/cacheWarmupService'
 
 // Router configuration
 // WS-C PR-C2: All pages are lazy-imported via `() => import(...)` so Vite

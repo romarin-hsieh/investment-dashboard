@@ -2,11 +2,62 @@
 // 在環境版本更新時預載所有股票的技術指標數據
 
 import { hybridTechnicalIndicatorsAPI } from '@/api/hybridTechnicalIndicatorsApi'
-import { performanceCache, CACHE_KEYS } from './performanceCache'
+import { performanceCache } from './performanceCache'
 import { performanceMonitor } from './performanceMonitor'
 import { paths } from './baseUrl'
 
+/** Per-symbol warmup outcome recorded in `warmupResults`. */
+interface WarmupResult {
+  success: boolean
+  duration: number
+  timestamp: string
+  source?: string
+  error?: string
+}
+
+/** Tunables controlling concurrency, retries and the auto-warmup schedule. */
+interface WarmupConfig {
+  maxConcurrent: number
+  batchDelay: number
+  retryAttempts: number
+  retryDelay: number
+  enableAutoWarmup: boolean
+  warmupOnVersionChange: boolean
+  warmupOnFirstLoad: boolean
+  warmupInterval: number
+  minCacheCoverage: number
+}
+
+/** Aggregate statistics computed after a warmup run. */
+interface WarmupStats {
+  total: number
+  successful: number
+  failed: number
+  successRate: number
+  duration: number
+  averageDuration: number
+}
+
+/** `getWarmupStatus()` snapshot. */
+interface WarmupStatus {
+  isWarming: boolean
+  progress: number
+  results: Record<string, WarmupResult>
+  lastWarmupTime: number | null
+  lastWarmupVersion: string | null
+  trackedSymbols: string[]
+  config: WarmupConfig
+}
+
 class CacheWarmupService {
+  isWarming: boolean
+  warmupProgress: number
+  warmupResults: Map<string, WarmupResult>
+  warmupStartTime: number | null
+  warmupEndTime: number | null
+  config: WarmupConfig
+  trackedSymbols: string[]
+
   constructor() {
     this.isWarming = false
     this.warmupProgress = 0
@@ -36,7 +87,7 @@ class CacheWarmupService {
   }
 
   // 啟動緩存預熱服務
-  async start() {
+  async start(): Promise<void> {
     console.log('🔥 Starting Cache Warmup Service...')
 
     // 🚀 開發環境檢測：完全停用預熱
@@ -67,7 +118,7 @@ class CacheWarmupService {
   }
 
   // 檢查是否需要執行預熱
-  async shouldPerformWarmup() {
+  async shouldPerformWarmup(): Promise<{ needed: boolean; reason: string }> {
     try {
       // 檢查版本變更
       const currentVersion = await this.getCurrentVersion()
@@ -118,7 +169,7 @@ class CacheWarmupService {
   }
 
   // 執行緩存預熱
-  async performWarmup() {
+  async performWarmup(): Promise<Map<string, WarmupResult>> {
     if (this.isWarming) {
       console.log('⚠️ Warmup already in progress')
       return this.warmupResults
@@ -171,8 +222,8 @@ class CacheWarmupService {
       console.log(`🎉 Cache warmup completed in ${Math.round(duration / 1000)}s`)
       console.log(`📊 Results: ${stats.successful}/${stats.total} successful (${stats.successRate}%)`)
 
-      // 保存預熱記錄
-      this.saveWarmupRecord(stats)
+      // 保存預熱記錄 (fire-and-forget, as the original — see saveWarmupRecord)
+      void this.saveWarmupRecord(stats)
 
       return this.warmupResults
 
@@ -186,7 +237,7 @@ class CacheWarmupService {
   }
 
   // 預熱單個股票
-  async warmupSymbol(symbol, attempt = 1) {
+  async warmupSymbol(symbol: string, attempt = 1): Promise<WarmupResult> {
     const startTime = Date.now()
 
     try {
@@ -210,7 +261,7 @@ class CacheWarmupService {
       }
 
     } catch (error) {
-      console.error(`❌ Failed to warm up ${symbol} (attempt ${attempt}): ${error.message}`)
+      console.error(`❌ Failed to warm up ${symbol} (attempt ${attempt}): ${(error as Error).message}`)
 
       // 重試機制
       if (attempt <= this.config.retryAttempts) {
@@ -220,7 +271,7 @@ class CacheWarmupService {
       } else {
         return {
           success: false,
-          error: error.message,
+          error: (error as Error).message,
           duration: Date.now() - startTime,
           timestamp: new Date().toISOString()
         }
@@ -229,8 +280,8 @@ class CacheWarmupService {
   }
 
   // 創建批次
-  createBatches(items, batchSize) {
-    const batches = []
+  createBatches<T>(items: T[], batchSize: number): T[][] {
+    const batches: T[][] = []
     for (let i = 0; i < items.length; i += batchSize) {
       batches.push(items.slice(i, i + batchSize))
     }
@@ -238,14 +289,14 @@ class CacheWarmupService {
   }
 
   // 獲取當前版本
-  async getCurrentVersion() {
+  async getCurrentVersion(): Promise<string> {
     try {
       // 獲取正確的 package.json 路徑 (支援 GitHub Pages)
       const packageUrl = this.getPackageJsonUrl()
 
       const response = await fetch(packageUrl)
       if (response.ok) {
-        const pkg = await response.json()
+        const pkg = (await response.json()) as { version?: string }
         return pkg.version || '1.0.0'
       }
     } catch (error) {
@@ -258,7 +309,7 @@ class CacheWarmupService {
   }
 
   // 獲取正確的 package.json URL (支援 GitHub Pages)
-  getPackageJsonUrl() {
+  getPackageJsonUrl(): string {
     // 使用統一的 baseUrl helper。先前這裡發出一個 dynamic import 並在 .then 裡
     // return —— 該回傳值無人接收，方法本身同步走 fallback，import 是純粹的
     // no-op。輸出字串相同（withBase 就是 BASE_URL + path），改為靜態 import
@@ -267,18 +318,18 @@ class CacheWarmupService {
   }
 
   // 獲取上次預熱版本
-  getLastWarmupVersion() {
+  getLastWarmupVersion(): string | null {
     return localStorage.getItem('cache_warmup_version') || null
   }
 
   // 獲取上次預熱時間
-  getLastWarmupTime() {
+  getLastWarmupTime(): number | null {
     const time = localStorage.getItem('cache_warmup_time')
     return time ? parseInt(time) : null
   }
 
   // 獲取緩存統計
-  async getCacheStats() {
+  async getCacheStats(): Promise<{ total: number; cached: number; coverage: number }> {
     let cachedCount = 0
 
     for (const symbol of this.trackedSymbols) {
@@ -301,7 +352,7 @@ class CacheWarmupService {
   }
 
   // 獲取預熱統計
-  getWarmupStats() {
+  getWarmupStats(): WarmupStats {
     const results = Array.from(this.warmupResults.values())
     const successful = results.filter(r => r.success).length
     const failed = results.filter(r => !r.success).length
@@ -311,14 +362,19 @@ class CacheWarmupService {
       successful,
       failed,
       successRate: Math.round((successful / results.length) * 100),
-      duration: this.warmupEndTime - this.warmupStartTime,
+      duration: (this.warmupEndTime as number) - (this.warmupStartTime as number),
       averageDuration: results.reduce((sum, r) => sum + r.duration, 0) / results.length
     }
   }
 
   // 保存預熱記錄
-  saveWarmupRecord(stats) {
-    const currentVersion = this.getCurrentVersion()
+  // NOTE: getCurrentVersion() is async — the original JS called it WITHOUT await
+  // and stored the resulting Promise (localStorage stringified it to
+  // "[object Promise]"). That value is inert (only read when warmupOnVersionChange
+  // is true, which is disabled), and the migration surfaced the missing await;
+  // now awaited so a real version string is persisted.
+  async saveWarmupRecord(stats: WarmupStats): Promise<void> {
+    const currentVersion = await this.getCurrentVersion()
 
     localStorage.setItem('cache_warmup_version', currentVersion)
     localStorage.setItem('cache_warmup_time', Date.now().toString())
@@ -328,7 +384,7 @@ class CacheWarmupService {
   }
 
   // 設置定期預熱
-  schedulePeriodicWarmup() {
+  schedulePeriodicWarmup(): void {
     console.log(`⏰ Scheduled periodic warmup every ${this.config.warmupInterval / 3600000} hours`)
 
     setInterval(async () => {
@@ -342,13 +398,13 @@ class CacheWarmupService {
   }
 
   // 手動觸發預熱
-  async triggerManualWarmup() {
+  async triggerManualWarmup(): Promise<Map<string, WarmupResult>> {
     console.log('🔥 Manual warmup triggered')
     return this.performWarmup()
   }
 
   // 獲取預熱狀態
-  getWarmupStatus() {
+  getWarmupStatus(): WarmupStatus {
     return {
       isWarming: this.isWarming,
       progress: this.warmupProgress,
@@ -361,24 +417,24 @@ class CacheWarmupService {
   }
 
   // 工具函數：延遲
-  sleep(ms) {
+  sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
 
   // 檢測是否為正式環境
-  isProductionEnvironment() {
+  isProductionEnvironment(): boolean {
     // 使用 Vite 的環境變數，更可靠
     return import.meta.env.PROD;
   }
 
   // 更新配置
-  updateConfig(newConfig) {
+  updateConfig(newConfig: Partial<WarmupConfig>): void {
     this.config = { ...this.config, ...newConfig }
     console.log('🔧 Cache warmup config updated:', this.config)
   }
 
   // 添加追蹤股票
-  addTrackedSymbol(symbol) {
+  addTrackedSymbol(symbol: string): void {
     if (!this.trackedSymbols.includes(symbol)) {
       this.trackedSymbols.push(symbol)
       console.log(`➕ Added ${symbol} to tracked symbols`)
@@ -386,7 +442,7 @@ class CacheWarmupService {
   }
 
   // 移除追蹤股票
-  removeTrackedSymbol(symbol) {
+  removeTrackedSymbol(symbol: string): void {
     const index = this.trackedSymbols.indexOf(symbol)
     if (index > -1) {
       this.trackedSymbols.splice(index, 1)

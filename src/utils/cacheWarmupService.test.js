@@ -27,7 +27,7 @@ vi.mock('./performanceMonitor', () => ({
   performanceMonitor: { start: vi.fn(), end: vi.fn() }
 }))
 
-import { cacheWarmupService } from './cacheWarmupService.js'
+import { cacheWarmupService } from './cacheWarmupService'
 import { paths } from './baseUrl'
 
 beforeEach(() => {

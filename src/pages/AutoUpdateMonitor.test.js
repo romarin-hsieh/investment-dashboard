@@ -18,7 +18,7 @@ vi.mock('@/utils/autoUpdateScheduler', () => ({
 vi.mock('@/utils/performanceCache', () => ({
   performanceCache: { getStats: () => ({ memoryCache: 0, localStorage: 0, totalSize: 0 }), clear: vi.fn() }
 }))
-vi.mock('@/utils/cacheWarmupService.js', () => ({
+vi.mock('@/utils/cacheWarmupService', () => ({
   cacheWarmupService: {
     getWarmupStatus: () => ({ isWarming: false, progress: 0, trackedSymbols: [], lastWarmupTime: null }),
     triggerManualWarmup: vi.fn()
