@@ -6,6 +6,12 @@ import { config } from '@vue/test-utils'
 import i18n from './i18n'
 import en from './locales/en.json'
 import zhTW from './locales/zh-TW.json'
+// Register the `toHaveNoViolations` matcher (vitest-axe) for the a11y suite
+// (src/a11y/*.a11y.test.js). Explicit expect.extend — the package's side-effect
+// `extend-expect` entry does not hook Vitest 4's expect. Harmless elsewhere.
+import { expect } from 'vitest'
+import * as axeMatchers from 'vitest-axe/matchers'
+expect.extend(axeMatchers)
 
 // Production lazy-loads messages (empty store at boot); tests need both locales
 // present synchronously. jsdom has no CSP, so vue-i18n's full build compiles the
