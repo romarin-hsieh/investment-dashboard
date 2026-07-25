@@ -39,19 +39,21 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { dataFetcher } from '@/lib/fetcher'
 import { formatNumber } from '@/utils/numberFormat'
 import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
+import type { MarketsIndicator } from '@/types'
 
-export default {
+export default defineComponent({
   name: 'MarketsOverview',
   data() {
     return {
-      marketsIndicators: [],
+      marketsIndicators: [] as MarketsIndicator[],
       loading: false,
-      error: null,
-      lastUpdate: null,
+      error: null as string | null,
+      lastUpdate: null as string | null,
       staleLevel: 'fresh'
     }
   },
@@ -81,7 +83,7 @@ export default {
         
         if (result.data && result.data.macro && result.data.macro.items) {
           this.marketsIndicators = result.data.macro.items
-          this.lastUpdate = result.as_of
+          this.lastUpdate = result.as_of ?? null
           this.staleLevel = result.stale_level
         } else {
           throw new Error(this.$t('marketsOverview.errorNoData'))
@@ -98,8 +100,8 @@ export default {
       await this.loadMarketsData()
     },
 
-    getIndicatorName(id) {
-      const names = {
+    getIndicatorName(id: string) {
+      const names: Record<string, string> = {
         'sp500_index': 'S&P 500',
         'nasdaq_composite': 'NASDAQ',
         'vix_volatility': 'VIX',
@@ -114,7 +116,7 @@ export default {
       return names[id] || id
     },
 
-    formatValue(value, id) {
+    formatValue(value: number | null | undefined, id: string) {
       if (value === null || value === undefined) {
         return this.$t('marketsOverview.notAvailable')
       }
@@ -146,7 +148,7 @@ export default {
       }
     },
 
-    formatTime(timeString) {
+    formatTime(timeString: string | null | undefined) {
       if (!timeString) return ''
       
       return i18nDateTime(timeString, {
@@ -157,7 +159,7 @@ export default {
       }, timeString)
     },
 
-    getTileClass(indicator) {
+    getTileClass(indicator: MarketsIndicator) {
       const classes = ['markets-tile']
       
       if (indicator.value === null || indicator.value === undefined) {
@@ -171,7 +173,7 @@ export default {
       return classes
     },
 
-    getQualityClass(qualityFlag) {
+    getQualityClass(qualityFlag: string) {
       switch (qualityFlag) {
         case 'good': return 'quality-good'
         case 'stale': return 'quality-stale'
@@ -181,7 +183,7 @@ export default {
       }
     },
 
-    getQualityText(qualityFlag) {
+    getQualityText(qualityFlag: string) {
       switch (qualityFlag) {
         case 'good': return this.$t('marketsOverview.qualityGood')
         case 'stale': return this.$t('marketsOverview.qualityStale')
@@ -191,7 +193,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
