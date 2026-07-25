@@ -12,7 +12,7 @@
     </div>
 
     <div class="chart-container" v-if="!loading && !error">
-      <Bar :data="chartData" :options="chartOptions" />
+      <Bar :data="chartData" :options="chartOptions" :aria-label="$t('sectorRotation.chartAriaLabel')" />
       <div ref="tooltip" class="external-tooltip"></div>
     </div>
 

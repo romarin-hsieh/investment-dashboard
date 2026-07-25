@@ -57,11 +57,19 @@ Headless Chromium drives a production build served by `vite preview`.
 ### The a11y gate is a baseline-ratchet
 
 `a11y.spec.ts` fails on any violation whose rule id is **not** in `BASELINE_RULE_IDS` —
-the same shape as the ADR-0013 coverage floors. Today the two primary routes are
-**axe-clean** (contrast included), so the baseline is **empty** and the gate asserts
-zero violations. The set is a documented escape hatch: to intentionally defer a specific
-known issue, add its rule id **with a tracking note**. It may only shrink — never add an
-id to silence a *new* violation; fix the violation.
+the same shape as the ADR-0013 coverage floors. Today the baseline holds exactly one id:
+**`color-contrast`**. `/#/market-overview` is contrast-clean, but `/#/stock-overview`
+renders muted labels (`#7d7d7d` / `#7a7a7a` on white ≈ 4.1–4.3:1, below the 4.5:1 AA
+threshold) — the issue the [2026-07-20 audit](../../audits/2026-07-20-adversarial-uiux-audit.md)
+flagged. It is fixed in the follow-up polish batch (darken `--text-muted`), which then
+deletes the baseline line. The set may only shrink — never add an id to silence a *new*
+violation; fix the violation.
+
+> The value of scanning in a real browser: this violation is invisible to the jsdom
+> layer (no computed style) and was surfaced by the **CI** run, not the local one —
+> local timing let axe scan `/#/stock-overview` before the data-driven cards rendered.
+> The spec now waits for the network to settle before scanning, so the gate is
+> deterministic across environments.
 
 ## Consequences
 
