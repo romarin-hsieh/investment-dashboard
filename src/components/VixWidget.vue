@@ -13,10 +13,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { useTheme } from '@/composables/useTheme';
 
-export default {
+export default defineComponent({
   name: 'VixWidget',
   setup() {
     const { theme } = useTheme()
@@ -29,7 +30,7 @@ export default {
       widgetId: `vix-widget-${Date.now()}`,
       // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
       // timeout if the user navigates away before the script settles.
-      loadTimeoutId: null
+      loadTimeoutId: null as ReturnType<typeof setTimeout> | null
     }
   },
   mounted() {
@@ -45,7 +46,7 @@ export default {
       
       try {
         // 清除容器 (Only the mount point)
-        const container = this.$refs.tvMountPoint
+        const container = this.$refs.tvMountPoint as HTMLElement | undefined
         if (!container) return
         
         // 移除所有子元素
@@ -66,9 +67,9 @@ export default {
     },
 
     async createWidget() {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         this.$nextTick(() => {
-          const container = this.$refs.tvMountPoint
+          const container = this.$refs.tvMountPoint as HTMLElement | undefined
           if (!container) {
             reject(new Error('Container not found'))
             return
@@ -158,14 +159,14 @@ export default {
 
             // 設置載入處理
             script.onload = () => {
-              clearTimeout(this.loadTimeoutId)
+              clearTimeout(this.loadTimeoutId ?? undefined)
               console.log('✅ FRED:VIXCLS widget script loaded')
               this.loading = false
               resolve()
             }
 
             script.onerror = (error) => {
-              clearTimeout(this.loadTimeoutId)
+              clearTimeout(this.loadTimeoutId ?? undefined)
               console.error('❌ VIX widget script failed:', error)
               this.error = true
               this.loading = false
@@ -186,7 +187,7 @@ export default {
       })
     }
   }
-}
+})
 </script>
 
 <style scoped>
