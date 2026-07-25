@@ -53,8 +53,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'VIXIndicator',
   data() {
     return {
@@ -104,7 +106,7 @@ export default {
       console.log('VIX Indicator loaded with mock data')
     }
   }
-}
+})
 </script>
 
 <style scoped>
