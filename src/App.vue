@@ -1,5 +1,7 @@
 <template>
-  <div id="app">
+  <!-- class, not id="app": the index.html mount point already owns id="app", so
+       reusing it here nested two id="app" elements (invalid). See ADR-0015. -->
+  <div class="app-root">
     <Layout>
       <router-view v-slot="{ Component, route }">
         <component :is="Component" :key="route.path" />

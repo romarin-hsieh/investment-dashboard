@@ -111,7 +111,9 @@ export default {
   letter-spacing: 0.02em;
   margin-top: var(--space-6); /* Use whitespace for separation */
   margin-bottom: var(--space-1);
-  opacity: 0.9;
+  /* No opacity: it dimmed the muted count badge below AA contrast
+     (--text-muted #6E6E6E → #7d7d7d ≈ 4.1:1). The token hierarchy already
+     provides the muted look accessibly. See ADR-0015. */
 }
 
 .sector-node:first-child .sector-label {
@@ -140,7 +142,8 @@ export default {
   font-size: var(--text-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  opacity: 0.8;
+  /* No opacity: it dimmed --text-secondary (#595959) to ~#7a7a7a ≈ 4.3:1,
+     below AA. Solid --text-secondary is 7.46:1. See ADR-0015. */
   margin-top: var(--space-2);
 }
 

@@ -58,18 +58,21 @@ Headless Chromium drives a production build served by `vite preview`.
 
 `a11y.spec.ts` fails on any violation whose rule id is **not** in `BASELINE_RULE_IDS` —
 the same shape as the ADR-0013 coverage floors. Today the baseline holds exactly one id:
-**`color-contrast`**. `/#/market-overview` is contrast-clean, but `/#/stock-overview`
-renders muted labels (`#7d7d7d` / `#7a7a7a` on white ≈ 4.1–4.3:1, below the 4.5:1 AA
-threshold) — the issue the [2026-07-20 audit](../../audits/2026-07-20-adversarial-uiux-audit.md)
-flagged. It is fixed in the follow-up polish batch (darken `--text-muted`), which then
-deletes the baseline line. The set may only shrink — never add an id to silence a *new*
-violation; fix the violation.
+**`color-contrast`**. The full-page browser scan (which the jsdom layer cannot do) showed
+it is **app-wide, not localized**: ~93% of the failing nodes are the **semantic price
+colors on white** — up-green `#22ab94` (~2.5:1) and down-red `#f7525f` (~3.3:1) — with the
+remainder `--text-muted` on `--bg-secondary` (`#6e6e6e` / `#ebe7e4` ≈ 4.15:1, the combo the
+[2026-07-20 audit](../../audits/2026-07-20-adversarial-uiux-audit.md) named). Meeting 4.5:1
+AA for the up/down language is a **brand/design decision**, so it is baselined for a
+dedicated a11y pass rather than changed unilaterally. The set may only shrink — never add
+an id to silence a *new* violation; fix the violation.
 
-> The value of scanning in a real browser: this violation is invisible to the jsdom
-> layer (no computed style) and was surfaced by the **CI** run, not the local one —
-> local timing let axe scan `/#/stock-overview` before the data-driven cards rendered.
-> The spec now waits for the network to settle before scanning, so the gate is
-> deterministic across environments.
+> The value of scanning in a real browser: contrast is invisible to the jsdom layer (no
+> computed style) and its true, app-wide scope was surfaced by the **CI** run, not the
+> local one — local timing let axe scan before the data-driven content rendered. The spec
+> now waits for the network to settle before scanning, so the gate is deterministic. The
+> polish batch removed one contributor (dimmed nav-tree labels — opacity over
+> `--text-muted`/`--text-secondary` in `TOCTree.vue`) and fixed the duplicate `id="app"`.
 
 ## Consequences
 
@@ -79,10 +82,11 @@ violation; fix the violation.
 - **Vitest scope**: `e2e/**` is excluded from Vitest (`vitest.config.js`) — the Playwright
   specs are `*.spec.ts` too but import `@playwright/test`. `vue-tsc` already ignores
   `e2e/` (outside `tsconfig` `include`).
-- **A real bug surfaced immediately**: `App.vue`'s root reuses the mount-point
-  `id="app"`, so the DOM nests two `id="app"` elements. Modern axe no longer flags a
-  generic duplicate id, but it is a genuine defect — tracked for the follow-up polish
-  batch (rename to a unique id + update the single `#app` style selector).
+- **A real bug surfaced immediately**: `App.vue`'s root reused the mount-point
+  `id="app"`, so the DOM nested two `id="app"` elements. Modern axe no longer flags a
+  generic duplicate id, but it is a genuine defect — **fixed** in the follow-up polish
+  batch (App.vue's root is now `class="app-root"`, and the `#app` style rule covers both
+  the mount point and `.app-root`).
 - **CI cost**: one extra job (~2–3 min: install browser, build, run). Isolated from the
   fast Vitest/type gate so it never slows the inner loop.
 
