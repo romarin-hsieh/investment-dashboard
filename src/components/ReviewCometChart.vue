@@ -1,8 +1,28 @@
-<script setup>
+<script setup lang="ts">
 import { ref, shallowRef, onMounted, onUnmounted, watch, nextTick, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { quantDataService } from '@/services/QuantDataService';
 import { formatNumber } from '@/utils/numberFormat';
+import type { PlotlyStatic } from 'plotly.js-dist-min';
+
+/** One kinetic-state coordinate (loose — trace points may omit axes). */
+interface CometPoint {
+  x_trend?: number
+  y_momentum?: number
+  z_structure?: number
+  [key: string]: unknown
+}
+
+/** The per-ticker quant record this chart reads (QuantTicker is opaque). */
+interface CometTicker {
+  ticker?: string
+  signal: string
+  commentary?: string
+  coordinates: CometPoint
+  trace?: CometPoint[]
+  sector_trace?: CometPoint[]
+  [key: string]: unknown
+}
 
 const { t } = useI18n();
 
@@ -11,8 +31,8 @@ const { t } = useI18n();
 // only when a user actually renders the Comet Chart. Keeping the top-level
 // import would pull Plotly into the initial JS bundle for every page visit.
 // Cached at module scope so we pay the import cost once per tab.
-let Plotly = null;
-async function loadPlotly () {
+let Plotly: PlotlyStatic | null = null;
+async function loadPlotly (): Promise<PlotlyStatic> {
   if (Plotly) return Plotly;
   Plotly = (await import('plotly.js-dist-min')).default;
   return Plotly;
@@ -24,21 +44,21 @@ const props = defineProps({
 });
 
 // Use shallowRef for performance (don't make the massive data object reactive)
-const cometData = shallowRef(null);
+const cometData = shallowRef<CometTicker | null>(null);
 const loading = ref(true);
-const error = ref(null);
+const error = ref<string | null>(null);
 
 // Chart Refs
-const chart3D = ref(null);
-const chartStockTop = ref(null);
-const chartStockSide = ref(null);
-const chartSectorTop = ref(null);
-const chartSectorSide = ref(null);
+const chart3D = ref<HTMLElement | null>(null);
+const chartStockTop = ref<HTMLElement | null>(null);
+const chartStockSide = ref<HTMLElement | null>(null);
+const chartSectorTop = ref<HTMLElement | null>(null);
+const chartSectorSide = ref<HTMLElement | null>(null);
 
 // Popover State
-const activePopover = ref(null);
+const activePopover = ref<string | null>(null);
 
-const togglePopover = (id) => {
+const togglePopover = (id: string) => {
     if (activePopover.value === id) activePopover.value = null;
     else activePopover.value = id;
 };
@@ -57,7 +77,7 @@ const getThemeColors = () => {
     };
 };
 
-const getCommentary = (d) => {
+const getCommentary = (d: CometTicker) => {
     if (d.commentary && d.commentary.length > 5) return d.commentary;
     const sig = d.signal;
     const x = d.coordinates.x_trend;
@@ -77,16 +97,18 @@ const fetchData = async () => {
         await new Promise(r => setTimeout(r, 10));
         
         const tickerData = await quantDataService.getTickerData(props.symbol);
-        
+
         if (tickerData) {
-            cometData.value = tickerData;
+            // QuantTicker is opaque ({ ticker; [key]: unknown }); cast to the
+            // richer shape this chart reads at the service boundary.
+            cometData.value = tickerData as unknown as CometTicker;
             error.value = null;
         } else {
             error.value = t('cometChart.errors.noDataForSymbol');
             cometData.value = null;
         }
     } catch (e) {
-        error.value = e.message;
+        error.value = (e as Error).message;
     } finally {
         loading.value = false;
         // Wait for DOM to update (removal of Skeleton) before rendering
@@ -100,7 +122,7 @@ const historicalMetrics = computed(() => {
     if (!cometData.value || !cometData.value.trace) return null;
     const trace = cometData.value.trace;
     const len = trace.length;
-    const getPoint = (idx) => {
+    const getPoint = (idx: number) => {
         if (idx < 0) return { x_trend: 0, y_momentum: 0, z_structure: 0 };
         return trace[idx];
     };
@@ -111,7 +133,7 @@ const historicalMetrics = computed(() => {
     };
 });
 
-const commonLayout = (title, xaxis, yaxis) => {
+const commonLayout = (_title: string, xaxis: string, yaxis: string) => {
     const c = getThemeColors();
     return {
         paper_bgcolor: 'rgba(0,0,0,0)',
@@ -131,13 +153,15 @@ const commonLayout = (title, xaxis, yaxis) => {
 
 // Staggered Rendering to prevent UI Freeze
 const renderChartsSequentially = async () => {
-    if (!cometData.value) return;
+    // Capture into a const before the await so the null-guard narrowing
+    // survives (a ref .value can be re-widened across the await point).
+    const d = cometData.value;
+    if (!d) return;
 
     // Lazy-load Plotly on first render (WS-C PR-C1). First call pays the
     // ~1.2 MB fetch; subsequent calls reuse the cached module.
-    await loadPlotly();
+    const P = await loadPlotly();
 
-    const d = cometData.value;
     const history = d.trace || [];
     const sector = d.sector_trace || [];
     const validSector = sector.length > 0 ? sector : [];
@@ -148,7 +172,7 @@ const renderChartsSequentially = async () => {
 
     // 1. Stock Top (Priority 1)
     if (chartStockTop.value) {
-        Plotly.newPlot(chartStockTop.value, [
+        P.newPlot(chartStockTop.value, [
             { x: history.map(p => p.x_trend), y: history.map(p => p.y_momentum), mode: 'lines', line: { color: '#2962FF', width: 2 }, type: 'scatter', hoverinfo: 'none' },
             { x: [d.coordinates.x_trend], y: [d.coordinates.y_momentum], mode: 'markers', marker: { size: 8, color: '#F23645' }, type: 'scatter' }
         ], { ...commonLayout('Stock Top', 'Trend (X)', 'Momentum (Y)'), shapes: [
@@ -161,7 +185,7 @@ const renderChartsSequentially = async () => {
 
     // 2. Stock Side
     if (chartStockSide.value) {
-        Plotly.newPlot(chartStockSide.value, [
+        P.newPlot(chartStockSide.value, [
             { x: history.map(p => p.x_trend), y: history.map(p => p.z_structure), mode: 'lines', line: { color: '#8E24AA', width: 2 }, type: 'scatter', hoverinfo: 'none' },
             { x: [d.coordinates.x_trend], y: [d.coordinates.z_structure], mode: 'markers', marker: { size: 8, color: '#F23645' }, type: 'scatter' }
         ], { ...commonLayout('Stock Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
@@ -172,7 +196,7 @@ const renderChartsSequentially = async () => {
     // 3. Sector Top
     if (chartSectorTop.value && validSector.length > 0) {
         const last = validSector[validSector.length-1];
-        Plotly.newPlot(chartSectorTop.value, [
+        P.newPlot(chartSectorTop.value, [
             { x: validSector.map(p => p.x_trend), y: validSector.map(p => p.y_momentum), mode: 'lines', line: { color: '#888888', width: 2, dash: 'dot' }, type: 'scatter', hoverinfo: 'none' },
             { x: [last.x_trend], y: [last.y_momentum], mode: 'markers', marker: { size: 6, color: '#888888' }, type: 'scatter' }
         ], { ...commonLayout('Sector Top', 'Trend (X)', 'Momentum (Y)'), shapes: [
@@ -186,7 +210,7 @@ const renderChartsSequentially = async () => {
     // 4. Sector Side
     if (chartSectorSide.value && validSector.length > 0) {
         const last = validSector[validSector.length-1];
-        Plotly.newPlot(chartSectorSide.value, [
+        P.newPlot(chartSectorSide.value, [
             { x: validSector.map(p => p.x_trend), y: validSector.map(p => p.z_structure), mode: 'lines', line: { color: '#888888', width: 2, dash: 'dot' }, type: 'scatter', hoverinfo: 'none' },
             { x: [last.x_trend], y: [last.z_structure], mode: 'markers', marker: { size: 6, color: '#888888' }, type: 'scatter' }
         ], { ...commonLayout('Sector Side', 'Trend (X)', 'Structure (Z)'), shapes: [{ type: 'rect', x0: -3, x1: 3, y0: 0.8, y1: 1.1, fillcolor: '#FFD700', opacity: 0.1, line: { width: 0 } }] }, { displayModeBar: false, responsive: true });
@@ -196,7 +220,7 @@ const renderChartsSequentially = async () => {
 
     // 5. 3D Chart (Heaviest)
     if (chart3D.value) {
-        Plotly.newPlot(chart3D.value, [
+        P.newPlot(chart3D.value, [
             { x: history.map(p => p.x_trend), y: history.map(p => p.y_momentum), z: history.map(p => p.z_structure), mode: 'lines', line: { color: '#2962FF', width: 4 }, type: 'scatter3d', hoverinfo: 'none' },
             { x: [d.coordinates.x_trend], y: [d.coordinates.y_momentum], z: [d.coordinates.z_structure], mode: 'markers', marker: { size: 5, color: '#F23645' }, type: 'scatter3d' },
             { type: "mesh3d", x: [-3, 3, 3, -3], y: [0, 0, 1, 1], z: [0.8, 0.8, 0.8, 0.8], color: '#FFD700', opacity: 0.1 }
