@@ -43,7 +43,7 @@
                 v-if="field.type === 'boolean' || field.type === 'checkbox'" 
                 type="checkbox" 
                 :checked="localModel[field.key]"
-                @change="updateValue(field.key, $event.target.checked)"
+                @change="updateValue(field.key, ($event.target as HTMLInputElement).checked)"
               >
               
               <!-- Number -->
@@ -54,14 +54,14 @@
                 :min="field.min"
                 :max="field.max"
                 :step="field.step || 1"
-                @input="updateValue(field.key, Number($event.target.value))"
+                @input="updateValue(field.key, Number(($event.target as HTMLInputElement).value))"
               >
               
               <!-- Select -->
               <select 
                 v-else-if="field.type === 'select'"
                 :value="localModel[field.key]"
-                @change="updateValue(field.key, $event.target.value)"
+                @change="updateValue(field.key, ($event.target as HTMLInputElement).value)"
               >
                 <option v-for="opt in field.options" :key="opt" :value="opt">{{ opt }}</option>
               </select>
@@ -71,7 +71,7 @@
                 v-else 
                 type="text" 
                 :value="localModel[field.key]" 
-                @input="updateValue(field.key, $event.target.value)"
+                @input="updateValue(field.key, ($event.target as HTMLInputElement).value)"
               >
             </div>
           </div>
@@ -87,7 +87,7 @@
                 <select 
                     v-if="field.type === 'select'"
                     :value="localModel[field.key]"
-                    @change="updateValue(field.key, $event.target.value)"
+                    @change="updateValue(field.key, ($event.target as HTMLInputElement).value)"
                 >
                     <option v-for="opt in field.options" :key="opt" :value="opt">{{ opt }}</option>
                 </select>
@@ -104,7 +104,7 @@
                    type="text" 
                    :value="localModel[field.key]" 
                    class="color-input"
-                   @change="updateValue(field.key, $event.target.value)"
+                   @change="updateValue(field.key, ($event.target as HTMLInputElement).value)"
                 >
             </div>
           </div>
@@ -119,8 +119,19 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
+
+/** One configurable field in the settings schema. A dynamic descriptor whose
+ *  attributes (label/type/group/min/max/step/options/tooltip/…) vary per field
+ *  and bind straight into template inputs — hence `any`-valued at this boundary. */
+interface SchemaField {
+  key: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any
+}
+
+export default defineComponent({
   name: 'GenericSettingsModal',
   props: {
     isOpen: {
@@ -132,12 +143,12 @@ export default {
       default: ''
     },
     schema: {
-      type: Array,
+      type: Array as PropType<SchemaField[]>,
       required: true,
       // Example: [{ key: 'len', label: 'Length', type: 'number', group: 'Inputs' }]
     },
     modelValue: {
-      type: Object,
+      type: Object as PropType<Record<string, any>>,
       required: true
     }
   },
@@ -145,12 +156,12 @@ export default {
   data() {
     return {
       activeTab: 'Inputs',
-      localModel: {},
+      localModel: {} as Record<string, any>,
       // PR-F2: a11y bookkeeping. `previouslyFocused` saves the element that
       // had focus before the modal opened so we can restore it on close.
       // `titleId` is generated once per instance so `aria-labelledby` points
       // at the header `<h3>` regardless of how many modals coexist.
-      previouslyFocused: null,
+      previouslyFocused: null as HTMLElement | null,
       titleId: `settings-modal-title-${Math.random().toString(36).slice(2, 9)}`
     }
   },
@@ -166,7 +177,7 @@ export default {
     }
   },
   watch: {
-    isOpen(val) {
+    isOpen(val: boolean) {
       if (val) {
         // Clone modelValue to localModel to avoid mutating parent state directly
         this.localModel = JSON.parse(JSON.stringify(this.modelValue));
@@ -174,9 +185,9 @@ export default {
         // close, then move focus into the modal (close button is the
         // semantically correct first stop — every modal has it; tab-btns
         // come right after).
-        this.previouslyFocused = document.activeElement || document.body;
+        this.previouslyFocused = (document.activeElement || document.body) as HTMLElement;
         this.$nextTick(() => {
-          this.$refs.closeBtn?.focus();
+          (this.$refs.closeBtn as HTMLElement | undefined)?.focus();
         });
       } else {
         // Restore focus to whatever had it before the modal opened.
@@ -189,10 +200,10 @@ export default {
     }
   },
   methods: {
-    tabLabel(tab) {
+    tabLabel(tab: string) {
       // `tab` is a stable internal key ('Inputs' | 'Style'); only its display
       // text is localized, the comparison/state value stays untranslated.
-      const map = { Inputs: 'settingsModal.tabInputs', Style: 'settingsModal.tabStyle' };
+      const map: Record<string, string> = { Inputs: 'settingsModal.tabInputs', Style: 'settingsModal.tabStyle' };
       return map[tab] ? this.$t(map[tab]) : tab;
     },
     close() {
@@ -202,17 +213,17 @@ export default {
       this.$emit('save', this.localModel);
       this.close();
     },
-    updateValue(key, value) {
+    updateValue(key: string, value: unknown) {
       this.localModel[key] = value;
     },
     // PR-F2: standard focus-trap cycle. Query all focusables inside the
     // overlay (close, tabs, form inputs, Cancel/Save), wrap focus at
     // boundaries. Unlike the simpler `KeyboardShortcutsOverlay` (1
     // focusable), this modal has many focusables so the cycle is real.
-    handleTab(event) {
-      const overlay = this.$refs.overlay;
+    handleTab(event: KeyboardEvent) {
+      const overlay = this.$refs.overlay as HTMLElement | undefined;
       if (!overlay) return;
-      const focusables = overlay.querySelectorAll(
+      const focusables = overlay.querySelectorAll<HTMLElement>(
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
       );
       if (focusables.length === 0) return;
@@ -228,7 +239,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
