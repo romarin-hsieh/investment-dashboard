@@ -2,10 +2,42 @@
 // 支援動態 API (Yahoo Finance) 和靜態文件兩種模式
 import { dataFetcher } from '@/lib/fetcher'
 import { dynamicMetadataService } from './dynamicMetadataService'
+import type { SymbolMetadata } from './dynamicMetadataService'
 import { directMetadataLoader } from './directMetadataLoader'
+import type { MetadataFile, SymbolMetadataItem } from './directMetadataLoader'
 import { paths } from './baseUrl'
 
+/** In-memory cache entry: the metadata item plus the epoch-ms it was stored. */
+interface CacheEntry {
+  data: SymbolMetadataItem
+  timestamp: number
+}
+
+/** `warmupCache()` summary (static and dynamic modes report a different subset). */
+interface WarmupSummary {
+  duration: number
+  symbolsProcessed: number
+  mode?: string
+  successRate?: string
+}
+
+/** `getCacheStats()` result — mode label plus mode-specific fields. */
+interface CacheStatsResult {
+  mode: string
+  [key: string]: unknown
+}
+
 class MetadataService {
+  cache: Map<string, CacheEntry>
+  cacheExpiry: number
+  lastFetch: number | null
+  lastAttempt: number | null
+  metadata: MetadataFile | null
+  useDynamicAPI: boolean
+  fetchCooldown: number
+  // Lazily managed — not set in the constructor (mirrors the original JS).
+  _loadingPromise: Promise<void> | null = null
+
   constructor() {
     this.cache = new Map()
     this.cacheExpiry = 24 * 60 * 60 * 1000 // 24 hours
@@ -17,13 +49,13 @@ class MetadataService {
   }
 
   // 設定是否使用動態 API
-  setUseDynamicAPI(useDynamic) {
+  setUseDynamicAPI(useDynamic: boolean): void {
     this.useDynamicAPI = useDynamic
     console.log(`Metadata service mode: ${useDynamic ? 'Dynamic API' : 'Static File'}`)
   }
 
   // Get metadata for a specific symbol
-  async getSymbolMetadata(symbol) {
+  async getSymbolMetadata(symbol: string): Promise<SymbolMetadata | SymbolMetadataItem> {
     if (this.useDynamicAPI) {
       // 使用動態 Yahoo Finance API
       return await dynamicMetadataService.getSymbolMetadata(symbol)
@@ -34,10 +66,10 @@ class MetadataService {
   }
 
   // 原有的靜態文件方式 (保留作為備用)
-  async getStaticSymbolMetadata(symbol) {
+  async getStaticSymbolMetadata(symbol: string): Promise<SymbolMetadataItem> {
     // Check if we have cached metadata
     if (this.cache.has(symbol)) {
-      const cached = this.cache.get(symbol)
+      const cached = this.cache.get(symbol)!
       if (Date.now() - cached.timestamp < this.cacheExpiry) {
         return cached.data
       }
@@ -62,7 +94,7 @@ class MetadataService {
 
     console.warn(`❌ No metadata found for ${symbol}, using default`)
     // Return default metadata if not found
-    const defaultMetadata = {
+    const defaultMetadata: SymbolMetadataItem = {
       symbol,
       sector: 'Unknown',
       industry: 'Unknown Industry',
@@ -81,7 +113,7 @@ class MetadataService {
   }
 
   // 設置批量元數據 (供優化器使用)
-  setBulkMetadata(items) {
+  setBulkMetadata(items: SymbolMetadataItem[]): void {
     if (!items || !Array.isArray(items)) {
       console.warn('❌ Invalid items passed to setBulkMetadata')
       return
@@ -108,7 +140,7 @@ class MetadataService {
   }
 
   // 批量獲取元數據
-  async getBatchMetadata(symbols) {
+  async getBatchMetadata(symbols: string[]): Promise<Map<string, SymbolMetadata> | Map<string, SymbolMetadataItem>> {
     if (this.useDynamicAPI) {
       return await dynamicMetadataService.getBatchMetadata(symbols)
     } else {
@@ -118,11 +150,11 @@ class MetadataService {
       // 1. Ensure metadata is loaded (ONCE)
       await this.refreshMetadata()
 
-      const results = new Map()
+      const results = new Map<string, SymbolMetadataItem>()
 
       // 2. Create a quick lookup map if metadata exists
-      const metadataMap = new Map()
-      const metadataMapLower = new Map() // Case-insensitive lookup
+      const metadataMap = new Map<string, SymbolMetadataItem>()
+      const metadataMapLower = new Map<string, SymbolMetadataItem>() // Case-insensitive lookup
 
       if (this.metadata && Array.isArray(this.metadata.items)) {
         console.log(`🔍 SAMA-DEBUG: metadata.items is Array of length ${this.metadata.items.length}`)
@@ -130,7 +162,7 @@ class MetadataService {
         // Debug specific symbols
         const debugSymbols = ['TSM', 'CRM', 'NVDA']
         debugSymbols.forEach(sym => {
-          const found = this.metadata.items.find(i => i.symbol === sym)
+          const found = this.metadata!.items!.find(i => i.symbol === sym)
           console.log(`🔍 SAMA-DEBUG: Content Check [${sym}]:`, found ? 'FOUND' : 'MISSING', found ? `(Conf: ${found.confidence})` : '')
         })
 
@@ -150,10 +182,10 @@ class MetadataService {
       for (const symbol of symbols) {
         // Try cache first
         if (this.cache.has(symbol)) {
-          const cached = this.cache.get(symbol)
+          const cached = this.cache.get(symbol)!
           if (Date.now() - cached.timestamp < this.cacheExpiry) {
             // Ensure we don't return cached "Unknown" if we have better data now
-            if (cached.data.confidence > 0 || !metadataMap.has(symbol)) {
+            if ((cached.data.confidence as number) > 0 || !metadataMap.has(symbol)) {
               results.set(symbol, cached.data)
               continue
             }
@@ -161,7 +193,7 @@ class MetadataService {
         }
 
         // Try loaded metadata (Exact match)
-        let metadata = metadataMap.get(symbol)
+        let metadata: SymbolMetadataItem | undefined = metadataMap.get(symbol)
 
         // Try case-insensitive match
         if (!metadata) {
@@ -204,12 +236,12 @@ class MetadataService {
   }
 
   // 獲取 metadata 文件的正確路徑
-  getMetadataUrl() {
+  getMetadataUrl(): string {
     return paths.symbolsMetadata()
   }
 
   // Refresh metadata from API
-  async refreshMetadata() {
+  async refreshMetadata(): Promise<void> {
     // Return existing promise if loading
     if (this._loadingPromise) {
       // console.log('🔄 Metadata refresh already in progress, waiting...')
@@ -228,9 +260,14 @@ class MetadataService {
         console.log('🔄 SAMA-DEBUG: Refreshing metadata from dataFetcher...')
 
         // 嘗試直接載入 JSON 檔案作為備用方案
-        let result;
+        // `result` holds whichever loader succeeded; only `.data` is read. The
+        // fetcher returns FetchResult<MetadataSnapshot> and the direct loader a
+        // MetadataFile — the same symbols_metadata.json shape at runtime, but
+        // the two interfaces model sector/industry as null vs undefined, so the
+        // fetcher result is asserted through `unknown` to the shape we consume.
+        let result: { data: MetadataFile | null } | undefined
         try {
-          result = await dataFetcher.fetchMetadataSnapshot()
+          result = (await dataFetcher.fetchMetadataSnapshot()) as unknown as { data: MetadataFile | null }
         } catch (fetcherError) {
           console.warn('❌ dataFetcher failed, trying direct loader:', fetcherError)
 
@@ -273,7 +310,7 @@ class MetadataService {
   }
 
   // Get default exchange for a symbol
-  getDefaultExchange(symbol) {
+  getDefaultExchange(symbol: string): string {
     const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS']
     const nyseSymbols = ['TSM', 'ORCL', 'RDW']
 
@@ -287,7 +324,7 @@ class MetadataService {
   }
 
   // Get industry display name (兼容兩種模式)
-  getIndustryDisplay(metadata) {
+  getIndustryDisplay(metadata: SymbolMetadata | null | undefined): string {
     if (this.useDynamicAPI) {
       return dynamicMetadataService.getIndustryDisplay(metadata)
     }
@@ -301,7 +338,7 @@ class MetadataService {
   }
 
   // Get industry category for styling (兼容兩種模式)
-  getIndustryCategory(metadata) {
+  getIndustryCategory(metadata: SymbolMetadata | null | undefined): string {
     if (this.useDynamicAPI) {
       return dynamicMetadataService.getIndustryCategory(metadata)
     }
@@ -309,7 +346,7 @@ class MetadataService {
     // 原有邏輯
     const industry = this.getIndustryDisplay(metadata)
 
-    const industryCategories = {
+    const industryCategories: Record<string, string> = {
       'Industrial IoT Solutions': 'tech-iot',
       'Satellite Imaging & Analytics': 'tech-satellite',
       'Database Software': 'tech-software',
@@ -326,7 +363,7 @@ class MetadataService {
   }
 
   // 預熱緩存
-  async warmupCache(symbols) {
+  async warmupCache(symbols: string[]): Promise<WarmupSummary> {
     if (this.useDynamicAPI) {
       return await dynamicMetadataService.warmupCache(symbols)
     } else {
@@ -352,7 +389,7 @@ class MetadataService {
   }
 
   // Clear cache
-  clearCache() {
+  clearCache(): void {
     this.cache.clear()
     this.metadata = null
     this.lastFetch = null
@@ -363,7 +400,7 @@ class MetadataService {
   }
 
   // 獲取緩存統計
-  getCacheStats() {
+  getCacheStats(): CacheStatsResult {
     if (this.useDynamicAPI) {
       return {
         mode: 'dynamic',
@@ -380,7 +417,7 @@ class MetadataService {
   }
 
   // 獲取當前模式
-  getCurrentMode() {
+  getCurrentMode(): 'dynamic' | 'static' {
     return this.useDynamicAPI ? 'dynamic' : 'static'
   }
 }
