@@ -28,8 +28,18 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+interface MarketIndex {
+  name: string
+  symbol: string
+  price: number
+  change: number
+  changePercent: number
+}
+
+export default defineComponent({
   name: 'MarketIndices',
   data() {
     return {
@@ -94,37 +104,37 @@ export default {
     }
   },
   methods: {
-    indexName(index) {
+    indexName(index: MarketIndex) {
       const key = `marketIndices.names.${index.symbol}`
       const translated = this.$t(key)
       // Fall back to the data-provided name if no translation exists for the symbol
       return translated === key ? index.name : translated
     },
 
-    formatPrice(price) {
+    formatPrice(price: number) {
       return new Intl.NumberFormat('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       }).format(price)
     },
 
-    formatChange(change) {
+    formatChange(change: number) {
       const sign = change >= 0 ? '+' : ''
       return `${sign}${this.formatPrice(Math.abs(change))}`
     },
 
-    formatPercent(percent) {
+    formatPercent(percent: number) {
       const sign = percent >= 0 ? '+' : ''
       return `${sign}${percent.toFixed(2)}%`
     },
 
-    getChangeClass(change) {
+    getChangeClass(change: number) {
       if (change > 0) return 'positive'
       if (change < 0) return 'negative'
       return 'neutral'
     }
   }
-}
+})
 </script>
 
 <style scoped>
