@@ -99,19 +99,31 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { withDataBase } from '@/utils/baseUrl';
 import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache';
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi';
 import { formatTime as i18nTime, formatDateTime as i18nDateTime } from '@/utils/dateFormat';
 
-export default {
+interface PipelineStatus {
+  lastUpdate: string | null
+  totalFiles: number
+  symbolsCount: number
+  generatedAt: string | null
+  status: string
+  source: string
+}
+interface UniverseInfo { total: number; sectors: unknown[]; sources: string[] }
+interface LogEntry { id: number; timestamp: string; level: string; message: string }
+
+export default defineComponent({
   name: 'SystemManager',
   data() {
     return {
       loading: false,
-      error: null,
-      
+      error: null as string | null,
+
       // Real Pipeline Status
       pipelineStatus: {
         lastUpdate: null,
@@ -120,17 +132,17 @@ export default {
         generatedAt: null,
         status: 'Unknown', // 'Clean', 'Stale', 'Error'
         source: 'N/A'
-      },
-      
+      } as PipelineStatus,
+
       // Universe Info
       universeInfo: {
         total: 0,
         sectors: [],
         sources: []
-      },
+      } as UniverseInfo,
 
       // System Logs (simulated for now, could be real alerts)
-      systemLogs: []
+      systemLogs: [] as LogEntry[]
     }
   },
   
@@ -200,7 +212,7 @@ export default {
             const metaRes = await metaPromise;
             if (!metaRes.ok) throw new Error(`HTTP error! status: ${metaRes.status}`);
             const meta = await metaRes.json();
-            const items = meta.items || meta.symbols || [];
+            const items: Array<{ sector?: unknown }> = meta.items || meta.symbols || [];
             this.universeInfo = {
                 total: items.length,
                 sectors: [...new Set(items.map(s => s.sector))].filter(Boolean),
@@ -212,14 +224,14 @@ export default {
         }
 
       } catch (err) {
-        this.error = err.message;
-        this.addLog('error', this.$t('systemManager.log.systemCheckFailed', { error: err.message }));
+        this.error = (err as Error).message;
+        this.addLog('error', this.$t('systemManager.log.systemCheckFailed', { error: (err as Error).message }));
       } finally {
         this.loading = false;
       }
     },
     
-    addLog(level, message) {
+    addLog(level: string, message: string) {
       this.systemLogs.unshift({
         id: Date.now(),
         timestamp: new Date().toISOString(),
@@ -229,12 +241,12 @@ export default {
       if (this.systemLogs.length > 50) this.systemLogs.pop();
     },
     
-    formatDate(isoString) {
+    formatDate(isoString: string | null | undefined) {
       if (!isoString) return this.$t('systemManager.never');
       return i18nDateTime(isoString);
     },
 
-    formatTime(timestamp) {
+    formatTime(timestamp: string) {
       return i18nTime(timestamp);
     },
 
@@ -250,12 +262,12 @@ export default {
             this.addLog('success', this.$t('systemManager.log.cacheCleared'));
             window.location.reload();
         } catch (e) {
-            this.error = e.message;
-            this.addLog('error', this.$t('systemManager.log.cacheClearFailed', { error: e.message }));
+            this.error = (e as Error).message;
+            this.addLog('error', this.$t('systemManager.log.cacheClearFailed', { error: (e as Error).message }));
         }
     }
   }
-}
+})
 </script>
 
 <style scoped>
