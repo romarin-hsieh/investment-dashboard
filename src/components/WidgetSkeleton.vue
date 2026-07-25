@@ -32,8 +32,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'WidgetSkeleton',
   props: {
     showHeader: {
@@ -65,7 +67,7 @@ export default {
       return this.type === 'chart'
     }
   }
-}
+})
 </script>
 
 <style scoped>
