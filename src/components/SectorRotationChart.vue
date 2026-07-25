@@ -27,7 +27,8 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import {
   Chart as ChartJS,
   Title,
@@ -35,7 +36,10 @@ import {
   Legend,
   BarElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  type ChartData,
+  type ChartOptions,
+  type TooltipModel
 } from 'chart.js'
 import { Bar } from 'vue-chartjs'
 import { formatNumber } from '@/utils/numberFormat'
@@ -45,8 +49,8 @@ import { getToken } from '@/utils/designTokens'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 // Yahoo Finance Sector Standards (Unified)
-const SECTOR_COLORS = {
-  "Technology": "#00d1b2", 
+const SECTOR_COLORS: Record<string, string> = {
+  "Technology": "#00d1b2",
   "Financial Services": "#3273dc",
   "Healthcare": "#48c774",
   "Consumer Cyclical": "#ffdd57", 
@@ -59,7 +63,7 @@ const SECTOR_COLORS = {
   "Utilities": "#209cee" 
 }
 
-const NORMALIZE_MAP = {
+const NORMALIZE_MAP: Record<string, string> = {
   "Information Technology": "Technology",
   "Technology": "Technology",
   "Financials": "Financial Services",
@@ -84,20 +88,27 @@ const NORMALIZE_MAP = {
 
 const DEFAULT_COLOR = "#b5b5b5"
 
-export default {
+export default defineComponent({
   name: 'SectorRotationChart',
   components: { Bar },
   data() {
     return {
       loading: true,
-      error: null,
+      error: null as string | null,
       managerCount: 0,
-      rotationData: {}, // Raw data
+      rotationData: {} as Record<string, unknown>, // Raw data
       chartData: {
         labels: [],
         datasets: []
-      },
-      chartOptions: {
+      } as ChartData<'bar'>
+    }
+  },
+  computed: {
+    // Options live in a computed (not data) so `this.externalTooltipHandler`
+    // resolves and the ChartOptions<'bar'> return type contextually types the
+    // nested tick/tooltip callbacks.
+    chartOptions(): ChartOptions<'bar'> {
+      return {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -125,10 +136,10 @@ export default {
             }
           },
           tooltip: {
-            enabled: false, 
+            enabled: false,
             mode: 'index',
             intersect: false,
-            external: this.externalTooltipHandler
+            external: (context) => this.externalTooltipHandler(context)
           }
         }
       }
@@ -138,14 +149,14 @@ export default {
     await this.fetchData()
   },
   methods: {
-    externalTooltipHandler(context) {
+    externalTooltipHandler(context: { chart: ChartJS; tooltip: TooltipModel<'bar'> }) {
       // Tooltip Element
       const { chart, tooltip } = context
-      const tooltipEl = this.$refs.tooltip
+      const tooltipEl = this.$refs.tooltip as HTMLElement
 
       // Hide if no tooltip
       if (tooltip.opacity === 0) {
-        tooltipEl.style.opacity = 0
+        tooltipEl.style.opacity = '0'
         return
       }
 
@@ -166,11 +177,15 @@ export default {
         const dataPoints = tooltip.dataPoints.sort((a, b) => b.datasetIndex - a.datasetIndex)
 
         dataPoints.forEach(dataPoint => {
-          const dataset = chart.data.datasets[dataPoint.datasetIndex]
+          const dataset = chart.data.datasets[dataPoint.datasetIndex] as {
+            label?: string
+            backgroundColor?: string
+            data: Array<number | { y?: number } | null>
+          }
           const currentVal = dataPoint.parsed.y || 0
           const label = dataset.label
           const color = dataset.backgroundColor
-          
+
           let changeHtml = ''
           const dataIndex = dataPoint.dataIndex
 
@@ -229,7 +244,7 @@ export default {
            top = 0
         }
 
-        tooltipEl.style.opacity = 1
+        tooltipEl.style.opacity = '1'
         tooltipEl.style.left = left + 'px'
         tooltipEl.style.top = top + 'px'
         tooltipEl.style.transform = 'none' 
@@ -250,7 +265,7 @@ export default {
         this.loading = false
       }
     },
-    processData(rotationMap) {
+    processData(rotationMap: Record<string, Record<string, number>>) {
       if (!rotationMap) return
 
       // Sort Periods (e.g., "2024 Q1", "2024 Q2")
@@ -259,8 +274,8 @@ export default {
 
       // Normalization + Aggregation Step
       // We need to create a new map: normalizedMap[period][UnifiedSector] = Sum(Percentages)
-      const normalizedMap = {}
-      const allSectors = new Set()
+      const normalizedMap: Record<string, Record<string, number>> = {}
+      const allSectors = new Set<string>()
 
       periods.forEach(p => {
         normalizedMap[p] = {}
@@ -321,7 +336,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
