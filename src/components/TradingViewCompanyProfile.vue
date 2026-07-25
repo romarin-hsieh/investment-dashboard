@@ -15,8 +15,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'TradingViewCompanyProfile',
   props: {
     symbol: {
@@ -44,7 +46,10 @@ export default {
     return {
       loaded: false,
       error: false,
-      widgetId: `company-profile-${Date.now()}`
+      widgetId: `company-profile-${Date.now()}`,
+      // Mount guard set in mounted()/beforeUnmount(); declared here so vue-tsc
+      // sees it. Read only in JS lifecycle guards, never in the template.
+      isMounted: false
     }
   },
   computed: {
@@ -87,7 +92,7 @@ export default {
 
     createCompanyProfile() {
       if (!this.isMounted) return
-      const container = this.$refs.widgetContainer
+      const container = this.$refs.widgetContainer as HTMLElement | undefined
       if (!container) return
 
       // Clean existing
@@ -160,7 +165,7 @@ export default {
       await this.loadCompanyProfile()
     }
   }
-}
+})
 </script>
 
 <style scoped>

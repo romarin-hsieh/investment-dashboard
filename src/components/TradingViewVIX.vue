@@ -20,8 +20,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'TradingViewVIX',
   props: {
     colorTheme: {
@@ -48,7 +50,7 @@ export default {
       widgetId: `vix-widget-${Date.now()}`,
       // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
       // timeout if the user navigates away before the script settles.
-      loadTimeoutId: null
+      loadTimeoutId: null as ReturnType<typeof setTimeout> | null
     }
   },
   mounted() {
@@ -72,7 +74,7 @@ export default {
     },
 
     createVIX() {
-      const container = this.$refs.container
+      const container = this.$refs.container as HTMLElement | undefined
       if (!container) return
 
       // 清除現有的 widget
@@ -165,7 +167,7 @@ export default {
       await this.loadVIX()
     }
   }
-}
+})
 </script>
 
 <style scoped>

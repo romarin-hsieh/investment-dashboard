@@ -14,10 +14,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
 
-export default {
+export default defineComponent({
   name: 'TradingViewFundamentalData',
   components: {
     WidgetSkeleton
@@ -52,7 +53,10 @@ export default {
     return {
       loaded: false,
       error: false,
-      widgetId: `fundamental-data-${Date.now()}`
+      widgetId: `fundamental-data-${Date.now()}`,
+      // Mount guard set in mounted()/beforeUnmount(); declared here so vue-tsc
+      // sees it. Read only in JS lifecycle guards, never in the template.
+      isMounted: false
     }
   },
   computed: {
@@ -95,7 +99,7 @@ export default {
 
     createFundamentalData() {
       if (!this.isMounted) return
-      const container = this.$refs.widgetContainer
+      const container = this.$refs.widgetContainer as HTMLElement | undefined
       if (!container) return
 
       // Clean existing
@@ -121,8 +125,6 @@ export default {
             "colorTheme": this.colorTheme,
             "displayMode": "regular",
             "isTransparent": true,
-            "locale": "zh_TW",
-            "width": "100%",
             "locale": "zh_TW",
             "width": "100%",
             "height": "100%",
@@ -170,7 +172,7 @@ export default {
       await this.loadFundamentalData()
     }
   }
-}
+})
 </script>
 
 <style scoped>
