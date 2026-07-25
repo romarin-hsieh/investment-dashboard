@@ -386,7 +386,7 @@ export type { DataVersionService };
 // 創建單例
 export const dataVersionService = new DataVersionService();
 
-// Auto-start is handled by AutoUpdateScheduler in main.js
+// Auto-start is handled by AutoUpdateScheduler in main.ts
 // if (typeof window !== 'undefined') {
 //   // 延遲啟動，避免影響初始頁面載入
 //   setTimeout(() => {
