@@ -1,7 +1,73 @@
 // 動態元數據服務 - 使用 Yahoo Finance API 獲取即時的 sector 和 industry 信息
 import { yahooFinanceAPI } from '@/api/yahooFinanceApi'
 
+/**
+ * Normalised per-symbol metadata produced by every path (live API, static
+ * fallback, default). Pass-through fields (marketCap, website, …) can be
+ * `null` where the source omits them; the string fields always carry a value
+ * because each constructor supplies a default.
+ */
+export interface SymbolMetadata {
+  symbol: string
+  sector: string
+  industry: string
+  exchange: string
+  marketCap: number | null
+  marketCapFormatted: string
+  marketCapCategory: string
+  currency: string
+  country: string
+  website: string | null
+  employees: number | null
+  businessSummary: string | null
+  confidence: number
+  source: string
+  lastUpdated: string
+  isLive: boolean
+}
+
+/** In-memory cache entry: the metadata plus the epoch-ms it was stored. */
+interface CacheEntry {
+  data: SymbolMetadata
+  timestamp: number
+}
+
+/** Per-symbol diagnostic returned inside `getCacheStats()`. */
+interface CacheStatEntry {
+  age: number
+  expired: boolean
+  sector: string
+  industry: string
+  confidence: number
+}
+
+/** `getCacheStats()` return shape. */
+interface CacheStats {
+  totalCached: number
+  cacheEntries: Record<string, CacheStatEntry>
+}
+
+/** Confidence-bucket histogram from `generateConfidenceDistribution()`. */
+interface ConfidenceDistribution {
+  high_confidence_0_90: number
+  medium_confidence_0_75: number
+  low_confidence_0_50: number
+  unknown_confidence: number
+}
+
+/** `warmupCache()` summary. */
+interface WarmupResult {
+  duration: number
+  symbolsProcessed: number
+  successRate: string
+}
+
 class DynamicMetadataService {
+  private cache: Map<string, CacheEntry>
+  private cacheExpiry: number
+  private batchSize: number
+  private requestDelay: number
+
   constructor() {
     this.cache = new Map()
     this.cacheExpiry = 24 * 60 * 60 * 1000 // 24 hours - sector/industry 信息變化不頻繁
@@ -10,11 +76,11 @@ class DynamicMetadataService {
   }
 
   // 獲取單個股票的元數據
-  async getSymbolMetadata(symbol) {
+  async getSymbolMetadata(symbol: string): Promise<SymbolMetadata> {
     try {
       // 檢查緩存
       if (this.cache.has(symbol)) {
-        const cached = this.cache.get(symbol)
+        const cached = this.cache.get(symbol)!
         if (Date.now() - cached.timestamp < this.cacheExpiry) {
           console.log(`Using cached metadata for ${symbol}`)
           return cached.data
@@ -27,23 +93,41 @@ class DynamicMetadataService {
       const stockInfo = await yahooFinanceAPI.getStockInfo(symbol)
 
       if (stockInfo && !stockInfo.error && stockInfo.sector !== 'Unknown') {
+        // API 回傳的是鬆散型別 (StockInfo 的 index signature 為 unknown)；於此邊界
+        // 斷言我們期待的欄位形狀，賦值時不做任何 runtime 轉換 (行為與 .js 一致)。
+        const info = stockInfo as {
+          sector?: string
+          industry?: string
+          exchange?: string
+          marketCap: number | null
+          marketCapFormatted: string
+          marketCapCategory?: string
+          currency?: string
+          country?: string
+          website: string | null
+          employees: number | null
+          businessSummary: string | null
+          confidence?: number
+          lastUpdated?: string
+        }
+
         // 轉換為標準元數據格式
-        const metadata = {
+        const metadata: SymbolMetadata = {
           symbol: symbol,
-          sector: stockInfo.sector || 'Unknown',
-          industry: stockInfo.industry || 'Unknown Industry',
-          exchange: stockInfo.exchange || this.getDefaultExchange(symbol),
-          marketCap: stockInfo.marketCap,
-          marketCapFormatted: stockInfo.marketCapFormatted,
-          marketCapCategory: stockInfo.marketCapCategory || 'unknown',
-          currency: stockInfo.currency || 'USD',
-          country: stockInfo.country || 'Unknown',
-          website: stockInfo.website,
-          employees: stockInfo.employees,
-          businessSummary: stockInfo.businessSummary,
-          confidence: stockInfo.confidence || 0.95, // Yahoo Finance API 信心度很高
+          sector: info.sector || 'Unknown',
+          industry: info.industry || 'Unknown Industry',
+          exchange: info.exchange || this.getDefaultExchange(symbol),
+          marketCap: info.marketCap,
+          marketCapFormatted: info.marketCapFormatted,
+          marketCapCategory: info.marketCapCategory || 'unknown',
+          currency: info.currency || 'USD',
+          country: info.country || 'Unknown',
+          website: info.website,
+          employees: info.employees,
+          businessSummary: info.businessSummary,
+          confidence: info.confidence || 0.95, // Yahoo Finance API 信心度很高
           source: 'Yahoo Finance API (Live)',
-          lastUpdated: stockInfo.lastUpdated || new Date().toISOString(),
+          lastUpdated: info.lastUpdated || new Date().toISOString(),
           isLive: true // 標記為即時數據
         }
 
@@ -72,8 +156,8 @@ class DynamicMetadataService {
   }
 
   // 靜態回退數據 (基於原有的 symbols_metadata.json)
-  getStaticFallbackMetadata(symbol) {
-    const staticData = {
+  getStaticFallbackMetadata(symbol: string): SymbolMetadata {
+    const staticData: Record<string, { sector: string; industry: string; confidence: number }> = {
       'ASTS': { sector: 'Communication Services', industry: 'Satellite Communications', confidence: 0.75 },
       'RIVN': { sector: 'Consumer Cyclical', industry: 'Electric Vehicles', confidence: 0.90 },
       'PL': { sector: 'Technology', industry: 'Satellite Imaging & Analytics', confidence: 0.90 },
@@ -106,7 +190,7 @@ class DynamicMetadataService {
       confidence: 0.0
     }
 
-    const metadata = {
+    const metadata: SymbolMetadata = {
       symbol: symbol,
       sector: fallbackData.sector,
       industry: fallbackData.industry,
@@ -141,8 +225,8 @@ class DynamicMetadataService {
   }
 
   // 批量獲取多個股票的元數據
-  async getBatchMetadata(symbols) {
-    const results = new Map()
+  async getBatchMetadata(symbols: string[]): Promise<Map<string, SymbolMetadata>> {
+    const results = new Map<string, SymbolMetadata>()
     const batches = this.createBatches(symbols, this.batchSize)
 
     console.log(`Fetching metadata for ${symbols.length} symbols in ${batches.length} batches...`)
@@ -178,7 +262,7 @@ class DynamicMetadataService {
   }
 
   // 獲取默認元數據
-  getDefaultMetadata(symbol) {
+  getDefaultMetadata(symbol: string): SymbolMetadata {
     return {
       symbol: symbol,
       sector: 'Unknown',
@@ -200,7 +284,7 @@ class DynamicMetadataService {
   }
 
   // 獲取默認交易所
-  getDefaultExchange(symbol) {
+  getDefaultExchange(symbol: string): string {
     const nasdaqSymbols = ['AAPL', 'MSFT', 'GOOGL', 'GOOG', 'AMZN', 'TSLA', 'NVDA', 'META', 'NFLX', 'RKLB', 'ASTS', 'RIVN', 'MDB', 'ONDS', 'PL', 'AVAV', 'CRM', 'AVGO', 'LEU', 'SMR', 'CRWV', 'IONQ', 'PLTR', 'HIMS']
     const nyseSymbols = ['TSM', 'ORCL', 'RDW']
 
@@ -214,7 +298,7 @@ class DynamicMetadataService {
   }
 
   // 獲取行業顯示名稱 (兼容舊版 API)
-  getIndustryDisplay(metadata) {
+  getIndustryDisplay(metadata: SymbolMetadata | null | undefined): string {
     if (!metadata || metadata.confidence < 0.7) {
       return 'Unknown Industry'
     }
@@ -223,10 +307,10 @@ class DynamicMetadataService {
   }
 
   // 獲取行業分類 (用於 CSS 樣式)
-  getIndustryCategory(metadata) {
+  getIndustryCategory(metadata: SymbolMetadata | null | undefined): string {
     const industry = this.getIndustryDisplay(metadata)
 
-    const industryCategories = {
+    const industryCategories: Record<string, string> = {
       // 科技類
       'Software - Application': 'tech-software',
       'Software - Infrastructure': 'tech-software',
@@ -270,8 +354,8 @@ class DynamicMetadataService {
   }
 
   // 生成行業統計
-  generateSectorGrouping(metadataMap) {
-    const sectorGrouping = {}
+  generateSectorGrouping(metadataMap: Map<string, SymbolMetadata>): Record<string, string[]> {
+    const sectorGrouping: Record<string, string[]> = {}
 
     for (const [symbol, metadata] of metadataMap) {
       const sector = metadata.sector || 'Unknown'
@@ -287,15 +371,15 @@ class DynamicMetadataService {
   }
 
   // 生成信心度分佈統計
-  generateConfidenceDistribution(metadataMap) {
-    const distribution = {
+  generateConfidenceDistribution(metadataMap: Map<string, SymbolMetadata>): ConfidenceDistribution {
+    const distribution: ConfidenceDistribution = {
       high_confidence_0_90: 0,
       medium_confidence_0_75: 0,
       low_confidence_0_50: 0,
       unknown_confidence: 0
     }
 
-    for (const [symbol, metadata] of metadataMap) {
+    for (const [, metadata] of metadataMap) {
       const confidence = metadata.confidence || 0
 
       if (confidence >= 0.90) {
@@ -313,8 +397,8 @@ class DynamicMetadataService {
   }
 
   // 創建批次
-  createBatches(array, batchSize) {
-    const batches = []
+  createBatches<T>(array: T[], batchSize: number): T[][] {
+    const batches: T[][] = []
     for (let i = 0; i < array.length; i += batchSize) {
       batches.push(array.slice(i, i + batchSize))
     }
@@ -322,19 +406,19 @@ class DynamicMetadataService {
   }
 
   // 延遲函數
-  delay(ms) {
+  delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
 
   // 清除緩存
-  clearCache() {
+  clearCache(): void {
     this.cache.clear()
     console.log('Dynamic metadata cache cleared')
   }
 
   // 獲取緩存統計
-  getCacheStats() {
-    const stats = {
+  getCacheStats(): CacheStats {
+    const stats: CacheStats = {
       totalCached: this.cache.size,
       cacheEntries: {}
     }
@@ -353,7 +437,7 @@ class DynamicMetadataService {
   }
 
   // 預熱緩存 - 為常用股票預先獲取元數據
-  async warmupCache(symbols) {
+  async warmupCache(symbols: string[]): Promise<WarmupResult> {
     console.log(`Warming up metadata cache for ${symbols.length} symbols...`)
 
     const startTime = Date.now()
