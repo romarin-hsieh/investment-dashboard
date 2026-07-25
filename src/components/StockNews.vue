@@ -53,10 +53,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { formatDate as i18nDate } from '@/utils/dateFormat'
 
-export default {
+/** A Yahoo Finance news article (loose — only the read fields are named). */
+interface NewsItem {
+  providerPublishTime?: number
+  title?: string
+  link?: string
+  publisher?: string
+  summary?: string
+  type?: string
+  thumbnail?: { resolutions: Array<{ url?: string }> }
+  [key: string]: unknown
+}
+
+export default defineComponent({
   name: 'StockNews',
   props: {
     symbol: {
@@ -71,8 +84,8 @@ export default {
   data() {
     return {
       loading: true,
-      error: null,
-      news: []
+      error: null as string | null,
+      news: [] as NewsItem[]
     }
   },
   mounted() {
@@ -106,13 +119,13 @@ export default {
         
       } catch (error) {
         console.error(`Failed to load news for ${this.symbol}:`, error);
-        this.error = error.message;
+        this.error = (error as Error).message;
       } finally {
         this.loading = false;
       }
     },
     
-    async fetchYahooNews(symbol) {
+    async fetchYahooNews(symbol: string): Promise<NewsItem[]> {
       // 使用 CORS 代理服務
       const corsProxies = [
         'https://yfinance-proxy.romarinhsieh.workers.dev/?',
@@ -147,7 +160,7 @@ export default {
           }
           
         } catch (error) {
-          console.warn(`Proxy failed for news:`, error.message);
+          console.warn(`Proxy failed for news:`, (error as Error).message);
           continue;
         }
       }
@@ -155,12 +168,12 @@ export default {
       throw new Error('All news proxies failed');
     },
     
-    formatDate(timestamp) {
+    formatDate(timestamp: number | null | undefined) {
       if (!timestamp) return this.$t('stockNews.unknownDate');
 
       const date = new Date(timestamp * 1000);
       const now = new Date();
-      const diffMs = now - date;
+      const diffMs = now.getTime() - date.getTime();
       const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
       const diffDays = Math.floor(diffHours / 24);
 
@@ -180,23 +193,23 @@ export default {
       }
     },
     
-    truncateText(text, maxLength) {
+    truncateText(text: string | null | undefined, maxLength: number) {
       if (!text) return '';
       if (text.length <= maxLength) return text;
       return text.substring(0, maxLength).trim() + '...';
     },
-    
-    openArticle(link) {
+
+    openArticle(link: string | null | undefined) {
       if (link) {
         window.open(link, '_blank', 'noopener,noreferrer');
       }
     },
-    
-    handleImageError(event) {
-      event.target.style.display = 'none';
+
+    handleImageError(event: Event) {
+      (event.target as HTMLElement).style.display = 'none';
     }
   }
-}
+})
 </script>
 
 <style scoped>
