@@ -274,7 +274,7 @@
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 import { withDataBase } from '@/utils/baseUrl'
 import { performanceCache } from '@/utils/performanceCache'
-import { cacheWarmupService } from '@/utils/cacheWarmupService.js'
+import { cacheWarmupService } from '@/utils/cacheWarmupService'
 import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 
 export default {
