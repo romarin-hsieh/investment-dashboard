@@ -38,7 +38,10 @@ export default defineConfig({
         ]
       : [])
   ],
-  base: process.env.NODE_ENV === 'production' ? '/investment-dashboard/' : '/',
+  // E2E (Playwright) previews at the server root, so `E2E=1` forces base '/'
+  // regardless of the production GitHub-Pages subpath. BASE_URL propagates to the
+  // baseUrl helper, so data fetches resolve under '/' too. See ADR-0015.
+  base: process.env.E2E ? '/' : (process.env.NODE_ENV === 'production' ? '/investment-dashboard/' : '/'),
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')

@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig, configDefaults } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 
@@ -13,6 +13,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
+    // Keep default discovery (src/ AND scripts/ hold *.test.js), but drop e2e/:
+    // the Playwright specs there are *.spec.ts too and import @playwright/test,
+    // so they must run via `npm run test:e2e`, not Vitest. See ADR-0015.
+    exclude: [...configDefaults.exclude, 'e2e/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
