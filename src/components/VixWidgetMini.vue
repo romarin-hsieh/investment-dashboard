@@ -11,8 +11,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'VixWidgetMini',
   data() {
     return {
@@ -20,7 +22,7 @@ export default {
       error: false,
       // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
       // timeout if the user navigates away before the script settles.
-      loadTimeoutId: null
+      loadTimeoutId: null as ReturnType<typeof setTimeout> | null
     }
   },
   mounted() {
@@ -35,7 +37,7 @@ export default {
       this.error = false
       
       try {
-        const container = this.$refs.vixContainer
+        const container = this.$refs.vixContainer as HTMLElement | undefined
         if (!container) return
         
         // 清除容器
@@ -126,7 +128,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>

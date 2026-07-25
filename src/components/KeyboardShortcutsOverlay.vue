@@ -29,7 +29,8 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
 // PR-E4: focus-trap + focus-restore for the help dialog. Standard
 // modal-a11y pattern — Tab/Shift-Tab cycle focus inside the overlay,
 // opening saves the previously-focused element and closing restores
@@ -37,26 +38,31 @@
 // close button), so the trap collapses to "Tab keeps focus here";
 // if more focusables are added later (e.g. action buttons inside
 // list items), the cycle handler already covers them.
-export default {
+interface ShortcutBinding {
+  key: string
+  description: string
+}
+
+export default defineComponent({
   name: 'KeyboardShortcutsOverlay',
   props: {
     visible: { type: Boolean, default: false },
-    bindings: { type: Array, required: true }
+    bindings: { type: Array as PropType<ShortcutBinding[]>, required: true }
   },
   emits: ['close'],
   data () {
-    return { previouslyFocused: null }
+    return { previouslyFocused: null as HTMLElement | null }
   },
   watch: {
-    visible (now, before) {
+    visible (now: boolean, before: boolean) {
       if (now && !before) {
         // Remember what had focus before the overlay opened so we can
         // restore it on close. document.activeElement is null in some
         // edge cases (e.g. dialog opened from non-DOM event); fall back
         // to body which is the spec-default.
-        this.previouslyFocused = document.activeElement || document.body
+        this.previouslyFocused = (document.activeElement || document.body) as HTMLElement
         this.$nextTick(() => {
-          this.$refs.closeBtn?.focus()
+          (this.$refs.closeBtn as HTMLElement | undefined)?.focus()
         })
       } else if (!now && before) {
         const target = this.previouslyFocused
@@ -68,17 +74,17 @@ export default {
     }
   },
   methods: {
-    displayKey (key) {
+    displayKey (key: string) {
       if (key === 'Enter') return '↵'
       if (key === 'Escape') return 'Esc'
       if (key === 'ArrowUp') return '↑'
       if (key === 'ArrowDown') return '↓'
       return key
     },
-    handleTab (event) {
-      const overlay = this.$refs.overlay
+    handleTab (event: KeyboardEvent) {
+      const overlay = this.$refs.overlay as HTMLElement | undefined
       if (!overlay) return
-      const focusables = overlay.querySelectorAll(
+      const focusables = overlay.querySelectorAll<HTMLElement>(
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
       )
       if (focusables.length === 0) return
@@ -98,7 +104,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
