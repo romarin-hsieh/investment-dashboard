@@ -44,8 +44,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'StockMarketInsight',
   props: {
     colorTheme: {
@@ -75,8 +77,8 @@ export default {
       weeklyWidgetId: `weekly-market-${Date.now()}`,
       // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
       // timeouts if the user navigates away before the scripts settle.
-      dailyTimeoutId: null,
-      weeklyTimeoutId: null
+      dailyTimeoutId: null as ReturnType<typeof setTimeout> | null,
+      weeklyTimeoutId: null as ReturnType<typeof setTimeout> | null
     }
   },
   mounted() {
@@ -94,7 +96,7 @@ export default {
     },
 
     createDailyWidget() {
-      const container = this.$refs.dailyContainer
+      const container = this.$refs.dailyContainer as HTMLElement | undefined
       if (!container) return
 
       // 清除現有的 widget
@@ -186,7 +188,7 @@ export default {
     },
 
     createWeeklyWidget() {
-      const container = this.$refs.weeklyContainer
+      const container = this.$refs.weeklyContainer as HTMLElement | undefined
       if (!container) return
 
       // 清除現有的 widget
@@ -291,7 +293,7 @@ export default {
       this.createWeeklyWidget()
     }
   }
-}
+})
 </script>
 
 <style scoped>
