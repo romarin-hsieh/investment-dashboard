@@ -92,14 +92,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { useTheme } from '../composables/useTheme'
 import { useLocale } from '../composables/useLocale'
 
 // Routes surfaced by the Tools disclosure — used to mark the toggle active.
 const TOOLS_ROUTES = ['/system-manager', '/technical-manager', '/auto-update-monitor', '/settings']
 
-export default {
+export default defineComponent({
   name: 'Layout',
   setup() {
     const { theme, toggleTheme } = useTheme()
@@ -132,20 +133,22 @@ export default {
     document.removeEventListener('click', this.onDocClick)
   },
   methods: {
-    onDocKeydown(e) {
+    onDocKeydown(e: KeyboardEvent) {
       if (e.key === 'Escape' && this.toolsOpen) {
         this.toolsOpen = false
         // Return focus to the toggle so keyboard users are not stranded.
-        this.$refs.toolsRoot?.querySelector('.nav-tools-toggle')?.focus()
+        const toolsRoot = this.$refs.toolsRoot as HTMLElement | undefined
+        toolsRoot?.querySelector<HTMLElement>('.nav-tools-toggle')?.focus()
       }
     },
-    onDocClick(e) {
-      if (this.toolsOpen && this.$refs.toolsRoot && !this.$refs.toolsRoot.contains(e.target)) {
+    onDocClick(e: MouseEvent) {
+      const toolsRoot = this.$refs.toolsRoot as HTMLElement | undefined
+      if (this.toolsOpen && toolsRoot && !toolsRoot.contains(e.target as Node)) {
         this.toolsOpen = false
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
