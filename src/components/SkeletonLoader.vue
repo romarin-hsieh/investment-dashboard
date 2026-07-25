@@ -56,8 +56,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'SkeletonLoader',
   data() {
     return {
@@ -72,7 +74,7 @@ export default {
       ]
     }
   }
-}
+})
 </script>
 
 <style scoped lang="scss">

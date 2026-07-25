@@ -8,17 +8,18 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import StockOverview from '@/components/StockOverview.vue'
 import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 
-export default {
+export default defineComponent({
   name: 'StockDashboard',
   components: {
     StockOverview,
     PerformanceMonitor
   }
-}
+})
 </script>
 
 <style scoped>
