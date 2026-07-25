@@ -13,10 +13,12 @@ import AxeBuilder from '@axe-core/playwright'
  * id to silence a newly-introduced violation, fix the violation instead.
  */
 const BASELINE_RULE_IDS = new Set<string>([
-  // color-contrast: /#/stock-overview renders muted labels (#7d7d7d / #7a7a7a on
-  // white ≈ 4.1–4.3:1 < 4.5:1 AA) — the issue the 2026-07-20 UI/UX audit flagged.
-  // /#/market-overview is already contrast-clean. Fixed in the follow-up polish
-  // batch (darken --text-muted), which then removes this line.
+  // color-contrast — BASELINED (design decision, not a quick fix). ~93% of the
+  // failing nodes are the semantic price colors on white: up-green #22ab94
+  // (~2.5:1) and down-red #f7525f (~3.3:1). Meeting 4.5:1 AA means restyling the
+  // brand's up/down language app-wide — deferred to a dedicated a11y pass. The
+  // remainder is --text-muted on --bg-secondary (#6e6e6e/#ebe7e4 ≈ 4.15:1).
+  // This PR did remove one contributor (dimmed nav-tree labels, TOCTree.vue).
   'color-contrast',
 ])
 
