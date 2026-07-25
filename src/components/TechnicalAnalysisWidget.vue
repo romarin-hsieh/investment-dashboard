@@ -17,11 +17,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
 import { useTheme } from '@/composables/useTheme'
 
-export default {
+export default defineComponent({
   name: 'TechnicalAnalysisWidget',
   setup() {
     const { theme } = useTheme()
@@ -47,7 +48,7 @@ export default {
       error: false,
       loadStartTime: 0,
       isVisible: false,
-      observer: null,
+      observer: null as IntersectionObserver | null,
       retryCount: 0
     }
   },
@@ -67,19 +68,19 @@ export default {
   methods: {
     setupIntersectionObserver() {
       // 根據優先級設置不同的 rootMargin
-      const rootMargins = {
+      const rootMargins: Record<number, string> = {
         1: '300px', // 高優先級：提前 300px 載入
         2: '150px', // 中優先級：提前 150px 載入
         3: '50px'   // 低優先級：提前 50px 載入
       }
 
-      this.observer = new IntersectionObserver(
+      const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && !this.loaded && !this.error) {
               this.isVisible = true
               this.loadWidget()
-              this.observer.disconnect() // 載入後停止觀察
+              observer.disconnect() // 載入後停止觀察
             }
           })
         },
@@ -88,8 +89,9 @@ export default {
           threshold: 0.1
         }
       )
+      this.observer = observer
 
-      this.observer.observe(this.$refs.container)
+      observer.observe(this.$refs.container as Element)
     },
 
     async loadWidget() {
@@ -99,7 +101,7 @@ export default {
 
       try {
         // 根據優先級添加延遲
-        const delays = {
+        const delays: Record<number, number> = {
           1: 0,     // 高優先級：立即載入
           2: 300,   // 中優先級：延遲 300ms
           3: 600    // 低優先級：延遲 600ms
@@ -125,9 +127,9 @@ export default {
     },
 
     async createWidget() {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         this.$nextTick(async () => {
-          const container = this.$refs.container
+          const container = this.$refs.container as HTMLElement | undefined
           if (!container) {
             reject(new Error('Container not found'))
             return
@@ -144,7 +146,7 @@ export default {
           script.innerHTML = JSON.stringify(config)
           
           // 調整 timeout - 根據優先級和重試次數
-          const baseTimeouts = {
+          const baseTimeouts: Record<number, number> = {
             1: 8000,   // 高優先級：8秒
             2: 12000,  // 中優先級：12秒
             3: 15000   // 低優先級：15秒
@@ -216,11 +218,11 @@ export default {
       console.log(`Technical Analysis widget ${this.symbol} retrying in ${backoffDelay}ms (attempt ${this.retryCount}/${maxRetries})`)
       
       await new Promise(resolve => setTimeout(resolve, backoffDelay))
-      
+
       this.setupIntersectionObserver()
     }
   }
-}
+})
 </script>
 
 <style scoped>

@@ -23,11 +23,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, watch } from 'vue'
 import { useTheme } from '@/composables/useTheme'
-import { watch } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'MarketRegimeWidget',
   props: {
     symbol: {
@@ -53,7 +53,7 @@ export default {
       error: false,
       loadStartTime: 0,
       isVisible: false,
-      observer: null
+      observer: null as IntersectionObserver | null
     }
   },
   computed: {
@@ -80,19 +80,19 @@ export default {
   },
   methods: {
     setupIntersectionObserver() {
-      const rootMargins = {
+      const rootMargins: Record<number, string> = {
         1: '300px',
-        2: '150px', 
+        2: '150px',
         3: '50px'
       }
 
-      this.observer = new IntersectionObserver(
+      const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && !this.loaded && !this.error) {
               this.isVisible = true
               this.loadWidget()
-              this.observer.disconnect()
+              observer.disconnect()
             }
           })
         },
@@ -101,8 +101,9 @@ export default {
           threshold: 0.1
         }
       )
+      this.observer = observer
 
-      this.observer.observe(this.$refs.container)
+      observer.observe(this.$refs.container as Element)
     },
 
     async loadWidget() {
@@ -111,7 +112,7 @@ export default {
       this.error = false
 
       try {
-        const delays = {
+        const delays: Record<number, number> = {
           1: 0,
           2: 300,
           3: 600
@@ -131,9 +132,9 @@ export default {
     },
 
     async createWidget() {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         this.$nextTick(async () => {
-          const container = this.$refs.container
+          const container = this.$refs.container as HTMLElement | undefined
           if (!container) {
             reject(new Error('Container not found'))
             return
@@ -219,7 +220,7 @@ export default {
       this.setupIntersectionObserver()
     }
   }
-}
+})
 </script>
 
 <style scoped>
