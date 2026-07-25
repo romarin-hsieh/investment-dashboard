@@ -39,6 +39,7 @@
           <h3>{{ $t('market.topStories') }}</h3>
         </div>
         <LazyTradingViewWidget
+          widget-type="Market Top Stories"
           :config="topStoriesConfig"
           script-url="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
           height="650px"
@@ -117,17 +118,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
 import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
 import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
-import { defineAsyncComponent } from 'vue'
+import { defineComponent, defineAsyncComponent } from 'vue'
 import { formatDate as i18nDate } from '@/utils/dateFormat'
 
-export default {
+export default defineComponent({
   name: 'MarketDashboard',
   components: {
     LazyTradingViewWidget,
@@ -143,7 +144,7 @@ export default {
   data() {
     return {
       loading: true,
-      error: null,
+      error: null as string | null,
       vixKey: Date.now() // 添加 VIX 專用的 key
     }
   },
@@ -383,7 +384,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
