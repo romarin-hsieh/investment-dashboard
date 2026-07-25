@@ -27,22 +27,54 @@
 </template>
 
 
-<script>
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-import { ohlcvApi } from '@/services/ohlcvApi'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, type ChartData, type ChartOptions, type LegendItem } from 'chart.js'
+import { ohlcvApi, type OhlcvData } from '@/services/ohlcvApi'
 import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
 import { formatNumber as fmtNumber } from '@/utils/numberFormat'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-export default {
+/** One horizontal price bin of the volume profile. */
+interface Bin {
+  min: number
+  max: number
+  totalVolume: number
+  smartBuy: number
+  smartSell: number
+  netSmartShares: number
+}
+
+/** Insider transaction row from the Dataroma payload (loose — read fields only). */
+interface DataromaTx {
+  transaction_date?: string
+  transaction_type?: string
+  price?: string | number
+  shares?: number
+}
+
+/** Superinvestor quarterly-activity row (loose — read fields only). */
+interface DataromaActivityItem {
+  reported_price?: string | number
+  shares_changed?: number
+  type?: string
+}
+
+/** The subset of the Dataroma payload this profile maps into bins. */
+interface DataromaData {
+  insiders?: { transactions?: DataromaTx[] }
+  activity?: Record<string, DataromaActivityItem[]>
+}
+
+export default defineComponent({
   name: 'SmartMoneyVolumeProfile',
   components: { Bar },
   props: {
     symbol: { type: String, required: true },
-    dataromaData: { type: Object, default: null }
+    dataromaData: { type: Object as PropType<DataromaData>, default: null }
   },
   setup() {
     const { theme } = useTheme()
@@ -51,15 +83,16 @@ export default {
   data() {
     return {
       loading: false,
-      error: null,
-      chartData: null,
-      ohlcv: null,
+      error: null as string | null,
+      chartData: null as ChartData<'bar'> | null,
+      ohlcv: null as OhlcvData | null,
+      generatedBins: null as Bin[] | null,
       selectedRange: '6mo'
     }
   },
   computed: {
     selectedRangeLabel() {
-        const map = {
+        const map: Record<string, string> = {
             '6mo': this.$t('smartMoney.rangeShort.6mo'),
             '1y': this.$t('smartMoney.rangeShort.1y'),
             '5y': this.$t('smartMoney.rangeShort.5y')
@@ -67,7 +100,7 @@ export default {
         return map[this.selectedRange] || this.$t('smartMoney.rangeShort.6mo');
     },
     isDark() { return this.theme === 'dark' },
-    chartOptions() {
+    chartOptions(): ChartOptions<'bar'> {
       // Touch `theme` so options re-read tokens on light/dark toggle.
       void this.theme;
       return {
@@ -91,12 +124,12 @@ export default {
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: getToken('--text-secondary'), generateLabels: this.generateLegendLabels }
+            labels: { color: getToken('--text-secondary'), generateLabels: () => this.generateLegendLabels() }
           },
           tooltip: {
             callbacks: {
               label: (context) => {
-                const raw = context.raw;
+                const raw = context.raw as number;
                 const dataIndex = context.dataIndex;
                 // Chart displays reversed bins (Max -> Min), so we must reverse index to access original bins (Min -> Max)
                 // Or simply reverse the original bins array if accessing linearly.
@@ -154,8 +187,8 @@ export default {
 
     calculateProfile() {
       if (!this.ohlcv) return;
-      
-      const { high, low, close, volume } = this.ohlcv;
+
+      const { high = [], low = [], close = [], volume = [] } = this.ohlcv;
       
       // Calculate Cutoff Date for Filtering Smart Money Data
       const now = new Date();
@@ -296,7 +329,7 @@ export default {
       this.renderChart(bins);
     },
     
-    renderChart(bins) {
+    renderChart(bins: Bin[]) {
         // Reverse bins to show High Price at Top (Standard Chart Y-Axis)
         // bins is Min -> Max. We want Max -> Min for display if Chart.js renders Index 0 at Top.
         const reversedBins = [...bins].reverse();
@@ -341,7 +374,7 @@ export default {
         };
     },
     
-    generateLegendLabels(chart) {
+    generateLegendLabels(): LegendItem[] {
         // Custom Legend to explain colors
         return [
            { text: this.$t('smartMoney.legend.buy'), fillStyle: getToken('--success-solid'), strokeStyle: getToken('--success-solid') },
@@ -350,17 +383,18 @@ export default {
         ];
     },
     
-    formatVolume(num) {
-        if (!Number.isFinite(num)) return this.$t('smartMoney.notAvailable');
-        if (num > 1000000) return fmtNumber(num / 1000000, 1) + 'M';
-        if (num > 1000) return fmtNumber(num / 1000, 1) + 'K';
-        return fmtNumber(num, 0);
+    formatVolume(num: number | string) {
+        const n = typeof num === 'number' ? num : Number(num);
+        if (!Number.isFinite(n)) return this.$t('smartMoney.notAvailable');
+        if (n > 1000000) return fmtNumber(n / 1000000, 1) + 'M';
+        if (n > 1000) return fmtNumber(n / 1000, 1) + 'K';
+        return fmtNumber(n, 0);
     },
-    formatNumber(num) {
+    formatNumber(num: number) {
         return new Intl.NumberFormat('en-US').format(Math.round(num));
     }
   }
-}
+})
 </script>
 
 <style scoped>
