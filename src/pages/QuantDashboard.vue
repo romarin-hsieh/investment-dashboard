@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
@@ -9,14 +9,34 @@ import { formatDate as i18nDate } from '@/utils/dateFormat';
 
 const { t } = useI18n();
 
-const latestData = ref([]);
+interface Coord {
+  x_trend: number
+  y_momentum: number
+  z_structure: number
+}
+
+/** One symbol's row in the daily quant report (loose — extra fields tolerated). */
+interface QuantRow {
+  ticker: string
+  signal: string
+  commentary: string
+  price: number
+  change_percent: number
+  date?: string
+  coordinates: Coord
+  trace?: unknown[]
+  sector_trace?: unknown[]
+  [key: string]: unknown
+}
+
+const latestData = ref<QuantRow[]>([]);
 const selectedTicker = ref('SPY');
 const loading = ref(true);
-const error = ref(null);
+const error = ref<string | null>(null);
 
-const currentDataPoint = ref(null);
-const historyTrace = ref([]);
-const sectorTrace = ref([]);
+const currentDataPoint = ref<Coord | null>(null);
+const historyTrace = ref<unknown[]>([]);
+const sectorTrace = ref<unknown[]>([]);
 
 const fetchData = async () => {
     try {
@@ -26,7 +46,7 @@ const fetchData = async () => {
         if (!response.ok) throw new Error(t('quant.errorLoadFailed'));
         
         const jsonData = await response.json();
-        const rows = jsonData.data || [];
+        const rows: QuantRow[] = jsonData?.data || [];
         // Defensive: the ETL has leaked per-lookback OHLCV variant keys (e.g.
         // TRV_1D_1825D) as phantom rows alongside the clean per-symbol rows.
         // Keep only real symbols so the selector isn't flooded with ~400 dupes.
@@ -40,14 +60,14 @@ const fetchData = async () => {
             : latestData.value[0]?.ticker;
         if (initial) selectTicker(initial);
     } catch (e) {
-        error.value = e.message;
+        error.value = (e as Error).message;
         console.error(e);
     } finally {
         loading.value = false;
     }
 };
 
-const selectTicker = (ticker) => {
+const selectTicker = (ticker: string) => {
     selectedTicker.value = ticker;
     const tickerData = latestData.value.find(d => d.ticker === ticker);
     
