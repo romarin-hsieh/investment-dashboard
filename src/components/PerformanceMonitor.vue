@@ -49,10 +49,18 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { formatNumber } from '@/utils/numberFormat'
 
-export default {
+interface WidgetTime {
+  id: number
+  name: string
+  time: number
+  priority: number
+}
+
+export default defineComponent({
   name: 'PerformanceMonitor',
   data() {
     return {
@@ -61,8 +69,9 @@ export default {
       pageLoadTime: 0,
       widgetsLoaded: 0,
       totalWidgets: 0,
-      widgetTimes: [],
-      startTime: 0
+      widgetTimes: [] as WidgetTime[],
+      startTime: 0,
+      performanceObserver: null as PerformanceObserver | null
     }
   },
   computed: {
@@ -70,7 +79,7 @@ export default {
       if (typeof performance !== 'undefined' && performance.getEntriesByType) {
         const entries = performance.getEntriesByType('resource')
         const totalBytes = entries.reduce((sum, entry) => {
-          return sum + (entry.transferSize || 0)
+          return sum + ((entry as PerformanceResourceTiming).transferSize || 0)
         }, 0)
         
         if (totalBytes > 1024 * 1024) {
@@ -84,8 +93,9 @@ export default {
     },
 
     memoryUsage() {
-      if (typeof performance !== 'undefined' && performance.memory) {
-        const used = performance.memory.usedJSHeapSize
+      const perf = performance as Performance & { memory?: { usedJSHeapSize: number } }
+      if (typeof performance !== 'undefined' && perf.memory) {
+        const used = perf.memory.usedJSHeapSize
         if (used > 1024 * 1024) {
           return `${formatNumber(used / (1024 * 1024), 1)}MB`
         }
@@ -124,11 +134,12 @@ export default {
       
       // 監聽自定義性能事件
       window.addEventListener('widget-loaded', (event) => {
-        if (event.detail) {
+        const detail = (event as CustomEvent).detail
+        if (detail) {
           this.addWidgetTime({
-            name: event.detail.name,
-            time: event.detail.time,
-            priority: event.detail.priority || 1
+            name: detail.name,
+            time: detail.time,
+            priority: detail.priority || 1
           })
         }
       })
@@ -136,7 +147,7 @@ export default {
       // 使用 Performance Observer 監聽資源載入
       if (typeof PerformanceObserver !== 'undefined') {
         try {
-          this.performanceObserver = new PerformanceObserver((list) => {
+          const observer = new PerformanceObserver((list) => {
             for (const entry of list.getEntries()) {
               // 只監聽 TradingView 相關的資源
               if (entry.name.includes('tradingview') || entry.name.includes('widget')) {
@@ -148,8 +159,9 @@ export default {
               }
             }
           })
-          
-          this.performanceObserver.observe({ entryTypes: ['resource', 'navigation'] })
+          this.performanceObserver = observer
+
+          observer.observe({ entryTypes: ['resource', 'navigation'] })
         } catch (error) {
           console.warn('PerformanceObserver not supported:', error)
           this.performanceObserver = null;
@@ -161,7 +173,7 @@ export default {
       this.pageLoadTime = Math.round(performance.now() - this.startTime)
     },
     
-    addWidgetTime(widget) {
+    addWidgetTime(widget: { name: string; time: number; priority: number }) {
       this.widgetTimes.push({
         id: Date.now() + Math.random(),
         ...widget
@@ -182,7 +194,7 @@ export default {
       }
     },
     
-    getTimeClass(time) {
+    getTimeClass(time: number) {
       if (time < 1000) return 'time-good'
       if (time < 3000) return 'time-ok'
       return 'time-slow'
@@ -220,7 +232,7 @@ export default {
       URL.revokeObjectURL(url)
     }
   }
-}
+})
 </script>
 
 <style scoped>
