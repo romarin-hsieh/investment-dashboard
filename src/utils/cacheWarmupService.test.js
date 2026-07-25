@@ -16,7 +16,7 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 // Mock heavy collaborators so importing the service doesn't fire side effects.
-vi.mock('@/api/hybridTechnicalIndicatorsApi.js', () => ({
+vi.mock('@/api/hybridTechnicalIndicatorsApi', () => ({
   hybridTechnicalIndicatorsAPI: { fetchTechnicalIndicators: vi.fn() }
 }))
 vi.mock('./performanceCache', () => ({

@@ -5,7 +5,67 @@ import precomputedIndicatorsAPI from './precomputedIndicatorsApi';
 import yahooFinanceAPI from './yahooFinanceApi';
 import technicalIndicatorsCache from '../utils/technicalIndicatorsCache';
 
+/** A single indicator cell, e.g. `{ value: 25, signal: 'BUY' }`. */
+interface IndicatorValueLike {
+  value?: unknown;
+  [key: string]: unknown;
+}
+
+/**
+ * A loose technical-indicator payload. The API surfaces heterogeneous shapes
+ * (precomputed JSON, daily-cache records, realtime Yahoo results, the error
+ * response), so only the fields the code probes are named — everything else
+ * rides the index signature, mirroring ProcessedIndicators / TechnicalIndicatorData.
+ */
+interface IndicatorPayload {
+  adx14?: IndicatorValueLike | null;
+  obv?: IndicatorValueLike | null;
+  yf?: Record<string, unknown> | null;
+  indicators?: { obv?: IndicatorValueLike | null; yf?: Record<string, unknown> | null; [key: string]: unknown } | null;
+  fullSeries?: { ADX_14?: unknown[]; [key: string]: unknown } | null;
+  lastUpdated?: string;
+  dataAge?: string;
+  source?: string;
+  error?: string;
+  symbol?: string;
+  isStale?: boolean;
+  loadTime?: string;
+  [key: string]: unknown;
+}
+
+/** Per-symbol outcome from `getBatchTechnicalIndicators`. */
+interface BatchResult {
+  symbol: string;
+  success: boolean;
+  data?: IndicatorPayload;
+  error?: string;
+}
+
+/** Data-source availability report from `getDataSourceStatus`. */
+interface DataSourceStatus {
+  precomputed: {
+    available: boolean;
+    symbols: unknown[] | undefined;
+    lastUpdate: unknown;
+    successful?: unknown;
+    failed?: unknown;
+  };
+  cache: unknown;
+  realtime: { available: boolean; proxies: number };
+}
+
+/** Options accepted by `setPreferences`. */
+interface PreferenceOptions {
+  preferPrecomputed?: boolean;
+  fallbackToRealtime?: boolean;
+  maxPrecomputedAge?: number;
+}
+
 class HybridTechnicalIndicatorsAPI {
+  preferPrecomputed: boolean;
+  maxPrecomputedAge: number;
+  fallbackToRealtime: boolean;
+
   constructor() {
     this.preferPrecomputed = true; // 優先使用預計算數據
     this.maxPrecomputedAge = 24 * 60 * 60 * 1000; // 24小時內的預計算數據可接受
@@ -13,7 +73,7 @@ class HybridTechnicalIndicatorsAPI {
   }
 
   // 主要的技術指標獲取方法
-  async getTechnicalIndicators(symbol) {
+  async getTechnicalIndicators(symbol: string): Promise<IndicatorPayload> {
     console.log(`🔍 Getting technical indicators for ${symbol}`);
 
     try {
@@ -36,7 +96,7 @@ class HybridTechnicalIndicatorsAPI {
       }
 
       // 策略 2: 檢查每日緩存 (檢查 ADX 是否有效)
-      const cachedData = await technicalIndicatorsCache.getTechnicalIndicators(symbol);
+      const cachedData = await technicalIndicatorsCache.getTechnicalIndicators(symbol) as IndicatorPayload | null;
       if (cachedData && this.isADXValid(cachedData)) {
         console.log(`📦 Using daily cache with valid ADX for ${symbol}`);
         return cachedData;
@@ -52,7 +112,7 @@ class HybridTechnicalIndicatorsAPI {
         if (realtimeData && !realtimeData.error) {
           // 存入每日緩存
           await technicalIndicatorsCache.setTechnicalIndicators(symbol, realtimeData);
-          return realtimeData;
+          return realtimeData as IndicatorPayload;
         }
       }
 
@@ -63,12 +123,12 @@ class HybridTechnicalIndicatorsAPI {
       console.error(`❌ Failed to get technical indicators for ${symbol}:`, error);
 
       // 返回錯誤狀態的指標
-      return this.createErrorResponse(symbol, error.message);
+      return this.createErrorResponse(symbol, (error as Error).message);
     }
   }
 
   // 預加載所有技術指標
-  async preloadAllPrecomputedData() {
+  async preloadAllPrecomputedData(): Promise<Record<string, unknown> | null> {
     if (this.preferPrecomputed) {
       return await precomputedIndicatorsAPI.getAllTechnicalIndicators();
     }
@@ -76,7 +136,7 @@ class HybridTechnicalIndicatorsAPI {
   }
 
   // 檢查數據完整性 (ADX, OBV, Beta)
-  isADXValid(data) {
+  isADXValid(data: IndicatorPayload | null | undefined): boolean {
     if (!data) return false;
 
     // 1. Check ADX (Existing Logic)
@@ -104,7 +164,7 @@ class HybridTechnicalIndicatorsAPI {
     // 不要因為 ADX 計算失敗就丟棄所有數據 (例如 MA, RSI 可能還是好的)
     if (data.fullSeries && data.fullSeries.ADX_14) {
       const adxSeries = data.fullSeries.ADX_14;
-      const validADXCount = adxSeries.filter(v => v !== null && v !== undefined && !isNaN(v)).length;
+      const validADXCount = adxSeries.filter(v => v !== null && v !== undefined && !isNaN(v as number)).length;
 
       if (validADXCount < 5) {
         console.warn(`ADX validation warning: only ${validADXCount} valid values. Continuing with partial data.`);
@@ -116,14 +176,14 @@ class HybridTechnicalIndicatorsAPI {
   }
 
   // 嘗試獲取預計算數據
-  async tryPrecomputedData(symbol) {
+  async tryPrecomputedData(symbol: string): Promise<IndicatorPayload | null> {
     try {
       console.log(`🔄 Trying precomputed data for ${symbol}`);
 
-      const data = await precomputedIndicatorsAPI.getTechnicalIndicators(symbol);
+      const data = await precomputedIndicatorsAPI.getTechnicalIndicators(symbol) as IndicatorPayload;
 
       // 檢查數據年齡
-      const computedAt = new Date(data.lastUpdated);
+      const computedAt = new Date(data.lastUpdated as string);
       const age = Date.now() - computedAt.getTime();
 
       if (age <= this.maxPrecomputedAge) {
@@ -146,13 +206,13 @@ class HybridTechnicalIndicatorsAPI {
       }
 
     } catch (error) {
-      console.log(`❌ Precomputed data not available for ${symbol}: ${error.message}`);
+      console.log(`❌ Precomputed data not available for ${symbol}: ${(error as Error).message}`);
       return null;
     }
   }
 
   // 創建錯誤響應
-  createErrorResponse(symbol, errorMessage) {
+  createErrorResponse(symbol: string, errorMessage: string): IndicatorPayload {
     return {
       ma5: { value: null, signal: 'N/A' },
       sma5: { value: null, signal: 'N/A' },
@@ -176,7 +236,7 @@ class HybridTechnicalIndicatorsAPI {
   }
 
   // 強制刷新數據 (跳過所有緩存)
-  async refreshTechnicalIndicators(symbol) {
+  async refreshTechnicalIndicators(symbol: string): Promise<IndicatorPayload> {
     console.log(`🔄 Force refreshing data for ${symbol}`);
 
     // 清除所有緩存
@@ -201,9 +261,9 @@ class HybridTechnicalIndicatorsAPI {
   }
 
   // 批量獲取多個股票的技術指標
-  async getBatchTechnicalIndicators(symbols, maxConcurrent = 3) {
-    const results = new Map();
-    const batches = [];
+  async getBatchTechnicalIndicators(symbols: string[], maxConcurrent = 3): Promise<Map<string, BatchResult>> {
+    const results = new Map<string, BatchResult>();
+    const batches: string[][] = [];
 
     // 分批處理
     for (let i = 0; i < symbols.length; i += maxConcurrent) {
@@ -218,7 +278,7 @@ class HybridTechnicalIndicatorsAPI {
           const data = await this.getTechnicalIndicators(symbol);
           return { symbol, success: true, data };
         } catch (error) {
-          return { symbol, success: false, error: error.message };
+          return { symbol, success: false, error: (error as Error).message };
         }
       });
 
@@ -238,8 +298,8 @@ class HybridTechnicalIndicatorsAPI {
   }
 
   // 獲取數據源狀態
-  async getDataSourceStatus() {
-    const status = {
+  async getDataSourceStatus(): Promise<DataSourceStatus> {
+    const status: DataSourceStatus = {
       precomputed: {
         available: false,
         symbols: [],
@@ -253,7 +313,12 @@ class HybridTechnicalIndicatorsAPI {
     };
 
     try {
-      const precomputedIndex = await precomputedIndicatorsAPI.getAvailableData();
+      const precomputedIndex = await precomputedIndicatorsAPI.getAvailableData() as {
+        symbols?: unknown[];
+        generatedAt?: unknown;
+        successful?: unknown;
+        failed?: unknown;
+      } | null;
       if (precomputedIndex) {
         status.precomputed = {
           available: true,
@@ -271,7 +336,7 @@ class HybridTechnicalIndicatorsAPI {
   }
 
   // 配置選項
-  setPreferences(options) {
+  setPreferences(options: PreferenceOptions): void {
     if (options.preferPrecomputed !== undefined) {
       this.preferPrecomputed = options.preferPrecomputed;
     }

@@ -1,7 +1,7 @@
 // 緩存預熱服務
 // 在環境版本更新時預載所有股票的技術指標數據
 
-import { hybridTechnicalIndicatorsAPI } from '@/api/hybridTechnicalIndicatorsApi.js'
+import { hybridTechnicalIndicatorsAPI } from '@/api/hybridTechnicalIndicatorsApi'
 import { performanceCache, CACHE_KEYS } from './performanceCache'
 import { performanceMonitor } from './performanceMonitor'
 import { paths } from './baseUrl'

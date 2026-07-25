@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
+import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi'
 import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import WidgetSkeleton from './WidgetSkeleton.vue'
 import { formatNumber } from '@/utils/numberFormat'
