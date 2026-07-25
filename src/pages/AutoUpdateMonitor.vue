@@ -270,21 +270,37 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 import { withDataBase } from '@/utils/baseUrl'
 import { performanceCache } from '@/utils/performanceCache'
 import { cacheWarmupService } from '@/utils/cacheWarmupService'
-import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
+import { formatDateTime as i18nDateTime, type DateInput } from '@/utils/dateFormat'
 
-export default {
+/** One entry in the in-memory activity log (newest first). */
+interface LogEntry {
+  timestamp: Date
+  level: string
+  message: string
+}
+
+/** The warmup fields this monitor reads off `getWarmupStatus()` (a subset). */
+interface WarmupInfo {
+  isWarming: boolean
+  progress: number
+  lastWarmupTime: number | null
+  trackedSymbols: string[]
+}
+
+export default defineComponent({
   name: 'AutoUpdateMonitor',
   data() {
     return {
       loading: false,
-      status: {},
-      cacheStats: {},
-      logs: [],
+      status: {} as ReturnType<typeof autoUpdateScheduler.getStatus>,
+      cacheStats: {} as ReturnType<typeof performanceCache.getStats>,
+      logs: [] as LogEntry[],
       config: {
         technicalIndicators: {
           enabled: true,
@@ -297,19 +313,20 @@ export default {
         }
       },
       configChanged: false,
-      startTime: null,
-      technicalIndicatorsLastUpdate: null,
+      startTime: null as Date | null,
+      technicalIndicatorsLastUpdate: null as Date | null,
       technicalIndicatorsAge: 0,
       technicalIndicatorsSuccessRate: 0,
-      metadataLastUpdate: null,
+      metadataLastUpdate: null as Date | null,
       metadataAge: 0,
       metadataSymbolCount: 0,
+      refreshInterval: null as ReturnType<typeof setInterval> | null,
       warmupInfo: {
         isWarming: false,
         progress: 0,
         lastWarmupTime: null,
         trackedSymbols: []
-      }
+      } as WarmupInfo
     }
   },
   computed: {
@@ -385,7 +402,7 @@ export default {
         this.startTime = new Date()
         this.addLog(this.$t('autoUpdate.logInitialized'), 'INFO')
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logInitFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logInitFailed') + (error as Error).message, 'ERROR')
       } finally {
         this.loading = false
       }
@@ -396,7 +413,7 @@ export default {
         this.status = autoUpdateScheduler.getStatus()
         this.cacheStats = performanceCache.getStats()
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logRefreshFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logRefreshFailed') + (error as Error).message, 'ERROR')
       }
     },
 
@@ -405,8 +422,9 @@ export default {
         const response = await fetch(withDataBase('data/technical-indicators/latest_index.json'))
         if (response.ok) {
           const data = await response.json()
-          this.technicalIndicatorsLastUpdate = new Date(data.generatedAt)
-          this.technicalIndicatorsAge = (Date.now() - this.technicalIndicatorsLastUpdate) / (1000 * 60 * 60)
+          const last = new Date(data.generatedAt)
+          this.technicalIndicatorsLastUpdate = last
+          this.technicalIndicatorsAge = (Date.now() - last.getTime()) / (1000 * 60 * 60)
           // Real coverage: files generated ÷ symbols requested. The index carries
           // `symbols[]` + `totalFiles`, NOT the totalSymbols/successfulSymbols this
           // used to read — those fields never existed, so the rate was a permanent 0%.
@@ -417,7 +435,7 @@ export default {
             : 0
         }
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logTiStatusFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logTiStatusFailed') + (error as Error).message, 'ERROR')
       }
     },
 
@@ -440,7 +458,7 @@ export default {
       } catch (error) {
         this.metadataLastUpdate = null
         this.metadataAge = 24 * 365
-        this.addLog(this.$t('autoUpdate.logMetadataFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logMetadataFailed') + (error as Error).message, 'ERROR')
       }
     },
 
@@ -448,7 +466,7 @@ export default {
       try {
         this.warmupInfo = cacheWarmupService.getWarmupStatus()
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logWarmupStatusFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logWarmupStatusFailed') + (error as Error).message, 'ERROR')
       }
     },
 
@@ -460,7 +478,7 @@ export default {
         this.addLog(this.$t('autoUpdate.logWarmupDone'), 'SUCCESS')
         await this.loadWarmupStatus()
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logWarmupFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logWarmupFailed') + (error as Error).message, 'ERROR')
       } finally {
         this.loading = false
       }
@@ -478,13 +496,13 @@ export default {
         }
         await this.refreshStatus()
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logToggleFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logToggleFailed') + (error as Error).message, 'ERROR')
       } finally {
         this.loading = false
       }
     },
 
-    async triggerUpdate(updateType) {
+    async triggerUpdate(updateType: string) {
       this.loading = true
       try {
         this.addLog(this.$t('autoUpdate.logUpdateTriggered') + updateType, 'INFO')
@@ -498,7 +516,7 @@ export default {
           await this.loadMetadataStatus()
         }
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logUpdateFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logUpdateFailed') + (error as Error).message, 'ERROR')
       } finally {
         this.loading = false
       }
@@ -513,7 +531,7 @@ export default {
       }, 30000) // 每 30 秒刷新一次
     },
 
-    addLog(message, level = 'INFO') {
+    addLog(message: string, level: string = 'INFO') {
       const log = {
         timestamp: new Date(),
         level,
@@ -543,28 +561,28 @@ export default {
         this.configChanged = false
         this.addLog(this.$t('autoUpdate.logConfigSaved'), 'SUCCESS')
       } catch (error) {
-        this.addLog(this.$t('autoUpdate.logSaveConfigFailed') + error.message, 'ERROR')
+        this.addLog(this.$t('autoUpdate.logSaveConfigFailed') + (error as Error).message, 'ERROR')
       }
     },
 
-    formatTime(date) {
+    formatTime(date: DateInput) {
       if (!date) return this.$t('common.na')
       return i18nDateTime(date)
     },
 
-    formatDataAge(ageHours) {
+    formatDataAge(ageHours: number) {
       if (ageHours < 1) return this.$t('autoUpdate.ageUnder1h')
       if (ageHours < 24) return this.$t('autoUpdate.ageHours', { n: Math.round(ageHours) })
       return this.$t('autoUpdate.ageDays', { n: Math.round(ageHours / 24) })
     },
 
-    getDataAgeClass(ageHours) {
+    getDataAgeClass(ageHours: number) {
       if (ageHours < 1) return 'text-success'
       if (ageHours < 12) return 'text-warning'
       return 'text-danger'
     },
 
-    getLogLevelClass(level) {
+    getLogLevelClass(level: string) {
       return {
         'log-info': level === 'INFO',
         'log-success': level === 'SUCCESS',
@@ -573,7 +591,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
