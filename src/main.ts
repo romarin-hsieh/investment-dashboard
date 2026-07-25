@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import App from './App.vue'
 import i18n, { loadLocaleMessages } from './i18n'
 import './styles/tokens.css'  // Neutral palette + semantic-state tokens (load first)
@@ -11,8 +12,10 @@ import '@/utils/widgetPreloader'
 // Import and initialize auto-update scheduler
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 
-// Import cache warmup service
-import { cacheWarmupService } from '@/utils/cacheWarmupService'
+// Import cache warmup service (side-effect import: instantiates the singleton;
+// the `.start()` call below is intentionally commented out, so no binding is
+// needed here — see the setTimeout at the bottom).
+import '@/utils/cacheWarmupService'
 
 // Router configuration
 // WS-C PR-C2: All pages are lazy-imported via `() => import(...)` so Vite
@@ -20,7 +23,7 @@ import { cacheWarmupService } from '@/utils/cacheWarmupService'
 // to just what's needed for the landing route (market-overview) + shell.
 // Eager pre-imports at top of file were removed; each route loads on first
 // navigation and is cached by the browser thereafter.
-const routes = [
+const routes: RouteRecordRaw[] = [
   { path: '/', redirect: '/market-overview' },
   { path: '/market-overview', component: () => import('./pages/MarketDashboard.vue'), name: 'market-overview' },
   { path: '/stock-overview', component: () => import('./pages/StockDashboard.vue'), name: 'stock-overview' },
