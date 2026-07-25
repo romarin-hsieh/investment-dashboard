@@ -16,16 +16,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { widgetCache } from '@/utils/widgetCache'
-import { widgetThrottle } from '@/utils/widgetThrottle'
 import { widgetPreloader } from '@/utils/widgetPreloader'
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
 import { useTheme } from '@/composables/useTheme'
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
-import { watch } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'FastTradingViewWidget',
   components: {
     WidgetSkeleton
@@ -34,7 +33,7 @@ export default {
     widgetType: {
       type: String,
       required: true,
-      validator: (value) => ['overview', 'technical'].includes(value)
+      validator: (value: unknown) => ['overview', 'technical'].includes(value as string)
     },
     symbol: {
       type: String,
@@ -59,7 +58,7 @@ export default {
       error: false,
       loadStartTime: 0,
       isVisible: false,
-      observer: null
+      observer: null as IntersectionObserver | null
     }
   },
   computed: {
@@ -90,19 +89,19 @@ export default {
   methods: {
     setupIntersectionObserver() {
       // 根據優先級設置不同的 rootMargin
-      const rootMargins = {
+      const rootMargins: Record<number, string> = {
         1: '300px', // 高優先級：提前 300px 載入
         2: '150px', // 中優先級：提前 150px 載入
         3: '50px'   // 低優先級：提前 50px 載入
       }
 
-      this.observer = new IntersectionObserver(
+      const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && !this.loaded && !this.error) {
               this.isVisible = true
               this.loadWidget()
-              this.observer.disconnect() // 載入後停止觀察
+              observer.disconnect() // 載入後停止觀察
             }
           })
         },
@@ -111,8 +110,9 @@ export default {
           threshold: 0.1
         }
       )
+      this.observer = observer
 
-      this.observer.observe(this.$refs.container)
+      observer.observe(this.$refs.container as Element)
     },
 
     async loadWidget() {
@@ -122,7 +122,7 @@ export default {
 
       try {
         // 根據優先級添加延遲
-        const delays = {
+        const delays: Record<number, number> = {
           1: 0,     // 高優先級：立即載入
           2: 300,   // 中優先級：延遲 300ms
           3: 600    // 低優先級：延遲 600ms
@@ -137,7 +137,7 @@ export default {
         if (widgetCache.has(this.widgetType, this.symbol, this.exchange)) {
           const cached = widgetCache.get(this.widgetType, this.symbol, this.exchange)
           if (cached) {
-            this.renderCachedWidget(cached)
+            this.renderCachedWidget(cached as { scriptUrl: string; config: unknown })
             return
           }
         }
@@ -167,20 +167,20 @@ export default {
     },
 
     async createWidget() {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         this.$nextTick(async () => {
-          const target = this.$refs.widgetTarget
-          
+          const target = this.$refs.widgetTarget as HTMLElement | undefined
+
           if (!target) {
             reject(new Error('Widget target container not found'))
             return
           }
-          
+
           // Clear existing content for theme reload
           target.innerHTML = ''
 
           const config = this.getWidgetConfig()
-          const scriptUrl = this.getScriptUrl()
+          const scriptUrl = this.getScriptUrl() as string
           
           // 檢查是否已預載入腳本
           if (!widgetPreloader.isPreloaded(scriptUrl)) {
@@ -199,7 +199,7 @@ export default {
           script.innerHTML = JSON.stringify(config)
           
           // 設定超時
-          const timeouts = {
+          const timeouts: Record<number, number> = {
             1: 3000,
             2: 5000,
             3: 8000
@@ -213,9 +213,7 @@ export default {
           script.onload = () => {
             clearTimeout(timeout)
             this.loaded = true
-            
-            const loadTime = performance.now() - this.loadStartTime
-            
+
             resolve()
           }
           
@@ -303,9 +301,9 @@ export default {
       }
     },
 
-    renderCachedWidget(cached) {
+    renderCachedWidget(cached: { scriptUrl: string; config: unknown }) {
       this.$nextTick(() => {
-        const target = this.$refs.widgetTarget
+        const target = this.$refs.widgetTarget as HTMLElement | undefined
         if (!target) return
 
         const script = document.createElement('script')
@@ -328,7 +326,7 @@ export default {
       this.setupIntersectionObserver()
     }
   }
-}
+})
 </script>
 
 <style scoped>

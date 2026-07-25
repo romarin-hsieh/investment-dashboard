@@ -23,13 +23,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, computed } from 'vue'
 import { widgetLoadManager } from '@/utils/widgetLoadManager'
 import { useTheme } from '@/composables/useTheme'
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
-import { watch, computed } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'LazyTradingViewWidget',
   components: {
     WidgetSkeleton
@@ -81,7 +81,7 @@ export default {
       isVisible: false,
       loaded: false,
       error: false,
-      observer: null,
+      observer: null as IntersectionObserver | null,
       loadStartTime: 0
     }
   },
@@ -108,19 +108,19 @@ export default {
   methods: {
     setupIntersectionObserver() {
       // 根據優先級設置不同的 rootMargin
-      const rootMargins = {
+      const rootMargins: Record<number, string> = {
         1: '200px', // 高優先級：提前 200px 載入
         2: '100px', // 中優先級：提前 100px 載入
         3: '50px'   // 低優先級：提前 50px 載入
       }
 
-      this.observer = new IntersectionObserver(
+      const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting && !this.loaded && !this.error) {
               this.isVisible = true
               this.loadWidget()
-              this.observer.disconnect() // 載入後停止觀察
+              observer.disconnect() // 載入後停止觀察
             }
           })
         },
@@ -129,8 +129,9 @@ export default {
           threshold: 0.1
         }
       )
+      this.observer = observer
 
-      this.observer.observe(this.$refs.container)
+      observer.observe(this.$refs.container as Element)
     },
 
     async loadWidget() {
@@ -138,7 +139,7 @@ export default {
       
       try {
         // 根據優先級添加延遲
-        const delays = {
+        const delays: Record<number, number> = {
           1: 0,     // 高優先級：立即載入
           2: 500,   // 中優先級：延遲 500ms
           3: 1000   // 低優先級：延遲 1000ms
@@ -163,11 +164,11 @@ export default {
     },
 
     async createWidget() {
-      return new Promise((resolve, reject) => {
+      return new Promise<void>((resolve, reject) => {
         this.$nextTick(() => {
           // Use specific widget target instead of broad container
-          const target = this.$refs.widgetTarget
-          
+          const target = this.$refs.widgetTarget as HTMLElement | undefined
+
           if (!target) {
             reject(new Error('Widget target container not found'))
             return
@@ -205,7 +206,7 @@ export default {
             // console.log(`🔧 Creating ${this.widgetType} widget with config:`, finalConfig)
             
             // 設定超時
-            const timeouts = {
+            const timeouts: Record<number, number> = {
               1: 8000,
               2: 10000,
               3: 12000
@@ -253,7 +254,7 @@ export default {
       await this.loadWidget()
     }
   }
-}
+})
 </script>
 
 <style scoped>
