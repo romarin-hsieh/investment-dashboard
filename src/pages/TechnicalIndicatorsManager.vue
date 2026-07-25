@@ -142,9 +142,9 @@
           </div>
 
           <div v-else class="indicators-preview">
-            <span>MA5: {{ result.data.ma5?.value || $t('common.na') }}</span>
-            <span>ADX: {{ result.data.adx14?.value || $t('common.na') }}</span>
-            <span>MACD: {{ result.data.macd?.signal || $t('common.na') }}</span>
+            <span>MA5: {{ result.data?.ma5?.value || $t('common.na') }}</span>
+            <span>ADX: {{ result.data?.adx14?.value || $t('common.na') }}</span>
+            <span>MACD: {{ result.data?.macd?.signal || $t('common.na') }}</span>
           </div>
         </div>
       </div>
@@ -167,21 +167,40 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi'
 import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 
-export default {
+/** The indicator fields the test-results table reads off a returned payload. */
+interface TestPayload {
+  ma5?: { value?: unknown } | null
+  adx14?: { value?: unknown } | null
+  macd?: { signal?: unknown } | null
+  [key: string]: unknown
+}
+
+/** One row of the precomputed-vs-realtime self-test. */
+interface TestResult {
+  symbol: string
+  success: boolean
+  data?: TestPayload
+  source?: string
+  error?: string
+  loadTime: string
+}
+
+export default defineComponent({
   name: 'TechnicalIndicatorsManager',
   data() {
     return {
       loading: false,
       testing: false,
       showPreferences: false,
-      dataSourceStatus: null,
-      testResults: [],
+      dataSourceStatus: null as Awaited<ReturnType<typeof hybridTechnicalIndicatorsAPI.getDataSourceStatus>> | null,
+      testResults: [] as TestResult[],
       preferences: {
         preferPrecomputed: true,
         fallbackToRealtime: true,
@@ -199,7 +218,7 @@ export default {
         this.dataSourceStatus = await hybridTechnicalIndicatorsAPI.getDataSourceStatus();
       } catch (error) {
         console.error('Failed to refresh status:', error);
-        alert(this.$t('techIndicators.refreshFailed') + error.message);
+        alert(this.$t('techIndicators.refreshFailed') + (error as Error).message);
       } finally {
         this.loading = false;
       }
@@ -219,7 +238,7 @@ export default {
         alert(this.$t('techIndicators.cachesCleared'));
         await this.refreshStatus();
       } catch (error) {
-        alert(this.$t('techIndicators.clearFailed') + error.message);
+        alert(this.$t('techIndicators.clearFailed') + (error as Error).message);
       }
     },
     
@@ -240,7 +259,7 @@ export default {
             this.testResults.push({
               symbol,
               success: true,
-              data,
+              data: data as unknown as TestPayload,
               source: data.source,
               loadTime: `${loadTime}ms`
             });
@@ -248,7 +267,7 @@ export default {
             this.testResults.push({
               symbol,
               success: false,
-              error: error.message,
+              error: (error as Error).message,
               loadTime: `${Date.now() - startTime}ms`
             });
           }
@@ -270,12 +289,12 @@ export default {
       console.log('Preferences updated:', this.preferences);
     },
     
-    formatDate(dateString) {
+    formatDate(dateString: string | null | undefined) {
       if (!dateString) return this.$t('common.na');
       return i18nDateTime(dateString);
     },
-    
-    formatBytes(bytes) {
+
+    formatBytes(bytes: number) {
       if (bytes === 0) return '0 B';
       const k = 1024;
       const sizes = ['B', 'KB', 'MB'];
@@ -283,7 +302,7 @@ export default {
       return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
     }
   }
-}
+})
 </script>
 
 <style scoped>

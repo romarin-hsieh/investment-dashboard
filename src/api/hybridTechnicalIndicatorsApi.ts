@@ -45,12 +45,12 @@ interface BatchResult {
 interface DataSourceStatus {
   precomputed: {
     available: boolean;
-    symbols: unknown[] | undefined;
-    lastUpdate: unknown;
-    successful?: unknown;
-    failed?: unknown;
+    symbols: string[];
+    lastUpdate: string | null | undefined;
+    successful?: number;
+    failed?: number;
   };
-  cache: unknown;
+  cache: ReturnType<typeof technicalIndicatorsCache.getCacheStats>;
   realtime: { available: boolean; proxies: number };
 }
 
@@ -314,15 +314,15 @@ class HybridTechnicalIndicatorsAPI {
 
     try {
       const precomputedIndex = await precomputedIndicatorsAPI.getAvailableData() as {
-        symbols?: unknown[];
-        generatedAt?: unknown;
-        successful?: unknown;
-        failed?: unknown;
+        symbols?: string[];
+        generatedAt?: string;
+        successful?: number;
+        failed?: number;
       } | null;
       if (precomputedIndex) {
         status.precomputed = {
           available: true,
-          symbols: precomputedIndex.symbols,
+          symbols: precomputedIndex.symbols ?? [],
           lastUpdate: precomputedIndex.generatedAt,
           successful: precomputedIndex.successful,
           failed: precomputedIndex.failed
