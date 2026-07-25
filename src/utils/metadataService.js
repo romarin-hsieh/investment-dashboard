@@ -1,7 +1,7 @@
 // Shared metadata service for stock industry information
 // 支援動態 API (Yahoo Finance) 和靜態文件兩種模式
 import { dataFetcher } from '@/lib/fetcher'
-import { dynamicMetadataService } from './dynamicMetadataService.js'
+import { dynamicMetadataService } from './dynamicMetadataService'
 import { directMetadataLoader } from './directMetadataLoader'
 import { paths } from './baseUrl'
 
