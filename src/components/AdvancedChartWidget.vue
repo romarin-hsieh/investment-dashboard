@@ -14,10 +14,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import { useTheme } from '@/composables/useTheme'
 
-export default {
+export default defineComponent({
   name: 'AdvancedChartWidget',
   props: {
     symbol: {
@@ -39,7 +40,7 @@ export default {
       error: false,
       // PR-E2: tracked so beforeUnmount can clear the 8s widget-load
       // timeout if the user navigates away before the script settles.
-      loadTimeoutId: null
+      loadTimeoutId: null as ReturnType<typeof setTimeout> | null
     }
   },
   computed: {
@@ -107,7 +108,7 @@ export default {
       this.error = false
 
       await this.$nextTick()
-      const target = this.$refs.widgetTarget
+      const target = this.$refs.widgetTarget as HTMLElement | undefined
       if (!target) {
         this.error = true
         return
@@ -127,12 +128,12 @@ export default {
       }, 8000)
 
       script.onload = () => {
-        clearTimeout(this.loadTimeoutId)
+        clearTimeout(this.loadTimeoutId ?? undefined)
         this.loaded = true
       }
 
       script.onerror = () => {
-        clearTimeout(this.loadTimeoutId)
+        clearTimeout(this.loadTimeoutId ?? undefined)
         this.error = true
       }
 
@@ -148,7 +149,7 @@ export default {
       this.createWidget()
     }
   }
-}
+})
 </script>
 
 <style scoped>
