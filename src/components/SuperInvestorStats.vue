@@ -176,12 +176,53 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
+
+/** A single super-investor activity row (loose — the dataroma blob is external). */
+interface ActivityRow {
+  quarter?: string
+  type?: string
+  // Typed non-null so the template's `shares_changed > 0` compiles; a runtime
+  // null/undefined still compares false, so behaviour is unchanged.
+  shares_changed: number
+  [key: string]: unknown
+}
+
+/** One quarter of an ownership row's history. */
+interface HistoryEntry {
+  period?: string
+  shares?: number | null
+  percent_portfolio?: number | null
+  percent_change_portfolio?: number | null
+  reported_price?: number | null
+  activity?: string
+  [key: string]: unknown
+}
+
+/** A super-investor's ownership row. Only fields the template reads are named. */
+interface OwnershipRow {
+  manager?: string
+  percent_portfolio?: number | null
+  shares?: number | null
+  value?: number | null
+  recent_activity?: string
+  history?: HistoryEntry[]
+  [key: string]: unknown
+}
+
+/** The dataroma payload this card renders. Only the fields it reads are named. */
+interface DataromaData {
+  superinvestors?: OwnershipRow[]
+  activity?: Record<string, ActivityRow[]>
+  [key: string]: unknown
+}
+
+export default defineComponent({
   name: 'SuperInvestorStats',
   props: {
     dataromaData: {
-      type: Object,
+      type: Object as PropType<DataromaData>,
       default: null
     },
     loading: {
@@ -194,9 +235,9 @@ export default {
       expandedSections: {
         ownership: true,
         activity: true
-      },
+      } as Record<string, boolean>,
       activityFilter: 'All', // All, Buys, Sells
-      expandedHistoryIndices: [] // Track indices of expanded ownership rows
+      expandedHistoryIndices: [] as number[] // Track indices of expanded ownership rows
     }
   },
   computed: {
@@ -212,7 +253,7 @@ export default {
     activityList() {
       if (!this.dataromaData?.activity) return [];
       
-      const list = [];
+      const list: ActivityRow[] = [];
       const filter = this.activityFilter;
 
       // Flatten the grouped object into a single list
@@ -237,34 +278,34 @@ export default {
     }
   },
   methods: {
-    toggleSection(section) {
+    toggleSection(section: string) {
       this.expandedSections[section] = !this.expandedSections[section];
     },
-    formatNumber(num) {
+    formatNumber(num: number | null | undefined) {
       return new Intl.NumberFormat('en-US').format(num || 0);
     },
-    formatPercent(num) {
+    formatPercent(num: number | null | undefined) {
       if (num === null || num === undefined) return '-';
       return num + '%';
     },
-    getActivityColor(activityStr) {
+    getActivityColor(activityStr: string | null | undefined) {
       if (!activityStr) return '';
       if (activityStr.includes('Add') || activityStr.includes('Buy')) return 'text-success';
       if (activityStr.includes('Reduce') || activityStr.includes('Sell')) return 'text-danger';
       return '';
     },
-    extractActivity(actionStr) {
+    extractActivity(actionStr: string | null | undefined) {
       if (!actionStr) return '-';
-      return actionStr.split(' ')[0]; 
+      return actionStr.split(' ')[0];
     },
-    getActionClass(type) {
+    getActionClass(type: string | undefined) {
       return type === 'Buy' ? 'text-success' : 'text-danger';
     },
-    getSharesClass(type) {
+    getSharesClass(type: string | undefined) {
       return type === 'Buy' ? 'text-success' : 'text-danger';
     },
     // History Toggle Methods
-    toggleHistory(index) {
+    toggleHistory(index: number) {
       const pos = this.expandedHistoryIndices.indexOf(index);
       if (pos > -1) {
         this.expandedHistoryIndices.splice(pos, 1);
@@ -272,11 +313,11 @@ export default {
         this.expandedHistoryIndices.push(index);
       }
     },
-    isHistoryExpanded(index) {
+    isHistoryExpanded(index: number) {
       return this.expandedHistoryIndices.includes(index);
     }
   }
-}
+})
 </script>
 
 <style scoped>
