@@ -25,19 +25,34 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 // Libraries
-import { createChart } from 'lightweight-charts';
+import {
+  createChart,
+  ColorType,
+  type IChartApi,
+  type ISeriesApi,
+  type ITimeScaleApi,
+  type Time,
+  type UTCTimestamp,
+  type CandlestickData,
+  type DeepPartial,
+  type ChartOptions
+} from 'lightweight-charts';
 // Services & Algos
 import { ohlcvApi } from '@/services/ohlcvApi';
-import { CisdAlgo } from '@/utils/technical-analysis/CisdAlgo';
-import { ShapeType } from '@/utils/technical-analysis/StandardPrimitives';
+import { CisdAlgo, type OhlcvData as CisdOhlcvData, type CisdSettings } from '@/utils/technical-analysis/CisdAlgo';
+import { ShapeType, type LineObject, type BoxObject, type LabelObject, type FilledAreaObject } from '@/utils/technical-analysis/StandardPrimitives';
 import { useTheme } from '@/composables/useTheme';
 import { getToken } from '@/utils/designTokens';
 // Components
 import GenericSettingsModal from '@/components/GenericSettingsModal.vue';
 
-export default {
+/** The drawable primitives the CISD algo emits (plus BoxObject the renderer supports). */
+type CisdShape = LineObject | BoxObject | LabelObject | FilledAreaObject;
+
+export default defineComponent({
   name: 'CisdWidget',
   components: {
     GenericSettingsModal
@@ -60,12 +75,12 @@ export default {
     return {
       loading: false,
       showSettings: false,
-      chart: null,
-      candlestickSeries: null,
-      primitives: [], // List of Drawables from Algo
-      
+      chart: null as IChartApi | null,
+      candlestickSeries: null as ISeriesApi<'Candlestick'> | null,
+      primitives: [] as CisdShape[], // List of Drawables from Algo
+
       // Algorithm + Config
-      algo: null,
+      algo: null as CisdAlgo | null,
       algoConfig: {
         runBarsThreshold: 2,
         cisdFilter: false,
@@ -107,8 +122,8 @@ export default {
         { key: 'level3Mult', label: this.$t('cisd.schema.levelMultiplier', { n: 3 }), type: 'number', step: 0.1, group: this.$t('cisd.schema.groupLevels') },
       ],
 
-      resizeObserver: null,
-      ohlcvData: null
+      resizeObserver: null as ResizeObserver | null,
+      ohlcvData: null as CisdOhlcvData | null
     };
   },
   mounted() {
@@ -118,7 +133,7 @@ export default {
     this.resizeObserver = new ResizeObserver(() => {
         this.handleResize();
     });
-    this.resizeObserver.observe(this.$refs.chartContainer);
+    this.resizeObserver.observe(this.$refs.chartContainer as Element);
   },
   beforeUnmount() {
     if (this.chart) {
@@ -139,7 +154,7 @@ export default {
   methods: {
     initChart() {
       const chartOptions = this.getChartOptions();
-      this.chart = createChart(this.$refs.chartDiv, chartOptions);
+      this.chart = createChart(this.$refs.chartDiv as HTMLElement, chartOptions);
       this.candlestickSeries = this.chart.addCandlestickSeries({
           upColor: getToken('--chart-up'),
           downColor: getToken('--chart-down'),
@@ -148,18 +163,18 @@ export default {
           wickDownColor: getToken('--chart-down')
       });
       // Subscribe to visible range changes to redraw overlay
-      this.chart.timeScale().subscribeVisibleTimeRangeChange(this.drawOverlay);
+      this.chart.timeScale().subscribeVisibleTimeRangeChange(() => this.drawOverlay());
       this.handleResize();
     },
 
-    getChartOptions() {
+    getChartOptions(): DeepPartial<ChartOptions> {
         const textColor = getToken('--text-primary');
         const gridColor = getToken('--chart-grid');
-        const bgColor = 'transparent'; 
+        const bgColor = 'transparent';
 
         return {
             layout: {
-                background: { type: 'solid', color: bgColor },
+                background: { type: ColorType.Solid, color: bgColor },
                 textColor: textColor,
             },
             grid: {
@@ -186,17 +201,25 @@ export default {
         this.loading = true;
         try {
             const data = await ohlcvApi.getOhlcv(this.symbol, '1d', '5y');
-            this.ohlcvData = data;
-            
-            const chartData = data.timestamps.map((t, i) => ({
-                time: t / 1000, 
-                open: data.open[i],
-                high: data.high[i],
-                low: data.low[i],
-                close: data.close[i]
+            if (!data || !data.timestamps) return;
+            // ohlcvApi's OhlcvData is loose (optional / nullable arrays); the algo
+            // needs the strict all-number shape, hence the cast at this boundary.
+            this.ohlcvData = data as CisdOhlcvData;
+
+            const timestamps = data.timestamps;
+            const open = data.open ?? [];
+            const high = data.high ?? [];
+            const low = data.low ?? [];
+            const close = data.close ?? [];
+            const chartData: CandlestickData[] = timestamps.map((t, i) => ({
+                time: (t / 1000) as UTCTimestamp,
+                open: open[i],
+                high: high[i],
+                low: low[i],
+                close: close[i] as number
             }));
 
-            this.candlestickSeries.setData(chartData);
+            this.candlestickSeries?.setData(chartData);
             this.runAlgo();
         } catch (e) {
             console.error('Failed to load chart data', e);
@@ -206,50 +229,55 @@ export default {
     },
 
     runAlgo() {
-        if (!this.ohlcvData) return;
-        
+        const ohlcv = this.ohlcvData;
+        if (!ohlcv) return;
+
         if (!this.algo) {
-            this.algo = new CisdAlgo(this.ohlcvData);
+            this.algo = new CisdAlgo(ohlcv);
         }
-        
+
         this.primitives = this.algo.calculate(this.algoConfig);
         console.log(`CISD Algo produced ${this.primitives.length} shapes`);
-        
-        requestAnimationFrame(this.drawOverlay);
+
+        requestAnimationFrame(() => this.drawOverlay());
     },
 
-    onSettingsSave(newConfig) {
-        this.algoConfig = { ...newConfig };
+    onSettingsSave(newConfig: Partial<CisdSettings>) {
+        this.algoConfig = { ...this.algoConfig, ...newConfig };
         this.runAlgo();
     },
 
     handleResize() {
-        if (!this.$refs.chartContainer || !this.$refs.overlayCanvas) return;
-        const width = this.$refs.chartContainer.clientWidth;
-        const height = this.$refs.chartContainer.clientHeight;
-        
+        const container = this.$refs.chartContainer as HTMLElement | undefined;
+        const canvas = this.$refs.overlayCanvas as HTMLCanvasElement | undefined;
+        if (!container || !canvas) return;
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
         const dpr = window.devicePixelRatio || 1;
-        this.$refs.overlayCanvas.width = width * dpr;
-        this.$refs.overlayCanvas.height = height * dpr;
-        this.$refs.overlayCanvas.style.width = width + 'px';
-        this.$refs.overlayCanvas.style.height = height + 'px';
-        
-        const ctx = this.$refs.overlayCanvas.getContext('2d');
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
         ctx.scale(dpr, dpr);
-        
+
         this.drawOverlay();
     },
 
     drawOverlay() {
-       if (!this.chart || !this.candlestickSeries || !this.$refs.overlayCanvas) return;
-       const ctx = this.$refs.overlayCanvas.getContext('2d');
-       const canvas = this.$refs.overlayCanvas;
+       const canvas = this.$refs.overlayCanvas as HTMLCanvasElement | undefined;
+       if (!this.chart || !this.candlestickSeries || !canvas) return;
+       const ctx = canvas.getContext('2d');
+       if (!ctx) return;
 
        const width = canvas.width / (window.devicePixelRatio || 1);
        const height = canvas.height / (window.devicePixelRatio || 1);
-       
+
        ctx.clearRect(0, 0, width, height);
-       
+
        const timeScale = this.chart.timeScale();
        
        // Clip Drawing Area to prevent overlay on Axes
@@ -272,30 +300,32 @@ export default {
        ctx.rect(0, 0, width - priceScaleWidth, height - timeScaleHeight);
        ctx.clip();
        
+       // ShapeType is a plain object (not `as const`), so `.type` is `string`
+       // and can't discriminate the union — cast to the branch's concrete type.
        this.primitives.forEach(shape => {
            if (shape.type === ShapeType.LINE) {
-               this.drawLine(ctx, shape, timeScale);
+               this.drawLine(ctx, shape as LineObject, timeScale);
            } else if (shape.type === ShapeType.BOX) {
-               this.drawBox(ctx, shape, timeScale);
+               this.drawBox(ctx, shape as BoxObject, timeScale);
            } else if (shape.type === ShapeType.LABEL) {
-               this.drawLabel(ctx, shape, timeScale);
+               this.drawLabel(ctx, shape as LabelObject, timeScale);
            } else if (shape.type === ShapeType.FILLED_AREA) {
-               this.drawFilledArea(ctx, shape, timeScale);
+               this.drawFilledArea(ctx, shape as FilledAreaObject, timeScale);
            }
        });
        
        ctx.restore();
     },
     
-    timeToX(time, timeScale) {
-        return timeScale.timeToCoordinate(time / 1000);
-    },
-    
-    priceToY(price) {
-        return this.candlestickSeries.priceToCoordinate(price);
+    timeToX(time: number, timeScale: ITimeScaleApi<Time>) {
+        return timeScale.timeToCoordinate((time / 1000) as UTCTimestamp);
     },
 
-    drawFilledArea(ctx, area, timeScale) {
+    priceToY(price: number) {
+        return this.candlestickSeries?.priceToCoordinate(price) ?? null;
+    },
+
+    drawFilledArea(ctx: CanvasRenderingContext2D, area: FilledAreaObject, timeScale: ITimeScaleApi<Time>) {
         if (!area.points || area.points.length === 0) return;
         
         ctx.fillStyle = area.color;
@@ -334,7 +364,7 @@ export default {
         ctx.fill();
     },
 
-    drawLine(ctx, line, timeScale) {
+    drawLine(ctx: CanvasRenderingContext2D, line: LineObject, timeScale: ITimeScaleApi<Time>) {
         const x1 = this.timeToX(line.x1, timeScale);
         const x2 = this.timeToX(line.x2, timeScale);
         const y1 = this.priceToY(line.y1);
@@ -355,8 +385,8 @@ export default {
         ctx.stroke();
     },
 
-    drawBox(ctx, box, timeScale) {
-        const x1 = this.timeToX(box.x1, timeScale); 
+    drawBox(ctx: CanvasRenderingContext2D, box: BoxObject, timeScale: ITimeScaleApi<Time>) {
+        const x1 = this.timeToX(box.x1, timeScale);
         const x2 = this.timeToX(box.x2, timeScale);
         const y1 = this.priceToY(box.y1); 
         const y2 = this.priceToY(box.y2); 
@@ -378,20 +408,20 @@ export default {
         }
     },
     
-    drawLabel(ctx, label, timeScale) {
+    drawLabel(ctx: CanvasRenderingContext2D, label: LabelObject, timeScale: ITimeScaleApi<Time>) {
         const x = this.timeToX(label.x, timeScale);
         const y = this.priceToY(label.y);
-        
+
         if (x === null || y === null) return;
-        
+
         ctx.fillStyle = label.textColor;
         ctx.font = `${label.fontSize}px sans-serif`;
-        ctx.textAlign = label.align;
+        ctx.textAlign = label.align as CanvasTextAlign;
         ctx.textBaseline = 'middle';
         ctx.fillText(label.text, x, y);
     }
   }
-}
+})
 </script>
 
 <style scoped>
