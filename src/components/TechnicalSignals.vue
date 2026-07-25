@@ -106,12 +106,26 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import WidgetSkeleton from './WidgetSkeleton.vue'
 import { formatDate as i18nDate } from '@/utils/dateFormat'
 
-export default {
+/** Parallel OHLC arrays used for the pivot / pattern / risk maths. */
+interface Candles {
+  open: number[]
+  high: number[]
+  low: number[]
+  close: number[]
+  date?: (string | number)[]
+}
+interface Pivots {
+  p: number | null; r1: number | null; s1: number | null; r2: number | null; s2: number | null
+}
+interface Pattern { name: string; type: string; date: string }
+
+export default defineComponent({
   name: 'TechnicalSignals',
   components: { WidgetSkeleton },
   props: {
@@ -127,11 +141,10 @@ export default {
   data() {
     return {
       loading: true,
-      pivots: { p: null, r1: null, s1: null, r2: null, s2: null },
-      patterns: [],
-      risk: { atr: null, volatility: null },
-      risk: { atr: null, volatility: null },
-      ohlcHistory: [],
+      pivots: { p: null, r1: null, s1: null, r2: null, s2: null } as Pivots,
+      patterns: [] as Pattern[],
+      risk: { atr: null as number | null, volatility: null as number | null },
+      ohlcHistory: [] as unknown,
       showInfo: false
     }
   },
@@ -141,11 +154,11 @@ export default {
         const p = this.pivots;
         const cp = this.currentPrice;
         
-        if (cp > p.r2) return this.$t('signals.zones.aboveR2');
-        if (cp > p.r1) return this.$t('signals.zones.testingR1R2');
-        if (cp > p.p) return this.$t('signals.zones.abovePivot');
-        if (cp > p.s1) return this.$t('signals.zones.belowPivot');
-        if (cp > p.s2) return this.$t('signals.zones.testingS1S2');
+        if (cp > p.r2!) return this.$t('signals.zones.aboveR2');
+        if (cp > p.r1!) return this.$t('signals.zones.testingR1R2');
+        if (cp > p.p!) return this.$t('signals.zones.abovePivot');
+        if (cp > p.s1!) return this.$t('signals.zones.belowPivot');
+        if (cp > p.s2!) return this.$t('signals.zones.testingS1S2');
         return this.$t('signals.zones.belowS2');
     }
   },
@@ -164,9 +177,10 @@ export default {
             const ohlcv = await yahooFinanceAPI.getOhlcv(this.symbol, '1d', '1mo');
             if (ohlcv && ohlcv.close && ohlcv.close.length > 0) {
                 this.ohlcHistory = ohlcv;
-                this.calculatePivots(ohlcv);
-                this.detectPatterns(ohlcv);
-                this.calculateRisk(ohlcv);
+                const candles = ohlcv as unknown as Candles;
+                this.calculatePivots(candles);
+                this.detectPatterns(candles);
+                this.calculateRisk(candles);
             }
         } catch (err) {
             console.error('Signals calculation error:', err);
@@ -175,7 +189,7 @@ export default {
         }
     },
     
-    calculatePivots(data) {
+    calculatePivots(data: Candles) {
         if (!data || !data.close) return;
         const len = data.close.length;
         console.log(`Calculating pivots for ${this.symbol}, items: ${len}`);
@@ -206,23 +220,22 @@ export default {
         this.pivots = { p, r1, s1, r2, s2 };
     },
     
-    detectPatterns(data) {
+    detectPatterns(data: Candles) {
         // Scan last 5 days for patterns
         const len = data.close.length;
         if (len < 6) return;
-        
-        const rawPatterns = [];
-        
+
+        const rawPatterns: Pattern[] = [];
+
         // Helper
-        const isBullish = (i) => data.close[i] > data.open[i];
-        const bodySize = (i) => Math.abs(data.close[i] - data.open[i]);
-        const fullSize = (i) => data.high[i] - data.low[i];
+        const isBullish = (i: number) => data.close[i] > data.open[i];
+        const bodySize = (i: number) => Math.abs(data.close[i] - data.open[i]);
+        const fullSize = (i: number) => data.high[i] - data.low[i];
         
         // Loop from last candle backwards (up to 5 days)
         for (let i = len - 1; i >= len - 5; i--) {
              if (i < 2) continue;
              
-             const date = new Date(data.date ? data.date[i] : Date.now()); 
              const dateStr = (data.date && data.date[i]) ? i18nDate(data.date[i]) : '';
 
              // 1. Hammer (Small body, long lower shadow)
@@ -259,7 +272,7 @@ export default {
         this.patterns = rawPatterns;
     },
     
-    calculateRisk(data) {
+    calculateRisk(data: Candles) {
        // Simple ATR 14 approx
        // For accurate ATR we use TR = Max(H-L, |H-Cp|, |L-Cp|)
        // Here we just use H-L average for simplicity or fetch if available
@@ -273,16 +286,16 @@ export default {
        this.risk.atr = sumTR / 14;
     },
     
-    formatPrice(val) {
+    formatPrice(val: number | null | undefined) {
         if (!val) return '--';
         return val.toFixed(2);
     },
-    
+
     openModal() {
         this.showInfo = true;
     }
   }
-}
+})
 </script>
 
 <style scoped>
