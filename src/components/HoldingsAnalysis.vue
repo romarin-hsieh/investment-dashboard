@@ -141,8 +141,9 @@
   </div>
 </template>
 
-<script>
-import { Chart as ChartJS, ArcElement, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
+import { Chart as ChartJS, ArcElement, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, type ChartData, type ChartOptions } from 'chart.js'
 import { Doughnut, Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
@@ -154,7 +155,15 @@ ChartJS.register(ArcElement, BarElement, LineElement, PointElement, CategoryScal
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
 import SmartMoneyVolumeProfile from '@/components/SmartMoneyVolumeProfile.vue'
 
-export default {
+/** Dataroma payload subset. The insider/superinvestor records are dynamically
+ *  shaped external data mutated in place, so `any`-valued at this boundary. */
+interface DataromaData {
+  insiders?: { transactions?: Array<Record<string, any>> }
+  superinvestors?: Array<{ history?: Array<Record<string, any>>; [key: string]: any }>
+  [key: string]: any
+}
+
+export default defineComponent({
   name: 'HoldingsAnalysis',
   components: { Doughnut, Bar, Line, WidgetSkeleton, SmartMoneyVolumeProfile },
   props: {
@@ -163,7 +172,7 @@ export default {
       required: true
     },
     dataromaData: {
-      type: Object,
+      type: Object as PropType<DataromaData>,
       default: null
     }
   },
@@ -174,11 +183,11 @@ export default {
   data() {
     return {
       loading: true,
-      error: null,
-      holders: {},
-      insiderTransactions: [],
-      ownershipChartData: null,
-      smartMoneyChartData: null,
+      error: null as string | null,
+      holders: {} as Record<string, any>,
+      insiderTransactions: [] as Array<Record<string, any>>,
+      ownershipChartData: null as ChartData<'doughnut'> | null,
+      smartMoneyChartData: null as ChartData<'bar'> | null,
       calculatedSmartMoneyScore: 0,
       smartMoneyTrendScore: 0,
     }
@@ -191,7 +200,7 @@ export default {
       isDark() {
           return this.theme === 'dark';
       },
-      ownershipChartOptions() {
+      ownershipChartOptions(): ChartOptions<'doughnut'> {
         // Chart.js reads raw values at render time; tokens recomputed on theme change.
         return {
           responsive: true,
@@ -248,7 +257,7 @@ export default {
 
          return { score, text, color };
       },
-      smartMoneyChartOptions() {
+      smartMoneyChartOptions(): ChartOptions<'bar'> {
           // Theme-adaptive chart styling. Tokens resolve to different hex in
           // light vs dark via .dark-mode overrides in style.css.
           const axisTextColor = getToken('--text-secondary');
@@ -305,11 +314,13 @@ export default {
         this.loading = true;
         this.error = null;
         try {
-            const data = await yahooFinanceAPI.getStockInfo(this.symbol);
+            // StockInfo is opaque ({ isStatic?; [key]: unknown }); read its
+            // holders/insiderTransactions off a loose view at this boundary.
+            const data = (await yahooFinanceAPI.getStockInfo(this.symbol)) as Record<string, any> | undefined;
             if (!data || !data.holders) {
                 throw new Error('Data incomplete');
             }
-            
+
             this.holders = data.holders;
             // Native YF transactions
             const yfTransactions = data.insiderTransactions || [];
@@ -331,8 +342,8 @@ export default {
              try {
                 const precomputed = await precomputedIndicatorsAPI.getTechnicalIndicators(this.symbol);
                 if (precomputed && precomputed.fundamentals) {
-                    const data = precomputed.fundamentals;
-                    this.holders = data.holders || {}; 
+                    const data = precomputed.fundamentals as Record<string, any>;
+                    this.holders = data.holders || {};
                     const yfTransactions = data.insiderTransactions || [];
                     
                      if (this.dataromaData && this.dataromaData.insiders) {
@@ -381,9 +392,11 @@ export default {
     },
     
     processSmartMoneyData() {
-        const historyMap = {};
+        const dr = this.dataromaData;
+        if (!dr || !dr.superinvestors) return;
+        const historyMap: Record<string, { shares: number; priceSum: number; priceCount: number; period: string }> = {};
         // Aggregate superinvestor history
-        this.dataromaData.superinvestors.forEach(investor => {
+        dr.superinvestors.forEach(investor => {
             if (investor.history) {
                 investor.history.forEach(rec => {
                     if (!historyMap[rec.period]) {
@@ -415,6 +428,8 @@ export default {
         const sharesData = sortedHistory.map(h => h.shares);
         const priceData = sortedHistory.map(h => h.priceCount ? (h.priceSum / h.priceCount).toFixed(2) : null);
         
+        // Mixed bar+line chart with a string/null price series — looser than
+        // ChartData<'bar'>, so cast at this assignment boundary.
         this.smartMoneyChartData = {
             labels,
             datasets: [
@@ -437,8 +452,8 @@ export default {
                     yAxisID: 'y1'
                 }
             ]
-        };
-        
+        } as unknown as ChartData<'bar'>;
+
         // Calculate Trend Score (Weight 30%)
         // Compare last quarter to previous quarter shares
         if (sharesData.length >= 2) {
@@ -526,7 +541,7 @@ export default {
         this.ownershipChartData = {
             labels: [this.$t('holdings.insiders'), this.$t('holdings.institutions'), this.$t('holdings.publicOther')],
             datasets: [{
-                data: [insiders, institutions, publicFloat],
+                data: [insiders, institutions, publicFloat] as number[],
                 backgroundColor: [
                     getToken('--secondary-color'),
                     getToken('--primary-color'),
@@ -562,7 +577,7 @@ export default {
         };
     },
 
-    formatDate(dateObj) {
+    formatDate(dateObj: any) {
         if (!dateObj) return this.$t('holdings.notAvailable');
         const raw = (typeof dateObj === 'string') ? dateObj : (dateObj.raw || dateObj.fmt || dateObj);
         
@@ -576,14 +591,14 @@ export default {
         return this.formatDateYYYYMMDD(d);
     },
     
-    formatDateYYYYMMDD(date) {
+    formatDateYYYYMMDD(date: Date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}/${month}/${day}`;
     }
   }
-}
+})
 </script>
 
 <style scoped>
