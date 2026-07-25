@@ -175,7 +175,7 @@ class StockOverviewOptimizer {
           try {
             // Dynamically import to avoid circular dependency if any?
             // Import at top is fine.
-            const { hybridTechnicalIndicatorsAPI } = await import('@/api/hybridTechnicalIndicatorsApi.js');
+            const { hybridTechnicalIndicatorsAPI } = await import('@/api/hybridTechnicalIndicatorsApi');
             return await hybridTechnicalIndicatorsAPI.preloadAllPrecomputedData();
           } catch (e) {
             console.warn('Failed to preload indicators:', e);

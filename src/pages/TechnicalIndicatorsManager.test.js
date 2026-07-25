@@ -8,7 +8,7 @@
 import { mount, flushPromises } from '@vue/test-utils'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
-vi.mock('@/api/hybridTechnicalIndicatorsApi.js', () => ({
+vi.mock('@/api/hybridTechnicalIndicatorsApi', () => ({
   default: { getDataSourceStatus: vi.fn().mockResolvedValue({}), getTechnicalIndicators: vi.fn() }
 }))
 vi.mock('@/utils/technicalIndicatorsCache', () => ({

@@ -168,7 +168,7 @@
 </template>
 
 <script>
-import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi.js'
+import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi'
 import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'

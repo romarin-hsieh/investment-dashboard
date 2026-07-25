@@ -20,7 +20,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 
-vi.mock('@/api/hybridTechnicalIndicatorsApi.js', () => {
+vi.mock('@/api/hybridTechnicalIndicatorsApi', () => {
   const api = { getTechnicalIndicators: vi.fn() }
   return { default: api, hybridTechnicalIndicatorsAPI: api }
 })
@@ -30,7 +30,7 @@ vi.mock('@/api/yahooFinanceApi', () => {
 })
 
 import TechnicalIndicators from './TechnicalIndicators.vue'
-import hybridApi from '@/api/hybridTechnicalIndicatorsApi.js'
+import hybridApi from '@/api/hybridTechnicalIndicatorsApi'
 import yahooApi from '@/api/yahooFinanceApi'
 
 // ---------- helpers ----------
