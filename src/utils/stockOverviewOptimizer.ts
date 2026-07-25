@@ -8,8 +8,34 @@ import { performanceMonitor, PERFORMANCE_LABELS } from './performanceMonitor'
 import { dataFetcher } from '@/lib/fetcher'
 import { stocksConfig } from './stocksConfigService'
 import { metadataService } from './metadataService'
+import type { QuoteItem } from '@/types'
+
+/** The cached / returned stock-overview payload. `quotes` is the only strongly
+ *  typed field the code iterates; the rest are pass-through blobs whose exact
+ *  shape varies by producer (preload vs optimized load vs cache). */
+interface StockOverviewData {
+  quotes: QuoteItem[]
+  dailyData?: unknown
+  metadata?: unknown
+  lastUpdate?: unknown
+  staleLevel?: unknown
+  fromCache?: boolean
+  preloaded?: boolean
+  preloadTime?: string
+}
+
+/** A single loading recommendation from `getLoadingRecommendations()`. */
+interface Recommendation {
+  type: string
+  message: string
+  action: () => unknown
+}
 
 class StockOverviewOptimizer {
+  preloadInProgress: boolean
+  preloadPromise: Promise<StockOverviewData> | null
+  criticalSymbols: string[]
+
   constructor() {
     this.preloadInProgress = false
     this.preloadPromise = null
@@ -18,7 +44,7 @@ class StockOverviewOptimizer {
 
   // Preload Critical Data
   // 預載入關鍵數據
-  async preloadCriticalData() {
+  async preloadCriticalData(): Promise<StockOverviewData | null> {
     if (this.preloadInProgress) {
       return this.preloadPromise
     }
@@ -40,12 +66,14 @@ class StockOverviewOptimizer {
     return this.preloadPromise
   }
 
-  async performPreload() {
+  async performPreload(): Promise<StockOverviewData> {
     try {
       // 1. Preload symbols config
       // 1. 預載入 symbols 配置
       performanceMonitor.start('preload_symbols_config')
-      const symbols = await stocksConfig.getEnabledSymbols()
+      // Warms the symbols-config cache; the result itself was unused in the
+      // original (kept as a side-effecting await, minus the dead binding).
+      await stocksConfig.getEnabledSymbols()
       performanceMonitor.end('preload_symbols_config')
 
       // 2. Preload critical stock quotes
@@ -88,7 +116,7 @@ class StockOverviewOptimizer {
 
       // 6. Cache preloaded data
       // 6. 快取預載入的數據
-      const preloadedData = {
+      const preloadedData: StockOverviewData = {
         quotes: quotesResult.data?.items || [],
         dailyData: dailyResult.data,
         lastUpdate: quotesResult.as_of,
@@ -110,13 +138,13 @@ class StockOverviewOptimizer {
 
   // Load Optimized Stock Data
   // 優化的股票數據載入
-  async loadOptimizedStockData(configuredSymbols) {
+  async loadOptimizedStockData(configuredSymbols: string[]): Promise<StockOverviewData> {
     console.log('🔄 Loading optimized stock data...')
 
     try {
       // 1. Check cache
       // 1. 檢查快取
-      const cachedData = performanceCache.get(CACHE_KEYS.STOCK_OVERVIEW_DATA)
+      const cachedData = performanceCache.get(CACHE_KEYS.STOCK_OVERVIEW_DATA) as StockOverviewData | null
       if (cachedData) {
         console.log('📦 Using cached stock overview data')
         return this.processCachedData(cachedData, configuredSymbols)
@@ -134,7 +162,7 @@ class StockOverviewOptimizer {
 
   // Process Cached Data
   // 處理快取數據
-  processCachedData(cachedData, configuredSymbols) {
+  processCachedData(cachedData: StockOverviewData, configuredSymbols: string[]): StockOverviewData {
     // Filter to show only configured symbols
     // 過濾只顯示配置的 symbols
     const filteredQuotes = cachedData.quotes.filter(quote =>
@@ -153,7 +181,7 @@ class StockOverviewOptimizer {
 
   // Perform Optimized Load (Parallel)
   // 執行優化載入 (並行處理)
-  async performOptimizedLoad(configuredSymbols) {
+  async performOptimizedLoad(configuredSymbols: string[]): Promise<StockOverviewData> {
     console.log('⚡ Performing optimized load...')
 
     // Ensure metadata service uses static data for performance
@@ -162,7 +190,7 @@ class StockOverviewOptimizer {
 
     // Load data in parallel stages
     // 分階段並行載入
-    const [quotesResult, dailyResult, indicatorsResult] = await Promise.all([
+    const [quotesResult, dailyResult] = await Promise.all([
       performanceMonitor.measureAsync(PERFORMANCE_LABELS.QUOTES_FETCH,
         () => dataFetcher.fetchQuotesSnapshot()
       ),
@@ -187,7 +215,7 @@ class StockOverviewOptimizer {
 
     // Process quotes
     // 處理 quotes
-    let quotes = []
+    let quotes: QuoteItem[] = []
     if (quotesResult.data?.items) {
       quotes = quotesResult.data.items.filter(quote =>
         configuredSymbols.includes(quote.symbol)
@@ -196,7 +224,7 @@ class StockOverviewOptimizer {
 
     // Load metadata (using static data)
     // 載入 metadata (使用靜態數據)
-    let metadata = null
+    let metadata: unknown = null
     if (quotes.length > 0) {
       const symbols = quotes.map(quote => quote.symbol)
       console.log(`🔄 Loading metadata for ${symbols.length} symbols using static data...`)
@@ -207,7 +235,9 @@ class StockOverviewOptimizer {
       )
 
       metadata = {
-        items: Array.from(metadataMap.values()),
+        // getBatchMetadata returns a union of Map types; the element type is
+        // irrelevant here (metadata is an opaque blob), so widen for Array.from.
+        items: Array.from((metadataMap as Map<string, unknown>).values()),
         as_of: new Date().toISOString(),
         source: 'Static Data (Performance Optimized)'
       }
@@ -215,7 +245,7 @@ class StockOverviewOptimizer {
 
     // Cache results
     // 快取結果
-    const dataToCache = {
+    const dataToCache: StockOverviewData = {
       quotes,
       dailyData: dailyResult.data,
       metadata,
@@ -231,7 +261,7 @@ class StockOverviewOptimizer {
 
   // Background Preload (Runs when idle)
   // 背景預載入 (在用戶瀏覽其他頁面時執行)
-  startBackgroundPreload() {
+  startBackgroundPreload(): void {
     // Use requestIdleCallback if available
     // 使用 requestIdleCallback 在瀏覽器空閒時執行
     if (window.requestIdleCallback) {
@@ -249,7 +279,7 @@ class StockOverviewOptimizer {
 
   // Intelligent Cache Management
   // 智能快取管理
-  manageCacheIntelligently() {
+  manageCacheIntelligently(): void {
     // Check cache stats
     // 檢查快取大小
     const stats = performanceCache.getStats()
@@ -265,23 +295,18 @@ class StockOverviewOptimizer {
 
   // Clean Old Cache Items
   // 清理舊的快取項目
-  cleanOldCacheItems() {
-    // Keep important keys, clear others
-    // 保留重要的快取，清理其他的
-    const importantKeys = [
-      CACHE_KEYS.STOCK_OVERVIEW_DATA,
-      CACHE_KEYS.QUOTES_SNAPSHOT,
-      CACHE_KEYS.SYMBOLS_CONFIG
-    ]
-
-    // Implementation of complex cleanup logic could go here
-    // 這裡可以實作更複雜的清理邏輯
+  cleanOldCacheItems(): void {
+    // Keep important keys (STOCK_OVERVIEW_DATA / QUOTES_SNAPSHOT / SYMBOLS_CONFIG),
+    // clear others. Implementation of complex cleanup logic could go here.
+    // 保留重要的快取，清理其他的；這裡可以實作更複雜的清理邏輯。
+    // (The original declared an unused `importantKeys` array as a placeholder;
+    //  dropped here — the intent is captured in this comment instead.)
     console.log('🗑️ Cache cleanup completed')
   }
 
   // 獲取載入建議
-  getLoadingRecommendations() {
-    const recommendations = []
+  getLoadingRecommendations(): Recommendation[] {
+    const recommendations: Recommendation[] = []
 
     // 檢查是否為首次載入
     const hasCache = performanceCache.has(CACHE_KEYS.STOCK_OVERVIEW_DATA)
@@ -294,8 +319,9 @@ class StockOverviewOptimizer {
     }
 
     // 檢查網路狀況
-    if (navigator.connection) {
-      const connection = navigator.connection
+    const nav = navigator as Navigator & { connection?: { effectiveType?: string } }
+    if (nav.connection) {
+      const connection = nav.connection
       if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
         recommendations.push({
           type: 'SLOW_NETWORK',
@@ -309,7 +335,7 @@ class StockOverviewOptimizer {
   }
 
   // 啟用最小模式 (慢網路時)
-  enableMinimalMode() {
+  enableMinimalMode(): { reducedSymbols: boolean; shorterCache: boolean; minimalMetadata: boolean } {
     console.log('🐌 Enabling minimal mode for slow network')
 
     // 只載入關鍵股票
@@ -324,7 +350,7 @@ class StockOverviewOptimizer {
   }
 
   // 效能報告
-  generatePerformanceReport() {
+  generatePerformanceReport(): Record<string, unknown> {
     const report = performanceMonitor.generateReport()
     const warnings = performanceMonitor.checkPerformanceWarnings()
 

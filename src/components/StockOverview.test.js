@@ -47,7 +47,7 @@ import { ref } from 'vue'
 vi.mock('@/utils/stocksConfigService', () => ({
   stocksConfig: { getEnabledSymbols: vi.fn() }
 }))
-vi.mock('@/utils/stockOverviewOptimizer.js', () => ({
+vi.mock('@/utils/stockOverviewOptimizer', () => ({
   stockOverviewOptimizer: { loadOptimizedStockData: vi.fn() },
   default: { loadOptimizedStockData: vi.fn() }
 }))
@@ -84,7 +84,7 @@ vi.mock('@/composables/useKeyboardShortcuts', () => ({
 
 import StockOverview from './StockOverview.vue'
 import { stocksConfig } from '@/utils/stocksConfigService'
-import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer.js'
+import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer'
 import { i18n } from '@/i18n'
 import { createKeyHandler } from '@/composables/useKeyboardShortcuts'
 import { directMetadataLoader } from '@/utils/directMetadataLoader'
