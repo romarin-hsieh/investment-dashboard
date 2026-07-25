@@ -161,13 +161,54 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { useTheme } from '@/composables/useTheme';
 import { ohlcvApi } from '@/services/ohlcvApi';
 import { withDataBase } from '@/utils/baseUrl';
 import { formatDate as i18nDate } from '@/utils/dateFormat';
 
-export default {
+/** Clean OHLCV series the gauge's math consumes (validated non-empty before use). */
+interface Series {
+  close: number[]
+  high: number[]
+  low: number[]
+  volume: number[]
+  timestamps: number[]
+}
+
+/** The four market series threaded through the fear/greed compute. */
+interface MarketSet {
+  spx: Series | null
+  vix: Series | null
+  tlt: Series | null
+  jnk: Series | null
+}
+
+/** Precomputed market-sentiment report (loose — only the read fields are named). */
+interface ExternalSentiment {
+  score?: number
+  history?: {
+    previous_close?: number
+    '1_week_ago'?: number
+    '1_month_ago'?: number
+    '1_year_ago'?: number
+    [key: string]: unknown
+  }
+  components?: {
+    momentum?: number
+    strength?: number
+    breadth?: number
+    options?: number
+    volatility?: number
+    safe_haven?: number
+    junk_bond?: number
+    [key: string]: unknown
+  }
+  [key: string]: unknown
+}
+
+export default defineComponent({
   name: 'ZeiiermanFearGreedGauge',
   setup() {
     const { theme } = useTheme()
@@ -178,7 +219,7 @@ export default {
       fearGreedValue: 50,
       loading: true,
       error: false,
-      externalSentiment: null, 
+      externalSentiment: null as ExternalSentiment | null,
       components: {
         sp125: 50, hl52: 50, mcsi: 50, putCall: 50, vix50: 50, safe: 50, yieldSpread: 50
       },
@@ -210,7 +251,7 @@ export default {
     this.calculateMetrics();
   },
   methods: {
-    getSentimentText(val) {
+    getSentimentText(val: number) {
       if (val <= 25) return this.$t('fearGreed.zones.extremeFear');
       if (val <= 45) return this.$t('fearGreed.zones.fear');
       if (val <= 55) return this.$t('fearGreed.zones.neutral');
@@ -229,7 +270,7 @@ export default {
             console.warn('Failed to load external sentiment:', e);
         }
     },
-    getSentimentClass(val) {
+    getSentimentClass(val: number) {
       if (val <= 25) return 'extreme-fear';
       if (val <= 45) return 'fear';
       if (val <= 55) return 'neutral';
@@ -238,18 +279,19 @@ export default {
     },
 
     applyExternalData() {
-        if (!this.externalSentiment) return;
-        
+        const ext = this.externalSentiment;
+        if (!ext) return;
+
         console.log('Applying External Data...');
-        
+
         // 1. Apply Key Score
-        if (this.externalSentiment.score) {
-            this.fearGreedValue = Math.round(this.externalSentiment.score);
+        if (ext.score) {
+            this.fearGreedValue = Math.round(ext.score);
         }
-        
+
         // 2. Apply History
-        if (this.externalSentiment.history) {
-            const h = this.externalSentiment.history;
+        if (ext.history) {
+            const h = ext.history;
             if (h.previous_close) this.history.prev = Math.round(h.previous_close);
             if (h["1_week_ago"]) this.history.week = Math.round(h["1_week_ago"]);
             if (h["1_month_ago"]) this.history.month = Math.round(h["1_month_ago"]);
@@ -257,8 +299,8 @@ export default {
         }
 
         // 3. Apply Components (as initial state / fallback)
-        if (this.externalSentiment.components) {
-            const c = this.externalSentiment.components;
+        if (ext.components) {
+            const c = ext.components;
             // Map JSON keys (momentum, strength...) to Vue keys (sp125, hl52...)
             if(c.momentum) this.components.sp125 = Math.round(c.momentum);
             if(c.strength) this.components.hl52 = Math.round(c.strength);
@@ -300,17 +342,14 @@ export default {
              // We only proceed here to update specific sub-components if we want "Live" precision 
              // or History Dates.
              
-             // Let's keep the History Dates logic as it uses getOhlcv timestamps
-             const prevData = this.computeFearGreed(1, markets);
+             // History-date labels come from the SPX timestamps. The per-offset
+             // computeFearGreed() scores were computed here but always discarded —
+             // the "Live precision" wiring was never added — so only the date
+             // labels remain. computeFearGreed() and its helpers stay below,
+             // typed but dormant, for that intended future use.
              this.historyDates.prev = this.getDateStr(markets.spx, 1);
-
-             const weekData = this.computeFearGreed(5, markets);
              this.historyDates.week = this.getDateStr(markets.spx, 5);
-
-             const monthData = this.computeFearGreed(20, markets);
              this.historyDates.month = this.getDateStr(markets.spx, 20);
-
-             const yearData = this.computeFearGreed(252, markets);
              this.historyDates.year = this.getDateStr(markets.spx, 252);
         }
         
@@ -323,11 +362,11 @@ export default {
       }
     },
 
-    getDateStr(data, offset) {
+    getDateStr(data: Series | null, offset: number) {
         if(!data || !data.timestamps) return '-';
         const idx = data.timestamps.length - 1 - offset;
         if(idx < 0) return '-';
-        
+
         let ts = data.timestamps[idx];
         if (ts < 1000000000000) {
             ts *= 1000;
@@ -338,13 +377,16 @@ export default {
     },
 
     // Core Calculation Logic - Z-Score Based (CNN Methodology)
-    computeFearGreed(offset, { spx, vix, tlt, jnk }) {
+    computeFearGreed(offset: number, { spx, vix, tlt, jnk }: MarketSet) {
         const result = {
             score: 50,
-            components: { spx125: 50, hl52: 50, mcsi: 50, putCall: 50, vix50: 50, safe: 50, yieldSpread: 50 }
+            // NOTE: momentum is written to `sp125` below, so the baseline key must
+            // be `sp125` too. It previously read `spx125`, leaving momentum's score
+            // in a stray 8th key while a constant 50 diluted the equal-weight average.
+            components: { sp125: 50, hl52: 50, mcsi: 50, putCall: 50, vix50: 50, safe: 50, yieldSpread: 50 }
         };
 
-        const getSlice = (data, windowSize) => {
+        const getSlice = (data: Series | null, windowSize: number) => {
             if (!data || !data.close) return null;
             const endIdx = data.close.length - 1 - offset;
             if (endIdx < windowSize) return null; 
@@ -381,7 +423,7 @@ export default {
             // Note: Strength usually looks back 52w (252d). 
             // If we shorten lookback for Z-Score to 125, we are checking "How weird is this 52w position relative to last 6m?"
             // This is acceptable tuning.
-            const strSeries = [];
+            const strSeries: number[] = [];
             const highs = spxSlice.high;
             const lows = spxSlice.low;
             for(let i=minHistory; i<closes.length; i++) {
@@ -425,7 +467,7 @@ export default {
         if (spxSlice && tltSlice && spxSlice.close.length > minHistory) {
             const sCloses = spxSlice.close;
             const bCloses = tltSlice.close;
-            const safeSeries = [];
+            const safeSeries: number[] = [];
             for(let i=minHistory; i<sCloses.length; i++) {
                 const sRet = (sCloses[i] - sCloses[i-20]) / sCloses[i-20];
                 const bRet = (bCloses[i] - bCloses[i-20]) / bCloses[i-20];
@@ -438,7 +480,7 @@ export default {
         if (jnkSlice && tltSlice && jnkSlice.close.length > minHistory) {
             const jCloses = jnkSlice.close;
             const bCloses = tltSlice.close;
-            const junkSeries = [];
+            const junkSeries: number[] = [];
              for(let i=minHistory; i<jCloses.length; i++) {
                 const ratio = jCloses[i] / bCloses[i]; // JNK/TLT
                 junkSeries.push(ratio);
@@ -458,15 +500,17 @@ export default {
     },
     
     // --- Helpers ---
-    async getOhlcv(symbols) {
-        if (!Array.isArray(symbols)) symbols = [symbols];
-        
-        for (const symbol of symbols) {
+    async getOhlcv(symbols: string | string[]): Promise<Series | null> {
+        const candidates = Array.isArray(symbols) ? symbols : [symbols];
+
+        for (const symbol of candidates) {
             try {
                 // Try standard API (Local JSON first)
                 const data = await ohlcvApi.getOhlcv(symbol);
                 if (data && data.close && data.close.length > 50) { // Basic validation
-                    return data;
+                    // Validated non-empty; the gauge's math treats the arrays as
+                    // clean number series (OhlcvData types close as (number|null)[]).
+                    return data as unknown as Series;
                 }
             } catch (e) {
                 // Continue to next symbol
@@ -475,15 +519,15 @@ export default {
         return null; // No valid data found for any candidate
     },
 
-    getMa(slice, period) {
+    getMa(slice: number[], period: number) {
         if(slice.length < period) return slice[slice.length-1];
         let sum = 0;
         for(let i=slice.length-period; i<slice.length; i++) sum += slice[i];
         return sum / period;
     },
 
-    calcRollingMetric(data, calcFn, startIdx) {
-        const results = [];
+    calcRollingMetric(data: number[], calcFn: (slice: number[]) => number, startIdx: number) {
+        const results: number[] = [];
         for(let i=startIdx; i<data.length; i++) {
             // Pass slice inclusive of 'i' and enough history
             // We pass the whole array slice up to i, calcFn handles lookback
@@ -493,7 +537,7 @@ export default {
         return results;
     },
 
-    getZScore(series) {
+    getZScore(series: number[]) {
         if (!series || series.length === 0) return 0;
         const current = series[series.length - 1];
         // Calculate stats on the *historical distribution* (last 125 points - Tuned)
@@ -507,28 +551,14 @@ export default {
         return (current - mean) / std;
     },
 
-    normalizeZ(z, invert=false) {
+    normalizeZ(z: number, invert = false) {
         if (invert) z = -z;
         const score = 50 + (z * 20); // Tuned Scaling Factor
         return Math.max(0, Math.min(100, Math.round(score)));
-    },
-    
-    // Keep these for getDiff used elsewhere? No, internal logic replaced.
-    // Clean up unused methods if safe, or keep for safety.
-    // Keeping data fetching helpers
-    getDateStr(data, offset) {
-       // ... existing ... 
-       if(!data || !data.timestamps) return '-';
-        const idx = data.timestamps.length - 1 - offset;
-        if(idx < 0) return '-';
-        let ts = data.timestamps[idx];
-        if (ts < 1000000000000) ts *= 1000;
-        const d = new Date(ts);
-        return i18nDate(d);
-    },
+    }
 
   }
-}
+})
 </script>
 
 <style scoped>
