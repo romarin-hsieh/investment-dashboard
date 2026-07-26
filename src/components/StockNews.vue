@@ -322,7 +322,8 @@ export default defineComponent({
 
 .news-publisher {
   font-size: var(--text-xs);
-  color: var(--blue-500);
+  /* --blue-500 was 3.97:1 on the card; brand link token --primary-text (theme-aware) clears AA */
+  color: var(--primary-text);
   font-weight: var(--weight-semibold);
 }
 
@@ -360,13 +361,14 @@ export default defineComponent({
 
 .read-more {
   font-size: var(--text-sm);
-  color: var(--blue-500);
+  /* --blue-500 was 3.97:1 on the card; brand link token --primary-text (theme-aware) clears AA */
+  color: var(--primary-text);
   font-weight: var(--weight-semibold);
   transition: color var(--transition-base);
 }
 
 .news-item:hover .read-more {
-  color: var(--blue-700);
+  color: var(--primary-hover);
 }
 
 /* 響應式設計 */

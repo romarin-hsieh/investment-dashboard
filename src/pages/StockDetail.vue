@@ -676,7 +676,9 @@ export default defineComponent({
 }
 
 .breadcrumb-link {
-  color: var(--primary-color);
+  /* --primary-color is a FILL token (3.94:1 as text); --primary-text is the
+     brand TEXT token (4.80:1, theme-aware) purpose-built for links */
+  color: var(--primary-text);
   text-decoration: none;
   font-weight: var(--weight-medium);
 }
