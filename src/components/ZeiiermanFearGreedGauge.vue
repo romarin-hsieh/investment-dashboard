@@ -569,8 +569,15 @@ export default defineComponent({
   --c-greed: #66bb6a;
   --c-ex-greed: #26a69a;
   
-  /* Text colors for specific backgrounds */
-  --c-neutral-text: #f9a825; /* Darker gold for text readability */
+  /* AA-as-text variants of the zone colors (light theme). The raw --c-* stay
+     vivid for the arc/gradient/dot-glow/circle fills; text usages point at these
+     darker tokens so labels/sentiment clear WCAG AA (4.5:1) on the light card
+     surface. .dark-mode restores the vivid values (they pass on the dark card). */
+  --c-ex-fear-text: #C62828;
+  --c-fear-text: #B45309;
+  --c-neutral-text: #7A6300; /* dark gold — the vivid yellow is unreadable as text */
+  --c-greed-text: #2E7D32;
+  --c-ex-greed-text: #00695C;
   
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -579,6 +586,15 @@ export default defineComponent({
   margin-bottom: var(--space-8);
   box-shadow: var(--shadow-md);
   transition: background-color var(--transition-slow) ease, border-color var(--transition-slow) ease;
+}
+
+.dark-mode .fear-greed-gauge-container {
+  /* On the dark card the vivid zone colors already clear AA as text. */
+  --c-ex-fear-text: var(--c-ex-fear);
+  --c-fear-text: var(--c-fear);
+  --c-neutral-text: var(--c-neutral);
+  --c-greed-text: var(--c-greed);
+  --c-ex-greed-text: var(--c-ex-greed);
 }
 
 .widget-header {
@@ -668,25 +684,24 @@ export default defineComponent({
   font-weight: var(--weight-semibold);
   padding: 0 10px;
 }
-.label-item { 
-  text-align: center; 
-  flex: 1; 
-  opacity: 0.8; 
-  transition: opacity var(--transition-base);
+.label-item {
+  text-align: center;
+  flex: 1;
+  /* No resting opacity wash: it blended the AA zone-text/range colors below
+     4.5:1. The legend stays quiet via its small type and secondary-grey range. */
   /* Ensure height alignment */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.label-item:hover { opacity: 1; }
 .label-text { display: block; margin-bottom: 4px; line-height: 1.2; }
-.label-range { display: block; opacity: 0.6; font-size: var(--text-xs); }
+.label-range { display: block; color: var(--text-secondary); font-size: var(--text-xs); }
 
-.label-item.extreme-fear .label-text { color: var(--c-ex-fear); }
-.label-item.fear .label-text { color: var(--c-fear); }
+.label-item.extreme-fear .label-text { color: var(--c-ex-fear-text); }
+.label-item.fear .label-text { color: var(--c-fear-text); }
 .label-item.neutral .label-text { color: var(--c-neutral-text); }
-.label-item.greed .label-text { color: var(--c-greed); }
-.label-item.extreme-greed .label-text { color: var(--c-ex-greed); }
+.label-item.greed .label-text { color: var(--c-greed-text); }
+.label-item.extreme-greed .label-text { color: var(--c-ex-greed-text); }
 
 /* Current Sentiment Box */
 .current-sentiment {
@@ -726,11 +741,11 @@ export default defineComponent({
 
 .current-sentiment.extreme-fear { border-color: var(--c-ex-fear); background: rgba(239, 83, 80, 0.08); }
 .current-sentiment.extreme-fear .sentiment-dot { background: var(--c-ex-fear); color: var(--c-ex-fear); }
-.current-sentiment.extreme-fear .sentiment-text { color: var(--c-ex-fear); }
+.current-sentiment.extreme-fear .sentiment-text { color: var(--c-ex-fear-text); }
 
 .current-sentiment.fear { border-color: var(--c-fear); background: rgba(255, 167, 38, 0.08); }
 .current-sentiment.fear .sentiment-dot { background: var(--c-fear); color: var(--c-fear); }
-.current-sentiment.fear .sentiment-text { color: var(--c-fear); }
+.current-sentiment.fear .sentiment-text { color: var(--c-fear-text); }
 
 .current-sentiment.neutral { border-color: var(--c-neutral); background: rgba(253, 216, 53, 0.08); }
 .current-sentiment.neutral .sentiment-dot { background: var(--c-neutral); color: var(--c-neutral); }
@@ -738,11 +753,11 @@ export default defineComponent({
 
 .current-sentiment.greed { border-color: var(--c-greed); background: rgba(102, 187, 106, 0.08); }
 .current-sentiment.greed .sentiment-dot { background: var(--c-greed); color: var(--c-greed); }
-.current-sentiment.greed .sentiment-text { color: var(--c-greed); }
+.current-sentiment.greed .sentiment-text { color: var(--c-greed-text); }
 
 .current-sentiment.extreme-greed { border-color: var(--c-ex-greed); background: rgba(38, 166, 154, 0.08); }
 .current-sentiment.extreme-greed .sentiment-dot { background: var(--c-ex-greed); color: var(--c-ex-greed); }
-.current-sentiment.extreme-greed .sentiment-text { color: var(--c-ex-greed); }
+.current-sentiment.extreme-greed .sentiment-text { color: var(--c-ex-greed-text); }
 
 /* Components Section */
 .components-section h4, .history-section h4 {
@@ -812,20 +827,20 @@ export default defineComponent({
 }
 
 /* Recycled classes for history colors */
-.history-sentiment.extreme-fear { color: var(--c-ex-fear); }
-.history-circle.extreme-fear { background: var(--c-ex-fear); color: white; }
+.history-sentiment.extreme-fear { color: var(--c-ex-fear-text); }
+.history-circle.extreme-fear { background: var(--c-ex-fear); color: #1a1a1a; }
 
-.history-sentiment.fear { color: var(--c-fear); }
-.history-circle.fear { background: var(--c-fear); color: white; }
+.history-sentiment.fear { color: var(--c-fear-text); }
+.history-circle.fear { background: var(--c-fear); color: #1a1a1a; }
 
 .history-sentiment.neutral { color: var(--c-neutral-text); }
-.history-circle.neutral { background: var(--c-neutral); color: #444; /* Dark text for yellow bg */ }
+.history-circle.neutral { background: var(--c-neutral); color: #1a1a1a; }
 
-.history-sentiment.greed { color: var(--c-greed); }
-.history-circle.greed { background: var(--c-greed); color: white; }
+.history-sentiment.greed { color: var(--c-greed-text); }
+.history-circle.greed { background: var(--c-greed); color: #1a1a1a; }
 
-.history-sentiment.extreme-greed { color: var(--c-ex-greed); }
-.history-circle.extreme-greed { background: var(--c-ex-greed); color: white; }
+.history-sentiment.extreme-greed { color: var(--c-ex-greed-text); }
+.history-circle.extreme-greed { background: var(--c-ex-greed); color: #1a1a1a; }
 
 /* Responsive */
 @media (max-width: 1024px) {
