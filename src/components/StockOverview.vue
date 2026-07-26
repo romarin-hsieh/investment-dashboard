@@ -74,7 +74,7 @@
                 :key="stock.quote.symbol"
                 :quote="stock.quote"
                 :daily-data="stock.dailyData"
-                :metadata="stock.metadata"
+                :metadata="(stock.metadata as any)"
                 :selected="stock.quote.symbol === selectedSymbol"
               />
             </div>
@@ -101,7 +101,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { stocksConfig } from '@/utils/stocksConfigService'
 import StockCard from './StockCard.vue'
 import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
@@ -111,15 +111,32 @@ import StockCardSkeleton from './StockCardSkeleton.vue'
 import KeyboardShortcutsOverlay from './KeyboardShortcutsOverlay.vue'
 import { navigationService } from '@/services/NavigationService'
 import { scrollSpyService } from '@/services/ScrollSpyService'
-import { dataFetcher } from '@/lib/fetcher'
 import { directMetadataLoader } from '@/utils/directMetadataLoader'
 import { stockOverviewOptimizer } from '@/utils/stockOverviewOptimizer'
 import { useTheme } from '@/composables/useTheme'
 import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 import { createKeyHandler } from '@/composables/useKeyboardShortcuts'
-import { computed } from 'vue'
+import { defineComponent } from 'vue'
+import type { QuoteItem } from '@/types'
+import type { TocSectorNode, TocIndustryNode, TocSymbolNode } from '@/types/toc'
 
-export default {
+/** A quote row (widened: the grid also reads name/companyName/shortName). */
+interface StockQuote extends QuoteItem { name?: string; companyName?: string; shortName?: string }
+/** One symbol's metadata row as StockOverview reads it — carries market_cap and
+ *  omits SymbolMetadata's sources/last_verified_at (a different view of the same
+ *  runtime row; StockCard reads only confidence/sector/industry/exchange). */
+interface StockMeta { symbol: string; sector?: string; industry?: string; exchange?: string; confidence?: number; market_cap?: number }
+interface MetadataEnvelope { items?: StockMeta[] | null }
+interface DailySymbol { symbol: string; [key: string]: unknown }
+interface DailyData { per_symbol?: DailySymbol[] }
+/** A grouped grid entry (quote + its optional metadata/daily rows). */
+interface StockEntry { quote: StockQuote; dailyData?: DailySymbol; metadata?: StockMeta }
+/** `_keyboardHandler` lives as an ad-hoc instance property, NOT in data(): Vue 3
+ *  hides `_`-prefixed data from the public proxy, but the unit test reads
+ *  vm._keyboardHandler. This host type declares it for the assign/read sites. */
+interface HandlerHost { _keyboardHandler: ((e: KeyboardEvent) => void) | null }
+
+export default defineComponent({
   name: 'StockOverview',
   components: {
     StockCard,
@@ -135,17 +152,17 @@ export default {
   },
   data() {
     return {
-      quotes: [],
-      dailyData: null,
-      metadata: null,
+      quotes: [] as StockQuote[],
+      dailyData: null as DailyData | null,
+      metadata: null as MetadataEnvelope | null,
       loading: false,
-      error: null,
-      lastUpdate: null,
-      configuredSymbols: [],
+      error: null as string | null,
+      lastUpdate: null as string | null,
+      configuredSymbols: [] as string[],
       // Navigation state
       activeSymbol: '',
       searchQuery: '',
-      expandedSections: new Set(),
+      expandedSections: new Set<string>(),
       // Keyboard navigation state
       selectedIndex: -1,
       showShortcutsHelp: false
@@ -189,18 +206,18 @@ export default {
       }
     },
 
-    groupedStocks() {
+    groupedStocks(): Record<string, StockEntry[]> {
       if (!this.quotes.length || !this.metadata) {
         return {}
       }
-      
+
       // A degraded 200 (envelope present, but `items` missing or not an array)
       // must NOT throw here — `this.metadata.items.find` blanked the ENTIRE page.
       // Fall back to "no metadata": every symbol files under Unknown, but the
       // grid still renders.
       const items = Array.isArray(this.metadata.items) ? this.metadata.items : []
 
-      const groups = {}
+      const groups: Record<string, StockEntry[]> = {}
 
       this.quotes.forEach(quote => {
         // m?. — a null/non-object entry inside a degraded `items` array must
@@ -210,7 +227,7 @@ export default {
         const symbolDailyData = this.dailyData?.per_symbol?.find(d => d.symbol === quote.symbol)
         
         let sector = 'Unknown'
-        if (symbolMetadata && symbolMetadata.confidence >= 0.7) {
+        if (symbolMetadata && (symbolMetadata.confidence ?? 0) >= 0.7) {
           sector = symbolMetadata.sector || 'Unknown'
         }
         
@@ -252,7 +269,7 @@ export default {
       
       // Define Industry priority order (grouped by sector)
       // 定義 Industry 優先順序 (依 Sector 分組)
-      const industryPriority = {
+      const industryPriority: Record<string, string[]> = {
         'Technology': [
           'Semiconductors',
           'Software - Infrastructure',
@@ -425,7 +442,7 @@ export default {
       
       // Sort groups by priority, but keep Object structure for iteration
       // 依優先級排序群組，但保持 Object 結構以便迭代
-      const sortedGroups = {}
+      const sortedGroups: Record<string, StockEntry[]> = {}
       
       // 1. Process sectors in predefined priority order
       // 1. 依預定義優先級處理 Sector
@@ -437,7 +454,7 @@ export default {
           
           // Group by industry
           // 依 Industry 分組
-          const industryGroups = {}
+          const industryGroups: Record<string, StockEntry[]> = {}
           groups[sector].forEach(stock => {
             const industry = stock.metadata?.industry || 'Unknown Industry'
             if (!industryGroups[industry]) {
@@ -445,10 +462,10 @@ export default {
             }
             industryGroups[industry].push(stock)
           })
-          
+
           // Array to store sorted stocks for this sector
           // 儲存該 Sector 已排序股票的陣列
-          const sortedStocks = []
+          const sortedStocks: StockEntry[] = []
           
           // Sort industries by priority
           // 依優先級排序 Industry
@@ -520,10 +537,10 @@ export default {
     // silently did the wrong thing (audit N2). displayGroups applies the SAME
     // query to the grid, matching the same fields the nav does (symbol, sector,
     // industry, + any company-name field), and drops sectors with no matches.
-    displayGroups() {
+    displayGroups(): Record<string, StockEntry[]> {
       const q = (this.searchQuery || '').trim().toLowerCase()
       if (!q) return this.groupedStocks
-      const out = {}
+      const out: Record<string, StockEntry[]> = {}
       for (const [sector, stocks] of Object.entries(this.groupedStocks)) {
         const matched = stocks.filter(stock => this.stockMatchesQuery(stock, q, sector))
         if (matched.length) out[sector] = matched
@@ -531,17 +548,17 @@ export default {
       return out
     },
 
-    tocTree() {
+    tocTree(): TocSectorNode[] {
       if (!this.quotes.length || !this.metadata) {
         return []
       }
 
-      const tree = []
-      
+      const tree: TocSectorNode[] = []
+
       // Use groupedStocks calculation to generate tree structure
       // 使用 groupedStocks 計算結果生成樹狀結構
       Object.entries(this.groupedStocks).forEach(([sectorName, stocks]) => {
-        const sectorNode = {
+        const sectorNode: TocSectorNode = {
           id: `sector-${this.sanitizeId(sectorName)}`,
           type: 'sector',
           label: sectorName,
@@ -550,7 +567,7 @@ export default {
 
         // Group by Industry
         // 依 Industry 分組
-        const industryGroups = {}
+        const industryGroups: Record<string, StockEntry[]> = {}
         stocks.forEach(stock => {
           const industry = stock.metadata?.industry || 'Unknown Industry'
           if (!industryGroups[industry]) {
@@ -562,7 +579,7 @@ export default {
         // Build nodes for each Industry
         // 每個 Industry 建立節點
         Object.entries(industryGroups).forEach(([industryName, industryStocks]) => {
-          const industryNode = {
+          const industryNode: TocIndustryNode = {
             id: `industry-${this.sanitizeId(sectorName)}-${this.sanitizeId(industryName)}`,
             type: 'industry',
             label: industryName,
@@ -572,7 +589,7 @@ export default {
           // Build nodes for each Symbol
           // 每個 Symbol 建立節點
           industryStocks.forEach(stock => {
-            const symbolNode = {
+            const symbolNode: TocSymbolNode = {
               id: `symbol-${this.sanitizeId(stock.quote.symbol)}`,
               type: 'symbol',
               label: stock.quote.symbol,
@@ -596,32 +613,10 @@ export default {
       return tree
     },
 
-    // Map for quick metadata lookup
-    // 快速查找 Metadata 的 Map
-    metadataMap() {
-      if (!this.metadata?.items) return new Map()
-      
-      const map = new Map()
-      this.metadata.items.forEach(item => {
-        map.set(item.symbol, item)
-      })
-      return map
-    },
-
-    dailyDataMap() {
-      if (!this.dailyData?.per_symbol) return new Map()
-
-      const map = new Map()
-      this.dailyData.per_symbol.forEach(item => {
-        map.set(item.symbol, item)
-      })
-      return map
-    },
-
     // Flat list of symbols in visual display order. j/k navigation walks
     // this list; Enter pushes the current entry to the detail route.
-    flatSymbols() {
-      const out = []
+    flatSymbols(): string[] {
+      const out: string[] = []
       for (const stocks of Object.values(this.groupedStocks)) {
         for (const stock of stocks) {
           out.push(stock.quote.symbol)
@@ -630,7 +625,7 @@ export default {
       return out
     },
 
-    selectedSymbol() {
+    selectedSymbol(): string {
       if (this.selectedIndex < 0 || this.selectedIndex >= this.flatSymbols.length) {
         return ''
       }
@@ -663,11 +658,12 @@ export default {
     }
     await this.loadStockData()
     this.initializeNavigation()
-    this._keyboardHandler = createKeyHandler(this.shortcutBindings)
-    window.addEventListener('keydown', this._keyboardHandler)
+    const keyboardHandler = createKeyHandler(this.shortcutBindings)
+    ;(this as unknown as HandlerHost)._keyboardHandler = keyboardHandler
+    window.addEventListener('keydown', keyboardHandler)
   },
 
-  beforeRouteLeave(to, from, next) {
+  beforeRouteLeave(_to, _from, next) {
     // Clear focus query param when leaving stock-overview route
     // 離開 stock-overview 路由時清除 focus 參數
     if (this.$route.query.focus) {
@@ -683,9 +679,10 @@ export default {
 
   beforeUnmount() {
     this.cleanupNavigation()
-    if (this._keyboardHandler) {
-      window.removeEventListener('keydown', this._keyboardHandler)
-      this._keyboardHandler = null
+    const host = this as unknown as HandlerHost
+    if (host._keyboardHandler) {
+      window.removeEventListener('keydown', host._keyboardHandler)
+      host._keyboardHandler = null
     }
   },
   methods: {
@@ -720,7 +717,8 @@ export default {
         }
         
         if (optimizedData.lastUpdate) {
-            this.lastUpdate = optimizedData.lastUpdate
+            // Producer types lastUpdate as unknown; it's the quotes as_of string.
+            this.lastUpdate = optimizedData.lastUpdate as string
         }
         
         if (optimizedData.dailyData) {
@@ -757,9 +755,9 @@ export default {
       await this.loadStockData()
     },
 
-    formatTime(timeString) {
+    formatTime(timeString: string | null) {
       if (!timeString) return ''
-      
+
       return i18nDateTime(timeString, {
         month: 'short',
         day: 'numeric',
@@ -769,10 +767,10 @@ export default {
     },
 
     // Helper method to map exchange codes to display names
-    mapExchangeCode(exchangeCode) {
+    mapExchangeCode(exchangeCode?: string) {
       if (!exchangeCode) return 'Unknown'
-      
-      const exchangeMap = {
+
+      const exchangeMap: Record<string, string> = {
         'NYQ': 'NYSE',    // New York Stock Exchange
         'NMS': 'NASDAQ',  // NASDAQ Global Select Market
         'NCM': 'NASDAQ',  // NASDAQ Capital Market
@@ -783,12 +781,12 @@ export default {
       return exchangeMap[exchangeCode] || exchangeCode
     },
 
-    sanitizeId(str) {
+    sanitizeId(str: string) {
       // Sanitize string for valid DOM ID
       // 清理字串以符合 DOM ID 規範
       return str.replace(/[^a-zA-Z0-9]/g, '_')
     },
-    async onSymbolClick(symbol) {
+    async onSymbolClick(symbol: string) {
       console.log('Navigation: Symbol clicked:', symbol)
       
       // Pause ScrollSpy to avoid conflict
@@ -822,14 +820,14 @@ export default {
       }
     },
 
-    onSearchChange(query) {
+    onSearchChange(query: string) {
       this.searchQuery = query
       this.syncSearchToUrl(query)
     },
 
     // Does a stock row match the active query? Same fields the sidebar nav
     // matches (NavigationPanel.filteredTocTree), so grid and nav stay in sync.
-    stockMatchesQuery(stock, q, sector) {
+    stockMatchesQuery(stock: StockEntry, q: string, sector: string) {
       const hay = [
         stock.quote?.symbol,
         stock.quote?.name, stock.quote?.companyName, stock.quote?.shortName,
@@ -843,7 +841,7 @@ export default {
     // back/forward — previously searchQuery was component-local and lost on any
     // navigation (audit N2). replace(), not push(), so keystrokes don't spam
     // history; undefined drops the param entirely when the query is cleared.
-    syncSearchToUrl(query) {
+    syncSearchToUrl(query: string) {
       const q = (query || '').trim()
       const current = (this.$route?.query?.q) || ''
       if (q === current) return
@@ -852,19 +850,7 @@ export default {
       }).catch(() => {})
     },
 
-    onToggleSection(sectionId, expanded) {
-      if (expanded) {
-        this.expandedSections.add(sectionId)
-      } else {
-        this.expandedSections.delete(sectionId)
-      }
-      
-      // Save to localStorage
-      // 儲存至 localStorage
-      this.saveExpandedSections()
-    },
-
-    autoExpandForSymbol(symbol) {
+    autoExpandForSymbol(symbol: string) {
       // Find sector and industry for symbol
       // 查找 Symbol 所屬的 Sector 與 Industry
       for (const sectorNode of this.tocTree) {
@@ -898,7 +884,7 @@ export default {
         }
       } catch (error) {
         console.warn('Failed to load expanded sections:', error)
-        this.expandedSections = new Set()
+        this.expandedSections = new Set<string>()
       }
     },
 
@@ -916,7 +902,7 @@ export default {
       // Check Vue Router query params (Hash Router compatible)
       // 檢查 Vue Router query 參數 (Hash Router 相容)
       const focusSymbol = this.$route.query.focus
-      if (focusSymbol && this.isSymbolValid(focusSymbol)) {
+      if (typeof focusSymbol === 'string' && this.isSymbolValid(focusSymbol)) {
         console.log('Navigation: Found focus symbol in URL:', focusSymbol)
         
         // Wait for DOM updates
@@ -967,7 +953,7 @@ export default {
       scrollSpyService.cleanup()
     },
 
-    isSymbolValid(symbol) {
+    isSymbolValid(symbol: string) {
       return navigationService.isSymbolValid(symbol)
     },
 
@@ -984,7 +970,7 @@ export default {
       console.log('Navigation: Expanded all sections by default')
     },
 
-    moveSelection(delta) {
+    moveSelection(delta: number) {
       const total = this.flatSymbols.length
       if (total === 0) return
       if (this.selectedIndex < 0) {
@@ -1029,7 +1015,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
