@@ -291,6 +291,7 @@ export default defineComponent({
           "colorTheme": isDark ? "dark" : "light"
         }
       }
+      return undefined
     },
 
     getScriptUrl() {
@@ -299,6 +300,7 @@ export default defineComponent({
       } else if (this.widgetType === 'technical') {
         return 'https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js'
       }
+      return undefined
     },
 
     renderCachedWidget(cached: { scriptUrl: string; config: unknown }) {
