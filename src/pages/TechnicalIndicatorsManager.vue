@@ -108,8 +108,9 @@
         </div>
 
         <div class="form-group">
-          <label>{{ $t('techIndicators.maxAgeLabel') }}</label>
+          <label for="ti-max-age">{{ $t('techIndicators.maxAgeLabel') }}</label>
           <input
+            id="ti-max-age"
             type="number"
             v-model.number="preferences.maxAgeHours"
             @change="updatePreferences"
@@ -400,7 +401,8 @@ export default defineComponent({
 }
 
 .control-btn.primary {
-  background: var(--blue-500);
+  /* --blue-500 #007bff gave white text only 3.98:1; the darker brand blue clears AA */
+  background: var(--blue-700);
   color: white;
 }
 
@@ -410,20 +412,24 @@ export default defineComponent({
 
 .control-btn.warning {
   background: var(--warning-solid);
-  color: var(--text-secondary);
+  /* White/grey can't clear 4.5:1 on amber; --signal-ink (dark) reaches 10.7:1 */
+  color: var(--signal-ink);
 }
 
 .control-btn.warning:hover {
-  background: #e0a800;
+  background: var(--warning-solid-hover);
 }
 
 .control-btn.info {
   background: var(--info-solid);
-  color: white;
+  /* Dark ink on the vivid cyan fill (5.72:1); white was only 3.04:1 */
+  color: var(--signal-ink);
 }
 
 .control-btn.info:hover:not(:disabled) {
-  background: #138496;
+  /* Hover darkens to --info-fg with white text (8.56:1) — ink would fail on this shade */
+  background: var(--info-fg);
+  color: white;
 }
 
 .control-btn.secondary {
@@ -500,11 +506,13 @@ export default defineComponent({
 
 .load-time {
   margin-left: auto;
-  color: var(--blue-500);
+  /* --blue-500 was 3.24:1 on the secondary card; darker brand blue clears AA */
+  color: var(--blue-700);
 }
 
 .error-message {
-  color: var(--danger-solid);
+  /* --danger-solid #dc3545 was 3.39:1 on --danger-bg; --danger-fg reaches 8.25:1 */
+  color: var(--danger-fg);
   font-size: var(--text-base);
 }
 
