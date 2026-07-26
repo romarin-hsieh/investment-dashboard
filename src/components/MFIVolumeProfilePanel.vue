@@ -200,7 +200,7 @@
     </div>
 
     <!-- Tooltip -->
-    <div v-if="tooltip.visible" class="tooltip" :style="tooltip.style">
+    <div v-if="tooltip.visible && tooltip.data" class="tooltip" :style="tooltip.style">
       <div class="tooltip-content">
         <div><strong>{{ $t('mfi.tooltipPriceRange') }}</strong> ${{ formatNumber(tooltip.data.minPrice, 2) }} - ${{ formatNumber(tooltip.data.maxPrice, 2) }}</div>
         <div><strong>{{ $t('mfi.tooltipVolume') }}</strong> {{ formatVolume(tooltip.data.volume) }}</div>
@@ -212,12 +212,14 @@
   </div>
 </template>
 
-<script>
-import { ohlcvApi } from '@/services/ohlcvApi';
-import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals } from '@/utils/mfiVolumeProfile';
+<script lang="ts">
+import { defineComponent, type CSSProperties } from 'vue';
+import { ohlcvApi, type OhlcvData } from '@/services/ohlcvApi';
+import { calculateMFIVolumeProfile, getMFIVolumeProfileSignals, type MFIVolumeProfileResult, type MFIVolumeProfileSignals, type VolumeProfileBin } from '@/utils/mfiVolumeProfile';
+import type { MFIInput } from '@/utils/mfi';
 import { formatNumber } from '@/utils/numberFormat';
 
-export default {
+export default defineComponent({
   name: 'MFIVolumeProfilePanel',
   props: {
     symbol: {
@@ -240,17 +242,18 @@ export default {
   data() {
     return {
       loading: false,
-      error: null,
-      profileData: null,
-      tradingSignals: null,
-      currentPrice: null,
+      error: null as string | null,
+      profileData: null as MFIVolumeProfileResult | null,
+      tradingSignals: null as MFIVolumeProfileSignals | null,
+      currentPrice: null as number | null,
       selectedRange: '3mo',
       binHeight: 12, // Height per bin in pixels
       showInfo: false,
+      loadSeq: 0,
       tooltip: {
         visible: false,
-        data: null,
-        style: {}
+        data: null as VolumeProfileBin | null,
+        style: {} as CSSProperties
       }
     };
   },
@@ -273,10 +276,6 @@ export default {
   },
   mounted() {
     this.loadData();
-  },
-  created() {
-    // Non-reactive request token; see loadData.
-    this.loadSeq = 0;
   },
   watch: {
     symbol() {
@@ -317,7 +316,9 @@ export default {
         console.log(`📊 OHLCV data loaded: ${ohlcvData.timestamps?.length || 0} points`);
         
         // Step 2: Calculate MFI Volume Profile
-        this.profileData = calculateMFIVolumeProfile(ohlcvData, this.bins, this.mfiPeriod);
+        // ohlcvApi's OhlcvData is loose (optional arrays); the profile calc
+        // wants the strict MFIInput shape, so cast at this boundary.
+        this.profileData = calculateMFIVolumeProfile(ohlcvData as unknown as MFIInput, this.bins, this.mfiPeriod);
         
         // Step 3: Get current price for trading signals
         this.currentPrice = this.getCurrentPrice(ohlcvData);
@@ -340,25 +341,28 @@ export default {
       }
     },
     
-    getCurrentPrice(ohlcvData) {
+    getCurrentPrice(ohlcvData: OhlcvData): number | null {
       // Get the latest valid close price
-      for (let i = ohlcvData.close.length - 1; i >= 0; i--) {
-        if (ohlcvData.close[i] != null && !isNaN(ohlcvData.close[i])) {
-          return ohlcvData.close[i];
+      const close = ohlcvData.close ?? [];
+      for (let i = close.length - 1; i >= 0; i--) {
+        const c = close[i];
+        if (c != null && !isNaN(c)) {
+          return c;
         }
       }
       return null;
     },
-    
-    getErrorMessage(error) {
-      if (error.message.includes('CORS')) {
+
+    getErrorMessage(error: unknown) {
+      const message = (error as Error).message || '';
+      if (message.includes('CORS')) {
         return this.$t('mfi.errorCors');
-      } else if (error.message.includes('404') || error.message.includes('not found')) {
+      } else if (message.includes('404') || message.includes('not found')) {
         return this.$t('mfi.errorNoData', { symbol: this.symbol });
-      } else if (error.message.includes('Insufficient')) {
+      } else if (message.includes('Insufficient')) {
         return this.$t('mfi.errorInsufficient');
       } else {
-        return this.$t('mfi.errorGeneric', { message: error.message });
+        return this.$t('mfi.errorGeneric', { message });
       }
     },
     
@@ -369,7 +373,7 @@ export default {
       this.loadData();
     },
     
-    getBarClass(bin) {
+    getBarClass(bin: VolumeProfileBin) {
       const classes = ['volume-bar'];
       
       // Add sentiment class based on MFI
@@ -389,7 +393,7 @@ export default {
       return classes.join(' ');
     },
     
-    getBarStyle(bin) {
+    getBarStyle(_bin: VolumeProfileBin): CSSProperties {
       return {
         position: 'relative',
         width: '100%',
@@ -399,7 +403,7 @@ export default {
       };
     },
     
-    getBarFillStyle(bin) {
+    getBarFillStyle(bin: VolumeProfileBin): CSSProperties {
       if (!this.profileData) return { width: '0%' };
       
       const maxVolume = this.profileData.statistics.maxVolumeInBin;
@@ -446,7 +450,7 @@ export default {
     
     formatNumber,
 
-    formatVolume(volume) {
+    formatVolume(volume: number) {
       if (!Number.isFinite(volume)) return this.$t('mfi.notAvailable');
       if (volume >= 1000000000) {
         return formatNumber(volume / 1000000000, 1) + 'B';
@@ -459,7 +463,7 @@ export default {
       }
     },
     
-    showTooltip(event, bin) {
+    showTooltip(event: MouseEvent, bin: VolumeProfileBin) {
       this.tooltip = {
         visible: true,
         data: bin,
@@ -471,12 +475,12 @@ export default {
         }
       };
     },
-    
+
     hideTooltip() {
       this.tooltip.visible = false;
     }
   }
-};
+});
 </script>
 
 <style scoped>
