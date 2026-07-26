@@ -704,6 +704,8 @@ class YahooFinanceAPI {
         }
       }
     }
+    // All proxies exhausted without a usable result.
+    return undefined;
   }
 
   // 嘗試獲取靜態生成的技術指標
@@ -1112,6 +1114,8 @@ class YahooFinanceAPI {
         }
       }
     }
+    // All proxies exhausted without a usable result.
+    return undefined;
   }
 
   // Helper: Process raw quoteSummary result into app structure
@@ -1566,6 +1570,8 @@ class YahooFinanceAPI {
         }
       }
     }
+    // Unreachable: the last proxy iteration always throws above. Explicit for noImplicitReturns.
+    return undefined;
   }
 }
 
