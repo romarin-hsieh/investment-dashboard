@@ -13,15 +13,18 @@ import AxeBuilder from '@axe-core/playwright'
  * id to silence a newly-introduced violation, fix the violation instead.
  */
 // Per-route baselines. The set may only SHRINK (never add an id to silence a new
-// violation — fix the violation instead). color-contrast is now CLEARED on
-// stock-overview: the semantic up/down price colors used as text were repointed
-// to the design system's AA-as-text variants (--success-strong / --danger-strong,
-// §2.1) and --text-muted was darkened to pass on the secondary surface.
-// It remains baselined on market-overview only, where the ZeiiermanFearGreedGauge
-// carries its own bespoke zone palette (amber/green sentiment colors + white-on-
-// color circles) — a separate, gauge-specific pass.
+// violation — fix the violation instead). color-contrast is now CLEARED on BOTH
+// gated routes:
+//  - stock-overview: the semantic up/down price colors used as text were
+//    repointed to the design system's AA-as-text variants (--success-strong /
+//    --danger-strong, §2.1) and --text-muted was darkened for the 2nd surface.
+//  - market-overview: the ZeiiermanFearGreedGauge's bespoke zone palette gained
+//    AA-as-text variants (--c-*-text) for its labels/sentiment, its history
+//    circles switched to dark numerals on the vivid fills, and the washed-out
+//    label ranges dropped their alpha-blend for --text-secondary. The raw --c-*
+//    zone colors stay vivid for the arc/gradient/dot-glow/circle fills.
 const BASELINE_BY_ROUTE: Record<string, Set<string>> = {
-  '/#/market-overview': new Set<string>(['color-contrast']),
+  '/#/market-overview': new Set<string>(),
   '/#/stock-overview': new Set<string>(),
 }
 
