@@ -104,7 +104,7 @@
             <div class="widget-header flex-header">
                 <div style="display: flex; align-items: center;">
                     <h3>{{ $t('stockDetail.sections.technicalIndicators') }}</h3>
-                    <button class="header-info-btn" @click="$refs.technicalSignals.openModal()" :title="$t('stockDetail.actions.signalSpecsTitle')" :aria-label="$t('stockDetail.actions.signalSpecsAria')" style="margin-left: 8px;">
+                    <button class="header-info-btn" @click="($refs.technicalSignals as any).openModal()" :title="$t('stockDetail.actions.signalSpecsTitle')" :aria-label="$t('stockDetail.actions.signalSpecsAria')" style="margin-left: 8px;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                             <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.302-4.495z"/>
@@ -271,21 +271,21 @@
       <div v-if="activeTab === 'holdings'" class="tab-content">
           <div class="widget-container">
              <div class="widget-header"><h3>{{ $t('stockDetail.sections.institutionalInsiderHoldings') }}</h3></div>
-             <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData" />
+             <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData || undefined" />
           </div>
 
           <!-- Dataroma Super Investor Stats -->
-          <SuperInvestorStats 
-            :dataroma-data="dataromaData" 
-            :loading="dataromaLoading" 
+          <SuperInvestorStats
+            :dataroma-data="dataromaData || undefined"
+            :loading="dataromaLoading"
           />
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import { defineAsyncComponent } from 'vue'
+<script lang="ts">
+import { defineComponent, defineAsyncComponent } from 'vue'
 import { withDataBase } from '@/utils/baseUrl'
 import FastTradingViewWidget from '@/components/FastTradingViewWidget.vue'
 import AdvancedChartWidget from '@/components/AdvancedChartWidget.vue'
@@ -322,7 +322,7 @@ import { directMetadataLoader } from '@/utils/directMetadataLoader'
 import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
 
-export default {
+export default defineComponent({
   name: 'StockDetail',
   components: {
     FastTradingViewWidget,
@@ -352,22 +352,22 @@ export default {
   data() {
     return {
       loading: true,
-      error: null,
-      metadata: null,
+      error: null as string | null,
+      metadata: null as Awaited<ReturnType<typeof directMetadataLoader.getSymbolMetadata>> | null,
       activeTab: 'overview',
-      dataromaData: null,
+      dataromaData: null as Record<string, unknown> | null,
       dataromaLoading: false
     }
   },
   computed: {
     symbol() {
-      return this.$route.params.symbol || 'RKLB'
+      return (this.$route.params.symbol as string) || 'RKLB'
     },
     exchange() {
       // 優先使用 metadata 中的交易所資訊
       if (this.metadata && this.metadata.exchange) {
         // 將 metadata 中的 exchange 代碼轉換為顯示名稱
-        const exchangeMap = {
+        const exchangeMap: Record<string, string> = {
           'NYQ': 'NYSE',    // New York Stock Exchange
           'NMS': 'NASDAQ',  // NASDAQ Global Select Market
           'NCM': 'NASDAQ',  // NASDAQ Capital Market
@@ -512,10 +512,17 @@ export default {
       // 當 symbol 改變時，滾動到頂部並重新載入數據
       this.scrollToTop()
       this.loadMetadata()
+      this.fetchDataromaData() // Fetch on symbol change
     },
     $route() {
       // 當路由改變時，滾動到頂部
       this.scrollToTop()
+    },
+    activeTab(newTab: string) {
+      // Lazy-fetch Dataroma data the first time the Holdings tab opens.
+      if (newTab === 'holdings' && !this.dataromaData && !this.dataromaLoading) {
+        this.fetchDataromaData()
+      }
     }
   },
     mounted() {
@@ -554,7 +561,7 @@ export default {
     },
 
     getSector() {
-      if (!this.metadata || this.metadata.confidence < 0.7) {
+      if (!this.metadata || (this.metadata.confidence ?? 0) < 0.7) {
         return this.$t('stockDetail.industry.unknown')
       }
       return this.metadata.sector || this.$t('stockDetail.industry.unknown')
@@ -569,7 +576,7 @@ export default {
       }
 
       // 根據 PRD 要求，confidence < 0.7 歸類為 Unknown
-      if (this.metadata.confidence < 0.7) {
+      if ((this.metadata.confidence ?? 0) < 0.7) {
         return 'Unknown Industry'
       }
 
@@ -590,7 +597,7 @@ export default {
       const industry = this.getIndustryRaw()
       
       // 根據 industry 返回主要分類，用於樣式
-      const industryCategories = {
+      const industryCategories: Record<string, string> = {
         'Software - Application': 'tech-software',
         'Computer Hardware': 'tech-hardware',
         'Communication Equipment': 'tech-satellite',
@@ -649,21 +656,8 @@ export default {
         this.dataromaLoading = false
       }
     }
-  },
-  watch: {
-    symbol() {
-      this.scrollToTop()
-      this.loadMetadata()
-      this.fetchDataromaData() // Fetch on symbol change
-    },
-    // ... existing watch ...
-    activeTab(newTab) {
-        if (newTab === 'holdings' && !this.dataromaData && !this.dataromaLoading) {
-            this.fetchDataromaData()
-        }
-    }
   }
-}
+})
 </script>
 
 <style scoped>
