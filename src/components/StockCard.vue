@@ -4,7 +4,7 @@
     :class="{ 'is-selected': selected }"
     :id="domId"
     :data-symbol="quote.symbol"
-    :aria-current="selected ? 'true' : null"
+    :aria-current="selected ? 'true' : undefined"
     tabindex="-1"
   >
     <!-- Stale Data Banner (above the fold; replaces corner badge) -->
@@ -96,11 +96,30 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
+import type { QuoteItem, SymbolMetadata } from '@/types'
 import FastTradingViewWidget from './FastTradingViewWidget.vue'
 import TechnicalIndicators from './TechnicalIndicators.vue'
 
-export default {
+/** One row of the trading-analysis readout. */
+interface TradingAnalysisPoint {
+  text: string
+  type: 'bullish' | 'bearish' | 'neutral'
+}
+
+/** The quote this card renders — canonical QuoteItem fields plus the raw-Yahoo
+ *  fallback fields the analysis logic also reads (dual-source shape). */
+interface StockCardQuote extends QuoteItem {
+  regularMarketChangePercent?: number
+  regularMarketPrice?: number | null
+  fiftyDayAverage?: number
+  twoHundredDayAverage?: number
+  regularMarketVolume?: number
+  averageDailyVolume3Month?: number
+}
+
+export default defineComponent({
   name: 'StockCard',
   components: {
     FastTradingViewWidget,
@@ -108,15 +127,15 @@ export default {
   },
   props: {
     quote: {
-      type: Object,
+      type: Object as PropType<StockCardQuote>,
       required: true
     },
     dailyData: {
-      type: Object,
+      type: Object as PropType<Record<string, unknown> | null>,
       default: null
     },
     metadata: {
-      type: Object,
+      type: Object as PropType<SymbolMetadata | null>,
       default: null
     },
     selected: {
@@ -191,7 +210,7 @@ export default {
       if (!industry) return 'unknown'
 
       // 根據 industry 返回主要分類，用於樣式
-      const industryCategories = {
+      const industryCategories: Record<string, string> = {
         'Industrial IoT Solutions': 'tech-iot',
         'Satellite Imaging & Analytics': 'tech-satellite',
         'Database Software': 'tech-software',
@@ -209,7 +228,7 @@ export default {
     getExchange() {
       if (this.metadata && this.metadata.exchange) {
         // 將 metadata 中的 exchange 代碼轉換為顯示名稱
-        const exchangeMap = {
+        const exchangeMap: Record<string, string> = {
           'NYQ': 'NYSE',    // New York Stock Exchange
           'NMS': 'NASDAQ',  // NASDAQ Global Select Market
           'NCM': 'NASDAQ',  // NASDAQ Capital Market
@@ -258,16 +277,16 @@ export default {
       })
     },
 
-    sanitizeSymbol(symbol) {
+    sanitizeSymbol(symbol: string) {
       // 將 symbol 轉換為有效的 DOM ID
       // 替換非字母數字字符為底線
       return symbol.replace(/[^a-zA-Z0-9]/g, '_')
     },
 
-    generateTradingAnalysis() {
+    generateTradingAnalysis(): TradingAnalysisPoint[] {
         if (!this.quote) return [];
-        
-        const analysis = [];
+
+        const analysis: TradingAnalysisPoint[] = [];
         // Support both real API (regularMarket...) and Mock Data (change_percent...) keys
         const change = this.quote.change_percent !== undefined ? this.quote.change_percent : (this.quote.regularMarketChangePercent || 0);
         // `??` (not `!== undefined`) so a NULL price falls back instead of poisoning the
@@ -284,8 +303,8 @@ export default {
         
         // 1. Trend Analysis — an MA claim requires a usable price. Without one we fall
         // through to the change-based reading rather than inventing a trend.
-        const hasPrice = Number.isFinite(price) && price > 0;
-        if (hasPrice && fiftyDayAverage && twoHundredDayAverage) {
+        // The typeof narrows `price` (number | null) to number for the whole block.
+        if (typeof price === 'number' && Number.isFinite(price) && price > 0 && fiftyDayAverage && twoHundredDayAverage) {
             if (price > fiftyDayAverage && price > twoHundredDayAverage) {
                 analysis.push({ text: this.$t('stockCard.analysisTrendBullishMA'), type: 'bullish' });
             } else if (price < fiftyDayAverage && price < twoHundredDayAverage) {
@@ -331,7 +350,7 @@ export default {
         return analysis;
     }
   }
-}
+})
 </script>
 
 <style scoped>
