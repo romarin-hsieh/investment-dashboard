@@ -31,19 +31,8 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
+import type { TocSectorNode, TocIndustryNode, TocSymbolNode } from '@/types/toc'
 import TOCTree from './TOCTree.vue'
-
-/** A node in the TOC tree (heterogeneous sector/industry/symbol shape, built by
- *  StockOverview.tocTree()). Flat — the filter logic reads children/label/symbol
- *  without narrowing on `type`, so a discriminated union isn't used here. */
-interface TocNode {
-  id: string
-  type: 'sector' | 'industry' | 'symbol'
-  label: string
-  symbol: string
-  children: TocNode[]
-  metadata?: { sector: string; industry: string; exchange: string; marketCap: number }
-}
 
 export default defineComponent({
   name: 'NavigationPanel',
@@ -52,7 +41,7 @@ export default defineComponent({
   },
   props: {
     tocTree: {
-      type: Array as PropType<TocNode[]>,
+      type: Array as PropType<TocSectorNode[]>,
       default: () => []
     },
     activeSymbol: {
@@ -84,10 +73,10 @@ export default defineComponent({
       const query = this.localSearchQuery.toLowerCase().trim()
       
       return this.tocTree.map(sectorNode => {
-        const filteredSector = { ...sectorNode, children: [] as TocNode[] }
+        const filteredSector = { ...sectorNode, children: [] as TocIndustryNode[] }
 
         sectorNode.children.forEach(industryNode => {
-          const filteredIndustry = { ...industryNode, children: [] as TocNode[] }
+          const filteredIndustry = { ...industryNode, children: [] as TocSymbolNode[] }
           
           industryNode.children.forEach(symbolNode => {
             // 搜尋匹配：sector, industry, symbol, company name
@@ -109,7 +98,7 @@ export default defineComponent({
         })
         
         return filteredSector.children.length > 0 ? filteredSector : null
-      }).filter(Boolean)
+      }).filter((sector): sector is TocSectorNode => sector !== null)
     }
   },
   watch: {
