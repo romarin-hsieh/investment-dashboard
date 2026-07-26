@@ -31,7 +31,7 @@
               :key="symbolNode.id"
               class="tree-node symbol-node"
               :class="{ 'is-active': symbolNode.symbol === activeSymbol }"
-              :aria-current="symbolNode.symbol === activeSymbol ? 'location' : null"
+              :aria-current="symbolNode.symbol === activeSymbol ? 'location' : undefined"
               @click="onSymbolClick(symbolNode.symbol)"
               @keydown.enter="onSymbolClick(symbolNode.symbol)"
               @keydown.space.prevent="onSymbolClick(symbolNode.symbol)"
@@ -46,18 +46,23 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
+import type { TocSectorNode } from '@/types/toc'
+
+export default defineComponent({
   name: 'TOCTree',
   props: {
     nodes: {
-      type: Array,
+      type: Array as PropType<TocSectorNode[]>,
       default: () => []
     },
     activeSymbol: {
       type: String,
       default: ''
     },
+    // Inert inside TOCTree (parent filters before passing `nodes`), but kept:
+    // NavigationPanel.test.js asserts TOCTree.props('searchQuery').
     searchQuery: {
       type: String,
       default: ''
@@ -66,18 +71,18 @@ export default {
   },
   emits: ['symbol-click'], // 移除 toggle-section emit
   methods: {
-    onSymbolClick(symbol) {
+    onSymbolClick(symbol: string) {
       this.$emit('symbol-click', symbol)
     },
 
-    getTotalSymbolCount(sectorNode) {
+    getTotalSymbolCount(sectorNode: TocSectorNode): number {
       return sectorNode.children.reduce((total, industryNode) => {
         return total + industryNode.children.length
       }, 0)
     }
     // 移除 onToggle 和 isSectionExpanded 方法
   }
-}
+})
 </script>
 
 <style scoped>
