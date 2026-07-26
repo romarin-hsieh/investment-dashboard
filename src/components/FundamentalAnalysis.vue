@@ -154,8 +154,9 @@
   </div>
 </template>
 
-<script>
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController } from 'chart.js'
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController, type ChartData, type ChartOptions } from 'chart.js'
 import { Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
@@ -168,7 +169,19 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale,
 
 import WidgetSkeleton from '@/components/WidgetSkeleton.vue'
 
-export default {
+/** The five analyst-recommendation vote buckets. */
+type VoteKey = 'strongBuy' | 'buy' | 'hold' | 'sell' | 'strongSell'
+interface PriceTargets { low: number; high: number; mean: number; current: number }
+interface RecommendationPeriod { period: string; strongBuy?: number; buy?: number; hold?: number; sell?: number; strongSell?: number }
+/** revenue/earnings arrive as number OR Yahoo {raw,fmt} envelopes — `any` boundary (ADR-0014). */
+interface EarningsEntry { date: number | string; revenue?: any; earnings?: any; synthesized?: boolean }
+interface UpgradeItem { epochGradeDate: number; currentPriceTarget?: number | null; [key: string]: unknown }
+/** Loose views of the two opaque API payloads (getStockInfo / precomputed.fundamentals). */
+interface StockInfoPayload { financials?: Record<string, unknown>; recommendationTrend?: unknown; earnings?: unknown; upgradeDowngradeHistory?: { history?: unknown }; upgradesDowngrades?: unknown }
+interface FundamentalsPayload { financialData?: Record<string, unknown>; defaultKeyStatistics?: Record<string, unknown>; recommendationTrend?: unknown; earnings?: unknown; upgradeDowngradeHistory?: { history?: unknown } }
+interface EarningsPayload { financialsChart?: { yearly?: unknown; quarterly?: unknown } }
+
+export default defineComponent({
   name: 'FundamentalAnalysis',
   components: { Bar, Line, WidgetSkeleton },
   props: {
@@ -190,17 +203,17 @@ export default {
   data() {
     return {
       loading: true,
-      error: null,
-      metrics: {},
-      upgradesDowngrades: [],
-      recommendationChartData: null,
-      earningsChartData: null,
+      error: null as string | null,
+      metrics: {} as Record<string, unknown>,
+      upgradesDowngrades: [] as UpgradeItem[],
+      recommendationChartData: null as ChartData<'bar'> | null,
+      earningsChartData: null as ChartData<'bar'> | null,
       earningsViewMode: 'yearly', // 'yearly' or 'quarterly'
-      yearlyEarningsData: [],
-      quarterlyEarningsData: [],
-      recommendationTrend: [], 
-      priceTargets: null, 
-      targetPriceChartData: null,
+      yearlyEarningsData: [] as EarningsEntry[],
+      quarterlyEarningsData: [] as EarningsEntry[],
+      recommendationTrend: [] as RecommendationPeriod[],
+      priceTargets: null as PriceTargets | null,
+      targetPriceChartData: null as ChartData<'line'> | null,
     };
   },
   computed: {
@@ -218,7 +231,7 @@ export default {
             tooltipText: getToken('--text-primary')
         }
     },
-    recommendationChartOptions() {
+    recommendationChartOptions(): ChartOptions<'bar'> {
         return {
             responsive: true,
             maintainAspectRatio: false,
@@ -240,7 +253,7 @@ export default {
             }
         }
     },
-    earningsChartOptions() {
+    earningsChartOptions(): ChartOptions<'bar'> {
         return {
             responsive: true,
             maintainAspectRatio: false,
@@ -272,11 +285,12 @@ export default {
                 ticks: {
                     color: this.commonChartColors.text,
                     callback: function(value) {
-                        if (value >= 1000000000) {
-                            return formatNumber(value / 1000000000, 1) + 'B';
+                        const n = Number(value);
+                        if (n >= 1000000000) {
+                            return formatNumber(n / 1000000000, 1) + 'B';
                         }
-                        if (value >= 1000000) {
-                            return formatNumber(value / 1000000, 1) + 'M';
+                        if (n >= 1000000) {
+                            return formatNumber(n / 1000000, 1) + 'M';
                         }
                         return value;
                     }
@@ -285,7 +299,7 @@ export default {
             }
         }
     },
-    targetPriceChartOptions() {
+    targetPriceChartOptions(): ChartOptions<'line'> {
         return {
             responsive: true,
             maintainAspectRatio: false,
@@ -320,13 +334,14 @@ export default {
         this.loading = true;
         this.error = null;
         try {
-            const data = await yahooFinanceAPI.getStockInfo(this.symbol);
+            // StockInfo is opaque ({ isStatic?; [key]: unknown }); read fields off a loose view.
+            const data = (await yahooFinanceAPI.getStockInfo(this.symbol)) as StockInfoPayload | undefined;
             if (!data || !data.financials) {
                 throw new Error('Data incomplete');
             }
-            
+
             this.metrics = data.financials;
-        
+
         // Map Price Targets
         if (this.metrics && this.metrics.targetMeanPrice) {
             this.priceTargets = {
@@ -334,7 +349,7 @@ export default {
                 high: this.metrics.targetHighPrice,
                 mean: this.metrics.targetMeanPrice,
                 current: this.metrics.currentPrice
-            };
+            } as PriceTargets;
         } else {
             this.priceTargets = null;
         }
@@ -354,10 +369,10 @@ export default {
                 const precomputed = await precomputedIndicatorsAPI.getTechnicalIndicators(this.symbol);
                 if (precomputed && precomputed.fundamentals) {
                     console.log('Using precomputed fundamentals for', this.symbol);
-                    const data = precomputed.fundamentals;
+                    const data = precomputed.fundamentals as FundamentalsPayload;
                     // Fix mapping: financialData holds the metrics in raw JSON
-                    const rawMetrics = data.financialData || {};
-                    const rawStats = data.defaultKeyStatistics || {};
+                    const rawMetrics: Record<string, unknown> = data.financialData || {};
+                    const rawStats: Record<string, unknown> = data.defaultKeyStatistics || {};
                     
                     this.metrics = {
                         ...rawMetrics,
@@ -387,25 +402,27 @@ export default {
         }
     },
     
-    processRecommendationTrend(trend) {
-        if (!trend || trend.length === 0) {
+    processRecommendationTrend(trend: unknown) {
+        if (!Array.isArray(trend) || trend.length === 0) {
             this.recommendationTrend = [];
             return;
         }
-        
+
         // Take latest 3-4 months for the stacked bar visual
         // The API usually returns [0m, -1m, -2m, -3m] where 0m is current
         this.recommendationTrend = trend.slice(0, 4);
     },
-    
-    processEarningsHistory(earnings) {
-        if (!earnings || !earnings.financialsChart) {
+
+    processEarningsHistory(earnings: unknown) {
+        const payload = earnings as EarningsPayload | null | undefined;
+        if (!payload || !payload.financialsChart) {
              this.earningsChartData = null;
              this.yearlyEarningsData = [];
              this.quarterlyEarningsData = [];
              return;
         }
-        
+        const financialsChart = payload.financialsChart;
+
         // Extract Yearly Data
         // COPY, never alias: the synthesis step below pushes onto this array, and
         // `earnings` is a cached API payload — aliasing meant we mutated the
@@ -414,18 +431,18 @@ export default {
         // Array.isArray, not truthiness: a degraded payload where `yearly` is a
         // truthy non-array ({} or a string) made `[...]` throw a TypeError and
         // took the whole earnings section down with it.
-        if (Array.isArray(earnings.financialsChart.yearly)) {
-            this.yearlyEarningsData = [...earnings.financialsChart.yearly];
-        } else if (Array.isArray(earnings.financialsChart)) {
+        if (Array.isArray(financialsChart.yearly)) {
+            this.yearlyEarningsData = [...financialsChart.yearly];
+        } else if (Array.isArray(financialsChart)) {
             // Legacy handling, assuming array is yearly if not specified
-            this.yearlyEarningsData = [...earnings.financialsChart];
+            this.yearlyEarningsData = [...financialsChart];
         } else {
             this.yearlyEarningsData = [];
         }
 
         // Extract Quarterly Data
-        if (Array.isArray(earnings.financialsChart.quarterly)) {
-            this.quarterlyEarningsData = [...earnings.financialsChart.quarterly];
+        if (Array.isArray(financialsChart.quarterly)) {
+            this.quarterlyEarningsData = [...financialsChart.quarterly];
         } else {
             this.quarterlyEarningsData = [];
         }
@@ -437,7 +454,7 @@ export default {
             const lastYear = typeof lastYearlyDate === 'string' ? parseInt(lastYearlyDate) : lastYearlyDate;
 
             // Group quarterly data by year
-            const quarterlyByYear = {};
+            const quarterlyByYear: Record<number, { revenue: number; earnings: number; count: number }> = {};
             this.quarterlyEarningsData.forEach(q => {
                 if (!q.date) return;
                 // Parse year from "1Q2025" or similar
@@ -481,7 +498,7 @@ export default {
         this.setEarningsView(this.earningsViewMode);
     },
 
-    setEarningsView(mode) {
+    setEarningsView(_mode: string) {
         // Enforce yearly view as quarterly data is unavailable/blocked
         this.earningsViewMode = 'yearly';
         const data = this.yearlyEarningsData;
@@ -493,14 +510,16 @@ export default {
         this.updateEarningsChart(data);
     },
 
-    updateEarningsChart(history) {
+    updateEarningsChart(history: EarningsEntry[]) {
         if (!history || history.length === 0) {
             this.earningsChartData = null;
             return;
         }
-        
+
         const labels = history.map(item => item.date); // Year string or '1Q2025'
-        
+
+        // Mixed bar+line datasets over a possibly-envelope revenue/earnings series —
+        // looser than ChartData<'bar'>, so cast at this assignment boundary.
         this.earningsChartData = {
             labels,
             datasets: [
@@ -524,21 +543,22 @@ export default {
                     yAxisID: 'y'
                 }
             ]
-        };
+        } as unknown as ChartData<'bar'>;
     },
-    
-    processUpgradesDowngrades(history) {
+
+    processUpgradesDowngrades(history: unknown) {
         if (!history || !Array.isArray(history)) {
             this.upgradesDowngrades = [];
             this.targetPriceChartData = null;
             return;
         }
+        const items = history as UpgradeItem[];
 
         const fiveYearsAgo = new Date();
         fiveYearsAgo.setFullYear(fiveYearsAgo.getFullYear() - 5);
 
         // Filter valid items with dates and normalize to milliseconds
-        const validItems = history
+        const validItems = items
             .map(item => {
                 let d = new Date(item.epochGradeDate);
                 // Handle Unix timestamp in seconds (common in YF API)
@@ -560,15 +580,15 @@ export default {
         this.prepareTargetPriceChart(this.upgradesDowngrades);
     },
 
-    formatPercent(val) {
+    formatPercent(val: unknown) {
         if (val === undefined || val === null) return this.$t('fundamentals.keyMetrics.notAvailable');
         // Handle both raw number (0.36) and object ({fmt: '36%'})
-        const num = typeof val === 'object' ? val.raw : val;
+        const num = (typeof val === 'object' && val !== null ? (val as { raw?: number }).raw : val) as number;
         const pct = formatNumber(num * 100, 2, null);
         return pct === null ? this.$t('fundamentals.keyMetrics.notAvailable') : pct + '%';
     },
 
-    prepareTargetPriceChart(validItems) {
+    prepareTargetPriceChart(validItems: UpgradeItem[]) {
         if (!validItems) return;
         // Filter out items without price targets for the chart, and ensure target > 0
         const chartItems = validItems
@@ -576,7 +596,7 @@ export default {
             .sort((a, b) => a.epochGradeDate - b.epochGradeDate);
 
         if (chartItems.length > 0) {
-            this.targetPriceChartData = {
+            this.targetPriceChartData = ({
                 labels: chartItems.map(item => this.formatDate(item.epochGradeDate)),
                 datasets: [{
                     label: this.$t('fundamentals.targetPriceChart.priceTargetSeries'),
@@ -588,23 +608,23 @@ export default {
                     fill: true,
                     tension: 0.2
                 }]
-            };
+            } as unknown as ChartData<'line'>);
         } else {
             // console.warn('No chart items found despite history existing.');
             this.targetPriceChartData = null;
         }
     },
 
-    formatCurrency(val) {
+    formatCurrency(val: number | null | undefined) {
         if (val === undefined || val === null) return this.$t('fundamentals.keyMetrics.notAvailable');
         return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
     },
-    
-    formatRecommendation(key) {
+
+    formatRecommendation(key: string) {
         return key ? key.replace(/_/g, ' ').toUpperCase() : 'N/A';
     },
-    
-    getRecommendationClass(key) {
+
+    getRecommendationClass(key: string) {
         if (!key) return '';
         const k = key.toLowerCase();
         if (k.includes('buy')) return 'text-success';
@@ -616,10 +636,11 @@ export default {
      * Yahoo returns `{ raw, fmt }` envelopes for many fields. Unwrap to a primitive
      * so downstream code never stringifies an object into the UI.
      */
-    unwrapValue(val) {
+    unwrapValue(val: unknown) {
       if (val && typeof val === 'object' && !Array.isArray(val)) {
-        if (val.raw !== undefined) return val.raw
-        if (val.fmt !== undefined) return val.fmt
+        const obj = val as { raw?: unknown; fmt?: unknown }
+        if (obj.raw !== undefined) return obj.raw
+        if (obj.fmt !== undefined) return obj.fmt
         return null
       }
       return val
@@ -631,7 +652,7 @@ export default {
      * render literally as "[object Object]" (beta), or die in
      * parseFloat({}) -> NaN and show a silent N/A for a value we DO have (forwardPE).
      */
-    displayMetric(value, decimals = 2) {
+    displayMetric(value: unknown, decimals: number = 2) {
       const raw = this.unwrapValue(value)
       if (raw === null || raw === undefined || raw === '') {
         return this.$t('fundamentals.keyMetrics.notAvailable')
@@ -644,7 +665,7 @@ export default {
       return formatNumber(n, decimals)
     },
 
-    getGrowthClass(val) {
+    getGrowthClass(val: unknown) {
         // Previously `val.includes('-')`, which THREW on a number or a {raw,fmt}
         // object, and returned 'text-success' for any string without a '-' —
         // painting missing data ('N/A') green, i.e. as positive growth.
@@ -655,7 +676,7 @@ export default {
         return n < 0 ? 'text-danger' : 'text-success';
     },
 
-    formatDate(epoch) {
+    formatDate(epoch: number | string) {
         if (!epoch) return '-';
         // Check if it's already a date string
         if (typeof epoch === 'string' && epoch.includes('T')) {
@@ -674,7 +695,7 @@ export default {
     },
     
     // Helpers for Analyst Visuals
-    getPricePosition(price) {
+    getPricePosition(price: number) {
          if (!this.priceTargets || !price) return '0%';
          const { low, high } = this.priceTargets;
          if (low === high) return '50%';
@@ -692,20 +713,20 @@ export default {
          return Math.max(0, Math.min(100, pct)) + '%';
     },
     
-    getTotalVotes(period) {
+    getTotalVotes(period: RecommendationPeriod) {
         return (period.strongBuy || 0) + (period.buy || 0) + (period.hold || 0) + (period.sell || 0) + (period.strongSell || 0);
     },
-    
-    getVotePct(period, type) {
+
+    getVotePct(period: RecommendationPeriod, type: VoteKey) {
         const total = this.getTotalVotes(period);
         if (total === 0) return '0%';
         const count = period[type] || 0;
         return (count / total * 100) + '%';
     },
-    
-    getPeriodLabel(periodKey) {
+
+    getPeriodLabel(periodKey: string) {
         // Simple mapping for 0m, -1m, etc.
-        const map = {
+        const map: Record<string, string> = {
             '0m': this.$t('fundamentals.periods.current'),
             '-1m': this.$t('fundamentals.periods.oneMonthAgo'),
             '-2m': this.$t('fundamentals.periods.twoMonthsAgo'),
@@ -714,7 +735,7 @@ export default {
         return map[periodKey] || periodKey;
     }
   }
-}
+})
 </script>
 
 <style scoped>
