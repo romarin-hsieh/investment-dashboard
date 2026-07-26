@@ -405,7 +405,8 @@ export default defineComponent({
     padding: 0.6rem 1.2rem;
     border: none;
     border-radius: var(--radius-sm);
-    background: var(--primary-color);
+    /* --primary-color #6B7F82 gave white text only 4.21:1; --primary-strong clears AA (5.13:1) */
+    background: var(--primary-strong);
     color: white;
     cursor: pointer;
     font-weight: var(--weight-semibold);
@@ -434,7 +435,8 @@ export default defineComponent({
     gap: var(--space-4);
 }
 
-.log-entry .time { color: var(--grey-550); font-size: var(--text-sm); min-width: 80px; }
+/* Dark log panel (#1e1e1e) needs a LIGHTER grey: --grey-550 was 3.55:1, --grey-450 is 5.85:1 */
+.log-entry .time { color: var(--grey-450); font-size: var(--text-sm); min-width: 80px; }
 .log-entry.info .msg { color: #4dabf7; }
 .log-entry.success .msg { color: #40c057; }
 .log-entry.warning .msg { color: #ffd43b; }

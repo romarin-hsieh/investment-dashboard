@@ -229,8 +229,9 @@
             </label>
           </div>
           <div class="config-item">
-            <label>{{ $t('autoUpdate.intervalHours') }}</label>
+            <label for="au-ti-interval">{{ $t('autoUpdate.intervalHours') }}</label>
             <input
+              id="au-ti-interval"
               type="number"
               v-model.number="config.technicalIndicators.intervalHours"
               @change="onConfigChange"
@@ -255,8 +256,9 @@
             </label>
           </div>
           <div class="config-item">
-            <label>{{ $t('autoUpdate.intervalHours') }}</label>
+            <label for="au-meta-interval">{{ $t('autoUpdate.intervalHours') }}</label>
             <input
+              id="au-meta-interval"
               type="number"
               v-model.number="config.metadata.intervalHours"
               @change="onConfigChange"
@@ -737,7 +739,8 @@ export default defineComponent({
 }
 
 .btn-primary {
-  background: var(--blue-500);
+  /* --blue-500 #007bff gave white text only 3.97:1; darker brand blue clears AA */
+  background: var(--blue-700);
   color: white;
 }
 
@@ -755,7 +758,8 @@ export default defineComponent({
 }
 
 .btn-success {
-  background: var(--success-solid);
+  /* --success-solid #28a745 gave white only 3.13:1; the darker shade clears AA */
+  background: var(--success-solid-hover);
   color: white;
 }
 
@@ -774,7 +778,8 @@ export default defineComponent({
 
 .btn-warning {
   background: var(--warning-solid);
-  color: var(--text-secondary);
+  /* White/grey can't clear 4.5:1 on amber; --signal-ink (dark) reaches 10.7:1 */
+  color: var(--signal-ink);
 }
 
 .btn-warning:hover:not(:disabled) {
@@ -861,20 +866,22 @@ export default defineComponent({
   flex: 1;
 }
 
+/* Log-level badges are TEXT on the (light) log surface — the vivid --*-solid
+   fills fail 4.5:1, so use the AA-as-text variants (theme-aware, pass on dark too). */
 .log-info .log-level {
-  color: var(--info-solid);
+  color: var(--info-fg);
 }
 
 .log-success .log-level {
-  color: var(--success-solid);
+  color: var(--success-strong);
 }
 
 .log-warning .log-level {
-  color: var(--warning-solid);
+  color: var(--warning-strong);
 }
 
 .log-error .log-level {
-  color: var(--danger-solid);
+  color: var(--danger-strong);
 }
 
 .config-content {

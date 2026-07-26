@@ -13,19 +13,27 @@ import AxeBuilder from '@axe-core/playwright'
  * id to silence a newly-introduced violation, fix the violation instead.
  */
 // Per-route baselines. The set may only SHRINK (never add an id to silence a new
-// violation — fix the violation instead). color-contrast is now CLEARED on BOTH
-// gated routes:
-//  - stock-overview: the semantic up/down price colors used as text were
-//    repointed to the design system's AA-as-text variants (--success-strong /
-//    --danger-strong, §2.1) and --text-muted was darkened for the 2nd surface.
+// violation — fix the violation instead). Every gated route below enforces
+// color-contrast (and label/select-name) with an EMPTY baseline:
+//  - stock-overview: semantic up/down price colors used as text repointed to the
+//    AA-as-text variants (--success-strong / --danger-strong, §2.1); --text-muted
+//    darkened for the 2nd surface.
 //  - market-overview: the ZeiiermanFearGreedGauge's bespoke zone palette gained
-//    AA-as-text variants (--c-*-text) for its labels/sentiment, its history
-//    circles switched to dark numerals on the vivid fills, and the washed-out
-//    label ranges dropped their alpha-blend for --text-secondary. The raw --c-*
-//    zone colors stay vivid for the arc/gradient/dot-glow/circle fills.
+//    AA-as-text variants (--c-*-text) for labels/sentiment; history circles use
+//    dark numerals on the vivid fills; label ranges dropped their alpha-blend.
+//  - settings: clean as-is.
+//  - technical-manager / auto-update-monitor / system-manager: page-scoped
+//    Bootstrap-ish action buttons (white/grey on #007bff/#28a745/#ffc107/#17a2b8
+//    /#6b7f82) repointed to darker in-palette tokens or dark --signal-ink on the
+//    light fills; dark-panel log timestamps lightened; unlabeled number inputs
+//    given for/id label associations.
 const BASELINE_BY_ROUTE: Record<string, Set<string>> = {
   '/#/market-overview': new Set<string>(),
   '/#/stock-overview': new Set<string>(),
+  '/#/settings': new Set<string>(),
+  '/#/technical-manager': new Set<string>(),
+  '/#/auto-update-monitor': new Set<string>(),
+  '/#/system-manager': new Set<string>(),
 }
 
 const ROUTES = Object.keys(BASELINE_BY_ROUTE)
