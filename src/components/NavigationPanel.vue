@@ -29,17 +29,30 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue'
 import TOCTree from './TOCTree.vue'
 
-export default {
+/** A node in the TOC tree (heterogeneous sector/industry/symbol shape, built by
+ *  StockOverview.tocTree()). Flat — the filter logic reads children/label/symbol
+ *  without narrowing on `type`, so a discriminated union isn't used here. */
+interface TocNode {
+  id: string
+  type: 'sector' | 'industry' | 'symbol'
+  label: string
+  symbol: string
+  children: TocNode[]
+  metadata?: { sector: string; industry: string; exchange: string; marketCap: number }
+}
+
+export default defineComponent({
   name: 'NavigationPanel',
   components: {
     TOCTree
   },
   props: {
     tocTree: {
-      type: Array,
+      type: Array as PropType<TocNode[]>,
       default: () => []
     },
     activeSymbol: {
@@ -71,10 +84,10 @@ export default {
       const query = this.localSearchQuery.toLowerCase().trim()
       
       return this.tocTree.map(sectorNode => {
-        const filteredSector = { ...sectorNode, children: [] }
-        
+        const filteredSector = { ...sectorNode, children: [] as TocNode[] }
+
         sectorNode.children.forEach(industryNode => {
-          const filteredIndustry = { ...industryNode, children: [] }
+          const filteredIndustry = { ...industryNode, children: [] as TocNode[] }
           
           industryNode.children.forEach(symbolNode => {
             // 搜尋匹配：sector, industry, symbol, company name
@@ -100,12 +113,12 @@ export default {
     }
   },
   watch: {
-    searchQuery(newValue) {
+    searchQuery(newValue: string) {
       this.localSearchQuery = newValue
     }
   },
   methods: {
-    onSymbolClick(symbol) {
+    onSymbolClick(symbol: string) {
       this.$emit('symbol-click', symbol)
     },
 
@@ -114,7 +127,7 @@ export default {
     }
     // 移除 onToggleSection 方法
   }
-}
+})
 </script>
 
 <style scoped>
