@@ -446,7 +446,7 @@ export default defineComponent({
   border: 1px solid var(--error-color);
   border-radius: var(--radius-sm);
   margin: var(--space-4) 0;
-  color: var(--error-color);
+  color: var(--danger-strong);
 }
 
 .btn {

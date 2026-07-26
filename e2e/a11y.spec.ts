@@ -12,20 +12,24 @@ import AxeBuilder from '@axe-core/playwright'
  * pre-existing issues so the gate lands green; it may only SHRINK — never add an
  * id to silence a newly-introduced violation, fix the violation instead.
  */
-const BASELINE_RULE_IDS = new Set<string>([
-  // color-contrast — BASELINED (design decision, not a quick fix). ~93% of the
-  // failing nodes are the semantic price colors on white: up-green #22ab94
-  // (~2.5:1) and down-red #f7525f (~3.3:1). Meeting 4.5:1 AA means restyling the
-  // brand's up/down language app-wide — deferred to a dedicated a11y pass. The
-  // remainder is --text-muted on --bg-secondary (#6e6e6e/#ebe7e4 ≈ 4.15:1).
-  // This PR did remove one contributor (dimmed nav-tree labels, TOCTree.vue).
-  'color-contrast',
-])
+// Per-route baselines. The set may only SHRINK (never add an id to silence a new
+// violation — fix the violation instead). color-contrast is now CLEARED on
+// stock-overview: the semantic up/down price colors used as text were repointed
+// to the design system's AA-as-text variants (--success-strong / --danger-strong,
+// §2.1) and --text-muted was darkened to pass on the secondary surface.
+// It remains baselined on market-overview only, where the ZeiiermanFearGreedGauge
+// carries its own bespoke zone palette (amber/green sentiment colors + white-on-
+// color circles) — a separate, gauge-specific pass.
+const BASELINE_BY_ROUTE: Record<string, Set<string>> = {
+  '/#/market-overview': new Set<string>(['color-contrast']),
+  '/#/stock-overview': new Set<string>(),
+}
 
-const ROUTES = ['/#/market-overview', '/#/stock-overview']
+const ROUTES = Object.keys(BASELINE_BY_ROUTE)
 
 for (const route of ROUTES) {
   test(`a11y: ${route} has no non-baseline violations`, async ({ page }) => {
+    const baseline = BASELINE_BY_ROUTE[route] ?? new Set<string>()
     await page.goto(route)
     // Scan the settled page, not a mid-load frame: wait for a heading, then for
     // the network to go idle (best-effort — analytics can keep it busy, so a
@@ -43,7 +47,7 @@ for (const route of ROUTES) {
       .exclude('iframe')
       .analyze()
 
-    const unexpected = results.violations.filter((v) => !BASELINE_RULE_IDS.has(v.id))
+    const unexpected = results.violations.filter((v) => !baseline.has(v.id))
     const report = unexpected
       .map((v) => `  [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} node(s))`)
       .join('\n')

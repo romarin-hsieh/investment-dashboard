@@ -734,7 +734,7 @@ h3 {
     color: var(--text-muted);
 }
 
-.label-buy { color: var(--success-color); }
+.label-buy { color: var(--success-strong); }
 .label-sentiment { color: var(--text-secondary); font-weight: var(--weight-bold); }
 
 /* Transactions List */
@@ -768,8 +768,8 @@ h3 {
     border-bottom: none;
 }
 
-.transaction-list li.buy .type { color: var(--success-color); font-weight: var(--weight-medium); }
-.transaction-list li.sell .type { color: var(--error-color); font-weight: var(--weight-medium); }
+.transaction-list li.buy .type { color: var(--success-strong); font-weight: var(--weight-medium); }
+.transaction-list li.sell .type { color: var(--danger-strong); font-weight: var(--weight-medium); }
 .transaction-list li.neutral .type { color: var(--text-muted); }
 
 .date { 

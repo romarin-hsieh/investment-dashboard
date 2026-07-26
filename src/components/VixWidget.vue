@@ -231,7 +231,7 @@ export default defineComponent({
   height: 100%;
   background: var(--bg-card);
   border: 1px solid var(--error-color);
-  color: var(--error-color);
+  color: var(--danger-strong);
 }
 
 .retry-btn {

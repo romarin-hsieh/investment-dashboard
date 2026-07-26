@@ -819,7 +819,7 @@ export default defineComponent({
   background: var(--bg-card); 
   border: 1px solid var(--border-color); 
   border-radius: 0; 
-  color: var(--error-color); 
+  color: var(--danger-strong); 
   margin: 0; 
 }
 

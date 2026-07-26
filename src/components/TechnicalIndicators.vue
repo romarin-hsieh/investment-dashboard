@@ -668,8 +668,8 @@ export default defineComponent({
     font-weight: var(--weight-semibold);
 }
 
-.change-tag.pos { color: var(--success-color); }
-.change-tag.neg { color: var(--error-color); }
+.change-tag.pos { color: var(--success-strong); }
+.change-tag.neg { color: var(--danger-strong); }
 
 .signal-tag {
     font-size: var(--text-xs); 

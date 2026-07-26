@@ -538,7 +538,7 @@ export default defineComponent({
 
 .error-message {
   margin-bottom: var(--space-4);
-  color: var(--error-color);
+  color: var(--danger-strong);
   max-width: 400px;
 }
 

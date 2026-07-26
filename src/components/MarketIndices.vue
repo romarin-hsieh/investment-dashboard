@@ -220,11 +220,11 @@ export default defineComponent({
 }
 
 .index-change.positive {
-  color: var(--chart-up);
+  color: var(--success-strong);
 }
 
 .index-change.negative {
-  color: var(--chart-down);
+  color: var(--danger-strong);
 }
 
 .index-change.neutral {

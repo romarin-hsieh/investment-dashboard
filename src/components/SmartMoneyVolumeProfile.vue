@@ -451,7 +451,7 @@ export default defineComponent({
     flex-direction: column;
     color: var(--text-muted);
 }
-.error-state { color: var(--error-color); }
+.error-state { color: var(--danger-strong); }
 .spinner {
     border: 3px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;

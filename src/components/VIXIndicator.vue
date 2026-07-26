@@ -286,7 +286,7 @@ export default defineComponent({
 }
 
 .greed .status-text {
-  color: var(--chart-up);
+  color: var(--success-strong);
 }
 
 /* VIX 等級說明 */

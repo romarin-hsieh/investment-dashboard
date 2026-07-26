@@ -573,8 +573,8 @@ export default defineComponent({
 }
 
 /* Dynamic Accent Colors */
-.analysis-point.bullish { border-left-color: var(--success-color); }
-.analysis-point.bearish { border-left-color: var(--error-color); }
+.analysis-point.bullish { border-left-color: var(--success-strong); }
+.analysis-point.bearish { border-left-color: var(--danger-strong); }
 .analysis-point.neutral { border-left-color: var(--text-muted); }
 
 .additional-info {
