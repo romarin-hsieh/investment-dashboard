@@ -287,7 +287,7 @@ export default defineComponent({
   background: var(--bg-card);
   border: 1px solid var(--error-color);
   border-radius: var(--radius-sm);
-  color: var(--error-color);
+  color: var(--danger-strong);
 }
 
 /* 錯誤狀態調整 */

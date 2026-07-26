@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="marker current" :style="{ left: getPricePosition(priceTargets.current) }">
-                         <span class="label top" style="top: -45px; font-weight: bold; color: var(--success-color);">
+                         <span class="label top" style="top: -45px; font-weight: bold; color: var(--success-strong);">
                             {{ formatCurrency(priceTargets.current) }}<br>{{ $t('fundamentals.priceTargets.current') }}
                          </span>
                     </div>
@@ -876,11 +876,11 @@ export default defineComponent({
     transition: width var(--transition-slow) ease;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-.bg-strong-buy { background-color: var(--chart-up); } /* TradingView Green */
+.bg-strong-buy { background-color: var(--success-strong); } /* TradingView Green */
 .bg-buy { background-color: rgba(34, 171, 148, 0.7); }
 .bg-hold { background-color: #DCC070; color: var(--grey-800); } /* Theme Warning */
 .bg-sell { background-color: rgba(247, 82, 95, 0.7); }
-.bg-strong-sell { background-color: var(--chart-down); } /* TradingView Red */
+.bg-strong-sell { background-color: var(--danger-strong); } /* TradingView Red */
 
 .legend-row {
     display: flex;
@@ -920,8 +920,8 @@ export default defineComponent({
     grid-column: 1 / -1;
     margin-top: var(--space-4);
 }
-.text-success { color: var(--success-color) !important; }
-.text-danger { color: var(--error-color) !important; }
+.text-success { color: var(--success-strong) !important; }
+.text-danger { color: var(--danger-strong) !important; }
 .text-warning { color: var(--warning-color) !important; }
 
 /* Loading/Error */

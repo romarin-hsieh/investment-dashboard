@@ -13,8 +13,10 @@
   --text-primary: #2C2C2C;
   /* Soft Charcoal */
   --text-secondary: #595959;
-  /* Muted Grey */
-  --text-muted: #6E6E6E;
+  /* Muted Grey — darkened from #6E6E6E to reach 4.5:1 AA on the secondary
+     surface (--bg-secondary #EBE7E4), e.g. the TOC exchange-badge; stays
+     distinctly lighter than --text-secondary #595959. */
+  --text-muted: #646464;
 
   --border-color: #E0DDD9;
 

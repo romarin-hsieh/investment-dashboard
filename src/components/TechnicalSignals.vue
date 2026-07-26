@@ -357,8 +357,8 @@ h4 {
     padding: 2px 0;
 }
 
-.pivot-row.resistance { color: var(--error-color); }
-.pivot-row.support { color: var(--success-color); }
+.pivot-row.resistance { color: var(--danger-strong); }
+.pivot-row.support { color: var(--success-strong); }
 .pivot-row.main { font-weight: bold; color: var(--text-secondary); border-top: 1px dashed var(--border-color); border-bottom: 1px dashed var(--border-color); padding: 4px 0; }
 
 .current-zone {
@@ -385,8 +385,8 @@ h4 {
     font-weight: var(--weight-semibold);
 }
 
-.pattern-badge.bullish { background: rgba(34, 171, 148, 0.15); color: var(--success-color); border: 1px solid rgba(34, 171, 148, 0.3); }
-.pattern-badge.bearish { background: rgba(247, 82, 95, 0.15); color: var(--error-color); border: 1px solid rgba(247, 82, 95, 0.3); }
+.pattern-badge.bullish { background: rgba(34, 171, 148, 0.15); color: var(--success-strong); border: 1px solid rgba(34, 171, 148, 0.3); }
+.pattern-badge.bearish { background: rgba(247, 82, 95, 0.15); color: var(--danger-strong); border: 1px solid rgba(247, 82, 95, 0.3); }
 .pattern-badge.neutral { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-color); }
 
 .no-patterns {

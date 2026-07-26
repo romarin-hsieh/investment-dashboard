@@ -379,7 +379,7 @@ export default defineComponent({
   background: var(--bg-card);
   border: 1px solid var(--error-color);
   border-radius: var(--radius-sm);
-  color: var(--error-color);
+  color: var(--danger-strong);
 }
 
 /* Symbol Overview 的 error 狀態調整 */

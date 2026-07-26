@@ -467,8 +467,8 @@ export default defineComponent({
 .text-right { text-align: right; }
 .text-center { text-align: center; }
 
-.text-success { color: var(--success-color); }
-.text-danger { color: var(--error-color); }
+.text-success { color: var(--success-strong); }
+.text-danger { color: var(--danger-strong); }
 .text-muted { color: var(--text-muted); }
 
 .action-text {
