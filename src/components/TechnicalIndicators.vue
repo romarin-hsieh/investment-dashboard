@@ -88,14 +88,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import hybridTechnicalIndicatorsAPI from '@/api/hybridTechnicalIndicatorsApi'
 import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import WidgetSkeleton from './WidgetSkeleton.vue'
 import { formatNumber } from '@/utils/numberFormat'
 import { formatDateTime as i18nDateTime } from '@/utils/dateFormat'
 
-export default {
+export default defineComponent({
   name: 'TechnicalIndicators',
   components: { WidgetSkeleton },
   props: {
@@ -115,22 +116,22 @@ export default {
   data() {
     return {
       loading: true,
-      error: null,
-      rawData: null,
-      groupedIndicators: {},
-      lastUpdated: null,
-      showInfo: false
+      error: null as string | null,
+      // Indicator payloads are dynamically-shaped external data probed by key
+      // (ADR-0014 dynamic-data boundary).
+      rawData: null as Record<string, any> | null,
+      groupedIndicators: {} as Record<string, any[]>,
+      lastUpdated: null as string | null,
+      showInfo: false,
+      // Non-reactive request token. Guards against a slow response for a PREVIOUS
+      // symbol landing on the currently-selected one (see loadData).
+      loadSeq: 0
     }
   },
   watch: {
     symbol() {
       this.loadData()
     }
-  },
-  created() {
-    // Non-reactive request token. Guards against a slow response for a PREVIOUS
-    // symbol landing on the currently-selected one (see loadData).
-    this.loadSeq = 0
   },
   mounted() {
     this.loadData()
@@ -169,7 +170,7 @@ export default {
         // Step 2: Load Real-time Stock Info (Slow - Background)
         // Only if we want to enrich with latest Volume/MarketCap
         try {
-            const stockInfo = await yahooFinanceAPI.getStockInfo(this.symbol);
+            const stockInfo = (await yahooFinanceAPI.getStockInfo(this.symbol)) as Record<string, any> | undefined;
             // Phase 2 is the SLOW call. Without this guard the PREVIOUS symbol's
             // volume / market-cap / beta gets spread onto the newly-selected ticker.
             if (seq !== this.loadSeq) return
@@ -201,26 +202,27 @@ export default {
         // A stale failure must not replace the panel a newer load already owns.
         if (seq !== this.loadSeq) return
         console.error('Error loading technical indicators:', err)
-        this.error = this.$t('indicators.loadFailed', { message: err.message })
+        this.error = this.$t('indicators.loadFailed', { message: (err as Error).message })
         this.loading = false;
       }
     },
     
     processGroupedIndicators() {
-      const data = this.rawData;
-      const groups = {
+      // Callers only invoke this after rawData is set.
+      const data = this.rawData as Record<string, any>;
+      const groups: Record<string, any[]> = {
           'Trend': [],
           'Oscillators': [],
           'Market': []
       };
-      
+
       const series = data.fullSeries || {};
-      
+
       // Helper function to get value and diff
-      const getIndicator = (key, label, arrayKey, group = 'Trend', forcedValue = null) => {
+      const getIndicator = (key: string, label: string, arrayKey: string, _group: string = 'Trend', forcedValue: string | null = null) => {
         let value = 'N/A';
         let signal = 'N/A';
-        let change = null;
+        let change: string | null = null;
         let changeClass = '';
 
         if (data[key]) {
@@ -401,7 +403,7 @@ export default {
     },
     
     // Utility Methods
-    getLatestValue(array) {
+    getLatestValue(array: any[] | null | undefined) {
       if (!array || !Array.isArray(array)) return null;
       for (let i = array.length - 1; i >= 0; i--) {
         if (array[i] !== null && array[i] !== undefined && !isNaN(array[i])) return array[i];
@@ -409,7 +411,7 @@ export default {
       return null;
     },
 
-    getPreviousValue(array) {
+    getPreviousValue(array: any[] | null | undefined) {
        if (!array || !Array.isArray(array)) return null;
        let count = 0;
        for (let i = array.length - 1; i >= 0; i--) {
@@ -436,13 +438,13 @@ export default {
      * Routing both the formatters and the category helpers through this keeps
      * the displayed value and its tag in agreement.
      */
-    toFiniteNumber(value) {
+    toFiniteNumber(value: unknown) {
       if (value === null || value === undefined || value === '' || value === 'N/A') return null
       const n = Number(value)
       return Number.isFinite(n) ? n : null
     },
 
-    formatNumber(value, decimals = 2) {
+    formatNumber(value: unknown, decimals: number = 2) {
       const n = this.toFiniteNumber(value)
       return n === null ? 'N/A' : n.toFixed(decimals)
     },
@@ -452,14 +454,14 @@ export default {
      * the input is not a finite number. Used by the compact-table change column
      * so upstream NaN/Infinity never renders as "NaN%" / "Infinity%".
      */
-    fmtChangePct(value, decimals = 1) {
+    fmtChangePct(value: number | null | undefined, decimals: number = 1) {
       const pct = formatNumber(value, decimals, null)
       if (pct === null) return null
       // formatNumber returns the number without a sign; re-add explicit '+' for positives
       return (Number(value) >= 0 ? '+' : '') + pct + '%'
     },
     
-    formatVolume(value) {
+    formatVolume(value: unknown) {
       // NaN, null, undefined, '' and 'N/A' all fall to N/A (Number(null) === 0 is
       // finite, which is exactly how absent volume used to render as "0").
       const n = this.toFiniteNumber(value)
@@ -470,7 +472,7 @@ export default {
       return n.toLocaleString()
     },
 
-    formatMarketCap(value) {
+    formatMarketCap(value: unknown) {
       const n = this.toFiniteNumber(value)
       if (n === null) return 'N/A'
       if (n >= 1e12) return '$' + formatNumber(n / 1e12, 2) + 'T'
@@ -479,7 +481,7 @@ export default {
       return '$' + n.toLocaleString()
     },
 
-    formatBeta(value) {
+    formatBeta(value: unknown) {
       // Local formatter (not the util) so numeric STRINGS from the Yahoo
       // enrichment format correctly instead of rendering 'N/A' next to a
       // confident volatility tag.
@@ -487,7 +489,7 @@ export default {
     },
     
     // Style Methods
-    getSignalClass(signal) {
+    getSignalClass(signal: unknown) {
       switch (signal) {
         case 'BUY':
         case 'BULLISH':
@@ -516,7 +518,7 @@ export default {
      * for display. Falls back to the raw token for any value not in the table so
      * unexpected upstream signals still render rather than vanishing.
      */
-    signalLabel(signal) {
+    signalLabel(signal: unknown) {
       if (signal === null || signal === undefined || signal === 'N/A') return signal
       const key = String(signal).toUpperCase().replace(/[^A-Z0-9]+/g, '_')
       const path = `indicators.signals.${key}`
@@ -525,13 +527,13 @@ export default {
       return translated === path ? signal : translated
     },
 
-    getChangeClass(value) {
+    getChangeClass(value: number | null | undefined) {
       if (value === null || value === undefined) return ''
       return value >= 0 ? 'pos' : 'neg'
     },
     
     // Category Methods
-    getMarketCapCategory(value) {
+    getMarketCapCategory(value: unknown) {
       // 'N/A' is truthy and fails every >= test, so it used to fall through to
       // 'MICRO CAP' — a fabricated size classification for missing data.
       const n = this.toFiniteNumber(value)
@@ -543,7 +545,7 @@ export default {
       return 'MICRO CAP'
     },
     
-    getBetaCategory(value) {
+    getBetaCategory(value: unknown) {
       // 'N/A' passed the null check and failed every > test, yielding a
       // confident 'VERY LOW' tag for a beta we do not actually have.
       const n = this.toFiniteNumber(value)
@@ -554,7 +556,7 @@ export default {
       return 'VERY LOW'
     },
 
-    getVolumeCategory(volume, avgVolume) {
+    getVolumeCategory(volume: unknown, avgVolume: unknown) {
         const v = this.toFiniteNumber(volume)
         const avg = this.toFiniteNumber(avgVolume)
         // A zero/absent average would divide to Infinity.
@@ -566,7 +568,7 @@ export default {
         return 'BELOW AVG';
     }
   }
-}
+})
 </script>
 
 <style scoped>
