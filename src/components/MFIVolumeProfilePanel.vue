@@ -32,7 +32,7 @@
               </button>
           </div>
           <div class="chart-controls">
-            <select v-model="selectedRange" @change="onRangeChange" class="range-selector">
+            <select v-model="selectedRange" @change="onRangeChange" class="range-selector" :aria-label="$t('mfi.rangeSelectorAriaLabel')">
               <option value="3mo">{{ $t('mfi.range3mo') }}</option>
               <option value="6mo">{{ $t('mfi.range6mo') }}</option>
               <option value="1y">{{ $t('mfi.range1y') }}</option>
@@ -47,13 +47,13 @@
           <span class="status-value" :class="`signal-${profileData.mfi.signal.toLowerCase()}`">{{ profileData.mfi.signal }}</span>
           <span class="status-detail">({{ formatNumber(profileData.mfi.latest, 2) }})</span>
         </div>
-        <div class="status-divider">|</div>
+        <div class="status-divider" aria-hidden="true">|</div>
         <div class="status-item">
           <span class="status-label">{{ $t('mfi.statusSentiment') }}</span>
           <span class="status-value" :class="`sentiment-${profileData.marketSentiment.toLowerCase()}`">{{ profileData.marketSentiment }}</span>
           <span class="status-detail">({{ $t('mfi.statusBuyShare', { pct: formatNumber(profileData.statistics.buyingRatio * 100, 0) }) }})</span>
         </div>
-        <div class="status-divider">|</div>
+        <div class="status-divider" aria-hidden="true">|</div>
         <div class="status-item">
           <span class="status-label">{{ $t('mfi.statusPoc') }}</span>
           <span class="status-value">${{ formatNumber(profileData.pointOfControl.priceLevel, 2) }}</span>
@@ -646,7 +646,8 @@ export default defineComponent({
 
 .status-detail {
   font-size: 0.8em;
-  color: #9ca3af;
+  /* #9ca3af was 2.5:1 on the card; --text-muted (theme-aware) is 5.9:1 */
+  color: var(--text-muted);
 }
 
 .status-divider {
@@ -654,14 +655,15 @@ export default defineComponent({
   font-size: var(--text-sm);
 }
 
-/* Updated Colors for text */
-.signal-overbought, .signal-sell { color: #d32f2f; }
-.signal-oversold, .signal-buy { color: #10b981; }
-.signal-neutral, .signal-hold { color: #f59e0b; }
+/* Status-value text colours — the raw signal hexes fail 4.5:1 on the card, so
+   use the AA-as-text design tokens (theme-aware, pass in light + dark). */
+.signal-overbought, .signal-sell { color: var(--danger-strong); }
+.signal-oversold, .signal-buy { color: var(--success-strong); }
+.signal-neutral, .signal-hold { color: var(--warning-strong); }
 
-.sentiment-bullish { color: #10b981; }
-.sentiment-bearish { color: #d32f2f; }
-.sentiment-neutral { color: #f59e0b; }
+.sentiment-bullish { color: var(--success-strong); }
+.sentiment-bearish { color: var(--danger-strong); }
+.sentiment-neutral { color: var(--warning-strong); }
 
 .metric-detail {
   font-size: var(--text-xs);
@@ -768,7 +770,8 @@ export default defineComponent({
   top: 50%;
   transform: translateY(-50%);
   background: #2196F3;
-  color: white;
+  /* white was 3.12:1 on this blue; dark ink clears AA (5.6:1) and keeps the fill */
+  color: var(--signal-ink);
   padding: 2px 4px;
   border-radius: 2px;
   font-size: var(--text-xs);
@@ -782,7 +785,8 @@ export default defineComponent({
   top: 50%;
   transform: translateY(-50%);
   background: #FF9800;
-  color: white;
+  /* white was 2.15:1 on this orange; dark ink clears AA (8.0:1) and keeps the fill */
+  color: var(--signal-ink);
   padding: 2px 4px;
   border-radius: 2px;
   font-size: var(--text-xs);
@@ -960,7 +964,8 @@ export default defineComponent({
     margin: var(--space-4) 0 var(--space-2) 0;
     font-size: var(--text-base);
     font-weight: var(--weight-semibold);
-    color: var(--blue-500);
+    /* --blue-500 was 3.98:1 on the modal card; --primary-text clears AA (theme-aware) */
+    color: var(--primary-text);
 }
 
 .modal-body h6:first-child {

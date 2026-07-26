@@ -27,9 +27,15 @@ import AxeBuilder from '@axe-core/playwright'
 //    /#6b7f82) repointed to darker in-palette tokens or dark --signal-ink on the
 //    light fills; dark-panel log timestamps lightened; unlabeled number inputs
 //    given for/id label associations.
+//  - stock-detail (symbols/:symbol): the MFI Volume Profile panel's status/signal
+//    text (raw #9ca3af/#f59e0b/#10b981 hexes) repointed to the AA-as-text tokens,
+//    its decorative dividers marked aria-hidden, its range <select> given an
+//    aria-label; the breadcrumb link moved from the --primary-color FILL token to
+//    the --primary-text link token.
 const BASELINE_BY_ROUTE: Record<string, Set<string>> = {
   '/#/market-overview': new Set<string>(),
   '/#/stock-overview': new Set<string>(),
+  '/#/stock-overview/symbols/AAPL': new Set<string>(),
   '/#/settings': new Set<string>(),
   '/#/technical-manager': new Set<string>(),
   '/#/auto-update-monitor': new Set<string>(),
