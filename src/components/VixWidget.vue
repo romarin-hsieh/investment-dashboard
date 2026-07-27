@@ -247,7 +247,9 @@ export default defineComponent({
 }
 
 .retry-btn:hover {
-  opacity: 0.9;
+  /* opacity:0.9 composited white-on-red down to 3.99:1; darken the fill instead
+     (matches the other retry buttons) so white stays AA (5.61:1). */
+  background: var(--danger-solid-hover);
 }
 
 :global(.vix-widget-container .tradingview-widget-container) {
