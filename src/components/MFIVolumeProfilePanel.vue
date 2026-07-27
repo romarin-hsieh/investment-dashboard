@@ -551,7 +551,8 @@ export default defineComponent({
 
 .retry-btn {
   padding: var(--space-2) var(--space-4);
-  background: var(--blue-500);
+  /* --blue-500 gave white only 3.98:1; --blue-700 is the audited white-on-blue fill */
+  background: var(--blue-700);
   color: white;
   border: none;
   border-radius: var(--radius-sm);

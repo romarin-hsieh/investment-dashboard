@@ -465,7 +465,8 @@ h4 {
     margin: var(--space-2) 0 var(--space-2) 0;
     font-size: var(--text-base);
     font-weight: var(--weight-semibold);
-    color: var(--primary-color);
+    /* --primary-color is a FILL token (4.21:1 as text); --primary-text is the AA link/text token */
+    color: var(--primary-text);
 }
 
 .modal-body ul {

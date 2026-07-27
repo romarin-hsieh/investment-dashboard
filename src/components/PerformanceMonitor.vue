@@ -330,7 +330,9 @@ export default defineComponent({
   justify-content: space-between;
   align-items: center;
   padding: var(--space-2);
-  background: var(--bg-secondary);
+  /* --bg-card (not --bg-secondary) so the -strong status colors below clear AA:
+     --danger-strong is only 4.47:1 on the secondary surface but 5.49:1 on the card. */
+  background: var(--bg-card);
   border-radius: var(--radius-xs);
   margin-bottom: var(--space-1);
   font-size: var(--text-sm);
@@ -347,20 +349,22 @@ export default defineComponent({
   font-weight: var(--weight-semibold);
 }
 
+/* -solid fills fail as text; use the AA-as-text -strong tokens (on --bg-card) */
 .time-good {
-  color: var(--success-solid);
+  color: var(--success-strong);
 }
 
 .time-ok {
-  color: var(--warning-solid);
+  color: var(--warning-strong);
 }
 
 .time-slow {
-  color: var(--danger-solid);
+  color: var(--danger-strong);
 }
 
 .widget-priority {
-  background: var(--blue-500);
+  /* --blue-500 gave white only 3.98:1; --blue-700 is the audited white-on-blue fill */
+  background: var(--blue-700);
   color: white;
   padding: 0.125rem 0.375rem;
   border-radius: var(--radius-md);
@@ -390,9 +394,9 @@ export default defineComponent({
 }
 
 .export-btn {
-  background: var(--blue-500);
+  background: var(--blue-700);
   color: white;
-  border-color: var(--blue-500);
+  border-color: var(--blue-700);
 }
 
 .export-btn:hover {

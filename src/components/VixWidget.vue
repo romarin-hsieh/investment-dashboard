@@ -237,7 +237,8 @@ export default defineComponent({
 .retry-btn {
   margin-top: var(--space-2);
   padding: var(--space-2) var(--space-4);
-  background: var(--error-color);
+  /* --error-color #f7525f gave white text only 3.32:1; --danger-solid clears AA */
+  background: var(--danger-solid);
   color: white;
   border: none;
   border-radius: var(--radius-sm);

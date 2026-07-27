@@ -178,7 +178,9 @@ export default defineComponent({
 
 .symbol-node.is-active {
   background: var(--bg-secondary);
-  color: var(--primary-color);
+  /* --primary-color = 3.43:1 on --bg-secondary; and --primary-text is only 4.18:1
+     there — so use --text-primary (11.4:1). Semibold + border-left keep the active cue. */
+  color: var(--text-primary);
   font-weight: var(--weight-semibold);
   border-left-color: var(--primary-color);
 }

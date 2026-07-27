@@ -502,10 +502,12 @@ onUnmounted(() => {
     color: #fff;
     letter-spacing: 0.5px;
 }
-.signal-badge.dip_buy { background: var(--chart-up-alt); }
+/* white text on the vivid fills was only 3.6–4.2:1; darken to the AA fills
+   (dip_buy 5.14, climax 5.61, wait 6.27:1). launchpad keeps #000 on gold. */
+.signal-badge.dip_buy { background: var(--success-solid-hover); }
 .signal-badge.launchpad { background: var(--signal-launchpad); color: #000; }
-.signal-badge.climax { background: var(--chart-down-alt); }
-.signal-badge.wait { background: var(--grey-500); }
+.signal-badge.climax { background: var(--danger-solid-hover); }
+.signal-badge.wait { background: var(--signal-neutral); }
 
 /* Popover */
 .info-btn {
