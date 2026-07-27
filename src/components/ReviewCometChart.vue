@@ -487,7 +487,7 @@ onUnmounted(() => {
     font-size: var(--text-sm);
     line-height: 1.4;
     font-weight: var(--weight-medium);
-    color: var(--text-color); /* Improve contrast */
+    color: var(--text-primary); /* --text-color was undefined (silently inherited); make it explicit + theme-aware */
     background: rgba(41, 98, 255, 0.08); /* Highlight bg */
     padding: var(--space-3);
     border-radius: var(--radius-xs);

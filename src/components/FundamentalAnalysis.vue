@@ -929,7 +929,9 @@ export default defineComponent({
 }
 .text-success { color: var(--success-strong) !important; }
 .text-danger { color: var(--danger-strong) !important; }
-.text-warning { color: var(--warning-color) !important; }
+/* Match the AA -strong siblings; --warning-color (a fill token) is only 2.6:1 as text.
+   Currently unreached (getRecommendationClass isn't bound) but fixed so it's AA if wired. */
+.text-warning { color: var(--warning-strong) !important; }
 
 /* Loading/Error */
 .loading-state, .error-state {
