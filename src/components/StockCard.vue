@@ -407,8 +407,9 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted); /* Subtle color */
-  opacity: 0.6;
+  /* --text-muted (4.8:1) is subtle enough on its own; the extra opacity:0.6 dropped
+     this icon-only link to 2.55:1, under the 3:1 non-text (WCAG 1.4.11) floor. */
+  color: var(--text-muted);
   transition: all var(--transition-base) ease;
   padding: 4px;
   border-radius: var(--radius-sm);

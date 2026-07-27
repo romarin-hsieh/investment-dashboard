@@ -713,8 +713,9 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted); /* Subtle color */
-  opacity: 0.6;
+  /* --text-muted (4.8:1) is subtle enough on its own; the extra opacity:0.6 dropped
+     this icon-only link to 2.55:1, under the 3:1 non-text (WCAG 1.4.11) floor. */
+  color: var(--text-muted);
   transition: all var(--transition-base) ease;
   padding: 4px;
   border-radius: var(--radius-sm);
@@ -1350,9 +1351,10 @@ export default defineComponent({
 }
 
 .tab-btn:hover {
-    /* Brand accent + theme-aware neutral hover (matches the nav-link convention),
-       replacing raw Bootstrap --blue-500 and a hardcoded rgba wash (audit V1). */
-    color: var(--primary-text);
+    /* Theme-aware neutral hover (matches the nav-link convention). --primary-text is
+       only 4.18:1 on --bg-secondary, so use --text-primary (11.4:1) — the hover bg is
+       --bg-secondary here, not the card. */
+    color: var(--text-primary);
     background: var(--bg-secondary);
 }
 

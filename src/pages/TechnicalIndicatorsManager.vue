@@ -427,8 +427,10 @@ export default defineComponent({
 }
 
 .control-btn.info:hover:not(:disabled) {
-  /* Hover darkens to --info-fg with white text (8.56:1) — ink would fail on this shade */
-  background: var(--info-fg);
+  /* --info-fg is THEME-AWARE — it flips to a LIGHT cyan in dark mode, so white text
+     collapsed to 1.84:1 there. Use a theme-FIXED dark teal so white clears AA in
+     both themes (8.56:1). */
+  background: #0c5460;
   color: white;
 }
 

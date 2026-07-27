@@ -325,7 +325,11 @@ export default defineComponent({
 }
 
 .quality-disabled {
-  background-color: var(--grey-200);
+  /* --grey-200 is a theme-FIXED near-white fill — with theme-aware --text-secondary
+     it goes light-on-light in dark mode (1.76:1). Use the theme-aware neutral
+     surface so both flip together (5.7:1 light / 6.8:1 dark). Mirrors the sibling
+     good/stale/degraded badges, which pair --*-bg with --*-fg. */
+  background-color: var(--bg-secondary);
   color: var(--text-secondary);
 }
 
