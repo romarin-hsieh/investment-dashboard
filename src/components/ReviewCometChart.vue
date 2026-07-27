@@ -460,7 +460,8 @@ onUnmounted(() => {
 
 .table-row.header {
     font-weight: var(--weight-semibold);
-    opacity: 0.6;
+    /* opacity:0.6 blended the inherited header text toward the plate (~3.9:1 on the
+       light plate). The semibold + smaller size already mark it as a header. */
     font-size: var(--text-xs);
     padding-bottom: 4px;
 }
@@ -511,7 +512,7 @@ onUnmounted(() => {
 
 /* Popover */
 .info-btn {
-    opacity: 0.6; /* Increased base opacity */
+    opacity: 0.9; /* keep the icon subtle but >=3:1 (WCAG 1.4.11); 0.6 dimmed it under the floor */
     transition: all var(--transition-base);
     border-radius: 50%;
     border: 1px solid currentColor;
