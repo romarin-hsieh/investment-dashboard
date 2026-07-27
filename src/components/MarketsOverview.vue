@@ -257,12 +257,15 @@ export default defineComponent({
 }
 
 .markets-tile.no-data {
-  background-color: var(--grey-50);
+  /* --grey-50/--grey-150 are theme-FIXED light greys: in dark mode the tile stays
+     near-white while the theme-aware text turns light -> light-on-light. Use the
+     theme-aware secondary surface so the muted text clears AA in both themes. */
+  background-color: var(--bg-secondary);
   border-color: var(--grey-200);
 }
 
 .markets-tile.disabled {
-  background-color: var(--grey-150);
+  background-color: var(--bg-secondary);
   opacity: 0.7;
 }
 

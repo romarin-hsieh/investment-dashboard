@@ -876,11 +876,14 @@ export default defineComponent({
     transition: width var(--transition-slow) ease;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
-.bg-strong-buy { background-color: var(--success-strong); } /* TradingView Green */
+/* --success-strong/--danger-strong are TEXT tokens that flip LIGHT in dark mode;
+   as segment FILLS under white text they fail dark (2.4:1). Use the theme-FIXED
+   dark solids so white clears AA in both themes (5.1–5.6:1). */
+.bg-strong-buy { background-color: var(--success-solid-hover); } /* TradingView Green */
 .bg-buy { background-color: rgba(34, 171, 148, 0.7); }
 .bg-hold { background-color: #DCC070; color: var(--grey-800); } /* Theme Warning */
 .bg-sell { background-color: rgba(247, 82, 95, 0.7); }
-.bg-strong-sell { background-color: var(--danger-strong); } /* TradingView Red */
+.bg-strong-sell { background-color: var(--danger-solid-hover); } /* TradingView Red */
 
 .legend-row {
     display: flex;

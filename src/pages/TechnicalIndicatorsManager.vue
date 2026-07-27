@@ -506,8 +506,9 @@ export default defineComponent({
 
 .load-time {
   margin-left: auto;
-  /* --blue-500 was 3.24:1 on the secondary card; darker brand blue clears AA */
-  color: var(--blue-700);
+  /* --blue-700 is theme-FIXED (#0056b3) — fine in light but only 2.20:1 on the
+     dark secondary card. Use the theme-aware meta token so it clears AA in both. */
+  color: var(--text-secondary);
 }
 
 .error-message {

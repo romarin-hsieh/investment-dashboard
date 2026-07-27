@@ -243,7 +243,9 @@ export default defineComponent({
 }
 
 .error-state {
-  color: var(--danger-solid);
+  /* --danger-solid is theme-FIXED; 4.53:1 on the light card but only 3.08:1 on
+     the dark card. --danger-strong is the theme-aware AA red (5.5–5.8:1 both). */
+  color: var(--danger-strong);
 }
 
 .error-icon, .info-icon {

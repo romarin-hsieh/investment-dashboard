@@ -476,6 +476,9 @@ onUnmounted(() => {
 
 .col-val { text-align: right; font-family: 'Roboto Mono', monospace; }
 .col-val.highlight { font-weight: bold; color: #2962FF; }
+/* On the dark plate (--chart-bg-deep #1e222d) the fixed #2962FF is only 3.24:1;
+   lift to a lighter blue there (6.15:1). Light plate #FFFFFF keeps #2962FF (4.90:1). */
+.review-comet-container.dark .col-val.highlight { color: #6EA0FF; }
 .col-val.muted { opacity: 0.6; font-size: var(--text-sm); }
 
 .commentary {

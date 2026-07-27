@@ -589,8 +589,10 @@ export default defineComponent({
 }
 
 .dark-mode .fear-greed-gauge-container {
-  /* On the dark card the vivid zone colors already clear AA as text. */
-  --c-ex-fear-text: var(--c-ex-fear);
+  /* On the dark card the vivid zone colors clear AA as text — EXCEPT the vivid
+     red --c-ex-fear #ef5350, which is only 4.01:1 on #2C2C2C. Use a lighter red
+     tuned for the dark card (5.32:1). The other four vivid zones pass (4.66–10:1). */
+  --c-ex-fear-text: #F47C79;
   --c-fear-text: var(--c-fear);
   --c-neutral-text: var(--c-neutral);
   --c-greed-text: var(--c-greed);
@@ -734,7 +736,9 @@ export default defineComponent({
 }
 .sentiment-description {
   font-size: var(--text-base);
-  color: var(--text-muted);
+  /* --text-muted is only 4.2:1 on the zone-tinted dark card (rgba tint over
+     #2C2C2C); --text-secondary clears AA on every zone tint (5.0–5.6:1) and in light. */
+  color: var(--text-secondary);
   max-width: 90%;
   margin: 0 auto;
 }

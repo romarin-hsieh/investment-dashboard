@@ -44,31 +44,46 @@ const BASELINE_BY_ROUTE: Record<string, Set<string>> = {
 
 const ROUTES = Object.keys(BASELINE_BY_ROUTE)
 
-for (const route of ROUTES) {
-  test(`a11y: ${route} has no non-baseline violations`, async ({ page }) => {
-    const baseline = BASELINE_BY_ROUTE[route] ?? new Set<string>()
-    await page.goto(route)
-    // Scan the settled page, not a mid-load frame: wait for a heading, then for
-    // the network to go idle (best-effort — analytics can keep it busy, so a
-    // timeout is fine). Deterministic scanning keeps the gate from flaking.
-    await expect(page.locator('h1, h2, h3').first()).toBeVisible({ timeout: 15_000 })
-    await page.waitForLoadState('networkidle', { timeout: 8_000 }).catch(() => {})
+// Scan every route in BOTH themes. The app renders in light by default, so a
+// light-only gate never sees dark-theme-only failures — theme-FIXED colors
+// (--*-solid, --blue-700, raw hexes) that pass on the light card but fall below
+// AA on the dark card (#2C2C2C / #242424). useTheme() reads localStorage.theme on
+// mount and toggles .dark-mode on <html>; seeding it before boot renders the
+// whole page in the target theme. Baselines are shared per route (all empty).
+const THEMES = ['light', 'dark'] as const
 
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-      // Third-party embeds render their own (un-fixable) markup into the page —
-      // e.g. TradingView's legend buttons have no discernible text. Audit our
-      // app, not vendor widgets. See ADR-0015.
-      .exclude('.tv-mount-point')
-      .exclude('.tradingview-widget-container')
-      .exclude('iframe')
-      .analyze()
+for (const theme of THEMES) {
+  for (const route of ROUTES) {
+    test(`a11y [${theme}]: ${route} has no non-baseline violations`, async ({ page }) => {
+      const baseline = BASELINE_BY_ROUTE[route] ?? new Set<string>()
+      await page.addInitScript((t) => localStorage.setItem('theme', t), theme)
+      await page.goto(route)
+      // Scan the settled page, not a mid-load frame: wait for a heading, then for
+      // the network to go idle (best-effort — analytics can keep it busy, so a
+      // timeout is fine). Deterministic scanning keeps the gate from flaking.
+      await expect(page.locator('h1, h2, h3').first()).toBeVisible({ timeout: 15_000 })
+      await page.waitForLoadState('networkidle', { timeout: 8_000 }).catch(() => {})
+      // Confirm the theme actually applied, so a silent useTheme regression can't
+      // turn the dark pass into a second (green) light scan.
+      if (theme === 'dark') await expect(page.locator('html')).toHaveClass(/dark-mode/)
+      else await expect(page.locator('html')).not.toHaveClass(/dark-mode/)
 
-    const unexpected = results.violations.filter((v) => !baseline.has(v.id))
-    const report = unexpected
-      .map((v) => `  [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} node(s))`)
-      .join('\n')
+      const results = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+        // Third-party embeds render their own (un-fixable) markup into the page —
+        // e.g. TradingView's legend buttons have no discernible text. Audit our
+        // app, not vendor widgets. See ADR-0015.
+        .exclude('.tv-mount-point')
+        .exclude('.tradingview-widget-container')
+        .exclude('iframe')
+        .analyze()
 
-    expect(unexpected, `Unexpected a11y violations on ${route}:\n${report}`).toEqual([])
-  })
+      const unexpected = results.violations.filter((v) => !baseline.has(v.id))
+      const report = unexpected
+        .map((v) => `  [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} node(s))`)
+        .join('\n')
+
+      expect(unexpected, `Unexpected a11y violations on ${route} [${theme}]:\n${report}`).toEqual([])
+    })
+  }
 }
