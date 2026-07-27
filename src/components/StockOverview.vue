@@ -1087,7 +1087,8 @@ export default defineComponent({
   margin: var(--space-8) 0 var(--space-4) 0;
   padding-bottom: var(--space-2);
   border-bottom: 2px solid var(--border-color);
-  color: var(--primary-color);
+  /* --primary-color FILL token = 3.94:1 on the page; --primary-text link token = 4.80:1 */
+  color: var(--primary-text);
   font-size: var(--text-lg);
   display: flex;
   align-items: center;

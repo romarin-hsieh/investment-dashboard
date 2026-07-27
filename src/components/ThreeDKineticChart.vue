@@ -458,10 +458,12 @@ onUnmounted(() => {
     padding: 2px 8px; border-radius: var(--radius-xs); font-size: var(--text-xs); font-weight: bold; color: #fff;
     text-transform: uppercase;
 }
-.signal-badge.dip_buy { background: var(--chart-up-alt); }
+/* white text on the vivid fills was only 3.6–4.2:1; darken to the AA fills
+   (dip_buy 5.14, climax 5.61, wait 6.27:1). launchpad keeps #000 on gold. */
+.signal-badge.dip_buy { background: var(--success-solid-hover); }
 .signal-badge.launchpad { background: var(--signal-launchpad); color: #000; }
-.signal-badge.climax { background: var(--chart-down-alt); }
-.signal-badge.wait { background: var(--grey-500); }
+.signal-badge.climax { background: var(--danger-solid-hover); }
+.signal-badge.wait { background: var(--signal-neutral); }
 
 .commentary {
     font-size: var(--text-sm);
@@ -496,7 +498,9 @@ onUnmounted(() => {
 }
 .popover {
     position: absolute; top: 25px; right: 5px;
-    background: var(--chart-bg); border: 1px solid var(--grey-500);
+    /* --chart-bg is a theme-FIXED dark slate; --text-secondary on it is 1.94:1 in
+       light theme. Use the theme-aware card surface so the popover text clears AA. */
+    background: var(--bg-card); border: 1px solid var(--grey-500);
     padding: 0.8rem; border-radius: var(--radius-xs);
     z-index: 100; width: 150px; font-size: var(--text-xs); color: var(--text-secondary);
 }

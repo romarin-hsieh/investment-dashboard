@@ -310,7 +310,9 @@ export default defineComponent({
 }
 
 .tab-btn.active {
-  color: var(--primary-color);
+  /* text --primary-color = 4.21:1 on the card; --primary-text clears AA. The
+     border-bottom stays --primary-color (a 3:1 UI underline, which passes). */
+  color: var(--primary-text);
   border-bottom-color: var(--primary-color);
   background: var(--bg-card);
 }

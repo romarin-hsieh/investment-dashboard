@@ -713,7 +713,9 @@ export default defineComponent({
 
 .retry-btn {
   padding: 0.4rem 0.8rem;
-  background: var(--primary-color);
+  /* --primary-color gave white only 4.21:1 light / 2.92:1 dark; --danger-solid
+     matches the other widgets' retry buttons and clears AA in both themes */
+  background: var(--danger-solid);
   color: white;
   border: none;
   border-radius: var(--radius-sm);
@@ -766,7 +768,8 @@ export default defineComponent({
 }
 
 .modal-body h6 {
-    color: var(--primary-color);
+    /* --primary-color FILL token = 4.21:1 as text; --primary-text is the AA link/text token */
+    color: var(--primary-text);
 }
 
 /* Responsive */
