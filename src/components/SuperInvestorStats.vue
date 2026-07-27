@@ -549,10 +549,11 @@ export default defineComponent({
 .history-table th {
   text-align: left;
   padding: 8px 12px;
+  /* --text-secondary is already an appropriately-muted header colour (7:1); the
+     extra opacity:0.8 blended it to #7a7a7a = 4.29:1, under AA. Dropped the dim. */
   color: var(--text-secondary);
   font-weight: var(--weight-medium);
   border-bottom: 1px solid var(--border-color);
-  opacity: 0.8;
 }
 
 .history-table th.text-right { text-align: right; }
