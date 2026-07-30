@@ -399,7 +399,7 @@ class TechnicalIndicatorsCache {
       timestamp: Date.now(),
       lastAccess: Date.now(), // LRU anchor (PR-B4)
       symbol: symbol,
-      date: new Date().toISOString().split('T')[0],
+      date: new Date().toISOString().split('T')[0] ?? '',
       indexTimestamp: latestTimestamp // 記錄 index timestamp
     };
 
@@ -521,6 +521,7 @@ class TechnicalIndicatorsCache {
       const limit = Math.min(items.length, targetCount);
       for (let i = 0; i < limit; i++) {
         const item = items[i];
+        if (!item) continue;
         localStorage.removeItem(item.key);
         // Also drop from memory cache so subsequent reads re-fetch fresh
         // rather than resurrecting an evicted entry.

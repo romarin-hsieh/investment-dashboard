@@ -85,7 +85,8 @@ class WidgetLoadManager {
 
     // 找到合適的插入位置（優先級數字越小越優先）
     for (let i = 0; i < this.queue.length; i++) {
-      if (task.priority < this.queue[i].priority) {
+      const queued = this.queue[i]
+      if (queued && task.priority < queued.priority) {
         insertIndex = i
         break
       }
@@ -169,7 +170,7 @@ class WidgetLoadManager {
     const taskIndex = this.queue.findIndex(task => task.id === widgetId)
     if (taskIndex !== -1) {
       const task = this.queue.splice(taskIndex, 1)[0]
-      task.reject(new Error('Widget load cancelled'))
+      if (task) task.reject(new Error('Widget load cancelled'))
       console.log(`WidgetLoadManager: Cancelled queued widget ${widgetId}`)
       return true
     }
