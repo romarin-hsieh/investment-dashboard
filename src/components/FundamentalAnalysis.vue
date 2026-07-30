@@ -147,9 +147,6 @@
              <Bar v-if="earningsChartData" :data="earningsChartData" :options="earningsChartOptions" />
         </div>
       </div>
-
-      <!-- Analyst Rating History -->
-      <!-- ... (rest of template) ... -->
     </div>
   </div>
 </template>
@@ -620,18 +617,6 @@ export default defineComponent({
         return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
     },
 
-    formatRecommendation(key: string) {
-        return key ? key.replace(/_/g, ' ').toUpperCase() : 'N/A';
-    },
-
-    getRecommendationClass(key: string) {
-        if (!key) return '';
-        const k = key.toLowerCase();
-        if (k.includes('buy')) return 'text-success';
-        if (k.includes('sell')) return 'text-danger';
-        return 'text-warning';
-    },
-
     /**
      * Yahoo returns `{ raw, fmt }` envelopes for many fields. Unwrap to a primitive
      * so downstream code never stringifies an object into the UI.
@@ -930,7 +915,7 @@ export default defineComponent({
 .text-success { color: var(--success-strong) !important; }
 .text-danger { color: var(--danger-strong) !important; }
 /* Match the AA -strong siblings; --warning-color (a fill token) is only 2.6:1 as text.
-   Currently unreached (getRecommendationClass isn't bound) but fixed so it's AA if wired. */
+   Latent utility with no current consumer — kept AA-correct so it's safe if ever wired. */
 .text-warning { color: var(--warning-strong) !important; }
 
 /* Loading/Error */
