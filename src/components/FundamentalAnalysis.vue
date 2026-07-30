@@ -447,7 +447,7 @@ export default defineComponent({
         // Synthesis Logic: Fill missing yearly data (e.g., 2025) from quarterly data
         if (this.yearlyEarningsData.length > 0 && this.quarterlyEarningsData.length > 0) {
             // Find the last year present in yearly data
-            const lastYearlyDate = this.yearlyEarningsData[this.yearlyEarningsData.length - 1].date;
+            const lastYearlyDate = this.yearlyEarningsData[this.yearlyEarningsData.length - 1]!.date;
             const lastYear = typeof lastYearlyDate === 'string' ? parseInt(lastYearlyDate) : lastYearlyDate;
 
             // Group quarterly data by year
@@ -457,7 +457,7 @@ export default defineComponent({
                 // Parse year from "1Q2025" or similar
                 const yearMatch = q.date.toString().match(/(\d{4})/);
                 if (yearMatch) {
-                    const year = parseInt(yearMatch[1]);
+                    const year = parseInt(yearMatch[1] ?? '');
                     // Only synthesize if it's a NEWER year than what we have
                     if (year > lastYear) {
                         if (!quarterlyByYear[year]) {
@@ -477,7 +477,7 @@ export default defineComponent({
             // Append synthesized years
             Object.keys(quarterlyByYear).sort().forEach(yearStr => {
                 const year = parseInt(yearStr);
-                const data = quarterlyByYear[year];
+                const data = quarterlyByYear[year]!;
                 // Only synthesize a COMPLETE fiscal year. Aggregating 1-3 quarters
                 // and charting it beside full years reads as a revenue collapse.
                 if (data.count !== 4) return;

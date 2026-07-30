@@ -330,7 +330,7 @@ export default defineComponent({
         
         // Debug Data Date
         if (spx && spx.timestamps.length > 0) {
-            const lastTs = spx.timestamps[spx.timestamps.length - 1];
+            const lastTs = spx.timestamps[spx.timestamps.length - 1]!;
             // Fix ms/sec issue for log
             const ts = lastTs < 1000000000000 ? lastTs * 1000 : lastTs;
             console.log('📊 Latest SPX Date:', i18nDate(ts)); // User expects 2026/1/9
@@ -367,7 +367,7 @@ export default defineComponent({
         const idx = data.timestamps.length - 1 - offset;
         if(idx < 0) return '-';
 
-        let ts = data.timestamps[idx];
+        let ts = data.timestamps[idx]!;
         if (ts < 1000000000000) {
             ts *= 1000;
         }
@@ -415,7 +415,7 @@ export default defineComponent({
             const closes = spxSlice.close;
             const momSeries = this.calcRollingMetric(closes, (slice) => {
                 const ma125 = this.getMa(slice, 125);
-                return slice[slice.length-1] / ma125;
+                return slice[slice.length-1]! / ma125;
             }, 125);
             result.components.sp125 = this.normalizeZ(this.getZScore(momSeries));
             
@@ -435,7 +435,7 @@ export default defineComponent({
                 const lSlice = lows.slice(start, i+1);
                 const h52 = Math.max(...hSlice);
                 const l52 = Math.min(...lSlice);
-                const curr = closes[i];
+                const curr = closes[i]!;
                 strSeries.push((curr - l52) / (h52 - l52));
             }
             result.components.hl52 = this.normalizeZ(this.getZScore(strSeries));
@@ -447,7 +447,7 @@ export default defineComponent({
             
             // Breadth
             const breadthSeries = this.calcRollingMetric(closes, (slice) => {
-                return slice[slice.length-1] - slice[slice.length-6]; 
+                return slice[slice.length-1]! - slice[slice.length-6]!; 
             }, 125);
             result.components.mcsi = this.normalizeZ(this.getZScore(breadthSeries), true);
 
@@ -458,7 +458,7 @@ export default defineComponent({
             // Volatility
             const volSeries = this.calcRollingMetric(closes, (slice) => {
                 const ma50 = this.getMa(slice, 50);
-                return (slice[slice.length-1] - ma50) / ma50;
+                return (slice[slice.length-1]! - ma50) / ma50;
             }, 125);
             result.components.vix50 = this.normalizeZ(this.getZScore(volSeries), true);
         }
@@ -469,8 +469,8 @@ export default defineComponent({
             const bCloses = tltSlice.close;
             const safeSeries: number[] = [];
             for(let i=minHistory; i<sCloses.length; i++) {
-                const sRet = (sCloses[i] - sCloses[i-20]) / sCloses[i-20];
-                const bRet = (bCloses[i] - bCloses[i-20]) / bCloses[i-20];
+                const sRet = (sCloses[i]! - sCloses[i-20]!) / sCloses[i-20]!;
+                const bRet = (bCloses[i]! - bCloses[i-20]!) / bCloses[i-20]!;
                 safeSeries.push(sRet - bRet);
             }
             result.components.safe = this.normalizeZ(this.getZScore(safeSeries));
@@ -482,7 +482,7 @@ export default defineComponent({
             const bCloses = tltSlice.close;
             const junkSeries: number[] = [];
              for(let i=minHistory; i<jCloses.length; i++) {
-                const ratio = jCloses[i] / bCloses[i]; // JNK/TLT
+                const ratio = jCloses[i]! / bCloses[i]!; // JNK/TLT
                 junkSeries.push(ratio);
             }
             result.components.yieldSpread = this.normalizeZ(this.getZScore(junkSeries));
@@ -519,10 +519,10 @@ export default defineComponent({
         return null; // No valid data found for any candidate
     },
 
-    getMa(slice: number[], period: number) {
-        if(slice.length < period) return slice[slice.length-1];
+    getMa(slice: number[], period: number): number {
+        if(slice.length < period) return slice[slice.length-1]!;
         let sum = 0;
-        for(let i=slice.length-period; i<slice.length; i++) sum += slice[i];
+        for(let i=slice.length-period; i<slice.length; i++) sum += slice[i]!;
         return sum / period;
     },
 
@@ -539,7 +539,7 @@ export default defineComponent({
 
     getZScore(series: number[]) {
         if (!series || series.length === 0) return 0;
-        const current = series[series.length - 1];
+        const current = series[series.length - 1]!;
         // Calculate stats on the *historical distribution* (last 125 points - Tuned)
         const window = series.slice(Math.max(0, series.length - 125));
         

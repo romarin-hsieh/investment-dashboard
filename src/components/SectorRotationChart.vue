@@ -278,8 +278,9 @@ export default defineComponent({
       const allSectors = new Set<string>()
 
       periods.forEach(p => {
-        normalizedMap[p] = {}
-        const rawSectors = rotationMap[p]
+        const sectorMap: Record<string, number> = {}
+        normalizedMap[p] = sectorMap
+        const rawSectors = rotationMap[p]!
         
         Object.entries(rawSectors).forEach(([rawName, val]) => {
             // Filter out invalid or missing sectors
@@ -296,21 +297,18 @@ export default defineComponent({
 
             allSectors.add(unifiedName)
             
-            if (!normalizedMap[p][unifiedName]) {
-                normalizedMap[p][unifiedName] = 0
-            }
-            normalizedMap[p][unifiedName] += val
+            sectorMap[unifiedName] = (sectorMap[unifiedName] ?? 0) + val
         })
 
         // Re-Normalize to 100%
         // Calculate current total after filtering
-        const validTotal = Object.values(normalizedMap[p]).reduce((sum, val) => sum + val, 0)
+        const validTotal = Object.values(sectorMap).reduce((sum, val) => sum + val, 0)
         
         if (validTotal > 0 && Math.abs(validTotal - 100) > 0.1) {
              const scaleFactor = 100 / validTotal
-             Object.keys(normalizedMap[p]).forEach(key => {
+             Object.keys(sectorMap).forEach(key => {
                  // Adjust value and round to specified precision (2 decimals)
-                 normalizedMap[p][key] = Math.round((normalizedMap[p][key] * scaleFactor) * 100) / 100
+                 sectorMap[key] = Math.round(((sectorMap[key] ?? 0) * scaleFactor) * 100) / 100
              })
         }
       })
@@ -325,7 +323,7 @@ export default defineComponent({
           label: sector,
           backgroundColor: color,
           // Use normalizedMap[p][sector]
-          data: periods.map(p => normalizedMap[p][sector] || 0),
+          data: periods.map(p => normalizedMap[p]?.[sector] || 0),
           barPercentage: 0.6,
         }
       })

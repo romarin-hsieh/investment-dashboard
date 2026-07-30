@@ -210,7 +210,9 @@ export default defineComponent({
     processGroupedIndicators() {
       // Callers only invoke this after rawData is set.
       const data = this.rawData as Record<string, any>;
-      const groups: Record<string, any[]> = {
+      // Precise keys (not a string index signature) so literal-key access like
+      // groups['Trend'] is known-present under noUncheckedIndexedAccess.
+      const groups: { Trend: any[]; Oscillators: any[]; Market: any[] } = {
           'Trend': [],
           'Oscillators': [],
           'Market': []
