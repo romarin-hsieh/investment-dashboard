@@ -234,7 +234,7 @@ export class DataFetcher {
           if (i > 0) {
             const dateObj = new Date(targetDate)
             dateObj.setDate(dateObj.getDate() - i)
-            const fallbackDate = dateObj.toISOString().split('T')[0]
+            const fallbackDate = dateObj.toISOString().split('T')[0] ?? ''
             attemptDate = fallbackDate
             console.log(`⚠️ Daily data for ${targetDate} not found, backtracking to ${attemptDate}...`)
           }
@@ -402,7 +402,7 @@ export class DataFetcher {
     const now = new Date()
     // 轉換為 Taipei 時區 (UTC+8)
     const taipeiTime = new Date(now.getTime() + (8 * 60 * 60 * 1000))
-    return taipeiTime.toISOString().split('T')[0]
+    return taipeiTime.toISOString().split('T')[0] ?? ''
   }
 }
 

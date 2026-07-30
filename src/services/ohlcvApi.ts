@@ -249,7 +249,7 @@ class OhlcvApi {
     if (!data || !data.timestamps || data.timestamps.length === 0) return data;
 
     // Use the last timestamp in the dataset as "now" to handle historical/stale data correctly
-    const lastTimestamp = data.timestamps[data.timestamps.length - 1];
+    const lastTimestamp = data.timestamps[data.timestamps.length - 1]!;
     const cutoffDate = new Date(lastTimestamp);
 
     switch (range) {

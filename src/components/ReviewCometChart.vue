@@ -124,7 +124,7 @@ const historicalMetrics = computed(() => {
     const len = trace.length;
     const getPoint = (idx: number) => {
         if (idx < 0) return { x_trend: 0, y_momentum: 0, z_structure: 0 };
-        return trace[idx];
+        return trace[idx]!;
     };
     return {
         now: getPoint(len - 1),
@@ -195,7 +195,7 @@ const renderChartsSequentially = async () => {
 
     // 3. Sector Top
     if (chartSectorTop.value && validSector.length > 0) {
-        const last = validSector[validSector.length-1];
+        const last = validSector[validSector.length-1]!;
         P.newPlot(chartSectorTop.value, [
             { x: validSector.map(p => p.x_trend), y: validSector.map(p => p.y_momentum), mode: 'lines', line: { color: '#888888', width: 2, dash: 'dot' }, type: 'scatter', hoverinfo: 'none' },
             { x: [last.x_trend], y: [last.y_momentum], mode: 'markers', marker: { size: 6, color: '#888888' }, type: 'scatter' }
@@ -209,7 +209,7 @@ const renderChartsSequentially = async () => {
 
     // 4. Sector Side
     if (chartSectorSide.value && validSector.length > 0) {
-        const last = validSector[validSector.length-1];
+        const last = validSector[validSector.length-1]!;
         P.newPlot(chartSectorSide.value, [
             { x: validSector.map(p => p.x_trend), y: validSector.map(p => p.z_structure), mode: 'lines', line: { color: '#888888', width: 2, dash: 'dot' }, type: 'scatter', hoverinfo: 'none' },
             { x: [last.x_trend], y: [last.z_structure], mode: 'markers', marker: { size: 6, color: '#888888' }, type: 'scatter' }

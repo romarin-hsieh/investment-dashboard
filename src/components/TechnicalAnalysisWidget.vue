@@ -153,7 +153,7 @@ export default defineComponent({
           }
           
           const retryCount = this.retryCount || 0
-          const timeoutDuration = baseTimeouts[this.priority] + (retryCount * 3000) // 每次重試增加 3 秒
+          const timeoutDuration = (baseTimeouts[this.priority] ?? 15000) + (retryCount * 3000) // 每次重試增加 3 秒
           
           const timeout = setTimeout(() => {
             this.error = true

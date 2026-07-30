@@ -240,11 +240,9 @@ export default defineComponent({
              })
         }
         
-        if (!groups[sector]) {
-          groups[sector] = []
-        }
+        const group = (groups[sector] ??= [])
         
-        groups[sector].push({
+        group.push({
           quote,
           dailyData: symbolDailyData,
           metadata: symbolMetadata
@@ -495,7 +493,7 @@ export default defineComponent({
           // 處理不在優先級列表中的其他 Industry
           Object.keys(industryGroups).forEach(industry => {
             if (!sectorIndustryPriority.includes(industry)) {
-              const sortedIndustryStocks = industryGroups[industry].sort((a, b) => {
+              const sortedIndustryStocks = industryGroups[industry]!.sort((a, b) => {
                 const marketCapA = a.metadata?.market_cap || 0
                 const marketCapB = b.metadata?.market_cap || 0
                 
@@ -520,8 +518,9 @@ export default defineComponent({
       // 2. Sort sectors not in priority list (e.g. Unknown)
       // 2. 排序不在優先級列表中的其他 Sector (例如 Unknown)
       Object.keys(groups).forEach(sector => {
-        if (!sectorPriority.includes(sector) && groups[sector].length > 0) {
-          sortedGroups[sector] = groups[sector].sort((a, b) => {
+        const group = groups[sector]!
+        if (!sectorPriority.includes(sector) && group.length > 0) {
+          sortedGroups[sector] = group.sort((a, b) => {
             return a.quote.symbol.localeCompare(b.quote.symbol)
           })
         }
@@ -629,7 +628,7 @@ export default defineComponent({
       if (this.selectedIndex < 0 || this.selectedIndex >= this.flatSymbols.length) {
         return ''
       }
-      return this.flatSymbols[this.selectedIndex]
+      return this.flatSymbols[this.selectedIndex]!
     },
 
     shortcutBindings() {

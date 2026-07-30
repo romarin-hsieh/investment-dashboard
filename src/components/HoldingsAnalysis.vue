@@ -378,16 +378,17 @@ export default defineComponent({
         dr.superinvestors.forEach(investor => {
             if (investor.history) {
                 investor.history.forEach(rec => {
-                    if (!historyMap[rec['period']]) {
-                         historyMap[rec['period']] = { shares: 0, priceSum: 0, priceCount: 0, period: rec['period'] };
-                    }
-                    historyMap[rec['period']].shares += (rec['shares'] || 0);
+                    const period = rec['period'];
+                    // Capture the entry once: element-access narrowing from the
+                    // create-if-absent check isn't retained across statements.
+                    const entry = (historyMap[period] ??= { shares: 0, priceSum: 0, priceCount: 0, period });
+                    entry.shares += (rec['shares'] || 0);
                     if (rec['reported_price']) {
                          // Simple clean of '$' if present
                          const p = parseFloat(String(rec['reported_price']).replace('$','').replace(',',''));
                          if (!isNaN(p)) {
-                             historyMap[rec['period']].priceSum += p;
-                             historyMap[rec['period']].priceCount++;
+                             entry.priceSum += p;
+                             entry.priceCount++;
                          }
                     }
                 });
@@ -399,7 +400,7 @@ export default defineComponent({
         const sortedHistory = Object.values(historyMap).sort((a, b) => {
             const [yA, qA] = a.period.split(' Q');
             const [yB, qB] = b.period.split(' Q');
-            return (parseInt(yA) - parseInt(yB)) || (parseInt(qA) - parseInt(qB));
+            return (parseInt(yA ?? '') - parseInt(yB ?? '')) || (parseInt(qA ?? '') - parseInt(qB ?? ''));
         });
         
         // Prepare Chart Data
@@ -436,8 +437,8 @@ export default defineComponent({
         // Calculate Trend Score (Weight 30%)
         // Compare last quarter to previous quarter shares
         if (sharesData.length >= 2) {
-            const current = sharesData[sharesData.length - 1];
-            const prev = sharesData[sharesData.length - 2];
+            const current = sharesData[sharesData.length - 1]!;
+            const prev = sharesData[sharesData.length - 2]!;
             if (prev > 0) {
                 const change = (current - prev) / prev;
                 if (change > 0.05) this.smartMoneyTrendScore = 100;

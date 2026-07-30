@@ -213,9 +213,9 @@ export default defineComponent({
             const close = data.close ?? [];
             const chartData: CandlestickData[] = timestamps.map((t, i) => ({
                 time: (t / 1000) as UTCTimestamp,
-                open: open[i],
-                high: high[i],
-                low: low[i],
+                open: open[i] as number,
+                high: high[i] as number,
+                low: low[i] as number,
                 close: close[i] as number
             }));
 
@@ -335,7 +335,7 @@ export default defineComponent({
         
         // Forward Loop (Top Line)
         for (let i = 0; i < area.points.length; i++) {
-            const p = area.points[i];
+            const p = area.points[i]!;
             const x = this.timeToX(p.time, timeScale);
             const y = this.priceToY(p.yTop);
             
@@ -351,7 +351,7 @@ export default defineComponent({
         
         // Backward Loop (Bottom Line)
         for (let i = area.points.length - 1; i >= 0; i--) {
-            const p = area.points[i];
+            const p = area.points[i]!;
             const x = this.timeToX(p.time, timeScale);
             const y = this.priceToY(p.yBottom);
             

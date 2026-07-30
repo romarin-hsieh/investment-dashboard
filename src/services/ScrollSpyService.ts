@@ -114,18 +114,18 @@ export class ScrollSpyService {
    */
   determineActiveSymbol(visibleElements: VisibleElement[]): string | null {
     if (visibleElements.length === 0) return null
-    if (visibleElements.length === 1) return visibleElements[0].symbol
+    if (visibleElements.length === 1) return visibleElements[0]!.symbol
 
     // 多個元素可見時，選擇最佳的一個
     // 優先級：1. 交集比例最高 2. 距離視窗中心最近
     const viewportHeight = window.innerHeight
     const viewportCenter = viewportHeight / 2
 
-    let bestElement = visibleElements[0]
+    let bestElement = visibleElements[0]!
     let bestScore = this.calculateElementScore(bestElement, viewportCenter)
 
     for (let i = 1; i < visibleElements.length; i++) {
-      const element = visibleElements[i]
+      const element = visibleElements[i]!
       const score = this.calculateElementScore(element, viewportCenter)
 
       if (score > bestScore) {

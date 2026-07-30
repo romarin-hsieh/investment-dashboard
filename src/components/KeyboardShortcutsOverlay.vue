@@ -88,8 +88,8 @@ export default defineComponent({
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'
       )
       if (focusables.length === 0) return
-      const first = focusables[0]
-      const last = focusables[focusables.length - 1]
+      const first = focusables[0]!
+      const last = focusables[focusables.length - 1]!
       const active = document.activeElement
 
       // Wrap focus at boundaries — Shift+Tab on first → last, Tab on
