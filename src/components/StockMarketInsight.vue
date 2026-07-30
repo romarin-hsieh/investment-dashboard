@@ -96,7 +96,7 @@ export default defineComponent({
     },
 
     createDailyWidget() {
-      const container = this.$refs.dailyContainer as HTMLElement | undefined
+      const container = this.$refs['dailyContainer'] as HTMLElement | undefined
       if (!container) return
 
       // 清除現有的 widget
@@ -188,7 +188,7 @@ export default defineComponent({
     },
 
     createWeeklyWidget() {
-      const container = this.$refs.weeklyContainer as HTMLElement | undefined
+      const container = this.$refs['weeklyContainer'] as HTMLElement | undefined
       if (!container) return
 
       // 清除現有的 widget

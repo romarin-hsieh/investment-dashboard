@@ -74,7 +74,7 @@ export default defineComponent({
     },
 
     createVIX() {
-      const container = this.$refs.container as HTMLElement | undefined
+      const container = this.$refs['container'] as HTMLElement | undefined
       if (!container) return
 
       // 清除現有的 widget

@@ -92,7 +92,7 @@ export default defineComponent({
 
     createCompanyProfile() {
       if (!this.isMounted) return
-      const container = this.$refs.widgetContainer as HTMLElement | undefined
+      const container = this.$refs['widgetContainer'] as HTMLElement | undefined
       if (!container) return
 
       // Clean existing

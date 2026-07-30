@@ -62,7 +62,7 @@ export default defineComponent({
         // to body which is the spec-default.
         this.previouslyFocused = (document.activeElement || document.body) as HTMLElement
         this.$nextTick(() => {
-          (this.$refs.closeBtn as HTMLElement | undefined)?.focus()
+          (this.$refs['closeBtn'] as HTMLElement | undefined)?.focus()
         })
       } else if (!now && before) {
         const target = this.previouslyFocused
@@ -82,7 +82,7 @@ export default defineComponent({
       return key
     },
     handleTab (event: KeyboardEvent) {
-      const overlay = this.$refs.overlay as HTMLElement | undefined
+      const overlay = this.$refs['overlay'] as HTMLElement | undefined
       if (!overlay) return
       const focusables = overlay.querySelectorAll<HTMLElement>(
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'

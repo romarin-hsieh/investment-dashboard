@@ -13,7 +13,7 @@ class ProductionOptimizer {
   performanceMetrics: Map<string, unknown>
 
   constructor() {
-    this.isProduction = process.env.NODE_ENV === 'production'
+    this.isProduction = process.env['NODE_ENV'] === 'production'
     this.optimizations = new Map()
     this.performanceMetrics = new Map()
   }
@@ -100,8 +100,8 @@ class ProductionOptimizer {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const img = entry.target as HTMLImageElement
-            if (img.dataset.src) {
-              img.src = img.dataset.src
+            if (img.dataset['src']) {
+              img.src = img.dataset['src']
               img.removeAttribute('data-src')
               imageObserver.unobserve(img)
             }

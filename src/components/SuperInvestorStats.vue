@@ -4,7 +4,7 @@
       type="button"
       class="section-header"
       @click="toggleSection('ownership')"
-      :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
+      :aria-expanded="expandedSections['ownership'] ? 'true' : 'false'"
       aria-controls="ownership-section"
     >
       <h3>{{ $t('superInvestor.title') }}</h3>
@@ -30,13 +30,13 @@
           type="button"
           class="subsection-header"
           @click="toggleSection('ownership')"
-          :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
+          :aria-expanded="expandedSections['ownership'] ? 'true' : 'false'"
           aria-controls="ownership-content"
         >
           <h4>{{ $t('superInvestor.ownership.heading') }}</h4>
         </button>
 
-        <div id="ownership-content" v-show="expandedSections.ownership" class="subsection-content">
+        <div id="ownership-content" v-show="expandedSections['ownership']" class="subsection-content">
            <div class="table-responsive">
              <table class="data-table">
                <thead>
@@ -117,13 +117,13 @@
           type="button"
           class="subsection-header"
           @click="toggleSection('activity')"
-          :aria-expanded="expandedSections.activity ? 'true' : 'false'"
+          :aria-expanded="expandedSections['activity'] ? 'true' : 'false'"
           aria-controls="activity-content"
         >
           <h4>{{ $t('superInvestor.activity.heading') }}</h4>
         </button>
 
-        <div id="activity-content" v-show="expandedSections.activity" class="subsection-content">
+        <div id="activity-content" v-show="expandedSections['activity']" class="subsection-content">
           <div class="controls-area">
              <!-- Filter Controls -->
              <div class="filter-controls">
@@ -152,11 +152,11 @@
                <tbody>
                  <tr v-for="(item, idx) in activityList" :key="idx">
                    <td class="text-left font-medium text-muted">{{ item.quarter }}</td>
-                   <td class="text-left font-medium">{{ item.manager }}</td>
-                   <td class="text-center">{{ item.portfolio_change ? item.portfolio_change + '%' : '-' }}</td>
+                   <td class="text-left font-medium">{{ item['manager'] }}</td>
+                   <td class="text-center">{{ item['portfolio_change'] ? item['portfolio_change'] + '%' : '-' }}</td>
                    <td class="text-center">
                       <span :class="['action-text', getActionClass(item.type)]">
-                        {{ item.action }}
+                        {{ item['action'] }}
                       </span>
                    </td>
                    <td class="text-right" :class="getSharesClass(item.type)">
