@@ -31,14 +31,14 @@ const routes: RouteRecordRaw[] = [
   // Legacy redirects for backward compatibility
   { path: '/market-dashboard', redirect: '/market-overview' },
   { path: '/stock-dashboard', redirect: '/stock-overview' },
-  { path: '/stock-dashboard/symbols/:symbol', redirect: to => `/stock-overview/symbols/${to.params.symbol}` },
+  { path: '/stock-dashboard/symbols/:symbol', redirect: to => `/stock-overview/symbols/${to.params['symbol']}` },
   { path: '/settings', component: () => import('./pages/Settings.vue'), name: 'settings' },
   // Tools
   { path: '/technical-manager', component: () => import('./pages/TechnicalIndicatorsManager.vue'), name: 'technical-manager' },
   { path: '/auto-update-monitor', component: () => import('./pages/AutoUpdateMonitor.vue'), name: 'auto-update-monitor' },
   { path: '/system-manager', component: () => import('./pages/SystemManager.vue'), name: 'system-manager' },
   // Quant Strategy (Dev Only)
-  ...(process.env.NODE_ENV === 'development' ? [
+  ...(process.env['NODE_ENV'] === 'development' ? [
     { path: '/quant-strategy', component: () => import('./pages/QuantDashboard.vue'), name: 'quant-strategy' }
   ] : []),
   // Catch-all route for 404s

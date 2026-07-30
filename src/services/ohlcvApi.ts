@@ -222,7 +222,7 @@ class OhlcvApi {
     }
 
     // 檢查數組長度一致性
-    const length = (rec.timestamps as unknown[]).length;
+    const length = (rec['timestamps'] as unknown[]).length;
     for (const field of requiredFields) {
       if ((rec[field] as unknown[]).length !== length) {
         console.error(`📊 OHLCV validation failed: ${field} length mismatch`);

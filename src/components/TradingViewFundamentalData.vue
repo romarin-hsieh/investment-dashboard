@@ -99,7 +99,7 @@ export default defineComponent({
 
     createFundamentalData() {
       if (!this.isMounted) return
-      const container = this.$refs.widgetContainer as HTMLElement | undefined
+      const container = this.$refs['widgetContainer'] as HTMLElement | undefined
       if (!container) return
 
       // Clean existing

@@ -620,7 +620,7 @@ class YahooFinanceAPI {
 
         console.log(`Price data for ${symbol}:`, {
           dataPoints: length,
-          priceRange: indicators.priceRange,
+          priceRange: indicators['priceRange'],
           samplePrices: ohlcv.close.slice(-10).filter(p => !isNaN(p)) // 最後 10 個有效價格
         });
 
@@ -645,7 +645,7 @@ class YahooFinanceAPI {
         const avgVol3m = calcAvgVol(60); // approx 3 months
 
         // Add Volume Change and Beta to indicators (compatible with TechnicalIndicators.vue expectation)
-        indicators.yf = {
+        indicators['yf'] = {
           volume_last_day_pct: volumeChangePct,
           beta_10d: formatNumber(getLastValue(coreResults.BETA_10D), 2, 'N/A'),
           beta_3mo: formatNumber(getLastValue(coreResults.BETA_3M), 2, 'N/A'),
@@ -813,8 +813,8 @@ class YahooFinanceAPI {
       const mapped = this._mapCoreResultsToIndicators(compatibleResults, currentPrice, 'Static JSON');
 
       // Merge extras from static header if any
-      mapped.lastUpdated = staticRaw.metadata?.generated || new Date().toISOString();
-      mapped.source = 'Static Pre-computed';
+      mapped['lastUpdated'] = staticRaw.metadata?.generated || new Date().toISOString();
+      mapped['source'] = 'Static Pre-computed';
 
       return mapped;
 
@@ -862,26 +862,26 @@ class YahooFinanceAPI {
     };
 
     return {
-      ma5: createIndicatorResult(coreResults.MA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      sma5: createIndicatorResult(coreResults.SMA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      ma10: createIndicatorResult(coreResults.MA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      sma10: createIndicatorResult(coreResults.SMA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      ma30: createIndicatorResult(coreResults.MA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      sma30: createIndicatorResult(coreResults.SMA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma5: createIndicatorResult(coreResults['MA_5'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma5: createIndicatorResult(coreResults['SMA_5'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma10: createIndicatorResult(coreResults['MA_10'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma10: createIndicatorResult(coreResults['SMA_10'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma30: createIndicatorResult(coreResults['MA_30'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma30: createIndicatorResult(coreResults['SMA_30'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
       sma50: { value: null, signal: 'N/A' },
 
-      ichimokuBaseLine: createIndicatorResult(coreResults.ICHIMOKU_BASELINE_26, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
-      ichimokuConversionLine: createIndicatorResult(coreResults.ICHIMOKU_CONVERSIONLINE_9, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
-      ichimokuLaggingSpan: createIndicatorResult(coreResults.ICHIMOKU_LAGGINGSPAN_26),
+      ichimokuBaseLine: createIndicatorResult(coreResults['ICHIMOKU_BASELINE_26'], { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+      ichimokuConversionLine: createIndicatorResult(coreResults['ICHIMOKU_CONVERSIONLINE_9'], { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+      ichimokuLaggingSpan: createIndicatorResult(coreResults['ICHIMOKU_LAGGINGSPAN_26']),
 
-      vwma20: createIndicatorResult(coreResults.VWMA_20, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      vwma20: createIndicatorResult(coreResults['VWMA_20'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
 
-      rsi14: createIndicatorResult(coreResults.RSI_14, { type: 'rsi', overbought: 70, oversold: 30 }),
+      rsi14: createIndicatorResult(coreResults['RSI_14'], { type: 'rsi', overbought: 70, oversold: 30 }),
 
       adx14: (() => {
-        const adxValue = getLastValue(coreResults.ADX_14);
-        const plusDI = getLastValue(coreResults.ADX_14_PLUS_DI);
-        const minusDI = getLastValue(coreResults.ADX_14_MINUS_DI);
+        const adxValue = getLastValue(coreResults['ADX_14']);
+        const plusDI = getLastValue(coreResults['ADX_14_PLUS_DI']);
+        const minusDI = getLastValue(coreResults['ADX_14_MINUS_DI']);
         let signal = 'NEUTRAL';
         if (adxValue !== null && !isNaN(adxValue)) {
           if (adxValue > 25) signal = 'STRONG_TREND';
@@ -896,9 +896,9 @@ class YahooFinanceAPI {
       })(),
 
       macd: (() => {
-        const macdValue = getLastValue(coreResults.MACD_12_26_9);
-        const signalValue = getLastValue(coreResults.MACD_SIGNAL_9);
-        const histValue = getLastValue(coreResults.MACD_HIST);
+        const macdValue = getLastValue(coreResults['MACD_12_26_9']);
+        const signalValue = getLastValue(coreResults['MACD_SIGNAL_9']);
+        const histValue = getLastValue(coreResults['MACD_HIST']);
         let signal = 'NEUTRAL';
         if (macdValue !== null && signalValue !== null && histValue !== null) {
           if (macdValue > signalValue && histValue > 0) signal = 'BUY';
@@ -912,14 +912,14 @@ class YahooFinanceAPI {
         };
       })(),
 
-      parabolicSAR: createIndicatorResult(coreResults.SAR, { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
-      stochK: createIndicatorResult(coreResults.STOCH_K, { type: 'rsi', overbought: 80, oversold: 20 }),
-      stochD: createIndicatorResult(coreResults.STOCH_D, { type: 'rsi', overbought: 80, oversold: 20 }),
-      cci20: createIndicatorResult(coreResults.CCI_20, { type: 'rsi', overbought: 100, oversold: -100 }),
-      atr14: createIndicatorResult(coreResults.ATR_14),
+      parabolicSAR: createIndicatorResult(coreResults['SAR'], { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
+      stochK: createIndicatorResult(coreResults['STOCH_K'], { type: 'rsi', overbought: 80, oversold: 20 }),
+      stochD: createIndicatorResult(coreResults['STOCH_D'], { type: 'rsi', overbought: 80, oversold: 20 }),
+      cci20: createIndicatorResult(coreResults['CCI_20'], { type: 'rsi', overbought: 100, oversold: -100 }),
+      atr14: createIndicatorResult(coreResults['ATR_14']),
 
       obv: (() => {
-        const obvSeries = (coreResults.OBV || []).filter(v => v !== null && !isNaN(v));
+        const obvSeries = (coreResults['OBV'] || []).filter(v => v !== null && !isNaN(v));
         const obvVal = obvSeries.length > 0 ? obvSeries[obvSeries.length - 1] : null;
         const prevObv = obvSeries.length > 1 ? obvSeries[obvSeries.length - 2] : null;
         let signal = 'NEUTRAL';
@@ -933,8 +933,8 @@ class YahooFinanceAPI {
         };
       })(),
 
-      superTrend: createIndicatorResult(coreResults.SUPERTREND_10_3, { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
-      mfi14: createIndicatorResult(coreResults.MFI_14, { type: 'rsi', overbought: 80, oversold: 20 })
+      superTrend: createIndicatorResult(coreResults['SUPERTREND_10_3'], { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
+      mfi14: createIndicatorResult(coreResults['MFI_14'], { type: 'rsi', overbought: 80, oversold: 20 })
     };
   }
 

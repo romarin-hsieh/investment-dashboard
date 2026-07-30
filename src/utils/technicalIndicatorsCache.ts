@@ -92,7 +92,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
  * 只要求 `timestamp` 為數字 + `data` 為物件，其餘欄位容忍缺漏（舊格式）。
  */
 function isCachedIndicatorRecord(value: unknown): value is CachedIndicatorRecord {
-  return isRecord(value) && typeof value.timestamp === 'number' && isRecord(value.data);
+  return isRecord(value) && typeof value['timestamp'] === 'number' && isRecord(value['data']);
 }
 
 /**
@@ -362,8 +362,8 @@ class TechnicalIndicatorsCache {
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
           const parsed: unknown = JSON.parse(cached);
-          if (isRecord(parsed) && isTechnicalIndicatorData(parsed.data)) {
-            existingData = parsed.data;
+          if (isRecord(parsed) && isTechnicalIndicatorData(parsed['data'])) {
+            existingData = parsed['data'];
           }
         }
       }
@@ -500,8 +500,8 @@ class TechnicalIndicatorsCache {
           // directly off any object instead.
           let sortKey = 0;
           if (isRecord(parsed)) {
-            const la = typeof parsed.lastAccess === 'number' ? parsed.lastAccess : 0;
-            const ts = typeof parsed.timestamp === 'number' ? parsed.timestamp : 0;
+            const la = typeof parsed['lastAccess'] === 'number' ? parsed['lastAccess'] : 0;
+            const ts = typeof parsed['timestamp'] === 'number' ? parsed['timestamp'] : 0;
             sortKey = la || ts || 0;
           }
           return { key, sortKey, size: val.length * 2 };

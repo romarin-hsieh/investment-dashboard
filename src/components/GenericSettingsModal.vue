@@ -34,13 +34,13 @@
         <div v-show="activeTab === 'Inputs'" class="tab-content">
           <div v-for="field in inputFields" :key="field.key" class="setting-row">
             <label class="setting-label">
-              {{ field.label }}
-              <span v-if="field.tooltip" class="info-icon" :title="field.tooltip">ⓘ</span>
+              {{ field['label'] }}
+              <span v-if="field['tooltip']" class="info-icon" :title="field['tooltip']">ⓘ</span>
             </label>
             <div class="setting-input">
               <!-- Boolean (Checkbox) -->
               <input 
-                v-if="field.type === 'boolean' || field.type === 'checkbox'" 
+                v-if="field['type'] === 'boolean' || field['type'] === 'checkbox'" 
                 type="checkbox" 
                 :checked="localModel[field.key]"
                 @change="updateValue(field.key, ($event.target as HTMLInputElement).checked)"
@@ -48,22 +48,22 @@
               
               <!-- Number -->
               <input 
-                v-else-if="field.type === 'number'" 
+                v-else-if="field['type'] === 'number'" 
                 type="number" 
                 :value="localModel[field.key]"
-                :min="field.min"
-                :max="field.max"
-                :step="field.step || 1"
+                :min="field['min']"
+                :max="field['max']"
+                :step="field['step'] || 1"
                 @input="updateValue(field.key, Number(($event.target as HTMLInputElement).value))"
               >
               
               <!-- Select -->
               <select 
-                v-else-if="field.type === 'select'"
+                v-else-if="field['type'] === 'select'"
                 :value="localModel[field.key]"
                 @change="updateValue(field.key, ($event.target as HTMLInputElement).value)"
               >
-                <option v-for="opt in field.options" :key="opt" :value="opt">{{ opt }}</option>
+                <option v-for="opt in field['options']" :key="opt" :value="opt">{{ opt }}</option>
               </select>
 
               <!-- Text -->
@@ -80,16 +80,16 @@
         <!-- Style Tab -->
         <div v-show="activeTab === 'Style'" class="tab-content">
           <div v-for="field in styleFields" :key="field.key" class="setting-row">
-            <label class="setting-label">{{ field.label }}</label>
+            <label class="setting-label">{{ field['label'] }}</label>
             
             <div class="setting-input style-input-group">
                 <!-- Select -->
                 <select 
-                    v-if="field.type === 'select'"
+                    v-if="field['type'] === 'select'"
                     :value="localModel[field.key]"
                     @change="updateValue(field.key, ($event.target as HTMLInputElement).value)"
                 >
-                    <option v-for="opt in field.options" :key="opt" :value="opt">{{ opt }}</option>
+                    <option v-for="opt in field['options']" :key="opt" :value="opt">{{ opt }}</option>
                 </select>
 
                 <!-- Color Preview (Only for text inputs that look like color) -->
@@ -100,7 +100,7 @@
                 
                 <!-- Text Input (Default for Style) -->
                 <input 
-                   v-if="field.type !== 'select'"
+                   v-if="field['type'] !== 'select'"
                    type="text" 
                    :value="localModel[field.key]" 
                    class="color-input"
@@ -170,10 +170,10 @@ export default defineComponent({
       return this.title || this.$t('settingsModal.defaultTitle');
     },
     inputFields() {
-      return this.schema.filter(f => !f.group || f.group === 'Inputs');
+      return this.schema.filter(f => !f['group'] || f['group'] === 'Inputs');
     },
     styleFields() {
-      return this.schema.filter(f => f.group === 'Style');
+      return this.schema.filter(f => f['group'] === 'Style');
     }
   },
   watch: {
@@ -187,7 +187,7 @@ export default defineComponent({
         // come right after).
         this.previouslyFocused = (document.activeElement || document.body) as HTMLElement;
         this.$nextTick(() => {
-          (this.$refs.closeBtn as HTMLElement | undefined)?.focus();
+          (this.$refs['closeBtn'] as HTMLElement | undefined)?.focus();
         });
       } else {
         // Restore focus to whatever had it before the modal opened.
@@ -221,7 +221,7 @@ export default defineComponent({
     // boundaries. Unlike the simpler `KeyboardShortcutsOverlay` (1
     // focusable), this modal has many focusables so the cycle is real.
     handleTab(event: KeyboardEvent) {
-      const overlay = this.$refs.overlay as HTMLElement | undefined;
+      const overlay = this.$refs['overlay'] as HTMLElement | undefined;
       if (!overlay) return;
       const focusables = overlay.querySelectorAll<HTMLElement>(
         'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input:not([disabled]), select:not([disabled]), textarea:not([disabled])'

@@ -652,7 +652,7 @@ export default defineComponent({
   async mounted() {
     // Restore a persisted search from the URL (?q=) before the first render so
     // a reload / back-navigation lands on the same filtered view (audit N2).
-    const urlQuery = this.$route?.query?.q
+    const urlQuery = this.$route?.query?.['q']
     if (typeof urlQuery === 'string' && urlQuery.trim()) {
       this.searchQuery = urlQuery
     }
@@ -666,7 +666,7 @@ export default defineComponent({
   beforeRouteLeave(_to, _from, next) {
     // Clear focus query param when leaving stock-overview route
     // 離開 stock-overview 路由時清除 focus 參數
-    if (this.$route.query.focus) {
+    if (this.$route.query['focus']) {
       console.log('Navigation: Clearing focus parameter on route leave')
       // Replace history to avoid back button issues
       // 替換歷史記錄以避免上一頁問題
@@ -843,7 +843,7 @@ export default defineComponent({
     // history; undefined drops the param entirely when the query is cleared.
     syncSearchToUrl(query: string) {
       const q = (query || '').trim()
-      const current = (this.$route?.query?.q) || ''
+      const current = (this.$route?.query?.['q']) || ''
       if (q === current) return
       this.$router.replace({
         query: { ...this.$route.query, q: q || undefined }
@@ -901,7 +901,7 @@ export default defineComponent({
       
       // Check Vue Router query params (Hash Router compatible)
       // 檢查 Vue Router query 參數 (Hash Router 相容)
-      const focusSymbol = this.$route.query.focus
+      const focusSymbol = this.$route.query['focus']
       if (typeof focusSymbol === 'string' && this.isSymbolValid(focusSymbol)) {
         console.log('Navigation: Found focus symbol in URL:', focusSymbol)
         

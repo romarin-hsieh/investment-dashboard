@@ -252,7 +252,7 @@ class DataVersionService {
 
       if (techResponse.ok) {
         const techIndex: unknown = await techResponse.json();
-        const techDate = isRecord(techIndex) ? techIndex.date : undefined;
+        const techDate = isRecord(techIndex) ? techIndex['date'] : undefined;
         console.log('✅ Technical indicators index refreshed:', techDate);
       }
 
@@ -267,7 +267,7 @@ class DataVersionService {
 
       if (ohlcvResponse.ok) {
         const ohlcvIndex: unknown = await ohlcvResponse.json();
-        const symbols = isRecord(ohlcvIndex) ? ohlcvIndex.symbols : undefined;
+        const symbols = isRecord(ohlcvIndex) ? ohlcvIndex['symbols'] : undefined;
         console.log('✅ OHLCV index refreshed:', Array.isArray(symbols) ? symbols.length : undefined, 'symbols');
       }
 

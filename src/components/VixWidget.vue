@@ -46,7 +46,7 @@ export default defineComponent({
       
       try {
         // 清除容器 (Only the mount point)
-        const container = this.$refs.tvMountPoint as HTMLElement | undefined
+        const container = this.$refs['tvMountPoint'] as HTMLElement | undefined
         if (!container) return
         
         // 移除所有子元素
@@ -69,7 +69,7 @@ export default defineComponent({
     async createWidget() {
       return new Promise<void>((resolve, reject) => {
         this.$nextTick(() => {
-          const container = this.$refs.tvMountPoint as HTMLElement | undefined
+          const container = this.$refs['tvMountPoint'] as HTMLElement | undefined
           if (!container) {
             reject(new Error('Container not found'))
             return

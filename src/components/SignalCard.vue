@@ -95,15 +95,15 @@ const isPositive = computed(() => props.changePercent >= 0);
     <div class="metrics-grid" v-if="coordinates">
       <div class="metric-item">
         <span class="metric-label">{{ $t('signalCard.metrics.trend') }}</span>
-        <span class="metric-value">{{ coordinates.x_trend }}</span>
+        <span class="metric-value">{{ coordinates['x_trend'] }}</span>
       </div>
       <div class="metric-item">
         <span class="metric-label">{{ $t('signalCard.metrics.momentum') }}</span>
-        <span class="metric-value">{{ coordinates.y_momentum }}</span>
+        <span class="metric-value">{{ coordinates['y_momentum'] }}</span>
       </div>
       <div class="metric-item">
         <span class="metric-label">{{ $t('signalCard.metrics.structure') }}</span>
-        <span class="metric-value">{{ coordinates.z_structure }}</span>
+        <span class="metric-value">{{ coordinates['z_structure'] }}</span>
       </div>
     </div>
   </div>

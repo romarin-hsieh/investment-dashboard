@@ -137,12 +137,12 @@ export default defineComponent({
       if (e.key === 'Escape' && this.toolsOpen) {
         this.toolsOpen = false
         // Return focus to the toggle so keyboard users are not stranded.
-        const toolsRoot = this.$refs.toolsRoot as HTMLElement | undefined
+        const toolsRoot = this.$refs['toolsRoot'] as HTMLElement | undefined
         toolsRoot?.querySelector<HTMLElement>('.nav-tools-toggle')?.focus()
       }
     },
     onDocClick(e: MouseEvent) {
-      const toolsRoot = this.$refs.toolsRoot as HTMLElement | undefined
+      const toolsRoot = this.$refs['toolsRoot'] as HTMLElement | undefined
       if (this.toolsOpen && toolsRoot && !toolsRoot.contains(e.target as Node)) {
         this.toolsOpen = false
       }

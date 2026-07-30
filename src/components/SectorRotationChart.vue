@@ -152,7 +152,7 @@ export default defineComponent({
     externalTooltipHandler(context: { chart: ChartJS; tooltip: TooltipModel<'bar'> }) {
       // Tooltip Element
       const { chart, tooltip } = context
-      const tooltipEl = this.$refs.tooltip as HTMLElement
+      const tooltipEl = this.$refs['tooltip'] as HTMLElement
 
       // Hide if no tooltip
       if (tooltip.opacity === 0) {

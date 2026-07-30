@@ -409,7 +409,7 @@ export class DataFetcher {
 // 導出單例實例 - 根據環境設置正確的基礎路徑
 // 資料可由 VITE_DATA_BASE_URL 覆寫（獨立 data 站台），預設回退到 app 的 BASE_URL
 const getBaseUrl = () => {
-  const startUrl = import.meta.env.VITE_DATA_BASE_URL || import.meta.env.BASE_URL
+  const startUrl = import.meta.env['VITE_DATA_BASE_URL'] || import.meta.env.BASE_URL
   return startUrl.endsWith('/') ? startUrl.slice(0, -1) : startUrl
 }
 

@@ -108,7 +108,7 @@ export default defineComponent({
       this.error = false
 
       await this.$nextTick()
-      const target = this.$refs.widgetTarget as HTMLElement | undefined
+      const target = this.$refs['widgetTarget'] as HTMLElement | undefined
       if (!target) {
         this.error = true
         return

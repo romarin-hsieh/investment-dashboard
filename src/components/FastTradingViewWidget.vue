@@ -112,7 +112,7 @@ export default defineComponent({
       )
       this.observer = observer
 
-      observer.observe(this.$refs.container as Element)
+      observer.observe(this.$refs['container'] as Element)
     },
 
     async loadWidget() {
@@ -169,7 +169,7 @@ export default defineComponent({
     async createWidget() {
       return new Promise<void>((resolve, reject) => {
         this.$nextTick(async () => {
-          const target = this.$refs.widgetTarget as HTMLElement | undefined
+          const target = this.$refs['widgetTarget'] as HTMLElement | undefined
 
           if (!target) {
             reject(new Error('Widget target container not found'))
@@ -305,7 +305,7 @@ export default defineComponent({
 
     renderCachedWidget(cached: { scriptUrl: string; config: unknown }) {
       this.$nextTick(() => {
-        const target = this.$refs.widgetTarget as HTMLElement | undefined
+        const target = this.$refs['widgetTarget'] as HTMLElement | undefined
         if (!target) return
 
         const script = document.createElement('script')
