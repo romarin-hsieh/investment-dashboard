@@ -233,6 +233,7 @@ class DynamicMetadataService {
 
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i]
+      if (!batch) continue
       console.log(`Processing batch ${i + 1}/${batches.length} (${batch.length} symbols)`)
 
       // 並行處理批次內的請求
@@ -247,7 +248,8 @@ class DynamicMetadataService {
 
       // 存儲結果
       batch.forEach((symbol, index) => {
-        results.set(symbol, batchResults[index])
+        const meta = batchResults[index]
+        if (meta) results.set(symbol, meta)
       })
 
       // 在批次之間添加延遲，避免 API 限制

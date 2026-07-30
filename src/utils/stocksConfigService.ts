@@ -175,10 +175,8 @@ class StocksConfigService {
     config.stocks
       .filter(stock => stock.enabled)
       .forEach(stock => {
-        if (!groups[stock.exchange]) {
-          groups[stock.exchange] = []
-        }
-        groups[stock.exchange].push(stock.symbol)
+        const list = (groups[stock.exchange] ??= [])
+        list.push(stock.symbol)
       })
 
     return groups
@@ -194,10 +192,8 @@ class StocksConfigService {
     config.stocks
       .filter(stock => stock.enabled)
       .forEach(stock => {
-        if (!groups[stock.sector]) {
-          groups[stock.sector] = []
-        }
-        groups[stock.sector].push(stock.symbol)
+        const list = (groups[stock.sector] ??= [])
+        list.push(stock.symbol)
       })
 
     return groups

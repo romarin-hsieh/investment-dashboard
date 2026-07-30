@@ -191,6 +191,7 @@ class CacheWarmupService {
 
       for (let i = 0; i < batches.length; i++) {
         const batch = batches[i]
+        if (!batch) continue
         console.log(`🔥 Processing batch ${i + 1}/${batches.length}: ${batch.join(', ')}`)
 
         // 並行處理批次中的股票
@@ -199,7 +200,8 @@ class CacheWarmupService {
 
         // 記錄結果
         batchResults.forEach((result, index) => {
-          this.warmupResults.set(batch[index], result)
+          const symbol = batch[index]
+          if (symbol) this.warmupResults.set(symbol, result)
         })
 
         // 更新進度
