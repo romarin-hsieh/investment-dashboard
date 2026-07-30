@@ -78,7 +78,8 @@ class CorsProxyManager {
      * @returns Current proxy URL / 目前代理 URL
      */
     getCurrentProxy(): string {
-        return this.proxies[this.currentProxyIndex];
+        // Fall back to the first proxy (then '') so a stale index can't return undefined.
+        return this.proxies[this.currentProxyIndex] ?? this.proxies[0] ?? '';
     }
 
     /**

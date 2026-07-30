@@ -102,7 +102,8 @@ class PrecomputedIndicatorsAPI {
 
   // 獲取今天的日期字符串
   getTodayString(): string {
-    return new Date().toISOString().split('T')[0];
+    // ISO always contains 'T', so [0] is present; `?? ''` satisfies the return type.
+    return new Date().toISOString().split('T')[0] ?? '';
   }
 
   // 獲取緩存的索引數據（避免重複載入）
