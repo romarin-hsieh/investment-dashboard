@@ -313,6 +313,8 @@ class YahooFinanceAPI {
           // Production Browser environment: Use External Proxy
           proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
           const proxy = this.corsProxies[proxyIndex];
+          // `% length` is NaN on an empty proxy list → undefined element.
+          if (!proxy) { throw new Error('No CORS proxy configured'); }
           console.log(`Fetching data for ${symbol} using proxy ${proxyIndex + 1}...`);
 
           // Special handling for custom Cloudflare Worker: DO NOT ENCODE
@@ -344,11 +346,14 @@ class YahooFinanceAPI {
 
         const result = data.chart.result[0];
 
-        if (!result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
+        if (!result || !result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
           throw new Error('Invalid data structure - missing indicators');
         }
 
         const quotes = result.indicators.quote[0];
+        if (!quotes) {
+          throw new Error('Invalid data structure - missing quotes');
+        }
 
         // 提取並清理 OHLCV 數據
         const rawData = {
@@ -390,15 +395,20 @@ class YahooFinanceAPI {
           const rawLow = rawData.low[i];
           const rawClose = rawData.close[i];
           const rawVolume = rawData.volume[i];
-          ohlcv.open[i] = rawOpen !== null ? rawOpen : NaN;
-          ohlcv.high[i] = rawHigh !== null ? rawHigh : NaN;
-          ohlcv.low[i] = rawLow !== null ? rawLow : NaN;
-          ohlcv.close[i] = rawClose !== null ? rawClose : NaN;
-          ohlcv.volume[i] = rawVolume !== null ? rawVolume : NaN;
+          // `!= null` (loose) collapses both the API's nulls AND the out-of-range
+          // undefined into NaN, so each local is a concrete number.
+          const o = rawOpen != null ? rawOpen : NaN;
+          const h = rawHigh != null ? rawHigh : NaN;
+          const l = rawLow != null ? rawLow : NaN;
+          const c = rawClose != null ? rawClose : NaN;
+          ohlcv.open[i] = o;
+          ohlcv.high[i] = h;
+          ohlcv.low[i] = l;
+          ohlcv.close[i] = c;
+          ohlcv.volume[i] = rawVolume != null ? rawVolume : NaN;
 
           // 計算有效數據點（OHLC 都不是 NaN）
-          if (!isNaN(ohlcv.open[i]) && !isNaN(ohlcv.high[i]) &&
-            !isNaN(ohlcv.low[i]) && !isNaN(ohlcv.close[i])) {
+          if (!isNaN(o) && !isNaN(h) && !isNaN(l) && !isNaN(c)) {
             validDataPoints++;
           }
         }
@@ -574,16 +584,16 @@ class YahooFinanceAPI {
             const prevObv = obvSeries.length > 1 ? obvSeries[obvSeries.length - 2] : null;
 
             let signal = 'NEUTRAL';
-            if (obvVal !== null && prevObv !== null) {
+            if (obvVal != null && prevObv != null) {
               if (obvVal > prevObv) signal = 'BULLISH';
               else if (obvVal < prevObv) signal = 'BEARISH';
             }
             // Format as Millions. formatNumber guards against Infinity / NaN
             // in the division (obvVal === 0 is fine; obvVal === null already
             // short-circuited above).
-            const obvMillions = obvVal !== null ? obvVal / 1_000_000 : null;
+            const obvMillions = obvVal != null ? obvVal / 1_000_000 : null;
             return {
-              value: obvVal !== null ? formatNumber(obvMillions, 2, 'N/A') + 'M' : 'N/A',
+              value: obvVal != null ? formatNumber(obvMillions, 2, 'N/A') + 'M' : 'N/A',
               signal: signal
             };
           })(),
@@ -923,12 +933,12 @@ class YahooFinanceAPI {
         const obvVal = obvSeries.length > 0 ? obvSeries[obvSeries.length - 1] : null;
         const prevObv = obvSeries.length > 1 ? obvSeries[obvSeries.length - 2] : null;
         let signal = 'NEUTRAL';
-        if (obvVal !== null && prevObv !== null) {
+        if (obvVal != null && prevObv != null) {
           if (obvVal > prevObv) signal = 'BULLISH';
           else if (obvVal < prevObv) signal = 'BEARISH';
         }
         return {
-          value: obvVal !== null ? formatNumber(obvVal / 1_000_000, 2, 'N/A') + 'M' : 'N/A',
+          value: obvVal != null ? formatNumber(obvVal / 1_000_000, 2, 'N/A') + 'M' : 'N/A',
           signal: signal
         };
       })(),
@@ -1074,6 +1084,7 @@ class YahooFinanceAPI {
         }
 
         const result = data.quoteSummary.result[0];
+        if (!result) { throw new Error('No quoteSummary data available'); }
         const proxyInfoStr = isNode ? 'Direct (Node)' : `Proxy ${proxyIndex + 1}`;
 
         // Use shared transformation logic
@@ -1495,11 +1506,14 @@ class YahooFinanceAPI {
 
         const result = data.chart.result[0];
 
-        if (!result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
+        if (!result || !result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
           throw new Error('Invalid data structure - missing indicators');
         }
 
         const quotes = result.indicators.quote[0];
+        if (!quotes) {
+          throw new Error('Invalid data structure - missing quotes');
+        }
         const timestamps = result.timestamp || [];
 
         // Extract and clean OHLCV data
