@@ -236,27 +236,6 @@ export default defineComponent({
           if (this.sentimentScore < 40) return this.$t('holdings.sentimentBearish');
           return this.$t('holdings.sentimentNeutral');
       },
-      sentimentColor() {
-          if (this.sentimentScore < 40) return getToken('--danger-solid');
-          return getToken('--warning-solid');
-      },
-      smartMoneyScoreDetails() {
-         const score = this.calculatedSmartMoneyScore;
-         let text = this.$t('holdings.scoreNeutral');
-         let color = getToken('--warning-solid');  // amber default
-
-         if (score >= 75) {
-             text = this.$t('holdings.scoreStrongAccumulation');
-             color = getToken('--success-solid');
-         } else if (score < 50) {
-             text = this.$t('holdings.scoreWeakDistribution');
-             color = getToken('--danger-solid');
-         } else {
-             text = this.$t('holdings.scoreStableNeutral');
-         }
-
-         return { score, text, color };
-      },
       smartMoneyChartOptions(): ChartOptions<'bar'> {
           // Theme-adaptive chart styling. Tokens resolve to different hex in
           // light vs dark via .dark-mode overrides in style.css.
