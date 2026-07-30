@@ -92,7 +92,7 @@ class DynamicMetadataService {
       // 從 Yahoo Finance API 獲取股票信息
       const stockInfo = await yahooFinanceAPI.getStockInfo(symbol)
 
-      if (stockInfo && !stockInfo.error && stockInfo.sector !== 'Unknown') {
+      if (stockInfo && !stockInfo['error'] && stockInfo['sector'] !== 'Unknown') {
         // API 回傳的是鬆散型別 (StockInfo 的 index signature 為 unknown)；於此邊界
         // 斷言我們期待的欄位形狀，賦值時不做任何 runtime 轉換 (行為與 .js 一致)。
         const info = stockInfo as {

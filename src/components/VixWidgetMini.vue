@@ -37,7 +37,7 @@ export default defineComponent({
       this.error = false
       
       try {
-        const container = this.$refs.vixContainer as HTMLElement | undefined
+        const container = this.$refs['vixContainer'] as HTMLElement | undefined
         if (!container) return
         
         // 清除容器

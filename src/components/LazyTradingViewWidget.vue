@@ -131,7 +131,7 @@ export default defineComponent({
       )
       this.observer = observer
 
-      observer.observe(this.$refs.container as Element)
+      observer.observe(this.$refs['container'] as Element)
     },
 
     async loadWidget() {
@@ -167,7 +167,7 @@ export default defineComponent({
       return new Promise<void>((resolve, reject) => {
         this.$nextTick(() => {
           // Use specific widget target instead of broad container
-          const target = this.$refs.widgetTarget as HTMLElement | undefined
+          const target = this.$refs['widgetTarget'] as HTMLElement | undefined
 
           if (!target) {
             reject(new Error('Widget target container not found'))

@@ -31,7 +31,7 @@ export function withBase(path: string): string {
  * @returns data base URL（結尾含 '/'）
  */
 export function getDataBaseUrl(): string {
-  const base = import.meta.env.VITE_DATA_BASE_URL || import.meta.env.BASE_URL || '/';
+  const base = import.meta.env['VITE_DATA_BASE_URL'] || import.meta.env.BASE_URL || '/';
   return base.endsWith('/') ? base : `${base}/`;
 }
 

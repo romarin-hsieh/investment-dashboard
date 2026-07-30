@@ -159,12 +159,12 @@ class PrecomputedIndicatorsAPI {
 
         if (index) {
           // 使用索引中的最新日期
-          if (typeof index.date === 'string') {
-            latestDate = index.date;
+          if (typeof index['date'] === 'string') {
+            latestDate = index['date'];
           }
 
           // 檢查該 symbol 是否在可用列表中
-          const symbols = index.symbols;
+          const symbols = index['symbols'];
           if (!Array.isArray(symbols) || !symbols.includes(symbol)) {
             throw new Error(`Symbol ${symbol} not found in precomputed data`);
           }
@@ -340,7 +340,7 @@ class PrecomputedIndicatorsAPI {
           timestamp: Date.now()
         });
 
-        console.log(`✅ Loaded precomputed data for ${symbol} (date: ${latestDate}, age: ${indicators.dataAge})`);
+        console.log(`✅ Loaded precomputed data for ${symbol} (date: ${latestDate}, age: ${indicators['dataAge']})`);
         return indicators;
       })();
 
@@ -384,7 +384,7 @@ class PrecomputedIndicatorsAPI {
   async isPrecomputedDataAvailable(symbol: string): Promise<boolean> {
     try {
       const index = await this.getCachedIndex();
-      return !!(index && Array.isArray(index.symbols) && index.symbols.includes(symbol));
+      return !!(index && Array.isArray(index['symbols']) && index['symbols'].includes(symbol));
     } catch (error) {
       return false;
     }

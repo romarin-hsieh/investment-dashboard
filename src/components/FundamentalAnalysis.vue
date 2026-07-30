@@ -107,26 +107,26 @@
                 <div class="metrics-grid mt-3">
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.revenueGrowth') }}</div>
-                        <div class="metric-value" :class="getGrowthClass(metrics.revenueGrowth)">
-                            {{ metrics.revenueGrowth || $t('fundamentals.keyMetrics.notAvailable') }}
+                        <div class="metric-value" :class="getGrowthClass(metrics['revenueGrowth'])">
+                            {{ metrics['revenueGrowth'] || $t('fundamentals.keyMetrics.notAvailable') }}
                         </div>
                      </div>
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.profitMargin') }}</div>
-                        <div class="metric-value" :class="getGrowthClass(metrics.profitMargins)">
-                             {{ metrics.profitMargins || $t('fundamentals.keyMetrics.notAvailable') }}
+                        <div class="metric-value" :class="getGrowthClass(metrics['profitMargins'])">
+                             {{ metrics['profitMargins'] || $t('fundamentals.keyMetrics.notAvailable') }}
                         </div>
                      </div>
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.forwardPE') }}</div>
                         <div class="metric-value">
-                             {{ displayMetric(metrics.forwardPE, 2) }}
+                             {{ displayMetric(metrics['forwardPE'], 2) }}
                         </div>
                      </div>
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.beta') }}</div>
                         <div class="metric-value">
-                            {{ displayMetric(metrics.beta, 2) }}
+                            {{ displayMetric(metrics['beta'], 2) }}
                         </div>
                      </div>
                 </div>
@@ -343,12 +343,12 @@ export default defineComponent({
             this.metrics = data.financials;
 
         // Map Price Targets
-        if (this.metrics && this.metrics.targetMeanPrice) {
+        if (this.metrics && this.metrics['targetMeanPrice']) {
             this.priceTargets = {
-                low: this.metrics.targetLowPrice,
-                high: this.metrics.targetHighPrice,
-                mean: this.metrics.targetMeanPrice,
-                current: this.metrics.currentPrice
+                low: this.metrics['targetLowPrice'],
+                high: this.metrics['targetHighPrice'],
+                mean: this.metrics['targetMeanPrice'],
+                current: this.metrics['currentPrice']
             } as PriceTargets;
         } else {
             this.priceTargets = null;
@@ -367,9 +367,9 @@ export default defineComponent({
             // Fallback to precomputed data
             try {
                 const precomputed = await precomputedIndicatorsAPI.getTechnicalIndicators(this.symbol);
-                if (precomputed && precomputed.fundamentals) {
+                if (precomputed && precomputed['fundamentals']) {
                     console.log('Using precomputed fundamentals for', this.symbol);
-                    const data = precomputed.fundamentals as FundamentalsPayload;
+                    const data = precomputed['fundamentals'] as FundamentalsPayload;
                     // Fix mapping: financialData holds the metrics in raw JSON
                     const rawMetrics: Record<string, unknown> = data.financialData || {};
                     const rawStats: Record<string, unknown> = data.defaultKeyStatistics || {};
@@ -378,10 +378,10 @@ export default defineComponent({
                         ...rawMetrics,
                         ...rawStats,
                         // specific overrides if needed
-                        profitMargins: this.formatPercent(rawMetrics.profitMargins || rawStats.profitMargins),
-                        revenueGrowth: this.formatPercent(rawMetrics.revenueGrowth),
-                        beta: rawStats.beta,
-                        forwardPE: rawStats.forwardPE
+                        profitMargins: this.formatPercent(rawMetrics['profitMargins'] || rawStats['profitMargins']),
+                        revenueGrowth: this.formatPercent(rawMetrics['revenueGrowth']),
+                        beta: rawStats['beta'],
+                        forwardPE: rawStats['forwardPE']
                     };
                     this.processRecommendationTrend(data.recommendationTrend);
                     this.processEarningsHistory(data.earnings);

@@ -137,7 +137,7 @@ export default defineComponent({
     this.resizeObserver = new ResizeObserver(() => {
         this.handleResize();
     });
-    this.resizeObserver.observe(this.$refs.chartContainer as Element);
+    this.resizeObserver.observe(this.$refs['chartContainer'] as Element);
   },
   beforeUnmount() {
     if (this.chart) {
@@ -158,7 +158,7 @@ export default defineComponent({
   methods: {
     initChart() {
       const chartOptions = this.getChartOptions();
-      this.chart = createChart(this.$refs.chartDiv as HTMLElement, chartOptions);
+      this.chart = createChart(this.$refs['chartDiv'] as HTMLElement, chartOptions);
       this.candlestickSeries = this.chart.addCandlestickSeries({
           upColor: getToken('--chart-up'),
           downColor: getToken('--chart-down'),
@@ -270,8 +270,8 @@ export default defineComponent({
     },
 
     handleResize() {
-        const container = this.$refs.chartContainer as HTMLElement | undefined;
-        const canvas = this.$refs.overlayCanvas as HTMLCanvasElement | undefined;
+        const container = this.$refs['chartContainer'] as HTMLElement | undefined;
+        const canvas = this.$refs['overlayCanvas'] as HTMLCanvasElement | undefined;
         if (!container || !canvas) return;
         const width = container.clientWidth;
         const height = container.clientHeight;
@@ -297,7 +297,7 @@ export default defineComponent({
     // THE OVERLAY DRAWING ENGINE
     // ============================================================
     drawOverlay() {
-       const canvas = this.$refs.overlayCanvas as HTMLCanvasElement | undefined;
+       const canvas = this.$refs['overlayCanvas'] as HTMLCanvasElement | undefined;
        if (!this.chart || !this.candlestickSeries || !canvas) return;
        const ctx = canvas.getContext('2d');
        if (!ctx) return;
@@ -434,7 +434,7 @@ export default defineComponent({
         if (y1 === null || y2 === null) return;
 
         // Context is already DPR-scaled, so logical coords 0..clientWidth are valid.
-        const fullWidth = (this.$refs.chartContainer as HTMLElement).clientWidth;
+        const fullWidth = (this.$refs['chartContainer'] as HTMLElement).clientWidth;
 
         const barWidth = fullWidth * bar.widthPct;
 

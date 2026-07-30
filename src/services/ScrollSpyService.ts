@@ -55,7 +55,7 @@ export class ScrollSpyService {
 
       // 開始觀察所有元素
       elements.forEach(element => {
-        const symbol = (element as HTMLElement).dataset.symbol
+        const symbol = (element as HTMLElement).dataset['symbol']
         if (symbol) {
           this.observedElements.set(element, symbol)
           observer.observe(element)
