@@ -240,8 +240,8 @@ export function calculateMFIVolumeProfile(
         const bin = volumeProfile[binIndex];
 
         // Calculate overlap between candle and bin
-        const binLow = bin.minPrice;
-        const binHigh = bin.maxPrice;
+        const binLow = bin!.minPrice;
+        const binHigh = bin!.maxPrice;
         const overlapLow = Math.max(low, binLow);
         const overlapHigh = Math.min(high, binHigh);
         const overlapRange = Math.max(0, overlapHigh - overlapLow);
@@ -255,31 +255,31 @@ export function calculateMFIVolumeProfile(
           volumeAllocation = volume / binsSpanned;
         }
 
-        bin.volume += volumeAllocation;
-        bin.candleCount++;
+        bin!.volume += volumeAllocation;
+        bin!.candleCount++;
 
         // Classify volume based on MFI
         if (mfiValue != null && !isNaN(mfiValue)) {
           if (mfiValue >= 60) {
-            bin.positiveVolume += volumeAllocation;
+            bin!.positiveVolume += volumeAllocation;
           } else if (mfiValue <= 40) {
-            bin.negativeVolume += volumeAllocation;
+            bin!.negativeVolume += volumeAllocation;
           } else {
-            bin.neutralVolume += volumeAllocation;
+            bin!.neutralVolume += volumeAllocation;
           }
 
           // Legacy MFI averaging (count-based)
-          bin.mfiAverageLegacy = (bin.mfiAverageLegacy * bin.mfiCountLegacy + mfiValue) / (bin.mfiCountLegacy + 1);
-          bin.mfiCountLegacy++;
+          bin!.mfiAverageLegacy = (bin!.mfiAverageLegacy * bin!.mfiCountLegacy + mfiValue) / (bin!.mfiCountLegacy + 1);
+          bin!.mfiCountLegacy++;
 
           // New volume-weighted MFI calculation
-          bin.mfiWeightedSum += mfiValue * volumeAllocation;
-          bin.mfiWeightedVolume += volumeAllocation;
+          bin!.mfiWeightedSum += mfiValue * volumeAllocation;
+          bin!.mfiWeightedVolume += volumeAllocation;
 
           // Keep legacy fields for backward compatibility (but don't use for final mfiAverage)
-          bin.mfiCount++;
+          bin!.mfiCount++;
         } else {
-          bin.neutralVolume += volumeAllocation;
+          bin!.neutralVolume += volumeAllocation;
         }
       }
     }
@@ -310,8 +310,8 @@ export function calculateMFIVolumeProfile(
     let pocIndex = 0;
     let maxVolume = 0;
     for (let i = 0; i < volumeProfile.length; i++) {
-      if (volumeProfile[i].volume > maxVolume) {
-        maxVolume = volumeProfile[i].volume;
+      if (volumeProfile[i]!.volume > maxVolume) {
+        maxVolume = volumeProfile[i]!.volume;
         pocIndex = i;
       }
     }
@@ -320,21 +320,21 @@ export function calculateMFIVolumeProfile(
 
     // Calculate Value Area (70% of total volume around POC)
     const targetVolume = totalVolume * 0.7;
-    let valueAreaVolume = poc.volume;
+    let valueAreaVolume = poc!.volume;
     let valueAreaLow = pocIndex;
     let valueAreaHigh = pocIndex;
 
     // Expand value area up and down from POC
     while (valueAreaVolume < targetVolume && (valueAreaLow > 0 || valueAreaHigh < bins - 1)) {
-      const volumeAbove = valueAreaHigh < bins - 1 ? volumeProfile[valueAreaHigh + 1].volume : 0;
-      const volumeBelow = valueAreaLow > 0 ? volumeProfile[valueAreaLow - 1].volume : 0;
+      const volumeAbove = valueAreaHigh < bins - 1 ? volumeProfile[valueAreaHigh + 1]!.volume : 0;
+      const volumeBelow = valueAreaLow > 0 ? volumeProfile[valueAreaLow - 1]!.volume : 0;
 
       if (volumeAbove >= volumeBelow && valueAreaHigh < bins - 1) {
         valueAreaHigh++;
-        valueAreaVolume += volumeProfile[valueAreaHigh].volume;
+        valueAreaVolume += volumeProfile[valueAreaHigh]!.volume;
       } else if (valueAreaLow > 0) {
         valueAreaLow--;
-        valueAreaVolume += volumeProfile[valueAreaLow].volume;
+        valueAreaVolume += volumeProfile[valueAreaLow]!.volume;
       } else {
         break;
       }
@@ -384,13 +384,13 @@ export function calculateMFIVolumeProfile(
       volumeProfile: volumeProfile,
       mfi: mfiResult,
       pointOfControl: {
-        priceLevel: poc.priceLevel,
-        volume: poc.volume,
-        percentage: (poc.volume / totalVolume) * 100
+        priceLevel: poc!.priceLevel,
+        volume: poc!.volume,
+        percentage: (poc!.volume / totalVolume) * 100
       },
       valueArea: {
-        low: volumeProfile[valueAreaLow].priceLevel,
-        high: volumeProfile[valueAreaHigh].priceLevel,
+        low: volumeProfile[valueAreaLow]!.priceLevel,
+        high: volumeProfile[valueAreaHigh]!.priceLevel,
         volume: valueAreaVolume,
         percentage: (valueAreaVolume / totalVolume) * 100
       },
@@ -421,7 +421,7 @@ export function calculateMFIVolumeProfile(
     console.log(`📊 MFI Volume Profile calculation complete:`, {
       bins: bins,
       totalVolume: totalVolume.toLocaleString(),
-      poc: poc.priceLevel.toFixed(2),
+      poc: poc!.priceLevel.toFixed(2),
       marketSentiment: marketSentiment,
       buyingRatio: (buyingRatio * 100).toFixed(1) + '%'
     });

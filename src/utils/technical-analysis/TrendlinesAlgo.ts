@@ -116,7 +116,7 @@ export class TrendlinesAlgo {
         // ----------------------------------------------------
 
         // Helper: Calculate SMA of Body Sizes
-        const bodySizes = close.map((c, i) => Math.abs(open[i] - c));
+        const bodySizes = close.map((c, i) => Math.abs(open[i]! - c));
         const avgBodyArr = this.calculateSMA(bodySizes, settings.period);
 
         // Storage for Active Trendlines (simulating Pine's var arrays)
@@ -133,12 +133,12 @@ export class TrendlinesAlgo {
 
             // Check Pivot High
             if (this.isPivot(high, pivotIndex, settings.leftBars, settings.rightBars, true)) {
-                this.handlePivot(settings, allLines, true, pivotIndex, high[pivotIndex], avgBodyArr, i);
+                this.handlePivot(settings, allLines, true, pivotIndex, high[pivotIndex]!, avgBodyArr, i);
             }
 
             // Check Pivot Low
             if (this.isPivot(low, pivotIndex, settings.leftBars, settings.rightBars, false)) {
-                this.handlePivot(settings, allLines, false, pivotIndex, low[pivotIndex], avgBodyArr, i);
+                this.handlePivot(settings, allLines, false, pivotIndex, low[pivotIndex]!, avgBodyArr, i);
             }
 
             // Breakout Detection (running on CURRENT bar 'i')
@@ -197,19 +197,19 @@ export class TrendlinesAlgo {
     // ==========================================================
 
     getTimeCount(timestamps: number[], index: number): number {
-        if (index < 0) return timestamps[0];
-        if (index < timestamps.length) return timestamps[index];
+        if (index < 0) return timestamps[0]!;
+        if (index < timestamps.length) return timestamps[index]!;
 
         // Extrapolate future time
         const len = timestamps.length;
-        if (len < 2) return timestamps[len - 1]; // Fallback
+        if (len < 2) return timestamps[len - 1]!; // Fallback
 
         const lastTime = timestamps[len - 1];
         const prevTime = timestamps[len - 2];
-        const interval = lastTime - prevTime; // Average step
+        const interval = lastTime! - prevTime!; // Average step
 
         // Projected
-        return lastTime + (index - (len - 1)) * interval;
+        return lastTime! + (index - (len - 1)) * interval;
     }
 
     // ==========================================================
@@ -247,7 +247,7 @@ export class TrendlinesAlgo {
         // Find recent line of SAME type (Second to last)
         let recentLineIdx = -1;
         for (let k = allLines.length - 2; k >= 0; k--) {
-            if (allLines[k].isHigh === isHigh) {
+            if (allLines[k]!.isHigh === isHigh) {
                 recentLineIdx = k;
                 break;
             }
@@ -257,17 +257,17 @@ export class TrendlinesAlgo {
             const recentLine = allLines[recentLineIdx];
 
             // Calculate slope to connect recentLine to this new pivot
-            const dx = idx - recentLine.x1;
-            const slope = dx !== 0 ? (price - recentLine.y1) / dx : 0;
+            const dx = idx - recentLine!.x1;
+            const slope = dx !== 0 ? (price - recentLine!.y1) / dx : 0;
 
             // Extend PAST this pivot
             const x2_ext = idx + settings.extendBars;
-            const y2_ext = recentLine.y1 + slope * (x2_ext - recentLine.x1);
+            const y2_ext = recentLine!.y1 + slope * (x2_ext - recentLine!.x1);
 
             // Update recentLine properties
-            recentLine.x2 = x2_ext;
-            recentLine.y2 = y2_ext;
-            recentLine.slope = slope;
+            recentLine!.x2 = x2_ext;
+            recentLine!.y2 = y2_ext;
+            recentLine!.slope = slope;
 
             // Slope Validation
             let deleteRecent = false;
@@ -311,7 +311,7 @@ export class TrendlinesAlgo {
 
             if (l.isHigh) {
                 // Resistance Breakout
-                if (close[i - 1] > (prevExpectedY + l.tolerance) && high[i] >= high[i - 1]) {
+                if (close[i - 1]! > (prevExpectedY + l.tolerance) && high[i]! >= high[i - 1]!) {
                     if (!l.broken) {
                         breakUp = true;
                     } else if (i - l.breakBar <= 2) {
@@ -320,7 +320,7 @@ export class TrendlinesAlgo {
                 }
             } else {
                 // Support Breakout
-                if (close[i - 1] < (prevExpectedY - l.tolerance) && low[i] <= low[i - 1]) {
+                if (close[i - 1]! < (prevExpectedY - l.tolerance) && low[i]! <= low[i - 1]!) {
                     if (!l.broken) {
                         breakDown = true;
                     } else if (i - l.breakBar <= 2) {
@@ -335,8 +335,8 @@ export class TrendlinesAlgo {
                     l.breakBar = i;
                 }
                 this.primitives.push(new ArrowObject({
-                    x: timestamps[i],
-                    y: low[i],
+                    x: timestamps[i]!,
+                    y: low[i]!,
                     direction: 'up',
                     color: '#00E676', // Green
                     text: ''
@@ -349,8 +349,8 @@ export class TrendlinesAlgo {
                     l.breakBar = i;
                 }
                 this.primitives.push(new ArrowObject({
-                    x: timestamps[i],
-                    y: high[i],
+                    x: timestamps[i]!,
+                    y: high[i]!,
                     direction: 'down',
                     color: '#FF1744', // Red
                     text: ''
@@ -363,12 +363,12 @@ export class TrendlinesAlgo {
         if (index - left < 0 || index + right >= data.length) return false;
         const val = data[index];
         for (let i = 1; i <= left; i++) {
-            if (isHigh) { if (data[index - i] > val) return false; }
-            else { if (data[index - i] < val) return false; }
+            if (isHigh) { if (data[index - i]! > val!) return false; }
+            else { if (data[index - i]! < val!) return false; }
         }
         for (let i = 1; i <= right; i++) {
-            if (isHigh) { if (data[index + i] >= val) return false; }
-            else { if (data[index + i] <= val) return false; }
+            if (isHigh) { if (data[index + i]! >= val!) return false; }
+            else { if (data[index + i]! <= val!) return false; }
         }
         return true;
     }
@@ -378,7 +378,7 @@ export class TrendlinesAlgo {
         for (let i = 0; i < data.length; i++) {
             if (i < period - 1) { sma[i] = 0; continue; }
             let sum = 0;
-            for (let j = 0; j < period; j++) sum += data[i - j];
+            for (let j = 0; j < period; j++) sum += data[i - j]!;
             sma[i] = sum / period;
         }
         return sma;
@@ -398,8 +398,8 @@ export class TrendlinesAlgo {
         let maxP = -Infinity;
         let minP = Infinity;
         for (let i = startIdx; i < len; i++) {
-            if (high[i] > maxP) maxP = high[i];
-            if (low[i] < minP) minP = low[i];
+            if (high[i]! > maxP) maxP = high[i]!;
+            if (low[i]! < minP) minP = low[i]!;
         }
         const priceRange = maxP - minP;
         if (priceRange <= 0) return;
@@ -412,16 +412,16 @@ export class TrendlinesAlgo {
 
         // 2. Populate Bins
         for (let i = startIdx; i < len; i++) {
-            const p = (high[i] + low[i] + close[i]) / 3; // HLC3
+            const p = (high[i]! + low[i]! + close[i]!) / 3; // HLC3
             const vol = volume[i];
-            const isBull = close[i] > open[i];
+            const isBull = close[i]! > open[i]!;
 
             let binIdx = Math.floor((p - minP) / rowSize);
             if (binIdx < 0) binIdx = 0;
             if (binIdx >= rowCount) binIdx = rowCount - 1;
 
-            if (isBull) binsBull[binIdx] += vol;
-            else binsBear[binIdx] += vol;
+            if (isBull) binsBull[binIdx]! += vol!;
+            else binsBear[binIdx]! += vol!;
         }
 
         // 3. Create Sections
@@ -446,8 +446,8 @@ export class TrendlinesAlgo {
             if (startBin >= rowCount) break;
 
             for (let k = startBin; k <= endBin; k++) {
-                sBull += binsBull[k];
-                sBear += binsBear[k];
+                sBull += binsBull[k]!;
+                sBear += binsBear[k]!;
             }
 
             const total = sBull + sBear;
@@ -508,7 +508,7 @@ export class TrendlinesAlgo {
             this.primitives.push(new BoxObject({
                 x1: startTime,
                 y1: z.top,
-                x2: lastTime,
+                x2: lastTime!,
                 y2: z.bottom,
                 color: color,
                 borderWidth: 1,
@@ -532,7 +532,7 @@ export class TrendlinesAlgo {
             this.primitives.push(new BoxObject({
                 x1: startTime,
                 y1: z.top,
-                x2: lastTime,
+                x2: lastTime!,
                 y2: z.bottom,
                 color: color,
                 borderWidth: 1,
