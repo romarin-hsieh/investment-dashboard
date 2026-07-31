@@ -13,10 +13,17 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
-    // Keep default discovery (src/ AND scripts/ hold *.test.js), but drop e2e/:
-    // the Playwright specs there are *.spec.ts too and import @playwright/test,
-    // so they must run via `npm run test:e2e`, not Vitest. See ADR-0015.
-    exclude: [...configDefaults.exclude, 'e2e/**'],
+    // Keep default discovery (src/ AND scripts/ hold *.test.js), but drop two trees:
+    //  - e2e/: the Playwright specs there are *.spec.ts too and import
+    //    @playwright/test, so they must run via `npm run test:e2e`, not Vitest.
+    //    See ADR-0015.
+    //  - .claude/: parallel Claude Code sessions check this repo out into nested
+    //    git worktrees under .claude/worktrees/. Those WIP copies carry their own
+    //    *.test.js, and Vitest's default exclude (node_modules/.git/.cache/...)
+    //    does NOT cover .claude, so a run from the main checkout would otherwise
+    //    collect and fail on another worktree's in-progress tests. CI is
+    //    unaffected (clean checkout has no .claude/worktrees/).
+    exclude: [...configDefaults.exclude, 'e2e/**', '.claude/**'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
