@@ -388,9 +388,9 @@ class TechnicalIndicatorsCache {
       // 根據新數據的結構決定放在哪裡
       if (data.indicators) {
         mergedData.indicators = mergedData.indicators || {}; // Ensure indicators object exists
-        mergedData.indicators.yf = existingYf;
+        mergedData.indicators.yf = existingYf ?? null;
       } else {
-        mergedData.yf = existingYf;
+        mergedData.yf = existingYf ?? null;
       }
     }
 

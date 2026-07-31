@@ -172,7 +172,7 @@ export default defineComponent({
       required: true
     },
     dataromaData: {
-      type: Object as PropType<DataromaData>,
+      type: Object as PropType<DataromaData | null>,
       default: null
     }
   },

@@ -74,7 +74,7 @@ export default defineComponent({
   components: { Bar },
   props: {
     symbol: { type: String, required: true },
-    dataromaData: { type: Object as PropType<DataromaData>, default: null }
+    dataromaData: { type: Object as PropType<DataromaData | null>, default: null }
   },
   setup() {
     const { theme } = useTheme()
