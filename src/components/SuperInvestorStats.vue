@@ -222,7 +222,7 @@ export default defineComponent({
   name: 'SuperInvestorStats',
   props: {
     dataromaData: {
-      type: Object as PropType<DataromaData>,
+      type: Object as PropType<DataromaData | null>,
       default: null
     },
     loading: {

@@ -324,8 +324,8 @@ class HybridTechnicalIndicatorsAPI {
           available: true,
           symbols: precomputedIndex.symbols ?? [],
           lastUpdate: precomputedIndex.generatedAt,
-          successful: precomputedIndex.successful,
-          failed: precomputedIndex.failed
+          successful: precomputedIndex.successful ?? 0,
+          failed: precomputedIndex.failed ?? 0
         };
       }
     } catch (error) {

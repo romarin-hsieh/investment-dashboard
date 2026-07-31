@@ -271,12 +271,12 @@
       <div v-if="activeTab === 'holdings'" class="tab-content">
           <div class="widget-container">
              <div class="widget-header"><h3>{{ $t('stockDetail.sections.institutionalInsiderHoldings') }}</h3></div>
-             <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData || undefined" />
+             <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData" />
           </div>
 
           <!-- Dataroma Super Investor Stats -->
           <SuperInvestorStats
-            :dataroma-data="dataromaData || undefined"
+            :dataroma-data="dataromaData"
             :loading="dataromaLoading"
           />
       </div>

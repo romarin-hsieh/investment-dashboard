@@ -11,7 +11,7 @@ interface WarmupResult {
   success: boolean
   duration: number
   timestamp: string
-  source?: string
+  source?: string | undefined
   error?: string
 }
 

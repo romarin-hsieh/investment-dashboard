@@ -329,7 +329,8 @@ class YahooFinanceAPI {
 
         const response = await fetch(url, {
           method: 'GET',
-          headers: isNode ? headers : undefined
+          // EOPT: omit `headers` entirely rather than assigning undefined
+          ...(isNode ? { headers } : {})
         });
 
         if (!response.ok) {
@@ -1069,7 +1070,8 @@ class YahooFinanceAPI {
 
         const response = await fetch(url, {
           method: 'GET',
-          headers: isNode ? headers : undefined
+          // EOPT: omit `headers` entirely rather than assigning undefined
+          ...(isNode ? { headers } : {})
         });
 
         if (!response.ok) {

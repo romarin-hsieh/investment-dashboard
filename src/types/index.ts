@@ -35,7 +35,7 @@ export interface CacheData {
 }
 
 export interface DiagnosticsData {
-  last_import_result?: ImportResult
+  last_import_result?: ImportResult | undefined
 }
 
 export interface ImportResult {
@@ -374,7 +374,9 @@ export interface ApiEndpoints {
 
 export interface ValidationResult<T = any> {
   success: boolean
-  data?: T
+  // EOPT: a result's data is genuinely absent on failure; the read type is
+  // unchanged (T | undefined), this only permits writing undefined.
+  data?: T | undefined
   error?: ValidationError
 }
 

@@ -66,9 +66,12 @@ const DiagnosticsDataSchema = z.object({
 })
 
 // Forward declarations for recursive types
-const DailySnapshotSchema: z.ZodType<DailySnapshot> = z.lazy(() => DailySnapshotSchemaImpl)
-const QuotesSnapshotSchema: z.ZodType<QuotesSnapshot> = z.lazy(() => QuotesSnapshotSchemaImpl)
-const MetadataSnapshotSchema: z.ZodType<MetadataSnapshot> = z.lazy(() => MetadataSnapshotSchemaImpl)
+// EOPT: Zod's `.optional()` infers `T | undefined`, which no longer matches the
+// hand-written `prop?: T` targets under exactOptionalPropertyTypes. Cast at the
+// schema boundary (localised) so the public validate* contracts stay exact.
+const DailySnapshotSchema = z.lazy(() => DailySnapshotSchemaImpl) as unknown as z.ZodType<DailySnapshot>
+const QuotesSnapshotSchema = z.lazy(() => QuotesSnapshotSchemaImpl) as unknown as z.ZodType<QuotesSnapshot>
+const MetadataSnapshotSchema = z.lazy(() => MetadataSnapshotSchemaImpl) as unknown as z.ZodType<MetadataSnapshot>
 
 const CacheDataSchema = z.object({
   last_daily_snapshot: DailySnapshotSchema.optional(),
@@ -326,7 +329,9 @@ export function validateData<T>(
 }
 
 export function validateUserState(data: unknown): ValidationResult<UserState> {
-  return validateData(UserStateSchema, data)
+  // EOPT: the inferred schema type widens optionals to `| undefined`; the exact
+  // hand-written UserState is the intended public contract, so cast at the seam.
+  return validateData(UserStateSchema, data) as ValidationResult<UserState>
 }
 
 export function validateQuotesSnapshot(data: unknown): ValidationResult<QuotesSnapshot> {
@@ -342,7 +347,7 @@ export function validateMetadataSnapshot(data: unknown): ValidationResult<Metada
 }
 
 export function validateSystemStatus(data: unknown): ValidationResult<SystemStatus> {
-  return validateData(SystemStatusSchema, data)
+  return validateData(SystemStatusSchema, data) as ValidationResult<SystemStatus>
 }
 
 export function validateUniverseConfig(data: unknown): ValidationResult<UniverseConfig> {

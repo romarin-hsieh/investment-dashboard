@@ -73,7 +73,7 @@
                 v-for="stock in group"
                 :key="stock.quote.symbol"
                 :quote="stock.quote"
-                :daily-data="stock.dailyData"
+                :daily-data="stock.dailyData ?? null"
                 :metadata="(stock.metadata as any)"
                 :selected="stock.quote.symbol === selectedSymbol"
               />
@@ -130,7 +130,7 @@ interface MetadataEnvelope { items?: StockMeta[] | null }
 interface DailySymbol { symbol: string; [key: string]: unknown }
 interface DailyData { per_symbol?: DailySymbol[] }
 /** A grouped grid entry (quote + its optional metadata/daily rows). */
-interface StockEntry { quote: StockQuote; dailyData?: DailySymbol; metadata?: StockMeta }
+interface StockEntry { quote: StockQuote; dailyData?: DailySymbol | undefined; metadata?: StockMeta | undefined }
 /** `_keyboardHandler` lives as an ad-hoc instance property, NOT in data(): Vue 3
  *  hides `_`-prefixed data from the public proxy, but the unit test reads
  *  vm._keyboardHandler. This host type declares it for the assign/read sites. */
