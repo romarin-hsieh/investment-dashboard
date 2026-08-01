@@ -188,8 +188,6 @@ export default defineComponent({
       insiderTransactions: [] as Array<Record<string, any>>,
       ownershipChartData: null as ChartData<'doughnut'> | null,
       smartMoneyChartData: null as ChartData<'bar'> | null,
-      calculatedSmartMoneyScore: 0,
-      smartMoneyTrendScore: 0,
     }
   },
   computed: {
@@ -433,50 +431,8 @@ export default defineComponent({
                 }
             ]
         } as unknown as ChartData<'bar'>;
-
-        // Calculate Trend Score (Weight 30%)
-        // Compare last quarter to previous quarter shares
-        if (sharesData.length >= 2) {
-            const current = sharesData[sharesData.length - 1]!;
-            const prev = sharesData[sharesData.length - 2]!;
-            if (prev > 0) {
-                const change = (current - prev) / prev;
-                if (change > 0.05) this.smartMoneyTrendScore = 100;
-                else if (change >= 0) this.smartMoneyTrendScore = 75;
-                else if (change > -0.05) this.smartMoneyTrendScore = 40;
-                else this.smartMoneyTrendScore = 0;
-            } else {
-                this.smartMoneyTrendScore = 50; // New position?
-            }
-        } else {
-            this.smartMoneyTrendScore = 50; // Not enough data
-        }
-        
-        this.calculateSmartMoneyScore();
-    },
-    
-    calculateSmartMoneyScore() {
-        // A: Institutions (30%)
-        const instPct = parseFloat(this.holders['institutionsPercent']) || 0;
-        const scoreA = Math.min(100, (instPct / 80) * 100);
-        
-        // B: Super Investor Trend (30%) -> this.smartMoneyTrendScore
-        const scoreB = this.smartMoneyTrendScore;
-        
-        // C: Insider Sentiment (20%)
-        const scoreC = this.sentimentScore; // 0-100
-        
-        // D: Insider Ownership (20%)
-        const insiderPct = parseFloat(this.holders['insidersPercent']) || 0;
-        const scoreD = Math.min(100, (insiderPct / 20) * 100);
-        
-        this.calculatedSmartMoneyScore = Math.round(
-            (scoreA * 0.3) + (scoreB * 0.3) + (scoreC * 0.2) + (scoreD * 0.2)
-        );
     },
 
-
-    
     processTransactions() {
          // Fix insider transaction buy/sell class
         this.insiderTransactions.forEach(tx => {
