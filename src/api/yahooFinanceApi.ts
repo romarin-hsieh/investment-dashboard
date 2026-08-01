@@ -8,7 +8,6 @@
  * For modular components, see:
  * 模組化元件請參閱：
  * - corsProxyManager.ts - CORS proxy rotation / CORS 代理輪替
- * - dataTransformers.ts - Data format conversion / 資料格式轉換
  *
  * @module api/yahooFinanceApi
  */

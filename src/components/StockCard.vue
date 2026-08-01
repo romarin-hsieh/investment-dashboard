@@ -55,7 +55,7 @@
         />
       </div>
 
-      <!-- Technical Analysis (1/3 width) - 使用新的 TechnicalAnalysisWidget -->
+      <!-- Technical Analysis (1/3 width) -->
       <div class="widget-overview">
         <div class="widget-header">
           <h4>{{ $t('stockCard.technicalAnalysis') }}</h4>
