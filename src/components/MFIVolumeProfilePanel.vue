@@ -167,7 +167,10 @@
       </div>
     </div>
 
-    <!-- Info Modal -->
+    <!-- Info Modal — teleported to <body> so the position:fixed overlay escapes this
+         component's overflow:hidden clip; without it, axe color-contrast can't see the
+         modal, leaving it unguarded (e2e/a11y-modals.spec.ts). -->
+    <Teleport to="body">
     <div v-if="showInfo" class="modal-overlay" @click.self="showInfo = false">
         <div class="modal-content">
             <div class="modal-header">
@@ -198,6 +201,7 @@
             </div>
         </div>
     </div>
+    </Teleport>
 
     <!-- Tooltip -->
     <div v-if="tooltip.visible && tooltip.data" class="tooltip" :style="tooltip.style">
