@@ -389,14 +389,6 @@ export default defineComponent({
   border-radius: 2px;
   display: inline-block;
 }
-.external-tooltip :deep(.text-green) {
-  color: #48c774; /* Bulma Success Green */
-  font-weight: var(--weight-semibold);
-}
-.external-tooltip :deep(.text-red) {
-  color: #ff3860; /* Bulma Danger Red */
-  font-weight: var(--weight-semibold);
-}
 
 .chart-header {
   display: flex;
