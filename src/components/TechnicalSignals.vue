@@ -232,9 +232,9 @@ export default defineComponent({
         const rawPatterns: Pattern[] = [];
 
         // Helper
-        const isBullish = (i: number) => data.close[i] > data.open[i];
-        const bodySize = (i: number) => Math.abs(data.close[i] - data.open[i]);
-        const fullSize = (i: number) => data.high[i] - data.low[i];
+        const isBullish = (i: number) => data.close[i]! > data.open[i]!;
+        const bodySize = (i: number) => Math.abs(data.close[i]! - data.open[i]!);
+        const fullSize = (i: number) => data.high[i]! - data.low[i]!;
         
         // Loop from last candle backwards (up to 5 days)
         for (let i = len - 1; i >= len - 5; i--) {
@@ -243,8 +243,8 @@ export default defineComponent({
              const dateStr = (data.date && data.date[i]) ? i18nDate(data.date[i]) : '';
 
              // 1. Hammer (Small body, long lower shadow)
-             const lowerShadow = Math.min(data.open[i], data.close[i]) - data.low[i];
-             const upperShadow = data.high[i] - Math.max(data.open[i], data.close[i]);
+             const lowerShadow = Math.min(data.open[i]!, data.close[i]!) - data.low[i]!;
+             const upperShadow = data.high[i]! - Math.max(data.open[i]!, data.close[i]!);
              const body = bodySize(i);
              const range = fullSize(i);
              
@@ -255,11 +255,11 @@ export default defineComponent({
              // 2. Engulfing
              const prev = i - 1;
              if (isBullish(i) && !isBullish(prev)) {
-                  if (data.close[i] > data.open[prev] && data.open[i] < data.close[prev]) {
+                  if (data.close[i]! > data.open[prev]! && data.open[i]! < data.close[prev]!) {
                       rawPatterns.push({ name: this.$t('signals.patternNames.bullishEngulfing'), type: 'bullish', date: dateStr });
                   }
              } else if (!isBullish(i) && isBullish(prev)) {
-                 if (data.close[i] < data.open[prev] && data.open[i] > data.close[prev]) {
+                 if (data.close[i]! < data.open[prev]! && data.open[i]! > data.close[prev]!) {
                      rawPatterns.push({ name: this.$t('signals.patternNames.bearishEngulfing'), type: 'bearish', date: dateStr });
                  }
              }
@@ -285,7 +285,7 @@ export default defineComponent({
        
        let sumTR = 0;
        for(let i = len-14; i < len; i++) {
-           sumTR += (data.high[i] - data.low[i]); // Approx TR
+           sumTR += (data.high[i]! - data.low[i]!); // Approx TR
        }
        this.risk.atr = sumTR / 14;
     },

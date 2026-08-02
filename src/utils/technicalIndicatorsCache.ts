@@ -92,7 +92,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
  * 只要求 `timestamp` 為數字 + `data` 為物件，其餘欄位容忍缺漏（舊格式）。
  */
 function isCachedIndicatorRecord(value: unknown): value is CachedIndicatorRecord {
-  return isRecord(value) && typeof value.timestamp === 'number' && isRecord(value.data);
+  return isRecord(value) && typeof value['timestamp'] === 'number' && isRecord(value['data']);
 }
 
 /**
@@ -362,8 +362,8 @@ class TechnicalIndicatorsCache {
         const cached = localStorage.getItem(cacheKey);
         if (cached) {
           const parsed: unknown = JSON.parse(cached);
-          if (isRecord(parsed) && isTechnicalIndicatorData(parsed.data)) {
-            existingData = parsed.data;
+          if (isRecord(parsed) && isTechnicalIndicatorData(parsed['data'])) {
+            existingData = parsed['data'];
           }
         }
       }
@@ -388,9 +388,9 @@ class TechnicalIndicatorsCache {
       // 根據新數據的結構決定放在哪裡
       if (data.indicators) {
         mergedData.indicators = mergedData.indicators || {}; // Ensure indicators object exists
-        mergedData.indicators.yf = existingYf;
+        mergedData.indicators.yf = existingYf ?? null;
       } else {
-        mergedData.yf = existingYf;
+        mergedData.yf = existingYf ?? null;
       }
     }
 
@@ -399,7 +399,7 @@ class TechnicalIndicatorsCache {
       timestamp: Date.now(),
       lastAccess: Date.now(), // LRU anchor (PR-B4)
       symbol: symbol,
-      date: new Date().toISOString().split('T')[0],
+      date: new Date().toISOString().split('T')[0] ?? '',
       indexTimestamp: latestTimestamp // 記錄 index timestamp
     };
 
@@ -500,8 +500,8 @@ class TechnicalIndicatorsCache {
           // directly off any object instead.
           let sortKey = 0;
           if (isRecord(parsed)) {
-            const la = typeof parsed.lastAccess === 'number' ? parsed.lastAccess : 0;
-            const ts = typeof parsed.timestamp === 'number' ? parsed.timestamp : 0;
+            const la = typeof parsed['lastAccess'] === 'number' ? parsed['lastAccess'] : 0;
+            const ts = typeof parsed['timestamp'] === 'number' ? parsed['timestamp'] : 0;
             sortKey = la || ts || 0;
           }
           return { key, sortKey, size: val.length * 2 };
@@ -521,6 +521,7 @@ class TechnicalIndicatorsCache {
       const limit = Math.min(items.length, targetCount);
       for (let i = 0; i < limit; i++) {
         const item = items[i];
+        if (!item) continue;
         localStorage.removeItem(item.key);
         // Also drop from memory cache so subsequent reads re-fetch fresh
         // rather than resurrecting an evicted entry.

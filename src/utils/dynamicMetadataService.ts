@@ -92,7 +92,7 @@ class DynamicMetadataService {
       // 從 Yahoo Finance API 獲取股票信息
       const stockInfo = await yahooFinanceAPI.getStockInfo(symbol)
 
-      if (stockInfo && !stockInfo.error && stockInfo.sector !== 'Unknown') {
+      if (stockInfo && !stockInfo['error'] && stockInfo['sector'] !== 'Unknown') {
         // API 回傳的是鬆散型別 (StockInfo 的 index signature 為 unknown)；於此邊界
         // 斷言我們期待的欄位形狀，賦值時不做任何 runtime 轉換 (行為與 .js 一致)。
         const info = stockInfo as {
@@ -233,6 +233,7 @@ class DynamicMetadataService {
 
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i]
+      if (!batch) continue
       console.log(`Processing batch ${i + 1}/${batches.length} (${batch.length} symbols)`)
 
       // 並行處理批次內的請求
@@ -247,7 +248,8 @@ class DynamicMetadataService {
 
       // 存儲結果
       batch.forEach((symbol, index) => {
-        results.set(symbol, batchResults[index])
+        const meta = batchResults[index]
+        if (meta) results.set(symbol, meta)
       })
 
       // 在批次之間添加延遲，避免 API 限制

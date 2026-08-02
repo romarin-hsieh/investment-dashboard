@@ -73,7 +73,7 @@
                 v-for="stock in group"
                 :key="stock.quote.symbol"
                 :quote="stock.quote"
-                :daily-data="stock.dailyData"
+                :daily-data="stock.dailyData ?? null"
                 :metadata="(stock.metadata as any)"
                 :selected="stock.quote.symbol === selectedSymbol"
               />
@@ -130,7 +130,7 @@ interface MetadataEnvelope { items?: StockMeta[] | null }
 interface DailySymbol { symbol: string; [key: string]: unknown }
 interface DailyData { per_symbol?: DailySymbol[] }
 /** A grouped grid entry (quote + its optional metadata/daily rows). */
-interface StockEntry { quote: StockQuote; dailyData?: DailySymbol; metadata?: StockMeta }
+interface StockEntry { quote: StockQuote; dailyData?: DailySymbol | undefined; metadata?: StockMeta | undefined }
 /** `_keyboardHandler` lives as an ad-hoc instance property, NOT in data(): Vue 3
  *  hides `_`-prefixed data from the public proxy, but the unit test reads
  *  vm._keyboardHandler. This host type declares it for the assign/read sites. */
@@ -240,11 +240,9 @@ export default defineComponent({
              })
         }
         
-        if (!groups[sector]) {
-          groups[sector] = []
-        }
+        const group = (groups[sector] ??= [])
         
-        groups[sector].push({
+        group.push({
           quote,
           dailyData: symbolDailyData,
           metadata: symbolMetadata
@@ -495,7 +493,7 @@ export default defineComponent({
           // 處理不在優先級列表中的其他 Industry
           Object.keys(industryGroups).forEach(industry => {
             if (!sectorIndustryPriority.includes(industry)) {
-              const sortedIndustryStocks = industryGroups[industry].sort((a, b) => {
+              const sortedIndustryStocks = industryGroups[industry]!.sort((a, b) => {
                 const marketCapA = a.metadata?.market_cap || 0
                 const marketCapB = b.metadata?.market_cap || 0
                 
@@ -520,8 +518,9 @@ export default defineComponent({
       // 2. Sort sectors not in priority list (e.g. Unknown)
       // 2. 排序不在優先級列表中的其他 Sector (例如 Unknown)
       Object.keys(groups).forEach(sector => {
-        if (!sectorPriority.includes(sector) && groups[sector].length > 0) {
-          sortedGroups[sector] = groups[sector].sort((a, b) => {
+        const group = groups[sector]!
+        if (!sectorPriority.includes(sector) && group.length > 0) {
+          sortedGroups[sector] = group.sort((a, b) => {
             return a.quote.symbol.localeCompare(b.quote.symbol)
           })
         }
@@ -629,7 +628,7 @@ export default defineComponent({
       if (this.selectedIndex < 0 || this.selectedIndex >= this.flatSymbols.length) {
         return ''
       }
-      return this.flatSymbols[this.selectedIndex]
+      return this.flatSymbols[this.selectedIndex]!
     },
 
     shortcutBindings() {
@@ -652,7 +651,7 @@ export default defineComponent({
   async mounted() {
     // Restore a persisted search from the URL (?q=) before the first render so
     // a reload / back-navigation lands on the same filtered view (audit N2).
-    const urlQuery = this.$route?.query?.q
+    const urlQuery = this.$route?.query?.['q']
     if (typeof urlQuery === 'string' && urlQuery.trim()) {
       this.searchQuery = urlQuery
     }
@@ -666,7 +665,7 @@ export default defineComponent({
   beforeRouteLeave(_to, _from, next) {
     // Clear focus query param when leaving stock-overview route
     // 離開 stock-overview 路由時清除 focus 參數
-    if (this.$route.query.focus) {
+    if (this.$route.query['focus']) {
       console.log('Navigation: Clearing focus parameter on route leave')
       // Replace history to avoid back button issues
       // 替換歷史記錄以避免上一頁問題
@@ -843,7 +842,7 @@ export default defineComponent({
     // history; undefined drops the param entirely when the query is cleared.
     syncSearchToUrl(query: string) {
       const q = (query || '').trim()
-      const current = (this.$route?.query?.q) || ''
+      const current = (this.$route?.query?.['q']) || ''
       if (q === current) return
       this.$router.replace({
         query: { ...this.$route.query, q: q || undefined }
@@ -901,7 +900,7 @@ export default defineComponent({
       
       // Check Vue Router query params (Hash Router compatible)
       // 檢查 Vue Router query 參數 (Hash Router 相容)
-      const focusSymbol = this.$route.query.focus
+      const focusSymbol = this.$route.query['focus']
       if (typeof focusSymbol === 'string' && this.isSymbolValid(focusSymbol)) {
         console.log('Navigation: Found focus symbol in URL:', focusSymbol)
         

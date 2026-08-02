@@ -8,7 +8,6 @@
  * For modular components, see:
  * 模組化元件請參閱：
  * - corsProxyManager.ts - CORS proxy rotation / CORS 代理輪替
- * - dataTransformers.ts - Data format conversion / 資料格式轉換
  *
  * @module api/yahooFinanceApi
  */
@@ -313,6 +312,8 @@ class YahooFinanceAPI {
           // Production Browser environment: Use External Proxy
           proxyIndex = (this.currentProxyIndex + i) % this.corsProxies.length;
           const proxy = this.corsProxies[proxyIndex];
+          // `% length` is NaN on an empty proxy list → undefined element.
+          if (!proxy) { throw new Error('No CORS proxy configured'); }
           console.log(`Fetching data for ${symbol} using proxy ${proxyIndex + 1}...`);
 
           // Special handling for custom Cloudflare Worker: DO NOT ENCODE
@@ -327,7 +328,8 @@ class YahooFinanceAPI {
 
         const response = await fetch(url, {
           method: 'GET',
-          headers: isNode ? headers : undefined
+          // EOPT: omit `headers` entirely rather than assigning undefined
+          ...(isNode ? { headers } : {})
         });
 
         if (!response.ok) {
@@ -344,11 +346,14 @@ class YahooFinanceAPI {
 
         const result = data.chart.result[0];
 
-        if (!result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
+        if (!result || !result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
           throw new Error('Invalid data structure - missing indicators');
         }
 
         const quotes = result.indicators.quote[0];
+        if (!quotes) {
+          throw new Error('Invalid data structure - missing quotes');
+        }
 
         // 提取並清理 OHLCV 數據
         const rawData = {
@@ -390,15 +395,20 @@ class YahooFinanceAPI {
           const rawLow = rawData.low[i];
           const rawClose = rawData.close[i];
           const rawVolume = rawData.volume[i];
-          ohlcv.open[i] = rawOpen !== null ? rawOpen : NaN;
-          ohlcv.high[i] = rawHigh !== null ? rawHigh : NaN;
-          ohlcv.low[i] = rawLow !== null ? rawLow : NaN;
-          ohlcv.close[i] = rawClose !== null ? rawClose : NaN;
-          ohlcv.volume[i] = rawVolume !== null ? rawVolume : NaN;
+          // `!= null` (loose) collapses both the API's nulls AND the out-of-range
+          // undefined into NaN, so each local is a concrete number.
+          const o = rawOpen != null ? rawOpen : NaN;
+          const h = rawHigh != null ? rawHigh : NaN;
+          const l = rawLow != null ? rawLow : NaN;
+          const c = rawClose != null ? rawClose : NaN;
+          ohlcv.open[i] = o;
+          ohlcv.high[i] = h;
+          ohlcv.low[i] = l;
+          ohlcv.close[i] = c;
+          ohlcv.volume[i] = rawVolume != null ? rawVolume : NaN;
 
           // 計算有效數據點（OHLC 都不是 NaN）
-          if (!isNaN(ohlcv.open[i]) && !isNaN(ohlcv.high[i]) &&
-            !isNaN(ohlcv.low[i]) && !isNaN(ohlcv.close[i])) {
+          if (!isNaN(o) && !isNaN(h) && !isNaN(l) && !isNaN(c)) {
             validDataPoints++;
           }
         }
@@ -574,16 +584,16 @@ class YahooFinanceAPI {
             const prevObv = obvSeries.length > 1 ? obvSeries[obvSeries.length - 2] : null;
 
             let signal = 'NEUTRAL';
-            if (obvVal !== null && prevObv !== null) {
+            if (obvVal != null && prevObv != null) {
               if (obvVal > prevObv) signal = 'BULLISH';
               else if (obvVal < prevObv) signal = 'BEARISH';
             }
             // Format as Millions. formatNumber guards against Infinity / NaN
             // in the division (obvVal === 0 is fine; obvVal === null already
             // short-circuited above).
-            const obvMillions = obvVal !== null ? obvVal / 1_000_000 : null;
+            const obvMillions = obvVal != null ? obvVal / 1_000_000 : null;
             return {
-              value: obvVal !== null ? formatNumber(obvMillions, 2, 'N/A') + 'M' : 'N/A',
+              value: obvVal != null ? formatNumber(obvMillions, 2, 'N/A') + 'M' : 'N/A',
               signal: signal
             };
           })(),
@@ -620,7 +630,7 @@ class YahooFinanceAPI {
 
         console.log(`Price data for ${symbol}:`, {
           dataPoints: length,
-          priceRange: indicators.priceRange,
+          priceRange: indicators['priceRange'],
           samplePrices: ohlcv.close.slice(-10).filter(p => !isNaN(p)) // 最後 10 個有效價格
         });
 
@@ -645,7 +655,7 @@ class YahooFinanceAPI {
         const avgVol3m = calcAvgVol(60); // approx 3 months
 
         // Add Volume Change and Beta to indicators (compatible with TechnicalIndicators.vue expectation)
-        indicators.yf = {
+        indicators['yf'] = {
           volume_last_day_pct: volumeChangePct,
           beta_10d: formatNumber(getLastValue(coreResults.BETA_10D), 2, 'N/A'),
           beta_3mo: formatNumber(getLastValue(coreResults.BETA_3M), 2, 'N/A'),
@@ -813,8 +823,8 @@ class YahooFinanceAPI {
       const mapped = this._mapCoreResultsToIndicators(compatibleResults, currentPrice, 'Static JSON');
 
       // Merge extras from static header if any
-      mapped.lastUpdated = staticRaw.metadata?.generated || new Date().toISOString();
-      mapped.source = 'Static Pre-computed';
+      mapped['lastUpdated'] = staticRaw.metadata?.generated || new Date().toISOString();
+      mapped['source'] = 'Static Pre-computed';
 
       return mapped;
 
@@ -862,26 +872,26 @@ class YahooFinanceAPI {
     };
 
     return {
-      ma5: createIndicatorResult(coreResults.MA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      sma5: createIndicatorResult(coreResults.SMA_5, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      ma10: createIndicatorResult(coreResults.MA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      sma10: createIndicatorResult(coreResults.SMA_10, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      ma30: createIndicatorResult(coreResults.MA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
-      sma30: createIndicatorResult(coreResults.SMA_30, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma5: createIndicatorResult(coreResults['MA_5'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma5: createIndicatorResult(coreResults['SMA_5'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma10: createIndicatorResult(coreResults['MA_10'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma10: createIndicatorResult(coreResults['SMA_10'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      ma30: createIndicatorResult(coreResults['MA_30'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      sma30: createIndicatorResult(coreResults['SMA_30'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
       sma50: { value: null, signal: 'N/A' },
 
-      ichimokuBaseLine: createIndicatorResult(coreResults.ICHIMOKU_BASELINE_26, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
-      ichimokuConversionLine: createIndicatorResult(coreResults.ICHIMOKU_CONVERSIONLINE_9, { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
-      ichimokuLaggingSpan: createIndicatorResult(coreResults.ICHIMOKU_LAGGINGSPAN_26),
+      ichimokuBaseLine: createIndicatorResult(coreResults['ICHIMOKU_BASELINE_26'], { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+      ichimokuConversionLine: createIndicatorResult(coreResults['ICHIMOKU_CONVERSIONLINE_9'], { type: 'price_comparison', buy: 1.01, sell: 0.99 }),
+      ichimokuLaggingSpan: createIndicatorResult(coreResults['ICHIMOKU_LAGGINGSPAN_26']),
 
-      vwma20: createIndicatorResult(coreResults.VWMA_20, { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
+      vwma20: createIndicatorResult(coreResults['VWMA_20'], { type: 'price_comparison', buy: 1.02, sell: 0.98 }),
 
-      rsi14: createIndicatorResult(coreResults.RSI_14, { type: 'rsi', overbought: 70, oversold: 30 }),
+      rsi14: createIndicatorResult(coreResults['RSI_14'], { type: 'rsi', overbought: 70, oversold: 30 }),
 
       adx14: (() => {
-        const adxValue = getLastValue(coreResults.ADX_14);
-        const plusDI = getLastValue(coreResults.ADX_14_PLUS_DI);
-        const minusDI = getLastValue(coreResults.ADX_14_MINUS_DI);
+        const adxValue = getLastValue(coreResults['ADX_14']);
+        const plusDI = getLastValue(coreResults['ADX_14_PLUS_DI']);
+        const minusDI = getLastValue(coreResults['ADX_14_MINUS_DI']);
         let signal = 'NEUTRAL';
         if (adxValue !== null && !isNaN(adxValue)) {
           if (adxValue > 25) signal = 'STRONG_TREND';
@@ -896,9 +906,9 @@ class YahooFinanceAPI {
       })(),
 
       macd: (() => {
-        const macdValue = getLastValue(coreResults.MACD_12_26_9);
-        const signalValue = getLastValue(coreResults.MACD_SIGNAL_9);
-        const histValue = getLastValue(coreResults.MACD_HIST);
+        const macdValue = getLastValue(coreResults['MACD_12_26_9']);
+        const signalValue = getLastValue(coreResults['MACD_SIGNAL_9']);
+        const histValue = getLastValue(coreResults['MACD_HIST']);
         let signal = 'NEUTRAL';
         if (macdValue !== null && signalValue !== null && histValue !== null) {
           if (macdValue > signalValue && histValue > 0) signal = 'BUY';
@@ -912,29 +922,29 @@ class YahooFinanceAPI {
         };
       })(),
 
-      parabolicSAR: createIndicatorResult(coreResults.SAR, { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
-      stochK: createIndicatorResult(coreResults.STOCH_K, { type: 'rsi', overbought: 80, oversold: 20 }),
-      stochD: createIndicatorResult(coreResults.STOCH_D, { type: 'rsi', overbought: 80, oversold: 20 }),
-      cci20: createIndicatorResult(coreResults.CCI_20, { type: 'rsi', overbought: 100, oversold: -100 }),
-      atr14: createIndicatorResult(coreResults.ATR_14),
+      parabolicSAR: createIndicatorResult(coreResults['SAR'], { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
+      stochK: createIndicatorResult(coreResults['STOCH_K'], { type: 'rsi', overbought: 80, oversold: 20 }),
+      stochD: createIndicatorResult(coreResults['STOCH_D'], { type: 'rsi', overbought: 80, oversold: 20 }),
+      cci20: createIndicatorResult(coreResults['CCI_20'], { type: 'rsi', overbought: 100, oversold: -100 }),
+      atr14: createIndicatorResult(coreResults['ATR_14']),
 
       obv: (() => {
-        const obvSeries = (coreResults.OBV || []).filter(v => v !== null && !isNaN(v));
+        const obvSeries = (coreResults['OBV'] || []).filter(v => v !== null && !isNaN(v));
         const obvVal = obvSeries.length > 0 ? obvSeries[obvSeries.length - 1] : null;
         const prevObv = obvSeries.length > 1 ? obvSeries[obvSeries.length - 2] : null;
         let signal = 'NEUTRAL';
-        if (obvVal !== null && prevObv !== null) {
+        if (obvVal != null && prevObv != null) {
           if (obvVal > prevObv) signal = 'BULLISH';
           else if (obvVal < prevObv) signal = 'BEARISH';
         }
         return {
-          value: obvVal !== null ? formatNumber(obvVal / 1_000_000, 2, 'N/A') + 'M' : 'N/A',
+          value: obvVal != null ? formatNumber(obvVal / 1_000_000, 2, 'N/A') + 'M' : 'N/A',
           signal: signal
         };
       })(),
 
-      superTrend: createIndicatorResult(coreResults.SUPERTREND_10_3, { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
-      mfi14: createIndicatorResult(coreResults.MFI_14, { type: 'rsi', overbought: 80, oversold: 20 })
+      superTrend: createIndicatorResult(coreResults['SUPERTREND_10_3'], { type: 'price_comparison', buy: 1.0, sell: 1.0 }),
+      mfi14: createIndicatorResult(coreResults['MFI_14'], { type: 'rsi', overbought: 80, oversold: 20 })
     };
   }
 
@@ -1059,7 +1069,8 @@ class YahooFinanceAPI {
 
         const response = await fetch(url, {
           method: 'GET',
-          headers: isNode ? headers : undefined
+          // EOPT: omit `headers` entirely rather than assigning undefined
+          ...(isNode ? { headers } : {})
         });
 
         if (!response.ok) {
@@ -1074,6 +1085,7 @@ class YahooFinanceAPI {
         }
 
         const result = data.quoteSummary.result[0];
+        if (!result) { throw new Error('No quoteSummary data available'); }
         const proxyInfoStr = isNode ? 'Direct (Node)' : `Proxy ${proxyIndex + 1}`;
 
         // Use shared transformation logic
@@ -1495,11 +1507,14 @@ class YahooFinanceAPI {
 
         const result = data.chart.result[0];
 
-        if (!result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
+        if (!result || !result.indicators || !result.indicators.quote || !result.indicators.quote[0]) {
           throw new Error('Invalid data structure - missing indicators');
         }
 
         const quotes = result.indicators.quote[0];
+        if (!quotes) {
+          throw new Error('Invalid data structure - missing quotes');
+        }
         const timestamps = result.timestamp || [];
 
         // Extract and clean OHLCV data

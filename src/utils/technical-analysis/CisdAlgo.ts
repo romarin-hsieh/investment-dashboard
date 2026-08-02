@@ -87,9 +87,9 @@ export class CisdAlgo {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         if (!result) return `rgba(128, 128, 128, ${alpha})`;
 
-        const r = parseInt(result[1], 16);
-        const g = parseInt(result[2], 16);
-        const b = parseInt(result[3], 16);
+        const r = parseInt(result[1]!, 16);
+        const g = parseInt(result[2]!, 16);
+        const b = parseInt(result[3]!, 16);
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
@@ -142,12 +142,12 @@ export class CisdAlgo {
 
         for (let i = startIndex; i < len; i++) {
             // Pine: bool bullishBar = close >= close[1]
-            const isBullishBar = close[i] >= close[i - 1];
-            const isBearishBar = close[i] < close[i - 1];
+            const isBullishBar = close[i]! >= close[i - 1]!;
+            const isBearishBar = close[i]! < close[i - 1]!;
 
             // Pine: bool bearishBar[1] (Previous bar was Bearish)
-            const prevBullish = close[i - 1] >= close[i - 2];
-            const prevBearish = close[i - 1] < close[i - 2];
+            const prevBullish = close[i - 1]! >= close[i - 2]!;
+            const prevBearish = close[i - 1]! < close[i - 2]!;
 
             // Pine: bool newRun = (bullishBar and bearishBar[1]) or (bearishBar and bullishBar[1])
             const newRun = (isBullishBar && prevBearish) || (isBearishBar && prevBullish);
@@ -156,33 +156,33 @@ export class CisdAlgo {
                 // If previous run exists, finalize it and check it
                 if (runs.length > 0) {
                     const lastRun = runs[runs.length - 1];
-                    lastRun.highest = this.getHighest(high, i - 1, settings.cisdFilterLength);
-                    lastRun.lowest = this.getLowest(low, i - 1, settings.cisdFilterLength);
+                    lastRun!.highest = this.getHighest(high, i - 1, settings.cisdFilterLength);
+                    lastRun!.lowest = this.getLowest(low, i - 1, settings.cisdFilterLength);
 
                     // The function `checkCISD` in Pine is called on the *previous* run when a new run starts?
                     // Pine: `if runs.size() >= 2: checkCISD(runs.get(-2))` inside `else` (same run).
                     // In `newRun` block: `if runs.size() > 0 ... checkCISD(currentRun)`.
                     // Yes, we check the JUST FINISHED run to see if the CURRENT bar triggers it.
-                    this.checkCISD(lastRun, settings, cisds, i, close);
+                    this.checkCISD(lastRun!, settings, cisds, i, close);
                 }
 
                 // Start NEW Run
                 // Pine: runs.push(run.new(open, high, low, bullishBar ? BULLISH : BEARISH ...))
                 // Note: The new run BIAS is determined by the CURRENT bar.
                 runs.push({
-                    openPrice: open[i], // Defined at start of run
-                    top: high[i],
-                    bottom: low[i],
+                    openPrice: open[i]!, // Defined at start of run
+                    top: high[i]!,
+                    bottom: low[i]!,
                     bias: isBullishBar ? BULLISH : BEARISH,
                     triggered: false,
-                    startTime: timestamps[i],
-                    endTime: timestamps[i],
+                    startTime: timestamps[i]!,
+                    endTime: timestamps[i]!,
                     fillEndTime: null, // For visualization
                     bars: 1,
 
                     reachedIndices: new Set<number>(),
                     levelEndTimes: {},
-                    timeSeries: [timestamps[i]], // For fill
+                    timeSeries: [timestamps[i]!], // For fill
 
                     highest: null,
                     lowest: null,
@@ -194,12 +194,12 @@ export class CisdAlgo {
                 // Continuation of Current Run
                 if (runs.length > 0) {
                     const currentRun = runs[runs.length - 1];
-                    if (!currentRun.triggered) {
-                        currentRun.endTime = timestamps[i];
-                        currentRun.bars += 1;
-                        currentRun.top = Math.max(high[i], currentRun.top);
-                        currentRun.bottom = Math.min(low[i], currentRun.bottom);
-                        currentRun.timeSeries.push(timestamps[i]);
+                    if (!currentRun!.triggered) {
+                        currentRun!.endTime = timestamps[i]!;
+                        currentRun!.bars += 1;
+                        currentRun!.top = Math.max(high[i]!, currentRun!.top);
+                        currentRun!.bottom = Math.min(low[i]!, currentRun!.bottom);
+                        currentRun!.timeSeries.push(timestamps[i]!);
                     }
 
                     // Pine: `if runs.size() >= 2: checkCISD(runs.get(-2))`
@@ -207,7 +207,7 @@ export class CisdAlgo {
                     // This creates the "Breakout" effect.
                     if (runs.length >= 2) {
                         const prevRun = runs[runs.length - 2];
-                        this.checkCISD(prevRun, settings, cisds, i, close);
+                        this.checkCISD(prevRun!, settings, cisds, i, close);
                     }
                 }
             }
@@ -215,11 +215,11 @@ export class CisdAlgo {
             // --- Invalidation & Termination Logic (Visuals) ---
             if (cisds.length > 0) {
                 const currentCisd = cisds[cisds.length - 1];
-                this.invalidateCISD(currentCisd, settings, i, close);
+                this.invalidateCISD(currentCisd!, settings, i, close);
 
                 // If not invalid and not terminated, extend levels
-                if (!currentCisd.invalid && !currentCisd.isTerminated) {
-                    currentCisd.endTime = timestamps[i]; // Extend visibility to now
+                if (!currentCisd!.invalid && !currentCisd!.isTerminated) {
+                    currentCisd!.endTime = timestamps[i]!; // Extend visibility to now
 
                     // Calculate Geometric Params to check Levels
                     // Pine:
@@ -235,27 +235,27 @@ export class CisdAlgo {
                     // BULLISH (Green) -> -1 (Down)
                     // BEARISH (Red)   -> 1 (Up)
 
-                    const basePrice = currentCisd.bias === BULLISH ? currentCisd.bottom : currentCisd.top;
-                    const priceBias = currentCisd.bias === BULLISH ? -1 : 1;
-                    const runRange = currentCisd.top - currentCisd.bottom;
+                    const basePrice = currentCisd!.bias === BULLISH ? currentCisd!.bottom : currentCisd!.top;
+                    const priceBias = currentCisd!.bias === BULLISH ? -1 : 1;
+                    const runRange = currentCisd!.top - currentCisd!.bottom;
 
                     customLevels.forEach(lvl => {
-                        if (!currentCisd.reachedIndices.has(lvl.idx)) {
+                        if (!currentCisd!.reachedIndices.has(lvl.idx)) {
                             const levelPrice = basePrice + priceBias * (lvl.m * runRange);
                             // Check reach
                             // Bullish Bias (Green Run, Proj Down) -> Touched if Low <= Level
                             // Bearish Bias (Red Run, Proj Up)     -> Touched if High >= Level
-                            const touched = (currentCisd.bias === BULLISH && low[i] <= levelPrice) ||
-                                (currentCisd.bias === BEARISH && high[i] >= levelPrice);
+                            const touched = (currentCisd!.bias === BULLISH && low[i]! <= levelPrice) ||
+                                (currentCisd!.bias === BEARISH && high[i]! >= levelPrice);
 
                             if (touched) {
-                                currentCisd.reachedIndices.add(lvl.idx);
-                                currentCisd.levelEndTimes[lvl.idx] = timestamps[i];
+                                currentCisd!.reachedIndices.add(lvl.idx);
+                                currentCisd!.levelEndTimes[lvl.idx] = timestamps[i]!;
                                 if (Math.abs(lvl.m - maxMult) < 0.001) {
-                                    currentCisd.fillEndTime = timestamps[i]; // Flush background
+                                    currentCisd!.fillEndTime = timestamps[i]!; // Flush background
                                 }
                             } else {
-                                currentCisd.levelEndTimes[lvl.idx] = timestamps[i];
+                                currentCisd!.levelEndTimes[lvl.idx] = timestamps[i]!;
                             }
                         }
                     });
@@ -267,24 +267,24 @@ export class CisdAlgo {
                     // The "Outer" side is fixed at `extension`.
                     // So we need to store the `inner` price series.
 
-                    const innerPrice = currentCisd.bias === BULLISH ? low[i] : high[i];
-                    if (!currentCisd.fillPoints) currentCisd.fillPoints = [];
-                    currentCisd.fillPoints.push({ time: timestamps[i], price: innerPrice });
+                    const innerPrice = currentCisd!.bias === BULLISH ? low[i] : high[i];
+                    if (!currentCisd!.fillPoints) currentCisd!.fillPoints = [];
+                    currentCisd!.fillPoints.push({ time: timestamps[i]!, price: innerPrice! });
                 }
             }
 
             // Flush old background if new CISD appears
             if (cisds.length >= 2) {
                 const prevCisd = cisds[cisds.length - 2];
-                if (!prevCisd.isTerminated) {
+                if (!prevCisd!.isTerminated) {
                     // Terminate levels
                     customLevels.forEach(lvl => {
-                        if (!prevCisd.reachedIndices.has(lvl.idx)) {
-                            prevCisd.levelEndTimes[lvl.idx] = cisds[cisds.length - 1].startTime;
+                        if (!prevCisd!.reachedIndices.has(lvl.idx)) {
+                            prevCisd!.levelEndTimes[lvl.idx] = cisds[cisds.length - 1]!.startTime;
                         }
                     });
-                    prevCisd.fillEndTime = timestamps[i];
-                    prevCisd.isTerminated = true;
+                    prevCisd!.fillEndTime = timestamps[i]!;
+                    prevCisd!.isTerminated = true;
                 }
             }
         }
@@ -305,7 +305,7 @@ export class CisdAlgo {
 
             const globalLimit: number = run.invalid && run.invalidationTime !== null
                 ? run.invalidationTime
-                : timestamps[len - 1];
+                : timestamps[len - 1]!;
 
             // 1. Fill (Curtain)
             if (settings.backgroundFill && run.fillPoints) {
@@ -389,7 +389,7 @@ export class CisdAlgo {
         let maxVal = -Infinity;
         const start = Math.max(0, endIndex - length + 1);
         for (let k = start; k <= endIndex; k++) {
-            if (data[k] > maxVal) maxVal = data[k];
+            if (data[k]! > maxVal) maxVal = data[k]!;
         }
         return maxVal;
     }
@@ -398,7 +398,7 @@ export class CisdAlgo {
         let minVal = Infinity;
         const start = Math.max(0, endIndex - length + 1);
         for (let k = start; k <= endIndex; k++) {
-            if (data[k] < minVal) minVal = data[k];
+            if (data[k]! < minVal) minVal = data[k]!;
         }
         return minVal;
     }
@@ -438,22 +438,22 @@ export class CisdAlgo {
         if (thresholdOK && filterOK) {
             const prevClose = this.ohlcv.close[i - 1];
             const currClose = close[i];
-            const isBullishBar = currClose >= prevClose;
-            const isBearishBar = currClose < prevClose;
+            const isBullishBar = currClose! >= prevClose!;
+            const isBearishBar = currClose! < prevClose!;
 
             console.log(`CheckCISD i=${i} RunBias=${run.bias} Open=${run.openPrice} PrevC=${prevClose} CurrC=${currClose}`);
 
             // Pine: bullishTrigger = bias == BEARISH and bullishBar and close > openPrice and close[1] <= openPrice
             // Breakout Up of Bearish Run
             const bullishTrigger = (run.bias === 0) && isBullishBar &&
-                (currClose > run.openPrice) && (prevClose <= run.openPrice);
+                (currClose! > run.openPrice) && (prevClose! <= run.openPrice);
 
-            if (run.bias === 0) console.log(`BullishTriggerCalc: Bias0=${run.bias === 0} Bull=${isBullishBar} ValidBreak=${currClose > run.openPrice} && ${prevClose <= run.openPrice} -> Result=${bullishTrigger}`);
+            if (run.bias === 0) console.log(`BullishTriggerCalc: Bias0=${run.bias === 0} Bull=${isBullishBar} ValidBreak=${currClose! > run.openPrice} && ${prevClose! <= run.openPrice} -> Result=${bullishTrigger}`);
 
             // Pine: bearishTrigger = bias == BULLISH and bearishBar and close < openPrice and close[1] >= openPrice
             // Breakout Down of Bullish Run
             const bearishTrigger = (run.bias === 1) && isBearishBar &&
-                (currClose < run.openPrice) && (prevClose >= run.openPrice);
+                (currClose! < run.openPrice) && (prevClose! >= run.openPrice);
 
             if (bullishTrigger || bearishTrigger) {
                 run.triggered = true;
@@ -484,11 +484,11 @@ export class CisdAlgo {
             // BEARISH Run (Red, Green Zone, Proj Up). Invalid if close < bottom (Breaks Low?)
             // BULLISH Run (Green, Red Zone, Proj Down). Invalid if close > top (Breaks High?)
 
-            const invalid = (run.bias === 0 && close[i] < run.bottom) ||
-                (run.bias === 1 && close[i] > run.top);
+            const invalid = (run.bias === 0 && close[i]! < run.bottom) ||
+                (run.bias === 1 && close[i]! > run.top);
             if (invalid) {
                 run.invalid = true;
-                run.invalidationTime = this.ohlcv.timestamps[i];
+                run.invalidationTime = this.ohlcv.timestamps[i]!;
             }
         }
     }

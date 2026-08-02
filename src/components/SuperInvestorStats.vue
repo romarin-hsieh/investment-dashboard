@@ -4,7 +4,7 @@
       type="button"
       class="section-header"
       @click="toggleSection('ownership')"
-      :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
+      :aria-expanded="expandedSections['ownership'] ? 'true' : 'false'"
       aria-controls="ownership-section"
     >
       <h3>{{ $t('superInvestor.title') }}</h3>
@@ -30,13 +30,13 @@
           type="button"
           class="subsection-header"
           @click="toggleSection('ownership')"
-          :aria-expanded="expandedSections.ownership ? 'true' : 'false'"
+          :aria-expanded="expandedSections['ownership'] ? 'true' : 'false'"
           aria-controls="ownership-content"
         >
           <h4>{{ $t('superInvestor.ownership.heading') }}</h4>
         </button>
 
-        <div id="ownership-content" v-show="expandedSections.ownership" class="subsection-content">
+        <div id="ownership-content" v-show="expandedSections['ownership']" class="subsection-content">
            <div class="table-responsive">
              <table class="data-table">
                <thead>
@@ -117,13 +117,13 @@
           type="button"
           class="subsection-header"
           @click="toggleSection('activity')"
-          :aria-expanded="expandedSections.activity ? 'true' : 'false'"
+          :aria-expanded="expandedSections['activity'] ? 'true' : 'false'"
           aria-controls="activity-content"
         >
           <h4>{{ $t('superInvestor.activity.heading') }}</h4>
         </button>
 
-        <div id="activity-content" v-show="expandedSections.activity" class="subsection-content">
+        <div id="activity-content" v-show="expandedSections['activity']" class="subsection-content">
           <div class="controls-area">
              <!-- Filter Controls -->
              <div class="filter-controls">
@@ -152,11 +152,11 @@
                <tbody>
                  <tr v-for="(item, idx) in activityList" :key="idx">
                    <td class="text-left font-medium text-muted">{{ item.quarter }}</td>
-                   <td class="text-left font-medium">{{ item.manager }}</td>
-                   <td class="text-center">{{ item.portfolio_change ? item.portfolio_change + '%' : '-' }}</td>
+                   <td class="text-left font-medium">{{ item['manager'] }}</td>
+                   <td class="text-center">{{ item['portfolio_change'] ? item['portfolio_change'] + '%' : '-' }}</td>
                    <td class="text-center">
                       <span :class="['action-text', getActionClass(item.type)]">
-                        {{ item.action }}
+                        {{ item['action'] }}
                       </span>
                    </td>
                    <td class="text-right" :class="getSharesClass(item.type)">
@@ -222,7 +222,7 @@ export default defineComponent({
   name: 'SuperInvestorStats',
   props: {
     dataromaData: {
-      type: Object as PropType<DataromaData>,
+      type: Object as PropType<DataromaData | null>,
       default: null
     },
     loading: {
@@ -549,10 +549,11 @@ export default defineComponent({
 .history-table th {
   text-align: left;
   padding: 8px 12px;
+  /* --text-secondary is already an appropriately-muted header colour (7:1); the
+     extra opacity:0.8 blended it to #7a7a7a = 4.29:1, under AA. Dropped the dim. */
   color: var(--text-secondary);
   font-weight: var(--weight-medium);
   border-bottom: 1px solid var(--border-color);
-  opacity: 0.8;
 }
 
 .history-table th.text-right { text-align: right; }

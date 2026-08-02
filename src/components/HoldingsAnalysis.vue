@@ -37,11 +37,11 @@
         <div class="stats-row">
             <div class="stat">
                 <span class="label">{{ $t('holdings.insiders') }}</span>
-                <span class="value">{{ holders.insidersPercent || '0%' }}</span>
+                <span class="value">{{ holders['insidersPercent'] || '0%' }}</span>
             </div>
              <div class="stat">
                 <span class="label">{{ $t('holdings.institutions') }}</span>
-                <span class="value">{{ holders.institutionsPercent || '0%' }}</span>
+                <span class="value">{{ holders['institutionsPercent'] || '0%' }}</span>
             </div>
         </div>
       </div>
@@ -98,13 +98,13 @@
                     <span class="value">{{ $t('holdings.value') }}</span>
                 </div>
                 <ul class="transaction-list">
-                    <li v-for="(tx, idx) in recentInsiders" :key="idx" :class="tx.buySell">
-                        <span class="date">{{ formatDate(tx.startDate) }}</span>
-                        <span class="name" :title="tx.filerName">{{ tx.filerName }}</span>
-                        <span class="relationship" :title="tx.relationship">{{ tx.relationship || '-' }}</span>
-                        <span class="type">{{ tx.transactionText }}</span>
-                        <span class="shares">{{ tx.shares ? tx.shares.fmt : $t('holdings.notAvailable') }}</span>
-                        <span class="value">{{ tx.value ? tx.value.fmt : $t('holdings.notAvailable') }}</span>
+                    <li v-for="(tx, idx) in recentInsiders" :key="idx" :class="tx['buySell']">
+                        <span class="date">{{ formatDate(tx['startDate']) }}</span>
+                        <span class="name" :title="tx['filerName']">{{ tx['filerName'] }}</span>
+                        <span class="relationship" :title="tx['relationship']">{{ tx['relationship'] || '-' }}</span>
+                        <span class="type">{{ tx['transactionText'] }}</span>
+                        <span class="shares">{{ tx['shares'] ? tx['shares'].fmt : $t('holdings.notAvailable') }}</span>
+                        <span class="value">{{ tx['value'] ? tx['value'].fmt : $t('holdings.notAvailable') }}</span>
                     </li>
                 </ul>
             </div>
@@ -126,7 +126,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(inst, idx) in holders.topInstitutions.slice(0, 10)" :key="idx">
+                    <tr v-for="(inst, idx) in holders['topInstitutions'].slice(0, 10)" :key="idx">
                         <td>{{ inst.reportDate ? inst.reportDate.fmt : $t('holdings.notAvailable') }}</td>
                         <td>{{ inst.organization }}</td>
                         <td>{{ inst.pctHeld ? inst.pctHeld.fmt : $t('holdings.notAvailable') }}</td>
@@ -172,7 +172,7 @@ export default defineComponent({
       required: true
     },
     dataromaData: {
-      type: Object as PropType<DataromaData>,
+      type: Object as PropType<DataromaData | null>,
       default: null
     }
   },
@@ -188,8 +188,6 @@ export default defineComponent({
       insiderTransactions: [] as Array<Record<string, any>>,
       ownershipChartData: null as ChartData<'doughnut'> | null,
       smartMoneyChartData: null as ChartData<'bar'> | null,
-      calculatedSmartMoneyScore: 0,
-      smartMoneyTrendScore: 0,
     }
   },
   computed: {
@@ -223,8 +221,8 @@ export default defineComponent({
           // Use weighted score by value if available, otherwise count
           // Simple count for now to match UI
           this.insiderTransactions.forEach(tx => {
-              if (tx.buySell === 'buy') buys++;
-              if (tx.buySell === 'sell') sells++;
+              if (tx['buySell'] === 'buy') buys++;
+              if (tx['buySell'] === 'sell') sells++;
           });
           
           const total = buys + sells;
@@ -235,27 +233,6 @@ export default defineComponent({
           if (this.sentimentScore > 60) return this.$t('holdings.sentimentBullish');
           if (this.sentimentScore < 40) return this.$t('holdings.sentimentBearish');
           return this.$t('holdings.sentimentNeutral');
-      },
-      sentimentColor() {
-          if (this.sentimentScore < 40) return getToken('--danger-solid');
-          return getToken('--warning-solid');
-      },
-      smartMoneyScoreDetails() {
-         const score = this.calculatedSmartMoneyScore;
-         let text = this.$t('holdings.scoreNeutral');
-         let color = getToken('--warning-solid');  // amber default
-
-         if (score >= 75) {
-             text = this.$t('holdings.scoreStrongAccumulation');
-             color = getToken('--success-solid');
-         } else if (score < 50) {
-             text = this.$t('holdings.scoreWeakDistribution');
-             color = getToken('--danger-solid');
-         } else {
-             text = this.$t('holdings.scoreStableNeutral');
-         }
-
-         return { score, text, color };
       },
       smartMoneyChartOptions(): ChartOptions<'bar'> {
           // Theme-adaptive chart styling. Tokens resolve to different hex in
@@ -317,13 +294,13 @@ export default defineComponent({
             // StockInfo is opaque ({ isStatic?; [key]: unknown }); read its
             // holders/insiderTransactions off a loose view at this boundary.
             const data = (await yahooFinanceAPI.getStockInfo(this.symbol)) as Record<string, any> | undefined;
-            if (!data || !data.holders) {
+            if (!data || !data['holders']) {
                 throw new Error('Data incomplete');
             }
 
-            this.holders = data.holders;
+            this.holders = data['holders'];
             // Native YF transactions
-            const yfTransactions = data.insiderTransactions || [];
+            const yfTransactions = data['insiderTransactions'] || [];
             
             // If Dataroma data is already available, use it, otherwise fallback to YF
             if (this.dataromaData && this.dataromaData.insiders && this.dataromaData.insiders.transactions) {
@@ -341,10 +318,10 @@ export default defineComponent({
             // Simplified fallback for brevity in this method override
              try {
                 const precomputed = await precomputedIndicatorsAPI.getTechnicalIndicators(this.symbol);
-                if (precomputed && precomputed.fundamentals) {
-                    const data = precomputed.fundamentals as Record<string, any>;
-                    this.holders = data.holders || {};
-                    const yfTransactions = data.insiderTransactions || [];
+                if (precomputed && precomputed['fundamentals']) {
+                    const data = precomputed['fundamentals'] as Record<string, any>;
+                    this.holders = data['holders'] || {};
+                    const yfTransactions = data['insiderTransactions'] || [];
                     
                      if (this.dataromaData && this.dataromaData.insiders) {
                         this.processDataromaData();
@@ -369,17 +346,17 @@ export default defineComponent({
         
         console.log('Use Dataroma Insider Data');
         const transactions = this.dataromaData.insiders.transactions.map(tx => {
-            const isBuy = tx.transaction_type === 'Purchase';
-            const isSell = tx.transaction_type === 'Sale';
+            const isBuy = tx['transaction_type'] === 'Purchase';
+            const isSell = tx['transaction_type'] === 'Sale';
             
             return {
-                startDate: tx.transaction_date, // "09 Oct 2025" or "2025-10-09"
-                filerName: tx.reporter,
-                relationship: tx.relationship || tx.filerRelation || '',
-                transactionText: this.$t('holdings.transactionAtPrice', { type: tx.transaction_type, price: tx.price }),
-                shares: { fmt: new Intl.NumberFormat('en-US').format(tx.shares) },
+                startDate: tx['transaction_date'], // "09 Oct 2025" or "2025-10-09"
+                filerName: tx['reporter'],
+                relationship: tx['relationship'] || tx['filerRelation'] || '',
+                transactionText: this.$t('holdings.transactionAtPrice', { type: tx['transaction_type'], price: tx['price'] }),
+                shares: { fmt: new Intl.NumberFormat('en-US').format(tx['shares']) },
                 buySell: isBuy ? 'buy' : (isSell ? 'sell' : 'neutral'),
-                value: { fmt: '$' + new Intl.NumberFormat('en-US').format(tx.value) }
+                value: { fmt: '$' + new Intl.NumberFormat('en-US').format(tx['value']) }
             };
         });
         
@@ -399,16 +376,17 @@ export default defineComponent({
         dr.superinvestors.forEach(investor => {
             if (investor.history) {
                 investor.history.forEach(rec => {
-                    if (!historyMap[rec.period]) {
-                         historyMap[rec.period] = { shares: 0, priceSum: 0, priceCount: 0, period: rec.period };
-                    }
-                    historyMap[rec.period].shares += (rec.shares || 0);
-                    if (rec.reported_price) {
+                    const period = rec['period'];
+                    // Capture the entry once: element-access narrowing from the
+                    // create-if-absent check isn't retained across statements.
+                    const entry = (historyMap[period] ??= { shares: 0, priceSum: 0, priceCount: 0, period });
+                    entry.shares += (rec['shares'] || 0);
+                    if (rec['reported_price']) {
                          // Simple clean of '$' if present
-                         const p = parseFloat(String(rec.reported_price).replace('$','').replace(',',''));
+                         const p = parseFloat(String(rec['reported_price']).replace('$','').replace(',',''));
                          if (!isNaN(p)) {
-                             historyMap[rec.period].priceSum += p;
-                             historyMap[rec.period].priceCount++;
+                             entry.priceSum += p;
+                             entry.priceCount++;
                          }
                     }
                 });
@@ -420,7 +398,7 @@ export default defineComponent({
         const sortedHistory = Object.values(historyMap).sort((a, b) => {
             const [yA, qA] = a.period.split(' Q');
             const [yB, qB] = b.period.split(' Q');
-            return (parseInt(yA) - parseInt(yB)) || (parseInt(qA) - parseInt(qB));
+            return (parseInt(yA ?? '') - parseInt(yB ?? '')) || (parseInt(qA ?? '') - parseInt(qB ?? ''));
         });
         
         // Prepare Chart Data
@@ -453,76 +431,34 @@ export default defineComponent({
                 }
             ]
         } as unknown as ChartData<'bar'>;
-
-        // Calculate Trend Score (Weight 30%)
-        // Compare last quarter to previous quarter shares
-        if (sharesData.length >= 2) {
-            const current = sharesData[sharesData.length - 1];
-            const prev = sharesData[sharesData.length - 2];
-            if (prev > 0) {
-                const change = (current - prev) / prev;
-                if (change > 0.05) this.smartMoneyTrendScore = 100;
-                else if (change >= 0) this.smartMoneyTrendScore = 75;
-                else if (change > -0.05) this.smartMoneyTrendScore = 40;
-                else this.smartMoneyTrendScore = 0;
-            } else {
-                this.smartMoneyTrendScore = 50; // New position?
-            }
-        } else {
-            this.smartMoneyTrendScore = 50; // Not enough data
-        }
-        
-        this.calculateSmartMoneyScore();
-    },
-    
-    calculateSmartMoneyScore() {
-        // A: Institutions (30%)
-        const instPct = parseFloat(this.holders.institutionsPercent) || 0;
-        const scoreA = Math.min(100, (instPct / 80) * 100);
-        
-        // B: Super Investor Trend (30%) -> this.smartMoneyTrendScore
-        const scoreB = this.smartMoneyTrendScore;
-        
-        // C: Insider Sentiment (20%)
-        const scoreC = this.sentimentScore; // 0-100
-        
-        // D: Insider Ownership (20%)
-        const insiderPct = parseFloat(this.holders.insidersPercent) || 0;
-        const scoreD = Math.min(100, (insiderPct / 20) * 100);
-        
-        this.calculatedSmartMoneyScore = Math.round(
-            (scoreA * 0.3) + (scoreB * 0.3) + (scoreC * 0.2) + (scoreD * 0.2)
-        );
     },
 
-
-    
     processTransactions() {
          // Fix insider transaction buy/sell class
         this.insiderTransactions.forEach(tx => {
-            const text = tx.transactionText || '';
-            if (text.toLowerCase().includes('purchase')) tx.buySell = 'buy';
-            else if (text.toLowerCase().includes('sale')) tx.buySell = 'sell';
-            else tx.buySell = 'neutral';
+            const text = tx['transactionText'] || '';
+            if (text.toLowerCase().includes('purchase')) tx['buySell'] = 'buy';
+            else if (text.toLowerCase().includes('sale')) tx['buySell'] = 'sell';
+            else tx['buySell'] = 'neutral';
             
             // Generate value fmt if missing or add $ prefix
-            if (tx.value && tx.value.fmt && !tx.value.fmt.startsWith('$')) {
-                tx.value.fmt = '$' + tx.value.fmt;
-            } else if (tx.value && !tx.value.fmt) {
-                tx.value = { fmt: '$' + new Intl.NumberFormat('en-US').format(tx.value) };
+            if (tx['value'] && tx['value'].fmt && !tx['value'].fmt.startsWith('$')) {
+                tx['value'].fmt = '$' + tx['value'].fmt;
+            } else if (tx['value'] && !tx['value'].fmt) {
+                tx['value'] = { fmt: '$' + new Intl.NumberFormat('en-US').format(tx['value']) };
             }
             
             // Ensure relationship exists
-             if (!tx.relationship) {
-                tx.relationship = tx.filerRelation || '';
+             if (!tx['relationship']) {
+                tx['relationship'] = tx['filerRelation'] || '';
              }
         });
     },
     
     processOwnershipChart() {
         // Parse percentages
-        const insiders = parseFloat(this.holders.insidersPercent) || 0;
-        const institutions = parseFloat(this.holders.institutionsPercent) || 0;
+        const insiders = parseFloat(this.holders['insidersPercent']) || 0;
+        const institutions = parseFloat(this.holders['institutionsPercent']) || 0;
         const publicFloat = Math.max(0, 100 - insiders - institutions); 
         
         // Renaissance-theme ownership palette:
@@ -564,8 +500,8 @@ export default defineComponent({
         let sells = 0;
         
         this.insiderTransactions.forEach(tx => {
-            if (tx.buySell === 'buy') buys++;
-            if (tx.buySell === 'sell') sells++;
+            if (tx['buySell'] === 'buy') buys++;
+            if (tx['buySell'] === 'sell') sells++;
         });
         
         const total = buys + sells;

@@ -153,8 +153,8 @@ class HybridTechnicalIndicatorsAPI {
     // 3. Check Beta (New Requirement) - Relaxed
     const yf = data.yf || (data.indicators && data.indicators.yf);
     const hasBeta = yf && (
-      (yf.beta_10d !== undefined && yf.beta_10d !== null && yf.beta_10d !== 'N/A') ||
-      (yf.beta_3mo !== undefined && yf.beta_3mo !== null && yf.beta_3mo !== 'N/A')
+      (yf['beta_10d'] !== undefined && yf['beta_10d'] !== null && yf['beta_10d'] !== 'N/A') ||
+      (yf['beta_3mo'] !== undefined && yf['beta_3mo'] !== null && yf['beta_3mo'] !== 'N/A')
     );
     if (!hasBeta) {
       // console.warn('Validation warning: Missing valid Beta (continuing anyway)');
@@ -324,8 +324,8 @@ class HybridTechnicalIndicatorsAPI {
           available: true,
           symbols: precomputedIndex.symbols ?? [],
           lastUpdate: precomputedIndex.generatedAt,
-          successful: precomputedIndex.successful,
-          failed: precomputedIndex.failed
+          successful: precomputedIndex.successful ?? 0,
+          failed: precomputedIndex.failed ?? 0
         };
       }
     } catch (error) {

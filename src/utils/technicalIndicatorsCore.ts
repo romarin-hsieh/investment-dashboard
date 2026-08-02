@@ -77,8 +77,8 @@ function rollingMax(values: number[], period: number): number[] {
     } else {
       let max = -Infinity;
       for (let j = i - period + 1; j <= i; j++) {
-        if (!isNaN(values[j])) {
-          max = Math.max(max, values[j]);
+        if (!isNaN(values[j]!)) {
+          max = Math.max(max, values[j]!);
         }
       }
       result[i] = max === -Infinity ? NaN : max;
@@ -97,8 +97,8 @@ function rollingMin(values: number[], period: number): number[] {
     } else {
       let min = Infinity;
       for (let j = i - period + 1; j <= i; j++) {
-        if (!isNaN(values[j])) {
-          min = Math.min(min, values[j]);
+        if (!isNaN(values[j]!)) {
+          min = Math.min(min, values[j]!);
         }
       }
       result[i] = min === Infinity ? NaN : min;
@@ -186,7 +186,7 @@ function ema(values: number[], period: number, alpha: number | null = null, init
     // 找到第一個非 NaN 值作為初始值
     let firstValidIndex = -1;
     for (let k = 0; k < L; k++) {
-      if (!isNaN(values[k])) {
+      if (!isNaN(values[k]!)) {
         firstValidIndex = k;
         break;
       }
@@ -198,27 +198,27 @@ function ema(values: number[], period: number, alpha: number | null = null, init
     }
 
     // 設置初始值
-    result[firstValidIndex] = values[firstValidIndex];
+    result[firstValidIndex] = values[firstValidIndex]!;
 
     // 從下一個點開始計算
     for (let t = firstValidIndex + 1; t < L; t++) {
-      if (isNaN(values[t])) {
+      if (isNaN(values[t]!)) {
         // 處理 NaN 輸入
         if (nanPolicy === 'hold_last') {
-          result[t] = result[t - 1];
+          result[t] = result[t - 1]!;
         } else {
           result[t] = NaN;
         }
       } else {
         // 有效輸入
-        if (isNaN(result[t - 1])) {
+        if (isNaN(result[t - 1]!)) {
           if (nanPolicy === 'strict_recover') {
             result[t] = NaN; // 等待重新 seed
           } else {
             result[t] = NaN;
           }
         } else {
-          result[t] = alpha * values[t] + (1 - alpha) * result[t - 1];
+          result[t] = alpha * values[t]! + (1 - alpha) * result[t - 1]!;
         }
       }
     }
@@ -242,10 +242,10 @@ function ema(values: number[], period: number, alpha: number | null = null, init
         }
       } else {
         // t > N-1
-        if (isNaN(values[t])) {
+        if (isNaN(values[t]!)) {
           // 輸入是 NaN
           if (nanPolicy === 'hold_last') {
-            result[t] = result[t - 1];
+            result[t] = result[t - 1]!;
           } else if (nanPolicy === 'strict_break') {
             result[t] = NaN;
             // 標記為 broken，後續都是 NaN (簡化實現)
@@ -254,7 +254,7 @@ function ema(values: number[], period: number, alpha: number | null = null, init
           }
         } else {
           // 輸入有效
-          if (isNaN(result[t - 1])) {
+          if (isNaN(result[t - 1]!)) {
             if (nanPolicy === 'strict_recover') {
               // re-seed: 檢查最近 N 根是否都有效
               const recentWindow = values.slice(t - period + 1, t + 1);
@@ -269,7 +269,7 @@ function ema(values: number[], period: number, alpha: number | null = null, init
             }
           } else {
             // 正常 EMA 計算
-            result[t] = alpha * values[t] + (1 - alpha) * result[t - 1];
+            result[t] = alpha * values[t]! + (1 - alpha) * result[t - 1]!;
           }
         }
       }
@@ -307,9 +307,9 @@ function wilderSmoothing(values: number[], period: number): (number | undefined)
 
   // 收集前 period 個有效值
   for (let j = 0; j < values.length && validIndices.length < period; j++) {
-    if (!isNaN(values[j])) {
+    if (!isNaN(values[j]!)) {
       validIndices.push(j);
-      sum += values[j];
+      sum += values[j]!;
       count++;
     }
   }
@@ -322,7 +322,7 @@ function wilderSmoothing(values: number[], period: number): (number | undefined)
   }
 
   // 使用最後一個有效值的位置作為初始化點
-  const initIndex = Math.max(period - 1, validIndices[period - 1]);
+  const initIndex = Math.max(period - 1, validIndices[period - 1]!);
   result[initIndex] = sum / period;
 
   console.log(`Wilder: Initialized at index ${initIndex} with value ${result[initIndex]}`);
@@ -330,10 +330,10 @@ function wilderSmoothing(values: number[], period: number): (number | undefined)
   // Wilder 遞迴平滑 - 從初始化點開始
   for (let i = initIndex + 1; i < values.length; i++) {
     const prev = result[i - 1];
-    if (prev === undefined || isNaN(prev) || isNaN(values[i])) {
+    if (prev === undefined || isNaN(prev) || isNaN(values[i]!)) {
       result[i] = NaN;
     } else {
-      result[i] = (prev * (period - 1) + values[i]) / period;
+      result[i] = (prev * (period - 1) + values[i]!) / period;
     }
   }
 
@@ -370,10 +370,10 @@ function calculateIchimokuBaseLine(high: number[], low: number[], period: number
 
   const result: number[] = new Array(high.length);
   for (let i = 0; i < high.length; i++) {
-    if (isNaN(hh[i]) || isNaN(ll[i])) {
+    if (isNaN(hh[i]!) || isNaN(ll[i]!)) {
       result[i] = NaN;
     } else {
-      result[i] = (hh[i] + ll[i]) / 2;
+      result[i] = (hh[i]! + ll[i]!) / 2;
     }
   }
 
@@ -397,7 +397,7 @@ function calculateIchimokuLaggingSpan(close: number[], shift: number = 26): numb
 
   for (let i = 0; i < close.length; i++) {
     if (i + shift < close.length) {
-      result[i] = close[i];
+      result[i] = close[i]!;
     } else {
       result[i] = NaN; // 最後 shift 根無未來資料
     }
@@ -420,9 +420,9 @@ function calculateVWMA(close: number[], volume: number[], period: number = 20): 
       let denominator = 0;
 
       for (let j = i - period + 1; j <= i; j++) {
-        if (!isNaN(close[j]) && !isNaN(volume[j])) {
-          numerator += close[j] * volume[j];
-          denominator += volume[j];
+        if (!isNaN(close[j]!) && !isNaN(volume[j]!)) {
+          numerator += close[j]! * volume[j]!;
+          denominator += volume[j]!;
         }
       }
 
@@ -451,14 +451,14 @@ function calculateRSI(close: number[], period: number = 14): number[] {
   loss[0] = NaN;
 
   for (let i = 1; i < close.length; i++) {
-    if (isNaN(close[i]) || isNaN(close[i - 1])) {
+    if (isNaN(close[i]!) || isNaN(close[i - 1]!)) {
       delta[i] = NaN;
       gain[i] = NaN;
       loss[i] = NaN;
     } else {
-      delta[i] = close[i] - close[i - 1];
-      gain[i] = Math.max(delta[i], 0);
-      loss[i] = Math.max(-delta[i], 0);
+      delta[i] = close[i]! - close[i - 1]!;
+      gain[i] = Math.max(delta[i]!, 0);
+      loss[i] = Math.max(-delta[i]!, 0);
     }
   }
 
@@ -507,7 +507,7 @@ function calculateADX(high: number[], low: number[], close: number[], period: nu
   // 檢查數據質量
   let validOHLCCount = 0;
   for (let i = 0; i < length; i++) {
-    if (!isNaN(high[i]) && !isNaN(low[i]) && !isNaN(close[i])) {
+    if (!isNaN(high[i]!) && !isNaN(low[i]!) && !isNaN(close[i]!)) {
       validOHLCCount++;
     }
   }
@@ -538,8 +538,8 @@ function calculateADX(high: number[], low: number[], close: number[], period: nu
 
   for (let i = 1; i < length; i++) {
     // 檢查當前和前一個數據點的有效性
-    if (isNaN(high[i]) || isNaN(low[i]) || isNaN(close[i]) ||
-      isNaN(high[i - 1]) || isNaN(low[i - 1]) || isNaN(close[i - 1])) {
+    if (isNaN(high[i]!) || isNaN(low[i]!) || isNaN(close[i]!) ||
+      isNaN(high[i - 1]!) || isNaN(low[i - 1]!) || isNaN(close[i - 1]!)) {
       upMove[i] = NaN;
       downMove[i] = NaN;
       plusDM[i] = NaN;
@@ -549,26 +549,26 @@ function calculateADX(high: number[], low: number[], close: number[], period: nu
     }
 
     // Up/Down Move
-    upMove[i] = high[i] - high[i - 1];
-    downMove[i] = low[i - 1] - low[i];
+    upMove[i] = high[i]! - high[i - 1]!;
+    downMove[i] = low[i - 1]! - low[i]!;
 
     // +DM / -DM
-    if (upMove[i] > downMove[i] && upMove[i] > 0) {
-      plusDM[i] = upMove[i];
+    if (upMove[i]! > downMove[i]! && upMove[i]! > 0) {
+      plusDM[i] = upMove[i]!;
     } else {
       plusDM[i] = 0;
     }
 
-    if (downMove[i] > upMove[i] && downMove[i] > 0) {
-      minusDM[i] = downMove[i];
+    if (downMove[i]! > upMove[i]! && downMove[i]! > 0) {
+      minusDM[i] = downMove[i]!;
     } else {
       minusDM[i] = 0;
     }
 
     // True Range
-    const tr1 = high[i] - low[i];
-    const tr2 = Math.abs(high[i] - close[i - 1]);
-    const tr3 = Math.abs(low[i] - close[i - 1]);
+    const tr1 = high[i]! - low[i]!;
+    const tr2 = Math.abs(high[i]! - close[i - 1]!);
+    const tr3 = Math.abs(low[i]! - close[i - 1]!);
     tr[i] = Math.max(tr1, tr2, tr3);
   }
 
@@ -602,11 +602,11 @@ function calculateADX(high: number[], low: number[], close: number[], period: nu
       plusDI[i] = 100 * smPlusDMValue / smTRValue;
       minusDI[i] = 100 * smMinusDMValue / smTRValue;
 
-      const diSum = plusDI[i] + minusDI[i];
+      const diSum = plusDI[i]! + minusDI[i]!;
       if (diSum <= EPSILON) {
         dx[i] = NaN;
       } else {
-        dx[i] = 100 * Math.abs(plusDI[i] - minusDI[i]) / diSum;
+        dx[i] = 100 * Math.abs(plusDI[i]! - minusDI[i]!) / diSum;
       }
     }
   }
@@ -648,10 +648,10 @@ function calculateMACD(close: number[], fastPeriod: number = 12, slowPeriod: num
   // MACD Line
   const macd: number[] = new Array(close.length);
   for (let i = 0; i < close.length; i++) {
-    if (isNaN(emaFast[i]) || isNaN(emaSlow[i])) {
+    if (isNaN(emaFast[i]!) || isNaN(emaSlow[i]!)) {
       macd[i] = NaN;
     } else {
-      macd[i] = emaFast[i] - emaSlow[i];
+      macd[i] = emaFast[i]! - emaSlow[i]!;
     }
   }
 
@@ -661,10 +661,10 @@ function calculateMACD(close: number[], fastPeriod: number = 12, slowPeriod: num
   // Histogram
   const histogram: number[] = new Array(close.length);
   for (let i = 0; i < close.length; i++) {
-    if (isNaN(macd[i]) || isNaN(signal[i])) {
+    if (isNaN(macd[i]!) || isNaN(signal[i]!)) {
       histogram[i] = NaN;
     } else {
-      histogram[i] = macd[i] - signal[i];
+      histogram[i] = macd[i]! - signal[i]!;
     }
   }
 
@@ -687,47 +687,47 @@ function calculateParabolicSAR(high: number[], low: number[], close: number[], s
 
   // 簡化初始化: 使用前幾個點的趨勢
   let trend = 1; // 1 for up, -1 for down
-  if (close[1] < close[0]) trend = -1;
+  if (close[1]! < close[0]!) trend = -1;
 
   let af = startAf;
-  let ep = trend === 1 ? Math.max(high[0], high[1]) : Math.min(low[0], low[1]);
-  psar[1] = trend === 1 ? Math.min(low[0], low[1]) : Math.max(high[0], high[1]);
+  let ep = trend === 1 ? Math.max(high[0]!, high[1]!) : Math.min(low[0]!, low[1]!);
+  psar[1] = trend === 1 ? Math.min(low[0]!, low[1]!) : Math.max(high[0]!, high[1]!);
 
   for (let i = 2; i < length; i++) {
     const prevSar = psar[i - 1];
 
     // 計算新的 SAR
-    let nextSar = prevSar + af * (ep - prevSar);
+    let nextSar = prevSar! + af * (ep - prevSar!);
 
     // 限制 SAR 不超過前兩個週期的極值
     if (trend === 1) {
-      nextSar = Math.min(nextSar, low[i - 1], low[i - 2]);
+      nextSar = Math.min(nextSar, low[i - 1]!, low[i - 2]!);
     } else {
-      nextSar = Math.max(nextSar, high[i - 1], high[i - 2]);
+      nextSar = Math.max(nextSar, high[i - 1]!, high[i - 2]!);
     }
 
     // 檢查反轉
     let newTrend = trend;
-    if (trend === 1 && low[i] < nextSar) {
+    if (trend === 1 && low[i]! < nextSar) {
       newTrend = -1;
       nextSar = ep; // 反轉時 SAR 跳到極值
-      ep = low[i];
+      ep = low[i]!;
       af = startAf;
-    } else if (trend === -1 && high[i] > nextSar) {
+    } else if (trend === -1 && high[i]! > nextSar) {
       newTrend = 1;
       nextSar = ep;
-      ep = high[i];
+      ep = high[i]!;
       af = startAf;
     } else {
       // 趨勢延續，更新 EP 和 AF
       if (trend === 1) {
-        if (high[i] > ep) {
-          ep = high[i];
+        if (high[i]! > ep) {
+          ep = high[i]!;
           af = Math.min(af + startAf, maxAf);
         }
       } else {
-        if (low[i] < ep) {
-          ep = low[i];
+        if (low[i]! < ep) {
+          ep = low[i]!;
           af = Math.min(af + startAf, maxAf);
         }
       }
@@ -753,14 +753,14 @@ function calculateStochastic(high: number[], low: number[], close: number[], per
     let lowestLow = Infinity;
 
     for (let j = i - period + 1; j <= i; j++) {
-      highestHigh = Math.max(highestHigh, high[j]);
-      lowestLow = Math.min(lowestLow, low[j]);
+      highestHigh = Math.max(highestHigh, high[j]!);
+      lowestLow = Math.min(lowestLow, low[j]!);
     }
 
     if (highestHigh === lowestLow) {
       kLine[i] = 50;
     } else {
-      kLine[i] = ((close[i] - lowestLow) / (highestHigh - lowestLow)) * 100;
+      kLine[i] = ((close[i]! - lowestLow) / (highestHigh - lowestLow)) * 100;
     }
   }
 
@@ -779,26 +779,26 @@ function calculateCCI(high: number[], low: number[], close: number[], period: nu
   const tp: number[] = new Array(length); // Typical Price
 
   for (let i = 0; i < length; i++) {
-    tp[i] = (high[i] + low[i] + close[i]) / 3;
+    tp[i] = (high[i]! + low[i]! + close[i]!) / 3;
   }
 
   // 計算 TP 的 SMA
   const smaTp = sma(tp, period);
 
   for (let i = period - 1; i < length; i++) {
-    if (isNaN(smaTp[i])) continue;
+    if (isNaN(smaTp[i]!)) continue;
 
     // 計算 Mean Deviation
     let meanDev = 0;
     for (let j = i - period + 1; j <= i; j++) {
-      meanDev += Math.abs(tp[j] - smaTp[i]);
+      meanDev += Math.abs(tp[j]! - smaTp[i]!);
     }
     meanDev /= period;
 
     if (meanDev === 0) {
       cci[i] = 0;
     } else {
-      cci[i] = (tp[i] - smaTp[i]) / (0.015 * meanDev);
+      cci[i] = (tp[i]! - smaTp[i]!) / (0.015 * meanDev);
     }
   }
 
@@ -814,9 +814,9 @@ function calculateATR(high: number[], low: number[], close: number[], period: nu
 
   // TR 計算
   for (let i = 1; i < length; i++) {
-    const t1 = high[i] - low[i];
-    const t2 = Math.abs(high[i] - close[i - 1]);
-    const t3 = Math.abs(low[i] - close[i - 1]);
+    const t1 = high[i]! - low[i]!;
+    const t2 = Math.abs(high[i]! - close[i - 1]!);
+    const t3 = Math.abs(low[i]! - close[i - 1]!);
     tr[i] = Math.max(t1, t2, t3);
   }
 
@@ -909,28 +909,28 @@ function calculateSuperTrend(high: number[], low: number[], close: number[], per
     const atrI = atr[i];
     if (atrI === undefined || isNaN(atrI)) continue;
 
-    const hl2 = (high[i] + low[i]) / 2;
+    const hl2 = (high[i]! + low[i]!) / 2;
     basicUpper[i] = hl2 + (multiplier * atrI);
     basicLower[i] = hl2 - (multiplier * atrI);
 
     // Initialize Final Bands
     // If previous final band is NaN, use current basic band
-    const prevFinalUpper = isNaN(finalUpper[i - 1]) ? basicUpper[i] : finalUpper[i - 1];
-    const prevFinalLower = isNaN(finalLower[i - 1]) ? basicLower[i] : finalLower[i - 1];
+    const prevFinalUpper = isNaN(finalUpper[i - 1]!) ? basicUpper[i] : finalUpper[i - 1];
+    const prevFinalLower = isNaN(finalLower[i - 1]!) ? basicLower[i] : finalLower[i - 1];
     const prevClose = close[i - 1];
 
     // Final Upper Band Logic
-    if (basicUpper[i] < prevFinalUpper || prevClose > prevFinalUpper) {
-      finalUpper[i] = basicUpper[i];
+    if (basicUpper[i]! < prevFinalUpper! || prevClose! > prevFinalUpper!) {
+      finalUpper[i] = basicUpper[i]!;
     } else {
-      finalUpper[i] = prevFinalUpper;
+      finalUpper[i] = prevFinalUpper!;
     }
 
     // Final Lower Band Logic
-    if (basicLower[i] > prevFinalLower || prevClose < prevFinalLower) {
-      finalLower[i] = basicLower[i];
+    if (basicLower[i]! > prevFinalLower! || prevClose! < prevFinalLower!) {
+      finalLower[i] = basicLower[i]!;
     } else {
-      finalLower[i] = prevFinalLower;
+      finalLower[i] = prevFinalLower!;
     }
 
     // Trend Logic
@@ -939,19 +939,19 @@ function calculateSuperTrend(high: number[], low: number[], close: number[], per
     // Determine SuperTrend
     // If trend was bullish...
     if (prevTrend === 1) {
-      superTrend[i] = finalLower[i];
-      if (close[i] < finalLower[i]) {
+      superTrend[i] = finalLower[i]!;
+      if (close[i]! < finalLower[i]!) {
         trend = -1; // Change to Bearish
-        superTrend[i] = finalUpper[i];
+        superTrend[i] = finalUpper[i]!;
       } else {
         trend = 1;
       }
     } else {
       // If trend was bearish...
-      superTrend[i] = finalUpper[i];
-      if (close[i] > finalUpper[i]) {
+      superTrend[i] = finalUpper[i]!;
+      if (close[i]! > finalUpper[i]!) {
         trend = 1; // Change to Bullish
-        superTrend[i] = finalLower[i];
+        superTrend[i] = finalLower[i]!;
       } else {
         trend = -1;
       }
@@ -970,7 +970,7 @@ function calculateMFI(high: number[], low: number[], close: number[], volume: nu
   const tp: number[] = new Array(length); // Typical Price
 
   for (let i = 0; i < length; i++) {
-    tp[i] = (high[i] + low[i] + close[i]) / 3;
+    tp[i] = (high[i]! + low[i]! + close[i]!) / 3;
   }
 
   // Need period + 1 data points to calculate change
@@ -980,10 +980,10 @@ function calculateMFI(high: number[], low: number[], close: number[], volume: nu
 
     // Loop through window
     for (let j = i - period + 1; j <= i; j++) {
-      if (tp[j] > tp[j - 1]) {
-        posMF += tp[j] * volume[j];
-      } else if (tp[j] < tp[j - 1]) {
-        negMF += tp[j] * volume[j];
+      if (tp[j]! > tp[j - 1]!) {
+        posMF += tp[j]! * volume[j]!;
+      } else if (tp[j]! < tp[j - 1]!) {
+        negMF += tp[j]! * volume[j]!;
       }
     }
 
@@ -1116,8 +1116,8 @@ function calculateBeta(close: number[], benchmarkClose: number[] | null, period:
   const benchReturns: number[] = new Array(length).fill(NaN);
 
   for (let i = 1; i < length; i++) {
-    if (close[i - 1] && close[i]) stockReturns[i] = (close[i] - close[i - 1]) / close[i - 1];
-    if (benchmarkClose[i - 1] && benchmarkClose[i]) benchReturns[i] = (benchmarkClose[i] - benchmarkClose[i - 1]) / benchmarkClose[i - 1];
+    if (close[i - 1] && close[i]) stockReturns[i] = (close[i]! - close[i - 1]!) / close[i - 1]!;
+    if (benchmarkClose[i - 1] && benchmarkClose[i]) benchReturns[i] = (benchmarkClose[i]! - benchmarkClose[i - 1]!) / benchmarkClose[i - 1]!;
   }
 
   // Calculate Beta over rolling window
@@ -1131,11 +1131,11 @@ function calculateBeta(close: number[], benchmarkClose: number[] | null, period:
     for (let j = i - period + 1; j <= i; j++) {
       const x = benchReturns[j];
       const y = stockReturns[j];
-      if (!isNaN(x) && !isNaN(y)) {
-        sumXY += x * y;
-        sumX += x;
-        sumY += y;
-        sumX2 += x * x;
+      if (!isNaN(x!) && !isNaN(y!)) {
+        sumXY += x! * y!;
+        sumX += x!;
+        sumY += y!;
+        sumX2 += x! * x!;
         count++;
       }
     }
@@ -1180,15 +1180,15 @@ function calculateWilliamsR(high: number[], low: number[], close: number[], peri
     let lowestLow = Infinity;
 
     for (let j = i - period + 1; j <= i; j++) {
-      highestHigh = Math.max(highestHigh, high[j]);
-      lowestLow = Math.min(lowestLow, low[j]);
+      highestHigh = Math.max(highestHigh, high[j]!);
+      lowestLow = Math.min(lowestLow, low[j]!);
     }
 
     if (highestHigh === lowestLow) {
       result[i] = -50; // Avoid division by zero, neutral value
     } else {
       // Formula: ((Highest High - Close) / (Highest High - Lowest Low)) * -100
-      result[i] = ((highestHigh - close[i]) / (highestHigh - lowestLow)) * -100;
+      result[i] = ((highestHigh - close[i]!) / (highestHigh - lowestLow)) * -100;
     }
   }
 
@@ -1212,12 +1212,12 @@ function calculateCMF(high: number[], low: number[], close: number[], volume: nu
   const mfv: number[] = new Array(length).fill(0);
 
   for (let i = 0; i < length; i++) {
-    const range = high[i] - low[i];
+    const range = high[i]! - low[i]!;
     if (range === 0) {
       mfv[i] = 0;
     } else {
-      const mfm = ((close[i] - low[i]) - (high[i] - close[i])) / range;
-      mfv[i] = mfm * volume[i];
+      const mfm = ((close[i]! - low[i]!) - (high[i]! - close[i]!)) / range;
+      mfv[i] = mfm * volume[i]!;
     }
   }
 
@@ -1227,8 +1227,8 @@ function calculateCMF(high: number[], low: number[], close: number[], volume: nu
     let sumVol = 0;
 
     for (let j = i - period + 1; j <= i; j++) {
-      sumMFV += mfv[j];
-      sumVol += volume[j];
+      sumMFV += mfv[j]!;
+      sumVol += volume[j]!;
     }
 
     if (sumVol === 0) {

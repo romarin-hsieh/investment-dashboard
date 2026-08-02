@@ -188,7 +188,7 @@ interface TestResult {
   symbol: string
   success: boolean
   data?: TestPayload
-  source?: string
+  source?: string | undefined
   error?: string
   loadTime: string
 }

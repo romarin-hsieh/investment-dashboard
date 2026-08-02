@@ -179,19 +179,19 @@ export default defineComponent({
             // volume / market-cap / beta gets spread onto the newly-selected ticker.
             if (seq !== this.loadSeq) return
             if (stockInfo) {
-                const existingYf = this.rawData.yf || {};
+                const existingYf = this.rawData['yf'] || {};
                 this.rawData = {
                     ...this.rawData,
                     yf: {
                         ...existingYf,
                         // Add extended market data from Real-time source
-                        extVolume: stockInfo.volume?.raw || stockInfo.volume || existingYf.extVolume, 
-                        extAvgVol: stockInfo.averageVolume?.raw || stockInfo.averageVolume,
-                        extAvgVol10D: stockInfo.averageDailyVolume10Day || existingYf.extAvgVol10D, 
-                        extAvgVol3M: stockInfo.averageDailyVolume3Month || existingYf.extAvgVol3M,   
-                        extMarketCap: stockInfo.marketCap || stockInfo.marketCapFormatted, 
-                        extBeta: stockInfo.beta || stockInfo.financials?.beta,
-                        regularMarketChangePercent: stockInfo.financials?.regularMarketChangePercent
+                        extVolume: stockInfo['volume']?.raw || stockInfo['volume'] || existingYf.extVolume, 
+                        extAvgVol: stockInfo['averageVolume']?.raw || stockInfo['averageVolume'],
+                        extAvgVol10D: stockInfo['averageDailyVolume10Day'] || existingYf.extAvgVol10D, 
+                        extAvgVol3M: stockInfo['averageDailyVolume3Month'] || existingYf.extAvgVol3M,   
+                        extMarketCap: stockInfo['marketCap'] || stockInfo['marketCapFormatted'], 
+                        extBeta: stockInfo['beta'] || stockInfo['financials']?.beta,
+                        regularMarketChangePercent: stockInfo['financials']?.regularMarketChangePercent
                     }
                 };
                 this.processGroupedIndicators();
@@ -214,13 +214,15 @@ export default defineComponent({
     processGroupedIndicators() {
       // Callers only invoke this after rawData is set.
       const data = this.rawData as Record<string, any>;
-      const groups: Record<string, any[]> = {
+      // Precise keys (not a string index signature) so literal-key access like
+      // groups['Trend'] is known-present under noUncheckedIndexedAccess.
+      const groups: { Trend: any[]; Oscillators: any[]; Market: any[] } = {
           'Trend': [],
           'Oscillators': [],
           'Market': []
       };
 
-      const series = data.fullSeries || {};
+      const series = data['fullSeries'] || {};
 
       // Helper function to get value and diff
       const getIndicator = (key: string, label: string, arrayKey: string, _group: string = 'Trend', forcedValue: string | null = null) => {
@@ -305,13 +307,13 @@ export default defineComponent({
       groups['Oscillators'].push(getIndicator('ichimokuLaggingSpan', this.$t('indicators.labels.ichiLag'), 'ICHIMOKU_LAGGINGSPAN_26', 'Oscillators'));
 
       // Group 3: Market & Volume (YFinance + Precomputed)
-      const yf = data.yf || data.indicators?.yf || {};
+      const yf = data['yf'] || data['indicators']?.yf || {};
       
       // Use precomputed market data if available (Fastest)
       // data.market comes from generate-daily-technical-indicators.js (latest_all.json)
       // data.beta comes from same source.
-      const preMarket = data.market || {};
-      const preBeta = data.beta || {};
+      const preMarket = data['market'] || {};
+      const preBeta = data['beta'] || {};
 
       groups['Market'].push(getIndicator('atr14', this.$t('indicators.labels.atr14'), 'ATR_14', 'Market'));
       groups['Market'].push(getIndicator('mfi14', this.$t('indicators.labels.mfi14'), 'MFI_14', 'Market'));
@@ -319,7 +321,7 @@ export default defineComponent({
       // CMF (20)
       groups['Market'].push(getIndicator('cmf20', this.$t('indicators.labels.cmf20'), 'CMF_20', 'Market', this.formatNumber(this.getLatestValue(series.CMF_20), 3)));
 
-      groups['Market'].push(getIndicator('obv', this.$t('indicators.labels.obv'), 'OBV', 'Market', this.formatVolume(data.obv?.value)));
+      groups['Market'].push(getIndicator('obv', this.$t('indicators.labels.obv'), 'OBV', 'Market', this.formatVolume(data['obv']?.value)));
       
       // Volume - Prefer real Volume from StockInfo, fallback to Precomputed, then Series
       let volChange = yf.volume_last_day_pct;
@@ -376,22 +378,22 @@ export default defineComponent({
       // Beta (10D)
       groups['Market'].push({
           label: this.$t('indicators.labels.beta10D'),
-          value: this.formatBeta(yf.beta_10d || preBeta.beta_10d || data.beta_10d?.value),
-          signal: this.getBetaCategory(yf.beta_10d || preBeta.beta_10d || data.beta_10d?.value)
+          value: this.formatBeta(yf.beta_10d || preBeta.beta_10d || data['beta_10d']?.value),
+          signal: this.getBetaCategory(yf.beta_10d || preBeta.beta_10d || data['beta_10d']?.value)
       });
 
       // Beta (3M)
       groups['Market'].push({
           label: this.$t('indicators.labels.beta3M'),
-          value: this.formatBeta(yf.beta_3mo || preBeta.beta_3mo || data.beta_3mo?.value),
-          signal: this.getBetaCategory(yf.beta_3mo || preBeta.beta_3mo || data.beta_3mo?.value)
+          value: this.formatBeta(yf.beta_3mo || preBeta.beta_3mo || data['beta_3mo']?.value),
+          signal: this.getBetaCategory(yf.beta_3mo || preBeta.beta_3mo || data['beta_3mo']?.value)
       });
 
       // Beta (1Y)
       groups['Market'].push({
          label: this.$t('indicators.labels.beta1Y'),
-         value: this.formatBeta(yf.extBeta || preBeta.beta_1y || data.beta_1y?.value || yf.beta || yf.beta_1y),
-         signal: this.getBetaCategory(yf.extBeta || preBeta.beta_1y || data.beta_1y?.value || yf.beta || yf.beta_1y)
+         value: this.formatBeta(yf.extBeta || preBeta.beta_1y || data['beta_1y']?.value || yf.beta || yf.beta_1y),
+         signal: this.getBetaCategory(yf.extBeta || preBeta.beta_1y || data['beta_1y']?.value || yf.beta || yf.beta_1y)
       });
 
       // Beta (5Y) - Keep if available

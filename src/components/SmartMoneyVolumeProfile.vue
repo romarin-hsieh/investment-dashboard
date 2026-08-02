@@ -74,7 +74,7 @@ export default defineComponent({
   components: { Bar },
   props: {
     symbol: { type: String, required: true },
-    dataromaData: { type: Object as PropType<DataromaData>, default: null }
+    dataromaData: { type: Object as PropType<DataromaData | null>, default: null }
   },
   setup() {
     const { theme } = useTheme()
@@ -230,9 +230,9 @@ export default defineComponent({
       for (let i = 0; i < close.length; i++) {
           if (!volume[i] || !high[i] || !low[i]) continue;
           
-          const dayVol = volume[i];
-          const dayLow = low[i];
-          const dayHigh = high[i];
+          const dayVol = volume[i]!;
+          const dayLow = low[i]!;
+          const dayHigh = high[i]!;
           
           // Identify which bins this day touches
           const startBin = Math.floor((dayLow - minPrice) / binSize);
@@ -246,7 +246,7 @@ export default defineComponent({
           const volPerBin = dayVol / binsInvolved;
           
           for (let b = safeStart; b <= safeEnd; b++) {
-              bins[b].totalVolume += volPerBin;
+              bins[b]!.totalVolume += volPerBin;
           }
       }
       
@@ -280,10 +280,10 @@ export default defineComponent({
                   let bIdx = Math.floor((p - minPrice) / binSize);
                   bIdx = Math.max(0, Math.min(binCount - 1, bIdx));
                   
-                  if (isBuy) bins[bIdx].smartBuy += shares;
-                  else bins[bIdx].smartSell += shares;
+                  if (isBuy) bins[bIdx]!.smartBuy += shares;
+                  else bins[bIdx]!.smartSell += shares;
                   
-                  bins[bIdx].netSmartShares += (isBuy ? shares : -shares);
+                  bins[bIdx]!.netSmartShares += (isBuy ? shares : -shares);
               }
           });
       }
@@ -295,8 +295,8 @@ export default defineComponent({
               // Regex to extract Q and Y
               const match = key.match(/Q(\d)\s+(\d{4})/);
               if (match) {
-                  const q = parseInt(match[1]);
-                  const y = parseInt(match[2]);
+                  const q = parseInt(match[1] ?? '');
+                  const y = parseInt(match[2] ?? '');
                   
                   // Approximate Quarter End Date
                   // Q1: Mar 31, Q2: Jun 30, Q3: Sep 30, Q4: Dec 31
@@ -314,10 +314,10 @@ export default defineComponent({
                               let bIdx = Math.floor((p - minPrice) / binSize);
                               bIdx = Math.max(0, Math.min(binCount - 1, bIdx));
                               
-                              if (isBuy) bins[bIdx].smartBuy += shares;
-                              else bins[bIdx].smartSell += shares;
+                              if (isBuy) bins[bIdx]!.smartBuy += shares;
+                              else bins[bIdx]!.smartSell += shares;
                               
-                              bins[bIdx].netSmartShares += (isBuy ? shares : -shares);
+                              bins[bIdx]!.netSmartShares += (isBuy ? shares : -shares);
                           }
                       }
                   });

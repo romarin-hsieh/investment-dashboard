@@ -133,7 +133,7 @@ export default defineComponent({
     this.resizeObserver = new ResizeObserver(() => {
         this.handleResize();
     });
-    this.resizeObserver.observe(this.$refs.chartContainer as Element);
+    this.resizeObserver.observe(this.$refs['chartContainer'] as Element);
   },
   beforeUnmount() {
     if (this.chart) {
@@ -154,7 +154,7 @@ export default defineComponent({
   methods: {
     initChart() {
       const chartOptions = this.getChartOptions();
-      this.chart = createChart(this.$refs.chartDiv as HTMLElement, chartOptions);
+      this.chart = createChart(this.$refs['chartDiv'] as HTMLElement, chartOptions);
       this.candlestickSeries = this.chart.addCandlestickSeries({
           upColor: getToken('--chart-up'),
           downColor: getToken('--chart-down'),
@@ -213,9 +213,9 @@ export default defineComponent({
             const close = data.close ?? [];
             const chartData: CandlestickData[] = timestamps.map((t, i) => ({
                 time: (t / 1000) as UTCTimestamp,
-                open: open[i],
-                high: high[i],
-                low: low[i],
+                open: open[i] as number,
+                high: high[i] as number,
+                low: low[i] as number,
                 close: close[i] as number
             }));
 
@@ -248,8 +248,8 @@ export default defineComponent({
     },
 
     handleResize() {
-        const container = this.$refs.chartContainer as HTMLElement | undefined;
-        const canvas = this.$refs.overlayCanvas as HTMLCanvasElement | undefined;
+        const container = this.$refs['chartContainer'] as HTMLElement | undefined;
+        const canvas = this.$refs['overlayCanvas'] as HTMLCanvasElement | undefined;
         if (!container || !canvas) return;
         const width = container.clientWidth;
         const height = container.clientHeight;
@@ -268,7 +268,7 @@ export default defineComponent({
     },
 
     drawOverlay() {
-       const canvas = this.$refs.overlayCanvas as HTMLCanvasElement | undefined;
+       const canvas = this.$refs['overlayCanvas'] as HTMLCanvasElement | undefined;
        if (!this.chart || !this.candlestickSeries || !canvas) return;
        const ctx = canvas.getContext('2d');
        if (!ctx) return;
@@ -335,7 +335,7 @@ export default defineComponent({
         
         // Forward Loop (Top Line)
         for (let i = 0; i < area.points.length; i++) {
-            const p = area.points[i];
+            const p = area.points[i]!;
             const x = this.timeToX(p.time, timeScale);
             const y = this.priceToY(p.yTop);
             
@@ -351,7 +351,7 @@ export default defineComponent({
         
         // Backward Loop (Bottom Line)
         for (let i = area.points.length - 1; i >= 0; i--) {
-            const p = area.points[i];
+            const p = area.points[i]!;
             const x = this.timeToX(p.time, timeScale);
             const y = this.priceToY(p.yBottom);
             

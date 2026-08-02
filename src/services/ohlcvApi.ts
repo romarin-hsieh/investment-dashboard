@@ -222,7 +222,7 @@ class OhlcvApi {
     }
 
     // 檢查數組長度一致性
-    const length = (rec.timestamps as unknown[]).length;
+    const length = (rec['timestamps'] as unknown[]).length;
     for (const field of requiredFields) {
       if ((rec[field] as unknown[]).length !== length) {
         console.error(`📊 OHLCV validation failed: ${field} length mismatch`);
@@ -249,7 +249,7 @@ class OhlcvApi {
     if (!data || !data.timestamps || data.timestamps.length === 0) return data;
 
     // Use the last timestamp in the dataset as "now" to handle historical/stale data correctly
-    const lastTimestamp = data.timestamps[data.timestamps.length - 1];
+    const lastTimestamp = data.timestamps[data.timestamps.length - 1]!;
     const cutoffDate = new Date(lastTimestamp);
 
     switch (range) {
