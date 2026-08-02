@@ -112,8 +112,6 @@
           :priority="3"
         />
       </div>
-
-      <!-- 移除 PerformanceMonitor，避免載入股票技術指標數據 -->
     </div>
   </div>
 </template>
