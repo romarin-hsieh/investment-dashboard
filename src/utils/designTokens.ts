@@ -65,30 +65,3 @@ export function getTokenRgba (name: string, alpha: number): string {
   const b = parseInt(full.slice(4, 6), 16)
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
-
-/**
- * Convenience: read several tokens at once. Returns an object keyed by the
- * token name without the leading '--' (so '--chart-up' becomes `chartUp`).
- *
- * @param names
- */
-export function getTokens (names: string[]): Record<string, string> {
-  const out: Record<string, string> = {}
-  for (const name of names) {
-    const key = name.replace(/^--/, '').replace(/-([a-z])/g, (_: string, c: string) => c.toUpperCase())
-    out[key] = getToken(name)
-  }
-  return out
-}
-
-/**
- * Returns true if the dark-mode class is currently active on <html>. Used by
- * components that still need the boolean for non-token decisions (e.g. picking
- * between two TradingView preset themes).
- *
- * @returns {boolean}
- */
-export function isDarkMode () {
-  if (!ROOT) return false
-  return ROOT.classList.contains('dark-mode')
-}
