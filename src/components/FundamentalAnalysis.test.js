@@ -13,10 +13,10 @@
  *   - `@/api/precomputedIndicatorsApi`  → vi.mock (named export)
  *   - `@/composables/useTheme`          → vi.mock (returns reactive ref('light'))
  *   - `@/utils/numberFormat`            → NO MOCK (pure passthrough)
- *   - `Bar` / `Line` (vue-chartjs)      → stubbed via mount options to skip
+ *   - `Bar` (vue-chartjs)      → stubbed via mount options to skip
  *                                         Chart.js canvas construction in jsdom
  *
- * Open template references (`upgradesDowngrades`, `targetPriceChartData`)
+ * Open template references (`upgradesDowngrades`)
  * are populated by `loadData` but the visible template elides them via
  * `<!-- ... (rest of template) ... -->` at line 152. Treated as orphan
  * state for this PR; if a future feature renders them, fixtures will
@@ -146,7 +146,7 @@ afterEach(() => {
 /** Common mount options — stub Chart.js components so jsdom doesn't try to render canvas. */
 const mountOpts = (props) => ({
   props,
-  global: { stubs: { Bar: true, Line: true } }
+  global: { stubs: { Bar: true } }
 })
 
 // ---------- mount + loadData cascade ----------
