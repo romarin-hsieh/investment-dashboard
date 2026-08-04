@@ -70,20 +70,6 @@ export function isDevelopment(): boolean {
   return import.meta.env.DEV;
 }
 
-/**
- * 獲取環境資訊
- * @returns 環境資訊
- */
-export function getEnvironmentInfo() {
-  return {
-    baseUrl: getBaseUrl(),
-    mode: import.meta.env.MODE,
-    prod: isProduction(),
-    dev: isDevelopment(),
-    viteEnv: import.meta.env
-  };
-}
-
 // 常用路徑 helpers
 // 資料檔（data/*）走 withDataBase（可由 VITE_DATA_BASE_URL 覆寫到獨立 data 站台）；
 // 設定檔（config/*）與 app 資產（package.json）留在 app repo，走 withBase。
@@ -125,29 +111,4 @@ export const paths = {
   packageJson: (): string => withBase('package.json'),
   quotesLatest: (): string => withDataBase('data/quotes/latest.json'),
   daily: (date: string): string => withDataBase(`data/daily/${date}.json`)
-};
-
-// Debug helper
-export function debugPaths(): void {
-  console.log('🔍 Base URL Debug Info:', {
-    baseUrl: getBaseUrl(),
-    environment: import.meta.env.MODE,
-    samplePaths: {
-      ohlcv: paths.ohlcv('AAPL'),
-      technicalIndicators: paths.technicalIndicators('2025-01-29', 'AAPL'),
-      metadata: paths.symbolsMetadata()
-    }
-  });
-}
-
-export default {
-  withBase,
-  withDataBase,
-  getBaseUrl,
-  getDataBaseUrl,
-  isProduction,
-  isDevelopment,
-  getEnvironmentInfo,
-  paths,
-  debugPaths
 };

@@ -175,14 +175,3 @@ export const PERFORMANCE_LABELS = {
   MARKET_DASHBOARD_LOAD: 'market_dashboard_load',
   STOCK_DETAIL_LOAD: 'stock_detail_load'
 } as const;
-
-// 自動性能監控裝飾器
-export function withPerformanceMonitoring(label: string) {
-  return function (_target: unknown, _propertyName: string, descriptor: PropertyDescriptor): PropertyDescriptor {
-    const method = descriptor.value as (...args: unknown[]) => unknown;
-    descriptor.value = async function (this: unknown, ...args: unknown[]) {
-      return await performanceMonitor.measureAsync(label, () => Promise.resolve(method.apply(this, args)));
-    };
-    return descriptor;
-  };
-}

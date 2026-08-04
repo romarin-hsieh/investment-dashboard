@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { formatNumber, formatPercent, formatLocaleNumber } from './numberFormat'
+import { formatNumber } from './numberFormat'
 
 describe('formatNumber', () => {
   it('formats finite numbers to the requested precision', () => {
@@ -47,34 +47,5 @@ describe('formatNumber', () => {
     expect(formatNumber('3.14', 2)).toBe('N/A')
     // @ts-expect-error
     expect(formatNumber({}, 2)).toBe('N/A')
-  })
-})
-
-describe('formatPercent', () => {
-  it('appends a % sign to finite values', () => {
-    expect(formatPercent(3.14159, 2)).toBe('3.14%')
-    expect(formatPercent(0, 0)).toBe('0%')
-    expect(formatPercent(-1.5, 1)).toBe('-1.5%')
-  })
-
-  it('returns the fallback WITHOUT a % suffix for non-finite input', () => {
-    // Regression guard: UI must never show "NaN%" or "Infinity%"
-    expect(formatPercent(NaN)).toBe('N/A')
-    expect(formatPercent(Infinity)).toBe('N/A')
-    expect(formatPercent(null)).toBe('N/A')
-    expect(formatPercent(undefined)).toBe('N/A')
-  })
-})
-
-describe('formatLocaleNumber', () => {
-  it('formats finite numbers with en-US grouping', () => {
-    expect(formatLocaleNumber(1234567.89, 2)).toBe('1,234,567.89')
-    expect(formatLocaleNumber(1000, 0)).toBe('1,000')
-  })
-
-  it('returns fallback for non-finite input', () => {
-    expect(formatLocaleNumber(NaN)).toBe('N/A')
-    expect(formatLocaleNumber(Infinity)).toBe('N/A')
-    expect(formatLocaleNumber(null)).toBe('N/A')
   })
 })
