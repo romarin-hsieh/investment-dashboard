@@ -219,6 +219,13 @@ class DataVersionService {
    */
   shouldClearCacheKey(key: string): boolean {
     const cachePatterns = [
+      // performanceCache namespace — quotes/overview/daily/metadata/config snapshots.
+      // All are data caches that must refresh when the data version bumps; without this
+      // the 24h-TTL `stock_overview_data` cache masks universe/config changes for a full
+      // day (e.g. a hidden->visible symbol would not appear until the TTL expired). The
+      // Pinia `investment-dashboard-state` and `*-expanded-sections` keys use a different
+      // prefix and are preserved, as is `lastSeenDataVersion`.
+      'investment_dashboard_cache_',
       'technical_indicators_',
       'precomputed_',
       'ohlcv_',

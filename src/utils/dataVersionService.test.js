@@ -38,12 +38,19 @@ describe('shouldClearCacheKey', () => {
     expect(dataVersionService.shouldClearCacheKey('ohlcv_TSLA_1d')).toBe(true)
     expect(dataVersionService.shouldClearCacheKey('latest_index_2026')).toBe(true)
     expect(dataVersionService.shouldClearCacheKey('hybrid_technical_QQQ')).toBe(true)
+    // performanceCache data snapshots — the 24h-TTL overview cache previously masked
+    // universe/config changes (visible-flag flips) until it expired.
+    expect(dataVersionService.shouldClearCacheKey('investment_dashboard_cache_v3_stock_overview_data')).toBe(true)
+    expect(dataVersionService.shouldClearCacheKey('investment_dashboard_cache_v3_quotes_snapshot')).toBe(true)
   })
 
   it('does not match unrelated keys (failure path — false positive guard)', () => {
     expect(dataVersionService.shouldClearCacheKey('user_preferences')).toBe(false)
     expect(dataVersionService.shouldClearCacheKey('theme_setting')).toBe(false)
     expect(dataVersionService.shouldClearCacheKey('lastSeenDataVersion')).toBe(false)
+    // preserved despite the broad cache-namespace pattern (different prefix)
+    expect(dataVersionService.shouldClearCacheKey('investment-dashboard-state')).toBe(false)
+    expect(dataVersionService.shouldClearCacheKey('stock-overview-expanded-sections')).toBe(false)
     expect(dataVersionService.shouldClearCacheKey('')).toBe(false)
   })
 })
