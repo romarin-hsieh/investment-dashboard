@@ -46,30 +46,6 @@ export function withDataBase(path: string): string {
   return `${getDataBaseUrl()}${cleanPath}`;
 }
 
-/**
- * 獲取當前的 base URL
- * @returns base URL
- */
-export function getBaseUrl(): string {
-  return import.meta.env.BASE_URL || '/';
-}
-
-/**
- * 檢查是否為生產環境
- * @returns 是否為生產環境
- */
-export function isProduction(): boolean {
-  return import.meta.env.PROD;
-}
-
-/**
- * 檢查是否為開發環境
- * @returns 是否為開發環境
- */
-export function isDevelopment(): boolean {
-  return import.meta.env.DEV;
-}
-
 // 常用路徑 helpers
 // 資料檔（data/*）走 withDataBase（可由 VITE_DATA_BASE_URL 覆寫到獨立 data 站台）；
 // 設定檔（config/*）與 app 資產（package.json）留在 app repo，走 withBase。
