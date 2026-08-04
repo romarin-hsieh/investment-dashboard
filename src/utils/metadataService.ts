@@ -157,25 +157,12 @@ class MetadataService {
       const metadataMapLower = new Map<string, SymbolMetadataItem>() // Case-insensitive lookup
 
       if (this.metadata && Array.isArray(this.metadata.items)) {
-        console.log(`🔍 SAMA-DEBUG: metadata.items is Array of length ${this.metadata.items.length}`)
-
-        // Debug specific symbols
-        const debugSymbols = ['TSM', 'CRM', 'NVDA']
-        debugSymbols.forEach(sym => {
-          const found = this.metadata!.items!.find(i => i.symbol === sym)
-          console.log(`🔍 SAMA-DEBUG: Content Check [${sym}]:`, found ? 'FOUND' : 'MISSING', found ? `(Conf: ${found.confidence})` : '')
-        })
-
         this.metadata.items.forEach(item => {
           if (item && item.symbol) {
             metadataMap.set(item.symbol, item)
             metadataMapLower.set(item.symbol.toLowerCase(), item)
           }
         })
-      } else {
-        console.error('❌ SAMA-DEBUG: CRITICAL - this.metadata structure is wrong:', this.metadata)
-        if (this.metadata && !this.metadata.items) console.error('❌ SAMA-DEBUG: items property is missing')
-        if (this.metadata && this.metadata.items && !Array.isArray(this.metadata.items)) console.error('❌ SAMA-DEBUG: items is NOT an array')
       }
 
       // 3. Populate results
@@ -257,8 +244,6 @@ class MetadataService {
     this._loadingPromise = (async () => {
       this.lastAttempt = Date.now() // Mark attempt start
       try {
-        console.log('🔄 SAMA-DEBUG: Refreshing metadata from dataFetcher...')
-
         // 嘗試直接載入 JSON 檔案作為備用方案
         // `result` holds whichever loader succeeded; only `.data` is read. The
         // fetcher returns FetchResult<MetadataSnapshot> and the direct loader a

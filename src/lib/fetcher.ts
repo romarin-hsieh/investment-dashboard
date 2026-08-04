@@ -314,7 +314,6 @@ export class DataFetcher {
       }
 
       const url = `${this.baseUrl}/data/symbols_metadata.json${cacheBuster}`
-      console.log(`🔍 SAMA-DEBUG: Fetching metadata snapshot from: ${url}`)
 
       const response = await fetch(url)
       if (!response.ok) {

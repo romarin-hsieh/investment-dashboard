@@ -948,30 +948,6 @@ class YahooFinanceAPI {
     };
   }
 
-  // Helper to transform Static JSON format -> Frontend Format
-  // Since we are now loading pre-calculated JSON, we might need a transformer if strict formats differ.
-  // Ideally, the generator should output exactly what frontend needs, OR we transform here.
-  // The generator output (seen in generate-daily-technical-indicators.js) seems to be RAW arrays.
-  // The Frontend expects objects with { value, signal }.
-  // -> We DO need a transformation step here similar to what _fetchTechnicalIndicatorsFromAPIInternal does.
-  // Let's implement that quickly in a separate PR or next step? 
-  // For now, let's stick to API fix, and keep static fetch disabled or simple until mapped.
-  // Wait, I already added call to _fetchStaticTechnicalIndicators. 
-  // Corrective action: Return null for now in _fetchStaticTechnicalIndicators to perform safe rollout 
-  // OR verify generators output. Generator outputs raw arrays. Frontend needs Signals.
-  // So we CANNOT just return staticRaw directly.
-
-  // Re-writing _fetchStaticTechnicalIndicators to be a safe stub for now OR implement full mapping.
-  // Given user request "能使 gitaction 每日進行資料收集與產出正常嗎", full mapping is better.
-  // However, mapping logic is huge (all those createIndicatorResult calls).
-  // Best approach: Refactor the mapping logic in _fetchTechnicalIndicatorsFromAPIInternal to be reusable
-  // and apply it to the static raw arrays.
-
-  // Let's postpone full static mapping to "Verification" phase or separate refactor. 
-  // I will comment out the static fetch return for now to ensure I don't break the app with raw arrays.
-  // Actually, I'll define it but return null to be safe until mappig is moved.
-
-
   // 清除 API 請求緩存
   clearCache() {
     this.cache.clear();
