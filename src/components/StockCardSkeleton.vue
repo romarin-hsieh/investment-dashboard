@@ -235,13 +235,7 @@ export default defineComponent({
 .skeleton-symbol,
 .skeleton-price,
 .skeleton-change,
-.skeleton-company-name,
-.skeleton-market-cap,
-.skeleton-exchange,
-.skeleton-description,
 .skeleton-chart,
-.skeleton-chart-label,
-.skeleton-chart-value,
 .skeleton-tag,
 .skeleton-confidence,
 .skeleton-source {
@@ -256,10 +250,6 @@ export default defineComponent({
   .skeleton-content {
     flex-direction: column;
     gap: var(--space-4);
-  }
-  
-  .skeleton-chart-section {
-    width: 100%;
   }
   
   .skeleton-chart {
@@ -290,11 +280,6 @@ export default defineComponent({
   .skeleton-price-group {
     align-items: flex-start;
   }
-  
-  .skeleton-market-info {
-    flex-direction: column;
-    gap: var(--space-2);
-  }
 }
 
 /* 動畫延遲效果 */
@@ -308,10 +293,6 @@ export default defineComponent({
 
 .skeleton-change {
   animation-delay: var(--transition-slow);
-}
-
-.skeleton-company-name {
-  animation-delay: 0.4s;
 }
 
 .skeleton-chart {
