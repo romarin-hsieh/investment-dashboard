@@ -387,20 +387,5 @@ export type { DataVersionService };
 export const dataVersionService = new DataVersionService();
 
 // Auto-start is handled by AutoUpdateScheduler in main.ts
-// if (typeof window !== 'undefined') {
-//   // 延遲啟動，避免影響初始頁面載入
-//   setTimeout(() => {
-//     dataVersionService.checkDataVersionAndRefresh();
-//   }, 2000); // 2 秒後檢查
-//
-//   // 監聽頁面可見性變化，當頁面重新可見時檢查版本
-//   document.addEventListener('visibilitychange', () => {
-//     if (!document.hidden) {
-//       setTimeout(() => {
-//         dataVersionService.checkDataVersionAndRefresh();
-//       }, 1000);
-//     }
-//   });
-// }
 
 export default dataVersionService;
