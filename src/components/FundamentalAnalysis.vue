@@ -154,7 +154,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, PointElement, LineElement, LineController, type ChartData, type ChartOptions } from 'chart.js'
-import { Bar, Line } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 import { formatNumber } from '@/utils/numberFormat'
@@ -180,7 +180,7 @@ interface EarningsPayload { financialsChart?: { yearly?: unknown; quarterly?: un
 
 export default defineComponent({
   name: 'FundamentalAnalysis',
-  components: { Bar, Line, WidgetSkeleton },
+  components: { Bar, WidgetSkeleton },
   props: {
     symbol: {
       type: String,
@@ -203,20 +203,15 @@ export default defineComponent({
       error: null as string | null,
       metrics: {} as Record<string, unknown>,
       upgradesDowngrades: [] as UpgradeItem[],
-      recommendationChartData: null as ChartData<'bar'> | null,
       earningsChartData: null as ChartData<'bar'> | null,
       earningsViewMode: 'yearly', // 'yearly' or 'quarterly'
       yearlyEarningsData: [] as EarningsEntry[],
       quarterlyEarningsData: [] as EarningsEntry[],
       recommendationTrend: [] as RecommendationPeriod[],
       priceTargets: null as PriceTargets | null,
-      targetPriceChartData: null as ChartData<'line'> | null,
     };
   },
   computed: {
-    isDark() {
-        return this.theme === 'dark';
-    },
     commonChartColors() {
         // Touch `theme` so this computed re-evaluates (re-reads tokens) on
         // light/dark toggle — getToken() reads the DOM, not a reactive dep.
@@ -226,28 +221,6 @@ export default defineComponent({
             grid: getToken('--chart-grid'),
             tooltipBg: getTokenRgba('--bg-card', 0.9),
             tooltipText: getToken('--text-primary')
-        }
-    },
-    recommendationChartOptions(): ChartOptions<'bar'> {
-        return {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false }
-            },
-            scales: {
-              x: { 
-                  stacked: true,
-                  ticks: { color: this.commonChartColors.text },
-                  grid: { color: this.commonChartColors.grid }
-              },
-              y: { 
-                  stacked: true, 
-                  beginAtZero: true,
-                  ticks: { color: this.commonChartColors.text },
-                  grid: { color: this.commonChartColors.grid }
-              }
-            }
         }
     },
     earningsChartOptions(): ChartOptions<'bar'> {
@@ -296,28 +269,6 @@ export default defineComponent({
             }
         }
     },
-    targetPriceChartOptions(): ChartOptions<'line'> {
-        return {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false },
-              title: { display: true, text: this.$t('fundamentals.targetPriceChart.title'), color: this.commonChartColors.text }
-            },
-            scales: {
-              x: {
-                  ticks: { color: this.commonChartColors.text },
-                  grid: { color: this.commonChartColors.grid }
-              },
-              y: {
-                beginAtZero: false,
-                title: { display: true, text: this.$t('fundamentals.targetPriceChart.priceAxis'), color: this.commonChartColors.text },
-                ticks: { color: this.commonChartColors.text },
-                grid: { color: this.commonChartColors.grid }
-              }
-            }
-        }
-    }
   },
   watch: {
     symbol: {
@@ -546,7 +497,6 @@ export default defineComponent({
     processUpgradesDowngrades(history: unknown) {
         if (!history || !Array.isArray(history)) {
             this.upgradesDowngrades = [];
-            this.targetPriceChartData = null;
             return;
         }
         const items = history as UpgradeItem[];
@@ -570,11 +520,8 @@ export default defineComponent({
                  return !isNaN(d.getTime()) && d >= fiveYearsAgo;
             });
 
-        // 1. Prepare Table Data (Newest First)
+        // Prepare Table Data (Newest First)
         this.upgradesDowngrades = [...validItems].sort((a, b) => b.epochGradeDate - a.epochGradeDate);
-        
-        // 2. Prepare Chart Data
-        this.prepareTargetPriceChart(this.upgradesDowngrades);
     },
 
     formatPercent(val: unknown) {
@@ -583,33 +530,6 @@ export default defineComponent({
         const num = (typeof val === 'object' && val !== null ? (val as { raw?: number }).raw : val) as number;
         const pct = formatNumber(num * 100, 2, null);
         return pct === null ? this.$t('fundamentals.keyMetrics.notAvailable') : pct + '%';
-    },
-
-    prepareTargetPriceChart(validItems: UpgradeItem[]) {
-        if (!validItems) return;
-        // Filter out items without price targets for the chart, and ensure target > 0
-        const chartItems = validItems
-            .filter(item => item.currentPriceTarget !== undefined && item.currentPriceTarget !== null && item.currentPriceTarget > 0)
-            .sort((a, b) => a.epochGradeDate - b.epochGradeDate);
-
-        if (chartItems.length > 0) {
-            this.targetPriceChartData = ({
-                labels: chartItems.map(item => this.formatDate(item.epochGradeDate)),
-                datasets: [{
-                    label: this.$t('fundamentals.targetPriceChart.priceTargetSeries'),
-                    data: chartItems.map(item => item.currentPriceTarget),
-                    borderColor: getToken('--warning-solid'),
-                    backgroundColor: getTokenRgba('--warning-solid', 0.2),
-                    pointRadius: 4,
-                    pointHoverRadius: 6,
-                    fill: true,
-                    tension: 0.2
-                }]
-            } as unknown as ChartData<'line'>);
-        } else {
-            // console.warn('No chart items found despite history existing.');
-            this.targetPriceChartData = null;
-        }
     },
 
     formatCurrency(val: number | null | undefined) {
@@ -729,13 +649,6 @@ export default defineComponent({
     /* background: var(--bg-primary); Removed gray background */
     /* border-radius: 8px; Removed */
     background: transparent;
-}
-.section-title {
-    margin-bottom: var(--space-6);
-    padding-bottom: var(--space-2);
-    border-bottom: 1px solid var(--border-color);
-    font-weight: var(--weight-semibold);
-    color: var(--text-secondary);
 }
 
 /* Grid Layout */
@@ -918,25 +831,6 @@ export default defineComponent({
    Latent utility with no current consumer — kept AA-correct so it's safe if ever wired. */
 .text-warning { color: var(--warning-strong) !important; }
 
-/* Loading/Error */
-.loading-state, .error-state {
-    text-align: center;
-    padding: var(--space-12);
-}
-.spinner {
-    width: 40px; 
-    height: 40px; 
-    border: 4px solid var(--bg-secondary); 
-    border-top: 4px solid var(--primary-color); 
-    border-radius: 50%; 
-    animation: spin 1s linear infinite; 
-    margin: 0 auto var(--space-4);
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 /* History Card & Tables */
 .earnings-card {
     background: var(--bg-card);
@@ -944,10 +838,6 @@ export default defineComponent({
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
-}
-.table-container {
-    overflow-x: auto;
-    margin-top: var(--space-4);
 }
 table {
     width: 100%;

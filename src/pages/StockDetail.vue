@@ -217,8 +217,6 @@
             </div>
           </div>
 
-          <!-- Performance Monitor -->
-          <PerformanceMonitor />
           
           <!-- Latest News -->
           <div class="widget-container">
@@ -294,7 +292,6 @@ import MarketRegimeWidget from '@/components/MarketRegimeWidget.vue'
 import TradingStrategyWidget from '@/components/TradingStrategyWidget.vue'
 import MFIVolumeProfilePanel from '@/components/MFIVolumeProfilePanel.vue'
 import TechnicalIndicators from '@/components/TechnicalIndicators.vue'
-import PerformanceMonitor from '@/components/PerformanceMonitor.vue'
 import StockNews from '@/components/StockNews.vue'
 import StockDetailSkeleton from '@/components/StockDetailSkeleton.vue'
 import TechnicalSignals from '@/components/TechnicalSignals.vue'
@@ -334,7 +331,6 @@ export default defineComponent({
     TradingViewCompanyProfile,
     TradingViewFundamentalData,
     TechnicalIndicators,
-    PerformanceMonitor,
     StockNews,
     StockDetailSkeleton,
     FundamentalAnalysis,
