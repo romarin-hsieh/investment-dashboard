@@ -64,7 +64,7 @@
                         </button>
                      </td>
                      <td class="text-left font-medium">{{ item.manager }}</td>
-                     <td class="text-center">{{ formatPercent(item.percent_portfolio) }}</td>
+                     <td class="text-center">{{ formatPortfolioPct(item.percent_portfolio) }}</td>
                      <td class="text-center" :class="getActivityColor(item.recent_activity)">{{ item.recent_activity || '-' }}</td>
                      <td class="text-right">{{ formatNumber(item.shares) }}</td>
                      <td class="text-right">${{ formatNumber(item.value) }}</td>
@@ -284,7 +284,10 @@ export default defineComponent({
     formatNumber(num: number | null | undefined) {
       return new Intl.NumberFormat('en-US').format(num || 0);
     },
-    formatPercent(num: number | null | undefined) {
+    // `percent_portfolio` is already a percentage (e.g. 36 => "36%") — no scaling
+    // or rounding here, unlike FundamentalAnalysis's fraction-based formatter that
+    // happens to share the name `formatPercent`.
+    formatPortfolioPct(num: number | null | undefined) {
       if (num === null || num === undefined) return '-';
       return num + '%';
     },
