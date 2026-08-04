@@ -455,15 +455,6 @@ export default defineComponent({
   gap: var(--space-4);
 }
 
-/* Orphaned .detail-btn styles removed */
-
-.btn-icon {
-  font-size: var(--text-md);
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-}
-
 /* Widgets Container */
 .widgets-container {
   display: grid;
@@ -474,8 +465,7 @@ export default defineComponent({
   will-change: transform; 
 }
 
-.widget-overview,
-.widget-technical {
+.widget-overview {
   background: var(--bg-card); /* Should match card bg or slightly different? Usually plain bg is fine */
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -486,11 +476,6 @@ export default defineComponent({
 }
 
 .widget-overview {
-  min-height: 440px; 
-  height: 440px;
-}
-
-.widget-technical {
   min-height: 440px; 
   height: 440px;
 }
@@ -511,11 +496,6 @@ export default defineComponent({
 
 /* 確保 widget 內容區域有足夠高度 */
 .widget-overview > :not(.widget-header) {
-  flex: 1;
-  min-height: 390px; 
-}
-
-.widget-technical > :not(.widget-header) {
   flex: 1;
   min-height: 390px; 
 }
@@ -658,8 +638,7 @@ export default defineComponent({
   }
 
   /* 讓 Overview 和 Technical 高度一致或自適應 */
-  .widget-overview,
-  .widget-technical {
+  .widget-overview {
     min-height: 450px;
     height: 450px;
   }
@@ -702,11 +681,6 @@ export default defineComponent({
     min-height: 380px;
   }
   
-  .widget-technical {
-    height: 380px; 
-    min-height: 380px;
-  }
-  
   .widget-header h4 {
     font-size: var(--text-base);
   }
@@ -733,11 +707,6 @@ export default defineComponent({
   }
   
   .widget-overview {
-    height: 330px; 
-    min-height: 330px;
-  }
-  
-  .widget-technical {
     height: 330px; 
     min-height: 330px;
   }
