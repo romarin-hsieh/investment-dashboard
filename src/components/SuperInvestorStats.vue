@@ -66,8 +66,8 @@
                      <td class="text-left font-medium">{{ item.manager }}</td>
                      <td class="text-center">{{ formatPortfolioPct(item.percent_portfolio) }}</td>
                      <td class="text-center" :class="getActivityColor(item.recent_activity)">{{ item.recent_activity || '-' }}</td>
-                     <td class="text-right">{{ formatNumber(item.shares) }}</td>
-                     <td class="text-right">${{ formatNumber(item.value) }}</td>
+                     <td class="text-right">{{ formatGrouped(item.shares) }}</td>
+                     <td class="text-right">${{ formatGrouped(item.value) }}</td>
                    </tr>
                    <!-- Nested History Table -->
                    <tr v-if="isHistoryExpanded(index)" class="history-row">
@@ -87,7 +87,7 @@
                               <tbody>
                                 <tr v-for="(hItem, hIndex) in item.history" :key="hIndex">
                                   <td>{{ hItem.period }}</td>
-                                  <td class="text-right">{{ formatNumber(hItem.shares) }}</td>
+                                  <td class="text-right">{{ formatGrouped(hItem.shares) }}</td>
                                   <td class="text-center">{{ hItem.percent_portfolio ? hItem.percent_portfolio + '%' : '-' }}</td>
                                   <td class="text-right" :class="getActivityColor(hItem.activity)">{{ hItem.activity || '-' }}</td>
                                   <td class="text-center">{{ hItem.percent_change_portfolio ? hItem.percent_change_portfolio + '%' : '-' }}</td>
@@ -160,7 +160,7 @@
                       </span>
                    </td>
                    <td class="text-right" :class="getSharesClass(item.type)">
-                     {{ item.shares_changed > 0 ? '+' : '' }}{{ formatNumber(item.shares_changed) }}
+                     {{ item.shares_changed > 0 ? '+' : '' }}{{ formatGrouped(item.shares_changed) }}
                    </td>
                  </tr>
                  <tr v-if="activityList.length === 0">
@@ -281,7 +281,10 @@ export default defineComponent({
     toggleSection(section: string) {
       this.expandedSections[section] = !this.expandedSections[section];
     },
-    formatNumber(num: number | null | undefined) {
+    // Locale thousands-grouping for whole share counts / $ values (1234567 => "1,234,567");
+    // distinct from the util `formatNumber` (toFixed decimals + "N/A" fallback), which this
+    // component does not import. num||0 => "0" fallback.
+    formatGrouped(num: number | null | undefined) {
       return new Intl.NumberFormat('en-US').format(num || 0);
     },
     // `percent_portfolio` is already a percentage (e.g. 36 => "36%") — no scaling
