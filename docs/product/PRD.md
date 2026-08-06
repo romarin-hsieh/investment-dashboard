@@ -51,7 +51,7 @@ Investment Dashboard is a private investment-analysis dashboard for a single ope
 | F10 | Watchlist / Holdings (LocalStorage) | **S** | Production | (src/types/index.ts) |
 | F11 | Automated daily ETL via GitHub Actions | **M** | Production | [operations/DATA_OPERATIONS.md](../operations/DATA_OPERATIONS.md) |
 | F12 | Add-new-symbol self-service workflow | **S** | Production | [operations/ADD_NEW_SYMBOL.md](../operations/ADD_NEW_SYMBOL.md) |
-| F13 | Automated Test Suite | **S** | ⚠️ Missing | TBD — see ROADMAP.md |
+| F13 | Automated Test Suite | **S** | Production | [ADR-0013](../architecture/adr/0013-component-test-coverage-policy.md) + [ADR-0015](../architecture/adr/0015-accessibility-and-e2e-testing.md) *(row corrected 2026-08-07 — was stale "Missing")* |
 | F14 | Research Ingestion (Obsidian / NotebookLM) | **C** (Could) | Planned | [ROADMAP.md](ROADMAP.md) |
 | F15 | n8n-based ETL orchestration | **C** | Planned | [ROADMAP.md](ROADMAP.md) |
 | F16 | Bilingual UI (EN / 繁中) | **C** | Production | [ADR-0009](../architecture/adr/0009-i18n-message-precompilation-csp.md) |
@@ -169,11 +169,12 @@ Feature: Nightly pipeline maintains the Static Lake
 
 ## 7. Open Questions / Decisions Needed
 
-1. **Testing strategy**: F13 is Should-have but currently missing (zero test coverage). Does the next iteration prioritise (a) Vitest component tests for critical widgets, (b) Python integration tests for the quant pipeline, or (c) Playwright E2E for the user-facing golden paths? → Needs ADR.
+1. **Testing strategy**: ✅ **Resolved** — Vitest component/unit layer (ADR-0013 coverage floors) + Playwright E2E/a11y layer (ADR-0015) both shipped; Gherkin acceptance criteria are executable via the GWT layer (`features/`, see [BDD_DDD_GAP_ANALYSIS.md](BDD_DDD_GAP_ANALYSIS.md)). *(Was stale as of 2026-08-07.)*
 2. **Research-to-site integration path** (F14/F15): Which platform owns the daily note — Obsidian (local, Markdown) or NotebookLM (cloud, summarization)? What JSON contract does the frontend consume? → Needs a dedicated ADR in the next cycle.
 3. **Bilingual UI (F16)**: ✅ **Resolved (2026-06)** — adopted vue-i18n with build-time message precompilation for CSP compliance ([ADR-0009](../architecture/adr/0009-i18n-message-precompilation-csp.md)). Full EN/繁中 runtime toggle shipped in PRs #60–#65.
 4. **CORS proxy SLA**: Tier-3 fallback depends on free third-party proxies. At what failure rate do we invest in a self-hosted proxy? → Track in SLA.md after one quarter of data.
 5. **Universe cap**: Currently ~50 active symbols in quant engine but `public/data/ohlcv/` hosts ~560. What's the upper bound before CI time becomes a bottleneck? → Monitor, revisit at 100 symbols.
+6. **Settings surface** *(added 2026-08-07)*: `/settings` ships three promise-only stub cards yet is advertised in the nav (audit SD-6). Implement the three panels (US-SET1/2 in [USER_STORIES.md](USER_STORIES.md)) or de-list the route until they exist? → Owner decision; interim mitigation options in the audit's fix package 6.
 
 ---
 
@@ -185,3 +186,4 @@ Feature: Nightly pipeline maintains the Static Lake
 - **Operations**: [operations/DATA_OPERATIONS.md](../operations/DATA_OPERATIONS.md), [operations/RUNBOOK.md](../operations/RUNBOOK.md), [operations/SLA.md](../operations/SLA.md)
 - **Roadmap**: [ROADMAP.md](ROADMAP.md)
 - **Vocabulary**: [GLOSSARY.md](GLOSSARY.md)
+- **Surface-level stories & UX contracts** *(2026-08-07)*: [USER_STORIES.md](USER_STORIES.md), [USER_FLOWS.md](USER_FLOWS.md), [STATE_MACHINES.md](STATE_MACHINES.md), [WIREFRAMES.md](WIREFRAMES.md), [BDD_DDD_GAP_ANALYSIS.md](BDD_DDD_GAP_ANALYSIS.md)
