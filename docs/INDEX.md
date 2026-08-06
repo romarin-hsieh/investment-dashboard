@@ -44,6 +44,7 @@
 - **[product/GLOSSARY.md](product/GLOSSARY.md)** — bilingual EN/繁中 vocabulary
 
 ### "Where are the known quality gaps?"
+- **[audits/2026-08-07-adversarial-round2-audit.md](audits/2026-08-07-adversarial-round2-audit.md)** — round 2: style/copy/system-design findings (skeptic-verified, runtime-measured), round-1 status tracking, ranked fix packages
 - **[audits/2026-07-20-adversarial-uiux-audit.md](audits/2026-07-20-adversarial-uiux-audit.md)** — 18 verified UI/UX + accessibility findings, ranked top-8 fixes
 - **[audits/2026-07-20-test-strategy.md](audits/2026-07-20-test-strategy.md)** — coverage gaps ranked by risk + the next 5 test PRs
 
@@ -101,6 +102,7 @@
 - [DATA_REPO_SETUP.md](contributing/DATA_REPO_SETUP.md) — local data setup (separate data repo)
 
 ### Audits (`audits/` — dated adversarial reviews)
+- [2026-08-07-adversarial-round2-audit.md](audits/2026-08-07-adversarial-round2-audit.md) (+ [progress log](audits/2026-08-07-progress.md), [screenshot baseline](audits/2026-08-07-screenshots/))
 - [2026-07-20-adversarial-uiux-audit.md](audits/2026-07-20-adversarial-uiux-audit.md)
 - [2026-07-20-test-strategy.md](audits/2026-07-20-test-strategy.md)
 
