@@ -394,7 +394,7 @@ export default defineComponent({
   padding: var(--space-2) var(--space-4);
   background: var(--primary-strong);
   color: white;
-  border: none;
+  border: 1px solid transparent;
   border-radius: var(--radius-sm);
   cursor: pointer;
 }

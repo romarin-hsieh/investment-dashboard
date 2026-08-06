@@ -1,7 +1,7 @@
 ﻿<template>
   <div class="stock-overview">
     <div class="stock-header">
-      <h2>{{ $t('stockOverview.title') }}</h2>
+      <h2 class="page-title page-title--display">{{ $t('stockOverview.title') }}</h2>
       <div class="header-right">
         <div class="update-info" v-if="lastUpdate">
           <span class="text-muted">{{ $t('stockOverview.lastUpdated', { time: formatTime(lastUpdate) }) }}</span>
@@ -1057,7 +1057,7 @@ export default defineComponent({
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
-  padding: var(--space-4);
+  padding: var(--widget-padding);
 }
 
 .widget-container-ticker .widget-header {

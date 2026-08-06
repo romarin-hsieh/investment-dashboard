@@ -553,21 +553,6 @@ export default defineComponent({
   gap: var(--space-2);
 }
 
-.retry-btn {
-  padding: var(--space-2) var(--space-4);
-  /* --blue-500 gave white only 3.98:1; --blue-700 is the audited white-on-blue fill */
-  background: var(--blue-700);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--text-base);
-}
-
-.retry-btn:hover {
-  background: var(--blue-700);
-}
-
 .dev-info {
   color: var(--text-secondary);
   font-style: italic;
@@ -893,6 +878,8 @@ export default defineComponent({
     background: none;
     border: none;
     padding: 2px 4px;
+    min-width: 24px;
+    min-height: 24px;
     color: var(--text-secondary);
     cursor: pointer;
     margin-left: 8px;

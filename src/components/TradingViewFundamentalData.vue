@@ -221,21 +221,6 @@ export default defineComponent({
   color: var(--danger-fg);
 }
 
-.retry-btn {
-  padding: var(--space-1) var(--space-3);
-  background: var(--danger-solid);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-}
-
-.retry-btn:hover {
-  background: #c82333;
-}
-
 /* TradingView Widget 樣式覆蓋 - 僅針對 Fundamental Data */
 :global(.fundamental-data-container) {
   display: flex;

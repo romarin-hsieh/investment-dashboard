@@ -25,7 +25,7 @@
         <div class="stock-info-header">
           <div class="symbol-info">
             <div class="symbol-wrapper">
-              <h3 class="symbol">{{ symbol }}</h3>
+              <h2 class="symbol">{{ symbol }}</h2>
               <a :href="`https://finance.yahoo.com/chart/${symbol}`" target="_blank" rel="noopener noreferrer" class="realtime-btn" :title="$t('stockDetail.actions.viewRealtimeChartTitle')" :aria-label="$t('stockDetail.actions.viewRealtimeChartAria', { symbol })">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
               </a>
@@ -1015,31 +1015,6 @@ export default defineComponent({
   gap: var(--space-4);
 }
 
-.detail-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  background: linear-gradient(135deg, var(--grey-550), var(--grey-650));
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-semibold);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
-  line-height: 1;
-  min-height: 36px;
-}
-
-.detail-btn:hover {
-  background: linear-gradient(135deg, var(--grey-650), var(--grey-700));
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
-}
-
 .btn-icon {
   font-size: var(--text-md);
   line-height: 1;
@@ -1258,11 +1233,6 @@ export default defineComponent({
     padding: var(--space-2) var(--space-3);
   }
   
-  .detail-btn {
-    padding: 0.4rem 0.8rem;
-    font-size: var(--text-sm);
-  }
-  
   .widgets-container {
     gap: var(--space-3);
   }
@@ -1386,6 +1356,8 @@ export default defineComponent({
   background: none;
   border: none;
   padding: 4px;
+  min-width: 24px;
+  min-height: 24px;
   color: var(--text-muted);
   cursor: pointer;
   transition: color var(--transition-base);

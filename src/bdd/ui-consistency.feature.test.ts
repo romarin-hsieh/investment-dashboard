@@ -2,15 +2,15 @@
  * Binding for features/ui-consistency.feature — the button grammar as a structural guard
  * (same family as style.css-negation.test.js / dateformat-usage.guard.test.js).
  *
- * @pending-fix(fix/ui-consistency): both scenarios are fully written but gated behind
- * pendingScenario until the SC-1/SC-6 unification lands (pages currently DO redefine .btn
- * geometry, and btn-info is used while defined nowhere). Flipping `pendingScenario` →
- * `scenario` is the fix PR's red→green switch.
+ * ACTIVE since fix/ui-consistency (the SC-1/SC-6 unification) — keeps page-local button
+ * geometry and undefined variants from returning. Variant scan is scoped to class
+ * attributes that carry the bare `btn` base class: component-private button classes that
+ * opt out of the system (e.g. GenericSettingsModal's btn-cancel/btn-save) are exempt.
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { expect } from 'vitest'
-import { feature, pendingScenario } from './gwt'
+import { feature, scenario } from './gwt'
 
 const read = (p: string) => fs.readFileSync(p, 'utf8')
 const listFiles = (dir: string, ext: string): string[] =>
@@ -25,9 +25,8 @@ const styleBlocksOf = (vueSource: string): string =>
   [...vueSource.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map((m) => m[1] ?? '').join('\n')
 
 feature('One visual grammar across routes', () => {
-  pendingScenario(
+  scenario(
     'No page redefines button geometry',
-    'activate in fix/ui-consistency once SC-1 lands',
     (s) => {
       let offenders: string[] = []
 
@@ -58,9 +57,8 @@ feature('One visual grammar across routes', () => {
     }
   )
 
-  pendingScenario(
+  scenario(
     'Every btn-* variant used in markup is defined in the global layer',
-    'activate in fix/ui-consistency once SC-6 lands',
     (s) => {
       const defined = new Set<string>()
       let undefinedUses: string[] = []
@@ -79,7 +77,16 @@ feature('One visual grammar across routes', () => {
           const source = read(file)
           const template = source.split(/<style/)[0] ?? source
           const used = new Set<string>()
-          for (const m of template.matchAll(/\bbtn-([a-z-]+)/g)) used.add(m[1] ?? '')
+          // Only class attributes that opt INTO the system (carry bare `btn`) are held
+          // to the defined-variant contract; private families (btn-cancel…) are exempt.
+          for (const attr of template.matchAll(/class="([^"]*)"/g)) {
+            const classes = (attr[1] ?? '').split(/\s+/)
+            if (!classes.includes('btn')) continue
+            for (const c of classes) {
+              const m = /^btn-([a-z-]+)$/.exec(c)
+              if (m) used.add(m[1] ?? '')
+            }
+          }
           return [...used]
             .filter((v) => !defined.has(v))
             .map((v) => `${path.basename(file)}: btn-${v} used but not defined globally`)

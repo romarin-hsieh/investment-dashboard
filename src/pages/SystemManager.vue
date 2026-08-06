@@ -1,7 +1,7 @@
 <template>
   <div class="system-manager">
     <div class="manager-header">
-      <h2>{{ $t('systemManager.pageTitle') }}</h2>
+      <h2 class="page-title">{{ $t('systemManager.pageTitle') }}</h2>
       <p>{{ $t('systemManager.pageSubtitle') }}</p>
     </div>
 
@@ -9,7 +9,7 @@
          rendered, so a total fetch failure showed only stale/zero values. -->
     <div v-if="error" class="error-banner" role="alert">
       <span>{{ $t('systemManager.errorBanner', { error }) }}</span>
-      <button class="btn" @click="refreshStatus" :disabled="loading">{{ $t('systemManager.actions.retry') }}</button>
+      <button class="btn btn-secondary" @click="refreshStatus" :disabled="loading">{{ $t('systemManager.actions.retry') }}</button>
     </div>
 
     <!-- Status Overview -->
@@ -17,7 +17,6 @@
       <div class="overview-grid">
         <!-- Pipeline Status -->
         <div class="overview-card" :style="{ borderColor: statusColor }">
-            <div class="card-icon">🚀</div>
             <div class="card-content">
                 <h3>{{ $t('systemManager.pipelineStatus.title') }}</h3>
                 <div class="status-val" :style="{ color: statusColor }">
@@ -31,7 +30,6 @@
 
         <!-- Last Update -->
         <div class="overview-card">
-            <div class="card-icon">🕒</div>
             <div class="card-content">
                 <h3>{{ $t('systemManager.lastUpdate.title') }}</h3>
                 <div class="status-val text-dark">
@@ -45,7 +43,6 @@
 
         <!-- Universe Coverage -->
         <div class="overview-card">
-            <div class="card-icon">📈</div>
             <div class="card-content">
                 <h3>{{ $t('systemManager.coverage.title') }}</h3>
                 <div class="status-val text-blue">
@@ -76,10 +73,10 @@
                 </div>
                 <hr>
                 <div class="actions">
-                    <button class="btn" @click="refreshStatus" :disabled="loading">
+                    <button class="btn btn-secondary" @click="refreshStatus" :disabled="loading">
                         {{ loading ? $t('systemManager.actions.checking') : $t('systemManager.actions.refreshStatus') }}
                     </button>
-                    <button class="btn warning" @click="clearCache" :disabled="loading">
+                    <button class="btn btn-warning" @click="clearCache" :disabled="loading">
                         {{ $t('systemManager.actions.clearCache') }}
                     </button>
                 </div>
@@ -155,8 +152,8 @@ export default defineComponent({
        return (now - genTime) < (25 * 60 * 60 * 1000);
     },
     statusColor() {
-        if (!this.pipelineStatus.generatedAt) return 'gray';
-        return this.isDataFresh ? '#28a745' : '#dc3545';
+        if (!this.pipelineStatus.generatedAt) return 'var(--text-muted)';
+        return this.isDataFresh ? 'var(--success-solid)' : 'var(--danger-solid)';
     },
     daysSinceUpdate() {
         if (!this.pipelineStatus.generatedAt) return 0;
@@ -272,18 +269,16 @@ export default defineComponent({
 
 <style scoped>
 .system-manager {
-    padding: var(--space-8);
-    max-width: 1200px;
-    margin: 0 auto;
+  /* Gutter, max-width and centering come from Layout's .container;
+     vertical spacing from .main-content. */
 }
 
 .manager-header {
+    /* Left-aligned per the shared page-header grammar (WIREFRAMES §1). */
     margin-bottom: var(--space-8);
-    text-align: center;
 }
 
 .manager-header h2 {
-    font-size: var(--text-2xl);
     color: var(--text-primary);
     margin-bottom: var(--space-2);
 }
@@ -307,22 +302,11 @@ export default defineComponent({
     background: var(--bg-card);
     padding: var(--card-padding);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: var(--space-6);
-}
-
-.card-icon {
-    font-size: var(--text-3xl);
-    background: var(--bg-secondary);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
 }
 
 .card-content h3 {
@@ -359,7 +343,7 @@ export default defineComponent({
     background: var(--bg-card);
     padding: var(--card-padding-large);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
 }
 
@@ -401,21 +385,8 @@ export default defineComponent({
     flex-wrap: wrap;
 }
 
-.btn {
-    padding: 0.6rem 1.2rem;
-    border: none;
-    border-radius: var(--radius-sm);
-    /* --primary-color #6B7F82 gave white text only 4.21:1; --primary-strong clears AA (5.13:1) */
-    background: var(--primary-strong);
-    color: white;
-    cursor: pointer;
-    font-weight: var(--weight-semibold);
-    transition: background var(--transition-base);
-}
-
 .btn:hover { background: var(--primary-hover); }
 .btn:disabled { background: var(--border-color); cursor: not-allowed; }
-.btn.warning { background: var(--warning-color); color: #000; }
 
 /* Logs */
 .logs-container {
