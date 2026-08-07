@@ -639,12 +639,18 @@ export default defineComponent({
     font-size: var(--text-sm);
 }
 
-.compact-table td {
+/* th as well as td: the S4 a11y fix turned the label cell into a
+   `th scope="row"`, but this rule still only matched td, so every metric label
+   lost its 16px inset and hung to the left of the card title and of every other
+   cell in the table. */
+.compact-table td,
+.compact-table th {
     padding: 0.6rem var(--space-4);
     border-bottom: 1px solid var(--border-color);
 }
 
-.compact-table tr:last-child td {
+.compact-table tr:last-child td,
+.compact-table tr:last-child th {
     border-bottom: none;
 }
 
@@ -681,13 +687,20 @@ export default defineComponent({
 .change-tag.neg { color: var(--danger-strong); }
 
 .signal-tag {
-    font-size: var(--text-xs); 
+    font-size: var(--text-xs);
     padding: 2px 4px;
     border-radius: var(--radius-xs);
     font-weight: var(--weight-bold);
-    text-transform: lowercase; 
-    white-space: nowrap; 
+    text-transform: lowercase;
+    white-space: nowrap;
     display: inline-block;
+    /* line-height:1 keeps the pill's box (11px text + 4px padding = 15px) inside
+       the row's 20.8px line box. Inheriting the 1.6 factor made it 21.6px, so
+       every pill row rendered ~0.8px taller than a plain .change-tag row — and
+       because the three groups sit side by side with different pill counts, that
+       error accumulated until their rows were 3.2px out of register by row 10. */
+    line-height: 1;
+    vertical-align: middle;
 }
 
 .tag-green { color: var(--tag-text-green); background: var(--tag-bg-green); }
@@ -784,7 +797,8 @@ export default defineComponent({
     grid-template-columns: 1fr;
   }
   
-  .compact-table td {
+  .compact-table td,
+  .compact-table th {
       padding: var(--space-2) var(--space-3);
   }
 }

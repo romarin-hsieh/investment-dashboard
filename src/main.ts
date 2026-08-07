@@ -33,7 +33,14 @@ const routes: RouteRecordRaw[] = [
   { path: '/auto-update-monitor', component: () => import('./pages/AutoUpdateMonitor.vue'), name: 'auto-update-monitor' },
   { path: '/system-manager', component: () => import('./pages/SystemManager.vue'), name: 'system-manager' },
   // Quant Strategy (Dev Only)
-  ...(process.env['NODE_ENV'] === 'development' ? [
+  // Must be import.meta.env.DEV, not process.env: Vite only statically replaces
+  // the dot-access form `process.env.NODE_ENV`, and the #187
+  // noPropertyAccessFromIndexSignature codemod rewrote this to bracket access.
+  // That silently stopped matching, leaving a bare `process` reference that the
+  // dev server cannot resolve — `npm run dev` booted to a blank page with
+  // "ReferenceError: process is not defined". Production was unaffected (the
+  // build defines process.env), which is why CI stayed green.
+  ...(import.meta.env.DEV ? [
     { path: '/quant-strategy', component: () => import('./pages/QuantDashboard.vue'), name: 'quant-strategy' }
   ] : []),
   // Catch-all route for 404s
