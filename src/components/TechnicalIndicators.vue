@@ -37,7 +37,8 @@
             <table class="compact-table">
                 <tbody>
                     <tr v-for="(indicator, idx) in group" :key="idx">
-                        <td class="col-label">{{ indicator.label }}</td>
+                        <!-- Row header so AT associates each value with its metric (audit S4). -->
+                        <th scope="row" class="col-label">{{ indicator.label }}</th>
                         <!-- 'N/A' is the internal sentinel (compared upstream); localize at render only (audit CP-9/S5). -->
                         <td class="col-value">{{ indicator.value === 'N/A' ? $t('common.na') : indicator.value }}</td>
                         <td class="col-meta">
@@ -650,7 +651,8 @@ export default defineComponent({
 .col-label {
     color: var(--text-muted);
     font-weight: var(--weight-medium);
-    width: 45%; 
+    text-align: left; /* the cell is now a th (S4); override the UA's centered th default */
+    width: 45%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

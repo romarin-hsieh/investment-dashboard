@@ -263,7 +263,7 @@ export default defineComponent({
           "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
           "valuesTracking": "1",
           "changeMode": "price-and-percent",
-          "symbols": [[this.symbol, `${this.exchange}:${this.symbol}|1D`]],
+          "symbols": [[this.symbol, this.exchange ? `${this.exchange}:${this.symbol}|1D` : `${this.symbol}|1D`]],
           "dateRanges": ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"],
           "fontSize": "10",
           "headerFontSize": "medium",
@@ -285,7 +285,7 @@ export default defineComponent({
           "width": "100%",
           "height": "100%",
           "isTransparent": true,
-          "symbol": `${this.exchange}:${this.symbol}`,
+          "symbol": this.exchange ? `${this.exchange}:${this.symbol}` : this.symbol,
           "showIntervalTabs": true,
           "locale": "en",
           "colorTheme": isDark ? "dark" : "light"
