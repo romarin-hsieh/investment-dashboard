@@ -5,6 +5,13 @@
 - **Deciders**: Project owner
 - **Context tags**: `tooling`, `type-safety`, `quality-gate`, `frontend`
 
+> **Status update (2026-08).** The incremental migration this ADR governs is **complete**:
+> zero non-test `.js` under `src/`, all 42 `.vue` SFCs on `<script lang="ts">`, and every
+> deferred strict flag now enabled. The decision and its trade-offs below are recorded as
+> written (append-only); where the body says SFCs "currently use plain `<script>`" or lists
+> remaining files, read the **Migration progress** section at the end of this ADR for the
+> finished state.
+
 ## Context & Problem
 
 The codebase was a stalled half-migration:
@@ -75,26 +82,33 @@ net), then the ROADMAP's top-5 by risk. Each file is renamed, typed with no `any
 gate-loosening, and its type enforcement is probe-tested (inject a deliberate violation,
 confirm the error code, revert to green) before the PR merges.
 
-### Migration progress
+### Migration progress — **COMPLETE** (2026-08, verified on `main` `a568340c0`)
 
-`.ts` file count: **7 → 16** (utilities). `.vue` SFCs still use plain `<script>` and are
-not yet opted in (`lang="ts"` is the per-file switch).
+**Zero non-test `.js` files remain under `src/`**: 52 `.ts` modules and 42 `.vue` SFCs, all
+42 of which carry `<script lang="ts">`. The strict ratchet finished too — `tsconfig.json`
+now runs `strict` plus `exactOptionalPropertyTypes`, `noUncheckedIndexedAccess`,
+`noPropertyAccessFromIndexSignature`, `noUnusedLocals`, `noUnusedParameters`,
+`noFallthroughCasesInSwitch`, `noImplicitReturns` and `noImplicitOverride`, and none of
+them was relaxed to land a migration.
 
-| Batch / PR | Files migrated to `.ts` | Notes |
+| Phase | PRs | What moved |
 |---|---|---|
-| #102 | `baseUrl` | first real migration; foundational to ADR-0008 |
-| #103 | `designTokens`, `mfi` | `mfi` exposed `MFISeries = (number \| null)[]` — nulls were laundered by `new Array()` |
-| #104 | `dataVersionService`, `technicalIndicatorsCache` | fixed a real `isChecking` latch bug the compiler forced out (+ regression test) |
-| #105 | `performanceCache`, `performanceMonitor`, `mfiVolumeProfile`, `autoUpdateScheduler` | leaves-first: the perf pair migrated to avoid throwaway `.d.ts` sidecars |
+| Gate | #101 | `typecheck` script + CI step; the 7 pre-existing `.ts` files verified strict-clean |
+| Utility batches 1–9 | #102–#112 | `baseUrl` · `designTokens`, `mfi` · `dataVersionService`, `technicalIndicatorsCache` · the perf-cache pair, `mfiVolumeProfile`, `autoUpdateScheduler` · `QuantDataService`, `NavigationService`, `useKeyboardShortcuts` · `i18n`, `useLocale`, `useTheme` · `technicalIndicatorsCore` (first giant, #110, behind characterization #109) · technical-analysis + widget utils · 6 data-access/util modules |
+| Giants + data access | #123–#124, #131–#134 | `yahooFinanceApi` (characterization #123, migration #124) · `ohlcvApi` · `dynamicMetadataService` · `metadataService` · `hybridTechnicalIndicatorsApi` |
+| Last services + entry | #138–#140 | `cacheWarmupService` · `stockOverviewOptimizer` · `main.js` + `axe-helper` — **0 source `.js` remained** |
+| SFC batches 1–28 + core 1–6 | #141–#174 | all 42 `.vue` SFCs onto `<script lang="ts">`, leaves first, ending with the six core components (`NavigationPanel` → `TOCTree` → `StockCard` → `TechnicalIndicators` → `FundamentalAnalysis` → `StockOverview`) |
+| Strict ratchet | #175, #187–#192 | `noImplicitReturns` + `noImplicitOverride` · `noPropertyAccessFromIndexSignature` (243 TS4111, codemod) · three prep PRs guarding indexed access at the API, component and util layers · `noUncheckedIndexedAccess` (341 bounded-algo assertions) · `exactOptionalPropertyTypes` (the last deferred flag) |
 
-**Remaining top-5 by risk** (both large and **untested**, so each gets a characterization
-test pass first, then a solo migration PR):
-- `technicalIndicatorsCore.js` (~1256 LOC, pure indicator math)
-- `api/yahooFinanceApi.js` (~1406 LOC, I/O-heavy API client)
+The migration forced out real defects along the way, each fixed with a regression test: an
+`isChecking` latch (#104), `new Array()` intermediates laundering `null` out of
+`MFISeries` (#103), and the degraded-data paths hardened in #114 and #130.
 
-After the top-5: the remaining ~26 `.js` utilities/services (migrate in dependency order,
-leaves first — importing a still-`.js` module from strict `.ts` raises TS7016, and the fix
-is to migrate the leaf, not to hand-write a sidecar), then the `.vue` SFCs.
+**Residue — the one thing this ADR does not yet cover.** `tsconfig.json`'s `include` is
+`src/**/*.{ts,d.ts,tsx,vue}` plus `tests/**/*.ts`, so the **41 `*.test.js` files are outside
+the type gate** (4 tests are already `.ts`). Production source is fully checked; the suite
+that exercises it is not. Migrating the tests is tracked in the ROADMAP's *Next* horizon,
+not here — it changes no production behaviour and needs no new decision.
 
 ### Other
 

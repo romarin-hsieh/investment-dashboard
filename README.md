@@ -103,7 +103,7 @@ Each decision below had a credible alternative; the reasoning is recorded in an 
 | Incremental TypeScript migration ([ADR-0014](docs/architecture/adr/0014-typescript-unification.md)) | Big-bang rewrite, or staying on JS | A 100+-file rewrite is unreviewable and regression-prone. Instead: install a strict `vue-tsc` CI gate first, then migrate leaves-first in small provably behaviour-preserving batches — the 1,256-line indicator core was pinned by a 91-case characterization suite before it moved. |
 | Coverage ratchet instead of a fixed threshold ([ADR-0013](docs/architecture/adr/0013-component-test-coverage-policy.md)) | Global fixed coverage bar | A fixed bar either blocks unrelated PRs on legacy gaps or sits uselessly low. Per-file floors set at measured-minus-one only ever rise, so coverage can regress nowhere without failing CI. |
 
-All 14 ADRs: [docs/architecture/adr/](docs/architecture/adr/README.md).
+All 15 ADRs: [docs/architecture/adr/](docs/architecture/adr/README.md).
 
 ---
 
@@ -205,7 +205,7 @@ src/
   locales/       en.json, zh-TW.json (compiled at build time)
   styles/        design tokens; theme, radius/shadow/spacing/type scales
 scripts/         nightly ETL (Python + Node) and data tooling
-docs/            PRD, 14 ADRs, specs, runbooks, audits — start at docs/INDEX.md
+docs/            PRD, 15 ADRs, specs, runbooks, audits — start at docs/INDEX.md
 public/data/     pre-computed JSON, seeded from the data repo (not committed)
 ```
 

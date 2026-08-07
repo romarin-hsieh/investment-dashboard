@@ -26,7 +26,7 @@
 - **[architecture/OVERVIEW.md](architecture/OVERVIEW.md)** — C4 context, 3-tier cache, ETL phases, frontend layout
 - **[architecture/BUILD_SPEC.md](architecture/BUILD_SPEC.md)** — interface contracts, CI/CD rules, security model, performance budget
 - **[architecture/COMPONENT_DEPENDENCIES.md](architecture/COMPONENT_DEPENDENCIES.md)** — Vue component dependency graph
-- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (14 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries, static-data caching, bundle budgets, separate data repository, i18n message precompilation, design-system tokens, bilingual i18n architecture, self-service add-symbol, component test coverage, TypeScript unification)
+- **[architecture/adr/](architecture/adr/)** — Architecture Decision Records (15 ADRs covering Static-First, CORS proxy, 3-tier cache, GitHub Actions ETL, charting libraries, static-data caching, bundle budgets, separate data repository, i18n message precompilation, design-system tokens, bilingual i18n architecture, self-service add-symbol, component test coverage, TypeScript unification, accessibility & E2E testing)
 
 ### "How does the math / strategy work?"
 - **[specs/QUANT_STRATEGY_DOSSIER.md](specs/QUANT_STRATEGY_DOSSIER.md)** — quant engine: regime → sector → signal selection logic

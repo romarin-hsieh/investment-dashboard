@@ -88,7 +88,7 @@ GitHub Actions（隔夜 ETL）             GitHub Pages                    瀏�
 | 漸進式 TypeScript 遷移（[ADR-0014](docs/architecture/adr/0014-typescript-unification.md)） | 一次性重寫，或維持 JS | 逾百檔的一次性重寫無法審閱且易生迴歸。改採：先設下嚴格的 `vue-tsc` CI 閘門，再以葉節點優先、可證明行為不變的小批次遷移 —— 那支 1,256 行的指標核心，在遷移前已由 91 案特性化測試套件釘住。 |
 | 覆蓋率棘輪取代固定門檻（[ADR-0013](docs/architecture/adr/0013-component-test-coverage-policy.md)） | 全域固定覆蓋率門檻 | 固定門檻不是卡住無關 PR 於歷史缺口，就是低到形同虛設。以「量測值減一」設定的逐檔下限只會上升，覆蓋率因此無處可退而不觸發 CI 失敗。 |
 
-全部 14 份 ADR：[docs/architecture/adr/](docs/architecture/adr/README.md)。
+全部 15 份 ADR：[docs/architecture/adr/](docs/architecture/adr/README.md)。
 
 ---
 
@@ -166,7 +166,7 @@ src/
   locales/       en.json、zh-TW.json（建置期編譯）
   styles/        設計 token；主題、圓角／陰影／間距／字級尺標
 scripts/         隔夜 ETL（Python + Node）與資料工具
-docs/            PRD、14 份 ADR、規格、手冊、稽核 —— 由 docs/INDEX.md 起
+docs/            PRD、15 份 ADR、規格、手冊、稽核 —— 由 docs/INDEX.md 起
 public/data/     預先計算的 JSON，由資料倉庫填入（不 commit）
 ```
 

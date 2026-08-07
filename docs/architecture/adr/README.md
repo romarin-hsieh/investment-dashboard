@@ -59,6 +59,7 @@
 | [0012](0012-self-service-add-symbol.md) | Self-Service Symbol Addition Workflow | Accepted | `operations`, `ci-cd`, `data` |
 | [0013](0013-component-test-coverage-policy.md) | Component Test Coverage Policy (ratchet floors) | Accepted | `testing`, `quality-gate`, `frontend` |
 | [0014](0014-typescript-unification.md) | Unify the Stack on TypeScript (enforced, incremental) | Accepted | `tooling`, `type-safety`, `quality-gate`, `frontend` |
+| [0015](0015-accessibility-and-e2e-testing.md) | Two-Layer Accessibility & End-to-End Testing | Accepted | `accessibility`, `testing`, `quality-gate`, `frontend`, `ci` |
 
 ## Lifecycle
 
