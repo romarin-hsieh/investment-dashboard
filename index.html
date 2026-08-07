@@ -22,24 +22,13 @@
       is wanted again, it needs a build step that injects the versioned URLs.
     -->
 
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "uqs9axfxt3");
-    </script>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4ME39R5VDH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-4ME39R5VDH');
-    </script>
-    
+    <!-- Analytics removed 2026-08-07 (owner decision): Microsoft Clarity session
+         recording + Google Analytics ran unconditionally here — never gated by the
+         state-manager's clarity_enabled/ga_enabled flags, and PRD §5 declares usage
+         metrics "not meaningful for a private tool". The Settings privacy statement
+         ("no tracking or analytics") is true because of this removal; reintroducing
+         any tracker requires updating that statement in the same PR. -->
+
     <script>
       // GitHub Pages SPA routing support
       (function(l) {
