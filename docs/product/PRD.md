@@ -174,7 +174,7 @@ Feature: Nightly pipeline maintains the Static Lake
 3. **Bilingual UI (F16)**: ✅ **Resolved (2026-06)** — adopted vue-i18n with build-time message precompilation for CSP compliance ([ADR-0009](../architecture/adr/0009-i18n-message-precompilation-csp.md)). Full EN/繁中 runtime toggle shipped in PRs #60–#65.
 4. **CORS proxy SLA**: Tier-3 fallback depends on free third-party proxies. At what failure rate do we invest in a self-hosted proxy? → Track in SLA.md after one quarter of data.
 5. **Universe cap**: Currently ~50 active symbols in quant engine but `public/data/ohlcv/` hosts ~560. What's the upper bound before CI time becomes a bottleneck? → Monitor, revisit at 100 symbols.
-6. **Settings surface** *(added 2026-08-07)*: `/settings` ships three promise-only stub cards yet is advertised in the nav (audit SD-6). Implement the three panels (US-SET1/2 in [USER_STORIES.md](USER_STORIES.md)) or de-list the route until they exist? → Owner decision; interim mitigation options in the audit's fix package 6.
+6. **Settings surface**: ✅ **Resolved (2026-08-07, owner picked option C)** — `/settings` became a single honest preferences page: a no-tracking statement (the app has no analytics, so a privacy *control* panel would be theatre), preference export/import (theme + locale JSON, satisfies US-SET2), and a two-step clear-local-data action. The diagnostics stub was dropped as redundant with System Status.
 
 ---
 
