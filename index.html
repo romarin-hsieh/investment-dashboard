@@ -23,11 +23,13 @@
     -->
 
     <!-- Analytics removed 2026-08-07 (owner decision): Microsoft Clarity session
-         recording + Google Analytics ran unconditionally here — never gated by the
-         state-manager's clarity_enabled/ga_enabled flags, and PRD §5 declares usage
-         metrics "not meaningful for a private tool". The Settings privacy statement
-         ("no tracking or analytics") is true because of this removal; reintroducing
-         any tracker requires updating that statement in the same PR. -->
+         recording + Google Analytics ran unconditionally here — never gated by any
+         setting, and PRD §5 declares usage metrics "not meaningful for a private
+         tool". The state-manager's vestigial clarity_enabled/ga_enabled flags were
+         dropped as a follow-up, so there is no longer a toggle to re-wire: the
+         Settings privacy statement ("no tracking or analytics") is true because
+         nothing loads. Reintroducing any tracker requires updating that statement
+         in the same PR. -->
 
     <script>
       // GitHub Pages SPA routing support

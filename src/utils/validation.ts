@@ -46,11 +46,14 @@ const HoldingDataSchema = z.object({
   shares: z.number().positive().finite().optional()
 })
 
+// The ga_enabled/clarity_enabled analytics flags were removed here when the
+// trackers themselves went (index.html). Both entry points run
+// StateManager.migrateState first, which rebuilds `settings` field-by-field, so
+// an older persisted state or backup file never reaches this schema still
+// carrying them.
 const UserSettingsSchema = z.object({
   scraping_enabled: z.boolean(),
-  degradation_enabled: z.boolean(),
-  ga_enabled: z.boolean(),
-  clarity_enabled: z.boolean()
+  degradation_enabled: z.boolean()
 })
 
 const ImportResultSchema = z.object({

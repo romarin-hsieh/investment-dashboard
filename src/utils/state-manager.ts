@@ -16,9 +16,7 @@ export class StateManager {
     holdings: {},
     settings: {
       scraping_enabled: false,
-      degradation_enabled: true,
-      ga_enabled: false,
-      clarity_enabled: false
+      degradation_enabled: true
     },
     cache: {},
     diagnostics: {}
@@ -265,11 +263,11 @@ export class StateManager {
       schema_version: StateManager.CURRENT_SCHEMA_VERSION,
       watchlist: state.watchlist || [],
       holdings: state.holdings || {},
+      // Rebuilt field-by-field, so the removed ga_enabled/clarity_enabled flags in
+      // an older persisted state are dropped here rather than carried forward.
       settings: {
         scraping_enabled: state.settings?.scraping_enabled ?? false,
-        degradation_enabled: state.settings?.degradation_enabled ?? true,
-        ga_enabled: state.settings?.ga_enabled ?? false,
-        clarity_enabled: state.settings?.clarity_enabled ?? false
+        degradation_enabled: state.settings?.degradation_enabled ?? true
       },
       cache: state.cache || {},
       diagnostics: state.diagnostics || {}
