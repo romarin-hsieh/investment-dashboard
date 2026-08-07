@@ -117,6 +117,7 @@ import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache';
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi';
 import { formatTime as i18nTime, formatDateTime as i18nDateTime } from '@/utils/dateFormat';
 import { gradeFreshness } from '@/utils/freshness';
+import { dataCacheBust } from '@/utils/cacheBust';
 
 interface PipelineStatus {
   lastUpdate: string | null
@@ -203,7 +204,7 @@ export default defineComponent({
         // preserved by keeping the two try/catch wrappers below — each
         // `await` on an already-rejected promise re-throws into its own
         // catch block.
-        const cacheBust = '?t=' + new Date().getTime();
+        const cacheBust = dataCacheBust(); // version-keyed (ADR-0006) — was per-millisecond
         const indexPromise = fetch(withDataBase('data/technical-indicators/latest_index.json') + cacheBust);
         const metaPromise = fetch(withDataBase('data/symbols_metadata.json') + cacheBust);
 

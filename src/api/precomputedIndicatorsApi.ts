@@ -1,6 +1,7 @@
 // 從靜態文件讀取預計算的技術指標數據
 import { technicalIndicatorsCache, type LatestIndex } from '../utils/technicalIndicatorsCache';
 import { getDataBaseUrl } from '../utils/baseUrl';
+import { dataCacheBust } from '../utils/cacheBust';
 
 /** 單一指標序列（可能含 null 空洞）。 */
 type Series = (number | null)[];
@@ -173,8 +174,7 @@ class PrecomputedIndicatorsAPI {
 
         // 使用最新日期構建 URL - 只載入當前股票的數據
         // Add Minute-based Cache Busting
-        const timestamp = Math.floor(Date.now() / 60000);
-        const dataUrl = `${this.baseUrl}${latestDate}_${symbol}.json?t=${timestamp}`;
+        const dataUrl = `${this.baseUrl}${latestDate}_${symbol}.json${dataCacheBust()}`;
 
         console.log(`🔍 Fetching precomputed data for ${symbol} from ${dataUrl}`);
 
@@ -412,8 +412,7 @@ class PrecomputedIndicatorsAPI {
     }
 
     try {
-      const timestamp = Math.floor(Date.now() / 60000); // Minute-level cache busting
-      const url = `${this.baseUrl}latest_all.json?t=${timestamp}`;
+      const url = `${this.baseUrl}latest_all.json${dataCacheBust()}`;
 
       const response = await fetch(url);
       if (!response.ok) {

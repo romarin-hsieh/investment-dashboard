@@ -6,6 +6,7 @@ import SignalCard from '@/components/SignalCard.vue';
 import { withDataBase } from '@/utils/baseUrl';
 import { formatNumber } from '@/utils/numberFormat';
 import { signalLabel as quantSignalLabel } from '@/utils/quantCopy';
+import { dataCacheBust } from '@/utils/cacheBust';
 import { formatDate as i18nDate } from '@/utils/dateFormat';
 
 const { t } = useI18n();
@@ -43,7 +44,7 @@ const fetchData = async () => {
     try {
         loading.value = true;
         // Fetch the generated analysis report
-        const response = await fetch(withDataBase('data/dashboard_status.json'));
+        const response = await fetch(withDataBase('data/dashboard_status.json') + dataCacheBust());
         if (!response.ok) throw new Error(t('quant.errorLoadFailed'));
         
         const jsonData = await response.json();

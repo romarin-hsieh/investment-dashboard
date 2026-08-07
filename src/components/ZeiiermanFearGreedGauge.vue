@@ -165,7 +165,8 @@
 import { defineComponent } from 'vue';
 import { useTheme } from '@/composables/useTheme';
 import { ohlcvApi } from '@/services/ohlcvApi';
-import { withDataBase } from '@/utils/baseUrl';
+import { withDataBase } from '@/utils/baseUrl'
+import { dataCacheBust } from '@/utils/cacheBust';
 import { formatDate as i18nDate } from '@/utils/dateFormat';
 
 /** Clean OHLCV series the gauge's math consumes (validated non-empty before use). */
@@ -252,7 +253,7 @@ export default defineComponent({
     },
     async fetchExternalSentiment() {
         try {
-            const url = withDataBase(`data/technical-indicators/market-sentiment.json?t=${new Date().getTime()}`);
+            const url = withDataBase('data/technical-indicators/market-sentiment.json') + dataCacheBust();
             const res = await fetch(url, { cache: 'no-store' });
             if (res.ok) {
                 this.externalSentiment = await res.json();

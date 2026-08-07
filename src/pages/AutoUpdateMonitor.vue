@@ -225,6 +225,7 @@ import { performanceCache } from '@/utils/performanceCache'
 import { cacheWarmupService } from '@/utils/cacheWarmupService'
 import { formatDateTime as i18nDateTime, type DateInput } from '@/utils/dateFormat'
 import { gradeFreshness, METADATA_SLO_HOURS } from '@/utils/freshness'
+import { dataCacheBust } from '@/utils/cacheBust'
 
 /** One entry in the in-memory activity log (newest first). */
 interface LogEntry {
@@ -385,7 +386,7 @@ export default defineComponent({
 
     async loadTechnicalIndicatorsStatus() {
       try {
-        const response = await fetch(withDataBase('data/technical-indicators/latest_index.json'))
+        const response = await fetch(withDataBase('data/technical-indicators/latest_index.json') + dataCacheBust())
         if (response.ok) {
           const data = await response.json()
           const last = new Date(data.generatedAt)
@@ -410,7 +411,7 @@ export default defineComponent({
         // Read REAL metadata status. Previously this hardcoded now()/age 0/24
         // symbols (a "暫時" placeholder), so the card was permanently green and
         // "Fresh" no matter how stale the feed actually was.
-        const response = await fetch(withDataBase('data/symbols_metadata.json'))
+        const response = await fetch(withDataBase('data/symbols_metadata.json') + dataCacheBust())
         if (!response.ok) throw new Error(`HTTP ${response.status}`)
         const data = await response.json()
         const asOf = data.as_of || data.generatedAt || null

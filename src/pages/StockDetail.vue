@@ -308,6 +308,7 @@ import ReviewCometChart from '@/components/ReviewCometChart.vue'
 // NOTE: SuperInvestorStats is lazy-loaded via defineAsyncComponent above
 //       (Holdings tab only). Static import removed in WS-C PR-C3.
 import { directMetadataLoader } from '@/utils/directMetadataLoader'
+import { dataCacheBust } from '@/utils/cacheBust'
 import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
 
@@ -626,7 +627,7 @@ export default defineComponent({
       this.dataromaLoading = true
       try {
         const url = withDataBase(`data/dataroma/${this.symbol}.json`)
-        const response = await fetch(`${url}?t=${Date.now()}`)
+        const response = await fetch(`${url}${dataCacheBust()}`)
         if (response.ok) {
           this.dataromaData = await response.json()
         } else {

@@ -15,19 +15,12 @@
     <title>Investment Dashboard</title>
 
     <!--
-      WS-C PR-C4: Prefetch hints for data files that almost every page-load needs.
-      GitHub Pages sends Cache-Control: max-age=600 by default and doesn't let us
-      override it (see docs/architecture/adr/0006-static-data-caching-on-github-pages.md)
-      so we use browser-level prefetch to get the data into the HTTP cache during
-      idle. By the time the SPA's fetch() fires for these URLs, the response is
-      usually served from cache — zero network round-trip.
-
-      The `as="fetch"` + `crossorigin` combo makes the prefetch eligible for reuse
-      by the SPA's later fetch() call (same Fetch destination + credentials mode).
+      The WS-C PR-C4 data prefetch hints were REMOVED with the ADR-0006 amendment
+      (2026-08-07): runtime data fetches are now version-keyed (?v=<dataVersion>, see
+      src/utils/cacheBust.ts), so a prefetched bare URL can never be reused by the SPA's
+      fetch() — the hint had become three wasted requests per load. If prefetch warm-up
+      is wanted again, it needs a build step that injects the versioned URLs.
     -->
-    <link rel="prefetch" as="fetch" crossorigin href="https://romarin-hsieh.github.io/investment-dashboard-data/data/technical-indicators/latest_index.json" />
-    <link rel="prefetch" as="fetch" crossorigin href="https://romarin-hsieh.github.io/investment-dashboard-data/data/technical-indicators/latest_all.json" />
-    <link rel="prefetch" as="fetch" crossorigin href="https://romarin-hsieh.github.io/investment-dashboard-data/data/dashboard_status.json" />
 
     <!-- Microsoft Clarity -->
     <script type="text/javascript">

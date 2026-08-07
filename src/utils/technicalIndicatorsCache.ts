@@ -3,6 +3,7 @@
 // 使用 latest_index.json timestamp 決定 cache bust
 
 import { getDataBaseUrl } from './baseUrl';
+import { dataCacheBust } from './cacheBust';
 
 /**
  * 單一指標的值容器（例如 OBV）。靜態 JSON 與即時計算的欄位並不一致，
@@ -186,7 +187,7 @@ class TechnicalIndicatorsCache {
       this._indexFetchPromise = (async (): Promise<LatestIndex | null> => {
         const baseUrl = getDataBaseUrl();
         // 移除 ?t= 時間戳，允許瀏覽器緩存，依賴 DataVersionService 進行版本控制
-        const response = await fetch(`${baseUrl}data/technical-indicators/latest_index.json`);
+        const response = await fetch(`${baseUrl}data/technical-indicators/latest_index.json${dataCacheBust()}`);
 
         if (response.ok) {
           const parsed: unknown = await response.json();

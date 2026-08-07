@@ -67,3 +67,33 @@ We adopt a **layered client-side caching strategy** on top of GitHub Pages' fixe
 - **Migration re-evaluation trigger**: if SLA shows repeat-visit TTI > 1.5 s p75 (currently unmeasured — target to instrument), reconsider Cloudflare Pages migration.
 - **Observability**: document in `docs/operations/RUNBOOK.md` a new playbook for "data file not appearing in prefetch" — typical fix is the base-path prefix (`/investment-dashboard/`) mismatch.
 - **Service worker removed (Stream ② / PR ②-1)**: a stray SW registration in `productionOptimizer.js` (registered at `/sw.js` — wrong scope under the `/investment-dashboard/` base, so it 404'd and never installed) was removed, consistent with this ADR's rejection of a service worker. A one-time `unregister()` on startup sheds any stale client registration. Re-introducing a service worker still requires a new ADR superseding this decision (per BUILD_SPEC).
+
+## Amendment (2026-08-07) — one busting policy, enforced
+
+The 2026-08-07 audit (finding SK-D-1) found **five incompatible busting conventions** in
+practice: `?v=<version>`, this ADR's hourly bucket (followed by exactly one file),
+minute-level buckets, per-millisecond `?t=${Date.now()}` (defeating browser *and* CDN
+caches on every request — twice on the landing route, against the SLA's TTI target), and
+no busting at all. `latest_index.json` alone was fetched under three different policies,
+which let sibling monitoring pages report different ages for the same file at the same
+moment.
+
+**Decision (layered):** all busting goes through `src/utils/cacheBust.ts`:
+
+1. **`status.json` version probe** (`dataVersionService` only) — per-call bust +
+   `no-cache` headers. Its purpose is to see the origin freshly; the service throttles
+   itself to one call per 5 s. *Sanctioned exception.*
+2. **Every other `data/*` fetch** — `dataCacheBust()`: `?v=<currentVersion>`, so URLs
+   change exactly when a deploy publishes new data (hourly-bucket fallback until the
+   version is first known). `src/lib/fetcher.ts`'s existing `?t=<last_updated>` is
+   data-derived and equivalent — compliant as-is.
+3. **App-repo assets** (`config/*`) — `hourlyBust()` (deploy-coupled, this ADR's
+   original convention).
+4. **Inline wall-clock busting is banned** — `src/cache-busting.guard.test.js` walks the
+   source and fails CI on `?t=${Date.now()}`-class patterns and out-of-helper buckets
+   (same guard pattern as `style.css-negation.test.js`).
+
+The index.html data prefetch hints (WS-C PR-C4) were removed in the same change: with
+version-keyed URLs a prefetched bare URL can never match the SPA's fetch, so the hints
+had become three wasted requests per load. Reintroducing prefetch requires a build step
+that injects versioned URLs.
