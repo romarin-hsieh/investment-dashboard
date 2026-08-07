@@ -688,20 +688,25 @@
   },
   "settings": {
     "title": "Settings",
-    "subtitle": "Configure your preferences and check system status",
+    "subtitle": "Manage the preferences stored in this browser",
     "privacy": {
-      "title": "Privacy & Tracking",
-      "description": "Choose what activity and data collection is allowed"
-    },
-    "diagnostics": {
-      "title": "System Diagnostics",
-      "description": "Check system status and how recently data was updated"
+      "title": "Data & Privacy",
+      "description": "This site uses anonymized usage analytics (Google Analytics and Microsoft Clarity) to understand feature usage. Preferences (theme, language) are stored only in this browser; the site itself keeps no account and no server-side data."
     },
     "importExport": {
-      "title": "Import & Export",
-      "description": "Back up your settings or restore them from a saved file"
+      "title": "Preference Backup",
+      "description": "Export your preferences as a JSON file, or restore them from one.",
+      "exportButton": "Export preferences",
+      "importButton": "Import preferences",
+      "importSuccess": "Imported — reloading…",
+      "importInvalid": "Not a valid preferences file."
     },
-    "planned": "Planned"
+    "clearData": {
+      "title": "Clear Local Data",
+      "description": "Removes all preferences and cached data stored by this site in this browser. Nothing is stored anywhere else.",
+      "clearButton": "Clear local data",
+      "confirmButton": "Click again to confirm"
+    }
   },
   "systemManager": {
     "pageTitle": "System Status",

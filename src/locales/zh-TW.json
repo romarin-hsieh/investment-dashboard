@@ -688,20 +688,25 @@
   },
   "settings": {
     "title": "設定",
-    "subtitle": "調整偏好設定並查看系統狀態",
+    "subtitle": "管理僅儲存於此瀏覽器的偏好設定",
     "privacy": {
-      "title": "隱私與追蹤",
-      "description": "選擇允許哪些活動追蹤與資料收集"
-    },
-    "diagnostics": {
-      "title": "系統診斷",
-      "description": "查看系統狀態與資料的最後更新時間"
+      "title": "資料與隱私",
+      "description": "本站使用匿名化使用分析（Google Analytics 與 Microsoft Clarity）以了解功能使用情況。偏好設定（主題、語言）僅儲存於此瀏覽器；本站本身無帳號機制，也不在伺服器端儲存任何資料。"
     },
     "importExport": {
-      "title": "匯入與匯出",
-      "description": "備份您的設定，或從已儲存的檔案還原"
+      "title": "偏好備份",
+      "description": "將偏好設定匯出為 JSON 檔案，或從檔案還原。",
+      "exportButton": "匯出偏好",
+      "importButton": "匯入偏好",
+      "importSuccess": "已匯入 — 重新載入中…",
+      "importInvalid": "不是有效的偏好設定檔。"
     },
-    "planned": "規劃中"
+    "clearData": {
+      "title": "清除本機資料",
+      "description": "移除本站儲存於此瀏覽器的所有偏好與快取資料；本站不在其他任何地方儲存資料。",
+      "clearButton": "清除本機資料",
+      "confirmButton": "再點一次確認"
+    }
   },
   "systemManager": {
     "pageTitle": "系統狀態",
