@@ -14,7 +14,8 @@
     "switchToDarkAria": "切換至深色主題",
     "languageAria": "切換語言",
     "footerCopyright": "© {year} Investment Dashboard",
-    "footerPoweredBy": "市場資料提供："
+    "footerPoweredBy": "市場資料提供：",
+    "footerDisclaimer": "本網站內容僅供參考，不構成投資建議。"
   },
   "common": {
     "retry": "重試",
@@ -28,10 +29,6 @@
     "chartUnavailable": "圖表無法載入，請檢查網路連線後重試。",
     "widgetFailed": "無法載入此元件，請重新整理頁面或檢查網路連線。",
     "generic": "發生錯誤，請稍後再試。"
-  },
-  "vix": {
-    "loading": "正在載入 VIX 指數…",
-    "failed": "無法載入 VIX 指數，請檢查網路連線後重試。"
   },
   "techIndicators": {
     "title": "技術指標管理中心",
@@ -211,20 +208,6 @@
     "sentimentPositive": "正向",
     "sentimentNegative": "負向"
   },
-  "marketIndices": {
-    "title": "指數洞察",
-    "description": "全球主要股市指數的即時表現",
-    "names": {
-      "SPX": "S&P 500",
-      "DJI": "道瓊工業指數",
-      "IXIC": "那斯達克",
-      "RUT": "羅素 2000",
-      "UKX": "FTSE 100",
-      "NKY": "日經 225",
-      "DAX": "DAX",
-      "SHCOMP": "上證綜合指數"
-    }
-  },
   "fearGreed": {
     "title": "恐懼與貪婪指數儀表",
     "source": "資料來源：CNN 恐懼與貪婪指數",
@@ -260,32 +243,6 @@
       "oneMonthAgo": "一個月前 - {date}",
       "oneYearAgo": "一年前 - {date}"
     }
-  },
-  "marketInsight": {
-    "title": "股市洞察",
-    "dailyTitle": "每日股市走勢圖",
-    "weeklyTitle": "每週股市走勢圖",
-    "dailyLoading": "正在載入每日市場資料...",
-    "weeklyLoading": "正在載入每週市場資料...",
-    "dailyError": "無法載入每日市場資料",
-    "weeklyError": "無法載入每週市場資料",
-    "retry": "重試"
-  },
-  "marketsOverview": {
-    "lastUpdated": "最後更新：{time}",
-    "loading": "載入市場指標中...",
-    "retry": "重試",
-    "notAvailable": "無資料",
-    "errorNoData": "無可用的市場資料",
-    "staleFresh": "即時",
-    "staleStale": "略舊",
-    "staleVeryStale": "嚴重過期",
-    "staleUnknown": "未知",
-    "qualityGood": "良好",
-    "qualityStale": "略舊",
-    "qualityDegraded": "降級",
-    "qualityDisabled": "已停用",
-    "qualityUnknown": "未知"
   },
   "stockDetail": {
     "breadcrumb": {
@@ -354,8 +311,7 @@
       "revenueGrowth": "營收成長率（年增率）",
       "profitMargin": "淨利率",
       "forwardPE": "預估本益比（股價相對於預期獲利）",
-      "beta": "Beta 值（相對於大盤的波動性）",
-      "notAvailable": "無資料"
+      "beta": "Beta 值（相對於大盤的波動性）"
     },
     "earnings": {
       "title": "獲利與營收歷史",
@@ -363,11 +319,6 @@
       "revenueAxis": "營收",
       "revenueSeries": "營收",
       "earningsSeries": "獲利"
-    },
-    "targetPriceChart": {
-      "title": "分析師目標價走勢",
-      "priceAxis": "股價（美元）",
-      "priceTargetSeries": "目標價"
     },
     "periods": {
       "current": "目前",
@@ -387,7 +338,6 @@
     "loadingSmartMoney": "正在載入聰明錢資料…",
     "recentTransactions": "近期交易",
     "retry": "重試",
-    "notAvailable": "無資料",
     "insiders": "內部人",
     "institutions": "機構",
     "publicOther": "公眾／其他",
@@ -573,8 +523,7 @@
     "risk": {
       "title": "風險與波動度",
       "atrLabel": "ATR（14 日）",
-      "volatilityLabel": "波動度（標準差）",
-      "notAvailable": "無資料"
+      "volatilityLabel": "波動度（標準差）"
     },
     "info": {
       "title": "這些訊號如何運作",
@@ -597,7 +546,6 @@
     "title": "MFI 成交量分佈",
     "loading": "正在載入 MFI 成交量分佈…",
     "retry": "重試",
-    "notAvailable": "無資料",
     "devFallbackNote": "開發模式：正在嘗試 Yahoo Finance 備援來源",
     "devFallbackButton": "嘗試 Yahoo Finance（僅限開發）",
     "infoButtonTitle": "此分析的運作方式",
@@ -665,7 +613,6 @@
     },
     "loading": "正在計算成交量分佈…",
     "noData": "成交量資料不足，無法顯示分佈",
-    "notAvailable": "無資料",
     "axis": {
       "totalVolume": "總成交量",
       "priceZone": "價格區間"
@@ -851,7 +798,10 @@
       "launchpad": "發射台",
       "dipBuy": "回檔承接",
       "climax": "動能高潮",
-      "avoid": "避開"
+      "avoid": "避開",
+      "wait": "觀望",
+      "noData": "無資料",
+      "noTrade": "不交易"
     },
     "metrics": {
       "trend": "X：趨勢",
@@ -898,23 +848,6 @@
       "empty": "沒有符合此篩選條件的動向。"
     }
   },
-  "vixIndicator": {
-    "title": "恐懼與貪婪指數",
-    "subtitle": "VIX 波動率指數",
-    "gaugeLabel": "VIX",
-    "levels": {
-      "extremeFear": "極度恐懼",
-      "fear": "恐懼",
-      "neutral": "中性",
-      "greed": "貪婪"
-    },
-    "descriptions": {
-      "extremeFear": "市場陷入恐慌，波動性極高",
-      "fear": "投資人情緒緊張，不確定性升高",
-      "neutral": "市場平穩，波動性正常且溫和",
-      "greed": "波動性偏低，顯示投資人可能過度樂觀"
-    }
-  },
   "kineticChart": {
     "signalStatus": "訊號狀態",
     "fallbackNeutral": "中性 — 尚無進場條件",
@@ -952,7 +885,10 @@
       "launchpad": "偵測到佈局：結構收斂（Z = {z}）且趨勢偏多，突破可能即將發生。",
       "dipBuy": "回檔承接：動能降溫，但主趨勢仍維持（X = {x}）。",
       "climax": "注意：動能過熱（Y = {y}），反轉風險偏高。",
-      "neutral": "中性：等待更明確的訊號。目前趨勢強度為 X = {x}。"
+      "neutral": "中性：等待更明確的訊號。目前趨勢強度為 X = {x}。",
+      "sectorWeakness": "類股走弱：同類股個股趨勢向下。",
+      "insufficientData": "價格歷史不足，無法評分此標的。",
+      "sectorAvoidance": "類股條件不支持進場訊號。"
     },
     "metricsTable": {
       "metric": "指標",
@@ -985,19 +921,6 @@
       }
     }
   },
-  "topStories": {
-    "heading": "市場頭條新聞",
-    "loading": "正在載入最新市場新聞…",
-    "errorTitle": "無法載入市場新聞",
-    "retry": "重試"
-  },
-  "tvVix": {
-    "title": "VIX 波動率指數",
-    "subtitle": "市場恐慌指標（VIX 越高代表恐慌越強）",
-    "loading": "正在載入 VIX 資料...",
-    "errorMessage": "無法載入 VIX 資料",
-    "retry": "重試"
-  },
   "vixWidget": {
     "loading": "正在載入 VIX 波動率指數…",
     "loadError": "無法載入 VIX 圖表",
@@ -1018,5 +941,45 @@
   "lazyWidget": {
     "failedToLoad": "載入失敗",
     "retry": "重試"
+  },
+  "sectors": {
+    "basicMaterials": "原物料",
+    "communicationServices": "通訊服務",
+    "consumerCyclical": "非必需消費",
+    "consumerDefensive": "必需消費",
+    "etf": "ETF",
+    "energy": "能源",
+    "financialServices": "金融服務",
+    "healthcare": "醫療保健",
+    "industrials": "工業",
+    "realEstate": "房地產",
+    "technology": "科技",
+    "utilities": "公用事業",
+    "unknown": "未知"
+  },
+  "marketTerms": {
+    "tx": {
+      "buy": "買進",
+      "sell": "賣出"
+    },
+    "activity": {
+      "buy": "買進",
+      "sell": "賣出",
+      "add": "加碼",
+      "reduce": "減碼",
+      "hold": "持有",
+      "soldOut": "出清"
+    },
+    "role": {
+      "ceo": "執行長",
+      "cfo": "財務長",
+      "coo": "營運長",
+      "director": "董事",
+      "officer": "高階主管",
+      "president": "總裁",
+      "chairman": "董事長",
+      "generalCounsel": "法務長",
+      "tenPctOwner": "持股 10% 以上股東"
+    }
   }
 }

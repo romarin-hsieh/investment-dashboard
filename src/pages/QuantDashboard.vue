@@ -5,6 +5,7 @@ import ThreeDKineticChart from '@/components/ThreeDKineticChart.vue';
 import SignalCard from '@/components/SignalCard.vue';
 import { withDataBase } from '@/utils/baseUrl';
 import { formatNumber } from '@/utils/numberFormat';
+import { signalLabel as quantSignalLabel } from '@/utils/quantCopy';
 import { formatDate as i18nDate } from '@/utils/dateFormat';
 
 const { t } = useI18n();
@@ -88,16 +89,7 @@ const currentTickerData = computed(() => {
 
 const isPositive = computed(() => (currentTickerData.value?.change_percent ?? 0) >= 0);
 
-const signalLabel = computed(() => {
-    const s = currentTickerData.value?.signal;
-    switch (s) {
-        case 'LAUNCHPAD': return t('signalCard.signals.launchpad');
-        case 'DIP_BUY':   return t('signalCard.signals.dipBuy');
-        case 'CLIMAX':    return t('signalCard.signals.climax');
-        case 'AVOID':     return t('signalCard.signals.avoid');
-        default:          return (s || 'WAIT').replace('_', ' ');
-    }
-});
+const signalLabel = computed(() => quantSignalLabel(currentTickerData.value?.signal || 'WAIT', t));
 
 const displayPrice = computed(() => formatNumber(currentTickerData.value?.price ?? 0, 2));
 const displayChange = computed(() => formatNumber(currentTickerData.value?.change_percent ?? 0, 2));

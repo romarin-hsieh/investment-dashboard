@@ -3,6 +3,7 @@ import { ref, shallowRef, onMounted, onUnmounted, watch, nextTick, computed } fr
 import { useI18n } from 'vue-i18n';
 import { quantDataService } from '@/services/QuantDataService';
 import { formatNumber } from '@/utils/numberFormat';
+import { signalLabel, commentaryLabel } from '@/utils/quantCopy';
 import type { PlotlyStatic } from 'plotly.js-dist-min';
 
 /** One kinetic-state coordinate (loose — trace points may omit axes). */
@@ -77,8 +78,12 @@ const getThemeColors = () => {
     };
 };
 
+const signalText = (sig: string) => signalLabel(sig, t);
+
 const getCommentary = (d: CometTicker) => {
-    if (d.commentary && d.commentary.length > 5) return d.commentary;
+    // Known payload prose maps to i18n; unknown prose stays visible raw (audit CP-1).
+    const mapped = commentaryLabel(d.commentary, t);
+    if (mapped) return mapped;
     const sig = d.signal;
     const x = d.coordinates.x_trend;
     const y = d.coordinates.y_momentum;
@@ -265,7 +270,7 @@ onUnmounted(() => {
                 <div class="card-header">
                     <h4>{{ $t('cometChart.signalCard.title') }}</h4>
                     <span class="signal-badge" :class="cometData.signal.toLowerCase()">
-                        {{ cometData.signal.replace('_', ' ') }}
+                        {{ signalText(cometData.signal) }}
                     </span>
                 </div>
                 

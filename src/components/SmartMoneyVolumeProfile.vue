@@ -385,7 +385,7 @@ export default defineComponent({
     
     formatVolume(num: number | string) {
         const n = typeof num === 'number' ? num : Number(num);
-        if (!Number.isFinite(n)) return this.$t('smartMoney.notAvailable');
+        if (!Number.isFinite(n)) return this.$t('common.na');
         if (n > 1000000) return fmtNumber(n / 1000000, 1) + 'M';
         if (n > 1000) return fmtNumber(n / 1000, 1) + 'K';
         return fmtNumber(n, 0);

@@ -108,13 +108,13 @@
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.revenueGrowth') }}</div>
                         <div class="metric-value" :class="getGrowthClass(metrics['revenueGrowth'])">
-                            {{ metrics['revenueGrowth'] || $t('fundamentals.keyMetrics.notAvailable') }}
+                            {{ metrics['revenueGrowth'] || $t('common.na') }}
                         </div>
                      </div>
                      <div>
                         <div class="metric-label">{{ $t('fundamentals.keyMetrics.profitMargin') }}</div>
                         <div class="metric-value" :class="getGrowthClass(metrics['profitMargins'])">
-                             {{ metrics['profitMargins'] || $t('fundamentals.keyMetrics.notAvailable') }}
+                             {{ metrics['profitMargins'] || $t('common.na') }}
                         </div>
                      </div>
                      <div>
@@ -525,15 +525,15 @@ export default defineComponent({
     },
 
     formatPercent(val: unknown) {
-        if (val === undefined || val === null) return this.$t('fundamentals.keyMetrics.notAvailable');
+        if (val === undefined || val === null) return this.$t('common.na');
         // Handle both raw number (0.36) and object ({fmt: '36%'})
         const num = (typeof val === 'object' && val !== null ? (val as { raw?: number }).raw : val) as number;
         const pct = formatNumber(num * 100, 2, null);
-        return pct === null ? this.$t('fundamentals.keyMetrics.notAvailable') : pct + '%';
+        return pct === null ? this.$t('common.na') : pct + '%';
     },
 
     formatCurrency(val: number | null | undefined) {
-        if (val === undefined || val === null) return this.$t('fundamentals.keyMetrics.notAvailable');
+        if (val === undefined || val === null) return this.$t('common.na');
         return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
     },
 
@@ -560,13 +560,13 @@ export default defineComponent({
     displayMetric(value: unknown, decimals: number = 2) {
       const raw = this.unwrapValue(value)
       if (raw === null || raw === undefined || raw === '') {
-        return this.$t('fundamentals.keyMetrics.notAvailable')
+        return this.$t('common.na')
       }
       // Same normalization as getGrowthClass below: a fmt-only envelope hands us
       // a display string like "1,250.40", and bare parseFloat stops at the comma
       // and returns 1 — a silently wrong number, worse than N/A.
       const n = typeof raw === 'number' ? raw : parseFloat(String(raw).replace(/[%,\s]/g, ''))
-      if (!Number.isFinite(n)) return this.$t('fundamentals.keyMetrics.notAvailable')
+      if (!Number.isFinite(n)) return this.$t('common.na')
       return formatNumber(n, decimals)
     },
 

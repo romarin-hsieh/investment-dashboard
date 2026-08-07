@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watch, nextTick, computed, type PropType } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { formatNumber } from '@/utils/numberFormat';
 import { getToken } from '@/utils/designTokens';
+import { signalLabel, commentaryLabel } from '@/utils/quantCopy';
 import type { PlotlyStatic } from 'plotly.js-dist-min';
 
 /** One kinetic-state coordinate (loose — history/sector points may omit axes). */
@@ -34,6 +36,11 @@ const props = defineProps({
   commentary: { type: String, default: '' },
   ticker: { type: String, default: 'STOCK' }
 });
+
+const { t } = useI18n();
+const signalText = (sig: string) => signalLabel(sig, t);
+// Known payload prose maps to i18n; unknown prose stays visible raw (audit CP-1).
+const commentaryText = computed(() => commentaryLabel(props.commentary, t) ?? '');
 
 const container3D = ref<HTMLElement | null>(null);
 const container2DTop = ref<HTMLElement | null>(null);
@@ -297,11 +304,11 @@ onUnmounted(() => {
             <div class="card-header">
                 <h4>{{ $t('kineticChart.signalStatus') }}</h4>
                 <span class="signal-badge" :class="(signal || 'WAIT').toLowerCase()">
-                    {{ (signal || 'WAIT').replace('_', ' ') }}
+                    {{ signalText(signal || 'WAIT') }}
                 </span>
             </div>
-            
-            <div class="commentary" v-if="commentary">{{ commentary }}</div>
+
+            <div class="commentary" v-if="commentaryText">{{ commentaryText }}</div>
             <div class="commentary" v-else>
                 <!-- Fallback commentary if none provided -->
                {{ signal === 'WAIT' ? $t('kineticChart.fallbackNeutral') : $t('kineticChart.fallbackSignalDetected', { signal }) }}

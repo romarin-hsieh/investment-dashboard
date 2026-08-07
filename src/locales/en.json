@@ -14,7 +14,8 @@
     "switchToDarkAria": "Switch to dark theme",
     "languageAria": "Switch language",
     "footerCopyright": "© {year} Investment Dashboard",
-    "footerPoweredBy": "Market data powered by"
+    "footerPoweredBy": "Market data powered by",
+    "footerDisclaimer": "For informational purposes only. Not investment advice."
   },
   "common": {
     "retry": "Retry",
@@ -28,10 +29,6 @@
     "chartUnavailable": "Chart could not load. Check your connection and try again.",
     "widgetFailed": "Unable to load this widget. Refresh the page or check your connection.",
     "generic": "Something went wrong. Please try again."
-  },
-  "vix": {
-    "loading": "Loading VIX Index…",
-    "failed": "Unable to load the VIX index. Check your connection and retry."
   },
   "techIndicators": {
     "title": "Technical Indicators Manager",
@@ -211,20 +208,6 @@
     "sentimentPositive": "Positive",
     "sentimentNegative": "Negative"
   },
-  "marketIndices": {
-    "title": "Index Insight",
-    "description": "Live performance of major global stock market indices",
-    "names": {
-      "SPX": "S&P 500",
-      "DJI": "Dow Jones",
-      "IXIC": "NASDAQ",
-      "RUT": "Russell 2000",
-      "UKX": "FTSE 100",
-      "NKY": "Nikkei 225",
-      "DAX": "DAX",
-      "SHCOMP": "Shanghai Composite"
-    }
-  },
   "fearGreed": {
     "title": "Fear & Greed Index Gauge",
     "source": "Source: CNN Fear & Greed Index",
@@ -260,32 +243,6 @@
       "oneMonthAgo": "1 month ago - {date}",
       "oneYearAgo": "1 year ago - {date}"
     }
-  },
-  "marketInsight": {
-    "title": "Stock Market Insight",
-    "dailyTitle": "Daily Stock Market Chart",
-    "weeklyTitle": "Weekly Stock Market Chart",
-    "dailyLoading": "Loading daily market data...",
-    "weeklyLoading": "Loading weekly market data...",
-    "dailyError": "Could not load daily market data",
-    "weeklyError": "Could not load weekly market data",
-    "retry": "Retry"
-  },
-  "marketsOverview": {
-    "lastUpdated": "Last updated: {time}",
-    "loading": "Loading market indicators...",
-    "retry": "Retry",
-    "notAvailable": "N/A",
-    "errorNoData": "No market data available",
-    "staleFresh": "Fresh",
-    "staleStale": "Stale",
-    "staleVeryStale": "Very stale",
-    "staleUnknown": "Unknown",
-    "qualityGood": "Good",
-    "qualityStale": "Stale",
-    "qualityDegraded": "Degraded",
-    "qualityDisabled": "Disabled",
-    "qualityUnknown": "Unknown"
   },
   "stockDetail": {
     "breadcrumb": {
@@ -354,8 +311,7 @@
       "revenueGrowth": "Revenue Growth (year over year)",
       "profitMargin": "Profit Margin",
       "forwardPE": "Forward P/E (price relative to expected earnings)",
-      "beta": "Beta (volatility vs. the market)",
-      "notAvailable": "N/A"
+      "beta": "Beta (volatility vs. the market)"
     },
     "earnings": {
       "title": "Earnings & Revenue History",
@@ -363,11 +319,6 @@
       "revenueAxis": "Revenue",
       "revenueSeries": "Revenue",
       "earningsSeries": "Earnings"
-    },
-    "targetPriceChart": {
-      "title": "Analyst Price Target Over Time",
-      "priceAxis": "Price ($)",
-      "priceTargetSeries": "Price Target"
     },
     "periods": {
       "current": "Current",
@@ -387,7 +338,6 @@
     "loadingSmartMoney": "Loading smart money data...",
     "recentTransactions": "Recent Transactions",
     "retry": "Retry",
-    "notAvailable": "N/A",
     "insiders": "Insiders",
     "institutions": "Institutions",
     "publicOther": "Public / Other",
@@ -573,8 +523,7 @@
     "risk": {
       "title": "Risk & Volatility",
       "atrLabel": "ATR (14-day)",
-      "volatilityLabel": "Volatility (standard deviation)",
-      "notAvailable": "N/A"
+      "volatilityLabel": "Volatility (standard deviation)"
     },
     "info": {
       "title": "How These Signals Work",
@@ -597,7 +546,6 @@
     "title": "MFI Volume Profile",
     "loading": "Loading MFI Volume Profile...",
     "retry": "Retry",
-    "notAvailable": "N/A",
     "devFallbackNote": "Dev mode: trying the Yahoo Finance fallback source",
     "devFallbackButton": "Try Yahoo Finance (dev only)",
     "infoButtonTitle": "How this analysis works",
@@ -665,7 +613,6 @@
     },
     "loading": "Calculating volume profile...",
     "noData": "Not enough volume data to show a profile",
-    "notAvailable": "N/A",
     "axis": {
       "totalVolume": "Total Volume",
       "priceZone": "Price Range"
@@ -851,7 +798,10 @@
       "launchpad": "LAUNCHPAD",
       "dipBuy": "DIP BUY",
       "climax": "CLIMAX",
-      "avoid": "AVOID"
+      "avoid": "AVOID",
+      "wait": "WAIT",
+      "noData": "NO DATA",
+      "noTrade": "NO TRADE"
     },
     "metrics": {
       "trend": "X: Trend",
@@ -898,23 +848,6 @@
       "empty": "No activity matches this filter."
     }
   },
-  "vixIndicator": {
-    "title": "Fear & Greed Index",
-    "subtitle": "VIX Volatility Index",
-    "gaugeLabel": "VIX",
-    "levels": {
-      "extremeFear": "Extreme Fear",
-      "fear": "Fear",
-      "neutral": "Neutral",
-      "greed": "Greed"
-    },
-    "descriptions": {
-      "extremeFear": "Markets are in panic mode with very high volatility",
-      "fear": "Investors are nervous and uncertainty is rising",
-      "neutral": "Markets are calm with normal, moderate volatility",
-      "greed": "Volatility is low, suggesting investors may be too complacent"
-    }
-  },
   "kineticChart": {
     "signalStatus": "Signal Status",
     "fallbackNeutral": "Neutral — no setup yet",
@@ -952,7 +885,10 @@
       "launchpad": "Setup detected: structure is tight (Z = {z}) while the trend is positive. A breakout may be imminent.",
       "dipBuy": "Pullback opportunity: momentum has cooled, but the main trend is still intact (X = {x}).",
       "climax": "Caution: momentum is overheated (Y = {y}). High risk of a reversal.",
-      "neutral": "Neutral: waiting for a clearer signal. Current trend strength is X = {x}."
+      "neutral": "Neutral: waiting for a clearer signal. Current trend strength is X = {x}.",
+      "sectorWeakness": "Sector weakness: peer stocks in this sector are trending down.",
+      "insufficientData": "Not enough price history to score this symbol.",
+      "sectorAvoidance": "Sector conditions do not support a setup."
     },
     "metricsTable": {
       "metric": "Metric",
@@ -985,19 +921,6 @@
       }
     }
   },
-  "topStories": {
-    "heading": "Top Market Stories",
-    "loading": "Loading the latest market news…",
-    "errorTitle": "Couldn't load market news",
-    "retry": "Try again"
-  },
-  "tvVix": {
-    "title": "VIX Volatility Index",
-    "subtitle": "Market fear gauge (higher VIX means more fear)",
-    "loading": "Loading VIX data...",
-    "errorMessage": "Couldn't load VIX data",
-    "retry": "Retry"
-  },
   "vixWidget": {
     "loading": "Loading VIX volatility index…",
     "loadError": "Couldn't load the VIX chart",
@@ -1018,5 +941,45 @@
   "lazyWidget": {
     "failedToLoad": "Failed to load",
     "retry": "Retry"
+  },
+  "sectors": {
+    "basicMaterials": "Basic Materials",
+    "communicationServices": "Communication Services",
+    "consumerCyclical": "Consumer Cyclical",
+    "consumerDefensive": "Consumer Defensive",
+    "etf": "ETF",
+    "energy": "Energy",
+    "financialServices": "Financial Services",
+    "healthcare": "Healthcare",
+    "industrials": "Industrials",
+    "realEstate": "Real Estate",
+    "technology": "Technology",
+    "utilities": "Utilities",
+    "unknown": "Unknown"
+  },
+  "marketTerms": {
+    "tx": {
+      "buy": "Buy",
+      "sell": "Sell"
+    },
+    "activity": {
+      "buy": "Buy",
+      "sell": "Sell",
+      "add": "Add",
+      "reduce": "Reduce",
+      "hold": "Hold",
+      "soldOut": "Sold Out"
+    },
+    "role": {
+      "ceo": "CEO",
+      "cfo": "CFO",
+      "coo": "COO",
+      "director": "Director",
+      "officer": "Officer",
+      "president": "President",
+      "chairman": "Chairman",
+      "generalCounsel": "General Counsel",
+      "tenPctOwner": "10% Owner"
+    }
   }
 }

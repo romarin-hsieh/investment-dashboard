@@ -17,6 +17,7 @@ import { getDataBaseUrl } from '../utils/baseUrl';
 import { calculateAllIndicators } from '../utils/technicalIndicatorsCore';
 import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';
 import { formatNumber } from '../utils/numberFormat';
+import { formatDate } from '../utils/dateFormat';
 
 // =========================================================================
 // Yahoo Finance payload boundary types
@@ -1215,7 +1216,9 @@ class YahooFinanceAPI {
           return {
             organization: holder.organization,
             position: createFmt(holder.position, v => Number(v).toLocaleString()),
-            reportDate: createFmt(holder.reportDate, v => new Date(v).toLocaleDateString()),
+            // Locale-aware (audit S1): raw toLocaleDateString baked the browser locale
+            // into a display field rendered under 申報日期 on the zh UI.
+            reportDate: createFmt(holder.reportDate, v => formatDate(v as string | number | Date)),
             pctHeld: createFmt(holder.pctHeld, v => {
               const pct = formatNumber(Number(v) * 100, 2, null);
               return pct !== null ? pct + '%' : 'N/A';
@@ -1240,7 +1243,7 @@ class YahooFinanceAPI {
           transactionText: tx.transactionText,
           moneyText: tx.moneyText,
           ownership: tx.ownership,
-          startDate: createFmt(tx.startDate, v => new Date(v).toLocaleDateString()),
+          startDate: createFmt(tx.startDate, v => formatDate(v as string | number | Date)),
           startEpoch: tx.startEpoch,
           shares: createFmt(tx.shares, v => Number(v).toLocaleString()),
           value: createFmt(tx.value, v => Number(v).toLocaleString()),

@@ -64,7 +64,8 @@
             class="sector-group"
           >
             <h4 class="sector-title">
-              {{ sector }}
+              <!-- Sector payload values localize for display; ids/anchors keep the raw value (SK-C-1). -->
+              {{ sectorDisplay(sector) }}
               <span class="stock-count">({{ group.length }})</span>
             </h4>
             
@@ -103,6 +104,7 @@
 
 <script lang="ts">
 import { stocksConfig } from '@/utils/stocksConfigService'
+import { sectorLabel } from '@/utils/sectorL10n'
 import StockCard from './StockCard.vue'
 import LazyTradingViewWidget from './LazyTradingViewWidget.vue'
 import NavigationPanel from './NavigationPanel.vue'
@@ -551,7 +553,7 @@ export default defineComponent({
         const sectorNode: TocSectorNode = {
           id: `sector-${this.sanitizeId(sectorName)}`,
           type: 'sector',
-          label: sectorName,
+          label: this.sectorDisplay(sectorName), // localized display; id keeps the raw value
           children: []
         }
 
@@ -676,6 +678,10 @@ export default defineComponent({
     }
   },
   methods: {
+    // Localized sector display (SK-C-1); anchors/ids/search fields keep raw values.
+    sectorDisplay(sector: string) {
+      return sectorLabel(sector, (key: string) => this.$t(key))
+    },
     async loadStockData() {
       this.loading = true
       this.error = null

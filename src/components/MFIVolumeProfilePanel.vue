@@ -455,7 +455,7 @@ export default defineComponent({
     formatNumber,
 
     formatVolume(volume: number) {
-      if (!Number.isFinite(volume)) return this.$t('mfi.notAvailable');
+      if (!Number.isFinite(volume)) return this.$t('common.na');
       if (volume >= 1000000000) {
         return formatNumber(volume / 1000000000, 1) + 'B';
       } else if (volume >= 1000000) {

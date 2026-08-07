@@ -71,7 +71,7 @@
                 </div>
                 <div class="risk-metric">
                     <span class="label">{{ $t('signals.risk.volatilityLabel') }}</span>
-                    <span class="value">{{ risk.volatility || $t('signals.risk.notAvailable') }}</span>
+                    <span class="value">{{ risk.volatility || $t('common.na') }}</span>
               </div>
             </div>
           </div>

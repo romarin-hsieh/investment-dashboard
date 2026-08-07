@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { getToken } from '@/utils/designTokens';
 import { formatNumber } from '@/utils/numberFormat';
+import { signalLabel, commentaryLabel } from '@/utils/quantCopy';
 
 const { t } = useI18n();
 
@@ -47,15 +48,9 @@ const signalColor = computed(() => {
   }
 });
 
-const signalText = computed(() => {
-  switch (props.signal) {
-    case 'LAUNCHPAD': return t('signalCard.signals.launchpad');
-    case 'DIP_BUY':   return t('signalCard.signals.dipBuy');
-    case 'CLIMAX':    return t('signalCard.signals.climax');
-    case 'AVOID':     return t('signalCard.signals.avoid');
-    default:          return props.signal.replace('_', ' ');
-  }
-});
+const signalText = computed(() => signalLabel(props.signal, t));
+// Known payload prose maps to i18n; unknown prose stays visible raw (audit CP-1).
+const commentaryText = computed(() => commentaryLabel(props.commentary, t) ?? '');
 
 const isPositive = computed(() => props.changePercent >= 0);
 </script>
@@ -89,7 +84,7 @@ const isPositive = computed(() => props.changePercent >= 0);
     
     <div class="commentary-box">
       <h4>{{ $t('signalCard.analysisTitle') }}</h4>
-      <p>{{ commentary }}</p>
+      <p>{{ commentaryText }}</p>
     </div>
 
     <div class="metrics-grid" v-if="coordinates">
