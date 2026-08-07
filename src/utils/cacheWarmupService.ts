@@ -78,12 +78,21 @@ class CacheWarmupService {
       minCacheCoverage: 0.95 // 需要 95% 以上的緩存覆蓋率才不預熱
     }
 
-    // 追蹤的股票代碼
-    this.trackedSymbols = [
-      'ASTS', 'RIVN', 'PL', 'ONDS', 'RDW', 'AVAV', 'MDB', 'ORCL', 'TSM', 'RKLB',
-      'CRM', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'LEU', 'SMR', 'CRWV',
-      'IONQ', 'PLTR', 'HIMS', 'TSLA'
-    ]
+    // 追蹤的股票代碼 — hydrated from the universe config (stocksConfigService) via
+    // ensureTrackedSymbols(); the old hardcoded 24-ticker list sat beside the real
+    // 138-symbol universe and the monitor displayed both counts (audit SD-7/FH-10).
+    this.trackedSymbols = []
+  }
+
+  // 從 universe config 載入預熱清單（一次；失敗時維持空清單，不捏造）
+  async ensureTrackedSymbols(): Promise<void> {
+    if (this.trackedSymbols.length > 0) return
+    try {
+      const { stocksConfig } = await import('./stocksConfigService')
+      this.trackedSymbols = await stocksConfig.getSymbolsList()
+    } catch (error) {
+      console.warn('⚠️ Warmup list unavailable (universe config failed to load):', error)
+    }
   }
 
   // 啟動緩存預熱服務
@@ -401,6 +410,7 @@ class CacheWarmupService {
 
   // 手動觸發預熱
   async triggerManualWarmup(): Promise<Map<string, WarmupResult>> {
+    await this.ensureTrackedSymbols()
     console.log('🔥 Manual warmup triggered')
     return this.performWarmup()
   }

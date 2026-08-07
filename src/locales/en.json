@@ -23,7 +23,8 @@
     "na": "N/A",
     "refresh": "Refresh",
     "available": "Available",
-    "unavailable": "Unavailable"
+    "unavailable": "Unavailable",
+    "checking": "Checking…"
   },
   "errors": {
     "chartUnavailable": "Chart could not load. Check your connection and try again.",
@@ -94,7 +95,7 @@
     "inProgress": "In progress",
     "idle": "Idle",
     "progress": "Progress",
-    "trackedSymbols": "Tracked symbols",
+    "trackedSymbols": "Warm-up list",
     "lastWarmup": "Last warm-up",
     "warmingUp": "Warming up…",
     "manualWarmup": "Warm up now",
@@ -107,15 +108,7 @@
     "updateLog": "Update Log",
     "clearLog": "Clear log",
     "noLogs": "No log entries yet",
-    "config": "Configuration",
-    "saveConfig": "Save config",
-    "tiUpdates": "Technical-indicator updates",
-    "enableAuto": "Enable auto-update",
-    "intervalHours": "Update interval (hours):",
-    "marketHoursOnly": "Only during market hours",
-    "metadataUpdates": "Metadata updates",
     "fresh": "Fresh",
-    "recent": "Recent",
     "stale": "Stale",
     "outdated": "Outdated",
     "needsCleanup": "Needs cleanup",
@@ -143,8 +136,6 @@
     "logUpdateDone": "Manual update complete: ",
     "logUpdateFailed": "Manual update failed: ",
     "logCleared": "Log cleared",
-    "logConfigSaved": "Configuration saved",
-    "logSaveConfigFailed": "Failed to save configuration: ",
     "logNoChange": "Checked, no changes: "
   },
   "market": {
@@ -708,7 +699,8 @@
     "importExport": {
       "title": "Import & Export",
       "description": "Back up your settings or restore them from a saved file"
-    }
+    },
+    "planned": "Planned"
   },
   "systemManager": {
     "pageTitle": "System Status",
@@ -719,7 +711,8 @@
       "title": "Pipeline Status",
       "healthy": "Healthy",
       "stale": "Stale",
-      "daysStale": "{n} days behind"
+      "daysStale": "{n} days behind",
+      "unknown": "Unknown"
     },
     "lastUpdate": {
       "title": "Last Data Update"
@@ -753,7 +746,8 @@
       "cacheCleared": "Caches cleared; reloading…",
       "cacheClearFailed": "Failed to clear caches: {error}"
     },
-    "errorBanner": "System check failed: {error}"
+    "errorBanner": "System check failed: {error}",
+    "statusUnavailable": "Status unavailable — check failed"
   },
   "quant": {
     "title": "Quant Strategy: 3D Kinetic Market State",

@@ -130,11 +130,21 @@ describe('singleton + invariants', () => {
     })
   })
 
-  it('trackedSymbols starts as a non-empty array of string symbols', () => {
+  // Contract changed (audit SD-7): the list is no longer a hardcoded 24-ticker array —
+  // it starts EMPTY and hydrates from the universe config via ensureTrackedSymbols().
+  it('trackedSymbols starts empty and hydrates from the universe config', async () => {
     expect(Array.isArray(cacheWarmupService.trackedSymbols)).toBe(true)
-    expect(cacheWarmupService.trackedSymbols.length).toBeGreaterThan(0)
-    for (const s of cacheWarmupService.trackedSymbols) {
-      expect(typeof s).toBe('string')
-    }
+    expect(cacheWarmupService.trackedSymbols.length).toBe(0)
+
+    const { stocksConfig } = await import('./stocksConfigService')
+    const spy = vi.spyOn(stocksConfig, 'getSymbolsList').mockResolvedValue(['AAPL', 'NVDA'])
+    await cacheWarmupService.ensureTrackedSymbols()
+    expect(cacheWarmupService.trackedSymbols).toEqual(['AAPL', 'NVDA'])
+
+    // Idempotent: a second call does not re-fetch.
+    await cacheWarmupService.ensureTrackedSymbols()
+    expect(spy).toHaveBeenCalledTimes(1)
+    spy.mockRestore()
+    cacheWarmupService.trackedSymbols = []
   })
 })

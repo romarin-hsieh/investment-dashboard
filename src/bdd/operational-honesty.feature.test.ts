@@ -42,7 +42,7 @@ feature('Monitoring surfaces report only measured truth', () => {
 
   manualScenario(
     'A failed status fetch renders Unknown, not fabricated values',
-    'browser-level; needs the Unknown card states from fix package 6 (FH-8/US-SYS2)'
+    'browser-level; landed in fix/ops-surfaces (FH-8/US-SYS2) — verified 2026-08-07 with the data host blocked: 未知/無法取得狀態 render, 過期/從未/0 absent'
   )
   manualScenario(
     'SUCCESS log entries only for performed work',

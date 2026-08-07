@@ -207,64 +207,11 @@
       </div>
     </div>
 
-    <!-- Config -->
-    <div class="config-panel">
-      <div class="config-header">
-        <h3>{{ $t('autoUpdate.config') }}</h3>
-        <button @click="saveConfig" class="btn btn-success btn-sm" :disabled="!configChanged">
-          {{ $t('autoUpdate.saveConfig') }}
-        </button>
-      </div>
-      <div class="config-content">
-        <div class="config-section">
-          <h4>{{ $t('autoUpdate.tiUpdates') }}</h4>
-          <div class="config-item">
-            <label>
-              <input type="checkbox" v-model="config.technicalIndicators.enabled" @change="onConfigChange">
-              {{ $t('autoUpdate.enableAuto') }}
-            </label>
-          </div>
-          <div class="config-item">
-            <label for="au-ti-interval">{{ $t('autoUpdate.intervalHours') }}</label>
-            <input
-              id="au-ti-interval"
-              type="number"
-              v-model.number="config.technicalIndicators.intervalHours"
-              @change="onConfigChange"
-              min="1"
-              max="24"
-            >
-          </div>
-          <div class="config-item">
-            <label>
-              <input type="checkbox" v-model="config.technicalIndicators.marketHoursOnly" @change="onConfigChange">
-              {{ $t('autoUpdate.marketHoursOnly') }}
-            </label>
-          </div>
-        </div>
-
-        <div class="config-section">
-          <h4>{{ $t('autoUpdate.metadataUpdates') }}</h4>
-          <div class="config-item">
-            <label>
-              <input type="checkbox" v-model="config.metadata.enabled" @change="onConfigChange">
-              {{ $t('autoUpdate.enableAuto') }}
-            </label>
-          </div>
-          <div class="config-item">
-            <label for="au-meta-interval">{{ $t('autoUpdate.intervalHours') }}</label>
-            <input
-              id="au-meta-interval"
-              type="number"
-              v-model.number="config.metadata.intervalHours"
-              @change="onConfigChange"
-              min="1"
-              max="168"
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- The Configuration panel was removed (audit SD-4): it saved to a localStorage key
+         nothing reads, its defaults contradicted the live scheduler, and marketHoursOnly
+         had no implementation — a confirmed-looking control that changed nothing.
+         Scheduler cadence lives in code (autoUpdateScheduler.ts constructor); reinstate a
+         panel only together with real wiring (hydrate from + write into the scheduler). -->
   </div>
 </template>
 
@@ -275,7 +222,7 @@ import { withDataBase } from '@/utils/baseUrl'
 import { performanceCache } from '@/utils/performanceCache'
 import { cacheWarmupService } from '@/utils/cacheWarmupService'
 import { formatDateTime as i18nDateTime, type DateInput } from '@/utils/dateFormat'
-import { gradeFreshness } from '@/utils/freshness'
+import { gradeFreshness, METADATA_SLO_HOURS } from '@/utils/freshness'
 
 /** One entry in the in-memory activity log (newest first). */
 interface LogEntry {
@@ -300,18 +247,6 @@ export default defineComponent({
       status: {} as ReturnType<typeof autoUpdateScheduler.getStatus>,
       cacheStats: {} as ReturnType<typeof performanceCache.getStats>,
       logs: [] as LogEntry[],
-      config: {
-        technicalIndicators: {
-          enabled: true,
-          intervalHours: 1,
-          marketHoursOnly: true
-        },
-        metadata: {
-          enabled: true,
-          intervalHours: 24
-        }
-      },
-      configChanged: false,
       startTime: null as Date | null,
       technicalIndicatorsLastUpdate: null as Date | null,
       technicalIndicatorsAge: 0,
@@ -355,14 +290,18 @@ export default defineComponent({
       if (grade === 'stale') return 'status-warning'
       return 'status-error'
     },
+    // Metadata is a WEEKLY feed (update-metadata.yml) — grading it on daily thresholds
+    // made a normal 3-day age read as an alarm. Same shared helper, weekly SLO.
     metadataStatus() {
-      if (this.metadataAge < 24) return this.$t('autoUpdate.fresh')
-      if (this.metadataAge < 72) return this.$t('autoUpdate.recent')
-      return this.$t('autoUpdate.stale')
+      const grade = gradeFreshness(this.metadataAge, METADATA_SLO_HOURS)
+      if (grade === 'fresh') return this.$t('autoUpdate.fresh')
+      if (grade === 'stale') return this.$t('autoUpdate.stale')
+      return this.$t('autoUpdate.outdated')
     },
     metadataStatusClass() {
-      if (this.metadataAge < 24) return 'status-success'
-      if (this.metadataAge < 72) return 'status-warning'
+      const grade = gradeFreshness(this.metadataAge, METADATA_SLO_HOURS)
+      if (grade === 'fresh') return 'status-success'
+      if (grade === 'stale') return 'status-warning'
       return 'status-error'
     },
     cacheStatus() {
@@ -380,8 +319,9 @@ export default defineComponent({
     warmupStatusClass() {
       if (this.warmupInfo.isWarming) return 'status-warning'
       if (this.warmupInfo.progress === 100) return 'status-success'
-      if (this.warmupInfo.lastWarmupTime) return 'status-info'
-      return 'status-error'
+      // Manual-only service that has simply not been run is a neutral state, not an
+      // alarm — red-by-construction trained the operator to ignore the card (SD-7).
+      return 'status-info'
     }
   },
   async mounted() {
@@ -466,6 +406,9 @@ export default defineComponent({
 
     async loadWarmupStatus() {
       try {
+        // Hydrate the warm-up list from the universe config before reading the count —
+        // it was a hardcoded 24-ticker array beside the real 138-symbol universe (SD-7).
+        await cacheWarmupService.ensureTrackedSymbols()
         this.warmupInfo = cacheWarmupService.getWarmupStatus()
       } catch (error) {
         this.addLog(this.$t('autoUpdate.logWarmupStatusFailed') + (error as Error).message, 'ERROR')
@@ -556,21 +499,6 @@ export default defineComponent({
     clearLogs() {
       this.logs = []
       this.addLog(this.$t('autoUpdate.logCleared'), 'INFO')
-    },
-
-    onConfigChange() {
-      this.configChanged = true
-    },
-
-    async saveConfig() {
-      try {
-        // 這裡可以保存配置到本地存儲或發送到服務器
-        localStorage.setItem('autoUpdateConfig', JSON.stringify(this.config))
-        this.configChanged = false
-        this.addLog(this.$t('autoUpdate.logConfigSaved'), 'SUCCESS')
-      } catch (error) {
-        this.addLog(this.$t('autoUpdate.logSaveConfigFailed') + (error as Error).message, 'ERROR')
-      }
     },
 
     formatTime(date: DateInput) {
