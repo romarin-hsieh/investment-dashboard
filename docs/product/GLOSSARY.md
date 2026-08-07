@@ -23,7 +23,7 @@
 | English | 繁體中文 | Definition |
 |---|---|---|
 | **Launchpad** | 發射台狀態 | Classification: Z > 0.8 ∧ X > 0 (high volatility compression + positive trend). Potential breakout candidate. |
-| **Climax** | 動能狀態 | Classification: Y > 0.9 (extreme momentum). Potential exhaustion zone. |
+| **Climax** | 動能高潮 | Classification: Y > 0.9 (extreme momentum). Potential exhaustion zone. *(繁中 updated 2026-08-07 from 動能狀態 — the clearer term already used by `quant.legend`; see audit CP-4.)* |
 | **Dip Buy** | 回檔承接 | Classification: X > 0 ∧ Y < 0.2 (intact uptrend + oversold momentum). |
 | **McGinley Dynamic** | 麥金利動態均線 | Adaptive moving average used as the X-axis trend reference. |
 | **Stochastic RSI (StochRSI)** | 隨機 RSI | Momentum oscillator used as the Y-axis energy reference. |
@@ -40,7 +40,9 @@
 | **Symbol Universe** | 追蹤標的清單 | Master list of tracked tickers, defined in `public/config/stocks.json`. |
 | **Smart Money** | 聰明錢 | Institutional capital flows tracked via Dataroma (Super Investor 13F filings). |
 | **Super Investors** | 超級投資人 | The curated Dataroma list (Buffett, Ackman, etc.) whose holdings are scraped. |
+| **Industry** | 產業 | The finer GICS-style grouping nested *inside* a sector (e.g. Semiconductors). Never translate sector as 產業 — see the Sector row. |
 | **Insider Sentiment** | 內部人情緒 | Aggregated C-Suite buy/sell activity per symbol. |
+| **Sector** | 類股 | The top-level market grouping (Technology, Financials…). Taiwan brokerage convention; distinguishes from Industry 產業. |
 | **Fear & Greed Index** | 恐懼與貪婪指數 | CNN daily sentiment score, produced by `scripts/update_sentiment.py` (CNN API, Z-Score fallback) → `market-sentiment.json`. |
 | **Dataroma** | Dataroma | Third-party aggregator of 13F institutional holdings. Source for Smart Money features. |
 
@@ -58,6 +60,26 @@
 | **Pre-computation** | 預先計算 | Moving expensive work from runtime (user request) to build-time (CI/CD). |
 | **Warm Boot (Widget)** | 暖啟動（元件） | Technique in `FastTradingViewWidget.vue` that caches widget scripts to bypass re-download on nav. |
 | **Add-Symbol Workflow** | 新增股票工作流 | Self-service GitHub Actions workflow (`add-symbol.yml`, or `npm run add-symbol`) that validates a new ticker via yahoo-finance2, auto-fills exchange/sector/industry, appends it to `config/stocks.json`, and triggers an ETL + deploy. See `docs/operations/ADD_NEW_SYMBOL.md`. |
+
+## D2. UI & Operations Vocabulary (user-facing copy)
+
+> Added 2026-08-07 after audit CP-2: the Tools pages drifted into mainland-register
+> vocabulary precisely where this table had no row. UI copy MUST use these forms; the
+> right-hand column lists the banned register variants the terminology guard test rejects.
+
+| English | 繁體中文 | Banned variants (do not ship) |
+|---|---|---|
+| **Cache** | 快取 | 緩存 |
+| **Data** | 資料 | 數據 (in UI copy; acceptable only inside 已定名詞 like 大數據) |
+| **Fallback** | 備援 | 回退 |
+| **Local (this device)** | 本機 | 本地 |
+| **Metadata** | 中繼資料 | 元數據 |
+| **Refresh** (action) | 重新整理 | 刷新 |
+| **Run / Execute** | 執行 | 運行 |
+| **Save** | 儲存 | 保存 |
+| **Scheduler** | 排程器 | 調度器 |
+| **Settings / Configuration** | 設定 | 配置 |
+| **System Status** (the `/system-manager` page) | 系統狀態 | 控制面板 · 系統管理 (as page names) |
 
 ## E. Project Nicknames & Codenames
 

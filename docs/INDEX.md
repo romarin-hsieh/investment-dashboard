@@ -11,6 +11,13 @@
 ### "What is this project? Who is it for?"
 - **[product/PRD.md](product/PRD.md)** — vision, target users, Job Stories, feature inventory, non-goals, acceptance criteria
 
+### "How should each surface behave?" (2026-08 PM foundation)
+- **[product/USER_STORIES.md](product/USER_STORIES.md)** — per-route stories with Given/When/Then acceptance, incl. the Tools pages the PRD never covered
+- **[product/USER_FLOWS.md](product/USER_FLOWS.md)** — expected end-to-end paths with failure branches (mermaid)
+- **[product/STATE_MACHINES.md](product/STATE_MACHINES.md)** — normative finite states: widget data lifecycle, 3-tier cache, scheduler, warm-up, theme/locale, data-version
+- **[product/WIREFRAMES.md](product/WIREFRAMES.md)** — per-route wireframes + the shared UI grammar (page headers, buttons, cards, status vocabulary, naming map)
+- **[product/BDD_DDD_GAP_ANALYSIS.md](product/BDD_DDD_GAP_ANALYSIS.md)** — BDD/DDD artifact inventory, bounded-context map, GWT framework decision
+
 ### "What's coming next?"
 - **[product/ROADMAP.md](product/ROADMAP.md)** — Now / Next / Later horizons, including future Co-work / n8n / NotebookLM / Obsidian integrations
 - **[../CHANGELOG.md](../CHANGELOG.md)** — versioned release history
@@ -59,6 +66,11 @@
 - [PRD.md](product/PRD.md)
 - [ROADMAP.md](product/ROADMAP.md)
 - [GLOSSARY.md](product/GLOSSARY.md)
+- [USER_STORIES.md](product/USER_STORIES.md)
+- [USER_FLOWS.md](product/USER_FLOWS.md)
+- [STATE_MACHINES.md](product/STATE_MACHINES.md)
+- [WIREFRAMES.md](product/WIREFRAMES.md)
+- [BDD_DDD_GAP_ANALYSIS.md](product/BDD_DDD_GAP_ANALYSIS.md)
 
 ### Architecture (`architecture/`)
 - [OVERVIEW.md](architecture/OVERVIEW.md)
