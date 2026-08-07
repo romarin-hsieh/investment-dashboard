@@ -18,6 +18,7 @@ import { calculateAllIndicators } from '../utils/technicalIndicatorsCore';
 import corsProxyManager, { CORS_PROXIES, API_CONFIG } from './corsProxyManager';
 import { formatNumber } from '../utils/numberFormat';
 import { formatDate } from '../utils/dateFormat';
+import { dataCacheBust } from '../utils/cacheBust';
 
 // =========================================================================
 // Yahoo Finance payload boundary types
@@ -728,7 +729,7 @@ class YahooFinanceAPI {
 
       // 1. Get/Refresh Index (Check availability)
       if (!this.latestIndex || Date.now() - this.latestIndexTimestamp > 60 * 60 * 1000) {
-        const indexUrl = `${baseUrl}${this.staticTechBaseUrl}latest_index.json?t=${Date.now()}`;
+        const indexUrl = `${baseUrl}${this.staticTechBaseUrl}latest_index.json${dataCacheBust()}`;
         const resp = await fetch(indexUrl);
         if (resp.ok) {
           this.latestIndex = await resp.json();
@@ -989,7 +990,7 @@ class YahooFinanceAPI {
     try {
       console.log(`Attempting to fetch static data for ${symbol}...`);
       const baseUrl = getDataBaseUrl();
-      const staticResponse = await fetch(`${baseUrl}data/fundamentals/${symbol}.json?t=${Date.now()}`);
+      const staticResponse = await fetch(`${baseUrl}data/fundamentals/${symbol}.json${dataCacheBust()}`);
       if (staticResponse.ok) {
         const staticData: RawQuoteSummaryResult = await staticResponse.json();
         console.log(`✅ Loaded static fundamental data for ${symbol}`);
@@ -1420,7 +1421,7 @@ class YahooFinanceAPI {
         // generate-real-ohlcv-yfinance.py uses sym.replace(":", "_"); generated files are UPPERCASE,
         // so try UPPERCASE first as per convention.
 
-        const staticUrl = `${baseUrl}data/ohlcv/${safeSymbol}.json?t=${Math.floor(Date.now() / 60000)}`; // Simple cache bust
+        const staticUrl = `${baseUrl}data/ohlcv/${safeSymbol}.json${dataCacheBust()}`; // version-keyed bust (ADR-0006)
         console.log(`📊 Attempting static OHLCV fetch: ${staticUrl}`);
 
         const resp = await fetch(staticUrl);

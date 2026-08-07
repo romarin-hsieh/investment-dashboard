@@ -1,6 +1,7 @@
 
 // Simple in-memory cache service for Quant Data
 import { withDataBase } from '../utils/baseUrl'
+import { dataCacheBust } from '../utils/cacheBust'
 
 /** 單一 ticker 的量化資料列（欄位隨後端 payload 演進，故以索引簽章開放）。 */
 export interface QuantTicker {
@@ -34,7 +35,7 @@ class QuantDataService {
     }
 
     // Fetch new data
-    this.fetchPromise = fetch(withDataBase('data/dashboard_status.json'))
+    this.fetchPromise = fetch(withDataBase('data/dashboard_status.json') + dataCacheBust())
       .then(res => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json() as Promise<QuantDashboardStatus>;

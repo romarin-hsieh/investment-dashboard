@@ -2,6 +2,7 @@
  * 統一股票配置服務
  * 所有模組都通過此服務獲取股票配置，避免重複維護多個配置文件
  */
+import { hourlyBust } from './cacheBust'
 
 /** config/stocks.json 內單一股票的設定。核心欄位固定，其餘以 index signature 容納。 */
 export interface StockConfigEntry {
@@ -60,7 +61,7 @@ class StocksConfigService {
       }
 
       const url = this.getConfigUrl()
-      const response = await fetch(`${url}?t=${Date.now()}`)
+      const response = await fetch(`${url}${hourlyBust()}`) // app-repo asset: hourly (ADR-0006)
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`)
