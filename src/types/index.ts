@@ -24,8 +24,6 @@ export interface HoldingData {
 export interface UserSettings {
   scraping_enabled: boolean
   degradation_enabled: boolean
-  ga_enabled: boolean
-  clarity_enabled: boolean
 }
 
 export interface CacheData {

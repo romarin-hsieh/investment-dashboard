@@ -18,7 +18,7 @@ function validState (overrides = {}) {
     schema_version: '1.0.0',
     watchlist: ['AMD', 'NVDA'],
     holdings: { AMD: { avg_cost_usd: 100, shares: 10 } },
-    settings: { scraping_enabled: false, degradation_enabled: true, ga_enabled: false, clarity_enabled: false },
+    settings: { scraping_enabled: false, degradation_enabled: true },
     cache: {},
     diagnostics: {},
     ...overrides
@@ -68,6 +68,27 @@ describe('StateManager.loadState — cache-drift resilience (CRITICAL)', () => {
     localStorage.setItem(KEY, '{not json')
     expect(StateManager.loadState().watchlist).toEqual([])
   })
+
+  it('loads a state persisted by the pre-removal build, dropping the dead analytics flags', () => {
+    // Every install predating the ga_enabled/clarity_enabled removal has those two
+    // keys in localStorage. On THIS path migrateState rebuilds `settings`
+    // field-by-field before validation, so the extras are gone before the schema
+    // ever sees them; the assertion pins that they don't survive into the result.
+    store({
+      ...validState(),
+      settings: {
+        scraping_enabled: false,
+        degradation_enabled: true,
+        ga_enabled: true,
+        clarity_enabled: true
+      }
+    })
+
+    const s = StateManager.loadState()
+
+    expect(s.watchlist).toEqual(['AMD', 'NVDA'])
+    expect(s.settings).toEqual({ scraping_enabled: false, degradation_enabled: true })
+  })
 })
 
 describe('StateManager.importState', () => {
@@ -81,6 +102,30 @@ describe('StateManager.importState', () => {
     expect(result.success).toBe(true)
     expect(result.data.watchlist).toEqual(['AMD', 'NVDA'])
     expect(result.data.holdings.AMD.avg_cost_usd).toBe(100)
+  })
+
+  it('still imports a backup file exported before the analytics flags were removed', () => {
+    // Backwards compatibility for the removal: a backup the user downloaded from
+    // the old Settings page carries ga_enabled/clarity_enabled. Restoring it must
+    // return the portfolio intact and quietly drop the dead keys, never reject the
+    // file. (migrateState rebuilds `settings` field-by-field, which is what makes
+    // this hold — validateImportData is only a format/top-level-key gate.)
+    const oldBackup = JSON.stringify({
+      ...validState(),
+      settings: {
+        scraping_enabled: false,
+        degradation_enabled: true,
+        ga_enabled: true,
+        clarity_enabled: true
+      }
+    })
+
+    const result = StateManager.importState(oldBackup)
+
+    expect(result.success).toBe(true)
+    expect(result.data.watchlist).toEqual(['AMD', 'NVDA'])
+    expect(result.data.holdings.AMD.avg_cost_usd).toBe(100)
+    expect(result.data.settings).toEqual({ scraping_enabled: false, degradation_enabled: true })
   })
 
   it('rejects unknown top-level keys', () => {
