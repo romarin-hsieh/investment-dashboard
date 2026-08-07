@@ -23,7 +23,8 @@
     "na": "無資料",
     "refresh": "重新整理",
     "available": "可用",
-    "unavailable": "不可用"
+    "unavailable": "不可用",
+    "checking": "檢查中…"
   },
   "errors": {
     "chartUnavailable": "圖表無法載入，請檢查網路連線後重試。",
@@ -94,7 +95,7 @@
     "inProgress": "進行中",
     "idle": "待機中",
     "progress": "進度",
-    "trackedSymbols": "追蹤股票",
+    "trackedSymbols": "預熱清單",
     "lastWarmup": "上次預熱",
     "warmingUp": "預熱中…",
     "manualWarmup": "手動預熱",
@@ -107,15 +108,7 @@
     "updateLog": "更新日誌",
     "clearLog": "清除日誌",
     "noLogs": "暫無日誌記錄",
-    "config": "設定",
-    "saveConfig": "儲存設定",
-    "tiUpdates": "技術指標更新",
-    "enableAuto": "啟用自動更新",
-    "intervalHours": "更新間隔（小時）：",
-    "marketHoursOnly": "僅在市場時間更新",
-    "metadataUpdates": "中繼資料更新",
     "fresh": "最新",
-    "recent": "較新",
     "stale": "過時",
     "outdated": "資料過舊",
     "needsCleanup": "需要清理",
@@ -143,8 +136,6 @@
     "logUpdateDone": "手動更新完成：",
     "logUpdateFailed": "手動更新失敗：",
     "logCleared": "日誌已清除",
-    "logConfigSaved": "設定已儲存",
-    "logSaveConfigFailed": "儲存設定失敗：",
     "logNoChange": "已檢查，無變更："
   },
   "market": {
@@ -708,7 +699,8 @@
     "importExport": {
       "title": "匯入與匯出",
       "description": "備份您的設定，或從已儲存的檔案還原"
-    }
+    },
+    "planned": "規劃中"
   },
   "systemManager": {
     "pageTitle": "系統狀態",
@@ -719,7 +711,8 @@
       "title": "管線狀態",
       "healthy": "正常",
       "stale": "過期",
-      "daysStale": "已落後 {n} 天"
+      "daysStale": "已落後 {n} 天",
+      "unknown": "未知"
     },
     "lastUpdate": {
       "title": "上次資料更新"
@@ -753,7 +746,8 @@
       "cacheCleared": "快取已清除；重新載入中…",
       "cacheClearFailed": "清除快取失敗：{error}"
     },
-    "errorBanner": "系統檢查失敗：{error}"
+    "errorBanner": "系統檢查失敗：{error}",
+    "statusUnavailable": "無法取得狀態 — 檢查失敗"
   },
   "quant": {
     "title": "量化策略：3D 動態市場狀態",

@@ -15,15 +15,23 @@
     <!-- Status Overview -->
     <div class="overview-section">
       <div class="overview-grid">
-        <!-- Pipeline Status -->
+        <!-- Pipeline Status. States are explicit (SM-1/US-SYS2): checking → 檢查中,
+             fetch failed → 未知 (never a fabricated 過期), else measured fresh/stale. -->
         <div class="overview-card" :style="{ borderColor: statusColor }">
             <div class="card-content">
                 <h3>{{ $t('systemManager.pipelineStatus.title') }}</h3>
-                <div class="status-val" :style="{ color: statusColor }">
+                <div v-if="loading" class="status-val text-muted">{{ $t('common.checking') }}</div>
+                <div v-else-if="!statusKnown" class="status-val" :style="{ color: statusColor }">
+                    {{ $t('systemManager.pipelineStatus.unknown') }}
+                </div>
+                <div v-else class="status-val" :style="{ color: statusColor }">
                     {{ isDataFresh ? $t('systemManager.pipelineStatus.healthy') : $t('systemManager.pipelineStatus.stale') }}
                 </div>
-                <div class="sub-text" v-if="!isDataFresh && daysSinceUpdate > 0">
+                <div class="sub-text" v-if="!loading && statusKnown && !isDataFresh && daysSinceUpdate > 0">
                     {{ $t('systemManager.pipelineStatus.daysStale', { n: daysSinceUpdate }) }}
+                </div>
+                <div class="sub-text" v-if="!loading && !statusKnown">
+                    {{ $t('systemManager.statusUnavailable') }}
                 </div>
             </div>
         </div>
@@ -32,12 +40,16 @@
         <div class="overview-card">
             <div class="card-content">
                 <h3>{{ $t('systemManager.lastUpdate.title') }}</h3>
-                <div class="status-val text-dark">
-                    {{ formatDate(pipelineStatus.generatedAt).split(',')[0] }}
-                </div>
-                <div class="sub-text">
-                    {{ formatDate(pipelineStatus.generatedAt).split(',')[1] }}
-                </div>
+                <div v-if="loading" class="status-val text-muted">{{ $t('common.checking') }}</div>
+                <div v-else-if="!statusKnown" class="status-val text-muted">{{ $t('common.na') }}</div>
+                <template v-else>
+                    <div class="status-val text-dark">
+                        {{ formatDate(pipelineStatus.generatedAt).split(',')[0] }}
+                    </div>
+                    <div class="sub-text">
+                        {{ formatDate(pipelineStatus.generatedAt).split(',')[1] }}
+                    </div>
+                </template>
             </div>
         </div>
 
@@ -45,7 +57,9 @@
         <div class="overview-card">
             <div class="card-content">
                 <h3>{{ $t('systemManager.coverage.title') }}</h3>
-                <div class="status-val text-blue">
+                <div v-if="loading" class="status-val text-muted">{{ $t('common.checking') }}</div>
+                <div v-else-if="!statusKnown && !universeInfo.total" class="status-val text-muted">{{ $t('common.na') }}</div>
+                <div v-else class="status-val text-blue">
                     {{ pipelineStatus.symbolsCount || universeInfo.total }}
                 </div>
                 <div class="sub-text">{{ $t('systemManager.coverage.activeSymbols') }}</div>
@@ -119,7 +133,9 @@ export default defineComponent({
   name: 'SystemManager',
   data() {
     return {
-      loading: false,
+      // Starts true so first paint shows 檢查中… placeholders instead of flashing
+      // fabricated 過期/從未/0 before the fetches settle (audit I8/FH-8).
+      loading: true,
       error: null as string | null,
 
       // Real Pipeline Status
@@ -145,6 +161,11 @@ export default defineComponent({
   },
   
   computed: {
+    // A definite fresh/stale claim requires a measured timestamp; without one the page
+    // must say unknown, not fabricate 過期/從未/0 (audit FH-8 / US-SYS2).
+    statusKnown() {
+       return !!this.pipelineStatus.generatedAt;
+    },
     isDataFresh() {
        if (!this.pipelineStatus.generatedAt) return false;
        const genTime = new Date(this.pipelineStatus.generatedAt).getTime();
@@ -203,6 +224,9 @@ export default defineComponent({
         } catch (e) {
             console.error(e);
             this.pipelineStatus.status = 'Unreachable';
+            // Surface the failure in the banner — the inner catch previously swallowed
+            // it, leaving the error UI unreachable (audit I3, round-1 residue).
+            this.error = (e as Error).message;
             this.addLog('error', this.$t('systemManager.log.indexFailed'));
         }
 

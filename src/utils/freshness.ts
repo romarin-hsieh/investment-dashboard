@@ -13,10 +13,15 @@
  */
 export const FRESHNESS_SLO_HOURS = 26
 
+/** symbols_metadata refreshes weekly (update-metadata.yml, Sundays 02:00 UTC) — its SLO
+ *  is one cadence plus a day of skew, not the daily pipeline's 26 h. */
+export const METADATA_SLO_HOURS = 8 * 24
+
 export type FreshnessGrade = 'fresh' | 'stale' | 'outdated'
 
-export function gradeFreshness(ageHours: number): FreshnessGrade {
-  if (ageHours < FRESHNESS_SLO_HOURS) return 'fresh'
-  if (ageHours < 48) return 'stale'
+/** stale = under two missed cadences; outdated = beyond. Default SLO is the daily feed's. */
+export function gradeFreshness(ageHours: number, sloHours: number = FRESHNESS_SLO_HOURS): FreshnessGrade {
+  if (ageHours < sloHours) return 'fresh'
+  if (ageHours < 2 * sloHours) return 'stale'
   return 'outdated'
 }
