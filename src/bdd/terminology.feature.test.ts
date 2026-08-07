@@ -1,16 +1,15 @@
 /**
  * Binding for features/terminology.feature — GLOSSARY §D2 as an executable guard.
  *
- * @pending-fix(fix/copy-slop): the banned-register scenario is fully written but gated
- * behind pendingScenario until the copy sweep lands (audit CP-2 documents the current
- * violations). Flipping `pendingScenario` → `scenario` is the fix PR's red→green switch.
- * The other two feature scenarios are @covered-by pre-existing tests (src/i18n.test.js,
- * src/dateformat-usage.guard.test.js) and deliberately not re-bound here.
+ * ACTIVE since fix/copy-slop (the CP-2 register sweep) — this guard keeps the banned
+ * vocabulary from returning. The other two feature scenarios are @covered-by
+ * pre-existing tests (src/i18n.test.js, src/dateformat-usage.guard.test.js) and
+ * deliberately not re-bound here.
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { expect } from 'vitest'
-import { feature, pendingScenario } from './gwt'
+import { feature, scenario } from './gwt'
 
 type Leaf = [key: string, value: string]
 function flatEntries(obj: Record<string, unknown>, prefix = ''): Leaf[] {
@@ -36,9 +35,8 @@ const BANNED: Array<[banned: string, canonical: string]> = [
 const ALLOWLISTED_KEYS = new Set<string>([])
 
 feature('UI copy traces to the project glossary', () => {
-  pendingScenario(
+  scenario(
     'zh-TW copy contains no banned-register vocabulary',
-    'activate in fix/copy-slop once the CP-2 sweep lands',
     (s) => {
       let leaves: Leaf[] = []
       let violations: string[] = []

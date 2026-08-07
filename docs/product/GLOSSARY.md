@@ -78,7 +78,7 @@
 | **Run / Execute** | 執行 | 運行 |
 | **Save** | 儲存 | 保存 |
 | **Scheduler** | 排程器 | 調度器 |
-| **Settings / Configuration** | 設定 | 配置 |
+| **Settings / Configuration** | 設定 | 配置 *(software-configuration sense only — the finance sense "allocation" 資產配置/類股配置 is canonical and stays)* |
 | **System Status** (the `/system-manager` page) | 系統狀態 | 控制面板 · 系統管理 (as page names) |
 
 ## E. Project Nicknames & Codenames

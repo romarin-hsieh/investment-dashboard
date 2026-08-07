@@ -2,7 +2,7 @@ Feature: UI copy traces to the project glossary
   # GLOSSARY.md §D2 · US-TIM1 · audit CP-2. The glossary's banned-variants column is
   # executable: mainland-register vocabulary must not ship in zh-TW UI copy.
 
-  @bound(src/bdd/terminology.feature.test.ts) @pending-fix(fix/copy-slop)
+  @bound(src/bdd/terminology.feature.test.ts)
   Scenario: zh-TW copy contains no banned-register vocabulary
     Given the banned-variant table in docs/product/GLOSSARY.md §D2
     When every leaf string in src/locales/zh-TW.json is scanned
