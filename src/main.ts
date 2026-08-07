@@ -45,6 +45,22 @@ const router = createRouter({
   routes
 })
 
+// Stale-chunk recovery: routes are lazy chunks with hashed filenames, so a tab that
+// stayed open across a deploy (nightly 02:00 UTC) or a local rebuild will 404 on its
+// next navigation and the click appears dead. Reload once to pick up the new manifest;
+// the sessionStorage guard prevents a reload loop if the failure is something else.
+router.onError((error, to) => {
+  const message = String(error?.message ?? error)
+  const isStaleChunk =
+    /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module/i.test(message)
+  if (isStaleChunk && !sessionStorage.getItem('chunk-reload')) {
+    sessionStorage.setItem('chunk-reload', '1')
+    window.location.href = to.fullPath ? `${window.location.pathname}#${to.fullPath}` : window.location.href
+    window.location.reload()
+  }
+})
+router.afterEach(() => sessionStorage.removeItem('chunk-reload'))
+
 const app = createApp(App)
 app.use(i18n)
 app.use(router)
