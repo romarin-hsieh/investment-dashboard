@@ -1,9 +1,15 @@
 /**
- * TechnicalIndicatorsManager — "Clear All Caches" actually clears (audit I2).
+ * TechnicalIndicatorsManager — "Clear All Caches" actually clears (audit I2),
+ * behind a two-step inline confirm (audit I5).
  *
- * Before: the two real clear calls were commented out and the success alert
+ * I2: the two real clear calls were once commented out while the success alert
  * fired unconditionally, so the user was told the purge succeeded while nothing
- * was cleared. This test locks that the real clears run before success.
+ * was cleared. These tests lock that the real clears run before success.
+ *
+ * I5: the native confirm()/alert() pair was replaced by the same arm-then-act
+ * grammar Settings uses — the first click only arms (and says so), the second
+ * does the work. Outcomes are reported in an inline status line, not a modal
+ * dialog, so nothing here stubs window.confirm/window.alert any more.
  */
 import { mount, flushPromises } from '@vue/test-utils'
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
@@ -26,28 +32,30 @@ beforeEach(() => {
   vi.clearAllMocks()   // module-mock call counts don't reset on their own
   vi.spyOn(console, 'log').mockImplementation(() => {})
   vi.spyOn(console, 'error').mockImplementation(() => {})
-  vi.spyOn(window, 'alert').mockImplementation(() => {})
 })
 afterEach(() => {
   vi.restoreAllMocks()
 })
 
-describe('TechnicalIndicatorsManager — Clear All Caches (I2)', () => {
-  it('runs the real cache clears before reporting success', async () => {
-    vi.spyOn(window, 'confirm').mockReturnValue(true)
+describe('TechnicalIndicatorsManager — Clear All Caches (I2 + I5)', () => {
+  it('runs the real cache clears before reporting success, on the confirming click', async () => {
     const wrapper = mount(TechnicalIndicatorsManager)
     await flushPromises()
 
-    await wrapper.vm.clearAllCaches()
+    await wrapper.vm.clearAllCaches()   // arms
+    await wrapper.vm.clearAllCaches()   // confirms
 
     expect(technicalIndicatorsCache.clearAllCache).toHaveBeenCalledTimes(1)
     expect(precomputedIndicatorsAPI.clearCache).toHaveBeenCalledTimes(1)
-    // Success is only reported after the clears ran.
-    expect(window.alert).toHaveBeenCalled()
+    // Success is only reported after the clears ran, and inline rather than in a dialog.
+    expect(wrapper.vm.actionStatus).toEqual({
+      kind: 'ok',
+      message: wrapper.vm.$t('techIndicators.cachesCleared')
+    })
+    expect(wrapper.vm.clearArmed).toBe(false)   // disarmed again after acting
   })
 
-  it('does nothing when the confirm is declined', async () => {
-    vi.spyOn(window, 'confirm').mockReturnValue(false)
+  it('the first click only arms — it clears nothing', async () => {
     const wrapper = mount(TechnicalIndicatorsManager)
     await flushPromises()
 
@@ -55,6 +63,32 @@ describe('TechnicalIndicatorsManager — Clear All Caches (I2)', () => {
 
     expect(technicalIndicatorsCache.clearAllCache).not.toHaveBeenCalled()
     expect(precomputedIndicatorsAPI.clearCache).not.toHaveBeenCalled()
-    expect(window.alert).not.toHaveBeenCalled()
+    expect(wrapper.vm.clearArmed).toBe(true)
+    // The user is told what the next click will do.
+    expect(wrapper.vm.actionStatus).toEqual({
+      kind: 'ok',
+      message: wrapper.vm.$t('techIndicators.confirmClear')
+    })
+  })
+
+  it('disarms after 5 s so a stale arm cannot be confirmed by an unrelated click', async () => {
+    vi.useFakeTimers()
+    try {
+      const wrapper = mount(TechnicalIndicatorsManager)
+      await flushPromises()
+
+      await wrapper.vm.clearAllCaches()
+      expect(wrapper.vm.clearArmed).toBe(true)
+
+      vi.advanceTimersByTime(5000)
+      expect(wrapper.vm.clearArmed).toBe(false)
+
+      // A click after the window re-arms instead of clearing.
+      await wrapper.vm.clearAllCaches()
+      expect(technicalIndicatorsCache.clearAllCache).not.toHaveBeenCalled()
+      expect(wrapper.vm.clearArmed).toBe(true)
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })

@@ -90,8 +90,10 @@
                     <button class="btn btn-secondary" @click="refreshStatus" :disabled="loading">
                         {{ loading ? $t('systemManager.actions.checking') : $t('systemManager.actions.refreshStatus') }}
                     </button>
+                    <!-- Two-step inline confirm (no native confirm() — audit I5): first
+                         click arms for 5 s and logs the warning, second click clears. -->
                     <button class="btn btn-warning" @click="clearCache" :disabled="loading">
-                        {{ $t('systemManager.actions.clearCache') }}
+                        {{ clearArmed ? $t('systemManager.actions.clearCacheConfirm') : $t('systemManager.actions.clearCache') }}
                     </button>
                 </div>
             </div>
@@ -138,6 +140,8 @@ export default defineComponent({
       // fabricated 過期/從未/0 before the fetches settle (audit I8/FH-8).
       loading: true,
       error: null as string | null,
+      clearArmed: false,
+      clearArmTimer: null as ReturnType<typeof setTimeout> | null,
 
       // Real Pipeline Status
       pipelineStatus: {
@@ -189,7 +193,11 @@ export default defineComponent({
   async mounted() {
     await this.refreshStatus();
   },
-  
+
+  beforeUnmount() {
+    if (this.clearArmTimer) clearTimeout(this.clearArmTimer);
+  },
+
   methods: {
     async refreshStatus() {
       this.loading = true;
@@ -275,7 +283,21 @@ export default defineComponent({
     },
 
     clearCache() {
-        if (!confirm(this.$t('systemManager.clearCacheConfirm'))) return;
+        // First click arms and warns in the log; second click within 5 s clears.
+        if (!this.clearArmed) {
+            this.clearArmed = true;
+            this.addLog('warning', this.$t('systemManager.clearCacheConfirm'));
+            this.clearArmTimer = setTimeout(() => {
+                this.clearArmed = false;
+                this.clearArmTimer = null;
+            }, 5000);
+            return;
+        }
+        this.clearArmed = false;
+        if (this.clearArmTimer) {
+            clearTimeout(this.clearArmTimer);
+            this.clearArmTimer = null;
+        }
         // Actually clear the data caches, THEN reload to re-fetch fresh. The old
         // body only did `reload(true)` — a mislabeled reload that purged nothing
         // (localStorage-backed caches survived; the `true` arg is ignored by
