@@ -284,22 +284,6 @@ export default defineComponent({
   margin: -8px;
 }
 
-.retry-btn {
-  margin-top: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  background: var(--danger-solid);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-}
-
-.retry-btn:hover {
-  background: #c82333;
-}
-
 /* TradingView Widget 樣式 */
 .tradingview-widget-container {
   width: 100%;

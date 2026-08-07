@@ -1,11 +1,9 @@
 <template>
   <div class="auto-update-monitor">
     <div class="monitor-header">
-      <h2>{{ $t('autoUpdate.title') }}</h2>
+      <h2 class="page-title">{{ $t('autoUpdate.title') }}</h2>
       <div class="header-actions">
         <button @click="refreshStatus" class="btn btn-secondary" :disabled="loading">
-          <span v-if="loading">🔄</span>
-          <span v-else>🔄</span>
           {{ $t('autoUpdate.refreshStatus') }}
         </button>
         <button @click="toggleScheduler" :class="schedulerButtonClass" :disabled="loading">
@@ -143,7 +141,7 @@
           </div>
         </div>
         <div class="card-actions">
-          <button @click="triggerWarmup" class="btn btn-info btn-sm" :disabled="loading || warmupInfo.isWarming">
+          <button @click="triggerWarmup" class="btn btn-secondary btn-sm" :disabled="loading || warmupInfo.isWarming">
             {{ warmupInfo.isWarming ? $t('autoUpdate.warmingUp') : $t('autoUpdate.manualWarmup') }}
           </button>
           <div class="update-note">
@@ -190,7 +188,7 @@
     <div class="update-logs">
       <div class="logs-header">
         <h3>{{ $t('autoUpdate.updateLog') }}</h3>
-        <button @click="clearLogs" class="btn btn-sm btn-outline">{{ $t('autoUpdate.clearLog') }}</button>
+        <button @click="clearLogs" class="btn btn-secondary btn-sm">{{ $t('autoUpdate.clearLog') }}</button>
       </div>
       <div class="logs-content">
         <div v-if="logs.length === 0" class="no-logs">
@@ -631,7 +629,8 @@ export default defineComponent({
 .status-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
 }
 
@@ -639,7 +638,7 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-4);
+  padding: var(--widget-padding);
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
 }
@@ -678,7 +677,7 @@ export default defineComponent({
 }
 
 .card-content {
-  padding: var(--space-4);
+  padding: var(--widget-padding);
 }
 
 .status-item {
@@ -722,84 +721,6 @@ export default defineComponent({
   margin-top: var(--space-2);
   color: var(--text-secondary);
   font-style: italic;
-}
-
-.btn {
-  padding: var(--space-2) var(--space-4);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--text-base);
-  transition: all var(--transition-base);
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.btn-primary {
-  /* --blue-500 #007bff gave white text only 3.97:1; darker brand blue clears AA */
-  background: var(--blue-700);
-  color: white;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background: var(--blue-700);
-}
-
-.btn-secondary {
-  background: var(--grey-550);
-  color: white;
-}
-
-.btn-secondary:hover:not(:disabled) {
-  background: var(--grey-650);
-}
-
-.btn-success {
-  /* --success-solid #28a745 gave white only 3.13:1; the darker shade clears AA */
-  background: var(--success-solid-hover);
-  color: white;
-}
-
-.btn-success:hover:not(:disabled) {
-  background: var(--success-solid-hover);
-}
-
-.btn-danger {
-  background: var(--danger-solid);
-  color: white;
-}
-
-.btn-danger:hover:not(:disabled) {
-  background: var(--danger-solid-hover);
-}
-
-.btn-warning {
-  background: var(--warning-solid);
-  /* White/grey can't clear 4.5:1 on amber; --signal-ink (dark) reaches 10.7:1 */
-  color: var(--signal-ink);
-}
-
-.btn-warning:hover:not(:disabled) {
-  background: var(--warning-solid-hover);
-}
-
-.btn-sm {
-  padding: 0.375rem var(--space-3);
-  font-size: var(--text-sm);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1px solid var(--grey-550);
-  color: var(--text-secondary);
-}
-
-.btn-outline:hover:not(:disabled) {
-  background: var(--grey-550);
-  color: white;
 }
 
 .update-logs, .config-panel {

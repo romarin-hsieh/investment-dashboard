@@ -447,28 +447,6 @@ export default defineComponent({
   color: var(--danger-strong);
 }
 
-.btn {
-  padding: var(--space-2) var(--space-4);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--text-base);
-}
-
-.btn-secondary {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-}
-
-.btn-secondary:hover {
-  background: var(--border-color);
-}
-
-.btn-sm {
-  padding: var(--space-1) var(--space-2);
-  font-size: var(--text-sm);
-}
-
 /* 統一的 Widget 容器樣式 - 限定在 market-dashboard 內 */
 .market-dashboard .widget-container {
   background: var(--bg-card);

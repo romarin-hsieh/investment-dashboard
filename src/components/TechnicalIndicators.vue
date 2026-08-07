@@ -717,22 +717,13 @@ export default defineComponent({
   100% { transform: rotate(360deg); }
 }
 
-.retry-btn {
-  padding: 0.4rem 0.8rem;
-  /* --primary-color gave white only 4.21:1 light / 2.92:1 dark; --danger-solid
-     matches the other widgets' retry buttons and clears AA in both themes */
-  background: var(--danger-solid);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
 /* Header Info Button */
 .header-info-btn {
   background: none;
   border: none;
   padding: 4px;
+  min-width: 24px;
+  min-height: 24px;
   color: var(--text-muted);
   cursor: pointer;
   margin-left: 8px;

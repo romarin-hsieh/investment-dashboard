@@ -1,6 +1,6 @@
 <template>
   <div class="settings">
-    <h2>{{ $t('settings.title') }}</h2>
+    <h2 class="page-title">{{ $t('settings.title') }}</h2>
     <p class="text-muted mb-3">{{ $t('settings.subtitle') }}</p>
 
     <div class="card">
@@ -30,3 +30,9 @@ export default defineComponent({
   name: 'Settings'
 })
 </script>
+
+<style scoped>
+.settings .card { padding: var(--card-padding); }
+.settings .card + .card { margin-top: var(--space-4); }
+.settings h2 { margin-bottom: var(--space-2); }
+</style>

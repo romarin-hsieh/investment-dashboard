@@ -1,7 +1,7 @@
 <template>
   <div class="indicators-manager">
     <div class="manager-header">
-      <h2>{{ $t('techIndicators.title') }}</h2>
+      <h2 class="page-title">{{ $t('techIndicators.title') }}</h2>
       <p>{{ $t('techIndicators.subtitle') }}</p>
     </div>
 
@@ -62,19 +62,19 @@
       <h3>{{ $t('techIndicators.controls') }}</h3>
 
       <div class="control-grid">
-        <button @click="refreshStatus()" class="control-btn primary" :disabled="loading">
+        <button @click="refreshStatus()" class="btn btn-primary" :disabled="loading">
           {{ loading ? $t('common.loading') : $t('techIndicators.refreshStatus') }}
         </button>
 
-        <button @click="clearAllCaches()" class="control-btn warning">
+        <button @click="clearAllCaches()" class="btn btn-warning">
           {{ $t('techIndicators.clearAllCaches') }}
         </button>
 
-        <button @click="testPrecomputed()" class="control-btn info" :disabled="testing">
+        <button @click="testPrecomputed()" class="btn btn-secondary" :disabled="testing">
           {{ testing ? $t('techIndicators.testing') : $t('techIndicators.testPrecomputed') }}
         </button>
 
-        <button @click="showPreferences = !showPreferences" class="control-btn secondary">
+        <button @click="showPreferences = !showPreferences" class="btn btn-secondary">
           {{ showPreferences ? $t('techIndicators.hideSettings') : $t('techIndicators.showSettings') }}
         </button>
       </div>
@@ -313,7 +313,7 @@ export default defineComponent({
 }
 
 .manager-header {
-  text-align: center;
+  /* Left-aligned per the shared page-header grammar (WIREFRAMES §1). */
   margin-bottom: var(--space-8);
 }
 
@@ -325,8 +325,9 @@ export default defineComponent({
 .status-section, .control-section, .preferences-section, .test-results-section, .symbols-section {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--card-padding);
   margin-bottom: var(--space-8);
 }
 
@@ -344,8 +345,9 @@ export default defineComponent({
 .status-card {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  padding: var(--space-4);
+  /* Nested tinted panel: shares the card radius, stays shadowless (WIREFRAMES §3). */
+  border-radius: var(--radius-md);
+  padding: var(--widget-padding);
 }
 /* Status is conveyed by the .status-badge in each card header (no side-stripe). */
 
@@ -388,64 +390,6 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-4);
-}
-
-.control-btn {
-  padding: var(--space-3) var(--space-4);
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
-  transition: all var(--transition-base);
-}
-
-.control-btn.primary {
-  /* --blue-500 #007bff gave white text only 3.98:1; the darker brand blue clears AA */
-  background: var(--blue-700);
-  color: white;
-}
-
-.control-btn.primary:hover:not(:disabled) {
-  background: var(--blue-700);
-}
-
-.control-btn.warning {
-  background: var(--warning-solid);
-  /* White/grey can't clear 4.5:1 on amber; --signal-ink (dark) reaches 10.7:1 */
-  color: var(--signal-ink);
-}
-
-.control-btn.warning:hover {
-  background: var(--warning-solid-hover);
-}
-
-.control-btn.info {
-  background: var(--info-solid);
-  /* Dark ink on the vivid cyan fill (5.72:1); white was only 3.04:1 */
-  color: var(--signal-ink);
-}
-
-.control-btn.info:hover:not(:disabled) {
-  /* --info-fg is THEME-AWARE — it flips to a LIGHT cyan in dark mode, so white text
-     collapsed to 1.84:1 there. Use a theme-FIXED dark teal so white clears AA in
-     both themes (8.56:1). */
-  background: #0c5460;
-  color: white;
-}
-
-.control-btn.secondary {
-  background: var(--grey-550);
-  color: white;
-}
-
-.control-btn.secondary:hover {
-  background: #545b62;
-}
-
-.control-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 
 .preferences-form {

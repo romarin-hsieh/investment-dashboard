@@ -234,24 +234,6 @@ export default defineComponent({
   color: var(--danger-strong);
 }
 
-.retry-btn {
-  margin-top: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  /* --error-color #f7525f gave white text only 3.32:1; --danger-solid clears AA */
-  background: var(--danger-solid);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-size: var(--text-sm);
-}
-
-.retry-btn:hover {
-  /* opacity:0.9 composited white-on-red down to 3.99:1; darken the fill instead
-     (matches the other retry buttons) so white stays AA (5.61:1). */
-  background: var(--danger-solid-hover);
-}
-
 :global(.vix-widget-container .tradingview-widget-container) {
   width: 100% !important;
   height: 100% !important;
