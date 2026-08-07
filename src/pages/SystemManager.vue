@@ -102,6 +102,7 @@ import { withDataBase } from '@/utils/baseUrl';
 import { technicalIndicatorsCache } from '@/utils/technicalIndicatorsCache';
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi';
 import { formatTime as i18nTime, formatDateTime as i18nDateTime } from '@/utils/dateFormat';
+import { gradeFreshness } from '@/utils/freshness';
 
 interface PipelineStatus {
   lastUpdate: string | null
@@ -147,9 +148,10 @@ export default defineComponent({
     isDataFresh() {
        if (!this.pipelineStatus.generatedAt) return false;
        const genTime = new Date(this.pipelineStatus.generatedAt).getTime();
-       const now = new Date().getTime();
-       // Considered fresh if < 25 hours (allowing for daily update skew)
-       return (now - genTime) < (25 * 60 * 60 * 1000);
+       const ageHours = (Date.now() - genTime) / (60 * 60 * 1000);
+       // Shared SLO grading (audit SD-1) — same helper as Auto-Update Monitor, so the
+       // two pages can never disagree about the same feed again.
+       return gradeFreshness(ageHours) === 'fresh';
     },
     statusColor() {
         if (!this.pipelineStatus.generatedAt) return 'var(--text-muted)';

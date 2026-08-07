@@ -6,19 +6,10 @@
       <p class="masthead-subtitle">{{ $t('market.subtitle') }}</p>
     </header>
 
-    <!-- 載入狀態顯示骨架屏 -->
-    <div v-if="loading" class="loading-with-skeleton">
-      <MarketOverviewSkeleton />
-    </div>
-
-    <!-- 錯誤狀態 -->
-    <div v-else-if="error" class="error">
-      <p class="text-danger">{{ error }}</p>
-      <button @click="refresh" class="btn btn-secondary">{{ $t('market.retry') }}</button>
-    </div>
-
-    <!-- 正常內容 -->
-    <div v-else>
+    <!-- Widgets render immediately and own their loading/error states (PRD F6, SM-1).
+         The page-level skeleton was an 800 ms artificial delay gating nothing real, and
+         its error/retry branch was unreachable (audit SD-8 / SK-D-3). -->
+    <div>
       <!-- Major Market Indices - 高優先級 -->
       <div class="widget-container-ticker">
         <div class="widget-header">
@@ -120,7 +111,6 @@
 import LazyTradingViewWidget from '@/components/LazyTradingViewWidget.vue'
 import VixWidget from '@/components/VixWidget.vue'
 import ZeiiermanFearGreedGauge from '@/components/ZeiiermanFearGreedGauge.vue'
-import MarketOverviewSkeleton from '@/components/MarketOverviewSkeleton.vue'
 import { useTheme } from '@/composables/useTheme'
 import { getToken } from '@/utils/designTokens'
 import { defineComponent, defineAsyncComponent } from 'vue'
@@ -132,7 +122,6 @@ export default defineComponent({
     LazyTradingViewWidget,
     VixWidget,
     ZeiiermanFearGreedGauge,
-    MarketOverviewSkeleton,
     SectorRotationChart: defineAsyncComponent(() => import('@/components/SectorRotationChart.vue'))
   },
   setup() {
@@ -141,15 +130,12 @@ export default defineComponent({
   },
   data() {
     return {
-      loading: true,
-      error: null as string | null,
       vixKey: Date.now() // 添加 VIX 專用的 key
     }
   },
   mounted() {
     // 頁面載入時滾動到頂部
     this.scrollToTop()
-    this.initializePage()
   },
   watch: {
     $route() {
@@ -162,23 +148,6 @@ export default defineComponent({
     }
   },
   methods: {
-    async initializePage() {
-      try {
-        // 模擬初始化過程
-        await new Promise(resolve => setTimeout(resolve, 800))
-        this.loading = false
-      } catch (err) {
-        this.error = String(err)
-        this.loading = false
-      }
-    },
-    async refresh() {
-      this.loading = true
-      this.error = null
-      this.vixKey = Date.now() // 強制重新載入 VIX widget
-      await this.initializePage()
-    },
-
     // 滾動到頁面頂部
     scrollToTop() {
       // 使用 nextTick 確保 DOM 已更新
@@ -431,20 +400,6 @@ export default defineComponent({
   .masthead-title {
     font-size: var(--text-2xl);
   }
-}
-
-.loading-with-skeleton {
-  /* 骨架屏載入容器 */
-}
-
-.error {
-  text-align: center;
-  padding: var(--space-8);
-  background-color: var(--bg-card);
-  border: 1px solid var(--error-color);
-  border-radius: var(--radius-sm);
-  margin: var(--space-4) 0;
-  color: var(--danger-strong);
 }
 
 /* 統一的 Widget 容器樣式 - 限定在 market-dashboard 內 */

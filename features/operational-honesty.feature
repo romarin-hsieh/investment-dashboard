@@ -3,7 +3,7 @@ Feature: Monitoring surfaces report only measured truth
   # architecture (ADR-0001) the ops pages may observe the lake and control browser-local
   # caches only — and must never render a value they did not measure.
 
-  @bound(src/bdd/operational-honesty.feature.test.ts) @pending-fix(fix/ops-honesty · SD-1)
+  @bound(src/bdd/operational-honesty.feature.test.ts)
   Scenario: One freshness grade per feed across all pages
     Given the technical-indicator feed is 13 hours old
     When System Status and Auto-Update Monitor grade its freshness
