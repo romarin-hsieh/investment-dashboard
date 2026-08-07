@@ -66,8 +66,10 @@
           {{ loading ? $t('common.loading') : $t('techIndicators.refreshStatus') }}
         </button>
 
+        <!-- Two-step inline confirm (no native confirm() — audit I5), same grammar
+             as Settings: first click arms for 5 s, second click clears. -->
         <button @click="clearAllCaches()" class="btn btn-warning">
-          {{ $t('techIndicators.clearAllCaches') }}
+          {{ clearArmed ? $t('techIndicators.confirmClearButton') : $t('techIndicators.clearAllCaches') }}
         </button>
 
         <button @click="testPrecomputed()" class="btn btn-secondary" :disabled="testing">
@@ -78,6 +80,13 @@
           {{ showPreferences ? $t('techIndicators.hideSettings') : $t('techIndicators.showSettings') }}
         </button>
       </div>
+
+      <!-- Outcome reporting replaces the three alert() calls (audit I5). role
+           distinguishes routine confirmation from failure for assistive tech. -->
+      <p v-if="actionStatus" class="status-line" :class="actionStatus.kind === 'error' ? 'text-danger' : 'text-muted'"
+         :role="actionStatus.kind === 'error' ? 'alert' : 'status'">
+        {{ actionStatus.message }}
+      </p>
     </div>
 
     <!-- Preferences -->
@@ -200,6 +209,9 @@ export default defineComponent({
       loading: false,
       testing: false,
       showPreferences: false,
+      actionStatus: null as null | { kind: 'ok' | 'error'; message: string },
+      clearArmed: false,
+      clearArmTimer: null as ReturnType<typeof setTimeout> | null,
       dataSourceStatus: null as Awaited<ReturnType<typeof hybridTechnicalIndicatorsAPI.getDataSourceStatus>> | null,
       testResults: [] as TestResult[],
       preferences: {
@@ -212,23 +224,47 @@ export default defineComponent({
   async mounted() {
     await this.refreshStatus();
   },
+  beforeUnmount() {
+    if (this.clearArmTimer) clearTimeout(this.clearArmTimer);
+  },
   methods: {
+    /** Single seam for the outcome line that replaced the alert() calls. */
+    report(kind: 'ok' | 'error', message: string) {
+      this.actionStatus = { kind, message };
+    },
+
+    disarmClear() {
+      this.clearArmed = false;
+      if (this.clearArmTimer) {
+        clearTimeout(this.clearArmTimer);
+        this.clearArmTimer = null;
+      }
+    },
+
     async refreshStatus() {
       this.loading = true;
       try {
         this.dataSourceStatus = await hybridTechnicalIndicatorsAPI.getDataSourceStatus();
       } catch (error) {
         console.error('Failed to refresh status:', error);
-        alert(this.$t('techIndicators.refreshFailed') + (error as Error).message);
+        this.report('error', this.$t('techIndicators.refreshFailed') + (error as Error).message);
       } finally {
         this.loading = false;
       }
     },
-    
+
     async clearAllCaches() {
-      if (!confirm(this.$t('techIndicators.confirmClear'))) {
+      // First click arms and says so; second click within 5 s does the work.
+      if (!this.clearArmed) {
+        this.clearArmed = true;
+        this.report('ok', this.$t('techIndicators.confirmClear'));
+        this.clearArmTimer = setTimeout(() => {
+          this.clearArmed = false;
+          this.clearArmTimer = null;
+        }, 5000);
         return;
       }
+      this.disarmClear();
 
       try {
         // Actually clear the caches. These calls used to be commented out while
@@ -236,10 +272,10 @@ export default defineComponent({
         // succeeded when nothing had been cleared.
         technicalIndicatorsCache.clearAllCache();
         precomputedIndicatorsAPI.clearCache();
-        alert(this.$t('techIndicators.cachesCleared'));
+        this.report('ok', this.$t('techIndicators.cachesCleared'));
         await this.refreshStatus();
       } catch (error) {
-        alert(this.$t('techIndicators.clearFailed') + (error as Error).message);
+        this.report('error', this.$t('techIndicators.clearFailed') + (error as Error).message);
       }
     },
     
@@ -391,6 +427,9 @@ export default defineComponent({
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-4);
 }
+
+/* Matches the Settings outcome line (audit I5). */
+.status-line { margin-top: var(--space-3); }
 
 .preferences-form {
   display: flex;
