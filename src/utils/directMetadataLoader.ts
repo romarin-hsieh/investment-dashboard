@@ -77,7 +77,9 @@ class DirectMetadataLoader {
         symbol,
         sector: 'Unknown',
         industry: 'Unknown Industry',
-        exchange: 'NASDAQ',
+        // No metadata → no venue claim. The old 'NASDAQ' placeholder propagated a
+        // fabricated exchange into every consumer (audit I4/US-D2).
+        exchange: null,
         confidence: 0.0,
         source: 'DirectLoader (Failed)'
       }
@@ -95,7 +97,7 @@ class DirectMetadataLoader {
       symbol,
       sector: 'Unknown',
       industry: 'Unknown Industry',
-      exchange: 'NASDAQ',
+      exchange: null,
       confidence: 0.0,
       source: 'DirectLoader (Not Found)'
     }

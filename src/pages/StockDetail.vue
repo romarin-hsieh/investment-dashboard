@@ -12,13 +12,9 @@
       <StockDetailSkeleton />
     </div>
 
-    <!-- 錯誤狀態 -->
-    <div v-else-if="error" class="error">
-      <p class="text-danger">{{ error }}</p>
-      <button @click="refresh" class="btn btn-secondary">{{ $t('stockDetail.actions.retry') }}</button>
-    </div>
-
-    <!-- 正常內容 -->
+    <!-- 正常內容。The page-level error/retry block was removed (audit I4): nothing could
+         ever set it (every fetch handles its own failure), so it was dead UI — each
+         widget owns its error state, and a metadata failure shows in the header tags. -->
     <div v-else>
       <!-- Stock Header -->
       <div class="stock-header">
@@ -31,7 +27,9 @@
               </a>
             </div>
             <div class="symbol-tags">
-              <span class="exchange-tag">{{ exchange }}</span>
+              <!-- Exchange renders only when metadata actually says so — the old
+                   hardcoded per-symbol guess list presented fabricated venues (I4/US-D2). -->
+              <span class="exchange-tag">{{ exchange || $t('common.na') }}</span>
               <span class="industry-tag" :class="`industry-${getIndustryCategory()}`">{{ getIndustry() }}</span>
             </div>
           </div>
@@ -52,7 +50,7 @@
             </div>
             <AdvancedChartWidget
               :symbol="symbol" 
-              :exchange="exchange"
+              :exchange="exchange ?? ''"
             />
           </div>
 
@@ -64,40 +62,34 @@
             <FastTradingViewWidget
               widget-type="technical"
               :symbol="symbol" 
-              :exchange="exchange"
+              :exchange="exchange ?? ''"
               class="technical-overview-style"
             />
           </div>
         </div>
       </div>
 
-      <!-- Tab Navigation -->
-      <div class="tabs-nav">
-        <button 
-            class="tab-btn" 
-            :class="{ active: activeTab === 'overview' }"
-            @click="activeTab = 'overview'"
+      <!-- Tab Navigation — WAI-ARIA tabs pattern with roving tabindex (audit S3). -->
+      <div class="tabs-nav" role="tablist" :aria-label="$t('stockDetail.tabsLabel')">
+        <button
+            v-for="tab in tabKeys"
+            :key="tab"
+            :id="`tab-${tab}`"
+            class="tab-btn"
+            role="tab"
+            :class="{ active: activeTab === tab }"
+            :aria-selected="activeTab === tab"
+            :aria-controls="`tabpanel-${tab}`"
+            :tabindex="activeTab === tab ? 0 : -1"
+            @click="activeTab = tab"
+            @keydown="onTabKeydown"
         >
-            {{ $t('stockDetail.tabs.overview') }}
-        </button>
-        <button 
-            class="tab-btn" 
-            :class="{ active: activeTab === 'holdings' }"
-            @click="activeTab = 'holdings'"
-        >
-            {{ $t('stockDetail.tabs.holdings') }}
-        </button>
-        <button 
-            class="tab-btn" 
-            :class="{ active: activeTab === 'analysis' }"
-            @click="activeTab = 'analysis'"
-        >
-            {{ $t('stockDetail.tabs.analysis') }}
+            {{ $t(`stockDetail.tabs.${tab}`) }}
         </button>
       </div>
 
       <!-- Tab Content: Overview -->
-      <div v-show="activeTab === 'overview'" class="tab-content">
+      <div v-show="activeTab === 'overview'" class="tab-content" id="tabpanel-overview" role="tabpanel" aria-labelledby="tab-overview">
           
           <!-- Technical Signals (Tactical) -->
           <div class="widget-container">
@@ -115,7 +107,7 @@
             </div>
             <div class="tactical-grid">
                  <TechnicalSignals ref="technicalSignals" :symbol="symbol" />
-                 <TechnicalIndicators :symbol="symbol" :exchange="exchange" :showTitle="false" />
+                 <TechnicalIndicators :symbol="symbol" :exchange="exchange ?? ''" :showTitle="false" />
             </div>
             
             <!-- Quant Review Block -->
@@ -138,7 +130,7 @@
               </div>
               <MarketRegimeWidget
                 :symbol="symbol"
-                :exchange="exchange"
+                :exchange="exchange ?? ''"
                 :priority="2"
               />
             </div>
@@ -150,7 +142,7 @@
               </div>
               <TradingStrategyWidget
                 :symbol="symbol"
-                :exchange="exchange"
+                :exchange="exchange ?? ''"
                 :priority="3"
               />
             </div>
@@ -162,7 +154,7 @@
               </div>
               <TrendlinesSRWidget
                 :symbol="symbol"
-                :exchange="exchange"
+                :exchange="exchange ?? ''"
               />
             </div>
 
@@ -173,7 +165,7 @@
               </div>
               <CisdWidget
                 :symbol="symbol"
-                :exchange="exchange"
+                :exchange="exchange ?? ''"
               />
             </div>
 
@@ -228,7 +220,7 @@
       </div>
 
       <!-- Tab Content: Analysis -->
-      <div v-if="activeTab === 'analysis'" class="tab-content">
+      <div v-if="activeTab === 'analysis'" class="tab-content" id="tabpanel-analysis" role="tabpanel" aria-labelledby="tab-analysis">
           <div class="widget-container">
              <div class="widget-header"><h3>{{ $t('stockDetail.sections.deepResearch') }}</h3></div>
              <FundamentalAnalysis :symbol="symbol" />
@@ -242,7 +234,7 @@
               </div>
               <TradingViewFundamentalData 
                 :symbol="symbol" 
-                :exchange="exchange" 
+                :exchange="exchange ?? ''" 
                 :color-theme="theme"
               />
             </div>
@@ -254,7 +246,7 @@
               </div>
               <TradingViewCompanyProfile 
                 :symbol="symbol" 
-                :exchange="exchange" 
+                :exchange="exchange ?? ''" 
                 :color-theme="theme"
                 :is-transparent="true"
               />
@@ -266,7 +258,7 @@
       <!-- WS-C PR-C3: v-if (not v-show) so HoldingsAnalysis + SuperInvestorStats
            aren't mounted on initial paint — they're lazy-loaded async components
            and their chunks only fetch when the user activates this tab. -->
-      <div v-if="activeTab === 'holdings'" class="tab-content">
+      <div v-if="activeTab === 'holdings'" class="tab-content" id="tabpanel-holdings" role="tabpanel" aria-labelledby="tab-holdings">
           <div class="widget-container">
              <div class="widget-header"><h3>{{ $t('stockDetail.sections.institutionalInsiderHoldings') }}</h3></div>
              <HoldingsAnalysis :symbol="symbol" :dataroma-data="dataromaData" />
@@ -348,9 +340,9 @@ export default defineComponent({
   data() {
     return {
       loading: true,
-      error: null as string | null,
       metadata: null as Awaited<ReturnType<typeof directMetadataLoader.getSymbolMetadata>> | null,
       activeTab: 'overview',
+      tabKeys: ['overview', 'analysis', 'holdings'] as const,
       dataromaData: null as Record<string, unknown> | null,
       dataromaLoading: false
     }
@@ -375,23 +367,10 @@ export default defineComponent({
         return exchangeMap[this.metadata.exchange] || this.metadata.exchange
       }
       
-      // 備用方案：根據 symbol 推測交易所（使用正確的分類）
-      const symbol = this.symbol
-      
-      // NYSE 股票 (根據 symbols_metadata.json 的實際資料)
-      if (['ORCL', 'TSM', 'RDW', 'CRM', 'PL', 'LEU', 'SMR', 'IONQ', 'HIMS'].includes(symbol)) {
-        return 'NYSE'
-      }
-      // AMEX 股票
-      else if (['UUUU'].includes(symbol)) {
-        return 'AMEX'
-      }
-      // NASDAQ 股票
-      else if (['ASTS', 'RIVN', 'ONDS', 'AVAV', 'MDB', 'RKLB', 'NVDA', 'AVGO', 'AMZN', 'GOOG', 'META', 'NFLX', 'CRWV', 'PLTR', 'TSLA'].includes(symbol)) {
-        return 'NASDAQ'
-      }
-      
-      return 'NASDAQ' // 預設值
+      // No metadata → no venue claim. The old per-symbol guess list silently presented
+      // a fabricated exchange for every symbol it didn't know (audit I4 / US-D2); the
+      // template renders common.na instead.
+      return null
     },
 
     dailyInsightConfig() {
@@ -522,28 +501,22 @@ export default defineComponent({
     }
   },
     mounted() {
-    // 頁面載入時滾動到頂部
+    // 頁面載入時滾動到頂部 (single call — the duplicate was audit I6 residue)
     this.scrollToTop()
-    this.scrollToTop()
-    
-    this.loadMetadata()
+
     this.fetchDataromaData() // Initial fetch
-    this.initializePage()
+    this.initializePage()    // awaits loadMetadata internally
   },
   methods: {
+    // The page skeleton gates on the one real page-level dependency (metadata) —
+    // previously `loading` flipped false synchronously so the skeleton and the
+    // error/retry UI were both dead (audit I4).
     async initializePage() {
       try {
-        // Remove fixed delay for better performance
-        this.loading = false
-      } catch (err) {
-        this.error = String(err)
+        await this.loadMetadata()
+      } finally {
         this.loading = false
       }
-    },
-    async refresh() {
-      this.loading = true
-      this.error = null
-      await this.initializePage()
     },
     async loadMetadata() {
       try {
@@ -554,6 +527,21 @@ export default defineComponent({
         console.warn(`Failed to load metadata for ${this.symbol}:`, error)
         this.metadata = null
       }
+    },
+    // Roving-tabindex keyboard support for the ARIA tabs (audit S3).
+    onTabKeydown(event: KeyboardEvent) {
+      const keys = this.tabKeys as readonly string[]
+      const index = keys.indexOf(this.activeTab)
+      let next: number | null = null
+      if (event.key === 'ArrowRight') next = (index + 1) % keys.length
+      else if (event.key === 'ArrowLeft') next = (index - 1 + keys.length) % keys.length
+      else if (event.key === 'Home') next = 0
+      else if (event.key === 'End') next = keys.length - 1
+      if (next === null) return
+      event.preventDefault()
+      const key = keys[next] as string
+      this.activeTab = key
+      document.getElementById(`tab-${key}`)?.focus()
     },
 
     getSector() {

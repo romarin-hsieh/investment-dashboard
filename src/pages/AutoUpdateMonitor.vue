@@ -3,10 +3,12 @@
     <div class="monitor-header">
       <h2 class="page-title">{{ $t('autoUpdate.title') }}</h2>
       <div class="header-actions">
-        <button @click="refreshStatus" class="btn btn-secondary" :disabled="loading">
-          {{ $t('autoUpdate.refreshStatus') }}
+        <!-- Per-action busy flags (audit I7): each control disables on ITS OWN work
+             only, and Refresh shows real in-progress feedback. -->
+        <button @click="manualRefresh" class="btn btn-secondary" :disabled="busy.refresh">
+          {{ busy.refresh ? $t('autoUpdate.refreshing') : $t('autoUpdate.refreshStatus') }}
         </button>
-        <button @click="toggleScheduler" :class="schedulerButtonClass" :disabled="loading">
+        <button @click="toggleScheduler" :class="schedulerButtonClass" :disabled="busy.scheduler">
           {{ schedulerButtonText }}
         </button>
       </div>
@@ -68,7 +70,7 @@
           </div>
         </div>
         <div class="card-actions">
-          <button @click="triggerUpdate('technicalIndicators')" class="btn btn-primary btn-sm" :disabled="loading">
+          <button @click="triggerUpdate('technicalIndicators')" class="btn btn-primary btn-sm" :disabled="busy.technicalIndicators">
             {{ $t('autoUpdate.clearCache') }}
           </button>
           <div class="update-note">
@@ -106,7 +108,7 @@
           </div>
         </div>
         <div class="card-actions">
-          <button @click="triggerUpdate('metadata')" class="btn btn-primary btn-sm" :disabled="loading">
+          <button @click="triggerUpdate('metadata')" class="btn btn-primary btn-sm" :disabled="busy.metadata">
             {{ $t('autoUpdate.manualUpdate') }}
           </button>
         </div>
@@ -141,7 +143,7 @@
           </div>
         </div>
         <div class="card-actions">
-          <button @click="triggerWarmup" class="btn btn-secondary btn-sm" :disabled="loading || warmupInfo.isWarming">
+          <button @click="triggerWarmup" class="btn btn-secondary btn-sm" :disabled="busy.warmup || warmupInfo.isWarming">
             {{ warmupInfo.isWarming ? $t('autoUpdate.warmingUp') : $t('autoUpdate.manualWarmup') }}
           </button>
           <div class="update-note">
@@ -243,7 +245,15 @@ export default defineComponent({
   name: 'AutoUpdateMonitor',
   data() {
     return {
-      loading: false,
+      // Per-action busy flags (audit I7) — one shared `loading` used to disable every
+      // unrelated control and let the 30 s poll race manual actions.
+      busy: {
+        refresh: false,
+        scheduler: false,
+        technicalIndicators: false,
+        metadata: false,
+        warmup: false
+      } as { refresh: boolean; scheduler: boolean; technicalIndicators: boolean; metadata: boolean; warmup: boolean } & Record<string, boolean>,
       status: {} as ReturnType<typeof autoUpdateScheduler.getStatus>,
       cacheStats: {} as ReturnType<typeof performanceCache.getStats>,
       logs: [] as LogEntry[],
@@ -335,7 +345,7 @@ export default defineComponent({
   },
   methods: {
     async initializeMonitor() {
-      this.loading = true
+      this.busy['refresh'] = true
       try {
         await this.refreshStatus()
         await this.loadTechnicalIndicatorsStatus()
@@ -346,7 +356,21 @@ export default defineComponent({
       } catch (error) {
         this.addLog(this.$t('autoUpdate.logInitFailed') + (error as Error).message, 'ERROR')
       } finally {
-        this.loading = false
+        this.busy['refresh'] = false
+      }
+    },
+
+    // Manual refresh with real busy feedback (audit I7 — the button used to render the
+    // identical glyph in both states, so users re-clicked).
+    async manualRefresh() {
+      this.busy['refresh'] = true
+      try {
+        await this.refreshStatus()
+        await this.loadTechnicalIndicatorsStatus()
+        await this.loadMetadataStatus()
+        await this.loadWarmupStatus()
+      } finally {
+        this.busy['refresh'] = false
       }
     },
 
@@ -416,7 +440,7 @@ export default defineComponent({
     },
 
     async triggerWarmup() {
-      this.loading = true
+      this.busy['warmup'] = true
       try {
         this.addLog(this.$t('autoUpdate.logWarmupTriggered'), 'INFO')
         await cacheWarmupService.triggerManualWarmup()
@@ -425,12 +449,12 @@ export default defineComponent({
       } catch (error) {
         this.addLog(this.$t('autoUpdate.logWarmupFailed') + (error as Error).message, 'ERROR')
       } finally {
-        this.loading = false
+        this.busy['warmup'] = false
       }
     },
 
     async toggleScheduler() {
-      this.loading = true
+      this.busy['scheduler'] = true
       try {
         if (this.status.isRunning) {
           autoUpdateScheduler.stop()
@@ -443,12 +467,12 @@ export default defineComponent({
       } catch (error) {
         this.addLog(this.$t('autoUpdate.logToggleFailed') + (error as Error).message, 'ERROR')
       } finally {
-        this.loading = false
+        this.busy['scheduler'] = false
       }
     },
 
     async triggerUpdate(updateType: string) {
-      this.loading = true
+      this.busy[updateType] = true
       try {
         this.addLog(this.$t('autoUpdate.logUpdateTriggered') + updateType, 'INFO')
         const result = await autoUpdateScheduler.triggerManualUpdate(updateType)
@@ -469,17 +493,20 @@ export default defineComponent({
       } catch (error) {
         this.addLog(this.$t('autoUpdate.logUpdateFailed') + (error as Error).message, 'ERROR')
       } finally {
-        this.loading = false
+        this.busy[updateType] = false
       }
     },
 
     startPeriodicRefresh() {
       this.refreshInterval = setInterval(async () => {
+        // Pause the background tick while any manual action runs — it used to clobber
+        // a just-triggered action's fields mid-flight (audit I7).
+        if (Object.values(this.busy).some(Boolean)) return
         await this.refreshStatus()
         await this.loadTechnicalIndicatorsStatus()
         await this.loadMetadataStatus()
         await this.loadWarmupStatus()
-      }, 30000) // 每 30 秒刷新一次
+      }, 30000) // 每 30 秒重新整理一次
     },
 
     addLog(message: string, level: string = 'INFO') {

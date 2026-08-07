@@ -45,7 +45,9 @@ export default defineComponent({
   },
   computed: {
     fullSymbol() {
-      return `${this.exchange}:${this.symbol}`
+      // No exchange metadata → bare symbol; TradingView resolves the venue itself
+      // rather than us fabricating one (audit I4/US-D2).
+      return this.exchange ? `${this.exchange}:${this.symbol}` : this.symbol
     },
     widgetConfig() {
       const isDark = this.theme === 'dark'
