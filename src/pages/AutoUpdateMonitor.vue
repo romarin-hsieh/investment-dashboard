@@ -648,8 +648,10 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--widget-padding);
-  background: var(--bg-secondary);
+  /* Plain header inside the card surface — the tinted full-bleed band was this
+     page's own invention; every other route's cards are white with a hairline
+     under the title (WIREFRAMES §3). */
+  padding: var(--widget-padding) var(--widget-padding) var(--space-2);
   border-bottom: 1px solid var(--border-color);
 }
 

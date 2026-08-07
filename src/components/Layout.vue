@@ -206,10 +206,18 @@ export default defineComponent({
   text-decoration: none;
   color: var(--text-secondary);
   font-weight: var(--weight-medium);
-  padding: var(--space-2) var(--space-4);
+  padding: 0 var(--space-4);
   border-radius: var(--radius-sm);
   transition: all var(--transition-base);
   font-size: var(--text-base);
+  /* One explicit box for BOTH <a> and <button> members: the global
+     button{font:inherit} reset gave the Tools <button> the body's 1.6 line
+     height (40px box) while the inline <a>s stayed at 36px — pin the box
+     instead of letting element defaults decide. */
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  line-height: 1;
 }
 
 .nav-link:hover {
@@ -289,6 +297,7 @@ export default defineComponent({
     cursor: pointer;
     transition: all var(--transition-base);
     font-size: var(--text-lg);
+    line-height: 1; /* keep the emoji glyph optically centered in the 36px circle */
 }
 
 .theme-toggle:hover {
@@ -311,6 +320,7 @@ export default defineComponent({
     transition: all var(--transition-base);
     font-size: var(--text-sm);
     font-weight: var(--weight-semibold);
+    line-height: 1;
 }
 
 .lang-toggle:hover {
