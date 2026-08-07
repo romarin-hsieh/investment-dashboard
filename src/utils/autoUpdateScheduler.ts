@@ -28,11 +28,14 @@ interface SchedulerConfig {
 
 class AutoUpdateScheduler {
   updateIntervals: Map<string, ReturnType<typeof setInterval>>
+  /** When each interval was armed — the basis for REAL next-run times (audit SD-2). */
+  armedAt: Map<string, number>
   isRunning: boolean
   config: SchedulerConfig
 
   constructor() {
     this.updateIntervals = new Map()
+    this.armedAt = new Map()
     this.isRunning = false
     this.config = {
       // 技術指標更新配置 - 現在使用版本驅動檢查
@@ -49,9 +52,11 @@ class AutoUpdateScheduler {
         retryAttempts: 2,
         retryDelay: 30 * 60 * 1000 // 30 分鐘
       },
-      // 緩存清理配置
+      // 緩存清理配置 — disabled: performCacheCleanup has no eviction implementation, so
+      // scheduling it only produced no-op work logged as success (audit SD-3). Re-enable
+      // together with a real eviction path.
       cacheCleanup: {
-        enabled: true,
+        enabled: false,
         interval: 6 * 60 * 60 * 1000, // 6 小時
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 天
       }
@@ -93,6 +98,7 @@ class AutoUpdateScheduler {
     }
 
     this.updateIntervals.clear()
+    this.armedAt.clear() // no timers armed → no next-run times to report
     this.isRunning = false
 
     console.log('✅ Auto update scheduler stopped')
@@ -132,6 +138,7 @@ class AutoUpdateScheduler {
         this.config.technicalIndicators.interval
       )
       this.updateIntervals.set('technicalIndicators', technicalInterval)
+      this.armedAt.set('technicalIndicators', Date.now())
       console.log(`📊 Scheduled technical indicators update every ${this.config.technicalIndicators.interval / 60000} minutes`)
     }
 
@@ -142,6 +149,7 @@ class AutoUpdateScheduler {
         this.config.metadata.interval
       )
       this.updateIntervals.set('metadata', metadataInterval)
+      this.armedAt.set('metadata', Date.now())
       console.log(`📋 Scheduled metadata update every ${this.config.metadata.interval / 3600000} hours`)
     }
 
@@ -152,6 +160,7 @@ class AutoUpdateScheduler {
         this.config.cacheCleanup.interval
       )
       this.updateIntervals.set('cacheCleanup', cleanupInterval)
+      this.armedAt.set('cacheCleanup', Date.now())
       console.log(`🧹 Scheduled cache cleanup every ${this.config.cacheCleanup.interval / 3600000} hours`)
     }
   }
@@ -170,10 +179,10 @@ class AutoUpdateScheduler {
 
       if (versionChanged) {
         console.log('✅ Data version changed - technical indicators refreshed automatically')
-        return
+        return true
       } else {
         console.log('✅ Technical indicators are up to date (version unchanged)')
-        return
+        return false
       }
 
     } catch (error) {
@@ -185,10 +194,12 @@ class AutoUpdateScheduler {
         if (needsUpdate) {
           console.log('🔄 Fallback: Clearing cache due to data age')
           this.clearTechnicalIndicatorsCache()
+          return true
         }
       } catch (fallbackError) {
         console.error('❌ Fallback check also failed:', fallbackError)
       }
+      return false
 
     } finally {
       performanceMonitor.end(label)
@@ -209,10 +220,10 @@ class AutoUpdateScheduler {
 
       if (versionChanged) {
         console.log('✅ Data version changed - metadata refreshed automatically')
-        return
+        return true
       } else {
         console.log('✅ Metadata is up to date (version unchanged)')
-        return
+        return false
       }
 
     } catch (error) {
@@ -224,10 +235,12 @@ class AutoUpdateScheduler {
         if (needsUpdate) {
           console.log('🔄 Fallback: Clearing metadata cache due to age')
           this.clearMetadataCache()
+          return true
         }
       } catch (fallbackError) {
         console.error('❌ Metadata fallback check failed:', fallbackError)
       }
+      return false
 
     } finally {
       performanceMonitor.end(label)
@@ -364,25 +377,17 @@ class AutoUpdateScheduler {
     console.log('🗑️ Cleared metadata and stock overview cache')
   }
 
-  // 執行緩存清理
+  // 緩存清理 — honest no-op: no eviction path is implemented, so this only records
+  // stats and reports that nothing was cleared (audit SD-3). Its schedule is disabled
+  // in the constructor; implement real eviction before re-enabling either.
   async performCacheCleanup() {
-    console.log('🧹 Performing cache cleanup...')
-
     try {
       const stats = performanceCache.getStats()
-      console.log('📊 Cache stats before cleanup:', stats)
-
-      // 清理過期的緩存項
-      // 這裡可以實施更精細的清理邏輯
-
-      const statsAfter = performanceCache.getStats()
-      console.log('📊 Cache stats after cleanup:', statsAfter)
-
-      console.log('✅ Cache cleanup completed')
-
+      console.log('ℹ️ Cache stats recorded (no eviction implemented):', stats)
     } catch (error) {
-      console.error('❌ Cache cleanup failed:', error)
+      console.error('❌ Cache stats read failed:', error)
     }
+    return false
   }
 
   // 重試更新
@@ -417,34 +422,43 @@ class AutoUpdateScheduler {
     }
   }
 
-  // 獲取下次更新時間
-  getNextUpdateTimes() {
-    const now = Date.now()
+  // 下次更新時間 — real values only: armedAt + interval per armed timer, null when a
+  // task is not scheduled. The old `now + interval` fabricated a forever-sliding time
+  // (audit SD-2).
+  getNextUpdateTimes(): Record<'technicalIndicators' | 'metadata' | 'cacheCleanup', Date | null> {
+    const nextFor = (key: string, interval: number): Date | null => {
+      const armed = this.armedAt.get(key)
+      return armed === undefined ? null : new Date(armed + interval)
+    }
     return {
-      technicalIndicators: new Date(now + this.config.technicalIndicators.interval),
-      metadata: new Date(now + this.config.metadata.interval),
-      cacheCleanup: new Date(now + this.config.cacheCleanup.interval)
+      technicalIndicators: nextFor('technicalIndicators', this.config.technicalIndicators.interval),
+      metadata: nextFor('metadata', this.config.metadata.interval),
+      cacheCleanup: nextFor('cacheCleanup', this.config.cacheCleanup.interval)
     }
   }
 
-  // 手動觸發更新
-  async triggerManualUpdate(updateType: string = 'all') {
+  // 手動觸發更新 — reports whether any work actually happened, so callers can log
+  // SUCCESS only for real changes (audit SD-3 / SK-D-2).
+  async triggerManualUpdate(updateType: string = 'all'): Promise<{ changed: boolean; detail: Record<string, boolean> }> {
     console.log(`🔄 Manual update triggered: ${updateType}`)
 
     try {
+      const detail: Record<string, boolean> = {}
       if (updateType === 'all' || updateType === 'technicalIndicators') {
-        await this.checkAndUpdateTechnicalIndicators()
+        detail['technicalIndicators'] = (await this.checkAndUpdateTechnicalIndicators()) === true
       }
 
       if (updateType === 'all' || updateType === 'metadata') {
-        await this.checkAndUpdateMetadata()
+        detail['metadata'] = (await this.checkAndUpdateMetadata()) === true
       }
 
       if (updateType === 'all' || updateType === 'cache') {
-        await this.performCacheCleanup()
+        detail['cache'] = (await this.performCacheCleanup()) === true
       }
 
-      console.log('✅ Manual update completed')
+      const changed = Object.values(detail).some(Boolean)
+      console.log(changed ? '✅ Manual update completed (changes applied)' : 'ℹ️ Manual update completed (no changes)')
+      return { changed, detail }
 
     } catch (error) {
       console.error('❌ Manual update failed:', error)
@@ -453,13 +467,6 @@ class AutoUpdateScheduler {
   }
 }
 
-// 創建全局實例
+// 創建全局實例 — started ONLY from main.ts (single bootstrap owner; the old module-level
+// self-start raced main.ts and silently restarted a user-stopped scheduler — audit SD-10).
 export const autoUpdateScheduler = new AutoUpdateScheduler()
-
-// 自動啟動 (在生產環境中)
-if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
-  // 延遲啟動，避免影響初始頁面載入
-  setTimeout(() => {
-    autoUpdateScheduler.start()
-  }, 30000) // 30 秒後啟動
-}

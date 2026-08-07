@@ -71,17 +71,20 @@ describe('start lifecycle', () => {
     vi.useFakeTimers()
   })
 
-  it('sets isRunning=true and registers three intervals (happy path)', () => {
+  it('sets isRunning=true and registers the two enabled intervals (happy path)', () => {
     expect(module.autoUpdateScheduler.isRunning).toBe(false)
     expect(module.autoUpdateScheduler.updateIntervals.size).toBe(0)
 
     module.autoUpdateScheduler.start()
 
     expect(module.autoUpdateScheduler.isRunning).toBe(true)
-    expect(module.autoUpdateScheduler.updateIntervals.size).toBe(3)
+    // cacheCleanup is deliberately NOT scheduled: it has no eviction implementation, so
+    // arming it only produced no-op runs logged as success (audit SD-3).
+    expect(module.autoUpdateScheduler.updateIntervals.size).toBe(2)
     expect([...module.autoUpdateScheduler.updateIntervals.keys()]).toEqual(
-      expect.arrayContaining(['technicalIndicators', 'metadata', 'cacheCleanup'])
+      expect.arrayContaining(['technicalIndicators', 'metadata'])
     )
+    expect(module.autoUpdateScheduler.updateIntervals.has('cacheCleanup')).toBe(false)
   })
 
   it('start when already running is a no-op (idempotent — failure-guard path)', () => {
@@ -109,7 +112,7 @@ describe('stop lifecycle', () => {
 
   it('clears all intervals and sets isRunning=false (happy path)', () => {
     module.autoUpdateScheduler.start()
-    expect(module.autoUpdateScheduler.updateIntervals.size).toBe(3)
+    expect(module.autoUpdateScheduler.updateIntervals.size).toBe(2)
 
     module.autoUpdateScheduler.stop()
 

@@ -12,11 +12,6 @@ import '@/utils/widgetPreloader'
 // Import and initialize auto-update scheduler
 import { autoUpdateScheduler } from '@/utils/autoUpdateScheduler'
 
-// Import cache warmup service (side-effect import: instantiates the singleton;
-// the `.start()` call below is intentionally commented out, so no binding is
-// needed here — see the setTimeout at the bottom).
-import '@/utils/cacheWarmupService'
-
 // Router configuration
 // WS-C PR-C2: All pages are lazy-imported via `() => import(...)` so Vite
 // emits each route as its own chunk. This drops the initial JS bundle
@@ -59,16 +54,17 @@ app.use(router)
 // `.finally` so the app still mounts even if the locale chunk fails to load.
 loadLocaleMessages(i18n.global.locale.value).finally(() => app.mount('#app'))
 
-// Initialize auto-update scheduler after app is mounted
-// Delay startup to avoid interfering with initial page load
-setTimeout(() => {
-  console.log('🚀 Initializing auto-update scheduler...')
-  autoUpdateScheduler.start()
-}, 10000) // Start after 10 seconds
-
-// Initialize cache warmup service
-// Start earlier to preload data before users navigate
-setTimeout(() => {
-  // console.log('🔥 Initializing cache warmup service...')
-  // cacheWarmupService.start()
-}, 5000) // Start after 5 seconds
+// Initialize auto-update scheduler after app is mounted (single bootstrap owner —
+// the module-level self-start was removed, audit SD-10). Production only: on local
+// hosts the scheduler adds timer noise without value, and 127.0.0.1 previously
+// bypassed the module's own localhost gate.
+const isLocalHost =
+  typeof window !== 'undefined' &&
+  ['localhost', '127.0.0.1'].includes(window.location.hostname)
+if (!isLocalHost) {
+  // Delay startup to avoid interfering with initial page load
+  setTimeout(() => {
+    console.log('🚀 Initializing auto-update scheduler...')
+    autoUpdateScheduler.start()
+  }, 10000)
+}

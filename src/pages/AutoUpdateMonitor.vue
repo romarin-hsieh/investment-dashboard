@@ -176,11 +176,9 @@
             <span class="value">{{ formatTime(status.nextUpdates?.cacheCleanup) }}</span>
           </div>
         </div>
-        <div class="card-actions">
-          <button @click="triggerUpdate('cache')" class="btn btn-warning btn-sm" :disabled="loading">
-            {{ $t('autoUpdate.cleanCache') }}
-          </button>
-        </div>
+        <!-- The "clean cache" action was removed: no eviction is implemented, so the
+             button could only log fake success (audit SD-3). Reinstate together with a
+             real eviction path. -->
       </div>
     </div>
 
@@ -277,6 +275,7 @@ import { withDataBase } from '@/utils/baseUrl'
 import { performanceCache } from '@/utils/performanceCache'
 import { cacheWarmupService } from '@/utils/cacheWarmupService'
 import { formatDateTime as i18nDateTime, type DateInput } from '@/utils/dateFormat'
+import { gradeFreshness } from '@/utils/freshness'
 
 /** One entry in the in-memory activity log (newest first). */
 interface LogEntry {
@@ -342,15 +341,18 @@ export default defineComponent({
     schedulerButtonClass() {
       return this.status.isRunning ? 'btn btn-danger' : 'btn btn-success'
     },
+    // Shared SLO grading (audit SD-1): the same feed must grade identically here and on
+    // System Status — a 13 h-old daily feed is ON schedule, not an alarm.
     technicalIndicatorsStatus() {
-      if (this.technicalIndicatorsAge < 1) return this.$t('autoUpdate.fresh')
-      if (this.technicalIndicatorsAge < 12) return this.$t('autoUpdate.recent')
-      if (this.technicalIndicatorsAge < 24) return this.$t('autoUpdate.stale')
+      const grade = gradeFreshness(this.technicalIndicatorsAge)
+      if (grade === 'fresh') return this.$t('autoUpdate.fresh')
+      if (grade === 'stale') return this.$t('autoUpdate.stale')
       return this.$t('autoUpdate.outdated')
     },
     technicalIndicatorsStatusClass() {
-      if (this.technicalIndicatorsAge < 1) return 'status-success'
-      if (this.technicalIndicatorsAge < 12) return 'status-warning'
+      const grade = gradeFreshness(this.technicalIndicatorsAge)
+      if (grade === 'fresh') return 'status-success'
+      if (grade === 'stale') return 'status-warning'
       return 'status-error'
     },
     metadataStatus() {
@@ -506,8 +508,14 @@ export default defineComponent({
       this.loading = true
       try {
         this.addLog(this.$t('autoUpdate.logUpdateTriggered') + updateType, 'INFO')
-        await autoUpdateScheduler.triggerManualUpdate(updateType)
-        this.addLog(this.$t('autoUpdate.logUpdateDone') + updateType, 'SUCCESS')
+        const result = await autoUpdateScheduler.triggerManualUpdate(updateType)
+        // SUCCESS only when work actually happened (audit SD-3/SK-D-2) — an unchanged
+        // version check is a fine outcome, but it is information, not an achievement.
+        if (result.changed) {
+          this.addLog(this.$t('autoUpdate.logUpdateDone') + updateType, 'SUCCESS')
+        } else {
+          this.addLog(this.$t('autoUpdate.logNoChange') + updateType, 'INFO')
+        }
         await this.refreshStatus()
         
         if (updateType === 'technicalIndicators') {
@@ -577,8 +585,10 @@ export default defineComponent({
     },
 
     getDataAgeClass(ageHours: number) {
-      if (ageHours < 1) return 'text-success'
-      if (ageHours < 12) return 'text-warning'
+      // On-SLO age is unremarkable (no color); only past-SLO ages get emphasis (SD-1).
+      const grade = gradeFreshness(ageHours)
+      if (grade === 'fresh') return ''
+      if (grade === 'stale') return 'text-warning'
       return 'text-danger'
     },
 

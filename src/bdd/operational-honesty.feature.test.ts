@@ -1,43 +1,44 @@
 /**
  * Binding for features/operational-honesty.feature.
  *
- * @pending-fix(fix/ops-honesty · SD-1): the shared SLO freshness helper does not exist
- * yet — SystemManager and AutoUpdateMonitor currently grade the same feed with
- * contradictory thresholds (audit SD-1). The scenario below is written against the
- * helper's intended contract; the fix PR creates `src/utils/freshness.ts`, points both
- * pages at it, and flips `pendingScenario` → `scenario` (updating the import).
- * The two @manual scenarios are browser-level and tracked in the feature file.
+ * The SLO-grading scenario is ACTIVE since fix/ops-honesty: src/utils/freshness.ts is the
+ * single grading authority and both System Status and Auto-Update Monitor consume it —
+ * asserted structurally below, so a page quietly reverting to private thresholds fails
+ * this scenario (audit SD-1). The two @manual scenarios are browser-level and tracked in
+ * the feature file.
  */
+import fs from 'node:fs'
+import path from 'node:path'
 import { expect } from 'vitest'
-import { feature, pendingScenario, manualScenario } from './gwt'
-
-const SLO_HOURS = 26 // docs/operations/SLA.md — data freshness < 26 h
+import { feature, scenario, manualScenario } from './gwt'
+import { gradeFreshness, FRESHNESS_SLO_HOURS } from '@/utils/freshness'
 
 feature('Monitoring surfaces report only measured truth', () => {
-  // Activation (fix/ops-honesty): add `import { gradeFreshness } from '@/utils/freshness'`
-  // at the top of this file, flip pendingScenario → scenario, and fill the given/when
-  // steps with the assertions sketched below. A static import cannot be written today —
-  // the module does not exist yet and Vite fails the whole file at transform time on an
-  // unresolvable specifier, even inside a skipped test.
-  pendingScenario(
-    'One freshness grade per feed across all pages',
-    'activate in fix/ops-honesty once src/utils/freshness.ts exists and both pages consume it',
-    (s) => {
-      s.given('the technical-indicator feed is 13 hours old', () => {})
-      s.when('System Status and Auto-Update Monitor grade its freshness', () => {
-        // Both pages import the same helper; asserting the helper asserts both.
-      })
-      s.then('both derive the grade from the shared SLO helper', () => {
-        // expect(typeof gradeFreshness).toBe('function')
-      })
-      s.and('a feed younger than the 26-hour SLO grades as fresh on both', () => {
-        // expect(gradeFreshness(13)).toBe('fresh')
-        // expect(gradeFreshness(SLO_HOURS - 1)).toBe('fresh')
-        // expect(gradeFreshness(SLO_HOURS + 1)).not.toBe('fresh')
-        expect(SLO_HOURS).toBe(26)
-      })
-    }
-  )
+  scenario('One freshness grade per feed across all pages', (s) => {
+    let grade13: string
+
+    s.given('the technical-indicator feed is 13 hours old', () => {
+      grade13 = gradeFreshness(13)
+    })
+    s.when('System Status and Auto-Update Monitor grade its freshness', () => {
+      // Both pages must consume the shared helper — private thresholds are the bug class.
+      for (const page of ['src/pages/SystemManager.vue', 'src/pages/AutoUpdateMonitor.vue']) {
+        const source = fs.readFileSync(path.resolve(process.cwd(), page), 'utf8')
+        expect(source, `${page} must import the shared freshness helper`).toMatch(
+          /from '@\/utils\/freshness'/
+        )
+        expect(source, `${page} must call gradeFreshness`).toMatch(/gradeFreshness\(/)
+      }
+    })
+    s.then('both derive the grade from the shared SLO helper', () => {
+      expect(FRESHNESS_SLO_HOURS).toBe(26) // docs/operations/SLA.md
+    })
+    s.and('a feed younger than the 26-hour SLO grades as fresh on both', () => {
+      expect(grade13).toBe('fresh')
+      expect(gradeFreshness(FRESHNESS_SLO_HOURS - 1)).toBe('fresh')
+      expect(gradeFreshness(FRESHNESS_SLO_HOURS + 1)).not.toBe('fresh')
+    })
+  })
 
   manualScenario(
     'A failed status fetch renders Unknown, not fabricated values',
@@ -45,6 +46,6 @@ feature('Monitoring surfaces report only measured truth', () => {
   )
   manualScenario(
     'SUCCESS log entries only for performed work',
-    'browser-level; verified by hand until the log-honesty fix (SD-3/SK-D-2) lands'
+    'browser-level; the log-honesty wiring (SD-3/SK-D-2) landed in fix/ops-honesty — verify by hand until a component-level binding exists'
   )
 })
