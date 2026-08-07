@@ -10,29 +10,46 @@
 
 ## Now (Active — being executed)
 
-### 🔤 WS-F — TypeScript stack unification (started 2026-07-20)
-Making TypeScript real and then migrating `.js` → `.ts` incrementally behind a strict
-typecheck gate, governed by [ADR-0014](../architecture/adr/0014-typescript-unification.md).
-The gate (`vue-tsc --noEmit`) runs in CI before the tests; `strict` is never relaxed to make
-a migration pass. **16 `.ts` files so far** (was 7): the type gate itself, then `baseUrl`,
-`designTokens`, `mfi`, `dataVersionService`, `technicalIndicatorsCache`, `performanceCache`,
-`performanceMonitor`, `mfiVolumeProfile`, `autoUpdateScheduler`. See the ADR-0014 progress
-table for the per-batch log and what remains. The migration has also forced out real bugs
-(an `isChecking` latch, null-laundering `new Array()` intermediates), each fixed with a
-regression test.
-
-### 🧪 WS-H — Component test coverage (2026-07-20, shipped)
-Risk-weighted expansion of Vue Test Utils coverage, governed by [ADR-0013](../architecture/adr/0013-component-test-coverage-policy.md). Coverage is gated by **ratchet floors** in `vitest.config.js` (global + per-file), mirroring the ADR-0007 bundle-size contract. Six components migrated in risk order: `NavigationPanel` → `StockCard` → `TechnicalIndicators` → `MFIVolumeProfilePanel` → `FundamentalAnalysis` → `StockOverview`, each PR raising its own floor. The planning pass also surfaced 11 real defects (stale-response races, `getGrowthClass` crash + payload mutation, null-price `BEARISH` call, fabricated signals) which were fixed alongside their regression tests. Global coverage 32.7% → 38.8% stmts.
+**None.** WS-F (TypeScript unification), WS-H (component test coverage), WS-I
+(test-strategy execution) and WS-J (UI/UX remediation) have all shipped — see *Recently
+shipped*. The project is between cycles: pick the next workstream from *Next*, or run a
+fresh audit.
 
 ---
 
 ## Next (Committed but not yet started)
 
-### 🧪 WS-I — Test-strategy execution
-Five sequenced test PRs per the [2026-07-20 test-strategy audit](../audits/2026-07-20-test-strategy.md): state-manager resilience (stops silent portfolio loss) → data-repo contract/golden-file tier → ingestion guards (fetcher/Yahoo/ohlcv) → test-quality anti-pattern fixes → first page-integration + a11y/E2E harness. Each PR raises its coverage floors per ADR-0013.
+### 🧹 Audit round-2 residue (verified open 2026-08-08)
+What the [2026-08-07 round-2 audit](../audits/2026-08-07-adversarial-round2-audit.md)
+stack (#210–#222) deliberately left behind. Each was re-verified against `main`
+`a568340c0`, not carried over on trust:
 
-### 🎨 WS-J — UI/UX remediation (top-8)
-Ranked fixes per the [2026-07-20 adversarial UI/UX audit](../audits/2026-07-20-adversarial-uiux-audit.md): navigation for the three orphaned routes, dark-mode grey-token contrast (WCAG AA), truthful monitoring pages (AutoUpdateMonitor / clear-cache no-ops), StockDetail tab tokens, `-var()` CSS fix + stylelint guard, stock-grid virtualization + search wiring, token-layer consolidation.
+- **I5 — native browser dialogs.** `Settings.vue` adopted a two-step inline confirm, but
+  `TechnicalIndicatorsManager.vue` still calls `alert()` ×3 + `confirm()` ×1 and
+  `SystemManager.vue` `confirm()` ×1. `GenericSettingsModal` exists and is unadopted by
+  the admin pages.
+- **Upstream `reason_code`.** `scripts/production/daily_update.py` emits no `reason_code`;
+  `src/utils/quantCopy.ts` localizes quant signals by string-matching the English payload
+  as a documented fallback. Add-only field, deliberately deferred so an ETL change and a
+  large UI stack never share a deploy window.
+- **Vestigial analytics flags.** #222 removed Clarity + GA, but `ga_enabled` /
+  `clarity_enabled` survive in `validation.ts`, `types/index.ts` and `state-manager.ts`
+  (defaulted `false`, read by nothing).
+- **SD-4 — configuration panel.** #218 removed the write-only panel. Reinstating it needs
+  a decision on what would actually be wired first; there is no bar for that today.
+
+### 🗂️ True stock-grid virtualization
+[#121](https://github.com/romarin-hsieh/investment-dashboard/pull/121) closed the honesty
+half of WS-J N2 (search filters the grid, persisted to the URL) and mitigated the cost
+with `content-visibility`, but every StockCard still mounts. Real windowing/pagination
+was ranked High impact / High effort and remains unbuilt.
+
+### 🧪 Test-suite type coverage + the last Q4 anti-pattern
+Two residues from the otherwise-complete testing programs: 41 `*.test.js` files sit
+outside `tsconfig.json`'s `include` (production source is 100 % TypeScript; the tests that
+exercise it are not type-checked), and Q4 from the test-strategy audit was the one item
+[#128](https://github.com/romarin-hsieh/investment-dashboard/pull/128) did not take —
+`autoUpdateScheduler.test.js` still asserts on `console.log` substrings rather than state.
 
 ### 🖥️ Self-hosted CORS proxy (Cloudflare Worker)
 Activate when public proxy failure rate exceeds 5% over 30 days, per [ADR-0002](../architecture/adr/0002-cors-proxy-strategy.md) follow-up. Cloudflare Workers free tier covers our scale.
@@ -53,10 +70,11 @@ Activate when public proxy failure rate exceeds 5% over 30 days, per [ADR-0002](
 - **Service worker (offline-first)**: render last-known dashboard state when offline; sync on reconnect.
 
 ### Engineering hygiene
-- **Full WCAG 2.1 AA pass**: beyond the *minimums* WS-A delivers
-- **E2E (Playwright) golden-path coverage**: Market → StockDetail → tab switching, gated in CI
+- **Manual / assistive-tech accessibility pass**: the automated gate (ADR-0015: `@axe-core/playwright`, 7 routes × both themes, zero-violation baselines) is in CI, but axe only catches a fraction of WCAG — real keyboard-only and screen-reader verification is still unperformed
+- **E2E golden-path coverage**: the Playwright harness landed with ADR-0015, but `e2e/smoke.spec.ts` only asserts boot + one route change — the Market → StockDetail → tab-switching journey is not yet covered
 - **Migration to a paid market-data API** (Polygon / Alpha Vantage): only if free Yahoo path becomes structurally constrained
 - **CSP via Cloudflare in front of GitHub Pages**: tightens security beyond what raw GH Pages supports
+- **`.git` history purge**: ~3.6 GB of migrated-away data blobs still in history; destructive and rewrites every SHA — deliberately unscheduled
 
 ### Not Planned (explicit *Won't*)
 The following are listed in [PRD §4 Non-Goals](PRD.md#4-non-goals-explicit) and will be declined:
@@ -76,7 +94,7 @@ The following are listed in [PRD §4 Non-Goals](PRD.md#4-non-goals-explicit) and
 - **Next**: no hard cap; if list grows beyond 8, prune to highest-confidence items (others fall to *Later*).
 - **Later**: capped at 10 distinct items. Anything beyond is signal of indecision — kill or commit.
 
-Currently: 0 *Now*, 3 *Next*, 11 *Later* items + 6 *Won't*. Between cycles — pick the next workstream from *Next* or run a fresh audit. *Later* bucket is 1 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
+Currently (2026-08-08): 0 *Now*, 4 *Next*, 12 *Later* items + 6 *Won't*. Between cycles — pick the next workstream from *Next* or run a fresh audit. *Later* bucket is 2 over its 10-item cap — flag for next monthly review to either promote to *Next* or move to *Won't*.
 
 ---
 
@@ -97,3 +115,15 @@ Currently: 0 *Now*, 3 *Next*, 11 *Later* items + 6 *Won't*. Between cycles — p
 - **WS-G — UI Polish + a11y (2026-06)** — AA-contrast token variants, skeleton-shimmer restore, dark-mode hardcoded-color sweep across 11 components, `--shadow-lg` token + modal/`.btn-save` polish. PRs [#51](https://github.com/romarin-hsieh/investment-dashboard/pull/51)–[#54](https://github.com/romarin-hsieh/investment-dashboard/pull/54).
 - **Self-service Add-Symbol (2026-06)** — `add-symbol.yml` workflow + `scripts/add-symbol.js` validate a ticker via yahoo-finance2, auto-fill exchange/sector/industry, append to `config/stocks.json`, and trigger ETL + deploy. PRs [#57](https://github.com/romarin-hsieh/investment-dashboard/pull/57), [#58](https://github.com/romarin-hsieh/investment-dashboard/pull/58).
 - **WS-F — Bilingual UI (EN/繁中) (2026-06)** — vue-i18n with build-time message precompilation for CSP compliance (no runtime `eval`), locale switcher, ~45 components migrated to bilingual copy. PRs [#60](https://github.com/romarin-hsieh/investment-dashboard/pull/60)–[#65](https://github.com/romarin-hsieh/investment-dashboard/pull/65) + [ADR-0009](../architecture/adr/0009-i18n-message-precompilation-csp.md).
+- **Docs freshness + design-token adoption (2026-06-20)** — docs sweep + the last two i18n gaps (app now 100 % bilingual), the missing space/text/weight/transition/radius scales added to the token layer, one-gutter page model, lossless adoption of 223 colour/radius/shadow literals, dark-mode semantic-state fix, and [ADR-0010](../architecture/adr/0010-design-system-css-tokens.md)/[0011](../architecture/adr/0011-bilingual-i18n-architecture.md)/[0012](../architecture/adr/0012-self-service-add-symbol.md). PRs [#66](https://github.com/romarin-hsieh/investment-dashboard/pull/66)–[#71](https://github.com/romarin-hsieh/investment-dashboard/pull/71).
+- **Craft program — anti-slop pass (2026-06-20)** — removed the decorative accent-border tells, typography/motion/spacing scale adoption (753 spacing swaps), Kinetic-State legend. PRs [#72](https://github.com/romarin-hsieh/investment-dashboard/pull/72)–[#78](https://github.com/romarin-hsieh/investment-dashboard/pull/78).
+- **Aesthetic ceiling — Market + Quant surfaces (2026-06-21)** — off-scale typography convergence (198 literals snapped to one ramp), Market Overview masthead, Quant Strategy de-terminal light-mode fix → Verdict Plate → phantom-ticker data fix → chart de-neon, lazy-loaded non-active locale (entry 164 → 145 KB gz), gauge/plate polish. PRs [#79](https://github.com/romarin-hsieh/investment-dashboard/pull/79)–[#87](https://github.com/romarin-hsieh/investment-dashboard/pull/87).
+- **Token + ETL cleanups (2026-06-22)** — border-radius literals unified onto `--radius-*`, all three chart libraries routed through colour tokens, Dataroma crawl made config-driven from `stocks.json` (de-hardcoded the ticker list). PRs [#89](https://github.com/romarin-hsieh/investment-dashboard/pull/89)–[#93](https://github.com/romarin-hsieh/investment-dashboard/pull/93).
+- **WS-H — Component test coverage (2026-07)** — risk-ordered Vue Test Utils expansion behind ratchet floors per [ADR-0013](../architecture/adr/0013-component-test-coverage-policy.md); surfaced and fixed 11 real defects (stale-response races, a `getGrowthClass` crash + payload mutation, a null-price `BEARISH` call, fabricated signals). Global coverage 32.7 % → 38.8 % stmts. PRs [#94](https://github.com/romarin-hsieh/investment-dashboard/pull/94)–[#100](https://github.com/romarin-hsieh/investment-dashboard/pull/100).
+- **WS-J — UI/UX remediation top-8 (2026-07)** — Tools menu for the three orphaned routes, greyscale-ramp contrast fix, truthful monitoring pages, `-var()` negation repair + guard, StockDetail tab tokens, token-layer reconnection, grid search wiring + URL persistence. PRs [#116](https://github.com/romarin-hsieh/investment-dashboard/pull/116)–[#121](https://github.com/romarin-hsieh/investment-dashboard/pull/121).
+- **WS-I — Test-strategy execution (2026-07)** — all five sequenced PRs per the [test-strategy audit](../audits/2026-07-20-test-strategy.md): state-manager schema-drift resilience, cross-repo indicator contract test, ingestion guards, test-quality teeth (Q1/Q2/Q3/Q5/Q6), and the two-layer a11y + Playwright harness ([ADR-0015](../architecture/adr/0015-accessibility-and-e2e-testing.md)). PRs [#123](https://github.com/romarin-hsieh/investment-dashboard/pull/123)–[#128](https://github.com/romarin-hsieh/investment-dashboard/pull/128), [#135](https://github.com/romarin-hsieh/investment-dashboard/pull/135).
+- **WS-F — TypeScript stack unification, COMPLETE (2026-07 → 2026-08)** — from 7 unenforced `.ts` files to a fully strict, fully typed source tree per [ADR-0014](../architecture/adr/0014-typescript-unification.md): the gate itself, ~40 utility/service/API migrations (incl. the two giants `technicalIndicatorsCore` and `yahooFinanceApi`, each behind a characterization suite), all 42 `.vue` SFCs on `<script lang="ts">`, then the strict-flag ratchet — `noImplicitReturns`/`noImplicitOverride`, `noPropertyAccessFromIndexSignature`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`. PRs [#101](https://github.com/romarin-hsieh/investment-dashboard/pull/101)–[#112](https://github.com/romarin-hsieh/investment-dashboard/pull/112), [#131](https://github.com/romarin-hsieh/investment-dashboard/pull/131)–[#134](https://github.com/romarin-hsieh/investment-dashboard/pull/134), [#138](https://github.com/romarin-hsieh/investment-dashboard/pull/138)–[#175](https://github.com/romarin-hsieh/investment-dashboard/pull/175), [#187](https://github.com/romarin-hsieh/investment-dashboard/pull/187)–[#192](https://github.com/romarin-hsieh/investment-dashboard/pull/192).
+- **Accessibility contrast program (2026-07 → 2026-08)** — WCAG AA colour-contrast cleared route by route, then the gate extended to scan the dark theme, interaction states, and Teleported modals; every route now carries a zero-violation axe baseline in both themes. PRs [#176](https://github.com/romarin-hsieh/investment-dashboard/pull/176)–[#184](https://github.com/romarin-hsieh/investment-dashboard/pull/184), [#196](https://github.com/romarin-hsieh/investment-dashboard/pull/196).
+- **Dead-code sweep (2026-08)** — 9 unused components, orphan modules, a dormant client-side fear/greed engine, a write-only smart-money score chain, unused util exports and debug scaffolding removed; CI actions bumped off deprecated Node majors. PRs [#185](https://github.com/romarin-hsieh/investment-dashboard/pull/185)–[#209](https://github.com/romarin-hsieh/investment-dashboard/pull/209).
+- **Adversarial round-2 audit + PM foundation (2026-08-07)** — three-lens audit with a skeptic pass and runtime measurement, the PM doc set (user stories / flows / state machines / wireframes / BDD-DDD gap analysis), a Given-When-Then harness, then a 10-PR fix stack: zh-TW register sweep, unified button/card/header grammar, ops honesty (no fake loads, real next-run times, SLO grading), payload-value localization, nav-chrome + stale-chunk recovery, honest surfaces with Unknown states, and ARIA tabs / `th scope` / per-action busy flags. PRs [#210](https://github.com/romarin-hsieh/investment-dashboard/pull/210)–[#219](https://github.com/romarin-hsieh/investment-dashboard/pull/219).
+- **Honesty follow-ups (2026-08-07)** — Settings became a real preferences page (privacy disclosure, export/import, two-step clear), cache-busting unified onto one version-keyed policy with a guard test ([ADR-0006](../architecture/adr/0006-static-data-caching-on-github-pages.md) amendment), and Microsoft Clarity + Google Analytics were removed so the privacy statement is true. PRs [#220](https://github.com/romarin-hsieh/investment-dashboard/pull/220)–[#222](https://github.com/romarin-hsieh/investment-dashboard/pull/222).
