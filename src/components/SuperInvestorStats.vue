@@ -65,7 +65,7 @@
                      </td>
                      <td class="text-left font-medium">{{ item.manager }}</td>
                      <td class="text-center">{{ formatPortfolioPct(item.percent_portfolio) }}</td>
-                     <td class="text-center" :class="getActivityColor(item.recent_activity)">{{ item.recent_activity || '-' }}</td>
+                     <td class="text-center" :class="getActivityColor(item.recent_activity)">{{ activityDisplay(item.recent_activity) }}</td>
                      <td class="text-right">{{ formatGrouped(item.shares) }}</td>
                      <td class="text-right">${{ formatGrouped(item.value) }}</td>
                    </tr>
@@ -89,7 +89,7 @@
                                   <td>{{ hItem.period }}</td>
                                   <td class="text-right">{{ formatGrouped(hItem.shares) }}</td>
                                   <td class="text-center">{{ hItem.percent_portfolio ? hItem.percent_portfolio + '%' : '-' }}</td>
-                                  <td class="text-right" :class="getActivityColor(hItem.activity)">{{ hItem.activity || '-' }}</td>
+                                  <td class="text-right" :class="getActivityColor(hItem.activity)">{{ activityDisplay(hItem.activity) }}</td>
                                   <td class="text-center">{{ hItem.percent_change_portfolio ? hItem.percent_change_portfolio + '%' : '-' }}</td>
                                   <td class="text-right">{{ hItem.reported_price }}</td>
                                 </tr>
@@ -178,6 +178,7 @@
 
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
+import { activityLabel } from '@/utils/marketTermL10n'
 
 /** A single super-investor activity row (loose — the dataroma blob is external). */
 interface ActivityRow {
@@ -278,6 +279,10 @@ export default defineComponent({
     }
   },
   methods: {
+    // Dataroma activity words localize; magnitudes ("Add 12.5%") keep their number (CP-8).
+    activityDisplay(raw: string | undefined) {
+      return activityLabel(raw, (k: string) => this.$t(k))
+    },
     toggleSection(section: string) {
       this.expandedSections[section] = !this.expandedSections[section];
     },

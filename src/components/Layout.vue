@@ -80,6 +80,8 @@
         <div class="footer-content">
           <span class="copyright">{{ $t('nav.footerCopyright', { year }) }}</span>
           <span class="separator" aria-hidden="true">•</span>
+          <span class="disclaimer">{{ $t('nav.footerDisclaimer') }}</span>
+          <span class="separator" aria-hidden="true">•</span>
           <span class="attribution">
             {{ $t('nav.footerPoweredBy') }}
             <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer" class="tradingview-link">

@@ -101,10 +101,10 @@
                     <li v-for="(tx, idx) in recentInsiders" :key="idx" :class="tx['buySell']">
                         <span class="date">{{ formatDate(tx['startDate']) }}</span>
                         <span class="name" :title="tx['filerName']">{{ tx['filerName'] }}</span>
-                        <span class="relationship" :title="tx['relationship']">{{ tx['relationship'] || '-' }}</span>
+                        <span class="relationship" :title="tx['relationship']">{{ relationshipDisplay(tx['relationship']) }}</span>
                         <span class="type">{{ tx['transactionText'] }}</span>
-                        <span class="shares">{{ tx['shares'] ? tx['shares'].fmt : $t('holdings.notAvailable') }}</span>
-                        <span class="value">{{ tx['value'] ? tx['value'].fmt : $t('holdings.notAvailable') }}</span>
+                        <span class="shares">{{ tx['shares'] ? tx['shares'].fmt : $t('common.na') }}</span>
+                        <span class="value">{{ tx['value'] ? tx['value'].fmt : $t('common.na') }}</span>
                     </li>
                 </ul>
             </div>
@@ -127,11 +127,11 @@
                 </thead>
                 <tbody>
                     <tr v-for="(inst, idx) in holders['topInstitutions'].slice(0, 10)" :key="idx">
-                        <td>{{ inst.reportDate ? inst.reportDate.fmt : $t('holdings.notAvailable') }}</td>
+                        <td>{{ inst.reportDate ? inst.reportDate.fmt : $t('common.na') }}</td>
                         <td>{{ inst.organization }}</td>
-                        <td>{{ inst.pctHeld ? inst.pctHeld.fmt : $t('holdings.notAvailable') }}</td>
-                        <td>{{ inst.position ? inst.position.fmt : $t('holdings.notAvailable') }}</td>
-                        <td>{{ inst.value ? ('$' + inst.value.fmt) : $t('holdings.notAvailable') }}</td>
+                        <td>{{ inst.pctHeld ? inst.pctHeld.fmt : $t('common.na') }}</td>
+                        <td>{{ inst.position ? inst.position.fmt : $t('common.na') }}</td>
+                        <td>{{ inst.value ? ('$' + inst.value.fmt) : $t('common.na') }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -146,6 +146,7 @@ import { defineComponent, type PropType } from 'vue'
 import { Chart as ChartJS, ArcElement, BarElement, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, type ChartData, type ChartOptions } from 'chart.js'
 import { Doughnut, Bar, Line } from 'vue-chartjs'
 import yahooFinanceAPI from '@/api/yahooFinanceApi'
+import { txTypeLabel, relationshipLabel } from '@/utils/marketTermL10n'
 import { precomputedIndicatorsAPI } from '@/api/precomputedIndicatorsApi'
 import { useTheme } from '@/composables/useTheme'
 import { getToken, getTokenRgba } from '@/utils/designTokens'
@@ -286,6 +287,10 @@ export default defineComponent({
     }
   },
   methods: {
+    // SEC relationship titles localize via the finite map; long tail stays raw (CP-8).
+    relationshipDisplay(raw: string | undefined) {
+        return relationshipLabel(raw, (k: string) => this.$t(k));
+    },
     async loadData() {
         if (!this.symbol) return;
         this.loading = true;
@@ -353,7 +358,7 @@ export default defineComponent({
                 startDate: tx['transaction_date'], // "09 Oct 2025" or "2025-10-09"
                 filerName: tx['reporter'],
                 relationship: tx['relationship'] || tx['filerRelation'] || '',
-                transactionText: this.$t('holdings.transactionAtPrice', { type: tx['transaction_type'], price: tx['price'] }),
+                transactionText: this.$t('holdings.transactionAtPrice', { type: txTypeLabel(tx['transaction_type'], (k: string) => this.$t(k)), price: tx['price'] }),
                 shares: { fmt: new Intl.NumberFormat('en-US').format(tx['shares']) },
                 buySell: isBuy ? 'buy' : (isSell ? 'sell' : 'neutral'),
                 value: { fmt: '$' + new Intl.NumberFormat('en-US').format(tx['value']) }
@@ -514,7 +519,7 @@ export default defineComponent({
     },
 
     formatDate(dateObj: any) {
-        if (!dateObj) return this.$t('holdings.notAvailable');
+        if (!dateObj) return this.$t('common.na');
         const raw = (typeof dateObj === 'string') ? dateObj : (dateObj.raw || dateObj.fmt || dateObj);
         
         // Try parsing

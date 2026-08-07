@@ -38,7 +38,8 @@
                 <tbody>
                     <tr v-for="(indicator, idx) in group" :key="idx">
                         <td class="col-label">{{ indicator.label }}</td>
-                        <td class="col-value">{{ indicator.value }}</td>
+                        <!-- 'N/A' is the internal sentinel (compared upstream); localize at render only (audit CP-9/S5). -->
+                        <td class="col-value">{{ indicator.value === 'N/A' ? $t('common.na') : indicator.value }}</td>
                         <td class="col-meta">
                             <span v-if="indicator.change" class="change-tag" :class="indicator.changeClass">{{ indicator.change }}</span>
                             <span v-else-if="indicator.signal && indicator.signal !== 'N/A'" class="signal-tag" :class="indicator.signalClass || getSignalClass(indicator.signal)">{{ signalLabel(indicator.signal) }}</span>

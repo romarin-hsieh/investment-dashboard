@@ -99,6 +99,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
 import type { QuoteItem, SymbolMetadata } from '@/types'
+import { sectorLabel } from '@/utils/sectorL10n'
 import FastTradingViewWidget from './FastTradingViewWidget.vue'
 import TechnicalIndicators from './TechnicalIndicators.vue'
 
@@ -185,7 +186,9 @@ export default defineComponent({
         return this.$t('stockCard.unknownSector')
       }
 
-      return this.metadata.sector || this.$t('stockCard.unknownSector')
+      if (!this.metadata.sector) return this.$t('stockCard.unknownSector')
+      // Sector payload values localize for display (SK-C-1).
+      return sectorLabel(this.metadata.sector, (key: string) => this.$t(key))
     },
 
     getIndustry() {
@@ -197,7 +200,11 @@ export default defineComponent({
         return this.$t('stockCard.unknownIndustry')
       }
 
-      return this.metadata.industry || this.metadata.sector || this.$t('stockCard.unknownIndustry')
+      const industry = this.metadata.industry || this.metadata.sector
+      // Industry names deliberately stay English (50+ values — see sectorL10n.ts);
+      // only the 'Unknown' placeholder localizes.
+      if (!industry || industry === 'Unknown') return this.$t('stockCard.unknownIndustry')
+      return industry
     },
 
     getIndustryCategory() {

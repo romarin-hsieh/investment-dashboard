@@ -293,7 +293,7 @@ describe('FundamentalAnalysis — Yahoo {raw, fmt} envelopes', () => {
     const wrapper = mount(FundamentalAnalysis, mountOpts({ symbol: 'AAPL' }))
     await flushPromises()
     const vm = wrapper.vm
-    const NA = vm.$t('fundamentals.keyMetrics.notAvailable')
+    const NA = vm.$t('common.na')
 
     expect(vm.displayMetric({ raw: 1.234, fmt: '1.23' }, 2)).toBe('1.23')
     expect(vm.displayMetric(1.234, 2)).toBe('1.23')
